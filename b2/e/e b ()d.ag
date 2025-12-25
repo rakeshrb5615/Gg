@@ -1,0 +1,65 @@
+# Lb2/e;->b()Lb2/d; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v6
+#
+# - return:b2.d
+
+b-BB@0x0 : [ b-BB@0xe ]
+	0       (00000000) const-string         v0, "androidx.lifecycle.internal.SavedStateHandlesProvider"
+	1       (00000004) iget-object          v1, v6, Lb2/e;->a Lc2/a;
+	2       (00000008) iget-object          v2, v1, Lc2/a;->c Lv3/f;
+	3       (0000000c) monitor-enter        v2
+
+b-BB@0xe : [ b-BB@0x22 ]
+	4       (0000000e) iget-object          v1, v1, Lc2/a;->d Ljava/util/LinkedHashMap;
+	5       (00000012) invoke-virtual       v1, Ljava/util/LinkedHashMap;->entrySet()Ljava/util/Set;
+	6       (00000018) move-result-object   v1
+	7       (0000001a) invoke-interface     v1, Ljava/util/Set;->iterator()Ljava/util/Iterator;
+	8       (00000020) move-result-object   v1
+	e:5b
+	(Ljava/lang/Throwable; -> 68 b-BB@0x68)
+
+b-BB@0x22 : [ b-BB@0x30 b-BB@0x6c ]
+	9       (00000022) invoke-interface     v1, Ljava/util/Iterator;->hasNext()Z
+	10      (00000028) move-result          v3
+	11      (0000002a) const/4              v4, 0
+	12      (0000002c) if-eqz               v3, +020h
+	e:5b
+	(Ljava/lang/Throwable; -> 68 b-BB@0x68)
+
+b-BB@0x30 : [ b-BB@0x60 b-BB@0x62 ]
+	13      (00000030) invoke-interface     v1, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	14      (00000036) move-result-object   v3
+	15      (00000038) check-cast           v3, Ljava/util/Map$Entry;
+	16      (0000003c) invoke-interface     v3, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
+	17      (00000042) move-result-object   v5
+	18      (00000044) check-cast           v5, Ljava/lang/String;
+	19      (00000048) invoke-interface     v3, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
+	20      (0000004e) move-result-object   v3
+	21      (00000050) check-cast           v3, Lb2/d;
+	22      (00000054) invoke-static        v5, v0, Lkotlin/jvm/internal/j;->a(Ljava/lang/Object; Ljava/lang/Object;)Z
+	23      (0000005a) move-result          v5
+	24      (0000005c) if-eqz               v5, +003h
+
+b-BB@0x60 : [ b-BB@0x62 ]
+	25      (00000060) move-object          v4, v3
+
+b-BB@0x62 : [ b-BB@0x66 b-BB@0x22 ]
+	26      (00000062) if-eqz               v4, -020h
+
+b-BB@0x66 : [ b-BB@0x6c ]
+	27      (00000066) goto                 +3h
+
+b-BB@0x68 : [ b-BB@0x70 ]
+	28      (00000068) move-exception       v0
+	29      (0000006a) goto                 +3h
+
+b-BB@0x6c : 
+	30      (0000006c) monitor-exit         v2
+	31      (0000006e) return-object        v4
+
+b-BB@0x70 : 
+	32      (00000070) monitor-exit         v2
+	33      (00000072) throw                v0
+

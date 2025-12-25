@@ -1,0 +1,41 @@
+# Lb8/i;->G0(I Ljava/lang/String;)Ljava/lang/String; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v0
+# - v1:int
+# - v2:java.lang.String
+#
+# - return:java.lang.String
+
+G0-BB@0x0 : [ G0-BB@0xe G0-BB@0x32 ]
+	0       (00000000) const-string         v0, "<this>"
+	1       (00000004) invoke-static        v2, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) if-ltz               v1, +014h
+
+G0-BB@0xe : [ G0-BB@0x1a G0-BB@0x1c ]
+	3       (0000000e) invoke-virtual       v2, Ljava/lang/String;->length()I
+	4       (00000014) move-result          v0
+	5       (00000016) if-le                v1, v0, +003h
+
+G0-BB@0x1a : [ G0-BB@0x1c ]
+	6       (0000001a) move                 v1, v0
+
+G0-BB@0x1c : 
+	7       (0000001c) const/4              v0, 0
+	8       (0000001e) invoke-virtual       v2, v0, v1, Ljava/lang/String;->substring(I I)Ljava/lang/String;
+	9       (00000024) move-result-object   v1
+	10      (00000026) const-string         v2, "substring(...)"
+	11      (0000002a) invoke-static        v1, v2, Lkotlin/jvm/internal/j;->d(Ljava/lang/Object; Ljava/lang/String;)V
+	12      (00000030) return-object        v1
+
+G0-BB@0x32 : 
+	13      (00000032) const-string         v2, "Requested character count "
+	14      (00000036) const-string         v0, " is less than zero."
+	15      (0000003a) invoke-static        v2, v1, v0, Lv1/a;->j(Ljava/lang/String; I Ljava/lang/String;)Ljava/lang/String;
+	16      (00000040) move-result-object   v1
+	17      (00000042) new-instance         v2, Ljava/lang/IllegalArgumentException;
+	18      (00000046) invoke-virtual       v1, Ljava/lang/Object;->toString()Ljava/lang/String;
+	19      (0000004c) move-result-object   v1
+	20      (0000004e) invoke-direct        v2, v1, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	21      (00000054) throw                v2
+

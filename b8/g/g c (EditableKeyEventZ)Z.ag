@@ -1,0 +1,91 @@
+# Lb8/g;->c(Landroid/text/Editable; Landroid/view/KeyEvent; Z)Z [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:android.text.Editable
+# - v7:android.view.KeyEvent
+# - v8:boolean
+#
+# - return:boolean
+
+c-BB@0x0 : [ c-BB@0x16 c-BB@0x18 ]
+	0       (00000000) invoke-virtual       v7, Landroid/view/KeyEvent;->getMetaState()I
+	1       (00000006) move-result          v7
+	2       (00000008) invoke-static        v7, Landroid/view/KeyEvent;->metaStateHasNoModifiers(I)Z
+	3       (0000000e) move-result          v7
+	4       (00000010) const/4              v0, 0
+	5       (00000012) if-nez               v7, +003h
+
+c-BB@0x16 : [ c-BB@0x96 ]
+	6       (00000016) goto                 +40h
+
+c-BB@0x18 : [ c-BB@0x2e c-BB@0x96 ]
+	7       (00000018) invoke-static        v6, Landroid/text/Selection;->getSelectionStart(Ljava/lang/CharSequence;)I
+	8       (0000001e) move-result          v7
+	9       (00000020) invoke-static        v6, Landroid/text/Selection;->getSelectionEnd(Ljava/lang/CharSequence;)I
+	10      (00000026) move-result          v1
+	11      (00000028) const/4              v2, -1
+	12      (0000002a) if-eq                v7, v2, +036h
+
+c-BB@0x2e : [ c-BB@0x32 c-BB@0x96 ]
+	13      (0000002e) if-eq                v1, v2, +034h
+
+c-BB@0x32 : [ c-BB@0x36 c-BB@0x38 ]
+	14      (00000032) if-eq                v7, v1, +003h
+
+c-BB@0x36 : [ c-BB@0x96 ]
+	15      (00000036) goto                 +30h
+
+c-BB@0x38 : [ c-BB@0x4c c-BB@0x96 ]
+	16      (00000038) const-class          v2, Lg1/v;
+	17      (0000003c) invoke-interface     v6, v7, v1, v2, Landroid/text/Spanned;->getSpans(I I Ljava/lang/Class;)[Ljava/lang/Object;
+	18      (00000042) move-result-object   v1
+	19      (00000044) check-cast           v1, [Lg1/v;
+	20      (00000048) if-eqz               v1, +027h
+
+c-BB@0x4c : [ c-BB@0x52 c-BB@0x96 ]
+	21      (0000004c) array-length         v2, v1
+	22      (0000004e) if-lez               v2, +024h
+
+c-BB@0x52 : [ c-BB@0x56 ]
+	23      (00000052) array-length         v2, v1
+	24      (00000054) move                 v3, v0
+
+c-BB@0x56 : [ c-BB@0x5a c-BB@0x96 ]
+	25      (00000056) if-ge                v3, v2, +020h
+
+c-BB@0x5a : [ c-BB@0x72 c-BB@0x76 ]
+	26      (0000005a) aget-object          v4, v1, v3
+	27      (0000005e) invoke-interface     v6, v4, Landroid/text/Spanned;->getSpanStart(Ljava/lang/Object;)I
+	28      (00000064) move-result          v5
+	29      (00000066) invoke-interface     v6, v4, Landroid/text/Spanned;->getSpanEnd(Ljava/lang/Object;)I
+	30      (0000006c) move-result          v4
+	31      (0000006e) if-eqz               v8, +004h
+
+c-BB@0x72 : [ c-BB@0x76 c-BB@0x86 ]
+	32      (00000072) if-eq                v5, v7, +00ah
+
+c-BB@0x76 : [ c-BB@0x7a c-BB@0x7e ]
+	33      (00000076) if-nez               v8, +004h
+
+c-BB@0x7a : [ c-BB@0x7e c-BB@0x86 ]
+	34      (0000007a) if-eq                v4, v7, +006h
+
+c-BB@0x7e : [ c-BB@0x82 c-BB@0x90 ]
+	35      (0000007e) if-le                v7, v5, +009h
+
+c-BB@0x82 : [ c-BB@0x86 c-BB@0x90 ]
+	36      (00000082) if-ge                v7, v4, +007h
+
+c-BB@0x86 : 
+	37      (00000086) invoke-interface     v6, v5, v4, Landroid/text/Editable;->delete(I I)Landroid/text/Editable;
+	38      (0000008c) const/4              v6, 1
+	39      (0000008e) return               v6
+
+c-BB@0x90 : [ c-BB@0x56 ]
+	40      (00000090) add-int/lit8         v3, v3, 1
+	41      (00000094) goto                 -1fh
+
+c-BB@0x96 : 
+	42      (00000096) return               v0
+

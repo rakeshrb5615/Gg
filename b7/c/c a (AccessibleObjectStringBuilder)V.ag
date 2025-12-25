@@ -1,0 +1,53 @@
+# Lb7/c;->a(Ljava/lang/reflect/AccessibleObject; Ljava/lang/StringBuilder;)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:java.lang.reflect.AccessibleObject
+# - v3:java.lang.StringBuilder
+#
+# - return:void
+
+a-BB@0x0 : [ a-BB@0x12 a-BB@0x20 ]
+	0       (00000000) const/16             v0, 40
+	1       (00000004) invoke-virtual       v3, v0, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+	2       (0000000a) instance-of          v0, v2, Ljava/lang/reflect/Method;
+	3       (0000000e) if-eqz               v0, +009h
+
+a-BB@0x12 : [ a-BB@0x2c ]
+	4       (00000012) check-cast           v2, Ljava/lang/reflect/Method;
+	5       (00000016) invoke-virtual       v2, Ljava/lang/reflect/Method;->getParameterTypes()[Ljava/lang/Class;
+	6       (0000001c) move-result-object   v2
+	7       (0000001e) goto                 +7h
+
+a-BB@0x20 : [ a-BB@0x2c ]
+	8       (00000020) check-cast           v2, Ljava/lang/reflect/Constructor;
+	9       (00000024) invoke-virtual       v2, Ljava/lang/reflect/Constructor;->getParameterTypes()[Ljava/lang/Class;
+	10      (0000002a) move-result-object   v2
+
+a-BB@0x2c : [ a-BB@0x2e ]
+	11      (0000002c) const/4              v0, 0
+
+a-BB@0x2e : [ a-BB@0x34 a-BB@0x5a ]
+	12      (0000002e) array-length         v1, v2
+	13      (00000030) if-ge                v0, v1, +015h
+
+a-BB@0x34 : [ a-BB@0x38 a-BB@0x42 ]
+	14      (00000034) if-lez               v0, +007h
+
+a-BB@0x38 : [ a-BB@0x42 ]
+	15      (00000038) const-string         v1, ", "
+	16      (0000003c) invoke-virtual       v3, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+a-BB@0x42 : [ a-BB@0x2e ]
+	17      (00000042) aget-object          v1, v2, v0
+	18      (00000046) invoke-virtual       v1, Ljava/lang/Class;->getSimpleName()Ljava/lang/String;
+	19      (0000004c) move-result-object   v1
+	20      (0000004e) invoke-virtual       v3, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	21      (00000054) add-int/lit8         v0, v0, 1
+	22      (00000058) goto                 -15h
+
+a-BB@0x5a : 
+	23      (0000005a) const/16             v2, 41
+	24      (0000005e) invoke-virtual       v3, v2, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+	25      (00000064) return-void          
+

@@ -1,0 +1,242 @@
+# Lb8/g;->s(Lr2/j; I Z)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v17
+# - v18:r2.j
+# - v19:int
+# - v20:boolean
+#
+# - return:void
+
+s-BB@0x0 : [ s-BB@0xb8 s-BB@0xbe ]
+	0       (00000000) move-object/from16   v1, v17
+	1       (00000004) move-object/from16   v0, v18
+	2       (00000008) move/from16          v2, v19
+	3       (0000000c) iget-object          v3, v1, Lb8/g;->d Ljava/lang/Object;
+	4       (00000010) check-cast           v3, Lx2/b;
+	5       (00000014) new-instance         v4, Landroid/content/ComponentName;
+	6       (00000018) iget-object          v5, v1, Lb8/g;->b Ljava/lang/Object;
+	7       (0000001c) check-cast           v5, Landroid/content/Context;
+	8       (00000020) const-class          v6, Lcom/google/android/datatransport/runtime/scheduling/jobscheduling/JobInfoSchedulerService;
+	9       (00000024) invoke-direct        v4, v5, v6, Landroid/content/ComponentName;-><init>(Landroid/content/Context; Ljava/lang/Class;)V
+	10      (0000002a) const-string         v6, "jobscheduler"
+	11      (0000002e) invoke-virtual       v5, v6, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+	12      (00000034) move-result-object   v6
+	13      (00000036) check-cast           v6, Landroid/app/job/JobScheduler;
+	14      (0000003a) new-instance         v7, Ljava/util/zip/Adler32;
+	15      (0000003e) invoke-direct        v7, Ljava/util/zip/Adler32;-><init>()V
+	16      (00000044) invoke-virtual       v5, Landroid/content/Context;->getPackageName()Ljava/lang/String;
+	17      (0000004a) move-result-object   v5
+	18      (0000004c) const-string         v8, "UTF-8"
+	19      (00000050) invoke-static        v8, Ljava/nio/charset/Charset;->forName(Ljava/lang/String;)Ljava/nio/charset/Charset;
+	20      (00000056) move-result-object   v9
+	21      (00000058) invoke-virtual       v5, v9, Ljava/lang/String;->getBytes(Ljava/nio/charset/Charset;)[B
+	22      (0000005e) move-result-object   v5
+	23      (00000060) invoke-virtual       v7, v5, Ljava/util/zip/Adler32;->update([B)V
+	24      (00000066) iget-object          v5, v0, Lr2/j;->a Ljava/lang/String;
+	25      (0000006a) iget-object          v9, v0, Lr2/j;->a Ljava/lang/String;
+	26      (0000006e) invoke-static        v8, Ljava/nio/charset/Charset;->forName(Ljava/lang/String;)Ljava/nio/charset/Charset;
+	27      (00000074) move-result-object   v8
+	28      (00000076) invoke-virtual       v5, v8, Ljava/lang/String;->getBytes(Ljava/nio/charset/Charset;)[B
+	29      (0000007c) move-result-object   v5
+	30      (0000007e) invoke-virtual       v7, v5, Ljava/util/zip/Adler32;->update([B)V
+	31      (00000084) const/4              v5, 4
+	32      (00000086) invoke-static        v5, Ljava/nio/ByteBuffer;->allocate(I)Ljava/nio/ByteBuffer;
+	33      (0000008c) move-result-object   v5
+	34      (0000008e) iget-object          v8, v0, Lr2/j;->c Lo2/d;
+	35      (00000092) invoke-static        v8, Lb3/a;->a(Lo2/d;)I
+	36      (00000098) move-result          v10
+	37      (0000009a) invoke-virtual       v5, v10, Ljava/nio/ByteBuffer;->putInt(I)Ljava/nio/ByteBuffer;
+	38      (000000a0) move-result-object   v5
+	39      (000000a2) invoke-virtual       v5, Ljava/nio/ByteBuffer;->array()[B
+	40      (000000a8) move-result-object   v5
+	41      (000000aa) invoke-virtual       v7, v5, Ljava/util/zip/Adler32;->update([B)V
+	42      (000000b0) iget-object          v5, v0, Lr2/j;->b [B
+	43      (000000b4) if-eqz               v5, +005h
+
+s-BB@0xb8 : [ s-BB@0xbe ]
+	44      (000000b8) invoke-virtual       v7, v5, Ljava/util/zip/Adler32;->update([B)V
+
+s-BB@0xbe : [ s-BB@0xd4 s-BB@0x128 ]
+	45      (000000be) invoke-virtual       v7, Ljava/util/zip/Adler32;->getValue()J
+	46      (000000c4) move-result-wide     v10
+	47      (000000c6) long-to-int          v7, v10
+	48      (000000c8) const-string         v10, "JobInfoScheduler"
+	49      (000000cc) const-string         v11, "attemptNumber"
+	50      (000000d0) if-nez               v20, +02ch
+
+s-BB@0xd4 : [ s-BB@0xe4 ]
+	51      (000000d4) invoke-virtual       v6, Landroid/app/job/JobScheduler;->getAllPendingJobs()Ljava/util/List;
+	52      (000000da) move-result-object   v12
+	53      (000000dc) invoke-interface     v12, Ljava/util/List;->iterator()Ljava/util/Iterator;
+	54      (000000e2) move-result-object   v12
+
+s-BB@0xe4 : [ s-BB@0xf0 s-BB@0x128 ]
+	55      (000000e4) invoke-interface     v12, Ljava/util/Iterator;->hasNext()Z
+	56      (000000ea) move-result          v13
+	57      (000000ec) if-eqz               v13, +01eh
+
+s-BB@0xf0 : [ s-BB@0x118 s-BB@0xe4 ]
+	58      (000000f0) invoke-interface     v12, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	59      (000000f6) move-result-object   v13
+	60      (000000f8) check-cast           v13, Landroid/app/job/JobInfo;
+	61      (000000fc) invoke-virtual       v13, Landroid/app/job/JobInfo;->getExtras()Landroid/os/PersistableBundle;
+	62      (00000102) move-result-object   v14
+	63      (00000104) invoke-virtual       v14, v11, Landroid/os/BaseBundle;->getInt(Ljava/lang/String;)I
+	64      (0000010a) move-result          v14
+	65      (0000010c) invoke-virtual       v13, Landroid/app/job/JobInfo;->getId()I
+	66      (00000112) move-result          v13
+	67      (00000114) if-ne                v13, v7, -018h
+
+s-BB@0x118 : [ s-BB@0x11c s-BB@0x128 ]
+	68      (00000118) if-lt                v14, v2, +008h
+
+s-BB@0x11c : 
+	69      (0000011c) const-string         v2, "Upload for context %s is already scheduled. Returning..."
+	70      (00000120) invoke-static        v10, v2, v0, Lc4/b;->v(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Object;)V
+	71      (00000126) return-void          
+
+s-BB@0x128 : [ s-BB@0x160 ]
+	72      (00000128) iget-object          v12, v1, Lb8/g;->c Ljava/lang/Object;
+	73      (0000012c) check-cast           v12, Ly2/d;
+	74      (00000130) check-cast           v12, Ly2/h;
+	75      (00000134) invoke-virtual       v12, Ly2/h;->c()Landroid/database/sqlite/SQLiteDatabase;
+	76      (0000013a) move-result-object   v12
+	77      (0000013c) invoke-static        v8, Lb3/a;->a(Lo2/d;)I
+	78      (00000142) move-result          v13
+	79      (00000144) invoke-static        v13, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
+	80      (0000014a) move-result-object   v13
+	81      (0000014c) filled-new-array     v9, v13, [Ljava/lang/String;
+	82      (00000152) move-result-object   v13
+	83      (00000154) const-string         v14, "SELECT next_request_ms FROM transport_contexts WHERE backend_name = ? and priority = ?"
+	84      (00000158) invoke-virtual       v12, v14, v13, Landroid/database/sqlite/SQLiteDatabase;->rawQuery(Ljava/lang/String; [Ljava/lang/String;)Landroid/database/Cursor;
+	85      (0000015e) move-result-object   v12
+
+s-BB@0x160 : [ s-BB@0x16e s-BB@0x180 ]
+	86      (00000160) invoke-interface     v12, Landroid/database/Cursor;->moveToNext()Z
+	87      (00000166) move-result          v13
+	88      (00000168) const/4              v14, 0
+	89      (0000016a) if-eqz               v13, +00bh
+	160:18b
+	(Ljava/lang/Throwable; -> 2c8 s-BB@0x2c8)
+
+s-BB@0x16e : [ s-BB@0x18c ]
+	90      (0000016e) invoke-interface     v12, v14, Landroid/database/Cursor;->getLong(I)J
+	91      (00000174) move-result-wide     v15
+	92      (00000176) invoke-static/range  v15 ... v16, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+	93      (0000017c) move-result-object   v13
+	94      (0000017e) goto                 +7h
+	160:18b
+	(Ljava/lang/Throwable; -> 2c8 s-BB@0x2c8)
+
+s-BB@0x180 : [ s-BB@0x18c ]
+	95      (00000180) const-wide/16        v15, 0
+	96      (00000184) invoke-static/range  v15 ... v16, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+	97      (0000018a) move-result-object   v13
+	160:18b
+	(Ljava/lang/Throwable; -> 2c8 s-BB@0x2c8)
+
+s-BB@0x18c : [ s-BB@0x1de s-BB@0x1e8 ]
+	98      (0000018c) invoke-interface     v12, Landroid/database/Cursor;->close()V
+	99      (00000192) invoke-virtual       v13, Ljava/lang/Long;->longValue()J
+	100     (00000198) move-result-wide     v14
+	101     (0000019a) new-instance         v12, Landroid/app/job/JobInfo$Builder;
+	102     (0000019e) invoke-direct        v12, v7, v4, Landroid/app/job/JobInfo$Builder;-><init>(I Landroid/content/ComponentName;)V
+	103     (000001a4) move-object          v4, v6
+	104     (000001a6) move/from16          v16, v7
+	105     (000001aa) invoke-virtual       v3, v8, v14, v15, v2, Lx2/b;->a(Lo2/d; J I)J
+	106     (000001b0) move-result-wide     v6
+	107     (000001b2) invoke-virtual       v12, v6, v7, Landroid/app/job/JobInfo$Builder;->setMinimumLatency(J)Landroid/app/job/JobInfo$Builder;
+	108     (000001b8) iget-object          v6, v3, Lx2/b;->b Ljava/util/HashMap;
+	109     (000001bc) invoke-virtual       v6, v8, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	110     (000001c2) move-result-object   v6
+	111     (000001c4) check-cast           v6, Lx2/c;
+	112     (000001c8) iget-object          v6, v6, Lx2/c;->c Ljava/util/Set;
+	113     (000001cc) sget-object          v7, Lx2/d;->a Lx2/d;
+	114     (000001d0) invoke-interface     v6, v7, Ljava/util/Set;->contains(Ljava/lang/Object;)Z
+	115     (000001d6) move-result          v7
+	116     (000001d8) const/4              v1, 1
+	117     (000001da) if-eqz               v7, +007h
+
+s-BB@0x1de : [ s-BB@0x1ee ]
+	118     (000001de) const/4              v7, 2
+	119     (000001e0) invoke-virtual       v12, v7, Landroid/app/job/JobInfo$Builder;->setRequiredNetworkType(I)Landroid/app/job/JobInfo$Builder;
+	120     (000001e6) goto                 +4h
+
+s-BB@0x1e8 : [ s-BB@0x1ee ]
+	121     (000001e8) invoke-virtual       v12, v1, Landroid/app/job/JobInfo$Builder;->setRequiredNetworkType(I)Landroid/app/job/JobInfo$Builder;
+
+s-BB@0x1ee : [ s-BB@0x1fe s-BB@0x204 ]
+	122     (000001ee) sget-object          v7, Lx2/d;->c Lx2/d;
+	123     (000001f2) invoke-interface     v6, v7, Ljava/util/Set;->contains(Ljava/lang/Object;)Z
+	124     (000001f8) move-result          v7
+	125     (000001fa) if-eqz               v7, +005h
+
+s-BB@0x1fe : [ s-BB@0x204 ]
+	126     (000001fe) invoke-virtual       v12, v1, Landroid/app/job/JobInfo$Builder;->setRequiresCharging(Z)Landroid/app/job/JobInfo$Builder;
+
+s-BB@0x204 : [ s-BB@0x214 s-BB@0x21a ]
+	127     (00000204) sget-object          v7, Lx2/d;->b Lx2/d;
+	128     (00000208) invoke-interface     v6, v7, Ljava/util/Set;->contains(Ljava/lang/Object;)Z
+	129     (0000020e) move-result          v6
+	130     (00000210) if-eqz               v6, +005h
+
+s-BB@0x214 : [ s-BB@0x21a ]
+	131     (00000214) invoke-virtual       v12, v1, Landroid/app/job/JobInfo$Builder;->setRequiresDeviceIdle(Z)Landroid/app/job/JobInfo$Builder;
+
+s-BB@0x21a : [ s-BB@0x24a s-BB@0x25e ]
+	132     (0000021a) new-instance         v1, Landroid/os/PersistableBundle;
+	133     (0000021e) invoke-direct        v1, Landroid/os/PersistableBundle;-><init>()V
+	134     (00000224) invoke-virtual       v1, v11, v2, Landroid/os/BaseBundle;->putInt(Ljava/lang/String; I)V
+	135     (0000022a) const-string         v6, "backendName"
+	136     (0000022e) invoke-virtual       v1, v6, v9, Landroid/os/BaseBundle;->putString(Ljava/lang/String; Ljava/lang/String;)V
+	137     (00000234) const-string         v6, "priority"
+	138     (00000238) invoke-static        v8, Lb3/a;->a(Lo2/d;)I
+	139     (0000023e) move-result          v7
+	140     (00000240) invoke-virtual       v1, v6, v7, Landroid/os/BaseBundle;->putInt(Ljava/lang/String; I)V
+	141     (00000246) if-eqz               v5, +00ch
+
+s-BB@0x24a : [ s-BB@0x25e ]
+	142     (0000024a) const-string         v6, "extras"
+	143     (0000024e) const/4              v7, 0
+	144     (00000250) invoke-static        v5, v7, Landroid/util/Base64;->encodeToString([B I)Ljava/lang/String;
+	145     (00000256) move-result-object   v5
+	146     (00000258) invoke-virtual       v1, v6, v5, Landroid/os/BaseBundle;->putString(Ljava/lang/String; Ljava/lang/String;)V
+
+s-BB@0x25e : [ s-BB@0x2a6 s-BB@0x2b8 ]
+	147     (0000025e) invoke-virtual       v12, v1, Landroid/app/job/JobInfo$Builder;->setExtras(Landroid/os/PersistableBundle;)Landroid/app/job/JobInfo$Builder;
+	148     (00000264) invoke-static/range  v16, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+	149     (0000026a) move-result-object   v1
+	150     (0000026c) invoke-virtual       v3, v8, v14, v15, v2, Lx2/b;->a(Lo2/d; J I)J
+	151     (00000272) move-result-wide     v5
+	152     (00000274) invoke-static        v5, v6, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+	153     (0000027a) move-result-object   v3
+	154     (0000027c) invoke-static        v2, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+	155     (00000282) move-result-object   v2
+	156     (00000284) filled-new-array     v0, v1, v3, v13, v2, [Ljava/lang/Object;
+	157     (0000028a) move-result-object   v0
+	158     (0000028c) const-string         v1, "TRuntime."
+	159     (00000290) invoke-virtual       v1, v10, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	160     (00000296) move-result-object   v1
+	161     (00000298) const/4              v2, 3
+	162     (0000029a) invoke-static        v1, v2, Landroid/util/Log;->isLoggable(Ljava/lang/String; I)Z
+	163     (000002a0) move-result          v2
+	164     (000002a2) if-eqz               v2, +00bh
+
+s-BB@0x2a6 : [ s-BB@0x2b8 ]
+	165     (000002a6) const-string         v2, "Scheduling upload for context %s with jobId=%d in %dms(Backend next call timestamp %d). Attempt %d"
+	166     (000002aa) invoke-static        v2, v0, Ljava/lang/String;->format(Ljava/lang/String; [Ljava/lang/Object;)Ljava/lang/String;
+	167     (000002b0) move-result-object   v0
+	168     (000002b2) invoke-static        v1, v0, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String;)I
+
+s-BB@0x2b8 : 
+	169     (000002b8) invoke-virtual       v12, Landroid/app/job/JobInfo$Builder;->build()Landroid/app/job/JobInfo;
+	170     (000002be) move-result-object   v0
+	171     (000002c0) invoke-virtual       v4, v0, Landroid/app/job/JobScheduler;->schedule(Landroid/app/job/JobInfo;)I
+	172     (000002c6) return-void          
+
+s-BB@0x2c8 : 
+	173     (000002c8) move-exception       v0
+	174     (000002ca) invoke-interface     v12, Landroid/database/Cursor;->close()V
+	175     (000002d0) throw                v0
+

@@ -1,0 +1,103 @@
+# Lb8/i;->E0(Ljava/lang/String; [C)Ljava/util/List; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:java.lang.String
+# - v6:char[]
+#
+# - return:java.util.List
+
+E0-BB@0x0 : [ E0-BB@0x16 E0-BB@0x9c ]
+	0       (00000000) const-string         v0, "<this>"
+	1       (00000004) invoke-static        v5, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) array-length         v0, v6
+	3       (0000000c) const/16             v1, 10
+	4       (00000010) const/4              v2, 1
+	5       (00000012) if-ne                v0, v2, +045h
+
+E0-BB@0x16 : [ E0-BB@0x32 E0-BB@0x8a ]
+	6       (00000016) const/4              v0, 0
+	7       (00000018) aget-char            v6, v6, v0
+	8       (0000001c) invoke-static        v6, Ljava/lang/String;->valueOf(C)Ljava/lang/String;
+	9       (00000022) move-result-object   v6
+	10      (00000024) invoke-static        v5, v6, v0, v0, Lb8/i;->u0(Ljava/lang/CharSequence; Ljava/lang/String; I Z)I
+	11      (0000002a) move-result          v2
+	12      (0000002c) const/4              v3, -1
+	13      (0000002e) if-eq                v2, v3, +02eh
+
+E0-BB@0x32 : [ E0-BB@0x3e ]
+	14      (00000032) new-instance         v4, Ljava/util/ArrayList;
+	15      (00000036) invoke-direct        v4, v1, Ljava/util/ArrayList;-><init>(I)V
+	16      (0000003c) move                 v1, v0
+
+E0-BB@0x3e : [ E0-BB@0x6a E0-BB@0x3e ]
+	17      (0000003e) invoke-virtual       v5, v1, v2, Ljava/lang/String;->subSequence(I I)Ljava/lang/CharSequence;
+	18      (00000044) move-result-object   v1
+	19      (00000046) invoke-virtual       v1, Ljava/lang/Object;->toString()Ljava/lang/String;
+	20      (0000004c) move-result-object   v1
+	21      (0000004e) invoke-virtual       v4, v1, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	22      (00000054) invoke-virtual       v6, Ljava/lang/String;->length()I
+	23      (0000005a) move-result          v1
+	24      (0000005c) add-int/2addr        v1, v2
+	25      (0000005e) invoke-static        v5, v6, v1, v0, Lb8/i;->u0(Ljava/lang/CharSequence; Ljava/lang/String; I Z)I
+	26      (00000064) move-result          v2
+	27      (00000066) if-ne                v2, v3, -014h
+
+E0-BB@0x6a : 
+	28      (0000006a) invoke-virtual       v5, Ljava/lang/String;->length()I
+	29      (00000070) move-result          v6
+	30      (00000072) invoke-virtual       v5, v1, v6, Ljava/lang/String;->subSequence(I I)Ljava/lang/CharSequence;
+	31      (00000078) move-result-object   v5
+	32      (0000007a) invoke-virtual       v5, Ljava/lang/Object;->toString()Ljava/lang/String;
+	33      (00000080) move-result-object   v5
+	34      (00000082) invoke-virtual       v4, v5, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	35      (00000088) return-object        v4
+
+E0-BB@0x8a : 
+	36      (0000008a) invoke-virtual       v5, Ljava/lang/Object;->toString()Ljava/lang/String;
+	37      (00000090) move-result-object   v5
+	38      (00000092) invoke-static        v5, La/a;->G(Ljava/lang/Object;)Ljava/util/List;
+	39      (00000098) move-result-object   v5
+	40      (0000009a) return-object        v5
+
+E0-BB@0x9c : [ E0-BB@0xd6 ]
+	41      (0000009c) new-instance         v0, La8/e;
+	42      (000000a0) new-instance         v3, Lb8/q;
+	43      (000000a4) const/4              v4, 0
+	44      (000000a6) invoke-direct        v3, v4, v6, Lb8/q;-><init>(I Ljava/io/Serializable;)V
+	45      (000000ac) invoke-direct        v0, v5, v3, La8/e;-><init>(Ljava/lang/CharSequence; Lb8/q;)V
+	46      (000000b2) new-instance         v6, La8/k;
+	47      (000000b6) invoke-direct        v6, v0, La8/k;-><init>(La8/e;)V
+	48      (000000bc) new-instance         v0, Ljava/util/ArrayList;
+	49      (000000c0) invoke-static        v6, v1, Li7/j;->X(Ljava/lang/Iterable; I)I
+	50      (000000c6) move-result          v1
+	51      (000000c8) invoke-direct        v0, v1, Ljava/util/ArrayList;-><init>(I)V
+	52      (000000ce) invoke-virtual       v6, La8/k;->iterator()Ljava/util/Iterator;
+	53      (000000d4) move-result-object   v6
+
+E0-BB@0xd6 : [ E0-BB@0xe8 E0-BB@0x120 ]
+	54      (000000d6) move-object          v1, v6
+	55      (000000d8) check-cast           v1, Lb8/b;
+	56      (000000dc) invoke-virtual       v1, Lb8/b;->hasNext()Z
+	57      (000000e2) move-result          v3
+	58      (000000e4) if-eqz               v3, +01eh
+
+E0-BB@0xe8 : [ E0-BB@0xd6 ]
+	59      (000000e8) invoke-virtual       v1, Lb8/b;->next()Ljava/lang/Object;
+	60      (000000ee) move-result-object   v1
+	61      (000000f0) check-cast           v1, Ly7/e;
+	62      (000000f4) const-string         v3, "range"
+	63      (000000f8) invoke-static        v1, v3, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	64      (000000fe) iget                 v3, v1, Ly7/d;->a I
+	65      (00000102) iget                 v1, v1, Ly7/d;->b I
+	66      (00000106) add-int/2addr        v1, v2
+	67      (00000108) invoke-virtual       v5, v3, v1, Ljava/lang/String;->subSequence(I I)Ljava/lang/CharSequence;
+	68      (0000010e) move-result-object   v1
+	69      (00000110) invoke-virtual       v1, Ljava/lang/Object;->toString()Ljava/lang/String;
+	70      (00000116) move-result-object   v1
+	71      (00000118) invoke-virtual       v0, v1, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	72      (0000011e) goto                 -24h
+
+E0-BB@0x120 : 
+	73      (00000120) return-object        v0
+

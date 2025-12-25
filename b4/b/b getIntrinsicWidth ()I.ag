@@ -1,0 +1,34 @@
+# Lb4/b;->getIntrinsicWidth()I [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v3
+#
+# - return:int
+
+getIntrinsicWidth-BB@0x0 : [ getIntrinsicWidth-BB@0x12 getIntrinsicWidth-BB@0x16 ]
+	0       (00000000) iget                 v0, v3, Lb4/b;->S I
+	1       (00000004) mul-int/lit8         v0, v0, 2
+	2       (00000008) int-to-float         v0, v0
+	3       (0000000a) iget-object          v1, v3, Lb4/b;->M Ljava/lang/CharSequence;
+	4       (0000000e) if-nez               v1, +004h
+
+getIntrinsicWidth-BB@0x12 : [ getIntrinsicWidth-BB@0x2a ]
+	5       (00000012) const/4              v1, 0
+	6       (00000014) goto                 +bh
+
+getIntrinsicWidth-BB@0x16 : [ getIntrinsicWidth-BB@0x2a ]
+	7       (00000016) iget-object          v2, v3, Lb4/b;->P Lq3/i;
+	8       (0000001a) invoke-interface     v1, Ljava/lang/CharSequence;->toString()Ljava/lang/String;
+	9       (00000020) move-result-object   v1
+	10      (00000022) invoke-virtual       v2, v1, Lq3/i;->a(Ljava/lang/String;)F
+	11      (00000028) move-result          v1
+
+getIntrinsicWidth-BB@0x2a : 
+	12      (0000002a) add-float/2addr      v0, v1
+	13      (0000002c) iget                 v1, v3, Lb4/b;->T I
+	14      (00000030) int-to-float         v1, v1
+	15      (00000032) invoke-static        v0, v1, Ljava/lang/Math;->max(F F)F
+	16      (00000038) move-result          v0
+	17      (0000003a) float-to-int         v0, v0
+	18      (0000003c) return               v0
+

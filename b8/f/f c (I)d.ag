@@ -1,0 +1,34 @@
+# Lb8/f;->c(I)Lb8/d; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:int
+#
+# - return:b8.d
+
+c-BB@0x0 : [ c-BB@0x2c c-BB@0x4a ]
+	0       (00000000) iget-object          v0, v3, Lb8/f;->a Lb8/g;
+	1       (00000004) iget-object          v0, v0, Lb8/g;->b Ljava/lang/Object;
+	2       (00000008) check-cast           v0, Ljava/util/regex/Matcher;
+	3       (0000000c) invoke-virtual       v0, v4, Ljava/util/regex/Matcher;->start(I)I
+	4       (00000012) move-result          v1
+	5       (00000014) invoke-virtual       v0, v4, Ljava/util/regex/Matcher;->end(I)I
+	6       (0000001a) move-result          v2
+	7       (0000001c) invoke-static        v1, v2, Lw3/a;->f(I I)Ly7/e;
+	8       (00000022) move-result-object   v1
+	9       (00000024) iget                 v2, v1, Ly7/d;->a I
+	10      (00000028) if-ltz               v2, +011h
+
+c-BB@0x2c : 
+	11      (0000002c) new-instance         v2, Lb8/d;
+	12      (00000030) invoke-virtual       v0, v4, Ljava/util/regex/Matcher;->group(I)Ljava/lang/String;
+	13      (00000036) move-result-object   v4
+	14      (00000038) const-string         v0, "group(...)"
+	15      (0000003c) invoke-static        v4, v0, Lkotlin/jvm/internal/j;->d(Ljava/lang/Object; Ljava/lang/String;)V
+	16      (00000042) invoke-direct        v2, v4, v1, Lb8/d;-><init>(Ljava/lang/String; Ly7/e;)V
+	17      (00000048) return-object        v2
+
+c-BB@0x4a : 
+	18      (0000004a) const/4              v4, 0
+	19      (0000004c) return-object        v4
+

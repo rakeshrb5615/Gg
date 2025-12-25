@@ -1,0 +1,29 @@
+# Lb5/i;->c()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v3
+#
+# - return:void
+
+c-BB@0x0 : [ c-BB@0x10 c-BB@0x20 ]
+	0       (00000000) iget-object          v0, v3, Lb5/i;->n Ljava/util/concurrent/ScheduledFuture;
+	1       (00000004) iget-object          v1, v3, Lt/h;->a Ljava/lang/Object;
+	2       (00000008) instance-of          v2, v1, Lt/a;
+	3       (0000000c) if-eqz               v2, +00ah
+
+c-BB@0x10 : [ c-BB@0x1c c-BB@0x20 ]
+	4       (00000010) check-cast           v1, Lt/a;
+	5       (00000014) iget-boolean         v1, v1, Lt/a;->a Z
+	6       (00000018) if-eqz               v1, +004h
+
+c-BB@0x1c : [ c-BB@0x22 ]
+	7       (0000001c) const/4              v1, 1
+	8       (0000001e) goto                 +2h
+
+c-BB@0x20 : [ c-BB@0x22 ]
+	9       (00000020) const/4              v1, 0
+
+c-BB@0x22 : 
+	10      (00000022) invoke-interface     v0, v1, Ljava/util/concurrent/Future;->cancel(Z)Z
+	11      (00000028) return-void          
+

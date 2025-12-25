@@ -1,0 +1,64 @@
+# Lb2/e;->d()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v5
+#
+# - return:void
+
+d-BB@0x0 : [ d-BB@0x10 d-BB@0x8a ]
+	0       (00000000) const-class          v0, Landroidx/lifecycle/k;
+	1       (00000004) iget-object          v1, v5, Lb2/e;->a Lc2/a;
+	2       (00000008) iget-boolean         v1, v1, Lc2/a;->h Z
+	3       (0000000c) if-eqz               v1, +03fh
+
+d-BB@0x10 : [ d-BB@0x18 d-BB@0x22 ]
+	4       (00000010) iget-object          v1, v5, Lb2/e;->b Lb2/a;
+	5       (00000014) if-nez               v1, +007h
+
+d-BB@0x18 : [ d-BB@0x22 ]
+	6       (00000018) new-instance         v1, Lb2/a;
+	7       (0000001c) invoke-direct        v1, v5, Lb2/a;-><init>(Lb2/e;)V
+
+d-BB@0x22 : [ d-BB@0x28 ]
+	8       (00000022) iput-object          v1, v5, Lb2/e;->b Lb2/a;
+	9       (00000026) const/4              v1, 0
+
+d-BB@0x28 : [ d-BB@0x36 d-BB@0x4c ]
+	10      (00000028) invoke-virtual       v0, v1, Ljava/lang/Class;->getDeclaredConstructor([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
+	11      (0000002e) iget-object          v1, v5, Lb2/e;->b Lb2/a;
+	12      (00000032) if-eqz               v1, +00dh
+	28:2d
+	(Ljava/lang/NoSuchMethodException; -> 4e d-BB@0x4e)
+
+d-BB@0x36 : [ d-BB@0x4c ]
+	13      (00000036) invoke-virtual       v0, Ljava/lang/Class;->getName()Ljava/lang/String;
+	14      (0000003c) move-result-object   v0
+	15      (0000003e) iget-object          v1, v1, Lb2/a;->b Ljava/lang/Object;
+	16      (00000042) check-cast           v1, Ljava/util/LinkedHashSet;
+	17      (00000046) invoke-interface     v1, v0, Ljava/util/Set;->add(Ljava/lang/Object;)Z
+
+d-BB@0x4c : 
+	18      (0000004c) return-void          
+
+d-BB@0x4e : 
+	19      (0000004e) move-exception       v1
+	20      (00000050) new-instance         v2, Ljava/lang/IllegalArgumentException;
+	21      (00000054) new-instance         v3, Ljava/lang/StringBuilder;
+	22      (00000058) const-string         v4, "Class "
+	23      (0000005c) invoke-direct        v3, v4, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	24      (00000062) invoke-virtual       v0, Ljava/lang/Class;->getSimpleName()Ljava/lang/String;
+	25      (00000068) move-result-object   v0
+	26      (0000006a) invoke-virtual       v3, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	27      (00000070) const-string         v0, " must have default constructor in order to be automatically recreated"
+	28      (00000074) invoke-virtual       v3, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	29      (0000007a) invoke-virtual       v3, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	30      (00000080) move-result-object   v0
+	31      (00000082) invoke-direct        v2, v0, v1, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	32      (00000088) throw                v2
+
+d-BB@0x8a : 
+	33      (0000008a) new-instance         v0, Ljava/lang/IllegalStateException;
+	34      (0000008e) const-string         v1, "Can not perform this action after onSaveInstanceState"
+	35      (00000092) invoke-direct        v0, v1, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	36      (00000098) throw                v0
+

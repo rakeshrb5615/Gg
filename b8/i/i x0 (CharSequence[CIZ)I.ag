@@ -1,0 +1,98 @@
+# Lb8/i;->x0(Ljava/lang/CharSequence; [C I Z)I [access_flags=public static final]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:java.lang.CharSequence
+# - v7:char[]
+# - v8:int
+# - v9:boolean
+#
+# - return:int
+
+x0-BB@0x0 : [ x0-BB@0xe x0-BB@0x5e ]
+	0       (00000000) const-string         v0, "<this>"
+	1       (00000004) invoke-static        v6, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) if-nez               v9, +02ah
+
+x0-BB@0xe : [ x0-BB@0x16 x0-BB@0x5e ]
+	3       (0000000e) array-length         v0, v7
+	4       (00000010) const/4              v1, 1
+	5       (00000012) if-ne                v0, v1, +026h
+
+x0-BB@0x16 : [ x0-BB@0x1e x0-BB@0x5e ]
+	6       (00000016) instance-of          v0, v6, Ljava/lang/String;
+	7       (0000001a) if-eqz               v0, +022h
+
+x0-BB@0x1e : [ x0-BB@0x24 x0-BB@0x4e ]
+	8       (0000001e) array-length         v9, v7
+	9       (00000020) if-eqz               v9, +017h
+
+x0-BB@0x24 : [ x0-BB@0x2a x0-BB@0x3e ]
+	10      (00000024) const/4              v0, 1
+	11      (00000026) if-ne                v9, v0, +00ch
+
+x0-BB@0x2a : 
+	12      (0000002a) const/4              v9, 0
+	13      (0000002c) aget-char            v7, v7, v9
+	14      (00000030) check-cast           v6, Ljava/lang/String;
+	15      (00000034) invoke-virtual       v6, v7, v8, Ljava/lang/String;->indexOf(I I)I
+	16      (0000003a) move-result          v6
+	17      (0000003c) return               v6
+
+x0-BB@0x3e : 
+	18      (0000003e) new-instance         v6, Ljava/lang/IllegalArgumentException;
+	19      (00000042) const-string         v7, "Array has more than one element."
+	20      (00000046) invoke-direct        v6, v7, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	21      (0000004c) throw                v6
+
+x0-BB@0x4e : 
+	22      (0000004e) new-instance         v6, Ljava/util/NoSuchElementException;
+	23      (00000052) const-string         v7, "Array is empty."
+	24      (00000056) invoke-direct        v6, v7, Ljava/util/NoSuchElementException;-><init>(Ljava/lang/String;)V
+	25      (0000005c) throw                v6
+
+x0-BB@0x5e : [ x0-BB@0x64 x0-BB@0x66 ]
+	26      (0000005e) const/4              v0, 0
+	27      (00000060) if-gez               v8, +003h
+
+x0-BB@0x64 : [ x0-BB@0x66 ]
+	28      (00000064) move                 v8, v0
+
+x0-BB@0x66 : [ x0-BB@0x72 x0-BB@0xa4 ]
+	29      (00000066) invoke-static        v6, Lb8/i;->t0(Ljava/lang/CharSequence;)I
+	30      (0000006c) move-result          v1
+	31      (0000006e) if-gt                v8, v1, +01bh
+
+x0-BB@0x72 : [ x0-BB@0x7e ]
+	32      (00000072) invoke-interface     v6, v8, Ljava/lang/CharSequence;->charAt(I)C
+	33      (00000078) move-result          v2
+	34      (0000007a) array-length         v3, v7
+	35      (0000007c) move                 v4, v0
+
+x0-BB@0x7e : [ x0-BB@0x82 x0-BB@0x9a ]
+	36      (0000007e) if-ge                v4, v3, +00eh
+
+x0-BB@0x82 : [ x0-BB@0x92 x0-BB@0x94 ]
+	37      (00000082) aget-char            v5, v7, v4
+	38      (00000086) invoke-static        v5, v2, v9, La/a;->s(C C Z)Z
+	39      (0000008c) move-result          v5
+	40      (0000008e) if-eqz               v5, +003h
+
+x0-BB@0x92 : 
+	41      (00000092) return               v8
+
+x0-BB@0x94 : [ x0-BB@0x7e ]
+	42      (00000094) add-int/lit8         v4, v4, 1
+	43      (00000098) goto                 -dh
+
+x0-BB@0x9a : [ x0-BB@0x9e x0-BB@0xa4 ]
+	44      (0000009a) if-eq                v8, v1, +005h
+
+x0-BB@0x9e : [ x0-BB@0x72 ]
+	45      (0000009e) add-int/lit8         v8, v8, 1
+	46      (000000a2) goto                 -18h
+
+x0-BB@0xa4 : 
+	47      (000000a4) const/4              v6, -1
+	48      (000000a6) return               v6
+

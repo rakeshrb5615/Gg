@@ -1,0 +1,26 @@
+# Lb3/a;->b(I)Lo2/d; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:int
+#
+# - return:o2.d
+
+b-BB@0x0 : [ b-BB@0x14 b-BB@0x16 ]
+	0       (00000000) sget-object          v0, Lb3/a;->a Landroid/util/SparseArray;
+	1       (00000004) invoke-virtual       v0, v2, Landroid/util/SparseArray;->get(I)Ljava/lang/Object;
+	2       (0000000a) move-result-object   v0
+	3       (0000000c) check-cast           v0, Lo2/d;
+	4       (00000010) if-eqz               v0, +003h
+
+b-BB@0x14 : 
+	5       (00000014) return-object        v0
+
+b-BB@0x16 : 
+	6       (00000016) new-instance         v0, Ljava/lang/IllegalArgumentException;
+	7       (0000001a) const-string         v1, "Unknown Priority for value "
+	8       (0000001e) invoke-static        v2, v1, Lg2/g;->c(I Ljava/lang/String;)Ljava/lang/String;
+	9       (00000024) move-result-object   v2
+	10      (00000026) invoke-direct        v0, v2, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	11      (0000002c) throw                v0
+

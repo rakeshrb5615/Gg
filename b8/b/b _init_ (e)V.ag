@@ -1,0 +1,44 @@
+# Lb8/b;-><init>(La8/e;)V [access_flags=public constructor]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:a8.e
+#
+# - return:void
+
+<init>-BB@0x0 : [ <init>-BB@0x2a <init>-BB@0x3c ]
+	0       (00000000) const/4              v0, 0
+	1       (00000002) iput                 v0, v3, Lb8/b;->a I
+	2       (00000006) invoke-direct        v3, Ljava/lang/Object;-><init>()V
+	3       (0000000c) iput-object          v4, v3, Lb8/b;->f Ljava/lang/Object;
+	4       (00000010) const/4              v0, -1
+	5       (00000012) iput                 v0, v3, Lb8/b;->b I
+	6       (00000016) iget-object          v4, v4, La8/e;->b Ljava/lang/Object;
+	7       (0000001a) check-cast           v4, Ljava/lang/CharSequence;
+	8       (0000001e) invoke-interface     v4, Ljava/lang/CharSequence;->length()I
+	9       (00000024) move-result          v4
+	10      (00000026) if-ltz               v4, +00bh
+
+<init>-BB@0x2a : [ <init>-BB@0x2e <init>-BB@0x30 ]
+	11      (0000002a) if-gez               v4, +003h
+
+<init>-BB@0x2e : [ <init>-BB@0x32 ]
+	12      (0000002e) goto                 +2h
+
+<init>-BB@0x30 : [ <init>-BB@0x32 ]
+	13      (00000030) const/4              v4, 0
+
+<init>-BB@0x32 : 
+	14      (00000032) iput                 v4, v3, Lb8/b;->c I
+	15      (00000036) iput                 v4, v3, Lb8/b;->d I
+	16      (0000003a) return-void          
+
+<init>-BB@0x3c : 
+	17      (0000003c) new-instance         v0, Ljava/lang/IllegalArgumentException;
+	18      (00000040) const-string         v1, "Cannot coerce value to an empty range: maximum "
+	19      (00000044) const-string         v2, " is less than minimum 0."
+	20      (00000048) invoke-static        v1, v4, v2, Lv1/a;->j(Ljava/lang/String; I Ljava/lang/String;)Ljava/lang/String;
+	21      (0000004e) move-result-object   v4
+	22      (00000050) invoke-direct        v0, v4, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	23      (00000056) throw                v0
+

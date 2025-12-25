@@ -1,0 +1,46 @@
+# Lb2/e;->c(Ljava/lang/String; Lb2/d;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:java.lang.String
+# - v5:b2.d
+#
+# - return:void
+
+c-BB@0x0 : [ c-BB@0x14 ]
+	0       (00000000) const-string         v0, "provider"
+	1       (00000004) invoke-static        v5, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) iget-object          v0, v3, Lb2/e;->a Lc2/a;
+	3       (0000000e) iget-object          v1, v0, Lc2/a;->c Lv3/f;
+	4       (00000012) monitor-enter        v1
+
+c-BB@0x14 : [ c-BB@0x24 c-BB@0x36 ]
+	5       (00000014) iget-object          v2, v0, Lc2/a;->d Ljava/util/LinkedHashMap;
+	6       (00000018) invoke-interface     v2, v4, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z
+	7       (0000001e) move-result          v2
+	8       (00000020) if-nez               v2, +00bh
+	14:2d
+	(Ljava/lang/Throwable; -> 32 c-BB@0x32)
+
+c-BB@0x24 : 
+	9       (00000024) iget-object          v0, v0, Lc2/a;->d Ljava/util/LinkedHashMap;
+	10      (00000028) invoke-interface     v0, v4, v5, Ljava/util/Map;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	11      (0000002e) monitor-exit         v1
+	12      (00000030) return-void          
+
+c-BB@0x32 : [ c-BB@0x46 ]
+	13      (00000032) move-exception       v4
+	14      (00000034) goto                 +9h
+
+c-BB@0x36 : 
+	15      (00000036) const-string         v4, "SavedStateProvider with the given key is already registered"
+	16      (0000003a) new-instance         v5, Ljava/lang/IllegalArgumentException;
+	17      (0000003e) invoke-direct        v5, v4, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	18      (00000044) throw                v5
+	36:45
+	(Ljava/lang/Throwable; -> 32 c-BB@0x32)
+
+c-BB@0x46 : 
+	19      (00000046) monitor-exit         v1
+	20      (00000048) throw                v4
+

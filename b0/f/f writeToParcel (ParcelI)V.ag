@@ -1,0 +1,49 @@
+# Lb0/f;->writeToParcel(Landroid/os/Parcel; I)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:android.os.Parcel
+# - v7:int
+#
+# - return:void
+
+writeToParcel-BB@0x0 : [ writeToParcel-BB@0x10 writeToParcel-BB@0x1a ]
+	0       (00000000) invoke-super         v5, v6, v7, Lx0/b;->writeToParcel(Landroid/os/Parcel; I)V
+	1       (00000006) iget-object          v0, v5, Lb0/f;->c Landroid/util/SparseArray;
+	2       (0000000a) const/4              v1, 0
+	3       (0000000c) if-eqz               v0, +007h
+
+writeToParcel-BB@0x10 : [ writeToParcel-BB@0x1c ]
+	4       (00000010) invoke-virtual       v0, Landroid/util/SparseArray;->size()I
+	5       (00000016) move-result          v0
+	6       (00000018) goto                 +2h
+
+writeToParcel-BB@0x1a : [ writeToParcel-BB@0x1c ]
+	7       (0000001a) move                 v0, v1
+
+writeToParcel-BB@0x1c : [ writeToParcel-BB@0x2a ]
+	8       (0000001c) invoke-virtual       v6, v0, Landroid/os/Parcel;->writeInt(I)V
+	9       (00000022) new-array            v2, v0, [I
+	10      (00000026) new-array            v3, v0, [Landroid/os/Parcelable;
+
+writeToParcel-BB@0x2a : [ writeToParcel-BB@0x2e writeToParcel-BB@0x58 ]
+	11      (0000002a) if-ge                v1, v0, +017h
+
+writeToParcel-BB@0x2e : [ writeToParcel-BB@0x2a ]
+	12      (0000002e) iget-object          v4, v5, Lb0/f;->c Landroid/util/SparseArray;
+	13      (00000032) invoke-virtual       v4, v1, Landroid/util/SparseArray;->keyAt(I)I
+	14      (00000038) move-result          v4
+	15      (0000003a) aput                 v4, v2, v1
+	16      (0000003e) iget-object          v4, v5, Lb0/f;->c Landroid/util/SparseArray;
+	17      (00000042) invoke-virtual       v4, v1, Landroid/util/SparseArray;->valueAt(I)Ljava/lang/Object;
+	18      (00000048) move-result-object   v4
+	19      (0000004a) check-cast           v4, Landroid/os/Parcelable;
+	20      (0000004e) aput-object          v4, v3, v1
+	21      (00000052) add-int/lit8         v1, v1, 1
+	22      (00000056) goto                 -16h
+
+writeToParcel-BB@0x58 : 
+	23      (00000058) invoke-virtual       v6, v2, Landroid/os/Parcel;->writeIntArray([I)V
+	24      (0000005e) invoke-virtual       v6, v3, v7, Landroid/os/Parcel;->writeParcelableArray([Landroid/os/Parcelable; I)V
+	25      (00000064) return-void          
+

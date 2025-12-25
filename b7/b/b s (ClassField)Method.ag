@@ -1,0 +1,26 @@
+# Lb7/b;->s(Ljava/lang/Class; Ljava/lang/reflect/Field;)Ljava/lang/reflect/Method; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:java.lang.Class
+# - v3:java.lang.reflect.Field
+#
+# - return:java.lang.reflect.Method
+
+s-BB@0x0 : 
+	0       (00000000) invoke-virtual       v3, Ljava/lang/reflect/Field;->getName()Ljava/lang/String;
+	1       (00000006) move-result-object   v3
+	2       (00000008) const/4              v0, 0
+	3       (0000000a) invoke-virtual       v2, v3, v0, Ljava/lang/Class;->getMethod(Ljava/lang/String; [Ljava/lang/Class;)Ljava/lang/reflect/Method;
+	4       (00000010) move-result-object   v2
+	5       (00000012) return-object        v2
+	0:11
+	(Ljava/lang/ReflectiveOperationException; -> 14 s-BB@0x14)
+
+s-BB@0x14 : 
+	6       (00000014) move-exception       v2
+	7       (00000016) new-instance         v3, Ljava/lang/RuntimeException;
+	8       (0000001a) const-string         v0, "Unexpected ReflectiveOperationException occurred (Gson 2.13.2). To support Java records, reflection is utilized to read out information about records. All these invocations happens after it is established that records exist in the JVM. This exception is unexpected behavior."
+	9       (0000001e) invoke-direct        v3, v0, v2, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	10      (00000024) throw                v3
+

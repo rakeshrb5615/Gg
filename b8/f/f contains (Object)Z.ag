@@ -1,0 +1,31 @@
+# Lb8/f;->contains(Ljava/lang/Object;)Z [access_flags=public final bridge]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:java.lang.Object
+#
+# - return:boolean
+
+contains-BB@0x0 : [ contains-BB@0x4 contains-BB@0x8 ]
+	0       (00000000) if-nez               v2, +004h
+
+contains-BB@0x4 : [ contains-BB@0xc ]
+	1       (00000004) const/4              v0, 1
+	2       (00000006) goto                 +3h
+
+contains-BB@0x8 : [ contains-BB@0xc ]
+	3       (00000008) instance-of          v0, v2, Lb8/d;
+
+contains-BB@0xc : [ contains-BB@0x10 contains-BB@0x14 ]
+	4       (0000000c) if-nez               v0, +004h
+
+contains-BB@0x10 : 
+	5       (00000010) const/4              v2, 0
+	6       (00000012) return               v2
+
+contains-BB@0x14 : 
+	7       (00000014) check-cast           v2, Lb8/d;
+	8       (00000018) invoke-super         v1, v2, Li7/a;->contains(Ljava/lang/Object;)Z
+	9       (0000001e) move-result          v2
+	10      (00000020) return               v2
+

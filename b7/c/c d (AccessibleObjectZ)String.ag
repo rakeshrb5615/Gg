@@ -1,0 +1,112 @@
+# Lb7/c;->d(Ljava/lang/reflect/AccessibleObject; Z)Ljava/lang/String; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:java.lang.reflect.AccessibleObject
+# - v5:boolean
+#
+# - return:java.lang.String
+
+d-BB@0x0 : [ d-BB@0xc d-BB@0x3c ]
+	0       (00000000) instance-of          v0, v4, Ljava/lang/reflect/Field;
+	1       (00000004) const-string         v1, "'"
+	2       (00000008) if-eqz               v0, +01ah
+
+d-BB@0xc : [ d-BB@0x108 ]
+	3       (0000000c) new-instance         v0, Ljava/lang/StringBuilder;
+	4       (00000010) const-string         v2, "field '"
+	5       (00000014) invoke-direct        v0, v2, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	6       (0000001a) check-cast           v4, Ljava/lang/reflect/Field;
+	7       (0000001e) invoke-static        v4, Lb7/c;->c(Ljava/lang/reflect/Field;)Ljava/lang/String;
+	8       (00000024) move-result-object   v4
+	9       (00000026) invoke-virtual       v0, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	10      (0000002c) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	11      (00000032) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	12      (00000038) move-result-object   v4
+	13      (0000003a) goto                 +67h
+
+d-BB@0x3c : [ d-BB@0x44 d-BB@0xac ]
+	14      (0000003c) instance-of          v0, v4, Ljava/lang/reflect/Method;
+	15      (00000040) if-eqz               v0, +036h
+
+d-BB@0x44 : [ d-BB@0x108 ]
+	16      (00000044) check-cast           v4, Ljava/lang/reflect/Method;
+	17      (00000048) new-instance         v0, Ljava/lang/StringBuilder;
+	18      (0000004c) invoke-virtual       v4, Ljava/lang/reflect/Method;->getName()Ljava/lang/String;
+	19      (00000052) move-result-object   v2
+	20      (00000054) invoke-direct        v0, v2, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	21      (0000005a) invoke-static        v4, v0, Lb7/c;->a(Ljava/lang/reflect/AccessibleObject; Ljava/lang/StringBuilder;)V
+	22      (00000060) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	23      (00000066) move-result-object   v0
+	24      (00000068) new-instance         v2, Ljava/lang/StringBuilder;
+	25      (0000006c) const-string         v3, "method '"
+	26      (00000070) invoke-direct        v2, v3, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	27      (00000076) invoke-virtual       v4, Ljava/lang/reflect/Method;->getDeclaringClass()Ljava/lang/Class;
+	28      (0000007c) move-result-object   v4
+	29      (0000007e) invoke-virtual       v4, Ljava/lang/Class;->getName()Ljava/lang/String;
+	30      (00000084) move-result-object   v4
+	31      (00000086) invoke-virtual       v2, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	32      (0000008c) const-string         v4, "#"
+	33      (00000090) invoke-virtual       v2, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	34      (00000096) invoke-virtual       v2, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	35      (0000009c) invoke-virtual       v2, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	36      (000000a2) invoke-virtual       v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	37      (000000a8) move-result-object   v4
+	38      (000000aa) goto                 +2fh
+
+d-BB@0xac : [ d-BB@0xb4 d-BB@0xe4 ]
+	39      (000000ac) instance-of          v0, v4, Ljava/lang/reflect/Constructor;
+	40      (000000b0) if-eqz               v0, +01ah
+
+d-BB@0xb4 : [ d-BB@0x108 ]
+	41      (000000b4) new-instance         v0, Ljava/lang/StringBuilder;
+	42      (000000b8) const-string         v2, "constructor '"
+	43      (000000bc) invoke-direct        v0, v2, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	44      (000000c2) check-cast           v4, Ljava/lang/reflect/Constructor;
+	45      (000000c6) invoke-static        v4, Lb7/c;->b(Ljava/lang/reflect/Constructor;)Ljava/lang/String;
+	46      (000000cc) move-result-object   v4
+	47      (000000ce) invoke-virtual       v0, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	48      (000000d4) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	49      (000000da) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	50      (000000e0) move-result-object   v4
+	51      (000000e2) goto                 +13h
+
+d-BB@0xe4 : [ d-BB@0x108 ]
+	52      (000000e4) new-instance         v0, Ljava/lang/StringBuilder;
+	53      (000000e8) const-string         v1, "<unknown AccessibleObject> "
+	54      (000000ec) invoke-direct        v0, v1, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	55      (000000f2) invoke-virtual       v4, Ljava/lang/Object;->toString()Ljava/lang/String;
+	56      (000000f8) move-result-object   v4
+	57      (000000fa) invoke-virtual       v0, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	58      (00000100) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	59      (00000106) move-result-object   v4
+
+d-BB@0x108 : [ d-BB@0x10c d-BB@0x15a ]
+	60      (00000108) if-eqz               v5, +029h
+
+d-BB@0x10c : [ d-BB@0x122 d-BB@0x15a ]
+	61      (0000010c) const/4              v5, 0
+	62      (0000010e) invoke-virtual       v4, v5, Ljava/lang/String;->charAt(I)C
+	63      (00000114) move-result          v0
+	64      (00000116) invoke-static        v0, Ljava/lang/Character;->isLowerCase(C)Z
+	65      (0000011c) move-result          v0
+	66      (0000011e) if-eqz               v0, +01eh
+
+d-BB@0x122 : [ d-BB@0x15a ]
+	67      (00000122) new-instance         v0, Ljava/lang/StringBuilder;
+	68      (00000126) invoke-direct        v0, Ljava/lang/StringBuilder;-><init>()V
+	69      (0000012c) invoke-virtual       v4, v5, Ljava/lang/String;->charAt(I)C
+	70      (00000132) move-result          v5
+	71      (00000134) invoke-static        v5, Ljava/lang/Character;->toUpperCase(C)C
+	72      (0000013a) move-result          v5
+	73      (0000013c) invoke-virtual       v0, v5, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+	74      (00000142) const/4              v5, 1
+	75      (00000144) invoke-virtual       v4, v5, Ljava/lang/String;->substring(I)Ljava/lang/String;
+	76      (0000014a) move-result-object   v4
+	77      (0000014c) invoke-virtual       v0, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	78      (00000152) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	79      (00000158) move-result-object   v4
+
+d-BB@0x15a : 
+	80      (0000015a) return-object        v4
+

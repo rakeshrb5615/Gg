@@ -1,0 +1,65 @@
+# Lb8/i;->H0(Ljava/lang/String;)Ljava/lang/CharSequence; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:java.lang.String
+#
+# - return:java.lang.CharSequence
+
+H0-BB@0x0 : [ H0-BB@0x1a ]
+	0       (00000000) const-string         v0, "<this>"
+	1       (00000004) invoke-static        v5, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) invoke-virtual       v5, Ljava/lang/String;->length()I
+	3       (00000010) move-result          v0
+	4       (00000012) const/4              v1, 1
+	5       (00000014) sub-int/2addr        v0, v1
+	6       (00000016) const/4              v2, 0
+	7       (00000018) move                 v3, v2
+
+H0-BB@0x1a : [ H0-BB@0x1e H0-BB@0x56 ]
+	8       (0000001a) if-gt                v2, v0, +01eh
+
+H0-BB@0x1e : [ H0-BB@0x22 H0-BB@0x26 ]
+	9       (0000001e) if-nez               v3, +004h
+
+H0-BB@0x22 : [ H0-BB@0x28 ]
+	10      (00000022) move                 v4, v2
+	11      (00000024) goto                 +2h
+
+H0-BB@0x26 : [ H0-BB@0x28 ]
+	12      (00000026) move                 v4, v0
+
+H0-BB@0x28 : [ H0-BB@0x3c H0-BB@0x4a ]
+	13      (00000028) invoke-virtual       v5, v4, Ljava/lang/String;->charAt(I)C
+	14      (0000002e) move-result          v4
+	15      (00000030) invoke-static        v4, La/a;->D(C)Z
+	16      (00000036) move-result          v4
+	17      (00000038) if-nez               v3, +009h
+
+H0-BB@0x3c : [ H0-BB@0x40 H0-BB@0x44 ]
+	18      (0000003c) if-nez               v4, +004h
+
+H0-BB@0x40 : [ H0-BB@0x1a ]
+	19      (00000040) move                 v3, v1
+	20      (00000042) goto                 -14h
+
+H0-BB@0x44 : [ H0-BB@0x1a ]
+	21      (00000044) add-int/lit8         v2, v2, 1
+	22      (00000048) goto                 -17h
+
+H0-BB@0x4a : [ H0-BB@0x4e H0-BB@0x50 ]
+	23      (0000004a) if-nez               v4, +003h
+
+H0-BB@0x4e : [ H0-BB@0x56 ]
+	24      (0000004e) goto                 +4h
+
+H0-BB@0x50 : [ H0-BB@0x1a ]
+	25      (00000050) add-int/lit8         v0, v0, -1
+	26      (00000054) goto                 -1dh
+
+H0-BB@0x56 : 
+	27      (00000056) add-int/2addr        v0, v1
+	28      (00000058) invoke-virtual       v5, v2, v0, Ljava/lang/String;->subSequence(I I)Ljava/lang/CharSequence;
+	29      (0000005e) move-result-object   v5
+	30      (00000060) return-object        v5
+

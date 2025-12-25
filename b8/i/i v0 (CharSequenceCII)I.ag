@@ -1,0 +1,39 @@
+# Lb8/i;->v0(Ljava/lang/CharSequence; C I I)I [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v0
+# - v1:java.lang.CharSequence
+# - v2:char
+# - v3:int
+# - v4:int
+#
+# - return:int
+
+v0-BB@0x0 : [ v0-BB@0xa v0-BB@0xc ]
+	0       (00000000) and-int/lit8         v4, v4, 2
+	1       (00000004) const/4              v0, 0
+	2       (00000006) if-eqz               v4, +003h
+
+v0-BB@0xa : [ v0-BB@0xc ]
+	3       (0000000a) move                 v3, v0
+
+v0-BB@0xc : [ v0-BB@0x1e v0-BB@0x32 ]
+	4       (0000000c) const-string         v4, "<this>"
+	5       (00000010) invoke-static        v1, v4, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	6       (00000016) instance-of          v4, v1, Ljava/lang/String;
+	7       (0000001a) if-nez               v4, +00ch
+
+v0-BB@0x1e : 
+	8       (0000001e) const/4              v4, 1
+	9       (00000020) new-array            v4, v4, [C
+	10      (00000024) aput-char            v2, v4, v0
+	11      (00000028) invoke-static        v1, v4, v3, v0, Lb8/i;->x0(Ljava/lang/CharSequence; [C I Z)I
+	12      (0000002e) move-result          v1
+	13      (00000030) return               v1
+
+v0-BB@0x32 : 
+	14      (00000032) check-cast           v1, Ljava/lang/String;
+	15      (00000036) invoke-virtual       v1, v2, v3, Ljava/lang/String;->indexOf(I I)I
+	16      (0000003c) move-result          v1
+	17      (0000003e) return               v1
+

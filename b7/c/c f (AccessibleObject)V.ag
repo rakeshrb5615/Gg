@@ -1,0 +1,35 @@
+# Lb7/c;->f(Ljava/lang/reflect/AccessibleObject;)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:java.lang.reflect.AccessibleObject
+#
+# - return:void
+
+f-BB@0x0 : [ f-BB@0x2 ]
+	0       (00000000) const/4              v0, 1
+
+f-BB@0x2 : 
+	1       (00000002) invoke-virtual       v4, v0, Ljava/lang/reflect/AccessibleObject;->setAccessible(Z)V
+	2       (00000008) return-void          
+	2:7
+	(Ljava/lang/Exception; -> a f-BB@0xa)
+
+f-BB@0xa : 
+	3       (0000000a) move-exception       v0
+	4       (0000000c) const/4              v1, 0
+	5       (0000000e) invoke-static        v4, v1, Lb7/c;->d(Ljava/lang/reflect/AccessibleObject; Z)Ljava/lang/String;
+	6       (00000014) move-result-object   v4
+	7       (00000016) new-instance         v1, Lw6/p;
+	8       (0000001a) const-string         v2, "Failed making "
+	9       (0000001e) const-string         v3, " accessible; either increase its visibility or write a custom TypeAdapter for its declaring type."
+	10      (00000022) invoke-static        v2, v4, v3, Lv1/a;->q(Ljava/lang/String; Ljava/lang/String; Ljava/lang/String;)Ljava/lang/StringBuilder;
+	11      (00000028) move-result-object   v4
+	12      (0000002a) invoke-static        v0, Lb7/c;->e(Ljava/lang/Exception;)Ljava/lang/String;
+	13      (00000030) move-result-object   v2
+	14      (00000032) invoke-virtual       v4, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	15      (00000038) invoke-virtual       v4, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	16      (0000003e) move-result-object   v4
+	17      (00000040) invoke-direct        v1, v4, v0, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	18      (00000046) throw                v1
+

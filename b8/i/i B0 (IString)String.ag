@@ -1,0 +1,63 @@
+# Lb8/i;->B0(I Ljava/lang/String;)Ljava/lang/String; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:int
+# - v3:java.lang.String
+#
+# - return:java.lang.String
+
+B0-BB@0x0 : [ B0-BB@0xe B0-BB@0x6e ]
+	0       (00000000) const-string         v0, "<this>"
+	1       (00000004) invoke-static        v3, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) if-ltz               v2, +032h
+
+B0-BB@0xe : [ B0-BB@0x1a B0-BB@0x2e ]
+	3       (0000000e) invoke-virtual       v3, Ljava/lang/String;->length()I
+	4       (00000014) move-result          v0
+	5       (00000016) if-gt                v2, v0, +00ch
+
+B0-BB@0x1a : [ B0-BB@0x64 ]
+	6       (0000001a) const/4              v2, 0
+	7       (0000001c) invoke-virtual       v3, Ljava/lang/String;->length()I
+	8       (00000022) move-result          v0
+	9       (00000024) invoke-virtual       v3, v2, v0, Ljava/lang/String;->subSequence(I I)Ljava/lang/CharSequence;
+	10      (0000002a) move-result-object   v2
+	11      (0000002c) goto                 +1ch
+
+B0-BB@0x2e : [ B0-BB@0x4e B0-BB@0x62 ]
+	12      (0000002e) new-instance         v0, Ljava/lang/StringBuilder;
+	13      (00000032) invoke-direct        v0, v2, Ljava/lang/StringBuilder;-><init>(I)V
+	14      (00000038) invoke-virtual       v0, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/CharSequence;)Ljava/lang/StringBuilder;
+	15      (0000003e) invoke-virtual       v3, Ljava/lang/String;->length()I
+	16      (00000044) move-result          v3
+	17      (00000046) sub-int/2addr        v2, v3
+	18      (00000048) const/4              v3, 1
+	19      (0000004a) if-gt                v3, v2, +00ch
+
+B0-BB@0x4e : [ B0-BB@0x5c B0-BB@0x62 ]
+	20      (0000004e) const/16             v1, 32
+	21      (00000052) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+	22      (00000058) if-eq                v3, v2, +005h
+
+B0-BB@0x5c : [ B0-BB@0x4e ]
+	23      (0000005c) add-int/lit8         v3, v3, 1
+	24      (00000060) goto                 -9h
+
+B0-BB@0x62 : [ B0-BB@0x64 ]
+	25      (00000062) move-object          v2, v0
+
+B0-BB@0x64 : 
+	26      (00000064) invoke-virtual       v2, Ljava/lang/Object;->toString()Ljava/lang/String;
+	27      (0000006a) move-result-object   v2
+	28      (0000006c) return-object        v2
+
+B0-BB@0x6e : 
+	29      (0000006e) new-instance         v3, Ljava/lang/IllegalArgumentException;
+	30      (00000072) const-string         v0, "Desired length "
+	31      (00000076) const-string         v1, " is less than zero."
+	32      (0000007a) invoke-static        v0, v2, v1, Lv1/a;->j(Ljava/lang/String; I Ljava/lang/String;)Ljava/lang/String;
+	33      (00000080) move-result-object   v2
+	34      (00000082) invoke-direct        v3, v2, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	35      (00000088) throw                v3
+

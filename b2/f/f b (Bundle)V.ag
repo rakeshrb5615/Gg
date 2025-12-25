@@ -1,0 +1,81 @@
+# Lb2/f;->b(Landroid/os/Bundle;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:android.os.Bundle
+#
+# - return:void
+
+b-BB@0x0 : [ b-BB@0x26 b-BB@0x2c ]
+	0       (00000000) iget-object          v0, v6, Lb2/f;->a Lc2/a;
+	1       (00000004) const/4              v1, 0
+	2       (00000006) new-array            v2, v1, [Lh7/f;
+	3       (0000000a) invoke-static        v2, v1, Ljava/util/Arrays;->copyOf([Ljava/lang/Object; I)[Ljava/lang/Object;
+	4       (00000010) move-result-object   v1
+	5       (00000012) check-cast           v1, [Lh7/f;
+	6       (00000016) invoke-static        v1, Lc4/b;->f([Lh7/f;)Landroid/os/Bundle;
+	7       (0000001c) move-result-object   v1
+	8       (0000001e) iget-object          v2, v0, Lc2/a;->f Landroid/os/Bundle;
+	9       (00000022) if-eqz               v2, +005h
+
+b-BB@0x26 : [ b-BB@0x2c ]
+	10      (00000026) invoke-virtual       v1, v2, Landroid/os/Bundle;->putAll(Landroid/os/Bundle;)V
+
+b-BB@0x2c : [ b-BB@0x32 ]
+	11      (0000002c) iget-object          v2, v0, Lc2/a;->c Lv3/f;
+	12      (00000030) monitor-enter        v2
+
+b-BB@0x32 : [ b-BB@0x46 ]
+	13      (00000032) iget-object          v0, v0, Lc2/a;->d Ljava/util/LinkedHashMap;
+	14      (00000036) invoke-virtual       v0, Ljava/util/LinkedHashMap;->entrySet()Ljava/util/Set;
+	15      (0000003c) move-result-object   v0
+	16      (0000003e) invoke-interface     v0, Ljava/util/Set;->iterator()Ljava/util/Iterator;
+	17      (00000044) move-result-object   v0
+	32:8d
+	(Ljava/lang/Throwable; -> 90 b-BB@0x90)
+
+b-BB@0x46 : [ b-BB@0x52 b-BB@0x94 ]
+	18      (00000046) invoke-interface     v0, Ljava/util/Iterator;->hasNext()Z
+	19      (0000004c) move-result          v3
+	20      (0000004e) if-eqz               v3, +023h
+	32:8d
+	(Ljava/lang/Throwable; -> 90 b-BB@0x90)
+
+b-BB@0x52 : [ b-BB@0x46 ]
+	21      (00000052) invoke-interface     v0, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	22      (00000058) move-result-object   v3
+	23      (0000005a) check-cast           v3, Ljava/util/Map$Entry;
+	24      (0000005e) invoke-interface     v3, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
+	25      (00000064) move-result-object   v4
+	26      (00000066) check-cast           v4, Ljava/lang/String;
+	27      (0000006a) invoke-interface     v3, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
+	28      (00000070) move-result-object   v3
+	29      (00000072) check-cast           v3, Lb2/d;
+	30      (00000076) invoke-interface     v3, Lb2/d;->a()Landroid/os/Bundle;
+	31      (0000007c) move-result-object   v3
+	32      (0000007e) const-string         v5, "key"
+	33      (00000082) invoke-static        v4, v5, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	34      (00000088) invoke-virtual       v1, v4, v3, Landroid/os/Bundle;->putBundle(Ljava/lang/String; Landroid/os/Bundle;)V
+	35      (0000008e) goto                 -24h
+
+b-BB@0x90 : [ b-BB@0xae ]
+	36      (00000090) move-exception       v7
+	37      (00000092) goto                 +eh
+
+b-BB@0x94 : [ b-BB@0xa2 b-BB@0xac ]
+	38      (00000094) monitor-exit         v2
+	39      (00000096) invoke-virtual       v1, Landroid/os/BaseBundle;->isEmpty()Z
+	40      (0000009c) move-result          v0
+	41      (0000009e) if-nez               v0, +007h
+
+b-BB@0xa2 : [ b-BB@0xac ]
+	42      (000000a2) const-string         v0, "androidx.lifecycle.BundlableSavedStateRegistry.key"
+	43      (000000a6) invoke-virtual       v7, v0, v1, Landroid/os/Bundle;->putBundle(Ljava/lang/String; Landroid/os/Bundle;)V
+
+b-BB@0xac : 
+	44      (000000ac) return-void          
+
+b-BB@0xae : 
+	45      (000000ae) monitor-exit         v2
+	46      (000000b0) throw                v7
+

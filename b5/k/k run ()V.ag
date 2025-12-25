@@ -1,0 +1,35 @@
+# Lb5/k;->run()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v3
+#
+# - return:void
+
+run-BB@0x0 : [ D:run-BB@0xa 0:run-BB@0x28 ]
+	0       (00000000) iget                 v0, v3, Lb5/k;->a I
+	1       (00000004) packed-switch        v0, +0000018h
+
+run-BB@0xa : [ run-BB@0x26 ]
+	2       (0000000a) iget-object          v0, v3, Lb5/k;->b Ljava/lang/Runnable;
+	3       (0000000e) invoke-interface     v0, Ljava/lang/Runnable;->run()V
+	4       (00000014) goto                 +9h
+	a:13
+	(Ljava/lang/Exception; -> 16 run-BB@0x16)
+
+run-BB@0x16 : [ run-BB@0x26 ]
+	5       (00000016) move-exception       v0
+	6       (00000018) const-string         v1, "Executor"
+	7       (0000001c) const-string         v2, "Background execution failure."
+	8       (00000020) invoke-static        v0, v1, v2, Lc4/b;->w(Ljava/lang/Exception; Ljava/lang/String; Ljava/lang/String;)V
+
+run-BB@0x26 : 
+	9       (00000026) return-void          
+
+run-BB@0x28 : 
+	10      (00000028) iget-object          v0, v3, Lb5/k;->b Ljava/lang/Runnable;
+	11      (0000002c) invoke-interface     v0, Ljava/lang/Runnable;->run()V
+	12      (00000032) return-void          
+
+run-BB@0x34 : 
+	13      (00000034) packed-switch-payload 0
+
