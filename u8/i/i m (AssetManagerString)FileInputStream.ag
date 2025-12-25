@@ -1,0 +1,39 @@
+# Lu8/i;->m(Landroid/content/res/AssetManager; Ljava/lang/String;)Ljava/io/FileInputStream; [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v0
+# - v1:android.content.res.AssetManager
+# - v2:java.lang.String
+#
+# - return:java.io.FileInputStream
+
+m-BB@0x0 : 
+	0       (00000000) invoke-virtual       v1, v2, Landroid/content/res/AssetManager;->openFd(Ljava/lang/String;)Landroid/content/res/AssetFileDescriptor;
+	1       (00000006) move-result-object   v1
+	2       (00000008) invoke-virtual       v1, Landroid/content/res/AssetFileDescriptor;->createInputStream()Ljava/io/FileInputStream;
+	3       (0000000e) move-result-object   v1
+	4       (00000010) return-object        v1
+	0:f
+	(Ljava/io/FileNotFoundException; -> 12 m-BB@0x12)
+
+m-BB@0x12 : [ m-BB@0x20 m-BB@0x3e ]
+	5       (00000012) move-exception       v1
+	6       (00000014) invoke-virtual       v1, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+	7       (0000001a) move-result-object   v1
+	8       (0000001c) if-eqz               v1, +011h
+
+m-BB@0x20 : [ m-BB@0x30 m-BB@0x3e ]
+	9       (00000020) const-string         v2, "compressed"
+	10      (00000024) invoke-virtual       v1, v2, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+	11      (0000002a) move-result          v1
+	12      (0000002c) if-eqz               v1, +009h
+
+m-BB@0x30 : [ m-BB@0x3e ]
+	13      (00000030) iget-object          v1, v0, Lu8/i;->d Ljava/lang/Object;
+	14      (00000034) check-cast           v1, Ly1/b;
+	15      (00000038) invoke-interface     v1, Ly1/b;->i()V
+
+m-BB@0x3e : 
+	16      (0000003e) const/4              v1, 0
+	17      (00000040) return-object        v1
+
