@@ -1,0 +1,31 @@
+# Ld8/f0;->g(Ll7/h;)V [access_flags=public static final]
+#
+# Parameters:
+# - local registers: v0...v0
+# - v1:l7.h
+#
+# - return:void
+
+g-BB@0x0 : [ g-BB@0x14 g-BB@0x2c ]
+	0       (00000000) sget-object          v0, Ld8/b0;->b Ld8/b0;
+	1       (00000004) invoke-interface     v1, v0, Ll7/h;->get(Ll7/g;)Ll7/f;
+	2       (0000000a) move-result-object   v1
+	3       (0000000c) check-cast           v1, Ld8/e1;
+	4       (00000010) if-eqz               v1, +00eh
+
+g-BB@0x14 : [ g-BB@0x20 g-BB@0x22 ]
+	5       (00000014) invoke-interface     v1, Ld8/e1;->isActive()Z
+	6       (0000001a) move-result          v0
+	7       (0000001c) if-eqz               v0, +003h
+
+g-BB@0x20 : [ g-BB@0x2c ]
+	8       (00000020) goto                 +6h
+
+g-BB@0x22 : 
+	9       (00000022) invoke-interface     v1, Ld8/e1;->getCancellationException()Ljava/util/concurrent/CancellationException;
+	10      (00000028) move-result-object   v1
+	11      (0000002a) throw                v1
+
+g-BB@0x2c : 
+	12      (0000002c) return-void          
+

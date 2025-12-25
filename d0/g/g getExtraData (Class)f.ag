@@ -1,0 +1,25 @@
+# Ld0/g;->getExtraData(Ljava/lang/Class;)Ld0/f; [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:java.lang.Class
+#
+# - return:d0.f
+
+getExtraData-BB@0x0 : [ getExtraData-BB@0x1a getExtraData-BB@0x1e ]
+	0       (00000000) const-string         v0, "extraDataClass"
+	1       (00000004) invoke-static        v2, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) iget-object          v0, v1, Ld0/g;->extraDataMap Lr/j;
+	3       (0000000e) invoke-virtual       v0, v2, Lr/j;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	4       (00000014) move-result-object   v2
+	5       (00000016) if-nez               v2, +004h
+
+getExtraData-BB@0x1a : 
+	6       (0000001a) const/4              v2, 0
+	7       (0000001c) return-object        v2
+
+getExtraData-BB@0x1e : 
+	8       (0000001e) new-instance         v2, Ljava/lang/ClassCastException;
+	9       (00000022) invoke-direct        v2, Ljava/lang/ClassCastException;-><init>()V
+	10      (00000028) throw                v2
+

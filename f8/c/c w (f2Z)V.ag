@@ -1,0 +1,73 @@
+# Lf8/c;->w(Ld8/f2; Z)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:d8.f2
+# - v4:boolean
+#
+# - return:void
+
+w-BB@0x0 : [ w-BB@0x8 w-BB@0x32 ]
+	0       (00000000) instance-of          v0, v3, Ld8/l;
+	1       (00000004) if-eqz               v0, +017h
+
+w-BB@0x8 : [ w-BB@0x10 w-BB@0x1a ]
+	2       (00000008) check-cast           v3, Ll7/c;
+	3       (0000000c) if-eqz               v4, +007h
+
+w-BB@0x10 : [ w-BB@0x22 ]
+	4       (00000010) invoke-virtual       v2, Lf8/c;->n()Ljava/lang/Throwable;
+	5       (00000016) move-result-object   v4
+	6       (00000018) goto                 +5h
+
+w-BB@0x1a : [ w-BB@0x22 ]
+	7       (0000001a) invoke-virtual       v2, Lf8/c;->o()Ljava/lang/Throwable;
+	8       (00000020) move-result-object   v4
+
+w-BB@0x22 : 
+	9       (00000022) invoke-static        v4, Lc4/b;->p(Ljava/lang/Throwable;)Lh7/g;
+	10      (00000028) move-result-object   v4
+	11      (0000002a) invoke-interface     v3, v4, Ll7/c;->resumeWith(Ljava/lang/Object;)V
+	12      (00000030) return-void          
+
+w-BB@0x32 : [ w-BB@0x3a w-BB@0x82 ]
+	13      (00000032) instance-of          v4, v3, Lf8/b;
+	14      (00000036) if-eqz               v4, +026h
+
+w-BB@0x3a : [ w-BB@0x66 w-BB@0x72 ]
+	15      (0000003a) check-cast           v3, Lf8/b;
+	16      (0000003e) iget-object          v4, v3, Lf8/b;->b Ld8/n;
+	17      (00000042) invoke-static        v4, Lkotlin/jvm/internal/j;->b(Ljava/lang/Object;)V
+	18      (00000048) const/4              v0, 0
+	19      (0000004a) iput-object          v0, v3, Lf8/b;->b Ld8/n;
+	20      (0000004e) sget-object          v0, Lf8/e;->l Ld4/l;
+	21      (00000052) iput-object          v0, v3, Lf8/b;->a Ljava/lang/Object;
+	22      (00000056) iget-object          v3, v3, Lf8/b;->c Lf8/c;
+	23      (0000005a) invoke-virtual       v3, Lf8/c;->m()Ljava/lang/Throwable;
+	24      (00000060) move-result-object   v3
+	25      (00000062) if-nez               v3, +008h
+
+w-BB@0x66 : 
+	26      (00000066) sget-object          v3, Ljava/lang/Boolean;->FALSE Ljava/lang/Boolean;
+	27      (0000006a) invoke-virtual       v4, v3, Ld8/n;->resumeWith(Ljava/lang/Object;)V
+	28      (00000070) return-void          
+
+w-BB@0x72 : 
+	29      (00000072) invoke-static        v3, Lc4/b;->p(Ljava/lang/Throwable;)Lh7/g;
+	30      (00000078) move-result-object   v3
+	31      (0000007a) invoke-virtual       v4, v3, Ld8/n;->resumeWith(Ljava/lang/Object;)V
+	32      (00000080) return-void          
+
+w-BB@0x82 : 
+	33      (00000082) new-instance         v4, Ljava/lang/IllegalStateException;
+	34      (00000086) new-instance         v0, Ljava/lang/StringBuilder;
+	35      (0000008a) const-string         v1, "Unexpected waiter: "
+	36      (0000008e) invoke-direct        v0, v1, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	37      (00000094) invoke-virtual       v0, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	38      (0000009a) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	39      (000000a0) move-result-object   v3
+	40      (000000a2) invoke-virtual       v3, Ljava/lang/Object;->toString()Ljava/lang/String;
+	41      (000000a8) move-result-object   v3
+	42      (000000aa) invoke-direct        v4, v3, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	43      (000000b0) throw                v4
+

@@ -1,0 +1,45 @@
+# Le6/b;-><clinit>()V [access_flags=static constructor]
+#
+# Parameters:
+# local registers: v0...v2
+#
+# - return:void
+
+<clinit>-BB@0x0 : [ <clinit>-BB@0x14 <clinit>-BB@0x16 ]
+	0       (00000000) const/4              v0, 0
+	1       (00000002) or-int/lit8          v0, v0, 2
+	2       (00000006) int-to-byte          v0, v0
+	3       (00000008) or-int/lit8          v0, v0, 1
+	4       (0000000c) int-to-byte          v0, v0
+	5       (0000000e) const/4              v1, 3
+	6       (00000010) if-ne                v0, v1, +003h
+
+<clinit>-BB@0x14 : 
+	7       (00000014) return-void          
+
+<clinit>-BB@0x16 : [ <clinit>-BB@0x28 <clinit>-BB@0x32 ]
+	8       (00000016) new-instance         v1, Ljava/lang/StringBuilder;
+	9       (0000001a) invoke-direct        v1, Ljava/lang/StringBuilder;-><init>()V
+	10      (00000020) and-int/lit8         v2, v0, 1
+	11      (00000024) if-nez               v2, +007h
+
+<clinit>-BB@0x28 : [ <clinit>-BB@0x32 ]
+	12      (00000028) const-string         v2, " expiresInSecs"
+	13      (0000002c) invoke-virtual       v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+<clinit>-BB@0x32 : [ <clinit>-BB@0x3a <clinit>-BB@0x44 ]
+	14      (00000032) and-int/lit8         v0, v0, 2
+	15      (00000036) if-nez               v0, +007h
+
+<clinit>-BB@0x3a : [ <clinit>-BB@0x44 ]
+	16      (0000003a) const-string         v0, " tokenCreationEpochInSecs"
+	17      (0000003e) invoke-virtual       v1, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+<clinit>-BB@0x44 : 
+	18      (00000044) new-instance         v0, Ljava/lang/IllegalStateException;
+	19      (00000048) const-string         v2, "Missing required properties:"
+	20      (0000004c) invoke-static        v2, v1, Lg2/g;->g(Ljava/lang/String; Ljava/lang/StringBuilder;)Ljava/lang/String;
+	21      (00000052) move-result-object   v1
+	22      (00000054) invoke-direct        v0, v1, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	23      (0000005a) throw                v0
+

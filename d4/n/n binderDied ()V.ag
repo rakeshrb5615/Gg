@@ -1,0 +1,221 @@
+# Ld4/n;->binderDied()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v8
+#
+# - return:void
+
+binderDied-BB@0x0 : [ D:binderDied-BB@0xa 0:binderDied-BB@0x18a 1:binderDied-BB@0xc6 ]
+	0       (00000000) iget                 v0, v8, Ld4/n;->a I
+	1       (00000004) packed-switch        v0, +0000126h
+
+binderDied-BB@0xa : [ binderDied-BB@0x36 binderDied-BB@0xba ]
+	2       (0000000a) iget-object          v0, v8, Ld4/n;->b Ljava/lang/Object;
+	3       (0000000e) check-cast           v0, Lk4/d;
+	4       (00000012) iget-object          v1, v0, Lk4/d;->b Lk4/z;
+	5       (00000016) const-string         v2, "reportBinderDeath"
+	6       (0000001a) const/4              v3, 0
+	7       (0000001c) new-array            v4, v3, [Ljava/lang/Object;
+	8       (00000020) invoke-virtual       v1, v2, v4, Lk4/z;->b(Ljava/lang/String; [Ljava/lang/Object;)V
+	9       (00000026) iget-object          v1, v0, Lk4/d;->j Ljava/lang/ref/WeakReference;
+	10      (0000002a) invoke-virtual       v1, Ljava/lang/ref/Reference;->get()Ljava/lang/Object;
+	11      (00000030) move-result-object   v1
+	12      (00000032) if-nez               v1, +044h
+
+binderDied-BB@0x36 : [ binderDied-BB@0x5c ]
+	13      (00000036) iget-object          v1, v0, Lk4/d;->b Lk4/z;
+	14      (0000003a) iget-object          v2, v0, Lk4/d;->c Ljava/lang/String;
+	15      (0000003e) filled-new-array     v2, [Ljava/lang/Object;
+	16      (00000044) move-result-object   v2
+	17      (00000046) const-string         v4, "%s : Binder has died."
+	18      (0000004a) invoke-virtual       v1, v4, v2, Lk4/z;->b(Ljava/lang/String; [Ljava/lang/Object;)V
+	19      (00000050) iget-object          v1, v0, Lk4/d;->d Ljava/util/ArrayList;
+	20      (00000054) invoke-virtual       v1, Ljava/util/ArrayList;->size()I
+	21      (0000005a) move-result          v2
+
+binderDied-BB@0x5c : [ binderDied-BB@0x60 binderDied-BB@0x9a ]
+	22      (0000005c) if-ge                v3, v2, +01fh
+
+binderDied-BB@0x60 : [ binderDied-BB@0x5c ]
+	23      (00000060) invoke-virtual       v1, v3, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	24      (00000066) move-result-object   v4
+	25      (00000068) add-int/lit8         v3, v3, 1
+	26      (0000006c) check-cast           v4, Lk4/a0;
+	27      (00000070) iget-object          v5, v0, Lk4/d;->c Ljava/lang/String;
+	28      (00000074) invoke-static        v5, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
+	29      (0000007a) move-result-object   v5
+	30      (0000007c) const-string         v6, " : Binder has died."
+	31      (00000080) new-instance         v7, Landroid/os/RemoteException;
+	32      (00000084) invoke-virtual       v5, v6, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	33      (0000008a) move-result-object   v5
+	34      (0000008c) invoke-direct        v7, v5, Landroid/os/RemoteException;-><init>(Ljava/lang/String;)V
+	35      (00000092) invoke-virtual       v4, v7, Lk4/a0;->a(Ljava/lang/Exception;)V
+	36      (00000098) goto                 -1eh
+
+binderDied-BB@0x9a : [ binderDied-BB@0xaa ]
+	37      (0000009a) iget-object          v1, v0, Lk4/d;->d Ljava/util/ArrayList;
+	38      (0000009e) invoke-virtual       v1, Ljava/util/ArrayList;->clear()V
+	39      (000000a4) iget-object          v1, v0, Lk4/d;->f Ljava/lang/Object;
+	40      (000000a8) monitor-enter        v1
+
+binderDied-BB@0xaa : 
+	41      (000000aa) invoke-virtual       v0, Lk4/d;->e()V
+	42      (000000b0) monitor-exit         v1
+	43      (000000b2) return-void          
+	aa:b7
+	(Ljava/lang/Throwable; -> b4 binderDied-BB@0xb4)
+
+binderDied-BB@0xb4 : 
+	44      (000000b4) move-exception       v0
+	45      (000000b6) monitor-exit         v1
+	46      (000000b8) throw                v0
+
+binderDied-BB@0xba : 
+	47      (000000ba) new-instance         v0, Ljava/lang/ClassCastException;
+	48      (000000be) invoke-direct        v0, Ljava/lang/ClassCastException;-><init>()V
+	49      (000000c4) throw                v0
+
+binderDied-BB@0xc6 : [ binderDied-BB@0xf2 binderDied-BB@0x17e ]
+	50      (000000c6) iget-object          v0, v8, Ld4/n;->b Ljava/lang/Object;
+	51      (000000ca) check-cast           v0, Li4/h;
+	52      (000000ce) iget-object          v1, v0, Li4/h;->b Ld4/l;
+	53      (000000d2) const-string         v2, "reportBinderDeath"
+	54      (000000d6) const/4              v3, 0
+	55      (000000d8) new-array            v4, v3, [Ljava/lang/Object;
+	56      (000000dc) invoke-virtual       v1, v2, v4, Ld4/l;->g(Ljava/lang/String; [Ljava/lang/Object;)V
+	57      (000000e2) iget-object          v1, v0, Li4/h;->i Ljava/lang/ref/WeakReference;
+	58      (000000e6) invoke-virtual       v1, Ljava/lang/ref/Reference;->get()Ljava/lang/Object;
+	59      (000000ec) move-result-object   v1
+	60      (000000ee) if-nez               v1, +048h
+
+binderDied-BB@0xf2 : [ binderDied-BB@0x118 ]
+	61      (000000f2) iget-object          v1, v0, Li4/h;->b Ld4/l;
+	62      (000000f6) iget-object          v2, v0, Li4/h;->c Ljava/lang/String;
+	63      (000000fa) filled-new-array     v2, [Ljava/lang/Object;
+	64      (00000100) move-result-object   v2
+	65      (00000102) const-string         v4, "%s : Binder has died."
+	66      (00000106) invoke-virtual       v1, v4, v2, Ld4/l;->g(Ljava/lang/String; [Ljava/lang/Object;)V
+	67      (0000010c) iget-object          v1, v0, Li4/h;->d Ljava/util/ArrayList;
+	68      (00000110) invoke-virtual       v1, Ljava/util/ArrayList;->size()I
+	69      (00000116) move-result          v2
+
+binderDied-BB@0x118 : [ binderDied-BB@0x11c binderDied-BB@0x15e ]
+	70      (00000118) if-ge                v3, v2, +023h
+
+binderDied-BB@0x11c : [ binderDied-BB@0x156 binderDied-BB@0x118 ]
+	71      (0000011c) invoke-virtual       v1, v3, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	72      (00000122) move-result-object   v4
+	73      (00000124) add-int/lit8         v3, v3, 1
+	74      (00000128) check-cast           v4, Li4/e;
+	75      (0000012c) iget-object          v5, v0, Li4/h;->c Ljava/lang/String;
+	76      (00000130) invoke-static        v5, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
+	77      (00000136) move-result-object   v5
+	78      (00000138) const-string         v6, " : Binder has died."
+	79      (0000013c) new-instance         v7, Landroid/os/RemoteException;
+	80      (00000140) invoke-virtual       v5, v6, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	81      (00000146) move-result-object   v5
+	82      (00000148) invoke-direct        v7, v5, Landroid/os/RemoteException;-><init>(Ljava/lang/String;)V
+	83      (0000014e) iget-object          v4, v4, Li4/e;->a Lcom/google/android/gms/tasks/TaskCompletionSource;
+	84      (00000152) if-eqz               v4, -01dh
+
+binderDied-BB@0x156 : [ binderDied-BB@0x118 ]
+	85      (00000156) invoke-virtual       v4, v7, Lcom/google/android/gms/tasks/TaskCompletionSource;->trySetException(Ljava/lang/Exception;)Z
+	86      (0000015c) goto                 -22h
+
+binderDied-BB@0x15e : [ binderDied-BB@0x16e ]
+	87      (0000015e) iget-object          v1, v0, Li4/h;->d Ljava/util/ArrayList;
+	88      (00000162) invoke-virtual       v1, Ljava/util/ArrayList;->clear()V
+	89      (00000168) iget-object          v1, v0, Li4/h;->f Ljava/lang/Object;
+	90      (0000016c) monitor-enter        v1
+
+binderDied-BB@0x16e : 
+	91      (0000016e) invoke-virtual       v0, Li4/h;->c()V
+	92      (00000174) monitor-exit         v1
+	93      (00000176) return-void          
+	16e:17b
+	(Ljava/lang/Throwable; -> 178 binderDied-BB@0x178)
+
+binderDied-BB@0x178 : 
+	94      (00000178) move-exception       v0
+	95      (0000017a) monitor-exit         v1
+	96      (0000017c) throw                v0
+
+binderDied-BB@0x17e : 
+	97      (0000017e) new-instance         v0, Ljava/lang/ClassCastException;
+	98      (00000182) invoke-direct        v0, Ljava/lang/ClassCastException;-><init>()V
+	99      (00000188) throw                v0
+
+binderDied-BB@0x18a : [ binderDied-BB@0x1b6 binderDied-BB@0x242 ]
+	100     (0000018a) iget-object          v0, v8, Ld4/n;->b Ljava/lang/Object;
+	101     (0000018e) check-cast           v0, Ld4/r;
+	102     (00000192) iget-object          v1, v0, Ld4/r;->b Ld4/l;
+	103     (00000196) const-string         v2, "reportBinderDeath"
+	104     (0000019a) const/4              v3, 0
+	105     (0000019c) new-array            v4, v3, [Ljava/lang/Object;
+	106     (000001a0) invoke-virtual       v1, v2, v4, Ld4/l;->h(Ljava/lang/String; [Ljava/lang/Object;)V
+	107     (000001a6) iget-object          v1, v0, Ld4/r;->i Ljava/lang/ref/WeakReference;
+	108     (000001aa) invoke-virtual       v1, Ljava/lang/ref/Reference;->get()Ljava/lang/Object;
+	109     (000001b0) move-result-object   v1
+	110     (000001b2) if-nez               v1, +048h
+
+binderDied-BB@0x1b6 : [ binderDied-BB@0x1dc ]
+	111     (000001b6) iget-object          v1, v0, Ld4/r;->b Ld4/l;
+	112     (000001ba) iget-object          v2, v0, Ld4/r;->c Ljava/lang/String;
+	113     (000001be) filled-new-array     v2, [Ljava/lang/Object;
+	114     (000001c4) move-result-object   v2
+	115     (000001c6) const-string         v4, "%s : Binder has died."
+	116     (000001ca) invoke-virtual       v1, v4, v2, Ld4/l;->h(Ljava/lang/String; [Ljava/lang/Object;)V
+	117     (000001d0) iget-object          v1, v0, Ld4/r;->d Ljava/util/ArrayList;
+	118     (000001d4) invoke-virtual       v1, Ljava/util/ArrayList;->size()I
+	119     (000001da) move-result          v2
+
+binderDied-BB@0x1dc : [ binderDied-BB@0x1e0 binderDied-BB@0x222 ]
+	120     (000001dc) if-ge                v3, v2, +023h
+
+binderDied-BB@0x1e0 : [ binderDied-BB@0x21a binderDied-BB@0x1dc ]
+	121     (000001e0) invoke-virtual       v1, v3, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	122     (000001e6) move-result-object   v4
+	123     (000001e8) add-int/lit8         v3, v3, 1
+	124     (000001ec) check-cast           v4, Ld4/m;
+	125     (000001f0) new-instance         v5, Landroid/os/RemoteException;
+	126     (000001f4) iget-object          v6, v0, Ld4/r;->c Ljava/lang/String;
+	127     (000001f8) invoke-static        v6, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
+	128     (000001fe) move-result-object   v6
+	129     (00000200) const-string         v7, " : Binder has died."
+	130     (00000204) invoke-virtual       v6, v7, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	131     (0000020a) move-result-object   v6
+	132     (0000020c) invoke-direct        v5, v6, Landroid/os/RemoteException;-><init>(Ljava/lang/String;)V
+	133     (00000212) iget-object          v4, v4, Ld4/m;->a Lcom/google/android/gms/tasks/TaskCompletionSource;
+	134     (00000216) if-eqz               v4, -01dh
+
+binderDied-BB@0x21a : [ binderDied-BB@0x1dc ]
+	135     (0000021a) invoke-virtual       v4, v5, Lcom/google/android/gms/tasks/TaskCompletionSource;->trySetException(Ljava/lang/Exception;)Z
+	136     (00000220) goto                 -22h
+
+binderDied-BB@0x222 : [ binderDied-BB@0x232 ]
+	137     (00000222) iget-object          v1, v0, Ld4/r;->d Ljava/util/ArrayList;
+	138     (00000226) invoke-virtual       v1, Ljava/util/ArrayList;->clear()V
+	139     (0000022c) iget-object          v1, v0, Ld4/r;->f Ljava/lang/Object;
+	140     (00000230) monitor-enter        v1
+
+binderDied-BB@0x232 : 
+	141     (00000232) invoke-virtual       v0, Ld4/r;->d()V
+	142     (00000238) monitor-exit         v1
+	143     (0000023a) return-void          
+	232:23f
+	(Ljava/lang/Throwable; -> 23c binderDied-BB@0x23c)
+
+binderDied-BB@0x23c : 
+	144     (0000023c) move-exception       v0
+	145     (0000023e) monitor-exit         v1
+	146     (00000240) throw                v0
+
+binderDied-BB@0x242 : 
+	147     (00000242) new-instance         v0, Ljava/lang/ClassCastException;
+	148     (00000246) invoke-direct        v0, Ljava/lang/ClassCastException;-><init>()V
+	149     (0000024c) throw                v0
+
+binderDied-BB@0x24e : 
+	150     (0000024e) nop                  
+	151     (00000250) packed-switch-payload 0 1
+

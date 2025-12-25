@@ -1,0 +1,100 @@
+# Ld8/r1;->r(Ld8/l1; Ljava/util/ArrayList;)Ljava/lang/Throwable; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:d8.l1
+# - v7:java.util.ArrayList
+#
+# - return:java.lang.Throwable
+
+r-BB@0x0 : [ r-BB@0xe r-BB@0x30 ]
+	0       (00000000) invoke-interface     v7, Ljava/util/List;->isEmpty()Z
+	1       (00000006) move-result          v0
+	2       (00000008) const/4              v1, 0
+	3       (0000000a) if-eqz               v0, +013h
+
+r-BB@0xe : [ r-BB@0x1a r-BB@0x2e ]
+	4       (0000000e) invoke-virtual       v6, Ld8/l1;->d()Z
+	5       (00000014) move-result          v6
+	6       (00000016) if-eqz               v6, +00ch
+
+r-BB@0x1a : 
+	7       (0000001a) new-instance         v6, Ld8/f1;
+	8       (0000001e) invoke-virtual       v5, Ld8/r1;->l()Ljava/lang/String;
+	9       (00000024) move-result-object   v7
+	10      (00000026) invoke-direct        v6, v7, v1, v5, Ld8/f1;-><init>(Ljava/lang/String; Ljava/lang/Throwable; Ld8/e1;)V
+	11      (0000002c) return-object        v6
+
+r-BB@0x2e : 
+	12      (0000002e) return-object        v1
+
+r-BB@0x30 : [ r-BB@0x3c ]
+	13      (00000030) invoke-virtual       v7, Ljava/util/ArrayList;->size()I
+	14      (00000036) move-result          v6
+	15      (00000038) const/4              v0, 0
+	16      (0000003a) move                 v2, v0
+
+r-BB@0x3c : [ r-BB@0x40 r-BB@0x5c ]
+	17      (0000003c) if-ge                v2, v6, +010h
+
+r-BB@0x40 : [ r-BB@0x5a r-BB@0x3c ]
+	18      (00000040) invoke-virtual       v7, v2, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	19      (00000046) move-result-object   v3
+	20      (00000048) add-int/lit8         v2, v2, 1
+	21      (0000004c) move-object          v4, v3
+	22      (0000004e) check-cast           v4, Ljava/lang/Throwable;
+	23      (00000052) instance-of          v4, v4, Ljava/util/concurrent/CancellationException;
+	24      (00000056) if-nez               v4, -00dh
+
+r-BB@0x5a : [ r-BB@0x5e ]
+	25      (0000005a) goto                 +2h
+
+r-BB@0x5c : [ r-BB@0x5e ]
+	26      (0000005c) move-object          v3, v1
+
+r-BB@0x5e : [ r-BB@0x66 r-BB@0x68 ]
+	27      (0000005e) check-cast           v3, Ljava/lang/Throwable;
+	28      (00000062) if-eqz               v3, +003h
+
+r-BB@0x66 : 
+	29      (00000066) return-object        v3
+
+r-BB@0x68 : [ r-BB@0x7c r-BB@0xb2 ]
+	30      (00000068) invoke-interface     v7, v0, Ljava/util/List;->get(I)Ljava/lang/Object;
+	31      (0000006e) move-result-object   v6
+	32      (00000070) check-cast           v6, Ljava/lang/Throwable;
+	33      (00000074) instance-of          v2, v6, Ld8/a2;
+	34      (00000078) if-eqz               v2, +01dh
+
+r-BB@0x7c : [ r-BB@0x84 ]
+	35      (0000007c) invoke-virtual       v7, Ljava/util/ArrayList;->size()I
+	36      (00000082) move-result          v2
+
+r-BB@0x84 : [ r-BB@0x88 r-BB@0xa8 ]
+	37      (00000084) if-ge                v0, v2, +012h
+
+r-BB@0x88 : [ r-BB@0x9e r-BB@0x84 ]
+	38      (00000088) invoke-virtual       v7, v0, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	39      (0000008e) move-result-object   v3
+	40      (00000090) add-int/lit8         v0, v0, 1
+	41      (00000094) move-object          v4, v3
+	42      (00000096) check-cast           v4, Ljava/lang/Throwable;
+	43      (0000009a) if-eq                v4, v6, -00bh
+
+r-BB@0x9e : [ r-BB@0xa6 r-BB@0x84 ]
+	44      (0000009e) instance-of          v4, v4, Ld8/a2;
+	45      (000000a2) if-eqz               v4, -00fh
+
+r-BB@0xa6 : [ r-BB@0xa8 ]
+	46      (000000a6) move-object          v1, v3
+
+r-BB@0xa8 : [ r-BB@0xb0 r-BB@0xb2 ]
+	47      (000000a8) check-cast           v1, Ljava/lang/Throwable;
+	48      (000000ac) if-eqz               v1, +003h
+
+r-BB@0xb0 : 
+	49      (000000b0) return-object        v1
+
+r-BB@0xb2 : 
+	50      (000000b2) return-object        v6
+

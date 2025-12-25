@@ -1,0 +1,49 @@
+# Ld8/g0;->c(J Ld8/b2; Ll7/h;)Ld8/p0; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:long
+# - v5:d8.b2
+# - v6:l7.h
+#
+# - return:d8.p0
+
+c-BB@0x0 : [ c-BB@0xc c-BB@0xe ]
+	0       (00000000) const-wide/16        v0, 0
+	1       (00000004) cmp-long             v6, v3, v0
+	2       (00000008) if-gtz               v6, +003h
+
+c-BB@0xc : [ c-BB@0x34 ]
+	3       (0000000c) goto                 +14h
+
+c-BB@0xe : [ c-BB@0x20 c-BB@0x2c ]
+	4       (0000000e) const-wide           v0, 9223372036854
+	5       (00000018) cmp-long             v6, v3, v0
+	6       (0000001c) if-ltz               v6, +008h
+
+c-BB@0x20 : [ c-BB@0x34 ]
+	7       (00000020) const-wide           v0, 9223372036854775807
+	8       (0000002a) goto                 +5h
+
+c-BB@0x2c : [ c-BB@0x34 ]
+	9       (0000002c) const-wide/32        v0, 1000000
+	10      (00000032) mul-long/2addr       v0, v3
+
+c-BB@0x34 : [ c-BB@0x46 c-BB@0x62 ]
+	11      (00000034) const-wide           v3, 4611686018427387903
+	12      (0000003e) cmp-long             v3, v0, v3
+	13      (00000042) if-gez               v3, +010h
+
+c-BB@0x46 : 
+	14      (00000046) invoke-static        Ljava/lang/System;->nanoTime()J
+	15      (0000004c) move-result-wide     v3
+	16      (0000004e) new-instance         v6, Ld8/t0;
+	17      (00000052) add-long/2addr       v0, v3
+	18      (00000054) invoke-direct        v6, v0, v1, v5, Ld8/t0;-><init>(J Ld8/b2;)V
+	19      (0000005a) invoke-virtual       v2, v3, v4, v6, Ld8/w0;->I(J Ld8/u0;)V
+	20      (00000060) return-object        v6
+
+c-BB@0x62 : 
+	21      (00000062) sget-object          v3, Ld8/t1;->a Ld8/t1;
+	22      (00000066) return-object        v3
+

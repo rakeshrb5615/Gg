@@ -1,0 +1,51 @@
+# Le7/a;->E()Z [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v5
+#
+# - return:boolean
+
+E-BB@0x0 : [ E-BB@0x8 E-BB@0x10 ]
+	0       (00000000) iget                 v0, v5, Le7/a;->m I
+	1       (00000004) if-nez               v0, +006h
+
+E-BB@0x8 : [ E-BB@0x10 ]
+	2       (00000008) invoke-virtual       v5, Le7/a;->s()I
+	3       (0000000e) move-result          v0
+
+E-BB@0x10 : [ E-BB@0x1a E-BB@0x34 ]
+	4       (00000010) const/4              v1, 5
+	5       (00000012) const/4              v2, 0
+	6       (00000014) const/4              v3, 1
+	7       (00000016) if-ne                v0, v1, +00fh
+
+E-BB@0x1a : 
+	8       (0000001a) iput                 v2, v5, Le7/a;->m I
+	9       (0000001e) iget-object          v0, v5, Le7/a;->t [I
+	10      (00000022) iget                 v1, v5, Le7/a;->r I
+	11      (00000026) sub-int/2addr        v1, v3
+	12      (00000028) aget                 v2, v0, v1
+	13      (0000002c) add-int/2addr        v2, v3
+	14      (0000002e) aput                 v2, v0, v1
+	15      (00000032) return               v3
+
+E-BB@0x34 : [ E-BB@0x3a E-BB@0x54 ]
+	16      (00000034) const/4              v1, 6
+	17      (00000036) if-ne                v0, v1, +00fh
+
+E-BB@0x3a : 
+	18      (0000003a) iput                 v2, v5, Le7/a;->m I
+	19      (0000003e) iget-object          v0, v5, Le7/a;->t [I
+	20      (00000042) iget                 v1, v5, Le7/a;->r I
+	21      (00000046) sub-int/2addr        v1, v3
+	22      (00000048) aget                 v4, v0, v1
+	23      (0000004c) add-int/2addr        v4, v3
+	24      (0000004e) aput                 v4, v0, v1
+	25      (00000052) return               v2
+
+E-BB@0x54 : 
+	26      (00000054) const-string         v0, "a boolean"
+	27      (00000058) invoke-virtual       v5, v0, Le7/a;->W(Ljava/lang/String;)Ljava/lang/IllegalStateException;
+	28      (0000005e) move-result-object   v0
+	29      (00000060) throw                v0
+

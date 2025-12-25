@@ -1,0 +1,55 @@
+# Le7/a;->P(I)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:int
+#
+# - return:void
+
+P-BB@0x0 : [ P-BB@0x10 P-BB@0x64 ]
+	0       (00000000) iget                 v0, v3, Le7/a;->r I
+	1       (00000004) add-int/lit8         v1, v0, -1
+	2       (00000008) const/16             v2, 255
+	3       (0000000c) if-ge                v1, v2, +02ch
+
+P-BB@0x10 : [ P-BB@0x1a P-BB@0x4e ]
+	4       (00000010) iget-object          v1, v3, Le7/a;->q [I
+	5       (00000014) array-length         v2, v1
+	6       (00000016) if-ne                v0, v2, +01ch
+
+P-BB@0x1a : [ P-BB@0x4e ]
+	7       (0000001a) mul-int/lit8         v0, v0, 2
+	8       (0000001e) invoke-static        v1, v0, Ljava/util/Arrays;->copyOf([I I)[I
+	9       (00000024) move-result-object   v1
+	10      (00000026) iput-object          v1, v3, Le7/a;->q [I
+	11      (0000002a) iget-object          v1, v3, Le7/a;->t [I
+	12      (0000002e) invoke-static        v1, v0, Ljava/util/Arrays;->copyOf([I I)[I
+	13      (00000034) move-result-object   v1
+	14      (00000036) iput-object          v1, v3, Le7/a;->t [I
+	15      (0000003a) iget-object          v1, v3, Le7/a;->s [Ljava/lang/String;
+	16      (0000003e) invoke-static        v1, v0, Ljava/util/Arrays;->copyOf([Ljava/lang/Object; I)[Ljava/lang/Object;
+	17      (00000044) move-result-object   v0
+	18      (00000046) check-cast           v0, [Ljava/lang/String;
+	19      (0000004a) iput-object          v0, v3, Le7/a;->s [Ljava/lang/String;
+
+P-BB@0x4e : 
+	20      (0000004e) iget-object          v0, v3, Le7/a;->q [I
+	21      (00000052) iget                 v1, v3, Le7/a;->r I
+	22      (00000056) add-int/lit8         v2, v1, 1
+	23      (0000005a) iput                 v2, v3, Le7/a;->r I
+	24      (0000005e) aput                 v4, v0, v1
+	25      (00000062) return-void          
+
+P-BB@0x64 : 
+	26      (00000064) new-instance         v4, Landroidx/datastore/preferences/protobuf/k;
+	27      (00000068) new-instance         v0, Ljava/lang/StringBuilder;
+	28      (0000006c) const-string         v1, "Nesting limit 255 reached"
+	29      (00000070) invoke-direct        v0, v1, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	30      (00000076) invoke-virtual       v3, Le7/a;->D()Ljava/lang/String;
+	31      (0000007c) move-result-object   v1
+	32      (0000007e) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	33      (00000084) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	34      (0000008a) move-result-object   v0
+	35      (0000008c) invoke-direct        v4, v0, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+	36      (00000092) throw                v4
+

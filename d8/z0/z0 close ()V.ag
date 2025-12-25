@@ -1,0 +1,28 @@
+# Ld8/z0;->close()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v2
+#
+# - return:void
+
+close-BB@0x0 : [ close-BB@0xc close-BB@0x12 ]
+	0       (00000000) iget-object          v0, v2, Ld8/z0;->c Ljava/util/concurrent/Executor;
+	1       (00000004) instance-of          v1, v0, Ljava/util/concurrent/ExecutorService;
+	2       (00000008) if-eqz               v1, +005h
+
+close-BB@0xc : [ close-BB@0x14 ]
+	3       (0000000c) check-cast           v0, Ljava/util/concurrent/ExecutorService;
+	4       (00000010) goto                 +2h
+
+close-BB@0x12 : [ close-BB@0x14 ]
+	5       (00000012) const/4              v0, 0
+
+close-BB@0x14 : [ close-BB@0x18 close-BB@0x1e ]
+	6       (00000014) if-eqz               v0, +005h
+
+close-BB@0x18 : [ close-BB@0x1e ]
+	7       (00000018) invoke-interface     v0, Ljava/util/concurrent/ExecutorService;->shutdown()V
+
+close-BB@0x1e : 
+	8       (0000001e) return-void          
+

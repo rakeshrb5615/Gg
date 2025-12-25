@@ -1,0 +1,80 @@
+# Le3/b;-><init>(Landroid/content/Context; Landroid/content/res/XmlResourceParser;)V [access_flags=public constructor]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:android.content.Context
+# - v8:android.content.res.XmlResourceParser
+#
+# - return:void
+
+<init>-BB@0x0 : [ <init>-BB@0x38 ]
+	0       (00000000) invoke-direct        v6, Ljava/lang/Object;-><init>()V
+	1       (00000006) new-instance         v0, Ljava/util/ArrayList;
+	2       (0000000a) invoke-direct        v0, Ljava/util/ArrayList;-><init>()V
+	3       (00000010) iput-object          v0, v6, Le3/b;->c Ljava/lang/Object;
+	4       (00000014) const/4              v0, -1
+	5       (00000016) iput                 v0, v6, Le3/b;->b I
+	6       (0000001a) invoke-static        v8, Landroid/util/Xml;->asAttributeSet(Lorg/xmlpull/v1/XmlPullParser;)Landroid/util/AttributeSet;
+	7       (00000020) move-result-object   v8
+	8       (00000022) sget-object          v0, Lz/r;->h [I
+	9       (00000026) invoke-virtual       v7, v8, v0, Landroid/content/Context;->obtainStyledAttributes(Landroid/util/AttributeSet; [I)Landroid/content/res/TypedArray;
+	10      (0000002c) move-result-object   v8
+	11      (0000002e) invoke-virtual       v8, Landroid/content/res/TypedArray;->getIndexCount()I
+	12      (00000034) move-result          v0
+	13      (00000036) const/4              v1, 0
+
+<init>-BB@0x38 : [ <init>-BB@0x3c <init>-BB@0xca ]
+	14      (00000038) if-ge                v1, v0, +049h
+
+<init>-BB@0x3c : [ <init>-BB@0x48 <init>-BB@0x5a ]
+	15      (0000003c) invoke-virtual       v8, v1, Landroid/content/res/TypedArray;->getIndex(I)I
+	16      (00000042) move-result          v2
+	17      (00000044) if-nez               v2, +00bh
+
+<init>-BB@0x48 : [ <init>-BB@0xc4 ]
+	18      (00000048) iget                 v3, v6, Le3/b;->a I
+	19      (0000004c) invoke-virtual       v8, v2, v3, Landroid/content/res/TypedArray;->getResourceId(I I)I
+	20      (00000052) move-result          v2
+	21      (00000054) iput                 v2, v6, Le3/b;->a I
+	22      (00000058) goto                 +36h
+
+<init>-BB@0x5a : [ <init>-BB@0x60 <init>-BB@0xc4 ]
+	23      (0000005a) const/4              v3, 1
+	24      (0000005c) if-ne                v2, v3, +034h
+
+<init>-BB@0x60 : [ <init>-BB@0x9e <init>-BB@0xc4 ]
+	25      (00000060) iget                 v3, v6, Le3/b;->b I
+	26      (00000064) invoke-virtual       v8, v2, v3, Landroid/content/res/TypedArray;->getResourceId(I I)I
+	27      (0000006a) move-result          v2
+	28      (0000006c) iput                 v2, v6, Le3/b;->b I
+	29      (00000070) invoke-virtual       v7, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+	30      (00000076) move-result-object   v3
+	31      (00000078) invoke-virtual       v3, v2, Landroid/content/res/Resources;->getResourceTypeName(I)Ljava/lang/String;
+	32      (0000007e) move-result-object   v3
+	33      (00000080) invoke-virtual       v7, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+	34      (00000086) move-result-object   v4
+	35      (00000088) invoke-virtual       v4, v2, Landroid/content/res/Resources;->getResourceName(I)Ljava/lang/String;
+	36      (0000008e) const-string         v4, "layout"
+	37      (00000092) invoke-virtual       v4, v3, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	38      (00000098) move-result          v3
+	39      (0000009a) if-eqz               v3, +015h
+
+<init>-BB@0x9e : [ <init>-BB@0xc4 ]
+	40      (0000009e) new-instance         v3, Lz/n;
+	41      (000000a2) invoke-direct        v3, Lz/n;-><init>()V
+	42      (000000a8) invoke-static        v7, Landroid/view/LayoutInflater;->from(Landroid/content/Context;)Landroid/view/LayoutInflater;
+	43      (000000ae) move-result-object   v4
+	44      (000000b0) const/4              v5, 0
+	45      (000000b2) invoke-virtual       v4, v2, v5, Landroid/view/LayoutInflater;->inflate(I Landroid/view/ViewGroup;)Landroid/view/View;
+	46      (000000b8) move-result-object   v2
+	47      (000000ba) check-cast           v2, Landroidx/constraintlayout/widget/ConstraintLayout;
+	48      (000000be) invoke-virtual       v3, v2, Lz/n;->b(Landroidx/constraintlayout/widget/ConstraintLayout;)V
+
+<init>-BB@0xc4 : [ <init>-BB@0x38 ]
+	49      (000000c4) add-int/lit8         v1, v1, 1
+	50      (000000c8) goto                 -48h
+
+<init>-BB@0xca : 
+	51      (000000ca) invoke-virtual       v8, Landroid/content/res/TypedArray;->recycle()V
+	52      (000000d0) return-void          
+

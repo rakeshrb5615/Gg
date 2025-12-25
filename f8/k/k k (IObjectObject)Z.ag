@@ -1,0 +1,33 @@
+# Lf8/k;->k(I Ljava/lang/Object; Ljava/lang/Object;)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:int
+# - v5:java.lang.Object
+# - v6:java.lang.Object
+#
+# - return:boolean
+
+k-BB@0x0 : [ k-BB@0x8 ]
+	0       (00000000) mul-int/lit8         v4, v4, 2
+	1       (00000004) const/4              v0, 1
+	2       (00000006) add-int/2addr        v4, v0
+
+k-BB@0x8 : [ k-BB@0x18 k-BB@0x1a ]
+	3       (00000008) iget-object          v1, v3, Lf8/k;->f Ljava/util/concurrent/atomic/AtomicReferenceArray;
+	4       (0000000c) invoke-virtual       v1, v4, v5, v6, Ljava/util/concurrent/atomic/AtomicReferenceArray;->compareAndSet(I Ljava/lang/Object; Ljava/lang/Object;)Z
+	5       (00000012) move-result          v2
+	6       (00000014) if-eqz               v2, +003h
+
+k-BB@0x18 : 
+	7       (00000018) return               v0
+
+k-BB@0x1a : [ k-BB@0x26 k-BB@0x8 ]
+	8       (0000001a) invoke-virtual       v1, v4, Ljava/util/concurrent/atomic/AtomicReferenceArray;->get(I)Ljava/lang/Object;
+	9       (00000020) move-result-object   v1
+	10      (00000022) if-eq                v1, v5, -00dh
+
+k-BB@0x26 : 
+	11      (00000026) const/4              v4, 0
+	12      (00000028) return               v4
+

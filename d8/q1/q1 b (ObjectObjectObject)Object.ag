@@ -1,0 +1,49 @@
+# Ld8/q1;->b(Ljava/lang/Object; Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:java.lang.Object
+# - v3:java.lang.Object
+# - v4:java.lang.Object
+#
+# - return:java.lang.Object
+
+b-BB@0x0 : [ b-BB@0x8 b-BB@0x4c ]
+	0       (00000000) check-cast           v2, Ld8/r1;
+	1       (00000004) if-nez               v3, +024h
+
+b-BB@0x8 : [ b-BB@0x12 ]
+	2       (00000008) sget-object          v3, Ld8/r1;->a Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;
+	3       (0000000c) invoke-virtual       v2, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+b-BB@0x12 : [ b-BB@0x28 b-BB@0x4a ]
+	4       (00000012) sget-object          v3, Ld8/r1;->a Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;
+	5       (00000016) invoke-virtual       v3, v2, Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	6       (0000001c) move-result-object   v3
+	7       (0000001e) instance-of          v4, v3, Ld8/b1;
+	8       (00000022) const/4              v0, 0
+	9       (00000024) if-eqz               v4, +013h
+
+b-BB@0x28 : [ b-BB@0x34 b-BB@0x36 ]
+	10      (00000028) invoke-virtual       v2, v3, Ld8/r1;->J(Ljava/lang/Object;)I
+	11      (0000002e) move-result          v3
+	12      (00000030) if-gez               v3, +003h
+
+b-BB@0x34 : [ b-BB@0x12 ]
+	13      (00000034) goto                 -11h
+
+b-BB@0x36 : 
+	14      (00000036) new-instance         v3, Ld8/m1;
+	15      (0000003a) invoke-direct        v3, Li8/j;-><init>()V
+	16      (00000040) const/4              v4, 1
+	17      (00000042) invoke-static        v2, v4, v3, Ld8/f0;->m(Ld8/e1; Z Ld8/i1;)Ld8/p0;
+	18      (00000048) throw                v0
+
+b-BB@0x4a : 
+	19      (0000004a) throw                v0
+
+b-BB@0x4c : 
+	20      (0000004c) new-instance         v2, Ljava/lang/ClassCastException;
+	21      (00000050) invoke-direct        v2, Ljava/lang/ClassCastException;-><init>()V
+	22      (00000056) throw                v2
+

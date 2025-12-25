@@ -1,0 +1,33 @@
+# Lf2/a0;->equals(Ljava/lang/Object;)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:java.lang.Object
+#
+# - return:boolean
+
+equals-BB@0x0 : [ equals-BB@0x8 equals-BB@0x30 ]
+	0       (00000000) instance-of          v0, v3, Lf2/a0;
+	1       (00000004) if-eqz               v0, +016h
+
+equals-BB@0x8 : [ equals-BB@0x18 equals-BB@0x30 ]
+	2       (00000008) check-cast           v3, Lf2/a0;
+	3       (0000000c) iget-object          v0, v3, Lf2/a0;->b Landroid/view/View;
+	4       (00000010) iget-object          v1, v2, Lf2/a0;->b Landroid/view/View;
+	5       (00000014) if-ne                v1, v0, +00eh
+
+equals-BB@0x18 : [ equals-BB@0x2c equals-BB@0x30 ]
+	6       (00000018) iget-object          v0, v2, Lf2/a0;->a Ljava/util/HashMap;
+	7       (0000001c) iget-object          v3, v3, Lf2/a0;->a Ljava/util/HashMap;
+	8       (00000020) invoke-interface     v0, v3, Ljava/util/Map;->equals(Ljava/lang/Object;)Z
+	9       (00000026) move-result          v3
+	10      (00000028) if-eqz               v3, +004h
+
+equals-BB@0x2c : 
+	11      (0000002c) const/4              v3, 1
+	12      (0000002e) return               v3
+
+equals-BB@0x30 : 
+	13      (00000030) const/4              v3, 0
+	14      (00000032) return               v3
+

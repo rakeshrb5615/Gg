@@ -1,0 +1,41 @@
+# Ld6/j;->a(Le6/b;)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:e6.b
+#
+# - return:boolean
+
+a-BB@0x0 : [ a-BB@0x10 a-BB@0x12 ]
+	0       (00000000) iget-object          v0, v7, Le6/b;->c Ljava/lang/String;
+	1       (00000004) invoke-static        v0, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+	2       (0000000a) move-result          v0
+	3       (0000000c) if-eqz               v0, +003h
+
+a-BB@0x10 : [ a-BB@0x48 ]
+	4       (00000010) goto                 +1ch
+
+a-BB@0x12 : [ a-BB@0x48 a-BB@0x4c ]
+	5       (00000012) iget-wide            v0, v7, Le6/b;->f J
+	6       (00000016) iget-wide            v2, v7, Le6/b;->e J
+	7       (0000001a) add-long/2addr       v0, v2
+	8       (0000001c) sget-object          v7, Ljava/util/concurrent/TimeUnit;->MILLISECONDS Ljava/util/concurrent/TimeUnit;
+	9       (00000020) iget-object          v2, v6, Ld6/j;->a Lv3/f;
+	10      (00000024) invoke-virtual       v2, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	11      (0000002a) invoke-static        Ljava/lang/System;->currentTimeMillis()J
+	12      (00000030) move-result-wide     v2
+	13      (00000032) invoke-virtual       v7, v2, v3, Ljava/util/concurrent/TimeUnit;->toSeconds(J)J
+	14      (00000038) move-result-wide     v2
+	15      (0000003a) sget-wide            v4, Ld6/j;->b J
+	16      (0000003e) add-long/2addr       v2, v4
+	17      (00000040) cmp-long             v7, v0, v2
+	18      (00000044) if-gez               v7, +004h
+
+a-BB@0x48 : 
+	19      (00000048) const/4              v7, 1
+	20      (0000004a) return               v7
+
+a-BB@0x4c : 
+	21      (0000004c) const/4              v7, 0
+	22      (0000004e) return               v7
+

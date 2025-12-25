@@ -1,0 +1,63 @@
+# Le0/c;->getContextForLanguage(Landroid/content/Context;)Landroid/content/Context; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:android.content.Context
+#
+# - return:android.content.Context
+
+getContextForLanguage-BB@0x0 : [ getContextForLanguage-BB@0xc getContextForLanguage-BB@0x40 ]
+	0       (00000000) sget                 v0, Landroid/os/Build$VERSION;->SDK_INT I
+	1       (00000004) const/16             v1, 33
+	2       (00000008) if-lt                v0, v1, +01ch
+
+getContextForLanguage-BB@0xc : [ getContextForLanguage-BB@0x1c getContextForLanguage-BB@0x3a ]
+	3       (0000000c) const-string         v1, "locale"
+	4       (00000010) invoke-virtual       v4, v1, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+	5       (00000016) move-result-object   v1
+	6       (00000018) if-eqz               v1, +011h
+
+getContextForLanguage-BB@0x1c : [ getContextForLanguage-BB@0x50 ]
+	7       (0000001c) invoke-static        v1, Ld0/h;->a(Ljava/lang/Object;)Landroid/os/LocaleList;
+	8       (00000022) move-result-object   v1
+	9       (00000024) new-instance         v2, Lm0/h;
+	10      (00000028) new-instance         v3, Lm0/i;
+	11      (0000002c) invoke-direct        v3, v1, Lm0/i;-><init>(Landroid/os/LocaleList;)V
+	12      (00000032) invoke-direct        v2, v3, Lm0/h;-><init>(Lm0/i;)V
+	13      (00000038) goto                 +ch
+
+getContextForLanguage-BB@0x3a : [ getContextForLanguage-BB@0x50 ]
+	14      (0000003a) sget-object          v2, Lm0/h;->b Lm0/h;
+	15      (0000003e) goto                 +9h
+
+getContextForLanguage-BB@0x40 : [ getContextForLanguage-BB@0x50 ]
+	16      (00000040) invoke-static        v4, Ld0/d;->e(Landroid/content/Context;)Ljava/lang/String;
+	17      (00000046) move-result-object   v1
+	18      (00000048) invoke-static        v1, Lm0/h;->a(Ljava/lang/String;)Lm0/h;
+	19      (0000004e) move-result-object   v2
+
+getContextForLanguage-BB@0x50 : [ getContextForLanguage-BB@0x58 getContextForLanguage-BB@0x94 ]
+	20      (00000050) const/16             v1, 32
+	21      (00000054) if-gt                v0, v1, +020h
+
+getContextForLanguage-BB@0x58 : [ getContextForLanguage-BB@0x64 getContextForLanguage-BB@0x94 ]
+	22      (00000058) invoke-virtual       v2, Lm0/h;->b()Z
+	23      (0000005e) move-result          v0
+	24      (00000060) if-nez               v0, +01ah
+
+getContextForLanguage-BB@0x64 : [ getContextForLanguage-BB@0x94 ]
+	25      (00000064) new-instance         v0, Landroid/content/res/Configuration;
+	26      (00000068) invoke-virtual       v4, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+	27      (0000006e) move-result-object   v1
+	28      (00000070) invoke-virtual       v1, Landroid/content/res/Resources;->getConfiguration()Landroid/content/res/Configuration;
+	29      (00000076) move-result-object   v1
+	30      (00000078) invoke-direct        v0, v1, Landroid/content/res/Configuration;-><init>(Landroid/content/res/Configuration;)V
+	31      (0000007e) iget-object          v1, v2, Lm0/h;->a Lm0/i;
+	32      (00000082) iget-object          v1, v1, Lm0/i;->a Landroid/os/LocaleList;
+	33      (00000086) invoke-virtual       v0, v1, Landroid/content/res/Configuration;->setLocales(Landroid/os/LocaleList;)V
+	34      (0000008c) invoke-virtual       v4, v0, Landroid/content/Context;->createConfigurationContext(Landroid/content/res/Configuration;)Landroid/content/Context;
+	35      (00000092) move-result-object   v4
+
+getContextForLanguage-BB@0x94 : 
+	36      (00000094) return-object        v4
+

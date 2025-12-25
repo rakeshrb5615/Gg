@@ -1,0 +1,49 @@
+# Ld4/l;->j(Ljava/lang/String; Ljava/lang/String; [Ljava/lang/Object;)Ljava/lang/String; [access_flags=public static varargs]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:java.lang.String
+# - v4:java.lang.String
+# - v5:java.lang.Object[]
+#
+# - return:java.lang.String
+
+j-BB@0x0 : [ j-BB@0x6 j-BB@0x6a ]
+	0       (00000000) array-length         v0, v5
+	1       (00000002) if-lez               v0, +034h
+
+j-BB@0x6 : [ j-BB@0x6a ]
+	2       (00000006) sget-object          v0, Ljava/util/Locale;->US Ljava/util/Locale;
+	3       (0000000a) invoke-static        v0, v4, v5, Ljava/lang/String;->format(Ljava/util/Locale; Ljava/lang/String; [Ljava/lang/Object;)Ljava/lang/String;
+	4       (00000010) move-result-object   v4
+	5       (00000012) goto                 +2ch
+	6:11
+	(Ljava/util/IllegalFormatException; -> 14 j-BB@0x14)
+
+j-BB@0x14 : [ j-BB@0x6a ]
+	6       (00000014) move-exception       v0
+	7       (00000016) const-string         v1, "Unable to format "
+	8       (0000001a) invoke-virtual       v1, v4, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	9       (00000020) move-result-object   v1
+	10      (00000022) const-string         v2, "PlayCore"
+	11      (00000026) invoke-static        v2, v1, v0, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+	12      (0000002c) const-string         v0, ", "
+	13      (00000030) invoke-static        v0, v5, Landroid/text/TextUtils;->join(Ljava/lang/CharSequence; [Ljava/lang/Object;)Ljava/lang/String;
+	14      (00000036) move-result-object   v5
+	15      (00000038) new-instance         v0, Ljava/lang/StringBuilder;
+	16      (0000003c) invoke-direct        v0, Ljava/lang/StringBuilder;-><init>()V
+	17      (00000042) invoke-virtual       v0, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	18      (00000048) const-string         v4, " ["
+	19      (0000004c) invoke-virtual       v0, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	20      (00000052) invoke-virtual       v0, v5, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	21      (00000058) const-string         v4, "]"
+	22      (0000005c) invoke-virtual       v0, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	23      (00000062) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	24      (00000068) move-result-object   v4
+
+j-BB@0x6a : 
+	25      (0000006a) const-string         v5, " : "
+	26      (0000006e) invoke-static        v3, v5, v4, Lg2/g;->e(Ljava/lang/String; Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	27      (00000074) move-result-object   v3
+	28      (00000076) return-object        v3
+

@@ -1,0 +1,30 @@
+# Lf8/p;->cancel(Ljava/util/concurrent/CancellationException;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:java.util.concurrent.CancellationException
+#
+# - return:void
+
+cancel-BB@0x0 : [ cancel-BB@0xc cancel-BB@0xe ]
+	0       (00000000) invoke-virtual       v2, Ld8/r1;->isCancelled()Z
+	1       (00000006) move-result          v0
+	2       (00000008) if-eqz               v0, +003h
+
+cancel-BB@0xc : 
+	3       (0000000c) return-void          
+
+cancel-BB@0xe : [ cancel-BB@0x12 cancel-BB@0x26 ]
+	4       (0000000e) if-nez               v3, +00ch
+
+cancel-BB@0x12 : [ cancel-BB@0x26 ]
+	5       (00000012) new-instance         v3, Ld8/f1;
+	6       (00000016) invoke-virtual       v2, Ld8/a;->l()Ljava/lang/String;
+	7       (0000001c) move-result-object   v0
+	8       (0000001e) const/4              v1, 0
+	9       (00000020) invoke-direct        v3, v0, v1, v2, Ld8/f1;-><init>(Ljava/lang/String; Ljava/lang/Throwable; Ld8/e1;)V
+
+cancel-BB@0x26 : 
+	10      (00000026) invoke-virtual       v2, v3, Lf8/p;->j(Ljava/util/concurrent/CancellationException;)V
+	11      (0000002c) return-void          
+

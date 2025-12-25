@@ -1,0 +1,87 @@
+# Ld8/f0;->o([Ld8/e1; Ln7/c;)Ljava/lang/Object; [access_flags=public static final]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:d8.e1[]
+# - v7:n7.c
+#
+# - return:java.lang.Object
+
+o-BB@0x0 : [ o-BB@0x8 o-BB@0x26 ]
+	0       (00000000) instance-of          v0, v7, Ld8/f;
+	1       (00000004) if-eqz               v0, +011h
+
+o-BB@0x8 : [ o-BB@0x1e o-BB@0x26 ]
+	2       (00000008) move-object          v0, v7
+	3       (0000000a) check-cast           v0, Ld8/f;
+	4       (0000000e) iget                 v1, v0, Ld8/f;->e I
+	5       (00000012) const/high16         v2, -2147483648
+	6       (00000016) and-int              v3, v1, v2
+	7       (0000001a) if-eqz               v3, +006h
+
+o-BB@0x1e : [ o-BB@0x30 ]
+	8       (0000001e) sub-int/2addr        v1, v2
+	9       (00000020) iput                 v1, v0, Ld8/f;->e I
+	10      (00000024) goto                 +6h
+
+o-BB@0x26 : [ o-BB@0x30 ]
+	11      (00000026) new-instance         v0, Ld8/f;
+	12      (0000002a) invoke-direct        v0, v7, Ln7/c;-><init>(Ll7/c;)V
+
+o-BB@0x30 : [ o-BB@0x42 o-BB@0x70 ]
+	13      (00000030) iget-object          v7, v0, Ld8/f;->d Ljava/lang/Object;
+	14      (00000034) sget-object          v1, Lm7/a;->a Lm7/a;
+	15      (00000038) iget                 v2, v0, Ld8/f;->e I
+	16      (0000003c) const/4              v3, 1
+	17      (0000003e) if-eqz               v2, +019h
+
+o-BB@0x42 : [ o-BB@0x46 o-BB@0x60 ]
+	18      (00000042) if-ne                v2, v3, +00fh
+
+o-BB@0x46 : [ o-BB@0xa6 ]
+	19      (00000046) iget                 v6, v0, Ld8/f;->c I
+	20      (0000004a) iget                 v2, v0, Ld8/f;->b I
+	21      (0000004e) iget-object          v4, v0, Ld8/f;->a [Ljava/lang/Object;
+	22      (00000052) check-cast           v4, [Ld8/e1;
+	23      (00000056) invoke-static        v7, Lc4/b;->e0(Ljava/lang/Object;)V
+	24      (0000005c) move-object          v7, v4
+	25      (0000005e) goto                 +24h
+
+o-BB@0x60 : 
+	26      (00000060) new-instance         v6, Ljava/lang/IllegalStateException;
+	27      (00000064) const-string         v7, "call to 'resume' before 'invoke' with coroutine"
+	28      (00000068) invoke-direct        v6, v7, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	29      (0000006e) throw                v6
+
+o-BB@0x70 : [ o-BB@0x80 ]
+	30      (00000070) invoke-static        v7, Lc4/b;->e0(Ljava/lang/Object;)V
+	31      (00000076) array-length         v7, v6
+	32      (00000078) const/4              v2, 0
+	33      (0000007a) move                 v5, v7
+	34      (0000007c) move-object          v7, v6
+	35      (0000007e) move                 v6, v5
+
+o-BB@0x80 : [ o-BB@0x84 o-BB@0xaa ]
+	36      (00000080) if-ge                v2, v6, +015h
+
+o-BB@0x84 : [ o-BB@0xa4 o-BB@0xa6 ]
+	37      (00000084) aget-object          v4, v7, v2
+	38      (00000088) iput-object          v7, v0, Ld8/f;->a [Ljava/lang/Object;
+	39      (0000008c) iput                 v2, v0, Ld8/f;->b I
+	40      (00000090) iput                 v6, v0, Ld8/f;->c I
+	41      (00000094) iput                 v3, v0, Ld8/f;->e I
+	42      (00000098) invoke-interface     v4, v0, Ld8/e1;->join(Ll7/c;)Ljava/lang/Object;
+	43      (0000009e) move-result-object   v4
+	44      (000000a0) if-ne                v4, v1, +003h
+
+o-BB@0xa4 : 
+	45      (000000a4) return-object        v1
+
+o-BB@0xa6 : [ o-BB@0x80 ]
+	46      (000000a6) add-int/2addr        v2, v3
+	47      (000000a8) goto                 -14h
+
+o-BB@0xaa : 
+	48      (000000aa) sget-object          v6, Lh7/l;->a Lh7/l;
+	49      (000000ae) return-object        v6
+

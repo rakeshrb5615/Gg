@@ -1,0 +1,76 @@
+# Lf2/s;->D()V [access_flags=public]
+#
+# Parameters:
+# local registers: v0...v10
+#
+# - return:void
+
+D-BB@0x0 : [ D-BB@0x1c ]
+	0       (00000000) invoke-virtual       v10, Lf2/s;->K()V
+	1       (00000006) invoke-static        Lf2/s;->s()Lr/e;
+	2       (0000000c) move-result-object   v0
+	3       (0000000e) iget-object          v1, v10, Lf2/s;->A Ljava/util/ArrayList;
+	4       (00000012) invoke-virtual       v1, Ljava/util/ArrayList;->size()I
+	5       (00000018) move-result          v2
+	6       (0000001a) const/4              v3, 0
+
+D-BB@0x1c : [ D-BB@0x20 D-BB@0xb0 ]
+	7       (0000001c) if-ge                v3, v2, +04ah
+
+D-BB@0x20 : [ D-BB@0x3c D-BB@0x1c ]
+	8       (00000020) invoke-virtual       v1, v3, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	9       (00000026) move-result-object   v4
+	10      (00000028) add-int/lit8         v3, v3, 1
+	11      (0000002c) check-cast           v4, Landroid/animation/Animator;
+	12      (00000030) invoke-virtual       v0, v4, Lr/j;->containsKey(Ljava/lang/Object;)Z
+	13      (00000036) move-result          v5
+	14      (00000038) if-eqz               v5, -00eh
+
+D-BB@0x3c : [ D-BB@0x46 D-BB@0x1c ]
+	15      (0000003c) invoke-virtual       v10, Lf2/s;->K()V
+	16      (00000042) if-eqz               v4, -013h
+
+D-BB@0x46 : [ D-BB@0x66 D-BB@0x6c ]
+	17      (00000046) new-instance         v5, Lf2/n;
+	18      (0000004a) invoke-direct        v5, v10, v0, Lf2/n;-><init>(Lf2/s; Lr/e;)V
+	19      (00000050) invoke-virtual       v4, v5, Landroid/animation/Animator;->addListener(Landroid/animation/Animator$AnimatorListener;)V
+	20      (00000056) iget-wide            v5, v10, Lf2/s;->c J
+	21      (0000005a) const-wide/16        v7, 0
+	22      (0000005e) cmp-long             v9, v5, v7
+	23      (00000062) if-ltz               v9, +005h
+
+D-BB@0x66 : [ D-BB@0x6c ]
+	24      (00000066) invoke-virtual       v4, v5, v6, Landroid/animation/Animator;->setDuration(J)Landroid/animation/Animator;
+
+D-BB@0x6c : [ D-BB@0x78 D-BB@0x88 ]
+	25      (0000006c) iget-wide            v5, v10, Lf2/s;->b J
+	26      (00000070) cmp-long             v7, v5, v7
+	27      (00000074) if-ltz               v7, +00ah
+
+D-BB@0x78 : [ D-BB@0x88 ]
+	28      (00000078) invoke-virtual       v4, Landroid/animation/Animator;->getStartDelay()J
+	29      (0000007e) move-result-wide     v7
+	30      (00000080) add-long/2addr       v7, v5
+	31      (00000082) invoke-virtual       v4, v7, v8, Landroid/animation/Animator;->setStartDelay(J)V
+
+D-BB@0x88 : [ D-BB@0x90 D-BB@0x96 ]
+	32      (00000088) iget-object          v5, v10, Lf2/s;->d Landroid/animation/TimeInterpolator;
+	33      (0000008c) if-eqz               v5, +005h
+
+D-BB@0x90 : [ D-BB@0x96 ]
+	34      (00000090) invoke-virtual       v4, v5, Landroid/animation/Animator;->setInterpolator(Landroid/animation/TimeInterpolator;)V
+
+D-BB@0x96 : [ D-BB@0x1c ]
+	35      (00000096) new-instance         v5, Lf2/o;
+	36      (0000009a) const/4              v6, 0
+	37      (0000009c) invoke-direct        v5, v10, v6, Lf2/o;-><init>(Ljava/lang/Object; I)V
+	38      (000000a2) invoke-virtual       v4, v5, Landroid/animation/Animator;->addListener(Landroid/animation/Animator$AnimatorListener;)V
+	39      (000000a8) invoke-virtual       v4, Landroid/animation/Animator;->start()V
+	40      (000000ae) goto                 -49h
+
+D-BB@0xb0 : 
+	41      (000000b0) iget-object          v0, v10, Lf2/s;->A Ljava/util/ArrayList;
+	42      (000000b4) invoke-virtual       v0, Ljava/util/ArrayList;->clear()V
+	43      (000000ba) invoke-virtual       v10, Lf2/s;->p()V
+	44      (000000c0) return-void          
+

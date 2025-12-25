@@ -1,0 +1,35 @@
+# Le8/c;->c(J Ld8/b2; Ll7/h;)Ld8/p0; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:long
+# - v6:d8.b2
+# - v7:l7.h
+#
+# - return:d8.p0
+
+c-BB@0x0 : [ c-BB@0x12 c-BB@0x14 ]
+	0       (00000000) const-wide           v0, 4611686018427387903
+	1       (0000000a) cmp-long             v2, v4, v0
+	2       (0000000e) if-lez               v2, +003h
+
+c-BB@0x12 : [ c-BB@0x14 ]
+	3       (00000012) move-wide            v4, v0
+
+c-BB@0x14 : [ c-BB@0x24 c-BB@0x32 ]
+	4       (00000014) iget-object          v0, v3, Le8/c;->c Landroid/os/Handler;
+	5       (00000018) invoke-virtual       v0, v6, v4, v5, Landroid/os/Handler;->postDelayed(Ljava/lang/Runnable; J)Z
+	6       (0000001e) move-result          v4
+	7       (00000020) if-eqz               v4, +009h
+
+c-BB@0x24 : 
+	8       (00000024) new-instance         v4, La1/a1;
+	9       (00000028) const/4              v5, 1
+	10      (0000002a) invoke-direct        v4, v5, v3, v6, La1/a1;-><init>(I Ljava/lang/Object; Ljava/lang/Object;)V
+	11      (00000030) return-object        v4
+
+c-BB@0x32 : 
+	12      (00000032) invoke-virtual       v3, v7, v6, Le8/c;->y(Ll7/h; Ljava/lang/Runnable;)V
+	13      (00000038) sget-object          v4, Ld8/t1;->a Ld8/t1;
+	14      (0000003c) return-object        v4
+

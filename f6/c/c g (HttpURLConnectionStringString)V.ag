@@ -1,0 +1,39 @@
+# Lf6/c;->g(Ljava/net/HttpURLConnection; Ljava/lang/String; Ljava/lang/String;)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:java.net.HttpURLConnection
+# - v3:java.lang.String
+# - v4:java.lang.String
+#
+# - return:void
+
+g-BB@0x0 : 
+	0       (00000000) new-instance         v0, Lorg/json/JSONObject;
+	1       (00000004) invoke-direct        v0, Lorg/json/JSONObject;-><init>()V
+	2       (0000000a) const-string         v1, "fid"
+	3       (0000000e) invoke-virtual       v0, v1, v3, Lorg/json/JSONObject;->put(Ljava/lang/String; Ljava/lang/Object;)Lorg/json/JSONObject;
+	4       (00000014) const-string         v3, "appId"
+	5       (00000018) invoke-virtual       v0, v3, v4, Lorg/json/JSONObject;->put(Ljava/lang/String; Ljava/lang/Object;)Lorg/json/JSONObject;
+	6       (0000001e) const-string         v3, "authVersion"
+	7       (00000022) const-string         v4, "FIS_v2"
+	8       (00000026) invoke-virtual       v0, v3, v4, Lorg/json/JSONObject;->put(Ljava/lang/String; Ljava/lang/Object;)Lorg/json/JSONObject;
+	9       (0000002c) const-string         v3, "sdkVersion"
+	10      (00000030) const-string         v4, "a:19.0.1"
+	11      (00000034) invoke-virtual       v0, v3, v4, Lorg/json/JSONObject;->put(Ljava/lang/String; Ljava/lang/Object;)Lorg/json/JSONObject;
+	12      (0000003a) invoke-virtual       v0, Lorg/json/JSONObject;->toString()Ljava/lang/String;
+	13      (00000040) move-result-object   v3
+	14      (00000042) const-string         v4, "UTF-8"
+	15      (00000046) invoke-virtual       v3, v4, Ljava/lang/String;->getBytes(Ljava/lang/String;)[B
+	16      (0000004c) move-result-object   v3
+	17      (0000004e) invoke-static        v2, v3, Lf6/c;->i(Ljava/net/HttpURLConnection; [B)V
+	18      (00000054) return-void          
+	0:39
+	(Lorg/json/JSONException; -> 56 g-BB@0x56)
+
+g-BB@0x56 : 
+	19      (00000056) move-exception       v2
+	20      (00000058) new-instance         v3, Ljava/lang/IllegalStateException;
+	21      (0000005c) invoke-direct        v3, v2, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/Throwable;)V
+	22      (00000062) throw                v3
+

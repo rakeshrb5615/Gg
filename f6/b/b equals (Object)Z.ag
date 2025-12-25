@@ -1,0 +1,65 @@
+# Lf6/b;->equals(Ljava/lang/Object;)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:java.lang.Object
+#
+# - return:boolean
+
+equals-BB@0x0 : [ equals-BB@0x4 equals-BB@0x6 ]
+	0       (00000000) if-ne                v6, v5, +003h
+
+equals-BB@0x4 : [ equals-BB@0x5e ]
+	1       (00000004) goto                 +2dh
+
+equals-BB@0x6 : [ equals-BB@0xe equals-BB@0x62 ]
+	2       (00000006) instance-of          v0, v6, Lf6/b;
+	3       (0000000a) if-eqz               v0, +02ch
+
+equals-BB@0xe : [ equals-BB@0x22 equals-BB@0x28 ]
+	4       (0000000e) check-cast           v6, Lf6/b;
+	5       (00000012) iget                 v0, v6, Lf6/b;->c I
+	6       (00000016) iget-object          v1, v6, Lf6/b;->a Ljava/lang/String;
+	7       (0000001a) iget-object          v2, v5, Lf6/b;->a Ljava/lang/String;
+	8       (0000001e) if-nez               v2, +005h
+
+equals-BB@0x22 : [ equals-BB@0x26 equals-BB@0x62 ]
+	9       (00000022) if-nez               v1, +020h
+
+equals-BB@0x26 : [ equals-BB@0x34 ]
+	10      (00000026) goto                 +7h
+
+equals-BB@0x28 : [ equals-BB@0x34 equals-BB@0x62 ]
+	11      (00000028) invoke-virtual       v2, v1, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	12      (0000002e) move-result          v1
+	13      (00000030) if-eqz               v1, +019h
+
+equals-BB@0x34 : [ equals-BB@0x44 equals-BB@0x62 ]
+	14      (00000034) iget-wide            v1, v5, Lf6/b;->b J
+	15      (00000038) iget-wide            v3, v6, Lf6/b;->b J
+	16      (0000003c) cmp-long             v6, v1, v3
+	17      (00000040) if-nez               v6, +011h
+
+equals-BB@0x44 : [ equals-BB@0x4c equals-BB@0x52 ]
+	18      (00000044) iget                 v6, v5, Lf6/b;->c I
+	19      (00000048) if-nez               v6, +005h
+
+equals-BB@0x4c : [ equals-BB@0x50 equals-BB@0x62 ]
+	20      (0000004c) if-nez               v0, +00bh
+
+equals-BB@0x50 : [ equals-BB@0x5e ]
+	21      (00000050) goto                 +7h
+
+equals-BB@0x52 : [ equals-BB@0x5e equals-BB@0x62 ]
+	22      (00000052) invoke-static        v6, v0, Lu/e;->a(I I)Z
+	23      (00000058) move-result          v6
+	24      (0000005a) if-eqz               v6, +004h
+
+equals-BB@0x5e : 
+	25      (0000005e) const/4              v6, 1
+	26      (00000060) return               v6
+
+equals-BB@0x62 : 
+	27      (00000062) const/4              v6, 0
+	28      (00000064) return               v6
+

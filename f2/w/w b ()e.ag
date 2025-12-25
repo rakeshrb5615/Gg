@@ -1,0 +1,32 @@
+# Lf2/w;->b()Lr/e; [access_flags=public static]
+#
+# Parameters:
+# local registers: v0...v2
+#
+# - return:r.e
+
+b-BB@0x0 : [ b-BB@0x14 b-BB@0x26 ]
+	0       (00000000) sget-object          v0, Lf2/w;->b Ljava/lang/ThreadLocal;
+	1       (00000004) invoke-virtual       v0, Ljava/lang/ThreadLocal;->get()Ljava/lang/Object;
+	2       (0000000a) move-result-object   v1
+	3       (0000000c) check-cast           v1, Ljava/lang/ref/WeakReference;
+	4       (00000010) if-eqz               v1, +00bh
+
+b-BB@0x14 : [ b-BB@0x24 b-BB@0x26 ]
+	5       (00000014) invoke-virtual       v1, Ljava/lang/ref/Reference;->get()Ljava/lang/Object;
+	6       (0000001a) move-result-object   v1
+	7       (0000001c) check-cast           v1, Lr/e;
+	8       (00000020) if-eqz               v1, +003h
+
+b-BB@0x24 : 
+	9       (00000024) return-object        v1
+
+b-BB@0x26 : 
+	10      (00000026) new-instance         v1, Lr/e;
+	11      (0000002a) const/4              v2, 0
+	12      (0000002c) invoke-direct        v1, v2, Lr/j;-><init>(I)V
+	13      (00000032) new-instance         v2, Ljava/lang/ref/WeakReference;
+	14      (00000036) invoke-direct        v2, v1, Ljava/lang/ref/WeakReference;-><init>(Ljava/lang/Object;)V
+	15      (0000003c) invoke-virtual       v0, v2, Ljava/lang/ThreadLocal;->set(Ljava/lang/Object;)V
+	16      (00000042) return-object        v1
+

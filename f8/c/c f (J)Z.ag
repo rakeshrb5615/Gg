@@ -1,0 +1,36 @@
+# Lf8/c;->f(J)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:long
+#
+# - return:boolean
+
+f-BB@0x0 : [ f-BB@0x14 f-BB@0x36 ]
+	0       (00000000) sget-object          v0, Lf8/c;->d Ljava/util/concurrent/atomic/AtomicLongFieldUpdater;
+	1       (00000004) invoke-virtual       v0, v4, Ljava/util/concurrent/atomic/AtomicLongFieldUpdater;->get(Ljava/lang/Object;)J
+	2       (0000000a) move-result-wide     v0
+	3       (0000000c) cmp-long             v0, v5, v0
+	4       (00000010) if-ltz               v0, +013h
+
+f-BB@0x14 : [ f-BB@0x30 f-BB@0x32 ]
+	5       (00000014) sget-object          v0, Lf8/c;->c Ljava/util/concurrent/atomic/AtomicLongFieldUpdater;
+	6       (00000018) invoke-virtual       v0, v4, Ljava/util/concurrent/atomic/AtomicLongFieldUpdater;->get(Ljava/lang/Object;)J
+	7       (0000001e) move-result-wide     v0
+	8       (00000020) iget                 v2, v4, Lf8/c;->a I
+	9       (00000024) int-to-long          v2, v2
+	10      (00000026) add-long/2addr       v0, v2
+	11      (00000028) cmp-long             v5, v5, v0
+	12      (0000002c) if-gez               v5, +003h
+
+f-BB@0x30 : [ f-BB@0x36 ]
+	13      (00000030) goto                 +3h
+
+f-BB@0x32 : 
+	14      (00000032) const/4              v5, 0
+	15      (00000034) return               v5
+
+f-BB@0x36 : 
+	16      (00000036) const/4              v5, 1
+	17      (00000038) return               v5
+

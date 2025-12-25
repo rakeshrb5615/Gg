@@ -1,0 +1,60 @@
+# Ld8/g0;->J()V [access_flags=public final synchronized]
+#
+# Parameters:
+# local registers: v0...v3
+#
+# - return:void
+
+J-BB@0x0 : [ J-BB@0x2 ]
+	0       (00000000) monitor-enter        v3
+
+J-BB@0x2 : [ J-BB@0xe J-BB@0x18 ]
+	1       (00000002) sget                 v0, Ld8/g0;->debugStatus I
+	2       (00000006) const/4              v1, 2
+	3       (00000008) const/4              v2, 3
+	4       (0000000a) if-eq                v0, v1, +007h
+	2:5
+	(Ljava/lang/Throwable; -> 46 J-BB@0x46)
+
+J-BB@0xe : [ J-BB@0x12 J-BB@0x14 ]
+	5       (0000000e) if-ne                v0, v2, +003h
+
+J-BB@0x12 : [ J-BB@0x18 ]
+	6       (00000012) goto                 +3h
+
+J-BB@0x14 : [ J-BB@0x1a ]
+	7       (00000014) const/4              v0, 0
+	8       (00000016) goto                 +2h
+
+J-BB@0x18 : [ J-BB@0x1a ]
+	9       (00000018) const/4              v0, 1
+
+J-BB@0x1a : [ J-BB@0x1e J-BB@0x22 ]
+	10      (0000001a) if-nez               v0, +004h
+
+J-BB@0x1e : 
+	11      (0000001e) monitor-exit         v3
+	12      (00000020) return-void          
+
+J-BB@0x22 : 
+	13      (00000022) sput                 v2, Ld8/g0;->debugStatus I
+	14      (00000026) sget-object          v0, Ld8/w0;->m Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;
+	15      (0000002a) const/4              v1, 0
+	16      (0000002c) invoke-virtual       v0, v3, v1, Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;->set(Ljava/lang/Object; Ljava/lang/Object;)V
+	17      (00000032) sget-object          v0, Ld8/w0;->n Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;
+	18      (00000036) invoke-virtual       v0, v3, v1, Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;->set(Ljava/lang/Object; Ljava/lang/Object;)V
+	19      (0000003c) invoke-virtual       v3, Ljava/lang/Object;->notifyAll()V
+	20      (00000042) monitor-exit         v3
+	21      (00000044) return-void          
+	22:41
+	(Ljava/lang/Throwable; -> 46 J-BB@0x46)
+
+J-BB@0x46 : [ J-BB@0x48 ]
+	22      (00000046) move-exception       v0
+
+J-BB@0x48 : 
+	23      (00000048) monitor-exit         v3
+	24      (0000004a) throw                v0
+	48:49
+	(Ljava/lang/Throwable; -> 46 J-BB@0x46)
+

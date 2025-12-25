@@ -1,0 +1,50 @@
+# Ld2/a;->c(Landroid/content/Context;)Ld2/a; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:android.content.Context
+#
+# - return:d2.a
+
+c-BB@0x0 : [ c-BB@0x8 c-BB@0x32 ]
+	0       (00000000) sget-object          v0, Ld2/a;->d Ld2/a;
+	1       (00000004) if-nez               v0, +017h
+
+c-BB@0x8 : [ c-BB@0xe ]
+	2       (00000008) sget-object          v0, Ld2/a;->e Ljava/lang/Object;
+	3       (0000000c) monitor-enter        v0
+
+c-BB@0xe : [ c-BB@0x16 c-BB@0x2a ]
+	4       (0000000e) sget-object          v1, Ld2/a;->d Ld2/a;
+	5       (00000012) if-nez               v1, +00ch
+	e:2f
+	(Ljava/lang/Throwable; -> 26 c-BB@0x26)
+
+c-BB@0x16 : [ c-BB@0x2a ]
+	6       (00000016) new-instance         v1, Ld2/a;
+	7       (0000001a) invoke-direct        v1, v2, Ld2/a;-><init>(Landroid/content/Context;)V
+	8       (00000020) sput-object          v1, Ld2/a;->d Ld2/a;
+	9       (00000024) goto                 +3h
+	e:2f
+	(Ljava/lang/Throwable; -> 26 c-BB@0x26)
+
+c-BB@0x26 : [ c-BB@0x2e ]
+	10      (00000026) move-exception       v2
+	11      (00000028) goto                 +3h
+	e:2f
+	(Ljava/lang/Throwable; -> 26 c-BB@0x26)
+
+c-BB@0x2a : [ c-BB@0x32 ]
+	12      (0000002a) monitor-exit         v0
+	13      (0000002c) goto                 +3h
+	e:2f
+	(Ljava/lang/Throwable; -> 26 c-BB@0x26)
+
+c-BB@0x2e : 
+	14      (0000002e) monitor-exit         v0
+	15      (00000030) throw                v2
+
+c-BB@0x32 : 
+	16      (00000032) sget-object          v2, Ld2/a;->d Ld2/a;
+	17      (00000036) return-object        v2
+

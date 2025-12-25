@@ -1,0 +1,85 @@
+# Le7/b;->E(Ljava/lang/String;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v8
+# - v9:java.lang.String
+#
+# - return:void
+
+E-BB@0x0 : [ E-BB@0x8 E-BB@0xe ]
+	0       (00000000) iget-boolean         v0, v8, Le7/b;->o Z
+	1       (00000004) if-eqz               v0, +005h
+
+E-BB@0x8 : [ E-BB@0x12 ]
+	2       (00000008) sget-object          v0, Le7/b;->t [Ljava/lang/String;
+	3       (0000000c) goto                 +3h
+
+E-BB@0xe : [ E-BB@0x12 ]
+	4       (0000000e) sget-object          v0, Le7/b;->s [Ljava/lang/String;
+
+E-BB@0x12 : [ E-BB@0x2c ]
+	5       (00000012) iget-object          v1, v8, Le7/b;->a Ljava/io/Writer;
+	6       (00000016) const/16             v2, 34
+	7       (0000001a) invoke-virtual       v1, v2, Ljava/io/Writer;->write(I)V
+	8       (00000020) invoke-virtual       v9, Ljava/lang/String;->length()I
+	9       (00000026) move-result          v3
+	10      (00000028) const/4              v4, 0
+	11      (0000002a) move                 v5, v4
+
+E-BB@0x2c : [ E-BB@0x30 E-BB@0x82 ]
+	12      (0000002c) if-ge                v4, v3, +02bh
+
+E-BB@0x30 : [ E-BB@0x40 E-BB@0x4a ]
+	13      (00000030) invoke-virtual       v9, v4, Ljava/lang/String;->charAt(I)C
+	14      (00000036) move-result          v6
+	15      (00000038) const/16             v7, 128
+	16      (0000003c) if-ge                v6, v7, +007h
+
+E-BB@0x40 : [ E-BB@0x48 E-BB@0x64 ]
+	17      (00000040) aget-object          v6, v0, v6
+	18      (00000044) if-nez               v6, +010h
+
+E-BB@0x48 : [ E-BB@0x7c ]
+	19      (00000048) goto                 +1ah
+
+E-BB@0x4a : [ E-BB@0x52 E-BB@0x58 ]
+	20      (0000004a) const/16             v7, 8232
+	21      (0000004e) if-ne                v6, v7, +005h
+
+E-BB@0x52 : [ E-BB@0x64 ]
+	22      (00000052) const-string         v6, "\u2028"
+	23      (00000056) goto                 +7h
+
+E-BB@0x58 : [ E-BB@0x60 E-BB@0x7c ]
+	24      (00000058) const/16             v7, 8233
+	25      (0000005c) if-ne                v6, v7, +010h
+
+E-BB@0x60 : [ E-BB@0x64 ]
+	26      (00000060) const-string         v6, "\u2029"
+
+E-BB@0x64 : [ E-BB@0x68 E-BB@0x72 ]
+	27      (00000064) if-ge                v5, v4, +007h
+
+E-BB@0x68 : [ E-BB@0x72 ]
+	28      (00000068) sub-int              v7, v4, v5
+	29      (0000006c) invoke-virtual       v1, v9, v5, v7, Ljava/io/Writer;->write(Ljava/lang/String; I I)V
+
+E-BB@0x72 : [ E-BB@0x7c ]
+	30      (00000072) invoke-virtual       v1, v6, Ljava/io/Writer;->write(Ljava/lang/String;)V
+	31      (00000078) add-int/lit8         v5, v4, 1
+
+E-BB@0x7c : [ E-BB@0x2c ]
+	32      (0000007c) add-int/lit8         v4, v4, 1
+	33      (00000080) goto                 -2ah
+
+E-BB@0x82 : [ E-BB@0x86 E-BB@0x8e ]
+	34      (00000082) if-ge                v5, v3, +006h
+
+E-BB@0x86 : [ E-BB@0x8e ]
+	35      (00000086) sub-int/2addr        v3, v5
+	36      (00000088) invoke-virtual       v1, v9, v5, v3, Ljava/io/Writer;->write(Ljava/lang/String; I I)V
+
+E-BB@0x8e : 
+	37      (0000008e) invoke-virtual       v1, v2, Ljava/io/Writer;->write(I)V
+	38      (00000094) return-void          
+

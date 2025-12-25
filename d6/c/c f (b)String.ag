@@ -1,0 +1,114 @@
+# Ld6/c;->f(Le6/b;)Ljava/lang/String; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:e6.b
+#
+# - return:java.lang.String
+
+f-BB@0x0 : [ f-BB@0x1e f-BB@0x3c ]
+	0       (00000000) iget-object          v0, v5, Ld6/c;->a Lq4/f;
+	1       (00000004) invoke-virtual       v0, Lq4/f;->a()V
+	2       (0000000a) iget-object          v0, v0, Lq4/f;->b Ljava/lang/String;
+	3       (0000000e) const-string         v1, "CHIME_ANDROID_SDK"
+	4       (00000012) invoke-virtual       v0, v1, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	5       (00000018) move-result          v0
+	6       (0000001a) if-nez               v0, +011h
+
+f-BB@0x1e : [ f-BB@0x3c f-BB@0xb8 ]
+	7       (0000001e) iget-object          v0, v5, Ld6/c;->a Lq4/f;
+	8       (00000022) const-string         v1, "[DEFAULT]"
+	9       (00000026) invoke-virtual       v0, Lq4/f;->a()V
+	10      (0000002c) iget-object          v0, v0, Lq4/f;->b Ljava/lang/String;
+	11      (00000030) invoke-virtual       v1, v0, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	12      (00000036) move-result          v0
+	13      (00000038) if-eqz               v0, +040h
+
+f-BB@0x3c : [ f-BB@0x46 f-BB@0xb8 ]
+	14      (0000003c) iget                 v6, v6, Le6/b;->b I
+	15      (00000040) const/4              v0, 1
+	16      (00000042) if-ne                v6, v0, +03bh
+
+f-BB@0x46 : [ f-BB@0x5c ]
+	17      (00000046) iget-object          v6, v5, Ld6/c;->e La5/r;
+	18      (0000004a) invoke-virtual       v6, La5/r;->get()Ljava/lang/Object;
+	19      (00000050) move-result-object   v6
+	20      (00000052) check-cast           v6, Le6/c;
+	21      (00000056) iget-object          v0, v6, Le6/c;->a Landroid/content/SharedPreferences;
+	22      (0000005a) monitor-enter        v0
+
+f-BB@0x5c : [ f-BB@0x62 ]
+	23      (0000005c) iget-object          v1, v6, Le6/c;->a Landroid/content/SharedPreferences;
+	24      (00000060) monitor-enter        v1
+	5c:61
+	(Ljava/lang/Throwable; -> 7e f-BB@0x7e)
+
+f-BB@0x62 : [ f-BB@0x7a f-BB@0x82 ]
+	25      (00000062) iget-object          v2, v6, Le6/c;->a Landroid/content/SharedPreferences;
+	26      (00000066) const-string         v3, "|S|id"
+	27      (0000006a) const/4              v4, 0
+	28      (0000006c) invoke-interface     v2, v3, v4, Landroid/content/SharedPreferences;->getString(Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	29      (00000072) move-result-object   v2
+	30      (00000074) monitor-exit         v1
+	31      (00000076) if-eqz               v2, +006h
+	62:75
+	(Ljava/lang/Throwable; -> ae f-BB@0xae)
+
+f-BB@0x7a : [ f-BB@0x8c ]
+	32      (0000007a) monitor-exit         v0
+	33      (0000007c) goto                 +8h
+	7a:8b
+	(Ljava/lang/Throwable; -> 7e f-BB@0x7e)
+
+f-BB@0x7e : [ f-BB@0xb4 ]
+	34      (0000007e) move-exception       v6
+	35      (00000080) goto                 +1ah
+	7a:8b
+	(Ljava/lang/Throwable; -> 7e f-BB@0x7e)
+
+f-BB@0x82 : [ f-BB@0x8c ]
+	36      (00000082) invoke-virtual       v6, Le6/c;->a()Ljava/lang/String;
+	37      (00000088) move-result-object   v2
+	38      (0000008a) monitor-exit         v0
+	7a:8b
+	(Ljava/lang/Throwable; -> 7e f-BB@0x7e)
+
+f-BB@0x8c : [ f-BB@0x98 f-BB@0xac ]
+	39      (0000008c) invoke-static        v2, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+	40      (00000092) move-result          v6
+	41      (00000094) if-eqz               v6, +00ch
+
+f-BB@0x98 : 
+	42      (00000098) iget-object          v6, v5, Ld6/c;->f Ld6/h;
+	43      (0000009c) invoke-virtual       v6, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	44      (000000a2) invoke-static        Ld6/h;->a()Ljava/lang/String;
+	45      (000000a8) move-result-object   v6
+	46      (000000aa) return-object        v6
+
+f-BB@0xac : 
+	47      (000000ac) return-object        v2
+
+f-BB@0xae : [ f-BB@0xb0 ]
+	48      (000000ae) move-exception       v6
+
+f-BB@0xb0 : [ f-BB@0xb2 ]
+	49      (000000b0) monitor-exit         v1
+	b0:b1
+	(Ljava/lang/Throwable; -> ae f-BB@0xae)
+
+f-BB@0xb2 : 
+	50      (000000b2) throw                v6
+	b2:b5
+	(Ljava/lang/Throwable; -> 7e f-BB@0x7e)
+
+f-BB@0xb4 : 
+	51      (000000b4) monitor-exit         v0
+	52      (000000b6) throw                v6
+
+f-BB@0xb8 : 
+	53      (000000b8) iget-object          v6, v5, Ld6/c;->f Ld6/h;
+	54      (000000bc) invoke-virtual       v6, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	55      (000000c2) invoke-static        Ld6/h;->a()Ljava/lang/String;
+	56      (000000c8) move-result-object   v6
+	57      (000000ca) return-object        v6
+

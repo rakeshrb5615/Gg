@@ -1,0 +1,46 @@
+# Ld8/n;->B(Ld8/a0;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:d8.a0
+#
+# - return:void
+
+B-BB@0x0 : [ B-BB@0xe B-BB@0x14 ]
+	0       (00000000) iget-object          v0, v3, Ld8/n;->d Ll7/c;
+	1       (00000004) instance-of          v1, v0, Li8/f;
+	2       (00000008) const/4              v2, 0
+	3       (0000000a) if-eqz               v1, +005h
+
+B-BB@0xe : [ B-BB@0x16 ]
+	4       (0000000e) check-cast           v0, Li8/f;
+	5       (00000012) goto                 +2h
+
+B-BB@0x14 : [ B-BB@0x16 ]
+	6       (00000014) move-object          v0, v2
+
+B-BB@0x16 : [ B-BB@0x1a B-BB@0x20 ]
+	7       (00000016) if-eqz               v0, +005h
+
+B-BB@0x1a : [ B-BB@0x22 ]
+	8       (0000001a) iget-object          v0, v0, Li8/f;->d Ld8/a0;
+	9       (0000001e) goto                 +2h
+
+B-BB@0x20 : [ B-BB@0x22 ]
+	10      (00000020) move-object          v0, v2
+
+B-BB@0x22 : [ B-BB@0x26 B-BB@0x2a ]
+	11      (00000022) if-ne                v0, v4, +004h
+
+B-BB@0x26 : [ B-BB@0x2e ]
+	12      (00000026) const/4              v4, 4
+	13      (00000028) goto                 +3h
+
+B-BB@0x2a : [ B-BB@0x2e ]
+	14      (0000002a) iget                 v4, v3, Ld8/m0;->c I
+
+B-BB@0x2e : 
+	15      (0000002e) sget-object          v0, Lh7/l;->a Lh7/l;
+	16      (00000032) invoke-virtual       v3, v0, v4, v2, Ld8/n;->A(Ljava/lang/Object; I Lu7/q;)V
+	17      (00000038) return-void          
+

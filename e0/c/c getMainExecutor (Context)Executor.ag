@@ -1,0 +1,28 @@
+# Le0/c;->getMainExecutor(Landroid/content/Context;)Ljava/util/concurrent/Executor; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:android.content.Context
+#
+# - return:java.util.concurrent.Executor
+
+getMainExecutor-BB@0x0 : [ getMainExecutor-BB@0xc getMainExecutor-BB@0x16 ]
+	0       (00000000) sget                 v0, Landroid/os/Build$VERSION;->SDK_INT I
+	1       (00000004) const/16             v1, 28
+	2       (00000008) if-lt                v0, v1, +007h
+
+getMainExecutor-BB@0xc : 
+	3       (0000000c) invoke-static        v2, Le0/a;->e(Landroid/content/Context;)Ljava/util/concurrent/Executor;
+	4       (00000012) move-result-object   v2
+	5       (00000014) return-object        v2
+
+getMainExecutor-BB@0x16 : 
+	6       (00000016) new-instance         v0, Landroid/os/Handler;
+	7       (0000001a) invoke-virtual       v2, Landroid/content/Context;->getMainLooper()Landroid/os/Looper;
+	8       (00000020) move-result-object   v2
+	9       (00000022) invoke-direct        v0, v2, Landroid/os/Handler;-><init>(Landroid/os/Looper;)V
+	10      (00000028) new-instance         v2, Lm0/f;
+	11      (0000002c) const/4              v1, 0
+	12      (0000002e) invoke-direct        v2, v0, v1, Lm0/f;-><init>(Ljava/lang/Object; I)V
+	13      (00000034) return-object        v2
+

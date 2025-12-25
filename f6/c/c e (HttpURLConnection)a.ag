@@ -1,0 +1,145 @@
+# Lf6/c;->e(Ljava/net/HttpURLConnection;)Lf6/a; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v11
+# - v12:java.net.HttpURLConnection
+#
+# - return:f6.a
+
+e-BB@0x0 : [ e-BB@0x3e ]
+	0       (00000000) invoke-virtual       v12, Ljava/net/URLConnection;->getInputStream()Ljava/io/InputStream;
+	1       (00000006) move-result-object   v12
+	2       (00000008) new-instance         v0, Landroid/util/JsonReader;
+	3       (0000000c) new-instance         v1, Ljava/io/InputStreamReader;
+	4       (00000010) sget-object          v2, Lf6/c;->e Ljava/nio/charset/Charset;
+	5       (00000014) invoke-direct        v1, v12, v2, Ljava/io/InputStreamReader;-><init>(Ljava/io/InputStream; Ljava/nio/charset/Charset;)V
+	6       (0000001a) invoke-direct        v0, v1, Landroid/util/JsonReader;-><init>(Ljava/io/Reader;)V
+	7       (00000020) const/4              v1, 0
+	8       (00000022) const/4              v2, 1
+	9       (00000024) or-int/2addr         v1, v2
+	10      (00000026) int-to-byte          v1, v1
+	11      (00000028) invoke-virtual       v0, Landroid/util/JsonReader;->beginObject()V
+	12      (0000002e) const/4              v3, 0
+	13      (00000030) const-wide/16        v4, 0
+	14      (00000034) move-object          v6, v3
+	15      (00000036) move-object          v7, v6
+	16      (00000038) move-wide            v8, v4
+	17      (0000003a) move-object          v4, v7
+	18      (0000003c) move-object          v5, v4
+
+e-BB@0x3e : [ e-BB@0x4a e-BB@0x148 ]
+	19      (0000003e) invoke-virtual       v0, Landroid/util/JsonReader;->hasNext()Z
+	20      (00000044) move-result          v10
+	21      (00000046) if-eqz               v10, +081h
+
+e-BB@0x4a : [ e-BB@0x62 e-BB@0x6c ]
+	22      (0000004a) invoke-virtual       v0, Landroid/util/JsonReader;->nextName()Ljava/lang/String;
+	23      (00000050) move-result-object   v10
+	24      (00000052) const-string         v11, "name"
+	25      (00000056) invoke-virtual       v10, v11, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	26      (0000005c) move-result          v11
+	27      (0000005e) if-eqz               v11, +007h
+
+e-BB@0x62 : [ e-BB@0x3e ]
+	28      (00000062) invoke-virtual       v0, Landroid/util/JsonReader;->nextString()Ljava/lang/String;
+	29      (00000068) move-result-object   v4
+	30      (0000006a) goto                 -16h
+
+e-BB@0x6c : [ e-BB@0x7c e-BB@0x86 ]
+	31      (0000006c) const-string         v11, "fid"
+	32      (00000070) invoke-virtual       v10, v11, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	33      (00000076) move-result          v11
+	34      (00000078) if-eqz               v11, +007h
+
+e-BB@0x7c : [ e-BB@0x3e ]
+	35      (0000007c) invoke-virtual       v0, Landroid/util/JsonReader;->nextString()Ljava/lang/String;
+	36      (00000082) move-result-object   v5
+	37      (00000084) goto                 -23h
+
+e-BB@0x86 : [ e-BB@0x96 e-BB@0xa0 ]
+	38      (00000086) const-string         v11, "refreshToken"
+	39      (0000008a) invoke-virtual       v10, v11, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	40      (00000090) move-result          v11
+	41      (00000092) if-eqz               v11, +007h
+
+e-BB@0x96 : [ e-BB@0x3e ]
+	42      (00000096) invoke-virtual       v0, Landroid/util/JsonReader;->nextString()Ljava/lang/String;
+	43      (0000009c) move-result-object   v6
+	44      (0000009e) goto                 -30h
+
+e-BB@0xa0 : [ e-BB@0xb0 e-BB@0x13e ]
+	45      (000000a0) const-string         v11, "authToken"
+	46      (000000a4) invoke-virtual       v10, v11, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	47      (000000aa) move-result          v10
+	48      (000000ac) if-eqz               v10, +049h
+
+e-BB@0xb0 : [ e-BB@0xb6 ]
+	49      (000000b0) invoke-virtual       v0, Landroid/util/JsonReader;->beginObject()V
+
+e-BB@0xb6 : [ e-BB@0xc2 e-BB@0x116 ]
+	50      (000000b6) invoke-virtual       v0, Landroid/util/JsonReader;->hasNext()Z
+	51      (000000bc) move-result          v7
+	52      (000000be) if-eqz               v7, +02ch
+
+e-BB@0xc2 : [ e-BB@0xda e-BB@0xe4 ]
+	53      (000000c2) invoke-virtual       v0, Landroid/util/JsonReader;->nextName()Ljava/lang/String;
+	54      (000000c8) move-result-object   v7
+	55      (000000ca) const-string         v10, "token"
+	56      (000000ce) invoke-virtual       v7, v10, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	57      (000000d4) move-result          v10
+	58      (000000d6) if-eqz               v10, +007h
+
+e-BB@0xda : [ e-BB@0xb6 ]
+	59      (000000da) invoke-virtual       v0, Landroid/util/JsonReader;->nextString()Ljava/lang/String;
+	60      (000000e0) move-result-object   v3
+	61      (000000e2) goto                 -16h
+
+e-BB@0xe4 : [ e-BB@0xf4 e-BB@0x10e ]
+	62      (000000e4) const-string         v10, "expiresIn"
+	63      (000000e8) invoke-virtual       v7, v10, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	64      (000000ee) move-result          v7
+	65      (000000f0) if-eqz               v7, +00fh
+
+e-BB@0xf4 : [ e-BB@0xb6 ]
+	66      (000000f4) invoke-virtual       v0, Landroid/util/JsonReader;->nextString()Ljava/lang/String;
+	67      (000000fa) move-result-object   v7
+	68      (000000fc) invoke-static        v7, Lf6/c;->d(Ljava/lang/String;)J
+	69      (00000102) move-result-wide     v7
+	70      (00000104) or-int/lit8          v1, v1, 1
+	71      (00000108) int-to-byte          v1, v1
+	72      (0000010a) move-wide            v8, v7
+	73      (0000010c) goto                 -2bh
+
+e-BB@0x10e : [ e-BB@0xb6 ]
+	74      (0000010e) invoke-virtual       v0, Landroid/util/JsonReader;->skipValue()V
+	75      (00000114) goto                 -2fh
+
+e-BB@0x116 : [ e-BB@0x11a e-BB@0x12e ]
+	76      (00000116) if-ne                v1, v2, +00ch
+
+e-BB@0x11a : [ e-BB@0x3e ]
+	77      (0000011a) new-instance         v7, Lf6/b;
+	78      (0000011e) const/4              v10, 0
+	79      (00000120) invoke-direct        v7, v3, v8, v9, v10, Lf6/b;-><init>(Ljava/lang/String; J I)V
+	80      (00000126) invoke-virtual       v0, Landroid/util/JsonReader;->endObject()V
+	81      (0000012c) goto                 -77h
+
+e-BB@0x12e : 
+	82      (0000012e) new-instance         v12, Ljava/lang/IllegalStateException;
+	83      (00000132) const-string         v0, "Missing required properties: tokenExpirationTimestamp"
+	84      (00000136) invoke-direct        v12, v0, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	85      (0000013c) throw                v12
+
+e-BB@0x13e : [ e-BB@0x3e ]
+	86      (0000013e) invoke-virtual       v0, Landroid/util/JsonReader;->skipValue()V
+	87      (00000144) goto/16              -083h
+
+e-BB@0x148 : 
+	88      (00000148) invoke-virtual       v0, Landroid/util/JsonReader;->endObject()V
+	89      (0000014e) invoke-virtual       v0, Landroid/util/JsonReader;->close()V
+	90      (00000154) invoke-virtual       v12, Ljava/io/InputStream;->close()V
+	91      (0000015a) new-instance         v3, Lf6/a;
+	92      (0000015e) const/4              v8, 1
+	93      (00000160) invoke-direct/range  v3 ... v8, Lf6/a;-><init>(Ljava/lang/String; Ljava/lang/String; Ljava/lang/String; Lf6/b; I)V
+	94      (00000166) return-object        v3
+

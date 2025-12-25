@@ -1,0 +1,253 @@
+# Ld1/i;->invokeSuspend(Ljava/lang/Object;)Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v8
+# - v9:java.lang.Object
+#
+# - return:java.lang.Object
+
+invokeSuspend-BB@0x0 : [ invokeSuspend-BB@0x40 ]
+	0       (00000000) sget-object          v0, Lm7/a;->a Lm7/a;
+	1       (00000004) invoke-static        v9, Lc4/b;->e0(Ljava/lang/Object;)V
+	2       (0000000a) iget-object          v9, v8, Ld1/i;->a Lc1/f;
+	3       (0000000e) iget-object          v0, v8, Ld1/i;->b Le1/b;
+	4       (00000012) invoke-virtual       v0, Le1/b;->a()Ljava/util/Map;
+	5       (00000018) move-result-object   v1
+	6       (0000001a) invoke-interface     v1, Ljava/util/Map;->keySet()Ljava/util/Set;
+	7       (00000020) move-result-object   v1
+	8       (00000022) new-instance         v2, Ljava/util/ArrayList;
+	9       (00000026) const/16             v3, 10
+	10      (0000002a) invoke-static        v1, v3, Li7/j;->X(Ljava/lang/Iterable; I)I
+	11      (00000030) move-result          v3
+	12      (00000032) invoke-direct        v2, v3, Ljava/util/ArrayList;-><init>(I)V
+	13      (00000038) invoke-interface     v1, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
+	14      (0000003e) move-result-object   v1
+
+invokeSuspend-BB@0x40 : [ invokeSuspend-BB@0x4c invokeSuspend-BB@0x64 ]
+	15      (00000040) invoke-interface     v1, Ljava/util/Iterator;->hasNext()Z
+	16      (00000046) move-result          v3
+	17      (00000048) if-eqz               v3, +00eh
+
+invokeSuspend-BB@0x4c : [ invokeSuspend-BB@0x40 ]
+	18      (0000004c) invoke-interface     v1, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	19      (00000052) move-result-object   v3
+	20      (00000054) check-cast           v3, Le1/e;
+	21      (00000058) iget-object          v3, v3, Le1/e;->a Ljava/lang/String;
+	22      (0000005c) invoke-virtual       v2, v3, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	23      (00000062) goto                 -11h
+
+invokeSuspend-BB@0x64 : [ invokeSuspend-BB@0x94 ]
+	24      (00000064) iget-object          v1, v9, Lc1/f;->a Landroid/content/SharedPreferences;
+	25      (00000068) invoke-interface     v1, Landroid/content/SharedPreferences;->getAll()Ljava/util/Map;
+	26      (0000006e) move-result-object   v1
+	27      (00000070) const-string         v3, "prefs.all"
+	28      (00000074) invoke-static        v1, v3, Lkotlin/jvm/internal/j;->d(Ljava/lang/Object; Ljava/lang/String;)V
+	29      (0000007a) new-instance         v3, Ljava/util/LinkedHashMap;
+	30      (0000007e) invoke-direct        v3, Ljava/util/LinkedHashMap;-><init>()V
+	31      (00000084) invoke-interface     v1, Ljava/util/Map;->entrySet()Ljava/util/Set;
+	32      (0000008a) move-result-object   v1
+	33      (0000008c) invoke-interface     v1, Ljava/util/Set;->iterator()Ljava/util/Iterator;
+	34      (00000092) move-result-object   v1
+
+invokeSuspend-BB@0x94 : [ invokeSuspend-BB@0xa2 invokeSuspend-BB@0xe6 ]
+	35      (00000094) invoke-interface     v1, Ljava/util/Iterator;->hasNext()Z
+	36      (0000009a) move-result          v4
+	37      (0000009c) const/4              v5, 1
+	38      (0000009e) if-eqz               v4, +024h
+
+invokeSuspend-BB@0xa2 : [ invokeSuspend-BB@0xc2 invokeSuspend-BB@0xca ]
+	39      (000000a2) invoke-interface     v1, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	40      (000000a8) move-result-object   v4
+	41      (000000aa) check-cast           v4, Ljava/util/Map$Entry;
+	42      (000000ae) invoke-interface     v4, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
+	43      (000000b4) move-result-object   v6
+	44      (000000b6) check-cast           v6, Ljava/lang/String;
+	45      (000000ba) iget-object          v7, v9, Lc1/f;->b Ljava/util/Set;
+	46      (000000be) if-eqz               v7, +006h
+
+invokeSuspend-BB@0xc2 : [ invokeSuspend-BB@0xca ]
+	47      (000000c2) invoke-interface     v7, v6, Ljava/util/Set;->contains(Ljava/lang/Object;)Z
+	48      (000000c8) move-result          v5
+
+invokeSuspend-BB@0xca : [ invokeSuspend-BB@0xce invokeSuspend-BB@0x94 ]
+	49      (000000ca) if-eqz               v5, -01bh
+
+invokeSuspend-BB@0xce : [ invokeSuspend-BB@0x94 ]
+	50      (000000ce) invoke-interface     v4, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
+	51      (000000d4) move-result-object   v5
+	52      (000000d6) invoke-interface     v4, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
+	53      (000000dc) move-result-object   v4
+	54      (000000de) invoke-interface     v3, v5, v4, Ljava/util/Map;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	55      (000000e4) goto                 -28h
+
+invokeSuspend-BB@0xe6 : [ invokeSuspend-BB@0x110 ]
+	56      (000000e6) new-instance         v9, Ljava/util/LinkedHashMap;
+	57      (000000ea) invoke-interface     v3, Ljava/util/Map;->size()I
+	58      (000000f0) move-result          v1
+	59      (000000f2) invoke-static        v1, Li7/r;->l0(I)I
+	60      (000000f8) move-result          v1
+	61      (000000fa) invoke-direct        v9, v1, Ljava/util/LinkedHashMap;-><init>(I)V
+	62      (00000100) invoke-virtual       v3, Ljava/util/LinkedHashMap;->entrySet()Ljava/util/Set;
+	63      (00000106) move-result-object   v1
+	64      (00000108) invoke-interface     v1, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
+	65      (0000010e) move-result-object   v1
+
+invokeSuspend-BB@0x110 : [ invokeSuspend-BB@0x11c invokeSuspend-BB@0x154 ]
+	66      (00000110) invoke-interface     v1, Ljava/util/Iterator;->hasNext()Z
+	67      (00000116) move-result          v3
+	68      (00000118) if-eqz               v3, +01eh
+
+invokeSuspend-BB@0x11c : [ invokeSuspend-BB@0x140 invokeSuspend-BB@0x14c ]
+	69      (0000011c) invoke-interface     v1, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	70      (00000122) move-result-object   v3
+	71      (00000124) check-cast           v3, Ljava/util/Map$Entry;
+	72      (00000128) invoke-interface     v3, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
+	73      (0000012e) move-result-object   v4
+	74      (00000130) invoke-interface     v3, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
+	75      (00000136) move-result-object   v3
+	76      (00000138) instance-of          v6, v3, Ljava/util/Set;
+	77      (0000013c) if-eqz               v6, +008h
+
+invokeSuspend-BB@0x140 : [ invokeSuspend-BB@0x14c ]
+	78      (00000140) check-cast           v3, Ljava/lang/Iterable;
+	79      (00000144) invoke-static        v3, Li7/i;->n0(Ljava/lang/Iterable;)Ljava/util/Set;
+	80      (0000014a) move-result-object   v3
+
+invokeSuspend-BB@0x14c : [ invokeSuspend-BB@0x110 ]
+	81      (0000014c) invoke-interface     v9, v4, v3, Ljava/util/Map;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	82      (00000152) goto                 -21h
+
+invokeSuspend-BB@0x154 : [ invokeSuspend-BB@0x16e ]
+	83      (00000154) new-instance         v1, Ljava/util/LinkedHashMap;
+	84      (00000158) invoke-direct        v1, Ljava/util/LinkedHashMap;-><init>()V
+	85      (0000015e) invoke-virtual       v9, Ljava/util/LinkedHashMap;->entrySet()Ljava/util/Set;
+	86      (00000164) move-result-object   v9
+	87      (00000166) invoke-interface     v9, Ljava/util/Set;->iterator()Ljava/util/Iterator;
+	88      (0000016c) move-result-object   v9
+
+invokeSuspend-BB@0x16e : [ invokeSuspend-BB@0x17a invokeSuspend-BB@0x1b6 ]
+	89      (0000016e) invoke-interface     v9, Ljava/util/Iterator;->hasNext()Z
+	90      (00000174) move-result          v3
+	91      (00000176) if-eqz               v3, +020h
+
+invokeSuspend-BB@0x17a : [ invokeSuspend-BB@0x19e invokeSuspend-BB@0x16e ]
+	92      (0000017a) invoke-interface     v9, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	93      (00000180) move-result-object   v3
+	94      (00000182) check-cast           v3, Ljava/util/Map$Entry;
+	95      (00000186) invoke-interface     v3, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
+	96      (0000018c) move-result-object   v4
+	97      (0000018e) check-cast           v4, Ljava/lang/String;
+	98      (00000192) invoke-virtual       v2, v4, Ljava/util/ArrayList;->contains(Ljava/lang/Object;)Z
+	99      (00000198) move-result          v4
+	100     (0000019a) if-nez               v4, -016h
+
+invokeSuspend-BB@0x19e : [ invokeSuspend-BB@0x16e ]
+	101     (0000019e) invoke-interface     v3, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
+	102     (000001a4) move-result-object   v4
+	103     (000001a6) invoke-interface     v3, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
+	104     (000001ac) move-result-object   v3
+	105     (000001ae) invoke-interface     v1, v4, v3, Ljava/util/Map;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	106     (000001b4) goto                 -23h
+
+invokeSuspend-BB@0x1b6 : [ invokeSuspend-BB@0x1e2 ]
+	107     (000001b6) new-instance         v9, Le1/b;
+	108     (000001ba) invoke-virtual       v0, Le1/b;->a()Ljava/util/Map;
+	109     (000001c0) move-result-object   v0
+	110     (000001c2) invoke-static        v0, Li7/r;->s0(Ljava/util/Map;)Ljava/util/LinkedHashMap;
+	111     (000001c8) move-result-object   v0
+	112     (000001ca) const/4              v2, 0
+	113     (000001cc) invoke-direct        v9, v0, v2, Le1/b;-><init>(Ljava/util/LinkedHashMap; Z)V
+	114     (000001d2) invoke-virtual       v1, Ljava/util/LinkedHashMap;->entrySet()Ljava/util/Set;
+	115     (000001d8) move-result-object   v0
+	116     (000001da) invoke-interface     v0, Ljava/util/Set;->iterator()Ljava/util/Iterator;
+	117     (000001e0) move-result-object   v0
+
+invokeSuspend-BB@0x1e2 : [ invokeSuspend-BB@0x1ee invokeSuspend-BB@0x2ce ]
+	118     (000001e2) invoke-interface     v0, Ljava/util/Iterator;->hasNext()Z
+	119     (000001e8) move-result          v1
+	120     (000001ea) if-eqz               v1, +072h
+
+invokeSuspend-BB@0x1ee : [ invokeSuspend-BB@0x21a invokeSuspend-BB@0x232 ]
+	121     (000001ee) invoke-interface     v0, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	122     (000001f4) move-result-object   v1
+	123     (000001f6) check-cast           v1, Ljava/util/Map$Entry;
+	124     (000001fa) invoke-interface     v1, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
+	125     (00000200) move-result-object   v2
+	126     (00000202) check-cast           v2, Ljava/lang/String;
+	127     (00000206) invoke-interface     v1, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
+	128     (0000020c) move-result-object   v1
+	129     (0000020e) instance-of          v3, v1, Ljava/lang/Boolean;
+	130     (00000212) const-string         v4, "name"
+	131     (00000216) if-eqz               v3, +00eh
+
+invokeSuspend-BB@0x21a : [ invokeSuspend-BB@0x1e2 ]
+	132     (0000021a) invoke-static        v2, v4, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	133     (00000220) new-instance         v3, Le1/e;
+	134     (00000224) invoke-direct        v3, v2, Le1/e;-><init>(Ljava/lang/String;)V
+	135     (0000022a) invoke-virtual       v9, v3, v1, Le1/b;->e(Le1/e; Ljava/lang/Object;)V
+	136     (00000230) goto                 -27h
+
+invokeSuspend-BB@0x232 : [ invokeSuspend-BB@0x23a invokeSuspend-BB@0x252 ]
+	137     (00000232) instance-of          v3, v1, Ljava/lang/Float;
+	138     (00000236) if-eqz               v3, +00eh
+
+invokeSuspend-BB@0x23a : [ invokeSuspend-BB@0x1e2 ]
+	139     (0000023a) invoke-static        v2, v4, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	140     (00000240) new-instance         v3, Le1/e;
+	141     (00000244) invoke-direct        v3, v2, Le1/e;-><init>(Ljava/lang/String;)V
+	142     (0000024a) invoke-virtual       v9, v3, v1, Le1/b;->e(Le1/e; Ljava/lang/Object;)V
+	143     (00000250) goto                 -37h
+
+invokeSuspend-BB@0x252 : [ invokeSuspend-BB@0x25a invokeSuspend-BB@0x272 ]
+	144     (00000252) instance-of          v3, v1, Ljava/lang/Integer;
+	145     (00000256) if-eqz               v3, +00eh
+
+invokeSuspend-BB@0x25a : [ invokeSuspend-BB@0x1e2 ]
+	146     (0000025a) invoke-static        v2, v4, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	147     (00000260) new-instance         v3, Le1/e;
+	148     (00000264) invoke-direct        v3, v2, Le1/e;-><init>(Ljava/lang/String;)V
+	149     (0000026a) invoke-virtual       v9, v3, v1, Le1/b;->e(Le1/e; Ljava/lang/Object;)V
+	150     (00000270) goto                 -47h
+
+invokeSuspend-BB@0x272 : [ invokeSuspend-BB@0x27a invokeSuspend-BB@0x292 ]
+	151     (00000272) instance-of          v3, v1, Ljava/lang/Long;
+	152     (00000276) if-eqz               v3, +00eh
+
+invokeSuspend-BB@0x27a : [ invokeSuspend-BB@0x1e2 ]
+	153     (0000027a) invoke-static        v2, v4, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	154     (00000280) new-instance         v3, Le1/e;
+	155     (00000284) invoke-direct        v3, v2, Le1/e;-><init>(Ljava/lang/String;)V
+	156     (0000028a) invoke-virtual       v9, v3, v1, Le1/b;->e(Le1/e; Ljava/lang/Object;)V
+	157     (00000290) goto                 -57h
+
+invokeSuspend-BB@0x292 : [ invokeSuspend-BB@0x29a invokeSuspend-BB@0x2b2 ]
+	158     (00000292) instance-of          v3, v1, Ljava/lang/String;
+	159     (00000296) if-eqz               v3, +00eh
+
+invokeSuspend-BB@0x29a : [ invokeSuspend-BB@0x1e2 ]
+	160     (0000029a) invoke-static        v2, v4, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	161     (000002a0) new-instance         v3, Le1/e;
+	162     (000002a4) invoke-direct        v3, v2, Le1/e;-><init>(Ljava/lang/String;)V
+	163     (000002aa) invoke-virtual       v9, v3, v1, Le1/b;->e(Le1/e; Ljava/lang/Object;)V
+	164     (000002b0) goto                 -67h
+
+invokeSuspend-BB@0x2b2 : [ invokeSuspend-BB@0x2ba invokeSuspend-BB@0x1e2 ]
+	165     (000002b2) instance-of          v3, v1, Ljava/util/Set;
+	166     (000002b6) if-eqz               v3, -06ah
+
+invokeSuspend-BB@0x2ba : [ invokeSuspend-BB@0x1e2 ]
+	167     (000002ba) invoke-static        v2, Lc4/b;->c0(Ljava/lang/String;)Le1/e;
+	168     (000002c0) move-result-object   v2
+	169     (000002c2) check-cast           v1, Ljava/util/Set;
+	170     (000002c6) invoke-virtual       v9, v2, v1, Le1/b;->e(Le1/e; Ljava/lang/Object;)V
+	171     (000002cc) goto                 -75h
+
+invokeSuspend-BB@0x2ce : 
+	172     (000002ce) new-instance         v0, Le1/b;
+	173     (000002d2) invoke-virtual       v9, Le1/b;->a()Ljava/util/Map;
+	174     (000002d8) move-result-object   v9
+	175     (000002da) invoke-static        v9, Li7/r;->s0(Ljava/util/Map;)Ljava/util/LinkedHashMap;
+	176     (000002e0) move-result-object   v9
+	177     (000002e2) invoke-direct        v0, v9, v5, Le1/b;-><init>(Ljava/util/LinkedHashMap; Z)V
+	178     (000002e8) return-object        v0
+

@@ -1,0 +1,88 @@
+# Lf8/c;->j(J)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v10
+# - v11:long
+#
+# - return:void
+
+j-BB@0x0 : [ j-BB@0x10 ]
+	0       (00000000) sget-object          v0, Lf8/c;->m Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;
+	1       (00000004) invoke-virtual       v0, v9, Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	2       (0000000a) move-result-object   v0
+	3       (0000000c) check-cast           v0, Lf8/k;
+
+j-BB@0x10 : [ j-BB@0x40 j-BB@0x42 ]
+	4       (00000010) sget-object          v1, Lf8/c;->c Ljava/util/concurrent/atomic/AtomicLongFieldUpdater;
+	5       (00000014) invoke-virtual       v1, v9, Ljava/util/concurrent/atomic/AtomicLongFieldUpdater;->get(Ljava/lang/Object;)J
+	6       (0000001a) move-result-wide     v3
+	7       (0000001c) iget                 v2, v9, Lf8/c;->a I
+	8       (00000020) int-to-long          v5, v2
+	9       (00000022) add-long/2addr       v5, v3
+	10      (00000024) sget-object          v2, Lf8/c;->d Ljava/util/concurrent/atomic/AtomicLongFieldUpdater;
+	11      (00000028) invoke-virtual       v2, v9, Ljava/util/concurrent/atomic/AtomicLongFieldUpdater;->get(Ljava/lang/Object;)J
+	12      (0000002e) move-result-wide     v7
+	13      (00000030) invoke-static        v5, v6, v7, v8, Ljava/lang/Math;->max(J J)J
+	14      (00000036) move-result-wide     v5
+	15      (00000038) cmp-long             v2, v10, v5
+	16      (0000003c) if-gez               v2, +003h
+
+j-BB@0x40 : 
+	17      (00000040) return-void          
+
+j-BB@0x42 : [ j-BB@0x56 j-BB@0x10 ]
+	18      (00000042) const-wide/16        v5, 1
+	19      (00000046) add-long/2addr       v5, v3
+	20      (00000048) move-object          v2, v9
+	21      (0000004a) invoke-virtual/range v1 ... v6, Ljava/util/concurrent/atomic/AtomicLongFieldUpdater;->compareAndSet(Ljava/lang/Object; J J)Z
+	22      (00000050) move-result          v1
+	23      (00000052) if-eqz               v1, -021h
+
+j-BB@0x56 : [ j-BB@0x72 j-BB@0x82 ]
+	24      (00000056) sget                 v1, Lf8/e;->b I
+	25      (0000005a) int-to-long          v5, v1
+	26      (0000005c) div-long             v7, v3, v5
+	27      (00000060) rem-long             v5, v3, v5
+	28      (00000064) long-to-int          v1, v5
+	29      (00000066) iget-wide            v5, v0, Li8/r;->c J
+	30      (0000006a) cmp-long             v5, v5, v7
+	31      (0000006e) if-eqz               v5, +00ah
+
+j-BB@0x72 : [ j-BB@0x7e j-BB@0x80 ]
+	32      (00000072) invoke-virtual       v9, v7, v8, v0, Lf8/c;->l(J Lf8/k;)Lf8/k;
+	33      (00000078) move-result-object   v5
+	34      (0000007a) if-nez               v5, +003h
+
+j-BB@0x7e : [ j-BB@0x10 ]
+	35      (0000007e) goto                 -37h
+
+j-BB@0x80 : [ j-BB@0x82 ]
+	36      (00000080) move-object          v0, v5
+
+j-BB@0x82 : [ j-BB@0x9a j-BB@0xb2 ]
+	37      (00000082) const/4              v7, 0
+	38      (00000084) move-wide            v5, v3
+	39      (00000086) move-object          v3, v0
+	40      (00000088) move                 v4, v1
+	41      (0000008a) invoke-virtual/range v2 ... v7, Lf8/c;->z(Lf8/k; I J Ljava/lang/Object;)Ljava/lang/Object;
+	42      (00000090) move-result-object   v0
+	43      (00000092) sget-object          v1, Lf8/e;->o Ld4/l;
+	44      (00000096) if-ne                v0, v1, +00eh
+
+j-BB@0x9a : [ j-BB@0xaa j-BB@0xb8 ]
+	45      (0000009a) invoke-virtual       v9, Lf8/c;->p()J
+	46      (000000a0) move-result-wide     v0
+	47      (000000a2) cmp-long             v0, v5, v0
+	48      (000000a6) if-gez               v0, +009h
+
+j-BB@0xaa : [ j-BB@0xb8 ]
+	49      (000000aa) invoke-virtual       v3, Li8/b;->b()V
+	50      (000000b0) goto                 +4h
+
+j-BB@0xb2 : [ j-BB@0xb8 ]
+	51      (000000b2) invoke-virtual       v3, Li8/b;->b()V
+
+j-BB@0xb8 : [ j-BB@0x10 ]
+	52      (000000b8) move-object          v0, v3
+	53      (000000ba) goto                 -55h
+

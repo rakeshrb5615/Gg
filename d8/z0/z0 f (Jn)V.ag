@@ -1,0 +1,69 @@
+# Ld8/z0;->f(J Ld8/n;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:long
+# - v8:d8.n
+#
+# - return:void
+
+f-BB@0x0 : [ f-BB@0xe f-BB@0x14 ]
+	0       (00000000) iget-object          v0, v5, Ld8/z0;->c Ljava/util/concurrent/Executor;
+	1       (00000004) instance-of          v1, v0, Ljava/util/concurrent/ScheduledExecutorService;
+	2       (00000008) const/4              v2, 0
+	3       (0000000a) if-eqz               v1, +005h
+
+f-BB@0xe : [ f-BB@0x16 ]
+	4       (0000000e) check-cast           v0, Ljava/util/concurrent/ScheduledExecutorService;
+	5       (00000012) goto                 +2h
+
+f-BB@0x14 : [ f-BB@0x16 ]
+	6       (00000014) move-object          v0, v2
+
+f-BB@0x16 : [ f-BB@0x1a f-BB@0x68 ]
+	7       (00000016) if-eqz               v0, +029h
+
+f-BB@0x1a : [ f-BB@0x2a ]
+	8       (0000001a) new-instance         v1, Lb5/l;
+	9       (0000001e) const/4              v3, 4
+	10      (00000020) invoke-direct        v1, v3, v5, v8, Lb5/l;-><init>(I Ljava/lang/Object; Ljava/lang/Object;)V
+	11      (00000026) iget-object          v3, v8, Ld8/n;->e Ll7/h;
+
+f-BB@0x2a : [ f-BB@0x68 ]
+	12      (0000002a) sget-object          v4, Ljava/util/concurrent/TimeUnit;->MILLISECONDS Ljava/util/concurrent/TimeUnit;
+	13      (0000002e) invoke-interface     v0, v1, v6, v7, v4, Ljava/util/concurrent/ScheduledExecutorService;->schedule(Ljava/lang/Runnable; J Ljava/util/concurrent/TimeUnit;)Ljava/util/concurrent/ScheduledFuture;
+	14      (00000034) move-result-object   v2
+	15      (00000036) goto                 +19h
+	2a:35
+	(Ljava/util/concurrent/RejectedExecutionException; -> 38 f-BB@0x38)
+
+f-BB@0x38 : [ f-BB@0x62 f-BB@0x68 ]
+	16      (00000038) move-exception       v0
+	17      (0000003a) new-instance         v1, Ljava/util/concurrent/CancellationException;
+	18      (0000003e) const-string         v4, "The task was rejected"
+	19      (00000042) invoke-direct        v1, v4, Ljava/util/concurrent/CancellationException;-><init>(Ljava/lang/String;)V
+	20      (00000048) invoke-virtual       v1, v0, Ljava/lang/Throwable;->initCause(Ljava/lang/Throwable;)Ljava/lang/Throwable;
+	21      (0000004e) sget-object          v0, Ld8/b0;->b Ld8/b0;
+	22      (00000052) invoke-interface     v3, v0, Ll7/h;->get(Ll7/g;)Ll7/f;
+	23      (00000058) move-result-object   v0
+	24      (0000005a) check-cast           v0, Ld8/e1;
+	25      (0000005e) if-eqz               v0, +005h
+
+f-BB@0x62 : [ f-BB@0x68 ]
+	26      (00000062) invoke-interface     v0, v1, Ld8/e1;->cancel(Ljava/util/concurrent/CancellationException;)V
+
+f-BB@0x68 : [ f-BB@0x6c f-BB@0x80 ]
+	27      (00000068) if-eqz               v2, +00ch
+
+f-BB@0x6c : 
+	28      (0000006c) new-instance         v6, Ld8/j;
+	29      (00000070) const/4              v7, 0
+	30      (00000072) invoke-direct        v6, v2, v7, Ld8/j;-><init>(Ljava/lang/Object; I)V
+	31      (00000078) invoke-virtual       v8, v6, Ld8/n;->u(Ld8/u1;)V
+	32      (0000007e) return-void          
+
+f-BB@0x80 : 
+	33      (00000080) sget-object          v0, Ld8/g0;->p Ld8/g0;
+	34      (00000084) invoke-virtual       v0, v6, v7, v8, Ld8/w0;->f(J Ld8/n;)V
+	35      (0000008a) return-void          
+

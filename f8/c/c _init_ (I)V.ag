@@ -1,0 +1,73 @@
+# Lf8/c;-><init>(I)V [access_flags=public constructor]
+#
+# Parameters:
+# - local registers: v0...v8
+# - v9:int
+#
+# - return:void
+
+<init>-BB@0x0 : [ <init>-BB@0xe <init>-BB@0x8c ]
+	0       (00000000) invoke-direct        v8, Ljava/lang/Object;-><init>()V
+	1       (00000006) iput                 v9, v8, Lf8/c;->a I
+	2       (0000000a) if-ltz               v9, +041h
+
+<init>-BB@0xe : [ <init>-BB@0x16 <init>-BB@0x30 ]
+	3       (0000000e) sget-object          v0, Lf8/e;->a Lf8/k;
+	4       (00000012) if-eqz               v9, +00fh
+
+<init>-BB@0x16 : [ <init>-BB@0x20 <init>-BB@0x24 ]
+	5       (00000016) const                v0, 2147483647
+	6       (0000001c) if-eq                v9, v0, +004h
+
+<init>-BB@0x20 : [ <init>-BB@0x34 ]
+	7       (00000020) int-to-long          v0, v9
+	8       (00000022) goto                 +9h
+
+<init>-BB@0x24 : [ <init>-BB@0x34 ]
+	9       (00000024) const-wide           v0, 9223372036854775807
+	10      (0000002e) goto                 +3h
+
+<init>-BB@0x30 : [ <init>-BB@0x34 ]
+	11      (00000030) const-wide/16        v0, 0
+
+<init>-BB@0x34 : [ <init>-BB@0x70 <init>-BB@0x7e ]
+	12      (00000034) iput-wide            v0, v8, Lf8/c;->bufferEnd$volatile J
+	13      (00000038) sget-object          v9, Lf8/c;->d Ljava/util/concurrent/atomic/AtomicLongFieldUpdater;
+	14      (0000003c) invoke-virtual       v9, v8, Ljava/util/concurrent/atomic/AtomicLongFieldUpdater;->get(Ljava/lang/Object;)J
+	15      (00000042) move-result-wide     v0
+	16      (00000044) iput-wide            v0, v8, Lf8/c;->completedExpandBuffersAndPauseFlag$volatile J
+	17      (00000048) new-instance         v2, Lf8/k;
+	18      (0000004c) const/4              v5, 0
+	19      (0000004e) const/4              v7, 3
+	20      (00000050) const-wide/16        v3, 0
+	21      (00000054) move-object          v6, v8
+	22      (00000056) invoke-direct/range  v2 ... v7, Lf8/k;-><init>(J Lf8/k; Lf8/c; I)V
+	23      (0000005c) iput-object          v2, v6, Lf8/c;->sendSegment$volatile Ljava/lang/Object;
+	24      (00000060) iput-object          v2, v6, Lf8/c;->receiveSegment$volatile Ljava/lang/Object;
+	25      (00000064) invoke-virtual       v8, Lf8/c;->t()Z
+	26      (0000006a) move-result          v9
+	27      (0000006c) if-eqz               v9, +009h
+
+<init>-BB@0x70 : [ <init>-BB@0x7e ]
+	28      (00000070) sget-object          v2, Lf8/e;->a Lf8/k;
+	29      (00000074) const-string         v9, "null cannot be cast to non-null type kotlinx.coroutines.channels.ChannelSegment<E of kotlinx.coroutines.channels.BufferedChannel>"
+	30      (00000078) invoke-static        v2, v9, Lkotlin/jvm/internal/j;->c(Ljava/lang/Object; Ljava/lang/String;)V
+
+<init>-BB@0x7e : 
+	31      (0000007e) iput-object          v2, v6, Lf8/c;->bufferEndSegment$volatile Ljava/lang/Object;
+	32      (00000082) sget-object          v9, Lf8/e;->s Ld4/l;
+	33      (00000086) iput-object          v9, v6, Lf8/c;->_closeCause$volatile Ljava/lang/Object;
+	34      (0000008a) return-void          
+
+<init>-BB@0x8c : 
+	35      (0000008c) move-object          v6, v8
+	36      (0000008e) const-string         v0, "Invalid channel capacity: "
+	37      (00000092) const-string         v1, ", should be >=0"
+	38      (00000096) invoke-static        v0, v9, v1, Lv1/a;->j(Ljava/lang/String; I Ljava/lang/String;)Ljava/lang/String;
+	39      (0000009c) move-result-object   v9
+	40      (0000009e) new-instance         v0, Ljava/lang/IllegalArgumentException;
+	41      (000000a2) invoke-virtual       v9, Ljava/lang/Object;->toString()Ljava/lang/String;
+	42      (000000a8) move-result-object   v9
+	43      (000000aa) invoke-direct        v0, v9, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	44      (000000b0) throw                v0
+

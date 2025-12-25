@@ -1,0 +1,28 @@
+# Le0/b;->g(Landroid/view/Window; Z)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:android.view.Window
+# - v3:boolean
+#
+# - return:void
+
+g-BB@0x0 : [ g-BB@0x14 g-BB@0x1a ]
+	0       (00000000) invoke-virtual       v2, Landroid/view/Window;->getDecorView()Landroid/view/View;
+	1       (00000006) move-result-object   v0
+	2       (00000008) invoke-virtual       v0, Landroid/view/View;->getSystemUiVisibility()I
+	3       (0000000e) move-result          v1
+	4       (00000010) if-eqz               v3, +005h
+
+g-BB@0x14 : [ g-BB@0x1e ]
+	5       (00000014) and-int/lit16        v1, v1, -257
+	6       (00000018) goto                 +3h
+
+g-BB@0x1a : [ g-BB@0x1e ]
+	7       (0000001a) or-int/lit16         v1, v1, 256
+
+g-BB@0x1e : 
+	8       (0000001e) invoke-virtual       v0, v1, Landroid/view/View;->setSystemUiVisibility(I)V
+	9       (00000024) invoke-virtual       v2, v3, Landroid/view/Window;->setDecorFitsSystemWindows(Z)V
+	10      (0000002a) return-void          
+

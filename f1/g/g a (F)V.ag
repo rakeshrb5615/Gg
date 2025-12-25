@@ -1,0 +1,120 @@
+# Lf1/g;->a(F)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:float
+#
+# - return:void
+
+a-BB@0x0 : [ a-BB@0x8 a-BB@0xe ]
+	0       (00000000) iget-boolean         v0, v6, Lf1/g;->e Z
+	1       (00000004) if-eqz               v0, +005h
+
+a-BB@0x8 : 
+	2       (00000008) iput                 v7, v6, Lf1/g;->k F
+	3       (0000000c) return-void          
+
+a-BB@0xe : [ a-BB@0x16 a-BB@0x24 ]
+	4       (0000000e) iget-object          v0, v6, Lf1/g;->j Lf1/h;
+	5       (00000012) if-nez               v0, +009h
+
+a-BB@0x16 : [ a-BB@0x24 ]
+	6       (00000016) new-instance         v0, Lf1/h;
+	7       (0000001a) invoke-direct        v0, v7, Lf1/h;-><init>(F)V
+	8       (00000020) iput-object          v0, v6, Lf1/g;->j Lf1/h;
+
+a-BB@0x24 : [ a-BB@0x42 a-BB@0x120 ]
+	9       (00000024) iget-object          v0, v6, Lf1/g;->j Lf1/h;
+	10      (00000028) float-to-double      v1, v7
+	11      (0000002a) iput-wide            v1, v0, Lf1/h;->i D
+	12      (0000002e) double-to-float      v7, v1
+	13      (00000030) float-to-double      v1, v7
+	14      (00000032) const                v7, 2139095039
+	15      (00000038) float-to-double      v3, v7
+	16      (0000003a) cmpl-double          v3, v1, v3
+	17      (0000003e) if-gtz               v3, +071h
+
+a-BB@0x42 : [ a-BB@0x52 a-BB@0x110 ]
+	18      (00000042) const                v3, -8388609
+	19      (00000048) float-to-double      v4, v3
+	20      (0000004a) cmpg-double          v1, v1, v4
+	21      (0000004e) if-ltz               v1, +061h
+
+a-BB@0x52 : [ a-BB@0xa8 a-BB@0x100 ]
+	22      (00000052) iget                 v1, v6, Lf1/g;->g F
+	23      (00000056) const/high16         v2, 1061158912
+	24      (0000005a) mul-float/2addr      v1, v2
+	25      (0000005c) float-to-double      v1, v1
+	26      (0000005e) invoke-static        v1, v2, Ljava/lang/Math;->abs(D)D
+	27      (00000064) move-result-wide     v1
+	28      (00000066) iput-wide            v1, v0, Lf1/h;->d D
+	29      (0000006a) const-wide           v4, 4633992910331707392
+	30      (00000074) mul-double/2addr     v1, v4
+	31      (00000076) iput-wide            v1, v0, Lf1/h;->e D
+	32      (0000007a) invoke-static        Lf1/g;->b()Lf1/d;
+	33      (00000080) move-result-object   v0
+	34      (00000082) iget-object          v0, v0, Lf1/d;->e Lk2/c;
+	35      (00000086) invoke-virtual       v0, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	36      (0000008c) invoke-static        Ljava/lang/Thread;->currentThread()Ljava/lang/Thread;
+	37      (00000092) move-result-object   v1
+	38      (00000094) iget-object          v0, v0, Lk2/c;->c Ljava/lang/Object;
+	39      (00000098) check-cast           v0, Landroid/os/Looper;
+	40      (0000009c) invoke-virtual       v0, Landroid/os/Looper;->getThread()Ljava/lang/Thread;
+	41      (000000a2) move-result-object   v0
+	42      (000000a4) if-ne                v1, v0, +02eh
+
+a-BB@0xa8 : [ a-BB@0xb0 a-BB@0xfe ]
+	43      (000000a8) iget-boolean         v0, v6, Lf1/g;->e Z
+	44      (000000ac) if-nez               v0, +029h
+
+a-BB@0xb0 : [ a-BB@0xb4 a-BB@0xfe ]
+	45      (000000b0) if-nez               v0, +027h
+
+a-BB@0xb4 : [ a-BB@0xd6 a-BB@0xee ]
+	46      (000000b4) const/4              v0, 1
+	47      (000000b6) iput-boolean         v0, v6, Lf1/g;->e Z
+	48      (000000ba) iget-object          v0, v6, Lf1/g;->d Lq4/b;
+	49      (000000be) iget-object          v1, v6, Lf1/g;->c Lv3/a0;
+	50      (000000c2) invoke-virtual       v0, v1, Lq4/b;->y(Lv3/a0;)F
+	51      (000000c8) move-result          v0
+	52      (000000ca) iput                 v0, v6, Lf1/g;->b F
+	53      (000000ce) cmpl-float           v7, v0, v7
+	54      (000000d2) if-gtz               v7, +00eh
+
+a-BB@0xd6 : [ a-BB@0xde a-BB@0xee ]
+	55      (000000d6) cmpg-float           v7, v0, v3
+	56      (000000da) if-ltz               v7, +00ah
+
+a-BB@0xde : 
+	57      (000000de) invoke-static        Lf1/g;->b()Lf1/d;
+	58      (000000e4) move-result-object   v7
+	59      (000000e6) invoke-virtual       v7, v6, Lf1/d;->a(Lf1/g;)V
+	60      (000000ec) return-void          
+
+a-BB@0xee : 
+	61      (000000ee) new-instance         v7, Ljava/lang/IllegalArgumentException;
+	62      (000000f2) const-string         v0, "Starting value need to be in between min value and max value"
+	63      (000000f6) invoke-direct        v7, v0, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	64      (000000fc) throw                v7
+
+a-BB@0xfe : 
+	65      (000000fe) return-void          
+
+a-BB@0x100 : 
+	66      (00000100) new-instance         v7, Landroid/util/AndroidRuntimeException;
+	67      (00000104) const-string         v0, "Animations may only be started on the same thread as the animation handler"
+	68      (00000108) invoke-direct        v7, v0, Landroid/util/AndroidRuntimeException;-><init>(Ljava/lang/String;)V
+	69      (0000010e) throw                v7
+
+a-BB@0x110 : 
+	70      (00000110) new-instance         v7, Ljava/lang/UnsupportedOperationException;
+	71      (00000114) const-string         v0, "Final position of the spring cannot be less than the min value."
+	72      (00000118) invoke-direct        v7, v0, Ljava/lang/UnsupportedOperationException;-><init>(Ljava/lang/String;)V
+	73      (0000011e) throw                v7
+
+a-BB@0x120 : 
+	74      (00000120) new-instance         v7, Ljava/lang/UnsupportedOperationException;
+	75      (00000124) const-string         v0, "Final position of the spring cannot be greater than the max value."
+	76      (00000128) invoke-direct        v7, v0, Ljava/lang/UnsupportedOperationException;-><init>(Ljava/lang/String;)V
+	77      (0000012e) throw                v7
+

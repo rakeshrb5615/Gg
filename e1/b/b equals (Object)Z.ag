@@ -1,0 +1,103 @@
+# Le1/b;->equals(Ljava/lang/Object;)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:java.lang.Object
+#
+# - return:boolean
+
+equals-BB@0x0 : [ equals-BB@0xa equals-BB@0xc ]
+	0       (00000000) instance-of          v0, v7, Le1/b;
+	1       (00000004) const/4              v1, 0
+	2       (00000006) if-nez               v0, +003h
+
+equals-BB@0xa : [ equals-BB@0xc0 ]
+	3       (0000000a) goto                 +5bh
+
+equals-BB@0xc : [ equals-BB@0x1e equals-BB@0x20 ]
+	4       (0000000c) check-cast           v7, Le1/b;
+	5       (00000010) iget-object          v7, v7, Le1/b;->a Ljava/util/LinkedHashMap;
+	6       (00000014) iget-object          v0, v6, Le1/b;->a Ljava/util/LinkedHashMap;
+	7       (00000018) const/4              v2, 1
+	8       (0000001a) if-ne                v7, v0, +003h
+
+equals-BB@0x1e : [ equals-BB@0xc2 ]
+	9       (0000001e) goto                 +52h
+
+equals-BB@0x20 : [ equals-BB@0x34 equals-BB@0x36 ]
+	10      (00000020) invoke-interface     v7, Ljava/util/Map;->size()I
+	11      (00000026) move-result          v3
+	12      (00000028) invoke-interface     v0, Ljava/util/Map;->size()I
+	13      (0000002e) move-result          v4
+	14      (00000030) if-eq                v3, v4, +003h
+
+equals-BB@0x34 : [ equals-BB@0xc0 ]
+	15      (00000034) goto                 +46h
+
+equals-BB@0x36 : [ equals-BB@0x42 equals-BB@0x44 ]
+	16      (00000036) invoke-interface     v7, Ljava/util/Map;->isEmpty()Z
+	17      (0000003c) move-result          v3
+	18      (0000003e) if-eqz               v3, +003h
+
+equals-BB@0x42 : [ equals-BB@0xc2 ]
+	19      (00000042) goto                 +40h
+
+equals-BB@0x44 : [ equals-BB@0x54 ]
+	20      (00000044) invoke-virtual       v7, Ljava/util/LinkedHashMap;->entrySet()Ljava/util/Set;
+	21      (0000004a) move-result-object   v7
+	22      (0000004c) invoke-interface     v7, Ljava/util/Set;->iterator()Ljava/util/Iterator;
+	23      (00000052) move-result-object   v7
+
+equals-BB@0x54 : [ equals-BB@0x60 equals-BB@0xc2 ]
+	24      (00000054) invoke-interface     v7, Ljava/util/Iterator;->hasNext()Z
+	25      (0000005a) move-result          v3
+	26      (0000005c) if-eqz               v3, +033h
+
+equals-BB@0x60 : [ equals-BB@0x80 equals-BB@0xba ]
+	27      (00000060) invoke-interface     v7, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	28      (00000066) move-result-object   v3
+	29      (00000068) check-cast           v3, Ljava/util/Map$Entry;
+	30      (0000006c) invoke-interface     v3, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
+	31      (00000072) move-result-object   v4
+	32      (00000074) invoke-virtual       v0, v4, Ljava/util/LinkedHashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	33      (0000007a) move-result-object   v4
+	34      (0000007c) if-eqz               v4, +01fh
+
+equals-BB@0x80 : [ equals-BB@0x90 equals-BB@0xb0 ]
+	35      (00000080) invoke-interface     v3, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
+	36      (00000086) move-result-object   v3
+	37      (00000088) instance-of          v5, v3, [B
+	38      (0000008c) if-eqz               v5, +012h
+
+equals-BB@0x90 : [ equals-BB@0x98 equals-BB@0xba ]
+	39      (00000090) instance-of          v5, v4, [B
+	40      (00000094) if-eqz               v5, +013h
+
+equals-BB@0x98 : [ equals-BB@0xac equals-BB@0xba ]
+	41      (00000098) check-cast           v3, [B
+	42      (0000009c) check-cast           v4, [B
+	43      (000000a0) invoke-static        v3, v4, Ljava/util/Arrays;->equals([B [B)Z
+	44      (000000a6) move-result          v3
+	45      (000000a8) if-eqz               v3, +009h
+
+equals-BB@0xac : [ equals-BB@0xbc ]
+	46      (000000ac) move                 v3, v2
+	47      (000000ae) goto                 +7h
+
+equals-BB@0xb0 : [ equals-BB@0xbc ]
+	48      (000000b0) invoke-static        v3, v4, Lkotlin/jvm/internal/j;->a(Ljava/lang/Object; Ljava/lang/Object;)Z
+	49      (000000b6) move-result          v3
+	50      (000000b8) goto                 +2h
+
+equals-BB@0xba : [ equals-BB@0xbc ]
+	51      (000000ba) move                 v3, v1
+
+equals-BB@0xbc : [ equals-BB@0xc0 equals-BB@0x54 ]
+	52      (000000bc) if-nez               v3, -034h
+
+equals-BB@0xc0 : 
+	53      (000000c0) return               v1
+
+equals-BB@0xc2 : 
+	54      (000000c2) return               v2
+

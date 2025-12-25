@@ -1,0 +1,34 @@
+# Le/a;->writeToParcel(Landroid/os/Parcel; I)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:android.os.Parcel
+# - v4:int
+#
+# - return:void
+
+writeToParcel-BB@0x0 : [ writeToParcel-BB@0x1c writeToParcel-BB@0x20 ]
+	0       (00000000) const-string         v0, "dest"
+	1       (00000004) invoke-static        v3, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) iget                 v0, v2, Le/a;->a I
+	3       (0000000e) invoke-virtual       v3, v0, Landroid/os/Parcel;->writeInt(I)V
+	4       (00000014) iget-object          v0, v2, Le/a;->b Landroid/content/Intent;
+	5       (00000018) if-nez               v0, +004h
+
+writeToParcel-BB@0x1c : [ writeToParcel-BB@0x22 ]
+	6       (0000001c) const/4              v1, 0
+	7       (0000001e) goto                 +2h
+
+writeToParcel-BB@0x20 : [ writeToParcel-BB@0x22 ]
+	8       (00000020) const/4              v1, 1
+
+writeToParcel-BB@0x22 : [ writeToParcel-BB@0x2c writeToParcel-BB@0x32 ]
+	9       (00000022) invoke-virtual       v3, v1, Landroid/os/Parcel;->writeInt(I)V
+	10      (00000028) if-eqz               v0, +005h
+
+writeToParcel-BB@0x2c : [ writeToParcel-BB@0x32 ]
+	11      (0000002c) invoke-virtual       v0, v3, v4, Landroid/content/Intent;->writeToParcel(Landroid/os/Parcel; I)V
+
+writeToParcel-BB@0x32 : 
+	12      (00000032) return-void          
+

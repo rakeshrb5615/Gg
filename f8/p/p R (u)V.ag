@@ -1,0 +1,78 @@
+# Lf8/p;->R(Lz8/u;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:z8.u
+#
+# - return:void
+
+R-BB@0x0 : [ R-BB@0xe ]
+	0       (00000000) iget-object          v0, v5, Lf8/p;->d Lf8/c;
+	1       (00000004) invoke-virtual       v0, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	2       (0000000a) sget-object          v1, Lf8/c;->p Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;
+
+R-BB@0xe : [ R-BB@0x1c R-BB@0x1e ]
+	3       (0000000e) const/4              v2, 0
+	4       (00000010) invoke-virtual       v1, v0, v2, v6, Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;->compareAndSet(Ljava/lang/Object; Ljava/lang/Object; Ljava/lang/Object;)Z
+	5       (00000016) move-result          v2
+	6       (00000018) if-eqz               v2, +003h
+
+R-BB@0x1c : 
+	7       (0000001c) return-void          
+
+R-BB@0x1e : [ R-BB@0x2a R-BB@0xe ]
+	8       (0000001e) invoke-virtual       v1, v0, Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	9       (00000024) move-result-object   v2
+	10      (00000026) if-eqz               v2, -00ch
+
+R-BB@0x2a : [ R-BB@0x3a R-BB@0x68 ]
+	11      (0000002a) invoke-virtual       v1, v0, Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	12      (00000030) move-result-object   v2
+	13      (00000032) sget-object          v3, Lf8/e;->q Ld4/l;
+	14      (00000036) if-ne                v2, v3, +019h
+
+R-BB@0x3a : [ R-BB@0x3e ]
+	15      (0000003a) sget-object          v4, Lf8/e;->r Ld4/l;
+
+R-BB@0x3e : [ R-BB@0x4a R-BB@0x5a ]
+	16      (0000003e) invoke-virtual       v1, v0, v3, v4, Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;->compareAndSet(Ljava/lang/Object; Ljava/lang/Object; Ljava/lang/Object;)Z
+	17      (00000044) move-result          v2
+	18      (00000046) if-eqz               v2, +00ah
+
+R-BB@0x4a : 
+	19      (0000004a) invoke-virtual       v0, Lf8/c;->m()Ljava/lang/Throwable;
+	20      (00000050) move-result-object   v0
+	21      (00000052) invoke-virtual       v6, v0, Lz8/u;->invoke(Ljava/lang/Object;)Ljava/lang/Object;
+	22      (00000058) return-void          
+
+R-BB@0x5a : [ R-BB@0x66 R-BB@0x3e ]
+	23      (0000005a) invoke-virtual       v1, v0, Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	24      (00000060) move-result-object   v2
+	25      (00000062) if-eq                v2, v3, -012h
+
+R-BB@0x66 : [ R-BB@0x2a ]
+	26      (00000066) goto                 -1eh
+
+R-BB@0x68 : [ R-BB@0x70 R-BB@0x80 ]
+	27      (00000068) sget-object          v6, Lf8/e;->r Ld4/l;
+	28      (0000006c) if-ne                v2, v6, +00ah
+
+R-BB@0x70 : 
+	29      (00000070) new-instance         v6, Ljava/lang/IllegalStateException;
+	30      (00000074) const-string         v0, "Another handler was already registered and successfully invoked"
+	31      (00000078) invoke-direct        v6, v0, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	32      (0000007e) throw                v6
+
+R-BB@0x80 : 
+	33      (00000080) new-instance         v6, Ljava/lang/IllegalStateException;
+	34      (00000084) new-instance         v0, Ljava/lang/StringBuilder;
+	35      (00000088) const-string         v1, "Another handler is already registered: "
+	36      (0000008c) invoke-direct        v0, v1, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	37      (00000092) invoke-virtual       v0, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	38      (00000098) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	39      (0000009e) move-result-object   v0
+	40      (000000a0) invoke-virtual       v0, Ljava/lang/Object;->toString()Ljava/lang/String;
+	41      (000000a6) move-result-object   v0
+	42      (000000a8) invoke-direct        v6, v0, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	43      (000000ae) throw                v6
+

@@ -1,0 +1,23 @@
+# Le7/b;->C()I [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v2
+#
+# - return:int
+
+C-BB@0x0 : [ C-BB@0x8 C-BB@0x16 ]
+	0       (00000000) iget                 v0, v2, Le7/b;->c I
+	1       (00000004) if-eqz               v0, +009h
+
+C-BB@0x8 : 
+	2       (00000008) iget-object          v1, v2, Le7/b;->b [I
+	3       (0000000c) add-int/lit8         v0, v0, -1
+	4       (00000010) aget                 v0, v1, v0
+	5       (00000014) return               v0
+
+C-BB@0x16 : 
+	6       (00000016) new-instance         v0, Ljava/lang/IllegalStateException;
+	7       (0000001a) const-string         v1, "JsonWriter is closed."
+	8       (0000001e) invoke-direct        v0, v1, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	9       (00000024) throw                v0
+

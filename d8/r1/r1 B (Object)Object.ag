@@ -1,0 +1,56 @@
+# Ld8/r1;->B(Ljava/lang/Object;)Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:java.lang.Object
+#
+# - return:java.lang.Object
+
+B-BB@0x0 : [ B-BB@0x1c B-BB@0x26 ]
+	0       (00000000) sget-object          v0, Ld8/r1;->a Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;
+	1       (00000004) invoke-virtual       v0, v4, Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	2       (0000000a) move-result-object   v0
+	3       (0000000c) invoke-virtual       v4, v0, v5, Ld8/r1;->M(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	4       (00000012) move-result-object   v0
+	5       (00000014) sget-object          v1, Ld8/f0;->d Ld4/l;
+	6       (00000018) if-eq                v0, v1, +007h
+
+B-BB@0x1c : [ B-BB@0x24 B-BB@0x0 ]
+	7       (0000001c) sget-object          v1, Ld8/f0;->f Ld4/l;
+	8       (00000020) if-eq                v0, v1, -010h
+
+B-BB@0x24 : 
+	9       (00000024) return-object        v0
+
+B-BB@0x26 : [ B-BB@0x60 B-BB@0x66 ]
+	10      (00000026) new-instance         v0, Ljava/lang/IllegalStateException;
+	11      (0000002a) new-instance         v1, Ljava/lang/StringBuilder;
+	12      (0000002e) const-string         v2, "Job "
+	13      (00000032) invoke-direct        v1, v2, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	14      (00000038) invoke-virtual       v1, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	15      (0000003e) const-string         v2, " is already complete or completing, but is being completed with "
+	16      (00000042) invoke-virtual       v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	17      (00000048) invoke-virtual       v1, v5, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	18      (0000004e) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	19      (00000054) move-result-object   v1
+	20      (00000056) instance-of          v2, v5, Ld8/w;
+	21      (0000005a) const/4              v3, 0
+	22      (0000005c) if-eqz               v2, +005h
+
+B-BB@0x60 : [ B-BB@0x68 ]
+	23      (00000060) check-cast           v5, Ld8/w;
+	24      (00000064) goto                 +2h
+
+B-BB@0x66 : [ B-BB@0x68 ]
+	25      (00000066) move-object          v5, v3
+
+B-BB@0x68 : [ B-BB@0x6c B-BB@0x70 ]
+	26      (00000068) if-eqz               v5, +004h
+
+B-BB@0x6c : [ B-BB@0x70 ]
+	27      (0000006c) iget-object          v3, v5, Ld8/w;->a Ljava/lang/Throwable;
+
+B-BB@0x70 : 
+	28      (00000070) invoke-direct        v0, v1, v3, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	29      (00000076) throw                v0
+

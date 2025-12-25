@@ -1,0 +1,76 @@
+# Le1/b;->a()Ljava/util/Map; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v6
+#
+# - return:java.util.Map
+
+a-BB@0x0 : [ a-BB@0x28 a-BB@0x2a ]
+	0       (00000000) iget-object          v0, v6, Le1/b;->a Ljava/util/LinkedHashMap;
+	1       (00000004) invoke-virtual       v0, Ljava/util/LinkedHashMap;->entrySet()Ljava/util/Set;
+	2       (0000000a) move-result-object   v0
+	3       (0000000c) const/16             v1, 10
+	4       (00000010) invoke-static        v0, v1, Li7/j;->X(Ljava/lang/Iterable; I)I
+	5       (00000016) move-result          v1
+	6       (00000018) invoke-static        v1, Li7/r;->l0(I)I
+	7       (0000001e) move-result          v1
+	8       (00000020) const/16             v2, 16
+	9       (00000024) if-ge                v1, v2, +003h
+
+a-BB@0x28 : [ a-BB@0x2a ]
+	10      (00000028) move                 v1, v2
+
+a-BB@0x2a : [ a-BB@0x3c ]
+	11      (0000002a) new-instance         v2, Ljava/util/LinkedHashMap;
+	12      (0000002e) invoke-direct        v2, v1, Ljava/util/LinkedHashMap;-><init>(I)V
+	13      (00000034) invoke-interface     v0, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
+	14      (0000003a) move-result-object   v0
+
+a-BB@0x3c : [ a-BB@0x48 a-BB@0xba ]
+	15      (0000003c) invoke-interface     v0, Ljava/util/Iterator;->hasNext()Z
+	16      (00000042) move-result          v1
+	17      (00000044) if-eqz               v1, +03bh
+
+a-BB@0x48 : [ a-BB@0x64 a-BB@0x90 ]
+	18      (00000048) invoke-interface     v0, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	19      (0000004e) move-result-object   v1
+	20      (00000050) check-cast           v1, Ljava/util/Map$Entry;
+	21      (00000054) invoke-interface     v1, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
+	22      (0000005a) move-result-object   v3
+	23      (0000005c) instance-of          v4, v3, [B
+	24      (00000060) if-eqz               v4, +018h
+
+a-BB@0x64 : [ a-BB@0xaa ]
+	25      (00000064) new-instance         v4, Lh7/f;
+	26      (00000068) invoke-interface     v1, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
+	27      (0000006e) move-result-object   v1
+	28      (00000070) check-cast           v3, [B
+	29      (00000074) array-length         v5, v3
+	30      (00000076) invoke-static        v3, v5, Ljava/util/Arrays;->copyOf([B I)[B
+	31      (0000007c) move-result-object   v3
+	32      (0000007e) const-string         v5, "copyOf(this, size)"
+	33      (00000082) invoke-static        v3, v5, Lkotlin/jvm/internal/j;->d(Ljava/lang/Object; Ljava/lang/String;)V
+	34      (00000088) invoke-direct        v4, v1, v3, Lh7/f;-><init>(Ljava/lang/Object; Ljava/lang/Object;)V
+	35      (0000008e) goto                 +eh
+
+a-BB@0x90 : [ a-BB@0xaa ]
+	36      (00000090) new-instance         v4, Lh7/f;
+	37      (00000094) invoke-interface     v1, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
+	38      (0000009a) move-result-object   v3
+	39      (0000009c) invoke-interface     v1, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
+	40      (000000a2) move-result-object   v1
+	41      (000000a4) invoke-direct        v4, v3, v1, Lh7/f;-><init>(Ljava/lang/Object; Ljava/lang/Object;)V
+
+a-BB@0xaa : [ a-BB@0x3c ]
+	42      (000000aa) iget-object          v1, v4, Lh7/f;->a Ljava/lang/Object;
+	43      (000000ae) iget-object          v3, v4, Lh7/f;->b Ljava/lang/Object;
+	44      (000000b2) invoke-interface     v2, v1, v3, Ljava/util/Map;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	45      (000000b8) goto                 -3eh
+
+a-BB@0xba : 
+	46      (000000ba) invoke-static        v2, Ljava/util/Collections;->unmodifiableMap(Ljava/util/Map;)Ljava/util/Map;
+	47      (000000c0) move-result-object   v0
+	48      (000000c2) const-string         v1, "unmodifiableMap(map)"
+	49      (000000c6) invoke-static        v0, v1, Lkotlin/jvm/internal/j;->d(Ljava/lang/Object; Ljava/lang/String;)V
+	50      (000000cc) return-object        v0
+

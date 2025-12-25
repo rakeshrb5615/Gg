@@ -1,0 +1,109 @@
+# Le1/c;->invokeSuspend(Ljava/lang/Object;)Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:java.lang.Object
+#
+# - return:java.lang.Object
+
+invokeSuspend-BB@0x0 : [ D:invokeSuspend-BB@0xa 0:invokeSuspend-BB@0x84 ]
+	0       (00000000) iget                 v0, v4, Le1/c;->a I
+	1       (00000004) packed-switch        v0, +000007ah
+
+invokeSuspend-BB@0xa : [ invokeSuspend-BB@0x18 invokeSuspend-BB@0x3c ]
+	2       (0000000a) sget-object          v0, Lm7/a;->a Lm7/a;
+	3       (0000000e) iget                 v1, v4, Le1/c;->b I
+	4       (00000012) const/4              v2, 1
+	5       (00000014) if-eqz               v1, +014h
+
+invokeSuspend-BB@0x18 : [ invokeSuspend-BB@0x1c invokeSuspend-BB@0x2c ]
+	6       (00000018) if-ne                v1, v2, +00ah
+
+invokeSuspend-BB@0x1c : [ invokeSuspend-BB@0x82 ]
+	7       (0000001c) iget-object          v0, v4, Le1/c;->c Ljava/lang/Object;
+	8       (00000020) check-cast           v0, Le1/b;
+	9       (00000024) invoke-static        v5, Lc4/b;->e0(Ljava/lang/Object;)V
+	10      (0000002a) goto                 +2ch
+
+invokeSuspend-BB@0x2c : 
+	11      (0000002c) new-instance         v5, Ljava/lang/IllegalStateException;
+	12      (00000030) const-string         v0, "call to 'resume' before 'invoke' with coroutine"
+	13      (00000034) invoke-direct        v5, v0, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	14      (0000003a) throw                v5
+
+invokeSuspend-BB@0x3c : [ invokeSuspend-BB@0x7e invokeSuspend-BB@0x80 ]
+	15      (0000003c) invoke-static        v5, Lc4/b;->e0(Ljava/lang/Object;)V
+	16      (00000042) iget-object          v5, v4, Le1/c;->c Ljava/lang/Object;
+	17      (00000046) check-cast           v5, Le1/b;
+	18      (0000004a) new-instance         v1, Le1/b;
+	19      (0000004e) invoke-virtual       v5, Le1/b;->a()Ljava/util/Map;
+	20      (00000054) move-result-object   v5
+	21      (00000056) invoke-static        v5, Li7/r;->s0(Ljava/util/Map;)Ljava/util/LinkedHashMap;
+	22      (0000005c) move-result-object   v5
+	23      (0000005e) const/4              v3, 0
+	24      (00000060) invoke-direct        v1, v5, v3, Le1/b;-><init>(Ljava/util/LinkedHashMap; Z)V
+	25      (00000066) iput-object          v1, v4, Le1/c;->c Ljava/lang/Object;
+	26      (0000006a) iput                 v2, v4, Le1/c;->b I
+	27      (0000006e) iget-object          v5, v4, Le1/c;->d Ln7/i;
+	28      (00000072) invoke-interface     v5, v1, v4, Lu7/p;->invoke(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	29      (00000078) move-result-object   v5
+	30      (0000007a) if-ne                v5, v0, +003h
+
+invokeSuspend-BB@0x7e : [ invokeSuspend-BB@0x82 ]
+	31      (0000007e) goto                 +2h
+
+invokeSuspend-BB@0x80 : [ invokeSuspend-BB@0x82 ]
+	32      (00000080) move-object          v0, v1
+
+invokeSuspend-BB@0x82 : 
+	33      (00000082) return-object        v0
+
+invokeSuspend-BB@0x84 : [ invokeSuspend-BB@0x92 invokeSuspend-BB@0xae ]
+	34      (00000084) sget-object          v0, Lm7/a;->a Lm7/a;
+	35      (00000088) iget                 v1, v4, Le1/c;->b I
+	36      (0000008c) const/4              v2, 1
+	37      (0000008e) if-eqz               v1, +010h
+
+invokeSuspend-BB@0x92 : [ invokeSuspend-BB@0x96 invokeSuspend-BB@0x9e ]
+	38      (00000092) if-ne                v1, v2, +006h
+
+invokeSuspend-BB@0x96 : [ invokeSuspend-BB@0xd2 ]
+	39      (00000096) invoke-static        v5, Lc4/b;->e0(Ljava/lang/Object;)V
+	40      (0000009c) goto                 +1bh
+
+invokeSuspend-BB@0x9e : 
+	41      (0000009e) new-instance         v5, Ljava/lang/IllegalStateException;
+	42      (000000a2) const-string         v0, "call to 'resume' before 'invoke' with coroutine"
+	43      (000000a6) invoke-direct        v5, v0, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	44      (000000ac) throw                v5
+
+invokeSuspend-BB@0xae : [ invokeSuspend-BB@0xd0 invokeSuspend-BB@0xd2 ]
+	45      (000000ae) invoke-static        v5, Lc4/b;->e0(Ljava/lang/Object;)V
+	46      (000000b4) iget-object          v5, v4, Le1/c;->c Ljava/lang/Object;
+	47      (000000b8) check-cast           v5, Le1/b;
+	48      (000000bc) iput                 v2, v4, Le1/c;->b I
+	49      (000000c0) iget-object          v1, v4, Le1/c;->d Ln7/i;
+	50      (000000c4) invoke-interface     v1, v5, v4, Lu7/p;->invoke(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	51      (000000ca) move-result-object   v5
+	52      (000000cc) if-ne                v5, v0, +003h
+
+invokeSuspend-BB@0xd0 : [ invokeSuspend-BB@0xf4 ]
+	53      (000000d0) goto                 +12h
+
+invokeSuspend-BB@0xd2 : [ invokeSuspend-BB@0xf4 ]
+	54      (000000d2) move-object          v0, v5
+	55      (000000d4) check-cast           v0, Le1/b;
+	56      (000000d8) const-string         v5, "null cannot be cast to non-null type androidx.datastore.preferences.core.MutablePreferences"
+	57      (000000dc) invoke-static        v0, v5, Lkotlin/jvm/internal/j;->c(Ljava/lang/Object; Ljava/lang/String;)V
+	58      (000000e2) iget-object          v5, v0, Le1/b;->b Ll6/c;
+	59      (000000e6) iget-object          v5, v5, Ll6/c;->b Ljava/lang/Object;
+	60      (000000ea) check-cast           v5, Ljava/util/concurrent/atomic/AtomicBoolean;
+	61      (000000ee) invoke-virtual       v5, v2, Ljava/util/concurrent/atomic/AtomicBoolean;->set(Z)V
+
+invokeSuspend-BB@0xf4 : 
+	62      (000000f4) return-object        v0
+
+invokeSuspend-BB@0xf6 : 
+	63      (000000f6) nop                  
+	64      (000000f8) packed-switch-payload 0
+

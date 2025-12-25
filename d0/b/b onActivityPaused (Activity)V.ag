@@ -1,0 +1,66 @@
+# Ld0/b;->onActivityPaused(Landroid/app/Activity;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:android.app.Activity
+#
+# - return:void
+
+onActivityPaused-BB@0x0 : [ onActivityPaused-BB@0x8 onActivityPaused-BB@0x7e ]
+	0       (00000000) iget-boolean         v0, v4, Ld0/b;->e Z
+	1       (00000004) if-eqz               v0, +03dh
+
+onActivityPaused-BB@0x8 : [ onActivityPaused-BB@0x10 onActivityPaused-BB@0x7e ]
+	2       (00000008) iget-boolean         v0, v4, Ld0/b;->f Z
+	3       (0000000c) if-nez               v0, +039h
+
+onActivityPaused-BB@0x10 : [ onActivityPaused-BB@0x18 onActivityPaused-BB@0x7e ]
+	4       (00000010) iget-boolean         v0, v4, Ld0/b;->d Z
+	5       (00000014) if-nez               v0, +035h
+
+onActivityPaused-BB@0x18 : [ onActivityPaused-BB@0x1c ]
+	6       (00000018) iget-object          v0, v4, Ld0/b;->a Ljava/lang/Object;
+
+onActivityPaused-BB@0x1c : [ onActivityPaused-BB@0x2c onActivityPaused-BB@0x7e ]
+	7       (0000001c) sget-object          v1, Ld0/c;->c Ljava/lang/reflect/Field;
+	8       (00000020) invoke-virtual       v1, v5, Ljava/lang/reflect/Field;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	9       (00000026) move-result-object   v1
+	10      (00000028) if-ne                v1, v0, +02bh
+	1c:33
+	(Ljava/lang/Throwable; -> 6e onActivityPaused-BB@0x6e)
+
+onActivityPaused-BB@0x2c : [ onActivityPaused-BB@0x3c onActivityPaused-BB@0x3e ]
+	11      (0000002c) invoke-virtual       v5, Ljava/lang/Object;->hashCode()I
+	12      (00000032) move-result          v0
+	13      (00000034) iget                 v2, v4, Ld0/b;->c I
+	14      (00000038) if-eq                v0, v2, +003h
+
+onActivityPaused-BB@0x3c : [ onActivityPaused-BB@0x7e ]
+	15      (0000003c) goto                 +21h
+
+onActivityPaused-BB@0x3e : 
+	16      (0000003e) sget-object          v0, Ld0/c;->b Ljava/lang/reflect/Field;
+	17      (00000042) invoke-virtual       v0, v5, Ljava/lang/reflect/Field;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	18      (00000048) move-result-object   v5
+	19      (0000004a) sget-object          v0, Ld0/c;->g Landroid/os/Handler;
+	20      (0000004e) new-instance         v2, Lb5/l;
+	21      (00000052) const/4              v3, 3
+	22      (00000054) invoke-direct        v2, v3, v5, v1, Lb5/l;-><init>(I Ljava/lang/Object; Ljava/lang/Object;)V
+	23      (0000005a) invoke-virtual       v0, v2, Landroid/os/Handler;->postAtFrontOfQueue(Ljava/lang/Runnable;)Z
+	24      (00000060) const/4              v5, 1
+	25      (00000062) iput-boolean         v5, v4, Ld0/b;->f Z
+	26      (00000066) const/4              v5, 0
+	27      (00000068) iput-object          v5, v4, Ld0/b;->a Ljava/lang/Object;
+	28      (0000006c) return-void          
+	3e:5f
+	(Ljava/lang/Throwable; -> 6e onActivityPaused-BB@0x6e)
+
+onActivityPaused-BB@0x6e : [ onActivityPaused-BB@0x7e ]
+	29      (0000006e) move-exception       v5
+	30      (00000070) const-string         v0, "ActivityRecreator"
+	31      (00000074) const-string         v1, "Exception while fetching field values"
+	32      (00000078) invoke-static        v0, v1, v5, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+
+onActivityPaused-BB@0x7e : 
+	33      (0000007e) return-void          
+

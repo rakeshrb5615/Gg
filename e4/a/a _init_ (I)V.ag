@@ -1,0 +1,71 @@
+# Le4/a;-><init>(I)V [access_flags=public constructor]
+#
+# Parameters:
+# - local registers: v0...v7
+# - v8:int
+#
+# - return:void
+
+<init>-BB@0x0 : [ <init>-BB@0x2c <init>-BB@0x8a ]
+	0       (00000000) new-instance         v0, Lcom/google/android/gms/common/api/Status;
+	1       (00000004) invoke-static        Ljava/util/Locale;->getDefault()Ljava/util/Locale;
+	2       (0000000a) move-result-object   v1
+	3       (0000000c) invoke-static        v8, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+	4       (00000012) move-result-object   v2
+	5       (00000014) sget-object          v3, Lf4/a;->a Ljava/util/HashMap;
+	6       (00000018) invoke-static        v8, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+	7       (0000001e) move-result-object   v4
+	8       (00000020) invoke-virtual       v3, v4, Ljava/util/HashMap;->containsKey(Ljava/lang/Object;)Z
+	9       (00000026) move-result          v5
+	10      (00000028) if-eqz               v5, +031h
+
+<init>-BB@0x2c : [ <init>-BB@0x3c <init>-BB@0x3e ]
+	11      (0000002c) sget-object          v5, Lf4/a;->b Ljava/util/HashMap;
+	12      (00000030) invoke-virtual       v5, v4, Ljava/util/HashMap;->containsKey(Ljava/lang/Object;)Z
+	13      (00000036) move-result          v6
+	14      (00000038) if-nez               v6, +003h
+
+<init>-BB@0x3c : [ <init>-BB@0x8a ]
+	15      (0000003c) goto                 +27h
+
+<init>-BB@0x3e : [ <init>-BB@0x8e ]
+	16      (0000003e) invoke-virtual       v3, v4, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	17      (00000044) move-result-object   v3
+	18      (00000046) check-cast           v3, Ljava/lang/String;
+	19      (0000004a) invoke-virtual       v5, v4, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	20      (00000050) move-result-object   v4
+	21      (00000052) check-cast           v4, Ljava/lang/String;
+	22      (00000056) new-instance         v5, Ljava/lang/StringBuilder;
+	23      (0000005a) invoke-direct        v5, Ljava/lang/StringBuilder;-><init>()V
+	24      (00000060) invoke-virtual       v5, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	25      (00000066) const-string         v3, " (https://developer.android.com/reference/com/google/android/play/core/install/model/InstallErrorCode#"
+	26      (0000006a) invoke-virtual       v5, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	27      (00000070) invoke-virtual       v5, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	28      (00000076) const-string         v3, ")"
+	29      (0000007a) invoke-virtual       v5, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	30      (00000080) invoke-virtual       v5, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	31      (00000086) move-result-object   v3
+	32      (00000088) goto                 +3h
+
+<init>-BB@0x8a : [ <init>-BB@0x8e ]
+	33      (0000008a) const-string         v3, ""
+
+<init>-BB@0x8e : [ <init>-BB@0xb2 <init>-BB@0xb4 ]
+	34      (0000008e) filled-new-array     v2, v3, [Ljava/lang/Object;
+	35      (00000094) move-result-object   v2
+	36      (00000096) const-string         v3, "Install Error(%d): %s"
+	37      (0000009a) invoke-static        v1, v3, v2, Ljava/lang/String;->format(Ljava/util/Locale; Ljava/lang/String; [Ljava/lang/Object;)Ljava/lang/String;
+	38      (000000a0) move-result-object   v1
+	39      (000000a2) invoke-direct        v0, v8, v1, Lcom/google/android/gms/common/api/Status;-><init>(I Ljava/lang/String;)V
+	40      (000000a8) invoke-direct        v7, v0, Lcom/google/android/gms/common/api/ApiException;-><init>(Lcom/google/android/gms/common/api/Status;)V
+	41      (000000ae) if-eqz               v8, +003h
+
+<init>-BB@0xb2 : 
+	42      (000000b2) return-void          
+
+<init>-BB@0xb4 : 
+	43      (000000b4) new-instance         v8, Ljava/lang/IllegalArgumentException;
+	44      (000000b8) const-string         v0, "errorCode should not be 0."
+	45      (000000bc) invoke-direct        v8, v0, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	46      (000000c2) throw                v8
+

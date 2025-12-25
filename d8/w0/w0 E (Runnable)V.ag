@@ -1,0 +1,32 @@
+# Ld8/w0;->E(Ljava/lang/Runnable;)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:java.lang.Runnable
+#
+# - return:void
+
+E-BB@0x0 : [ E-BB@0x12 E-BB@0x2e ]
+	0       (00000000) invoke-virtual       v1, Ld8/w0;->F()V
+	1       (00000006) invoke-virtual       v1, v2, Ld8/w0;->G(Ljava/lang/Runnable;)Z
+	2       (0000000c) move-result          v0
+	3       (0000000e) if-eqz               v0, +010h
+
+E-BB@0x12 : [ E-BB@0x26 E-BB@0x2c ]
+	4       (00000012) invoke-virtual       v1, Ld8/x0;->z()Ljava/lang/Thread;
+	5       (00000018) move-result-object   v2
+	6       (0000001a) invoke-static        Ljava/lang/Thread;->currentThread()Ljava/lang/Thread;
+	7       (00000020) move-result-object   v0
+	8       (00000022) if-eq                v0, v2, +005h
+
+E-BB@0x26 : [ E-BB@0x2c ]
+	9       (00000026) invoke-static        v2, Ljava/util/concurrent/locks/LockSupport;->unpark(Ljava/lang/Thread;)V
+
+E-BB@0x2c : 
+	10      (0000002c) return-void          
+
+E-BB@0x2e : 
+	11      (0000002e) sget-object          v0, Ld8/g0;->p Ld8/g0;
+	12      (00000032) invoke-virtual       v0, v2, Ld8/g0;->E(Ljava/lang/Runnable;)V
+	13      (00000038) return-void          
+

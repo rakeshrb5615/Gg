@@ -1,0 +1,53 @@
+# Ld8/n;->toString()Ljava/lang/String; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v3
+#
+# - return:java.lang.String
+
+toString-BB@0x0 : [ toString-BB@0x52 toString-BB@0x58 ]
+	0       (00000000) new-instance         v0, Ljava/lang/StringBuilder;
+	1       (00000004) invoke-direct        v0, Ljava/lang/StringBuilder;-><init>()V
+	2       (0000000a) invoke-virtual       v3, Ld8/n;->x()Ljava/lang/String;
+	3       (00000010) move-result-object   v1
+	4       (00000012) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	5       (00000018) const/16             v1, 40
+	6       (0000001c) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+	7       (00000022) iget-object          v1, v3, Ld8/n;->d Ll7/c;
+	8       (00000026) invoke-static        v1, Ld8/f0;->u(Ll7/c;)Ljava/lang/String;
+	9       (0000002c) move-result-object   v1
+	10      (0000002e) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	11      (00000034) const-string         v1, "){"
+	12      (00000038) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	13      (0000003e) sget-object          v1, Ld8/n;->m Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;
+	14      (00000042) invoke-virtual       v1, v3, Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	15      (00000048) move-result-object   v1
+	16      (0000004a) instance-of          v2, v1, Ld8/u1;
+	17      (0000004e) if-eqz               v2, +005h
+
+toString-BB@0x52 : [ toString-BB@0x6a ]
+	18      (00000052) const-string         v1, "Active"
+	19      (00000056) goto                 +ah
+
+toString-BB@0x58 : [ toString-BB@0x60 toString-BB@0x66 ]
+	20      (00000058) instance-of          v1, v1, Ld8/o;
+	21      (0000005c) if-eqz               v1, +005h
+
+toString-BB@0x60 : [ toString-BB@0x6a ]
+	22      (00000060) const-string         v1, "Cancelled"
+	23      (00000064) goto                 +3h
+
+toString-BB@0x66 : [ toString-BB@0x6a ]
+	24      (00000066) const-string         v1, "Completed"
+
+toString-BB@0x6a : 
+	25      (0000006a) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	26      (00000070) const-string         v1, "}@"
+	27      (00000074) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	28      (0000007a) invoke-static        v3, Ld8/f0;->j(Ljava/lang/Object;)Ljava/lang/String;
+	29      (00000080) move-result-object   v1
+	30      (00000082) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	31      (00000088) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	32      (0000008e) move-result-object   v0
+	33      (00000090) return-object        v0
+

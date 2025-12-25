@@ -1,0 +1,73 @@
+# Le1/a;->invoke(Ljava/lang/Object;)Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v7
+# - v8:java.lang.Object
+#
+# - return:java.lang.Object
+
+invoke-BB@0x0 : [ invoke-BB@0x1e invoke-BB@0x7e ]
+	0       (00000000) check-cast           v8, Ljava/util/Map$Entry;
+	1       (00000004) const-string         v0, "entry"
+	2       (00000008) invoke-static        v8, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	3       (0000000e) invoke-interface     v8, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
+	4       (00000014) move-result-object   v0
+	5       (00000016) instance-of          v1, v0, [B
+	6       (0000001a) if-eqz               v1, +032h
+
+invoke-BB@0x1e : [ invoke-BB@0x3c ]
+	7       (0000001e) check-cast           v0, [B
+	8       (00000022) new-instance         v1, Ljava/lang/StringBuilder;
+	9       (00000026) invoke-direct        v1, Ljava/lang/StringBuilder;-><init>()V
+	10      (0000002c) const-string         v2, "["
+	11      (00000030) invoke-virtual       v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/CharSequence;)Ljava/lang/Appendable;
+	12      (00000036) array-length         v2, v0
+	13      (00000038) const/4              v3, 0
+	14      (0000003a) move                 v4, v3
+
+invoke-BB@0x3c : [ invoke-BB@0x40 invoke-BB@0x6a ]
+	15      (0000003c) if-ge                v3, v2, +017h
+
+invoke-BB@0x40 : [ invoke-BB@0x4c invoke-BB@0x56 ]
+	16      (00000040) aget-byte            v5, v0, v3
+	17      (00000044) const/4              v6, 1
+	18      (00000046) add-int/2addr        v4, v6
+	19      (00000048) if-le                v4, v6, +007h
+
+invoke-BB@0x4c : [ invoke-BB@0x56 ]
+	20      (0000004c) const-string         v6, ", "
+	21      (00000050) invoke-virtual       v1, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/CharSequence;)Ljava/lang/Appendable;
+
+invoke-BB@0x56 : [ invoke-BB@0x3c ]
+	22      (00000056) invoke-static        v5, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
+	23      (0000005c) move-result-object   v5
+	24      (0000005e) invoke-virtual       v1, v5, Ljava/lang/StringBuilder;->append(Ljava/lang/CharSequence;)Ljava/lang/Appendable;
+	25      (00000064) add-int/lit8         v3, v3, 1
+	26      (00000068) goto                 -16h
+
+invoke-BB@0x6a : [ invoke-BB@0x8e ]
+	27      (0000006a) const-string         v0, "]"
+	28      (0000006e) invoke-virtual       v1, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/CharSequence;)Ljava/lang/Appendable;
+	29      (00000074) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	30      (0000007a) move-result-object   v0
+	31      (0000007c) goto                 +9h
+
+invoke-BB@0x7e : [ invoke-BB@0x8e ]
+	32      (0000007e) invoke-interface     v8, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
+	33      (00000084) move-result-object   v0
+	34      (00000086) invoke-static        v0, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
+	35      (0000008c) move-result-object   v0
+
+invoke-BB@0x8e : 
+	36      (0000008e) new-instance         v1, Ljava/lang/StringBuilder;
+	37      (00000092) const-string         v2, "  "
+	38      (00000096) invoke-direct        v1, v2, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	39      (0000009c) invoke-interface     v8, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
+	40      (000000a2) move-result-object   v8
+	41      (000000a4) check-cast           v8, Le1/e;
+	42      (000000a8) iget-object          v8, v8, Le1/e;->a Ljava/lang/String;
+	43      (000000ac) const-string         v2, " = "
+	44      (000000b0) invoke-static        v1, v8, v2, v0, Lv1/a;->o(Ljava/lang/StringBuilder; Ljava/lang/String; Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	45      (000000b6) move-result-object   v8
+	46      (000000b8) return-object        v8
+

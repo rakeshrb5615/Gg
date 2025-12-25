@@ -1,0 +1,336 @@
+# Ld6/c;->b(Le6/b;)Le6/b; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v18
+# - v19:e6.b
+#
+# - return:e6.b
+
+b-BB@0x0 : [ b-BB@0x4c b-BB@0x2ee ]
+	0       (00000000) move-object/from16   v1, v18
+	1       (00000004) move-object/from16   v0, v19
+	2       (00000008) iget-object          v2, v1, Ld6/c;->b Lf6/c;
+	3       (0000000c) iget-object          v3, v1, Ld6/c;->a Lq4/f;
+	4       (00000010) invoke-virtual       v3, Lq4/f;->a()V
+	5       (00000016) iget-object          v3, v3, Lq4/f;->c Lq4/j;
+	6       (0000001a) iget-object          v3, v3, Lq4/j;->a Ljava/lang/String;
+	7       (0000001e) iget-object          v4, v0, Le6/b;->a Ljava/lang/String;
+	8       (00000022) iget-object          v5, v1, Ld6/c;->a Lq4/f;
+	9       (00000026) invoke-virtual       v5, Lq4/f;->a()V
+	10      (0000002c) iget-object          v5, v5, Lq4/f;->c Lq4/j;
+	11      (00000030) iget-object          v5, v5, Lq4/j;->g Ljava/lang/String;
+	12      (00000034) iget-object          v6, v0, Le6/b;->d Ljava/lang/String;
+	13      (00000038) const-string         v7, "Firebase Installations Service is unavailable. Please try again later."
+	14      (0000003c) iget-object          v8, v2, Lf6/c;->c Lf6/d;
+	15      (00000040) invoke-virtual       v8, Lf6/d;->a()Z
+	16      (00000046) move-result          v9
+	17      (00000048) if-eqz               v9, +153h
+
+b-BB@0x4c : [ b-BB@0x8c ]
+	18      (0000004c) new-instance         v9, Ljava/lang/StringBuilder;
+	19      (00000050) const-string         v10, "projects/"
+	20      (00000054) invoke-direct        v9, v10, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	21      (0000005a) invoke-virtual       v9, v5, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	22      (00000060) const-string         v10, "/installations/"
+	23      (00000064) invoke-virtual       v9, v10, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	24      (0000006a) invoke-virtual       v9, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	25      (00000070) const-string         v4, "/authTokens:generate"
+	26      (00000074) invoke-virtual       v9, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	27      (0000007a) invoke-virtual       v9, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	28      (00000080) move-result-object   v4
+	29      (00000082) invoke-static        v4, Lf6/c;->a(Ljava/lang/String;)Ljava/net/URL;
+	30      (00000088) move-result-object   v4
+	31      (0000008a) const/4              v10, 0
+
+b-BB@0x8c : [ b-BB@0x92 b-BB@0x2e2 ]
+	32      (0000008c) const/4              v11, 1
+	33      (0000008e) if-gt                v10, v11, +12ah
+
+b-BB@0x92 : [ b-BB@0xa6 ]
+	34      (00000092) const                v12, 32771
+	35      (00000098) invoke-static        v12, Landroid/net/TrafficStats;->setThreadStatsTag(I)V
+	36      (0000009e) invoke-virtual       v2, v4, v3, Lf6/c;->c(Ljava/net/URL; Ljava/lang/String;)Ljava/net/HttpURLConnection;
+	37      (000000a4) move-result-object   v12
+
+b-BB@0xa6 : [ b-BB@0xfe b-BB@0x10a ]
+	38      (000000a6) const-string         v13, "POST"
+	39      (000000aa) invoke-virtual       v12, v13, Ljava/net/HttpURLConnection;->setRequestMethod(Ljava/lang/String;)V
+	40      (000000b0) const-string         v13, "Authorization"
+	41      (000000b4) new-instance         v14, Ljava/lang/StringBuilder;
+	42      (000000b8) invoke-direct        v14, Ljava/lang/StringBuilder;-><init>()V
+	43      (000000be) const-string         v15, "FIS_v2 "
+	44      (000000c2) invoke-virtual       v14, v15, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	45      (000000c8) invoke-virtual       v14, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	46      (000000ce) invoke-virtual       v14, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	47      (000000d4) move-result-object   v14
+	48      (000000d6) invoke-virtual       v12, v13, v14, Ljava/net/URLConnection;->addRequestProperty(Ljava/lang/String; Ljava/lang/String;)V
+	49      (000000dc) invoke-virtual       v12, v11, Ljava/net/URLConnection;->setDoOutput(Z)V
+	50      (000000e2) invoke-static        v12, Lf6/c;->h(Ljava/net/HttpURLConnection;)V
+	51      (000000e8) invoke-virtual       v12, Ljava/net/HttpURLConnection;->getResponseCode()I
+	52      (000000ee) move-result          v13
+	53      (000000f0) invoke-virtual       v8, v13, Lf6/d;->b(I)V
+	54      (000000f6) const/16             v14, 200
+	55      (000000fa) if-lt                v13, v14, +008h
+	a6:11b
+	(Ljava/lang/AssertionError; -> 130 b-BB@0x130)
+	(Ljava/io/IOException; -> 130 b-BB@0x130)
+	(Ljava/lang/Throwable; -> 12a b-BB@0x12a)
+
+b-BB@0xfe : [ b-BB@0x106 b-BB@0x10a ]
+	56      (000000fe) const/16             v14, 300
+	57      (00000102) if-ge                v13, v14, +004h
+	a6:11b
+	(Ljava/lang/AssertionError; -> 130 b-BB@0x130)
+	(Ljava/io/IOException; -> 130 b-BB@0x130)
+	(Ljava/lang/Throwable; -> 12a b-BB@0x12a)
+
+b-BB@0x106 : [ b-BB@0x10c ]
+	58      (00000106) move                 v14, v11
+	59      (00000108) goto                 +2h
+	a6:11b
+	(Ljava/lang/AssertionError; -> 130 b-BB@0x130)
+	(Ljava/io/IOException; -> 130 b-BB@0x130)
+	(Ljava/lang/Throwable; -> 12a b-BB@0x12a)
+
+b-BB@0x10a : [ b-BB@0x10c ]
+	60      (0000010a) const/4              v14, 0
+	a6:11b
+	(Ljava/lang/AssertionError; -> 130 b-BB@0x130)
+	(Ljava/io/IOException; -> 130 b-BB@0x130)
+	(Ljava/lang/Throwable; -> 12a b-BB@0x12a)
+
+b-BB@0x10c : [ b-BB@0x114 b-BB@0x136 ]
+	61      (0000010c) const/4              v15, 2
+	62      (0000010e) const/4              v9, 0
+	63      (00000110) if-eqz               v14, +013h
+	a6:11b
+	(Ljava/lang/AssertionError; -> 130 b-BB@0x130)
+	(Ljava/io/IOException; -> 130 b-BB@0x130)
+	(Ljava/lang/Throwable; -> 12a b-BB@0x12a)
+
+b-BB@0x114 : [ b-BB@0x1ec ]
+	64      (00000114) invoke-static        v12, Lf6/c;->f(Ljava/net/HttpURLConnection;)Lf6/b;
+	65      (0000011a) move-result-object   v2
+	66      (0000011c) invoke-virtual       v12, Ljava/net/HttpURLConnection;->disconnect()V
+	67      (00000122) invoke-static        Landroid/net/TrafficStats;->clearThreadStatsTag()V
+	68      (00000128) goto                 +62h
+
+b-BB@0x12a : [ b-BB@0x2cc ]
+	69      (0000012a) move-exception       v0
+	70      (0000012c) goto/16              +0d0h
+
+b-BB@0x130 : [ b-BB@0x16e ]
+	71      (00000130) move/from16          v16, v10
+	72      (00000134) goto                 +1dh
+
+b-BB@0x136 : [ b-BB@0x14c b-BB@0x1d2 ]
+	73      (00000136) invoke-static        v12, v9, v3, v5, Lf6/c;->b(Ljava/net/HttpURLConnection; Ljava/lang/String; Ljava/lang/String; Ljava/lang/String;)V
+	74      (0000013c) const/16             v14, 401
+	75      (00000140) move/from16          v16, v10
+	76      (00000144) const-wide/16        v9, 0
+	77      (00000148) if-eq                v13, v14, +045h
+	136:13b
+	(Ljava/lang/AssertionError; -> 130 b-BB@0x130)
+	(Ljava/io/IOException; -> 130 b-BB@0x130)
+	(Ljava/lang/Throwable; -> 12a b-BB@0x12a)
+
+b-BB@0x14c : [ b-BB@0x154 b-BB@0x156 ]
+	78      (0000014c) const/16             v14, 404
+	79      (00000150) if-ne                v13, v14, +003h
+
+b-BB@0x154 : [ b-BB@0x1d2 ]
+	80      (00000154) goto                 +3fh
+
+b-BB@0x156 : [ b-BB@0x15e b-BB@0x1c2 ]
+	81      (00000156) const/16             v14, 429
+	82      (0000015a) if-eq                v13, v14, +034h
+
+b-BB@0x15e : [ b-BB@0x166 b-BB@0x17e ]
+	83      (0000015e) const/16             v14, 500
+	84      (00000162) if-lt                v13, v14, +00eh
+
+b-BB@0x166 : [ b-BB@0x16e b-BB@0x17e ]
+	85      (00000166) const/16             v14, 600
+	86      (0000016a) if-ge                v13, v14, +00ah
+
+b-BB@0x16e : [ b-BB@0x2da ]
+	87      (0000016e) invoke-virtual       v12, Ljava/net/HttpURLConnection;->disconnect()V
+	88      (00000174) invoke-static        Landroid/net/TrafficStats;->clearThreadStatsTag()V
+	89      (0000017a) goto/16              +0b0h
+
+b-BB@0x17e : [ b-BB@0x196 b-BB@0x1b2 ]
+	90      (0000017e) const-string         v13, "Firebase-Installations"
+	91      (00000182) const-string         v14, "Firebase Installations can not communicate with Firebase server APIs due to invalid configuration. Please update your Firebase initialization process and set valid Firebase options (API key, Project ID, Application ID) when initializing Firebase."
+	92      (00000186) invoke-static        v13, v14, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String;)I
+	93      (0000018c) const/4              v13, 0
+	94      (0000018e) or-int/2addr         v13, v11
+	95      (00000190) int-to-byte          v13, v13
+	96      (00000192) if-ne                v13, v11, +010h
+	17e:1a1
+	(Ljava/lang/AssertionError; -> 16e b-BB@0x16e)
+	(Ljava/io/IOException; -> 16e b-BB@0x16e)
+	(Ljava/lang/Throwable; -> 12a b-BB@0x12a)
+
+b-BB@0x196 : [ b-BB@0x1a2 ]
+	97      (00000196) new-instance         v13, Lf6/b;
+	98      (0000019a) const/4              v14, 0
+	99      (0000019c) invoke-direct        v13, v14, v9, v10, v15, Lf6/b;-><init>(Ljava/lang/String; J I)V
+	17e:1a1
+	(Ljava/lang/AssertionError; -> 16e b-BB@0x16e)
+	(Ljava/io/IOException; -> 16e b-BB@0x16e)
+	(Ljava/lang/Throwable; -> 12a b-BB@0x12a)
+
+b-BB@0x1a2 : [ b-BB@0x1ec ]
+	100     (000001a2) invoke-virtual       v12, Ljava/net/HttpURLConnection;->disconnect()V
+	101     (000001a8) invoke-static        Landroid/net/TrafficStats;->clearThreadStatsTag()V
+	102     (000001ae) move-object          v2, v13
+	103     (000001b0) goto                 +1eh
+
+b-BB@0x1b2 : 
+	104     (000001b2) new-instance         v9, Ljava/lang/IllegalStateException;
+	105     (000001b6) const-string         v10, "Missing required properties: tokenExpirationTimestamp"
+	106     (000001ba) invoke-direct        v9, v10, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	107     (000001c0) throw                v9
+	1b2:1e9
+	(Ljava/lang/AssertionError; -> 16e b-BB@0x16e)
+	(Ljava/io/IOException; -> 16e b-BB@0x16e)
+	(Ljava/lang/Throwable; -> 12a b-BB@0x12a)
+
+b-BB@0x1c2 : 
+	108     (000001c2) new-instance         v9, Ld6/e;
+	109     (000001c6) const-string         v10, "Firebase servers have received too many requests from this client in a short period of time. Please try again later."
+	110     (000001ca) invoke-direct        v9, v10, Lq4/h;-><init>(Ljava/lang/String;)V
+	111     (000001d0) throw                v9
+	1b2:1e9
+	(Ljava/lang/AssertionError; -> 16e b-BB@0x16e)
+	(Ljava/io/IOException; -> 16e b-BB@0x16e)
+	(Ljava/lang/Throwable; -> 12a b-BB@0x12a)
+
+b-BB@0x1d2 : [ b-BB@0x1dc b-BB@0x2bc ]
+	112     (000001d2) const/4              v13, 0
+	113     (000001d4) or-int/2addr         v13, v11
+	114     (000001d6) int-to-byte          v13, v13
+	115     (000001d8) if-ne                v13, v11, +072h
+	1b2:1e9
+	(Ljava/lang/AssertionError; -> 16e b-BB@0x16e)
+	(Ljava/io/IOException; -> 16e b-BB@0x16e)
+	(Ljava/lang/Throwable; -> 12a b-BB@0x12a)
+
+b-BB@0x1dc : [ b-BB@0x1a2 ]
+	116     (000001dc) new-instance         v13, Lf6/b;
+	117     (000001e0) const/4              v14, 3
+	118     (000001e2) const/4              v15, 0
+	119     (000001e4) invoke-direct        v13, v15, v9, v10, v14, Lf6/b;-><init>(Ljava/lang/String; J I)V
+	120     (000001ea) goto                 -24h
+
+b-BB@0x1ec : [ b-BB@0x1fc b-BB@0x258 ]
+	121     (000001ec) iget                 v3, v2, Lf6/b;->c I
+	122     (000001f0) invoke-static        v3, Lu/e;->c(I)I
+	123     (000001f6) move-result          v3
+	124     (000001f8) if-eqz               v3, +030h
+
+b-BB@0x1fc : [ b-BB@0x200 b-BB@0x238 ]
+	125     (000001fc) if-eq                v3, v11, +01eh
+
+b-BB@0x200 : [ b-BB@0x206 b-BB@0x22c ]
+	126     (00000200) const/4              v2, 2
+	127     (00000202) if-ne                v3, v2, +015h
+
+b-BB@0x206 : [ b-BB@0x20a ]
+	128     (00000206) monitor-enter        v18
+	129     (00000208) const/4              v14, 0
+
+b-BB@0x20a : 
+	130     (0000020a) iput-object          v14, v1, Ld6/c;->j Ljava/lang/String;
+	131     (0000020e) monitor-exit         v18
+	132     (00000210) invoke-virtual       v0, Le6/b;->a()Le6/a;
+	133     (00000216) move-result-object   v0
+	134     (00000218) iput                 v2, v0, Le6/a;->b I
+	135     (0000021c) invoke-virtual       v0, Le6/a;->a()Le6/b;
+	136     (00000222) move-result-object   v0
+	137     (00000224) return-object        v0
+	20a:20d
+	(Ljava/lang/Throwable; -> 226 b-BB@0x226)
+
+b-BB@0x226 : [ b-BB@0x228 ]
+	138     (00000226) move-exception       v0
+
+b-BB@0x228 : 
+	139     (00000228) monitor-exit         v18
+	140     (0000022a) throw                v0
+	228:229
+	(Ljava/lang/Throwable; -> 226 b-BB@0x226)
+
+b-BB@0x22c : 
+	141     (0000022c) new-instance         v0, Ld6/e;
+	142     (00000230) invoke-direct        v0, v7, Lq4/h;-><init>(Ljava/lang/String;)V
+	143     (00000236) throw                v0
+
+b-BB@0x238 : 
+	144     (00000238) const-string         v2, "BAD CONFIG"
+	145     (0000023c) invoke-virtual       v0, Le6/b;->a()Le6/a;
+	146     (00000242) move-result-object   v0
+	147     (00000244) iput-object          v2, v0, Le6/a;->g Ljava/lang/String;
+	148     (00000248) const/4              v2, 5
+	149     (0000024a) iput                 v2, v0, Le6/a;->b I
+	150     (0000024e) invoke-virtual       v0, Le6/a;->a()Le6/b;
+	151     (00000254) move-result-object   v0
+	152     (00000256) return-object        v0
+
+b-BB@0x258 : 
+	153     (00000258) iget-object          v3, v2, Lf6/b;->a Ljava/lang/String;
+	154     (0000025c) iget-wide            v4, v2, Lf6/b;->b J
+	155     (00000260) iget-object          v2, v1, Ld6/c;->d Ld6/j;
+	156     (00000264) invoke-virtual       v2, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	157     (0000026a) sget-object          v6, Ljava/util/concurrent/TimeUnit;->MILLISECONDS Ljava/util/concurrent/TimeUnit;
+	158     (0000026e) iget-object          v2, v2, Ld6/j;->a Lv3/f;
+	159     (00000272) invoke-virtual       v2, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	160     (00000278) invoke-static        Ljava/lang/System;->currentTimeMillis()J
+	161     (0000027e) move-result-wide     v7
+	162     (00000280) invoke-virtual       v6, v7, v8, Ljava/util/concurrent/TimeUnit;->toSeconds(J)J
+	163     (00000286) move-result-wide     v6
+	164     (00000288) invoke-virtual       v0, Le6/b;->a()Le6/a;
+	165     (0000028e) move-result-object   v0
+	166     (00000290) iput-object          v3, v0, Le6/a;->c Ljava/lang/String;
+	167     (00000294) iput-wide            v4, v0, Le6/a;->e J
+	168     (00000298) iget-byte            v2, v0, Le6/a;->h B
+	169     (0000029c) or-int/2addr         v2, v11
+	170     (0000029e) int-to-byte          v2, v2
+	171     (000002a0) iput-wide            v6, v0, Le6/a;->f J
+	172     (000002a4) const/16             v17, 2
+	173     (000002a8) or-int/lit8          v2, v2, 2
+	174     (000002ac) int-to-byte          v2, v2
+	175     (000002ae) iput-byte            v2, v0, Le6/a;->h B
+	176     (000002b2) invoke-virtual       v0, Le6/a;->a()Le6/b;
+	177     (000002b8) move-result-object   v0
+	178     (000002ba) return-object        v0
+
+b-BB@0x2bc : 
+	179     (000002bc) new-instance         v9, Ljava/lang/IllegalStateException;
+	180     (000002c0) const-string         v10, "Missing required properties: tokenExpirationTimestamp"
+	181     (000002c4) invoke-direct        v9, v10, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	182     (000002ca) throw                v9
+	2bc:2cb
+	(Ljava/lang/AssertionError; -> 16e b-BB@0x16e)
+	(Ljava/io/IOException; -> 16e b-BB@0x16e)
+	(Ljava/lang/Throwable; -> 12a b-BB@0x12a)
+
+b-BB@0x2cc : 
+	183     (000002cc) invoke-virtual       v12, Ljava/net/HttpURLConnection;->disconnect()V
+	184     (000002d2) invoke-static        Landroid/net/TrafficStats;->clearThreadStatsTag()V
+	185     (000002d8) throw                v0
+
+b-BB@0x2da : [ b-BB@0x8c ]
+	186     (000002da) add-int/lit8         v10, v16, 1
+	187     (000002de) goto/16              -129h
+
+b-BB@0x2e2 : 
+	188     (000002e2) new-instance         v0, Ld6/e;
+	189     (000002e6) invoke-direct        v0, v7, Lq4/h;-><init>(Ljava/lang/String;)V
+	190     (000002ec) throw                v0
+
+b-BB@0x2ee : 
+	191     (000002ee) new-instance         v0, Ld6/e;
+	192     (000002f2) invoke-direct        v0, v7, Lq4/h;-><init>(Ljava/lang/String;)V
+	193     (000002f8) throw                v0
+

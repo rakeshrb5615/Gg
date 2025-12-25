@@ -1,0 +1,50 @@
+# Lf2/f;->M(Lf2/a0;)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:f2.a0
+#
+# - return:void
+
+M-BB@0x0 : [ M-BB@0x14 M-BB@0x30 ]
+	0       (00000000) iget-object          v0, v6, Lf2/a0;->b Landroid/view/View;
+	1       (00000004) iget-object          v6, v6, Lf2/a0;->a Ljava/util/HashMap;
+	2       (00000008) invoke-virtual       v0, Landroid/view/View;->isLaidOut()Z
+	3       (0000000e) move-result          v1
+	4       (00000010) if-nez               v1, +010h
+
+M-BB@0x14 : [ M-BB@0x20 M-BB@0x30 ]
+	5       (00000014) invoke-virtual       v0, Landroid/view/View;->getWidth()I
+	6       (0000001a) move-result          v1
+	7       (0000001c) if-nez               v1, +00ah
+
+M-BB@0x20 : [ M-BB@0x2c M-BB@0x2e ]
+	8       (00000020) invoke-virtual       v0, Landroid/view/View;->getHeight()I
+	9       (00000026) move-result          v1
+	10      (00000028) if-eqz               v1, +003h
+
+M-BB@0x2c : [ M-BB@0x30 ]
+	11      (0000002c) goto                 +2h
+
+M-BB@0x2e : 
+	12      (0000002e) return-void          
+
+M-BB@0x30 : 
+	13      (00000030) new-instance         v1, Landroid/graphics/Rect;
+	14      (00000034) invoke-virtual       v0, Landroid/view/View;->getLeft()I
+	15      (0000003a) move-result          v2
+	16      (0000003c) invoke-virtual       v0, Landroid/view/View;->getTop()I
+	17      (00000042) move-result          v3
+	18      (00000044) invoke-virtual       v0, Landroid/view/View;->getRight()I
+	19      (0000004a) move-result          v4
+	20      (0000004c) invoke-virtual       v0, Landroid/view/View;->getBottom()I
+	21      (00000052) move-result          v5
+	22      (00000054) invoke-direct        v1, v2, v3, v4, v5, Landroid/graphics/Rect;-><init>(I I I I)V
+	23      (0000005a) const-string         v2, "android:changeBounds:bounds"
+	24      (0000005e) invoke-virtual       v6, v2, v1, Ljava/util/HashMap;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	25      (00000064) const-string         v1, "android:changeBounds:parent"
+	26      (00000068) invoke-virtual       v0, Landroid/view/View;->getParent()Landroid/view/ViewParent;
+	27      (0000006e) move-result-object   v0
+	28      (00000070) invoke-virtual       v6, v1, v0, Ljava/util/HashMap;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	29      (00000076) return-void          
+

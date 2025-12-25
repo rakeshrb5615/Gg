@@ -1,0 +1,31 @@
+# Lf8/c;->t()Z [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v4
+#
+# - return:boolean
+
+t-BB@0x0 : [ t-BB@0x18 t-BB@0x30 ]
+	0       (00000000) sget-object          v0, Lf8/c;->d Ljava/util/concurrent/atomic/AtomicLongFieldUpdater;
+	1       (00000004) invoke-virtual       v0, v4, Ljava/util/concurrent/atomic/AtomicLongFieldUpdater;->get(Ljava/lang/Object;)J
+	2       (0000000a) move-result-wide     v0
+	3       (0000000c) const-wide/16        v2, 0
+	4       (00000010) cmp-long             v2, v0, v2
+	5       (00000014) if-eqz               v2, +00eh
+
+t-BB@0x18 : [ t-BB@0x2a t-BB@0x2c ]
+	6       (00000018) const-wide           v2, 9223372036854775807
+	7       (00000022) cmp-long             v0, v0, v2
+	8       (00000026) if-nez               v0, +003h
+
+t-BB@0x2a : [ t-BB@0x30 ]
+	9       (0000002a) goto                 +3h
+
+t-BB@0x2c : 
+	10      (0000002c) const/4              v0, 0
+	11      (0000002e) return               v0
+
+t-BB@0x30 : 
+	12      (00000030) const/4              v0, 1
+	13      (00000032) return               v0
+

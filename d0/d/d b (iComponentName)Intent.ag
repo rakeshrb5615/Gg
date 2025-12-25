@@ -1,0 +1,39 @@
+# Ld0/d;->b(Lh/i; Landroid/content/ComponentName;)Landroid/content/Intent; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:h.i
+# - v3:android.content.ComponentName
+#
+# - return:android.content.Intent
+
+b-BB@0x0 : [ b-BB@0xc b-BB@0x10 ]
+	0       (00000000) invoke-static        v2, v3, Ld0/d;->c(Landroid/content/Context; Landroid/content/ComponentName;)Ljava/lang/String;
+	1       (00000006) move-result-object   v0
+	2       (00000008) if-nez               v0, +004h
+
+b-BB@0xc : 
+	3       (0000000c) const/4              v2, 0
+	4       (0000000e) return-object        v2
+
+b-BB@0x10 : [ b-BB@0x2e b-BB@0x38 ]
+	5       (00000010) new-instance         v1, Landroid/content/ComponentName;
+	6       (00000014) invoke-virtual       v3, Landroid/content/ComponentName;->getPackageName()Ljava/lang/String;
+	7       (0000001a) move-result-object   v3
+	8       (0000001c) invoke-direct        v1, v3, v0, Landroid/content/ComponentName;-><init>(Ljava/lang/String; Ljava/lang/String;)V
+	9       (00000022) invoke-static        v2, v1, Ld0/d;->c(Landroid/content/Context; Landroid/content/ComponentName;)Ljava/lang/String;
+	10      (00000028) move-result-object   v2
+	11      (0000002a) if-nez               v2, +007h
+
+b-BB@0x2e : 
+	12      (0000002e) invoke-static        v1, Landroid/content/Intent;->makeMainActivity(Landroid/content/ComponentName;)Landroid/content/Intent;
+	13      (00000034) move-result-object   v2
+	14      (00000036) return-object        v2
+
+b-BB@0x38 : 
+	15      (00000038) new-instance         v2, Landroid/content/Intent;
+	16      (0000003c) invoke-direct        v2, Landroid/content/Intent;-><init>()V
+	17      (00000042) invoke-virtual       v2, v1, Landroid/content/Intent;->setComponent(Landroid/content/ComponentName;)Landroid/content/Intent;
+	18      (00000048) move-result-object   v2
+	19      (0000004a) return-object        v2
+

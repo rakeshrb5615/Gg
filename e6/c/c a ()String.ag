@@ -1,0 +1,128 @@
+# Le6/c;->a()Ljava/lang/String; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v7
+#
+# - return:java.lang.String
+
+a-BB@0x0 : [ a-BB@0x6 ]
+	0       (00000000) iget-object          v0, v7, Le6/c;->a Landroid/content/SharedPreferences;
+	1       (00000004) monitor-enter        v0
+
+a-BB@0x6 : [ a-BB@0x1c a-BB@0x24 ]
+	2       (00000006) iget-object          v1, v7, Le6/c;->a Landroid/content/SharedPreferences;
+	3       (0000000a) const-string         v2, "|S||P|"
+	4       (0000000e) const/4              v3, 0
+	5       (00000010) invoke-interface     v1, v2, v3, Landroid/content/SharedPreferences;->getString(Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	6       (00000016) move-result-object   v1
+	7       (00000018) if-nez               v1, +006h
+	6:1d
+	(Ljava/lang/Throwable; -> 20 a-BB@0x20)
+
+a-BB@0x1c : 
+	8       (0000001c) monitor-exit         v0
+	9       (0000001e) return-object        v3
+
+a-BB@0x20 : [ a-BB@0xde ]
+	10      (00000020) move-exception       v1
+	11      (00000022) goto                 +5eh
+
+a-BB@0x24 : [ a-BB@0x28 ]
+	12      (00000024) const/16             v2, 8
+
+a-BB@0x28 : [ a-BB@0x82 ]
+	13      (00000028) invoke-static        v1, v2, Landroid/util/Base64;->decode(Ljava/lang/String; I)[B
+	14      (0000002e) move-result-object   v1
+	15      (00000030) const-string         v4, "RSA"
+	16      (00000034) invoke-static        v4, Ljava/security/KeyFactory;->getInstance(Ljava/lang/String;)Ljava/security/KeyFactory;
+	17      (0000003a) move-result-object   v4
+	18      (0000003c) new-instance         v5, Ljava/security/spec/X509EncodedKeySpec;
+	19      (00000040) invoke-direct        v5, v1, Ljava/security/spec/X509EncodedKeySpec;-><init>([B)V
+	20      (00000046) invoke-virtual       v4, v5, Ljava/security/KeyFactory;->generatePublic(Ljava/security/spec/KeySpec;)Ljava/security/PublicKey;
+	21      (0000004c) move-result-object   v1
+	22      (0000004e) goto                 +1ah
+	28:4d
+	(Ljava/lang/IllegalArgumentException; -> 58 a-BB@0x58)
+	(Ljava/security/spec/InvalidKeySpecException; -> 54 a-BB@0x54)
+	(Ljava/security/NoSuchAlgorithmException; -> 50 a-BB@0x50)
+	(Ljava/lang/Throwable; -> 20 a-BB@0x20)
+
+a-BB@0x50 : [ a-BB@0x5a ]
+	23      (00000050) move-exception       v1
+	24      (00000052) goto                 +4h
+
+a-BB@0x54 : [ a-BB@0x5a ]
+	25      (00000054) move-exception       v1
+	26      (00000056) goto                 +2h
+
+a-BB@0x58 : [ a-BB@0x5a ]
+	27      (00000058) move-exception       v1
+
+a-BB@0x5a : [ a-BB@0x82 ]
+	28      (0000005a) const-string         v4, "ContentValues"
+	29      (0000005e) new-instance         v5, Ljava/lang/StringBuilder;
+	30      (00000062) const-string         v6, "Invalid key stored "
+	31      (00000066) invoke-direct        v5, v6, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	32      (0000006c) invoke-virtual       v5, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	33      (00000072) invoke-virtual       v5, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	34      (00000078) move-result-object   v1
+	35      (0000007a) invoke-static        v4, v1, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+	36      (00000080) move-object          v1, v3
+	5a:91
+	(Ljava/lang/Throwable; -> 20 a-BB@0x20)
+
+a-BB@0x82 : [ a-BB@0x86 a-BB@0x8a ]
+	37      (00000082) if-nez               v1, +004h
+	5a:91
+	(Ljava/lang/Throwable; -> 20 a-BB@0x20)
+
+a-BB@0x86 : 
+	38      (00000086) monitor-exit         v0
+	39      (00000088) return-object        v3
+	5a:91
+	(Ljava/lang/Throwable; -> 20 a-BB@0x20)
+
+a-BB@0x8a : [ a-BB@0x92 ]
+	40      (0000008a) invoke-interface     v1, Ljava/security/Key;->getEncoded()[B
+	41      (00000090) move-result-object   v1
+	5a:91
+	(Ljava/lang/Throwable; -> 20 a-BB@0x20)
+
+a-BB@0x92 : [ a-BB@0xda ]
+	42      (00000092) const-string         v4, "SHA1"
+	43      (00000096) invoke-static        v4, Ljava/security/MessageDigest;->getInstance(Ljava/lang/String;)Ljava/security/MessageDigest;
+	44      (0000009c) move-result-object   v4
+	45      (0000009e) invoke-virtual       v4, v1, Ljava/security/MessageDigest;->digest([B)[B
+	46      (000000a4) move-result-object   v1
+	47      (000000a6) const/4              v4, 0
+	48      (000000a8) aget-byte            v5, v1, v4
+	49      (000000ac) and-int/lit8         v5, v5, 15
+	50      (000000b0) add-int/lit8         v5, v5, 112
+	51      (000000b4) and-int/lit16        v5, v5, 255
+	52      (000000b8) int-to-byte          v5, v5
+	53      (000000ba) aput-byte            v5, v1, v4
+	54      (000000be) const/16             v5, 11
+	55      (000000c2) invoke-static        v1, v4, v2, v5, Landroid/util/Base64;->encodeToString([B I I I)Ljava/lang/String;
+	56      (000000c8) move-result-object   v3
+	57      (000000ca) goto                 +8h
+	92:c9
+	(Ljava/security/NoSuchAlgorithmException; -> cc a-BB@0xcc)
+	(Ljava/lang/Throwable; -> 20 a-BB@0x20)
+
+a-BB@0xcc : [ a-BB@0xda ]
+	58      (000000cc) const-string         v1, "ContentValues"
+	59      (000000d0) const-string         v2, "Unexpected error, device missing required algorithms"
+	60      (000000d4) invoke-static        v1, v2, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+	cc:df
+	(Ljava/lang/Throwable; -> 20 a-BB@0x20)
+
+a-BB@0xda : 
+	61      (000000da) monitor-exit         v0
+	62      (000000dc) return-object        v3
+	cc:df
+	(Ljava/lang/Throwable; -> 20 a-BB@0x20)
+
+a-BB@0xde : 
+	63      (000000de) monitor-exit         v0
+	64      (000000e0) throw                v1
+

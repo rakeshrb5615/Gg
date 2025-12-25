@@ -1,0 +1,130 @@
+# Lf6/c;->b(Ljava/net/HttpURLConnection; Ljava/lang/String; Ljava/lang/String; Ljava/lang/String;)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:java.net.HttpURLConnection
+# - v6:java.lang.String
+# - v7:java.lang.String
+# - v8:java.lang.String
+#
+# - return:void
+
+b-BB@0x0 : [ b-BB@0xe b-BB@0x10 ]
+	0       (00000000) invoke-virtual       v5, Ljava/net/HttpURLConnection;->getErrorStream()Ljava/io/InputStream;
+	1       (00000006) move-result-object   v0
+	2       (00000008) const/4              v1, 0
+	3       (0000000a) if-nez               v0, +003h
+
+b-BB@0xe : [ b-BB@0x92 ]
+	4       (0000000e) goto                 +42h
+
+b-BB@0x10 : [ b-BB@0x28 ]
+	5       (00000010) new-instance         v2, Ljava/io/BufferedReader;
+	6       (00000014) new-instance         v3, Ljava/io/InputStreamReader;
+	7       (00000018) sget-object          v4, Lf6/c;->e Ljava/nio/charset/Charset;
+	8       (0000001c) invoke-direct        v3, v0, v4, Ljava/io/InputStreamReader;-><init>(Ljava/io/InputStream; Ljava/nio/charset/Charset;)V
+	9       (00000022) invoke-direct        v2, v3, Ljava/io/BufferedReader;-><init>(Ljava/io/Reader;)V
+
+b-BB@0x28 : [ b-BB@0x48 ]
+	10      (00000028) new-instance         v0, Ljava/lang/StringBuilder;
+	11      (0000002c) invoke-direct        v0, Ljava/lang/StringBuilder;-><init>()V
+	12      (00000032) goto                 +bh
+	28:81
+	(Ljava/io/IOException; -> 82 b-BB@0x82)
+	(Ljava/lang/Throwable; -> 52 b-BB@0x52)
+
+b-BB@0x34 : [ b-BB@0x38 b-BB@0x56 ]
+	13      (00000034) if-eqz               v3, +011h
+	28:81
+	(Ljava/io/IOException; -> 82 b-BB@0x82)
+	(Ljava/lang/Throwable; -> 52 b-BB@0x52)
+
+b-BB@0x38 : [ b-BB@0x48 ]
+	14      (00000038) invoke-virtual       v0, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	15      (0000003e) const/16             v3, 10
+	16      (00000042) invoke-virtual       v0, v3, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+	28:81
+	(Ljava/io/IOException; -> 82 b-BB@0x82)
+	(Ljava/lang/Throwable; -> 52 b-BB@0x52)
+
+b-BB@0x48 : [ b-BB@0x34 ]
+	17      (00000048) invoke-virtual       v2, Ljava/io/BufferedReader;->readLine()Ljava/lang/String;
+	18      (0000004e) move-result-object   v3
+	19      (00000050) goto                 -eh
+	28:81
+	(Ljava/io/IOException; -> 82 b-BB@0x82)
+	(Ljava/lang/Throwable; -> 52 b-BB@0x52)
+
+b-BB@0x52 : [ b-BB@0x8a ]
+	20      (00000052) move-exception       v5
+	21      (00000054) goto                 +1bh
+	28:81
+	(Ljava/io/IOException; -> 82 b-BB@0x82)
+	(Ljava/lang/Throwable; -> 52 b-BB@0x52)
+
+b-BB@0x56 : [ b-BB@0x82 ]
+	22      (00000056) const-string         v3, "Error when communicating with the Firebase Installations server API. HTTP response: [%d %s: %s]"
+	23      (0000005a) invoke-virtual       v5, Ljava/net/HttpURLConnection;->getResponseCode()I
+	24      (00000060) move-result          v4
+	25      (00000062) invoke-static        v4, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+	26      (00000068) move-result-object   v4
+	27      (0000006a) invoke-virtual       v5, Ljava/net/HttpURLConnection;->getResponseMessage()Ljava/lang/String;
+	28      (00000070) move-result-object   v5
+	29      (00000072) filled-new-array     v4, v5, v0, [Ljava/lang/Object;
+	30      (00000078) move-result-object   v5
+	31      (0000007a) invoke-static        v3, v5, Ljava/lang/String;->format(Ljava/lang/String; [Ljava/lang/Object;)Ljava/lang/String;
+	32      (00000080) move-result-object   v1
+	28:81
+	(Ljava/io/IOException; -> 82 b-BB@0x82)
+	(Ljava/lang/Throwable; -> 52 b-BB@0x52)
+
+b-BB@0x82 : [ b-BB@0x92 ]
+	33      (00000082) invoke-virtual       v2, Ljava/io/BufferedReader;->close()V
+	34      (00000088) goto                 +5h
+	82:87
+	(Ljava/io/IOException; -> 92 b-BB@0x92)
+
+b-BB@0x8a : [ b-BB@0x90 ]
+	35      (0000008a) invoke-virtual       v2, Ljava/io/BufferedReader;->close()V
+	8a:8f
+	(Ljava/io/IOException; -> 90 b-BB@0x90)
+
+b-BB@0x90 : 
+	36      (00000090) throw                v5
+
+b-BB@0x92 : [ b-BB@0x9e b-BB@0xfa ]
+	37      (00000092) invoke-static        v1, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+	38      (00000098) move-result          v5
+	39      (0000009a) if-nez               v5, +030h
+
+b-BB@0x9e : [ b-BB@0xb8 b-BB@0xbe ]
+	40      (0000009e) const-string         v5, "Firebase-Installations"
+	41      (000000a2) invoke-static        v5, v1, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+	42      (000000a8) invoke-static        v6, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+	43      (000000ae) move-result          v0
+	44      (000000b0) const-string         v1, ", "
+	45      (000000b4) if-eqz               v0, +005h
+
+b-BB@0xb8 : [ b-BB@0xc6 ]
+	46      (000000b8) const-string         v6, ""
+	47      (000000bc) goto                 +5h
+
+b-BB@0xbe : [ b-BB@0xc6 ]
+	48      (000000be) invoke-static        v1, v6, Lg2/g;->l(Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	49      (000000c4) move-result-object   v6
+
+b-BB@0xc6 : [ b-BB@0xfa ]
+	50      (000000c6) new-instance         v0, Ljava/lang/StringBuilder;
+	51      (000000ca) const-string         v2, "Firebase options used while communicating with Firebase server APIs: "
+	52      (000000ce) invoke-direct        v0, v2, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	53      (000000d4) invoke-virtual       v0, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	54      (000000da) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	55      (000000e0) invoke-virtual       v0, v8, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	56      (000000e6) invoke-virtual       v0, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	57      (000000ec) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	58      (000000f2) move-result-object   v6
+	59      (000000f4) invoke-static        v5, v6, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+
+b-BB@0xfa : 
+	60      (000000fa) return-void          
+

@@ -1,0 +1,22 @@
+# Ld8/h;->f(Ljava/lang/Object;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:java.lang.Object
+#
+# - return:void
+
+f-BB@0x0 : [ f-BB@0x18 f-BB@0x1e ]
+	0       (00000000) invoke-static        Ljava/lang/Thread;->currentThread()Ljava/lang/Thread;
+	1       (00000006) move-result-object   v2
+	2       (00000008) iget-object          v0, v1, Ld8/h;->d Ljava/lang/Thread;
+	3       (0000000c) invoke-static        v2, v0, Lkotlin/jvm/internal/j;->a(Ljava/lang/Object; Ljava/lang/Object;)Z
+	4       (00000012) move-result          v2
+	5       (00000014) if-nez               v2, +005h
+
+f-BB@0x18 : [ f-BB@0x1e ]
+	6       (00000018) invoke-static        v0, Ljava/util/concurrent/locks/LockSupport;->unpark(Ljava/lang/Thread;)V
+
+f-BB@0x1e : 
+	7       (0000001e) return-void          
+

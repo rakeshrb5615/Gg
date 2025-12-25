@@ -1,0 +1,28 @@
+# Ld8/r1;->isActive()Z [access_flags=public]
+#
+# Parameters:
+# local registers: v0...v2
+#
+# - return:boolean
+
+isActive-BB@0x0 : [ isActive-BB@0x14 isActive-BB@0x28 ]
+	0       (00000000) sget-object          v0, Ld8/r1;->a Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;
+	1       (00000004) invoke-virtual       v0, v2, Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	2       (0000000a) move-result-object   v0
+	3       (0000000c) instance-of          v1, v0, Ld8/b1;
+	4       (00000010) if-eqz               v1, +00ch
+
+isActive-BB@0x14 : [ isActive-BB@0x24 isActive-BB@0x28 ]
+	5       (00000014) check-cast           v0, Ld8/b1;
+	6       (00000018) invoke-interface     v0, Ld8/b1;->isActive()Z
+	7       (0000001e) move-result          v0
+	8       (00000020) if-eqz               v0, +004h
+
+isActive-BB@0x24 : 
+	9       (00000024) const/4              v0, 1
+	10      (00000026) return               v0
+
+isActive-BB@0x28 : 
+	11      (00000028) const/4              v0, 0
+	12      (0000002a) return               v0
+

@@ -1,0 +1,131 @@
+# Le7/b;->H(Ljava/lang/Number;)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:java.lang.Number
+#
+# - return:void
+
+H-BB@0x0 : [ H-BB@0x4 H-BB@0xc ]
+	0       (00000000) if-nez               v5, +006h
+
+H-BB@0x4 : 
+	1       (00000004) invoke-virtual       v4, Le7/b;->B()Le7/b;
+	2       (0000000a) return-void          
+
+H-BB@0xc : [ H-BB@0x2a H-BB@0x11c ]
+	3       (0000000c) invoke-virtual       v4, Le7/b;->K()V
+	4       (00000012) invoke-virtual       v5, Ljava/lang/Object;->toString()Ljava/lang/String;
+	5       (00000018) move-result-object   v0
+	6       (0000001a) invoke-virtual       v5, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	7       (00000020) move-result-object   v5
+	8       (00000022) const-class          v1, Ljava/lang/Integer;
+	9       (00000026) if-eq                v5, v1, +07bh
+
+H-BB@0x2a : [ H-BB@0x32 H-BB@0x11c ]
+	10      (0000002a) const-class          v1, Ljava/lang/Long;
+	11      (0000002e) if-eq                v5, v1, +077h
+
+H-BB@0x32 : [ H-BB@0x3a H-BB@0x11c ]
+	12      (00000032) const-class          v1, Ljava/lang/Byte;
+	13      (00000036) if-eq                v5, v1, +073h
+
+H-BB@0x3a : [ H-BB@0x42 H-BB@0x11c ]
+	14      (0000003a) const-class          v1, Ljava/lang/Short;
+	15      (0000003e) if-eq                v5, v1, +06fh
+
+H-BB@0x42 : [ H-BB@0x4a H-BB@0x11c ]
+	16      (00000042) const-class          v1, Ljava/math/BigDecimal;
+	17      (00000046) if-eq                v5, v1, +06bh
+
+H-BB@0x4a : [ H-BB@0x52 H-BB@0x11c ]
+	18      (0000004a) const-class          v1, Ljava/math/BigInteger;
+	19      (0000004e) if-eq                v5, v1, +067h
+
+H-BB@0x52 : [ H-BB@0x5a H-BB@0x11c ]
+	20      (00000052) const-class          v1, Ljava/util/concurrent/atomic/AtomicInteger;
+	21      (00000056) if-eq                v5, v1, +063h
+
+H-BB@0x5a : [ H-BB@0x62 H-BB@0x64 ]
+	22      (0000005a) const-class          v1, Ljava/util/concurrent/atomic/AtomicLong;
+	23      (0000005e) if-ne                v5, v1, +003h
+
+H-BB@0x62 : [ H-BB@0x11c ]
+	24      (00000062) goto                 +5dh
+
+H-BB@0x64 : [ H-BB@0x74 H-BB@0xf8 ]
+	25      (00000064) const-string         v1, "-Infinity"
+	26      (00000068) invoke-virtual       v0, v1, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	27      (0000006e) move-result          v1
+	28      (00000070) if-nez               v1, +044h
+
+H-BB@0x74 : [ H-BB@0x84 H-BB@0xf8 ]
+	29      (00000074) const-string         v1, "Infinity"
+	30      (00000078) invoke-virtual       v0, v1, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	31      (0000007e) move-result          v1
+	32      (00000080) if-nez               v1, +03ch
+
+H-BB@0x84 : [ H-BB@0x94 H-BB@0x96 ]
+	33      (00000084) const-string         v1, "NaN"
+	34      (00000088) invoke-virtual       v0, v1, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	35      (0000008e) move-result          v1
+	36      (00000090) if-eqz               v1, +003h
+
+H-BB@0x94 : [ H-BB@0xf8 ]
+	37      (00000094) goto                 +32h
+
+H-BB@0x96 : [ H-BB@0x9e H-BB@0x11c ]
+	38      (00000096) const-class          v1, Ljava/lang/Float;
+	39      (0000009a) if-eq                v5, v1, +041h
+
+H-BB@0x9e : [ H-BB@0xa6 H-BB@0x11c ]
+	40      (0000009e) const-class          v1, Ljava/lang/Double;
+	41      (000000a2) if-eq                v5, v1, +03dh
+
+H-BB@0xa6 : [ H-BB@0xbe H-BB@0xc0 ]
+	42      (000000a6) sget-object          v1, Le7/b;->r Ljava/util/regex/Pattern;
+	43      (000000aa) invoke-virtual       v1, v0, Ljava/util/regex/Pattern;->matcher(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;
+	44      (000000b0) move-result-object   v1
+	45      (000000b2) invoke-virtual       v1, Ljava/util/regex/Matcher;->matches()Z
+	46      (000000b8) move-result          v1
+	47      (000000ba) if-eqz               v1, +003h
+
+H-BB@0xbe : [ H-BB@0x11c ]
+	48      (000000be) goto                 +2fh
+
+H-BB@0xc0 : 
+	49      (000000c0) new-instance         v1, Ljava/lang/IllegalArgumentException;
+	50      (000000c4) new-instance         v2, Ljava/lang/StringBuilder;
+	51      (000000c8) const-string         v3, "String created by "
+	52      (000000cc) invoke-direct        v2, v3, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	53      (000000d2) invoke-virtual       v2, v5, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	54      (000000d8) const-string         v5, " is not a valid JSON number: "
+	55      (000000dc) invoke-virtual       v2, v5, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	56      (000000e2) invoke-virtual       v2, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	57      (000000e8) invoke-virtual       v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	58      (000000ee) move-result-object   v5
+	59      (000000f0) invoke-direct        v1, v5, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	60      (000000f6) throw                v1
+
+H-BB@0xf8 : [ H-BB@0x102 H-BB@0x104 ]
+	61      (000000f8) iget                 v5, v4, Le7/b;->n I
+	62      (000000fc) const/4              v1, 1
+	63      (000000fe) if-ne                v5, v1, +003h
+
+H-BB@0x102 : [ H-BB@0x11c ]
+	64      (00000102) goto                 +dh
+
+H-BB@0x104 : 
+	65      (00000104) new-instance         v5, Ljava/lang/IllegalArgumentException;
+	66      (00000108) const-string         v1, "Numeric values must be finite, but was "
+	67      (0000010c) invoke-virtual       v1, v0, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	68      (00000112) move-result-object   v0
+	69      (00000114) invoke-direct        v5, v0, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	70      (0000011a) throw                v5
+
+H-BB@0x11c : 
+	71      (0000011c) invoke-virtual       v4, Le7/b;->c()V
+	72      (00000122) iget-object          v5, v4, Le7/b;->a Ljava/io/Writer;
+	73      (00000126) invoke-virtual       v5, v0, Ljava/io/Writer;->append(Ljava/lang/CharSequence;)Ljava/io/Writer;
+	74      (0000012c) return-void          
+

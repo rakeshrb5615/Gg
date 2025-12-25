@@ -1,0 +1,64 @@
+# Ld6/c;->c()Lcom/google/android/gms/tasks/Task; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v4
+#
+# - return:com.google.android.gms.tasks.Task
+
+c-BB@0x0 : [ c-BB@0x8 ]
+	0       (00000000) invoke-virtual       v4, Ld6/c;->e()V
+	1       (00000006) monitor-enter        v4
+
+c-BB@0x8 : [ c-BB@0x12 c-BB@0x1c ]
+	2       (00000008) iget-object          v0, v4, Ld6/c;->j Ljava/lang/String;
+	3       (0000000c) monitor-exit         v4
+	4       (0000000e) if-eqz               v0, +007h
+	8:b
+	(Ljava/lang/Throwable; -> 68 c-BB@0x68)
+
+c-BB@0x12 : 
+	5       (00000012) invoke-static        v0, Lcom/google/android/gms/tasks/Tasks;->forResult(Ljava/lang/Object;)Lcom/google/android/gms/tasks/Task;
+	6       (00000018) move-result-object   v0
+	7       (0000001a) return-object        v0
+
+c-BB@0x1c : [ c-BB@0x36 ]
+	8       (0000001c) new-instance         v0, Lcom/google/android/gms/tasks/TaskCompletionSource;
+	9       (00000020) invoke-direct        v0, Lcom/google/android/gms/tasks/TaskCompletionSource;-><init>()V
+	10      (00000026) new-instance         v1, Ld6/g;
+	11      (0000002a) invoke-direct        v1, v0, Ld6/g;-><init>(Lcom/google/android/gms/tasks/TaskCompletionSource;)V
+	12      (00000030) iget-object          v2, v4, Ld6/c;->g Ljava/lang/Object;
+	13      (00000034) monitor-enter        v2
+
+c-BB@0x36 : 
+	14      (00000036) iget-object          v3, v4, Ld6/c;->l Ljava/util/ArrayList;
+	15      (0000003a) invoke-virtual       v3, v1, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	16      (00000040) monitor-exit         v2
+	17      (00000042) invoke-virtual       v0, Lcom/google/android/gms/tasks/TaskCompletionSource;->getTask()Lcom/google/android/gms/tasks/Task;
+	18      (00000048) move-result-object   v0
+	19      (0000004a) iget-object          v1, v4, Ld6/c;->h Ljava/util/concurrent/ExecutorService;
+	20      (0000004e) new-instance         v2, Ld6/b;
+	21      (00000052) const/4              v3, 0
+	22      (00000054) invoke-direct        v2, v4, v3, Ld6/b;-><init>(Ld6/c; I)V
+	23      (0000005a) invoke-interface     v1, v2, Ljava/util/concurrent/Executor;->execute(Ljava/lang/Runnable;)V
+	24      (00000060) return-object        v0
+	36:41
+	(Ljava/lang/Throwable; -> 62 c-BB@0x62)
+
+c-BB@0x62 : [ c-BB@0x64 ]
+	25      (00000062) move-exception       v0
+
+c-BB@0x64 : 
+	26      (00000064) monitor-exit         v2
+	27      (00000066) throw                v0
+	64:65
+	(Ljava/lang/Throwable; -> 62 c-BB@0x62)
+
+c-BB@0x68 : [ c-BB@0x6a ]
+	28      (00000068) move-exception       v0
+
+c-BB@0x6a : 
+	29      (0000006a) monitor-exit         v4
+	30      (0000006c) throw                v0
+	6a:6b
+	(Ljava/lang/Throwable; -> 68 c-BB@0x68)
+

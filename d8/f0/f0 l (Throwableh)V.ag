@@ -1,0 +1,47 @@
+# Ld8/f0;->l(Ljava/lang/Throwable; Ll7/h;)V [access_flags=public static final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:java.lang.Throwable
+# - v4:l7.h
+#
+# - return:void
+
+l-BB@0x0 : [ l-BB@0x14 l-BB@0x20 ]
+	0       (00000000) sget-object          v0, Ld8/b0;->a Ld8/b0;
+	1       (00000004) invoke-interface     v4, v0, Ll7/h;->get(Ll7/g;)Ll7/f;
+	2       (0000000a) move-result-object   v0
+	3       (0000000c) check-cast           v0, Le8/b;
+	4       (00000010) if-eqz               v0, +008h
+	0:19
+	(Ljava/lang/Throwable; -> 1c l-BB@0x1c)
+
+l-BB@0x14 : 
+	5       (00000014) invoke-virtual       v0, v3, Le8/b;->i(Ljava/lang/Throwable;)V
+	6       (0000001a) return-void          
+
+l-BB@0x1c : [ l-BB@0x28 ]
+	7       (0000001c) move-exception       v0
+	8       (0000001e) goto                 +5h
+
+l-BB@0x20 : 
+	9       (00000020) invoke-static        v3, v4, Li8/a;->d(Ljava/lang/Throwable; Ll7/h;)V
+	10      (00000026) return-void          
+
+l-BB@0x28 : [ l-BB@0x2c l-BB@0x2e ]
+	11      (00000028) if-ne                v3, v0, +003h
+
+l-BB@0x2c : [ l-BB@0x44 ]
+	12      (0000002c) goto                 +ch
+
+l-BB@0x2e : [ l-BB@0x44 ]
+	13      (0000002e) new-instance         v1, Ljava/lang/RuntimeException;
+	14      (00000032) const-string         v2, "Exception while trying to handle coroutine exception"
+	15      (00000036) invoke-direct        v1, v2, v0, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	16      (0000003c) invoke-static        v1, v3, Lq4/b;->a(Ljava/lang/Throwable; Ljava/lang/Throwable;)V
+	17      (00000042) move-object          v3, v1
+
+l-BB@0x44 : 
+	18      (00000044) invoke-static        v3, v4, Li8/a;->d(Ljava/lang/Throwable; Ll7/h;)V
+	19      (0000004a) return-void          
+

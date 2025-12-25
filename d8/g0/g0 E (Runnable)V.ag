@@ -1,0 +1,23 @@
+# Ld8/g0;->E(Ljava/lang/Runnable;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:java.lang.Runnable
+#
+# - return:void
+
+E-BB@0x0 : [ E-BB@0xa E-BB@0x12 ]
+	0       (00000000) sget                 v0, Ld8/g0;->debugStatus I
+	1       (00000004) const/4              v1, 4
+	2       (00000006) if-eq                v0, v1, +006h
+
+E-BB@0xa : 
+	3       (0000000a) invoke-super         v2, v3, Ld8/w0;->E(Ljava/lang/Runnable;)V
+	4       (00000010) return-void          
+
+E-BB@0x12 : 
+	5       (00000012) new-instance         v3, Ljava/util/concurrent/RejectedExecutionException;
+	6       (00000016) const-string         v0, "DefaultExecutor was shut down. This error indicates that Dispatchers.shutdown() was invoked prior to completion of exiting coroutines, leaving coroutines in incomplete state. Please refer to Dispatchers.shutdown documentation for more details"
+	7       (0000001a) invoke-direct        v3, v0, Ljava/util/concurrent/RejectedExecutionException;-><init>(Ljava/lang/String;)V
+	8       (00000020) throw                v3
+

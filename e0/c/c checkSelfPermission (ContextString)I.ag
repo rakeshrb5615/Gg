@@ -1,0 +1,54 @@
+# Le0/c;->checkSelfPermission(Landroid/content/Context; Ljava/lang/String;)I [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:android.content.Context
+# - v3:java.lang.String
+#
+# - return:int
+
+checkSelfPermission-BB@0x0 : [ checkSelfPermission-BB@0x4 checkSelfPermission-BB@0x5c ]
+	0       (00000000) if-eqz               v3, +02eh
+
+checkSelfPermission-BB@0x4 : [ checkSelfPermission-BB@0x10 checkSelfPermission-BB@0x42 ]
+	1       (00000004) sget                 v0, Landroid/os/Build$VERSION;->SDK_INT I
+	2       (00000008) const/16             v1, 33
+	3       (0000000c) if-ge                v0, v1, +01bh
+
+checkSelfPermission-BB@0x10 : [ checkSelfPermission-BB@0x20 checkSelfPermission-BB@0x42 ]
+	4       (00000010) const-string         v0, "android.permission.POST_NOTIFICATIONS"
+	5       (00000014) invoke-static        v0, v3, Landroid/text/TextUtils;->equals(Ljava/lang/CharSequence; Ljava/lang/CharSequence;)Z
+	6       (0000001a) move-result          v0
+	7       (0000001c) if-eqz               v0, +013h
+
+checkSelfPermission-BB@0x20 : [ checkSelfPermission-BB@0x3a checkSelfPermission-BB@0x3e ]
+	8       (00000020) new-instance         v3, Ld0/x;
+	9       (00000024) invoke-direct        v3, v2, Ld0/x;-><init>(Landroid/content/Context;)V
+	10      (0000002a) iget-object          v2, v3, Ld0/x;->a Landroid/app/NotificationManager;
+	11      (0000002e) invoke-virtual       v2, Landroid/app/NotificationManager;->areNotificationsEnabled()Z
+	12      (00000034) move-result          v2
+	13      (00000036) if-eqz               v2, +004h
+
+checkSelfPermission-BB@0x3a : 
+	14      (0000003a) const/4              v2, 0
+	15      (0000003c) return               v2
+
+checkSelfPermission-BB@0x3e : 
+	16      (0000003e) const/4              v2, -1
+	17      (00000040) return               v2
+
+checkSelfPermission-BB@0x42 : 
+	18      (00000042) invoke-static        Landroid/os/Process;->myPid()I
+	19      (00000048) move-result          v0
+	20      (0000004a) invoke-static        Landroid/os/Process;->myUid()I
+	21      (00000050) move-result          v1
+	22      (00000052) invoke-virtual       v2, v3, v0, v1, Landroid/content/Context;->checkPermission(Ljava/lang/String; I I)I
+	23      (00000058) move-result          v2
+	24      (0000005a) return               v2
+
+checkSelfPermission-BB@0x5c : 
+	25      (0000005c) new-instance         v2, Ljava/lang/NullPointerException;
+	26      (00000060) const-string         v3, "permission must be non-null"
+	27      (00000064) invoke-direct        v2, v3, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
+	28      (0000006a) throw                v2
+

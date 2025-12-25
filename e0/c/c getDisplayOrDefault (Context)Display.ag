@@ -1,0 +1,27 @@
+# Le0/c;->getDisplayOrDefault(Landroid/content/Context;)Landroid/view/Display; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:android.content.Context
+#
+# - return:android.view.Display
+
+getDisplayOrDefault-BB@0x0 : [ getDisplayOrDefault-BB@0xc getDisplayOrDefault-BB@0x16 ]
+	0       (00000000) sget                 v0, Landroid/os/Build$VERSION;->SDK_INT I
+	1       (00000004) const/16             v1, 30
+	2       (00000008) if-lt                v0, v1, +007h
+
+getDisplayOrDefault-BB@0xc : 
+	3       (0000000c) invoke-static        v2, Le0/b;->d(Landroid/content/Context;)Landroid/view/Display;
+	4       (00000012) move-result-object   v2
+	5       (00000014) return-object        v2
+
+getDisplayOrDefault-BB@0x16 : 
+	6       (00000016) const-string         v0, "window"
+	7       (0000001a) invoke-virtual       v2, v0, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+	8       (00000020) move-result-object   v2
+	9       (00000022) check-cast           v2, Landroid/view/WindowManager;
+	10      (00000026) invoke-interface     v2, Landroid/view/WindowManager;->getDefaultDisplay()Landroid/view/Display;
+	11      (0000002c) move-result-object   v2
+	12      (0000002e) return-object        v2
+

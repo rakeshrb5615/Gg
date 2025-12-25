@@ -1,0 +1,67 @@
+# Le/i;->e(Ljava/lang/String;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:java.lang.String
+#
+# - return:void
+
+e-BB@0x0 : [ e-BB@0x14 e-BB@0x16 ]
+	0       (00000000) iget-object          v0, v5, Le/i;->b Ljava/util/LinkedHashMap;
+	1       (00000004) invoke-virtual       v0, v6, Ljava/util/LinkedHashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	2       (0000000a) move-result-object   v1
+	3       (0000000c) check-cast           v1, Ljava/lang/Integer;
+	4       (00000010) if-eqz               v1, +003h
+
+e-BB@0x14 : 
+	5       (00000014) return-void          
+
+e-BB@0x16 : [ e-BB@0x4a ]
+	6       (00000016) new-instance         v1, Le/e;
+	7       (0000001a) invoke-direct        v1, Le/e;-><init>()V
+	8       (00000020) new-instance         v2, La8/e;
+	9       (00000024) new-instance         v3, La6/i;
+	10      (00000028) const/4              v4, 1
+	11      (0000002a) invoke-direct        v3, v1, v4, La6/i;-><init>(Ljava/lang/Object; I)V
+	12      (00000030) const/4              v4, 0
+	13      (00000032) invoke-direct        v2, v1, v3, v4, La8/e;-><init>(Ljava/lang/Object; Lu7/l; I)V
+	14      (00000038) new-instance         v1, La8/a;
+	15      (0000003c) invoke-direct        v1, v2, La8/a;-><init>(La8/f;)V
+	16      (00000042) invoke-virtual       v1, La8/a;->iterator()Ljava/util/Iterator;
+	17      (00000048) move-result-object   v1
+
+e-BB@0x4a : [ e-BB@0x56 e-BB@0xa8 ]
+	18      (0000004a) invoke-interface     v1, Ljava/util/Iterator;->hasNext()Z
+	19      (00000050) move-result          v2
+	20      (00000052) if-eqz               v2, +02bh
+
+e-BB@0x56 : [ e-BB@0x82 e-BB@0x4a ]
+	21      (00000056) invoke-interface     v1, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	22      (0000005c) move-result-object   v2
+	23      (0000005e) check-cast           v2, Ljava/lang/Number;
+	24      (00000062) invoke-virtual       v2, Ljava/lang/Number;->intValue()I
+	25      (00000068) move-result          v3
+	26      (0000006a) invoke-static        v3, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+	27      (00000070) move-result-object   v3
+	28      (00000072) iget-object          v4, v5, Le/i;->a Ljava/util/LinkedHashMap;
+	29      (00000076) invoke-interface     v4, v3, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z
+	30      (0000007c) move-result          v3
+	31      (0000007e) if-nez               v3, -01ah
+
+e-BB@0x82 : 
+	32      (00000082) invoke-virtual       v2, Ljava/lang/Number;->intValue()I
+	33      (00000088) move-result          v1
+	34      (0000008a) invoke-static        v1, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+	35      (00000090) move-result-object   v2
+	36      (00000092) invoke-interface     v4, v2, v6, Ljava/util/Map;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	37      (00000098) invoke-static        v1, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+	38      (0000009e) move-result-object   v1
+	39      (000000a0) invoke-interface     v0, v6, v1, Ljava/util/Map;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	40      (000000a6) return-void          
+
+e-BB@0xa8 : 
+	41      (000000a8) new-instance         v6, Ljava/util/NoSuchElementException;
+	42      (000000ac) const-string         v0, "Sequence contains no element matching the predicate."
+	43      (000000b0) invoke-direct        v6, v0, Ljava/util/NoSuchElementException;-><init>(Ljava/lang/String;)V
+	44      (000000b6) throw                v6
+

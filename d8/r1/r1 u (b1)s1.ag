@@ -1,0 +1,48 @@
+# Ld8/r1;->u(Ld8/b1;)Ld8/s1; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:d8.b1
+#
+# - return:d8.s1
+
+u-BB@0x0 : [ u-BB@0xc u-BB@0x66 ]
+	0       (00000000) invoke-interface     v4, Ld8/b1;->c()Ld8/s1;
+	1       (00000006) move-result-object   v0
+	2       (00000008) if-nez               v0, +02fh
+
+u-BB@0xc : [ u-BB@0x14 u-BB@0x20 ]
+	3       (0000000c) instance-of          v0, v4, Ld8/r0;
+	4       (00000010) if-eqz               v0, +008h
+
+u-BB@0x14 : 
+	5       (00000014) new-instance         v4, Ld8/s1;
+	6       (00000018) invoke-direct        v4, Li8/j;-><init>()V
+	7       (0000001e) return-object        v4
+
+u-BB@0x20 : [ u-BB@0x28 u-BB@0x36 ]
+	8       (00000020) instance-of          v0, v4, Ld8/i1;
+	9       (00000024) if-eqz               v0, +009h
+
+u-BB@0x28 : 
+	10      (00000028) check-cast           v4, Ld8/i1;
+	11      (0000002c) invoke-virtual       v3, v4, Ld8/r1;->I(Ld8/i1;)V
+	12      (00000032) const/4              v4, 0
+	13      (00000034) return-object        v4
+
+u-BB@0x36 : 
+	14      (00000036) new-instance         v0, Ljava/lang/IllegalStateException;
+	15      (0000003a) new-instance         v1, Ljava/lang/StringBuilder;
+	16      (0000003e) const-string         v2, "State should have list: "
+	17      (00000042) invoke-direct        v1, v2, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	18      (00000048) invoke-virtual       v1, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	19      (0000004e) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	20      (00000054) move-result-object   v4
+	21      (00000056) invoke-virtual       v4, Ljava/lang/Object;->toString()Ljava/lang/String;
+	22      (0000005c) move-result-object   v4
+	23      (0000005e) invoke-direct        v0, v4, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	24      (00000064) throw                v0
+
+u-BB@0x66 : 
+	25      (00000066) return-object        v0
+

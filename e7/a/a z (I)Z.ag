@@ -1,0 +1,77 @@
+# Le7/a;->z(I)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v7
+# - v8:int
+#
+# - return:boolean
+
+z-BB@0x0 : [ z-BB@0x1c z-BB@0x2a ]
+	0       (00000000) iget                 v0, v7, Le7/a;->f I
+	1       (00000004) iget                 v1, v7, Le7/a;->c I
+	2       (00000008) sub-int/2addr        v0, v1
+	3       (0000000a) iput                 v0, v7, Le7/a;->f I
+	4       (0000000e) iget                 v0, v7, Le7/a;->d I
+	5       (00000012) const/4              v2, 0
+	6       (00000014) iget-object          v3, v7, Le7/a;->b [C
+	7       (00000018) if-eq                v0, v1, +009h
+
+z-BB@0x1c : [ z-BB@0x2e ]
+	8       (0000001c) sub-int/2addr        v0, v1
+	9       (0000001e) iput                 v0, v7, Le7/a;->d I
+	10      (00000022) invoke-static        v3, v1, v3, v2, v0, Ljava/lang/System;->arraycopy(Ljava/lang/Object; I Ljava/lang/Object; I I)V
+	11      (00000028) goto                 +3h
+
+z-BB@0x2a : [ z-BB@0x2e ]
+	12      (0000002a) iput                 v2, v7, Le7/a;->d I
+
+z-BB@0x2e : [ z-BB@0x32 ]
+	13      (0000002e) iput                 v2, v7, Le7/a;->c I
+
+z-BB@0x32 : [ z-BB@0x4c z-BB@0x96 ]
+	14      (00000032) iget                 v0, v7, Le7/a;->d I
+	15      (00000036) array-length         v1, v3
+	16      (00000038) sub-int/2addr        v1, v0
+	17      (0000003a) iget-object          v4, v7, Le7/a;->a Lokhttp3/ResponseBody$BomAwareReader;
+	18      (0000003e) invoke-virtual       v4, v3, v0, v1, Lokhttp3/ResponseBody$BomAwareReader;->read([C I I)I
+	19      (00000044) move-result          v0
+	20      (00000046) const/4              v1, -1
+	21      (00000048) if-eq                v0, v1, +027h
+
+z-BB@0x4c : [ z-BB@0x60 z-BB@0x90 ]
+	22      (0000004c) iget                 v1, v7, Le7/a;->d I
+	23      (00000050) add-int/2addr        v1, v0
+	24      (00000052) iput                 v1, v7, Le7/a;->d I
+	25      (00000056) iget                 v0, v7, Le7/a;->e I
+	26      (0000005a) const/4              v4, 1
+	27      (0000005c) if-nez               v0, +01ah
+
+z-BB@0x60 : [ z-BB@0x68 z-BB@0x90 ]
+	28      (00000060) iget                 v0, v7, Le7/a;->f I
+	29      (00000064) if-nez               v0, +016h
+
+z-BB@0x68 : [ z-BB@0x6c z-BB@0x90 ]
+	30      (00000068) if-lez               v1, +014h
+
+z-BB@0x6c : [ z-BB@0x7a z-BB@0x90 ]
+	31      (0000006c) aget-char            v5, v3, v2
+	32      (00000070) const                v6, 65279
+	33      (00000076) if-ne                v5, v6, +00dh
+
+z-BB@0x7a : [ z-BB@0x90 ]
+	34      (0000007a) iget                 v5, v7, Le7/a;->c I
+	35      (0000007e) add-int/2addr        v5, v4
+	36      (00000080) iput                 v5, v7, Le7/a;->c I
+	37      (00000084) add-int/lit8         v0, v0, 1
+	38      (00000088) iput                 v0, v7, Le7/a;->f I
+	39      (0000008c) add-int/lit8         v8, v8, 1
+
+z-BB@0x90 : [ z-BB@0x94 z-BB@0x32 ]
+	40      (00000090) if-lt                v1, v8, -02fh
+
+z-BB@0x94 : 
+	41      (00000094) return               v4
+
+z-BB@0x96 : 
+	42      (00000096) return               v2
+

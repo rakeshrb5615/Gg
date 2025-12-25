@@ -1,0 +1,50 @@
+# Lf6/d;->a()Z [access_flags=public final synchronized]
+#
+# Parameters:
+# local registers: v0...v4
+#
+# - return:boolean
+
+a-BB@0x0 : [ a-BB@0x2 ]
+	0       (00000000) monitor-enter        v4
+
+a-BB@0x2 : [ a-BB@0xa a-BB@0x36 ]
+	1       (00000002) iget                 v0, v4, Lf6/d;->c I
+	2       (00000006) if-eqz               v0, +018h
+	2:23
+	(Ljava/lang/Throwable; -> 32 a-BB@0x32)
+
+a-BB@0xa : [ a-BB@0x2c a-BB@0x2e ]
+	3       (0000000a) iget-object          v0, v4, Lf6/d;->a Ld6/j;
+	4       (0000000e) iget-object          v0, v0, Ld6/j;->a Lv3/f;
+	5       (00000012) invoke-virtual       v0, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	6       (00000018) invoke-static        Ljava/lang/System;->currentTimeMillis()J
+	7       (0000001e) move-result-wide     v0
+	8       (00000020) iget-wide            v2, v4, Lf6/d;->b J
+	9       (00000024) cmp-long             v0, v0, v2
+	10      (00000028) if-lez               v0, +003h
+
+a-BB@0x2c : [ a-BB@0x36 ]
+	11      (0000002c) goto                 +5h
+
+a-BB@0x2e : [ a-BB@0x38 ]
+	12      (0000002e) const/4              v0, 0
+	13      (00000030) goto                 +4h
+
+a-BB@0x32 : [ a-BB@0x3c ]
+	14      (00000032) move-exception       v0
+	15      (00000034) goto                 +4h
+
+a-BB@0x36 : [ a-BB@0x38 ]
+	16      (00000036) const/4              v0, 1
+
+a-BB@0x38 : 
+	17      (00000038) monitor-exit         v4
+	18      (0000003a) return               v0
+
+a-BB@0x3c : 
+	19      (0000003c) monitor-exit         v4
+	20      (0000003e) throw                v0
+	3c:3d
+	(Ljava/lang/Throwable; -> 32 a-BB@0x32)
+

@@ -1,0 +1,112 @@
+# Le0/c;->registerReceiver(Landroid/content/Context; Landroid/content/BroadcastReceiver; Landroid/content/IntentFilter; Ljava/lang/String; Landroid/os/Handler; I)Landroid/content/Intent; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:android.content.Context
+# - v7:android.content.BroadcastReceiver
+# - v8:android.content.IntentFilter
+# - v9:java.lang.String
+# - v10:android.os.Handler
+# - v11:int
+#
+# - return:android.content.Intent
+
+registerReceiver-BB@0x0 : [ registerReceiver-BB@0x8 registerReceiver-BB@0x22 ]
+	0       (00000000) and-int/lit8         v0, v11, 1
+	1       (00000004) if-eqz               v0, +00fh
+
+registerReceiver-BB@0x8 : [ registerReceiver-BB@0x10 registerReceiver-BB@0x12 ]
+	2       (00000008) and-int/lit8         v1, v11, 4
+	3       (0000000c) if-nez               v1, +003h
+
+registerReceiver-BB@0x10 : [ registerReceiver-BB@0x22 ]
+	4       (00000010) goto                 +9h
+
+registerReceiver-BB@0x12 : 
+	5       (00000012) new-instance         v6, Ljava/lang/IllegalArgumentException;
+	6       (00000016) const-string         v7, "Cannot specify both RECEIVER_VISIBLE_TO_INSTANT_APPS and RECEIVER_NOT_EXPORTED"
+	7       (0000001a) invoke-direct        v6, v7, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	8       (00000020) throw                v6
+
+registerReceiver-BB@0x22 : [ registerReceiver-BB@0x26 registerReceiver-BB@0x2a ]
+	9       (00000022) if-eqz               v0, +004h
+
+registerReceiver-BB@0x26 : [ registerReceiver-BB@0x2a ]
+	10      (00000026) or-int/lit8          v11, v11, 2
+
+registerReceiver-BB@0x2a : [ registerReceiver-BB@0x34 registerReceiver-BB@0x4e ]
+	11      (0000002a) move                 v5, v11
+	12      (0000002c) and-int/lit8         v11, v5, 2
+	13      (00000030) if-nez               v11, +00fh
+
+registerReceiver-BB@0x34 : [ registerReceiver-BB@0x3c registerReceiver-BB@0x3e ]
+	14      (00000034) and-int/lit8         v0, v5, 4
+	15      (00000038) if-eqz               v0, +003h
+
+registerReceiver-BB@0x3c : [ registerReceiver-BB@0x4e ]
+	16      (0000003c) goto                 +9h
+
+registerReceiver-BB@0x3e : 
+	17      (0000003e) new-instance         v6, Ljava/lang/IllegalArgumentException;
+	18      (00000042) const-string         v7, "One of either RECEIVER_EXPORTED or RECEIVER_NOT_EXPORTED is required"
+	19      (00000046) invoke-direct        v6, v7, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	20      (0000004c) throw                v6
+
+registerReceiver-BB@0x4e : [ registerReceiver-BB@0x52 registerReceiver-BB@0x6c ]
+	21      (0000004e) if-eqz               v11, +00fh
+
+registerReceiver-BB@0x52 : [ registerReceiver-BB@0x5a registerReceiver-BB@0x5c ]
+	22      (00000052) and-int/lit8         v11, v5, 4
+	23      (00000056) if-nez               v11, +003h
+
+registerReceiver-BB@0x5a : [ registerReceiver-BB@0x6c ]
+	24      (0000005a) goto                 +9h
+
+registerReceiver-BB@0x5c : 
+	25      (0000005c) new-instance         v6, Ljava/lang/IllegalArgumentException;
+	26      (00000060) const-string         v7, "Cannot specify both RECEIVER_EXPORTED and RECEIVER_NOT_EXPORTED"
+	27      (00000064) invoke-direct        v6, v7, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	28      (0000006a) throw                v6
+
+registerReceiver-BB@0x6c : [ registerReceiver-BB@0x78 registerReceiver-BB@0x8c ]
+	29      (0000006c) sget                 v11, Landroid/os/Build$VERSION;->SDK_INT I
+	30      (00000070) const/16             v0, 33
+	31      (00000074) if-lt                v11, v0, +00ch
+
+registerReceiver-BB@0x78 : 
+	32      (00000078) move-object          v0, v6
+	33      (0000007a) move-object          v1, v7
+	34      (0000007c) move-object          v2, v8
+	35      (0000007e) move-object          v3, v9
+	36      (00000080) move-object          v4, v10
+	37      (00000082) invoke-virtual/range v0 ... v5, Landroid/content/Context;->registerReceiver(Landroid/content/BroadcastReceiver; Landroid/content/IntentFilter; Ljava/lang/String; Landroid/os/Handler; I)Landroid/content/Intent;
+	38      (00000088) move-result-object   v6
+	39      (0000008a) return-object        v6
+
+registerReceiver-BB@0x8c : [ registerReceiver-BB@0x9e registerReceiver-BB@0xb4 ]
+	40      (0000008c) move-object          v0, v6
+	41      (0000008e) move-object          v1, v7
+	42      (00000090) move-object          v2, v8
+	43      (00000092) move-object          v3, v9
+	44      (00000094) move-object          v4, v10
+	45      (00000096) and-int/lit8         v6, v5, 4
+	46      (0000009a) if-eqz               v6, +00dh
+
+registerReceiver-BB@0x9e : [ registerReceiver-BB@0xa2 registerReceiver-BB@0xb4 ]
+	47      (0000009e) if-nez               v3, +00bh
+
+registerReceiver-BB@0xa2 : [ registerReceiver-BB@0xc0 ]
+	48      (000000a2) invoke-static        v0, Le0/c;->obtainAndCheckReceiverPermission(Landroid/content/Context;)Ljava/lang/String;
+	49      (000000a8) move-result-object   v6
+	50      (000000aa) invoke-virtual       v0, v1, v2, v6, v4, Landroid/content/Context;->registerReceiver(Landroid/content/BroadcastReceiver; Landroid/content/IntentFilter; Ljava/lang/String; Landroid/os/Handler;)Landroid/content/Intent;
+	51      (000000b0) move-result-object   v6
+	52      (000000b2) goto                 +7h
+
+registerReceiver-BB@0xb4 : [ registerReceiver-BB@0xc0 ]
+	53      (000000b4) and-int/lit8         v5, v5, 1
+	54      (000000b8) invoke-virtual/range v0 ... v5, Landroid/content/Context;->registerReceiver(Landroid/content/BroadcastReceiver; Landroid/content/IntentFilter; Ljava/lang/String; Landroid/os/Handler; I)Landroid/content/Intent;
+	55      (000000be) move-result-object   v6
+
+registerReceiver-BB@0xc0 : 
+	56      (000000c0) return-object        v6
+

@@ -1,0 +1,43 @@
+# Ld8/n;->l(Li8/r; Ljava/lang/Throwable;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:i8.r
+# - v5:java.lang.Throwable
+#
+# - return:void
+
+l-BB@0x0 : [ l-BB@0x1c l-BB@0x54 ]
+	0       (00000000) iget-object          v5, v3, Ld8/n;->e Ll7/h;
+	1       (00000004) sget-object          v0, Ld8/n;->f Ljava/util/concurrent/atomic/AtomicIntegerFieldUpdater;
+	2       (00000008) invoke-virtual       v0, v3, Ljava/util/concurrent/atomic/AtomicIntegerFieldUpdater;->get(Ljava/lang/Object;)I
+	3       (0000000e) move-result          v0
+	4       (00000010) const                v1, 536870911
+	5       (00000016) and-int/2addr        v0, v1
+	6       (00000018) if-eq                v0, v1, +01eh
+
+l-BB@0x1c : 
+	7       (0000001c) invoke-virtual       v4, v0, v5, Li8/r;->h(I Ll7/h;)V
+	8       (00000022) return-void          
+	1c:21
+	(Ljava/lang/Throwable; -> 24 l-BB@0x24)
+
+l-BB@0x24 : 
+	9       (00000024) move-exception       v4
+	10      (00000026) new-instance         v0, La5/o;
+	11      (0000002a) new-instance         v1, Ljava/lang/StringBuilder;
+	12      (0000002e) const-string         v2, "Exception in invokeOnCancellation handler for "
+	13      (00000032) invoke-direct        v1, v2, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	14      (00000038) invoke-virtual       v1, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	15      (0000003e) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	16      (00000044) move-result-object   v1
+	17      (00000046) invoke-direct        v0, v1, v4, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	18      (0000004c) invoke-static        v0, v5, Ld8/f0;->l(Ljava/lang/Throwable; Ll7/h;)V
+	19      (00000052) return-void          
+
+l-BB@0x54 : 
+	20      (00000054) new-instance         v4, Ljava/lang/IllegalStateException;
+	21      (00000058) const-string         v5, "The index for Segment.onCancellation(..) is broken"
+	22      (0000005c) invoke-direct        v4, v5, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	23      (00000062) throw                v4
+

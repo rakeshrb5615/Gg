@@ -1,0 +1,38 @@
+# Lf2/y;->m()Lf2/s; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v5
+#
+# - return:f2.s
+
+m-BB@0x0 : [ m-BB@0x28 ]
+	0       (00000000) invoke-super         v5, Lf2/s;->m()Lf2/s;
+	1       (00000006) move-result-object   v0
+	2       (00000008) check-cast           v0, Lf2/y;
+	3       (0000000c) new-instance         v1, Ljava/util/ArrayList;
+	4       (00000010) invoke-direct        v1, Ljava/util/ArrayList;-><init>()V
+	5       (00000016) iput-object          v1, v0, Lf2/y;->H Ljava/util/ArrayList;
+	6       (0000001a) iget-object          v1, v5, Lf2/y;->H Ljava/util/ArrayList;
+	7       (0000001e) invoke-virtual       v1, Ljava/util/ArrayList;->size()I
+	8       (00000024) move-result          v1
+	9       (00000026) const/4              v2, 0
+
+m-BB@0x28 : [ m-BB@0x2c m-BB@0x58 ]
+	10      (00000028) if-ge                v2, v1, +018h
+
+m-BB@0x2c : [ m-BB@0x28 ]
+	11      (0000002c) iget-object          v3, v5, Lf2/y;->H Ljava/util/ArrayList;
+	12      (00000030) invoke-virtual       v3, v2, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	13      (00000036) move-result-object   v3
+	14      (00000038) check-cast           v3, Lf2/s;
+	15      (0000003c) invoke-virtual       v3, Lf2/s;->m()Lf2/s;
+	16      (00000042) move-result-object   v3
+	17      (00000044) iget-object          v4, v0, Lf2/y;->H Ljava/util/ArrayList;
+	18      (00000048) invoke-virtual       v4, v3, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	19      (0000004e) iput-object          v0, v3, Lf2/s;->o Lf2/y;
+	20      (00000052) add-int/lit8         v2, v2, 1
+	21      (00000056) goto                 -17h
+
+m-BB@0x58 : 
+	22      (00000058) return-object        v0
+

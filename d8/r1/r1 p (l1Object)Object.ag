@@ -1,0 +1,180 @@
+# Ld8/r1;->p(Ld8/l1; Ljava/lang/Object;)Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v10
+# - v11:d8.l1
+# - v12:java.lang.Object
+#
+# - return:java.lang.Object
+
+p-BB@0x0 : [ p-BB@0xa p-BB@0x12 ]
+	0       (00000000) instance-of          v0, v12, Ld8/w;
+	1       (00000004) const/4              v1, 0
+	2       (00000006) if-eqz               v0, +006h
+
+p-BB@0xa : [ p-BB@0x14 ]
+	3       (0000000a) move-object          v0, v12
+	4       (0000000c) check-cast           v0, Ld8/w;
+	5       (00000010) goto                 +2h
+
+p-BB@0x12 : [ p-BB@0x14 ]
+	6       (00000012) move-object          v0, v1
+
+p-BB@0x14 : [ p-BB@0x18 p-BB@0x1c ]
+	7       (00000014) if-eqz               v0, +004h
+
+p-BB@0x18 : [ p-BB@0x1c ]
+	8       (00000018) iget-object          v1, v0, Ld8/w;->a Ljava/lang/Throwable;
+
+p-BB@0x1c : [ p-BB@0x1e ]
+	9       (0000001c) monitor-enter        v11
+
+p-BB@0x1e : [ p-BB@0x3c p-BB@0xa6 ]
+	10      (0000001e) invoke-virtual       v11, Ld8/l1;->d()Z
+	11      (00000024) invoke-virtual       v11, v1, Ld8/l1;->e(Ljava/lang/Throwable;)Ljava/util/ArrayList;
+	12      (0000002a) move-result-object   v0
+	13      (0000002c) invoke-virtual       v10, v11, v0, Ld8/r1;->r(Ld8/l1; Ljava/util/ArrayList;)Ljava/lang/Throwable;
+	14      (00000032) move-result-object   v2
+	15      (00000034) const/4              v3, 0
+	16      (00000036) const/4              v4, 1
+	17      (00000038) if-eqz               v2, +037h
+	1e:a3
+	(Ljava/lang/Throwable; -> 13c p-BB@0x13c)
+
+p-BB@0x3c : [ p-BB@0x48 p-BB@0x4a ]
+	18      (0000003c) invoke-interface     v0, Ljava/util/List;->size()I
+	19      (00000042) move-result          v5
+	20      (00000044) if-gt                v5, v4, +003h
+	1e:a3
+	(Ljava/lang/Throwable; -> 13c p-BB@0x13c)
+
+p-BB@0x48 : [ p-BB@0xa6 ]
+	21      (00000048) goto                 +2fh
+	1e:a3
+	(Ljava/lang/Throwable; -> 13c p-BB@0x13c)
+
+p-BB@0x4a : [ p-BB@0x6e ]
+	22      (0000004a) invoke-interface     v0, Ljava/util/List;->size()I
+	23      (00000050) move-result          v5
+	24      (00000052) new-instance         v6, Ljava/util/IdentityHashMap;
+	25      (00000056) invoke-direct        v6, v5, Ljava/util/IdentityHashMap;-><init>(I)V
+	26      (0000005c) invoke-static        v6, Ljava/util/Collections;->newSetFromMap(Ljava/util/Map;)Ljava/util/Set;
+	27      (00000062) move-result-object   v5
+	28      (00000064) invoke-virtual       v0, Ljava/util/ArrayList;->size()I
+	29      (0000006a) move-result          v6
+	30      (0000006c) move                 v7, v3
+	1e:a3
+	(Ljava/lang/Throwable; -> 13c p-BB@0x13c)
+
+p-BB@0x6e : [ p-BB@0x72 p-BB@0xa6 ]
+	31      (0000006e) if-ge                v7, v6, +01ch
+	1e:a3
+	(Ljava/lang/Throwable; -> 13c p-BB@0x13c)
+
+p-BB@0x72 : [ p-BB@0x86 p-BB@0x6e ]
+	32      (00000072) invoke-virtual       v0, v7, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	33      (00000078) move-result-object   v8
+	34      (0000007a) add-int/lit8         v7, v7, 1
+	35      (0000007e) check-cast           v8, Ljava/lang/Throwable;
+	36      (00000082) if-eq                v8, v2, -00ah
+	1e:a3
+	(Ljava/lang/Throwable; -> 13c p-BB@0x13c)
+
+p-BB@0x86 : [ p-BB@0x8a p-BB@0x6e ]
+	37      (00000086) if-eq                v8, v2, -00ch
+	1e:a3
+	(Ljava/lang/Throwable; -> 13c p-BB@0x13c)
+
+p-BB@0x8a : [ p-BB@0x92 p-BB@0x6e ]
+	38      (0000008a) instance-of          v9, v8, Ljava/util/concurrent/CancellationException;
+	39      (0000008e) if-nez               v9, -010h
+	1e:a3
+	(Ljava/lang/Throwable; -> 13c p-BB@0x13c)
+
+p-BB@0x92 : [ p-BB@0x9e p-BB@0x6e ]
+	40      (00000092) invoke-interface     v5, v8, Ljava/util/Set;->add(Ljava/lang/Object;)Z
+	41      (00000098) move-result          v9
+	42      (0000009a) if-eqz               v9, -016h
+	1e:a3
+	(Ljava/lang/Throwable; -> 13c p-BB@0x13c)
+
+p-BB@0x9e : [ p-BB@0x6e ]
+	43      (0000009e) invoke-static        v2, v8, Lq4/b;->a(Ljava/lang/Throwable; Ljava/lang/Throwable;)V
+	44      (000000a4) goto                 -1bh
+
+p-BB@0xa6 : [ p-BB@0xac p-BB@0xae ]
+	45      (000000a6) monitor-exit         v11
+	46      (000000a8) if-nez               v2, +003h
+
+p-BB@0xac : [ p-BB@0xbe ]
+	47      (000000ac) goto                 +9h
+
+p-BB@0xae : [ p-BB@0xb2 p-BB@0xb4 ]
+	48      (000000ae) if-ne                v2, v1, +003h
+
+p-BB@0xb2 : [ p-BB@0xbe ]
+	49      (000000b2) goto                 +6h
+
+p-BB@0xb4 : [ p-BB@0xbe ]
+	50      (000000b4) new-instance         v12, Ld8/w;
+	51      (000000b8) invoke-direct        v12, v3, v2, Ld8/w;-><init>(Z Ljava/lang/Throwable;)V
+
+p-BB@0xbe : [ p-BB@0xc2 p-BB@0xf4 ]
+	52      (000000be) if-eqz               v2, +01bh
+
+p-BB@0xc2 : [ p-BB@0xce p-BB@0xda ]
+	53      (000000c2) invoke-virtual       v10, v2, Ld8/r1;->k(Ljava/lang/Throwable;)Z
+	54      (000000c8) move-result          v0
+	55      (000000ca) if-nez               v0, +008h
+
+p-BB@0xce : [ p-BB@0xda p-BB@0xf4 ]
+	56      (000000ce) invoke-virtual       v10, v2, Ld8/r1;->v(Ljava/lang/Throwable;)Z
+	57      (000000d4) move-result          v0
+	58      (000000d6) if-eqz               v0, +00fh
+
+p-BB@0xda : [ p-BB@0xf4 ]
+	59      (000000da) const-string         v0, "null cannot be cast to non-null type kotlinx.coroutines.CompletedExceptionally"
+	60      (000000de) invoke-static        v12, v0, Lkotlin/jvm/internal/j;->c(Ljava/lang/Object; Ljava/lang/String;)V
+	61      (000000e4) move-object          v0, v12
+	62      (000000e6) check-cast           v0, Ld8/w;
+	63      (000000ea) sget-object          v1, Ld8/w;->b Ljava/util/concurrent/atomic/AtomicIntegerFieldUpdater;
+	64      (000000ee) invoke-virtual       v1, v0, v3, v4, Ljava/util/concurrent/atomic/AtomicIntegerFieldUpdater;->compareAndSet(Ljava/lang/Object; I I)Z
+
+p-BB@0xf4 : [ p-BB@0x106 p-BB@0x118 ]
+	65      (000000f4) invoke-virtual       v10, v12, Ld8/r1;->F(Ljava/lang/Object;)V
+	66      (000000fa) sget-object          v0, Ld8/r1;->a Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;
+	67      (000000fe) instance-of          v1, v12, Ld8/b1;
+	68      (00000102) if-eqz               v1, +00bh
+
+p-BB@0x106 : [ p-BB@0x11a ]
+	69      (00000106) new-instance         v1, Ld8/c1;
+	70      (0000010a) move-object          v2, v12
+	71      (0000010c) check-cast           v2, Ld8/b1;
+	72      (00000110) invoke-direct        v1, v2, Ld8/c1;-><init>(Ld8/b1;)V
+	73      (00000116) goto                 +2h
+
+p-BB@0x118 : [ p-BB@0x11a ]
+	74      (00000118) move-object          v1, v12
+
+p-BB@0x11a : [ p-BB@0x126 p-BB@0x128 ]
+	75      (0000011a) invoke-virtual       v0, v10, v11, v1, Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;->compareAndSet(Ljava/lang/Object; Ljava/lang/Object; Ljava/lang/Object;)Z
+	76      (00000120) move-result          v2
+	77      (00000122) if-eqz               v2, +003h
+
+p-BB@0x126 : [ p-BB@0x134 ]
+	78      (00000126) goto                 +7h
+
+p-BB@0x128 : [ p-BB@0x134 p-BB@0x11a ]
+	79      (00000128) invoke-virtual       v0, v10, Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	80      (0000012e) move-result-object   v2
+	81      (00000130) if-eq                v2, v11, -00bh
+
+p-BB@0x134 : 
+	82      (00000134) invoke-virtual       v10, v11, v12, Ld8/r1;->n(Ld8/b1; Ljava/lang/Object;)V
+	83      (0000013a) return-object        v12
+
+p-BB@0x13c : 
+	84      (0000013c) move-exception       v12
+	85      (0000013e) monitor-exit         v11
+	86      (00000140) throw                v12
+

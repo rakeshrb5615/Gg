@@ -1,0 +1,37 @@
+# Lf2/y;->H(La6/e;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:a6.e
+#
+# - return:void
+
+H-BB@0x0 : [ H-BB@0x1a H-BB@0x48 ]
+	0       (00000000) invoke-super         v2, v3, Lf2/s;->H(La6/e;)V
+	1       (00000006) iget                 v0, v2, Lf2/y;->L I
+	2       (0000000a) or-int/lit8          v0, v0, 4
+	3       (0000000e) iput                 v0, v2, Lf2/y;->L I
+	4       (00000012) iget-object          v0, v2, Lf2/y;->H Ljava/util/ArrayList;
+	5       (00000016) if-eqz               v0, +019h
+
+H-BB@0x1a : [ H-BB@0x1c ]
+	6       (0000001a) const/4              v0, 0
+
+H-BB@0x1c : [ H-BB@0x2c H-BB@0x48 ]
+	7       (0000001c) iget-object          v1, v2, Lf2/y;->H Ljava/util/ArrayList;
+	8       (00000020) invoke-virtual       v1, Ljava/util/ArrayList;->size()I
+	9       (00000026) move-result          v1
+	10      (00000028) if-ge                v0, v1, +010h
+
+H-BB@0x2c : [ H-BB@0x1c ]
+	11      (0000002c) iget-object          v1, v2, Lf2/y;->H Ljava/util/ArrayList;
+	12      (00000030) invoke-virtual       v1, v0, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	13      (00000036) move-result-object   v1
+	14      (00000038) check-cast           v1, Lf2/s;
+	15      (0000003c) invoke-virtual       v1, v3, Lf2/s;->H(La6/e;)V
+	16      (00000042) add-int/lit8         v0, v0, 1
+	17      (00000046) goto                 -15h
+
+H-BB@0x48 : 
+	18      (00000048) return-void          
+

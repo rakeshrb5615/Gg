@@ -1,0 +1,57 @@
+# Le0/c;->obtainAndCheckReceiverPermission(Landroid/content/Context;)Ljava/lang/String; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:android.content.Context
+#
+# - return:java.lang.String
+
+obtainAndCheckReceiverPermission-BB@0x0 : [ obtainAndCheckReceiverPermission-BB@0x3e obtainAndCheckReceiverPermission-BB@0x9a ]
+	0       (00000000) new-instance         v0, Ljava/lang/StringBuilder;
+	1       (00000004) invoke-direct        v0, Ljava/lang/StringBuilder;-><init>()V
+	2       (0000000a) invoke-virtual       v4, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;
+	3       (00000010) move-result-object   v1
+	4       (00000012) invoke-virtual       v1, Landroid/content/Context;->getPackageName()Ljava/lang/String;
+	5       (00000018) move-result-object   v1
+	6       (0000001a) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	7       (00000020) const-string         v1, ".DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+	8       (00000024) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	9       (0000002a) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	10      (00000030) move-result-object   v0
+	11      (00000032) invoke-static        v4, v0, La/a;->k(Landroid/content/Context; Ljava/lang/String;)I
+	12      (00000038) move-result          v2
+	13      (0000003a) if-eqz               v2, +030h
+
+obtainAndCheckReceiverPermission-BB@0x3e : [ obtainAndCheckReceiverPermission-BB@0x4a obtainAndCheckReceiverPermission-BB@0x7e ]
+	14      (0000003e) sget                 v2, Landroid/os/Build$VERSION;->SDK_INT I
+	15      (00000042) const/16             v3, 29
+	16      (00000046) if-lt                v2, v3, +01ch
+
+obtainAndCheckReceiverPermission-BB@0x4a : [ obtainAndCheckReceiverPermission-BB@0x7c obtainAndCheckReceiverPermission-BB@0x7e ]
+	17      (0000004a) new-instance         v0, Ljava/lang/StringBuilder;
+	18      (0000004e) invoke-direct        v0, Ljava/lang/StringBuilder;-><init>()V
+	19      (00000054) invoke-virtual       v4, Landroid/content/Context;->getOpPackageName()Ljava/lang/String;
+	20      (0000005a) move-result-object   v2
+	21      (0000005c) invoke-virtual       v0, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	22      (00000062) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	23      (00000068) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	24      (0000006e) move-result-object   v0
+	25      (00000070) invoke-static        v4, v0, La/a;->k(Landroid/content/Context; Ljava/lang/String;)I
+	26      (00000076) move-result          v4
+	27      (00000078) if-nez               v4, +003h
+
+obtainAndCheckReceiverPermission-BB@0x7c : 
+	28      (0000007c) return-object        v0
+
+obtainAndCheckReceiverPermission-BB@0x7e : 
+	29      (0000007e) new-instance         v4, Ljava/lang/RuntimeException;
+	30      (00000082) const-string         v1, "Permission "
+	31      (00000086) const-string         v2, " is required by your application to receive broadcasts, please add it to your manifest"
+	32      (0000008a) invoke-static        v1, v0, v2, Lv1/a;->l(Ljava/lang/String; Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	33      (00000090) move-result-object   v0
+	34      (00000092) invoke-direct        v4, v0, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
+	35      (00000098) throw                v4
+
+obtainAndCheckReceiverPermission-BB@0x9a : 
+	36      (0000009a) return-object        v0
+

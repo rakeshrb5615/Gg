@@ -1,0 +1,31 @@
+# Ld8/x0;->A(Z)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:boolean
+#
+# - return:void
+
+A-BB@0x0 : [ A-BB@0x8 A-BB@0x14 ]
+	0       (00000000) iget-wide            v0, v4, Ld8/x0;->c J
+	1       (00000004) if-eqz               v5, +008h
+
+A-BB@0x8 : [ A-BB@0x18 ]
+	2       (00000008) const-wide           v2, 4294967296
+	3       (00000012) goto                 +3h
+
+A-BB@0x14 : [ A-BB@0x18 ]
+	4       (00000014) const-wide/16        v2, 1
+
+A-BB@0x18 : [ A-BB@0x22 A-BB@0x28 ]
+	5       (00000018) add-long/2addr       v2, v0
+	6       (0000001a) iput-wide            v2, v4, Ld8/x0;->c J
+	7       (0000001e) if-nez               v5, +005h
+
+A-BB@0x22 : [ A-BB@0x28 ]
+	8       (00000022) const/4              v5, 1
+	9       (00000024) iput-boolean         v5, v4, Ld8/x0;->d Z
+
+A-BB@0x28 : 
+	10      (00000028) return-void          
+

@@ -1,0 +1,57 @@
+# Le7/b;->s(I I C)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:int
+# - v3:int
+# - v4:char
+#
+# - return:void
+
+s-BB@0x0 : [ s-BB@0xc s-BB@0x22 ]
+	0       (00000000) invoke-virtual       v1, Le7/b;->C()I
+	1       (00000006) move-result          v0
+	2       (00000008) if-eq                v0, v3, +00dh
+
+s-BB@0xc : [ s-BB@0x10 s-BB@0x12 ]
+	3       (0000000c) if-ne                v0, v2, +003h
+
+s-BB@0x10 : [ s-BB@0x22 ]
+	4       (00000010) goto                 +9h
+
+s-BB@0x12 : 
+	5       (00000012) new-instance         v2, Ljava/lang/IllegalStateException;
+	6       (00000016) const-string         v3, "Nesting problem."
+	7       (0000001a) invoke-direct        v2, v3, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	8       (00000020) throw                v2
+
+s-BB@0x22 : [ s-BB@0x2a s-BB@0x4c ]
+	9       (00000022) iget-object          v2, v1, Le7/b;->p Ljava/lang/String;
+	10      (00000026) if-nez               v2, +013h
+
+s-BB@0x2a : [ s-BB@0x3a s-BB@0x40 ]
+	11      (0000002a) iget                 v2, v1, Le7/b;->c I
+	12      (0000002e) add-int/lit8         v2, v2, -1
+	13      (00000032) iput                 v2, v1, Le7/b;->c I
+	14      (00000036) if-ne                v0, v3, +005h
+
+s-BB@0x3a : [ s-BB@0x40 ]
+	15      (0000003a) invoke-virtual       v1, Le7/b;->A()V
+
+s-BB@0x40 : 
+	16      (00000040) iget-object          v2, v1, Le7/b;->a Ljava/io/Writer;
+	17      (00000044) invoke-virtual       v2, v4, Ljava/io/Writer;->write(I)V
+	18      (0000004a) return-void          
+
+s-BB@0x4c : 
+	19      (0000004c) new-instance         v2, Ljava/lang/IllegalStateException;
+	20      (00000050) new-instance         v3, Ljava/lang/StringBuilder;
+	21      (00000054) const-string         v4, "Dangling name: "
+	22      (00000058) invoke-direct        v3, v4, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	23      (0000005e) iget-object          v4, v1, Le7/b;->p Ljava/lang/String;
+	24      (00000062) invoke-virtual       v3, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	25      (00000068) invoke-virtual       v3, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	26      (0000006e) move-result-object   v3
+	27      (00000070) invoke-direct        v2, v3, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	28      (00000076) throw                v2
+

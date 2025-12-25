@@ -1,0 +1,42 @@
+# Ld8/r1;->getCompletionExceptionOrNull()Ljava/lang/Throwable; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v3
+#
+# - return:java.lang.Throwable
+
+getCompletionExceptionOrNull-BB@0x0 : [ getCompletionExceptionOrNull-BB@0x14 getCompletionExceptionOrNull-BB@0x32 ]
+	0       (00000000) sget-object          v0, Ld8/r1;->a Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;
+	1       (00000004) invoke-virtual       v0, v3, Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	2       (0000000a) move-result-object   v0
+	3       (0000000c) instance-of          v1, v0, Ld8/b1;
+	4       (00000010) if-nez               v1, +011h
+
+getCompletionExceptionOrNull-BB@0x14 : [ getCompletionExceptionOrNull-BB@0x1e getCompletionExceptionOrNull-BB@0x24 ]
+	5       (00000014) instance-of          v1, v0, Ld8/w;
+	6       (00000018) const/4              v2, 0
+	7       (0000001a) if-eqz               v1, +005h
+
+getCompletionExceptionOrNull-BB@0x1e : [ getCompletionExceptionOrNull-BB@0x26 ]
+	8       (0000001e) check-cast           v0, Ld8/w;
+	9       (00000022) goto                 +2h
+
+getCompletionExceptionOrNull-BB@0x24 : [ getCompletionExceptionOrNull-BB@0x26 ]
+	10      (00000024) move-object          v0, v2
+
+getCompletionExceptionOrNull-BB@0x26 : [ getCompletionExceptionOrNull-BB@0x2a getCompletionExceptionOrNull-BB@0x30 ]
+	11      (00000026) if-eqz               v0, +005h
+
+getCompletionExceptionOrNull-BB@0x2a : 
+	12      (0000002a) iget-object          v0, v0, Ld8/w;->a Ljava/lang/Throwable;
+	13      (0000002e) return-object        v0
+
+getCompletionExceptionOrNull-BB@0x30 : 
+	14      (00000030) return-object        v2
+
+getCompletionExceptionOrNull-BB@0x32 : 
+	15      (00000032) new-instance         v0, Ljava/lang/IllegalStateException;
+	16      (00000036) const-string         v1, "This job has not completed yet"
+	17      (0000003a) invoke-direct        v0, v1, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	18      (00000040) throw                v0
+

@@ -1,0 +1,35 @@
+# Ld8/n;->a(Li8/r; I)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:i8.r
+# - v6:int
+#
+# - return:void
+
+a-BB@0x0 : [ a-BB@0x1a a-BB@0x38 ]
+	0       (00000000) sget-object          v0, Ld8/n;->f Ljava/util/concurrent/atomic/AtomicIntegerFieldUpdater;
+	1       (00000004) invoke-virtual       v0, v4, Ljava/util/concurrent/atomic/AtomicIntegerFieldUpdater;->get(Ljava/lang/Object;)I
+	2       (0000000a) move-result          v1
+	3       (0000000c) const                v2, 536870911
+	4       (00000012) and-int              v3, v1, v2
+	5       (00000016) if-ne                v3, v2, +011h
+
+a-BB@0x1a : [ a-BB@0x30 a-BB@0x0 ]
+	6       (0000001a) shr-int/lit8         v2, v1, 29
+	7       (0000001e) shl-int/lit8         v2, v2, 29
+	8       (00000022) add-int/2addr        v2, v6
+	9       (00000024) invoke-virtual       v0, v4, v1, v2, Ljava/util/concurrent/atomic/AtomicIntegerFieldUpdater;->compareAndSet(Ljava/lang/Object; I I)Z
+	10      (0000002a) move-result          v0
+	11      (0000002c) if-eqz               v0, -016h
+
+a-BB@0x30 : 
+	12      (00000030) invoke-virtual       v4, v5, Ld8/n;->u(Ld8/u1;)V
+	13      (00000036) return-void          
+
+a-BB@0x38 : 
+	14      (00000038) new-instance         v5, Ljava/lang/IllegalStateException;
+	15      (0000003c) const-string         v6, "invokeOnCancellation should be called at most once"
+	16      (00000040) invoke-direct        v5, v6, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	17      (00000046) throw                v5
+

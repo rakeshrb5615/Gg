@@ -1,0 +1,46 @@
+# Lf2/b0;->c([I)[I [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:int[]
+#
+# - return:int[]
+
+c-BB@0x0 : [ c-BB@0x2 ]
+	0       (00000000) const/4              v0, 0
+
+c-BB@0x2 : [ c-BB@0xe c-BB@0x34 ]
+	1       (00000002) array-length         v1, v3
+	2       (00000004) const                v2, 16842912
+	3       (0000000a) if-ge                v0, v1, +015h
+
+c-BB@0xe : [ c-BB@0x16 c-BB@0x18 ]
+	4       (0000000e) aget                 v1, v3, v0
+	5       (00000012) if-ne                v1, v2, +003h
+
+c-BB@0x16 : 
+	6       (00000016) return-object        v3
+
+c-BB@0x18 : [ c-BB@0x1c c-BB@0x2e ]
+	7       (00000018) if-nez               v1, +00bh
+
+c-BB@0x1c : 
+	8       (0000001c) invoke-virtual       v3, [I->clone()Ljava/lang/Object;
+	9       (00000022) move-result-object   v3
+	10      (00000024) check-cast           v3, [I
+	11      (00000028) aput                 v2, v3, v0
+	12      (0000002c) return-object        v3
+
+c-BB@0x2e : [ c-BB@0x2 ]
+	13      (0000002e) add-int/lit8         v0, v0, 1
+	14      (00000032) goto                 -18h
+
+c-BB@0x34 : 
+	15      (00000034) array-length         v0, v3
+	16      (00000036) add-int/lit8         v0, v0, 1
+	17      (0000003a) invoke-static        v3, v0, Ljava/util/Arrays;->copyOf([I I)[I
+	18      (00000040) move-result-object   v0
+	19      (00000042) array-length         v3, v3
+	20      (00000044) aput                 v2, v0, v3
+	21      (00000048) return-object        v0
+

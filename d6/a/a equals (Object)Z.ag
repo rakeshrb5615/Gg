@@ -1,0 +1,46 @@
+# Ld6/a;->equals(Ljava/lang/Object;)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v7
+# - v8:java.lang.Object
+#
+# - return:boolean
+
+equals-BB@0x0 : [ equals-BB@0x6 equals-BB@0x8 ]
+	0       (00000000) const/4              v0, 1
+	1       (00000002) if-ne                v8, v7, +003h
+
+equals-BB@0x6 : 
+	2       (00000006) return               v0
+
+equals-BB@0x8 : [ equals-BB@0x12 equals-BB@0x4c ]
+	3       (00000008) instance-of          v1, v8, Ld6/a;
+	4       (0000000c) const/4              v2, 0
+	5       (0000000e) if-eqz               v1, +01fh
+
+equals-BB@0x12 : [ equals-BB@0x2a equals-BB@0x4c ]
+	6       (00000012) check-cast           v8, Ld6/a;
+	7       (00000016) iget-object          v1, v7, Ld6/a;->a Ljava/lang/String;
+	8       (0000001a) iget-object          v3, v8, Ld6/a;->a Ljava/lang/String;
+	9       (0000001e) invoke-virtual       v1, v3, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	10      (00000024) move-result          v1
+	11      (00000026) if-eqz               v1, +013h
+
+equals-BB@0x2a : [ equals-BB@0x3a equals-BB@0x4c ]
+	12      (0000002a) iget-wide            v3, v7, Ld6/a;->b J
+	13      (0000002e) iget-wide            v5, v8, Ld6/a;->b J
+	14      (00000032) cmp-long             v1, v3, v5
+	15      (00000036) if-nez               v1, +00bh
+
+equals-BB@0x3a : [ equals-BB@0x4a equals-BB@0x4c ]
+	16      (0000003a) iget-wide            v3, v7, Ld6/a;->c J
+	17      (0000003e) iget-wide            v5, v8, Ld6/a;->c J
+	18      (00000042) cmp-long             v8, v3, v5
+	19      (00000046) if-nez               v8, +003h
+
+equals-BB@0x4a : 
+	20      (0000004a) return               v0
+
+equals-BB@0x4c : 
+	21      (0000004c) return               v2
+

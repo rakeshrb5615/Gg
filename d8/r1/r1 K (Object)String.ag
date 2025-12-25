@@ -1,0 +1,65 @@
+# Ld8/r1;->K(Ljava/lang/Object;)Ljava/lang/String; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:java.lang.Object
+#
+# - return:java.lang.String
+
+K-BB@0x0 : [ K-BB@0xc K-BB@0x3a ]
+	0       (00000000) instance-of          v0, v2, Ld8/l1;
+	1       (00000004) const-string         v1, "Active"
+	2       (00000008) if-eqz               v0, +019h
+
+K-BB@0xc : [ K-BB@0x1c K-BB@0x22 ]
+	3       (0000000c) check-cast           v2, Ld8/l1;
+	4       (00000010) invoke-virtual       v2, Ld8/l1;->d()Z
+	5       (00000016) move-result          v0
+	6       (00000018) if-eqz               v0, +005h
+
+K-BB@0x1c : 
+	7       (0000001c) const-string         v2, "Cancelling"
+	8       (00000020) return-object        v2
+
+K-BB@0x22 : [ K-BB@0x32 K-BB@0x38 ]
+	9       (00000022) sget-object          v0, Ld8/l1;->b Ljava/util/concurrent/atomic/AtomicIntegerFieldUpdater;
+	10      (00000026) invoke-virtual       v0, v2, Ljava/util/concurrent/atomic/AtomicIntegerFieldUpdater;->get(Ljava/lang/Object;)I
+	11      (0000002c) move-result          v2
+	12      (0000002e) if-eqz               v2, +005h
+
+K-BB@0x32 : 
+	13      (00000032) const-string         v2, "Completing"
+	14      (00000036) return-object        v2
+
+K-BB@0x38 : 
+	15      (00000038) return-object        v1
+
+K-BB@0x3a : [ K-BB@0x42 K-BB@0x5a ]
+	16      (0000003a) instance-of          v0, v2, Ld8/b1;
+	17      (0000003e) if-eqz               v0, +00eh
+
+K-BB@0x42 : [ K-BB@0x52 K-BB@0x54 ]
+	18      (00000042) check-cast           v2, Ld8/b1;
+	19      (00000046) invoke-interface     v2, Ld8/b1;->isActive()Z
+	20      (0000004c) move-result          v2
+	21      (0000004e) if-eqz               v2, +003h
+
+K-BB@0x52 : 
+	22      (00000052) return-object        v1
+
+K-BB@0x54 : 
+	23      (00000054) const-string         v2, "New"
+	24      (00000058) return-object        v2
+
+K-BB@0x5a : [ K-BB@0x62 K-BB@0x68 ]
+	25      (0000005a) instance-of          v2, v2, Ld8/w;
+	26      (0000005e) if-eqz               v2, +005h
+
+K-BB@0x62 : 
+	27      (00000062) const-string         v2, "Cancelled"
+	28      (00000066) return-object        v2
+
+K-BB@0x68 : 
+	29      (00000068) const-string         v2, "Completed"
+	30      (0000006c) return-object        v2
+

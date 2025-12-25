@@ -1,0 +1,38 @@
+# Ld6/g;->a(Le6/b;)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:e6.b
+#
+# - return:boolean
+
+a-BB@0x0 : [ a-BB@0xa a-BB@0xc ]
+	0       (00000000) iget                 v0, v3, Le6/b;->b I
+	1       (00000004) const/4              v1, 3
+	2       (00000006) if-ne                v0, v1, +003h
+
+a-BB@0xa : [ a-BB@0x1a ]
+	3       (0000000a) goto                 +8h
+
+a-BB@0xc : [ a-BB@0x12 a-BB@0x14 ]
+	4       (0000000c) const/4              v1, 4
+	5       (0000000e) if-ne                v0, v1, +003h
+
+a-BB@0x12 : [ a-BB@0x1a ]
+	6       (00000012) goto                 +4h
+
+a-BB@0x14 : [ a-BB@0x1a a-BB@0x2c ]
+	7       (00000014) const/4              v1, 5
+	8       (00000016) if-ne                v0, v1, +00bh
+
+a-BB@0x1a : 
+	9       (0000001a) iget-object          v0, v2, Ld6/g;->a Lcom/google/android/gms/tasks/TaskCompletionSource;
+	10      (0000001e) iget-object          v3, v3, Le6/b;->a Ljava/lang/String;
+	11      (00000022) invoke-virtual       v0, v3, Lcom/google/android/gms/tasks/TaskCompletionSource;->trySetResult(Ljava/lang/Object;)Z
+	12      (00000028) const/4              v3, 1
+	13      (0000002a) return               v3
+
+a-BB@0x2c : 
+	14      (0000002c) const/4              v3, 0
+	15      (0000002e) return               v3
+

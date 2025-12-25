@@ -1,0 +1,138 @@
+# Ld8/r1;->n(Ld8/b1; Ljava/lang/Object;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:d8.b1
+# - v8:java.lang.Object
+#
+# - return:void
+
+n-BB@0x0 : [ n-BB@0x14 n-BB@0x24 ]
+	0       (00000000) sget-object          v0, Ld8/r1;->b Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;
+	1       (00000004) invoke-virtual       v0, v6, Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	2       (0000000a) move-result-object   v1
+	3       (0000000c) check-cast           v1, Ld8/q;
+	4       (00000010) if-eqz               v1, +00ah
+
+n-BB@0x14 : [ n-BB@0x24 ]
+	5       (00000014) invoke-interface     v1, Ld8/p0;->a()V
+	6       (0000001a) sget-object          v1, Ld8/t1;->a Ld8/t1;
+	7       (0000001e) invoke-virtual       v0, v6, v1, Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;->set(Ljava/lang/Object; Ljava/lang/Object;)V
+
+n-BB@0x24 : [ n-BB@0x2e n-BB@0x34 ]
+	8       (00000024) instance-of          v0, v8, Ld8/w;
+	9       (00000028) const/4              v1, 0
+	10      (0000002a) if-eqz               v0, +005h
+
+n-BB@0x2e : [ n-BB@0x36 ]
+	11      (0000002e) check-cast           v8, Ld8/w;
+	12      (00000032) goto                 +2h
+
+n-BB@0x34 : [ n-BB@0x36 ]
+	13      (00000034) move-object          v8, v1
+
+n-BB@0x36 : [ n-BB@0x3a n-BB@0x40 ]
+	14      (00000036) if-eqz               v8, +005h
+
+n-BB@0x3a : [ n-BB@0x42 ]
+	15      (0000003a) iget-object          v8, v8, Ld8/w;->a Ljava/lang/Throwable;
+	16      (0000003e) goto                 +2h
+
+n-BB@0x40 : [ n-BB@0x42 ]
+	17      (00000040) move-object          v8, v1
+
+n-BB@0x42 : [ n-BB@0x52 n-BB@0x98 ]
+	18      (00000042) instance-of          v0, v7, Ld8/i1;
+	19      (00000046) const-string         v2, " for "
+	20      (0000004a) const-string         v3, "Exception in completion handler "
+	21      (0000004e) if-eqz               v0, +025h
+
+n-BB@0x52 : 
+	22      (00000052) move-object          v0, v7
+	23      (00000054) check-cast           v0, Ld8/i1;
+	24      (00000058) invoke-virtual       v0, v8, Ld8/i1;->k(Ljava/lang/Throwable;)V
+	25      (0000005e) return-void          
+	52:5d
+	(Ljava/lang/Throwable; -> 60 n-BB@0x60)
+
+n-BB@0x60 : [ n-BB@0x142 ]
+	26      (00000060) move-exception       v8
+	27      (00000062) new-instance         v0, La5/o;
+	28      (00000066) new-instance         v1, Ljava/lang/StringBuilder;
+	29      (0000006a) invoke-direct        v1, v3, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	30      (00000070) invoke-virtual       v1, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	31      (00000076) invoke-virtual       v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	32      (0000007c) invoke-virtual       v1, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	33      (00000082) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	34      (00000088) move-result-object   v7
+	35      (0000008a) invoke-direct        v0, v7, v8, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	36      (00000090) invoke-virtual       v6, v0, Ld8/r1;->w(La5/o;)V
+	37      (00000096) goto                 +56h
+
+n-BB@0x98 : [ n-BB@0xa4 n-BB@0x142 ]
+	38      (00000098) invoke-interface     v7, Ld8/b1;->c()Ld8/s1;
+	39      (0000009e) move-result-object   v7
+	40      (000000a0) if-eqz               v7, +051h
+
+n-BB@0xa4 : [ n-BB@0xd0 ]
+	41      (000000a4) new-instance         v0, Li8/h;
+	42      (000000a8) const/4              v4, 1
+	43      (000000aa) invoke-direct        v0, v4, Li8/h;-><init>(I)V
+	44      (000000b0) invoke-virtual       v7, v0, v4, Li8/j;->d(Li8/j; I)Z
+	45      (000000b6) sget-object          v0, Li8/j;->a Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;
+	46      (000000ba) invoke-virtual       v0, v7, Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	47      (000000c0) move-result-object   v0
+	48      (000000c2) const-string         v4, "null cannot be cast to non-null type kotlinx.coroutines.internal.LockFreeLinkedListNode"
+	49      (000000c6) invoke-static        v0, v4, Lkotlin/jvm/internal/j;->c(Ljava/lang/Object; Ljava/lang/String;)V
+	50      (000000cc) check-cast           v0, Li8/j;
+
+n-BB@0xd0 : [ n-BB@0xdc n-BB@0x138 ]
+	51      (000000d0) invoke-virtual       v0, v7, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+	52      (000000d6) move-result          v4
+	53      (000000d8) if-nez               v4, +030h
+
+n-BB@0xdc : [ n-BB@0xe4 n-BB@0x12e ]
+	54      (000000dc) instance-of          v4, v0, Ld8/i1;
+	55      (000000e0) if-eqz               v4, +027h
+
+n-BB@0xe4 : [ n-BB@0x12e ]
+	56      (000000e4) move-object          v4, v0
+	57      (000000e6) check-cast           v4, Ld8/i1;
+	58      (000000ea) invoke-virtual       v4, v8, Ld8/i1;->k(Ljava/lang/Throwable;)V
+	59      (000000f0) goto                 +1fh
+	e4:ef
+	(Ljava/lang/Throwable; -> f2 n-BB@0xf2)
+
+n-BB@0xf2 : [ n-BB@0xf8 n-BB@0x100 ]
+	60      (000000f2) move-exception       v4
+	61      (000000f4) if-eqz               v1, +006h
+
+n-BB@0xf8 : [ n-BB@0x12e ]
+	62      (000000f8) invoke-static        v1, v4, Lq4/b;->a(Ljava/lang/Throwable; Ljava/lang/Throwable;)V
+	63      (000000fe) goto                 +18h
+
+n-BB@0x100 : [ n-BB@0x12e ]
+	64      (00000100) new-instance         v1, La5/o;
+	65      (00000104) new-instance         v5, Ljava/lang/StringBuilder;
+	66      (00000108) invoke-direct        v5, v3, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	67      (0000010e) invoke-virtual       v5, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	68      (00000114) invoke-virtual       v5, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	69      (0000011a) invoke-virtual       v5, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	70      (00000120) invoke-virtual       v5, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	71      (00000126) move-result-object   v5
+	72      (00000128) invoke-direct        v1, v5, v4, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+
+n-BB@0x12e : [ n-BB@0xd0 ]
+	73      (0000012e) invoke-virtual       v0, Li8/j;->g()Li8/j;
+	74      (00000134) move-result-object   v0
+	75      (00000136) goto                 -33h
+
+n-BB@0x138 : [ n-BB@0x13c n-BB@0x142 ]
+	76      (00000138) if-eqz               v1, +005h
+
+n-BB@0x13c : [ n-BB@0x142 ]
+	77      (0000013c) invoke-virtual       v6, v1, Ld8/r1;->w(La5/o;)V
+
+n-BB@0x142 : 
+	78      (00000142) return-void          
+

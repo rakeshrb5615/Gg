@@ -1,0 +1,173 @@
+# Ld4/k;->onReceive(Landroid/content/Context; Landroid/content/Intent;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v19
+# - v20:android.content.Context
+# - v21:android.content.Intent
+#
+# - return:void
+
+onReceive-BB@0x0 : [ D:onReceive-BB@0x12 0:onReceive-BB@0x32 1:onReceive-BB@0x22 ]
+	0       (00000000) move-object/from16   v1, v19
+	1       (00000004) move-object/from16   v0, v21
+	2       (00000008) iget                 v2, v1, Ld4/k;->a I
+	3       (0000000c) packed-switch        v2, +00000f0h
+
+onReceive-BB@0x12 : 
+	4       (00000012) iget-object          v0, v1, Ld4/k;->b Ljava/lang/Object;
+	5       (00000016) check-cast           v0, Li2/n0;
+	6       (0000001a) invoke-virtual       v0, Li2/n0;->b()V
+	7       (00000020) return-void          
+
+onReceive-BB@0x22 : 
+	8       (00000022) iget-object          v0, v1, Ld4/k;->b Ljava/lang/Object;
+	9       (00000026) check-cast           v0, Lh/z;
+	10      (0000002a) invoke-virtual       v0, Lh/z;->g()V
+	11      (00000030) return-void          
+
+onReceive-BB@0x32 : [ onReceive-BB@0x5a onReceive-BB@0x80 ]
+	12      (00000032) iget-object          v2, v1, Ld4/k;->b Ljava/lang/Object;
+	13      (00000036) check-cast           v2, Lc4/c;
+	14      (0000003a) const-string         v3, "package.name"
+	15      (0000003e) invoke-virtual/range v20, Landroid/content/Context;->getPackageName()Ljava/lang/String;
+	16      (00000044) move-result-object   v4
+	17      (00000046) invoke-virtual       v0, v3, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
+	18      (0000004c) move-result-object   v3
+	19      (0000004e) invoke-virtual       v4, v3, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	20      (00000054) move-result          v3
+	21      (00000056) if-nez               v3, +015h
+
+onReceive-BB@0x5a : [ onReceive-BB@0x1e6 ]
+	22      (0000005a) iget-object          v2, v2, Lc4/c;->a Ld4/l;
+	23      (0000005e) const-string         v3, "package.name"
+	24      (00000062) invoke-virtual       v0, v3, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
+	25      (00000068) move-result-object   v0
+	26      (0000006a) filled-new-array     v0, [Ljava/lang/Object;
+	27      (00000070) move-result-object   v0
+	28      (00000072) const-string         v3, "ListenerRegistryBroadcastReceiver received broadcast for third party app: %s"
+	29      (00000076) invoke-virtual       v2, v3, v0, Ld4/l;->d(Ljava/lang/String; [Ljava/lang/Object;)V
+	30      (0000007c) goto/16              +0b5h
+
+onReceive-BB@0x80 : [ onReceive-BB@0xac ]
+	31      (00000080) iget-object          v3, v2, Lc4/c;->a Ld4/l;
+	32      (00000084) const/4              v4, 0
+	33      (00000086) new-array            v5, v4, [Ljava/lang/Object;
+	34      (0000008a) const-string         v6, "List of extras in received intent:"
+	35      (0000008e) invoke-virtual       v3, v6, v5, Ld4/l;->d(Ljava/lang/String; [Ljava/lang/Object;)V
+	36      (00000094) invoke-virtual       v0, Landroid/content/Intent;->getExtras()Landroid/os/Bundle;
+	37      (0000009a) move-result-object   v3
+	38      (0000009c) invoke-virtual       v3, Landroid/os/BaseBundle;->keySet()Ljava/util/Set;
+	39      (000000a2) move-result-object   v3
+	40      (000000a4) invoke-interface     v3, Ljava/util/Set;->iterator()Ljava/util/Iterator;
+	41      (000000aa) move-result-object   v3
+
+onReceive-BB@0xac : [ onReceive-BB@0xb8 onReceive-BB@0xec ]
+	42      (000000ac) invoke-interface     v3, Ljava/util/Iterator;->hasNext()Z
+	43      (000000b2) move-result          v5
+	44      (000000b4) if-eqz               v5, +01ch
+
+onReceive-BB@0xb8 : [ onReceive-BB@0xac ]
+	45      (000000b8) invoke-interface     v3, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	46      (000000be) move-result-object   v5
+	47      (000000c0) check-cast           v5, Ljava/lang/String;
+	48      (000000c4) iget-object          v6, v2, Lc4/c;->a Ld4/l;
+	49      (000000c8) invoke-virtual       v0, Landroid/content/Intent;->getExtras()Landroid/os/Bundle;
+	50      (000000ce) move-result-object   v7
+	51      (000000d0) invoke-virtual       v7, v5, Landroid/os/BaseBundle;->get(Ljava/lang/String;)Ljava/lang/Object;
+	52      (000000d6) move-result-object   v7
+	53      (000000d8) filled-new-array     v5, v7, [Ljava/lang/Object;
+	54      (000000de) move-result-object   v5
+	55      (000000e0) const-string         v7, "Key: %s; value: %s"
+	56      (000000e4) invoke-virtual       v6, v7, v5, Ld4/l;->d(Ljava/lang/String; [Ljava/lang/Object;)V
+	57      (000000ea) goto                 -1fh
+
+onReceive-BB@0xec : [ onReceive-BB@0x1aa ]
+	58      (000000ec) iget-object          v3, v2, Lc4/c;->a Ld4/l;
+	59      (000000f0) const-string         v5, "List of extras in received intent needed by fromUpdateIntent:"
+	60      (000000f4) new-array            v6, v4, [Ljava/lang/Object;
+	61      (000000f8) invoke-virtual       v3, v5, v6, Ld4/l;->d(Ljava/lang/String; [Ljava/lang/Object;)V
+	62      (000000fe) const-string         v5, "install.status"
+	63      (00000102) invoke-virtual       v0, v5, v4, Landroid/content/Intent;->getIntExtra(Ljava/lang/String; I)I
+	64      (00000108) move-result          v6
+	65      (0000010a) invoke-static        v6, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+	66      (00000110) move-result-object   v6
+	67      (00000112) filled-new-array     v5, v6, [Ljava/lang/Object;
+	68      (00000118) move-result-object   v6
+	69      (0000011a) const-string         v7, "Key: %s; value: %s"
+	70      (0000011e) invoke-virtual       v3, v7, v6, Ld4/l;->d(Ljava/lang/String; [Ljava/lang/Object;)V
+	71      (00000124) const-string         v6, "error.code"
+	72      (00000128) invoke-virtual       v0, v6, v4, Landroid/content/Intent;->getIntExtra(Ljava/lang/String; I)I
+	73      (0000012e) move-result          v8
+	74      (00000130) invoke-static        v8, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+	75      (00000136) move-result-object   v8
+	76      (00000138) filled-new-array     v6, v8, [Ljava/lang/Object;
+	77      (0000013e) move-result-object   v8
+	78      (00000140) invoke-virtual       v3, v7, v8, Ld4/l;->d(Ljava/lang/String; [Ljava/lang/Object;)V
+	79      (00000146) const-string         v3, "total.bytes.to.download"
+	80      (0000014a) const-string         v7, "bytes.downloaded"
+	81      (0000014e) const-string         v8, "package.name"
+	82      (00000152) invoke-virtual       v0, v5, v4, Landroid/content/Intent;->getIntExtra(Ljava/lang/String; I)I
+	83      (00000158) move-result          v10
+	84      (0000015a) const-wide/16        v11, 0
+	85      (0000015e) invoke-virtual       v0, v7, v11, v12, Landroid/content/Intent;->getLongExtra(Ljava/lang/String; J)J
+	86      (00000164) move-result-wide     v13
+	87      (00000166) invoke-virtual       v0, v3, v11, v12, Landroid/content/Intent;->getLongExtra(Ljava/lang/String; J)J
+	88      (0000016c) move-result-wide     v11
+	89      (0000016e) invoke-virtual       v0, v6, v4, Landroid/content/Intent;->getIntExtra(Ljava/lang/String; I)I
+	90      (00000174) move-result          v15
+	91      (00000176) invoke-virtual       v0, v8, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
+	92      (0000017c) move-result-object   v16
+	93      (0000017e) new-instance         v9, Lcom/google/android/play/core/install/zza;
+	94      (00000182) move-wide/from16     v17, v13
+	95      (00000186) move-wide            v13, v11
+	96      (00000188) move-wide/from16     v11, v17
+	97      (0000018c) invoke-direct/range  v9 ... v16, Lcom/google/android/play/core/install/zza;-><init>(I J J I Ljava/lang/String;)V
+	98      (00000192) iget-object          v0, v2, Lc4/c;->a Ld4/l;
+	99      (00000196) filled-new-array     v9, [Ljava/lang/Object;
+	100     (0000019c) move-result-object   v3
+	101     (0000019e) const-string         v4, "ListenerRegistryBroadcastReceiver.onReceive: %s"
+	102     (000001a2) invoke-virtual       v0, v4, v3, Ld4/l;->d(Ljava/lang/String; [Ljava/lang/Object;)V
+	103     (000001a8) monitor-enter        v2
+
+onReceive-BB@0x1aa : [ onReceive-BB@0x1c0 ]
+	104     (000001aa) new-instance         v0, Ljava/util/HashSet;
+	105     (000001ae) iget-object          v3, v2, Lc4/c;->d Ljava/util/HashSet;
+	106     (000001b2) invoke-direct        v0, v3, Ljava/util/HashSet;-><init>(Ljava/util/Collection;)V
+	107     (000001b8) invoke-virtual       v0, Ljava/util/HashSet;->iterator()Ljava/util/Iterator;
+	108     (000001be) move-result-object   v0
+	1aa:1dd
+	(Ljava/lang/Throwable; -> 1e0 onReceive-BB@0x1e0)
+
+onReceive-BB@0x1c0 : [ onReceive-BB@0x1cc onReceive-BB@0x1e4 ]
+	109     (000001c0) invoke-interface     v0, Ljava/util/Iterator;->hasNext()Z
+	110     (000001c6) move-result          v3
+	111     (000001c8) if-eqz               v3, +00eh
+	1aa:1dd
+	(Ljava/lang/Throwable; -> 1e0 onReceive-BB@0x1e0)
+
+onReceive-BB@0x1cc : [ onReceive-BB@0x1c0 ]
+	112     (000001cc) invoke-interface     v0, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	113     (000001d2) move-result-object   v3
+	114     (000001d4) check-cast           v3, Li2/e0;
+	115     (000001d8) invoke-virtual       v3, v9, Li2/e0;->a(Lcom/google/android/play/core/install/zza;)V
+	116     (000001de) goto                 -fh
+
+onReceive-BB@0x1e0 : [ onReceive-BB@0x1e8 ]
+	117     (000001e0) move-exception       v0
+	118     (000001e2) goto                 +3h
+
+onReceive-BB@0x1e4 : [ onReceive-BB@0x1e6 ]
+	119     (000001e4) monitor-exit         v2
+
+onReceive-BB@0x1e6 : 
+	120     (000001e6) return-void          
+
+onReceive-BB@0x1e8 : 
+	121     (000001e8) monitor-exit         v2
+	122     (000001ea) throw                v0
+	1e8:1e9
+	(Ljava/lang/Throwable; -> 1e0 onReceive-BB@0x1e0)
+
+onReceive-BB@0x1ec : 
+	123     (000001ec) packed-switch-payload 0 1
+

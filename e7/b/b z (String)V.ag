@@ -1,0 +1,43 @@
+# Le7/b;->z(Ljava/lang/String;)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:java.lang.String
+#
+# - return:void
+
+z-BB@0x0 : [ z-BB@0x12 z-BB@0x3e ]
+	0       (00000000) const-string         v0, "name == null"
+	1       (00000004) invoke-static        v3, v0, Ljava/util/Objects;->requireNonNull(Ljava/lang/Object; Ljava/lang/String;)Ljava/lang/Object;
+	2       (0000000a) iget-object          v0, v2, Le7/b;->p Ljava/lang/String;
+	3       (0000000e) if-nez               v0, +018h
+
+z-BB@0x12 : [ z-BB@0x20 z-BB@0x38 ]
+	4       (00000012) invoke-virtual       v2, Le7/b;->C()I
+	5       (00000018) move-result          v0
+	6       (0000001a) const/4              v1, 3
+	7       (0000001c) if-eq                v0, v1, +00eh
+
+z-BB@0x20 : [ z-BB@0x26 z-BB@0x28 ]
+	8       (00000020) const/4              v1, 5
+	9       (00000022) if-ne                v0, v1, +003h
+
+z-BB@0x26 : [ z-BB@0x38 ]
+	10      (00000026) goto                 +9h
+
+z-BB@0x28 : 
+	11      (00000028) new-instance         v3, Ljava/lang/IllegalStateException;
+	12      (0000002c) const-string         v0, "Please begin an object before writing a name."
+	13      (00000030) invoke-direct        v3, v0, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	14      (00000036) throw                v3
+
+z-BB@0x38 : 
+	15      (00000038) iput-object          v3, v2, Le7/b;->p Ljava/lang/String;
+	16      (0000003c) return-void          
+
+z-BB@0x3e : 
+	17      (0000003e) new-instance         v3, Ljava/lang/IllegalStateException;
+	18      (00000042) const-string         v0, "Already wrote a name, expecting a value."
+	19      (00000046) invoke-direct        v3, v0, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	20      (0000004c) throw                v3
+

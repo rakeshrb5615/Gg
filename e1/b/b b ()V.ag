@@ -1,0 +1,24 @@
+# Le1/b;->b()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v2
+#
+# - return:void
+
+b-BB@0x0 : [ b-BB@0x18 b-BB@0x1a ]
+	0       (00000000) iget-object          v0, v2, Le1/b;->b Ll6/c;
+	1       (00000004) iget-object          v0, v0, Ll6/c;->b Ljava/lang/Object;
+	2       (00000008) check-cast           v0, Ljava/util/concurrent/atomic/AtomicBoolean;
+	3       (0000000c) invoke-virtual       v0, Ljava/util/concurrent/atomic/AtomicBoolean;->get()Z
+	4       (00000012) move-result          v0
+	5       (00000014) if-nez               v0, +003h
+
+b-BB@0x18 : 
+	6       (00000018) return-void          
+
+b-BB@0x1a : 
+	7       (0000001a) new-instance         v0, Ljava/lang/IllegalStateException;
+	8       (0000001e) const-string         v1, "Do mutate preferences once returned to DataStore."
+	9       (00000022) invoke-direct        v0, v1, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	10      (00000028) throw                v0
+

@@ -1,0 +1,133 @@
+# Le7/a;->L(C)Ljava/lang/String; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v11
+# - v12:char
+#
+# - return:java.lang.String
+
+L-BB@0x0 : [ L-BB@0x4 ]
+	0       (00000000) const/4              v0, 0
+	1       (00000002) move-object          v1, v0
+
+L-BB@0x4 : [ L-BB@0xc ]
+	2       (00000004) iget                 v2, v11, Le7/a;->c I
+	3       (00000008) iget                 v3, v11, Le7/a;->d I
+
+L-BB@0xc : [ L-BB@0x10 ]
+	4       (0000000c) move                 v4, v3
+	5       (0000000e) move                 v3, v2
+
+L-BB@0x10 : [ L-BB@0x1e L-BB@0xd6 ]
+	6       (00000010) const/16             v5, 16
+	7       (00000014) const/4              v6, 1
+	8       (00000016) iget-object          v7, v11, Le7/a;->b [C
+	9       (0000001a) if-ge                v2, v4, +05eh
+
+L-BB@0x1e : [ L-BB@0x30 L-BB@0x46 ]
+	10      (0000001e) add-int/lit8         v8, v2, 1
+	11      (00000022) aget-char            v2, v7, v2
+	12      (00000026) iget                 v9, v11, Le7/a;->u I
+	13      (0000002a) const/4              v10, 3
+	14      (0000002c) if-ne                v9, v10, +00dh
+
+L-BB@0x30 : [ L-BB@0x38 L-BB@0x3a ]
+	15      (00000030) const/16             v9, 32
+	16      (00000034) if-lt                v2, v9, +003h
+
+L-BB@0x38 : [ L-BB@0x46 ]
+	17      (00000038) goto                 +7h
+
+L-BB@0x3a : 
+	18      (0000003a) const-string         v12, "Unescaped control characters (\u0000-\u001F) are not allowed in strict mode"
+	19      (0000003e) invoke-virtual       v11, v12, Le7/a;->V(Ljava/lang/String;)V
+	20      (00000044) throw                v0
+
+L-BB@0x46 : [ L-BB@0x4a L-BB@0x72 ]
+	21      (00000046) if-ne                v2, v12, +016h
+
+L-BB@0x4a : [ L-BB@0x56 L-BB@0x62 ]
+	22      (0000004a) iput                 v8, v11, Le7/a;->c I
+	23      (0000004e) sub-int/2addr        v8, v3
+	24      (00000050) sub-int/2addr        v8, v6
+	25      (00000052) if-nez               v1, +008h
+
+L-BB@0x56 : 
+	26      (00000056) new-instance         v12, Ljava/lang/String;
+	27      (0000005a) invoke-direct        v12, v7, v3, v8, Ljava/lang/String;-><init>([C I I)V
+	28      (00000060) return-object        v12
+
+L-BB@0x62 : 
+	29      (00000062) invoke-virtual       v1, v7, v3, v8, Ljava/lang/StringBuilder;->append([C I I)Ljava/lang/StringBuilder;
+	30      (00000068) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	31      (0000006e) move-result-object   v12
+	32      (00000070) return-object        v12
+
+L-BB@0x72 : [ L-BB@0x7a L-BB@0xbc ]
+	33      (00000072) const/16             v9, 92
+	34      (00000076) if-ne                v2, v9, +023h
+
+L-BB@0x7a : [ L-BB@0x88 L-BB@0x9e ]
+	35      (0000007a) iput                 v8, v11, Le7/a;->c I
+	36      (0000007e) sub-int/2addr        v8, v3
+	37      (00000080) add-int/lit8         v2, v8, -1
+	38      (00000084) if-nez               v1, +00dh
+
+L-BB@0x88 : [ L-BB@0x9e ]
+	39      (00000088) mul-int/lit8         v8, v8, 2
+	40      (0000008c) new-instance         v1, Ljava/lang/StringBuilder;
+	41      (00000090) invoke-static        v8, v5, Ljava/lang/Math;->max(I I)I
+	42      (00000096) move-result          v4
+	43      (00000098) invoke-direct        v1, v4, Ljava/lang/StringBuilder;-><init>(I)V
+
+L-BB@0x9e : [ L-BB@0xc ]
+	44      (0000009e) invoke-virtual       v1, v7, v3, v2, Ljava/lang/StringBuilder;->append([C I I)Ljava/lang/StringBuilder;
+	45      (000000a4) invoke-virtual       v11, Le7/a;->Q()C
+	46      (000000aa) move-result          v2
+	47      (000000ac) invoke-virtual       v1, v2, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+	48      (000000b2) iget                 v2, v11, Le7/a;->c I
+	49      (000000b6) iget                 v3, v11, Le7/a;->d I
+	50      (000000ba) goto                 -57h
+
+L-BB@0xbc : [ L-BB@0xc4 L-BB@0xd2 ]
+	51      (000000bc) const/16             v5, 10
+	52      (000000c0) if-ne                v2, v5, +009h
+
+L-BB@0xc4 : [ L-BB@0xd2 ]
+	53      (000000c4) iget                 v2, v11, Le7/a;->e I
+	54      (000000c8) add-int/2addr        v2, v6
+	55      (000000ca) iput                 v2, v11, Le7/a;->e I
+	56      (000000ce) iput                 v8, v11, Le7/a;->f I
+
+L-BB@0xd2 : [ L-BB@0x10 ]
+	57      (000000d2) move                 v2, v8
+	58      (000000d4) goto                 -62h
+
+L-BB@0xd6 : [ L-BB@0xda L-BB@0xf6 ]
+	59      (000000d6) if-nez               v1, +010h
+
+L-BB@0xda : [ L-BB@0xf6 ]
+	60      (000000da) sub-int              v1, v2, v3
+	61      (000000de) mul-int/lit8         v1, v1, 2
+	62      (000000e2) new-instance         v4, Ljava/lang/StringBuilder;
+	63      (000000e6) invoke-static        v1, v5, Ljava/lang/Math;->max(I I)I
+	64      (000000ec) move-result          v1
+	65      (000000ee) invoke-direct        v4, v1, Ljava/lang/StringBuilder;-><init>(I)V
+	66      (000000f4) move-object          v1, v4
+
+L-BB@0xf6 : [ L-BB@0x110 L-BB@0x114 ]
+	67      (000000f6) sub-int              v4, v2, v3
+	68      (000000fa) invoke-virtual       v1, v7, v3, v4, Ljava/lang/StringBuilder;->append([C I I)Ljava/lang/StringBuilder;
+	69      (00000100) iput                 v2, v11, Le7/a;->c I
+	70      (00000104) invoke-virtual       v11, v6, Le7/a;->z(I)Z
+	71      (0000010a) move-result          v2
+	72      (0000010c) if-eqz               v2, +004h
+
+L-BB@0x110 : [ L-BB@0x4 ]
+	73      (00000110) goto/16              -086h
+
+L-BB@0x114 : 
+	74      (00000114) const-string         v12, "Unterminated string"
+	75      (00000118) invoke-virtual       v11, v12, Le7/a;->V(Ljava/lang/String;)V
+	76      (0000011e) throw                v0
+

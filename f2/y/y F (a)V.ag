@@ -1,0 +1,33 @@
+# Lf2/y;->F(La/a;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:a.a
+#
+# - return:void
+
+F-BB@0x0 : [ F-BB@0x1e ]
+	0       (00000000) iput-object          v4, v3, Lf2/s;->B La/a;
+	1       (00000004) iget                 v0, v3, Lf2/y;->L I
+	2       (00000008) or-int/lit8          v0, v0, 8
+	3       (0000000c) iput                 v0, v3, Lf2/y;->L I
+	4       (00000010) iget-object          v0, v3, Lf2/y;->H Ljava/util/ArrayList;
+	5       (00000014) invoke-virtual       v0, Ljava/util/ArrayList;->size()I
+	6       (0000001a) move-result          v0
+	7       (0000001c) const/4              v1, 0
+
+F-BB@0x1e : [ F-BB@0x22 F-BB@0x3e ]
+	8       (0000001e) if-ge                v1, v0, +010h
+
+F-BB@0x22 : [ F-BB@0x1e ]
+	9       (00000022) iget-object          v2, v3, Lf2/y;->H Ljava/util/ArrayList;
+	10      (00000026) invoke-virtual       v2, v1, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	11      (0000002c) move-result-object   v2
+	12      (0000002e) check-cast           v2, Lf2/s;
+	13      (00000032) invoke-virtual       v2, v4, Lf2/s;->F(La/a;)V
+	14      (00000038) add-int/lit8         v1, v1, 1
+	15      (0000003c) goto                 -fh
+
+F-BB@0x3e : 
+	16      (0000003e) return-void          
+

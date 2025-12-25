@@ -1,0 +1,142 @@
+# Ld2/a;->b(Ljava/lang/Class; Ljava/util/HashSet;)Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:java.lang.Class
+# - v7:java.util.HashSet
+#
+# - return:java.lang.Object
+
+b-BB@0x0 : [ b-BB@0x14 b-BB@0x2a ]
+	0       (00000000) iget-object          v0, v5, Ld2/a;->a Ljava/util/HashMap;
+	1       (00000004) const-string         v1, "Cannot initialize "
+	2       (00000008) invoke-static        Lj5/t1;->I()Z
+	3       (0000000e) move-result          v2
+	4       (00000010) if-eqz               v2, +00dh
+
+b-BB@0x14 : [ b-BB@0x2a ]
+	5       (00000014) invoke-virtual       v6, Ljava/lang/Class;->getSimpleName()Ljava/lang/String;
+	6       (0000001a) move-result-object   v2
+	7       (0000001c) invoke-static        v2, Lj5/t1;->c(Ljava/lang/String;)V
+	8       (00000022) goto                 +4h
+	14:47
+	(Ljava/lang/Throwable; -> 24 b-BB@0x24)
+
+b-BB@0x24 : [ b-BB@0x116 ]
+	9       (00000024) move-exception       v6
+	10      (00000026) goto/16              +078h
+	14:47
+	(Ljava/lang/Throwable; -> 24 b-BB@0x24)
+
+b-BB@0x2a : [ b-BB@0x36 b-BB@0xe0 ]
+	11      (0000002a) invoke-virtual       v7, v6, Ljava/util/HashSet;->contains(Ljava/lang/Object;)Z
+	12      (00000030) move-result          v2
+	13      (00000032) if-nez               v2, +057h
+	14:47
+	(Ljava/lang/Throwable; -> 24 b-BB@0x24)
+
+b-BB@0x36 : [ b-BB@0x42 b-BB@0xd0 ]
+	14      (00000036) invoke-virtual       v0, v6, Ljava/util/HashMap;->containsKey(Ljava/lang/Object;)Z
+	15      (0000003c) move-result          v1
+	16      (0000003e) if-nez               v1, +049h
+	14:47
+	(Ljava/lang/Throwable; -> 24 b-BB@0x24)
+
+b-BB@0x42 : [ b-BB@0x4a ]
+	17      (00000042) invoke-virtual       v7, v6, Ljava/util/HashSet;->add(Ljava/lang/Object;)Z
+	18      (00000048) const/4              v1, 0
+
+b-BB@0x4a : [ b-BB@0x72 b-BB@0xaa ]
+	19      (0000004a) invoke-virtual       v6, v1, Ljava/lang/Class;->getDeclaredConstructor([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
+	20      (00000050) move-result-object   v2
+	21      (00000052) invoke-virtual       v2, v1, Ljava/lang/reflect/Constructor;->newInstance([Ljava/lang/Object;)Ljava/lang/Object;
+	22      (00000058) move-result-object   v1
+	23      (0000005a) check-cast           v1, Ld2/b;
+	24      (0000005e) invoke-interface     v1, Ld2/b;->a()Ljava/util/List;
+	25      (00000064) move-result-object   v2
+	26      (00000066) invoke-interface     v2, Ljava/util/List;->isEmpty()Z
+	27      (0000006c) move-result          v3
+	28      (0000006e) if-nez               v3, +01eh
+	4a:c1
+	(Ljava/lang/Throwable; -> a6 b-BB@0xa6)
+
+b-BB@0x72 : [ b-BB@0x7a ]
+	29      (00000072) invoke-interface     v2, Ljava/util/List;->iterator()Ljava/util/Iterator;
+	30      (00000078) move-result-object   v2
+	4a:c1
+	(Ljava/lang/Throwable; -> a6 b-BB@0xa6)
+
+b-BB@0x7a : [ b-BB@0x86 b-BB@0xaa ]
+	31      (0000007a) invoke-interface     v2, Ljava/util/Iterator;->hasNext()Z
+	32      (00000080) move-result          v3
+	33      (00000082) if-eqz               v3, +014h
+	4a:c1
+	(Ljava/lang/Throwable; -> a6 b-BB@0xa6)
+
+b-BB@0x86 : [ b-BB@0x9e b-BB@0x7a ]
+	34      (00000086) invoke-interface     v2, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	35      (0000008c) move-result-object   v3
+	36      (0000008e) check-cast           v3, Ljava/lang/Class;
+	37      (00000092) invoke-virtual       v0, v3, Ljava/util/HashMap;->containsKey(Ljava/lang/Object;)Z
+	38      (00000098) move-result          v4
+	39      (0000009a) if-nez               v4, -010h
+	4a:c1
+	(Ljava/lang/Throwable; -> a6 b-BB@0xa6)
+
+b-BB@0x9e : [ b-BB@0x7a ]
+	40      (0000009e) invoke-virtual       v5, v3, v7, Ld2/a;->b(Ljava/lang/Class; Ljava/util/HashSet;)Ljava/lang/Object;
+	41      (000000a4) goto                 -15h
+	4a:c1
+	(Ljava/lang/Throwable; -> a6 b-BB@0xa6)
+
+b-BB@0xa6 : [ b-BB@0xc4 ]
+	42      (000000a6) move-exception       v6
+	43      (000000a8) goto                 +eh
+	4a:c1
+	(Ljava/lang/Throwable; -> a6 b-BB@0xa6)
+
+b-BB@0xaa : [ b-BB@0xd8 ]
+	44      (000000aa) iget-object          v2, v5, Ld2/a;->c Landroid/content/Context;
+	45      (000000ae) invoke-interface     v1, v2, Ld2/b;->b(Landroid/content/Context;)Ljava/lang/Object;
+	46      (000000b4) move-result-object   v1
+	47      (000000b6) invoke-virtual       v7, v6, Ljava/util/HashSet;->remove(Ljava/lang/Object;)Z
+	48      (000000bc) invoke-virtual       v0, v6, v1, Ljava/util/HashMap;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	49      (000000c2) goto                 +bh
+
+b-BB@0xc4 : 
+	50      (000000c4) new-instance         v7, La5/o;
+	51      (000000c8) invoke-direct        v7, v6, Ljava/lang/RuntimeException;-><init>(Ljava/lang/Throwable;)V
+	52      (000000ce) throw                v7
+	c4:d7
+	(Ljava/lang/Throwable; -> 24 b-BB@0x24)
+
+b-BB@0xd0 : [ b-BB@0xd8 ]
+	53      (000000d0) invoke-virtual       v0, v6, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	54      (000000d6) move-result-object   v1
+	c4:d7
+	(Ljava/lang/Throwable; -> 24 b-BB@0x24)
+
+b-BB@0xd8 : 
+	55      (000000d8) invoke-static        Landroid/os/Trace;->endSection()V
+	56      (000000de) return-object        v1
+
+b-BB@0xe0 : 
+	57      (000000e0) invoke-virtual       v6, Ljava/lang/Class;->getName()Ljava/lang/String;
+	58      (000000e6) move-result-object   v6
+	59      (000000e8) new-instance         v7, Ljava/lang/StringBuilder;
+	60      (000000ec) invoke-direct        v7, v1, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	61      (000000f2) invoke-virtual       v7, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	62      (000000f8) const-string         v6, ". Cycle detected."
+	63      (000000fc) invoke-virtual       v7, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	64      (00000102) invoke-virtual       v7, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	65      (00000108) move-result-object   v6
+	66      (0000010a) new-instance         v7, Ljava/lang/IllegalStateException;
+	67      (0000010e) invoke-direct        v7, v6, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	68      (00000114) throw                v7
+	e0:115
+	(Ljava/lang/Throwable; -> 24 b-BB@0x24)
+
+b-BB@0x116 : 
+	69      (00000116) invoke-static        Landroid/os/Trace;->endSection()V
+	70      (0000011c) throw                v6
+

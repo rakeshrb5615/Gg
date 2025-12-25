@@ -1,0 +1,68 @@
+# Lf2/s;->v(Lf2/a0; Lf2/a0;)Z [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:f2.a0
+# - v7:f2.a0
+#
+# - return:boolean
+
+v-BB@0x0 : [ v-BB@0x6 v-BB@0x72 ]
+	0       (00000000) const/4              v0, 0
+	1       (00000002) if-eqz               v6, +038h
+
+v-BB@0x6 : [ v-BB@0xa v-BB@0x72 ]
+	2       (00000006) if-eqz               v7, +036h
+
+v-BB@0xa : [ v-BB@0x16 v-BB@0x36 ]
+	3       (0000000a) invoke-virtual       v5, Lf2/s;->t()[Ljava/lang/String;
+	4       (00000010) move-result-object   v1
+	5       (00000012) if-eqz               v1, +012h
+
+v-BB@0x16 : [ v-BB@0x1a ]
+	6       (00000016) array-length         v2, v1
+	7       (00000018) move                 v3, v0
+
+v-BB@0x1a : [ v-BB@0x1e v-BB@0x72 ]
+	8       (0000001a) if-ge                v3, v2, +02ch
+
+v-BB@0x1e : [ v-BB@0x2e v-BB@0x30 ]
+	9       (0000001e) aget-object          v4, v1, v3
+	10      (00000022) invoke-static        v6, v7, v4, Lf2/s;->x(Lf2/a0; Lf2/a0; Ljava/lang/String;)Z
+	11      (00000028) move-result          v4
+	12      (0000002a) if-eqz               v4, +003h
+
+v-BB@0x2e : [ v-BB@0x6e ]
+	13      (0000002e) goto                 +20h
+
+v-BB@0x30 : [ v-BB@0x1a ]
+	14      (00000030) add-int/lit8         v3, v3, 1
+	15      (00000034) goto                 -dh
+
+v-BB@0x36 : [ v-BB@0x4a ]
+	16      (00000036) iget-object          v1, v6, Lf2/a0;->a Ljava/util/HashMap;
+	17      (0000003a) invoke-virtual       v1, Ljava/util/HashMap;->keySet()Ljava/util/Set;
+	18      (00000040) move-result-object   v1
+	19      (00000042) invoke-interface     v1, Ljava/util/Set;->iterator()Ljava/util/Iterator;
+	20      (00000048) move-result-object   v1
+
+v-BB@0x4a : [ v-BB@0x56 v-BB@0x72 ]
+	21      (0000004a) invoke-interface     v1, Ljava/util/Iterator;->hasNext()Z
+	22      (00000050) move-result          v2
+	23      (00000052) if-eqz               v2, +010h
+
+v-BB@0x56 : [ v-BB@0x6e v-BB@0x4a ]
+	24      (00000056) invoke-interface     v1, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	25      (0000005c) move-result-object   v2
+	26      (0000005e) check-cast           v2, Ljava/lang/String;
+	27      (00000062) invoke-static        v6, v7, v2, Lf2/s;->x(Lf2/a0; Lf2/a0; Ljava/lang/String;)Z
+	28      (00000068) move-result          v2
+	29      (0000006a) if-eqz               v2, -010h
+
+v-BB@0x6e : 
+	30      (0000006e) const/4              v6, 1
+	31      (00000070) return               v6
+
+v-BB@0x72 : 
+	32      (00000072) return               v0
+

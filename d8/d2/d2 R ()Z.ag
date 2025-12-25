@@ -1,0 +1,31 @@
+# Ld8/d2;->R()Z [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v3
+#
+# - return:boolean
+
+R-BB@0x0 : [ R-BB@0xa R-BB@0x1e ]
+	0       (00000000) iget-boolean         v0, v3, Ld8/d2;->threadLocalIsSet Z
+	1       (00000004) const/4              v1, 1
+	2       (00000006) if-eqz               v0, +00ch
+
+R-BB@0xa : [ R-BB@0x1a R-BB@0x1e ]
+	3       (0000000a) iget-object          v0, v3, Ld8/d2;->e Ljava/lang/ThreadLocal;
+	4       (0000000e) invoke-virtual       v0, Ljava/lang/ThreadLocal;->get()Ljava/lang/Object;
+	5       (00000014) move-result-object   v0
+	6       (00000016) if-nez               v0, +004h
+
+R-BB@0x1a : [ R-BB@0x20 ]
+	7       (0000001a) move                 v0, v1
+	8       (0000001c) goto                 +2h
+
+R-BB@0x1e : [ R-BB@0x20 ]
+	9       (0000001e) const/4              v0, 0
+
+R-BB@0x20 : 
+	10      (00000020) iget-object          v2, v3, Ld8/d2;->e Ljava/lang/ThreadLocal;
+	11      (00000024) invoke-virtual       v2, Ljava/lang/ThreadLocal;->remove()V
+	12      (0000002a) xor-int/2addr        v0, v1
+	13      (0000002c) return               v0
+

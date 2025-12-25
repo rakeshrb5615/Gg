@@ -1,0 +1,82 @@
+# Ld8/r1;->E(Ld8/s1; Ljava/lang/Throwable;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:d8.s1
+# - v7:java.lang.Throwable
+#
+# - return:void
+
+E-BB@0x0 : [ E-BB@0x2e ]
+	0       (00000000) new-instance         v0, Li8/h;
+	1       (00000004) const/4              v1, 4
+	2       (00000006) invoke-direct        v0, v1, Li8/h;-><init>(I)V
+	3       (0000000c) invoke-virtual       v6, v0, v1, Li8/j;->d(Li8/j; I)Z
+	4       (00000012) sget-object          v0, Li8/j;->a Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;
+	5       (00000016) invoke-virtual       v0, v6, Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	6       (0000001c) move-result-object   v0
+	7       (0000001e) const-string         v1, "null cannot be cast to non-null type kotlinx.coroutines.internal.LockFreeLinkedListNode"
+	8       (00000022) invoke-static        v0, v1, Lkotlin/jvm/internal/j;->c(Ljava/lang/Object; Ljava/lang/String;)V
+	9       (00000028) check-cast           v0, Li8/j;
+	10      (0000002c) const/4              v1, 0
+
+E-BB@0x2e : [ E-BB@0x3a E-BB@0xb0 ]
+	11      (0000002e) invoke-virtual       v0, v6, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+	12      (00000034) move-result          v2
+	13      (00000036) if-nez               v2, +03dh
+
+E-BB@0x3a : [ E-BB@0x42 E-BB@0xa6 ]
+	14      (0000003a) instance-of          v2, v0, Ld8/i1;
+	15      (0000003e) if-eqz               v2, +034h
+
+E-BB@0x42 : [ E-BB@0x54 E-BB@0xa6 ]
+	16      (00000042) move-object          v2, v0
+	17      (00000044) check-cast           v2, Ld8/i1;
+	18      (00000048) invoke-virtual       v2, Ld8/i1;->j()Z
+	19      (0000004e) move-result          v2
+	20      (00000050) if-eqz               v2, +02bh
+
+E-BB@0x54 : [ E-BB@0xa6 ]
+	21      (00000054) move-object          v2, v0
+	22      (00000056) check-cast           v2, Ld8/i1;
+	23      (0000005a) invoke-virtual       v2, v7, Ld8/i1;->k(Ljava/lang/Throwable;)V
+	24      (00000060) goto                 +23h
+	54:5f
+	(Ljava/lang/Throwable; -> 62 E-BB@0x62)
+
+E-BB@0x62 : [ E-BB@0x68 E-BB@0x70 ]
+	25      (00000062) move-exception       v2
+	26      (00000064) if-eqz               v1, +006h
+
+E-BB@0x68 : [ E-BB@0xa6 ]
+	27      (00000068) invoke-static        v1, v2, Lq4/b;->a(Ljava/lang/Throwable; Ljava/lang/Throwable;)V
+	28      (0000006e) goto                 +1ch
+
+E-BB@0x70 : [ E-BB@0xa6 ]
+	29      (00000070) new-instance         v1, La5/o;
+	30      (00000074) new-instance         v3, Ljava/lang/StringBuilder;
+	31      (00000078) const-string         v4, "Exception in completion handler "
+	32      (0000007c) invoke-direct        v3, v4, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	33      (00000082) invoke-virtual       v3, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	34      (00000088) const-string         v4, " for "
+	35      (0000008c) invoke-virtual       v3, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	36      (00000092) invoke-virtual       v3, v5, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	37      (00000098) invoke-virtual       v3, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	38      (0000009e) move-result-object   v3
+	39      (000000a0) invoke-direct        v1, v3, v2, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+
+E-BB@0xa6 : [ E-BB@0x2e ]
+	40      (000000a6) invoke-virtual       v0, Li8/j;->g()Li8/j;
+	41      (000000ac) move-result-object   v0
+	42      (000000ae) goto                 -40h
+
+E-BB@0xb0 : [ E-BB@0xb4 E-BB@0xba ]
+	43      (000000b0) if-eqz               v1, +005h
+
+E-BB@0xb4 : [ E-BB@0xba ]
+	44      (000000b4) invoke-virtual       v5, v1, Ld8/r1;->w(La5/o;)V
+
+E-BB@0xba : 
+	45      (000000ba) invoke-virtual       v5, v7, Ld8/r1;->k(Ljava/lang/Throwable;)Z
+	46      (000000c0) return-void          
+

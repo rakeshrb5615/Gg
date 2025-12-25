@@ -1,0 +1,50 @@
+# Le/i;->d(Ljava/lang/String; Lf/a; Le/b;)Le/h; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:java.lang.String
+# - v4:f.a
+# - v5:e.b
+#
+# - return:e.h
+
+d-BB@0x0 : [ d-BB@0x34 d-BB@0x48 ]
+	0       (00000000) const-string         v0, "key"
+	1       (00000004) invoke-static        v3, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) invoke-virtual       v2, v3, Le/i;->e(Ljava/lang/String;)V
+	3       (00000010) new-instance         v0, Le/f;
+	4       (00000014) invoke-direct        v0, v4, v5, Le/f;-><init>(Lf/a; Le/b;)V
+	5       (0000001a) iget-object          v1, v2, Le/i;->e Ljava/util/LinkedHashMap;
+	6       (0000001e) invoke-interface     v1, v3, v0, Ljava/util/Map;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	7       (00000024) iget-object          v0, v2, Le/i;->f Ljava/util/LinkedHashMap;
+	8       (00000028) invoke-interface     v0, v3, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z
+	9       (0000002e) move-result          v1
+	10      (00000030) if-eqz               v1, +00ch
+
+d-BB@0x34 : [ d-BB@0x48 ]
+	11      (00000034) invoke-virtual       v0, v3, Ljava/util/LinkedHashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	12      (0000003a) move-result-object   v1
+	13      (0000003c) invoke-interface     v0, v3, Ljava/util/Map;->remove(Ljava/lang/Object;)Ljava/lang/Object;
+	14      (00000042) invoke-interface     v5, v1, Le/b;->onActivityResult(Ljava/lang/Object;)V
+
+d-BB@0x48 : [ d-BB@0x5c d-BB@0x78 ]
+	15      (00000048) iget-object          v0, v2, Le/i;->g Landroid/os/Bundle;
+	16      (0000004c) invoke-static        v0, v3, La/a;->z(Landroid/os/Bundle; Ljava/lang/String;)Ljava/lang/Object;
+	17      (00000052) move-result-object   v1
+	18      (00000054) check-cast           v1, Le/a;
+	19      (00000058) if-eqz               v1, +010h
+
+d-BB@0x5c : [ d-BB@0x78 ]
+	20      (0000005c) invoke-virtual       v0, v3, Landroid/os/Bundle;->remove(Ljava/lang/String;)V
+	21      (00000062) iget                 v0, v1, Le/a;->a I
+	22      (00000066) iget-object          v1, v1, Le/a;->b Landroid/content/Intent;
+	23      (0000006a) invoke-virtual       v4, v0, v1, Lf/a;->c(I Landroid/content/Intent;)Ljava/lang/Object;
+	24      (00000070) move-result-object   v0
+	25      (00000072) invoke-interface     v5, v0, Le/b;->onActivityResult(Ljava/lang/Object;)V
+
+d-BB@0x78 : 
+	26      (00000078) new-instance         v5, Le/h;
+	27      (0000007c) const/4              v0, 1
+	28      (0000007e) invoke-direct        v5, v2, v3, v4, v0, Le/h;-><init>(Le/i; Ljava/lang/String; Lf/a; I)V
+	29      (00000084) return-object        v5
+

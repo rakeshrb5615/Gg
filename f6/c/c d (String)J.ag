@@ -1,0 +1,41 @@
+# Lf6/c;->d(Ljava/lang/String;)J [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:java.lang.String
+#
+# - return:long
+
+d-BB@0x0 : [ d-BB@0x22 d-BB@0x50 ]
+	0       (00000000) sget-object          v0, Lf6/c;->d Ljava/util/regex/Pattern;
+	1       (00000004) invoke-virtual       v0, v2, Ljava/util/regex/Pattern;->matcher(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;
+	2       (0000000a) move-result-object   v0
+	3       (0000000c) invoke-virtual       v0, Ljava/util/regex/Matcher;->matches()Z
+	4       (00000012) move-result          v0
+	5       (00000014) const-string         v1, "Invalid Expiration Timestamp."
+	6       (00000018) invoke-static        v0, v1, Lcom/google/android/gms/common/internal/Preconditions;->checkArgument(Z Ljava/lang/Object;)V
+	7       (0000001e) if-eqz               v2, +019h
+
+d-BB@0x22 : [ d-BB@0x2e d-BB@0x30 ]
+	8       (00000022) invoke-virtual       v2, Ljava/lang/String;->length()I
+	9       (00000028) move-result          v0
+	10      (0000002a) if-nez               v0, +003h
+
+d-BB@0x2e : [ d-BB@0x50 ]
+	11      (0000002e) goto                 +11h
+
+d-BB@0x30 : 
+	12      (00000030) invoke-virtual       v2, Ljava/lang/String;->length()I
+	13      (00000036) move-result          v0
+	14      (00000038) add-int/lit8         v0, v0, -1
+	15      (0000003c) const/4              v1, 0
+	16      (0000003e) invoke-virtual       v2, v1, v0, Ljava/lang/String;->substring(I I)Ljava/lang/String;
+	17      (00000044) move-result-object   v2
+	18      (00000046) invoke-static        v2, Ljava/lang/Long;->parseLong(Ljava/lang/String;)J
+	19      (0000004c) move-result-wide     v0
+	20      (0000004e) return-wide          v0
+
+d-BB@0x50 : 
+	21      (00000050) const-wide/16        v0, 0
+	22      (00000054) return-wide          v0
+

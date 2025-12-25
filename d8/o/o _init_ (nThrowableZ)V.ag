@@ -1,0 +1,31 @@
+# Ld8/o;-><init>(Ld8/n; Ljava/lang/Throwable; Z)V [access_flags=public constructor]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:d8.n
+# - v4:java.lang.Throwable
+# - v5:boolean
+#
+# - return:void
+
+<init>-BB@0x0 : [ <init>-BB@0x4 <init>-BB@0x34 ]
+	0       (00000000) if-nez               v4, +01ah
+
+<init>-BB@0x4 : [ <init>-BB@0x34 ]
+	1       (00000004) new-instance         v4, Ljava/util/concurrent/CancellationException;
+	2       (00000008) new-instance         v0, Ljava/lang/StringBuilder;
+	3       (0000000c) const-string         v1, "Continuation "
+	4       (00000010) invoke-direct        v0, v1, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	5       (00000016) invoke-virtual       v0, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	6       (0000001c) const-string         v3, " was cancelled normally"
+	7       (00000020) invoke-virtual       v0, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	8       (00000026) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	9       (0000002c) move-result-object   v3
+	10      (0000002e) invoke-direct        v4, v3, Ljava/util/concurrent/CancellationException;-><init>(Ljava/lang/String;)V
+
+<init>-BB@0x34 : 
+	11      (00000034) invoke-direct        v2, v5, v4, Ld8/w;-><init>(Z Ljava/lang/Throwable;)V
+	12      (0000003a) const/4              v3, 0
+	13      (0000003c) iput                 v3, v2, Ld8/o;->_resumed$volatile I
+	14      (00000040) return-void          
+

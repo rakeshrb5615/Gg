@@ -1,0 +1,47 @@
+# Le7/a;->W(Ljava/lang/String;)Ljava/lang/IllegalStateException; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:java.lang.String
+#
+# - return:java.lang.IllegalStateException
+
+W-BB@0x0 : [ W-BB@0x10 W-BB@0x16 ]
+	0       (00000000) invoke-virtual       v4, Le7/a;->O()I
+	1       (00000006) move-result          v0
+	2       (00000008) const/16             v1, 9
+	3       (0000000c) if-ne                v0, v1, +005h
+
+W-BB@0x10 : [ W-BB@0x1a ]
+	4       (00000010) const-string         v0, "adapter-not-null-safe"
+	5       (00000014) goto                 +3h
+
+W-BB@0x16 : [ W-BB@0x1a ]
+	6       (00000016) const-string         v0, "unexpected-json-structure"
+
+W-BB@0x1a : 
+	7       (0000001a) new-instance         v1, Ljava/lang/IllegalStateException;
+	8       (0000001e) const-string         v2, "Expected "
+	9       (00000022) const-string         v3, " but was "
+	10      (00000026) invoke-static        v2, v5, v3, Lv1/a;->q(Ljava/lang/String; Ljava/lang/String; Ljava/lang/String;)Ljava/lang/StringBuilder;
+	11      (0000002c) move-result-object   v5
+	12      (0000002e) invoke-virtual       v4, Le7/a;->O()I
+	13      (00000034) move-result          v2
+	14      (00000036) invoke-static        v2, Lv1/a;->z(I)Ljava/lang/String;
+	15      (0000003c) move-result-object   v2
+	16      (0000003e) invoke-virtual       v5, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	17      (00000044) invoke-virtual       v4, Le7/a;->D()Ljava/lang/String;
+	18      (0000004a) move-result-object   v2
+	19      (0000004c) invoke-virtual       v5, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	20      (00000052) const-string         v2, "
+See "
+	21      (00000056) invoke-virtual       v5, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	22      (0000005c) const-string         v2, "https://github.com/google/gson/blob/main/Troubleshooting.md#"
+	23      (00000060) invoke-virtual       v2, v0, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	24      (00000066) move-result-object   v0
+	25      (00000068) invoke-virtual       v5, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	26      (0000006e) invoke-virtual       v5, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	27      (00000074) move-result-object   v5
+	28      (00000076) invoke-direct        v1, v5, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	29      (0000007c) return-object        v1
+

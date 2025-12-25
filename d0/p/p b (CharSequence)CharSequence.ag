@@ -1,0 +1,28 @@
+# Ld0/p;->b(Ljava/lang/CharSequence;)Ljava/lang/CharSequence; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:java.lang.CharSequence
+#
+# - return:java.lang.CharSequence
+
+b-BB@0x0 : [ b-BB@0x4 b-BB@0x6 ]
+	0       (00000000) if-nez               v2, +003h
+
+b-BB@0x4 : 
+	1       (00000004) return-object        v2
+
+b-BB@0x6 : [ b-BB@0x16 b-BB@0x20 ]
+	2       (00000006) invoke-interface     v2, Ljava/lang/CharSequence;->length()I
+	3       (0000000c) move-result          v0
+	4       (0000000e) const/16             v1, 5120
+	5       (00000012) if-le                v0, v1, +007h
+
+b-BB@0x16 : [ b-BB@0x20 ]
+	6       (00000016) const/4              v0, 0
+	7       (00000018) invoke-interface     v2, v0, v1, Ljava/lang/CharSequence;->subSequence(I I)Ljava/lang/CharSequence;
+	8       (0000001e) move-result-object   v2
+
+b-BB@0x20 : 
+	9       (00000020) return-object        v2
+

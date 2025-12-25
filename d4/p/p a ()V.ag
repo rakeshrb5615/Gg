@@ -1,0 +1,83 @@
+# Ld4/p;->a()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v6
+#
+# - return:void
+
+a-BB@0x0 : [ a-BB@0x18 a-BB@0x1c ]
+	0       (00000000) iget-object          v0, v6, Ld4/p;->c Ld4/q;
+	1       (00000004) iget-object          v0, v0, Ld4/q;->b Ljava/lang/Object;
+	2       (00000008) check-cast           v0, Ld4/r;
+	3       (0000000c) sget                 v1, Ld4/g;->b I
+	4       (00000010) iget-object          v1, v6, Ld4/p;->b Landroid/os/IBinder;
+	5       (00000014) if-nez               v1, +004h
+
+a-BB@0x18 : [ a-BB@0x44 ]
+	6       (00000018) const/4              v1, 0
+	7       (0000001a) goto                 +15h
+
+a-BB@0x1c : [ a-BB@0x30 a-BB@0x38 ]
+	8       (0000001c) const-string         v2, "com.google.android.play.core.appupdate.protocol.IAppUpdateService"
+	9       (00000020) invoke-interface     v1, v2, Landroid/os/IBinder;->queryLocalInterface(Ljava/lang/String;)Landroid/os/IInterface;
+	10      (00000026) move-result-object   v2
+	11      (00000028) instance-of          v3, v2, Ld4/h;
+	12      (0000002c) if-eqz               v3, +006h
+
+a-BB@0x30 : [ a-BB@0x44 ]
+	13      (00000030) move-object          v1, v2
+	14      (00000032) check-cast           v1, Ld4/h;
+	15      (00000036) goto                 +7h
+
+a-BB@0x38 : [ a-BB@0x44 ]
+	16      (00000038) new-instance         v2, Ld4/f;
+	17      (0000003c) invoke-direct        v2, v1, Ld4/f;-><init>(Landroid/os/IBinder;)V
+	18      (00000042) move-object          v1, v2
+
+a-BB@0x44 : [ a-BB@0x60 ]
+	19      (00000044) check-cast           v1, Ld4/h;
+	20      (00000048) iput-object          v1, v0, Ld4/r;->m Ld4/h;
+	21      (0000004c) iget-object          v1, v0, Ld4/r;->b Ld4/l;
+	22      (00000050) const-string         v2, "linkToDeath"
+	23      (00000054) const/4              v3, 0
+	24      (00000056) new-array            v4, v3, [Ljava/lang/Object;
+	25      (0000005a) invoke-virtual       v1, v2, v4, Ld4/l;->h(Ljava/lang/String; [Ljava/lang/Object;)V
+
+a-BB@0x60 : [ a-BB@0x88 ]
+	26      (00000060) iget-object          v2, v0, Ld4/r;->m Ld4/h;
+	27      (00000064) invoke-interface     v2, Landroid/os/IInterface;->asBinder()Landroid/os/IBinder;
+	28      (0000006a) move-result-object   v2
+	29      (0000006c) iget-object          v4, v0, Ld4/r;->j Ld4/n;
+	30      (00000070) invoke-interface     v2, v4, v3, Landroid/os/IBinder;->linkToDeath(Landroid/os/IBinder$DeathRecipient; I)V
+	31      (00000076) goto                 +9h
+	60:75
+	(Landroid/os/RemoteException; -> 78 a-BB@0x78)
+
+a-BB@0x78 : [ a-BB@0x88 ]
+	32      (00000078) move-exception       v2
+	33      (0000007a) new-array            v4, v3, [Ljava/lang/Object;
+	34      (0000007e) const-string         v5, "linkToDeath failed"
+	35      (00000082) invoke-virtual       v1, v2, v5, v4, Ld4/l;->f(Landroid/os/RemoteException; Ljava/lang/String; [Ljava/lang/Object;)V
+
+a-BB@0x88 : [ a-BB@0x98 ]
+	36      (00000088) iput-boolean         v3, v0, Ld4/r;->g Z
+	37      (0000008c) iget-object          v1, v0, Ld4/r;->d Ljava/util/ArrayList;
+	38      (00000090) invoke-virtual       v1, Ljava/util/ArrayList;->size()I
+	39      (00000096) move-result          v2
+
+a-BB@0x98 : [ a-BB@0x9c a-BB@0xb4 ]
+	40      (00000098) if-ge                v3, v2, +00eh
+
+a-BB@0x9c : [ a-BB@0x98 ]
+	41      (0000009c) invoke-virtual       v1, v3, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	42      (000000a2) move-result-object   v4
+	43      (000000a4) add-int/lit8         v3, v3, 1
+	44      (000000a8) check-cast           v4, Ljava/lang/Runnable;
+	45      (000000ac) invoke-interface     v4, Ljava/lang/Runnable;->run()V
+	46      (000000b2) goto                 -dh
+
+a-BB@0xb4 : 
+	47      (000000b4) iget-object          v0, v0, Ld4/r;->d Ljava/util/ArrayList;
+	48      (000000b8) invoke-virtual       v0, Ljava/util/ArrayList;->clear()V
+	49      (000000be) return-void          
+

@@ -1,0 +1,126 @@
+# Ld0/d;->d(Landroid/content/Context; Ljava/lang/String;)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:android.content.Context
+# - v6:java.lang.String
+#
+# - return:void
+
+d-BB@0x0 : [ d-BB@0x6 ]
+	0       (00000000) sget-object          v0, Ld0/d;->a Ljava/lang/Object;
+	1       (00000004) monitor-enter        v0
+
+d-BB@0x6 : [ d-BB@0x16 d-BB@0x28 ]
+	2       (00000006) const-string         v1, ""
+	3       (0000000a) invoke-virtual       v6, v1, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	4       (00000010) move-result          v1
+	5       (00000012) if-eqz               v1, +00bh
+	6:21
+	(Ljava/lang/Throwable; -> 24 d-BB@0x24)
+
+d-BB@0x16 : 
+	6       (00000016) const-string         v6, "androidx.appcompat.app.AppCompatDelegate.application_locales_record_file"
+	7       (0000001a) invoke-virtual       v5, v6, Landroid/content/Context;->deleteFile(Ljava/lang/String;)Z
+	8       (00000020) monitor-exit         v0
+	9       (00000022) return-void          
+
+d-BB@0x24 : [ d-BB@0xc0 ]
+	10      (00000024) move-exception       v5
+	11      (00000026) goto                 +4dh
+
+d-BB@0x28 : [ d-BB@0x36 ]
+	12      (00000028) const-string         v1, "androidx.appcompat.app.AppCompatDelegate.application_locales_record_file"
+	13      (0000002c) const/4              v2, 0
+	14      (0000002e) invoke-virtual       v5, v1, v2, Landroid/content/Context;->openFileOutput(Ljava/lang/String; I)Ljava/io/FileOutputStream;
+	15      (00000034) move-result-object   v5
+	28:35
+	(Ljava/io/FileNotFoundException; -> ae d-BB@0xae)
+	(Ljava/lang/Throwable; -> 24 d-BB@0x24)
+
+d-BB@0x36 : [ d-BB@0x40 ]
+	16      (00000036) invoke-static        Landroid/util/Xml;->newSerializer()Lorg/xmlpull/v1/XmlSerializer;
+	17      (0000003c) move-result-object   v1
+	18      (0000003e) const/4              v2, 0
+	36:3d
+	(Ljava/lang/Throwable; -> 24 d-BB@0x24)
+
+d-BB@0x40 : [ d-BB@0x7c d-BB@0x9e ]
+	19      (00000040) invoke-interface     v1, v5, v2, Lorg/xmlpull/v1/XmlSerializer;->setOutput(Ljava/io/OutputStream; Ljava/lang/String;)V
+	20      (00000046) const-string         v3, "UTF-8"
+	21      (0000004a) sget-object          v4, Ljava/lang/Boolean;->TRUE Ljava/lang/Boolean;
+	22      (0000004e) invoke-interface     v1, v3, v4, Lorg/xmlpull/v1/XmlSerializer;->startDocument(Ljava/lang/String; Ljava/lang/Boolean;)V
+	23      (00000054) const-string         v3, "locales"
+	24      (00000058) invoke-interface     v1, v2, v3, Lorg/xmlpull/v1/XmlSerializer;->startTag(Ljava/lang/String; Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;
+	25      (0000005e) const-string         v3, "application_locales"
+	26      (00000062) invoke-interface     v1, v2, v3, v6, Lorg/xmlpull/v1/XmlSerializer;->attribute(Ljava/lang/String; Ljava/lang/String; Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;
+	27      (00000068) const-string         v6, "locales"
+	28      (0000006c) invoke-interface     v1, v2, v6, Lorg/xmlpull/v1/XmlSerializer;->endTag(Ljava/lang/String; Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;
+	29      (00000072) invoke-interface     v1, Lorg/xmlpull/v1/XmlSerializer;->endDocument()V
+	30      (00000078) if-eqz               v5, +013h
+	40:77
+	(Ljava/lang/Exception; -> 88 d-BB@0x88)
+	(Ljava/lang/Throwable; -> 84 d-BB@0x84)
+
+d-BB@0x7c : [ d-BB@0x9e ]
+	31      (0000007c) invoke-virtual       v5, Ljava/io/FileOutputStream;->close()V
+	32      (00000082) goto                 +eh
+	7c:81
+	(Ljava/io/IOException; -> 9e d-BB@0x9e)
+	(Ljava/lang/Throwable; -> 24 d-BB@0x24)
+
+d-BB@0x84 : [ d-BB@0xa2 ]
+	33      (00000084) move-exception       v6
+	34      (00000086) goto                 +eh
+
+d-BB@0x88 : [ d-BB@0x8a ]
+	35      (00000088) move-exception       v6
+
+d-BB@0x8a : [ d-BB@0x9c d-BB@0x9e ]
+	36      (0000008a) const-string         v1, "AppLocalesStorageHelper"
+	37      (0000008e) const-string         v2, "Storing App Locales : Failed to persist app-locales in storage "
+	38      (00000092) invoke-static        v1, v2, v6, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+	39      (00000098) if-eqz               v5, +003h
+	8a:97
+	(Ljava/lang/Throwable; -> 84 d-BB@0x84)
+
+d-BB@0x9c : [ d-BB@0x7c ]
+	40      (0000009c) goto                 -10h
+
+d-BB@0x9e : [ d-BB@0xbe ]
+	41      (0000009e) monitor-exit         v0
+	42      (000000a0) goto                 +fh
+	9e:9f
+	(Ljava/lang/Throwable; -> 24 d-BB@0x24)
+
+d-BB@0xa2 : [ d-BB@0xa6 d-BB@0xac ]
+	43      (000000a2) if-eqz               v5, +005h
+
+d-BB@0xa6 : [ d-BB@0xac ]
+	44      (000000a6) invoke-virtual       v5, Ljava/io/FileOutputStream;->close()V
+	a6:ab
+	(Ljava/io/IOException; -> ac d-BB@0xac)
+	(Ljava/lang/Throwable; -> 24 d-BB@0x24)
+
+d-BB@0xac : 
+	45      (000000ac) throw                v6
+	ac:c1
+	(Ljava/lang/Throwable; -> 24 d-BB@0x24)
+
+d-BB@0xae : [ d-BB@0xbe ]
+	46      (000000ae) const-string         v5, "AppLocalesStorageHelper"
+	47      (000000b2) const-string         v6, "Storing App Locales : FileNotFoundException: Cannot open file androidx.appcompat.app.AppCompatDelegate.application_locales_record_file for writing "
+	48      (000000b6) invoke-static        v5, v6, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+	49      (000000bc) monitor-exit         v0
+	ac:c1
+	(Ljava/lang/Throwable; -> 24 d-BB@0x24)
+
+d-BB@0xbe : 
+	50      (000000be) return-void          
+	ac:c1
+	(Ljava/lang/Throwable; -> 24 d-BB@0x24)
+
+d-BB@0xc0 : 
+	51      (000000c0) monitor-exit         v0
+	52      (000000c2) throw                v5
+

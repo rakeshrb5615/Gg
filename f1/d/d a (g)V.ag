@@ -1,0 +1,60 @@
+# Lf1/d;->a(Lf1/g;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:f1.g
+#
+# - return:void
+
+a-BB@0x0 : [ a-BB@0x10 a-BB@0x7e ]
+	0       (00000000) iget-object          v0, v4, Lf1/d;->b Ljava/util/ArrayList;
+	1       (00000004) invoke-virtual       v0, Ljava/util/ArrayList;->size()I
+	2       (0000000a) move-result          v1
+	3       (0000000c) if-nez               v1, +039h
+
+a-BB@0x10 : [ a-BB@0x3c a-BB@0x7e ]
+	4       (00000010) iget-object          v1, v4, Lf1/d;->e Lk2/c;
+	5       (00000014) iget-object          v1, v1, Lk2/c;->b Ljava/lang/Object;
+	6       (00000018) check-cast           v1, Landroid/view/Choreographer;
+	7       (0000001c) new-instance         v2, Lf1/c;
+	8       (00000020) iget-object          v3, v4, Lf1/d;->d Landroidx/lifecycle/g0;
+	9       (00000024) invoke-direct        v2, v3, Lf1/c;-><init>(Ljava/lang/Runnable;)V
+	10      (0000002a) invoke-virtual       v1, v2, Landroid/view/Choreographer;->postFrameCallback(Landroid/view/Choreographer$FrameCallback;)V
+	11      (00000030) sget                 v1, Landroid/os/Build$VERSION;->SDK_INT I
+	12      (00000034) const/16             v2, 33
+	13      (00000038) if-lt                v1, v2, +023h
+
+a-BB@0x3c : [ a-BB@0x50 a-BB@0x5e ]
+	14      (0000003c) invoke-static        Landroid/animation/ValueAnimator;->getDurationScale()F
+	15      (00000042) move-result          v1
+	16      (00000044) iput                 v1, v4, Lf1/d;->g F
+	17      (00000048) iget-object          v1, v4, Lf1/d;->h Lf1/b;
+	18      (0000004c) if-nez               v1, +009h
+
+a-BB@0x50 : [ a-BB@0x5e ]
+	19      (00000050) new-instance         v1, Lf1/b;
+	20      (00000054) invoke-direct        v1, v4, Lf1/b;-><init>(Lf1/d;)V
+	21      (0000005a) iput-object          v1, v4, Lf1/d;->h Lf1/b;
+
+a-BB@0x5e : [ a-BB@0x6a a-BB@0x7e ]
+	22      (0000005e) iget-object          v1, v4, Lf1/d;->h Lf1/b;
+	23      (00000062) iget-object          v2, v1, Lf1/b;->a Lf1/a;
+	24      (00000066) if-nez               v2, +00ch
+
+a-BB@0x6a : [ a-BB@0x7e ]
+	25      (0000006a) new-instance         v2, Lf1/a;
+	26      (0000006e) invoke-direct        v2, v1, Lf1/a;-><init>(Lf1/b;)V
+	27      (00000074) iput-object          v2, v1, Lf1/b;->a Lf1/a;
+	28      (00000078) invoke-static        v2, Landroid/animation/ValueAnimator;->registerDurationScaleChangeListener(Landroid/animation/ValueAnimator$DurationScaleChangeListener;)Z
+
+a-BB@0x7e : [ a-BB@0x8a a-BB@0x90 ]
+	29      (0000007e) invoke-virtual       v0, v5, Ljava/util/ArrayList;->contains(Ljava/lang/Object;)Z
+	30      (00000084) move-result          v1
+	31      (00000086) if-nez               v1, +005h
+
+a-BB@0x8a : [ a-BB@0x90 ]
+	32      (0000008a) invoke-virtual       v0, v5, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+a-BB@0x90 : 
+	33      (00000090) return-void          
+

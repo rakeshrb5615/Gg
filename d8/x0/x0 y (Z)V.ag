@@ -1,0 +1,39 @@
+# Ld8/x0;->y(Z)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:boolean
+#
+# - return:void
+
+y-BB@0x0 : [ y-BB@0x8 y-BB@0x14 ]
+	0       (00000000) iget-wide            v0, v4, Ld8/x0;->c J
+	1       (00000004) if-eqz               v5, +008h
+
+y-BB@0x8 : [ y-BB@0x18 ]
+	2       (00000008) const-wide           v2, 4294967296
+	3       (00000012) goto                 +3h
+
+y-BB@0x14 : [ y-BB@0x18 ]
+	4       (00000014) const-wide/16        v2, 1
+
+y-BB@0x18 : [ y-BB@0x2a y-BB@0x2c ]
+	5       (00000018) sub-long/2addr       v0, v2
+	6       (0000001a) iput-wide            v0, v4, Ld8/x0;->c J
+	7       (0000001e) const-wide/16        v2, 0
+	8       (00000022) cmp-long             v5, v0, v2
+	9       (00000026) if-lez               v5, +003h
+
+y-BB@0x2a : [ y-BB@0x3a ]
+	10      (0000002a) goto                 +8h
+
+y-BB@0x2c : [ y-BB@0x34 y-BB@0x3a ]
+	11      (0000002c) iget-boolean         v5, v4, Ld8/x0;->d Z
+	12      (00000030) if-eqz               v5, +005h
+
+y-BB@0x34 : [ y-BB@0x3a ]
+	13      (00000034) invoke-virtual       v4, Ld8/x0;->shutdown()V
+
+y-BB@0x3a : 
+	14      (0000003a) return-void          
+

@@ -1,0 +1,106 @@
+# Ld8/w0;->F()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v10
+#
+# - return:void
+
+F-BB@0x0 : [ F-BB@0x14 F-BB@0x88 ]
+	0       (00000000) sget-object          v0, Ld8/w0;->n Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;
+	1       (00000004) invoke-virtual       v0, v10, Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	2       (0000000a) move-result-object   v0
+	3       (0000000c) check-cast           v0, Ld8/v0;
+	4       (00000010) if-eqz               v0, +03ch
+
+F-BB@0x14 : [ F-BB@0x24 F-BB@0x26 ]
+	5       (00000014) sget-object          v1, Li8/u;->b Ljava/util/concurrent/atomic/AtomicIntegerFieldUpdater;
+	6       (00000018) invoke-virtual       v1, v0, Ljava/util/concurrent/atomic/AtomicIntegerFieldUpdater;->get(Ljava/lang/Object;)I
+	7       (0000001e) move-result          v1
+	8       (00000020) if-nez               v1, +003h
+
+F-BB@0x24 : 
+	9       (00000024) return-void          
+
+F-BB@0x26 : [ F-BB@0x2e ]
+	10      (00000026) invoke-static        Ljava/lang/System;->nanoTime()J
+	11      (0000002c) move-result-wide     v1
+
+F-BB@0x2e : [ F-BB@0x30 ]
+	12      (0000002e) monitor-enter        v0
+
+F-BB@0x30 : [ F-BB@0x3c F-BB@0x42 ]
+	13      (00000030) iget-object          v3, v0, Li8/u;->a [Ld8/u0;
+	14      (00000034) const/4              v4, 0
+	15      (00000036) const/4              v5, 0
+	16      (00000038) if-eqz               v3, +005h
+	30:3f
+	(Ljava/lang/Throwable; -> 6a F-BB@0x6a)
+
+F-BB@0x3c : [ F-BB@0x44 ]
+	17      (0000003c) aget-object          v3, v3, v5
+	18      (00000040) goto                 +2h
+
+F-BB@0x42 : [ F-BB@0x44 ]
+	19      (00000042) move-object          v3, v4
+
+F-BB@0x44 : [ F-BB@0x48 F-BB@0x4c ]
+	20      (00000044) if-nez               v3, +004h
+
+F-BB@0x48 : [ F-BB@0x7e ]
+	21      (00000048) monitor-exit         v0
+	22      (0000004a) goto                 +1ah
+
+F-BB@0x4c : [ F-BB@0x60 F-BB@0x6e ]
+	23      (0000004c) iget-wide            v6, v3, Ld8/u0;->a J
+	24      (00000050) sub-long             v6, v1, v6
+	25      (00000054) const-wide/16        v8, 0
+	26      (00000058) cmp-long             v6, v6, v8
+	27      (0000005c) if-ltz               v6, +009h
+	4c:7b
+	(Ljava/lang/Throwable; -> 6a F-BB@0x6a)
+
+F-BB@0x60 : [ F-BB@0x70 ]
+	28      (00000060) invoke-virtual       v10, v3, Ld8/w0;->G(Ljava/lang/Runnable;)Z
+	29      (00000066) move-result          v3
+	30      (00000068) goto                 +4h
+	4c:7b
+	(Ljava/lang/Throwable; -> 6a F-BB@0x6a)
+
+F-BB@0x6a : [ F-BB@0x84 ]
+	31      (0000006a) move-exception       v1
+	32      (0000006c) goto                 +ch
+	4c:7b
+	(Ljava/lang/Throwable; -> 6a F-BB@0x6a)
+
+F-BB@0x6e : [ F-BB@0x70 ]
+	33      (0000006e) move                 v3, v5
+	4c:7b
+	(Ljava/lang/Throwable; -> 6a F-BB@0x6a)
+
+F-BB@0x70 : [ F-BB@0x74 F-BB@0x7c ]
+	34      (00000070) if-eqz               v3, +006h
+	4c:7b
+	(Ljava/lang/Throwable; -> 6a F-BB@0x6a)
+
+F-BB@0x74 : [ F-BB@0x7c ]
+	35      (00000074) invoke-virtual       v0, v5, Li8/u;->b(I)Ld8/u0;
+	36      (0000007a) move-result-object   v4
+	4c:7b
+	(Ljava/lang/Throwable; -> 6a F-BB@0x6a)
+
+F-BB@0x7c : [ F-BB@0x7e ]
+	37      (0000007c) monitor-exit         v0
+
+F-BB@0x7e : [ F-BB@0x82 F-BB@0x2e ]
+	38      (0000007e) if-nez               v4, -028h
+
+F-BB@0x82 : [ F-BB@0x88 ]
+	39      (00000082) goto                 +3h
+
+F-BB@0x84 : 
+	40      (00000084) monitor-exit         v0
+	41      (00000086) throw                v1
+
+F-BB@0x88 : 
+	42      (00000088) return-void          
+

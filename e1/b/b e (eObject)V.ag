@@ -1,0 +1,53 @@
+# Le1/b;->e(Le1/e; Ljava/lang/Object;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:e1.e
+# - v4:java.lang.Object
+#
+# - return:void
+
+e-BB@0x0 : [ e-BB@0x14 e-BB@0x1c ]
+	0       (00000000) const-string         v0, "key"
+	1       (00000004) invoke-static        v3, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) invoke-virtual       v2, Le1/b;->b()V
+	3       (00000010) if-nez               v4, +006h
+
+e-BB@0x14 : 
+	4       (00000014) invoke-virtual       v2, v3, Le1/b;->c(Le1/e;)V
+	5       (0000001a) return-void          
+
+e-BB@0x1c : [ e-BB@0x28 e-BB@0x4e ]
+	6       (0000001c) instance-of          v0, v4, Ljava/util/Set;
+	7       (00000020) iget-object          v1, v2, Le1/b;->a Ljava/util/LinkedHashMap;
+	8       (00000024) if-eqz               v0, +015h
+
+e-BB@0x28 : 
+	9       (00000028) check-cast           v4, Ljava/util/Set;
+	10      (0000002c) invoke-static        v4, Li7/i;->n0(Ljava/lang/Iterable;)Ljava/util/Set;
+	11      (00000032) move-result-object   v4
+	12      (00000034) invoke-static        v4, Ljava/util/Collections;->unmodifiableSet(Ljava/util/Set;)Ljava/util/Set;
+	13      (0000003a) move-result-object   v4
+	14      (0000003c) const-string         v0, "unmodifiableSet(set.toSet())"
+	15      (00000040) invoke-static        v4, v0, Lkotlin/jvm/internal/j;->d(Ljava/lang/Object; Ljava/lang/String;)V
+	16      (00000046) invoke-interface     v1, v3, v4, Ljava/util/Map;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	17      (0000004c) return-void          
+
+e-BB@0x4e : [ e-BB@0x56 e-BB@0x76 ]
+	18      (0000004e) instance-of          v0, v4, [B
+	19      (00000052) if-eqz               v0, +012h
+
+e-BB@0x56 : 
+	20      (00000056) check-cast           v4, [B
+	21      (0000005a) array-length         v0, v4
+	22      (0000005c) invoke-static        v4, v0, Ljava/util/Arrays;->copyOf([B I)[B
+	23      (00000062) move-result-object   v4
+	24      (00000064) const-string         v0, "copyOf(this, size)"
+	25      (00000068) invoke-static        v4, v0, Lkotlin/jvm/internal/j;->d(Ljava/lang/Object; Ljava/lang/String;)V
+	26      (0000006e) invoke-interface     v1, v3, v4, Ljava/util/Map;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	27      (00000074) return-void          
+
+e-BB@0x76 : 
+	28      (00000076) invoke-interface     v1, v3, v4, Ljava/util/Map;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	29      (0000007c) return-void          
+

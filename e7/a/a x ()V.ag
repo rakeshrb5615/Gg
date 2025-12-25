@@ -1,0 +1,38 @@
+# Le7/a;->x()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v3
+#
+# - return:void
+
+x-BB@0x0 : [ x-BB@0x8 x-BB@0x10 ]
+	0       (00000000) iget                 v0, v3, Le7/a;->m I
+	1       (00000004) if-nez               v0, +006h
+
+x-BB@0x8 : [ x-BB@0x10 ]
+	2       (00000008) invoke-virtual       v3, Le7/a;->s()I
+	3       (0000000e) move-result          v0
+
+x-BB@0x10 : [ x-BB@0x16 x-BB@0x3e ]
+	4       (00000010) const/4              v1, 4
+	5       (00000012) if-ne                v0, v1, +016h
+
+x-BB@0x16 : 
+	6       (00000016) iget                 v0, v3, Le7/a;->r I
+	7       (0000001a) add-int/lit8         v1, v0, -1
+	8       (0000001e) iput                 v1, v3, Le7/a;->r I
+	9       (00000022) iget-object          v1, v3, Le7/a;->t [I
+	10      (00000026) add-int/lit8         v0, v0, -2
+	11      (0000002a) aget                 v2, v1, v0
+	12      (0000002e) add-int/lit8         v2, v2, 1
+	13      (00000032) aput                 v2, v1, v0
+	14      (00000036) const/4              v0, 0
+	15      (00000038) iput                 v0, v3, Le7/a;->m I
+	16      (0000003c) return-void          
+
+x-BB@0x3e : 
+	17      (0000003e) const-string         v0, "END_ARRAY"
+	18      (00000042) invoke-virtual       v3, v0, Le7/a;->W(Ljava/lang/String;)Ljava/lang/IllegalStateException;
+	19      (00000048) move-result-object   v0
+	20      (0000004a) throw                v0
+

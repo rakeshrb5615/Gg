@@ -1,0 +1,41 @@
+# Ld8/j1;->p(Ld8/r1;)Ljava/lang/Throwable; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:d8.r1
+#
+# - return:java.lang.Throwable
+
+p-BB@0x0 : [ p-BB@0x1e p-BB@0x32 ]
+	0       (00000000) iget-object          v0, v2, Ld8/j1;->o Ld8/r1;
+	1       (00000004) invoke-virtual       v0, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	2       (0000000a) sget-object          v1, Ld8/r1;->a Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;
+	3       (0000000e) invoke-virtual       v1, v0, Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	4       (00000014) move-result-object   v0
+	5       (00000016) instance-of          v1, v0, Ld8/l1;
+	6       (0000001a) if-eqz               v1, +00ch
+
+p-BB@0x1e : [ p-BB@0x30 p-BB@0x32 ]
+	7       (0000001e) move-object          v1, v0
+	8       (00000020) check-cast           v1, Ld8/l1;
+	9       (00000024) invoke-virtual       v1, Ld8/l1;->b()Ljava/lang/Throwable;
+	10      (0000002a) move-result-object   v1
+	11      (0000002c) if-eqz               v1, +003h
+
+p-BB@0x30 : 
+	12      (00000030) return-object        v1
+
+p-BB@0x32 : [ p-BB@0x3a p-BB@0x44 ]
+	13      (00000032) instance-of          v1, v0, Ld8/w;
+	14      (00000036) if-eqz               v1, +007h
+
+p-BB@0x3a : 
+	15      (0000003a) check-cast           v0, Ld8/w;
+	16      (0000003e) iget-object          v3, v0, Ld8/w;->a Ljava/lang/Throwable;
+	17      (00000042) return-object        v3
+
+p-BB@0x44 : 
+	18      (00000044) invoke-virtual       v3, Ld8/r1;->getCancellationException()Ljava/util/concurrent/CancellationException;
+	19      (0000004a) move-result-object   v3
+	20      (0000004c) return-object        v3
+
