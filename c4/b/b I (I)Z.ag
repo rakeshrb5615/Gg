@@ -1,0 +1,27 @@
+# Lc4/b;->I(I)Z [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:int
+#
+# - return:boolean
+
+I-BB@0x0 : [ I-BB@0xa I-BB@0x16 ]
+	0       (00000000) and-int/lit8         v0, v2, 2
+	1       (00000004) const/4              v1, 1
+	2       (00000006) if-nez               v0, +008h
+
+I-BB@0xa : [ I-BB@0x10 I-BB@0x12 ]
+	3       (0000000a) and-int/2addr        v2, v1
+	4       (0000000c) if-eqz               v2, +003h
+
+I-BB@0x10 : [ I-BB@0x16 ]
+	5       (00000010) goto                 +3h
+
+I-BB@0x12 : 
+	6       (00000012) const/4              v2, 0
+	7       (00000014) return               v2
+
+I-BB@0x16 : 
+	8       (00000016) return               v1
+

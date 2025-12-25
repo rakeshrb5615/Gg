@@ -1,0 +1,255 @@
+# Lc/m;->b(I Lf/a; Ljava/lang/Object;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v9
+# - v10:int
+# - v11:f.a
+# - v12:java.lang.Object
+#
+# - return:void
+
+b-BB@0x0 : [ b-BB@0x1a b-BB@0x40 ]
+	0       (00000000) const-string         v0, "contract"
+	1       (00000004) invoke-static        v11, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) iget-object          v1, v9, Lc/m;->h Lc/n;
+	3       (0000000e) invoke-virtual       v11, v1, v12, Lf/a;->b(Landroid/content/Context; Ljava/lang/Object;)Ll6/c;
+	4       (00000014) move-result-object   v0
+	5       (00000016) if-eqz               v0, +015h
+
+b-BB@0x1a : 
+	6       (0000001a) new-instance         v11, Landroid/os/Handler;
+	7       (0000001e) invoke-static        Landroid/os/Looper;->getMainLooper()Landroid/os/Looper;
+	8       (00000024) move-result-object   v12
+	9       (00000026) invoke-direct        v11, v12, Landroid/os/Handler;-><init>(Landroid/os/Looper;)V
+	10      (0000002c) new-instance         v12, Lc/l;
+	11      (00000030) const/4              v1, 0
+	12      (00000032) invoke-direct        v12, v9, v10, v1, v0, Lc/l;-><init>(Ljava/lang/Object; I I Ljava/lang/Object;)V
+	13      (00000038) invoke-virtual       v11, v12, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
+	14      (0000003e) return-void          
+
+b-BB@0x40 : [ b-BB@0x54 b-BB@0x7c ]
+	15      (00000040) invoke-virtual       v11, v1, v12, Lf/a;->a(Landroid/content/Context; Ljava/lang/Object;)Landroid/content/Intent;
+	16      (00000046) move-result-object   v11
+	17      (00000048) invoke-virtual       v11, Landroid/content/Intent;->getExtras()Landroid/os/Bundle;
+	18      (0000004e) move-result-object   v12
+	19      (00000050) if-eqz               v12, +016h
+
+b-BB@0x54 : [ b-BB@0x6e b-BB@0x7c ]
+	20      (00000054) invoke-virtual       v11, Landroid/content/Intent;->getExtras()Landroid/os/Bundle;
+	21      (0000005a) move-result-object   v12
+	22      (0000005c) invoke-static        v12, Lkotlin/jvm/internal/j;->b(Ljava/lang/Object;)V
+	23      (00000062) invoke-virtual       v12, Landroid/os/Bundle;->getClassLoader()Ljava/lang/ClassLoader;
+	24      (00000068) move-result-object   v12
+	25      (0000006a) if-nez               v12, +009h
+
+b-BB@0x6e : [ b-BB@0x7c ]
+	26      (0000006e) invoke-virtual       v1, Landroid/content/Context;->getClassLoader()Ljava/lang/ClassLoader;
+	27      (00000074) move-result-object   v12
+	28      (00000076) invoke-virtual       v11, v12, Landroid/content/Intent;->setExtrasClassLoader(Ljava/lang/ClassLoader;)V
+
+b-BB@0x7c : [ b-BB@0x8c b-BB@0x9e ]
+	29      (0000007c) const-string         v12, "androidx.activity.result.contract.extra.ACTIVITY_OPTIONS_BUNDLE"
+	30      (00000080) invoke-virtual       v11, v12, Landroid/content/Intent;->hasExtra(Ljava/lang/String;)Z
+	31      (00000086) move-result          v0
+	32      (00000088) if-eqz               v0, +00bh
+
+b-BB@0x8c : [ b-BB@0x9a ]
+	33      (0000008c) invoke-virtual       v11, v12, Landroid/content/Intent;->getBundleExtra(Ljava/lang/String;)Landroid/os/Bundle;
+	34      (00000092) move-result-object   v0
+	35      (00000094) invoke-virtual       v11, v12, Landroid/content/Intent;->removeExtra(Ljava/lang/String;)V
+
+b-BB@0x9a : [ b-BB@0xa2 ]
+	36      (0000009a) move-object          v8, v0
+	37      (0000009c) goto                 +3h
+
+b-BB@0x9e : [ b-BB@0x9a ]
+	38      (0000009e) const/4              v0, 0
+	39      (000000a0) goto                 -3h
+
+b-BB@0xa2 : [ b-BB@0xba b-BB@0x1c4 ]
+	40      (000000a2) const-string         v12, "androidx.activity.result.contract.action.REQUEST_PERMISSIONS"
+	41      (000000a6) invoke-virtual       v11, Landroid/content/Intent;->getAction()Ljava/lang/String;
+	42      (000000ac) move-result-object   v0
+	43      (000000ae) invoke-virtual       v12, v0, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+	44      (000000b4) move-result          v12
+	45      (000000b6) if-eqz               v12, +087h
+
+b-BB@0xba : [ b-BB@0xcc b-BB@0xd0 ]
+	46      (000000ba) const-string         v12, "androidx.activity.result.contract.extra.PERMISSIONS"
+	47      (000000be) invoke-virtual       v11, v12, Landroid/content/Intent;->getStringArrayExtra(Ljava/lang/String;)[Ljava/lang/String;
+	48      (000000c4) move-result-object   v11
+	49      (000000c6) const/4              v12, 0
+	50      (000000c8) if-nez               v11, +004h
+
+b-BB@0xcc : [ b-BB@0xd0 ]
+	51      (000000cc) new-array            v11, v12, [Ljava/lang/String;
+
+b-BB@0xd0 : [ b-BB@0xdc ]
+	52      (000000d0) new-instance         v0, Ljava/util/HashSet;
+	53      (000000d4) invoke-direct        v0, Ljava/util/HashSet;-><init>()V
+	54      (000000da) move                 v2, v12
+
+b-BB@0xdc : [ b-BB@0xe2 b-BB@0x154 ]
+	55      (000000dc) array-length         v3, v11
+	56      (000000de) if-ge                v2, v3, +03bh
+
+b-BB@0xe2 : [ b-BB@0xf2 b-BB@0x126 ]
+	57      (000000e2) aget-object          v3, v11, v2
+	58      (000000e6) invoke-static        v3, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+	59      (000000ec) move-result          v3
+	60      (000000ee) if-nez               v3, +01ch
+
+b-BB@0xf2 : [ b-BB@0xfe b-BB@0x120 ]
+	61      (000000f2) sget                 v3, Landroid/os/Build$VERSION;->SDK_INT I
+	62      (000000f6) const/16             v4, 33
+	63      (000000fa) if-ge                v3, v4, +013h
+
+b-BB@0xfe : [ b-BB@0x112 b-BB@0x120 ]
+	64      (000000fe) aget-object          v3, v11, v2
+	65      (00000102) const-string         v4, "android.permission.POST_NOTIFICATIONS"
+	66      (00000106) invoke-static        v3, v4, Landroid/text/TextUtils;->equals(Ljava/lang/CharSequence; Ljava/lang/CharSequence;)Z
+	67      (0000010c) move-result          v3
+	68      (0000010e) if-eqz               v3, +009h
+
+b-BB@0x112 : [ b-BB@0x120 ]
+	69      (00000112) invoke-static        v2, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+	70      (00000118) move-result-object   v3
+	71      (0000011a) invoke-virtual       v0, v3, Ljava/util/HashSet;->add(Ljava/lang/Object;)Z
+
+b-BB@0x120 : [ b-BB@0xdc ]
+	72      (00000120) add-int/lit8         v2, v2, 1
+	73      (00000124) goto                 -24h
+
+b-BB@0x126 : 
+	74      (00000126) new-instance         v10, Ljava/lang/IllegalArgumentException;
+	75      (0000012a) new-instance         v12, Ljava/lang/StringBuilder;
+	76      (0000012e) const-string         v0, "Permission request for permissions "
+	77      (00000132) invoke-direct        v12, v0, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	78      (00000138) invoke-static        v11, Ljava/util/Arrays;->toString([Ljava/lang/Object;)Ljava/lang/String;
+	79      (0000013e) move-result-object   v11
+	80      (00000140) const-string         v0, " must not contain null or empty values"
+	81      (00000144) invoke-static        v12, v11, v0, Lv1/a;->n(Ljava/lang/StringBuilder; Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	82      (0000014a) move-result-object   v11
+	83      (0000014c) invoke-direct        v10, v11, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	84      (00000152) throw                v10
+
+b-BB@0x154 : [ b-BB@0x160 b-BB@0x16a ]
+	85      (00000154) invoke-virtual       v0, Ljava/util/HashSet;->size()I
+	86      (0000015a) move-result          v2
+	87      (0000015c) if-lez               v2, +007h
+
+b-BB@0x160 : [ b-BB@0x16c ]
+	88      (00000160) array-length         v3, v11
+	89      (00000162) sub-int/2addr        v3, v2
+	90      (00000164) new-array            v3, v3, [Ljava/lang/String;
+	91      (00000168) goto                 +2h
+
+b-BB@0x16a : [ b-BB@0x16c ]
+	92      (0000016a) move-object          v3, v11
+
+b-BB@0x16c : [ b-BB@0x170 b-BB@0x1a8 ]
+	93      (0000016c) if-lez               v2, +01eh
+
+b-BB@0x170 : [ b-BB@0x176 b-BB@0x178 ]
+	94      (00000170) array-length         v4, v11
+	95      (00000172) if-ne                v2, v4, +003h
+
+b-BB@0x176 : 
+	96      (00000176) return-void          
+
+b-BB@0x178 : [ b-BB@0x17a ]
+	97      (00000178) move                 v2, v12
+
+b-BB@0x17a : [ b-BB@0x180 b-BB@0x1a8 ]
+	98      (0000017a) array-length         v4, v11
+	99      (0000017c) if-ge                v12, v4, +016h
+
+b-BB@0x180 : [ b-BB@0x194 b-BB@0x1a2 ]
+	100     (00000180) invoke-static        v12, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+	101     (00000186) move-result-object   v4
+	102     (00000188) invoke-virtual       v0, v4, Ljava/util/HashSet;->contains(Ljava/lang/Object;)Z
+	103     (0000018e) move-result          v4
+	104     (00000190) if-nez               v4, +009h
+
+b-BB@0x194 : [ b-BB@0x1a2 ]
+	105     (00000194) add-int/lit8         v4, v2, 1
+	106     (00000198) aget-object          v5, v11, v12
+	107     (0000019c) aput-object          v5, v3, v2
+	108     (000001a0) move                 v2, v4
+
+b-BB@0x1a2 : [ b-BB@0x17a ]
+	109     (000001a2) add-int/lit8         v12, v12, 1
+	110     (000001a6) goto                 -16h
+
+b-BB@0x1a8 : [ b-BB@0x1b0 b-BB@0x1bc ]
+	111     (000001a8) instance-of          v12, v1, Ld0/a;
+	112     (000001ac) if-eqz               v12, +008h
+
+b-BB@0x1b0 : [ b-BB@0x1bc ]
+	113     (000001b0) move-object          v12, v1
+	114     (000001b2) check-cast           v12, Ld0/a;
+	115     (000001b6) invoke-interface     v12, v10, Ld0/a;->validateRequestPermissionsRequestCode(I)V
+
+b-BB@0x1bc : 
+	116     (000001bc) invoke-virtual       v1, v11, v10, Landroid/app/Activity;->requestPermissions([Ljava/lang/String; I)V
+	117     (000001c2) return-void          
+
+b-BB@0x1c4 : [ b-BB@0x1dc b-BB@0x240 ]
+	118     (000001c4) const-string         v12, "androidx.activity.result.contract.action.INTENT_SENDER_REQUEST"
+	119     (000001c8) invoke-virtual       v11, Landroid/content/Intent;->getAction()Ljava/lang/String;
+	120     (000001ce) move-result-object   v0
+	121     (000001d0) invoke-virtual       v12, v0, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+	122     (000001d6) move-result          v12
+	123     (000001d8) if-eqz               v12, +034h
+
+b-BB@0x1dc : [ b-BB@0x1ec ]
+	124     (000001dc) const-string         v12, "androidx.activity.result.contract.extra.INTENT_SENDER_REQUEST"
+	125     (000001e0) invoke-virtual       v11, v12, Landroid/content/Intent;->getParcelableExtra(Ljava/lang/String;)Landroid/os/Parcelable;
+	126     (000001e6) move-result-object   v11
+	127     (000001e8) check-cast           v11, Le/k;
+
+b-BB@0x1ec : [ b-BB@0x206 ]
+	128     (000001ec) invoke-static        v11, Lkotlin/jvm/internal/j;->b(Ljava/lang/Object;)V
+	129     (000001f2) iget-object          v2, v11, Le/k;->a Landroid/content/IntentSender;
+	130     (000001f6) iget-object          v4, v11, Le/k;->b Landroid/content/Intent;
+	131     (000001fa) iget                 v5, v11, Le/k;->c I
+	132     (000001fe) iget                 v6, v11, Le/k;->d I
+	133     (00000202) const/4              v7, 0
+	134     (00000204) move                 v3, v10
+	1ec:201
+	(Landroid/content/IntentSender$SendIntentException; -> 214 b-BB@0x214)
+
+b-BB@0x206 : 
+	135     (00000206) invoke-virtual/range v1 ... v8, Lc/n;->startIntentSenderForResult(Landroid/content/IntentSender; I Landroid/content/Intent; I I I Landroid/os/Bundle;)V
+	136     (0000020c) return-void          
+	206:20b
+	(Landroid/content/IntentSender$SendIntentException; -> 20e b-BB@0x20e)
+
+b-BB@0x20e : [ b-BB@0x210 ]
+	137     (0000020e) move-exception       v0
+
+b-BB@0x210 : [ b-BB@0x21a ]
+	138     (00000210) move-object          v10, v0
+	139     (00000212) goto                 +4h
+
+b-BB@0x214 : [ b-BB@0x210 ]
+	140     (00000214) move-exception       v0
+	141     (00000216) move                 v3, v10
+	142     (00000218) goto                 -4h
+
+b-BB@0x21a : 
+	143     (0000021a) new-instance         v11, Landroid/os/Handler;
+	144     (0000021e) invoke-static        Landroid/os/Looper;->getMainLooper()Landroid/os/Looper;
+	145     (00000224) move-result-object   v12
+	146     (00000226) invoke-direct        v11, v12, Landroid/os/Handler;-><init>(Landroid/os/Looper;)V
+	147     (0000022c) new-instance         v12, Lc/l;
+	148     (00000230) const/4              v0, 1
+	149     (00000232) invoke-direct        v12, v9, v3, v0, v10, Lc/l;-><init>(Ljava/lang/Object; I I Ljava/lang/Object;)V
+	150     (00000238) invoke-virtual       v11, v12, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
+	151     (0000023e) return-void          
+
+b-BB@0x240 : 
+	152     (00000240) move                 v3, v10
+	153     (00000242) invoke-virtual       v1, v11, v3, v8, Lc/n;->startActivityForResult(Landroid/content/Intent; I Landroid/os/Bundle;)V
+	154     (00000248) return-void          
+

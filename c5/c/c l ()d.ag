@@ -1,0 +1,64 @@
+# Lc5/c;->l()Lx8/d; [access_flags=public static]
+#
+# Parameters:
+# local registers: v0...v8
+#
+# - return:x8.d
+
+l-BB@0x0 : [ l-BB@0x18 l-BB@0x60 ]
+	0       (00000000) sget-object          v0, Lx8/d;->h Lh/f;
+	1       (00000004) iget-object          v1, v0, Lh/f;->c Ljava/lang/Object;
+	2       (00000008) check-cast           v1, [Lx8/d;
+	3       (0000000c) const/4              v2, 1
+	4       (0000000e) aget-object          v1, v1, v2
+	5       (00000012) const/4              v3, 0
+	6       (00000014) if-nez               v1, +026h
+
+l-BB@0x18 : [ l-BB@0x42 l-BB@0x5e ]
+	7       (00000018) invoke-static        Ljava/lang/System;->nanoTime()J
+	8       (0000001e) move-result-wide     v4
+	9       (00000020) sget-object          v1, Lx8/d;->k Ljava/util/concurrent/locks/Condition;
+	10      (00000024) sget-wide            v6, Lx8/d;->l J
+	11      (00000028) sget-object          v8, Ljava/util/concurrent/TimeUnit;->MILLISECONDS Ljava/util/concurrent/TimeUnit;
+	12      (0000002c) invoke-interface     v1, v6, v7, v8, Ljava/util/concurrent/locks/Condition;->await(J Ljava/util/concurrent/TimeUnit;)Z
+	13      (00000032) iget-object          v0, v0, Lh/f;->c Ljava/lang/Object;
+	14      (00000036) check-cast           v0, [Lx8/d;
+	15      (0000003a) aget-object          v0, v0, v2
+	16      (0000003e) if-nez               v0, +010h
+
+l-BB@0x42 : [ l-BB@0x58 l-BB@0x5e ]
+	17      (00000042) invoke-static        Ljava/lang/System;->nanoTime()J
+	18      (00000048) move-result-wide     v0
+	19      (0000004a) sub-long/2addr       v0, v4
+	20      (0000004c) sget-wide            v4, Lx8/d;->m J
+	21      (00000050) cmp-long             v0, v0, v4
+	22      (00000054) if-ltz               v0, +005h
+
+l-BB@0x58 : 
+	23      (00000058) sget-object          v0, Lx8/d;->i Lx8/d;
+	24      (0000005c) return-object        v0
+
+l-BB@0x5e : 
+	25      (0000005e) return-object        v3
+
+l-BB@0x60 : [ l-BB@0x7a l-BB@0x8a ]
+	26      (00000060) invoke-static        Ljava/lang/System;->nanoTime()J
+	27      (00000066) move-result-wide     v4
+	28      (00000068) iget-wide            v6, v1, Lx8/d;->g J
+	29      (0000006c) sub-long/2addr       v6, v4
+	30      (0000006e) const-wide/16        v4, 0
+	31      (00000072) cmp-long             v2, v6, v4
+	32      (00000076) if-lez               v2, +00ah
+
+l-BB@0x7a : 
+	33      (0000007a) sget-object          v0, Lx8/d;->k Ljava/util/concurrent/locks/Condition;
+	34      (0000007e) sget-object          v1, Ljava/util/concurrent/TimeUnit;->NANOSECONDS Ljava/util/concurrent/TimeUnit;
+	35      (00000082) invoke-interface     v0, v6, v7, v1, Ljava/util/concurrent/locks/Condition;->await(J Ljava/util/concurrent/TimeUnit;)Z
+	36      (00000088) return-object        v3
+
+l-BB@0x8a : 
+	37      (0000008a) invoke-virtual       v0, v1, Lh/f;->g(Lx8/d;)V
+	38      (00000090) const/4              v0, 2
+	39      (00000092) iput                 v0, v1, Lx8/d;->e I
+	40      (00000096) return-object        v1
+

@@ -1,0 +1,45 @@
+# Lc2/a;->a()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v3
+#
+# - return:void
+
+a-BB@0x0 : [ a-BB@0x1c a-BB@0x60 ]
+	0       (00000000) iget-object          v0, v3, Lc2/a;->a Lb2/g;
+	1       (00000004) invoke-interface     v0, Landroidx/lifecycle/u;->getLifecycle()Landroidx/lifecycle/p;
+	2       (0000000a) move-result-object   v1
+	3       (0000000c) check-cast           v1, Landroidx/lifecycle/w;
+	4       (00000010) iget-object          v1, v1, Landroidx/lifecycle/w;->c Landroidx/lifecycle/o;
+	5       (00000014) sget-object          v2, Landroidx/lifecycle/o;->b Landroidx/lifecycle/o;
+	6       (00000018) if-ne                v1, v2, +024h
+
+a-BB@0x1c : [ a-BB@0x24 a-BB@0x50 ]
+	7       (0000001c) iget-boolean         v1, v3, Lc2/a;->e Z
+	8       (00000020) if-nez               v1, +018h
+
+a-BB@0x24 : 
+	9       (00000024) iget-object          v1, v3, Lc2/a;->b La8/j;
+	10      (00000028) invoke-virtual       v1, La8/j;->invoke()Ljava/lang/Object;
+	11      (0000002e) invoke-interface     v0, Landroidx/lifecycle/u;->getLifecycle()Landroidx/lifecycle/p;
+	12      (00000034) move-result-object   v0
+	13      (00000036) new-instance         v1, Lc/e;
+	14      (0000003a) const/4              v2, 2
+	15      (0000003c) invoke-direct        v1, v3, v2, Lc/e;-><init>(Ljava/lang/Object; I)V
+	16      (00000042) invoke-virtual       v0, v1, Landroidx/lifecycle/p;->a(Landroidx/lifecycle/t;)V
+	17      (00000048) const/4              v0, 1
+	18      (0000004a) iput-boolean         v0, v3, Lc2/a;->e Z
+	19      (0000004e) return-void          
+
+a-BB@0x50 : 
+	20      (00000050) new-instance         v0, Ljava/lang/IllegalStateException;
+	21      (00000054) const-string         v1, "SavedStateRegistry was already attached."
+	22      (00000058) invoke-direct        v0, v1, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	23      (0000005e) throw                v0
+
+a-BB@0x60 : 
+	24      (00000060) new-instance         v0, Ljava/lang/IllegalStateException;
+	25      (00000064) const-string         v1, "Restarter must be created only during owner's initialization stage"
+	26      (00000068) invoke-direct        v0, v1, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	27      (0000006e) throw                v0
+

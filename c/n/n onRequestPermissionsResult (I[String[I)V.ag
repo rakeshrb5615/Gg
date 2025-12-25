@@ -1,0 +1,35 @@
+# Lc/n;->onRequestPermissionsResult(I [Ljava/lang/String; [I)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:int
+# - v5:java.lang.String[]
+# - v6:int[]
+#
+# - return:void
+
+onRequestPermissionsResult-BB@0x0 : [ onRequestPermissionsResult-BB@0x48 onRequestPermissionsResult-BB@0x4e ]
+	0       (00000000) const-string         v0, "permissions"
+	1       (00000004) invoke-static        v5, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) const-string         v0, "grantResults"
+	3       (0000000e) invoke-static        v6, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	4       (00000014) iget-object          v0, v3, Lc/n;->activityResultRegistry Le/i;
+	5       (00000018) new-instance         v1, Landroid/content/Intent;
+	6       (0000001c) invoke-direct        v1, Landroid/content/Intent;-><init>()V
+	7       (00000022) const-string         v2, "androidx.activity.result.contract.extra.PERMISSIONS"
+	8       (00000026) invoke-virtual       v1, v2, v5, Landroid/content/Intent;->putExtra(Ljava/lang/String; [Ljava/lang/String;)Landroid/content/Intent;
+	9       (0000002c) move-result-object   v1
+	10      (0000002e) const-string         v2, "androidx.activity.result.contract.extra.PERMISSION_GRANT_RESULTS"
+	11      (00000032) invoke-virtual       v1, v2, v6, Landroid/content/Intent;->putExtra(Ljava/lang/String; [I)Landroid/content/Intent;
+	12      (00000038) move-result-object   v1
+	13      (0000003a) const/4              v2, -1
+	14      (0000003c) invoke-virtual       v0, v4, v2, v1, Le/i;->a(I I Landroid/content/Intent;)Z
+	15      (00000042) move-result          v0
+	16      (00000044) if-nez               v0, +005h
+
+onRequestPermissionsResult-BB@0x48 : [ onRequestPermissionsResult-BB@0x4e ]
+	17      (00000048) invoke-super         v3, v4, v5, v6, Landroid/app/Activity;->onRequestPermissionsResult(I [Ljava/lang/String; [I)V
+
+onRequestPermissionsResult-BB@0x4e : 
+	18      (0000004e) return-void          
+

@@ -1,0 +1,49 @@
+# Lc/n;->onMultiWindowModeChanged(Z Landroid/content/res/Configuration;)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:boolean
+# - v4:android.content.res.Configuration
+#
+# - return:void
+
+onMultiWindowModeChanged-BB@0x0 : [ onMultiWindowModeChanged-BB@0x12 ]
+	0       (00000000) const-string         v0, "newConfig"
+	1       (00000004) invoke-static        v4, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) const/4              v0, 1
+	3       (0000000c) iput-boolean         v0, v2, Lc/n;->dispatchingOnMultiWindowModeChanged Z
+	4       (00000010) const/4              v0, 0
+
+onMultiWindowModeChanged-BB@0x12 : [ onMultiWindowModeChanged-BB@0x32 ]
+	5       (00000012) invoke-super         v2, v3, v4, Landroid/app/Activity;->onMultiWindowModeChanged(Z Landroid/content/res/Configuration;)V
+	6       (00000018) iput-boolean         v0, v2, Lc/n;->dispatchingOnMultiWindowModeChanged Z
+	7       (0000001c) iget-object          v4, v2, Lc/n;->onMultiWindowModeChangedListeners Ljava/util/concurrent/CopyOnWriteArrayList;
+	8       (00000020) invoke-virtual       v4, Ljava/util/concurrent/CopyOnWriteArrayList;->iterator()Ljava/util/Iterator;
+	9       (00000026) move-result-object   v4
+	10      (00000028) const-string         v0, "iterator(...)"
+	11      (0000002c) invoke-static        v4, v0, Lkotlin/jvm/internal/j;->d(Ljava/lang/Object; Ljava/lang/String;)V
+	12:17
+	(Ljava/lang/Throwable; -> 5e onMultiWindowModeChanged-BB@0x5e)
+
+onMultiWindowModeChanged-BB@0x32 : [ onMultiWindowModeChanged-BB@0x3e onMultiWindowModeChanged-BB@0x5c ]
+	12      (00000032) invoke-interface     v4, Ljava/util/Iterator;->hasNext()Z
+	13      (00000038) move-result          v0
+	14      (0000003a) if-eqz               v0, +011h
+
+onMultiWindowModeChanged-BB@0x3e : [ onMultiWindowModeChanged-BB@0x32 ]
+	15      (0000003e) invoke-interface     v4, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	16      (00000044) move-result-object   v0
+	17      (00000046) check-cast           v0, Lp0/a;
+	18      (0000004a) new-instance         v1, Ld0/i;
+	19      (0000004e) invoke-direct        v1, v3, Ld0/i;-><init>(Z)V
+	20      (00000054) invoke-interface     v0, v1, Lp0/a;->accept(Ljava/lang/Object;)V
+	21      (0000005a) goto                 -14h
+
+onMultiWindowModeChanged-BB@0x5c : 
+	22      (0000005c) return-void          
+
+onMultiWindowModeChanged-BB@0x5e : 
+	23      (0000005e) move-exception       v3
+	24      (00000060) iput-boolean         v0, v2, Lc/n;->dispatchingOnMultiWindowModeChanged Z
+	25      (00000064) throw                v3
+

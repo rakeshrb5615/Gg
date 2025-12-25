@@ -1,0 +1,33 @@
+# Lc/n;->onNewIntent(Landroid/content/Intent;)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:android.content.Intent
+#
+# - return:void
+
+onNewIntent-BB@0x0 : [ onNewIntent-BB@0x26 ]
+	0       (00000000) const-string         v0, "intent"
+	1       (00000004) invoke-static        v3, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) invoke-super         v2, v3, Landroid/app/Activity;->onNewIntent(Landroid/content/Intent;)V
+	3       (00000010) iget-object          v0, v2, Lc/n;->onNewIntentListeners Ljava/util/concurrent/CopyOnWriteArrayList;
+	4       (00000014) invoke-virtual       v0, Ljava/util/concurrent/CopyOnWriteArrayList;->iterator()Ljava/util/Iterator;
+	5       (0000001a) move-result-object   v0
+	6       (0000001c) const-string         v1, "iterator(...)"
+	7       (00000020) invoke-static        v0, v1, Lkotlin/jvm/internal/j;->d(Ljava/lang/Object; Ljava/lang/String;)V
+
+onNewIntent-BB@0x26 : [ onNewIntent-BB@0x32 onNewIntent-BB@0x46 ]
+	8       (00000026) invoke-interface     v0, Ljava/util/Iterator;->hasNext()Z
+	9       (0000002c) move-result          v1
+	10      (0000002e) if-eqz               v1, +00ch
+
+onNewIntent-BB@0x32 : [ onNewIntent-BB@0x26 ]
+	11      (00000032) invoke-interface     v0, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	12      (00000038) move-result-object   v1
+	13      (0000003a) check-cast           v1, Lp0/a;
+	14      (0000003e) invoke-interface     v1, v3, Lp0/a;->accept(Ljava/lang/Object;)V
+	15      (00000044) goto                 -fh
+
+onNewIntent-BB@0x46 : 
+	16      (00000046) return-void          
+

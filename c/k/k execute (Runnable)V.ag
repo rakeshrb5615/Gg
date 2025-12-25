@@ -1,0 +1,46 @@
+# Lc/k;->execute(Ljava/lang/Runnable;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:java.lang.Runnable
+#
+# - return:void
+
+execute-BB@0x0 : [ execute-BB@0x34 execute-BB@0x60 ]
+	0       (00000000) const-string         v0, "runnable"
+	1       (00000004) invoke-static        v3, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) iput-object          v3, v2, Lc/k;->b Ljava/lang/Runnable;
+	3       (0000000e) iget-object          v3, v2, Lc/k;->d Lc/n;
+	4       (00000012) invoke-virtual       v3, Landroid/app/Activity;->getWindow()Landroid/view/Window;
+	5       (00000018) move-result-object   v3
+	6       (0000001a) invoke-virtual       v3, Landroid/view/Window;->getDecorView()Landroid/view/View;
+	7       (00000020) move-result-object   v3
+	8       (00000022) const-string         v0, "getDecorView(...)"
+	9       (00000026) invoke-static        v3, v0, Lkotlin/jvm/internal/j;->d(Ljava/lang/Object; Ljava/lang/String;)V
+	10      (0000002c) iget-boolean         v0, v2, Lc/k;->c Z
+	11      (00000030) if-eqz               v0, +018h
+
+execute-BB@0x34 : [ execute-BB@0x50 execute-BB@0x58 ]
+	12      (00000034) invoke-static        Landroid/os/Looper;->myLooper()Landroid/os/Looper;
+	13      (0000003a) move-result-object   v0
+	14      (0000003c) invoke-static        Landroid/os/Looper;->getMainLooper()Landroid/os/Looper;
+	15      (00000042) move-result-object   v1
+	16      (00000044) invoke-static        v0, v1, Lkotlin/jvm/internal/j;->a(Ljava/lang/Object; Ljava/lang/Object;)Z
+	17      (0000004a) move-result          v0
+	18      (0000004c) if-eqz               v0, +006h
+
+execute-BB@0x50 : 
+	19      (00000050) invoke-virtual       v3, Landroid/view/View;->invalidate()V
+	20      (00000056) return-void          
+
+execute-BB@0x58 : 
+	21      (00000058) invoke-virtual       v3, Landroid/view/View;->postInvalidate()V
+	22      (0000005e) return-void          
+
+execute-BB@0x60 : 
+	23      (00000060) new-instance         v0, Landroidx/lifecycle/g0;
+	24      (00000064) const/4              v1, 1
+	25      (00000066) invoke-direct        v0, v2, v1, Landroidx/lifecycle/g0;-><init>(Ljava/lang/Object; I)V
+	26      (0000006c) invoke-virtual       v3, v0, Landroid/view/View;->postOnAnimation(Ljava/lang/Runnable;)V
+	27      (00000072) return-void          
+

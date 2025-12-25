@@ -1,0 +1,39 @@
+# Lc/p;->onCreate(Landroid/os/Bundle;)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:android.os.Bundle
+#
+# - return:void
+
+onCreate-BB@0x0 : [ onCreate-BB@0x12 onCreate-BB@0x32 ]
+	0       (00000000) invoke-super         v3, v4, Landroid/app/Dialog;->onCreate(Landroid/os/Bundle;)V
+	1       (00000006) sget                 v0, Landroid/os/Build$VERSION;->SDK_INT I
+	2       (0000000a) const/16             v1, 33
+	3       (0000000e) if-lt                v0, v1, +012h
+
+onCreate-BB@0x12 : [ onCreate-BB@0x32 ]
+	4       (00000012) invoke-virtual       v3, Lc/p;->getOnBackPressedDispatcher()Lc/v;
+	5       (00000018) move-result-object   v0
+	6       (0000001a) invoke-virtual       v3, Landroid/app/Dialog;->getOnBackInvokedDispatcher()Landroid/window/OnBackInvokedDispatcher;
+	7       (00000020) move-result-object   v1
+	8       (00000022) const-string         v2, "getOnBackInvokedDispatcher(...)"
+	9       (00000026) invoke-static        v1, v2, Lkotlin/jvm/internal/j;->d(Ljava/lang/Object; Ljava/lang/String;)V
+	10      (0000002c) invoke-virtual       v0, v1, Lc/v;->b(Landroid/window/OnBackInvokedDispatcher;)V
+
+onCreate-BB@0x32 : [ onCreate-BB@0x44 onCreate-BB@0x52 ]
+	11      (00000032) iget-object          v0, v3, Lc/p;->b Lb2/f;
+	12      (00000036) invoke-virtual       v0, v4, Lb2/f;->a(Landroid/os/Bundle;)V
+	13      (0000003c) iget-object          v4, v3, Lc/p;->a Landroidx/lifecycle/w;
+	14      (00000040) if-nez               v4, +009h
+
+onCreate-BB@0x44 : [ onCreate-BB@0x52 ]
+	15      (00000044) new-instance         v4, Landroidx/lifecycle/w;
+	16      (00000048) invoke-direct        v4, v3, Landroidx/lifecycle/w;-><init>(Landroidx/lifecycle/u;)V
+	17      (0000004e) iput-object          v4, v3, Lc/p;->a Landroidx/lifecycle/w;
+
+onCreate-BB@0x52 : 
+	18      (00000052) sget-object          v0, Landroidx/lifecycle/n;->ON_CREATE Landroidx/lifecycle/n;
+	19      (00000056) invoke-virtual       v4, v0, Landroidx/lifecycle/w;->e(Landroidx/lifecycle/n;)V
+	20      (0000005c) return-void          
+

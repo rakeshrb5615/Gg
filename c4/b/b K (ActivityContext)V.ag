@@ -1,0 +1,122 @@
+# Lc4/b;->K(Landroid/app/Activity; Landroid/content/Context;)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v8
+# - v9:android.app.Activity
+# - v10:android.content.Context
+#
+# - return:void
+
+K-BB@0x0 : [ K-BB@0xc K-BB@0xe ]
+	0       (00000000) invoke-virtual       v9, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;
+	1       (00000006) move-result-object   v0
+	2       (00000008) if-eqz               v0, +003h
+
+K-BB@0xc : [ K-BB@0x10 ]
+	3       (0000000c) goto                 +2h
+
+K-BB@0xe : [ K-BB@0x10 ]
+	4       (0000000e) move-object          v0, v9
+
+K-BB@0x10 : [ K-BB@0x4e K-BB@0x12c ]
+	5       (00000010) new-instance         v1, Lk2/c;
+	6       (00000014) new-instance         v2, Lh4/f;
+	7       (00000018) invoke-direct        v2, v0, Lh4/f;-><init>(Landroid/content/Context;)V
+	8       (0000001e) invoke-direct        v1, v2, Lk2/c;-><init>(Lh4/f;)V
+	9       (00000024) iget-object          v0, v1, Lk2/c;->b Ljava/lang/Object;
+	10      (00000028) check-cast           v0, Lh4/f;
+	11      (0000002c) iget-object          v2, v0, Lh4/f;->b Ljava/lang/String;
+	12      (00000030) sget-object          v3, Lh4/f;->c Ld4/l;
+	13      (00000034) filled-new-array     v2, [Ljava/lang/Object;
+	14      (0000003a) move-result-object   v2
+	15      (0000003c) const-string         v4, "requestInAppReview (%s)"
+	16      (00000040) invoke-virtual       v3, v4, v2, Ld4/l;->g(Ljava/lang/String; [Ljava/lang/Object;)V
+	17      (00000046) iget-object          v2, v0, Lh4/f;->a Li4/h;
+	18      (0000004a) if-nez               v2, +071h
+
+K-BB@0x4e : [ K-BB@0x66 K-BB@0x7c ]
+	19      (0000004e) const/4              v0, 0
+	20      (00000050) new-array            v0, v0, [Ljava/lang/Object;
+	21      (00000054) const/4              v2, 6
+	22      (00000056) const-string         v4, "PlayCore"
+	23      (0000005a) invoke-static        v4, v2, Landroid/util/Log;->isLoggable(Ljava/lang/String; I)Z
+	24      (00000060) move-result          v2
+	25      (00000062) if-eqz               v2, +00dh
+
+K-BB@0x66 : [ K-BB@0x7c ]
+	26      (00000066) iget-object          v2, v3, Ld4/l;->b Ljava/lang/String;
+	27      (0000006a) const-string         v3, "Play Store app is either not installed or not the official version"
+	28      (0000006e) invoke-static        v2, v3, v0, Ld4/l;->i(Ljava/lang/String; Ljava/lang/String; [Ljava/lang/Object;)Ljava/lang/String;
+	29      (00000074) move-result-object   v0
+	30      (00000076) invoke-static        v4, v0, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String;)I
+
+K-BB@0x7c : [ K-BB@0xae K-BB@0xb4 ]
+	31      (0000007c) new-instance         v0, Le4/a;
+	32      (00000080) new-instance         v2, Lcom/google/android/gms/common/api/Status;
+	33      (00000084) invoke-static        Ljava/util/Locale;->getDefault()Ljava/util/Locale;
+	34      (0000008a) move-result-object   v3
+	35      (0000008c) const/4              v4, -1
+	36      (0000008e) invoke-static        v4, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+	37      (00000094) move-result-object   v5
+	38      (00000096) sget-object          v6, Lj4/a;->a Ljava/util/HashMap;
+	39      (0000009a) invoke-static        v4, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+	40      (000000a0) move-result-object   v7
+	41      (000000a2) invoke-virtual       v6, v7, Ljava/util/HashMap;->containsKey(Ljava/lang/Object;)Z
+	42      (000000a8) move-result          v8
+	43      (000000aa) if-nez               v8, +005h
+
+K-BB@0xae : [ K-BB@0x102 ]
+	44      (000000ae) const-string         v6, ""
+	45      (000000b2) goto                 +28h
+
+K-BB@0xb4 : [ K-BB@0x102 ]
+	46      (000000b4) invoke-virtual       v6, v7, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	47      (000000ba) move-result-object   v6
+	48      (000000bc) check-cast           v6, Ljava/lang/String;
+	49      (000000c0) sget-object          v8, Lj4/a;->b Ljava/util/HashMap;
+	50      (000000c4) invoke-virtual       v8, v7, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	51      (000000ca) move-result-object   v7
+	52      (000000cc) check-cast           v7, Ljava/lang/String;
+	53      (000000d0) new-instance         v8, Ljava/lang/StringBuilder;
+	54      (000000d4) invoke-direct        v8, Ljava/lang/StringBuilder;-><init>()V
+	55      (000000da) invoke-virtual       v8, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	56      (000000e0) const-string         v6, " (https://developer.android.com/reference/com/google/android/play/core/review/model/ReviewErrorCode.html#"
+	57      (000000e4) invoke-virtual       v8, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	58      (000000ea) invoke-virtual       v8, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	59      (000000f0) const-string         v6, ")"
+	60      (000000f4) invoke-virtual       v8, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	61      (000000fa) invoke-virtual       v8, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	62      (00000100) move-result-object   v6
+
+K-BB@0x102 : [ K-BB@0x160 ]
+	63      (00000102) filled-new-array     v5, v6, [Ljava/lang/Object;
+	64      (00000108) move-result-object   v5
+	65      (0000010a) const-string         v6, "Review Error(%d): %s"
+	66      (0000010e) invoke-static        v3, v6, v5, Ljava/lang/String;->format(Ljava/util/Locale; Ljava/lang/String; [Ljava/lang/Object;)Ljava/lang/String;
+	67      (00000114) move-result-object   v3
+	68      (00000116) invoke-direct        v2, v4, v3, Lcom/google/android/gms/common/api/Status;-><init>(I Ljava/lang/String;)V
+	69      (0000011c) invoke-direct        v0, v2, Lcom/google/android/gms/common/api/ApiException;-><init>(Lcom/google/android/gms/common/api/Status;)V
+	70      (00000122) invoke-static        v0, Lcom/google/android/gms/tasks/Tasks;->forException(Ljava/lang/Exception;)Lcom/google/android/gms/tasks/Task;
+	71      (00000128) move-result-object   v0
+	72      (0000012a) goto                 +1bh
+
+K-BB@0x12c : [ K-BB@0x160 ]
+	73      (0000012c) new-instance         v3, Lcom/google/android/gms/tasks/TaskCompletionSource;
+	74      (00000130) invoke-direct        v3, Lcom/google/android/gms/tasks/TaskCompletionSource;-><init>()V
+	75      (00000136) new-instance         v4, Lh4/d;
+	76      (0000013a) invoke-direct        v4, v0, v3, v3, Lh4/d;-><init>(Lh4/f; Lcom/google/android/gms/tasks/TaskCompletionSource; Lcom/google/android/gms/tasks/TaskCompletionSource;)V
+	77      (00000140) new-instance         v0, Li4/f;
+	78      (00000144) invoke-direct        v0, v2, v3, v3, v4, Li4/f;-><init>(Li4/h; Lcom/google/android/gms/tasks/TaskCompletionSource; Lcom/google/android/gms/tasks/TaskCompletionSource; Lh4/d;)V
+	79      (0000014a) invoke-virtual       v2, Li4/h;->a()Landroid/os/Handler;
+	80      (00000150) move-result-object   v2
+	81      (00000152) invoke-virtual       v2, v0, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
+	82      (00000158) invoke-virtual       v3, Lcom/google/android/gms/tasks/TaskCompletionSource;->getTask()Lcom/google/android/gms/tasks/Task;
+	83      (0000015e) move-result-object   v0
+
+K-BB@0x160 : 
+	84      (00000160) new-instance         v2, Lh5/a;
+	85      (00000164) const/4              v3, 1
+	86      (00000166) invoke-direct        v2, v1, v9, v10, v3, Lh5/a;-><init>(Ljava/lang/Object; Ljava/lang/Object; Ljava/lang/Object; I)V
+	87      (0000016c) invoke-virtual       v0, v2, Lcom/google/android/gms/tasks/Task;->addOnCompleteListener(Lcom/google/android/gms/tasks/OnCompleteListener;)Lcom/google/android/gms/tasks/Task;
+	88      (00000172) return-void          
+

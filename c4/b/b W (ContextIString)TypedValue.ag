@@ -1,0 +1,32 @@
+# Lc4/b;->W(Landroid/content/Context; I Ljava/lang/String;)Landroid/util/TypedValue; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v0
+# - v1:android.content.Context
+# - v2:int
+# - v3:java.lang.String
+#
+# - return:android.util.TypedValue
+
+W-BB@0x0 : [ W-BB@0xc W-BB@0xe ]
+	0       (00000000) invoke-static        v1, v2, Lc4/b;->T(Landroid/content/Context; I)Landroid/util/TypedValue;
+	1       (00000006) move-result-object   v0
+	2       (00000008) if-eqz               v0, +003h
+
+W-BB@0xc : 
+	3       (0000000c) return-object        v0
+
+W-BB@0xe : 
+	4       (0000000e) new-instance         v0, Ljava/lang/IllegalArgumentException;
+	5       (00000012) invoke-virtual       v1, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+	6       (00000018) move-result-object   v1
+	7       (0000001a) invoke-virtual       v1, v2, Landroid/content/res/Resources;->getResourceName(I)Ljava/lang/String;
+	8       (00000020) move-result-object   v1
+	9       (00000022) filled-new-array     v3, v1, [Ljava/lang/Object;
+	10      (00000028) move-result-object   v1
+	11      (0000002a) const-string         v2, "%1$s requires a value for the %2$s attribute to be set in your app theme. You can either set the attribute in your theme or update your theme to inherit from Theme.MaterialComponents (or a descendant)."
+	12      (0000002e) invoke-static        v2, v1, Ljava/lang/String;->format(Ljava/lang/String; [Ljava/lang/Object;)Ljava/lang/String;
+	13      (00000034) move-result-object   v1
+	14      (00000036) invoke-direct        v0, v1, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	15      (0000003c) throw                v0
+

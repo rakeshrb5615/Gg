@@ -1,0 +1,45 @@
+# Lc/n;->e(Lc/n;)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:c.n
+#
+# - return:void
+
+e-BB@0x0 : 
+	0       (00000000) invoke-super         v2, Landroid/app/Activity;->onBackPressed()V
+	1       (00000006) return-void          
+	0:5
+	(Ljava/lang/IllegalStateException; -> 26 e-BB@0x26)
+	(Ljava/lang/NullPointerException; -> 8 e-BB@0x8)
+
+e-BB@0x8 : [ e-BB@0x22 e-BB@0x24 ]
+	2       (00000008) move-exception       v2
+	3       (0000000a) invoke-virtual       v2, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+	4       (00000010) move-result-object   v0
+	5       (00000012) const-string         v1, "Attempt to invoke virtual method 'android.os.Handler android.app.FragmentHostCallback.getHandler()' on a null object reference"
+	6       (00000016) invoke-static        v0, v1, Lkotlin/jvm/internal/j;->a(Ljava/lang/Object; Ljava/lang/Object;)Z
+	7       (0000001c) move-result          v0
+	8       (0000001e) if-eqz               v0, +003h
+
+e-BB@0x22 : [ e-BB@0x40 ]
+	9       (00000022) goto                 +fh
+
+e-BB@0x24 : 
+	10      (00000024) throw                v2
+
+e-BB@0x26 : [ e-BB@0x40 e-BB@0x42 ]
+	11      (00000026) move-exception       v2
+	12      (00000028) invoke-virtual       v2, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+	13      (0000002e) move-result-object   v0
+	14      (00000030) const-string         v1, "Can not perform this action after onSaveInstanceState"
+	15      (00000034) invoke-static        v0, v1, Lkotlin/jvm/internal/j;->a(Ljava/lang/Object; Ljava/lang/Object;)Z
+	16      (0000003a) move-result          v0
+	17      (0000003c) if-eqz               v0, +003h
+
+e-BB@0x40 : 
+	18      (00000040) return-void          
+
+e-BB@0x42 : 
+	19      (00000042) throw                v2
+

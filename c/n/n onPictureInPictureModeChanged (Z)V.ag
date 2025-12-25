@@ -1,0 +1,39 @@
+# Lc/n;->onPictureInPictureModeChanged(Z)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:boolean
+#
+# - return:void
+
+onPictureInPictureModeChanged-BB@0x0 : [ onPictureInPictureModeChanged-BB@0x8 onPictureInPictureModeChanged-BB@0xa ]
+	0       (00000000) iget-boolean         v0, v3, Lc/n;->dispatchingOnPictureInPictureModeChanged Z
+	1       (00000004) if-eqz               v0, +003h
+
+onPictureInPictureModeChanged-BB@0x8 : [ onPictureInPictureModeChanged-BB@0x4a ]
+	2       (00000008) goto                 +21h
+
+onPictureInPictureModeChanged-BB@0xa : [ onPictureInPictureModeChanged-BB@0x20 ]
+	3       (0000000a) iget-object          v0, v3, Lc/n;->onPictureInPictureModeChangedListeners Ljava/util/concurrent/CopyOnWriteArrayList;
+	4       (0000000e) invoke-virtual       v0, Ljava/util/concurrent/CopyOnWriteArrayList;->iterator()Ljava/util/Iterator;
+	5       (00000014) move-result-object   v0
+	6       (00000016) const-string         v1, "iterator(...)"
+	7       (0000001a) invoke-static        v0, v1, Lkotlin/jvm/internal/j;->d(Ljava/lang/Object; Ljava/lang/String;)V
+
+onPictureInPictureModeChanged-BB@0x20 : [ onPictureInPictureModeChanged-BB@0x2c onPictureInPictureModeChanged-BB@0x4a ]
+	8       (00000020) invoke-interface     v0, Ljava/util/Iterator;->hasNext()Z
+	9       (00000026) move-result          v1
+	10      (00000028) if-eqz               v1, +011h
+
+onPictureInPictureModeChanged-BB@0x2c : [ onPictureInPictureModeChanged-BB@0x20 ]
+	11      (0000002c) invoke-interface     v0, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	12      (00000032) move-result-object   v1
+	13      (00000034) check-cast           v1, Lp0/a;
+	14      (00000038) new-instance         v2, Ld0/a0;
+	15      (0000003c) invoke-direct        v2, v4, Ld0/a0;-><init>(Z)V
+	16      (00000042) invoke-interface     v1, v2, Lp0/a;->accept(Ljava/lang/Object;)V
+	17      (00000048) goto                 -14h
+
+onPictureInPictureModeChanged-BB@0x4a : 
+	18      (0000004a) return-void          
+

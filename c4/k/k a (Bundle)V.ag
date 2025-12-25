@@ -1,0 +1,147 @@
+# Lc4/k;->a(Landroid/os/Bundle;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v19
+# - v20:android.os.Bundle
+#
+# - return:void
+
+a-BB@0x0 : [ a-BB@0x24 a-BB@0x3e ]
+	0       (00000000) move-object/from16   v0, v19
+	1       (00000004) move-object/from16   v1, v20
+	2       (00000008) invoke-super/range   v19 ... v20, Lc4/i;->a(Landroid/os/Bundle;)V
+	3       (0000000e) const-string         v2, "error.code"
+	4       (00000012) const/4              v3, -2
+	5       (00000014) invoke-virtual       v1, v2, v3, Landroid/os/BaseBundle;->getInt(Ljava/lang/String; I)I
+	6       (0000001a) move-result          v4
+	7       (0000001c) iget-object          v5, v0, Lc4/i;->c Lcom/google/android/gms/tasks/TaskCompletionSource;
+	8       (00000020) if-eqz               v4, +00fh
+
+a-BB@0x24 : 
+	9       (00000024) new-instance         v4, Le4/a;
+	10      (00000028) invoke-virtual       v1, v2, v3, Landroid/os/BaseBundle;->getInt(Ljava/lang/String; I)I
+	11      (0000002e) move-result          v1
+	12      (00000030) invoke-direct        v4, v1, Le4/a;-><init>(I)V
+	13      (00000036) invoke-virtual       v5, v4, Lcom/google/android/gms/tasks/TaskCompletionSource;->trySetException(Ljava/lang/Exception;)Z
+	14      (0000003c) return-void          
+
+a-BB@0x3e : [ a-BB@0x72 a-BB@0x74 ]
+	15      (0000003e) const-string         v2, "version.code"
+	16      (00000042) const/4              v3, -1
+	17      (00000044) invoke-virtual       v1, v2, v3, Landroid/os/BaseBundle;->getInt(Ljava/lang/String; I)I
+	18      (0000004a) const-string         v2, "update.availability"
+	19      (0000004e) invoke-virtual       v1, v2, Landroid/os/BaseBundle;->getInt(Ljava/lang/String;)I
+	20      (00000054) move-result          v7
+	21      (00000056) const-string         v2, "install.status"
+	22      (0000005a) const/4              v4, 0
+	23      (0000005c) invoke-virtual       v1, v2, v4, Landroid/os/BaseBundle;->getInt(Ljava/lang/String; I)I
+	24      (00000062) const-string         v2, "client.version.staleness"
+	25      (00000066) invoke-virtual       v1, v2, v3, Landroid/os/BaseBundle;->getInt(Ljava/lang/String; I)I
+	26      (0000006c) move-result          v6
+	27      (0000006e) if-ne                v6, v3, +003h
+
+a-BB@0x72 : [ a-BB@0x7a ]
+	28      (00000072) goto                 +4h
+
+a-BB@0x74 : [ a-BB@0x7a ]
+	29      (00000074) invoke-virtual       v1, v2, Landroid/os/BaseBundle;->getInt(Ljava/lang/String;)I
+
+a-BB@0x7a : [ a-BB@0x146 a-BB@0x14c ]
+	30      (0000007a) const-string         v2, "in.app.update.priority"
+	31      (0000007e) invoke-virtual       v1, v2, v4, Landroid/os/BaseBundle;->getInt(Ljava/lang/String; I)I
+	32      (00000084) const-string         v2, "bytes.downloaded"
+	33      (00000088) invoke-virtual       v1, v2, Landroid/os/BaseBundle;->getLong(Ljava/lang/String;)J
+	34      (0000008e) const-string         v2, "total.bytes.to.download"
+	35      (00000092) invoke-virtual       v1, v2, Landroid/os/BaseBundle;->getLong(Ljava/lang/String;)J
+	36      (00000098) const-string         v2, "additional.size.required"
+	37      (0000009c) invoke-virtual       v1, v2, Landroid/os/BaseBundle;->getLong(Ljava/lang/String;)J
+	38      (000000a2) move-result-wide     v8
+	39      (000000a4) iget-object          v2, v0, Lc4/k;->e Lc4/l;
+	40      (000000a8) iget-object          v2, v2, Lc4/l;->d Lc4/m;
+	41      (000000ac) invoke-virtual       v2, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	42      (000000b2) new-instance         v3, Ljava/io/File;
+	43      (000000b6) iget-object          v2, v2, Lc4/m;->a Landroid/content/Context;
+	44      (000000ba) invoke-virtual       v2, Landroid/content/Context;->getFilesDir()Ljava/io/File;
+	45      (000000c0) move-result-object   v2
+	46      (000000c2) const-string         v4, "assetpacks"
+	47      (000000c6) invoke-direct        v3, v2, v4, Ljava/io/File;-><init>(Ljava/io/File; Ljava/lang/String;)V
+	48      (000000cc) invoke-static        v3, Lc4/m;->a(Ljava/io/File;)J
+	49      (000000d2) move-result-wide     v10
+	50      (000000d4) const-string         v2, "blocking.intent"
+	51      (000000d8) invoke-virtual       v1, v2, Landroid/os/Bundle;->getParcelable(Ljava/lang/String;)Landroid/os/Parcelable;
+	52      (000000de) move-result-object   v3
+	53      (000000e0) move-object          v12, v3
+	54      (000000e2) check-cast           v12, Landroid/app/PendingIntent;
+	55      (000000e6) const-string         v3, "nonblocking.intent"
+	56      (000000ea) invoke-virtual       v1, v3, Landroid/os/Bundle;->getParcelable(Ljava/lang/String;)Landroid/os/Parcelable;
+	57      (000000f0) move-result-object   v4
+	58      (000000f2) move-object          v13, v4
+	59      (000000f4) check-cast           v13, Landroid/app/PendingIntent;
+	60      (000000f8) const-string         v4, "blocking.destructive.intent"
+	61      (000000fc) invoke-virtual       v1, v4, Landroid/os/Bundle;->getParcelable(Ljava/lang/String;)Landroid/os/Parcelable;
+	62      (00000102) move-result-object   v6
+	63      (00000104) move-object          v14, v6
+	64      (00000106) check-cast           v14, Landroid/app/PendingIntent;
+	65      (0000010a) const-string         v6, "nonblocking.destructive.intent"
+	66      (0000010e) invoke-virtual       v1, v6, Landroid/os/Bundle;->getParcelable(Ljava/lang/String;)Landroid/os/Parcelable;
+	67      (00000114) move-result-object   v15
+	68      (00000116) check-cast           v15, Landroid/app/PendingIntent;
+	69      (0000011a) new-instance         v0, Ljava/util/HashMap;
+	70      (0000011e) invoke-direct        v0, Ljava/util/HashMap;-><init>()V
+	71      (00000124) move/from16          v16, v7
+	72      (00000128) const-string         v7, "update.precondition.failures:blocking.destructive.intent"
+	73      (0000012c) invoke-virtual       v1, v7, Landroid/os/Bundle;->getIntegerArrayList(Ljava/lang/String;)Ljava/util/ArrayList;
+	74      (00000132) move-result-object   v7
+	75      (00000134) move-wide/from16     v17, v8
+	76      (00000138) new-instance         v8, Ljava/util/HashSet;
+	77      (0000013c) invoke-direct        v8, Ljava/util/HashSet;-><init>()V
+	78      (00000142) if-eqz               v7, +005h
+
+a-BB@0x146 : [ a-BB@0x14c ]
+	79      (00000146) invoke-virtual       v8, v7, Ljava/util/AbstractCollection;->addAll(Ljava/util/Collection;)Z
+
+a-BB@0x14c : [ a-BB@0x16c a-BB@0x172 ]
+	80      (0000014c) invoke-virtual       v0, v4, v8, Ljava/util/HashMap;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	81      (00000152) const-string         v4, "update.precondition.failures:nonblocking.destructive.intent"
+	82      (00000156) invoke-virtual       v1, v4, Landroid/os/Bundle;->getIntegerArrayList(Ljava/lang/String;)Ljava/util/ArrayList;
+	83      (0000015c) move-result-object   v4
+	84      (0000015e) new-instance         v7, Ljava/util/HashSet;
+	85      (00000162) invoke-direct        v7, Ljava/util/HashSet;-><init>()V
+	86      (00000168) if-eqz               v4, +005h
+
+a-BB@0x16c : [ a-BB@0x172 ]
+	87      (0000016c) invoke-virtual       v7, v4, Ljava/util/AbstractCollection;->addAll(Ljava/util/Collection;)Z
+
+a-BB@0x172 : [ a-BB@0x192 a-BB@0x198 ]
+	88      (00000172) invoke-virtual       v0, v6, v7, Ljava/util/HashMap;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	89      (00000178) const-string         v4, "update.precondition.failures:blocking.intent"
+	90      (0000017c) invoke-virtual       v1, v4, Landroid/os/Bundle;->getIntegerArrayList(Ljava/lang/String;)Ljava/util/ArrayList;
+	91      (00000182) move-result-object   v4
+	92      (00000184) new-instance         v6, Ljava/util/HashSet;
+	93      (00000188) invoke-direct        v6, Ljava/util/HashSet;-><init>()V
+	94      (0000018e) if-eqz               v4, +005h
+
+a-BB@0x192 : [ a-BB@0x198 ]
+	95      (00000192) invoke-virtual       v6, v4, Ljava/util/AbstractCollection;->addAll(Ljava/util/Collection;)Z
+
+a-BB@0x198 : [ a-BB@0x1b8 a-BB@0x1be ]
+	96      (00000198) invoke-virtual       v0, v2, v6, Ljava/util/HashMap;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	97      (0000019e) const-string         v2, "update.precondition.failures:nonblocking.intent"
+	98      (000001a2) invoke-virtual       v1, v2, Landroid/os/Bundle;->getIntegerArrayList(Ljava/lang/String;)Ljava/util/ArrayList;
+	99      (000001a8) move-result-object   v1
+	100     (000001aa) new-instance         v2, Ljava/util/HashSet;
+	101     (000001ae) invoke-direct        v2, Ljava/util/HashSet;-><init>()V
+	102     (000001b4) if-eqz               v1, +005h
+
+a-BB@0x1b8 : [ a-BB@0x1be ]
+	103     (000001b8) invoke-virtual       v2, v1, Ljava/util/AbstractCollection;->addAll(Ljava/util/Collection;)Z
+
+a-BB@0x1be : 
+	104     (000001be) invoke-virtual       v0, v3, v2, Ljava/util/HashMap;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	105     (000001c4) new-instance         v6, Lc4/a;
+	106     (000001c8) move/from16          v7, v16
+	107     (000001cc) move-wide/from16     v8, v17
+	108     (000001d0) invoke-direct/range  v6 ... v15, Lc4/a;-><init>(I J J Landroid/app/PendingIntent; Landroid/app/PendingIntent; Landroid/app/PendingIntent; Landroid/app/PendingIntent;)V
+	109     (000001d6) invoke-virtual       v5, v6, Lcom/google/android/gms/tasks/TaskCompletionSource;->trySetResult(Ljava/lang/Object;)Z
+	110     (000001dc) return-void          
+

@@ -1,0 +1,105 @@
+# Lc4/b;->D(I I I)I [access_flags=public static final]
+#
+# Parameters:
+# - local registers: v0...v0
+# - v1:int
+# - v2:int
+# - v3:int
+#
+# - return:int
+
+D-BB@0x0 : [ D-BB@0x4 D-BB@0x30 ]
+	0       (00000000) if-lez               v3, +018h
+
+D-BB@0x4 : [ D-BB@0x8 D-BB@0xa ]
+	1       (00000004) if-lt                v1, v2, +003h
+
+D-BB@0x8 : [ D-BB@0x38 ]
+	2       (00000008) goto                 +18h
+
+D-BB@0xa : [ D-BB@0x12 D-BB@0x14 ]
+	3       (0000000a) rem-int              v0, v2, v3
+	4       (0000000e) if-ltz               v0, +003h
+
+D-BB@0x12 : [ D-BB@0x16 ]
+	5       (00000012) goto                 +2h
+
+D-BB@0x14 : [ D-BB@0x16 ]
+	6       (00000014) add-int/2addr        v0, v3
+
+D-BB@0x16 : [ D-BB@0x1c D-BB@0x1e ]
+	7       (00000016) rem-int/2addr        v1, v3
+	8       (00000018) if-ltz               v1, +003h
+
+D-BB@0x1c : [ D-BB@0x20 ]
+	9       (0000001c) goto                 +2h
+
+D-BB@0x1e : [ D-BB@0x20 ]
+	10      (0000001e) add-int/2addr        v1, v3
+
+D-BB@0x20 : [ D-BB@0x28 D-BB@0x2a ]
+	11      (00000020) sub-int/2addr        v0, v1
+	12      (00000022) rem-int/2addr        v0, v3
+	13      (00000024) if-ltz               v0, +003h
+
+D-BB@0x28 : [ D-BB@0x2c ]
+	14      (00000028) goto                 +2h
+
+D-BB@0x2a : [ D-BB@0x2c ]
+	15      (0000002a) add-int/2addr        v0, v3
+
+D-BB@0x2c : 
+	16      (0000002c) sub-int/2addr        v2, v0
+	17      (0000002e) return               v2
+
+D-BB@0x30 : [ D-BB@0x34 D-BB@0x62 ]
+	18      (00000030) if-gez               v3, +019h
+
+D-BB@0x34 : [ D-BB@0x38 D-BB@0x3a ]
+	19      (00000034) if-gt                v1, v2, +003h
+
+D-BB@0x38 : 
+	20      (00000038) return               v2
+
+D-BB@0x3a : [ D-BB@0x42 D-BB@0x44 ]
+	21      (0000003a) neg-int              v3, v3
+	22      (0000003c) rem-int/2addr        v1, v3
+	23      (0000003e) if-ltz               v1, +003h
+
+D-BB@0x42 : [ D-BB@0x46 ]
+	24      (00000042) goto                 +2h
+
+D-BB@0x44 : [ D-BB@0x46 ]
+	25      (00000044) add-int/2addr        v1, v3
+
+D-BB@0x46 : [ D-BB@0x4e D-BB@0x50 ]
+	26      (00000046) rem-int              v0, v2, v3
+	27      (0000004a) if-ltz               v0, +003h
+
+D-BB@0x4e : [ D-BB@0x52 ]
+	28      (0000004e) goto                 +2h
+
+D-BB@0x50 : [ D-BB@0x52 ]
+	29      (00000050) add-int/2addr        v0, v3
+
+D-BB@0x52 : [ D-BB@0x5a D-BB@0x5c ]
+	30      (00000052) sub-int/2addr        v1, v0
+	31      (00000054) rem-int/2addr        v1, v3
+	32      (00000056) if-ltz               v1, +003h
+
+D-BB@0x5a : [ D-BB@0x5e ]
+	33      (0000005a) goto                 +2h
+
+D-BB@0x5c : [ D-BB@0x5e ]
+	34      (0000005c) add-int/2addr        v1, v3
+
+D-BB@0x5e : 
+	35      (0000005e) add-int/2addr        v1, v2
+	36      (00000060) return               v1
+
+D-BB@0x62 : 
+	37      (00000062) new-instance         v1, Ljava/lang/IllegalArgumentException;
+	38      (00000066) const-string         v2, "Step is zero."
+	39      (0000006a) invoke-direct        v1, v2, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	40      (00000070) throw                v1
+

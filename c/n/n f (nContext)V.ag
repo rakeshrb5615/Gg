@@ -1,0 +1,126 @@
+# Lc/n;->f(Lc/n; Landroid/content/Context;)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v8
+# - v9:c.n
+# - v10:android.content.Context
+#
+# - return:void
+
+f-BB@0x0 : [ f-BB@0x22 f-BB@0x140 ]
+	0       (00000000) const-string         v0, "it"
+	1       (00000004) invoke-static        v10, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) invoke-virtual       v9, Lc/n;->getSavedStateRegistry()Lb2/e;
+	3       (00000010) move-result-object   v10
+	4       (00000012) const-string         v0, "android:support:activity-result"
+	5       (00000016) invoke-virtual       v10, v0, Lb2/e;->a(Ljava/lang/String;)Landroid/os/Bundle;
+	6       (0000001c) move-result-object   v10
+	7       (0000001e) if-eqz               v10, +091h
+
+f-BB@0x22 : [ f-BB@0x4e f-BB@0x140 ]
+	8       (00000022) iget-object          v9, v9, Lc/n;->activityResultRegistry Le/i;
+	9       (00000026) iget-object          v0, v9, Le/i;->b Ljava/util/LinkedHashMap;
+	10      (0000002a) iget-object          v1, v9, Le/i;->a Ljava/util/LinkedHashMap;
+	11      (0000002e) iget-object          v2, v9, Le/i;->g Landroid/os/Bundle;
+	12      (00000032) const-string         v3, "KEY_COMPONENT_ACTIVITY_REGISTERED_RCS"
+	13      (00000036) invoke-virtual       v10, v3, Landroid/os/Bundle;->getIntegerArrayList(Ljava/lang/String;)Ljava/util/ArrayList;
+	14      (0000003c) move-result-object   v3
+	15      (0000003e) const-string         v4, "KEY_COMPONENT_ACTIVITY_REGISTERED_KEYS"
+	16      (00000042) invoke-virtual       v10, v4, Landroid/os/Bundle;->getStringArrayList(Ljava/lang/String;)Ljava/util/ArrayList;
+	17      (00000048) move-result-object   v4
+	18      (0000004a) if-eqz               v4, +07bh
+
+f-BB@0x4e : [ f-BB@0x52 f-BB@0x56 ]
+	19      (0000004e) if-nez               v3, +004h
+
+f-BB@0x52 : [ f-BB@0x140 ]
+	20      (00000052) goto/16              +077h
+
+f-BB@0x56 : [ f-BB@0x66 f-BB@0x70 ]
+	21      (00000056) const-string         v5, "KEY_COMPONENT_ACTIVITY_LAUNCHED_KEYS"
+	22      (0000005a) invoke-virtual       v10, v5, Landroid/os/Bundle;->getStringArrayList(Ljava/lang/String;)Ljava/util/ArrayList;
+	23      (00000060) move-result-object   v5
+	24      (00000062) if-eqz               v5, +007h
+
+f-BB@0x66 : [ f-BB@0x70 ]
+	25      (00000066) iget-object          v6, v9, Le/i;->d Ljava/util/ArrayList;
+	26      (0000006a) invoke-virtual       v6, v5, Ljava/util/ArrayList;->addAll(Ljava/util/Collection;)Z
+
+f-BB@0x70 : [ f-BB@0x80 f-BB@0x86 ]
+	27      (00000070) const-string         v5, "KEY_COMPONENT_ACTIVITY_PENDING_RESULT"
+	28      (00000074) invoke-virtual       v10, v5, Landroid/os/Bundle;->getBundle(Ljava/lang/String;)Landroid/os/Bundle;
+	29      (0000007a) move-result-object   v10
+	30      (0000007c) if-eqz               v10, +005h
+
+f-BB@0x80 : [ f-BB@0x86 ]
+	31      (00000080) invoke-virtual       v2, v10, Landroid/os/Bundle;->putAll(Landroid/os/Bundle;)V
+
+f-BB@0x86 : [ f-BB@0x90 ]
+	32      (00000086) invoke-interface     v4, Ljava/util/Collection;->size()I
+	33      (0000008c) move-result          v10
+	34      (0000008e) const/4              v5, 0
+
+f-BB@0x90 : [ f-BB@0x94 f-BB@0x140 ]
+	35      (00000090) if-ge                v5, v10, +058h
+
+f-BB@0x94 : [ f-BB@0xac f-BB@0xea ]
+	36      (00000094) invoke-virtual       v4, v5, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	37      (0000009a) move-result-object   v6
+	38      (0000009c) check-cast           v6, Ljava/lang/String;
+	39      (000000a0) invoke-interface     v0, v6, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z
+	40      (000000a6) move-result          v7
+	41      (000000a8) if-eqz               v7, +021h
+
+f-BB@0xac : [ f-BB@0xc4 f-BB@0xea ]
+	42      (000000ac) invoke-interface     v0, v6, Ljava/util/Map;->remove(Ljava/lang/Object;)Ljava/lang/Object;
+	43      (000000b2) move-result-object   v7
+	44      (000000b4) check-cast           v7, Ljava/lang/Integer;
+	45      (000000b8) invoke-virtual       v2, v6, Landroid/os/BaseBundle;->containsKey(Ljava/lang/String;)Z
+	46      (000000be) move-result          v6
+	47      (000000c0) if-nez               v6, +015h
+
+f-BB@0xc4 : [ f-BB@0xcc f-BB@0xe4 ]
+	48      (000000c4) instance-of          v6, v1, Lv7/a;
+	49      (000000c8) if-eqz               v6, +00eh
+
+f-BB@0xcc : [ f-BB@0xd4 f-BB@0xd6 ]
+	50      (000000cc) instance-of          v6, v1, Lv7/b;
+	51      (000000d0) if-eqz               v6, +003h
+
+f-BB@0xd4 : [ f-BB@0xe4 ]
+	52      (000000d4) goto                 +8h
+
+f-BB@0xd6 : 
+	53      (000000d6) const-string         v9, "kotlin.collections.MutableMap"
+	54      (000000da) invoke-static        v1, v9, Lkotlin/jvm/internal/u;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	55      (000000e0) const/4              v9, 0
+	56      (000000e2) throw                v9
+
+f-BB@0xe4 : [ f-BB@0xea ]
+	57      (000000e4) invoke-interface     v1, v7, Ljava/util/Map;->remove(Ljava/lang/Object;)Ljava/lang/Object;
+
+f-BB@0xea : [ f-BB@0x90 ]
+	58      (000000ea) invoke-virtual       v3, v5, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	59      (000000f0) move-result-object   v6
+	60      (000000f2) const-string         v7, "get(...)"
+	61      (000000f6) invoke-static        v6, v7, Lkotlin/jvm/internal/j;->d(Ljava/lang/Object; Ljava/lang/String;)V
+	62      (000000fc) check-cast           v6, Ljava/lang/Number;
+	63      (00000100) invoke-virtual       v6, Ljava/lang/Number;->intValue()I
+	64      (00000106) move-result          v6
+	65      (00000108) invoke-virtual       v4, v5, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	66      (0000010e) move-result-object   v8
+	67      (00000110) invoke-static        v8, v7, Lkotlin/jvm/internal/j;->d(Ljava/lang/Object; Ljava/lang/String;)V
+	68      (00000116) check-cast           v8, Ljava/lang/String;
+	69      (0000011a) invoke-static        v6, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+	70      (00000120) move-result-object   v7
+	71      (00000122) invoke-interface     v1, v7, v8, Ljava/util/Map;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	72      (00000128) iget-object          v7, v9, Le/i;->b Ljava/util/LinkedHashMap;
+	73      (0000012c) invoke-static        v6, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+	74      (00000132) move-result-object   v6
+	75      (00000134) invoke-interface     v7, v8, v6, Ljava/util/Map;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	76      (0000013a) add-int/lit8         v5, v5, 1
+	77      (0000013e) goto                 -57h
+
+f-BB@0x140 : 
+	78      (00000140) return-void          
+

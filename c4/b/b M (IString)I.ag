@@ -1,0 +1,29 @@
+# Lc4/b;->M(I Ljava/lang/String;)I [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:int
+# - v3:java.lang.String
+#
+# - return:int
+
+M-BB@0x0 : [ M-BB@0x30 M-BB@0x38 ]
+	0       (00000000) invoke-static        v2, Landroid/opengl/GLES20;->glCreateShader(I)I
+	1       (00000006) move-result          v2
+	2       (00000008) invoke-static        v2, v3, Landroid/opengl/GLES20;->glShaderSource(I Ljava/lang/String;)V
+	3       (0000000e) invoke-static        v2, Landroid/opengl/GLES20;->glCompileShader(I)V
+	4       (00000014) const/4              v3, 1
+	5       (00000016) new-array            v3, v3, [I
+	6       (0000001a) const                v0, 35713
+	7       (00000020) const/4              v1, 0
+	8       (00000022) invoke-static        v2, v0, v3, v1, Landroid/opengl/GLES20;->glGetShaderiv(I I [I I)V
+	9       (00000028) aget                 v3, v3, v1
+	10      (0000002c) if-nez               v3, +006h
+
+M-BB@0x30 : 
+	11      (00000030) invoke-static        v2, Landroid/opengl/GLES20;->glDeleteShader(I)V
+	12      (00000036) return               v1
+
+M-BB@0x38 : 
+	13      (00000038) return               v2
+

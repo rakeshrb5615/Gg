@@ -1,0 +1,43 @@
+# Lc4/b;->G(I)Z [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v0
+# - v1:int
+#
+# - return:boolean
+
+G-BB@0x0 : [ G-BB@0x8 G-BB@0x36 ]
+	0       (00000000) and-int/lit8         v0, v1, 32
+	1       (00000004) if-nez               v0, +019h
+
+G-BB@0x8 : [ G-BB@0x10 G-BB@0x36 ]
+	2       (00000008) and-int/lit8         v0, v1, 64
+	3       (0000000c) if-nez               v0, +015h
+
+G-BB@0x10 : [ G-BB@0x18 G-BB@0x36 ]
+	4       (00000010) and-int/lit16        v0, v1, 128
+	5       (00000014) if-nez               v0, +011h
+
+G-BB@0x18 : [ G-BB@0x20 G-BB@0x36 ]
+	6       (00000018) and-int/lit16        v0, v1, 256
+	7       (0000001c) if-nez               v0, +00dh
+
+G-BB@0x20 : [ G-BB@0x28 G-BB@0x36 ]
+	8       (00000020) and-int/lit16        v0, v1, 512
+	9       (00000024) if-nez               v0, +009h
+
+G-BB@0x28 : [ G-BB@0x30 G-BB@0x32 ]
+	10      (00000028) and-int/lit16        v1, v1, 4096
+	11      (0000002c) if-eqz               v1, +003h
+
+G-BB@0x30 : [ G-BB@0x36 ]
+	12      (00000030) goto                 +3h
+
+G-BB@0x32 : 
+	13      (00000032) const/4              v1, 0
+	14      (00000034) return               v1
+
+G-BB@0x36 : 
+	15      (00000036) const/4              v1, 1
+	16      (00000038) return               v1
+

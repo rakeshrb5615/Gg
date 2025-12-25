@@ -1,0 +1,30 @@
+# Lc/r;->b(Z)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:boolean
+#
+# - return:void
+
+b-BB@0x0 : [ b-BB@0x8 b-BB@0xa ]
+	0       (00000000) iget-boolean         v0, v1, Lc/r;->b Z
+	1       (00000004) if-ne                v0, v2, +003h
+
+b-BB@0x8 : [ b-BB@0x24 ]
+	2       (00000008) goto                 +eh
+
+b-BB@0xa : [ b-BB@0x16 b-BB@0x24 ]
+	3       (0000000a) iput-boolean         v2, v1, Lc/r;->b Z
+	4       (0000000e) iget-object          v2, v1, Lc/r;->c Ls1/c;
+	5       (00000012) if-eqz               v2, +009h
+
+b-BB@0x16 : [ b-BB@0x1e b-BB@0x24 ]
+	6       (00000016) iget-object          v2, v2, Ls1/c;->b Ls1/f;
+	7       (0000001a) if-eqz               v2, +005h
+
+b-BB@0x1e : [ b-BB@0x24 ]
+	8       (0000001e) invoke-virtual       v2, Ls1/f;->b()V
+
+b-BB@0x24 : 
+	9       (00000024) return-void          
+

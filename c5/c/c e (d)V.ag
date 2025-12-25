@@ -1,0 +1,97 @@
+# Lc5/c;->e(Lx8/d;)V [access_flags=public static final]
+#
+# Parameters:
+# - local registers: v0...v7
+# - v8:x8.d
+#
+# - return:void
+
+e-BB@0x0 : [ e-BB@0xe e-BB@0x36 ]
+	0       (00000000) sget-object          v0, Lx8/d;->h Lh/f;
+	1       (00000004) sget-object          v0, Lx8/d;->i Lx8/d;
+	2       (00000008) const/4              v1, 1
+	3       (0000000a) if-nez               v0, +016h
+
+e-BB@0xe : [ e-BB@0x36 ]
+	4       (0000000e) new-instance         v0, Lx8/d;
+	5       (00000012) invoke-direct        v0, Lx8/d;-><init>()V
+	6       (00000018) sput-object          v0, Lx8/d;->i Lx8/d;
+	7       (0000001c) new-instance         v0, Lx8/c;
+	8       (00000020) const-string         v2, "Okio Watchdog"
+	9       (00000024) invoke-direct        v0, v2, Ljava/lang/Thread;-><init>(Ljava/lang/String;)V
+	10      (0000002a) invoke-virtual       v0, v1, Ljava/lang/Thread;->setDaemon(Z)V
+	11      (00000030) invoke-virtual       v0, Ljava/lang/Thread;->start()V
+
+e-BB@0x36 : [ e-BB@0x52 e-BB@0x70 ]
+	12      (00000036) invoke-static        Ljava/lang/System;->nanoTime()J
+	13      (0000003c) move-result-wide     v2
+	14      (0000003e) iget-wide            v4, v8, Lx8/j0;->c J
+	15      (00000042) iget-boolean         v0, v8, Lx8/j0;->a Z
+	16      (00000046) const-wide/16        v6, 0
+	17      (0000004a) cmp-long             v6, v4, v6
+	18      (0000004e) if-eqz               v6, +011h
+
+e-BB@0x52 : [ e-BB@0x56 e-BB@0x70 ]
+	19      (00000052) if-eqz               v0, +00fh
+
+e-BB@0x56 : [ e-BB@0x8c ]
+	20      (00000056) invoke-virtual       v8, Lx8/j0;->c()J
+	21      (0000005c) move-result-wide     v6
+	22      (0000005e) sub-long/2addr       v6, v2
+	23      (00000060) invoke-static        v4, v5, v6, v7, Ljava/lang/Math;->min(J J)J
+	24      (00000066) move-result-wide     v4
+	25      (00000068) add-long/2addr       v4, v2
+	26      (0000006a) iput-wide            v4, v8, Lx8/d;->g J
+	27      (0000006e) goto                 +fh
+
+e-BB@0x70 : [ e-BB@0x74 e-BB@0x7c ]
+	28      (00000070) if-eqz               v6, +006h
+
+e-BB@0x74 : [ e-BB@0x8c ]
+	29      (00000074) add-long/2addr       v2, v4
+	30      (00000076) iput-wide            v2, v8, Lx8/d;->g J
+	31      (0000007a) goto                 +9h
+
+e-BB@0x7c : [ e-BB@0x80 e-BB@0xda ]
+	32      (0000007c) if-eqz               v0, +02fh
+
+e-BB@0x80 : [ e-BB@0x8c ]
+	33      (00000080) invoke-virtual       v8, Lx8/j0;->c()J
+	34      (00000086) move-result-wide     v2
+	35      (00000088) iput-wide            v2, v8, Lx8/d;->g J
+
+e-BB@0x8c : [ e-BB@0xa8 e-BB@0xc0 ]
+	36      (0000008c) sget-object          v0, Lx8/d;->h Lh/f;
+	37      (00000090) iget                 v2, v0, Lh/f;->b I
+	38      (00000094) add-int/2addr        v2, v1
+	39      (00000096) iput                 v2, v0, Lh/f;->b I
+	40      (0000009a) iget-object          v3, v0, Lh/f;->c Ljava/lang/Object;
+	41      (0000009e) check-cast           v3, [Lx8/d;
+	42      (000000a2) array-length         v4, v3
+	43      (000000a4) if-ne                v2, v4, +00eh
+
+e-BB@0xa8 : [ e-BB@0xc0 ]
+	44      (000000a8) mul-int/lit8         v4, v2, 2
+	45      (000000ac) new-array            v4, v4, [Lx8/d;
+	46      (000000b0) const/16             v5, 14
+	47      (000000b4) const/4              v6, 0
+	48      (000000b6) invoke-static        v3, v6, v4, v6, v5, Li7/h;->a0([Ljava/lang/Object; I [Ljava/lang/Object; I I)V
+	49      (000000bc) iput-object          v4, v0, Lh/f;->c Ljava/lang/Object;
+
+e-BB@0xc0 : [ e-BB@0xce e-BB@0xd8 ]
+	50      (000000c0) invoke-virtual       v0, v2, v8, Lh/f;->e(I Lx8/d;)V
+	51      (000000c6) iget                 v8, v8, Lx8/d;->f I
+	52      (000000ca) if-ne                v8, v1, +007h
+
+e-BB@0xce : [ e-BB@0xd8 ]
+	53      (000000ce) sget-object          v8, Lx8/d;->k Ljava/util/concurrent/locks/Condition;
+	54      (000000d2) invoke-interface     v8, Ljava/util/concurrent/locks/Condition;->signal()V
+
+e-BB@0xd8 : 
+	55      (000000d8) return-void          
+
+e-BB@0xda : 
+	56      (000000da) new-instance         v8, Ljava/lang/AssertionError;
+	57      (000000de) invoke-direct        v8, Ljava/lang/AssertionError;-><init>()V
+	58      (000000e4) throw                v8
+

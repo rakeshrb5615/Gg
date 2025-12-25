@@ -1,0 +1,26 @@
+# Lc4/b;->C(Landroid/content/Context;)Landroid/content/SharedPreferences; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:android.content.Context
+#
+# - return:android.content.SharedPreferences
+
+C-BB@0x0 : [ C-BB@0xc C-BB@0xe ]
+	0       (00000000) invoke-virtual       v2, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;
+	1       (00000006) move-result-object   v0
+	2       (00000008) if-nez               v0, +003h
+
+C-BB@0xc : [ C-BB@0x10 ]
+	3       (0000000c) goto                 +2h
+
+C-BB@0xe : [ C-BB@0x10 ]
+	4       (0000000e) move-object          v2, v0
+
+C-BB@0x10 : 
+	5       (00000010) const-string         v0, "com.google.firebase.messaging"
+	6       (00000014) const/4              v1, 0
+	7       (00000016) invoke-virtual       v2, v0, v1, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String; I)Landroid/content/SharedPreferences;
+	8       (0000001c) move-result-object   v2
+	9       (0000001e) return-object        v2
+

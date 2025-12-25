@@ -1,0 +1,56 @@
+# Lc4/b;->b0(Landroid/app/Activity; Landroid/content/Context;)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:android.app.Activity
+# - v5:android.content.Context
+#
+# - return:void
+
+b0-BB@0x0 : [ b0-BB@0x4 ]
+	0       (00000000) const-string         v0, "https://play.google.com/store/apps/details?id="
+
+b0-BB@0x4 : 
+	1       (00000004) invoke-virtual       v5, Landroid/content/Context;->getPackageName()Ljava/lang/String;
+	2       (0000000a) move-result-object   v1
+	3       (0000000c) new-instance         v2, Ljava/lang/StringBuilder;
+	4       (00000010) invoke-direct        v2, v0, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	5       (00000016) invoke-virtual       v2, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	6       (0000001c) invoke-virtual       v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	7       (00000022) move-result-object   v0
+	8       (00000024) new-instance         v1, Ljava/lang/StringBuilder;
+	9       (00000028) invoke-direct        v1, Ljava/lang/StringBuilder;-><init>()V
+	10      (0000002e) const                v2, 2131952341
+	11      (00000034) invoke-virtual       v4, v2, Landroid/content/Context;->getString(I)Ljava/lang/String;
+	12      (0000003a) move-result-object   v3
+	13      (0000003c) invoke-virtual       v1, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	14      (00000042) invoke-virtual       v1, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	15      (00000048) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	16      (0000004e) move-result-object   v0
+	17      (00000050) new-instance         v1, Landroid/content/Intent;
+	18      (00000054) const-string         v3, "android.intent.action.SEND"
+	19      (00000058) invoke-direct        v1, v3, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
+	20      (0000005e) const-string         v3, "text/plain"
+	21      (00000062) invoke-virtual       v1, v3, Landroid/content/Intent;->setType(Ljava/lang/String;)Landroid/content/Intent;
+	22      (00000068) const-string         v3, "android.intent.extra.SUBJECT"
+	23      (0000006c) invoke-virtual       v4, v2, Landroid/content/Context;->getString(I)Ljava/lang/String;
+	24      (00000072) move-result-object   v2
+	25      (00000074) invoke-virtual       v1, v3, v2, Landroid/content/Intent;->putExtra(Ljava/lang/String; Ljava/lang/String;)Landroid/content/Intent;
+	26      (0000007a) const-string         v2, "android.intent.extra.TEXT"
+	27      (0000007e) invoke-virtual       v1, v2, v0, Landroid/content/Intent;->putExtra(Ljava/lang/String; Ljava/lang/String;)Landroid/content/Intent;
+	28      (00000084) const-string         v0, "Share app via"
+	29      (00000088) invoke-static        v1, v0, Landroid/content/Intent;->createChooser(Landroid/content/Intent; Ljava/lang/CharSequence;)Landroid/content/Intent;
+	30      (0000008e) move-result-object   v0
+	31      (00000090) invoke-virtual       v4, v0, Landroid/app/Activity;->startActivity(Landroid/content/Intent;)V
+	32      (00000096) return-void          
+	4:95
+	(Ljava/lang/Exception; -> 98 b0-BB@0x98)
+
+b0-BB@0x98 : 
+	33      (00000098) const-string         v4, "Unable to share at this time."
+	34      (0000009c) const/4              v0, 0
+	35      (0000009e) invoke-static        v5, v4, v0, Landroid/widget/Toast;->makeText(Landroid/content/Context; Ljava/lang/CharSequence; I)Landroid/widget/Toast;
+	36      (000000a4) move-result-object   v4
+	37      (000000a6) invoke-virtual       v4, Landroid/widget/Toast;->show()V
+	38      (000000ac) return-void          
+

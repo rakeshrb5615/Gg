@@ -1,0 +1,53 @@
+# Lc4/c;->a()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v6
+#
+# - return:void
+
+a-BB@0x0 : [ a-BB@0x14 a-BB@0x4c ]
+	0       (00000000) iget-object          v0, v6, Lc4/c;->d Ljava/util/HashSet;
+	1       (00000004) invoke-virtual       v0, Ljava/util/HashSet;->isEmpty()Z
+	2       (0000000a) move-result          v1
+	3       (0000000c) iget-object          v2, v6, Lc4/c;->c Landroid/content/Context;
+	4       (00000010) if-nez               v1, +01eh
+
+a-BB@0x14 : [ a-BB@0x1c a-BB@0x4c ]
+	5       (00000014) iget-object          v1, v6, Lc4/c;->e Ld4/k;
+	6       (00000018) if-nez               v1, +01ah
+
+a-BB@0x1c : [ a-BB@0x3c a-BB@0x46 ]
+	7       (0000001c) new-instance         v1, Ld4/k;
+	8       (00000020) const/4              v3, 0
+	9       (00000022) invoke-direct        v1, v6, v3, Ld4/k;-><init>(Ljava/lang/Object; I)V
+	10      (00000028) iput-object          v1, v6, Lc4/c;->e Ld4/k;
+	11      (0000002c) sget                 v3, Landroid/os/Build$VERSION;->SDK_INT I
+	12      (00000030) const/16             v4, 33
+	13      (00000034) iget-object          v5, v6, Lc4/c;->b Landroid/content/IntentFilter;
+	14      (00000038) if-lt                v3, v4, +007h
+
+a-BB@0x3c : [ a-BB@0x4c ]
+	15      (0000003c) const/4              v3, 2
+	16      (0000003e) invoke-virtual       v2, v1, v5, v3, Landroid/content/Context;->registerReceiver(Landroid/content/BroadcastReceiver; Landroid/content/IntentFilter; I)Landroid/content/Intent;
+	17      (00000044) goto                 +4h
+
+a-BB@0x46 : [ a-BB@0x4c ]
+	18      (00000046) invoke-virtual       v2, v1, v5, Landroid/content/Context;->registerReceiver(Landroid/content/BroadcastReceiver; Landroid/content/IntentFilter;)Landroid/content/Intent;
+
+a-BB@0x4c : [ a-BB@0x58 a-BB@0x6c ]
+	19      (0000004c) invoke-virtual       v0, Ljava/util/HashSet;->isEmpty()Z
+	20      (00000052) move-result          v0
+	21      (00000054) if-eqz               v0, +00ch
+
+a-BB@0x58 : [ a-BB@0x60 a-BB@0x6c ]
+	22      (00000058) iget-object          v0, v6, Lc4/c;->e Ld4/k;
+	23      (0000005c) if-eqz               v0, +008h
+
+a-BB@0x60 : [ a-BB@0x6c ]
+	24      (00000060) invoke-virtual       v2, v0, Landroid/content/Context;->unregisterReceiver(Landroid/content/BroadcastReceiver;)V
+	25      (00000066) const/4              v0, 0
+	26      (00000068) iput-object          v0, v6, Lc4/c;->e Ld4/k;
+
+a-BB@0x6c : 
+	27      (0000006c) return-void          
+

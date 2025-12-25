@@ -1,0 +1,71 @@
+# Lc4/b;->N(Landroid/graphics/Bitmap;)I [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:android.graphics.Bitmap
+#
+# - return:int
+
+N-BB@0x0 : [ N-BB@0x6 N-BB@0x92 ]
+	0       (00000000) const/4              v0, 0
+	1       (00000002) if-eqz               v6, +048h
+
+N-BB@0x6 : [ N-BB@0x12 N-BB@0x14 ]
+	2       (00000006) invoke-virtual       v6, Landroid/graphics/Bitmap;->isRecycled()Z
+	3       (0000000c) move-result          v1
+	4       (0000000e) if-eqz               v1, +003h
+
+N-BB@0x12 : [ N-BB@0x92 ]
+	5       (00000012) goto                 +40h
+
+N-BB@0x14 : [ N-BB@0x28 N-BB@0x2a ]
+	6       (00000014) const/4              v1, 1
+	7       (00000016) new-array            v2, v1, [I
+	8       (0000001a) invoke-static        v1, v2, v0, Landroid/opengl/GLES20;->glGenTextures(I [I I)V
+	9       (00000020) aget                 v3, v2, v0
+	10      (00000024) if-nez               v3, +003h
+
+N-BB@0x28 : [ N-BB@0x92 ]
+	11      (00000028) goto                 +35h
+
+N-BB@0x2a : [ N-BB@0x2e ]
+	12      (0000002a) const/16             v4, 3553
+
+N-BB@0x2e : 
+	13      (0000002e) invoke-static        v4, v3, Landroid/opengl/GLES20;->glBindTexture(I I)V
+	14      (00000034) const/16             v3, 10241
+	15      (00000038) const/16             v5, 9729
+	16      (0000003c) invoke-static        v4, v3, v5, Landroid/opengl/GLES20;->glTexParameteri(I I I)V
+	17      (00000042) const/16             v3, 10240
+	18      (00000046) invoke-static        v4, v3, v5, Landroid/opengl/GLES20;->glTexParameteri(I I I)V
+	19      (0000004c) const/16             v3, 10242
+	20      (00000050) const                v5, 33071
+	21      (00000056) invoke-static        v4, v3, v5, Landroid/opengl/GLES20;->glTexParameteri(I I I)V
+	22      (0000005c) const/16             v3, 10243
+	23      (00000060) invoke-static        v4, v3, v5, Landroid/opengl/GLES20;->glTexParameteri(I I I)V
+	24      (00000066) invoke-static        v4, v0, v6, v0, Landroid/opengl/GLUtils;->texImage2D(I I Landroid/graphics/Bitmap; I)V
+	25      (0000006c) invoke-virtual       v6, Landroid/graphics/Bitmap;->recycle()V
+	26      (00000072) aget                 v6, v2, v0
+	27      (00000076) return               v6
+	2e:6b
+	(Ljava/lang/Exception; -> 7c N-BB@0x7c)
+	(Ljava/lang/Throwable; -> 78 N-BB@0x78)
+
+N-BB@0x78 : [ N-BB@0x8a ]
+	28      (00000078) move-exception       v0
+	29      (0000007a) goto                 +8h
+
+N-BB@0x7c : 
+	30      (0000007c) invoke-static        v1, v2, v0, Landroid/opengl/GLES20;->glDeleteTextures(I [I I)V
+	31      (00000082) invoke-virtual       v6, Landroid/graphics/Bitmap;->recycle()V
+	32      (00000088) return               v0
+	7c:81
+	(Ljava/lang/Throwable; -> 78 N-BB@0x78)
+
+N-BB@0x8a : 
+	33      (0000008a) invoke-virtual       v6, Landroid/graphics/Bitmap;->recycle()V
+	34      (00000090) throw                v0
+
+N-BB@0x92 : 
+	35      (00000092) return               v0
+

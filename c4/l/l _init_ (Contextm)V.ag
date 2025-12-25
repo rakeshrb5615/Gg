@@ -1,0 +1,136 @@
+# Lc4/l;-><init>(Landroid/content/Context; Lc4/m;)V [access_flags=public constructor]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:android.content.Context
+# - v7:c4.m
+#
+# - return:void
+
+<init>-BB@0x0 : [ <init>-BB@0x22 ]
+	0       (00000000) invoke-direct        v5, Ljava/lang/Object;-><init>()V
+	1       (00000006) invoke-virtual       v6, Landroid/content/Context;->getPackageName()Ljava/lang/String;
+	2       (0000000c) move-result-object   v0
+	3       (0000000e) iput-object          v0, v5, Lc4/l;->b Ljava/lang/String;
+	4       (00000012) iput-object          v6, v5, Lc4/l;->c Landroid/content/Context;
+	5       (00000016) iput-object          v7, v5, Lc4/l;->d Lc4/m;
+	6       (0000001a) sget-object          v7, Ld4/a;->a Ld4/l;
+	7       (0000001e) const-string         v7, "com.android.vending"
+
+<init>-BB@0x22 : [ <init>-BB@0x3c <init>-BB@0x142 ]
+	8       (00000022) invoke-virtual       v6, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
+	9       (00000028) move-result-object   v0
+	10      (0000002a) const/4              v1, 0
+	11      (0000002c) invoke-virtual       v0, v7, v1, Landroid/content/pm/PackageManager;->getApplicationInfo(Ljava/lang/String; I)Landroid/content/pm/ApplicationInfo;
+	12      (00000032) move-result-object   v0
+	13      (00000034) iget-boolean         v0, v0, Landroid/content/pm/ApplicationInfo;->enabled Z
+	14      (00000038) if-eqz               v0, +085h
+	22:53
+	(Landroid/content/pm/PackageManager$NameNotFoundException; -> 142 <init>-BB@0x142)
+
+<init>-BB@0x3c : [ <init>-BB@0x58 <init>-BB@0x10c ]
+	15      (0000003c) invoke-virtual       v6, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
+	16      (00000042) move-result-object   v0
+	17      (00000044) const/16             v2, 64
+	18      (00000048) invoke-virtual       v0, v7, v2, Landroid/content/pm/PackageManager;->getPackageInfo(Ljava/lang/String; I)Landroid/content/pm/PackageInfo;
+	19      (0000004e) move-result-object   v7
+	20      (00000050) iget-object          v7, v7, Landroid/content/pm/PackageInfo;->signatures [Landroid/content/pm/Signature;
+	21      (00000054) if-eqz               v7, +05ch
+
+<init>-BB@0x58 : [ <init>-BB@0x5e <init>-BB@0x60 ]
+	22      (00000058) array-length         v0, v7
+	23      (0000005a) if-nez               v0, +003h
+
+<init>-BB@0x5e : [ <init>-BB@0x10c ]
+	24      (0000005e) goto                 +57h
+
+<init>-BB@0x60 : [ <init>-BB@0x64 <init>-BB@0x142 ]
+	25      (00000060) if-ge                v1, v0, +071h
+
+<init>-BB@0x64 : [ <init>-BB@0x70 ]
+	26      (00000064) aget-object          v2, v7, v1
+	27      (00000068) invoke-virtual       v2, Landroid/content/pm/Signature;->toByteArray()[B
+	28      (0000006e) move-result-object   v2
+
+<init>-BB@0x70 : [ <init>-BB@0x9c ]
+	29      (00000070) const-string         v3, "SHA-256"
+	30      (00000074) invoke-static        v3, Ljava/security/MessageDigest;->getInstance(Ljava/lang/String;)Ljava/security/MessageDigest;
+	31      (0000007a) move-result-object   v3
+	32      (0000007c) invoke-virtual       v3, v2, Ljava/security/MessageDigest;->update([B)V
+	33      (00000082) invoke-virtual       v3, Ljava/security/MessageDigest;->digest()[B
+	34      (00000088) move-result-object   v2
+	35      (0000008a) const/16             v3, 11
+	36      (0000008e) invoke-static        v2, v3, Landroid/util/Base64;->encodeToString([B I)Ljava/lang/String;
+	37      (00000094) move-result-object   v2
+	38      (00000096) goto                 +3h
+	70:7b
+	(Ljava/security/NoSuchAlgorithmException; -> 98 <init>-BB@0x98)
+
+<init>-BB@0x98 : [ <init>-BB@0x9c ]
+	39      (00000098) const-string         v2, ""
+
+<init>-BB@0x9c : [ <init>-BB@0xac <init>-BB@0xe6 ]
+	40      (0000009c) const-string         v3, "8P1sW0EPJcslw7UzRsiXL64w-O50Ed-RBICtay1g24M"
+	41      (000000a0) invoke-virtual       v3, v2, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	42      (000000a6) move-result          v3
+	43      (000000a8) if-nez               v3, +01fh
+
+<init>-BB@0xac : [ <init>-BB@0xc0 <init>-BB@0xd0 ]
+	44      (000000ac) sget-object          v3, Landroid/os/Build;->TAGS Ljava/lang/String;
+	45      (000000b0) const-string         v4, "dev-keys"
+	46      (000000b4) invoke-virtual       v3, v4, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+	47      (000000ba) move-result          v4
+	48      (000000bc) if-nez               v4, +00ah
+
+<init>-BB@0xc0 : [ <init>-BB@0xd0 <init>-BB@0xe0 ]
+	49      (000000c0) const-string         v4, "test-keys"
+	50      (000000c4) invoke-virtual       v3, v4, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+	51      (000000ca) move-result          v3
+	52      (000000cc) if-eqz               v3, +00ah
+
+<init>-BB@0xd0 : [ <init>-BB@0xe0 <init>-BB@0xe6 ]
+	53      (000000d0) const-string         v3, "GXWy8XF3vIml3_MfnmSmyuKBpT3B0dWbHRR_4cgq-gA"
+	54      (000000d4) invoke-virtual       v3, v2, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	55      (000000da) move-result          v2
+	56      (000000dc) if-nez               v2, +005h
+
+<init>-BB@0xe0 : [ <init>-BB@0x60 ]
+	57      (000000e0) add-int/lit8         v1, v1, 1
+	58      (000000e4) goto                 -42h
+
+<init>-BB@0xe6 : [ <init>-BB@0xf6 <init>-BB@0xf8 ]
+	59      (000000e6) new-instance         v7, Ld4/r;
+	60      (000000ea) invoke-virtual       v6, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;
+	61      (000000f0) move-result-object   v0
+	62      (000000f2) if-eqz               v0, +003h
+
+<init>-BB@0xf6 : [ <init>-BB@0xf8 ]
+	63      (000000f6) move-object          v6, v0
+
+<init>-BB@0xf8 : 
+	64      (000000f8) sget-object          v0, Lc4/l;->e Ld4/l;
+	65      (000000fc) sget-object          v1, Lc4/l;->f Landroid/content/Intent;
+	66      (00000100) invoke-direct        v7, v6, v0, v1, Ld4/r;-><init>(Landroid/content/Context; Ld4/l; Landroid/content/Intent;)V
+	67      (00000106) iput-object          v7, v5, Lc4/l;->a Ld4/r;
+	68      (0000010a) return-void          
+
+<init>-BB@0x10c : [ <init>-BB@0x12c <init>-BB@0x142 ]
+	69      (0000010c) sget-object          v6, Ld4/a;->a Ld4/l;
+	70      (00000110) new-array            v7, v1, [Ljava/lang/Object;
+	71      (00000114) invoke-virtual       v6, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	72      (0000011a) const/4              v0, 5
+	73      (0000011c) const-string         v1, "PlayCore"
+	74      (00000120) invoke-static        v1, v0, Landroid/util/Log;->isLoggable(Ljava/lang/String; I)Z
+	75      (00000126) move-result          v0
+	76      (00000128) if-eqz               v0, +00dh
+
+<init>-BB@0x12c : [ <init>-BB@0x142 ]
+	77      (0000012c) iget-object          v6, v6, Ld4/l;->b Ljava/lang/String;
+	78      (00000130) const-string         v0, "Phonesky package is not signed -- possibly self-built package. Could not verify."
+	79      (00000134) invoke-static        v6, v0, v7, Ld4/l;->j(Ljava/lang/String; Ljava/lang/String; [Ljava/lang/Object;)Ljava/lang/String;
+	80      (0000013a) move-result-object   v6
+	81      (0000013c) invoke-static        v1, v6, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+
+<init>-BB@0x142 : 
+	82      (00000142) return-void          
+

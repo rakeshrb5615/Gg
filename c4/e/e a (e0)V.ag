@@ -1,0 +1,68 @@
+# Lc4/e;->a(Li2/e0;)V [access_flags=public final synchronized]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:i2.e0
+#
+# - return:void
+
+a-BB@0x0 : [ a-BB@0x2 ]
+	0       (00000000) monitor-enter        v4
+
+a-BB@0x2 : [ a-BB@0x8 ]
+	1       (00000002) iget-object          v0, v4, Lc4/e;->b Lc4/c;
+	2       (00000006) monitor-enter        v0
+	2:7
+	(Ljava/lang/Throwable; -> 4e a-BB@0x4e)
+
+a-BB@0x8 : [ a-BB@0x24 a-BB@0x3e ]
+	3       (00000008) iget-object          v1, v0, Lc4/c;->a Ld4/l;
+	4       (0000000c) const-string         v2, "unregisterListener"
+	5       (00000010) const/4              v3, 0
+	6       (00000012) new-array            v3, v3, [Ljava/lang/Object;
+	7       (00000016) invoke-virtual       v1, v2, v3, Ld4/l;->h(Ljava/lang/String; [Ljava/lang/Object;)V
+	8       (0000001c) const-string         v1, "Unregistered Play Core listener should not be null."
+	9       (00000020) if-eqz               v5, +00fh
+	8:33
+	(Ljava/lang/Throwable; -> 3a a-BB@0x3a)
+
+a-BB@0x24 : [ a-BB@0x34 ]
+	10      (00000024) iget-object          v1, v0, Lc4/c;->d Ljava/util/HashSet;
+	11      (00000028) invoke-virtual       v1, v5, Ljava/util/HashSet;->remove(Ljava/lang/Object;)Z
+	12      (0000002e) invoke-virtual       v0, Lc4/c;->a()V
+	8:33
+	(Ljava/lang/Throwable; -> 3a a-BB@0x3a)
+
+a-BB@0x34 : 
+	13      (00000034) monitor-exit         v0
+	14      (00000036) monitor-exit         v4
+	15      (00000038) return-void          
+	34:35
+	(Ljava/lang/Throwable; -> 4e a-BB@0x4e)
+
+a-BB@0x3a : [ a-BB@0x4a ]
+	16      (0000003a) move-exception       v5
+	17      (0000003c) goto                 +7h
+
+a-BB@0x3e : 
+	18      (0000003e) new-instance         v5, Ljava/lang/NullPointerException;
+	19      (00000042) invoke-direct        v5, v1, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
+	20      (00000048) throw                v5
+	3e:4b
+	(Ljava/lang/Throwable; -> 3a a-BB@0x3a)
+
+a-BB@0x4a : [ a-BB@0x4c ]
+	21      (0000004a) monitor-exit         v0
+	3e:4b
+	(Ljava/lang/Throwable; -> 3a a-BB@0x3a)
+
+a-BB@0x4c : 
+	22      (0000004c) throw                v5
+	4c:51
+	(Ljava/lang/Throwable; -> 4e a-BB@0x4e)
+
+a-BB@0x4e : 
+	23      (0000004e) move-exception       v5
+	24      (00000050) monitor-exit         v4
+	25      (00000052) throw                v5
+

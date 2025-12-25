@@ -1,0 +1,33 @@
+# Lc/n;->onTrimMemory(I)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:int
+#
+# - return:void
+
+onTrimMemory-BB@0x0 : [ onTrimMemory-BB@0x1c ]
+	0       (00000000) invoke-super         v3, v4, Landroid/app/Activity;->onTrimMemory(I)V
+	1       (00000006) iget-object          v0, v3, Lc/n;->onTrimMemoryListeners Ljava/util/concurrent/CopyOnWriteArrayList;
+	2       (0000000a) invoke-virtual       v0, Ljava/util/concurrent/CopyOnWriteArrayList;->iterator()Ljava/util/Iterator;
+	3       (00000010) move-result-object   v0
+	4       (00000012) const-string         v1, "iterator(...)"
+	5       (00000016) invoke-static        v0, v1, Lkotlin/jvm/internal/j;->d(Ljava/lang/Object; Ljava/lang/String;)V
+
+onTrimMemory-BB@0x1c : [ onTrimMemory-BB@0x28 onTrimMemory-BB@0x44 ]
+	6       (0000001c) invoke-interface     v0, Ljava/util/Iterator;->hasNext()Z
+	7       (00000022) move-result          v1
+	8       (00000024) if-eqz               v1, +010h
+
+onTrimMemory-BB@0x28 : [ onTrimMemory-BB@0x1c ]
+	9       (00000028) invoke-interface     v0, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	10      (0000002e) move-result-object   v1
+	11      (00000030) check-cast           v1, Lp0/a;
+	12      (00000034) invoke-static        v4, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+	13      (0000003a) move-result-object   v2
+	14      (0000003c) invoke-interface     v1, v2, Lp0/a;->accept(Ljava/lang/Object;)V
+	15      (00000042) goto                 -13h
+
+onTrimMemory-BB@0x44 : 
+	16      (00000044) return-void          
+

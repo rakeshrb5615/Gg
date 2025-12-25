@@ -1,0 +1,134 @@
+# Lc1/d;->a(Ljava/lang/Object; Ln7/c;)Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:java.lang.Object
+# - v6:n7.c
+#
+# - return:java.lang.Object
+
+a-BB@0x0 : [ a-BB@0x8 a-BB@0x26 ]
+	0       (00000000) instance-of          v0, v6, Lc1/c;
+	1       (00000004) if-eqz               v0, +011h
+
+a-BB@0x8 : [ a-BB@0x1e a-BB@0x26 ]
+	2       (00000008) move-object          v0, v6
+	3       (0000000a) check-cast           v0, Lc1/c;
+	4       (0000000e) iget                 v1, v0, Lc1/c;->d I
+	5       (00000012) const/high16         v2, -2147483648
+	6       (00000016) and-int              v3, v1, v2
+	7       (0000001a) if-eqz               v3, +006h
+
+a-BB@0x1e : [ a-BB@0x30 ]
+	8       (0000001e) sub-int/2addr        v1, v2
+	9       (00000020) iput                 v1, v0, Lc1/c;->d I
+	10      (00000024) goto                 +6h
+
+a-BB@0x26 : [ a-BB@0x30 ]
+	11      (00000026) new-instance         v0, Lc1/c;
+	12      (0000002a) invoke-direct        v0, v4, v6, Lc1/c;-><init>(Lc1/d; Ln7/c;)V
+
+a-BB@0x30 : [ a-BB@0x42 a-BB@0x62 ]
+	13      (00000030) iget-object          v6, v0, Lc1/c;->b Ljava/lang/Object;
+	14      (00000034) sget-object          v1, Lm7/a;->a Lm7/a;
+	15      (00000038) iget                 v2, v0, Lc1/c;->d I
+	16      (0000003c) const/4              v3, 1
+	17      (0000003e) if-eqz               v2, +012h
+
+a-BB@0x42 : [ a-BB@0x46 a-BB@0x52 ]
+	18      (00000042) if-ne                v2, v3, +008h
+
+a-BB@0x46 : [ a-BB@0x84 ]
+	19      (00000046) iget-object          v5, v0, Lc1/c;->a Lc1/d;
+	20      (0000004a) invoke-static        v6, Lc4/b;->e0(Ljava/lang/Object;)V
+	21      (00000050) goto                 +1ah
+
+a-BB@0x52 : 
+	22      (00000052) new-instance         v5, Ljava/lang/IllegalStateException;
+	23      (00000056) const-string         v6, "call to 'resume' before 'invoke' with coroutine"
+	24      (0000005a) invoke-direct        v5, v6, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	25      (00000060) throw                v5
+
+a-BB@0x62 : [ a-BB@0x80 a-BB@0x82 ]
+	26      (00000062) invoke-static        v6, Lc4/b;->e0(Ljava/lang/Object;)V
+	27      (00000068) iput-object          v4, v0, Lc1/c;->a Lc1/d;
+	28      (0000006c) iput                 v3, v0, Lc1/c;->d I
+	29      (00000070) iget-object          v6, v4, Lc1/d;->a La1/p;
+	30      (00000074) invoke-virtual       v6, v5, v0, La1/p;->invoke(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	31      (0000007a) move-result-object   v6
+	32      (0000007c) if-ne                v6, v1, +003h
+
+a-BB@0x80 : 
+	33      (00000080) return-object        v1
+
+a-BB@0x82 : [ a-BB@0x84 ]
+	34      (00000082) move-object          v5, v4
+
+a-BB@0x84 : [ a-BB@0x94 a-BB@0x9a ]
+	35      (00000084) check-cast           v6, Ljava/lang/Boolean;
+	36      (00000088) invoke-virtual       v6, Ljava/lang/Boolean;->booleanValue()Z
+	37      (0000008e) move-result          v6
+	38      (00000090) if-nez               v6, +005h
+
+a-BB@0x94 : 
+	39      (00000094) sget-object          v5, Ljava/lang/Boolean;->FALSE Ljava/lang/Boolean;
+	40      (00000098) return-object        v5
+
+a-BB@0x9a : [ a-BB@0xa8 a-BB@0xd8 ]
+	41      (0000009a) iget-object          v6, v5, Lc1/d;->f Ljava/util/Set;
+	42      (0000009e) iget-object          v5, v5, Lc1/d;->e Lh7/j;
+	43      (000000a2) const/4              v0, 0
+	44      (000000a4) if-nez               v6, +01ah
+
+a-BB@0xa8 : [ a-BB@0xd2 a-BB@0xd4 ]
+	45      (000000a8) invoke-virtual       v5, Lh7/j;->getValue()Ljava/lang/Object;
+	46      (000000ae) move-result-object   v5
+	47      (000000b0) check-cast           v5, Landroid/content/SharedPreferences;
+	48      (000000b4) invoke-interface     v5, Landroid/content/SharedPreferences;->getAll()Ljava/util/Map;
+	49      (000000ba) move-result-object   v5
+	50      (000000bc) const-string         v6, "sharedPrefs.all"
+	51      (000000c0) invoke-static        v5, v6, Lkotlin/jvm/internal/j;->d(Ljava/lang/Object; Ljava/lang/String;)V
+	52      (000000c6) invoke-interface     v5, Ljava/util/Map;->isEmpty()Z
+	53      (000000cc) move-result          v5
+	54      (000000ce) if-nez               v5, +003h
+
+a-BB@0xd2 : [ a-BB@0x11e ]
+	55      (000000d2) goto                 +26h
+
+a-BB@0xd4 : [ a-BB@0x11e ]
+	56      (000000d4) move                 v3, v0
+	57      (000000d6) goto                 +24h
+
+a-BB@0xd8 : [ a-BB@0xf0 a-BB@0xf2 ]
+	58      (000000d8) invoke-virtual       v5, Lh7/j;->getValue()Ljava/lang/Object;
+	59      (000000de) move-result-object   v5
+	60      (000000e0) check-cast           v5, Landroid/content/SharedPreferences;
+	61      (000000e4) invoke-interface     v6, Ljava/util/Collection;->isEmpty()Z
+	62      (000000ea) move-result          v1
+	63      (000000ec) if-eqz               v1, +003h
+
+a-BB@0xf0 : [ a-BB@0xd4 ]
+	64      (000000f0) goto                 -eh
+
+a-BB@0xf2 : [ a-BB@0xfa ]
+	65      (000000f2) invoke-interface     v6, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
+	66      (000000f8) move-result-object   v6
+
+a-BB@0xfa : [ a-BB@0x106 a-BB@0xd4 ]
+	67      (000000fa) invoke-interface     v6, Ljava/util/Iterator;->hasNext()Z
+	68      (00000100) move-result          v1
+	69      (00000102) if-eqz               v1, -017h
+
+a-BB@0x106 : [ a-BB@0x11e a-BB@0xfa ]
+	70      (00000106) invoke-interface     v6, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	71      (0000010c) move-result-object   v1
+	72      (0000010e) check-cast           v1, Ljava/lang/String;
+	73      (00000112) invoke-interface     v5, v1, Landroid/content/SharedPreferences;->contains(Ljava/lang/String;)Z
+	74      (00000118) move-result          v1
+	75      (0000011a) if-eqz               v1, -010h
+
+a-BB@0x11e : 
+	76      (0000011e) invoke-static        v3, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+	77      (00000124) move-result-object   v5
+	78      (00000126) return-object        v5
+

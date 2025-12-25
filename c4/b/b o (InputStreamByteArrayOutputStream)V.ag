@@ -1,0 +1,30 @@
+# Lc4/b;->o(Ljava/io/InputStream; Ljava/io/ByteArrayOutputStream;)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:java.io.InputStream
+# - v4:java.io.ByteArrayOutputStream
+#
+# - return:void
+
+o-BB@0x0 : [ o-BB@0x1a ]
+	0       (00000000) const-string         v0, "<this>"
+	1       (00000004) invoke-static        v3, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) const/16             v0, 8192
+	3       (0000000e) new-array            v0, v0, [B
+	4       (00000012) invoke-virtual       v3, v0, Ljava/io/InputStream;->read([B)I
+	5       (00000018) move-result          v1
+
+o-BB@0x1a : [ o-BB@0x1e o-BB@0x30 ]
+	6       (0000001a) if-ltz               v1, +00bh
+
+o-BB@0x1e : [ o-BB@0x1a ]
+	7       (0000001e) const/4              v2, 0
+	8       (00000020) invoke-virtual       v4, v0, v2, v1, Ljava/io/OutputStream;->write([B I I)V
+	9       (00000026) invoke-virtual       v3, v0, Ljava/io/InputStream;->read([B)I
+	10      (0000002c) move-result          v1
+	11      (0000002e) goto                 -ah
+
+o-BB@0x30 : 
+	12      (00000030) return-void          
+

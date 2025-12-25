@@ -1,0 +1,52 @@
+# Lc8/a;->d(J Lc8/c;)J [access_flags=public static final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:long
+# - v5:c8.c
+#
+# - return:long
+
+d-BB@0x0 : [ d-BB@0x16 d-BB@0x22 ]
+	0       (00000000) const-string         v0, "unit"
+	1       (00000004) invoke-static        v5, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) sget-wide            v0, Lc8/a;->b J
+	3       (0000000e) cmp-long             v0, v3, v0
+	4       (00000012) if-nez               v0, +008h
+
+d-BB@0x16 : 
+	5       (00000016) const-wide           v3, 9223372036854775807
+	6       (00000020) return-wide          v3
+
+d-BB@0x22 : [ d-BB@0x2e d-BB@0x34 ]
+	7       (00000022) sget-wide            v0, Lc8/a;->c J
+	8       (00000026) cmp-long             v0, v3, v0
+	9       (0000002a) if-nez               v0, +005h
+
+d-BB@0x2e : 
+	10      (0000002e) const-wide/high16    v3, -9223372036854775808
+	11      (00000032) return-wide          v3
+
+d-BB@0x34 : [ d-BB@0x42 d-BB@0x48 ]
+	12      (00000034) const/4              v0, 1
+	13      (00000036) shr-long             v1, v3, v0
+	14      (0000003a) long-to-int          v3, v3
+	15      (0000003c) and-int/2addr        v3, v0
+	16      (0000003e) if-nez               v3, +005h
+
+d-BB@0x42 : [ d-BB@0x4c ]
+	17      (00000042) sget-object          v3, Lc8/c;->b Lc8/c;
+	18      (00000046) goto                 +3h
+
+d-BB@0x48 : [ d-BB@0x4c ]
+	19      (00000048) sget-object          v3, Lc8/c;->c Lc8/c;
+
+d-BB@0x4c : 
+	20      (0000004c) const-string         v4, "sourceUnit"
+	21      (00000050) invoke-static        v3, v4, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	22      (00000056) iget-object          v4, v5, Lc8/c;->a Ljava/util/concurrent/TimeUnit;
+	23      (0000005a) iget-object          v3, v3, Lc8/c;->a Ljava/util/concurrent/TimeUnit;
+	24      (0000005e) invoke-virtual       v4, v1, v2, v3, Ljava/util/concurrent/TimeUnit;->convert(J Ljava/util/concurrent/TimeUnit;)J
+	25      (00000064) move-result-wide     v3
+	26      (00000066) return-wide          v3
+

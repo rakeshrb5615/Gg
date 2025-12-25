@@ -1,0 +1,131 @@
+# Lc4/b;->E(Ln/b1;)Lo0/c; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v7
+# - v8:n.b1
+#
+# - return:o0.c
+
+E-BB@0x0 : [ E-BB@0xc E-BB@0x20 ]
+	0       (00000000) sget                 v0, Landroid/os/Build$VERSION;->SDK_INT I
+	1       (00000004) const/16             v1, 28
+	2       (00000008) if-lt                v0, v1, +00ch
+
+E-BB@0xc : 
+	3       (0000000c) new-instance         v0, Lo0/c;
+	4       (00000010) invoke-static        v8, Le0/a;->l(Ln/b1;)Landroid/text/PrecomputedText$Params;
+	5       (00000016) move-result-object   v8
+	6       (00000018) invoke-direct        v0, v8, Lo0/c;-><init>(Landroid/text/PrecomputedText$Params;)V
+	7       (0000001e) return-object        v0
+
+E-BB@0x20 : [ E-BB@0x56 E-BB@0x5c ]
+	8       (00000020) new-instance         v2, Landroid/text/TextPaint;
+	9       (00000024) invoke-virtual       v8, Landroid/widget/TextView;->getPaint()Landroid/text/TextPaint;
+	10      (0000002a) move-result-object   v3
+	11      (0000002c) invoke-direct        v2, v3, Landroid/text/TextPaint;-><init>(Landroid/graphics/Paint;)V
+	12      (00000032) sget-object          v3, Landroid/text/TextDirectionHeuristics;->FIRSTSTRONG_LTR Landroid/text/TextDirectionHeuristic;
+	13      (00000036) invoke-virtual       v8, Landroid/widget/TextView;->getBreakStrategy()I
+	14      (0000003c) move-result          v4
+	15      (0000003e) invoke-virtual       v8, Landroid/widget/TextView;->getHyphenationFrequency()I
+	16      (00000044) move-result          v5
+	17      (00000046) invoke-virtual       v8, Landroid/widget/TextView;->getTransformationMethod()Landroid/text/method/TransformationMethod;
+	18      (0000004c) move-result-object   v6
+	19      (0000004e) instance-of          v6, v6, Landroid/text/method/PasswordTransformationMethod;
+	20      (00000052) if-eqz               v6, +005h
+
+E-BB@0x56 : [ E-BB@0xfe ]
+	21      (00000056) sget-object          v3, Landroid/text/TextDirectionHeuristics;->LTR Landroid/text/TextDirectionHeuristic;
+	22      (0000005a) goto                 +52h
+
+E-BB@0x5c : [ E-BB@0x64 E-BB@0xba ]
+	23      (0000005c) const/4              v6, 1
+	24      (0000005e) const/4              v7, 0
+	25      (00000060) if-lt                v0, v1, +02dh
+
+E-BB@0x64 : [ E-BB@0x76 E-BB@0xba ]
+	26      (00000064) invoke-virtual       v8, Landroid/widget/TextView;->getInputType()I
+	27      (0000006a) move-result          v0
+	28      (0000006c) and-int/lit8         v0, v0, 15
+	29      (00000070) const/4              v1, 3
+	30      (00000072) if-ne                v0, v1, +024h
+
+E-BB@0x76 : [ E-BB@0xa6 E-BB@0xb4 ]
+	31      (00000076) invoke-virtual       v8, Landroid/widget/TextView;->getTextLocale()Ljava/util/Locale;
+	32      (0000007c) move-result-object   v8
+	33      (0000007e) invoke-static        v8, Landroid/icu/text/DecimalFormatSymbols;->getInstance(Ljava/util/Locale;)Landroid/icu/text/DecimalFormatSymbols;
+	34      (00000084) move-result-object   v8
+	35      (00000086) invoke-static        v8, Le0/a;->c(Landroid/icu/text/DecimalFormatSymbols;)[Ljava/lang/String;
+	36      (0000008c) move-result-object   v8
+	37      (0000008e) aget-object          v8, v8, v7
+	38      (00000092) invoke-virtual       v8, v7, Ljava/lang/String;->codePointAt(I)I
+	39      (00000098) move-result          v8
+	40      (0000009a) invoke-static        v8, Ljava/lang/Character;->getDirectionality(I)B
+	41      (000000a0) move-result          v8
+	42      (000000a2) if-eq                v8, v6, +009h
+
+E-BB@0xa6 : [ E-BB@0xac E-BB@0xae ]
+	43      (000000a6) const/4              v0, 2
+	44      (000000a8) if-ne                v8, v0, +003h
+
+E-BB@0xac : [ E-BB@0xb4 ]
+	45      (000000ac) goto                 +4h
+
+E-BB@0xae : [ E-BB@0xfe ]
+	46      (000000ae) sget-object          v3, Landroid/text/TextDirectionHeuristics;->LTR Landroid/text/TextDirectionHeuristic;
+	47      (000000b2) goto                 +26h
+
+E-BB@0xb4 : [ E-BB@0xfe ]
+	48      (000000b4) sget-object          v3, Landroid/text/TextDirectionHeuristics;->RTL Landroid/text/TextDirectionHeuristic;
+	49      (000000b8) goto                 +23h
+
+E-BB@0xba : [ E-BB@0xc6 E-BB@0xc8 ]
+	50      (000000ba) invoke-virtual       v8, Landroid/view/View;->getLayoutDirection()I
+	51      (000000c0) move-result          v0
+	52      (000000c2) if-ne                v0, v6, +003h
+
+E-BB@0xc6 : [ E-BB@0xca ]
+	53      (000000c6) goto                 +2h
+
+E-BB@0xc8 : [ E-BB@0xca ]
+	54      (000000c8) move                 v6, v7
+
+E-BB@0xca : [ D:E-BB@0xd8 2:E-BB@0xfa 3:E-BB@0xf4 4:E-BB@0xee 5:E-BB@0xe8 6:E-BB@0xfe 7:E-BB@0xe2 ]
+	55      (000000ca) invoke-virtual       v8, Landroid/view/View;->getTextDirection()I
+	56      (000000d0) move-result          v8
+	57      (000000d2) packed-switch        v8, +000001dh
+
+E-BB@0xd8 : [ E-BB@0xdc E-BB@0xfe ]
+	58      (000000d8) if-eqz               v6, +013h
+
+E-BB@0xdc : [ E-BB@0xfe ]
+	59      (000000dc) sget-object          v3, Landroid/text/TextDirectionHeuristics;->FIRSTSTRONG_RTL Landroid/text/TextDirectionHeuristic;
+	60      (000000e0) goto                 +fh
+
+E-BB@0xe2 : [ E-BB@0xfe ]
+	61      (000000e2) sget-object          v3, Landroid/text/TextDirectionHeuristics;->FIRSTSTRONG_RTL Landroid/text/TextDirectionHeuristic;
+	62      (000000e6) goto                 +ch
+
+E-BB@0xe8 : [ E-BB@0xfe ]
+	63      (000000e8) sget-object          v3, Landroid/text/TextDirectionHeuristics;->LOCALE Landroid/text/TextDirectionHeuristic;
+	64      (000000ec) goto                 +9h
+
+E-BB@0xee : [ E-BB@0xfe ]
+	65      (000000ee) sget-object          v3, Landroid/text/TextDirectionHeuristics;->RTL Landroid/text/TextDirectionHeuristic;
+	66      (000000f2) goto                 +6h
+
+E-BB@0xf4 : [ E-BB@0xfe ]
+	67      (000000f4) sget-object          v3, Landroid/text/TextDirectionHeuristics;->LTR Landroid/text/TextDirectionHeuristic;
+	68      (000000f8) goto                 +3h
+
+E-BB@0xfa : [ E-BB@0xfe ]
+	69      (000000fa) sget-object          v3, Landroid/text/TextDirectionHeuristics;->ANYRTL_LTR Landroid/text/TextDirectionHeuristic;
+
+E-BB@0xfe : 
+	70      (000000fe) new-instance         v8, Lo0/c;
+	71      (00000102) invoke-direct        v8, v2, v3, v4, v5, Lo0/c;-><init>(Landroid/text/TextPaint; Landroid/text/TextDirectionHeuristic; I I)V
+	72      (00000108) return-object        v8
+
+E-BB@0x10a : 
+	73      (0000010a) nop                  
+	74      (0000010c) packed-switch-payload 2 3 4 5 6 7
+

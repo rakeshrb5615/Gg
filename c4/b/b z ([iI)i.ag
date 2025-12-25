@@ -1,0 +1,77 @@
+# Lc4/b;->z([Ln0/i; I)Ln0/i; [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v10
+# - v11:n0.i[]
+# - v12:int
+#
+# - return:n0.i
+
+z-BB@0x0 : [ z-BB@0x8 z-BB@0xe ]
+	0       (00000000) and-int/lit8         v0, v12, 1
+	1       (00000004) if-nez               v0, +005h
+
+z-BB@0x8 : [ z-BB@0x12 ]
+	2       (00000008) const/16             v0, 400
+	3       (0000000c) goto                 +3h
+
+z-BB@0xe : [ z-BB@0x12 ]
+	4       (0000000e) const/16             v0, 700
+
+z-BB@0x12 : [ z-BB@0x1e z-BB@0x22 ]
+	5       (00000012) and-int/lit8         v12, v12, 2
+	6       (00000016) const/4              v1, 0
+	7       (00000018) const/4              v2, 1
+	8       (0000001a) if-eqz               v12, +004h
+
+z-BB@0x1e : [ z-BB@0x24 ]
+	9       (0000001e) move                 v12, v2
+	10      (00000020) goto                 +2h
+
+z-BB@0x22 : [ z-BB@0x24 ]
+	11      (00000022) move                 v12, v1
+
+z-BB@0x24 : [ z-BB@0x30 ]
+	12      (00000024) array-length         v3, v11
+	13      (00000026) const/4              v4, 0
+	14      (00000028) const                v5, 2147483647
+	15      (0000002e) move                 v6, v1
+
+z-BB@0x30 : [ z-BB@0x34 z-BB@0x6c ]
+	16      (00000030) if-ge                v6, v3, +01eh
+
+z-BB@0x34 : [ z-BB@0x52 z-BB@0x56 ]
+	17      (00000034) aget-object          v7, v11, v6
+	18      (00000038) iget                 v8, v7, Ln0/i;->c I
+	19      (0000003c) sub-int/2addr        v8, v0
+	20      (0000003e) invoke-static        v8, Ljava/lang/Math;->abs(I)I
+	21      (00000044) move-result          v8
+	22      (00000046) mul-int/lit8         v8, v8, 2
+	23      (0000004a) iget-boolean         v9, v7, Ln0/i;->d Z
+	24      (0000004e) if-ne                v9, v12, +004h
+
+z-BB@0x52 : [ z-BB@0x58 ]
+	25      (00000052) move                 v9, v1
+	26      (00000054) goto                 +2h
+
+z-BB@0x56 : [ z-BB@0x58 ]
+	27      (00000056) move                 v9, v2
+
+z-BB@0x58 : [ z-BB@0x5e z-BB@0x62 ]
+	28      (00000058) add-int/2addr        v8, v9
+	29      (0000005a) if-eqz               v4, +004h
+
+z-BB@0x5e : [ z-BB@0x62 z-BB@0x66 ]
+	30      (0000005e) if-le                v5, v8, +004h
+
+z-BB@0x62 : [ z-BB@0x66 ]
+	31      (00000062) move-object          v4, v7
+	32      (00000064) move                 v5, v8
+
+z-BB@0x66 : [ z-BB@0x30 ]
+	33      (00000066) add-int/lit8         v6, v6, 1
+	34      (0000006a) goto                 -1dh
+
+z-BB@0x6c : 
+	35      (0000006c) return-object        v4
+

@@ -1,0 +1,115 @@
+# Lc5/a;->a(Lc6/b;)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v8
+# - v9:c6.b
+#
+# - return:void
+
+a-BB@0x0 : [ a-BB@0x54 a-BB@0x86 ]
+	0       (00000000) iget-object          v0, v8, Lc5/a;->a Lc5/b;
+	1       (00000004) sget-object          v1, Ld5/d;->a Ld5/d;
+	2       (00000008) const-string         v2, "AnalyticsConnector now available."
+	3       (0000000c) invoke-virtual       v1, v2, Ld5/d;->b(Ljava/lang/String;)V
+	4       (00000012) invoke-interface     v9, Lc6/b;->get()Ljava/lang/Object;
+	5       (00000018) move-result-object   v9
+	6       (0000001a) check-cast           v9, Lu4/b;
+	7       (0000001e) new-instance         v2, Ll6/c;
+	8       (00000022) const/16             v3, 14
+	9       (00000026) invoke-direct        v2, v9, v3, Ll6/c;-><init>(Ljava/lang/Object; I)V
+	10      (0000002c) new-instance         v3, Lk2/c;
+	11      (00000030) const/4              v4, 6
+	12      (00000032) const/4              v5, 0
+	13      (00000034) invoke-direct        v3, v4, v5, Lk2/c;-><init>(I Z)V
+	14      (0000003a) const-string         v4, "FirebaseCrashlytics"
+	15      (0000003e) const-string         v5, "clx"
+	16      (00000042) check-cast           v9, Lu4/c;
+	17      (00000046) invoke-virtual       v9, v5, v3, Lu4/c;->b(Ljava/lang/String; Lk2/c;)La6/e;
+	18      (0000004c) move-result-object   v5
+	19      (0000004e) const/4              v6, 0
+	20      (00000050) if-nez               v5, +01bh
+
+a-BB@0x54 : [ a-BB@0x66 a-BB@0x6c ]
+	21      (00000054) const-string         v5, "Could not register AnalyticsConnectorListener with Crashlytics origin."
+	22      (00000058) const/4              v7, 3
+	23      (0000005a) invoke-static        v4, v7, Landroid/util/Log;->isLoggable(Ljava/lang/String; I)Z
+	24      (00000060) move-result          v7
+	25      (00000062) if-eqz               v7, +005h
+
+a-BB@0x66 : [ a-BB@0x6c ]
+	26      (00000066) invoke-static        v4, v5, v6, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+
+a-BB@0x6c : [ a-BB@0x7c a-BB@0x86 ]
+	27      (0000006c) const-string         v5, "crash"
+	28      (00000070) invoke-virtual       v9, v5, v3, Lu4/c;->b(Ljava/lang/String; Lk2/c;)La6/e;
+	29      (00000076) move-result-object   v5
+	30      (00000078) if-eqz               v5, +007h
+
+a-BB@0x7c : [ a-BB@0x86 ]
+	31      (0000007c) const-string         v9, "A new version of the Google Analytics for Firebase SDK is now available. For improved performance and compatibility with Crashlytics, please update to the latest version."
+	32      (00000080) invoke-static        v4, v9, v6, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+
+a-BB@0x86 : [ a-BB@0x8a a-BB@0xfe ]
+	33      (00000086) if-eqz               v5, +03ch
+
+a-BB@0x8a : [ a-BB@0xb4 ]
+	34      (0000008a) const-string         v9, "Registered Firebase Analytics listener."
+	35      (0000008e) invoke-virtual       v1, v9, Ld5/d;->b(Ljava/lang/String;)V
+	36      (00000094) new-instance         v9, Ll6/c;
+	37      (00000098) const/16             v1, 13
+	38      (0000009c) const/4              v4, 0
+	39      (0000009e) invoke-direct        v9, v1, v4, Ll6/c;-><init>(I Z)V
+	40      (000000a4) new-instance         v1, Lb8/g;
+	41      (000000a8) sget-object          v4, Ljava/util/concurrent/TimeUnit;->MILLISECONDS Ljava/util/concurrent/TimeUnit;
+	42      (000000ac) invoke-direct        v1, v2, Lb8/g;-><init>(Ll6/c;)V
+	43      (000000b2) monitor-enter        v0
+
+a-BB@0xb4 : [ a-BB@0xc6 ]
+	44      (000000b4) iget-object          v2, v0, Lc5/b;->a Ljava/lang/Object;
+	45      (000000b8) check-cast           v2, Ljava/util/ArrayList;
+	46      (000000bc) invoke-virtual       v2, Ljava/util/ArrayList;->size()I
+	47      (000000c2) move-result          v4
+	48      (000000c4) const/4              v5, 0
+	b4:fb
+	(Ljava/lang/Throwable; -> e2 a-BB@0xe2)
+
+a-BB@0xc6 : [ a-BB@0xca a-BB@0xe6 ]
+	49      (000000c6) if-ge                v5, v4, +010h
+	b4:fb
+	(Ljava/lang/Throwable; -> e2 a-BB@0xe2)
+
+a-BB@0xca : [ a-BB@0xc6 ]
+	50      (000000ca) invoke-virtual       v2, v5, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	51      (000000d0) move-result-object   v6
+	52      (000000d2) add-int/lit8         v5, v5, 1
+	53      (000000d6) check-cast           v6, Lg5/q;
+	54      (000000da) invoke-virtual       v9, v6, Ll6/c;->b(Lg5/q;)V
+	55      (000000e0) goto                 -dh
+	b4:fb
+	(Ljava/lang/Throwable; -> e2 a-BB@0xe2)
+
+a-BB@0xe2 : [ a-BB@0xfa ]
+	56      (000000e2) move-exception       v9
+	57      (000000e4) goto                 +bh
+	b4:fb
+	(Ljava/lang/Throwable; -> e2 a-BB@0xe2)
+
+a-BB@0xe6 : 
+	58      (000000e6) iput-object          v9, v3, Lk2/c;->c Ljava/lang/Object;
+	59      (000000ea) iput-object          v1, v3, Lk2/c;->b Ljava/lang/Object;
+	60      (000000ee) iput-object          v9, v0, Lc5/b;->c Ljava/lang/Object;
+	61      (000000f2) iput-object          v1, v0, Lc5/b;->b Ljava/lang/Object;
+	62      (000000f6) monitor-exit         v0
+	63      (000000f8) return-void          
+	b4:fb
+	(Ljava/lang/Throwable; -> e2 a-BB@0xe2)
+
+a-BB@0xfa : 
+	64      (000000fa) monitor-exit         v0
+	65      (000000fc) throw                v9
+
+a-BB@0xfe : 
+	66      (000000fe) const-string         v9, "Could not register Firebase Analytics listener; a listener is already registered."
+	67      (00000102) invoke-virtual       v1, v9, v6, Ld5/d;->d(Ljava/lang/String; Ljava/lang/Exception;)V
+	68      (00000108) return-void          
+

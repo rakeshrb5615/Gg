@@ -1,0 +1,57 @@
+# Lc4/b;->O(Landroid/content/Context; I)I [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:android.content.Context
+# - v5:int
+#
+# - return:int
+
+O-BB@0x0 : [ O-BB@0x2 ]
+	0       (00000000) const/4              v0, 0
+
+O-BB@0x2 : [ O-BB@0xe O-BB@0x10 ]
+	1       (00000002) invoke-static        v4, v5, Lj5/t1;->A(Landroid/content/Context; I)Landroid/graphics/drawable/Drawable;
+	2       (00000008) move-result-object   v4
+	3       (0000000a) if-nez               v4, +003h
+	2:9
+	(Ljava/lang/Exception; -> 6a O-BB@0x6a)
+
+O-BB@0xe : [ O-BB@0x6a ]
+	4       (0000000e) goto                 +2eh
+
+O-BB@0x10 : [ O-BB@0x24 O-BB@0x28 ]
+	5       (00000010) invoke-virtual       v4, Landroid/graphics/drawable/Drawable;->getIntrinsicWidth()I
+	6       (00000016) move-result          v5
+	7       (00000018) invoke-virtual       v4, Landroid/graphics/drawable/Drawable;->getIntrinsicHeight()I
+	8       (0000001e) move-result          v1
+	9       (00000020) if-lez               v5, +004h
+
+O-BB@0x24 : [ O-BB@0x28 O-BB@0x2e ]
+	10      (00000024) if-gtz               v1, +005h
+
+O-BB@0x28 : [ O-BB@0x2e ]
+	11      (00000028) const/16             v5, 64
+	12      (0000002c) move                 v1, v5
+
+O-BB@0x2e : 
+	13      (0000002e) sget-object          v2, Landroid/graphics/Bitmap$Config;->ARGB_8888 Landroid/graphics/Bitmap$Config;
+	14      (00000032) invoke-static        v5, v1, v2, Landroid/graphics/Bitmap;->createBitmap(I I Landroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+	15      (00000038) move-result-object   v5
+	16      (0000003a) new-instance         v1, Landroid/graphics/Canvas;
+	17      (0000003e) invoke-direct        v1, v5, Landroid/graphics/Canvas;-><init>(Landroid/graphics/Bitmap;)V
+	18      (00000044) invoke-virtual       v1, Landroid/graphics/Canvas;->getWidth()I
+	19      (0000004a) move-result          v2
+	20      (0000004c) invoke-virtual       v1, Landroid/graphics/Canvas;->getHeight()I
+	21      (00000052) move-result          v3
+	22      (00000054) invoke-virtual       v4, v0, v0, v2, v3, Landroid/graphics/drawable/Drawable;->setBounds(I I I I)V
+	23      (0000005a) invoke-virtual       v4, v1, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V
+	24      (00000060) invoke-static        v5, Lc4/b;->N(Landroid/graphics/Bitmap;)I
+	25      (00000066) move-result          v4
+	26      (00000068) return               v4
+	2e:67
+	(Ljava/lang/Exception; -> 6a O-BB@0x6a)
+
+O-BB@0x6a : 
+	27      (0000006a) return               v0
+
