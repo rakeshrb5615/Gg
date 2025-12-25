@@ -1,0 +1,188 @@
+# Lq0/b;->g(Landroid/view/View; I Landroid/os/Bundle;)Z [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:android.view.View
+# - v8:int
+# - v9:android.os.Bundle
+#
+# - return:boolean
+
+g-BB@0x0 : [ g-BB@0x16 g-BB@0x1a ]
+	0       (00000000) const                v0, 2131362475
+	1       (00000006) invoke-virtual       v7, v0, Landroid/view/View;->getTag(I)Ljava/lang/Object;
+	2       (0000000c) move-result-object   v0
+	3       (0000000e) check-cast           v0, Ljava/util/List;
+	4       (00000012) if-nez               v0, +004h
+
+g-BB@0x16 : [ g-BB@0x1a ]
+	5       (00000016) sget-object          v0, Ljava/util/Collections;->EMPTY_LIST Ljava/util/List;
+
+g-BB@0x1a : [ g-BB@0x1e ]
+	6       (0000001a) const/4              v1, 0
+	7       (0000001c) move                 v2, v1
+
+g-BB@0x1e : [ g-BB@0x2c g-BB@0xaa ]
+	8       (0000001e) invoke-interface     v0, Ljava/util/List;->size()I
+	9       (00000024) move-result          v3
+	10      (00000026) const/4              v4, 0
+	11      (00000028) if-ge                v2, v3, +041h
+
+g-BB@0x2c : [ g-BB@0x44 g-BB@0xa4 ]
+	12      (0000002c) invoke-interface     v0, v2, Ljava/util/List;->get(I)Ljava/lang/Object;
+	13      (00000032) move-result-object   v3
+	14      (00000034) check-cast           v3, Lr0/b;
+	15      (00000038) invoke-virtual       v3, Lr0/b;->a()I
+	16      (0000003e) move-result          v5
+	17      (00000040) if-ne                v5, v8, +032h
+
+g-BB@0x44 : [ g-BB@0x50 g-BB@0xaa ]
+	18      (00000044) iget-object          v0, v3, Lr0/b;->c Ljava/lang/Class;
+	19      (00000048) iget-object          v2, v3, Lr0/b;->d Lr0/l;
+	20      (0000004c) if-eqz               v2, +02fh
+
+g-BB@0x50 : [ g-BB@0x54 g-BB@0x56 ]
+	21      (00000050) if-nez               v0, +003h
+
+g-BB@0x54 : [ g-BB@0x9a ]
+	22      (00000054) goto                 +23h
+
+g-BB@0x56 : [ g-BB@0x6a g-BB@0x70 ]
+	23      (00000056) invoke-virtual       v0, v4, Ljava/lang/Class;->getDeclaredConstructor([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
+	24      (0000005c) move-result-object   v3
+	25      (0000005e) invoke-virtual       v3, v4, Ljava/lang/reflect/Constructor;->newInstance([Ljava/lang/Object;)Ljava/lang/Object;
+	26      (00000064) move-result-object   v3
+	27      (00000066) if-nez               v3, +005h
+	56:7b
+	(Ljava/lang/Exception; -> 6c g-BB@0x6c)
+
+g-BB@0x6a : 
+	28      (0000006a) throw                v4
+	56:7b
+	(Ljava/lang/Exception; -> 6c g-BB@0x6c)
+
+g-BB@0x6c : [ g-BB@0x7c ]
+	29      (0000006c) move-exception       v3
+	30      (0000006e) goto                 +7h
+	56:7b
+	(Ljava/lang/Exception; -> 6c g-BB@0x6c)
+
+g-BB@0x70 : 
+	31      (00000070) new-instance         v3, Ljava/lang/ClassCastException;
+	32      (00000074) invoke-direct        v3, Ljava/lang/ClassCastException;-><init>()V
+	33      (0000007a) throw                v3
+	56:7b
+	(Ljava/lang/Exception; -> 6c g-BB@0x6c)
+
+g-BB@0x7c : [ g-BB@0x9a ]
+	34      (0000007c) invoke-virtual       v0, Ljava/lang/Class;->getName()Ljava/lang/String;
+	35      (00000082) move-result-object   v0
+	36      (00000084) const-string         v5, "Failed to execute command with argument class ViewCommandArgument: "
+	37      (00000088) invoke-virtual       v5, v0, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	38      (0000008e) move-result-object   v0
+	39      (00000090) const-string         v5, "A11yActionCompat"
+	40      (00000094) invoke-static        v5, v0, v3, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+
+g-BB@0x9a : [ g-BB@0xac ]
+	41      (0000009a) invoke-interface     v2, v7, Lr0/l;->a(Landroid/view/View;)Z
+	42      (000000a0) move-result          v0
+	43      (000000a2) goto                 +5h
+
+g-BB@0xa4 : [ g-BB@0x1e ]
+	44      (000000a4) add-int/lit8         v2, v2, 1
+	45      (000000a8) goto                 -45h
+
+g-BB@0xaa : [ g-BB@0xac ]
+	46      (000000aa) move                 v0, v1
+
+g-BB@0xac : [ g-BB@0xb0 g-BB@0xbc ]
+	47      (000000ac) if-nez               v0, +008h
+
+g-BB@0xb0 : [ g-BB@0xbc ]
+	48      (000000b0) iget-object          v0, v6, Lq0/b;->a Landroid/view/View$AccessibilityDelegate;
+	49      (000000b4) invoke-virtual       v0, v7, v8, v9, Landroid/view/View$AccessibilityDelegate;->performAccessibilityAction(Landroid/view/View; I Landroid/os/Bundle;)Z
+	50      (000000ba) move-result          v0
+
+g-BB@0xbc : [ g-BB@0xc0 g-BB@0x178 ]
+	51      (000000bc) if-nez               v0, +05eh
+
+g-BB@0xc0 : [ g-BB@0xca g-BB@0x178 ]
+	52      (000000c0) const                v2, 2131361810
+	53      (000000c6) if-ne                v8, v2, +059h
+
+g-BB@0xca : [ g-BB@0xce g-BB@0x178 ]
+	54      (000000ca) if-eqz               v9, +057h
+
+g-BB@0xce : [ g-BB@0xf2 g-BB@0x176 ]
+	55      (000000ce) const-string         v8, "ACCESSIBILITY_CLICKABLE_SPAN_ID"
+	56      (000000d2) const/4              v0, -1
+	57      (000000d4) invoke-virtual       v9, v8, v0, Landroid/os/BaseBundle;->getInt(Ljava/lang/String; I)I
+	58      (000000da) move-result          v8
+	59      (000000dc) const                v9, 2131362476
+	60      (000000e2) invoke-virtual       v7, v9, Landroid/view/View;->getTag(I)Ljava/lang/Object;
+	61      (000000e8) move-result-object   v9
+	62      (000000ea) check-cast           v9, Landroid/util/SparseArray;
+	63      (000000ee) if-eqz               v9, +044h
+
+g-BB@0xf2 : [ g-BB@0x102 g-BB@0x176 ]
+	64      (000000f2) invoke-virtual       v9, v8, Landroid/util/SparseArray;->get(I)Ljava/lang/Object;
+	65      (000000f8) move-result-object   v8
+	66      (000000fa) check-cast           v8, Ljava/lang/ref/WeakReference;
+	67      (000000fe) if-eqz               v8, +03ch
+
+g-BB@0x102 : [ g-BB@0x112 g-BB@0x176 ]
+	68      (00000102) invoke-virtual       v8, Ljava/lang/ref/Reference;->get()Ljava/lang/Object;
+	69      (00000108) move-result-object   v8
+	70      (0000010a) check-cast           v8, Landroid/text/style/ClickableSpan;
+	71      (0000010e) if-eqz               v8, +034h
+
+g-BB@0x112 : [ g-BB@0x12a g-BB@0x14a ]
+	72      (00000112) invoke-virtual       v7, Landroid/view/View;->createAccessibilityNodeInfo()Landroid/view/accessibility/AccessibilityNodeInfo;
+	73      (00000118) move-result-object   v9
+	74      (0000011a) invoke-virtual       v9, Landroid/view/accessibility/AccessibilityNodeInfo;->getText()Ljava/lang/CharSequence;
+	75      (00000120) move-result-object   v9
+	76      (00000122) instance-of          v0, v9, Landroid/text/Spanned;
+	77      (00000126) if-eqz               v0, +012h
+
+g-BB@0x12a : [ g-BB@0x14a ]
+	78      (0000012a) move-object          v0, v9
+	79      (0000012c) check-cast           v0, Landroid/text/Spanned;
+	80      (00000130) invoke-interface     v9, Ljava/lang/CharSequence;->length()I
+	81      (00000136) move-result          v9
+	82      (00000138) const-class          v2, Landroid/text/style/ClickableSpan;
+	83      (0000013c) invoke-interface     v0, v1, v9, v2, Landroid/text/Spanned;->getSpans(I I Ljava/lang/Class;)[Ljava/lang/Object;
+	84      (00000142) move-result-object   v9
+	85      (00000144) move-object          v4, v9
+	86      (00000146) check-cast           v4, [Landroid/text/style/ClickableSpan;
+
+g-BB@0x14a : [ g-BB@0x14c ]
+	87      (0000014a) move                 v9, v1
+
+g-BB@0x14c : [ g-BB@0x150 g-BB@0x176 ]
+	88      (0000014c) if-eqz               v4, +015h
+
+g-BB@0x150 : [ g-BB@0x156 g-BB@0x176 ]
+	89      (00000150) array-length         v0, v4
+	90      (00000152) if-ge                v9, v0, +012h
+
+g-BB@0x156 : [ g-BB@0x166 g-BB@0x170 ]
+	91      (00000156) aget-object          v0, v4, v9
+	92      (0000015a) invoke-virtual       v8, v0, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+	93      (00000160) move-result          v0
+	94      (00000162) if-eqz               v0, +007h
+
+g-BB@0x166 : [ g-BB@0x176 ]
+	95      (00000166) invoke-virtual       v8, v7, Landroid/text/style/ClickableSpan;->onClick(Landroid/view/View;)V
+	96      (0000016c) const/4              v1, 1
+	97      (0000016e) goto                 +4h
+
+g-BB@0x170 : [ g-BB@0x14c ]
+	98      (00000170) add-int/lit8         v9, v9, 1
+	99      (00000174) goto                 -14h
+
+g-BB@0x176 : [ g-BB@0x178 ]
+	100     (00000176) move                 v0, v1
+
+g-BB@0x178 : 
+	101     (00000178) return               v0
+

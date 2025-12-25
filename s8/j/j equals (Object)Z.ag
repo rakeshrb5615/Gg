@@ -1,0 +1,45 @@
+# Ls8/j;->equals(Ljava/lang/Object;)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:java.lang.Object
+#
+# - return:boolean
+
+equals-BB@0x0 : [ equals-BB@0x6 equals-BB@0x8 ]
+	0       (00000000) const/4              v0, 1
+	1       (00000002) if-ne                v4, v5, +003h
+
+equals-BB@0x6 : 
+	2       (00000006) return               v0
+
+equals-BB@0x8 : [ equals-BB@0xe equals-BB@0x3c ]
+	3       (00000008) const/4              v1, 0
+	4       (0000000a) if-eqz               v5, +019h
+
+equals-BB@0xe : [ equals-BB@0x1e equals-BB@0x20 ]
+	5       (0000000e) const-class          v2, Ls8/j;
+	6       (00000012) invoke-virtual       v5, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	7       (00000018) move-result-object   v3
+	8       (0000001a) if-eq                v2, v3, +003h
+
+equals-BB@0x1e : [ equals-BB@0x3c ]
+	9       (0000001e) goto                 +fh
+
+equals-BB@0x20 : [ equals-BB@0x38 equals-BB@0x3a ]
+	10      (00000020) check-cast           v5, Ls8/j;
+	11      (00000024) iget-object          v2, v4, Ls8/j;->a Lo8/a;
+	12      (00000028) iget-object          v5, v5, Ls8/j;->a Lo8/a;
+	13      (0000002c) invoke-static        v2, v5, Lkotlin/jvm/internal/j;->a(Ljava/lang/Object; Ljava/lang/Object;)Z
+	14      (00000032) move-result          v5
+	15      (00000034) if-nez               v5, +003h
+
+equals-BB@0x38 : 
+	16      (00000038) return               v1
+
+equals-BB@0x3a : 
+	17      (0000003a) return               v0
+
+equals-BB@0x3c : 
+	18      (0000003c) return               v1
+

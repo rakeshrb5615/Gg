@@ -1,0 +1,39 @@
+# Lq0/j;->equals(Ljava/lang/Object;)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:java.lang.Object
+#
+# - return:boolean
+
+equals-BB@0x0 : [ equals-BB@0x4 equals-BB@0x8 ]
+	0       (00000000) if-ne                v2, v3, +004h
+
+equals-BB@0x4 : 
+	1       (00000004) const/4              v3, 1
+	2       (00000006) return               v3
+
+equals-BB@0x8 : [ equals-BB@0xc equals-BB@0x34 ]
+	3       (00000008) if-eqz               v3, +016h
+
+equals-BB@0xc : [ equals-BB@0x1c equals-BB@0x1e ]
+	4       (0000000c) const-class          v0, Lq0/j;
+	5       (00000010) invoke-virtual       v3, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	6       (00000016) move-result-object   v1
+	7       (00000018) if-eq                v0, v1, +003h
+
+equals-BB@0x1c : [ equals-BB@0x34 ]
+	8       (0000001c) goto                 +ch
+
+equals-BB@0x1e : 
+	9       (0000001e) check-cast           v3, Lq0/j;
+	10      (00000022) iget-object          v0, v2, Lq0/j;->a Landroid/view/DisplayCutout;
+	11      (00000026) iget-object          v3, v3, Lq0/j;->a Landroid/view/DisplayCutout;
+	12      (0000002a) invoke-static        v0, v3, Ljava/util/Objects;->equals(Ljava/lang/Object; Ljava/lang/Object;)Z
+	13      (00000030) move-result          v3
+	14      (00000032) return               v3
+
+equals-BB@0x34 : 
+	15      (00000034) const/4              v3, 0
+	16      (00000036) return               v3
+

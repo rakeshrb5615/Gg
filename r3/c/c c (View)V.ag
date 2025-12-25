@@ -1,0 +1,30 @@
+# Lr3/c;->c(Landroid/view/View;)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:android.view.View
+#
+# - return:void
+
+c-BB@0x0 : [ c-BB@0x8 c-BB@0xa ]
+	0       (00000000) iget-object          v0, v1, Lr3/c;->a Landroid/window/OnBackInvokedCallback;
+	1       (00000004) if-nez               v0, +003h
+
+c-BB@0x8 : [ c-BB@0x16 ]
+	2       (00000008) goto                 +7h
+
+c-BB@0xa : [ c-BB@0x16 c-BB@0x18 ]
+	3       (0000000a) invoke-virtual       v2, Landroid/view/View;->findOnBackInvokedDispatcher()Landroid/window/OnBackInvokedDispatcher;
+	4       (00000010) move-result-object   v2
+	5       (00000012) if-nez               v2, +003h
+
+c-BB@0x16 : 
+	6       (00000016) return-void          
+
+c-BB@0x18 : 
+	7       (00000018) iget-object          v0, v1, Lr3/c;->a Landroid/window/OnBackInvokedCallback;
+	8       (0000001c) invoke-interface     v2, v0, Landroid/window/OnBackInvokedDispatcher;->unregisterOnBackInvokedCallback(Landroid/window/OnBackInvokedCallback;)V
+	9       (00000022) const/4              v2, 0
+	10      (00000024) iput-object          v2, v1, Lr3/c;->a Landroid/window/OnBackInvokedCallback;
+	11      (00000028) return-void          
+

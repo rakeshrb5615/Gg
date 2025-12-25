@@ -1,0 +1,40 @@
+# Lr/f;->toArray([Ljava/lang/Object;)[Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:java.lang.Object[]
+#
+# - return:java.lang.Object[]
+
+toArray-BB@0x0 : [ toArray-BB@0x14 toArray-BB@0x32 ]
+	0       (00000000) const-string         v0, "array"
+	1       (00000004) invoke-static        v4, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) iget                 v0, v3, Lr/f;->c I
+	3       (0000000e) array-length         v1, v4
+	4       (00000010) if-ge                v1, v0, +011h
+
+toArray-BB@0x14 : [ toArray-BB@0x3e ]
+	5       (00000014) invoke-virtual       v4, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	6       (0000001a) move-result-object   v4
+	7       (0000001c) invoke-virtual       v4, Ljava/lang/Class;->getComponentType()Ljava/lang/Class;
+	8       (00000022) move-result-object   v4
+	9       (00000024) invoke-static        v4, v0, Ljava/lang/reflect/Array;->newInstance(Ljava/lang/Class; I)Ljava/lang/Object;
+	10      (0000002a) move-result-object   v4
+	11      (0000002c) check-cast           v4, [Ljava/lang/Object;
+	12      (00000030) goto                 +7h
+
+toArray-BB@0x32 : [ toArray-BB@0x38 toArray-BB@0x3e ]
+	13      (00000032) array-length         v1, v4
+	14      (00000034) if-le                v1, v0, +005h
+
+toArray-BB@0x38 : [ toArray-BB@0x3e ]
+	15      (00000038) const/4              v1, 0
+	16      (0000003a) aput-object          v1, v4, v0
+
+toArray-BB@0x3e : 
+	17      (0000003e) iget-object          v0, v3, Lr/f;->b [Ljava/lang/Object;
+	18      (00000042) iget                 v1, v3, Lr/f;->c I
+	19      (00000046) const/4              v2, 0
+	20      (00000048) invoke-static        v0, v2, v4, v2, v1, Li7/h;->Z([Ljava/lang/Object; I [Ljava/lang/Object; I I)V
+	21      (0000004e) return-object        v4
+

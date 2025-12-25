@@ -1,0 +1,41 @@
+# Lr2/m;->equals(Ljava/lang/Object;)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:java.lang.Object
+#
+# - return:boolean
+
+equals-BB@0x0 : [ equals-BB@0x4 equals-BB@0x8 ]
+	0       (00000000) if-ne                v3, v4, +004h
+
+equals-BB@0x4 : 
+	1       (00000004) const/4              v4, 1
+	2       (00000006) return               v4
+
+equals-BB@0x8 : [ equals-BB@0x12 equals-BB@0x14 ]
+	3       (00000008) instance-of          v0, v4, Lr2/m;
+	4       (0000000c) const/4              v1, 0
+	5       (0000000e) if-nez               v0, +003h
+
+equals-BB@0x12 : 
+	6       (00000012) return               v1
+
+equals-BB@0x14 : [ equals-BB@0x2c equals-BB@0x2e ]
+	7       (00000014) check-cast           v4, Lr2/m;
+	8       (00000018) iget-object          v0, v3, Lr2/m;->a Lo2/c;
+	9       (0000001c) iget-object          v2, v4, Lr2/m;->a Lo2/c;
+	10      (00000020) invoke-virtual       v0, v2, Lo2/c;->equals(Ljava/lang/Object;)Z
+	11      (00000026) move-result          v0
+	12      (00000028) if-nez               v0, +003h
+
+equals-BB@0x2c : 
+	13      (0000002c) return               v1
+
+equals-BB@0x2e : 
+	14      (0000002e) iget-object          v0, v3, Lr2/m;->b [B
+	15      (00000032) iget-object          v4, v4, Lr2/m;->b [B
+	16      (00000036) invoke-static        v0, v4, Ljava/util/Arrays;->equals([B [B)Z
+	17      (0000003c) move-result          v4
+	18      (0000003e) return               v4
+

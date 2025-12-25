@@ -1,0 +1,63 @@
+# Lq2/p;->equals(Ljava/lang/Object;)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:java.lang.Object
+#
+# - return:boolean
+
+equals-BB@0x0 : [ equals-BB@0x6 equals-BB@0x8 ]
+	0       (00000000) const/4              v0, 1
+	1       (00000002) if-ne                v6, v5, +003h
+
+equals-BB@0x6 : 
+	2       (00000006) return               v0
+
+equals-BB@0x8 : [ equals-BB@0x12 equals-BB@0x62 ]
+	3       (00000008) instance-of          v1, v6, Lq2/b0;
+	4       (0000000c) const/4              v2, 0
+	5       (0000000e) if-eqz               v1, +02ah
+
+equals-BB@0x12 : [ equals-BB@0x24 equals-BB@0x2a ]
+	6       (00000012) check-cast           v6, Lq2/b0;
+	7       (00000016) instance-of          v1, v6, Lq2/p;
+	8       (0000001a) move-object          v3, v6
+	9       (0000001c) check-cast           v3, Lq2/p;
+	10      (00000020) if-eqz               v1, +005h
+
+equals-BB@0x24 : [ equals-BB@0x2e ]
+	11      (00000024) iget-object          v3, v3, Lq2/p;->a [B
+	12      (00000028) goto                 +3h
+
+equals-BB@0x2a : [ equals-BB@0x2e ]
+	13      (0000002a) iget-object          v3, v3, Lq2/p;->a [B
+
+equals-BB@0x2e : [ equals-BB@0x3e equals-BB@0x62 ]
+	14      (0000002e) iget-object          v4, v5, Lq2/p;->a [B
+	15      (00000032) invoke-static        v4, v3, Ljava/util/Arrays;->equals([B [B)Z
+	16      (00000038) move-result          v3
+	17      (0000003a) if-eqz               v3, +014h
+
+equals-BB@0x3e : [ equals-BB@0x46 equals-BB@0x4c ]
+	18      (0000003e) check-cast           v6, Lq2/p;
+	19      (00000042) if-eqz               v1, +005h
+
+equals-BB@0x46 : [ equals-BB@0x50 ]
+	20      (00000046) iget-object          v6, v6, Lq2/p;->b [B
+	21      (0000004a) goto                 +3h
+
+equals-BB@0x4c : [ equals-BB@0x50 ]
+	22      (0000004c) iget-object          v6, v6, Lq2/p;->b [B
+
+equals-BB@0x50 : [ equals-BB@0x60 equals-BB@0x62 ]
+	23      (00000050) iget-object          v1, v5, Lq2/p;->b [B
+	24      (00000054) invoke-static        v1, v6, Ljava/util/Arrays;->equals([B [B)Z
+	25      (0000005a) move-result          v6
+	26      (0000005c) if-eqz               v6, +003h
+
+equals-BB@0x60 : 
+	27      (00000060) return               v0
+
+equals-BB@0x62 : 
+	28      (00000062) return               v2
+

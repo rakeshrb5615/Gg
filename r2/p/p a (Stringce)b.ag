@@ -1,0 +1,38 @@
+# Lr2/p;->a(Ljava/lang/String; Lo2/c; Lo2/e;)La2/b; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v9
+# - v10:java.lang.String
+# - v11:o2.c
+# - v12:o2.e
+#
+# - return:a2.b
+
+a-BB@0x0 : [ a-BB@0x10 a-BB@0x2c ]
+	0       (00000000) iget-object          v0, v9, Lr2/p;->a Ljava/util/Set;
+	1       (00000004) invoke-interface     v0, v11, Ljava/util/Set;->contains(Ljava/lang/Object;)Z
+	2       (0000000a) move-result          v1
+	3       (0000000c) if-eqz               v1, +010h
+
+a-BB@0x10 : 
+	4       (00000010) new-instance         v2, La2/b;
+	5       (00000014) iget-object          v7, v9, Lr2/p;->c Lr2/r;
+	6       (00000018) const/4              v8, 3
+	7       (0000001a) iget-object          v3, v9, Lr2/p;->b Lr2/j;
+	8       (0000001e) move-object          v4, v10
+	9       (00000020) move-object          v5, v11
+	10      (00000022) move-object          v6, v12
+	11      (00000024) invoke-direct/range  v2 ... v8, La2/b;-><init>(Ljava/lang/Object; Ljava/lang/Object; Ljava/lang/Object; Ljava/lang/Object; Ljava/lang/Object; I)V
+	12      (0000002a) return-object        v2
+
+a-BB@0x2c : 
+	13      (0000002c) move-object          v5, v11
+	14      (0000002e) new-instance         v10, Ljava/lang/IllegalArgumentException;
+	15      (00000032) const-string         v11, "%s is not supported byt this factory. Supported encodings are: %s."
+	16      (00000036) filled-new-array     v5, v0, [Ljava/lang/Object;
+	17      (0000003c) move-result-object   v12
+	18      (0000003e) invoke-static        v11, v12, Ljava/lang/String;->format(Ljava/lang/String; [Ljava/lang/Object;)Ljava/lang/String;
+	19      (00000044) move-result-object   v11
+	20      (00000046) invoke-direct        v10, v11, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	21      (0000004c) throw                v10
+

@@ -1,0 +1,93 @@
+# Lq4/d;->onBackgroundStateChanged(Z)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v7
+# - v8:boolean
+#
+# - return:void
+
+onBackgroundStateChanged-BB@0x0 : [ onBackgroundStateChanged-BB@0x6 ]
+	0       (00000000) sget-object          v0, Lq4/f;->k Ljava/lang/Object;
+	1       (00000004) monitor-enter        v0
+
+onBackgroundStateChanged-BB@0x6 : [ onBackgroundStateChanged-BB@0x26 ]
+	2       (00000006) new-instance         v1, Ljava/util/ArrayList;
+	3       (0000000a) sget-object          v2, Lq4/f;->l Lr/e;
+	4       (0000000e) invoke-virtual       v2, Lr/e;->values()Ljava/util/Collection;
+	5       (00000014) move-result-object   v2
+	6       (00000016) invoke-direct        v1, v2, Ljava/util/ArrayList;-><init>(Ljava/util/Collection;)V
+	7       (0000001c) invoke-virtual       v1, Ljava/util/ArrayList;->size()I
+	8       (00000022) move-result          v2
+	9       (00000024) const/4              v3, 0
+	6:a5
+	(Ljava/lang/Throwable; -> 9c onBackgroundStateChanged-BB@0x9c)
+
+onBackgroundStateChanged-BB@0x26 : [ onBackgroundStateChanged-BB@0x2a onBackgroundStateChanged-BB@0xa0 ]
+	10      (00000026) if-ge                v3, v2, +03dh
+	6:a5
+	(Ljava/lang/Throwable; -> 9c onBackgroundStateChanged-BB@0x9c)
+
+onBackgroundStateChanged-BB@0x2a : [ onBackgroundStateChanged-BB@0x4a onBackgroundStateChanged-BB@0x26 ]
+	11      (0000002a) invoke-virtual       v1, v3, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	12      (00000030) move-result-object   v4
+	13      (00000032) add-int/lit8         v3, v3, 1
+	14      (00000036) check-cast           v4, Lq4/f;
+	15      (0000003a) iget-object          v5, v4, Lq4/f;->e Ljava/util/concurrent/atomic/AtomicBoolean;
+	16      (0000003e) invoke-virtual       v5, Ljava/util/concurrent/atomic/AtomicBoolean;->get()Z
+	17      (00000044) move-result          v5
+	18      (00000046) if-eqz               v5, -010h
+	6:a5
+	(Ljava/lang/Throwable; -> 9c onBackgroundStateChanged-BB@0x9c)
+
+onBackgroundStateChanged-BB@0x4a : [ onBackgroundStateChanged-BB@0x64 ]
+	19      (0000004a) const-string         v5, "FirebaseApp"
+	20      (0000004e) const-string         v6, "Notifying background state change listeners."
+	21      (00000052) invoke-static        v5, v6, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String;)I
+	22      (00000058) iget-object          v4, v4, Lq4/f;->i Ljava/util/concurrent/CopyOnWriteArrayList;
+	23      (0000005c) invoke-virtual       v4, Ljava/util/concurrent/CopyOnWriteArrayList;->iterator()Ljava/util/Iterator;
+	24      (00000062) move-result-object   v4
+	6:a5
+	(Ljava/lang/Throwable; -> 9c onBackgroundStateChanged-BB@0x9c)
+
+onBackgroundStateChanged-BB@0x64 : [ onBackgroundStateChanged-BB@0x70 onBackgroundStateChanged-BB@0x26 ]
+	25      (00000064) invoke-interface     v4, Ljava/util/Iterator;->hasNext()Z
+	26      (0000006a) move-result          v5
+	27      (0000006c) if-eqz               v5, -023h
+	6:a5
+	(Ljava/lang/Throwable; -> 9c onBackgroundStateChanged-BB@0x9c)
+
+onBackgroundStateChanged-BB@0x70 : [ onBackgroundStateChanged-BB@0x84 onBackgroundStateChanged-BB@0x64 ]
+	28      (00000070) invoke-interface     v4, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	29      (00000076) move-result-object   v5
+	30      (00000078) check-cast           v5, Lq4/c;
+	31      (0000007c) iget-object          v5, v5, Lq4/c;->a Lq4/f;
+	32      (00000080) if-nez               v8, -00eh
+	6:a5
+	(Ljava/lang/Throwable; -> 9c onBackgroundStateChanged-BB@0x9c)
+
+onBackgroundStateChanged-BB@0x84 : [ onBackgroundStateChanged-BB@0x64 ]
+	33      (00000084) iget-object          v5, v5, Lq4/f;->h Lc6/b;
+	34      (00000088) invoke-interface     v5, Lc6/b;->get()Ljava/lang/Object;
+	35      (0000008e) move-result-object   v5
+	36      (00000090) check-cast           v5, La6/d;
+	37      (00000094) invoke-virtual       v5, La6/d;->a()V
+	38      (0000009a) goto                 -1bh
+	6:a5
+	(Ljava/lang/Throwable; -> 9c onBackgroundStateChanged-BB@0x9c)
+
+onBackgroundStateChanged-BB@0x9c : [ onBackgroundStateChanged-BB@0xa4 ]
+	39      (0000009c) move-exception       v8
+	40      (0000009e) goto                 +3h
+	6:a5
+	(Ljava/lang/Throwable; -> 9c onBackgroundStateChanged-BB@0x9c)
+
+onBackgroundStateChanged-BB@0xa0 : 
+	41      (000000a0) monitor-exit         v0
+	42      (000000a2) return-void          
+	6:a5
+	(Ljava/lang/Throwable; -> 9c onBackgroundStateChanged-BB@0x9c)
+
+onBackgroundStateChanged-BB@0xa4 : 
+	43      (000000a4) monitor-exit         v0
+	44      (000000a6) throw                v8
+

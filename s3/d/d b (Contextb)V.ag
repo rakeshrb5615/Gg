@@ -1,0 +1,87 @@
+# Ls3/d;->b(Landroid/content/Context; Lq4/b;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v9
+# - v10:android.content.Context
+# - v11:q4.b
+#
+# - return:void
+
+b-BB@0x0 : [ b-BB@0xc b-BB@0x12 ]
+	0       (00000000) invoke-virtual       v9, v10, Ls3/d;->c(Landroid/content/Context;)Z
+	1       (00000006) move-result          v0
+	2       (00000008) if-nez               v0, +005h
+
+b-BB@0xc : [ b-BB@0x12 ]
+	3       (0000000c) invoke-virtual       v9, Ls3/d;->a()V
+
+b-BB@0x12 : [ b-BB@0x1c b-BB@0x20 ]
+	4       (00000012) const/4              v1, 1
+	5       (00000014) iget                 v3, v9, Ls3/d;->m I
+	6       (00000018) if-nez               v3, +004h
+
+b-BB@0x1c : [ b-BB@0x20 ]
+	7       (0000001c) iput-boolean         v1, v9, Ls3/d;->n Z
+
+b-BB@0x20 : [ b-BB@0x28 b-BB@0x34 ]
+	8       (00000020) iget-boolean         v0, v9, Ls3/d;->n Z
+	9       (00000024) if-eqz               v0, +008h
+
+b-BB@0x28 : 
+	10      (00000028) iget-object          v10, v9, Ls3/d;->p Landroid/graphics/Typeface;
+	11      (0000002c) invoke-virtual       v11, v10, v1, Lq4/b;->J(Landroid/graphics/Typeface; Z)V
+	12      (00000032) return-void          
+
+b-BB@0x34 : [ b-BB@0x4e b-BB@0x58 ]
+	13      (00000034) new-instance         v6, Ls3/b;
+	14      (00000038) invoke-direct        v6, v9, v11, Ls3/b;-><init>(Ls3/d; Lq4/b;)V
+	15      (0000003e) sget-object          v0, Lg0/m;->a Ljava/lang/ThreadLocal;
+	16      (00000042) invoke-virtual       v10, Landroid/content/Context;->isRestricted()Z
+	17      (00000048) move-result          v0
+	18      (0000004a) if-eqz               v0, +007h
+	34:6f
+	(Landroid/content/res/Resources$NotFoundException; -> ae b-BB@0xae)
+	(Ljava/lang/Exception; -> 72 b-BB@0x72)
+
+b-BB@0x4e : 
+	19      (0000004e) const/4              v10, -4
+	20      (00000050) invoke-virtual       v6, v10, Lg0/b;->a(I)V
+	21      (00000056) return-void          
+	34:6f
+	(Landroid/content/res/Resources$NotFoundException; -> ae b-BB@0xae)
+	(Ljava/lang/Exception; -> 72 b-BB@0x72)
+
+b-BB@0x58 : 
+	22      (00000058) new-instance         v4, Landroid/util/TypedValue;
+	23      (0000005c) invoke-direct        v4, Landroid/util/TypedValue;-><init>()V
+	24      (00000062) const/4              v7, 0
+	25      (00000064) const/4              v8, 0
+	26      (00000066) const/4              v5, 0
+	27      (00000068) move-object          v2, v10
+	28      (0000006a) invoke-static/range  v2 ... v8, Lg0/m;->a(Landroid/content/Context; I Landroid/util/TypedValue; I Lg0/b; Z Z)Landroid/graphics/Typeface;
+	29      (00000070) return-void          
+
+b-BB@0x72 : [ b-BB@0xb8 ]
+	30      (00000072) move-exception       v0
+	31      (00000074) move-object          v10, v0
+	32      (00000076) new-instance         v0, Ljava/lang/StringBuilder;
+	33      (0000007a) const-string         v2, "Error loading font "
+	34      (0000007e) invoke-direct        v0, v2, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	35      (00000084) iget-object          v2, v9, Ls3/d;->b Ljava/lang/String;
+	36      (00000088) invoke-virtual       v0, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	37      (0000008e) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	38      (00000094) move-result-object   v0
+	39      (00000096) const-string         v2, "TextAppearance"
+	40      (0000009a) invoke-static        v2, v0, v10, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+	41      (000000a0) iput-boolean         v1, v9, Ls3/d;->n Z
+	42      (000000a4) const/4              v10, -3
+	43      (000000a6) invoke-virtual       v11, v10, Lq4/b;->I(I)V
+	44      (000000ac) goto                 +6h
+
+b-BB@0xae : [ b-BB@0xb8 ]
+	45      (000000ae) iput-boolean         v1, v9, Ls3/d;->n Z
+	46      (000000b2) invoke-virtual       v11, v1, Lq4/b;->I(I)V
+
+b-BB@0xb8 : 
+	47      (000000b8) return-void          
+

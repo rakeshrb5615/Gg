@@ -1,0 +1,38 @@
+# Lr/b;->hashCode()I [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v5
+#
+# - return:int
+
+hashCode-BB@0x0 : [ hashCode-BB@0x10 ]
+	0       (00000000) iget-object          v0, v5, Lr/b;->a Lr/e;
+	1       (00000004) iget                 v1, v0, Lr/j;->c I
+	2       (00000008) add-int/lit8         v1, v1, -1
+	3       (0000000c) const/4              v2, 0
+	4       (0000000e) move                 v3, v2
+
+hashCode-BB@0x10 : [ hashCode-BB@0x14 hashCode-BB@0x34 ]
+	5       (00000010) if-ltz               v1, +012h
+
+hashCode-BB@0x14 : [ hashCode-BB@0x20 hashCode-BB@0x24 ]
+	6       (00000014) invoke-virtual       v0, v1, Lr/j;->g(I)Ljava/lang/Object;
+	7       (0000001a) move-result-object   v4
+	8       (0000001c) if-nez               v4, +004h
+
+hashCode-BB@0x20 : [ hashCode-BB@0x2c ]
+	9       (00000020) move                 v4, v2
+	10      (00000022) goto                 +5h
+
+hashCode-BB@0x24 : [ hashCode-BB@0x2c ]
+	11      (00000024) invoke-virtual       v4, Ljava/lang/Object;->hashCode()I
+	12      (0000002a) move-result          v4
+
+hashCode-BB@0x2c : [ hashCode-BB@0x10 ]
+	13      (0000002c) add-int/2addr        v3, v4
+	14      (0000002e) add-int/lit8         v1, v1, -1
+	15      (00000032) goto                 -11h
+
+hashCode-BB@0x34 : 
+	16      (00000034) return               v3
+

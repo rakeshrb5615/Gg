@@ -1,0 +1,43 @@
+# Lt/h;->g(Lt/h;)Ljava/lang/Object; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v0
+# - v1:t.h
+#
+# - return:java.lang.Object
+
+g-BB@0x0 : [ g-BB@0x2 ]
+	0       (00000000) const/4              v0, 0
+
+g-BB@0x2 : [ g-BB@0xe g-BB@0x1c ]
+	1       (00000002) invoke-virtual       v1, Lt/h;->get()Ljava/lang/Object;
+	2       (00000008) move-result-object   v1
+	3       (0000000a) if-eqz               v0, +009h
+	2:9
+	(Ljava/lang/InterruptedException; -> 34 g-BB@0x34)
+	(Ljava/lang/Throwable; -> 1e g-BB@0x1e)
+
+g-BB@0xe : [ g-BB@0x1c ]
+	4       (0000000e) invoke-static        Ljava/lang/Thread;->currentThread()Ljava/lang/Thread;
+	5       (00000014) move-result-object   v0
+	6       (00000016) invoke-virtual       v0, Ljava/lang/Thread;->interrupt()V
+
+g-BB@0x1c : 
+	7       (0000001c) return-object        v1
+
+g-BB@0x1e : [ g-BB@0x24 g-BB@0x32 ]
+	8       (0000001e) move-exception       v1
+	9       (00000020) if-eqz               v0, +009h
+
+g-BB@0x24 : [ g-BB@0x32 ]
+	10      (00000024) invoke-static        Ljava/lang/Thread;->currentThread()Ljava/lang/Thread;
+	11      (0000002a) move-result-object   v0
+	12      (0000002c) invoke-virtual       v0, Ljava/lang/Thread;->interrupt()V
+
+g-BB@0x32 : 
+	13      (00000032) throw                v1
+
+g-BB@0x34 : [ g-BB@0x2 ]
+	14      (00000034) const/4              v0, 1
+	15      (00000036) goto                 -1ah
+

@@ -1,0 +1,37 @@
+# Lq0/j1;->s(I Z)Lh0/b; [access_flags=private]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:int
+# - v5:boolean
+#
+# - return:h0.b
+
+s-BB@0x0 : [ s-BB@0x6 ]
+	0       (00000000) sget-object          v0, Lh0/b;->e Lh0/b;
+	1       (00000004) const/4              v1, 1
+
+s-BB@0x6 : [ s-BB@0xe s-BB@0x2e ]
+	2       (00000006) const/16             v2, 512
+	3       (0000000a) if-gt                v1, v2, +012h
+
+s-BB@0xe : [ s-BB@0x16 s-BB@0x18 ]
+	4       (0000000e) and-int              v2, v4, v1
+	5       (00000012) if-nez               v2, +003h
+
+s-BB@0x16 : [ s-BB@0x28 ]
+	6       (00000016) goto                 +9h
+
+s-BB@0x18 : [ s-BB@0x28 ]
+	7       (00000018) invoke-virtual       v3, v1, v5, Lq0/j1;->t(I Z)Lh0/b;
+	8       (0000001e) move-result-object   v2
+	9       (00000020) invoke-static        v0, v2, Lh0/b;->a(Lh0/b; Lh0/b;)Lh0/b;
+	10      (00000026) move-result-object   v0
+
+s-BB@0x28 : [ s-BB@0x6 ]
+	11      (00000028) shl-int/lit8         v1, v1, 1
+	12      (0000002c) goto                 -13h
+
+s-BB@0x2e : 
+	13      (0000002e) return-object        v0
+

@@ -1,0 +1,143 @@
+# Lr6/y0;->invokeSuspend(Ljava/lang/Object;)Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:java.lang.Object
+#
+# - return:java.lang.Object
+
+invokeSuspend-BB@0x0 : [ D:invokeSuspend-BB@0xa 0:invokeSuspend-BB@0xc8 ]
+	0       (00000000) iget                 v0, v6, Lr6/y0;->a I
+	1       (00000004) packed-switch        v0, +00000a2h
+
+invokeSuspend-BB@0xa : [ invokeSuspend-BB@0x1e invokeSuspend-BB@0x3e ]
+	2       (0000000a) sget-object          v0, Lm7/a;->a Lm7/a;
+	3       (0000000e) iget                 v1, v6, Lr6/y0;->b I
+	4       (00000012) const/4              v2, 0
+	5       (00000014) const/4              v3, 1
+	6       (00000016) iget-object          v4, v6, Lr6/y0;->c Lr6/c1;
+	7       (0000001a) if-eqz               v1, +012h
+
+invokeSuspend-BB@0x1e : [ invokeSuspend-BB@0x22 invokeSuspend-BB@0x2e ]
+	8       (0000001e) if-ne                v1, v3, +008h
+
+invokeSuspend-BB@0x22 : [ invokeSuspend-BB@0xb6 ]
+	9       (00000022) invoke-static        v7, Lc4/b;->e0(Ljava/lang/Object;)V
+	10      (00000028) goto                 +47h
+	22:27
+	(Ljava/lang/Exception; -> 2a invokeSuspend-BB@0x2a)
+
+invokeSuspend-BB@0x2a : [ invokeSuspend-BB@0x66 ]
+	11      (0000002a) move-exception       v7
+	12      (0000002c) goto                 +1dh
+
+invokeSuspend-BB@0x2e : 
+	13      (0000002e) new-instance         v7, Ljava/lang/IllegalStateException;
+	14      (00000032) const-string         v0, "call to 'resume' before 'invoke' with coroutine"
+	15      (00000036) invoke-direct        v7, v0, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	16      (0000003c) throw                v7
+
+invokeSuspend-BB@0x3e : [ invokeSuspend-BB@0x44 ]
+	17      (0000003e) invoke-static        v7, Lc4/b;->e0(Ljava/lang/Object;)V
+
+invokeSuspend-BB@0x44 : [ invokeSuspend-BB@0x64 invokeSuspend-BB@0xb6 ]
+	18      (00000044) iget-object          v7, v4, Lr6/c1;->e La1/h;
+	19      (00000048) new-instance         v1, Lr6/a1;
+	20      (0000004c) const/4              v5, 0
+	21      (0000004e) invoke-direct        v1, v4, v2, v5, Lr6/a1;-><init>(Lr6/c1; Ll7/c; I)V
+	22      (00000054) iput                 v3, v6, Lr6/y0;->b I
+	23      (00000058) invoke-interface     v7, v1, v6, La1/h;->a(Lu7/p; Ln7/c;)Ljava/lang/Object;
+	24      (0000005e) move-result-object   v7
+	25      (00000060) if-ne                v7, v0, +02bh
+	44:5f
+	(Ljava/lang/Exception; -> 2a invokeSuspend-BB@0x2a)
+
+invokeSuspend-BB@0x64 : [ invokeSuspend-BB@0xba ]
+	26      (00000064) goto                 +2bh
+
+invokeSuspend-BB@0x66 : [ invokeSuspend-BB@0x9c invokeSuspend-BB@0xbc ]
+	27      (00000066) new-instance         v0, Ljava/lang/StringBuilder;
+	28      (0000006a) const-string         v1, "App backgrounded, failed to update data. Message: "
+	29      (0000006e) invoke-direct        v0, v1, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	30      (00000074) invoke-virtual       v7, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+	31      (0000007a) move-result-object   v7
+	32      (0000007c) invoke-virtual       v0, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	33      (00000082) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	34      (00000088) move-result-object   v7
+	35      (0000008a) const-string         v0, "FirebaseSessions"
+	36      (0000008e) invoke-static        v0, v7, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String;)I
+	37      (00000094) iget-object          v7, v4, Lr6/c1;->h Lr6/h0;
+	38      (00000098) if-eqz               v7, +012h
+
+invokeSuspend-BB@0x9c : [ invokeSuspend-BB@0xb6 ]
+	39      (0000009c) iget-object          v0, v4, Lr6/c1;->d Lr6/g1;
+	40      (000000a0) invoke-virtual       v0, Lr6/g1;->a()Lr6/f1;
+	41      (000000a6) move-result-object   v0
+	42      (000000a8) const/4              v1, 5
+	43      (000000aa) invoke-static        v7, v2, v0, v2, v1, Lr6/h0;->a(Lr6/h0; Lr6/m0; Lr6/f1; Ljava/util/Map; I)Lr6/h0;
+	44      (000000b0) move-result-object   v7
+	45      (000000b2) iput-object          v7, v4, Lr6/c1;->h Lr6/h0;
+
+invokeSuspend-BB@0xb6 : [ invokeSuspend-BB@0xba ]
+	46      (000000b6) sget-object          v0, Lh7/l;->a Lh7/l;
+
+invokeSuspend-BB@0xba : 
+	47      (000000ba) return-object        v0
+
+invokeSuspend-BB@0xbc : 
+	48      (000000bc) const-string         v7, "localSessionData"
+	49      (000000c0) invoke-static        v7, Lkotlin/jvm/internal/j;->i(Ljava/lang/String;)V
+	50      (000000c6) throw                v2
+
+invokeSuspend-BB@0xc8 : [ invokeSuspend-BB@0xd6 invokeSuspend-BB@0xf2 ]
+	51      (000000c8) sget-object          v0, Lm7/a;->a Lm7/a;
+	52      (000000cc) iget                 v1, v6, Lr6/y0;->b I
+	53      (000000d0) const/4              v2, 1
+	54      (000000d2) if-eqz               v1, +010h
+
+invokeSuspend-BB@0xd6 : [ invokeSuspend-BB@0xda invokeSuspend-BB@0xe2 ]
+	55      (000000d6) if-ne                v1, v2, +006h
+
+invokeSuspend-BB@0xda : [ invokeSuspend-BB@0x140 ]
+	56      (000000da) invoke-static        v7, Lc4/b;->e0(Ljava/lang/Object;)V
+	57      (000000e0) goto                 +30h
+
+invokeSuspend-BB@0xe2 : 
+	58      (000000e2) new-instance         v7, Ljava/lang/IllegalStateException;
+	59      (000000e6) const-string         v0, "call to 'resume' before 'invoke' with coroutine"
+	60      (000000ea) invoke-direct        v7, v0, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	61      (000000f0) throw                v7
+
+invokeSuspend-BB@0xf2 : [ invokeSuspend-BB@0x13e invokeSuspend-BB@0x140 ]
+	62      (000000f2) invoke-static        v7, Lc4/b;->e0(Ljava/lang/Object;)V
+	63      (000000f8) iget-object          v7, v6, Lr6/y0;->c Lr6/c1;
+	64      (000000fc) iget-object          v1, v7, Lr6/c1;->e La1/h;
+	65      (00000100) invoke-interface     v1, La1/h;->b()Lg8/c;
+	66      (00000106) move-result-object   v1
+	67      (00000108) new-instance         v3, Lr6/x0;
+	68      (0000010c) const/4              v4, 0
+	69      (0000010e) invoke-direct        v3, v7, v4, Lr6/x0;-><init>(Lr6/c1; Ll7/c;)V
+	70      (00000114) new-instance         v4, Lk2/c;
+	71      (00000118) const/16             v5, 19
+	72      (0000011c) invoke-direct        v4, v5, v1, v3, Lk2/c;-><init>(I Ljava/lang/Object; Ljava/lang/Object;)V
+	73      (00000122) new-instance         v1, La1/s;
+	74      (00000126) const/4              v3, 2
+	75      (00000128) invoke-direct        v1, v7, v3, La1/s;-><init>(Ljava/lang/Object; I)V
+	76      (0000012e) iput                 v2, v6, Lr6/y0;->b I
+	77      (00000132) invoke-virtual       v4, v1, v6, Lk2/c;->f(Lg8/d; Ln7/c;)Ljava/lang/Object;
+	78      (00000138) move-result-object   v7
+	79      (0000013a) if-ne                v7, v0, +003h
+
+invokeSuspend-BB@0x13e : [ invokeSuspend-BB@0x144 ]
+	80      (0000013e) goto                 +3h
+
+invokeSuspend-BB@0x140 : [ invokeSuspend-BB@0x144 ]
+	81      (00000140) sget-object          v0, Lh7/l;->a Lh7/l;
+
+invokeSuspend-BB@0x144 : 
+	82      (00000144) return-object        v0
+
+invokeSuspend-BB@0x146 : 
+	83      (00000146) nop                  
+	84      (00000148) packed-switch-payload 0
+

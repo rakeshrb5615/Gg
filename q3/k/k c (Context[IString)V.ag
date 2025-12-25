@@ -1,0 +1,42 @@
+# Lq3/k;->c(Landroid/content/Context; [I Ljava/lang/String;)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:android.content.Context
+# - v3:int[]
+# - v4:java.lang.String
+#
+# - return:void
+
+c-BB@0x0 : [ c-BB@0xa ]
+	0       (00000000) invoke-virtual       v2, v3, Landroid/content/Context;->obtainStyledAttributes([I)Landroid/content/res/TypedArray;
+	1       (00000006) move-result-object   v2
+	2       (00000008) const/4              v0, 0
+
+c-BB@0xa : [ c-BB@0x10 c-BB@0x44 ]
+	3       (0000000a) array-length         v1, v3
+	4       (0000000c) if-ge                v0, v1, +01ch
+
+c-BB@0x10 : [ c-BB@0x1c c-BB@0x22 ]
+	5       (00000010) invoke-virtual       v2, v0, Landroid/content/res/TypedArray;->hasValue(I)Z
+	6       (00000016) move-result          v1
+	7       (00000018) if-eqz               v1, +005h
+
+c-BB@0x1c : [ c-BB@0xa ]
+	8       (0000001c) add-int/lit8         v0, v0, 1
+	9       (00000020) goto                 -bh
+
+c-BB@0x22 : 
+	10      (00000022) invoke-virtual       v2, Landroid/content/res/TypedArray;->recycle()V
+	11      (00000028) new-instance         v2, Ljava/lang/IllegalArgumentException;
+	12      (0000002c) const-string         v3, "The style on this component requires your app theme to be "
+	13      (00000030) const-string         v0, " (or a descendant)."
+	14      (00000034) invoke-static        v3, v4, v0, Lv1/a;->l(Ljava/lang/String; Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	15      (0000003a) move-result-object   v3
+	16      (0000003c) invoke-direct        v2, v3, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	17      (00000042) throw                v2
+
+c-BB@0x44 : 
+	18      (00000044) invoke-virtual       v2, Landroid/content/res/TypedArray;->recycle()V
+	19      (0000004a) return-void          
+

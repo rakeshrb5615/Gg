@@ -1,0 +1,26 @@
+# Lr0/c;->c(Ljava/lang/String;)Ljava/util/ArrayList; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:java.lang.String
+#
+# - return:java.util.ArrayList
+
+c-BB@0x0 : [ c-BB@0x18 c-BB@0x30 ]
+	0       (00000000) iget-object          v0, v2, Lr0/c;->a Landroid/view/accessibility/AccessibilityNodeInfo;
+	1       (00000004) invoke-virtual       v0, Landroid/view/accessibility/AccessibilityNodeInfo;->getExtras()Landroid/os/Bundle;
+	2       (0000000a) move-result-object   v1
+	3       (0000000c) invoke-virtual       v1, v3, Landroid/os/Bundle;->getIntegerArrayList(Ljava/lang/String;)Ljava/util/ArrayList;
+	4       (00000012) move-result-object   v1
+	5       (00000014) if-nez               v1, +00eh
+
+c-BB@0x18 : [ c-BB@0x30 ]
+	6       (00000018) new-instance         v1, Ljava/util/ArrayList;
+	7       (0000001c) invoke-direct        v1, Ljava/util/ArrayList;-><init>()V
+	8       (00000022) invoke-virtual       v0, Landroid/view/accessibility/AccessibilityNodeInfo;->getExtras()Landroid/os/Bundle;
+	9       (00000028) move-result-object   v0
+	10      (0000002a) invoke-virtual       v0, v3, v1, Landroid/os/Bundle;->putIntegerArrayList(Ljava/lang/String; Ljava/util/ArrayList;)V
+
+c-BB@0x30 : 
+	11      (00000030) return-object        v1
+

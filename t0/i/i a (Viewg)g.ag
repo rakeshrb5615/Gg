@@ -1,0 +1,119 @@
+# Lt0/i;->a(Landroid/view/View; Lq0/g;)Lq0/g; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v8
+# - v9:android.view.View
+# - v10:q0.g
+#
+# - return:q0.g
+
+a-BB@0x0 : [ a-BB@0x12 a-BB@0x34 ]
+	0       (00000000) const/4              v0, 3
+	1       (00000002) const-string         v1, "ReceiveContent"
+	2       (00000006) invoke-static        v1, v0, Landroid/util/Log;->isLoggable(Ljava/lang/String; I)Z
+	3       (0000000c) move-result          v0
+	4       (0000000e) if-eqz               v0, +013h
+
+a-BB@0x12 : [ a-BB@0x34 ]
+	5       (00000012) new-instance         v0, Ljava/lang/StringBuilder;
+	6       (00000016) const-string         v2, "onReceive: "
+	7       (0000001a) invoke-direct        v0, v2, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	8       (00000020) invoke-virtual       v0, v10, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	9       (00000026) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	10      (0000002c) move-result-object   v0
+	11      (0000002e) invoke-static        v1, v0, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String;)I
+
+a-BB@0x34 : [ a-BB@0x46 a-BB@0x48 ]
+	12      (00000034) iget-object          v0, v10, Lq0/g;->a Lq0/f;
+	13      (00000038) invoke-interface     v0, Lq0/f;->a()I
+	14      (0000003e) move-result          v1
+	15      (00000040) const/4              v2, 2
+	16      (00000042) if-ne                v1, v2, +003h
+
+a-BB@0x46 : 
+	17      (00000046) return-object        v10
+
+a-BB@0x48 : [ a-BB@0x76 ]
+	18      (00000048) invoke-interface     v0, Lq0/f;->b()Landroid/content/ClipData;
+	19      (0000004e) move-result-object   v10
+	20      (00000050) invoke-interface     v0, Lq0/f;->c()I
+	21      (00000056) move-result          v0
+	22      (00000058) check-cast           v9, Landroid/widget/TextView;
+	23      (0000005c) invoke-virtual       v9, Landroid/widget/TextView;->getText()Ljava/lang/CharSequence;
+	24      (00000062) move-result-object   v1
+	25      (00000064) check-cast           v1, Landroid/text/Editable;
+	26      (00000068) invoke-virtual       v9, Landroid/view/View;->getContext()Landroid/content/Context;
+	27      (0000006e) move-result-object   v9
+	28      (00000070) const/4              v2, 0
+	29      (00000072) move                 v3, v2
+	30      (00000074) move                 v4, v3
+
+a-BB@0x76 : [ a-BB@0x82 a-BB@0x124 ]
+	31      (00000076) invoke-virtual       v10, Landroid/content/ClipData;->getItemCount()I
+	32      (0000007c) move-result          v5
+	33      (0000007e) if-ge                v3, v5, +053h
+
+a-BB@0x82 : [ a-BB@0x94 a-BB@0xae ]
+	34      (00000082) invoke-virtual       v10, v3, Landroid/content/ClipData;->getItemAt(I)Landroid/content/ClipData$Item;
+	35      (00000088) move-result-object   v5
+	36      (0000008a) const/4              v6, 1
+	37      (0000008c) and-int/lit8         v7, v0, 1
+	38      (00000090) if-eqz               v7, +00fh
+
+a-BB@0x94 : [ a-BB@0xa4 a-BB@0xb6 ]
+	39      (00000094) invoke-virtual       v5, v9, Landroid/content/ClipData$Item;->coerceToText(Landroid/content/Context;)Ljava/lang/CharSequence;
+	40      (0000009a) move-result-object   v5
+	41      (0000009c) instance-of          v7, v5, Landroid/text/Spanned;
+	42      (000000a0) if-eqz               v7, +00bh
+
+a-BB@0xa4 : [ a-BB@0xb6 ]
+	43      (000000a4) invoke-interface     v5, Ljava/lang/CharSequence;->toString()Ljava/lang/String;
+	44      (000000aa) move-result-object   v5
+	45      (000000ac) goto                 +5h
+
+a-BB@0xae : [ a-BB@0xb6 ]
+	46      (000000ae) invoke-virtual       v5, v9, Landroid/content/ClipData$Item;->coerceToStyledText(Landroid/content/Context;)Ljava/lang/CharSequence;
+	47      (000000b4) move-result-object   v5
+
+a-BB@0xb6 : [ a-BB@0xba a-BB@0x11e ]
+	48      (000000b6) if-eqz               v5, +034h
+
+a-BB@0xba : [ a-BB@0xbe a-BB@0xfe ]
+	49      (000000ba) if-nez               v4, +022h
+
+a-BB@0xbe : [ a-BB@0x11e ]
+	50      (000000be) invoke-static        v1, Landroid/text/Selection;->getSelectionStart(Ljava/lang/CharSequence;)I
+	51      (000000c4) move-result          v4
+	52      (000000c6) invoke-static        v1, Landroid/text/Selection;->getSelectionEnd(Ljava/lang/CharSequence;)I
+	53      (000000cc) move-result          v7
+	54      (000000ce) invoke-static        v4, v7, Ljava/lang/Math;->min(I I)I
+	55      (000000d4) move-result          v8
+	56      (000000d6) invoke-static        v2, v8, Ljava/lang/Math;->max(I I)I
+	57      (000000dc) move-result          v8
+	58      (000000de) invoke-static        v4, v7, Ljava/lang/Math;->max(I I)I
+	59      (000000e4) move-result          v4
+	60      (000000e6) invoke-static        v2, v4, Ljava/lang/Math;->max(I I)I
+	61      (000000ec) move-result          v4
+	62      (000000ee) invoke-static        v1, v4, Landroid/text/Selection;->setSelection(Landroid/text/Spannable; I)V
+	63      (000000f4) invoke-interface     v1, v8, v4, v5, Landroid/text/Editable;->replace(I I Ljava/lang/CharSequence;)Landroid/text/Editable;
+	64      (000000fa) move                 v4, v6
+	65      (000000fc) goto                 +11h
+
+a-BB@0xfe : [ a-BB@0x11e ]
+	66      (000000fe) invoke-static        v1, Landroid/text/Selection;->getSelectionEnd(Ljava/lang/CharSequence;)I
+	67      (00000104) move-result          v6
+	68      (00000106) const-string         v7, "
+"
+	69      (0000010a) invoke-interface     v1, v6, v7, Landroid/text/Editable;->insert(I Ljava/lang/CharSequence;)Landroid/text/Editable;
+	70      (00000110) invoke-static        v1, Landroid/text/Selection;->getSelectionEnd(Ljava/lang/CharSequence;)I
+	71      (00000116) move-result          v6
+	72      (00000118) invoke-interface     v1, v6, v5, Landroid/text/Editable;->insert(I Ljava/lang/CharSequence;)Landroid/text/Editable;
+
+a-BB@0x11e : [ a-BB@0x76 ]
+	73      (0000011e) add-int/lit8         v3, v3, 1
+	74      (00000122) goto                 -56h
+
+a-BB@0x124 : 
+	75      (00000124) const/4              v9, 0
+	76      (00000126) return-object        v9
+

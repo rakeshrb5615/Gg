@@ -1,0 +1,31 @@
+# Lt/k;->cancel(Z)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:boolean
+#
+# - return:boolean
+
+cancel-BB@0x0 : [ cancel-BB@0x20 cancel-BB@0x38 ]
+	0       (00000000) iget-object          v0, v2, Lt/k;->a Ljava/lang/ref/WeakReference;
+	1       (00000004) invoke-virtual       v0, Ljava/lang/ref/Reference;->get()Ljava/lang/Object;
+	2       (0000000a) move-result-object   v0
+	3       (0000000c) check-cast           v0, Lt/i;
+	4       (00000010) iget-object          v1, v2, Lt/k;->b Lt/j;
+	5       (00000014) invoke-virtual       v1, v3, Lt/h;->cancel(Z)Z
+	6       (0000001a) move-result          v3
+	7       (0000001c) if-eqz               v3, +00eh
+
+cancel-BB@0x20 : [ cancel-BB@0x24 cancel-BB@0x38 ]
+	8       (00000020) if-eqz               v0, +00ch
+
+cancel-BB@0x24 : [ cancel-BB@0x38 ]
+	9       (00000024) const/4              v1, 0
+	10      (00000026) iput-object          v1, v0, Lt/i;->a Ljava/lang/Object;
+	11      (0000002a) iput-object          v1, v0, Lt/i;->b Lt/k;
+	12      (0000002e) iget-object          v0, v0, Lt/i;->c Lt/l;
+	13      (00000032) invoke-virtual       v0, v1, Lt/h;->j(Ljava/lang/Object;)Z
+
+cancel-BB@0x38 : 
+	14      (00000038) return               v3
+

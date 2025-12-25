@@ -1,0 +1,45 @@
+# Lt/i;->finalize()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v4
+#
+# - return:void
+
+finalize-BB@0x0 : [ finalize-BB@0x8 finalize-BB@0x4a ]
+	0       (00000000) iget-object          v0, v4, Lt/i;->b Lt/k;
+	1       (00000004) if-eqz               v0, +023h
+
+finalize-BB@0x8 : [ finalize-BB@0x18 finalize-BB@0x4a ]
+	2       (00000008) iget-object          v0, v0, Lt/k;->b Lt/j;
+	3       (0000000c) invoke-virtual       v0, Lt/h;->isDone()Z
+	4       (00000012) move-result          v1
+	5       (00000014) if-nez               v1, +01bh
+
+finalize-BB@0x18 : [ finalize-BB@0x4a ]
+	6       (00000018) new-instance         v1, Lt/b;
+	7       (0000001c) new-instance         v2, Ljava/lang/StringBuilder;
+	8       (00000020) const-string         v3, "The completer object was garbage collected - this future would otherwise never complete. The tag was: "
+	9       (00000024) invoke-direct        v2, v3, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	10      (0000002a) iget-object          v3, v4, Lt/i;->a Ljava/lang/Object;
+	11      (0000002e) invoke-virtual       v2, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	12      (00000034) invoke-virtual       v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	13      (0000003a) move-result-object   v2
+	14      (0000003c) const/4              v3, 1
+	15      (0000003e) invoke-direct        v1, v2, v3, Lt/b;-><init>(Ljava/lang/String; I)V
+	16      (00000044) invoke-virtual       v0, v1, Lt/h;->k(Ljava/lang/Throwable;)Z
+
+finalize-BB@0x4a : [ finalize-BB@0x52 finalize-BB@0x62 ]
+	17      (0000004a) iget-boolean         v0, v4, Lt/i;->d Z
+	18      (0000004e) if-nez               v0, +00ah
+
+finalize-BB@0x52 : [ finalize-BB@0x5a finalize-BB@0x62 ]
+	19      (00000052) iget-object          v0, v4, Lt/i;->c Lt/l;
+	20      (00000056) if-eqz               v0, +006h
+
+finalize-BB@0x5a : [ finalize-BB@0x62 ]
+	21      (0000005a) const/4              v1, 0
+	22      (0000005c) invoke-virtual       v0, v1, Lt/h;->j(Ljava/lang/Object;)Z
+
+finalize-BB@0x62 : 
+	23      (00000062) return-void          
+

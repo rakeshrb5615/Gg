@@ -1,0 +1,53 @@
+# Lr/a;->next()Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v3
+#
+# - return:java.lang.Object
+
+next-BB@0x0 : [ next-BB@0xc next-BB@0x60 ]
+	0       (00000000) invoke-virtual       v3, Lr/a;->hasNext()Z
+	1       (00000006) move-result          v0
+	2       (00000008) if-eqz               v0, +02ch
+
+next-BB@0xc : [ D:next-BB@0x1a 0:next-BB@0x3e 1:next-BB@0x2c ]
+	3       (0000000c) iget                 v0, v3, Lr/a;->b I
+	4       (00000010) iget                 v1, v3, Lr/a;->d I
+	5       (00000014) packed-switch        v1, +000002ch
+
+next-BB@0x1a : [ next-BB@0x4e ]
+	6       (0000001a) iget-object          v1, v3, Lr/a;->e Ljava/lang/Object;
+	7       (0000001e) check-cast           v1, Lr/f;
+	8       (00000022) iget-object          v1, v1, Lr/f;->b [Ljava/lang/Object;
+	9       (00000026) aget-object          v0, v1, v0
+	10      (0000002a) goto                 +12h
+
+next-BB@0x2c : [ next-BB@0x4e ]
+	11      (0000002c) iget-object          v1, v3, Lr/a;->e Ljava/lang/Object;
+	12      (00000030) check-cast           v1, Lr/e;
+	13      (00000034) invoke-virtual       v1, v0, Lr/j;->j(I)Ljava/lang/Object;
+	14      (0000003a) move-result-object   v0
+	15      (0000003c) goto                 +9h
+
+next-BB@0x3e : [ next-BB@0x4e ]
+	16      (0000003e) iget-object          v1, v3, Lr/a;->e Ljava/lang/Object;
+	17      (00000042) check-cast           v1, Lr/e;
+	18      (00000046) invoke-virtual       v1, v0, Lr/j;->g(I)Ljava/lang/Object;
+	19      (0000004c) move-result-object   v0
+
+next-BB@0x4e : 
+	20      (0000004e) iget                 v1, v3, Lr/a;->b I
+	21      (00000052) const/4              v2, 1
+	22      (00000054) add-int/2addr        v1, v2
+	23      (00000056) iput                 v1, v3, Lr/a;->b I
+	24      (0000005a) iput-boolean         v2, v3, Lr/a;->c Z
+	25      (0000005e) return-object        v0
+
+next-BB@0x60 : 
+	26      (00000060) new-instance         v0, Ljava/util/NoSuchElementException;
+	27      (00000064) invoke-direct        v0, Ljava/util/NoSuchElementException;-><init>()V
+	28      (0000006a) throw                v0
+
+next-BB@0x6c : 
+	29      (0000006c) packed-switch-payload 0 1
+

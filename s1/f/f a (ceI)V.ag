@@ -1,0 +1,83 @@
+# Ls1/f;->a(Ls1/c; Ls1/e; I)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:s1.c
+# - v4:s1.e
+# - v5:int
+#
+# - return:void
+
+a-BB@0x0 : [ a-BB@0x12 a-BB@0x74 ]
+	0       (00000000) const-string         v0, "dispatcher"
+	1       (00000004) invoke-static        v3, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) iget-object          v0, v4, Ls1/e;->a Ls1/c;
+	3       (0000000e) if-nez               v0, +033h
+
+a-BB@0x12 : [ a-BB@0x18 a-BB@0x28 ]
+	4       (00000012) const/4              v0, 1
+	5       (00000014) if-eqz               v5, +00ah
+
+a-BB@0x18 : [ a-BB@0x1c a-BB@0x22 ]
+	6       (00000018) if-eq                v5, v0, +005h
+
+a-BB@0x1c : [ a-BB@0x2c ]
+	7       (0000001c) iget-object          v1, v2, Ls1/f;->i Ljava/util/LinkedHashSet;
+	8       (00000020) goto                 +6h
+
+a-BB@0x22 : [ a-BB@0x2c ]
+	9       (00000022) iget-object          v1, v2, Ls1/f;->j Ljava/util/LinkedHashSet;
+	10      (00000026) goto                 +3h
+
+a-BB@0x28 : [ a-BB@0x2c ]
+	11      (00000028) iget-object          v1, v2, Ls1/f;->k Ljava/util/LinkedHashSet;
+
+a-BB@0x2c : [ a-BB@0x58 a-BB@0x68 ]
+	12      (0000002c) invoke-interface     v1, v4, Ljava/util/Collection;->add(Ljava/lang/Object;)Z
+	13      (00000032) iput-object          v3, v4, Ls1/e;->a Ls1/c;
+	14      (00000036) iget-object          v3, v2, Ls1/f;->c Lg8/v;
+	15      (0000003a) iget-object          v3, v3, Lg8/v;->a Lg8/y;
+	16      (0000003e) invoke-virtual       v3, Lg8/y;->b()Ljava/lang/Object;
+	17      (00000044) move-result-object   v3
+	18      (00000046) check-cast           v3, Ls1/d;
+	19      (0000004a) const-string         v1, "history"
+	20      (0000004e) invoke-static        v3, v1, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	21      (00000054) if-eqz               v5, +00ah
+
+a-BB@0x58 : [ a-BB@0x5c a-BB@0x62 ]
+	22      (00000058) if-eq                v5, v0, +005h
+
+a-BB@0x5c : [ a-BB@0x6c ]
+	23      (0000005c) iget-boolean         v3, v2, Ls1/f;->n Z
+	24      (00000060) goto                 +6h
+
+a-BB@0x62 : [ a-BB@0x6c ]
+	25      (00000062) iget-boolean         v3, v2, Ls1/f;->l Z
+	26      (00000066) goto                 +3h
+
+a-BB@0x68 : [ a-BB@0x6c ]
+	27      (00000068) iget-boolean         v3, v2, Ls1/f;->m Z
+
+a-BB@0x6c : 
+	28      (0000006c) invoke-virtual       v4, v3, Ls1/e;->b(Z)V
+	29      (00000072) return-void          
+
+a-BB@0x74 : 
+	30      (00000074) new-instance         v3, Ljava/lang/StringBuilder;
+	31      (00000078) const-string         v5, "Input '"
+	32      (0000007c) invoke-direct        v3, v5, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	33      (00000082) invoke-virtual       v3, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	34      (00000088) const-string         v5, "' is already added to dispatcher "
+	35      (0000008c) invoke-virtual       v3, v5, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	36      (00000092) iget-object          v4, v4, Ls1/e;->a Ls1/c;
+	37      (00000096) invoke-virtual       v3, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	38      (0000009c) const/16             v4, 46
+	39      (000000a0) invoke-virtual       v3, v4, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+	40      (000000a6) invoke-virtual       v3, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	41      (000000ac) move-result-object   v3
+	42      (000000ae) new-instance         v4, Ljava/lang/IllegalArgumentException;
+	43      (000000b2) invoke-virtual       v3, Ljava/lang/Object;->toString()Ljava/lang/String;
+	44      (000000b8) move-result-object   v3
+	45      (000000ba) invoke-direct        v4, v3, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	46      (000000c0) throw                v4
+

@@ -1,0 +1,45 @@
+# Lr6/a0;->equals(Ljava/lang/Object;)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:java.lang.Object
+#
+# - return:boolean
+
+equals-BB@0x0 : [ equals-BB@0x6 equals-BB@0x8 ]
+	0       (00000000) const/4              v0, 1
+	1       (00000002) if-ne                v4, v5, +003h
+
+equals-BB@0x6 : 
+	2       (00000006) return               v0
+
+equals-BB@0x8 : [ equals-BB@0x12 equals-BB@0x14 ]
+	3       (00000008) instance-of          v1, v5, Lr6/a0;
+	4       (0000000c) const/4              v2, 0
+	5       (0000000e) if-nez               v1, +003h
+
+equals-BB@0x12 : 
+	6       (00000012) return               v2
+
+equals-BB@0x14 : [ equals-BB@0x24 equals-BB@0x26 ]
+	7       (00000014) check-cast           v5, Lr6/a0;
+	8       (00000018) iget                 v1, v4, Lr6/a0;->a I
+	9       (0000001c) iget                 v3, v5, Lr6/a0;->a I
+	10      (00000020) if-eq                v1, v3, +003h
+
+equals-BB@0x24 : 
+	11      (00000024) return               v2
+
+equals-BB@0x26 : [ equals-BB@0x3a equals-BB@0x3c ]
+	12      (00000026) iget-object          v1, v4, Lr6/a0;->b Ljava/lang/String;
+	13      (0000002a) iget-object          v5, v5, Lr6/a0;->b Ljava/lang/String;
+	14      (0000002e) invoke-static        v1, v5, Lkotlin/jvm/internal/j;->a(Ljava/lang/Object; Ljava/lang/Object;)Z
+	15      (00000034) move-result          v5
+	16      (00000036) if-nez               v5, +003h
+
+equals-BB@0x3a : 
+	17      (0000003a) return               v2
+
+equals-BB@0x3c : 
+	18      (0000003c) return               v0
+

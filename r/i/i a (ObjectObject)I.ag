@@ -1,0 +1,33 @@
+# Lr/i;->a(Ljava/lang/Object; Ljava/lang/Object;)I [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:java.lang.Object
+# - v4:java.lang.Object
+#
+# - return:int
+
+a-BB@0x0 : [ a-BB@0xc a-BB@0xe ]
+	0       (00000000) invoke-virtual       v2, v3, v4, Lr/i;->sizeOf(Ljava/lang/Object; Ljava/lang/Object;)I
+	1       (00000006) move-result          v0
+	2       (00000008) if-ltz               v0, +003h
+
+a-BB@0xc : 
+	3       (0000000c) return               v0
+
+a-BB@0xe : 
+	4       (0000000e) new-instance         v0, Ljava/lang/StringBuilder;
+	5       (00000012) const-string         v1, "Negative size: "
+	6       (00000016) invoke-direct        v0, v1, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	7       (0000001c) invoke-virtual       v0, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	8       (00000022) const/16             v3, 61
+	9       (00000026) invoke-virtual       v0, v3, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+	10      (0000002c) invoke-virtual       v0, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	11      (00000032) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	12      (00000038) move-result-object   v3
+	13      (0000003a) const-string         v4, "message"
+	14      (0000003e) invoke-static        v3, v4, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	15      (00000044) new-instance         v4, Ljava/lang/IllegalStateException;
+	16      (00000048) invoke-direct        v4, v3, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	17      (0000004e) throw                v4
+

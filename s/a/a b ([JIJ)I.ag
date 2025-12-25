@@ -1,0 +1,44 @@
+# Ls/a;->b([J I J)I [access_flags=public static final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:long[]
+# - v6:int
+# - v7:long
+#
+# - return:int
+
+b-BB@0x0 : [ b-BB@0x10 ]
+	0       (00000000) const-string         v0, "array"
+	1       (00000004) invoke-static        v4, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) add-int/lit8         v5, v5, -1
+	3       (0000000e) const/4              v0, 0
+
+b-BB@0x10 : [ b-BB@0x14 b-BB@0x3a ]
+	4       (00000010) if-gt                v0, v5, +015h
+
+b-BB@0x14 : [ b-BB@0x28 b-BB@0x2e ]
+	5       (00000014) add-int              v1, v0, v5
+	6       (00000018) ushr-int/lit8        v1, v1, 1
+	7       (0000001c) aget-wide            v2, v4, v1
+	8       (00000020) cmp-long             v2, v2, v6
+	9       (00000024) if-gez               v2, +005h
+
+b-BB@0x28 : [ b-BB@0x10 ]
+	10      (00000028) add-int/lit8         v0, v1, 1
+	11      (0000002c) goto                 -eh
+
+b-BB@0x2e : [ b-BB@0x32 b-BB@0x38 ]
+	12      (0000002e) if-lez               v2, +005h
+
+b-BB@0x32 : [ b-BB@0x10 ]
+	13      (00000032) add-int/lit8         v5, v1, -1
+	14      (00000036) goto                 -13h
+
+b-BB@0x38 : 
+	15      (00000038) return               v1
+
+b-BB@0x3a : 
+	16      (0000003a) not-int              v4, v0
+	17      (0000003c) return               v4
+

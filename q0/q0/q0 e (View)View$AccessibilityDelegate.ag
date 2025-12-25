@@ -1,0 +1,65 @@
+# Lq0/q0;->e(Landroid/view/View;)Landroid/view/View$AccessibilityDelegate; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:android.view.View
+#
+# - return:android.view.View$AccessibilityDelegate
+
+e-BB@0x0 : [ e-BB@0xc e-BB@0x16 ]
+	0       (00000000) sget                 v0, Landroid/os/Build$VERSION;->SDK_INT I
+	1       (00000004) const/16             v1, 29
+	2       (00000008) if-lt                v0, v1, +007h
+
+e-BB@0xc : 
+	3       (0000000c) invoke-static        v3, Lq0/m0;->a(Landroid/view/View;)Landroid/view/View$AccessibilityDelegate;
+	4       (00000012) move-result-object   v3
+	5       (00000014) return-object        v3
+
+e-BB@0x16 : [ e-BB@0x1e e-BB@0x20 ]
+	6       (00000016) sget-boolean         v0, Lq0/q0;->c Z
+	7       (0000001a) if-eqz               v0, +003h
+
+e-BB@0x1e : [ e-BB@0x6a ]
+	8       (0000001e) goto                 +26h
+
+e-BB@0x20 : [ e-BB@0x2a e-BB@0x4c ]
+	9       (00000020) sget-object          v0, Lq0/q0;->b Ljava/lang/reflect/Field;
+	10      (00000024) const/4              v1, 1
+	11      (00000026) if-nez               v0, +013h
+
+e-BB@0x2a : [ e-BB@0x4c ]
+	12      (0000002a) const-class          v0, Landroid/view/View;
+	13      (0000002e) const-string         v2, "mAccessibilityDelegate"
+	14      (00000032) invoke-virtual       v0, v2, Ljava/lang/Class;->getDeclaredField(Ljava/lang/String;)Ljava/lang/reflect/Field;
+	15      (00000038) move-result-object   v0
+	16      (0000003a) sput-object          v0, Lq0/q0;->b Ljava/lang/reflect/Field;
+	17      (0000003e) invoke-virtual       v0, v1, Ljava/lang/reflect/AccessibleObject;->setAccessible(Z)V
+	18      (00000044) goto                 +4h
+	2a:43
+	(Ljava/lang/Throwable; -> 46 e-BB@0x46)
+
+e-BB@0x46 : [ e-BB@0x6a ]
+	19      (00000046) sput-boolean         v1, Lq0/q0;->c Z
+	20      (0000004a) goto                 +10h
+
+e-BB@0x4c : [ e-BB@0x60 e-BB@0x6a ]
+	21      (0000004c) sget-object          v0, Lq0/q0;->b Ljava/lang/reflect/Field;
+	22      (00000050) invoke-virtual       v0, v3, Ljava/lang/reflect/Field;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	23      (00000056) move-result-object   v3
+	24      (00000058) instance-of          v0, v3, Landroid/view/View$AccessibilityDelegate;
+	25      (0000005c) if-eqz               v0, +007h
+	4c:63
+	(Ljava/lang/Throwable; -> 66 e-BB@0x66)
+
+e-BB@0x60 : 
+	26      (00000060) check-cast           v3, Landroid/view/View$AccessibilityDelegate;
+	27      (00000064) return-object        v3
+
+e-BB@0x66 : [ e-BB@0x6a ]
+	28      (00000066) sput-boolean         v1, Lq0/q0;->c Z
+
+e-BB@0x6a : 
+	29      (0000006a) const/4              v3, 0
+	30      (0000006c) return-object        v3
+

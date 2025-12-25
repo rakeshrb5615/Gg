@@ -1,0 +1,43 @@
+# Lq4/b;->P(Landroid/view/inputmethod/EditorInfo; Ljava/lang/CharSequence; I I)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:android.view.inputmethod.EditorInfo
+# - v3:java.lang.CharSequence
+# - v4:int
+# - v5:int
+#
+# - return:void
+
+P-BB@0x0 : [ P-BB@0x8 P-BB@0x16 ]
+	0       (00000000) iget-object          v0, v2, Landroid/view/inputmethod/EditorInfo;->extras Landroid/os/Bundle;
+	1       (00000004) if-nez               v0, +009h
+
+P-BB@0x8 : [ P-BB@0x16 ]
+	2       (00000008) new-instance         v0, Landroid/os/Bundle;
+	3       (0000000c) invoke-direct        v0, Landroid/os/Bundle;-><init>()V
+	4       (00000012) iput-object          v0, v2, Landroid/view/inputmethod/EditorInfo;->extras Landroid/os/Bundle;
+
+P-BB@0x16 : [ P-BB@0x1a P-BB@0x26 ]
+	5       (00000016) if-eqz               v3, +008h
+
+P-BB@0x1a : [ P-BB@0x28 ]
+	6       (0000001a) new-instance         v0, Landroid/text/SpannableStringBuilder;
+	7       (0000001e) invoke-direct        v0, v3, Landroid/text/SpannableStringBuilder;-><init>(Ljava/lang/CharSequence;)V
+	8       (00000024) goto                 +2h
+
+P-BB@0x26 : [ P-BB@0x28 ]
+	9       (00000026) const/4              v0, 0
+
+P-BB@0x28 : 
+	10      (00000028) iget-object          v3, v2, Landroid/view/inputmethod/EditorInfo;->extras Landroid/os/Bundle;
+	11      (0000002c) const-string         v1, "androidx.core.view.inputmethod.EditorInfoCompat.CONTENT_SURROUNDING_TEXT"
+	12      (00000030) invoke-virtual       v3, v1, v0, Landroid/os/Bundle;->putCharSequence(Ljava/lang/String; Ljava/lang/CharSequence;)V
+	13      (00000036) iget-object          v3, v2, Landroid/view/inputmethod/EditorInfo;->extras Landroid/os/Bundle;
+	14      (0000003a) const-string         v0, "androidx.core.view.inputmethod.EditorInfoCompat.CONTENT_SELECTION_HEAD"
+	15      (0000003e) invoke-virtual       v3, v0, v4, Landroid/os/BaseBundle;->putInt(Ljava/lang/String; I)V
+	16      (00000044) iget-object          v2, v2, Landroid/view/inputmethod/EditorInfo;->extras Landroid/os/Bundle;
+	17      (00000048) const-string         v3, "androidx.core.view.inputmethod.EditorInfoCompat.CONTENT_SELECTION_END"
+	18      (0000004c) invoke-virtual       v2, v3, v5, Landroid/os/BaseBundle;->putInt(Ljava/lang/String; I)V
+	19      (00000052) return-void          
+

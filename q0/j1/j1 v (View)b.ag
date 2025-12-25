@@ -1,0 +1,100 @@
+# Lq0/j1;->v(Landroid/view/View;)Lh0/b; [access_flags=private]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:android.view.View
+#
+# - return:h0.b
+
+v-BB@0x0 : [ v-BB@0x10 v-BB@0xc6 ]
+	0       (00000000) const-string         v0, "WindowInsetsCompat"
+	1       (00000004) sget                 v1, Landroid/os/Build$VERSION;->SDK_INT I
+	2       (00000008) const/16             v2, 30
+	3       (0000000c) if-ge                v1, v2, +05dh
+
+v-BB@0x10 : [ v-BB@0x18 v-BB@0x1e ]
+	4       (00000010) sget-boolean         v1, Lq0/j1;->i Z
+	5       (00000014) if-nez               v1, +005h
+
+v-BB@0x18 : [ v-BB@0x1e ]
+	6       (00000018) invoke-static        Lq0/j1;->w()V
+
+v-BB@0x1e : [ v-BB@0x28 v-BB@0xc4 ]
+	7       (0000001e) sget-object          v1, Lq0/j1;->j Ljava/lang/reflect/Method;
+	8       (00000022) const/4              v2, 0
+	9       (00000024) if-eqz               v1, +050h
+
+v-BB@0x28 : [ v-BB@0x30 v-BB@0xc4 ]
+	10      (00000028) sget-object          v3, Lq0/j1;->k Ljava/lang/Class;
+	11      (0000002c) if-eqz               v3, +04ch
+
+v-BB@0x30 : [ v-BB@0x38 v-BB@0x3a ]
+	12      (00000030) sget-object          v3, Lq0/j1;->l Ljava/lang/reflect/Field;
+	13      (00000034) if-nez               v3, +003h
+
+v-BB@0x38 : [ v-BB@0xc4 ]
+	14      (00000038) goto                 +46h
+
+v-BB@0x3a : [ v-BB@0x46 v-BB@0x60 ]
+	15      (0000003a) invoke-virtual       v1, v6, v2, Ljava/lang/reflect/Method;->invoke(Ljava/lang/Object; [Ljava/lang/Object;)Ljava/lang/Object;
+	16      (00000040) move-result-object   v6
+	17      (00000042) if-nez               v6, +00fh
+	3a:97
+	(Ljava/lang/ReflectiveOperationException; -> 5c v-BB@0x5c)
+
+v-BB@0x46 : 
+	18      (00000046) const-string         v6, "Failed to get visible insets. getViewRootImpl() returned null from the provided view. This means that the view is either not attached or the method has been overridden"
+	19      (0000004a) new-instance         v1, Ljava/lang/NullPointerException;
+	20      (0000004e) invoke-direct        v1, Ljava/lang/NullPointerException;-><init>()V
+	21      (00000054) invoke-static        v0, v6, v1, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+	22      (0000005a) return-object        v2
+	3a:97
+	(Ljava/lang/ReflectiveOperationException; -> 5c v-BB@0x5c)
+
+v-BB@0x5c : [ v-BB@0x9a ]
+	23      (0000005c) move-exception       v6
+	24      (0000005e) goto                 +1eh
+	3a:97
+	(Ljava/lang/ReflectiveOperationException; -> 5c v-BB@0x5c)
+
+v-BB@0x60 : [ v-BB@0x80 v-BB@0xc4 ]
+	25      (00000060) sget-object          v1, Lq0/j1;->m Ljava/lang/reflect/Field;
+	26      (00000064) invoke-virtual       v1, v6, Ljava/lang/reflect/Field;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	27      (0000006a) move-result-object   v6
+	28      (0000006c) sget-object          v1, Lq0/j1;->l Ljava/lang/reflect/Field;
+	29      (00000070) invoke-virtual       v1, v6, Ljava/lang/reflect/Field;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	30      (00000076) move-result-object   v6
+	31      (00000078) check-cast           v6, Landroid/graphics/Rect;
+	32      (0000007c) if-eqz               v6, +024h
+	3a:97
+	(Ljava/lang/ReflectiveOperationException; -> 5c v-BB@0x5c)
+
+v-BB@0x80 : 
+	33      (00000080) iget                 v1, v6, Landroid/graphics/Rect;->left I
+	34      (00000084) iget                 v3, v6, Landroid/graphics/Rect;->top I
+	35      (00000088) iget                 v4, v6, Landroid/graphics/Rect;->right I
+	36      (0000008c) iget                 v6, v6, Landroid/graphics/Rect;->bottom I
+	37      (00000090) invoke-static        v1, v3, v4, v6, Lh0/b;->b(I I I I)Lh0/b;
+	38      (00000096) move-result-object   v6
+	39      (00000098) return-object        v6
+
+v-BB@0x9a : [ v-BB@0xc4 ]
+	40      (0000009a) new-instance         v1, Ljava/lang/StringBuilder;
+	41      (0000009e) const-string         v3, "Failed to get visible insets. (Reflection error). "
+	42      (000000a2) invoke-direct        v1, v3, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	43      (000000a8) invoke-virtual       v6, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+	44      (000000ae) move-result-object   v3
+	45      (000000b0) invoke-virtual       v1, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	46      (000000b6) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	47      (000000bc) move-result-object   v1
+	48      (000000be) invoke-static        v0, v1, v6, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+
+v-BB@0xc4 : 
+	49      (000000c4) return-object        v2
+
+v-BB@0xc6 : 
+	50      (000000c6) new-instance         v6, Ljava/lang/UnsupportedOperationException;
+	51      (000000ca) const-string         v0, "getVisibleInsets() should not be called on API >= 30. Use WindowInsets.isVisible() instead."
+	52      (000000ce) invoke-direct        v6, v0, Ljava/lang/UnsupportedOperationException;-><init>(Ljava/lang/String;)V
+	53      (000000d4) throw                v6
+

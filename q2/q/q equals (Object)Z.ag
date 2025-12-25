@@ -1,0 +1,45 @@
+# Lq2/q;->equals(Ljava/lang/Object;)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:java.lang.Object
+#
+# - return:boolean
+
+equals-BB@0x0 : [ equals-BB@0x6 equals-BB@0x8 ]
+	0       (00000000) const/4              v0, 1
+	1       (00000002) if-ne                v4, v3, +003h
+
+equals-BB@0x6 : 
+	2       (00000006) return               v0
+
+equals-BB@0x8 : [ equals-BB@0x12 equals-BB@0x3c ]
+	3       (00000008) instance-of          v1, v4, Lq2/c0;
+	4       (0000000c) const/4              v2, 0
+	5       (0000000e) if-eqz               v1, +017h
+
+equals-BB@0x12 : [ equals-BB@0x22 equals-BB@0x2e ]
+	6       (00000012) check-cast           v4, Lq2/c0;
+	7       (00000016) iget-object          v1, v3, Lq2/q;->a Ljava/lang/Integer;
+	8       (0000001a) check-cast           v4, Lq2/q;
+	9       (0000001e) if-nez               v1, +008h
+
+equals-BB@0x22 : [ equals-BB@0x2a equals-BB@0x2c ]
+	10      (00000022) iget-object          v4, v4, Lq2/q;->a Ljava/lang/Integer;
+	11      (00000026) if-nez               v4, +003h
+
+equals-BB@0x2a : 
+	12      (0000002a) return               v0
+
+equals-BB@0x2c : 
+	13      (0000002c) return               v2
+
+equals-BB@0x2e : 
+	14      (0000002e) iget-object          v4, v4, Lq2/q;->a Ljava/lang/Integer;
+	15      (00000032) invoke-virtual       v1, v4, Ljava/lang/Integer;->equals(Ljava/lang/Object;)Z
+	16      (00000038) move-result          v4
+	17      (0000003a) return               v4
+
+equals-BB@0x3c : 
+	18      (0000003c) return               v2
+

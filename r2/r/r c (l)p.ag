@@ -1,0 +1,67 @@
+# Lr2/r;->c(Lr2/l;)Lr2/p; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:r2.l
+#
+# - return:r2.p
+
+c-BB@0x0 : [ c-BB@0x8 c-BB@0x16 ]
+	0       (00000000) new-instance         v0, Lr2/p;
+	1       (00000004) if-eqz               v7, +009h
+
+c-BB@0x8 : [ c-BB@0x2c ]
+	2       (00000008) sget-object          v1, Lp2/a;->d Ljava/util/Set;
+	3       (0000000c) invoke-static        v1, Ljava/util/Collections;->unmodifiableSet(Ljava/util/Set;)Ljava/util/Set;
+	4       (00000012) move-result-object   v1
+	5       (00000014) goto                 +ch
+
+c-BB@0x16 : [ c-BB@0x2c ]
+	6       (00000016) new-instance         v1, Lo2/c;
+	7       (0000001a) const-string         v2, "proto"
+	8       (0000001e) invoke-direct        v1, v2, Lo2/c;-><init>(Ljava/lang/String;)V
+	9       (00000024) invoke-static        v1, Ljava/util/Collections;->singleton(Ljava/lang/Object;)Ljava/util/Set;
+	10      (0000002a) move-result-object   v1
+
+c-BB@0x2c : [ c-BB@0x52 c-BB@0x5a ]
+	11      (0000002c) invoke-static        Lr2/j;->a()Lb8/g;
+	12      (00000032) move-result-object   v2
+	13      (00000034) invoke-virtual       v7, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	14      (0000003a) const-string         v3, "cct"
+	15      (0000003e) iput-object          v3, v2, Lb8/g;->b Ljava/lang/Object;
+	16      (00000042) check-cast           v7, Lp2/a;
+	17      (00000046) iget-object          v3, v7, Lp2/a;->a Ljava/lang/String;
+	18      (0000004a) iget-object          v7, v7, Lp2/a;->b Ljava/lang/String;
+	19      (0000004e) if-nez               v7, +006h
+
+c-BB@0x52 : [ c-BB@0x56 c-BB@0x5a ]
+	20      (00000052) if-nez               v3, +004h
+
+c-BB@0x56 : [ c-BB@0x86 ]
+	21      (00000056) const/4              v7, 0
+	22      (00000058) goto                 +17h
+
+c-BB@0x5a : [ c-BB@0x5e c-BB@0x62 ]
+	23      (0000005a) if-nez               v7, +004h
+
+c-BB@0x5e : [ c-BB@0x62 ]
+	24      (0000005e) const-string         v7, ""
+
+c-BB@0x62 : [ c-BB@0x86 ]
+	25      (00000062) const-string         v4, "1$"
+	26      (00000066) const-string         v5, "\"
+	27      (0000006a) invoke-static        v4, v3, v5, v7, Lg2/g;->f(Ljava/lang/String; Ljava/lang/String; Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	28      (00000070) move-result-object   v7
+	29      (00000072) const-string         v3, "UTF-8"
+	30      (00000076) invoke-static        v3, Ljava/nio/charset/Charset;->forName(Ljava/lang/String;)Ljava/nio/charset/Charset;
+	31      (0000007c) move-result-object   v3
+	32      (0000007e) invoke-virtual       v7, v3, Ljava/lang/String;->getBytes(Ljava/nio/charset/Charset;)[B
+	33      (00000084) move-result-object   v7
+
+c-BB@0x86 : 
+	34      (00000086) iput-object          v7, v2, Lb8/g;->c Ljava/lang/Object;
+	35      (0000008a) invoke-virtual       v2, Lb8/g;->a()Lr2/j;
+	36      (00000090) move-result-object   v7
+	37      (00000092) invoke-direct        v0, v1, v7, v6, Lr2/p;-><init>(Ljava/util/Set; Lr2/j; Lr2/r;)V
+	38      (00000098) return-object        v0
+

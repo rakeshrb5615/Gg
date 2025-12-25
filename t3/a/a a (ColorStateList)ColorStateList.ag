@@ -1,0 +1,45 @@
+# Lt3/a;->a(Landroid/content/res/ColorStateList;)Landroid/content/res/ColorStateList; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:android.content.res.ColorStateList
+#
+# - return:android.content.res.ColorStateList
+
+a-BB@0x0 : [ a-BB@0x6 a-BB@0x4e ]
+	0       (00000000) const/4              v0, 0
+	1       (00000002) if-eqz               v3, +026h
+
+a-BB@0x6 : [ a-BB@0x12 a-BB@0x4c ]
+	2       (00000006) sget                 v1, Landroid/os/Build$VERSION;->SDK_INT I
+	3       (0000000a) const/16             v2, 27
+	4       (0000000e) if-gt                v1, v2, +01fh
+
+a-BB@0x12 : [ a-BB@0x26 a-BB@0x4c ]
+	5       (00000012) invoke-virtual       v3, Landroid/content/res/ColorStateList;->getDefaultColor()I
+	6       (00000018) move-result          v1
+	7       (0000001a) invoke-static        v1, Landroid/graphics/Color;->alpha(I)I
+	8       (00000020) move-result          v1
+	9       (00000022) if-nez               v1, +015h
+
+a-BB@0x26 : [ a-BB@0x3e a-BB@0x4c ]
+	10      (00000026) sget-object          v1, Lt3/a;->a [I
+	11      (0000002a) invoke-virtual       v3, v1, v0, Landroid/content/res/ColorStateList;->getColorForState([I I)I
+	12      (00000030) move-result          v0
+	13      (00000032) invoke-static        v0, Landroid/graphics/Color;->alpha(I)I
+	14      (00000038) move-result          v0
+	15      (0000003a) if-eqz               v0, +009h
+
+a-BB@0x3e : [ a-BB@0x4c ]
+	16      (0000003e) sget-object          v0, Lt3/a;->b Ljava/lang/String;
+	17      (00000042) const-string         v1, "Use a non-transparent color for the default color as it will be used to finish ripple animations."
+	18      (00000046) invoke-static        v0, v1, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+
+a-BB@0x4c : 
+	19      (0000004c) return-object        v3
+
+a-BB@0x4e : 
+	20      (0000004e) invoke-static        v0, Landroid/content/res/ColorStateList;->valueOf(I)Landroid/content/res/ColorStateList;
+	21      (00000054) move-result-object   v3
+	22      (00000056) return-object        v3
+

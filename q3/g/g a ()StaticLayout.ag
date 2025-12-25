@@ -1,0 +1,118 @@
+# Lq3/g;->a()Landroid/text/StaticLayout; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v7
+#
+# - return:android.text.StaticLayout
+
+a-BB@0x0 : [ a-BB@0x8 a-BB@0x10 ]
+	0       (00000000) iget-object          v0, v7, Lq3/g;->a Ljava/lang/CharSequence;
+	1       (00000004) if-nez               v0, +006h
+
+a-BB@0x8 : [ a-BB@0x10 ]
+	2       (00000008) const-string         v0, ""
+	3       (0000000c) iput-object          v0, v7, Lq3/g;->a Ljava/lang/CharSequence;
+
+a-BB@0x10 : [ a-BB@0x30 a-BB@0x3e ]
+	4       (00000010) iget                 v0, v7, Lq3/g;->c I
+	5       (00000014) const/4              v1, 0
+	6       (00000016) invoke-static        v1, v0, Ljava/lang/Math;->max(I I)I
+	7       (0000001c) move-result          v0
+	8       (0000001e) iget-object          v2, v7, Lq3/g;->a Ljava/lang/CharSequence;
+	9       (00000022) iget                 v3, v7, Lq3/g;->f I
+	10      (00000026) iget-object          v4, v7, Lq3/g;->b Landroid/text/TextPaint;
+	11      (0000002a) const/4              v5, 1
+	12      (0000002c) if-ne                v3, v5, +009h
+
+a-BB@0x30 : [ a-BB@0x3e ]
+	13      (00000030) int-to-float         v3, v0
+	14      (00000032) iget-object          v6, v7, Lq3/g;->l Landroid/text/TextUtils$TruncateAt;
+	15      (00000036) invoke-static        v2, v4, v3, v6, Landroid/text/TextUtils;->ellipsize(Ljava/lang/CharSequence; Landroid/text/TextPaint; F Landroid/text/TextUtils$TruncateAt;)Ljava/lang/CharSequence;
+	16      (0000003c) move-result-object   v2
+
+a-BB@0x3e : [ a-BB@0x5e a-BB@0x6e ]
+	17      (0000003e) invoke-interface     v2, Ljava/lang/CharSequence;->length()I
+	18      (00000044) move-result          v3
+	19      (00000046) iget                 v6, v7, Lq3/g;->d I
+	20      (0000004a) invoke-static        v3, v6, Ljava/lang/Math;->min(I I)I
+	21      (00000050) move-result          v3
+	22      (00000052) iput                 v3, v7, Lq3/g;->d I
+	23      (00000056) iget-boolean         v6, v7, Lq3/g;->k Z
+	24      (0000005a) if-eqz               v6, +00ah
+
+a-BB@0x5e : [ a-BB@0x66 a-BB@0x6e ]
+	25      (0000005e) iget                 v6, v7, Lq3/g;->f I
+	26      (00000062) if-ne                v6, v5, +006h
+
+a-BB@0x66 : [ a-BB@0x6e ]
+	27      (00000066) sget-object          v6, Landroid/text/Layout$Alignment;->ALIGN_OPPOSITE Landroid/text/Layout$Alignment;
+	28      (0000006a) iput-object          v6, v7, Lq3/g;->e Landroid/text/Layout$Alignment;
+
+a-BB@0x6e : [ a-BB@0x92 a-BB@0x98 ]
+	29      (0000006e) invoke-static        v2, v1, v3, v4, v0, Landroid/text/StaticLayout$Builder;->obtain(Ljava/lang/CharSequence; I I Landroid/text/TextPaint; I)Landroid/text/StaticLayout$Builder;
+	30      (00000074) move-result-object   v0
+	31      (00000076) iget-object          v1, v7, Lq3/g;->e Landroid/text/Layout$Alignment;
+	32      (0000007a) invoke-virtual       v0, v1, Landroid/text/StaticLayout$Builder;->setAlignment(Landroid/text/Layout$Alignment;)Landroid/text/StaticLayout$Builder;
+	33      (00000080) iget-boolean         v1, v7, Lq3/g;->j Z
+	34      (00000084) invoke-virtual       v0, v1, Landroid/text/StaticLayout$Builder;->setIncludePad(Z)Landroid/text/StaticLayout$Builder;
+	35      (0000008a) iget-boolean         v1, v7, Lq3/g;->k Z
+	36      (0000008e) if-eqz               v1, +005h
+
+a-BB@0x92 : [ a-BB@0x9c ]
+	37      (00000092) sget-object          v1, Landroid/text/TextDirectionHeuristics;->RTL Landroid/text/TextDirectionHeuristic;
+	38      (00000096) goto                 +3h
+
+a-BB@0x98 : [ a-BB@0x9c ]
+	39      (00000098) sget-object          v1, Landroid/text/TextDirectionHeuristics;->LTR Landroid/text/TextDirectionHeuristic;
+
+a-BB@0x9c : [ a-BB@0xaa a-BB@0xb0 ]
+	40      (0000009c) invoke-virtual       v0, v1, Landroid/text/StaticLayout$Builder;->setTextDirection(Landroid/text/TextDirectionHeuristic;)Landroid/text/StaticLayout$Builder;
+	41      (000000a2) iget-object          v1, v7, Lq3/g;->l Landroid/text/TextUtils$TruncateAt;
+	42      (000000a6) if-eqz               v1, +005h
+
+a-BB@0xaa : [ a-BB@0xb0 ]
+	43      (000000aa) invoke-virtual       v0, v1, Landroid/text/StaticLayout$Builder;->setEllipsize(Landroid/text/TextUtils$TruncateAt;)Landroid/text/StaticLayout$Builder;
+
+a-BB@0xb0 : [ a-BB@0xc8 a-BB@0xd8 ]
+	44      (000000b0) iget                 v1, v7, Lq3/g;->f I
+	45      (000000b4) invoke-virtual       v0, v1, Landroid/text/StaticLayout$Builder;->setMaxLines(I)Landroid/text/StaticLayout$Builder;
+	46      (000000ba) iget                 v1, v7, Lq3/g;->g F
+	47      (000000be) const/4              v2, 0
+	48      (000000c0) cmpl-float           v2, v1, v2
+	49      (000000c4) if-nez               v2, +00ah
+
+a-BB@0xc8 : [ a-BB@0xd8 a-BB@0xe2 ]
+	50      (000000c8) iget                 v2, v7, Lq3/g;->h F
+	51      (000000cc) const/high16         v3, 1065353216
+	52      (000000d0) cmpl-float           v2, v2, v3
+	53      (000000d4) if-eqz               v2, +007h
+
+a-BB@0xd8 : [ a-BB@0xe2 ]
+	54      (000000d8) iget                 v2, v7, Lq3/g;->h F
+	55      (000000dc) invoke-virtual       v0, v1, v2, Landroid/text/StaticLayout$Builder;->setLineSpacing(F F)Landroid/text/StaticLayout$Builder;
+
+a-BB@0xe2 : [ a-BB@0xea a-BB@0xf4 ]
+	56      (000000e2) iget                 v1, v7, Lq3/g;->f I
+	57      (000000e6) if-le                v1, v5, +007h
+
+a-BB@0xea : [ a-BB@0xf4 ]
+	58      (000000ea) iget                 v1, v7, Lq3/g;->i I
+	59      (000000ee) invoke-virtual       v0, v1, Landroid/text/StaticLayout$Builder;->setHyphenationFrequency(I)Landroid/text/StaticLayout$Builder;
+
+a-BB@0xf4 : [ a-BB@0xfc a-BB@0x116 ]
+	60      (000000f4) iget-object          v1, v7, Lq3/g;->m La5/a;
+	61      (000000f8) if-eqz               v1, +00fh
+
+a-BB@0xfc : [ a-BB@0x116 ]
+	62      (000000fc) iget-object          v1, v1, La5/a;->b Ljava/lang/Object;
+	63      (00000100) check-cast           v1, Lcom/google/android/material/textfield/TextInputLayout;
+	64      (00000104) iget-object          v1, v1, Lcom/google/android/material/textfield/TextInputLayout;->A Ln/b1;
+	65      (00000108) invoke-virtual       v1, Landroid/widget/TextView;->getBreakStrategy()I
+	66      (0000010e) move-result          v1
+	67      (00000110) invoke-virtual       v0, v1, Landroid/text/StaticLayout$Builder;->setBreakStrategy(I)Landroid/text/StaticLayout$Builder;
+
+a-BB@0x116 : 
+	68      (00000116) invoke-virtual       v0, Landroid/text/StaticLayout$Builder;->build()Landroid/text/StaticLayout;
+	69      (0000011c) move-result-object   v0
+	70      (0000011e) return-object        v0
+

@@ -1,0 +1,45 @@
+# Lq0/i1;->c(I Lh0/b;)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:int
+# - v5:h0.b
+#
+# - return:void
+
+c-BB@0x0 : [ c-BB@0x8 c-BB@0x14 ]
+	0       (00000000) iget-object          v0, v3, Lq0/i1;->b [Lh0/b;
+	1       (00000004) if-nez               v0, +008h
+
+c-BB@0x8 : [ c-BB@0x14 ]
+	2       (00000008) const/16             v0, 10
+	3       (0000000c) new-array            v0, v0, [Lh0/b;
+	4       (00000010) iput-object          v0, v3, Lq0/i1;->b [Lh0/b;
+
+c-BB@0x14 : [ c-BB@0x16 ]
+	5       (00000014) const/4              v0, 1
+
+c-BB@0x16 : [ c-BB@0x1e c-BB@0x3e ]
+	6       (00000016) const/16             v1, 512
+	7       (0000001a) if-gt                v0, v1, +012h
+
+c-BB@0x1e : [ c-BB@0x26 c-BB@0x28 ]
+	8       (0000001e) and-int              v1, v4, v0
+	9       (00000022) if-nez               v1, +003h
+
+c-BB@0x26 : [ c-BB@0x38 ]
+	10      (00000026) goto                 +9h
+
+c-BB@0x28 : [ c-BB@0x38 ]
+	11      (00000028) iget-object          v1, v3, Lq0/i1;->b [Lh0/b;
+	12      (0000002c) invoke-static        v0, Lq4/b;->B(I)I
+	13      (00000032) move-result          v2
+	14      (00000034) aput-object          v5, v1, v2
+
+c-BB@0x38 : [ c-BB@0x16 ]
+	15      (00000038) shl-int/lit8         v0, v0, 1
+	16      (0000003c) goto                 -13h
+
+c-BB@0x3e : 
+	17      (0000003e) return-void          
+

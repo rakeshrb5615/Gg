@@ -1,0 +1,77 @@
+# Lt/h;->b(Ljava/lang/StringBuilder;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:java.lang.StringBuilder
+#
+# - return:void
+
+b-BB@0x0 : [ b-BB@0x4 ]
+	0       (00000000) const-string         v0, "]"
+
+b-BB@0x4 : [ b-BB@0x1a b-BB@0x20 ]
+	1       (00000004) invoke-static        v3, Lt/h;->g(Lt/h;)Ljava/lang/Object;
+	2       (0000000a) move-result-object   v1
+	3       (0000000c) const-string         v2, "SUCCESS, result=["
+	4       (00000010) invoke-virtual       v4, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	5       (00000016) if-ne                v1, v3, +005h
+	4:33
+	(Ljava/util/concurrent/ExecutionException; -> 3a b-BB@0x3a)
+	(Ljava/util/concurrent/CancellationException; -> 62 b-BB@0x62)
+	(Ljava/lang/RuntimeException; -> 36 b-BB@0x36)
+
+b-BB@0x1a : [ b-BB@0x28 ]
+	6       (0000001a) const-string         v1, "this future"
+	7       (0000001e) goto                 +5h
+	4:33
+	(Ljava/util/concurrent/ExecutionException; -> 3a b-BB@0x3a)
+	(Ljava/util/concurrent/CancellationException; -> 62 b-BB@0x62)
+	(Ljava/lang/RuntimeException; -> 36 b-BB@0x36)
+
+b-BB@0x20 : [ b-BB@0x28 ]
+	8       (00000020) invoke-static        v1, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
+	9       (00000026) move-result-object   v1
+	4:33
+	(Ljava/util/concurrent/ExecutionException; -> 3a b-BB@0x3a)
+	(Ljava/util/concurrent/CancellationException; -> 62 b-BB@0x62)
+	(Ljava/lang/RuntimeException; -> 36 b-BB@0x36)
+
+b-BB@0x28 : 
+	10      (00000028) invoke-virtual       v4, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	11      (0000002e) invoke-virtual       v4, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	12      (00000034) return-void          
+
+b-BB@0x36 : [ b-BB@0x3e ]
+	13      (00000036) move-exception       v0
+	14      (00000038) goto                 +3h
+
+b-BB@0x3a : [ b-BB@0x6e ]
+	15      (0000003a) move-exception       v1
+	16      (0000003c) goto                 +19h
+
+b-BB@0x3e : [ b-BB@0x8c ]
+	17      (0000003e) const-string         v1, "UNKNOWN, cause=["
+	18      (00000042) invoke-virtual       v4, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	19      (00000048) invoke-virtual       v0, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	20      (0000004e) move-result-object   v0
+	21      (00000050) invoke-virtual       v4, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	22      (00000056) const-string         v0, " thrown from get()]"
+	23      (0000005a) invoke-virtual       v4, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	24      (00000060) goto                 +16h
+
+b-BB@0x62 : [ b-BB@0x8c ]
+	25      (00000062) const-string         v0, "CANCELLED"
+	26      (00000066) invoke-virtual       v4, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	27      (0000006c) goto                 +10h
+
+b-BB@0x6e : [ b-BB@0x8c ]
+	28      (0000006e) const-string         v2, "FAILURE, cause=["
+	29      (00000072) invoke-virtual       v4, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	30      (00000078) invoke-virtual       v1, Ljava/lang/Throwable;->getCause()Ljava/lang/Throwable;
+	31      (0000007e) move-result-object   v1
+	32      (00000080) invoke-virtual       v4, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	33      (00000086) invoke-virtual       v4, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+b-BB@0x8c : 
+	34      (0000008c) return-void          
+

@@ -1,0 +1,49 @@
+# Lq0/s1;->e(Lh0/b; I I I I)Lh0/b; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:h0.b
+# - v6:int
+# - v7:int
+# - v8:int
+# - v9:int
+#
+# - return:h0.b
+
+e-BB@0x0 : [ e-BB@0x3e e-BB@0x4c ]
+	0       (00000000) iget                 v0, v5, Lh0/b;->a I
+	1       (00000004) sub-int/2addr        v0, v6
+	2       (00000006) const/4              v1, 0
+	3       (00000008) invoke-static        v1, v0, Ljava/lang/Math;->max(I I)I
+	4       (0000000e) move-result          v0
+	5       (00000010) iget                 v2, v5, Lh0/b;->b I
+	6       (00000014) sub-int/2addr        v2, v7
+	7       (00000016) invoke-static        v1, v2, Ljava/lang/Math;->max(I I)I
+	8       (0000001c) move-result          v2
+	9       (0000001e) iget                 v3, v5, Lh0/b;->c I
+	10      (00000022) sub-int/2addr        v3, v8
+	11      (00000024) invoke-static        v1, v3, Ljava/lang/Math;->max(I I)I
+	12      (0000002a) move-result          v3
+	13      (0000002c) iget                 v4, v5, Lh0/b;->d I
+	14      (00000030) sub-int/2addr        v4, v9
+	15      (00000032) invoke-static        v1, v4, Ljava/lang/Math;->max(I I)I
+	16      (00000038) move-result          v1
+	17      (0000003a) if-ne                v0, v6, +009h
+
+e-BB@0x3e : [ e-BB@0x42 e-BB@0x4c ]
+	18      (0000003e) if-ne                v2, v7, +007h
+
+e-BB@0x42 : [ e-BB@0x46 e-BB@0x4c ]
+	19      (00000042) if-ne                v3, v8, +005h
+
+e-BB@0x46 : [ e-BB@0x4a e-BB@0x4c ]
+	20      (00000046) if-ne                v1, v9, +003h
+
+e-BB@0x4a : 
+	21      (0000004a) return-object        v5
+
+e-BB@0x4c : 
+	22      (0000004c) invoke-static        v0, v2, v3, v1, Lh0/b;->b(I I I I)Lh0/b;
+	23      (00000052) move-result-object   v5
+	24      (00000054) return-object        v5
+

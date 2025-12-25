@@ -1,0 +1,85 @@
+# Lr6/e0;->b(Landroid/content/Context;)Lr6/d0; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:android.content.Context
+#
+# - return:r6.d0
+
+b-BB@0x0 : [ b-BB@0x26 ]
+	0       (00000000) const-string         v0, "context"
+	1       (00000004) invoke-static        v6, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) invoke-static        Landroid/os/Process;->myPid()I
+	3       (00000010) move-result          v0
+	4       (00000012) invoke-static        v6, Lr6/e0;->a(Landroid/content/Context;)Ljava/util/ArrayList;
+	5       (00000018) move-result-object   v6
+	6       (0000001a) invoke-virtual       v6, Ljava/util/ArrayList;->size()I
+	7       (00000020) move-result          v1
+	8       (00000022) const/4              v2, 0
+	9       (00000024) move                 v3, v2
+
+b-BB@0x26 : [ b-BB@0x2a b-BB@0x46 ]
+	10      (00000026) if-ge                v3, v1, +010h
+
+b-BB@0x2a : [ b-BB@0x44 b-BB@0x26 ]
+	11      (0000002a) invoke-virtual       v6, v3, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	12      (00000030) move-result-object   v4
+	13      (00000032) add-int/lit8         v3, v3, 1
+	14      (00000036) move-object          v5, v4
+	15      (00000038) check-cast           v5, Lr6/d0;
+	16      (0000003c) iget                 v5, v5, Lr6/d0;->b I
+	17      (00000040) if-ne                v5, v0, -00dh
+
+b-BB@0x44 : [ b-BB@0x48 ]
+	18      (00000044) goto                 +2h
+
+b-BB@0x46 : [ b-BB@0x48 ]
+	19      (00000046) const/4              v4, 0
+
+b-BB@0x48 : [ b-BB@0x50 b-BB@0xa4 ]
+	20      (00000048) check-cast           v4, Lr6/d0;
+	21      (0000004c) if-nez               v4, +02ch
+
+b-BB@0x50 : [ b-BB@0x60 b-BB@0x74 ]
+	22      (00000050) new-instance         v6, Lr6/d0;
+	23      (00000054) sget                 v1, Landroid/os/Build$VERSION;->SDK_INT I
+	24      (00000058) const/16             v3, 33
+	25      (0000005c) if-le                v1, v3, +00ch
+
+b-BB@0x60 : [ b-BB@0x9c ]
+	26      (00000060) invoke-static        Landroid/os/Process;->myProcessName()Ljava/lang/String;
+	27      (00000066) move-result-object   v1
+	28      (00000068) const-string         v3, "myProcessName(...)"
+	29      (0000006c) invoke-static        v1, v3, Lkotlin/jvm/internal/j;->d(Ljava/lang/Object; Ljava/lang/String;)V
+	30      (00000072) goto                 +15h
+
+b-BB@0x74 : [ b-BB@0x7c b-BB@0x8a ]
+	31      (00000074) const/16             v3, 28
+	32      (00000078) if-lt                v1, v3, +009h
+
+b-BB@0x7c : [ b-BB@0x88 b-BB@0x8a ]
+	33      (0000007c) invoke-static        Landroid/app/Application;->getProcessName()Ljava/lang/String;
+	34      (00000082) move-result-object   v1
+	35      (00000084) if-eqz               v1, +003h
+
+b-BB@0x88 : [ b-BB@0x9c ]
+	36      (00000088) goto                 +ah
+
+b-BB@0x8a : [ b-BB@0x96 b-BB@0x98 ]
+	37      (0000008a) invoke-static        Lcom/google/android/gms/common/util/ProcessUtils;->getMyProcessName()Ljava/lang/String;
+	38      (00000090) move-result-object   v1
+	39      (00000092) if-eqz               v1, +003h
+
+b-BB@0x96 : [ b-BB@0x9c ]
+	40      (00000096) goto                 +3h
+
+b-BB@0x98 : [ b-BB@0x9c ]
+	41      (00000098) const-string         v1, ""
+
+b-BB@0x9c : 
+	42      (0000009c) invoke-direct        v6, v1, v0, v2, v2, Lr6/d0;-><init>(Ljava/lang/String; I I Z)V
+	43      (000000a2) return-object        v6
+
+b-BB@0xa4 : 
+	44      (000000a4) return-object        v4
+

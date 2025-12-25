@@ -1,0 +1,41 @@
+# Lr/e;->m(Ljava/util/Collection;)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:java.util.Collection
+#
+# - return:boolean
+
+m-BB@0x0 : [ m-BB@0x8 ]
+	0       (00000000) iget                 v0, v3, Lr/j;->c I
+	1       (00000004) add-int/lit8         v1, v0, -1
+
+m-BB@0x8 : [ m-BB@0xc m-BB@0x2c ]
+	2       (00000008) if-ltz               v1, +012h
+
+m-BB@0xc : [ m-BB@0x20 m-BB@0x26 ]
+	3       (0000000c) invoke-virtual       v3, v1, Lr/j;->g(I)Ljava/lang/Object;
+	4       (00000012) move-result-object   v2
+	5       (00000014) invoke-interface     v4, v2, Ljava/util/Collection;->contains(Ljava/lang/Object;)Z
+	6       (0000001a) move-result          v2
+	7       (0000001c) if-nez               v2, +005h
+
+m-BB@0x20 : [ m-BB@0x26 ]
+	8       (00000020) invoke-virtual       v3, v1, Lr/j;->h(I)Ljava/lang/Object;
+
+m-BB@0x26 : [ m-BB@0x8 ]
+	9       (00000026) add-int/lit8         v1, v1, -1
+	10      (0000002a) goto                 -11h
+
+m-BB@0x2c : [ m-BB@0x34 m-BB@0x38 ]
+	11      (0000002c) iget                 v4, v3, Lr/j;->c I
+	12      (00000030) if-eq                v0, v4, +004h
+
+m-BB@0x34 : 
+	13      (00000034) const/4              v4, 1
+	14      (00000036) return               v4
+
+m-BB@0x38 : 
+	15      (00000038) const/4              v4, 0
+	16      (0000003a) return               v4
+

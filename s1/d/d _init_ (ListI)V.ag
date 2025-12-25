@@ -1,0 +1,60 @@
+# Ls1/d;-><init>(Ljava/util/List; I)V [access_flags=public constructor]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:java.util.List
+# - v5:int
+#
+# - return:void
+
+<init>-BB@0x0 : [ <init>-BB@0x1a <init>-BB@0x20 ]
+	0       (00000000) invoke-direct        v3, Ljava/lang/Object;-><init>()V
+	1       (00000006) iput-object          v4, v3, Ls1/d;->a Ljava/util/List;
+	2       (0000000a) iput                 v5, v3, Ls1/d;->b I
+	3       (0000000e) invoke-interface     v4, Ljava/util/List;->isEmpty()Z
+	4       (00000014) move-result          v0
+	5       (00000016) if-eqz               v0, +005h
+
+<init>-BB@0x1a : [ <init>-BB@0x20 <init>-BB@0x3c ]
+	6       (0000001a) const/4              v0, -1
+	7       (0000001c) if-eq                v5, v0, +010h
+
+<init>-BB@0x20 : [ <init>-BB@0x2c <init>-BB@0x3e ]
+	8       (00000020) invoke-interface     v4, Ljava/util/Collection;->isEmpty()Z
+	9       (00000026) move-result          v0
+	10      (00000028) if-nez               v0, +00bh
+
+<init>-BB@0x2c : [ <init>-BB@0x38 <init>-BB@0x3e ]
+	11      (0000002c) invoke-interface     v4, Ljava/util/Collection;->size()I
+	12      (00000032) move-result          v0
+	13      (00000034) if-ltz               v5, +005h
+
+<init>-BB@0x38 : [ <init>-BB@0x3c <init>-BB@0x3e ]
+	14      (00000038) if-ge                v5, v0, +003h
+
+<init>-BB@0x3c : 
+	15      (0000003c) return-void          
+
+<init>-BB@0x3e : 
+	16      (0000003e) const-string         v0, "Invalid 'NavigationEventHistory' state:  'currentIndex' must be within the bounds of 'mergedHistory' (or -1 if empty). Received: currentIndex = '"
+	17      (00000042) const-string         v1, "', bounds = '"
+	18      (00000046) invoke-static        v0, v5, v1, Lv1/a;->p(Ljava/lang/String; I Ljava/lang/String;)Ljava/lang/StringBuilder;
+	19      (0000004c) move-result-object   v5
+	20      (0000004e) new-instance         v0, Ly7/e;
+	21      (00000052) invoke-interface     v4, Ljava/util/Collection;->size()I
+	22      (00000058) move-result          v4
+	23      (0000005a) const/4              v1, 1
+	24      (0000005c) sub-int/2addr        v4, v1
+	25      (0000005e) const/4              v2, 0
+	26      (00000060) invoke-direct        v0, v2, v4, v1, Ly7/d;-><init>(I I I)V
+	27      (00000066) invoke-virtual       v5, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	28      (0000006c) const-string         v4, "'."
+	29      (00000070) invoke-virtual       v5, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	30      (00000076) invoke-virtual       v5, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	31      (0000007c) move-result-object   v4
+	32      (0000007e) new-instance         v5, Ljava/lang/IllegalArgumentException;
+	33      (00000082) invoke-virtual       v4, Ljava/lang/Object;->toString()Ljava/lang/String;
+	34      (00000088) move-result-object   v4
+	35      (0000008a) invoke-direct        v5, v4, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	36      (00000090) throw                v5
+

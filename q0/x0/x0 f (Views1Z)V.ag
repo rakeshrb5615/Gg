@@ -1,0 +1,52 @@
+# Lq0/x0;->f(Landroid/view/View; Lq0/s1; Z)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:android.view.View
+# - v3:q0.s1
+# - v4:boolean
+#
+# - return:void
+
+f-BB@0x0 : [ f-BB@0xc f-BB@0x34 ]
+	0       (00000000) invoke-static        v2, Lq0/x0;->j(Landroid/view/View;)Lh3/k;
+	1       (00000006) move-result-object   v0
+	2       (00000008) if-eqz               v0, +016h
+
+f-BB@0xc : [ f-BB@0x14 f-BB@0x34 ]
+	3       (0000000c) iput-object          v3, v0, Lh3/k;->c Ljava/lang/Object;
+	4       (00000010) if-nez               v4, +012h
+
+f-BB@0x14 : [ f-BB@0x34 ]
+	5       (00000014) iget-object          v4, v0, Lh3/k;->d Ljava/lang/Object;
+	6       (00000018) check-cast           v4, Landroid/view/View;
+	7       (0000001c) iget-object          v1, v0, Lh3/k;->e Ljava/io/Serializable;
+	8       (00000020) check-cast           v1, [I
+	9       (00000024) invoke-virtual       v4, v1, Landroid/view/View;->getLocationOnScreen([I)V
+	10      (0000002a) const/4              v4, 1
+	11      (0000002c) aget                 v1, v1, v4
+	12      (00000030) iput                 v1, v0, Lh3/k;->a I
+
+f-BB@0x34 : [ f-BB@0x3c f-BB@0x62 ]
+	13      (00000034) instance-of          v0, v2, Landroid/view/ViewGroup;
+	14      (00000038) if-eqz               v0, +015h
+
+f-BB@0x3c : [ f-BB@0x42 ]
+	15      (0000003c) check-cast           v2, Landroid/view/ViewGroup;
+	16      (00000040) const/4              v0, 0
+
+f-BB@0x42 : [ f-BB@0x4e f-BB@0x62 ]
+	17      (00000042) invoke-virtual       v2, Landroid/view/ViewGroup;->getChildCount()I
+	18      (00000048) move-result          v1
+	19      (0000004a) if-ge                v0, v1, +00ch
+
+f-BB@0x4e : [ f-BB@0x42 ]
+	20      (0000004e) invoke-virtual       v2, v0, Landroid/view/ViewGroup;->getChildAt(I)Landroid/view/View;
+	21      (00000054) move-result-object   v1
+	22      (00000056) invoke-static        v1, v3, v4, Lq0/x0;->f(Landroid/view/View; Lq0/s1; Z)V
+	23      (0000005c) add-int/lit8         v0, v0, 1
+	24      (00000060) goto                 -fh
+
+f-BB@0x62 : 
+	25      (00000062) return-void          
+

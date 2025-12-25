@@ -1,0 +1,25 @@
+# Lr0/c;->l(Ljava/lang/CharSequence;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:java.lang.CharSequence
+#
+# - return:void
+
+l-BB@0x0 : [ l-BB@0x10 l-BB@0x18 ]
+	0       (00000000) sget                 v0, Landroid/os/Build$VERSION;->SDK_INT I
+	1       (00000004) const/16             v1, 28
+	2       (00000008) iget-object          v2, v3, Lr0/c;->a Landroid/view/accessibility/AccessibilityNodeInfo;
+	3       (0000000c) if-lt                v0, v1, +006h
+
+l-BB@0x10 : 
+	4       (00000010) invoke-virtual       v2, v4, Landroid/view/accessibility/AccessibilityNodeInfo;->setPaneTitle(Ljava/lang/CharSequence;)V
+	5       (00000016) return-void          
+
+l-BB@0x18 : 
+	6       (00000018) invoke-virtual       v2, Landroid/view/accessibility/AccessibilityNodeInfo;->getExtras()Landroid/os/Bundle;
+	7       (0000001e) move-result-object   v0
+	8       (00000020) const-string         v1, "androidx.view.accessibility.AccessibilityNodeInfoCompat.PANE_TITLE_KEY"
+	9       (00000024) invoke-virtual       v0, v1, v4, Landroid/os/Bundle;->putCharSequence(Ljava/lang/String; Ljava/lang/CharSequence;)V
+	10      (0000002a) return-void          
+

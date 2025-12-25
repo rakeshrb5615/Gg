@@ -1,0 +1,24 @@
+# Lr/c;->getValue()Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v2
+#
+# - return:java.lang.Object
+
+getValue-BB@0x0 : [ getValue-BB@0x8 getValue-BB@0x1a ]
+	0       (00000000) iget-boolean         v0, v2, Lr/c;->c Z
+	1       (00000004) if-eqz               v0, +00bh
+
+getValue-BB@0x8 : 
+	2       (00000008) iget-object          v0, v2, Lr/c;->d Lr/e;
+	3       (0000000c) iget                 v1, v2, Lr/c;->b I
+	4       (00000010) invoke-virtual       v0, v1, Lr/j;->j(I)Ljava/lang/Object;
+	5       (00000016) move-result-object   v0
+	6       (00000018) return-object        v0
+
+getValue-BB@0x1a : 
+	7       (0000001a) new-instance         v0, Ljava/lang/IllegalStateException;
+	8       (0000001e) const-string         v1, "This container does not support retaining Map.Entry objects"
+	9       (00000022) invoke-direct        v0, v1, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	10      (00000028) throw                v0
+

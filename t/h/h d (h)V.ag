@@ -1,0 +1,67 @@
+# Lt/h;->d(Lt/h;)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:t.h
+#
+# - return:void
+
+d-BB@0x0 : [ d-BB@0x18 d-BB@0x0 ]
+	0       (00000000) iget-object          v0, v4, Lt/h;->c Lt/g;
+	1       (00000004) sget-object          v1, Lt/h;->f Lq4/b;
+	2       (00000008) sget-object          v2, Lt/g;->c Lt/g;
+	3       (0000000c) invoke-virtual       v1, v4, v0, v2, Lq4/b;->d(Lt/h; Lt/g; Lt/g;)Z
+	4       (00000012) move-result          v1
+	5       (00000014) if-eqz               v1, -00ah
+
+d-BB@0x18 : [ d-BB@0x1e d-BB@0x36 ]
+	6       (00000018) const/4              v1, 0
+	7       (0000001a) if-eqz               v0, +00eh
+
+d-BB@0x1e : [ d-BB@0x26 d-BB@0x30 ]
+	8       (0000001e) iget-object          v2, v0, Lt/g;->a Ljava/lang/Thread;
+	9       (00000022) if-eqz               v2, +007h
+
+d-BB@0x26 : [ d-BB@0x30 ]
+	10      (00000026) iput-object          v1, v0, Lt/g;->a Ljava/lang/Thread;
+	11      (0000002a) invoke-static        v2, Ljava/util/concurrent/locks/LockSupport;->unpark(Ljava/lang/Thread;)V
+
+d-BB@0x30 : [ d-BB@0x18 ]
+	12      (00000030) iget-object          v0, v0, Lt/g;->b Lt/g;
+	13      (00000034) goto                 -eh
+
+d-BB@0x36 : [ d-BB@0x3c ]
+	14      (00000036) invoke-virtual       v4, Lt/h;->c()V
+
+d-BB@0x3c : [ d-BB@0x54 d-BB@0x3c ]
+	15      (0000003c) iget-object          v0, v4, Lt/h;->b Lt/d;
+	16      (00000040) sget-object          v2, Lt/h;->f Lq4/b;
+	17      (00000044) sget-object          v3, Lt/d;->d Lt/d;
+	18      (00000048) invoke-virtual       v2, v4, v0, v3, Lq4/b;->b(Lt/h; Lt/d; Lt/d;)Z
+	19      (0000004e) move-result          v2
+	20      (00000050) if-eqz               v2, -00ah
+
+d-BB@0x54 : [ d-BB@0x5c d-BB@0x66 ]
+	21      (00000054) move-object          v4, v1
+	22      (00000056) move-object          v1, v0
+	23      (00000058) if-eqz               v1, +007h
+
+d-BB@0x5c : [ d-BB@0x54 ]
+	24      (0000005c) iget-object          v0, v1, Lt/d;->c Lt/d;
+	25      (00000060) iput-object          v4, v1, Lt/d;->c Lt/d;
+	26      (00000064) goto                 -8h
+
+d-BB@0x66 : [ d-BB@0x6a d-BB@0x80 ]
+	27      (00000066) if-eqz               v4, +00dh
+
+d-BB@0x6a : [ d-BB@0x66 ]
+	28      (0000006a) iget-object          v0, v4, Lt/d;->c Lt/d;
+	29      (0000006e) iget-object          v1, v4, Lt/d;->a Ljava/lang/Runnable;
+	30      (00000072) iget-object          v4, v4, Lt/d;->b Ljava/util/concurrent/Executor;
+	31      (00000076) invoke-static        v1, v4, Lt/h;->e(Ljava/lang/Runnable; Ljava/util/concurrent/Executor;)V
+	32      (0000007c) move-object          v4, v0
+	33      (0000007e) goto                 -ch
+
+d-BB@0x80 : 
+	34      (00000080) return-void          
+

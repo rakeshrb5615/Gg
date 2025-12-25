@@ -1,0 +1,118 @@
+# Lr6/e0;->a(Landroid/content/Context;)Ljava/util/ArrayList; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v8
+# - v9:android.content.Context
+#
+# - return:java.util.ArrayList
+
+a-BB@0x0 : [ a-BB@0x36 a-BB@0x3c ]
+	0       (00000000) const-string         v0, "context"
+	1       (00000004) invoke-static        v9, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) invoke-virtual       v9, Landroid/content/Context;->getApplicationInfo()Landroid/content/pm/ApplicationInfo;
+	3       (00000010) move-result-object   v0
+	4       (00000012) iget                 v0, v0, Landroid/content/pm/ApplicationInfo;->uid I
+	5       (00000016) invoke-virtual       v9, Landroid/content/Context;->getApplicationInfo()Landroid/content/pm/ApplicationInfo;
+	6       (0000001c) move-result-object   v1
+	7       (0000001e) iget-object          v1, v1, Landroid/content/pm/ApplicationInfo;->processName Ljava/lang/String;
+	8       (00000022) const-string         v2, "activity"
+	9       (00000026) invoke-virtual       v9, v2, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+	10      (0000002c) move-result-object   v9
+	11      (0000002e) instance-of          v2, v9, Landroid/app/ActivityManager;
+	12      (00000032) if-eqz               v2, +005h
+
+a-BB@0x36 : [ a-BB@0x3e ]
+	13      (00000036) check-cast           v9, Landroid/app/ActivityManager;
+	14      (0000003a) goto                 +2h
+
+a-BB@0x3c : [ a-BB@0x3e ]
+	15      (0000003c) const/4              v9, 0
+
+a-BB@0x3e : [ a-BB@0x42 a-BB@0x4e ]
+	16      (0000003e) if-eqz               v9, +008h
+
+a-BB@0x42 : [ a-BB@0x4e a-BB@0x52 ]
+	17      (00000042) invoke-virtual       v9, Landroid/app/ActivityManager;->getRunningAppProcesses()Ljava/util/List;
+	18      (00000048) move-result-object   v9
+	19      (0000004a) if-nez               v9, +004h
+
+a-BB@0x4e : [ a-BB@0x52 ]
+	20      (0000004e) sget-object          v9, Li7/n;->a Li7/n;
+
+a-BB@0x52 : [ a-BB@0x64 ]
+	21      (00000052) new-instance         v2, Ljava/util/ArrayList;
+	22      (00000056) invoke-direct        v2, Ljava/util/ArrayList;-><init>()V
+	23      (0000005c) invoke-interface     v9, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
+	24      (00000062) move-result-object   v9
+
+a-BB@0x64 : [ a-BB@0x70 a-BB@0x84 ]
+	25      (00000064) invoke-interface     v9, Ljava/util/Iterator;->hasNext()Z
+	26      (0000006a) move-result          v3
+	27      (0000006c) if-eqz               v3, +00ch
+
+a-BB@0x70 : [ a-BB@0x7c a-BB@0x64 ]
+	28      (00000070) invoke-interface     v9, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	29      (00000076) move-result-object   v3
+	30      (00000078) if-eqz               v3, -00ah
+
+a-BB@0x7c : [ a-BB@0x64 ]
+	31      (0000007c) invoke-virtual       v2, v3, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	32      (00000082) goto                 -fh
+
+a-BB@0x84 : [ a-BB@0x9a ]
+	33      (00000084) new-instance         v9, Ljava/util/ArrayList;
+	34      (00000088) invoke-direct        v9, Ljava/util/ArrayList;-><init>()V
+	35      (0000008e) invoke-virtual       v2, Ljava/util/ArrayList;->size()I
+	36      (00000094) move-result          v3
+	37      (00000096) const/4              v4, 0
+	38      (00000098) move                 v5, v4
+
+a-BB@0x9a : [ a-BB@0x9e a-BB@0xc0 ]
+	39      (0000009a) if-ge                v5, v3, +013h
+
+a-BB@0x9e : [ a-BB@0xb8 a-BB@0x9a ]
+	40      (0000009e) invoke-virtual       v2, v5, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	41      (000000a4) move-result-object   v6
+	42      (000000a6) add-int/lit8         v5, v5, 1
+	43      (000000aa) move-object          v7, v6
+	44      (000000ac) check-cast           v7, Landroid/app/ActivityManager$RunningAppProcessInfo;
+	45      (000000b0) iget                 v7, v7, Landroid/app/ActivityManager$RunningAppProcessInfo;->uid I
+	46      (000000b4) if-ne                v7, v0, -00dh
+
+a-BB@0xb8 : [ a-BB@0x9a ]
+	47      (000000b8) invoke-virtual       v9, v6, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	48      (000000be) goto                 -12h
+
+a-BB@0xc0 : [ a-BB@0xde ]
+	49      (000000c0) new-instance         v0, Ljava/util/ArrayList;
+	50      (000000c4) const/16             v2, 10
+	51      (000000c8) invoke-static        v9, v2, Li7/j;->X(Ljava/lang/Iterable; I)I
+	52      (000000ce) move-result          v2
+	53      (000000d0) invoke-direct        v0, v2, Ljava/util/ArrayList;-><init>(I)V
+	54      (000000d6) invoke-virtual       v9, Ljava/util/ArrayList;->size()I
+	55      (000000dc) move-result          v2
+
+a-BB@0xde : [ a-BB@0xe2 a-BB@0x126 ]
+	56      (000000de) if-ge                v4, v2, +024h
+
+a-BB@0xe2 : [ a-BB@0xde ]
+	57      (000000e2) invoke-virtual       v9, v4, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	58      (000000e8) move-result-object   v3
+	59      (000000ea) add-int/lit8         v4, v4, 1
+	60      (000000ee) check-cast           v3, Landroid/app/ActivityManager$RunningAppProcessInfo;
+	61      (000000f2) new-instance         v5, Lr6/d0;
+	62      (000000f6) iget-object          v6, v3, Landroid/app/ActivityManager$RunningAppProcessInfo;->processName Ljava/lang/String;
+	63      (000000fa) const-string         v7, "processName"
+	64      (000000fe) invoke-static        v6, v7, Lkotlin/jvm/internal/j;->d(Ljava/lang/Object; Ljava/lang/String;)V
+	65      (00000104) iget                 v7, v3, Landroid/app/ActivityManager$RunningAppProcessInfo;->pid I
+	66      (00000108) iget                 v8, v3, Landroid/app/ActivityManager$RunningAppProcessInfo;->importance I
+	67      (0000010c) iget-object          v3, v3, Landroid/app/ActivityManager$RunningAppProcessInfo;->processName Ljava/lang/String;
+	68      (00000110) invoke-static        v3, v1, Lkotlin/jvm/internal/j;->a(Ljava/lang/Object; Ljava/lang/Object;)Z
+	69      (00000116) move-result          v3
+	70      (00000118) invoke-direct        v5, v6, v7, v8, v3, Lr6/d0;-><init>(Ljava/lang/String; I I Z)V
+	71      (0000011e) invoke-virtual       v0, v5, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	72      (00000124) goto                 -23h
+
+a-BB@0x126 : 
+	73      (00000126) return-object        v0
+

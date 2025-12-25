@@ -1,0 +1,30 @@
+# Lr/c;->remove()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v2
+#
+# - return:void
+
+remove-BB@0x0 : [ remove-BB@0x8 remove-BB@0x36 ]
+	0       (00000000) iget-boolean         v0, v2, Lr/c;->c Z
+	1       (00000004) if-eqz               v0, +019h
+
+remove-BB@0x8 : 
+	2       (00000008) iget-object          v0, v2, Lr/c;->d Lr/e;
+	3       (0000000c) iget                 v1, v2, Lr/c;->b I
+	4       (00000010) invoke-virtual       v0, v1, Lr/j;->h(I)Ljava/lang/Object;
+	5       (00000016) iget                 v0, v2, Lr/c;->b I
+	6       (0000001a) add-int/lit8         v0, v0, -1
+	7       (0000001e) iput                 v0, v2, Lr/c;->b I
+	8       (00000022) iget                 v0, v2, Lr/c;->a I
+	9       (00000026) add-int/lit8         v0, v0, -1
+	10      (0000002a) iput                 v0, v2, Lr/c;->a I
+	11      (0000002e) const/4              v0, 0
+	12      (00000030) iput-boolean         v0, v2, Lr/c;->c Z
+	13      (00000034) return-void          
+
+remove-BB@0x36 : 
+	14      (00000036) new-instance         v0, Ljava/lang/IllegalStateException;
+	15      (0000003a) invoke-direct        v0, Ljava/lang/IllegalStateException;-><init>()V
+	16      (00000040) throw                v0
+

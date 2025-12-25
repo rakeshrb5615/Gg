@@ -1,0 +1,29 @@
+# Lt/e;->d(Lt/h; Lt/g; Lt/g;)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:t.h
+# - v4:t.g
+# - v5:t.g
+#
+# - return:boolean
+
+d-BB@0x0 : [ d-BB@0x10 d-BB@0x14 ]
+	0       (00000000) iget-object          v0, v2, Lt/e;->h Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;
+	1       (00000004) invoke-virtual       v0, v3, v4, v5, Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;->compareAndSet(Ljava/lang/Object; Ljava/lang/Object; Ljava/lang/Object;)Z
+	2       (0000000a) move-result          v1
+	3       (0000000c) if-eqz               v1, +004h
+
+d-BB@0x10 : 
+	4       (00000010) const/4              v3, 1
+	5       (00000012) return               v3
+
+d-BB@0x14 : [ d-BB@0x20 d-BB@0x0 ]
+	6       (00000014) invoke-virtual       v0, v3, Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	7       (0000001a) move-result-object   v0
+	8       (0000001c) if-eq                v0, v4, -00eh
+
+d-BB@0x20 : 
+	9       (00000020) const/4              v3, 0
+	10      (00000022) return               v3
+

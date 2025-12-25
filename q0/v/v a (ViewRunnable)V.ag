@@ -1,0 +1,27 @@
+# Lq0/v;->a(Landroid/view/View; Ljava/lang/Runnable;)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v0
+# - v1:android.view.View
+# - v2:java.lang.Runnable
+#
+# - return:void
+
+a-BB@0x0 : [ a-BB@0x4 a-BB@0x24 ]
+	0       (00000000) if-eqz               v1, +012h
+
+a-BB@0x4 : 
+	1       (00000004) new-instance         v0, Lq0/v;
+	2       (00000008) invoke-direct        v0, v1, v2, Lq0/v;-><init>(Landroid/view/View; Ljava/lang/Runnable;)V
+	3       (0000000e) invoke-virtual       v1, Landroid/view/View;->getViewTreeObserver()Landroid/view/ViewTreeObserver;
+	4       (00000014) move-result-object   v2
+	5       (00000016) invoke-virtual       v2, v0, Landroid/view/ViewTreeObserver;->addOnPreDrawListener(Landroid/view/ViewTreeObserver$OnPreDrawListener;)V
+	6       (0000001c) invoke-virtual       v1, v0, Landroid/view/View;->addOnAttachStateChangeListener(Landroid/view/View$OnAttachStateChangeListener;)V
+	7       (00000022) return-void          
+
+a-BB@0x24 : 
+	8       (00000024) new-instance         v1, Ljava/lang/NullPointerException;
+	9       (00000028) const-string         v2, "view == null"
+	10      (0000002c) invoke-direct        v1, v2, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
+	11      (00000032) throw                v1
+

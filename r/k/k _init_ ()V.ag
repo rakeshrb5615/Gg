@@ -1,0 +1,39 @@
+# Lr/k;-><init>()V [access_flags=public constructor]
+#
+# Parameters:
+# local registers: v0...v4
+#
+# - return:void
+
+<init>-BB@0x0 : [ <init>-BB@0xa ]
+	0       (00000000) invoke-direct        v4, Ljava/lang/Object;-><init>()V
+	1       (00000006) const/4              v0, 4
+	2       (00000008) move                 v1, v0
+
+<init>-BB@0xa : [ <init>-BB@0x16 <init>-BB@0x2c ]
+	3       (0000000a) const/16             v2, 32
+	4       (0000000e) const/16             v3, 40
+	5       (00000012) if-ge                v1, v2, +00dh
+
+<init>-BB@0x16 : [ <init>-BB@0x22 <init>-BB@0x26 ]
+	6       (00000016) const/4              v2, 1
+	7       (00000018) shl-int/2addr        v2, v1
+	8       (0000001a) add-int/lit8         v2, v2, -12
+	9       (0000001e) if-gt                v3, v2, +004h
+
+<init>-BB@0x22 : [ <init>-BB@0x2c ]
+	10      (00000022) move                 v3, v2
+	11      (00000024) goto                 +4h
+
+<init>-BB@0x26 : [ <init>-BB@0xa ]
+	12      (00000026) add-int/lit8         v1, v1, 1
+	13      (0000002a) goto                 -10h
+
+<init>-BB@0x2c : 
+	14      (0000002c) div-int/2addr        v3, v0
+	15      (0000002e) new-array            v0, v3, [I
+	16      (00000032) iput-object          v0, v4, Lr/k;->a [I
+	17      (00000036) new-array            v0, v3, [Ljava/lang/Object;
+	18      (0000003a) iput-object          v0, v4, Lr/k;->b [Ljava/lang/Object;
+	19      (0000003e) return-void          
+

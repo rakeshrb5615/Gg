@@ -1,0 +1,28 @@
+# Ls8/g;->a(Ljava/lang/String;)I [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:java.lang.String
+#
+# - return:int
+
+a-BB@0x0 : [ a-BB@0x16 a-BB@0x20 ]
+	0       (00000000) const-string         v0, "name"
+	1       (00000004) invoke-static        v3, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) invoke-static        v3, Lb8/p;->q0(Ljava/lang/String;)Ljava/lang/Integer;
+	3       (00000010) move-result-object   v0
+	4       (00000012) if-eqz               v0, +007h
+
+a-BB@0x16 : 
+	5       (00000016) invoke-virtual       v0, Ljava/lang/Integer;->intValue()I
+	6       (0000001c) move-result          v3
+	7       (0000001e) return               v3
+
+a-BB@0x20 : 
+	8       (00000020) new-instance         v0, Ljava/lang/IllegalArgumentException;
+	9       (00000024) const-string         v1, " is not a valid map index"
+	10      (00000028) invoke-virtual       v3, v1, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	11      (0000002e) move-result-object   v3
+	12      (00000030) invoke-direct        v0, v3, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	13      (00000036) throw                v0
+

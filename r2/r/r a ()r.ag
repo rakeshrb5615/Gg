@@ -1,0 +1,24 @@
+# Lr2/r;->a()Lr2/r; [access_flags=public static]
+#
+# Parameters:
+# local registers: v0...v1
+#
+# - return:r2.r
+
+a-BB@0x0 : [ a-BB@0x8 a-BB@0x1a ]
+	0       (00000000) sget-object          v0, Lr2/r;->e Lr2/k;
+	1       (00000004) if-eqz               v0, +00bh
+
+a-BB@0x8 : 
+	2       (00000008) iget-object          v0, v0, Lr2/k;->f Lg7/a;
+	3       (0000000c) invoke-interface     v0, Lg7/a;->get()Ljava/lang/Object;
+	4       (00000012) move-result-object   v0
+	5       (00000014) check-cast           v0, Lr2/r;
+	6       (00000018) return-object        v0
+
+a-BB@0x1a : 
+	7       (0000001a) new-instance         v0, Ljava/lang/IllegalStateException;
+	8       (0000001e) const-string         v1, "Not initialized!"
+	9       (00000022) invoke-direct        v0, v1, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	10      (00000028) throw                v0
+

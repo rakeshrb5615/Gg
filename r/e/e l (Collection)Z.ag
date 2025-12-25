@@ -1,0 +1,36 @@
+# Lr/e;->l(Ljava/util/Collection;)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:java.util.Collection
+#
+# - return:boolean
+
+l-BB@0x0 : [ l-BB@0xc ]
+	0       (00000000) iget                 v0, v2, Lr/j;->c I
+	1       (00000004) invoke-interface     v3, Ljava/util/Collection;->iterator()Ljava/util/Iterator;
+	2       (0000000a) move-result-object   v3
+
+l-BB@0xc : [ l-BB@0x18 l-BB@0x28 ]
+	3       (0000000c) invoke-interface     v3, Ljava/util/Iterator;->hasNext()Z
+	4       (00000012) move-result          v1
+	5       (00000014) if-eqz               v1, +00ah
+
+l-BB@0x18 : [ l-BB@0xc ]
+	6       (00000018) invoke-interface     v3, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	7       (0000001e) move-result-object   v1
+	8       (00000020) invoke-super         v2, v1, Lr/j;->remove(Ljava/lang/Object;)Ljava/lang/Object;
+	9       (00000026) goto                 -dh
+
+l-BB@0x28 : [ l-BB@0x30 l-BB@0x34 ]
+	10      (00000028) iget                 v3, v2, Lr/j;->c I
+	11      (0000002c) if-eq                v0, v3, +004h
+
+l-BB@0x30 : 
+	12      (00000030) const/4              v3, 1
+	13      (00000032) return               v3
+
+l-BB@0x34 : 
+	14      (00000034) const/4              v3, 0
+	15      (00000036) return               v3
+

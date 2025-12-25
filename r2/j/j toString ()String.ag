@@ -1,0 +1,36 @@
+# Lr2/j;->toString()Ljava/lang/String; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v4
+#
+# - return:java.lang.String
+
+toString-BB@0x0 : [ toString-BB@0x8 toString-BB@0xe ]
+	0       (00000000) iget-object          v0, v4, Lr2/j;->b [B
+	1       (00000004) if-nez               v0, +005h
+
+toString-BB@0x8 : [ toString-BB@0x18 ]
+	2       (00000008) const-string         v0, ""
+	3       (0000000c) goto                 +6h
+
+toString-BB@0xe : [ toString-BB@0x18 ]
+	4       (0000000e) const/4              v1, 2
+	5       (00000010) invoke-static        v0, v1, Landroid/util/Base64;->encodeToString([B I)Ljava/lang/String;
+	6       (00000016) move-result-object   v0
+
+toString-BB@0x18 : 
+	7       (00000018) new-instance         v1, Ljava/lang/StringBuilder;
+	8       (0000001c) const-string         v2, "TransportContext("
+	9       (00000020) invoke-direct        v1, v2, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	10      (00000026) iget-object          v2, v4, Lr2/j;->a Ljava/lang/String;
+	11      (0000002a) invoke-virtual       v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	12      (00000030) const-string         v2, ", "
+	13      (00000034) invoke-virtual       v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	14      (0000003a) iget-object          v3, v4, Lr2/j;->c Lo2/d;
+	15      (0000003e) invoke-virtual       v1, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	16      (00000044) invoke-virtual       v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	17      (0000004a) const-string         v2, ")"
+	18      (0000004e) invoke-static        v1, v0, v2, Lv1/a;->n(Ljava/lang/StringBuilder; Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	19      (00000054) move-result-object   v0
+	20      (00000056) return-object        v0
+

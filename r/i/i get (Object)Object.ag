@@ -1,0 +1,111 @@
+# Lr/i;->get(Ljava/lang/Object;)Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:java.lang.Object
+#
+# - return:java.lang.Object
+
+get-BB@0x0 : [ get-BB@0x10 ]
+	0       (00000000) const-string         v0, "key"
+	1       (00000004) invoke-static        v6, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) iget-object          v0, v5, Lr/i;->lock Ls/b;
+	3       (0000000e) monitor-enter        v0
+
+get-BB@0x10 : [ get-BB@0x2a get-BB@0x3e ]
+	4       (00000010) iget-object          v1, v5, Lr/i;->map Ls/c;
+	5       (00000014) invoke-virtual       v1, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	6       (0000001a) iget-object          v1, v1, Ls/c;->a Ljava/util/LinkedHashMap;
+	7       (0000001e) invoke-virtual       v1, v6, Ljava/util/LinkedHashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	8       (00000024) move-result-object   v1
+	9       (00000026) if-eqz               v1, +00ch
+	10:35
+	(Ljava/lang/Throwable; -> 3a get-BB@0x3a)
+
+get-BB@0x2a : 
+	10      (0000002a) iget                 v6, v5, Lr/i;->hitCount I
+	11      (0000002e) add-int/lit8         v6, v6, 1
+	12      (00000032) iput                 v6, v5, Lr/i;->hitCount I
+	13      (00000036) monitor-exit         v0
+	14      (00000038) return-object        v1
+
+get-BB@0x3a : [ get-BB@0xc8 ]
+	15      (0000003a) move-exception       v6
+	16      (0000003c) goto                 +46h
+
+get-BB@0x3e : [ get-BB@0x58 get-BB@0x5c ]
+	17      (0000003e) iget                 v1, v5, Lr/i;->missCount I
+	18      (00000042) add-int/lit8         v1, v1, 1
+	19      (00000046) iput                 v1, v5, Lr/i;->missCount I
+	20      (0000004a) monitor-exit         v0
+	21      (0000004c) invoke-virtual       v5, v6, Lr/i;->create(Ljava/lang/Object;)Ljava/lang/Object;
+	22      (00000052) move-result-object   v0
+	23      (00000054) if-nez               v0, +004h
+	3e:49
+	(Ljava/lang/Throwable; -> 3a get-BB@0x3a)
+
+get-BB@0x58 : 
+	24      (00000058) const/4              v6, 0
+	25      (0000005a) return-object        v6
+
+get-BB@0x5c : [ get-BB@0x62 ]
+	26      (0000005c) iget-object          v1, v5, Lr/i;->lock Ls/b;
+	27      (00000060) monitor-enter        v1
+
+get-BB@0x62 : [ get-BB@0x82 get-BB@0x96 ]
+	28      (00000062) iget                 v2, v5, Lr/i;->createCount I
+	29      (00000066) add-int/lit8         v2, v2, 1
+	30      (0000006a) iput                 v2, v5, Lr/i;->createCount I
+	31      (0000006e) iget-object          v2, v5, Lr/i;->map Ls/c;
+	32      (00000072) iget-object          v2, v2, Ls/c;->a Ljava/util/LinkedHashMap;
+	33      (00000076) invoke-virtual       v2, v6, v0, Ljava/util/AbstractMap;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	34      (0000007c) move-result-object   v2
+	35      (0000007e) if-eqz               v2, +00ch
+	62:a7
+	(Ljava/lang/Throwable; -> 92 get-BB@0x92)
+
+get-BB@0x82 : [ get-BB@0xa8 ]
+	36      (00000082) iget-object          v3, v5, Lr/i;->map Ls/c;
+	37      (00000086) iget-object          v3, v3, Ls/c;->a Ljava/util/LinkedHashMap;
+	38      (0000008a) invoke-virtual       v3, v6, v2, Ljava/util/AbstractMap;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	39      (00000090) goto                 +ch
+	62:a7
+	(Ljava/lang/Throwable; -> 92 get-BB@0x92)
+
+get-BB@0x92 : [ get-BB@0xc4 ]
+	40      (00000092) move-exception       v6
+	41      (00000094) goto                 +18h
+	62:a7
+	(Ljava/lang/Throwable; -> 92 get-BB@0x92)
+
+get-BB@0x96 : [ get-BB@0xa8 ]
+	42      (00000096) iget                 v3, v5, Lr/i;->size I
+	43      (0000009a) invoke-virtual       v5, v6, v0, Lr/i;->a(Ljava/lang/Object; Ljava/lang/Object;)I
+	44      (000000a0) move-result          v4
+	45      (000000a2) add-int/2addr        v3, v4
+	46      (000000a4) iput                 v3, v5, Lr/i;->size I
+	62:a7
+	(Ljava/lang/Throwable; -> 92 get-BB@0x92)
+
+get-BB@0xa8 : [ get-BB@0xae get-BB@0xb8 ]
+	47      (000000a8) monitor-exit         v1
+	48      (000000aa) if-eqz               v2, +007h
+
+get-BB@0xae : 
+	49      (000000ae) const/4              v1, 0
+	50      (000000b0) invoke-virtual       v5, v1, v6, v0, v2, Lr/i;->entryRemoved(Z Ljava/lang/Object; Ljava/lang/Object; Ljava/lang/Object;)V
+	51      (000000b6) return-object        v2
+
+get-BB@0xb8 : 
+	52      (000000b8) iget                 v6, v5, Lr/i;->maxSize I
+	53      (000000bc) invoke-virtual       v5, v6, Lr/i;->trimToSize(I)V
+	54      (000000c2) return-object        v0
+
+get-BB@0xc4 : 
+	55      (000000c4) monitor-exit         v1
+	56      (000000c6) throw                v6
+
+get-BB@0xc8 : 
+	57      (000000c8) monitor-exit         v0
+	58      (000000ca) throw                v6
+

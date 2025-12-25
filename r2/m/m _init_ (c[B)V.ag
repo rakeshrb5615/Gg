@@ -1,0 +1,33 @@
+# Lr2/m;-><init>(Lo2/c; [B)V [access_flags=public constructor]
+#
+# Parameters:
+# - local registers: v0...v0
+# - v1:o2.c
+# - v2:byte[]
+#
+# - return:void
+
+<init>-BB@0x0 : [ <init>-BB@0xa <init>-BB@0x28 ]
+	0       (00000000) invoke-direct        v0, Ljava/lang/Object;-><init>()V
+	1       (00000006) if-eqz               v1, +011h
+
+<init>-BB@0xa : [ <init>-BB@0xe <init>-BB@0x18 ]
+	2       (0000000a) if-eqz               v2, +007h
+
+<init>-BB@0xe : 
+	3       (0000000e) iput-object          v1, v0, Lr2/m;->a Lo2/c;
+	4       (00000012) iput-object          v2, v0, Lr2/m;->b [B
+	5       (00000016) return-void          
+
+<init>-BB@0x18 : 
+	6       (00000018) new-instance         v1, Ljava/lang/NullPointerException;
+	7       (0000001c) const-string         v2, "bytes is null"
+	8       (00000020) invoke-direct        v1, v2, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
+	9       (00000026) throw                v1
+
+<init>-BB@0x28 : 
+	10      (00000028) new-instance         v1, Ljava/lang/NullPointerException;
+	11      (0000002c) const-string         v2, "encoding is null"
+	12      (00000030) invoke-direct        v1, v2, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
+	13      (00000036) throw                v1
+

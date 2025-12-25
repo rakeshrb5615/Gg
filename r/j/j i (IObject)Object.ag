@@ -1,0 +1,43 @@
+# Lr/j;->i(I Ljava/lang/Object;)Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:int
+# - v5:java.lang.Object
+#
+# - return:java.lang.Object
+
+i-BB@0x0 : [ i-BB@0x8 i-BB@0x12 ]
+	0       (00000000) const/4              v0, 0
+	1       (00000002) const/4              v1, 1
+	2       (00000004) if-ltz               v4, +007h
+
+i-BB@0x8 : [ i-BB@0x10 i-BB@0x12 ]
+	3       (00000008) iget                 v2, v3, Lr/j;->c I
+	4       (0000000c) if-ge                v4, v2, +003h
+
+i-BB@0x10 : [ i-BB@0x12 ]
+	5       (00000010) move                 v0, v1
+
+i-BB@0x12 : [ i-BB@0x16 i-BB@0x28 ]
+	6       (00000012) if-eqz               v0, +00bh
+
+i-BB@0x16 : 
+	7       (00000016) shl-int/2addr        v4, v1
+	8       (00000018) add-int/2addr        v4, v1
+	9       (0000001a) iget-object          v0, v3, Lr/j;->b [Ljava/lang/Object;
+	10      (0000001e) aget-object          v1, v0, v4
+	11      (00000022) aput-object          v5, v0, v4
+	12      (00000026) return-object        v1
+
+i-BB@0x28 : 
+	13      (00000028) new-instance         v5, Ljava/lang/StringBuilder;
+	14      (0000002c) const-string         v0, "Expected index to be within 0..size()-1, but was "
+	15      (00000030) invoke-direct        v5, v0, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	16      (00000036) invoke-virtual       v5, v4, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	17      (0000003c) invoke-virtual       v5, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	18      (00000042) move-result-object   v4
+	19      (00000044) invoke-static        v4, Ls/a;->c(Ljava/lang/String;)V
+	20      (0000004a) const/4              v4, 0
+	21      (0000004c) throw                v4
+

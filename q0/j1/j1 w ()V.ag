@@ -1,0 +1,57 @@
+# Lq0/j1;->w()V [access_flags=private static]
+#
+# Parameters:
+# local registers: v0...v3
+#
+# - return:void
+
+w-BB@0x0 : [ w-BB@0x2 ]
+	0       (00000000) const/4              v0, 1
+
+w-BB@0x2 : [ w-BB@0x9a ]
+	1       (00000002) const-class          v1, Landroid/view/View;
+	2       (00000006) const-string         v2, "getViewRootImpl"
+	3       (0000000a) const/4              v3, 0
+	4       (0000000c) invoke-virtual       v1, v2, v3, Ljava/lang/Class;->getDeclaredMethod(Ljava/lang/String; [Ljava/lang/Class;)Ljava/lang/reflect/Method;
+	5       (00000012) move-result-object   v1
+	6       (00000014) sput-object          v1, Lq0/j1;->j Ljava/lang/reflect/Method;
+	7       (00000018) const-string         v1, "android.view.View$AttachInfo"
+	8       (0000001c) invoke-static        v1, Ljava/lang/Class;->forName(Ljava/lang/String;)Ljava/lang/Class;
+	9       (00000022) move-result-object   v1
+	10      (00000024) sput-object          v1, Lq0/j1;->k Ljava/lang/Class;
+	11      (00000028) const-string         v2, "mVisibleInsets"
+	12      (0000002c) invoke-virtual       v1, v2, Ljava/lang/Class;->getDeclaredField(Ljava/lang/String;)Ljava/lang/reflect/Field;
+	13      (00000032) move-result-object   v1
+	14      (00000034) sput-object          v1, Lq0/j1;->l Ljava/lang/reflect/Field;
+	15      (00000038) const-string         v1, "android.view.ViewRootImpl"
+	16      (0000003c) invoke-static        v1, Ljava/lang/Class;->forName(Ljava/lang/String;)Ljava/lang/Class;
+	17      (00000042) move-result-object   v1
+	18      (00000044) const-string         v2, "mAttachInfo"
+	19      (00000048) invoke-virtual       v1, v2, Ljava/lang/Class;->getDeclaredField(Ljava/lang/String;)Ljava/lang/reflect/Field;
+	20      (0000004e) move-result-object   v1
+	21      (00000050) sput-object          v1, Lq0/j1;->m Ljava/lang/reflect/Field;
+	22      (00000054) sget-object          v1, Lq0/j1;->l Ljava/lang/reflect/Field;
+	23      (00000058) invoke-virtual       v1, v0, Ljava/lang/reflect/AccessibleObject;->setAccessible(Z)V
+	24      (0000005e) sget-object          v1, Lq0/j1;->m Ljava/lang/reflect/Field;
+	25      (00000062) invoke-virtual       v1, v0, Ljava/lang/reflect/AccessibleObject;->setAccessible(Z)V
+	26      (00000068) goto                 +19h
+	2:67
+	(Ljava/lang/ReflectiveOperationException; -> 6a w-BB@0x6a)
+
+w-BB@0x6a : [ w-BB@0x9a ]
+	27      (0000006a) move-exception       v1
+	28      (0000006c) new-instance         v2, Ljava/lang/StringBuilder;
+	29      (00000070) const-string         v3, "Failed to get visible insets. (Reflection error). "
+	30      (00000074) invoke-direct        v2, v3, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	31      (0000007a) invoke-virtual       v1, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+	32      (00000080) move-result-object   v3
+	33      (00000082) invoke-virtual       v2, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	34      (00000088) invoke-virtual       v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	35      (0000008e) move-result-object   v2
+	36      (00000090) const-string         v3, "WindowInsetsCompat"
+	37      (00000094) invoke-static        v3, v2, v1, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+
+w-BB@0x9a : 
+	38      (0000009a) sput-boolean         v0, Lq0/j1;->i Z
+	39      (0000009e) return-void          
+

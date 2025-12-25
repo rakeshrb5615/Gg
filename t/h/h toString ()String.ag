@@ -1,0 +1,86 @@
+# Lt/h;->toString()Ljava/lang/String; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v5
+#
+# - return:java.lang.String
+
+toString-BB@0x0 : [ toString-BB@0x32 toString-BB@0x3e ]
+	0       (00000000) new-instance         v0, Ljava/lang/StringBuilder;
+	1       (00000004) invoke-direct        v0, Ljava/lang/StringBuilder;-><init>()V
+	2       (0000000a) invoke-super         v5, Ljava/lang/Object;->toString()Ljava/lang/String;
+	3       (00000010) move-result-object   v1
+	4       (00000012) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	5       (00000018) const-string         v1, "[status="
+	6       (0000001c) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	7       (00000022) iget-object          v1, v5, Lt/h;->a Ljava/lang/Object;
+	8       (00000026) instance-of          v1, v1, Lt/a;
+	9       (0000002a) const-string         v2, "]"
+	10      (0000002e) if-eqz               v1, +008h
+
+toString-BB@0x32 : [ toString-BB@0xc8 ]
+	11      (00000032) const-string         v1, "CANCELLED"
+	12      (00000036) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	13      (0000003c) goto                 +46h
+
+toString-BB@0x3e : [ toString-BB@0x4a toString-BB@0x52 ]
+	14      (0000003e) invoke-virtual       v5, Lt/h;->isDone()Z
+	15      (00000044) move-result          v1
+	16      (00000046) if-eqz               v1, +006h
+
+toString-BB@0x4a : [ toString-BB@0xc8 ]
+	17      (0000004a) invoke-virtual       v5, v0, Lt/h;->b(Ljava/lang/StringBuilder;)V
+	18      (00000050) goto                 +3ch
+
+toString-BB@0x52 : [ toString-BB@0x82 ]
+	19      (00000052) invoke-virtual       v5, Lt/h;->h()Ljava/lang/String;
+	20      (00000058) move-result-object   v1
+	21      (0000005a) goto                 +14h
+	52:59
+	(Ljava/lang/RuntimeException; -> 5c toString-BB@0x5c)
+
+toString-BB@0x5c : [ toString-BB@0x82 ]
+	22      (0000005c) move-exception       v1
+	23      (0000005e) new-instance         v3, Ljava/lang/StringBuilder;
+	24      (00000062) const-string         v4, "Exception thrown from implementation: "
+	25      (00000066) invoke-direct        v3, v4, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	26      (0000006c) invoke-virtual       v1, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	27      (00000072) move-result-object   v1
+	28      (00000074) invoke-virtual       v3, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	29      (0000007a) invoke-virtual       v3, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	30      (00000080) move-result-object   v1
+
+toString-BB@0x82 : [ toString-BB@0x86 toString-BB@0xaa ]
+	31      (00000082) if-eqz               v1, +014h
+
+toString-BB@0x86 : [ toString-BB@0x92 toString-BB@0xaa ]
+	32      (00000086) invoke-virtual       v1, Ljava/lang/String;->isEmpty()Z
+	33      (0000008c) move-result          v3
+	34      (0000008e) if-nez               v3, +00eh
+
+toString-BB@0x92 : [ toString-BB@0xc8 ]
+	35      (00000092) const-string         v3, "PENDING, info=["
+	36      (00000096) invoke-virtual       v0, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	37      (0000009c) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	38      (000000a2) invoke-virtual       v0, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	39      (000000a8) goto                 +10h
+
+toString-BB@0xaa : [ toString-BB@0xb6 toString-BB@0xbe ]
+	40      (000000aa) invoke-virtual       v5, Lt/h;->isDone()Z
+	41      (000000b0) move-result          v1
+	42      (000000b2) if-eqz               v1, +006h
+
+toString-BB@0xb6 : [ toString-BB@0xc8 ]
+	43      (000000b6) invoke-virtual       v5, v0, Lt/h;->b(Ljava/lang/StringBuilder;)V
+	44      (000000bc) goto                 +6h
+
+toString-BB@0xbe : [ toString-BB@0xc8 ]
+	45      (000000be) const-string         v1, "PENDING"
+	46      (000000c2) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+toString-BB@0xc8 : 
+	47      (000000c8) invoke-virtual       v0, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	48      (000000ce) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	49      (000000d4) move-result-object   v0
+	50      (000000d6) return-object        v0
+

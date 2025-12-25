@@ -1,0 +1,38 @@
+# Lr/d;->removeAll(Ljava/util/Collection;)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:java.util.Collection
+#
+# - return:boolean
+
+removeAll-BB@0x0 : [ removeAll-BB@0xc ]
+	0       (00000000) iget-object          v0, v6, Lr/d;->a Lr/e;
+	1       (00000004) iget                 v1, v0, Lr/j;->c I
+	2       (00000008) const/4              v2, 0
+	3       (0000000a) move                 v3, v2
+
+removeAll-BB@0xc : [ removeAll-BB@0x10 removeAll-BB@0x3a ]
+	4       (0000000c) if-ge                v2, v1, +017h
+
+removeAll-BB@0x10 : [ removeAll-BB@0x26 removeAll-BB@0x36 ]
+	5       (00000010) invoke-virtual       v0, v2, Lr/j;->j(I)Ljava/lang/Object;
+	6       (00000016) move-result-object   v4
+	7       (00000018) invoke-interface     v7, v4, Ljava/util/Collection;->contains(Ljava/lang/Object;)Z
+	8       (0000001e) move-result          v4
+	9       (00000020) const/4              v5, 1
+	10      (00000022) if-eqz               v4, +00ah
+
+removeAll-BB@0x26 : [ removeAll-BB@0x36 ]
+	11      (00000026) invoke-virtual       v0, v2, Lr/j;->h(I)Ljava/lang/Object;
+	12      (0000002c) add-int/lit8         v2, v2, -1
+	13      (00000030) add-int/lit8         v1, v1, -1
+	14      (00000034) move                 v3, v5
+
+removeAll-BB@0x36 : [ removeAll-BB@0xc ]
+	15      (00000036) add-int/2addr        v2, v5
+	16      (00000038) goto                 -16h
+
+removeAll-BB@0x3a : 
+	17      (0000003a) return               v3
+

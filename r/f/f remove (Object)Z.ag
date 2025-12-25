@@ -1,0 +1,35 @@
+# Lr/f;->remove(Ljava/lang/Object;)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:java.lang.Object
+#
+# - return:boolean
+
+remove-BB@0x0 : [ remove-BB@0x6 remove-BB@0x12 ]
+	0       (00000000) const/4              v0, 0
+	1       (00000002) if-nez               v3, +008h
+
+remove-BB@0x6 : [ remove-BB@0x22 ]
+	2       (00000006) const/4              v3, 0
+	3       (00000008) invoke-static        v2, v3, v0, Lr/h;->b(Lr/f; Ljava/lang/Object; I)I
+	4       (0000000e) move-result          v3
+	5       (00000010) goto                 +9h
+
+remove-BB@0x12 : [ remove-BB@0x22 ]
+	6       (00000012) invoke-virtual       v3, Ljava/lang/Object;->hashCode()I
+	7       (00000018) move-result          v1
+	8       (0000001a) invoke-static        v2, v3, v1, Lr/h;->b(Lr/f; Ljava/lang/Object; I)I
+	9       (00000020) move-result          v3
+
+remove-BB@0x22 : [ remove-BB@0x26 remove-BB@0x30 ]
+	10      (00000022) if-ltz               v3, +007h
+
+remove-BB@0x26 : 
+	11      (00000026) invoke-virtual       v2, v3, Lr/f;->b(I)Ljava/lang/Object;
+	12      (0000002c) const/4              v3, 1
+	13      (0000002e) return               v3
+
+remove-BB@0x30 : 
+	14      (00000030) return               v0
+

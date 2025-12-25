@@ -1,0 +1,86 @@
+# Lr2/h;->b()Lr2/i; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v15
+#
+# - return:r2.i
+
+b-BB@0x0 : [ b-BB@0x8 b-BB@0xe ]
+	0       (00000000) iget-object          v0, v15, Lr2/h;->a Ljava/lang/String;
+	1       (00000004) if-nez               v0, +005h
+
+b-BB@0x8 : [ b-BB@0x12 ]
+	2       (00000008) const-string         v0, " transportName"
+	3       (0000000c) goto                 +3h
+
+b-BB@0xe : [ b-BB@0x12 ]
+	4       (0000000e) const-string         v0, ""
+
+b-BB@0x12 : [ b-BB@0x1a b-BB@0x26 ]
+	5       (00000012) iget-object          v1, v15, Lr2/h;->c Lr2/m;
+	6       (00000016) if-nez               v1, +008h
+
+b-BB@0x1a : [ b-BB@0x26 ]
+	7       (0000001a) const-string         v1, " encodedPayload"
+	8       (0000001e) invoke-virtual       v0, v1, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	9       (00000024) move-result-object   v0
+
+b-BB@0x26 : [ b-BB@0x2e b-BB@0x3a ]
+	10      (00000026) iget-object          v1, v15, Lr2/h;->d Ljava/lang/Long;
+	11      (0000002a) if-nez               v1, +008h
+
+b-BB@0x2e : [ b-BB@0x3a ]
+	12      (0000002e) const-string         v1, " eventMillis"
+	13      (00000032) invoke-static        v0, v1, Lg2/g;->d(Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	14      (00000038) move-result-object   v0
+
+b-BB@0x3a : [ b-BB@0x42 b-BB@0x4e ]
+	15      (0000003a) iget-object          v1, v15, Lr2/h;->e Ljava/lang/Long;
+	16      (0000003e) if-nez               v1, +008h
+
+b-BB@0x42 : [ b-BB@0x4e ]
+	17      (00000042) const-string         v1, " uptimeMillis"
+	18      (00000046) invoke-static        v0, v1, Lg2/g;->d(Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	19      (0000004c) move-result-object   v0
+
+b-BB@0x4e : [ b-BB@0x56 b-BB@0x62 ]
+	20      (0000004e) iget-object          v1, v15, Lr2/h;->f Ljava/util/HashMap;
+	21      (00000052) if-nez               v1, +008h
+
+b-BB@0x56 : [ b-BB@0x62 ]
+	22      (00000056) const-string         v1, " autoMetadata"
+	23      (0000005a) invoke-static        v0, v1, Lg2/g;->d(Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	24      (00000060) move-result-object   v0
+
+b-BB@0x62 : [ b-BB@0x6e b-BB@0xb2 ]
+	25      (00000062) invoke-virtual       v0, Ljava/lang/String;->isEmpty()Z
+	26      (00000068) move-result          v1
+	27      (0000006a) if-eqz               v1, +024h
+
+b-BB@0x6e : 
+	28      (0000006e) new-instance         v2, Lr2/i;
+	29      (00000072) iget-object          v3, v15, Lr2/h;->a Ljava/lang/String;
+	30      (00000076) iget-object          v4, v15, Lr2/h;->b Ljava/lang/Integer;
+	31      (0000007a) iget-object          v5, v15, Lr2/h;->c Lr2/m;
+	32      (0000007e) iget-object          v0, v15, Lr2/h;->d Ljava/lang/Long;
+	33      (00000082) invoke-virtual       v0, Ljava/lang/Long;->longValue()J
+	34      (00000088) move-result-wide     v6
+	35      (0000008a) iget-object          v0, v15, Lr2/h;->e Ljava/lang/Long;
+	36      (0000008e) invoke-virtual       v0, Ljava/lang/Long;->longValue()J
+	37      (00000094) move-result-wide     v8
+	38      (00000096) iget-object          v10, v15, Lr2/h;->f Ljava/util/HashMap;
+	39      (0000009a) iget-object          v11, v15, Lr2/h;->g Ljava/lang/Integer;
+	40      (0000009e) iget-object          v12, v15, Lr2/h;->h Ljava/lang/String;
+	41      (000000a2) iget-object          v13, v15, Lr2/h;->i [B
+	42      (000000a6) iget-object          v14, v15, Lr2/h;->j [B
+	43      (000000aa) invoke-direct/range  v2 ... v14, Lr2/i;-><init>(Ljava/lang/String; Ljava/lang/Integer; Lr2/m; J J Ljava/util/HashMap; Ljava/lang/Integer; Ljava/lang/String; [B [B)V
+	44      (000000b0) return-object        v2
+
+b-BB@0xb2 : 
+	45      (000000b2) new-instance         v1, Ljava/lang/IllegalStateException;
+	46      (000000b6) const-string         v2, "Missing required properties:"
+	47      (000000ba) invoke-virtual       v2, v0, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	48      (000000c0) move-result-object   v0
+	49      (000000c2) invoke-direct        v1, v0, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	50      (000000c8) throw                v1
+

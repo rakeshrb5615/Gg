@@ -1,0 +1,66 @@
+# Lr/f;->equals(Ljava/lang/Object;)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:java.lang.Object
+#
+# - return:boolean
+
+equals-BB@0x0 : [ equals-BB@0x6 equals-BB@0x8 ]
+	0       (00000000) const/4              v0, 1
+	1       (00000002) if-ne                v6, v7, +003h
+
+equals-BB@0x6 : 
+	2       (00000006) return               v0
+
+equals-BB@0x8 : [ equals-BB@0x12 equals-BB@0x58 ]
+	3       (00000008) instance-of          v1, v7, Ljava/util/Set;
+	4       (0000000c) const/4              v2, 0
+	5       (0000000e) if-eqz               v1, +025h
+
+equals-BB@0x12 : [ equals-BB@0x28 equals-BB@0x2a ]
+	6       (00000012) iget                 v1, v6, Lr/f;->c I
+	7       (00000016) move-object          v3, v7
+	8       (00000018) check-cast           v3, Ljava/util/Set;
+	9       (0000001c) invoke-interface     v3, Ljava/util/Set;->size()I
+	10      (00000022) move-result          v3
+	11      (00000024) if-eq                v1, v3, +003h
+
+equals-BB@0x28 : 
+	12      (00000028) return               v2
+
+equals-BB@0x2a : [ equals-BB@0x30 ]
+	13      (0000002a) iget                 v1, v6, Lr/f;->c I
+	14      (0000002e) move                 v3, v2
+	2a:49
+	(Ljava/lang/NullPointerException; -> 58 equals-BB@0x58)
+	(Ljava/lang/ClassCastException; -> 58 equals-BB@0x58)
+
+equals-BB@0x30 : [ equals-BB@0x34 equals-BB@0x56 ]
+	15      (00000030) if-ge                v3, v1, +013h
+	2a:49
+	(Ljava/lang/NullPointerException; -> 58 equals-BB@0x58)
+	(Ljava/lang/ClassCastException; -> 58 equals-BB@0x58)
+
+equals-BB@0x34 : [ equals-BB@0x4e equals-BB@0x50 ]
+	16      (00000034) iget-object          v4, v6, Lr/f;->b [Ljava/lang/Object;
+	17      (00000038) aget-object          v4, v4, v3
+	18      (0000003c) move-object          v5, v7
+	19      (0000003e) check-cast           v5, Ljava/util/Set;
+	20      (00000042) invoke-interface     v5, v4, Ljava/util/Set;->contains(Ljava/lang/Object;)Z
+	21      (00000048) move-result          v4
+	22      (0000004a) if-nez               v4, +003h
+
+equals-BB@0x4e : 
+	23      (0000004e) return               v2
+
+equals-BB@0x50 : [ equals-BB@0x30 ]
+	24      (00000050) add-int/lit8         v3, v3, 1
+	25      (00000054) goto                 -12h
+
+equals-BB@0x56 : 
+	26      (00000056) return               v0
+
+equals-BB@0x58 : 
+	27      (00000058) return               v2
+

@@ -1,0 +1,29 @@
+# Lq0/v;->onViewDetachedFromWindow(Landroid/view/View;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:android.view.View
+#
+# - return:void
+
+onViewDetachedFromWindow-BB@0x0 : [ onViewDetachedFromWindow-BB@0x14 onViewDetachedFromWindow-BB@0x20 ]
+	0       (00000000) iget-object          v2, v1, Lq0/v;->b Landroid/view/ViewTreeObserver;
+	1       (00000004) invoke-virtual       v2, Landroid/view/ViewTreeObserver;->isAlive()Z
+	2       (0000000a) move-result          v2
+	3       (0000000c) iget-object          v0, v1, Lq0/v;->a Landroid/view/View;
+	4       (00000010) if-eqz               v2, +008h
+
+onViewDetachedFromWindow-BB@0x14 : [ onViewDetachedFromWindow-BB@0x2e ]
+	5       (00000014) iget-object          v2, v1, Lq0/v;->b Landroid/view/ViewTreeObserver;
+	6       (00000018) invoke-virtual       v2, v1, Landroid/view/ViewTreeObserver;->removeOnPreDrawListener(Landroid/view/ViewTreeObserver$OnPreDrawListener;)V
+	7       (0000001e) goto                 +8h
+
+onViewDetachedFromWindow-BB@0x20 : [ onViewDetachedFromWindow-BB@0x2e ]
+	8       (00000020) invoke-virtual       v0, Landroid/view/View;->getViewTreeObserver()Landroid/view/ViewTreeObserver;
+	9       (00000026) move-result-object   v2
+	10      (00000028) invoke-virtual       v2, v1, Landroid/view/ViewTreeObserver;->removeOnPreDrawListener(Landroid/view/ViewTreeObserver$OnPreDrawListener;)V
+
+onViewDetachedFromWindow-BB@0x2e : 
+	11      (0000002e) invoke-virtual       v0, v1, Landroid/view/View;->removeOnAttachStateChangeListener(Landroid/view/View$OnAttachStateChangeListener;)V
+	12      (00000034) return-void          
+

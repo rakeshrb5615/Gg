@@ -1,0 +1,45 @@
+# Lq0/q;->b(F F)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:float
+# - v5:float
+#
+# - return:boolean
+
+b-BB@0x0 : [ b-BB@0xa b-BB@0x56 ]
+	0       (00000000) iget-boolean         v0, v3, Lq0/q;->d Z
+	1       (00000004) const/4              v1, 0
+	2       (00000006) if-eqz               v0, +028h
+
+b-BB@0xa : [ b-BB@0x16 b-BB@0x56 ]
+	3       (0000000a) invoke-virtual       v3, v1, Lq0/q;->e(I)Landroid/view/ViewParent;
+	4       (00000010) move-result-object   v0
+	5       (00000012) if-eqz               v0, +022h
+
+b-BB@0x16 : [ b-BB@0x1a ]
+	6       (00000016) iget-object          v2, v3, Lq0/q;->c Landroid/view/ViewGroup;
+
+b-BB@0x1a : 
+	7       (0000001a) invoke-interface     v0, v2, v4, v5, Landroid/view/ViewParent;->onNestedPreFling(Landroid/view/View; F F)Z
+	8       (00000020) move-result          v4
+	9       (00000022) return               v4
+	1a:21
+	(Ljava/lang/AbstractMethodError; -> 24 b-BB@0x24)
+
+b-BB@0x24 : [ b-BB@0x56 ]
+	10      (00000024) move-exception       v4
+	11      (00000026) new-instance         v5, Ljava/lang/StringBuilder;
+	12      (0000002a) const-string         v2, "ViewParent "
+	13      (0000002e) invoke-direct        v5, v2, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	14      (00000034) invoke-virtual       v5, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	15      (0000003a) const-string         v0, " does not implement interface method onNestedPreFling"
+	16      (0000003e) invoke-virtual       v5, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	17      (00000044) invoke-virtual       v5, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	18      (0000004a) move-result-object   v5
+	19      (0000004c) const-string         v0, "ViewParentCompat"
+	20      (00000050) invoke-static        v0, v5, v4, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+
+b-BB@0x56 : 
+	21      (00000056) return               v1
+

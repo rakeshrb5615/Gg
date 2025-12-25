@@ -1,0 +1,142 @@
+# Lq0/q;->c(I I I [I [I)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v12
+# - v13:int
+# - v14:int
+# - v15:int
+# - v16:int[]
+# - v17:int[]
+#
+# - return:boolean
+
+c-BB@0x0 : [ c-BB@0x10 c-BB@0x10a ]
+	0       (00000000) move                 v6, v15
+	1       (00000002) move-object/from16   v7, v17
+	2       (00000006) iget-boolean         v0, v12, Lq0/q;->d Z
+	3       (0000000a) const/4              v8, 0
+	4       (0000000c) if-eqz               v0, +07fh
+
+c-BB@0x10 : [ c-BB@0x1c c-BB@0x20 ]
+	5       (00000010) invoke-virtual       v12, v15, Lq0/q;->e(I)Landroid/view/ViewParent;
+	6       (00000016) move-result-object   v1
+	7       (00000018) if-nez               v1, +004h
+
+c-BB@0x1c : [ c-BB@0x10a ]
+	8       (0000001c) goto/16              +077h
+
+c-BB@0x20 : [ c-BB@0x26 c-BB@0x3a ]
+	9       (00000020) const/4              v9, 1
+	10      (00000022) if-nez               v13, +00ch
+
+c-BB@0x26 : [ c-BB@0x2a c-BB@0x2c ]
+	11      (00000026) if-eqz               v14, +003h
+
+c-BB@0x2a : [ c-BB@0x3a ]
+	12      (0000002a) goto                 +8h
+
+c-BB@0x2c : [ c-BB@0x30 c-BB@0x10a ]
+	13      (0000002c) if-eqz               v7, +06fh
+
+c-BB@0x30 : 
+	14      (00000030) aput                 v8, v7, v8
+	15      (00000034) aput                 v8, v7, v9
+	16      (00000038) return               v8
+
+c-BB@0x3a : [ c-BB@0x42 c-BB@0x56 ]
+	17      (0000003a) iget-object          v2, v12, Lq0/q;->c Landroid/view/ViewGroup;
+	18      (0000003e) if-eqz               v7, +00ch
+
+c-BB@0x42 : [ c-BB@0x5a ]
+	19      (00000042) invoke-virtual       v2, v7, Landroid/view/View;->getLocationInWindow([I)V
+	20      (00000048) aget                 v0, v7, v8
+	21      (0000004c) aget                 v3, v7, v9
+	22      (00000050) move                 v10, v0
+	23      (00000052) move                 v11, v3
+	24      (00000054) goto                 +3h
+
+c-BB@0x56 : [ c-BB@0x5a ]
+	25      (00000056) move                 v10, v8
+	26      (00000058) move                 v11, v10
+
+c-BB@0x5a : [ c-BB@0x5e c-BB@0x78 ]
+	27      (0000005a) if-nez               v16, +00fh
+
+c-BB@0x5e : [ c-BB@0x66 c-BB@0x70 ]
+	28      (0000005e) iget-object          v0, v12, Lq0/q;->e [I
+	29      (00000062) if-nez               v0, +007h
+
+c-BB@0x66 : [ c-BB@0x70 ]
+	30      (00000066) const/4              v0, 2
+	31      (00000068) new-array            v0, v0, [I
+	32      (0000006c) iput-object          v0, v12, Lq0/q;->e [I
+
+c-BB@0x70 : [ c-BB@0x7c ]
+	33      (00000070) iget-object          v0, v12, Lq0/q;->e [I
+	34      (00000074) move-object          v5, v0
+	35      (00000076) goto                 +3h
+
+c-BB@0x78 : [ c-BB@0x7c ]
+	36      (00000078) move-object/from16   v5, v16
+
+c-BB@0x7c : [ c-BB@0x8c c-BB@0x9c ]
+	37      (0000007c) aput                 v8, v5, v8
+	38      (00000080) aput                 v8, v5, v9
+	39      (00000084) instance-of          v0, v1, Lq0/r;
+	40      (00000088) if-eqz               v0, +00ah
+
+c-BB@0x8c : [ c-BB@0xda ]
+	41      (0000008c) check-cast           v1, Lq0/r;
+	42      (00000090) move                 v3, v13
+	43      (00000092) move                 v4, v14
+	44      (00000094) invoke-interface/range v1 ... v6, Lq0/r;->c(Landroid/view/View; I I [I I)V
+	45      (0000009a) goto                 +20h
+
+c-BB@0x9c : [ c-BB@0xa0 c-BB@0xda ]
+	46      (0000009c) if-nez               v15, +01fh
+
+c-BB@0xa0 : [ c-BB@0xda ]
+	47      (000000a0) invoke-interface     v1, v2, v13, v14, v5, Landroid/view/ViewParent;->onNestedPreScroll(Landroid/view/View; I I [I)V
+	48      (000000a6) goto                 +1ah
+	a0:a5
+	(Ljava/lang/AbstractMethodError; -> a8 c-BB@0xa8)
+
+c-BB@0xa8 : [ c-BB@0xda ]
+	49      (000000a8) move-exception       v0
+	50      (000000aa) new-instance         v3, Ljava/lang/StringBuilder;
+	51      (000000ae) const-string         v4, "ViewParent "
+	52      (000000b2) invoke-direct        v3, v4, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	53      (000000b8) invoke-virtual       v3, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	54      (000000be) const-string         v1, " does not implement interface method onNestedPreScroll"
+	55      (000000c2) invoke-virtual       v3, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	56      (000000c8) invoke-virtual       v3, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	57      (000000ce) move-result-object   v1
+	58      (000000d0) const-string         v3, "ViewParentCompat"
+	59      (000000d4) invoke-static        v3, v1, v0, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+
+c-BB@0xda : [ c-BB@0xde c-BB@0xf8 ]
+	60      (000000da) if-eqz               v7, +00fh
+
+c-BB@0xde : [ c-BB@0xf8 ]
+	61      (000000de) invoke-virtual       v2, v7, Landroid/view/View;->getLocationInWindow([I)V
+	62      (000000e4) aget                 v0, v7, v8
+	63      (000000e8) sub-int/2addr        v0, v10
+	64      (000000ea) aput                 v0, v7, v8
+	65      (000000ee) aget                 v0, v7, v9
+	66      (000000f2) sub-int/2addr        v0, v11
+	67      (000000f4) aput                 v0, v7, v9
+
+c-BB@0xf8 : [ c-BB@0x100 c-BB@0x108 ]
+	68      (000000f8) aget                 v0, v5, v8
+	69      (000000fc) if-nez               v0, +006h
+
+c-BB@0x100 : [ c-BB@0x108 c-BB@0x10a ]
+	70      (00000100) aget                 v0, v5, v9
+	71      (00000104) if-eqz               v0, +003h
+
+c-BB@0x108 : [ c-BB@0x10a ]
+	72      (00000108) move                 v8, v9
+
+c-BB@0x10a : 
+	73      (0000010a) return               v8
+

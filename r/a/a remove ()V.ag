@@ -1,0 +1,52 @@
+# Lr/a;->remove()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v2
+#
+# - return:void
+
+remove-BB@0x0 : [ remove-BB@0x8 remove-BB@0x60 ]
+	0       (00000000) iget-boolean         v0, v2, Lr/a;->c Z
+	1       (00000004) if-eqz               v0, +02eh
+
+remove-BB@0x8 : [ D:remove-BB@0x1e 0:remove-BB@0x3e 1:remove-BB@0x2e ]
+	2       (00000008) iget                 v0, v2, Lr/a;->b I
+	3       (0000000c) add-int/lit8         v0, v0, -1
+	4       (00000010) iput                 v0, v2, Lr/a;->b I
+	5       (00000014) iget                 v1, v2, Lr/a;->d I
+	6       (00000018) packed-switch        v1, +000002ch
+
+remove-BB@0x1e : [ remove-BB@0x4c ]
+	7       (0000001e) iget-object          v1, v2, Lr/a;->e Ljava/lang/Object;
+	8       (00000022) check-cast           v1, Lr/f;
+	9       (00000026) invoke-virtual       v1, v0, Lr/f;->b(I)Ljava/lang/Object;
+	10      (0000002c) goto                 +10h
+
+remove-BB@0x2e : [ remove-BB@0x4c ]
+	11      (0000002e) iget-object          v1, v2, Lr/a;->e Ljava/lang/Object;
+	12      (00000032) check-cast           v1, Lr/e;
+	13      (00000036) invoke-virtual       v1, v0, Lr/j;->h(I)Ljava/lang/Object;
+	14      (0000003c) goto                 +8h
+
+remove-BB@0x3e : [ remove-BB@0x4c ]
+	15      (0000003e) iget-object          v1, v2, Lr/a;->e Ljava/lang/Object;
+	16      (00000042) check-cast           v1, Lr/e;
+	17      (00000046) invoke-virtual       v1, v0, Lr/j;->h(I)Ljava/lang/Object;
+
+remove-BB@0x4c : 
+	18      (0000004c) iget                 v0, v2, Lr/a;->a I
+	19      (00000050) add-int/lit8         v0, v0, -1
+	20      (00000054) iput                 v0, v2, Lr/a;->a I
+	21      (00000058) const/4              v0, 0
+	22      (0000005a) iput-boolean         v0, v2, Lr/a;->c Z
+	23      (0000005e) return-void          
+
+remove-BB@0x60 : 
+	24      (00000060) new-instance         v0, Ljava/lang/IllegalStateException;
+	25      (00000064) const-string         v1, "Call next() before removing an element."
+	26      (00000068) invoke-direct        v0, v1, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	27      (0000006e) throw                v0
+
+remove-BB@0x70 : 
+	28      (00000070) packed-switch-payload 0 1
+

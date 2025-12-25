@@ -1,0 +1,49 @@
+# Lq3/i;->a(Ljava/lang/String;)F [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:java.lang.String
+#
+# - return:float
+
+a-BB@0x0 : [ a-BB@0x8 a-BB@0xe ]
+	0       (00000000) iget-boolean         v0, v3, Lq3/i;->d Z
+	1       (00000004) if-nez               v0, +005h
+
+a-BB@0x8 : 
+	2       (00000008) iget                 v4, v3, Lq3/i;->c F
+	3       (0000000c) return               v4
+
+a-BB@0xe : [ a-BB@0x18 a-BB@0x1c ]
+	4       (0000000e) const/4              v0, 0
+	5       (00000010) iget-object          v1, v3, Lq3/i;->a Landroid/text/TextPaint;
+	6       (00000014) if-nez               v4, +004h
+
+a-BB@0x18 : [ a-BB@0x2c ]
+	7       (00000018) const/4              v2, 0
+	8       (0000001a) goto                 +9h
+
+a-BB@0x1c : [ a-BB@0x2c ]
+	9       (0000001c) invoke-virtual       v4, Ljava/lang/String;->length()I
+	10      (00000022) move-result          v2
+	11      (00000024) invoke-virtual       v1, v4, v0, v2, Landroid/graphics/Paint;->measureText(Ljava/lang/CharSequence; I I)F
+	12      (0000002a) move-result          v2
+
+a-BB@0x2c : [ a-BB@0x34 a-BB@0x36 ]
+	13      (0000002c) iput                 v2, v3, Lq3/i;->c F
+	14      (00000030) if-nez               v4, +003h
+
+a-BB@0x34 : [ a-BB@0x48 ]
+	15      (00000034) goto                 +ah
+
+a-BB@0x36 : [ a-BB@0x48 ]
+	16      (00000036) invoke-virtual       v1, Landroid/graphics/Paint;->getFontMetrics()Landroid/graphics/Paint$FontMetrics;
+	17      (0000003c) move-result-object   v4
+	18      (0000003e) iget                 v4, v4, Landroid/graphics/Paint$FontMetrics;->ascent F
+	19      (00000042) invoke-static        v4, Ljava/lang/Math;->abs(F)F
+
+a-BB@0x48 : 
+	20      (00000048) iput-boolean         v0, v3, Lq3/i;->d Z
+	21      (0000004c) iget                 v4, v3, Lq3/i;->c F
+	22      (00000050) return               v4
+

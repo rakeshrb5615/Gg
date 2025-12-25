@@ -1,0 +1,105 @@
+# Lq0/q1;->a(I)I [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:int
+#
+# - return:int
+
+a-BB@0x0 : [ a-BB@0x6 ]
+	0       (00000000) const/4              v0, 0
+	1       (00000002) const/4              v1, 1
+	2       (00000004) move                 v2, v1
+
+a-BB@0x6 : [ a-BB@0xe a-BB@0xa8 ]
+	3       (00000006) const/16             v3, 512
+	4       (0000000a) if-gt                v2, v3, +04fh
+
+a-BB@0xe : [ a-BB@0x16 a-BB@0xa2 ]
+	5       (0000000e) and-int              v3, v4, v2
+	6       (00000012) if-eqz               v3, +048h
+
+a-BB@0x16 : [ a-BB@0x1a a-BB@0x98 ]
+	7       (00000016) if-eq                v2, v1, +041h
+
+a-BB@0x1a : [ a-BB@0x20 a-BB@0x8e ]
+	8       (0000001a) const/4              v3, 2
+	9       (0000001c) if-eq                v2, v3, +039h
+
+a-BB@0x20 : [ a-BB@0x26 a-BB@0x84 ]
+	10      (00000020) const/4              v3, 4
+	11      (00000022) if-eq                v2, v3, +031h
+
+a-BB@0x26 : [ a-BB@0x2e a-BB@0x7a ]
+	12      (00000026) const/16             v3, 8
+	13      (0000002a) if-eq                v2, v3, +028h
+
+a-BB@0x2e : [ a-BB@0x36 a-BB@0x70 ]
+	14      (0000002e) const/16             v3, 16
+	15      (00000032) if-eq                v2, v3, +01fh
+
+a-BB@0x36 : [ a-BB@0x3e a-BB@0x66 ]
+	16      (00000036) const/16             v3, 32
+	17      (0000003a) if-eq                v2, v3, +016h
+
+a-BB@0x3e : [ a-BB@0x46 a-BB@0x5c ]
+	18      (0000003e) const/16             v3, 64
+	19      (00000042) if-eq                v2, v3, +00dh
+
+a-BB@0x46 : [ a-BB@0x4e a-BB@0x50 ]
+	20      (00000046) const/16             v3, 128
+	21      (0000004a) if-eq                v2, v3, +003h
+
+a-BB@0x4e : [ a-BB@0xa2 ]
+	22      (0000004e) goto                 +2ah
+
+a-BB@0x50 : [ a-BB@0x58 ]
+	23      (00000050) invoke-static        Landroid/view/WindowInsets$Type;->displayCutout()I
+	24      (00000056) move-result          v3
+
+a-BB@0x58 : [ a-BB@0xa2 ]
+	25      (00000058) or-int/2addr         v0, v3
+	26      (0000005a) goto                 +24h
+
+a-BB@0x5c : [ a-BB@0x58 ]
+	27      (0000005c) invoke-static        Landroid/view/WindowInsets$Type;->tappableElement()I
+	28      (00000062) move-result          v3
+	29      (00000064) goto                 -6h
+
+a-BB@0x66 : [ a-BB@0x58 ]
+	30      (00000066) invoke-static        Landroid/view/WindowInsets$Type;->mandatorySystemGestures()I
+	31      (0000006c) move-result          v3
+	32      (0000006e) goto                 -bh
+
+a-BB@0x70 : [ a-BB@0x58 ]
+	33      (00000070) invoke-static        Landroid/view/WindowInsets$Type;->systemGestures()I
+	34      (00000076) move-result          v3
+	35      (00000078) goto                 -10h
+
+a-BB@0x7a : [ a-BB@0x58 ]
+	36      (0000007a) invoke-static        Landroid/view/WindowInsets$Type;->ime()I
+	37      (00000080) move-result          v3
+	38      (00000082) goto                 -15h
+
+a-BB@0x84 : [ a-BB@0x58 ]
+	39      (00000084) invoke-static        Landroid/view/WindowInsets$Type;->captionBar()I
+	40      (0000008a) move-result          v3
+	41      (0000008c) goto                 -1ah
+
+a-BB@0x8e : [ a-BB@0x58 ]
+	42      (0000008e) invoke-static        Landroid/view/WindowInsets$Type;->navigationBars()I
+	43      (00000094) move-result          v3
+	44      (00000096) goto                 -1fh
+
+a-BB@0x98 : [ a-BB@0x58 ]
+	45      (00000098) invoke-static        Landroid/view/WindowInsets$Type;->statusBars()I
+	46      (0000009e) move-result          v3
+	47      (000000a0) goto                 -24h
+
+a-BB@0xa2 : [ a-BB@0x6 ]
+	48      (000000a2) shl-int/lit8         v2, v2, 1
+	49      (000000a6) goto                 -50h
+
+a-BB@0xa8 : 
+	50      (000000a8) return               v0
+

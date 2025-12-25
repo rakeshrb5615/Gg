@@ -1,0 +1,35 @@
+# Lr/j;-><init>(I)V [access_flags=public constructor]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:int
+#
+# - return:void
+
+<init>-BB@0x0 : [ <init>-BB@0xa <init>-BB@0x10 ]
+	0       (00000000) invoke-direct        v1, Ljava/lang/Object;-><init>()V
+	1       (00000006) if-nez               v2, +005h
+
+<init>-BB@0xa : [ <init>-BB@0x14 ]
+	2       (0000000a) sget-object          v0, Ls/a;->a [I
+	3       (0000000e) goto                 +3h
+
+<init>-BB@0x10 : [ <init>-BB@0x14 ]
+	4       (00000010) new-array            v0, v2, [I
+
+<init>-BB@0x14 : [ <init>-BB@0x1c <init>-BB@0x22 ]
+	5       (00000014) iput-object          v0, v1, Lr/j;->a [I
+	6       (00000018) if-nez               v2, +005h
+
+<init>-BB@0x1c : [ <init>-BB@0x2a ]
+	7       (0000001c) sget-object          v2, Ls/a;->b [Ljava/lang/Object;
+	8       (00000020) goto                 +5h
+
+<init>-BB@0x22 : [ <init>-BB@0x2a ]
+	9       (00000022) shl-int/lit8         v2, v2, 1
+	10      (00000026) new-array            v2, v2, [Ljava/lang/Object;
+
+<init>-BB@0x2a : 
+	11      (0000002a) iput-object          v2, v1, Lr/j;->b [Ljava/lang/Object;
+	12      (0000002e) return-void          
+

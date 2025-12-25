@@ -1,0 +1,155 @@
+# Ls6/c;->b(Ln7/c;)Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v10
+# - v11:n7.c
+#
+# - return:java.lang.Object
+
+b-BB@0x0 : [ b-BB@0x8 b-BB@0x26 ]
+	0       (00000000) instance-of          v0, v11, Ls6/b;
+	1       (00000004) if-eqz               v0, +011h
+
+b-BB@0x8 : [ b-BB@0x1e b-BB@0x26 ]
+	2       (00000008) move-object          v0, v11
+	3       (0000000a) check-cast           v0, Ls6/b;
+	4       (0000000e) iget                 v1, v0, Ls6/b;->o I
+	5       (00000012) const/high16         v2, -2147483648
+	6       (00000016) and-int              v3, v1, v2
+	7       (0000001a) if-eqz               v3, +006h
+
+b-BB@0x1e : [ b-BB@0x30 ]
+	8       (0000001e) sub-int/2addr        v1, v2
+	9       (00000020) iput                 v1, v0, Ls6/b;->o I
+	10      (00000024) goto                 +6h
+
+b-BB@0x26 : [ b-BB@0x30 ]
+	11      (00000026) new-instance         v0, Ls6/b;
+	12      (0000002a) invoke-direct        v0, v10, v11, Ls6/b;-><init>(Ls6/c; Ln7/c;)V
+
+b-BB@0x30 : [ b-BB@0x42 b-BB@0x7e ]
+	13      (00000030) iget-object          v11, v0, Ls6/b;->m Ljava/lang/Object;
+	14      (00000034) sget-object          v1, Lm7/a;->a Lm7/a;
+	15      (00000038) iget                 v2, v0, Ls6/b;->o I
+	16      (0000003c) const/4              v3, 1
+	17      (0000003e) if-eqz               v2, +020h
+
+b-BB@0x42 : [ b-BB@0x46 b-BB@0x6e ]
+	18      (00000042) if-ne                v2, v3, +016h
+
+b-BB@0x46 : [ b-BB@0x130 ]
+	19      (00000046) iget-object          v2, v0, Ls6/b;->f Ljava/lang/Object;
+	20      (0000004a) iget-object          v4, v0, Ls6/b;->e Ljava/util/Map;
+	21      (0000004e) check-cast           v4, Ljava/util/Map;
+	22      (00000052) iget-object          v5, v0, Ls6/b;->d Lm8/c;
+	23      (00000056) iget-object          v6, v0, Ls6/b;->c Ls6/d;
+	24      (0000005a) iget-object          v7, v0, Ls6/b;->b Ljava/util/Iterator;
+	25      (0000005e) iget-object          v8, v0, Ls6/b;->a Ljava/util/Map;
+	26      (00000062) check-cast           v8, Ljava/util/Map;
+	27      (00000066) invoke-static        v11, Lc4/b;->e0(Ljava/lang/Object;)V
+	28      (0000006c) goto                 +62h
+
+b-BB@0x6e : 
+	29      (0000006e) new-instance         v11, Ljava/lang/IllegalStateException;
+	30      (00000072) const-string         v0, "call to 'resume' before 'invoke' with coroutine"
+	31      (00000076) invoke-direct        v11, v0, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	32      (0000007c) throw                v11
+
+b-BB@0x7e : [ b-BB@0xc0 ]
+	33      (0000007e) invoke-static        v11, Lc4/b;->e0(Ljava/lang/Object;)V
+	34      (00000084) const-string         v11, "dependencies"
+	35      (00000088) sget-object          v2, Ls6/c;->b Ljava/util/Map;
+	36      (0000008c) invoke-static        v2, v11, Lkotlin/jvm/internal/j;->d(Ljava/lang/Object; Ljava/lang/String;)V
+	37      (00000092) new-instance         v11, Ljava/util/LinkedHashMap;
+	38      (00000096) invoke-interface     v2, Ljava/util/Map;->size()I
+	39      (0000009c) move-result          v4
+	40      (0000009e) invoke-static        v4, Li7/r;->l0(I)I
+	41      (000000a4) move-result          v4
+	42      (000000a6) invoke-direct        v11, v4, Ljava/util/LinkedHashMap;-><init>(I)V
+	43      (000000ac) invoke-interface     v2, Ljava/util/Map;->entrySet()Ljava/util/Set;
+	44      (000000b2) move-result-object   v2
+	45      (000000b4) invoke-interface     v2, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
+	46      (000000ba) move-result-object   v2
+	47      (000000bc) move-object          v4, v11
+	48      (000000be) move-object          v7, v2
+
+b-BB@0xc0 : [ b-BB@0xcc b-BB@0x198 ]
+	49      (000000c0) invoke-interface     v7, Ljava/util/Iterator;->hasNext()Z
+	50      (000000c6) move-result          v11
+	51      (000000c8) if-eqz               v11, +068h
+
+b-BB@0xcc : [ b-BB@0x12c b-BB@0x12e ]
+	52      (000000cc) invoke-interface     v7, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	53      (000000d2) move-result-object   v11
+	54      (000000d4) check-cast           v11, Ljava/util/Map$Entry;
+	55      (000000d8) invoke-interface     v11, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
+	56      (000000de) move-result-object   v2
+	57      (000000e0) invoke-interface     v11, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
+	58      (000000e6) move-result-object   v5
+	59      (000000e8) move-object          v6, v5
+	60      (000000ea) check-cast           v6, Ls6/d;
+	61      (000000ee) invoke-interface     v11, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
+	62      (000000f4) move-result-object   v11
+	63      (000000f6) check-cast           v11, Ls6/a;
+	64      (000000fa) iget-object          v5, v11, Ls6/a;->a Lm8/c;
+	65      (000000fe) move-object          v11, v4
+	66      (00000100) check-cast           v11, Ljava/util/Map;
+	67      (00000104) iput-object          v11, v0, Ls6/b;->a Ljava/util/Map;
+	68      (00000108) iput-object          v7, v0, Ls6/b;->b Ljava/util/Iterator;
+	69      (0000010c) iput-object          v6, v0, Ls6/b;->c Ls6/d;
+	70      (00000110) iput-object          v5, v0, Ls6/b;->d Lm8/c;
+	71      (00000114) iput-object          v11, v0, Ls6/b;->e Ljava/util/Map;
+	72      (00000118) iput-object          v2, v0, Ls6/b;->f Ljava/lang/Object;
+	73      (0000011c) iput                 v3, v0, Ls6/b;->o I
+	74      (00000120) invoke-virtual       v5, v0, Lm8/c;->d(Ln7/c;)Ljava/lang/Object;
+	75      (00000126) move-result-object   v11
+	76      (00000128) if-ne                v11, v1, +003h
+
+b-BB@0x12c : 
+	77      (0000012c) return-object        v1
+
+b-BB@0x12e : [ b-BB@0x130 ]
+	78      (0000012e) move-object          v8, v4
+
+b-BB@0x130 : [ b-BB@0x132 ]
+	79      (00000130) const/4              v11, 0
+
+b-BB@0x132 : [ b-BB@0x14c b-BB@0x15c ]
+	80      (00000132) const-string         v9, "subscriberName"
+	81      (00000136) invoke-static        v6, v9, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	82      (0000013c) invoke-static        v6, Ls6/c;->a(Ls6/d;)Ls6/a;
+	83      (00000142) move-result-object   v9
+	84      (00000144) iget-object          v9, v9, Ls6/a;->b Lg5/k;
+	85      (00000148) if-eqz               v9, +00ah
+	132:147
+	(Ljava/lang/Throwable; -> 18e b-BB@0x18e)
+
+b-BB@0x14c : [ b-BB@0xc0 ]
+	86      (0000014c) invoke-virtual       v5, v11, Lm8/c;->f(Ljava/lang/Object;)V
+	87      (00000152) invoke-interface     v4, v2, v9, Ljava/util/Map;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	88      (00000158) move-object          v4, v8
+	89      (0000015a) goto                 -4dh
+
+b-BB@0x15c : 
+	90      (0000015c) new-instance         v0, Ljava/lang/IllegalStateException;
+	91      (00000160) new-instance         v1, Ljava/lang/StringBuilder;
+	92      (00000164) const-string         v2, "Subscriber "
+	93      (00000168) invoke-direct        v1, v2, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	94      (0000016e) invoke-virtual       v1, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	95      (00000174) const-string         v2, " has not been registered."
+	96      (00000178) invoke-virtual       v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	97      (0000017e) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	98      (00000184) move-result-object   v1
+	99      (00000186) invoke-direct        v0, v1, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	100     (0000018c) throw                v0
+	15c:18d
+	(Ljava/lang/Throwable; -> 18e b-BB@0x18e)
+
+b-BB@0x18e : 
+	101     (0000018e) move-exception       v0
+	102     (00000190) invoke-virtual       v5, v11, Lm8/c;->f(Ljava/lang/Object;)V
+	103     (00000196) throw                v0
+
+b-BB@0x198 : 
+	104     (00000198) return-object        v4
+

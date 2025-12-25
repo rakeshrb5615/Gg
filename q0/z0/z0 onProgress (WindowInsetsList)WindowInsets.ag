@@ -1,0 +1,61 @@
+# Lq0/z0;->onProgress(Landroid/view/WindowInsets; Ljava/util/List;)Landroid/view/WindowInsets; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:android.view.WindowInsets
+# - v6:java.util.List
+#
+# - return:android.view.WindowInsets
+
+onProgress-BB@0x0 : [ onProgress-BB@0x8 onProgress-BB@0x2c ]
+	0       (00000000) iget-object          v0, v4, Lq0/z0;->c Ljava/util/ArrayList;
+	1       (00000004) if-nez               v0, +014h
+
+onProgress-BB@0x8 : [ onProgress-BB@0x32 ]
+	2       (00000008) new-instance         v0, Ljava/util/ArrayList;
+	3       (0000000c) invoke-interface     v6, Ljava/util/List;->size()I
+	4       (00000012) move-result          v1
+	5       (00000014) invoke-direct        v0, v1, Ljava/util/ArrayList;-><init>(I)V
+	6       (0000001a) iput-object          v0, v4, Lq0/z0;->c Ljava/util/ArrayList;
+	7       (0000001e) invoke-static        v0, Ljava/util/Collections;->unmodifiableList(Ljava/util/List;)Ljava/util/List;
+	8       (00000024) move-result-object   v0
+	9       (00000026) iput-object          v0, v4, Lq0/z0;->b Ljava/util/List;
+	10      (0000002a) goto                 +4h
+
+onProgress-BB@0x2c : [ onProgress-BB@0x32 ]
+	11      (0000002c) invoke-virtual       v0, Ljava/util/ArrayList;->clear()V
+
+onProgress-BB@0x32 : [ onProgress-BB@0x3e ]
+	12      (00000032) invoke-interface     v6, Ljava/util/List;->size()I
+	13      (00000038) move-result          v0
+	14      (0000003a) add-int/lit8         v0, v0, -1
+
+onProgress-BB@0x3e : [ onProgress-BB@0x42 onProgress-BB@0x78 ]
+	15      (0000003e) if-ltz               v0, +01dh
+
+onProgress-BB@0x42 : [ onProgress-BB@0x3e ]
+	16      (00000042) invoke-interface     v6, v0, Ljava/util/List;->get(I)Ljava/lang/Object;
+	17      (00000048) move-result-object   v1
+	18      (0000004a) check-cast           v1, Landroid/view/WindowInsetsAnimation;
+	19      (0000004e) invoke-virtual       v4, v1, Lq0/z0;->a(Landroid/view/WindowInsetsAnimation;)Lq0/c1;
+	20      (00000054) move-result-object   v2
+	21      (00000056) invoke-virtual       v1, Landroid/view/WindowInsetsAnimation;->getFraction()F
+	22      (0000005c) move-result          v1
+	23      (0000005e) iget-object          v3, v2, Lq0/c1;->a Lq0/b1;
+	24      (00000062) invoke-virtual       v3, v1, Lq0/b1;->d(F)V
+	25      (00000068) iget-object          v1, v4, Lq0/z0;->c Ljava/util/ArrayList;
+	26      (0000006c) invoke-virtual       v1, v2, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	27      (00000072) add-int/lit8         v0, v0, -1
+	28      (00000076) goto                 -1ch
+
+onProgress-BB@0x78 : 
+	29      (00000078) const/4              v6, 0
+	30      (0000007a) invoke-static        v6, v5, Lq0/s1;->g(Landroid/view/View; Landroid/view/WindowInsets;)Lq0/s1;
+	31      (00000080) move-result-object   v5
+	32      (00000082) iget-object          v6, v4, Lq0/z0;->b Ljava/util/List;
+	33      (00000086) iget-object          v0, v4, Lq0/z0;->a Lh3/k;
+	34      (0000008a) invoke-virtual       v0, v5, v6, Lh3/k;->e(Lq0/s1; Ljava/util/List;)V
+	35      (00000090) invoke-virtual       v5, Lq0/s1;->f()Landroid/view/WindowInsets;
+	36      (00000096) move-result-object   v5
+	37      (00000098) return-object        v5
+

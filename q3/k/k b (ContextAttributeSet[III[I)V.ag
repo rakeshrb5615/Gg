@@ -1,0 +1,82 @@
+# Lq3/k;->b(Landroid/content/Context; Landroid/util/AttributeSet; [I I I [I)V [access_flags=public static varargs]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:android.content.Context
+# - v6:android.util.AttributeSet
+# - v7:int[]
+# - v8:int
+# - v9:int
+# - v10:int[]
+#
+# - return:void
+
+b-BB@0x0 : [ b-BB@0x1c b-BB@0x24 ]
+	0       (00000000) sget-object          v0, Lc3/a;->G [I
+	1       (00000004) invoke-virtual       v5, v6, v0, v8, v9, Landroid/content/Context;->obtainStyledAttributes(Landroid/util/AttributeSet; [I I I)Landroid/content/res/TypedArray;
+	2       (0000000a) move-result-object   v0
+	3       (0000000c) const/4              v1, 2
+	4       (0000000e) const/4              v2, 0
+	5       (00000010) invoke-virtual       v0, v1, v2, Landroid/content/res/TypedArray;->getBoolean(I Z)Z
+	6       (00000016) move-result          v1
+	7       (00000018) if-nez               v1, +006h
+
+b-BB@0x1c : 
+	8       (0000001c) invoke-virtual       v0, Landroid/content/res/TypedArray;->recycle()V
+	9       (00000022) return-void          
+
+b-BB@0x24 : [ b-BB@0x2e b-BB@0x3e ]
+	10      (00000024) array-length         v1, v10
+	11      (00000026) const/4              v3, 1
+	12      (00000028) const/4              v4, -1
+	13      (0000002a) if-nez               v1, +00ah
+
+b-BB@0x2e : [ b-BB@0x3a b-BB@0x74 ]
+	14      (0000002e) invoke-virtual       v0, v2, v4, Landroid/content/res/TypedArray;->getResourceId(I I)I
+	15      (00000034) move-result          v5
+	16      (00000036) if-eq                v5, v4, +01fh
+
+b-BB@0x3a : [ b-BB@0x74 ]
+	17      (0000003a) move                 v2, v3
+	18      (0000003c) goto                 +1ch
+
+b-BB@0x3e : [ b-BB@0x4a ]
+	19      (0000003e) invoke-virtual       v5, v6, v7, v8, v9, Landroid/content/Context;->obtainStyledAttributes(Landroid/util/AttributeSet; [I I I)Landroid/content/res/TypedArray;
+	20      (00000044) move-result-object   v5
+	21      (00000046) array-length         v6, v10
+	22      (00000048) move                 v7, v2
+
+b-BB@0x4a : [ b-BB@0x4e b-BB@0x6c ]
+	23      (0000004a) if-ge                v7, v6, +011h
+
+b-BB@0x4e : [ b-BB@0x5e b-BB@0x66 ]
+	24      (0000004e) aget                 v8, v10, v7
+	25      (00000052) invoke-virtual       v5, v8, v4, Landroid/content/res/TypedArray;->getResourceId(I I)I
+	26      (00000058) move-result          v8
+	27      (0000005a) if-ne                v8, v4, +006h
+
+b-BB@0x5e : [ b-BB@0x74 ]
+	28      (0000005e) invoke-virtual       v5, Landroid/content/res/TypedArray;->recycle()V
+	29      (00000064) goto                 +8h
+
+b-BB@0x66 : [ b-BB@0x4a ]
+	30      (00000066) add-int/lit8         v7, v7, 1
+	31      (0000006a) goto                 -10h
+
+b-BB@0x6c : [ b-BB@0x3a ]
+	32      (0000006c) invoke-virtual       v5, Landroid/content/res/TypedArray;->recycle()V
+	33      (00000072) goto                 -1ch
+
+b-BB@0x74 : [ b-BB@0x7e b-BB@0x80 ]
+	34      (00000074) invoke-virtual       v0, Landroid/content/res/TypedArray;->recycle()V
+	35      (0000007a) if-eqz               v2, +003h
+
+b-BB@0x7e : 
+	36      (0000007e) return-void          
+
+b-BB@0x80 : 
+	37      (00000080) new-instance         v5, Ljava/lang/IllegalArgumentException;
+	38      (00000084) const-string         v6, "This component requires that you specify a valid TextAppearance attribute. Update your app theme to inherit from Theme.MaterialComponents (or a descendant)."
+	39      (00000088) invoke-direct        v5, v6, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	40      (0000008e) throw                v5
+

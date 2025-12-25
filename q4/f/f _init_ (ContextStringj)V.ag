@@ -1,0 +1,248 @@
+# Lq4/f;-><init>(Landroid/content/Context; Ljava/lang/String; Lq4/j;)V [access_flags=public constructor]
+#
+# Parameters:
+# - local registers: v0...v8
+# - v9:android.content.Context
+# - v10:java.lang.String
+# - v11:q4.j
+#
+# - return:void
+
+<init>-BB@0x0 : [ <init>-BB@0x94 ]
+	0       (00000000) invoke-direct        v8, Ljava/lang/Object;-><init>()V
+	1       (00000006) new-instance         v0, Ljava/util/concurrent/atomic/AtomicBoolean;
+	2       (0000000a) const/4              v1, 0
+	3       (0000000c) invoke-direct        v0, v1, Ljava/util/concurrent/atomic/AtomicBoolean;-><init>(Z)V
+	4       (00000012) iput-object          v0, v8, Lq4/f;->e Ljava/util/concurrent/atomic/AtomicBoolean;
+	5       (00000016) new-instance         v0, Ljava/util/concurrent/atomic/AtomicBoolean;
+	6       (0000001a) invoke-direct        v0, Ljava/util/concurrent/atomic/AtomicBoolean;-><init>()V
+	7       (00000020) iput-object          v0, v8, Lq4/f;->f Ljava/util/concurrent/atomic/AtomicBoolean;
+	8       (00000024) new-instance         v0, Ljava/util/concurrent/CopyOnWriteArrayList;
+	9       (00000028) invoke-direct        v0, Ljava/util/concurrent/CopyOnWriteArrayList;-><init>()V
+	10      (0000002e) iput-object          v0, v8, Lq4/f;->i Ljava/util/concurrent/CopyOnWriteArrayList;
+	11      (00000032) new-instance         v0, Ljava/util/concurrent/CopyOnWriteArrayList;
+	12      (00000036) invoke-direct        v0, Ljava/util/concurrent/CopyOnWriteArrayList;-><init>()V
+	13      (0000003c) iput-object          v0, v8, Lq4/f;->j Ljava/util/concurrent/CopyOnWriteArrayList;
+	14      (00000040) invoke-static        v9, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;
+	15      (00000046) move-result-object   v0
+	16      (00000048) check-cast           v0, Landroid/content/Context;
+	17      (0000004c) iput-object          v0, v8, Lq4/f;->a Landroid/content/Context;
+	18      (00000050) invoke-static        v10, Lcom/google/android/gms/common/internal/Preconditions;->checkNotEmpty(Ljava/lang/String;)Ljava/lang/String;
+	19      (00000056) move-result-object   v10
+	20      (00000058) iput-object          v10, v8, Lq4/f;->b Ljava/lang/String;
+	21      (0000005c) invoke-static        v11, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;
+	22      (00000062) move-result-object   v10
+	23      (00000064) check-cast           v10, Lq4/j;
+	24      (00000068) iput-object          v10, v8, Lq4/f;->c Lq4/j;
+	25      (0000006c) sget-object          v10, Lcom/google/firebase/provider/FirebaseInitProvider;->a Lq4/a;
+	26      (00000070) const-string         v0, "Firebase"
+	27      (00000074) invoke-static        v0, Landroid/os/Trace;->beginSection(Ljava/lang/String;)V
+	28      (0000007a) const-string         v0, "ComponentDiscovery"
+	29      (0000007e) invoke-static        v0, Landroid/os/Trace;->beginSection(Ljava/lang/String;)V
+	30      (00000084) const-class          v2, Lcom/google/firebase/components/ComponentDiscoveryService;
+	31      (00000088) new-instance         v3, Ljava/util/ArrayList;
+	32      (0000008c) invoke-direct        v3, Ljava/util/ArrayList;-><init>()V
+	33      (00000092) const/4              v4, 0
+
+<init>-BB@0x94 : [ <init>-BB@0xa0 <init>-BB@0xac ]
+	34      (00000094) invoke-virtual       v9, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
+	35      (0000009a) move-result-object   v5
+	36      (0000009c) if-nez               v5, +008h
+	94:f3
+	(Landroid/content/pm/PackageManager$NameNotFoundException; -> f6 <init>-BB@0xf6)
+
+<init>-BB@0xa0 : [ <init>-BB@0x100 ]
+	37      (000000a0) const-string         v2, "Context has no PackageManager."
+	38      (000000a4) invoke-static        v0, v2, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+	39      (000000aa) goto                 +2bh
+	94:f3
+	(Landroid/content/pm/PackageManager$NameNotFoundException; -> f6 <init>-BB@0xf6)
+
+<init>-BB@0xac : [ <init>-BB@0xc6 <init>-BB@0xf0 ]
+	40      (000000ac) new-instance         v6, Landroid/content/ComponentName;
+	41      (000000b0) invoke-direct        v6, v9, v2, Landroid/content/ComponentName;-><init>(Landroid/content/Context; Ljava/lang/Class;)V
+	42      (000000b6) const/16             v7, 128
+	43      (000000ba) invoke-virtual       v5, v6, v7, Landroid/content/pm/PackageManager;->getServiceInfo(Landroid/content/ComponentName; I)Landroid/content/pm/ServiceInfo;
+	44      (000000c0) move-result-object   v5
+	45      (000000c2) if-nez               v5, +017h
+	94:f3
+	(Landroid/content/pm/PackageManager$NameNotFoundException; -> f6 <init>-BB@0xf6)
+
+<init>-BB@0xc6 : [ <init>-BB@0x100 ]
+	46      (000000c6) new-instance         v5, Ljava/lang/StringBuilder;
+	47      (000000ca) invoke-direct        v5, Ljava/lang/StringBuilder;-><init>()V
+	48      (000000d0) invoke-virtual       v5, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	49      (000000d6) const-string         v2, " has no service info."
+	50      (000000da) invoke-virtual       v5, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	51      (000000e0) invoke-virtual       v5, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	52      (000000e6) move-result-object   v2
+	53      (000000e8) invoke-static        v0, v2, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+	54      (000000ee) goto                 +9h
+	94:f3
+	(Landroid/content/pm/PackageManager$NameNotFoundException; -> f6 <init>-BB@0xf6)
+
+<init>-BB@0xf0 : [ <init>-BB@0x100 ]
+	55      (000000f0) iget-object          v4, v5, Landroid/content/pm/ServiceInfo;->metaData Landroid/os/Bundle;
+	56      (000000f4) goto                 +6h
+
+<init>-BB@0xf6 : [ <init>-BB@0x100 ]
+	57      (000000f6) const-string         v2, "Application info not found."
+	58      (000000fa) invoke-static        v0, v2, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+
+<init>-BB@0x100 : [ <init>-BB@0x104 <init>-BB@0x114 ]
+	59      (00000100) if-nez               v4, +00ah
+
+<init>-BB@0x104 : [ <init>-BB@0x182 ]
+	60      (00000104) const-string         v2, "Could not retrieve metadata, returning empty list of registrars."
+	61      (00000108) invoke-static        v0, v2, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+	62      (0000010e) sget-object          v0, Ljava/util/Collections;->EMPTY_LIST Ljava/util/List;
+	63      (00000112) goto                 +38h
+
+<init>-BB@0x114 : [ <init>-BB@0x12e ]
+	64      (00000114) new-instance         v0, Ljava/util/ArrayList;
+	65      (00000118) invoke-direct        v0, Ljava/util/ArrayList;-><init>()V
+	66      (0000011e) invoke-virtual       v4, Landroid/os/BaseBundle;->keySet()Ljava/util/Set;
+	67      (00000124) move-result-object   v2
+	68      (00000126) invoke-interface     v2, Ljava/util/Set;->iterator()Ljava/util/Iterator;
+	69      (0000012c) move-result-object   v2
+
+<init>-BB@0x12e : [ <init>-BB@0x13a <init>-BB@0x182 ]
+	70      (0000012e) invoke-interface     v2, Ljava/util/Iterator;->hasNext()Z
+	71      (00000134) move-result          v5
+	72      (00000136) if-eqz               v5, +026h
+
+<init>-BB@0x13a : [ <init>-BB@0x15e <init>-BB@0x12e ]
+	73      (0000013a) invoke-interface     v2, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	74      (00000140) move-result-object   v5
+	75      (00000142) check-cast           v5, Ljava/lang/String;
+	76      (00000146) invoke-virtual       v4, v5, Landroid/os/BaseBundle;->get(Ljava/lang/String;)Ljava/lang/Object;
+	77      (0000014c) move-result-object   v6
+	78      (0000014e) const-string         v7, "com.google.firebase.components.ComponentRegistrar"
+	79      (00000152) invoke-virtual       v7, v6, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	80      (00000158) move-result          v6
+	81      (0000015a) if-eqz               v6, -016h
+
+<init>-BB@0x15e : [ <init>-BB@0x16e <init>-BB@0x12e ]
+	82      (0000015e) const-string         v6, "com.google.firebase.components:"
+	83      (00000162) invoke-virtual       v5, v6, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
+	84      (00000168) move-result          v6
+	85      (0000016a) if-eqz               v6, -01eh
+
+<init>-BB@0x16e : [ <init>-BB@0x12e ]
+	86      (0000016e) const/16             v6, 31
+	87      (00000172) invoke-virtual       v5, v6, Ljava/lang/String;->substring(I)Ljava/lang/String;
+	88      (00000178) move-result-object   v5
+	89      (0000017a) invoke-virtual       v0, v5, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	90      (00000180) goto                 -29h
+
+<init>-BB@0x182 : [ <init>-BB@0x18a ]
+	91      (00000182) invoke-interface     v0, Ljava/util/List;->iterator()Ljava/util/Iterator;
+	92      (00000188) move-result-object   v0
+
+<init>-BB@0x18a : [ <init>-BB@0x196 <init>-BB@0x1b4 ]
+	93      (0000018a) invoke-interface     v0, Ljava/util/Iterator;->hasNext()Z
+	94      (00000190) move-result          v2
+	95      (00000192) if-eqz               v2, +011h
+
+<init>-BB@0x196 : [ <init>-BB@0x18a ]
+	96      (00000196) invoke-interface     v0, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	97      (0000019c) move-result-object   v2
+	98      (0000019e) check-cast           v2, Ljava/lang/String;
+	99      (000001a2) new-instance         v4, La5/e;
+	100     (000001a6) invoke-direct        v4, v2, v1, La5/e;-><init>(Ljava/lang/Object; I)V
+	101     (000001ac) invoke-virtual       v3, v4, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	102     (000001b2) goto                 -14h
+
+<init>-BB@0x1b4 : [ <init>-BB@0x280 <init>-BB@0x2a6 ]
+	103     (000001b4) invoke-static        Landroid/os/Trace;->endSection()V
+	104     (000001ba) const-string         v0, "Runtime"
+	105     (000001be) invoke-static        v0, Landroid/os/Trace;->beginSection(Ljava/lang/String;)V
+	106     (000001c4) sget-object          v0, Lb5/n;->a Lb5/n;
+	107     (000001c8) new-instance         v0, Ljava/util/ArrayList;
+	108     (000001cc) invoke-direct        v0, Ljava/util/ArrayList;-><init>()V
+	109     (000001d2) new-instance         v2, Ljava/util/ArrayList;
+	110     (000001d6) invoke-direct        v2, Ljava/util/ArrayList;-><init>()V
+	111     (000001dc) invoke-virtual       v0, v3, Ljava/util/ArrayList;->addAll(Ljava/util/Collection;)Z
+	112     (000001e2) new-instance         v3, Lcom/google/firebase/FirebaseCommonRegistrar;
+	113     (000001e6) invoke-direct        v3, Lcom/google/firebase/FirebaseCommonRegistrar;-><init>()V
+	114     (000001ec) new-instance         v4, La5/e;
+	115     (000001f0) const/4              v5, 1
+	116     (000001f2) invoke-direct        v4, v3, v5, La5/e;-><init>(Ljava/lang/Object; I)V
+	117     (000001f8) invoke-virtual       v0, v4, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	118     (000001fe) new-instance         v3, Lcom/google/firebase/concurrent/ExecutorsRegistrar;
+	119     (00000202) invoke-direct        v3, Lcom/google/firebase/concurrent/ExecutorsRegistrar;-><init>()V
+	120     (00000208) new-instance         v4, La5/e;
+	121     (0000020c) invoke-direct        v4, v3, v5, La5/e;-><init>(Ljava/lang/Object; I)V
+	122     (00000212) invoke-virtual       v0, v4, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	123     (00000218) const-class          v3, Landroid/content/Context;
+	124     (0000021c) new-array            v4, v1, [Ljava/lang/Class;
+	125     (00000220) invoke-static        v9, v3, v4, La5/c;->c(Ljava/lang/Object; Ljava/lang/Class; [Ljava/lang/Class;)La5/c;
+	126     (00000226) move-result-object   v3
+	127     (00000228) invoke-virtual       v2, v3, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	128     (0000022e) const-class          v3, Lq4/f;
+	129     (00000232) new-array            v4, v1, [Ljava/lang/Class;
+	130     (00000236) invoke-static        v8, v3, v4, La5/c;->c(Ljava/lang/Object; Ljava/lang/Class; [Ljava/lang/Class;)La5/c;
+	131     (0000023c) move-result-object   v3
+	132     (0000023e) invoke-virtual       v2, v3, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	133     (00000244) const-class          v3, Lq4/j;
+	134     (00000248) new-array            v4, v1, [Ljava/lang/Class;
+	135     (0000024c) invoke-static        v11, v3, v4, La5/c;->c(Ljava/lang/Object; Ljava/lang/Class; [Ljava/lang/Class;)La5/c;
+	136     (00000252) move-result-object   v11
+	137     (00000254) invoke-virtual       v2, v11, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	138     (0000025a) new-instance         v11, La6/e;
+	139     (0000025e) invoke-direct        v11, Ljava/lang/Object;-><init>()V
+	140     (00000264) const-class          v3, Landroid/os/UserManager;
+	141     (00000268) invoke-virtual       v9, v3, Landroid/content/Context;->getSystemService(Ljava/lang/Class;)Ljava/lang/Object;
+	142     (0000026e) move-result-object   v3
+	143     (00000270) check-cast           v3, Landroid/os/UserManager;
+	144     (00000274) invoke-virtual       v3, Landroid/os/UserManager;->isUserUnlocked()Z
+	145     (0000027a) move-result          v3
+	146     (0000027c) if-eqz               v3, +015h
+
+<init>-BB@0x280 : [ <init>-BB@0x290 <init>-BB@0x2a6 ]
+	147     (00000280) sget-object          v3, Lcom/google/firebase/provider/FirebaseInitProvider;->b Ljava/util/concurrent/atomic/AtomicBoolean;
+	148     (00000284) invoke-virtual       v3, Ljava/util/concurrent/atomic/AtomicBoolean;->get()Z
+	149     (0000028a) move-result          v3
+	150     (0000028c) if-eqz               v3, +00dh
+
+<init>-BB@0x290 : [ <init>-BB@0x2a6 ]
+	151     (00000290) const-class          v3, Lq4/a;
+	152     (00000294) new-array            v1, v1, [Ljava/lang/Class;
+	153     (00000298) invoke-static        v10, v3, v1, La5/c;->c(Ljava/lang/Object; Ljava/lang/Class; [Ljava/lang/Class;)La5/c;
+	154     (0000029e) move-result-object   v10
+	155     (000002a0) invoke-virtual       v2, v10, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+<init>-BB@0x2a6 : [ <init>-BB@0x304 <init>-BB@0x312 ]
+	156     (000002a6) new-instance         v10, La5/j;
+	157     (000002aa) invoke-direct        v10, v0, v2, v11, La5/j;-><init>(Ljava/util/ArrayList; Ljava/util/ArrayList; La6/e;)V
+	158     (000002b0) iput-object          v10, v8, Lq4/f;->d La5/j;
+	159     (000002b4) invoke-static        Landroid/os/Trace;->endSection()V
+	160     (000002ba) new-instance         v11, La5/r;
+	161     (000002be) new-instance         v0, La5/h;
+	162     (000002c2) const/4              v1, 2
+	163     (000002c4) invoke-direct        v0, v1, v8, v9, La5/h;-><init>(I Ljava/lang/Object; Ljava/lang/Object;)V
+	164     (000002ca) invoke-direct        v11, v0, La5/r;-><init>(Lc6/b;)V
+	165     (000002d0) iput-object          v11, v8, Lq4/f;->g La5/r;
+	166     (000002d4) const-class          v9, La6/d;
+	167     (000002d8) invoke-interface     v10, v9, La5/d;->f(Ljava/lang/Class;)Lc6/b;
+	168     (000002de) move-result-object   v9
+	169     (000002e0) iput-object          v9, v8, Lq4/f;->h Lc6/b;
+	170     (000002e4) new-instance         v9, Lq4/c;
+	171     (000002e8) invoke-direct        v9, v8, Lq4/c;-><init>(Lq4/f;)V
+	172     (000002ee) invoke-virtual       v8, Lq4/f;->a()V
+	173     (000002f4) iget-object          v10, v8, Lq4/f;->e Ljava/util/concurrent/atomic/AtomicBoolean;
+	174     (000002f8) invoke-virtual       v10, Ljava/util/concurrent/atomic/AtomicBoolean;->get()Z
+	175     (000002fe) move-result          v10
+	176     (00000300) if-eqz               v10, +009h
+
+<init>-BB@0x304 : [ <init>-BB@0x312 ]
+	177     (00000304) invoke-static        Lcom/google/android/gms/common/api/internal/BackgroundDetector;->getInstance()Lcom/google/android/gms/common/api/internal/BackgroundDetector;
+	178     (0000030a) move-result-object   v10
+	179     (0000030c) invoke-virtual       v10, Lcom/google/android/gms/common/api/internal/BackgroundDetector;->isInBackground()Z
+
+<init>-BB@0x312 : 
+	180     (00000312) iget-object          v10, v8, Lq4/f;->i Ljava/util/concurrent/CopyOnWriteArrayList;
+	181     (00000316) invoke-virtual       v10, v9, Ljava/util/concurrent/CopyOnWriteArrayList;->add(Ljava/lang/Object;)Z
+	182     (0000031c) invoke-static        Landroid/os/Trace;->endSection()V
+	183     (00000322) return-void          
+

@@ -1,0 +1,65 @@
+# Lq0/q0;->o(Landroid/view/View; Ljava/lang/CharSequence;)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:android.view.View
+# - v7:java.lang.CharSequence
+#
+# - return:void
+
+o-BB@0x0 : [ o-BB@0x2c o-BB@0x7e ]
+	0       (00000000) new-instance         v0, Lq0/e0;
+	1       (00000004) const/16             v4, 28
+	2       (00000008) const/4              v5, 1
+	3       (0000000a) const                v1, 2131362478
+	4       (00000010) const-class          v2, Ljava/lang/CharSequence;
+	5       (00000014) const/16             v3, 8
+	6       (00000018) invoke-direct/range  v0 ... v5, Lq0/e0;-><init>(I Ljava/lang/Class; I I I)V
+	7       (0000001e) invoke-virtual       v0, v6, v7, Lh1/c;->g(Landroid/view/View; Ljava/lang/Object;)V
+	8       (00000024) sget-object          v0, Lq0/q0;->f Lq0/f0;
+	9       (00000028) if-eqz               v7, +02bh
+
+o-BB@0x2c : [ o-BB@0x3c o-BB@0x4c ]
+	10      (0000002c) iget-object          v7, v0, Lq0/f0;->a Ljava/util/WeakHashMap;
+	11      (00000030) invoke-virtual       v6, Landroid/view/View;->isShown()Z
+	12      (00000036) move-result          v1
+	13      (00000038) if-eqz               v1, +00ah
+
+o-BB@0x3c : [ o-BB@0x48 o-BB@0x4c ]
+	14      (0000003c) invoke-virtual       v6, Landroid/view/View;->getWindowVisibility()I
+	15      (00000042) move-result          v1
+	16      (00000044) if-nez               v1, +004h
+
+o-BB@0x48 : [ o-BB@0x4e ]
+	17      (00000048) const/4              v1, 1
+	18      (0000004a) goto                 +2h
+
+o-BB@0x4c : [ o-BB@0x4e ]
+	19      (0000004c) const/4              v1, 0
+
+o-BB@0x4e : [ o-BB@0x6e o-BB@0x7c ]
+	20      (0000004e) invoke-static        v1, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+	21      (00000054) move-result-object   v1
+	22      (00000056) invoke-virtual       v7, v6, v1, Ljava/util/WeakHashMap;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	23      (0000005c) invoke-virtual       v6, v0, Landroid/view/View;->addOnAttachStateChangeListener(Landroid/view/View$OnAttachStateChangeListener;)V
+	24      (00000062) invoke-virtual       v6, Landroid/view/View;->isAttachedToWindow()Z
+	25      (00000068) move-result          v7
+	26      (0000006a) if-eqz               v7, +009h
+
+o-BB@0x6e : [ o-BB@0x7c ]
+	27      (0000006e) invoke-virtual       v6, Landroid/view/View;->getViewTreeObserver()Landroid/view/ViewTreeObserver;
+	28      (00000074) move-result-object   v6
+	29      (00000076) invoke-virtual       v6, v0, Landroid/view/ViewTreeObserver;->addOnGlobalLayoutListener(Landroid/view/ViewTreeObserver$OnGlobalLayoutListener;)V
+
+o-BB@0x7c : 
+	30      (0000007c) return-void          
+
+o-BB@0x7e : 
+	31      (0000007e) iget-object          v7, v0, Lq0/f0;->a Ljava/util/WeakHashMap;
+	32      (00000082) invoke-virtual       v7, v6, Ljava/util/WeakHashMap;->remove(Ljava/lang/Object;)Ljava/lang/Object;
+	33      (00000088) invoke-virtual       v6, v0, Landroid/view/View;->removeOnAttachStateChangeListener(Landroid/view/View$OnAttachStateChangeListener;)V
+	34      (0000008e) invoke-virtual       v6, Landroid/view/View;->getViewTreeObserver()Landroid/view/ViewTreeObserver;
+	35      (00000094) move-result-object   v6
+	36      (00000096) invoke-virtual       v6, v0, Landroid/view/ViewTreeObserver;->removeOnGlobalLayoutListener(Landroid/view/ViewTreeObserver$OnGlobalLayoutListener;)V
+	37      (0000009c) return-void          
+

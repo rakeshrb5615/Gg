@@ -1,0 +1,27 @@
+# Lt0/d;->b(F F F)F [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v0
+# - v1:float
+# - v2:float
+# - v3:float
+#
+# - return:float
+
+b-BB@0x0 : [ b-BB@0x8 b-BB@0xa ]
+	0       (00000000) cmpl-float           v0, v1, v3
+	1       (00000004) if-lez               v0, +003h
+
+b-BB@0x8 : 
+	2       (00000008) return               v3
+
+b-BB@0xa : [ b-BB@0x12 b-BB@0x14 ]
+	3       (0000000a) cmpg-float           v3, v1, v2
+	4       (0000000e) if-gez               v3, +003h
+
+b-BB@0x12 : 
+	5       (00000012) return               v2
+
+b-BB@0x14 : 
+	6       (00000014) return               v1
+

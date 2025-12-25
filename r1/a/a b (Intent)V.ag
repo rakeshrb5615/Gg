@@ -1,0 +1,147 @@
+# Lr1/a;->b(Landroid/content/Intent;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v9
+# - v10:android.content.Intent
+#
+# - return:void
+
+b-BB@0x0 : [ b-BB@0xe ]
+	0       (00000000) const-string         v0, "Action list: "
+	1       (00000004) const-string         v1, "Resolving type "
+	2       (00000008) iget-object          v2, v9, Lr1/a;->b Ljava/util/HashMap;
+	3       (0000000c) monitor-enter        v2
+
+b-BB@0xe : [ b-BB@0x4e b-BB@0x52 ]
+	4       (0000000e) invoke-virtual       v10, Landroid/content/Intent;->getAction()Ljava/lang/String;
+	5       (00000014) iget-object          v3, v9, Lr1/a;->a Landroid/content/Context;
+	6       (00000018) invoke-virtual       v3, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
+	7       (0000001e) move-result-object   v3
+	8       (00000020) invoke-virtual       v10, v3, Landroid/content/Intent;->resolveTypeIfNeeded(Landroid/content/ContentResolver;)Ljava/lang/String;
+	9       (00000026) move-result-object   v3
+	10      (00000028) invoke-virtual       v10, Landroid/content/Intent;->getData()Landroid/net/Uri;
+	11      (0000002e) invoke-virtual       v10, Landroid/content/Intent;->getScheme()Ljava/lang/String;
+	12      (00000034) move-result-object   v4
+	13      (00000036) invoke-virtual       v10, Landroid/content/Intent;->getCategories()Ljava/util/Set;
+	14      (0000003c) invoke-virtual       v10, Landroid/content/Intent;->getFlags()I
+	15      (00000042) move-result          v5
+	16      (00000044) and-int/lit8         v5, v5, 8
+	17      (00000048) const/4              v6, 0
+	18      (0000004a) if-eqz               v5, +004h
+	e:115
+	(Ljava/lang/Throwable; -> 9c b-BB@0x9c)
+
+b-BB@0x4e : [ b-BB@0x54 ]
+	19      (0000004e) const/4              v5, 1
+	20      (00000050) goto                 +2h
+	e:115
+	(Ljava/lang/Throwable; -> 9c b-BB@0x9c)
+
+b-BB@0x52 : [ b-BB@0x54 ]
+	21      (00000052) move                 v5, v6
+	e:115
+	(Ljava/lang/Throwable; -> 9c b-BB@0x9c)
+
+b-BB@0x54 : [ b-BB@0x58 b-BB@0xa0 ]
+	22      (00000054) if-eqz               v5, +026h
+	e:115
+	(Ljava/lang/Throwable; -> 9c b-BB@0x9c)
+
+b-BB@0x58 : [ b-BB@0xa0 ]
+	23      (00000058) const-string         v7, "LocalBroadcastManager"
+	24      (0000005c) new-instance         v8, Ljava/lang/StringBuilder;
+	25      (00000060) invoke-direct        v8, v1, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	26      (00000066) invoke-virtual       v8, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	27      (0000006c) const-string         v1, " scheme "
+	28      (00000070) invoke-virtual       v8, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	29      (00000076) invoke-virtual       v8, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	30      (0000007c) const-string         v1, " of intent "
+	31      (00000080) invoke-virtual       v8, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	32      (00000086) invoke-virtual       v8, v10, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	33      (0000008c) invoke-virtual       v8, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	34      (00000092) move-result-object   v1
+	35      (00000094) invoke-static        v7, v1, Landroid/util/Log;->v(Ljava/lang/String; Ljava/lang/String;)I
+	36      (0000009a) goto                 +3h
+	e:115
+	(Ljava/lang/Throwable; -> 9c b-BB@0x9c)
+
+b-BB@0x9c : [ b-BB@0x114 ]
+	37      (0000009c) move-exception       v10
+	38      (0000009e) goto                 +3bh
+	e:115
+	(Ljava/lang/Throwable; -> 9c b-BB@0x9c)
+
+b-BB@0xa0 : [ b-BB@0xbc b-BB@0x110 ]
+	39      (000000a0) iget-object          v1, v9, Lr1/a;->c Ljava/util/HashMap;
+	40      (000000a4) invoke-virtual       v10, Landroid/content/Intent;->getAction()Ljava/lang/String;
+	41      (000000aa) move-result-object   v10
+	42      (000000ac) invoke-virtual       v1, v10, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	43      (000000b2) move-result-object   v10
+	44      (000000b4) check-cast           v10, Ljava/util/ArrayList;
+	45      (000000b8) if-eqz               v10, +02ch
+	e:115
+	(Ljava/lang/Throwable; -> 9c b-BB@0x9c)
+
+b-BB@0xbc : [ b-BB@0xc0 b-BB@0xe2 ]
+	46      (000000bc) if-eqz               v5, +013h
+	e:115
+	(Ljava/lang/Throwable; -> 9c b-BB@0x9c)
+
+b-BB@0xc0 : [ b-BB@0xe2 ]
+	47      (000000c0) const-string         v1, "LocalBroadcastManager"
+	48      (000000c4) new-instance         v3, Ljava/lang/StringBuilder;
+	49      (000000c8) invoke-direct        v3, v0, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	50      (000000ce) invoke-virtual       v3, v10, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	51      (000000d4) invoke-virtual       v3, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	52      (000000da) move-result-object   v0
+	53      (000000dc) invoke-static        v1, v0, Landroid/util/Log;->v(Ljava/lang/String; Ljava/lang/String;)I
+	e:115
+	(Ljava/lang/Throwable; -> 9c b-BB@0x9c)
+
+b-BB@0xe2 : [ b-BB@0xee b-BB@0x110 ]
+	54      (000000e2) invoke-virtual       v10, Ljava/util/ArrayList;->size()I
+	55      (000000e8) move-result          v0
+	56      (000000ea) if-lez               v0, +013h
+	e:115
+	(Ljava/lang/Throwable; -> 9c b-BB@0x9c)
+
+b-BB@0xee : [ b-BB@0xfa b-BB@0x104 ]
+	57      (000000ee) invoke-virtual       v10, v6, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	58      (000000f4) move-result-object   v10
+	59      (000000f6) if-nez               v10, +007h
+	e:115
+	(Ljava/lang/Throwable; -> 9c b-BB@0x9c)
+
+b-BB@0xfa : [ b-BB@0x100 b-BB@0x102 ]
+	60      (000000fa) const/4              v10, 0
+	61      (000000fc) if-eqz               v5, +003h
+	e:115
+	(Ljava/lang/Throwable; -> 9c b-BB@0x9c)
+
+b-BB@0x100 : 
+	62      (00000100) throw                v10
+	e:115
+	(Ljava/lang/Throwable; -> 9c b-BB@0x9c)
+
+b-BB@0x102 : 
+	63      (00000102) throw                v10
+	e:115
+	(Ljava/lang/Throwable; -> 9c b-BB@0x9c)
+
+b-BB@0x104 : 
+	64      (00000104) new-instance         v10, Ljava/lang/ClassCastException;
+	65      (00000108) invoke-direct        v10, Ljava/lang/ClassCastException;-><init>()V
+	66      (0000010e) throw                v10
+	e:115
+	(Ljava/lang/Throwable; -> 9c b-BB@0x9c)
+
+b-BB@0x110 : 
+	67      (00000110) monitor-exit         v2
+	68      (00000112) return-void          
+	e:115
+	(Ljava/lang/Throwable; -> 9c b-BB@0x9c)
+
+b-BB@0x114 : 
+	69      (00000114) monitor-exit         v2
+	70      (00000116) throw                v10
+

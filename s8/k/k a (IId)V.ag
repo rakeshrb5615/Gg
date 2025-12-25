@@ -1,0 +1,84 @@
+# Ls8/k;->a(I I Lq8/d;)V [access_flags=public static final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:int
+# - v4:int
+# - v5:q8.d
+#
+# - return:void
+
+a-BB@0x0 : [ a-BB@0x1c ]
+	0       (00000000) const-string         v0, "descriptor"
+	1       (00000004) invoke-static        v5, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) new-instance         v0, Ljava/util/ArrayList;
+	3       (0000000e) invoke-direct        v0, Ljava/util/ArrayList;-><init>()V
+	4       (00000014) not-int              v3, v3
+	5       (00000016) and-int/2addr        v3, v4
+	6       (00000018) const/4              v4, 0
+	7       (0000001a) move                 v1, v4
+
+a-BB@0x1c : [ a-BB@0x24 a-BB@0x44 ]
+	8       (0000001c) const/16             v2, 32
+	9       (00000020) if-ge                v1, v2, +012h
+
+a-BB@0x24 : [ a-BB@0x2c a-BB@0x3a ]
+	10      (00000024) and-int/lit8         v2, v3, 1
+	11      (00000028) if-eqz               v2, +009h
+
+a-BB@0x2c : [ a-BB@0x3a ]
+	12      (0000002c) invoke-interface     v5, v1, Lq8/d;->e(I)Ljava/lang/String;
+	13      (00000032) move-result-object   v2
+	14      (00000034) invoke-virtual       v0, v2, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+a-BB@0x3a : [ a-BB@0x1c ]
+	15      (0000003a) ushr-int/lit8        v3, v3, 1
+	16      (0000003e) add-int/lit8         v1, v1, 1
+	17      (00000042) goto                 -13h
+
+a-BB@0x44 : [ a-BB@0x68 a-BB@0xac ]
+	18      (00000044) new-instance         v3, Lo8/b;
+	19      (00000048) invoke-interface     v5, Lq8/d;->b()Ljava/lang/String;
+	20      (0000004e) move-result-object   v5
+	21      (00000050) const-string         v1, "serialName"
+	22      (00000054) invoke-static        v5, v1, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	23      (0000005a) invoke-virtual       v0, Ljava/util/ArrayList;->size()I
+	24      (00000060) move-result          v1
+	25      (00000062) const/4              v2, 1
+	26      (00000064) if-ne                v1, v2, +024h
+
+a-BB@0x68 : [ a-BB@0xe2 ]
+	27      (00000068) new-instance         v1, Ljava/lang/StringBuilder;
+	28      (0000006c) const-string         v2, "Field '"
+	29      (00000070) invoke-direct        v1, v2, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	30      (00000076) invoke-virtual       v0, v4, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	31      (0000007c) move-result-object   v4
+	32      (0000007e) check-cast           v4, Ljava/lang/String;
+	33      (00000082) invoke-virtual       v1, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	34      (00000088) const-string         v4, "' is required for type with serial name '"
+	35      (0000008c) invoke-virtual       v1, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	36      (00000092) invoke-virtual       v1, v5, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	37      (00000098) const-string         v4, "', but it was missing"
+	38      (0000009c) invoke-virtual       v1, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	39      (000000a2) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	40      (000000a8) move-result-object   v4
+	41      (000000aa) goto                 +1ch
+
+a-BB@0xac : [ a-BB@0xe2 ]
+	42      (000000ac) new-instance         v4, Ljava/lang/StringBuilder;
+	43      (000000b0) const-string         v1, "Fields "
+	44      (000000b4) invoke-direct        v4, v1, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	45      (000000ba) invoke-virtual       v4, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	46      (000000c0) const-string         v1, " are required for type with serial name '"
+	47      (000000c4) invoke-virtual       v4, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	48      (000000ca) invoke-virtual       v4, v5, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	49      (000000d0) const-string         v5, "', but they were missing"
+	50      (000000d4) invoke-virtual       v4, v5, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	51      (000000da) invoke-virtual       v4, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	52      (000000e0) move-result-object   v4
+
+a-BB@0xe2 : 
+	53      (000000e2) const/4              v5, 0
+	54      (000000e4) invoke-direct        v3, v0, v4, v5, Lo8/b;-><init>(Ljava/util/List; Ljava/lang/String; Lo8/b;)V
+	55      (000000ea) throw                v3
+

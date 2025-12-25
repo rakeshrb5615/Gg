@@ -1,0 +1,73 @@
+# Lt/h;->get()Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v4
+#
+# - return:java.lang.Object
+
+get-BB@0x0 : [ get-BB@0x10 get-BB@0x96 ]
+	0       (00000000) sget-object          v0, Lt/g;->c Lt/g;
+	1       (00000004) invoke-static        Ljava/lang/Thread;->interrupted()Z
+	2       (0000000a) move-result          v1
+	3       (0000000c) if-nez               v1, +045h
+
+get-BB@0x10 : [ get-BB@0x18 get-BB@0x22 ]
+	4       (00000010) iget-object          v1, v4, Lt/h;->a Ljava/lang/Object;
+	5       (00000014) if-eqz               v1, +007h
+
+get-BB@0x18 : 
+	6       (00000018) invoke-static        v1, Lt/h;->f(Ljava/lang/Object;)Ljava/lang/Object;
+	7       (0000001e) move-result-object   v0
+	8       (00000020) return-object        v0
+
+get-BB@0x22 : [ get-BB@0x2a get-BB@0x88 ]
+	9       (00000022) iget-object          v1, v4, Lt/h;->c Lt/g;
+	10      (00000026) if-eq                v1, v0, +031h
+
+get-BB@0x2a : [ get-BB@0x34 ]
+	11      (0000002a) new-instance         v2, Lt/g;
+	12      (0000002e) invoke-direct        v2, Lt/g;-><init>()V
+
+get-BB@0x34 : [ get-BB@0x4a get-BB@0x80 ]
+	13      (00000034) sget-object          v3, Lt/h;->f Lq4/b;
+	14      (00000038) invoke-virtual       v3, v2, v1, Lq4/b;->M(Lt/g; Lt/g;)V
+	15      (0000003e) invoke-virtual       v3, v4, v1, v2, Lq4/b;->d(Lt/h; Lt/g; Lt/g;)Z
+	16      (00000044) move-result          v1
+	17      (00000046) if-eqz               v1, +01dh
+
+get-BB@0x4a : [ get-BB@0x5c get-BB@0x6e ]
+	18      (0000004a) invoke-static        v4, Ljava/util/concurrent/locks/LockSupport;->park(Ljava/lang/Object;)V
+	19      (00000050) invoke-static        Ljava/lang/Thread;->interrupted()Z
+	20      (00000056) move-result          v0
+	21      (00000058) if-nez               v0, +00bh
+
+get-BB@0x5c : [ get-BB@0x64 get-BB@0x4a ]
+	22      (0000005c) iget-object          v0, v4, Lt/h;->a Ljava/lang/Object;
+	23      (00000060) if-eqz               v0, -00bh
+
+get-BB@0x64 : 
+	24      (00000064) invoke-static        v0, Lt/h;->f(Ljava/lang/Object;)Ljava/lang/Object;
+	25      (0000006a) move-result-object   v0
+	26      (0000006c) return-object        v0
+
+get-BB@0x6e : 
+	27      (0000006e) invoke-virtual       v4, v2, Lt/h;->i(Lt/g;)V
+	28      (00000074) new-instance         v0, Ljava/lang/InterruptedException;
+	29      (00000078) invoke-direct        v0, Ljava/lang/InterruptedException;-><init>()V
+	30      (0000007e) throw                v0
+
+get-BB@0x80 : [ get-BB@0x88 get-BB@0x34 ]
+	31      (00000080) iget-object          v1, v4, Lt/h;->c Lt/g;
+	32      (00000084) if-ne                v1, v0, -028h
+
+get-BB@0x88 : 
+	33      (00000088) iget-object          v0, v4, Lt/h;->a Ljava/lang/Object;
+	34      (0000008c) invoke-static        v0, Lt/h;->f(Ljava/lang/Object;)Ljava/lang/Object;
+	35      (00000092) move-result-object   v0
+	36      (00000094) return-object        v0
+
+get-BB@0x96 : 
+	37      (00000096) new-instance         v0, Ljava/lang/InterruptedException;
+	38      (0000009a) invoke-direct        v0, Ljava/lang/InterruptedException;-><init>()V
+	39      (000000a0) throw                v0
+

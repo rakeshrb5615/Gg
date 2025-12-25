@@ -1,0 +1,26 @@
+# Ls8/g;->h(I)Ljava/util/List; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:int
+#
+# - return:java.util.List
+
+h-BB@0x0 : [ h-BB@0x4 h-BB@0xa ]
+	0       (00000000) if-ltz               v3, +005h
+
+h-BB@0x4 : 
+	1       (00000004) sget-object          v3, Li7/n;->a Li7/n;
+	2       (00000008) return-object        v3
+
+h-BB@0xa : 
+	3       (0000000a) const-string         v0, "Illegal index "
+	4       (0000000e) const-string         v1, ", kotlin.collections.LinkedHashMap expects only non-negative indices"
+	5       (00000012) invoke-static        v0, v3, v1, Lv1/a;->j(Ljava/lang/String; I Ljava/lang/String;)Ljava/lang/String;
+	6       (00000018) move-result-object   v3
+	7       (0000001a) new-instance         v0, Ljava/lang/IllegalArgumentException;
+	8       (0000001e) invoke-virtual       v3, Ljava/lang/Object;->toString()Ljava/lang/String;
+	9       (00000024) move-result-object   v3
+	10      (00000026) invoke-direct        v0, v3, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	11      (0000002c) throw                v0
+

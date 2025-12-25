@@ -1,0 +1,28 @@
+# Lr/i;-><init>(I)V [access_flags=public constructor]
+#
+# Parameters:
+# - local registers: v0...v0
+# - v1:int
+#
+# - return:void
+
+<init>-BB@0x0 : [ <init>-BB@0xe <init>-BB@0x2c ]
+	0       (00000000) invoke-direct        v0, Ljava/lang/Object;-><init>()V
+	1       (00000006) iput                 v1, v0, Lr/i;->maxSize I
+	2       (0000000a) if-lez               v1, +011h
+
+<init>-BB@0xe : 
+	3       (0000000e) new-instance         v1, Ls/c;
+	4       (00000012) invoke-direct        v1, Ls/c;-><init>()V
+	5       (00000018) iput-object          v1, v0, Lr/i;->map Ls/c;
+	6       (0000001c) new-instance         v1, Ls/b;
+	7       (00000020) invoke-direct        v1, Ljava/lang/Object;-><init>()V
+	8       (00000026) iput-object          v1, v0, Lr/i;->lock Ls/b;
+	9       (0000002a) return-void          
+
+<init>-BB@0x2c : 
+	10      (0000002c) const-string         v1, "maxSize <= 0"
+	11      (00000030) invoke-static        v1, Ls/a;->c(Ljava/lang/String;)V
+	12      (00000036) const/4              v1, 0
+	13      (00000038) throw                v1
+

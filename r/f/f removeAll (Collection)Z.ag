@@ -1,0 +1,31 @@
+# Lr/f;->removeAll(Ljava/util/Collection;)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:java.util.Collection
+#
+# - return:boolean
+
+removeAll-BB@0x0 : [ removeAll-BB@0x14 ]
+	0       (00000000) const-string         v0, "elements"
+	1       (00000004) invoke-static        v3, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) invoke-interface     v3, Ljava/util/Collection;->iterator()Ljava/util/Iterator;
+	3       (00000010) move-result-object   v3
+	4       (00000012) const/4              v0, 0
+
+removeAll-BB@0x14 : [ removeAll-BB@0x20 removeAll-BB@0x34 ]
+	5       (00000014) invoke-interface     v3, Ljava/util/Iterator;->hasNext()Z
+	6       (0000001a) move-result          v1
+	7       (0000001c) if-eqz               v1, +00ch
+
+removeAll-BB@0x20 : [ removeAll-BB@0x14 ]
+	8       (00000020) invoke-interface     v3, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	9       (00000026) move-result-object   v1
+	10      (00000028) invoke-virtual       v2, v1, Lr/f;->remove(Ljava/lang/Object;)Z
+	11      (0000002e) move-result          v1
+	12      (00000030) or-int/2addr         v0, v1
+	13      (00000032) goto                 -fh
+
+removeAll-BB@0x34 : 
+	14      (00000034) return               v0
+

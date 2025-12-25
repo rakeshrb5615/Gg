@@ -1,0 +1,101 @@
+# Lq0/d1;->i()Landroid/view/WindowInsets; [access_flags=private static]
+#
+# Parameters:
+# local registers: v0...v5
+#
+# - return:android.view.WindowInsets
+
+i-BB@0x0 : [ i-BB@0x12 i-BB@0x34 ]
+	0       (00000000) sget-boolean         v0, Lq0/d1;->f Z
+	1       (00000004) const/4              v1, 1
+	2       (00000006) const-class          v2, Landroid/view/WindowInsets;
+	3       (0000000a) const-string         v3, "WindowInsetsCompat"
+	4       (0000000e) if-nez               v0, +013h
+
+i-BB@0x12 : [ i-BB@0x30 ]
+	5       (00000012) const-string         v0, "CONSUMED"
+	6       (00000016) invoke-virtual       v2, v0, Ljava/lang/Class;->getDeclaredField(Ljava/lang/String;)Ljava/lang/reflect/Field;
+	7       (0000001c) move-result-object   v0
+	8       (0000001e) sput-object          v0, Lq0/d1;->e Ljava/lang/reflect/Field;
+	9       (00000022) goto                 +7h
+	12:21
+	(Ljava/lang/ReflectiveOperationException; -> 24 i-BB@0x24)
+
+i-BB@0x24 : [ i-BB@0x30 ]
+	10      (00000024) move-exception       v0
+	11      (00000026) const-string         v4, "Could not retrieve WindowInsets.CONSUMED field"
+	12      (0000002a) invoke-static        v3, v4, v0, Landroid/util/Log;->i(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+
+i-BB@0x30 : [ i-BB@0x34 ]
+	13      (00000030) sput-boolean         v1, Lq0/d1;->f Z
+
+i-BB@0x34 : [ i-BB@0x3e i-BB@0x66 ]
+	14      (00000034) sget-object          v0, Lq0/d1;->e Ljava/lang/reflect/Field;
+	15      (00000038) const/4              v4, 0
+	16      (0000003a) if-eqz               v0, +016h
+
+i-BB@0x3e : [ i-BB@0x4e i-BB@0x66 ]
+	17      (0000003e) invoke-virtual       v0, v4, Ljava/lang/reflect/Field;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	18      (00000044) move-result-object   v0
+	19      (00000046) check-cast           v0, Landroid/view/WindowInsets;
+	20      (0000004a) if-eqz               v0, +00eh
+	3e:57
+	(Ljava/lang/ReflectiveOperationException; -> 5a i-BB@0x5a)
+
+i-BB@0x4e : 
+	21      (0000004e) new-instance         v5, Landroid/view/WindowInsets;
+	22      (00000052) invoke-direct        v5, v0, Landroid/view/WindowInsets;-><init>(Landroid/view/WindowInsets;)V
+	23      (00000058) return-object        v5
+
+i-BB@0x5a : [ i-BB@0x66 ]
+	24      (0000005a) move-exception       v0
+	25      (0000005c) const-string         v5, "Could not get value from WindowInsets.CONSUMED field"
+	26      (00000060) invoke-static        v3, v5, v0, Landroid/util/Log;->i(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+
+i-BB@0x66 : [ i-BB@0x6e i-BB@0x98 ]
+	27      (00000066) sget-boolean         v0, Lq0/d1;->h Z
+	28      (0000006a) if-nez               v0, +017h
+
+i-BB@0x6e : [ i-BB@0x94 ]
+	29      (0000006e) const-class          v0, Landroid/graphics/Rect;
+	30      (00000072) filled-new-array     v0, [Ljava/lang/Class;
+	31      (00000078) move-result-object   v0
+	32      (0000007a) invoke-virtual       v2, v0, Ljava/lang/Class;->getConstructor([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
+	33      (00000080) move-result-object   v0
+	34      (00000082) sput-object          v0, Lq0/d1;->g Ljava/lang/reflect/Constructor;
+	35      (00000086) goto                 +7h
+	6e:85
+	(Ljava/lang/ReflectiveOperationException; -> 88 i-BB@0x88)
+
+i-BB@0x88 : [ i-BB@0x94 ]
+	36      (00000088) move-exception       v0
+	37      (0000008a) const-string         v2, "Could not retrieve WindowInsets(Rect) constructor"
+	38      (0000008e) invoke-static        v3, v2, v0, Landroid/util/Log;->i(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+
+i-BB@0x94 : [ i-BB@0x98 ]
+	39      (00000094) sput-boolean         v1, Lq0/d1;->h Z
+
+i-BB@0x98 : [ i-BB@0xa0 i-BB@0xcc ]
+	40      (00000098) sget-object          v0, Lq0/d1;->g Ljava/lang/reflect/Constructor;
+	41      (0000009c) if-eqz               v0, +018h
+
+i-BB@0xa0 : 
+	42      (000000a0) new-instance         v1, Landroid/graphics/Rect;
+	43      (000000a4) invoke-direct        v1, Landroid/graphics/Rect;-><init>()V
+	44      (000000aa) filled-new-array     v1, [Ljava/lang/Object;
+	45      (000000b0) move-result-object   v1
+	46      (000000b2) invoke-virtual       v0, v1, Ljava/lang/reflect/Constructor;->newInstance([Ljava/lang/Object;)Ljava/lang/Object;
+	47      (000000b8) move-result-object   v0
+	48      (000000ba) check-cast           v0, Landroid/view/WindowInsets;
+	49      (000000be) return-object        v0
+	a0:bd
+	(Ljava/lang/ReflectiveOperationException; -> c0 i-BB@0xc0)
+
+i-BB@0xc0 : [ i-BB@0xcc ]
+	50      (000000c0) move-exception       v0
+	51      (000000c2) const-string         v1, "Could not invoke WindowInsets(Rect) constructor"
+	52      (000000c6) invoke-static        v3, v1, v0, Landroid/util/Log;->i(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+
+i-BB@0xcc : 
+	53      (000000cc) return-object        v4
+

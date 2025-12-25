@@ -1,0 +1,34 @@
+# Lr/f;->containsAll(Ljava/util/Collection;)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:java.util.Collection
+#
+# - return:boolean
+
+containsAll-BB@0x0 : [ containsAll-BB@0x12 ]
+	0       (00000000) const-string         v0, "elements"
+	1       (00000004) invoke-static        v2, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) invoke-interface     v2, Ljava/util/Collection;->iterator()Ljava/util/Iterator;
+	3       (00000010) move-result-object   v2
+
+containsAll-BB@0x12 : [ containsAll-BB@0x1e containsAll-BB@0x36 ]
+	4       (00000012) invoke-interface     v2, Ljava/util/Iterator;->hasNext()Z
+	5       (00000018) move-result          v0
+	6       (0000001a) if-eqz               v0, +00eh
+
+containsAll-BB@0x1e : [ containsAll-BB@0x32 containsAll-BB@0x12 ]
+	7       (0000001e) invoke-interface     v2, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	8       (00000024) move-result-object   v0
+	9       (00000026) invoke-virtual       v1, v0, Lr/f;->contains(Ljava/lang/Object;)Z
+	10      (0000002c) move-result          v0
+	11      (0000002e) if-nez               v0, -00eh
+
+containsAll-BB@0x32 : 
+	12      (00000032) const/4              v2, 0
+	13      (00000034) return               v2
+
+containsAll-BB@0x36 : 
+	14      (00000036) const/4              v2, 1
+	15      (00000038) return               v2
+

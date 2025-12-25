@@ -1,0 +1,65 @@
+# Lr/i;->toString()Ljava/lang/String; [access_flags=public]
+#
+# Parameters:
+# local registers: v0...v4
+#
+# - return:java.lang.String
+
+toString-BB@0x0 : [ toString-BB@0xa ]
+	0       (00000000) const-string         v0, "LruCache[maxSize="
+	1       (00000004) iget-object          v1, v4, Lr/i;->lock Ls/b;
+	2       (00000008) monitor-enter        v1
+
+toString-BB@0xa : [ toString-BB@0x18 toString-BB@0x24 ]
+	3       (0000000a) iget                 v2, v4, Lr/i;->hitCount I
+	4       (0000000e) iget                 v3, v4, Lr/i;->missCount I
+	5       (00000012) add-int/2addr        v3, v2
+	6       (00000014) if-eqz               v3, +008h
+	a:83
+	(Ljava/lang/Throwable; -> 20 toString-BB@0x20)
+
+toString-BB@0x18 : [ toString-BB@0x26 ]
+	7       (00000018) mul-int/lit8         v2, v2, 100
+	8       (0000001c) div-int/2addr        v2, v3
+	9       (0000001e) goto                 +4h
+	a:83
+	(Ljava/lang/Throwable; -> 20 toString-BB@0x20)
+
+toString-BB@0x20 : [ toString-BB@0x88 ]
+	10      (00000020) move-exception       v0
+	11      (00000022) goto                 +33h
+	a:83
+	(Ljava/lang/Throwable; -> 20 toString-BB@0x20)
+
+toString-BB@0x24 : [ toString-BB@0x26 ]
+	12      (00000024) const/4              v2, 0
+	a:83
+	(Ljava/lang/Throwable; -> 20 toString-BB@0x20)
+
+toString-BB@0x26 : 
+	13      (00000026) new-instance         v3, Ljava/lang/StringBuilder;
+	14      (0000002a) invoke-direct        v3, v0, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	15      (00000030) iget                 v0, v4, Lr/i;->maxSize I
+	16      (00000034) invoke-virtual       v3, v0, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	17      (0000003a) const-string         v0, ",hits="
+	18      (0000003e) invoke-virtual       v3, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	19      (00000044) iget                 v0, v4, Lr/i;->hitCount I
+	20      (00000048) invoke-virtual       v3, v0, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	21      (0000004e) const-string         v0, ",misses="
+	22      (00000052) invoke-virtual       v3, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	23      (00000058) iget                 v0, v4, Lr/i;->missCount I
+	24      (0000005c) invoke-virtual       v3, v0, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	25      (00000062) const-string         v0, ",hitRate="
+	26      (00000066) invoke-virtual       v3, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	27      (0000006c) invoke-virtual       v3, v2, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	28      (00000072) const-string         v0, "%]"
+	29      (00000076) invoke-virtual       v3, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	30      (0000007c) invoke-virtual       v3, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	31      (00000082) move-result-object   v0
+	32      (00000084) monitor-exit         v1
+	33      (00000086) return-object        v0
+
+toString-BB@0x88 : 
+	34      (00000088) monitor-exit         v1
+	35      (0000008a) throw                v0
+

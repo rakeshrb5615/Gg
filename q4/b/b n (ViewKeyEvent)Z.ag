@@ -1,0 +1,135 @@
+# Lq4/b;->n(Landroid/view/View; Landroid/view/KeyEvent;)Z [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:android.view.View
+# - v4:android.view.KeyEvent
+#
+# - return:boolean
+
+n-BB@0x0 : [ n-BB@0x10 n-BB@0x14 ]
+	0       (00000000) sget-object          v0, Lq0/q0;->a Ljava/util/WeakHashMap;
+	1       (00000004) sget                 v0, Landroid/os/Build$VERSION;->SDK_INT I
+	2       (00000008) const/16             v1, 28
+	3       (0000000c) if-lt                v0, v1, +004h
+
+n-BB@0x10 : [ n-BB@0x13a ]
+	4       (00000010) goto/16              +095h
+
+n-BB@0x14 : [ n-BB@0x30 n-BB@0x4c ]
+	5       (00000014) sget-object          v0, Lq0/p0;->d Ljava/util/ArrayList;
+	6       (00000018) const                v0, 2131362487
+	7       (0000001e) invoke-virtual       v3, v0, Landroid/view/View;->getTag(I)Ljava/lang/Object;
+	8       (00000024) move-result-object   v1
+	9       (00000026) check-cast           v1, Lq0/p0;
+	10      (0000002a) const/4              v2, 0
+	11      (0000002c) if-nez               v1, +010h
+
+n-BB@0x30 : [ n-BB@0x4c ]
+	12      (00000030) new-instance         v1, Lq0/p0;
+	13      (00000034) invoke-direct        v1, Ljava/lang/Object;-><init>()V
+	14      (0000003a) iput-object          v2, v1, Lq0/p0;->a Ljava/util/WeakHashMap;
+	15      (0000003e) iput-object          v2, v1, Lq0/p0;->b Landroid/util/SparseArray;
+	16      (00000042) iput-object          v2, v1, Lq0/p0;->c Ljava/lang/ref/WeakReference;
+	17      (00000046) invoke-virtual       v3, v0, v1, Landroid/view/View;->setTag(I Ljava/lang/Object;)V
+
+n-BB@0x4c : [ n-BB@0x54 n-BB@0x62 ]
+	18      (0000004c) iget-object          v3, v1, Lq0/p0;->c Ljava/lang/ref/WeakReference;
+	19      (00000050) if-eqz               v3, +009h
+
+n-BB@0x54 : [ n-BB@0x60 n-BB@0x62 ]
+	20      (00000054) invoke-virtual       v3, Ljava/lang/ref/Reference;->get()Ljava/lang/Object;
+	21      (0000005a) move-result-object   v3
+	22      (0000005c) if-ne                v3, v4, +003h
+
+n-BB@0x60 : [ n-BB@0x13a ]
+	23      (00000060) goto                 +6dh
+
+n-BB@0x62 : [ n-BB@0x78 n-BB@0x86 ]
+	24      (00000062) new-instance         v3, Ljava/lang/ref/WeakReference;
+	25      (00000066) invoke-direct        v3, v4, Ljava/lang/ref/WeakReference;-><init>(Ljava/lang/Object;)V
+	26      (0000006c) iput-object          v3, v1, Lq0/p0;->c Ljava/lang/ref/WeakReference;
+	27      (00000070) iget-object          v3, v1, Lq0/p0;->b Landroid/util/SparseArray;
+	28      (00000074) if-nez               v3, +009h
+
+n-BB@0x78 : [ n-BB@0x86 ]
+	29      (00000078) new-instance         v3, Landroid/util/SparseArray;
+	30      (0000007c) invoke-direct        v3, Landroid/util/SparseArray;-><init>()V
+	31      (00000082) iput-object          v3, v1, Lq0/p0;->b Landroid/util/SparseArray;
+
+n-BB@0x86 : [ n-BB@0x98 n-BB@0xbe ]
+	32      (00000086) iget-object          v3, v1, Lq0/p0;->b Landroid/util/SparseArray;
+	33      (0000008a) invoke-virtual       v4, Landroid/view/KeyEvent;->getAction()I
+	34      (00000090) move-result          v0
+	35      (00000092) const/4              v1, 1
+	36      (00000094) if-ne                v0, v1, +015h
+
+n-BB@0x98 : [ n-BB@0xac n-BB@0xbe ]
+	37      (00000098) invoke-virtual       v4, Landroid/view/KeyEvent;->getKeyCode()I
+	38      (0000009e) move-result          v0
+	39      (000000a0) invoke-virtual       v3, v0, Landroid/util/SparseArray;->indexOfKey(I)I
+	40      (000000a6) move-result          v0
+	41      (000000a8) if-ltz               v0, +00bh
+
+n-BB@0xac : [ n-BB@0xbe ]
+	42      (000000ac) invoke-virtual       v3, v0, Landroid/util/SparseArray;->valueAt(I)Ljava/lang/Object;
+	43      (000000b2) move-result-object   v2
+	44      (000000b4) check-cast           v2, Ljava/lang/ref/WeakReference;
+	45      (000000b8) invoke-virtual       v3, v0, Landroid/util/SparseArray;->removeAt(I)V
+
+n-BB@0xbe : [ n-BB@0xc2 n-BB@0xd8 ]
+	46      (000000be) if-nez               v2, +00dh
+
+n-BB@0xc2 : [ n-BB@0xd8 ]
+	47      (000000c2) invoke-virtual       v4, Landroid/view/KeyEvent;->getKeyCode()I
+	48      (000000c8) move-result          v4
+	49      (000000ca) invoke-virtual       v3, v4, Landroid/util/SparseArray;->get(I)Ljava/lang/Object;
+	50      (000000d0) move-result-object   v3
+	51      (000000d2) move-object          v2, v3
+	52      (000000d4) check-cast           v2, Ljava/lang/ref/WeakReference;
+
+n-BB@0xd8 : [ n-BB@0xdc n-BB@0x13a ]
+	53      (000000d8) if-eqz               v2, +031h
+
+n-BB@0xdc : [ n-BB@0xec n-BB@0x138 ]
+	54      (000000dc) invoke-virtual       v2, Ljava/lang/ref/Reference;->get()Ljava/lang/Object;
+	55      (000000e2) move-result-object   v3
+	56      (000000e4) check-cast           v3, Landroid/view/View;
+	57      (000000e8) if-eqz               v3, +028h
+
+n-BB@0xec : [ n-BB@0xf8 n-BB@0x138 ]
+	58      (000000ec) invoke-virtual       v3, Landroid/view/View;->isAttachedToWindow()Z
+	59      (000000f2) move-result          v4
+	60      (000000f4) if-eqz               v4, +022h
+
+n-BB@0xf8 : [ n-BB@0x10e n-BB@0x138 ]
+	61      (000000f8) const                v4, 2131362488
+	62      (000000fe) invoke-virtual       v3, v4, Landroid/view/View;->getTag(I)Ljava/lang/Object;
+	63      (00000104) move-result-object   v3
+	64      (00000106) check-cast           v3, Ljava/util/ArrayList;
+	65      (0000010a) if-eqz               v3, +017h
+
+n-BB@0x10e : [ n-BB@0x11c n-BB@0x11e ]
+	66      (0000010e) invoke-virtual       v3, Ljava/util/ArrayList;->size()I
+	67      (00000114) move-result          v4
+	68      (00000116) sub-int/2addr        v4, v1
+	69      (00000118) if-gez               v4, +003h
+
+n-BB@0x11c : [ n-BB@0x138 ]
+	70      (0000011c) goto                 +eh
+
+n-BB@0x11e : 
+	71      (0000011e) invoke-virtual       v3, v4, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	72      (00000124) move-result-object   v3
+	73      (00000126) invoke-virtual       v3, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	74      (0000012c) new-instance         v3, Ljava/lang/ClassCastException;
+	75      (00000130) invoke-direct        v3, Ljava/lang/ClassCastException;-><init>()V
+	76      (00000136) throw                v3
+
+n-BB@0x138 : 
+	77      (00000138) return               v1
+
+n-BB@0x13a : 
+	78      (0000013a) const/4              v3, 0
+	79      (0000013c) return               v3
+

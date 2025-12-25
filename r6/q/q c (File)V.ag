@@ -1,0 +1,83 @@
+# Lr6/q;->c(Ljava/io/File;)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:java.io.File
+#
+# - return:void
+
+c-BB@0x0 : [ c-BB@0xc c-BB@0xe ]
+	0       (00000000) invoke-virtual       v4, Ljava/io/File;->getParentFile()Ljava/io/File;
+	1       (00000006) move-result-object   v4
+	2       (00000008) if-nez               v4, +003h
+
+c-BB@0xc : [ c-BB@0x80 ]
+	3       (0000000c) goto                 +3ah
+
+c-BB@0xe : [ c-BB@0x1a c-BB@0x74 ]
+	4       (0000000e) invoke-virtual       v4, Ljava/io/File;->exists()Z
+	5       (00000014) move-result          v0
+	6       (00000016) if-eqz               v0, +02fh
+
+c-BB@0x1a : [ c-BB@0x26 c-BB@0x74 ]
+	7       (0000001a) invoke-virtual       v4, Ljava/io/File;->isDirectory()Z
+	8       (00000020) move-result          v0
+	9       (00000022) if-nez               v0, +029h
+
+c-BB@0x26 : [ c-BB@0x3e c-BB@0x74 ]
+	10      (00000026) invoke-virtual       v4, Ljava/io/File;->getName()Ljava/lang/String;
+	11      (0000002c) move-result-object   v0
+	12      (0000002e) const-string         v1, "firebaseSessions"
+	13      (00000032) invoke-static        v0, v1, Lkotlin/jvm/internal/j;->a(Ljava/lang/Object; Ljava/lang/Object;)Z
+	14      (00000038) move-result          v0
+	15      (0000003a) if-eqz               v0, +01dh
+
+c-BB@0x3e : [ c-BB@0x4a c-BB@0x4c ]
+	16      (0000003e) invoke-virtual       v4, Ljava/io/File;->delete()Z
+	17      (00000044) move-result          v0
+	18      (00000046) if-eqz               v0, +003h
+
+c-BB@0x4a : [ c-BB@0x74 ]
+	19      (0000004a) goto                 +15h
+
+c-BB@0x4c : 
+	20      (0000004c) new-instance         v0, Ljava/io/IOException;
+	21      (00000050) new-instance         v1, Ljava/lang/StringBuilder;
+	22      (00000054) const-string         v2, "Failed to delete conflicting file: "
+	23      (00000058) invoke-direct        v1, v2, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	24      (0000005e) invoke-virtual       v1, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	25      (00000064) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	26      (0000006a) move-result-object   v4
+	27      (0000006c) invoke-direct        v0, v4, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+	28      (00000072) throw                v0
+
+c-BB@0x74 : [ c-BB@0x80 c-BB@0x82 ]
+	29      (00000074) invoke-virtual       v4, Ljava/io/File;->isDirectory()Z
+	30      (0000007a) move-result          v0
+	31      (0000007c) if-eqz               v0, +003h
+
+c-BB@0x80 : 
+	32      (00000080) return-void          
+
+c-BB@0x82 : 
+	33      (00000082) invoke-virtual       v4, Ljava/io/File;->toPath()Ljava/nio/file/Path;
+	34      (00000088) move-result-object   v0
+	35      (0000008a) const/4              v1, 0
+	36      (0000008c) new-array            v1, v1, [Ljava/nio/file/attribute/FileAttribute;
+	37      (00000090) invoke-static        v0, v1, Ljava/nio/file/Files;->createDirectories(Ljava/nio/file/Path; [Ljava/nio/file/attribute/FileAttribute;)Ljava/nio/file/Path;
+	38      (00000096) return-void          
+	82:95
+	(Ljava/lang/Exception; -> 98 c-BB@0x98)
+
+c-BB@0x98 : 
+	39      (00000098) move-exception       v0
+	40      (0000009a) new-instance         v1, Ljava/io/IOException;
+	41      (0000009e) new-instance         v2, Ljava/lang/StringBuilder;
+	42      (000000a2) const-string         v3, "Failed to create directory: "
+	43      (000000a6) invoke-direct        v2, v3, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	44      (000000ac) invoke-virtual       v2, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	45      (000000b2) invoke-virtual       v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	46      (000000b8) move-result-object   v4
+	47      (000000ba) invoke-direct        v1, v4, v0, Ljava/io/IOException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	48      (000000c0) throw                v1
+

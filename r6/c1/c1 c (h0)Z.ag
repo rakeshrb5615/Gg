@@ -1,0 +1,79 @@
+# Lr6/c1;->c(Lr6/h0;)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:r6.h0
+#
+# - return:boolean
+
+c-BB@0x0 : [ c-BB@0x12 c-BB@0x9c ]
+	0       (00000000) iget-object          v6, v6, Lr6/h0;->c Ljava/util/Map;
+	1       (00000004) const-string         v0, "FirebaseSessions"
+	2       (00000008) const/4              v1, 1
+	3       (0000000a) iget-object          v2, v5, Lr6/c1;->f Lr6/c0;
+	4       (0000000e) if-eqz               v6, +047h
+
+c-BB@0x12 : [ c-BB@0x30 c-BB@0x32 ]
+	5       (00000012) invoke-virtual       v2, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	6       (00000018) invoke-virtual       v2, Lr6/c0;->a()Ljava/lang/String;
+	7       (0000001e) move-result-object   v3
+	8       (00000020) invoke-interface     v6, v3, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	9       (00000026) move-result-object   v6
+	10      (00000028) check-cast           v6, Lr6/a0;
+	11      (0000002c) if-nez               v6, +003h
+
+c-BB@0x30 : [ c-BB@0x62 ]
+	12      (00000030) goto                 +19h
+
+c-BB@0x32 : [ c-BB@0x3e c-BB@0x62 ]
+	13      (00000032) iget                 v3, v6, Lr6/a0;->a I
+	14      (00000036) iget                 v4, v2, Lr6/c0;->c I
+	15      (0000003a) if-ne                v3, v4, +014h
+
+c-BB@0x3e : [ c-BB@0x5e c-BB@0x60 ]
+	16      (0000003e) iget-object          v6, v6, Lr6/a0;->b Ljava/lang/String;
+	17      (00000042) iget-object          v3, v2, Lr6/c0;->d Lh7/j;
+	18      (00000046) invoke-virtual       v3, Lh7/j;->getValue()Ljava/lang/Object;
+	19      (0000004c) move-result-object   v3
+	20      (0000004e) check-cast           v3, Ljava/lang/String;
+	21      (00000052) invoke-static        v6, v3, Lkotlin/jvm/internal/j;->a(Ljava/lang/Object; Ljava/lang/Object;)Z
+	22      (00000058) move-result          v6
+	23      (0000005a) if-nez               v6, +003h
+
+c-BB@0x5e : [ c-BB@0x62 ]
+	24      (0000005e) goto                 +2h
+
+c-BB@0x60 : [ c-BB@0x62 ]
+	25      (00000060) const/4              v1, 0
+
+c-BB@0x62 : [ c-BB@0x66 c-BB@0x9a ]
+	26      (00000062) if-eqz               v1, +01ch
+
+c-BB@0x66 : [ c-BB@0x9a ]
+	27      (00000066) new-instance         v6, Ljava/lang/StringBuilder;
+	28      (0000006a) const-string         v3, "Process "
+	29      (0000006e) invoke-direct        v6, v3, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	30      (00000074) invoke-virtual       v2, Lr6/c0;->a()Ljava/lang/String;
+	31      (0000007a) move-result-object   v2
+	32      (0000007c) invoke-virtual       v6, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	33      (00000082) const-string         v2, " is stale"
+	34      (00000086) invoke-virtual       v6, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	35      (0000008c) invoke-virtual       v6, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	36      (00000092) move-result-object   v6
+	37      (00000094) invoke-static        v0, v6, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String;)I
+
+c-BB@0x9a : 
+	38      (0000009a) return               v1
+
+c-BB@0x9c : 
+	39      (0000009c) new-instance         v6, Ljava/lang/StringBuilder;
+	40      (000000a0) const-string         v3, "No process data for "
+	41      (000000a4) invoke-direct        v6, v3, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	42      (000000aa) invoke-virtual       v2, Lr6/c0;->a()Ljava/lang/String;
+	43      (000000b0) move-result-object   v2
+	44      (000000b2) invoke-virtual       v6, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	45      (000000b8) invoke-virtual       v6, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	46      (000000be) move-result-object   v6
+	47      (000000c0) invoke-static        v0, v6, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String;)I
+	48      (000000c6) return               v1
+

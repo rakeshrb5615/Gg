@@ -1,0 +1,26 @@
+# Lr/d;->toArray()[Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v5
+#
+# - return:java.lang.Object[]
+
+toArray-BB@0x0 : [ toArray-BB@0xe ]
+	0       (00000000) iget-object          v0, v5, Lr/d;->a Lr/e;
+	1       (00000004) iget                 v1, v0, Lr/j;->c I
+	2       (00000008) new-array            v2, v1, [Ljava/lang/Object;
+	3       (0000000c) const/4              v3, 0
+
+toArray-BB@0xe : [ toArray-BB@0x12 toArray-BB@0x24 ]
+	4       (0000000e) if-ge                v3, v1, +00bh
+
+toArray-BB@0x12 : [ toArray-BB@0xe ]
+	5       (00000012) invoke-virtual       v0, v3, Lr/j;->j(I)Ljava/lang/Object;
+	6       (00000018) move-result-object   v4
+	7       (0000001a) aput-object          v4, v2, v3
+	8       (0000001e) add-int/lit8         v3, v3, 1
+	9       (00000022) goto                 -ah
+
+toArray-BB@0x24 : 
+	10      (00000024) return-object        v2
+

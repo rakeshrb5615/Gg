@@ -1,0 +1,97 @@
+# Ls8/h;->c(Ln/p;)Ljava/lang/Object; [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v9
+# - v10:n.p
+#
+# - return:java.lang.Object
+
+c-BB@0x0 : [ c-BB@0x44 ]
+	0       (00000000) const-string         v0, "decoder"
+	1       (00000004) invoke-static        v10, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) const-string         v0, "decoder"
+	3       (0000000e) invoke-static        v10, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	4       (00000014) new-instance         v0, Ljava/util/LinkedHashMap;
+	5       (00000018) invoke-direct        v0, Ljava/util/LinkedHashMap;-><init>()V
+	6       (0000001e) const-string         v1, "<this>"
+	7       (00000022) invoke-static        v0, v1, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	8       (00000028) invoke-virtual       v0, Ljava/util/AbstractMap;->size()I
+	9       (0000002e) move-result          v1
+	10      (00000030) mul-int/lit8         v1, v1, 2
+	11      (00000034) invoke-interface     v9, Lo8/a;->d()Lq8/d;
+	12      (0000003a) move-result-object   v2
+	13      (0000003c) invoke-virtual       v10, v2, Ln/p;->b(Lq8/d;)Ln/p;
+	14      (00000042) move-result-object   v10
+
+c-BB@0x44 : [ c-BB@0x5a c-BB@0xfc ]
+	15      (00000044) invoke-interface     v9, Lo8/a;->d()Lq8/d;
+	16      (0000004a) move-result-object   v2
+	17      (0000004c) invoke-virtual       v10, v2, Ln/p;->c(Lq8/d;)I
+	18      (00000052) move-result          v2
+	19      (00000054) const/4              v3, -1
+	20      (00000056) if-eq                v2, v3, +053h
+
+c-BB@0x5a : [ c-BB@0x8e c-BB@0xd8 ]
+	21      (0000005a) add-int/2addr        v2, v1
+	22      (0000005c) move-object          v3, v0
+	23      (0000005e) check-cast           v3, Ljava/util/Map;
+	24      (00000062) const-string         v4, "builder"
+	25      (00000066) invoke-static        v3, v4, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	26      (0000006c) sget-object          v4, Ls8/p;->a Ls8/p;
+	27      (00000070) iget-object          v5, v9, Ls8/h;->b Ls8/g;
+	28      (00000074) const/4              v6, 0
+	29      (00000076) invoke-virtual       v10, v5, v2, v4, v6, Ln/p;->j(Lq8/d; I Lo8/a; Ljava/lang/Object;)Ljava/lang/Object;
+	30      (0000007c) move-result-object   v4
+	31      (0000007e) invoke-virtual       v10, v5, Ln/p;->c(Lq8/d;)I
+	32      (00000084) move-result          v7
+	33      (00000086) add-int/lit8         v8, v2, 1
+	34      (0000008a) if-ne                v7, v8, +027h
+
+c-BB@0x8e : [ c-BB@0x9e c-BB@0xc8 ]
+	35      (0000008e) invoke-interface     v3, v4, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z
+	36      (00000094) move-result          v2
+	37      (00000096) iget-object          v8, v9, Ls8/h;->a Lo8/a;
+	38      (0000009a) if-eqz               v2, +017h
+
+c-BB@0x9e : [ c-BB@0xb6 c-BB@0xc8 ]
+	39      (0000009e) invoke-interface     v8, Lo8/a;->d()Lq8/d;
+	40      (000000a4) move-result-object   v2
+	41      (000000a6) invoke-interface     v2, Lq8/d;->c()Lq4/b;
+	42      (000000ac) move-result-object   v2
+	43      (000000ae) instance-of          v2, v2, Lq8/c;
+	44      (000000b2) if-nez               v2, +00bh
+
+c-BB@0xb6 : [ c-BB@0xd0 ]
+	45      (000000b6) invoke-static        v3, v4, Li7/r;->k0(Ljava/util/Map; Ljava/lang/Object;)Ljava/lang/Object;
+	46      (000000bc) move-result-object   v2
+	47      (000000be) invoke-virtual       v10, v5, v7, v8, v2, Ln/p;->j(Lq8/d; I Lo8/a; Ljava/lang/Object;)Ljava/lang/Object;
+	48      (000000c4) move-result-object   v2
+	49      (000000c6) goto                 +5h
+
+c-BB@0xc8 : [ c-BB@0xd0 ]
+	50      (000000c8) invoke-virtual       v10, v5, v7, v8, v6, Ln/p;->j(Lq8/d; I Lo8/a; Ljava/lang/Object;)Ljava/lang/Object;
+	51      (000000ce) move-result-object   v2
+
+c-BB@0xd0 : [ c-BB@0x44 ]
+	52      (000000d0) invoke-interface     v3, v4, v2, Ljava/util/Map;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	53      (000000d6) goto                 -49h
+
+c-BB@0xd8 : 
+	54      (000000d8) const-string         v10, "Value must follow key in a map, index for key: "
+	55      (000000dc) const-string         v0, ", returned index for value: "
+	56      (000000e0) invoke-static        v10, v2, v7, v0, Lv1/a;->i(Ljava/lang/String; I I Ljava/lang/String;)Ljava/lang/String;
+	57      (000000e6) move-result-object   v10
+	58      (000000e8) new-instance         v0, Ljava/lang/IllegalArgumentException;
+	59      (000000ec) invoke-virtual       v10, Ljava/lang/Object;->toString()Ljava/lang/String;
+	60      (000000f2) move-result-object   v10
+	61      (000000f4) invoke-direct        v0, v10, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	62      (000000fa) throw                v0
+
+c-BB@0xfc : 
+	63      (000000fc) invoke-interface     v9, Lo8/a;->d()Lq8/d;
+	64      (00000102) move-result-object   v1
+	65      (00000104) invoke-virtual       v10, v1, Ln/p;->n(Lq8/d;)V
+	66      (0000010a) const-string         v10, "<this>"
+	67      (0000010e) invoke-static        v0, v10, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	68      (00000114) return-object        v0
+

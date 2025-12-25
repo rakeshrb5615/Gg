@@ -1,0 +1,38 @@
+# Lr/f;->retainAll(Ljava/util/Collection;)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:java.util.Collection
+#
+# - return:boolean
+
+retainAll-BB@0x0 : [ retainAll-BB@0x14 ]
+	0       (00000000) const-string         v0, "elements"
+	1       (00000004) invoke-static        v5, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) iget                 v0, v4, Lr/f;->c I
+	3       (0000000e) const/4              v1, 1
+	4       (00000010) sub-int/2addr        v0, v1
+	5       (00000012) const/4              v2, 0
+
+retainAll-BB@0x14 : [ retainAll-BB@0x1a retainAll-BB@0x3c ]
+	6       (00000014) const/4              v3, -1
+	7       (00000016) if-ge                v3, v0, +013h
+
+retainAll-BB@0x1a : [ retainAll-BB@0x2e retainAll-BB@0x36 ]
+	8       (0000001a) iget-object          v3, v4, Lr/f;->b [Ljava/lang/Object;
+	9       (0000001e) aget-object          v3, v3, v0
+	10      (00000022) invoke-static        v5, v3, Li7/i;->Z(Ljava/lang/Iterable; Ljava/lang/Object;)Z
+	11      (00000028) move-result          v3
+	12      (0000002a) if-nez               v3, +006h
+
+retainAll-BB@0x2e : [ retainAll-BB@0x36 ]
+	13      (0000002e) invoke-virtual       v4, v0, Lr/f;->b(I)Ljava/lang/Object;
+	14      (00000034) move                 v2, v1
+
+retainAll-BB@0x36 : [ retainAll-BB@0x14 ]
+	15      (00000036) add-int/lit8         v0, v0, -1
+	16      (0000003a) goto                 -13h
+
+retainAll-BB@0x3c : 
+	17      (0000003c) return               v2
+

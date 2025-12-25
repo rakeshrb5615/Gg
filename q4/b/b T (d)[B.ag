@@ -1,0 +1,109 @@
+# Lq4/b;->T(Lj6/d;)[B [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v9
+# - v10:j6.d
+#
+# - return:byte[]
+
+T-BB@0x0 : [ T-BB@0x36 ]
+	0       (00000000) new-instance         v0, Ljava/util/ArrayDeque;
+	1       (00000004) const/16             v1, 20
+	2       (00000008) invoke-direct        v0, v1, Ljava/util/ArrayDeque;-><init>(I)V
+	3       (0000000e) const/4              v1, 0
+	4       (00000010) invoke-static        v1, Ljava/lang/Integer;->highestOneBit(I)I
+	5       (00000016) move-result          v2
+	6       (00000018) const/4              v3, 2
+	7       (0000001a) mul-int/2addr        v2, v3
+	8       (0000001c) const/16             v4, 128
+	9       (00000020) invoke-static        v4, v2, Ljava/lang/Math;->max(I I)I
+	10      (00000026) move-result          v2
+	11      (00000028) const/16             v4, 8192
+	12      (0000002c) invoke-static        v4, v2, Ljava/lang/Math;->min(I I)I
+	13      (00000032) move-result          v2
+	14      (00000034) move                 v4, v1
+
+T-BB@0x36 : [ T-BB@0x42 T-BB@0xbe ]
+	15      (00000036) const/4              v5, -1
+	16      (00000038) const                v6, 2147483639
+	17      (0000003e) if-ge                v4, v6, +040h
+
+T-BB@0x42 : [ T-BB@0x58 ]
+	18      (00000042) sub-int/2addr        v6, v4
+	19      (00000044) invoke-static        v2, v6, Ljava/lang/Math;->min(I I)I
+	20      (0000004a) move-result          v6
+	21      (0000004c) new-array            v7, v6, [B
+	22      (00000050) invoke-virtual       v0, v7, Ljava/util/ArrayDeque;->add(Ljava/lang/Object;)Z
+	23      (00000056) move                 v8, v1
+
+T-BB@0x58 : [ T-BB@0x5c T-BB@0x7c ]
+	24      (00000058) if-ge                v8, v6, +012h
+
+T-BB@0x5c : [ T-BB@0x6c T-BB@0x76 ]
+	25      (0000005c) sub-int              v9, v6, v8
+	26      (00000060) invoke-virtual       v10, v7, v8, v9, Lj6/d;->read([B I I)I
+	27      (00000066) move-result          v9
+	28      (00000068) if-ne                v9, v5, +007h
+
+T-BB@0x6c : 
+	29      (0000006c) invoke-static        v0, v4, Lq4/b;->g(Ljava/util/ArrayDeque; I)[B
+	30      (00000072) move-result-object   v10
+	31      (00000074) return-object        v10
+
+T-BB@0x76 : [ T-BB@0x58 ]
+	32      (00000076) add-int/2addr        v8, v9
+	33      (00000078) add-int/2addr        v4, v9
+	34      (0000007a) goto                 -11h
+
+T-BB@0x7c : [ T-BB@0x86 T-BB@0x8a ]
+	35      (0000007c) int-to-long          v5, v2
+	36      (0000007e) const/16             v7, 4096
+	37      (00000082) if-ge                v2, v7, +004h
+
+T-BB@0x86 : [ T-BB@0x8c ]
+	38      (00000086) const/4              v2, 4
+	39      (00000088) goto                 +2h
+
+T-BB@0x8a : [ T-BB@0x8c ]
+	40      (0000008a) move                 v2, v3
+
+T-BB@0x8c : [ T-BB@0x9e T-BB@0xa6 ]
+	41      (0000008c) int-to-long          v7, v2
+	42      (0000008e) mul-long/2addr       v5, v7
+	43      (00000090) const-wide/32        v7, 2147483647
+	44      (00000096) cmp-long             v2, v5, v7
+	45      (0000009a) if-lez               v2, +006h
+
+T-BB@0x9e : [ T-BB@0x36 ]
+	46      (0000009e) const                v2, 2147483647
+	47      (000000a4) goto                 -37h
+
+T-BB@0xa6 : [ T-BB@0xb4 T-BB@0xba ]
+	48      (000000a6) const-wide/32        v7, -2147483648
+	49      (000000ac) cmp-long             v2, v5, v7
+	50      (000000b0) if-gez               v2, +005h
+
+T-BB@0xb4 : [ T-BB@0x36 ]
+	51      (000000b4) const/high16         v2, -2147483648
+	52      (000000b8) goto                 -41h
+
+T-BB@0xba : [ T-BB@0x36 ]
+	53      (000000ba) long-to-int          v2, v5
+	54      (000000bc) goto                 -43h
+
+T-BB@0xbe : [ T-BB@0xca T-BB@0xd4 ]
+	55      (000000be) invoke-virtual       v10, Lj6/d;->read()I
+	56      (000000c4) move-result          v10
+	57      (000000c6) if-ne                v10, v5, +007h
+
+T-BB@0xca : 
+	58      (000000ca) invoke-static        v0, v6, Lq4/b;->g(Ljava/util/ArrayDeque; I)[B
+	59      (000000d0) move-result-object   v10
+	60      (000000d2) return-object        v10
+
+T-BB@0xd4 : 
+	61      (000000d4) new-instance         v10, Ljava/lang/OutOfMemoryError;
+	62      (000000d8) const-string         v0, "input is too large to fit in a byte array"
+	63      (000000dc) invoke-direct        v10, v0, Ljava/lang/OutOfMemoryError;-><init>(Ljava/lang/String;)V
+	64      (000000e2) throw                v10
+

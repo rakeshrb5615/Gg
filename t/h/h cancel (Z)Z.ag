@@ -1,0 +1,59 @@
+# Lt/h;->cancel(Z)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:boolean
+#
+# - return:boolean
+
+cancel-BB@0x0 : [ cancel-BB@0xc cancel-BB@0x10 ]
+	0       (00000000) iget-object          v0, v6, Lt/h;->a Ljava/lang/Object;
+	1       (00000004) const/4              v1, 1
+	2       (00000006) const/4              v2, 0
+	3       (00000008) if-nez               v0, +004h
+
+cancel-BB@0xc : [ cancel-BB@0x12 ]
+	4       (0000000c) move                 v3, v1
+	5       (0000000e) goto                 +2h
+
+cancel-BB@0x10 : [ cancel-BB@0x12 ]
+	6       (00000010) move                 v3, v2
+
+cancel-BB@0x12 : [ cancel-BB@0x16 cancel-BB@0x5e ]
+	7       (00000012) if-eqz               v3, +026h
+
+cancel-BB@0x16 : [ cancel-BB@0x1e cancel-BB@0x38 ]
+	8       (00000016) sget-boolean         v3, Lt/h;->d Z
+	9       (0000001a) if-eqz               v3, +00fh
+
+cancel-BB@0x1e : [ cancel-BB@0x46 ]
+	10      (0000001e) new-instance         v3, Lt/a;
+	11      (00000022) new-instance         v4, Ljava/util/concurrent/CancellationException;
+	12      (00000026) const-string         v5, "Future.cancel() was called."
+	13      (0000002a) invoke-direct        v4, v5, Ljava/util/concurrent/CancellationException;-><init>(Ljava/lang/String;)V
+	14      (00000030) invoke-direct        v3, v7, v4, Lt/a;-><init>(Z Ljava/lang/Throwable;)V
+	15      (00000036) goto                 +8h
+
+cancel-BB@0x38 : [ cancel-BB@0x3c cancel-BB@0x42 ]
+	16      (00000038) if-eqz               v7, +005h
+
+cancel-BB@0x3c : [ cancel-BB@0x46 ]
+	17      (0000003c) sget-object          v3, Lt/a;->c Lt/a;
+	18      (00000040) goto                 +3h
+
+cancel-BB@0x42 : [ cancel-BB@0x46 ]
+	19      (00000042) sget-object          v3, Lt/a;->d Lt/a;
+
+cancel-BB@0x46 : [ cancel-BB@0x56 cancel-BB@0x5e ]
+	20      (00000046) sget-object          v7, Lt/h;->f Lq4/b;
+	21      (0000004a) invoke-virtual       v7, v6, v0, v3, Lq4/b;->c(Lt/h; Ljava/lang/Object; Ljava/lang/Object;)Z
+	22      (00000050) move-result          v7
+	23      (00000052) if-eqz               v7, +006h
+
+cancel-BB@0x56 : 
+	24      (00000056) invoke-static        v6, Lt/h;->d(Lt/h;)V
+	25      (0000005c) return               v1
+
+cancel-BB@0x5e : 
+	26      (0000005e) return               v2
+

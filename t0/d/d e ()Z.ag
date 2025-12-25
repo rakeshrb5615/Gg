@@ -1,0 +1,75 @@
+# Lt0/d;->e()Z [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v8
+#
+# - return:boolean
+
+e-BB@0x0 : [ e-BB@0x24 e-BB@0x94 ]
+	0       (00000000) iget-object          v0, v8, Lt0/d;->a Lt0/a;
+	1       (00000004) iget                 v1, v0, Lt0/a;->d F
+	2       (00000008) invoke-static        v1, Ljava/lang/Math;->abs(F)F
+	3       (0000000e) move-result          v2
+	4       (00000010) div-float/2addr      v1, v2
+	5       (00000012) float-to-int         v1, v1
+	6       (00000014) iget                 v0, v0, Lt0/a;->c F
+	7       (00000018) invoke-static        v0, Ljava/lang/Math;->abs(F)F
+	8       (0000001e) const/4              v0, 0
+	9       (00000020) if-eqz               v1, +03ah
+
+e-BB@0x24 : [ e-BB@0x34 e-BB@0x36 ]
+	10      (00000024) iget-object          v2, v8, Lt0/d;->w Ln/t1;
+	11      (00000028) invoke-virtual       v2, Landroid/widget/AdapterView;->getCount()I
+	12      (0000002e) move-result          v3
+	13      (00000030) if-nez               v3, +003h
+
+e-BB@0x34 : [ e-BB@0x94 ]
+	14      (00000034) goto                 +30h
+
+e-BB@0x36 : [ e-BB@0x50 e-BB@0x74 ]
+	15      (00000036) invoke-virtual       v2, Landroid/view/ViewGroup;->getChildCount()I
+	16      (0000003c) move-result          v4
+	17      (0000003e) invoke-virtual       v2, Landroid/widget/AdapterView;->getFirstVisiblePosition()I
+	18      (00000044) move-result          v5
+	19      (00000046) add-int              v6, v5, v4
+	20      (0000004a) const/4              v7, 1
+	21      (0000004c) if-lez               v1, +014h
+
+e-BB@0x50 : [ e-BB@0x54 e-BB@0x92 ]
+	22      (00000050) if-lt                v6, v3, +021h
+
+e-BB@0x54 : [ e-BB@0x72 e-BB@0x92 ]
+	23      (00000054) sub-int/2addr        v4, v7
+	24      (00000056) invoke-virtual       v2, v4, Landroid/view/ViewGroup;->getChildAt(I)Landroid/view/View;
+	25      (0000005c) move-result-object   v1
+	26      (0000005e) invoke-virtual       v1, Landroid/view/View;->getBottom()I
+	27      (00000064) move-result          v1
+	28      (00000066) invoke-virtual       v2, Landroid/view/View;->getHeight()I
+	29      (0000006c) move-result          v2
+	30      (0000006e) if-gt                v1, v2, +012h
+
+e-BB@0x72 : [ e-BB@0x94 ]
+	31      (00000072) goto                 +11h
+
+e-BB@0x74 : [ e-BB@0x78 e-BB@0x94 ]
+	32      (00000074) if-gez               v1, +010h
+
+e-BB@0x78 : [ e-BB@0x7c e-BB@0x92 ]
+	33      (00000078) if-gtz               v5, +00dh
+
+e-BB@0x7c : [ e-BB@0x90 e-BB@0x92 ]
+	34      (0000007c) invoke-virtual       v2, v0, Landroid/view/ViewGroup;->getChildAt(I)Landroid/view/View;
+	35      (00000082) move-result-object   v1
+	36      (00000084) invoke-virtual       v1, Landroid/view/View;->getTop()I
+	37      (0000008a) move-result          v1
+	38      (0000008c) if-ltz               v1, +003h
+
+e-BB@0x90 : [ e-BB@0x94 ]
+	39      (00000090) goto                 +2h
+
+e-BB@0x92 : 
+	40      (00000092) return               v7
+
+e-BB@0x94 : 
+	41      (00000094) return               v0
+

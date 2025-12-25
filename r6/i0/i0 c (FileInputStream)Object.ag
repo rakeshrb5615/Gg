@@ -1,0 +1,33 @@
+# Lr6/i0;->c(Ljava/io/FileInputStream;)Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:java.io.FileInputStream
+#
+# - return:java.lang.Object
+
+c-BB@0x0 : 
+	0       (00000000) sget-object          v0, Lt8/b;->d Lt8/b;
+	1       (00000004) invoke-static        v4, Lc4/b;->S(Ljava/io/InputStream;)[B
+	2       (0000000a) move-result-object   v4
+	3       (0000000c) new-instance         v1, Ljava/lang/String;
+	4       (00000010) sget-object          v2, Lb8/a;->a Ljava/nio/charset/Charset;
+	5       (00000014) invoke-direct        v1, v4, v2, Ljava/lang/String;-><init>([B Ljava/nio/charset/Charset;)V
+	6       (0000001a) invoke-virtual       v0, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	7       (00000020) sget-object          v4, Lr6/h0;->Companion Lr6/g0;
+	8       (00000024) invoke-virtual       v4, Lr6/g0;->serializer()Lo8/a;
+	9       (0000002a) move-result-object   v4
+	10      (0000002c) invoke-virtual       v0, v4, v1, Lt8/b;->a(Lo8/a; Ljava/lang/String;)Ljava/lang/Object;
+	11      (00000032) move-result-object   v4
+	12      (00000034) check-cast           v4, Lr6/h0;
+	13      (00000038) return-object        v4
+	0:37
+	(Ljava/lang/Exception; -> 3a c-BB@0x3a)
+
+c-BB@0x3a : 
+	14      (0000003a) move-exception       v4
+	15      (0000003c) new-instance         v0, La1/b;
+	16      (00000040) const-string         v1, "Cannot parse session data"
+	17      (00000044) invoke-direct        v0, v1, v4, Ljava/io/IOException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	18      (0000004a) throw                v0
+

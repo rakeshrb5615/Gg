@@ -1,0 +1,32 @@
+# Lr0/c;->e(I)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:int
+#
+# - return:boolean
+
+e-BB@0x0 : [ e-BB@0x12 e-BB@0x14 ]
+	0       (00000000) iget-object          v0, v3, Lr0/c;->a Landroid/view/accessibility/AccessibilityNodeInfo;
+	1       (00000004) invoke-virtual       v0, Landroid/view/accessibility/AccessibilityNodeInfo;->getExtras()Landroid/os/Bundle;
+	2       (0000000a) move-result-object   v0
+	3       (0000000c) const/4              v1, 0
+	4       (0000000e) if-nez               v0, +003h
+
+e-BB@0x12 : [ e-BB@0x2a ]
+	5       (00000012) goto                 +ch
+
+e-BB@0x14 : [ e-BB@0x26 e-BB@0x2a ]
+	6       (00000014) const-string         v2, "androidx.view.accessibility.AccessibilityNodeInfoCompat.BOOLEAN_PROPERTY_KEY"
+	7       (00000018) invoke-virtual       v0, v2, v1, Landroid/os/BaseBundle;->getInt(Ljava/lang/String; I)I
+	8       (0000001e) move-result          v0
+	9       (00000020) and-int/2addr        v0, v4
+	10      (00000022) if-ne                v0, v4, +004h
+
+e-BB@0x26 : 
+	11      (00000026) const/4              v4, 1
+	12      (00000028) return               v4
+
+e-BB@0x2a : 
+	13      (0000002a) return               v1
+

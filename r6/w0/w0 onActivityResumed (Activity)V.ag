@@ -1,0 +1,68 @@
+# Lr6/w0;->onActivityResumed(Landroid/app/Activity;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:android.app.Activity
+#
+# - return:void
+
+onActivityResumed-BB@0x0 : [ onActivityResumed-BB@0x20 onActivityResumed-BB@0x2c ]
+	0       (00000000) const-string         v0, "activity"
+	1       (00000004) invoke-static        v6, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) iget-object          v6, v5, Lr6/w0;->a Lr6/c1;
+	3       (0000000e) const/4              v0, 1
+	4       (00000010) iput-boolean         v0, v6, Lr6/c1;->i Z
+	5       (00000014) iget-object          v0, v6, Lr6/c1;->h Lr6/h0;
+	6       (00000018) const-string         v1, "FirebaseSessions"
+	7       (0000001c) if-nez               v0, +008h
+
+onActivityResumed-BB@0x20 : 
+	8       (00000020) const-string         v6, "App foregrounded, but local SessionData not initialized"
+	9       (00000024) invoke-static        v1, v6, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String;)I
+	10      (0000002a) return-void          
+
+onActivityResumed-BB@0x2c : [ onActivityResumed-BB@0x32 onActivityResumed-BB@0x9e ]
+	11      (0000002c) const/4              v2, 0
+	12      (0000002e) if-eqz               v0, +038h
+
+onActivityResumed-BB@0x32 : [ onActivityResumed-BB@0x6c onActivityResumed-BB@0x7c ]
+	13      (00000032) new-instance         v3, Ljava/lang/StringBuilder;
+	14      (00000036) const-string         v4, "App foregrounded on "
+	15      (0000003a) invoke-direct        v3, v4, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	16      (00000040) iget-object          v4, v6, Lr6/c1;->f Lr6/c0;
+	17      (00000044) invoke-virtual       v4, Lr6/c0;->a()Ljava/lang/String;
+	18      (0000004a) move-result-object   v4
+	19      (0000004c) invoke-virtual       v3, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	20      (00000052) invoke-virtual       v3, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	21      (00000058) move-result-object   v3
+	22      (0000005a) invoke-static        v1, v3, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String;)I
+	23      (00000060) invoke-virtual       v6, v0, Lr6/c1;->d(Lr6/h0;)Z
+	24      (00000066) move-result          v1
+	25      (00000068) if-nez               v1, +00ah
+
+onActivityResumed-BB@0x6c : [ onActivityResumed-BB@0x78 onActivityResumed-BB@0x7a ]
+	26      (0000006c) invoke-virtual       v6, v0, Lr6/c1;->c(Lr6/h0;)Z
+	27      (00000072) move-result          v1
+	28      (00000074) if-eqz               v1, +003h
+
+onActivityResumed-BB@0x78 : [ onActivityResumed-BB@0x7c ]
+	29      (00000078) goto                 +2h
+
+onActivityResumed-BB@0x7a : 
+	30      (0000007a) return-void          
+
+onActivityResumed-BB@0x7c : 
+	31      (0000007c) iget-object          v1, v6, Lr6/c1;->g Ll7/h;
+	32      (00000080) invoke-static        v1, Ld8/f0;->b(Ll7/h;)Li8/c;
+	33      (00000086) move-result-object   v1
+	34      (00000088) new-instance         v3, La1/d;
+	35      (0000008c) const/16             v4, 11
+	36      (00000090) invoke-direct        v3, v6, v0, v2, v4, La1/d;-><init>(Ljava/lang/Object; Ljava/lang/Object; Ll7/c; I)V
+	37      (00000096) invoke-static        v1, v3, Ld8/f0;->p(Ld8/c0; Lu7/p;)Ld8/w1;
+	38      (0000009c) return-void          
+
+onActivityResumed-BB@0x9e : 
+	39      (0000009e) const-string         v6, "localSessionData"
+	40      (000000a2) invoke-static        v6, Lkotlin/jvm/internal/j;->i(Ljava/lang/String;)V
+	41      (000000a8) throw                v2
+

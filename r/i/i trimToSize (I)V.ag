@@ -1,0 +1,169 @@
+# Lr/i;->trimToSize(I)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:int
+#
+# - return:void
+
+trimToSize-BB@0x0 : [ trimToSize-BB@0x6 ]
+	0       (00000000) iget-object          v0, v6, Lr/i;->lock Ls/b;
+	1       (00000004) monitor-enter        v0
+
+trimToSize-BB@0x6 : [ trimToSize-BB@0xe trimToSize-BB@0x11a ]
+	2       (00000006) iget                 v1, v6, Lr/i;->size I
+	3       (0000000a) if-ltz               v1, +088h
+	6:b5
+	(Ljava/lang/Throwable; -> 2c trimToSize-BB@0x2c)
+
+trimToSize-BB@0xe : [ trimToSize-BB@0x22 trimToSize-BB@0x32 ]
+	4       (0000000e) iget-object          v1, v6, Lr/i;->map Ls/c;
+	5       (00000012) iget-object          v1, v1, Ls/c;->a Ljava/util/LinkedHashMap;
+	6       (00000016) invoke-virtual       v1, Ljava/util/AbstractMap;->isEmpty()Z
+	7       (0000001c) move-result          v1
+	8       (0000001e) if-eqz               v1, +00ah
+	6:b5
+	(Ljava/lang/Throwable; -> 2c trimToSize-BB@0x2c)
+
+trimToSize-BB@0x22 : [ trimToSize-BB@0x2a trimToSize-BB@0x11a ]
+	9       (00000022) iget                 v1, v6, Lr/i;->size I
+	10      (00000026) if-nez               v1, +07ah
+	6:b5
+	(Ljava/lang/Throwable; -> 2c trimToSize-BB@0x2c)
+
+trimToSize-BB@0x2a : [ trimToSize-BB@0x32 ]
+	11      (0000002a) goto                 +4h
+	6:b5
+	(Ljava/lang/Throwable; -> 2c trimToSize-BB@0x2c)
+
+trimToSize-BB@0x2c : [ trimToSize-BB@0x12a ]
+	12      (0000002c) move-exception       v7
+	13      (0000002e) goto/16              +07eh
+	6:b5
+	(Ljava/lang/Throwable; -> 2c trimToSize-BB@0x2c)
+
+trimToSize-BB@0x32 : [ trimToSize-BB@0x3a trimToSize-BB@0x116 ]
+	14      (00000032) iget                 v1, v6, Lr/i;->size I
+	15      (00000036) if-le                v1, v7, +070h
+	6:b5
+	(Ljava/lang/Throwable; -> 2c trimToSize-BB@0x2c)
+
+trimToSize-BB@0x3a : [ trimToSize-BB@0x4e trimToSize-BB@0x50 ]
+	16      (0000003a) iget-object          v1, v6, Lr/i;->map Ls/c;
+	17      (0000003e) iget-object          v1, v1, Ls/c;->a Ljava/util/LinkedHashMap;
+	18      (00000042) invoke-virtual       v1, Ljava/util/AbstractMap;->isEmpty()Z
+	19      (00000048) move-result          v1
+	20      (0000004a) if-eqz               v1, +003h
+	6:b5
+	(Ljava/lang/Throwable; -> 2c trimToSize-BB@0x2c)
+
+trimToSize-BB@0x4e : [ trimToSize-BB@0x116 ]
+	21      (0000004e) goto                 +64h
+	6:b5
+	(Ljava/lang/Throwable; -> 2c trimToSize-BB@0x2c)
+
+trimToSize-BB@0x50 : [ trimToSize-BB@0x74 trimToSize-BB@0x94 ]
+	22      (00000050) iget-object          v1, v6, Lr/i;->map Ls/c;
+	23      (00000054) iget-object          v1, v1, Ls/c;->a Ljava/util/LinkedHashMap;
+	24      (00000058) invoke-virtual       v1, Ljava/util/LinkedHashMap;->entrySet()Ljava/util/Set;
+	25      (0000005e) move-result-object   v1
+	26      (00000060) const-string         v2, "<get-entries>(...)"
+	27      (00000064) invoke-static        v1, v2, Lkotlin/jvm/internal/j;->d(Ljava/lang/Object; Ljava/lang/String;)V
+	28      (0000006a) instance-of          v2, v1, Ljava/util/List;
+	29      (0000006e) const/4              v3, 0
+	30      (00000070) if-eqz               v2, +012h
+	6:b5
+	(Ljava/lang/Throwable; -> 2c trimToSize-BB@0x2c)
+
+trimToSize-BB@0x74 : [ trimToSize-BB@0x84 trimToSize-BB@0x88 ]
+	31      (00000074) check-cast           v1, Ljava/util/List;
+	32      (00000078) invoke-interface     v1, Ljava/util/List;->isEmpty()Z
+	33      (0000007e) move-result          v2
+	34      (00000080) if-eqz               v2, +004h
+	6:b5
+	(Ljava/lang/Throwable; -> 2c trimToSize-BB@0x2c)
+
+trimToSize-BB@0x84 : [ trimToSize-BB@0xb2 ]
+	35      (00000084) move-object          v1, v3
+	36      (00000086) goto                 +16h
+	6:b5
+	(Ljava/lang/Throwable; -> 2c trimToSize-BB@0x2c)
+
+trimToSize-BB@0x88 : [ trimToSize-BB@0xb2 ]
+	37      (00000088) const/4              v2, 0
+	38      (0000008a) invoke-interface     v1, v2, Ljava/util/List;->get(I)Ljava/lang/Object;
+	39      (00000090) move-result-object   v1
+	40      (00000092) goto                 +10h
+	6:b5
+	(Ljava/lang/Throwable; -> 2c trimToSize-BB@0x2c)
+
+trimToSize-BB@0x94 : [ trimToSize-BB@0xa8 trimToSize-BB@0xaa ]
+	41      (00000094) invoke-interface     v1, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
+	42      (0000009a) move-result-object   v1
+	43      (0000009c) invoke-interface     v1, Ljava/util/Iterator;->hasNext()Z
+	44      (000000a2) move-result          v2
+	45      (000000a4) if-nez               v2, +003h
+	6:b5
+	(Ljava/lang/Throwable; -> 2c trimToSize-BB@0x2c)
+
+trimToSize-BB@0xa8 : [ trimToSize-BB@0x84 ]
+	46      (000000a8) goto                 -12h
+	6:b5
+	(Ljava/lang/Throwable; -> 2c trimToSize-BB@0x2c)
+
+trimToSize-BB@0xaa : [ trimToSize-BB@0xb2 ]
+	47      (000000aa) invoke-interface     v1, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	48      (000000b0) move-result-object   v1
+	6:b5
+	(Ljava/lang/Throwable; -> 2c trimToSize-BB@0x2c)
+
+trimToSize-BB@0xb2 : [ trimToSize-BB@0xba trimToSize-BB@0xbe ]
+	49      (000000b2) check-cast           v1, Ljava/util/Map$Entry;
+	50      (000000b6) if-nez               v1, +004h
+
+trimToSize-BB@0xba : 
+	51      (000000ba) monitor-exit         v0
+	52      (000000bc) return-void          
+
+trimToSize-BB@0xbe : [ trimToSize-BB@0x0 ]
+	53      (000000be) invoke-interface     v1, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
+	54      (000000c4) move-result-object   v2
+	55      (000000c6) invoke-interface     v1, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
+	56      (000000cc) move-result-object   v1
+	57      (000000ce) iget-object          v4, v6, Lr/i;->map Ls/c;
+	58      (000000d2) invoke-virtual       v4, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	59      (000000d8) const-string         v5, "key"
+	60      (000000dc) invoke-static        v2, v5, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	61      (000000e2) iget-object          v4, v4, Ls/c;->a Ljava/util/LinkedHashMap;
+	62      (000000e6) invoke-virtual       v4, v2, Ljava/util/AbstractMap;->remove(Ljava/lang/Object;)Ljava/lang/Object;
+	63      (000000ec) iget                 v4, v6, Lr/i;->size I
+	64      (000000f0) invoke-virtual       v6, v2, v1, Lr/i;->a(Ljava/lang/Object; Ljava/lang/Object;)I
+	65      (000000f6) move-result          v5
+	66      (000000f8) sub-int/2addr        v4, v5
+	67      (000000fa) iput                 v4, v6, Lr/i;->size I
+	68      (000000fe) iget                 v4, v6, Lr/i;->evictionCount I
+	69      (00000102) const/4              v5, 1
+	70      (00000104) add-int/2addr        v4, v5
+	71      (00000106) iput                 v4, v6, Lr/i;->evictionCount I
+	72      (0000010a) monitor-exit         v0
+	73      (0000010c) invoke-virtual       v6, v5, v2, v1, v3, Lr/i;->entryRemoved(Z Ljava/lang/Object; Ljava/lang/Object; Ljava/lang/Object;)V
+	74      (00000112) goto/16              -089h
+	be:109
+	(Ljava/lang/Throwable; -> 2c trimToSize-BB@0x2c)
+
+trimToSize-BB@0x116 : 
+	75      (00000116) monitor-exit         v0
+	76      (00000118) return-void          
+
+trimToSize-BB@0x11a : 
+	77      (0000011a) const-string         v7, "LruCache.sizeOf() is reporting inconsistent results!"
+	78      (0000011e) new-instance         v1, Ljava/lang/IllegalStateException;
+	79      (00000122) invoke-direct        v1, v7, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	80      (00000128) throw                v1
+	11a:129
+	(Ljava/lang/Throwable; -> 2c trimToSize-BB@0x2c)
+
+trimToSize-BB@0x12a : 
+	81      (0000012a) monitor-exit         v0
+	82      (0000012c) throw                v7
+

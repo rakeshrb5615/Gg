@@ -1,0 +1,33 @@
+# Ls6/c;->a(Ls6/d;)Ls6/a; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:s6.d
+#
+# - return:s6.a
+
+a-BB@0x0 : [ a-BB@0x1a a-BB@0x20 ]
+	0       (00000000) const-string         v0, "dependencies"
+	1       (00000004) sget-object          v1, Ls6/c;->b Ljava/util/Map;
+	2       (00000008) invoke-static        v1, v0, Lkotlin/jvm/internal/j;->d(Ljava/lang/Object; Ljava/lang/String;)V
+	3       (0000000e) invoke-interface     v1, v3, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	4       (00000014) move-result-object   v0
+	5       (00000016) if-eqz               v0, +005h
+
+a-BB@0x1a : 
+	6       (0000001a) check-cast           v0, Ls6/a;
+	7       (0000001e) return-object        v0
+
+a-BB@0x20 : 
+	8       (00000020) new-instance         v0, Ljava/lang/IllegalStateException;
+	9       (00000024) new-instance         v1, Ljava/lang/StringBuilder;
+	10      (00000028) const-string         v2, "Cannot get dependency "
+	11      (0000002c) invoke-direct        v1, v2, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	12      (00000032) invoke-virtual       v1, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	13      (00000038) const-string         v3, ". Dependencies should be added at class load time."
+	14      (0000003c) invoke-virtual       v1, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	15      (00000042) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	16      (00000048) move-result-object   v3
+	17      (0000004a) invoke-direct        v0, v3, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	18      (00000050) throw                v0
+

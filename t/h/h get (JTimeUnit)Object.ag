@@ -1,0 +1,254 @@
+# Lt/h;->get(J Ljava/util/concurrent/TimeUnit;)Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v18
+# - v19:long
+# - v20:java.util.concurrent.TimeUnit
+#
+# - return:java.lang.Object
+
+get-BB@0x0 : [ get-BB@0x24 get-BB@0x286 ]
+	0       (00000000) move-object/from16   v0, v17
+	1       (00000004) move-wide/from16     v1, v18
+	2       (00000008) move-object/from16   v3, v20
+	3       (0000000c) sget-object          v4, Lt/g;->c Lt/g;
+	4       (00000010) invoke-virtual       v3, v1, v2, Ljava/util/concurrent/TimeUnit;->toNanos(J)J
+	5       (00000016) move-result-wide     v5
+	6       (00000018) invoke-static        Ljava/lang/Thread;->interrupted()Z
+	7       (0000001e) move-result          v7
+	8       (00000020) if-nez               v7, +133h
+
+get-BB@0x24 : [ get-BB@0x2c get-BB@0x36 ]
+	9       (00000024) iget-object          v7, v0, Lt/h;->a Ljava/lang/Object;
+	10      (00000028) if-eqz               v7, +007h
+
+get-BB@0x2c : 
+	11      (0000002c) invoke-static        v7, Lt/h;->f(Ljava/lang/Object;)Ljava/lang/Object;
+	12      (00000032) move-result-object   v1
+	13      (00000034) return-object        v1
+
+get-BB@0x36 : [ get-BB@0x42 get-BB@0x4e ]
+	14      (00000036) const-wide/16        v7, 0
+	15      (0000003a) cmp-long             v9, v5, v7
+	16      (0000003e) if-lez               v9, +008h
+
+get-BB@0x42 : [ get-BB@0x50 ]
+	17      (00000042) invoke-static        Ljava/lang/System;->nanoTime()J
+	18      (00000048) move-result-wide     v9
+	19      (0000004a) add-long/2addr       v9, v5
+	20      (0000004c) goto                 +2h
+
+get-BB@0x4e : [ get-BB@0x50 ]
+	21      (0000004e) move-wide            v9, v7
+
+get-BB@0x50 : [ get-BB@0x5c get-BB@0xec ]
+	22      (00000050) const-wide/16        v11, 1000
+	23      (00000054) cmp-long             v13, v5, v11
+	24      (00000058) if-ltz               v13, +04ah
+
+get-BB@0x5c : [ get-BB@0x64 get-BB@0xde ]
+	25      (0000005c) iget-object          v13, v0, Lt/h;->c Lt/g;
+	26      (00000060) if-eq                v13, v4, +03fh
+
+get-BB@0x64 : [ get-BB@0x6e ]
+	27      (00000064) new-instance         v14, Lt/g;
+	28      (00000068) invoke-direct        v14, Lt/g;-><init>()V
+
+get-BB@0x6e : [ get-BB@0x84 get-BB@0xd6 ]
+	29      (0000006e) sget-object          v15, Lt/h;->f Lq4/b;
+	30      (00000072) invoke-virtual       v15, v14, v13, Lq4/b;->M(Lt/g; Lt/g;)V
+	31      (00000078) invoke-virtual       v15, v0, v13, v14, Lq4/b;->d(Lt/h; Lt/g; Lt/g;)Z
+	32      (0000007e) move-result          v13
+	33      (00000080) if-eqz               v13, +02bh
+
+get-BB@0x84 : [ get-BB@0x96 get-BB@0xc4 ]
+	34      (00000084) invoke-static        v0, v5, v6, Ljava/util/concurrent/locks/LockSupport;->parkNanos(Ljava/lang/Object; J)V
+	35      (0000008a) invoke-static        Ljava/lang/Thread;->interrupted()Z
+	36      (00000090) move-result          v4
+	37      (00000092) if-nez               v4, +019h
+
+get-BB@0x96 : [ get-BB@0x9e get-BB@0xa8 ]
+	38      (00000096) iget-object          v4, v0, Lt/h;->a Ljava/lang/Object;
+	39      (0000009a) if-eqz               v4, +007h
+
+get-BB@0x9e : 
+	40      (0000009e) invoke-static        v4, Lt/h;->f(Ljava/lang/Object;)Ljava/lang/Object;
+	41      (000000a4) move-result-object   v1
+	42      (000000a6) return-object        v1
+
+get-BB@0xa8 : [ get-BB@0xbc get-BB@0x84 ]
+	43      (000000a8) invoke-static        Ljava/lang/System;->nanoTime()J
+	44      (000000ae) move-result-wide     v4
+	45      (000000b0) sub-long             v5, v9, v4
+	46      (000000b4) cmp-long             v4, v5, v11
+	47      (000000b8) if-gez               v4, -01ah
+
+get-BB@0xbc : [ get-BB@0xec ]
+	48      (000000bc) invoke-virtual       v0, v14, Lt/h;->i(Lt/g;)V
+	49      (000000c2) goto                 +15h
+
+get-BB@0xc4 : 
+	50      (000000c4) invoke-virtual       v0, v14, Lt/h;->i(Lt/g;)V
+	51      (000000ca) new-instance         v1, Ljava/lang/InterruptedException;
+	52      (000000ce) invoke-direct        v1, Ljava/lang/InterruptedException;-><init>()V
+	53      (000000d4) throw                v1
+
+get-BB@0xd6 : [ get-BB@0xde get-BB@0x6e ]
+	54      (000000d6) iget-object          v13, v0, Lt/h;->c Lt/g;
+	55      (000000da) if-ne                v13, v4, -036h
+
+get-BB@0xde : 
+	56      (000000de) iget-object          v1, v0, Lt/h;->a Ljava/lang/Object;
+	57      (000000e2) invoke-static        v1, Lt/h;->f(Ljava/lang/Object;)Ljava/lang/Object;
+	58      (000000e8) move-result-object   v1
+	59      (000000ea) return-object        v1
+
+get-BB@0xec : [ get-BB@0xf4 get-BB@0x12c ]
+	60      (000000ec) cmp-long             v4, v5, v7
+	61      (000000f0) if-lez               v4, +01eh
+
+get-BB@0xf4 : [ get-BB@0xfc get-BB@0x106 ]
+	62      (000000f4) iget-object          v4, v0, Lt/h;->a Ljava/lang/Object;
+	63      (000000f8) if-eqz               v4, +007h
+
+get-BB@0xfc : 
+	64      (000000fc) invoke-static        v4, Lt/h;->f(Ljava/lang/Object;)Ljava/lang/Object;
+	65      (00000102) move-result-object   v1
+	66      (00000104) return-object        v1
+
+get-BB@0x106 : [ get-BB@0x112 get-BB@0x120 ]
+	67      (00000106) invoke-static        Ljava/lang/Thread;->interrupted()Z
+	68      (0000010c) move-result          v4
+	69      (0000010e) if-nez               v4, +009h
+
+get-BB@0x112 : [ get-BB@0xec ]
+	70      (00000112) invoke-static        Ljava/lang/System;->nanoTime()J
+	71      (00000118) move-result-wide     v4
+	72      (0000011a) sub-long             v5, v9, v4
+	73      (0000011e) goto                 -19h
+
+get-BB@0x120 : 
+	74      (00000120) new-instance         v1, Ljava/lang/InterruptedException;
+	75      (00000124) invoke-direct        v1, Ljava/lang/InterruptedException;-><init>()V
+	76      (0000012a) throw                v1
+
+get-BB@0x12c : [ get-BB@0x190 get-BB@0x24a ]
+	77      (0000012c) invoke-virtual       v0, Lt/h;->toString()Ljava/lang/String;
+	78      (00000132) move-result-object   v4
+	79      (00000134) invoke-virtual       v3, Ljava/lang/Object;->toString()Ljava/lang/String;
+	80      (0000013a) move-result-object   v9
+	81      (0000013c) sget-object          v10, Ljava/util/Locale;->ROOT Ljava/util/Locale;
+	82      (00000140) invoke-virtual       v9, v10, Ljava/lang/String;->toLowerCase(Ljava/util/Locale;)Ljava/lang/String;
+	83      (00000146) move-result-object   v9
+	84      (00000148) new-instance         v13, Ljava/lang/StringBuilder;
+	85      (0000014c) const-string         v14, "Waited "
+	86      (00000150) invoke-direct        v13, v14, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	87      (00000156) invoke-virtual       v13, v1, v2, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+	88      (0000015c) const-string         v1, " "
+	89      (00000160) invoke-virtual       v13, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	90      (00000166) invoke-virtual       v3, Ljava/lang/Object;->toString()Ljava/lang/String;
+	91      (0000016c) move-result-object   v2
+	92      (0000016e) invoke-virtual       v2, v10, Ljava/lang/String;->toLowerCase(Ljava/util/Locale;)Ljava/lang/String;
+	93      (00000174) move-result-object   v2
+	94      (00000176) invoke-virtual       v13, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	95      (0000017c) invoke-virtual       v13, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	96      (00000182) move-result-object   v2
+	97      (00000184) add-long             v13, v5, v11
+	98      (00000188) cmp-long             v10, v13, v7
+	99      (0000018c) if-gez               v10, +05fh
+
+get-BB@0x190 : [ get-BB@0x1bc get-BB@0x1ca ]
+	100     (00000190) const-string         v10, " (plus "
+	101     (00000194) invoke-static        v2, v10, Lg2/g;->d(Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	102     (0000019a) move-result-object   v2
+	103     (0000019c) neg-long             v5, v5
+	104     (0000019e) sget-object          v10, Ljava/util/concurrent/TimeUnit;->NANOSECONDS Ljava/util/concurrent/TimeUnit;
+	105     (000001a2) invoke-virtual       v3, v5, v6, v10, Ljava/util/concurrent/TimeUnit;->convert(J Ljava/util/concurrent/TimeUnit;)J
+	106     (000001a8) move-result-wide     v13
+	107     (000001aa) invoke-virtual       v3, v13, v14, Ljava/util/concurrent/TimeUnit;->toNanos(J)J
+	108     (000001b0) move-result-wide     v15
+	109     (000001b2) sub-long/2addr       v5, v15
+	110     (000001b4) cmp-long             v3, v13, v7
+	111     (000001b8) if-eqz               v3, +009h
+
+get-BB@0x1bc : [ get-BB@0x1c4 get-BB@0x1c6 ]
+	112     (000001bc) cmp-long             v7, v5, v11
+	113     (000001c0) if-lez               v7, +003h
+
+get-BB@0x1c4 : [ get-BB@0x1ca ]
+	114     (000001c4) goto                 +3h
+
+get-BB@0x1c6 : [ get-BB@0x1cc ]
+	115     (000001c6) const/4              v7, 0
+	116     (000001c8) goto                 +2h
+
+get-BB@0x1ca : [ get-BB@0x1cc ]
+	117     (000001ca) const/4              v7, 1
+
+get-BB@0x1cc : [ get-BB@0x1d0 get-BB@0x212 ]
+	118     (000001cc) if-lez               v3, +023h
+
+get-BB@0x1d0 : [ get-BB@0x1fe get-BB@0x20a ]
+	119     (000001d0) new-instance         v3, Ljava/lang/StringBuilder;
+	120     (000001d4) invoke-direct        v3, Ljava/lang/StringBuilder;-><init>()V
+	121     (000001da) invoke-virtual       v3, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	122     (000001e0) invoke-virtual       v3, v13, v14, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+	123     (000001e6) invoke-virtual       v3, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	124     (000001ec) invoke-virtual       v3, v9, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	125     (000001f2) invoke-virtual       v3, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	126     (000001f8) move-result-object   v2
+	127     (000001fa) if-eqz               v7, +008h
+
+get-BB@0x1fe : [ get-BB@0x20a ]
+	128     (000001fe) const-string         v3, ","
+	129     (00000202) invoke-static        v2, v3, Lg2/g;->d(Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	130     (00000208) move-result-object   v2
+
+get-BB@0x20a : [ get-BB@0x212 ]
+	131     (0000020a) invoke-static        v2, v1, Lg2/g;->d(Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	132     (00000210) move-result-object   v2
+
+get-BB@0x212 : [ get-BB@0x216 get-BB@0x23e ]
+	133     (00000212) if-eqz               v7, +016h
+
+get-BB@0x216 : [ get-BB@0x23e ]
+	134     (00000216) new-instance         v1, Ljava/lang/StringBuilder;
+	135     (0000021a) invoke-direct        v1, Ljava/lang/StringBuilder;-><init>()V
+	136     (00000220) invoke-virtual       v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	137     (00000226) invoke-virtual       v1, v5, v6, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+	138     (0000022c) const-string         v2, " nanoseconds "
+	139     (00000230) invoke-virtual       v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	140     (00000236) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	141     (0000023c) move-result-object   v2
+
+get-BB@0x23e : [ get-BB@0x24a ]
+	142     (0000023e) const-string         v1, "delay)"
+	143     (00000242) invoke-static        v2, v1, Lg2/g;->d(Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	144     (00000248) move-result-object   v2
+
+get-BB@0x24a : [ get-BB@0x256 get-BB@0x26e ]
+	145     (0000024a) invoke-virtual       v0, Lt/h;->isDone()Z
+	146     (00000250) move-result          v1
+	147     (00000252) if-eqz               v1, +00eh
+
+get-BB@0x256 : 
+	148     (00000256) new-instance         v1, Ljava/util/concurrent/TimeoutException;
+	149     (0000025a) const-string         v3, " but future completed as timeout expired"
+	150     (0000025e) invoke-static        v2, v3, Lg2/g;->d(Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	151     (00000264) move-result-object   v2
+	152     (00000266) invoke-direct        v1, v2, Ljava/util/concurrent/TimeoutException;-><init>(Ljava/lang/String;)V
+	153     (0000026c) throw                v1
+
+get-BB@0x26e : 
+	154     (0000026e) new-instance         v1, Ljava/util/concurrent/TimeoutException;
+	155     (00000272) const-string         v3, " for "
+	156     (00000276) invoke-static        v2, v3, v4, Lg2/g;->e(Ljava/lang/String; Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	157     (0000027c) move-result-object   v2
+	158     (0000027e) invoke-direct        v1, v2, Ljava/util/concurrent/TimeoutException;-><init>(Ljava/lang/String;)V
+	159     (00000284) throw                v1
+
+get-BB@0x286 : 
+	160     (00000286) new-instance         v1, Ljava/lang/InterruptedException;
+	161     (0000028a) invoke-direct        v1, Ljava/lang/InterruptedException;-><init>()V
+	162     (00000290) throw                v1
+
