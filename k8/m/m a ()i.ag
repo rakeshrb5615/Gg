@@ -1,0 +1,49 @@
+# Lk8/m;->a()Lk8/i; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v5
+#
+# - return:k8.i
+
+a-BB@0x0 : [ a-BB@0x22 a-BB@0x24 ]
+	0       (00000000) sget-object          v0, Lk8/m;->d Ljava/util/concurrent/atomic/AtomicIntegerFieldUpdater;
+	1       (00000004) invoke-virtual       v0, v5, Ljava/util/concurrent/atomic/AtomicIntegerFieldUpdater;->get(Ljava/lang/Object;)I
+	2       (0000000a) move-result          v1
+	3       (0000000c) sget-object          v2, Lk8/m;->c Ljava/util/concurrent/atomic/AtomicIntegerFieldUpdater;
+	4       (00000010) invoke-virtual       v2, v5, Ljava/util/concurrent/atomic/AtomicIntegerFieldUpdater;->get(Ljava/lang/Object;)I
+	5       (00000016) move-result          v2
+	6       (00000018) sub-int              v2, v1, v2
+	7       (0000001c) const/4              v3, 0
+	8       (0000001e) if-nez               v2, +003h
+
+a-BB@0x22 : 
+	9       (00000022) return-object        v3
+
+a-BB@0x24 : [ a-BB@0x38 a-BB@0x0 ]
+	10      (00000024) and-int/lit8         v2, v1, 127
+	11      (00000028) add-int/lit8         v4, v1, 1
+	12      (0000002c) invoke-virtual       v0, v5, v1, v4, Ljava/util/concurrent/atomic/AtomicIntegerFieldUpdater;->compareAndSet(Ljava/lang/Object; I I)Z
+	13      (00000032) move-result          v0
+	14      (00000034) if-eqz               v0, -01ah
+
+a-BB@0x38 : [ a-BB@0x4c a-BB@0x4e ]
+	15      (00000038) iget-object          v0, v5, Lk8/m;->a Ljava/util/concurrent/atomic/AtomicReferenceArray;
+	16      (0000003c) invoke-virtual       v0, v2, v3, Ljava/util/concurrent/atomic/AtomicReferenceArray;->getAndSet(I Ljava/lang/Object;)Ljava/lang/Object;
+	17      (00000042) move-result-object   v0
+	18      (00000044) check-cast           v0, Lk8/i;
+	19      (00000048) if-nez               v0, +003h
+
+a-BB@0x4c : [ a-BB@0x0 ]
+	20      (0000004c) goto                 -26h
+
+a-BB@0x4e : [ a-BB@0x56 a-BB@0x60 ]
+	21      (0000004e) iget-boolean         v1, v0, Lk8/i;->b Z
+	22      (00000052) if-eqz               v1, +007h
+
+a-BB@0x56 : [ a-BB@0x60 ]
+	23      (00000056) sget-object          v1, Lk8/m;->e Ljava/util/concurrent/atomic/AtomicIntegerFieldUpdater;
+	24      (0000005a) invoke-virtual       v1, v5, Ljava/util/concurrent/atomic/AtomicIntegerFieldUpdater;->decrementAndGet(Ljava/lang/Object;)I
+
+a-BB@0x60 : 
+	25      (00000060) return-object        v0
+

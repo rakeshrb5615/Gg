@@ -1,0 +1,53 @@
+# Lkotlin/jvm/internal/a;->equals(Ljava/lang/Object;)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:java.lang.Object
+#
+# - return:boolean
+
+equals-BB@0x0 : [ equals-BB@0x6 equals-BB@0x8 ]
+	0       (00000000) const/4              v0, 1
+	1       (00000002) if-ne                v3, v4, +003h
+
+equals-BB@0x6 : 
+	2       (00000006) return               v0
+
+equals-BB@0x8 : [ equals-BB@0x10 equals-BB@0x12 ]
+	3       (00000008) instance-of          v1, v4, Lkotlin/jvm/internal/a;
+	4       (0000000c) if-nez               v1, +003h
+
+equals-BB@0x10 : [ equals-BB@0x54 ]
+	5       (00000010) goto                 +22h
+
+equals-BB@0x12 : [ equals-BB@0x22 equals-BB@0x54 ]
+	6       (00000012) check-cast           v4, Lkotlin/jvm/internal/a;
+	7       (00000016) iget-boolean         v1, v3, Lkotlin/jvm/internal/a;->b Z
+	8       (0000001a) iget-boolean         v2, v4, Lkotlin/jvm/internal/a;->b Z
+	9       (0000001e) if-ne                v1, v2, +01bh
+
+equals-BB@0x22 : [ equals-BB@0x2e equals-BB@0x54 ]
+	10      (00000022) iget                 v1, v3, Lkotlin/jvm/internal/a;->c I
+	11      (00000026) iget                 v2, v4, Lkotlin/jvm/internal/a;->c I
+	12      (0000002a) if-ne                v1, v2, +015h
+
+equals-BB@0x2e : [ equals-BB@0x42 equals-BB@0x54 ]
+	13      (0000002e) iget-object          v1, v3, Lkotlin/jvm/internal/a;->a Ljava/lang/Object;
+	14      (00000032) iget-object          v4, v4, Lkotlin/jvm/internal/a;->a Ljava/lang/Object;
+	15      (00000036) invoke-static        v1, v4, Lkotlin/jvm/internal/j;->a(Ljava/lang/Object; Ljava/lang/Object;)Z
+	16      (0000003c) move-result          v4
+	17      (0000003e) if-eqz               v4, +00bh
+
+equals-BB@0x42 : [ equals-BB@0x52 equals-BB@0x54 ]
+	18      (00000042) const-class          v4, Ljava/util/concurrent/atomic/AtomicReference;
+	19      (00000046) invoke-virtual       v4, v4, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+	20      (0000004c) move-result          v4
+	21      (0000004e) if-eqz               v4, +003h
+
+equals-BB@0x52 : 
+	22      (00000052) return               v0
+
+equals-BB@0x54 : 
+	23      (00000054) const/4              v4, 0
+	24      (00000056) return               v4
+

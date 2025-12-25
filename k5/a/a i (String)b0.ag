@@ -1,0 +1,56 @@
+# Lk5/a;->i(Ljava/lang/String;)Lj5/b0; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:java.lang.String
+#
+# - return:j5.b0
+
+i-BB@0x0 : [ i-BB@0x14 ]
+	0       (00000000) new-instance         v0, Landroid/util/JsonReader;
+	1       (00000004) new-instance         v1, Ljava/io/StringReader;
+	2       (00000008) invoke-direct        v1, v2, Ljava/io/StringReader;-><init>(Ljava/lang/String;)V
+	3       (0000000e) invoke-direct        v0, v1, Landroid/util/JsonReader;-><init>(Ljava/io/Reader;)V
+	0:13
+	(Ljava/lang/IllegalStateException; -> 38 i-BB@0x38)
+
+i-BB@0x14 : [ i-BB@0x1c ]
+	4       (00000014) invoke-static        v0, Lk5/a;->h(Landroid/util/JsonReader;)Lj5/b0;
+	5       (0000001a) move-result-object   v2
+	14:1b
+	(Ljava/lang/Throwable; -> 24 i-BB@0x24)
+
+i-BB@0x1c : 
+	6       (0000001c) invoke-virtual       v0, Landroid/util/JsonReader;->close()V
+	7       (00000022) return-object        v2
+	1c:21
+	(Ljava/lang/IllegalStateException; -> 38 i-BB@0x38)
+
+i-BB@0x24 : [ i-BB@0x26 ]
+	8       (00000024) move-exception       v2
+
+i-BB@0x26 : [ i-BB@0x36 ]
+	9       (00000026) invoke-virtual       v0, Landroid/util/JsonReader;->close()V
+	10      (0000002c) goto                 +5h
+	26:2b
+	(Ljava/lang/Throwable; -> 2e i-BB@0x2e)
+
+i-BB@0x2e : [ i-BB@0x30 ]
+	11      (0000002e) move-exception       v0
+
+i-BB@0x30 : [ i-BB@0x36 ]
+	12      (00000030) invoke-virtual       v2, v0, Ljava/lang/Throwable;->addSuppressed(Ljava/lang/Throwable;)V
+	30:37
+	(Ljava/lang/IllegalStateException; -> 38 i-BB@0x38)
+
+i-BB@0x36 : 
+	13      (00000036) throw                v2
+	30:37
+	(Ljava/lang/IllegalStateException; -> 38 i-BB@0x38)
+
+i-BB@0x38 : 
+	14      (00000038) move-exception       v2
+	15      (0000003a) new-instance         v0, Ljava/io/IOException;
+	16      (0000003e) invoke-direct        v0, v2, Ljava/io/IOException;-><init>(Ljava/lang/Throwable;)V
+	17      (00000044) throw                v0
+

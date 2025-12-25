@@ -1,0 +1,110 @@
+# Lk2/c;->g(Landroid/content/Context;)Lk2/c; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:android.content.Context
+#
+# - return:k2.c
+
+g-BB@0x0 : [ g-BB@0x6 ]
+	0       (00000000) const-string         v0, "generatefid.lock"
+	1       (00000004) const/4              v1, 0
+
+g-BB@0x6 : [ g-BB@0x2e ]
+	2       (00000006) new-instance         v2, Ljava/io/File;
+	3       (0000000a) invoke-virtual       v5, Landroid/content/Context;->getFilesDir()Ljava/io/File;
+	4       (00000010) move-result-object   v5
+	5       (00000012) invoke-direct        v2, v5, v0, Ljava/io/File;-><init>(Ljava/io/File; Ljava/lang/String;)V
+	6       (00000018) new-instance         v5, Ljava/io/RandomAccessFile;
+	7       (0000001c) const-string         v0, "rw"
+	8       (00000020) invoke-direct        v5, v2, v0, Ljava/io/RandomAccessFile;-><init>(Ljava/io/File; Ljava/lang/String;)V
+	9       (00000026) invoke-virtual       v5, Ljava/io/RandomAccessFile;->getChannel()Ljava/nio/channels/FileChannel;
+	10      (0000002c) move-result-object   v5
+	6:2d
+	(Ljava/io/IOException; -> 6c g-BB@0x6c)
+	(Ljava/lang/Error; -> 68 g-BB@0x68)
+	(Ljava/nio/channels/OverlappingFileLockException; -> 60 g-BB@0x60)
+
+g-BB@0x2e : [ g-BB@0x36 ]
+	11      (0000002e) invoke-virtual       v5, Ljava/nio/channels/FileChannel;->lock()Ljava/nio/channels/FileLock;
+	12      (00000034) move-result-object   v0
+	2e:35
+	(Ljava/io/IOException; -> 5c g-BB@0x5c)
+	(Ljava/lang/Error; -> 58 g-BB@0x58)
+	(Ljava/nio/channels/OverlappingFileLockException; -> 52 g-BB@0x52)
+
+g-BB@0x36 : 
+	13      (00000036) new-instance         v2, Lk2/c;
+	14      (0000003a) const/16             v3, 10
+	15      (0000003e) invoke-direct        v2, v3, v5, v0, Lk2/c;-><init>(I Ljava/lang/Object; Ljava/lang/Object;)V
+	16      (00000044) return-object        v2
+	36:43
+	(Ljava/io/IOException; -> 4e g-BB@0x4e)
+	(Ljava/lang/Error; -> 4a g-BB@0x4a)
+	(Ljava/nio/channels/OverlappingFileLockException; -> 46 g-BB@0x46)
+
+g-BB@0x46 : [ g-BB@0x70 ]
+	17      (00000046) move-exception       v2
+	18      (00000048) goto                 +14h
+
+g-BB@0x4a : [ g-BB@0x70 ]
+	19      (0000004a) move-exception       v2
+	20      (0000004c) goto                 +12h
+
+g-BB@0x4e : [ g-BB@0x70 ]
+	21      (0000004e) move-exception       v2
+	22      (00000050) goto                 +10h
+
+g-BB@0x52 : [ g-BB@0x54 ]
+	23      (00000052) move-exception       v2
+
+g-BB@0x54 : [ g-BB@0x70 ]
+	24      (00000054) move-object          v0, v1
+	25      (00000056) goto                 +dh
+
+g-BB@0x58 : [ g-BB@0x54 ]
+	26      (00000058) move-exception       v2
+	27      (0000005a) goto                 -3h
+
+g-BB@0x5c : [ g-BB@0x54 ]
+	28      (0000005c) move-exception       v2
+	29      (0000005e) goto                 -5h
+
+g-BB@0x60 : [ g-BB@0x62 ]
+	30      (00000060) move-exception       v2
+
+g-BB@0x62 : [ g-BB@0x70 ]
+	31      (00000062) move-object          v5, v1
+	32      (00000064) move-object          v0, v5
+	33      (00000066) goto                 +5h
+
+g-BB@0x68 : [ g-BB@0x62 ]
+	34      (00000068) move-exception       v2
+	35      (0000006a) goto                 -4h
+
+g-BB@0x6c : [ g-BB@0x62 ]
+	36      (0000006c) move-exception       v2
+	37      (0000006e) goto                 -6h
+
+g-BB@0x70 : [ g-BB@0x82 g-BB@0x88 ]
+	38      (00000070) const-string         v3, "CrossProcessLock"
+	39      (00000074) const-string         v4, "encountered error while creating and acquiring the lock, ignoring"
+	40      (00000078) invoke-static        v3, v4, v2, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+	41      (0000007e) if-eqz               v0, +005h
+
+g-BB@0x82 : [ g-BB@0x88 ]
+	42      (00000082) invoke-virtual       v0, Ljava/nio/channels/FileLock;->release()V
+	82:87
+	(Ljava/io/IOException; -> 88 g-BB@0x88)
+
+g-BB@0x88 : [ g-BB@0x8c g-BB@0x92 ]
+	43      (00000088) if-eqz               v5, +005h
+
+g-BB@0x8c : [ g-BB@0x92 ]
+	44      (0000008c) invoke-virtual       v5, Ljava/nio/channels/spi/AbstractInterruptibleChannel;->close()V
+	8c:91
+	(Ljava/io/IOException; -> 92 g-BB@0x92)
+
+g-BB@0x92 : 
+	45      (00000092) return-object        v1
+

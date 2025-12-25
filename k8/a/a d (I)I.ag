@@ -1,0 +1,31 @@
+# Lk8/a;->d(I)I [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:int
+#
+# - return:int
+
+d-BB@0x0 : [ d-BB@0x26 d-BB@0x2c ]
+	0       (00000000) iget                 v0, v3, Lk8/a;->f I
+	1       (00000004) shl-int/lit8         v1, v0, 13
+	2       (00000008) xor-int/2addr        v0, v1
+	3       (0000000a) shr-int/lit8         v1, v0, 17
+	4       (0000000e) xor-int/2addr        v0, v1
+	5       (00000010) shl-int/lit8         v1, v0, 5
+	6       (00000014) xor-int/2addr        v0, v1
+	7       (00000016) iput                 v0, v3, Lk8/a;->f I
+	8       (0000001a) add-int/lit8         v1, v4, -1
+	9       (0000001e) and-int              v2, v1, v4
+	10      (00000022) if-nez               v2, +005h
+
+d-BB@0x26 : 
+	11      (00000026) and-int              v4, v0, v1
+	12      (0000002a) return               v4
+
+d-BB@0x2c : 
+	13      (0000002c) const                v1, 2147483647
+	14      (00000032) and-int/2addr        v0, v1
+	15      (00000034) rem-int/2addr        v0, v4
+	16      (00000036) return               v0
+

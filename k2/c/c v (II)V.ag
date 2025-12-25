@@ -1,0 +1,84 @@
+# Lk2/c;->v(I I)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:int
+# - v7:int
+#
+# - return:void
+
+v-BB@0x0 : [ v-BB@0xc v-BB@0xa4 ]
+	0       (00000000) iget-object          v0, v5, Lk2/c;->b Ljava/lang/Object;
+	1       (00000004) check-cast           v0, [I
+	2       (00000008) if-eqz               v0, +04eh
+
+v-BB@0xc : [ v-BB@0x12 v-BB@0x14 ]
+	3       (0000000c) array-length         v0, v0
+	4       (0000000e) if-lt                v6, v0, +003h
+
+v-BB@0x12 : [ v-BB@0xa4 ]
+	5       (00000012) goto                 +49h
+
+v-BB@0x14 : [ v-BB@0x54 v-BB@0x56 ]
+	6       (00000014) add-int              v0, v6, v7
+	7       (00000018) invoke-virtual       v5, v0, Lk2/c;->l(I)V
+	8       (0000001e) iget-object          v1, v5, Lk2/c;->b Ljava/lang/Object;
+	9       (00000022) check-cast           v1, [I
+	10      (00000026) array-length         v2, v1
+	11      (00000028) sub-int/2addr        v2, v6
+	12      (0000002a) sub-int/2addr        v2, v7
+	13      (0000002c) invoke-static        v1, v0, v1, v6, v2, Ljava/lang/System;->arraycopy(Ljava/lang/Object; I Ljava/lang/Object; I I)V
+	14      (00000032) iget-object          v1, v5, Lk2/c;->b Ljava/lang/Object;
+	15      (00000036) check-cast           v1, [I
+	16      (0000003a) array-length         v2, v1
+	17      (0000003c) sub-int/2addr        v2, v7
+	18      (0000003e) array-length         v3, v1
+	19      (00000040) const/4              v4, -1
+	20      (00000042) invoke-static        v1, v2, v3, v4, Ljava/util/Arrays;->fill([I I I I)V
+	21      (00000048) iget-object          v1, v5, Lk2/c;->c Ljava/lang/Object;
+	22      (0000004c) check-cast           v1, Ljava/util/ArrayList;
+	23      (00000050) if-nez               v1, +003h
+
+v-BB@0x54 : [ v-BB@0xa4 ]
+	24      (00000054) goto                 +28h
+
+v-BB@0x56 : [ v-BB@0x62 ]
+	25      (00000056) invoke-interface     v1, Ljava/util/List;->size()I
+	26      (0000005c) move-result          v1
+	27      (0000005e) add-int/lit8         v1, v1, -1
+
+v-BB@0x62 : [ v-BB@0x66 v-BB@0xa4 ]
+	28      (00000062) if-ltz               v1, +021h
+
+v-BB@0x66 : [ v-BB@0x82 v-BB@0x84 ]
+	29      (00000066) iget-object          v2, v5, Lk2/c;->c Ljava/lang/Object;
+	30      (0000006a) check-cast           v2, Ljava/util/ArrayList;
+	31      (0000006e) invoke-interface     v2, v1, Ljava/util/List;->get(I)Ljava/lang/Object;
+	32      (00000074) move-result-object   v2
+	33      (00000076) check-cast           v2, La2/q1;
+	34      (0000007a) iget                 v3, v2, La2/q1;->a I
+	35      (0000007e) if-ge                v3, v6, +003h
+
+v-BB@0x82 : [ v-BB@0x9e ]
+	36      (00000082) goto                 +eh
+
+v-BB@0x84 : [ v-BB@0x88 v-BB@0x98 ]
+	37      (00000084) if-ge                v3, v0, +00ah
+
+v-BB@0x88 : [ v-BB@0x9e ]
+	38      (00000088) iget-object          v2, v5, Lk2/c;->c Ljava/lang/Object;
+	39      (0000008c) check-cast           v2, Ljava/util/ArrayList;
+	40      (00000090) invoke-interface     v2, v1, Ljava/util/List;->remove(I)Ljava/lang/Object;
+	41      (00000096) goto                 +4h
+
+v-BB@0x98 : [ v-BB@0x9e ]
+	42      (00000098) sub-int/2addr        v3, v7
+	43      (0000009a) iput                 v3, v2, La2/q1;->a I
+
+v-BB@0x9e : [ v-BB@0x62 ]
+	44      (0000009e) add-int/lit8         v1, v1, -1
+	45      (000000a2) goto                 -20h
+
+v-BB@0xa4 : 
+	46      (000000a4) return-void          
+

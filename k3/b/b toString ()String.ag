@@ -1,0 +1,43 @@
+# Lk3/b;->toString()Ljava/lang/String; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v3
+#
+# - return:java.lang.String
+
+toString-BB@0x0 : [ toString-BB@0x38 toString-BB@0x4a ]
+	0       (00000000) new-instance         v0, Ljava/lang/StringBuilder;
+	1       (00000004) const-string         v1, "MaterialCheckBox.SavedState{"
+	2       (00000008) invoke-direct        v0, v1, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	3       (0000000e) invoke-static        v3, Ljava/lang/System;->identityHashCode(Ljava/lang/Object;)I
+	4       (00000014) move-result          v1
+	5       (00000016) invoke-static        v1, Ljava/lang/Integer;->toHexString(I)Ljava/lang/String;
+	6       (0000001c) move-result-object   v1
+	7       (0000001e) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	8       (00000024) const-string         v1, " CheckedState="
+	9       (00000028) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	10      (0000002e) iget                 v1, v3, Lk3/b;->a I
+	11      (00000032) const/4              v2, 1
+	12      (00000034) if-eq                v1, v2, +00bh
+
+toString-BB@0x38 : [ toString-BB@0x3e toString-BB@0x44 ]
+	13      (00000038) const/4              v2, 2
+	14      (0000003a) if-eq                v1, v2, +005h
+
+toString-BB@0x3e : [ toString-BB@0x4e ]
+	15      (0000003e) const-string         v1, "unchecked"
+	16      (00000042) goto                 +6h
+
+toString-BB@0x44 : [ toString-BB@0x4e ]
+	17      (00000044) const-string         v1, "indeterminate"
+	18      (00000048) goto                 +3h
+
+toString-BB@0x4a : [ toString-BB@0x4e ]
+	19      (0000004a) const-string         v1, "checked"
+
+toString-BB@0x4e : 
+	20      (0000004e) const-string         v2, "}"
+	21      (00000052) invoke-static        v0, v1, v2, Lv1/a;->n(Ljava/lang/StringBuilder; Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	22      (00000058) move-result-object   v0
+	23      (0000005a) return-object        v0
+

@@ -1,0 +1,84 @@
+# Lk4/g;->a()Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v5
+#
+# - return:java.lang.Object
+
+a-BB@0x0 : [ a-BB@0x10 a-BB@0x88 ]
+	0       (00000000) const-string         v0, "Scoped provider was invoked recursively returning different results: "
+	1       (00000004) iget-object          v1, v5, Lk4/g;->b Ljava/lang/Object;
+	2       (00000008) sget-object          v2, Lk4/g;->c Ljava/lang/Object;
+	3       (0000000c) if-ne                v1, v2, +03eh
+
+a-BB@0x10 : [ a-BB@0x12 ]
+	4       (00000010) monitor-enter        v5
+
+a-BB@0x12 : [ a-BB@0x1a a-BB@0x80 ]
+	5       (00000012) iget-object          v1, v5, Lk4/g;->b Ljava/lang/Object;
+	6       (00000016) if-ne                v1, v2, +035h
+	12:85
+	(Ljava/lang/Throwable; -> 72 a-BB@0x72)
+
+a-BB@0x1a : [ a-BB@0x2e a-BB@0x76 ]
+	7       (0000001a) iget-object          v1, v5, Lk4/g;->a Lk4/j;
+	8       (0000001e) invoke-interface     v1, Lk4/j;->a()Ljava/lang/Object;
+	9       (00000024) move-result-object   v1
+	10      (00000026) iget-object          v3, v5, Lk4/g;->b Ljava/lang/Object;
+	11      (0000002a) if-eq                v3, v2, +026h
+	12:85
+	(Ljava/lang/Throwable; -> 72 a-BB@0x72)
+
+a-BB@0x2e : [ a-BB@0x32 a-BB@0x34 ]
+	12      (0000002e) if-ne                v3, v1, +003h
+	12:85
+	(Ljava/lang/Throwable; -> 72 a-BB@0x72)
+
+a-BB@0x32 : [ a-BB@0x76 ]
+	13      (00000032) goto                 +22h
+	12:85
+	(Ljava/lang/Throwable; -> 72 a-BB@0x72)
+
+a-BB@0x34 : 
+	14      (00000034) new-instance         v2, Ljava/lang/IllegalStateException;
+	15      (00000038) new-instance         v4, Ljava/lang/StringBuilder;
+	16      (0000003c) invoke-direct        v4, v0, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	17      (00000042) invoke-virtual       v4, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	18      (00000048) const-string         v0, " & "
+	19      (0000004c) invoke-virtual       v4, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	20      (00000052) invoke-virtual       v4, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	21      (00000058) const-string         v0, ". This is likely due to a circular dependency."
+	22      (0000005c) invoke-virtual       v4, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	23      (00000062) invoke-virtual       v4, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	24      (00000068) move-result-object   v0
+	25      (0000006a) invoke-direct        v2, v0, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	26      (00000070) throw                v2
+	12:85
+	(Ljava/lang/Throwable; -> 72 a-BB@0x72)
+
+a-BB@0x72 : [ a-BB@0x84 ]
+	27      (00000072) move-exception       v0
+	28      (00000074) goto                 +8h
+	12:85
+	(Ljava/lang/Throwable; -> 72 a-BB@0x72)
+
+a-BB@0x76 : [ a-BB@0x80 ]
+	29      (00000076) iput-object          v1, v5, Lk4/g;->b Ljava/lang/Object;
+	30      (0000007a) const/4              v0, 0
+	31      (0000007c) iput-object          v0, v5, Lk4/g;->a Lk4/j;
+	12:85
+	(Ljava/lang/Throwable; -> 72 a-BB@0x72)
+
+a-BB@0x80 : 
+	32      (00000080) monitor-exit         v5
+	33      (00000082) return-object        v1
+	12:85
+	(Ljava/lang/Throwable; -> 72 a-BB@0x72)
+
+a-BB@0x84 : 
+	34      (00000084) monitor-exit         v5
+	35      (00000086) throw                v0
+
+a-BB@0x88 : 
+	36      (00000088) return-object        v1
+

@@ -1,0 +1,59 @@
+# Lk2/c;->D(La2/k1;)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:a2.k1
+#
+# - return:void
+
+D-BB@0x0 : [ D-BB@0x14 ]
+	0       (00000000) iget-object          v0, v6, Lk2/c;->c Ljava/lang/Object;
+	1       (00000004) check-cast           v0, Lr/g;
+	2       (00000008) invoke-virtual       v0, Lr/g;->g()I
+	3       (0000000e) move-result          v1
+	4       (00000010) const/4              v2, 1
+	5       (00000012) sub-int/2addr        v1, v2
+
+D-BB@0x14 : [ D-BB@0x18 D-BB@0x44 ]
+	6       (00000014) if-ltz               v1, +018h
+
+D-BB@0x18 : [ D-BB@0x24 D-BB@0x3e ]
+	7       (00000018) invoke-virtual       v0, v1, Lr/g;->h(I)Ljava/lang/Object;
+	8       (0000001e) move-result-object   v3
+	9       (00000020) if-ne                v7, v3, +00fh
+
+D-BB@0x24 : [ D-BB@0x34 D-BB@0x44 ]
+	10      (00000024) iget-object          v3, v0, Lr/g;->c [Ljava/lang/Object;
+	11      (00000028) aget-object          v4, v3, v1
+	12      (0000002c) sget-object          v5, Lr/h;->a Ljava/lang/Object;
+	13      (00000030) if-eq                v4, v5, +00ah
+
+D-BB@0x34 : [ D-BB@0x44 ]
+	14      (00000034) aput-object          v5, v3, v1
+	15      (00000038) iput-boolean         v2, v0, Lr/g;->a Z
+	16      (0000003c) goto                 +4h
+
+D-BB@0x3e : [ D-BB@0x14 ]
+	17      (0000003e) add-int/lit8         v1, v1, -1
+	18      (00000042) goto                 -17h
+
+D-BB@0x44 : [ D-BB@0x5c D-BB@0x76 ]
+	19      (00000044) iget-object          v0, v6, Lk2/c;->b Ljava/lang/Object;
+	20      (00000048) check-cast           v0, Lr/j;
+	21      (0000004c) invoke-virtual       v0, v7, Lr/j;->remove(Ljava/lang/Object;)Ljava/lang/Object;
+	22      (00000052) move-result-object   v7
+	23      (00000054) check-cast           v7, La2/u1;
+	24      (00000058) if-eqz               v7, +00fh
+
+D-BB@0x5c : [ D-BB@0x76 ]
+	25      (0000005c) const/4              v0, 0
+	26      (0000005e) iput                 v0, v7, La2/u1;->a I
+	27      (00000062) const/4              v0, 0
+	28      (00000064) iput-object          v0, v7, La2/u1;->b La2/o0;
+	29      (00000068) iput-object          v0, v7, La2/u1;->c La2/o0;
+	30      (0000006c) sget-object          v0, La2/u1;->d Lp0/c;
+	31      (00000070) invoke-virtual       v0, v7, Lp0/c;->c(Ljava/lang/Object;)Z
+
+D-BB@0x76 : 
+	32      (00000076) return-void          
+

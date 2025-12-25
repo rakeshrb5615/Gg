@@ -1,0 +1,55 @@
+# Lk4/d;->a()Landroid/os/Handler; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v4
+#
+# - return:android.os.Handler
+
+a-BB@0x0 : [ a-BB@0x6 ]
+	0       (00000000) sget-object          v0, Lk4/d;->o Ljava/util/HashMap;
+	1       (00000004) monitor-enter        v0
+
+a-BB@0x6 : [ a-BB@0x16 a-BB@0x50 ]
+	2       (00000006) iget-object          v1, v4, Lk4/d;->c Ljava/lang/String;
+	3       (0000000a) invoke-virtual       v0, v1, Ljava/util/HashMap;->containsKey(Ljava/lang/Object;)Z
+	4       (00000010) move-result          v1
+	5       (00000012) if-nez               v1, +01fh
+	6:65
+	(Ljava/lang/Throwable; -> 4c a-BB@0x4c)
+
+a-BB@0x16 : [ a-BB@0x50 ]
+	6       (00000016) new-instance         v1, Landroid/os/HandlerThread;
+	7       (0000001a) iget-object          v2, v4, Lk4/d;->c Ljava/lang/String;
+	8       (0000001e) const/16             v3, 10
+	9       (00000022) invoke-direct        v1, v2, v3, Landroid/os/HandlerThread;-><init>(Ljava/lang/String; I)V
+	10      (00000028) invoke-virtual       v1, Ljava/lang/Thread;->start()V
+	11      (0000002e) iget-object          v2, v4, Lk4/d;->c Ljava/lang/String;
+	12      (00000032) new-instance         v3, Landroid/os/Handler;
+	13      (00000036) invoke-virtual       v1, Landroid/os/HandlerThread;->getLooper()Landroid/os/Looper;
+	14      (0000003c) move-result-object   v1
+	15      (0000003e) invoke-direct        v3, v1, Landroid/os/Handler;-><init>(Landroid/os/Looper;)V
+	16      (00000044) invoke-virtual       v0, v2, v3, Ljava/util/HashMap;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	17      (0000004a) goto                 +3h
+	6:65
+	(Ljava/lang/Throwable; -> 4c a-BB@0x4c)
+
+a-BB@0x4c : [ a-BB@0x64 ]
+	18      (0000004c) move-exception       v1
+	19      (0000004e) goto                 +bh
+	6:65
+	(Ljava/lang/Throwable; -> 4c a-BB@0x4c)
+
+a-BB@0x50 : 
+	20      (00000050) iget-object          v1, v4, Lk4/d;->c Ljava/lang/String;
+	21      (00000054) invoke-virtual       v0, v1, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	22      (0000005a) move-result-object   v1
+	23      (0000005c) check-cast           v1, Landroid/os/Handler;
+	24      (00000060) monitor-exit         v0
+	25      (00000062) return-object        v1
+	6:65
+	(Ljava/lang/Throwable; -> 4c a-BB@0x4c)
+
+a-BB@0x64 : 
+	26      (00000064) monitor-exit         v0
+	27      (00000066) throw                v1
+

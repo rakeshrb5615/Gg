@@ -1,0 +1,38 @@
+# Lk8/a;->h(Lk8/b;)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:k8.b
+#
+# - return:boolean
+
+h-BB@0x0 : [ h-BB@0xc h-BB@0x10 ]
+	0       (00000000) iget-object          v0, v6, Lk8/a;->c Lk8/b;
+	1       (00000004) sget-object          v1, Lk8/b;->a Lk8/b;
+	2       (00000008) if-ne                v0, v1, +004h
+
+h-BB@0xc : [ h-BB@0x12 ]
+	3       (0000000c) const/4              v1, 1
+	4       (0000000e) goto                 +2h
+
+h-BB@0x10 : [ h-BB@0x12 ]
+	5       (00000010) const/4              v1, 0
+
+h-BB@0x12 : [ h-BB@0x16 h-BB@0x2e ]
+	6       (00000012) if-eqz               v1, +00eh
+
+h-BB@0x16 : [ h-BB@0x2e ]
+	7       (00000016) sget-object          v2, Lk8/c;->o Ljava/util/concurrent/atomic/AtomicLongFieldUpdater;
+	8       (0000001a) const-wide           v3, 4398046511104
+	9       (00000024) iget-object          v5, v6, Lk8/a;->n Lk8/c;
+	10      (00000028) invoke-virtual       v2, v5, v3, v4, Ljava/util/concurrent/atomic/AtomicLongFieldUpdater;->addAndGet(Ljava/lang/Object; J)J
+
+h-BB@0x2e : [ h-BB@0x32 h-BB@0x36 ]
+	11      (0000002e) if-eq                v0, v7, +004h
+
+h-BB@0x32 : [ h-BB@0x36 ]
+	12      (00000032) iput-object          v7, v6, Lk8/a;->c Lk8/b;
+
+h-BB@0x36 : 
+	13      (00000036) return               v1
+

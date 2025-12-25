@@ -1,0 +1,45 @@
+# Lk8/j;->toString()Ljava/lang/String; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v4
+#
+# - return:java.lang.String
+
+toString-BB@0x0 : [ toString-BB@0x62 toString-BB@0x68 ]
+	0       (00000000) new-instance         v0, Ljava/lang/StringBuilder;
+	1       (00000004) const-string         v1, "Task["
+	2       (00000008) invoke-direct        v0, v1, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	3       (0000000e) iget-object          v1, v4, Lk8/j;->c Ljava/lang/Runnable;
+	4       (00000012) invoke-virtual       v1, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	5       (00000018) move-result-object   v2
+	6       (0000001a) invoke-virtual       v2, Ljava/lang/Class;->getSimpleName()Ljava/lang/String;
+	7       (00000020) move-result-object   v2
+	8       (00000022) invoke-virtual       v0, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	9       (00000028) const/16             v2, 64
+	10      (0000002c) invoke-virtual       v0, v2, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+	11      (00000032) invoke-static        v1, Ld8/f0;->j(Ljava/lang/Object;)Ljava/lang/String;
+	12      (00000038) move-result-object   v1
+	13      (0000003a) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	14      (00000040) const-string         v1, ", "
+	15      (00000044) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	16      (0000004a) iget-wide            v2, v4, Lk8/i;->a J
+	17      (0000004e) invoke-virtual       v0, v2, v3, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+	18      (00000054) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	19      (0000005a) iget-boolean         v1, v4, Lk8/i;->b Z
+	20      (0000005e) if-eqz               v1, +005h
+
+toString-BB@0x62 : [ toString-BB@0x6c ]
+	21      (00000062) const-string         v1, "Blocking"
+	22      (00000066) goto                 +3h
+
+toString-BB@0x68 : [ toString-BB@0x6c ]
+	23      (00000068) const-string         v1, "Non-blocking"
+
+toString-BB@0x6c : 
+	24      (0000006c) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	25      (00000072) const/16             v1, 93
+	26      (00000076) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+	27      (0000007c) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	28      (00000082) move-result-object   v0
+	29      (00000084) return-object        v0
+

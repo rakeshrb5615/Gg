@@ -1,0 +1,31 @@
+# Lkotlin/jvm/internal/c;->getOwner()Lz7/d; [access_flags=public]
+#
+# Parameters:
+# local registers: v0...v2
+#
+# - return:z7.d
+
+getOwner-BB@0x0 : [ getOwner-BB@0x8 getOwner-BB@0xc ]
+	0       (00000000) iget-object          v0, v2, Lkotlin/jvm/internal/c;->owner Ljava/lang/Class;
+	1       (00000004) if-nez               v0, +004h
+
+getOwner-BB@0x8 : 
+	2       (00000008) const/4              v0, 0
+	3       (0000000a) return-object        v0
+
+getOwner-BB@0xc : [ getOwner-BB@0x14 getOwner-BB@0x2a ]
+	4       (0000000c) iget-boolean         v1, v2, Lkotlin/jvm/internal/c;->isTopLevel Z
+	5       (00000010) if-eqz               v1, +00dh
+
+getOwner-BB@0x14 : 
+	6       (00000014) sget-object          v1, Lkotlin/jvm/internal/s;->a Lkotlin/jvm/internal/t;
+	7       (00000018) invoke-virtual       v1, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	8       (0000001e) new-instance         v1, Lkotlin/jvm/internal/l;
+	9       (00000022) invoke-direct        v1, v0, Lkotlin/jvm/internal/l;-><init>(Ljava/lang/Class;)V
+	10      (00000028) return-object        v1
+
+getOwner-BB@0x2a : 
+	11      (0000002a) invoke-static        v0, Lkotlin/jvm/internal/s;->a(Ljava/lang/Class;)Lkotlin/jvm/internal/e;
+	12      (00000030) move-result-object   v0
+	13      (00000032) return-object        v0
+

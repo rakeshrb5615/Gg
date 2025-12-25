@@ -1,0 +1,76 @@
+# Lk2/c;->x(I Landroid/os/Bundle;)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:int
+# - v4:android.os.Bundle
+#
+# - return:void
+
+x-BB@0x0 : [ x-BB@0x42 x-BB@0x4a ]
+	0       (00000000) sget-object          v0, Ljava/util/Locale;->US Ljava/util/Locale;
+	1       (00000004) new-instance         v0, Ljava/lang/StringBuilder;
+	2       (00000008) const-string         v1, "Analytics listener received message. ID: "
+	3       (0000000c) invoke-direct        v0, v1, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	4       (00000012) invoke-virtual       v0, v3, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	5       (00000018) const-string         v3, ", Extras: "
+	6       (0000001c) invoke-virtual       v0, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	7       (00000022) invoke-virtual       v0, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	8       (00000028) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	9       (0000002e) move-result-object   v3
+	10      (00000030) const-string         v0, "FirebaseCrashlytics"
+	11      (00000034) const/4              v1, 2
+	12      (00000036) invoke-static        v0, v1, Landroid/util/Log;->isLoggable(Ljava/lang/String; I)Z
+	13      (0000003c) move-result          v1
+	14      (0000003e) if-eqz               v1, +006h
+
+x-BB@0x42 : [ x-BB@0x4a ]
+	15      (00000042) const/4              v1, 0
+	16      (00000044) invoke-static        v0, v3, v1, Landroid/util/Log;->v(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+
+x-BB@0x4a : [ x-BB@0x5a x-BB@0xae ]
+	17      (0000004a) const-string         v3, "name"
+	18      (0000004e) invoke-virtual       v4, v3, Landroid/os/BaseBundle;->getString(Ljava/lang/String;)Ljava/lang/String;
+	19      (00000054) move-result-object   v3
+	20      (00000056) if-eqz               v3, +02ch
+
+x-BB@0x5a : [ x-BB@0x6a x-BB@0x74 ]
+	21      (0000005a) const-string         v0, "params"
+	22      (0000005e) invoke-virtual       v4, v0, Landroid/os/Bundle;->getBundle(Ljava/lang/String;)Landroid/os/Bundle;
+	23      (00000064) move-result-object   v4
+	24      (00000066) if-nez               v4, +007h
+
+x-BB@0x6a : [ x-BB@0x74 ]
+	25      (0000006a) new-instance         v4, Landroid/os/Bundle;
+	26      (0000006e) invoke-direct        v4, Landroid/os/Bundle;-><init>()V
+
+x-BB@0x74 : [ x-BB@0x90 x-BB@0x9a ]
+	27      (00000074) const-string         v0, "_o"
+	28      (00000078) invoke-virtual       v4, v0, Landroid/os/BaseBundle;->getString(Ljava/lang/String;)Ljava/lang/String;
+	29      (0000007e) move-result-object   v0
+	30      (00000080) const-string         v1, "clx"
+	31      (00000084) invoke-virtual       v1, v0, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	32      (0000008a) move-result          v0
+	33      (0000008c) if-eqz               v0, +007h
+
+x-BB@0x90 : [ x-BB@0xa2 ]
+	34      (00000090) iget-object          v0, v2, Lk2/c;->b Ljava/lang/Object;
+	35      (00000094) check-cast           v0, Lb8/g;
+	36      (00000098) goto                 +5h
+
+x-BB@0x9a : [ x-BB@0xa2 ]
+	37      (0000009a) iget-object          v0, v2, Lk2/c;->c Ljava/lang/Object;
+	38      (0000009e) check-cast           v0, Ll6/c;
+
+x-BB@0xa2 : [ x-BB@0xa6 x-BB@0xa8 ]
+	39      (000000a2) if-nez               v0, +003h
+
+x-BB@0xa6 : [ x-BB@0xae ]
+	40      (000000a6) goto                 +4h
+
+x-BB@0xa8 : [ x-BB@0xae ]
+	41      (000000a8) invoke-interface     v0, v4, v3, Le5/b;->d(Landroid/os/Bundle; Ljava/lang/String;)V
+
+x-BB@0xae : 
+	42      (000000ae) return-void          
+

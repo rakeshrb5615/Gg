@@ -1,0 +1,198 @@
+# Lk8/a;->a(Z)Lk8/i; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v11
+# - v12:boolean
+#
+# - return:k8.i
+
+a-BB@0x0 : [ a-BB@0x18 a-BB@0x1c ]
+	0       (00000000) iget-object          v0, v11, Lk8/a;->c Lk8/b;
+	1       (00000004) sget-object          v1, Lk8/b;->a Lk8/b;
+	2       (00000008) iget-object          v3, v11, Lk8/a;->n Lk8/c;
+	3       (0000000c) const/4              v8, 0
+	4       (0000000e) const/4              v9, 1
+	5       (00000010) iget-object          v10, v11, Lk8/a;->a Lk8/m;
+	6       (00000014) if-ne                v0, v1, +004h
+
+a-BB@0x18 : [ a-BB@0x10c ]
+	7       (00000018) goto/16              +07ah
+
+a-BB@0x1c : [ a-BB@0x20 ]
+	8       (0000001c) sget-object          v0, Lk8/c;->o Ljava/util/concurrent/atomic/AtomicLongFieldUpdater;
+
+a-BB@0x20 : [ a-BB@0x40 a-BB@0xe6 ]
+	9       (00000020) invoke-virtual       v0, v3, Ljava/util/concurrent/atomic/AtomicLongFieldUpdater;->get(Ljava/lang/Object;)J
+	10      (00000026) move-result-wide     v4
+	11      (00000028) const-wide           v1, 9223367638808264704
+	12      (00000032) and-long/2addr       v1, v4
+	13      (00000034) const/16             v6, 42
+	14      (00000038) shr-long/2addr       v1, v6
+	15      (0000003a) long-to-int          v1, v1
+	16      (0000003c) if-nez               v1, +055h
+
+a-BB@0x40 : [ a-BB@0x46 ]
+	17      (00000040) invoke-virtual       v10, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+a-BB@0x46 : [ a-BB@0x5a a-BB@0x5c ]
+	18      (00000046) sget-object          v12, Lk8/m;->b Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;
+	19      (0000004a) invoke-virtual       v12, v10, Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	20      (00000050) move-result-object   v0
+	21      (00000052) check-cast           v0, Lk8/i;
+	22      (00000056) if-nez               v0, +003h
+
+a-BB@0x5a : [ a-BB@0x82 ]
+	23      (0000005a) goto                 +14h
+
+a-BB@0x5c : [ a-BB@0x64 a-BB@0x82 ]
+	24      (0000005c) iget-boolean         v1, v0, Lk8/i;->b Z
+	25      (00000060) if-ne                v1, v9, +011h
+
+a-BB@0x64 : [ a-BB@0x70 a-BB@0x74 ]
+	26      (00000064) invoke-virtual       v12, v10, v0, v8, Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;->compareAndSet(Ljava/lang/Object; Ljava/lang/Object; Ljava/lang/Object;)Z
+	27      (0000006a) move-result          v1
+	28      (0000006c) if-eqz               v1, +004h
+
+a-BB@0x70 : [ a-BB@0xc2 ]
+	29      (00000070) move-object          v8, v0
+	30      (00000072) goto                 +28h
+
+a-BB@0x74 : [ a-BB@0x80 a-BB@0x64 ]
+	31      (00000074) invoke-virtual       v12, v10, Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	32      (0000007a) move-result-object   v1
+	33      (0000007c) if-eq                v1, v0, -00ch
+
+a-BB@0x80 : [ a-BB@0x46 ]
+	34      (00000080) goto                 -1dh
+
+a-BB@0x82 : [ a-BB@0x9a ]
+	35      (00000082) sget-object          v12, Lk8/m;->d Ljava/util/concurrent/atomic/AtomicIntegerFieldUpdater;
+	36      (00000086) invoke-virtual       v12, v10, Ljava/util/concurrent/atomic/AtomicIntegerFieldUpdater;->get(Ljava/lang/Object;)I
+	37      (0000008c) move-result          v12
+	38      (0000008e) sget-object          v0, Lk8/m;->c Ljava/util/concurrent/atomic/AtomicIntegerFieldUpdater;
+	39      (00000092) invoke-virtual       v0, v10, Ljava/util/concurrent/atomic/AtomicIntegerFieldUpdater;->get(Ljava/lang/Object;)I
+	40      (00000098) move-result          v0
+
+a-BB@0x9a : [ a-BB@0x9e a-BB@0xc2 ]
+	41      (0000009a) if-eq                v12, v0, +014h
+
+a-BB@0x9e : [ a-BB@0xae a-BB@0xb0 ]
+	42      (0000009e) sget-object          v1, Lk8/m;->e Ljava/util/concurrent/atomic/AtomicIntegerFieldUpdater;
+	43      (000000a2) invoke-virtual       v1, v10, Ljava/util/concurrent/atomic/AtomicIntegerFieldUpdater;->get(Ljava/lang/Object;)I
+	44      (000000a8) move-result          v1
+	45      (000000aa) if-nez               v1, +003h
+
+a-BB@0xae : [ a-BB@0xc2 ]
+	46      (000000ae) goto                 +ah
+
+a-BB@0xb0 : [ a-BB@0xc0 a-BB@0x9a ]
+	47      (000000b0) add-int/lit8         v0, v0, -1
+	48      (000000b4) invoke-virtual       v10, v0, v9, Lk8/m;->b(I Z)Lk8/i;
+	49      (000000ba) move-result-object   v1
+	50      (000000bc) if-eqz               v1, -011h
+
+a-BB@0xc0 : [ a-BB@0xc2 ]
+	51      (000000c0) move-object          v8, v1
+
+a-BB@0xc2 : [ a-BB@0xc6 a-BB@0xe4 ]
+	52      (000000c2) if-nez               v8, +011h
+
+a-BB@0xc6 : [ a-BB@0xda a-BB@0xe2 ]
+	53      (000000c6) iget-object          v12, v3, Lk8/c;->f Lk8/f;
+	54      (000000ca) invoke-virtual       v12, Li8/k;->d()Ljava/lang/Object;
+	55      (000000d0) move-result-object   v12
+	56      (000000d2) check-cast           v12, Lk8/i;
+	57      (000000d6) if-nez               v12, +006h
+
+a-BB@0xda : [ a-BB@0xe2 ]
+	58      (000000da) invoke-virtual       v11, v9, Lk8/a;->i(I)Lk8/i;
+	59      (000000e0) move-result-object   v12
+
+a-BB@0xe2 : 
+	60      (000000e2) return-object        v12
+
+a-BB@0xe4 : 
+	61      (000000e4) return-object        v8
+
+a-BB@0xe6 : [ a-BB@0x104 a-BB@0x20 ]
+	62      (000000e6) const-wide           v1, 4398046511104
+	63      (000000f0) sub-long             v6, v4, v1
+	64      (000000f4) sget-object          v2, Lk8/c;->o Ljava/util/concurrent/atomic/AtomicLongFieldUpdater;
+	65      (000000f8) invoke-virtual/range v2 ... v7, Ljava/util/concurrent/atomic/AtomicLongFieldUpdater;->compareAndSet(Ljava/lang/Object; J J)Z
+	66      (000000fe) move-result          v1
+	67      (00000100) if-eqz               v1, -070h
+
+a-BB@0x104 : [ a-BB@0x10c ]
+	68      (00000104) sget-object          v0, Lk8/b;->a Lk8/b;
+	69      (00000108) iput-object          v0, v11, Lk8/a;->c Lk8/b;
+
+a-BB@0x10c : [ a-BB@0x110 a-BB@0x174 ]
+	70      (0000010c) if-eqz               v12, +034h
+
+a-BB@0x110 : [ a-BB@0x124 a-BB@0x126 ]
+	71      (00000110) iget                 v12, v3, Lk8/c;->a I
+	72      (00000114) mul-int/lit8         v12, v12, 2
+	73      (00000118) invoke-virtual       v11, v12, Lk8/a;->d(I)I
+	74      (0000011e) move-result          v12
+	75      (00000120) if-nez               v12, +003h
+
+a-BB@0x124 : [ a-BB@0x128 ]
+	76      (00000124) goto                 +2h
+
+a-BB@0x126 : [ a-BB@0x128 ]
+	77      (00000126) const/4              v9, 0
+
+a-BB@0x128 : [ a-BB@0x12c a-BB@0x13a ]
+	78      (00000128) if-eqz               v9, +009h
+
+a-BB@0x12c : [ a-BB@0x138 a-BB@0x13a ]
+	79      (0000012c) invoke-virtual       v11, Lk8/a;->e()Lk8/i;
+	80      (00000132) move-result-object   v12
+	81      (00000134) if-eqz               v12, +003h
+
+a-BB@0x138 : 
+	82      (00000138) return-object        v12
+
+a-BB@0x13a : [ a-BB@0x154 a-BB@0x15c ]
+	83      (0000013a) invoke-virtual       v10, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	84      (00000140) sget-object          v12, Lk8/m;->b Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;
+	85      (00000144) invoke-virtual       v12, v10, v8, Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;->getAndSet(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	86      (0000014a) move-result-object   v12
+	87      (0000014c) check-cast           v12, Lk8/i;
+	88      (00000150) if-nez               v12, +006h
+
+a-BB@0x154 : [ a-BB@0x15c ]
+	89      (00000154) invoke-virtual       v10, Lk8/m;->a()Lk8/i;
+	90      (0000015a) move-result-object   v12
+
+a-BB@0x15c : [ a-BB@0x160 a-BB@0x162 ]
+	91      (0000015c) if-eqz               v12, +003h
+
+a-BB@0x160 : 
+	92      (00000160) return-object        v12
+
+a-BB@0x162 : [ a-BB@0x166 a-BB@0x182 ]
+	93      (00000162) if-nez               v9, +010h
+
+a-BB@0x166 : [ a-BB@0x172 a-BB@0x182 ]
+	94      (00000166) invoke-virtual       v11, Lk8/a;->e()Lk8/i;
+	95      (0000016c) move-result-object   v12
+	96      (0000016e) if-eqz               v12, +00ah
+
+a-BB@0x172 : 
+	97      (00000172) return-object        v12
+
+a-BB@0x174 : [ a-BB@0x180 a-BB@0x182 ]
+	98      (00000174) invoke-virtual       v11, Lk8/a;->e()Lk8/i;
+	99      (0000017a) move-result-object   v12
+	100     (0000017c) if-eqz               v12, +003h
+
+a-BB@0x180 : 
+	101     (00000180) return-object        v12
+
+a-BB@0x182 : 
+	102     (00000182) const/4              v12, 3
+	103     (00000184) invoke-virtual       v11, v12, Lk8/a;->i(I)Lk8/i;
+	104     (0000018a) move-result-object   v12
+	105     (0000018c) return-object        v12
+

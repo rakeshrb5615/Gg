@@ -1,0 +1,124 @@
+# Lk4/c;->b()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v5
+#
+# - return:void
+
+b-BB@0x0 : [ D:b-BB@0xa 0:b-BB@0xd0 ]
+	0       (00000000) iget                 v0, v5, Lk4/c;->m I
+	1       (00000004) packed-switch        v0, +000008ah
+
+b-BB@0xa : [ b-BB@0x18 ]
+	2       (0000000a) iget-object          v0, v5, Lk4/c;->n Ljava/lang/Object;
+	3       (0000000e) check-cast           v0, Lk4/d;
+	4       (00000012) iget-object          v0, v0, Lk4/d;->f Ljava/lang/Object;
+	5       (00000016) monitor-enter        v0
+
+b-BB@0x18 : [ b-BB@0x32 b-BB@0x6c ]
+	6       (00000018) iget-object          v1, v5, Lk4/c;->n Ljava/lang/Object;
+	7       (0000001c) check-cast           v1, Lk4/d;
+	8       (00000020) iget-object          v1, v1, Lk4/d;->l Ljava/util/concurrent/atomic/AtomicInteger;
+	9       (00000024) invoke-virtual       v1, Ljava/util/concurrent/atomic/AtomicInteger;->get()I
+	10      (0000002a) move-result          v1
+	11      (0000002c) const/4              v2, 0
+	12      (0000002e) if-lez               v1, +01fh
+	18:cd
+	(Ljava/lang/Throwable; -> 68 b-BB@0x68)
+
+b-BB@0x32 : [ b-BB@0x4a b-BB@0x6c ]
+	13      (00000032) iget-object          v1, v5, Lk4/c;->n Ljava/lang/Object;
+	14      (00000036) check-cast           v1, Lk4/d;
+	15      (0000003a) iget-object          v1, v1, Lk4/d;->l Ljava/util/concurrent/atomic/AtomicInteger;
+	16      (0000003e) invoke-virtual       v1, Ljava/util/concurrent/atomic/AtomicInteger;->decrementAndGet()I
+	17      (00000044) move-result          v1
+	18      (00000046) if-lez               v1, +013h
+	18:cd
+	(Ljava/lang/Throwable; -> 68 b-BB@0x68)
+
+b-BB@0x4a : [ b-BB@0xca ]
+	19      (0000004a) iget-object          v1, v5, Lk4/c;->n Ljava/lang/Object;
+	20      (0000004e) check-cast           v1, Lk4/d;
+	21      (00000052) iget-object          v1, v1, Lk4/d;->b Lk4/z;
+	22      (00000056) const-string         v3, "Leaving the connection open for other ongoing calls."
+	23      (0000005a) new-array            v2, v2, [Ljava/lang/Object;
+	24      (0000005e) invoke-virtual       v1, v3, v2, Lk4/z;->b(Ljava/lang/String; [Ljava/lang/Object;)V
+	25      (00000064) monitor-exit         v0
+	26      (00000066) goto                 +32h
+	18:cd
+	(Ljava/lang/Throwable; -> 68 b-BB@0x68)
+
+b-BB@0x68 : [ b-BB@0xcc ]
+	27      (00000068) move-exception       v1
+	28      (0000006a) goto                 +31h
+	18:cd
+	(Ljava/lang/Throwable; -> 68 b-BB@0x68)
+
+b-BB@0x6c : [ b-BB@0x7c b-BB@0xba ]
+	29      (0000006c) iget-object          v1, v5, Lk4/c;->n Ljava/lang/Object;
+	30      (00000070) check-cast           v1, Lk4/d;
+	31      (00000074) iget-object          v3, v1, Lk4/d;->n Landroid/os/IInterface;
+	32      (00000078) if-eqz               v3, +021h
+	18:cd
+	(Ljava/lang/Throwable; -> 68 b-BB@0x68)
+
+b-BB@0x7c : [ b-BB@0xba ]
+	33      (0000007c) iget-object          v1, v1, Lk4/d;->b Lk4/z;
+	34      (00000080) const-string         v3, "Unbind from service."
+	35      (00000084) new-array            v4, v2, [Ljava/lang/Object;
+	36      (00000088) invoke-virtual       v1, v3, v4, Lk4/z;->b(Ljava/lang/String; [Ljava/lang/Object;)V
+	37      (0000008e) iget-object          v1, v5, Lk4/c;->n Ljava/lang/Object;
+	38      (00000092) check-cast           v1, Lk4/d;
+	39      (00000096) iget-object          v3, v1, Lk4/d;->a Landroid/content/Context;
+	40      (0000009a) iget-object          v1, v1, Lk4/d;->m Ld4/q;
+	41      (0000009e) invoke-virtual       v3, v1, Landroid/content/Context;->unbindService(Landroid/content/ServiceConnection;)V
+	42      (000000a4) iget-object          v1, v5, Lk4/c;->n Ljava/lang/Object;
+	43      (000000a8) check-cast           v1, Lk4/d;
+	44      (000000ac) iput-boolean         v2, v1, Lk4/d;->g Z
+	45      (000000b0) const/4              v2, 0
+	46      (000000b2) iput-object          v2, v1, Lk4/d;->n Landroid/os/IInterface;
+	47      (000000b6) iput-object          v2, v1, Lk4/d;->m Ld4/q;
+	18:cd
+	(Ljava/lang/Throwable; -> 68 b-BB@0x68)
+
+b-BB@0xba : [ b-BB@0xca ]
+	48      (000000ba) iget-object          v1, v5, Lk4/c;->n Ljava/lang/Object;
+	49      (000000be) check-cast           v1, Lk4/d;
+	50      (000000c2) invoke-virtual       v1, Lk4/d;->e()V
+	51      (000000c8) monitor-exit         v0
+	18:cd
+	(Ljava/lang/Throwable; -> 68 b-BB@0x68)
+
+b-BB@0xca : 
+	52      (000000ca) return-void          
+	18:cd
+	(Ljava/lang/Throwable; -> 68 b-BB@0x68)
+
+b-BB@0xcc : 
+	53      (000000cc) monitor-exit         v0
+	54      (000000ce) throw                v1
+
+b-BB@0xd0 : 
+	55      (000000d0) iget-object          v0, v5, Lk4/c;->n Ljava/lang/Object;
+	56      (000000d4) check-cast           v0, Ld4/q;
+	57      (000000d8) iget-object          v0, v0, Ld4/q;->b Ljava/lang/Object;
+	58      (000000dc) check-cast           v0, Lk4/d;
+	59      (000000e0) iget-object          v1, v0, Lk4/d;->b Lk4/z;
+	60      (000000e4) const-string         v2, "unlinkToDeath"
+	61      (000000e8) const/4              v3, 0
+	62      (000000ea) new-array            v4, v3, [Ljava/lang/Object;
+	63      (000000ee) invoke-virtual       v1, v2, v4, Lk4/z;->b(Ljava/lang/String; [Ljava/lang/Object;)V
+	64      (000000f4) iget-object          v1, v0, Lk4/d;->n Landroid/os/IInterface;
+	65      (000000f8) invoke-interface     v1, Landroid/os/IInterface;->asBinder()Landroid/os/IBinder;
+	66      (000000fe) move-result-object   v1
+	67      (00000100) iget-object          v2, v0, Lk4/d;->k Ld4/n;
+	68      (00000104) invoke-interface     v1, v2, v3, Landroid/os/IBinder;->unlinkToDeath(Landroid/os/IBinder$DeathRecipient; I)Z
+	69      (0000010a) const/4              v1, 0
+	70      (0000010c) iput-object          v1, v0, Lk4/d;->n Landroid/os/IInterface;
+	71      (00000110) iput-boolean         v3, v0, Lk4/d;->g Z
+	72      (00000114) return-void          
+
+b-BB@0x116 : 
+	73      (00000116) nop                  
+	74      (00000118) packed-switch-payload 0
+

@@ -1,0 +1,121 @@
+# Lk2/c;->then(Ljava/lang/Object;)Lcom/google/android/gms/tasks/Task; [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:java.lang.Object
+#
+# - return:com.google.android.gms.tasks.Task
+
+then-BB@0x0 : [ then-BB@0x1e then-BB@0xfc ]
+	0       (00000000) check-cast           v5, Ljava/lang/Boolean;
+	1       (00000004) iget-object          v0, v4, Lk2/c;->c Ljava/lang/Object;
+	2       (00000008) check-cast           v0, Lg5/n;
+	3       (0000000c) invoke-virtual       v5, Ljava/lang/Boolean;->booleanValue()Z
+	4       (00000012) move-result          v1
+	5       (00000014) const-string         v2, "FirebaseCrashlytics"
+	6       (00000018) const/4              v3, 0
+	7       (0000001a) if-nez               v1, +071h
+
+then-BB@0x1e : [ then-BB@0x2c then-BB@0x36 ]
+	8       (0000001e) const/4              v5, 2
+	9       (00000020) invoke-static        v2, v5, Landroid/util/Log;->isLoggable(Ljava/lang/String; I)Z
+	10      (00000026) move-result          v5
+	11      (00000028) if-eqz               v5, +007h
+
+then-BB@0x2c : [ then-BB@0x36 ]
+	12      (0000002c) const-string         v5, "Deleting cached crash reports..."
+	13      (00000030) invoke-static        v2, v5, v3, Landroid/util/Log;->v(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+
+then-BB@0x36 : [ then-BB@0x5e ]
+	14      (00000036) iget-object          v5, v0, Lg5/n;->g Lm5/c;
+	15      (0000003a) sget-object          v1, Lg5/n;->r Lg5/h;
+	16      (0000003e) iget-object          v5, v5, Lm5/c;->d Ljava/lang/Object;
+	17      (00000042) check-cast           v5, Ljava/io/File;
+	18      (00000046) invoke-virtual       v5, v1, Ljava/io/File;->listFiles(Ljava/io/FilenameFilter;)[Ljava/io/File;
+	19      (0000004c) move-result-object   v5
+	20      (0000004e) invoke-static        v5, Lm5/c;->e([Ljava/lang/Object;)Ljava/util/List;
+	21      (00000054) move-result-object   v5
+	22      (00000056) invoke-interface     v5, Ljava/util/List;->iterator()Ljava/util/Iterator;
+	23      (0000005c) move-result-object   v5
+
+then-BB@0x5e : [ then-BB@0x6a then-BB@0x7e ]
+	24      (0000005e) invoke-interface     v5, Ljava/util/Iterator;->hasNext()Z
+	25      (00000064) move-result          v1
+	26      (00000066) if-eqz               v1, +00ch
+
+then-BB@0x6a : [ then-BB@0x5e ]
+	27      (0000006a) invoke-interface     v5, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	28      (00000070) move-result-object   v1
+	29      (00000072) check-cast           v1, Ljava/io/File;
+	30      (00000076) invoke-virtual       v1, Ljava/io/File;->delete()Z
+	31      (0000007c) goto                 -fh
+
+then-BB@0x7e : 
+	32      (0000007e) iget-object          v5, v0, Lg5/n;->m La5/z;
+	33      (00000082) iget-object          v5, v5, La5/z;->b Ljava/lang/Object;
+	34      (00000086) check-cast           v5, Lm5/a;
+	35      (0000008a) iget-object          v5, v5, Lm5/a;->b Lm5/c;
+	36      (0000008e) iget-object          v1, v5, Lm5/c;->f Ljava/lang/Object;
+	37      (00000092) check-cast           v1, Ljava/io/File;
+	38      (00000096) invoke-virtual       v1, Ljava/io/File;->listFiles()[Ljava/io/File;
+	39      (0000009c) move-result-object   v1
+	40      (0000009e) invoke-static        v1, Lm5/c;->e([Ljava/lang/Object;)Ljava/util/List;
+	41      (000000a4) move-result-object   v1
+	42      (000000a6) invoke-static        v1, Lm5/a;->a(Ljava/util/List;)V
+	43      (000000ac) iget-object          v1, v5, Lm5/c;->m Ljava/lang/Object;
+	44      (000000b0) check-cast           v1, Ljava/io/File;
+	45      (000000b4) invoke-virtual       v1, Ljava/io/File;->listFiles()[Ljava/io/File;
+	46      (000000ba) move-result-object   v1
+	47      (000000bc) invoke-static        v1, Lm5/c;->e([Ljava/lang/Object;)Ljava/util/List;
+	48      (000000c2) move-result-object   v1
+	49      (000000c4) invoke-static        v1, Lm5/a;->a(Ljava/util/List;)V
+	50      (000000ca) iget-object          v5, v5, Lm5/c;->n Ljava/lang/Object;
+	51      (000000ce) check-cast           v5, Ljava/io/File;
+	52      (000000d2) invoke-virtual       v5, Ljava/io/File;->listFiles()[Ljava/io/File;
+	53      (000000d8) move-result-object   v5
+	54      (000000da) invoke-static        v5, Lm5/c;->e([Ljava/lang/Object;)Ljava/util/List;
+	55      (000000e0) move-result-object   v5
+	56      (000000e2) invoke-static        v5, Lm5/a;->a(Ljava/util/List;)V
+	57      (000000e8) iget-object          v5, v0, Lg5/n;->q Lcom/google/android/gms/tasks/TaskCompletionSource;
+	58      (000000ec) invoke-virtual       v5, v3, Lcom/google/android/gms/tasks/TaskCompletionSource;->trySetResult(Ljava/lang/Object;)Z
+	59      (000000f2) invoke-static        v3, Lcom/google/android/gms/tasks/Tasks;->forResult(Ljava/lang/Object;)Lcom/google/android/gms/tasks/Task;
+	60      (000000f8) move-result-object   v5
+	61      (000000fa) return-object        v5
+
+then-BB@0xfc : [ then-BB@0x10a then-BB@0x114 ]
+	62      (000000fc) const/4              v1, 3
+	63      (000000fe) invoke-static        v2, v1, Landroid/util/Log;->isLoggable(Ljava/lang/String; I)Z
+	64      (00000104) move-result          v1
+	65      (00000106) if-eqz               v1, +007h
+
+then-BB@0x10a : [ then-BB@0x114 ]
+	66      (0000010a) const-string         v1, "Sending cached crash reports..."
+	67      (0000010e) invoke-static        v2, v1, v3, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+
+then-BB@0x114 : [ then-BB@0x124 then-BB@0x156 ]
+	68      (00000114) invoke-virtual       v5, Ljava/lang/Boolean;->booleanValue()Z
+	69      (0000011a) move-result          v5
+	70      (0000011c) iget-object          v1, v0, Lg5/n;->b Lg5/v;
+	71      (00000120) if-eqz               v5, +01bh
+
+then-BB@0x124 : 
+	72      (00000124) iget-object          v5, v1, Lg5/v;->f Lcom/google/android/gms/tasks/TaskCompletionSource;
+	73      (00000128) invoke-virtual       v5, v3, Lcom/google/android/gms/tasks/TaskCompletionSource;->trySetResult(Ljava/lang/Object;)Z
+	74      (0000012e) iget-object          v5, v4, Lk2/c;->b Ljava/lang/Object;
+	75      (00000132) check-cast           v5, Lcom/google/android/gms/tasks/Task;
+	76      (00000136) iget-object          v0, v0, Lg5/n;->e Lh5/f;
+	77      (0000013a) iget-object          v0, v0, Lh5/f;->a Lh5/c;
+	78      (0000013e) new-instance         v1, Ll6/c;
+	79      (00000142) const/16             v2, 20
+	80      (00000146) invoke-direct        v1, v4, v2, Ll6/c;-><init>(Ljava/lang/Object; I)V
+	81      (0000014c) invoke-virtual       v5, v0, v1, Lcom/google/android/gms/tasks/Task;->onSuccessTask(Ljava/util/concurrent/Executor; Lcom/google/android/gms/tasks/SuccessContinuation;)Lcom/google/android/gms/tasks/Task;
+	82      (00000152) move-result-object   v5
+	83      (00000154) return-object        v5
+
+then-BB@0x156 : 
+	84      (00000156) invoke-virtual       v1, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	85      (0000015c) new-instance         v5, Ljava/lang/IllegalStateException;
+	86      (00000160) const-string         v0, "An invalid data collection token was used."
+	87      (00000164) invoke-direct        v5, v0, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	88      (0000016a) throw                v5
+

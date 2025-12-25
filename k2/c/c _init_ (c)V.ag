@@ -1,0 +1,85 @@
+# Lk2/c;-><init>(Lk2/c;)V [access_flags=public constructor]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:k2.c
+#
+# - return:void
+
+<init>-BB@0x0 : [ <init>-BB@0x32 <init>-BB@0x6e ]
+	0       (00000000) const/16             v0, 8
+	1       (00000004) iput                 v0, v5, Lk2/c;->a I
+	2       (00000008) invoke-direct        v5, Ljava/lang/Object;-><init>()V
+	3       (0000000e) iget-object          v6, v6, Lk2/c;->b Ljava/lang/Object;
+	4       (00000012) check-cast           v6, Landroid/content/Context;
+	5       (00000016) const-string         v0, "com.google.firebase.crashlytics.unity_version"
+	6       (0000001a) const-string         v1, "string"
+	7       (0000001e) invoke-static        v6, v0, v1, Lg5/g;->d(Landroid/content/Context; Ljava/lang/String; Ljava/lang/String;)I
+	8       (00000024) move-result          v0
+	9       (00000026) const/4              v1, 2
+	10      (00000028) const-string         v2, "FirebaseCrashlytics"
+	11      (0000002c) const/4              v3, 0
+	12      (0000002e) if-eqz               v0, +020h
+
+<init>-BB@0x32 : [ <init>-BB@0x66 <init>-BB@0xc6 ]
+	13      (00000032) const-string         v4, "Unity"
+	14      (00000036) iput-object          v4, v5, Lk2/c;->b Ljava/lang/Object;
+	15      (0000003a) invoke-virtual       v6, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+	16      (00000040) move-result-object   v6
+	17      (00000042) invoke-virtual       v6, v0, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
+	18      (00000048) move-result-object   v6
+	19      (0000004a) iput-object          v6, v5, Lk2/c;->c Ljava/lang/Object;
+	20      (0000004e) const-string         v0, "Unity Editor version is: "
+	21      (00000052) invoke-static        v0, v6, Lg2/g;->l(Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	22      (00000058) move-result-object   v6
+	23      (0000005a) invoke-static        v2, v1, Landroid/util/Log;->isLoggable(Ljava/lang/String; I)Z
+	24      (00000060) move-result          v0
+	25      (00000062) if-eqz               v0, +032h
+
+<init>-BB@0x66 : [ <init>-BB@0xc6 ]
+	26      (00000066) invoke-static        v2, v6, v3, Landroid/util/Log;->v(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+	27      (0000006c) goto                 +2dh
+
+<init>-BB@0x6e : [ <init>-BB@0x7e <init>-BB@0x80 ]
+	28      (0000006e) const-string         v0, "flutter_assets/NOTICES.Z"
+	29      (00000072) invoke-virtual       v6, Landroid/content/Context;->getAssets()Landroid/content/res/AssetManager;
+	30      (00000078) move-result-object   v4
+	31      (0000007a) if-nez               v4, +003h
+
+<init>-BB@0x7e : [ <init>-BB@0xbe ]
+	32      (0000007e) goto                 +20h
+
+<init>-BB@0x80 : [ <init>-BB@0x94 <init>-BB@0x9a ]
+	33      (00000080) invoke-virtual       v6, Landroid/content/Context;->getAssets()Landroid/content/res/AssetManager;
+	34      (00000086) move-result-object   v6
+	35      (00000088) invoke-virtual       v6, v0, Landroid/content/res/AssetManager;->open(Ljava/lang/String;)Ljava/io/InputStream;
+	36      (0000008e) move-result-object   v6
+	37      (00000090) if-eqz               v6, +005h
+	80:99
+	(Ljava/io/IOException; -> be <init>-BB@0xbe)
+
+<init>-BB@0x94 : [ <init>-BB@0x9a ]
+	38      (00000094) invoke-virtual       v6, Ljava/io/InputStream;->close()V
+	80:99
+	(Ljava/io/IOException; -> be <init>-BB@0xbe)
+
+<init>-BB@0x9a : [ <init>-BB@0xb2 <init>-BB@0xc6 ]
+	39      (0000009a) const-string         v6, "Flutter"
+	40      (0000009e) iput-object          v6, v5, Lk2/c;->b Ljava/lang/Object;
+	41      (000000a2) iput-object          v3, v5, Lk2/c;->c Ljava/lang/Object;
+	42      (000000a6) invoke-static        v2, v1, Landroid/util/Log;->isLoggable(Ljava/lang/String; I)Z
+	43      (000000ac) move-result          v6
+	44      (000000ae) if-eqz               v6, +00ch
+
+<init>-BB@0xb2 : [ <init>-BB@0xc6 ]
+	45      (000000b2) const-string         v6, "Development platform is: Flutter"
+	46      (000000b6) invoke-static        v2, v6, v3, Landroid/util/Log;->v(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+	47      (000000bc) goto                 +5h
+
+<init>-BB@0xbe : [ <init>-BB@0xc6 ]
+	48      (000000be) iput-object          v3, v5, Lk2/c;->b Ljava/lang/Object;
+	49      (000000c2) iput-object          v3, v5, Lk2/c;->c Ljava/lang/Object;
+
+<init>-BB@0xc6 : 
+	50      (000000c6) return-void          
+

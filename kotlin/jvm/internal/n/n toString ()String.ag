@@ -1,0 +1,30 @@
+# Lkotlin/jvm/internal/n;->toString()Ljava/lang/String; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v2
+#
+# - return:java.lang.String
+
+toString-BB@0x0 : [ toString-BB@0xc toString-BB@0x16 ]
+	0       (00000000) invoke-virtual       v2, Lkotlin/jvm/internal/n;->compute()Lz7/b;
+	1       (00000006) move-result-object   v0
+	2       (00000008) if-eq                v0, v2, +007h
+
+toString-BB@0xc : 
+	3       (0000000c) invoke-virtual       v0, Ljava/lang/Object;->toString()Ljava/lang/String;
+	4       (00000012) move-result-object   v0
+	5       (00000014) return-object        v0
+
+toString-BB@0x16 : 
+	6       (00000016) new-instance         v0, Ljava/lang/StringBuilder;
+	7       (0000001a) const-string         v1, "property "
+	8       (0000001e) invoke-direct        v0, v1, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	9       (00000024) invoke-virtual       v2, Lkotlin/jvm/internal/c;->getName()Ljava/lang/String;
+	10      (0000002a) move-result-object   v1
+	11      (0000002c) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	12      (00000032) const-string         v1, " (Kotlin reflection is not available)"
+	13      (00000036) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	14      (0000003c) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	15      (00000042) move-result-object   v0
+	16      (00000044) return-object        v0
+

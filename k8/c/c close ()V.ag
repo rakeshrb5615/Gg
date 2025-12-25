@@ -1,0 +1,181 @@
+# Lk8/c;->close()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v8
+#
+# - return:void
+
+close-BB@0x0 : [ close-BB@0x14 close-BB@0x16 ]
+	0       (00000000) sget-object          v0, Lk8/c;->p Ljava/util/concurrent/atomic/AtomicIntegerFieldUpdater;
+	1       (00000004) const/4              v1, 0
+	2       (00000006) const/4              v2, 1
+	3       (00000008) invoke-virtual       v0, v8, v1, v2, Ljava/util/concurrent/atomic/AtomicIntegerFieldUpdater;->compareAndSet(Ljava/lang/Object; I I)Z
+	4       (0000000e) move-result          v0
+	5       (00000010) if-nez               v0, +003h
+
+close-BB@0x14 : 
+	6       (00000014) return-void          
+
+close-BB@0x16 : [ close-BB@0x28 close-BB@0x2e ]
+	7       (00000016) invoke-static        Ljava/lang/Thread;->currentThread()Ljava/lang/Thread;
+	8       (0000001c) move-result-object   v0
+	9       (0000001e) instance-of          v1, v0, Lk8/a;
+	10      (00000022) const/4              v3, 0
+	11      (00000024) if-eqz               v1, +005h
+
+close-BB@0x28 : [ close-BB@0x30 ]
+	12      (00000028) check-cast           v0, Lk8/a;
+	13      (0000002c) goto                 +2h
+
+close-BB@0x2e : [ close-BB@0x30 ]
+	14      (0000002e) move-object          v0, v3
+
+close-BB@0x30 : [ close-BB@0x34 close-BB@0x46 ]
+	15      (00000030) if-eqz               v0, +00bh
+
+close-BB@0x34 : [ close-BB@0x44 close-BB@0x46 ]
+	16      (00000034) iget-object          v1, v0, Lk8/a;->n Lk8/c;
+	17      (00000038) invoke-static        v1, v8, Lkotlin/jvm/internal/j;->a(Ljava/lang/Object; Ljava/lang/Object;)Z
+	18      (0000003e) move-result          v1
+	19      (00000040) if-eqz               v1, +003h
+
+close-BB@0x44 : [ close-BB@0x48 ]
+	20      (00000044) goto                 +2h
+
+close-BB@0x46 : [ close-BB@0x48 ]
+	21      (00000046) move-object          v0, v3
+
+close-BB@0x48 : [ close-BB@0x4e ]
+	22      (00000048) iget-object          v1, v8, Lk8/c;->m Li8/p;
+	23      (0000004c) monitor-enter        v1
+
+close-BB@0x4e : [ close-BB@0x6a close-BB@0xf0 ]
+	24      (0000004e) sget-object          v4, Lk8/c;->o Ljava/util/concurrent/atomic/AtomicLongFieldUpdater;
+	25      (00000052) invoke-virtual       v4, v8, Ljava/util/concurrent/atomic/AtomicLongFieldUpdater;->get(Ljava/lang/Object;)J
+	26      (00000058) move-result-wide     v4
+	27      (0000005a) const-wide/32        v6, 2097151
+	28      (00000060) and-long/2addr       v4, v6
+	29      (00000062) long-to-int          v4, v4
+	30      (00000064) monitor-exit         v1
+	31      (00000066) if-gt                v2, v4, +045h
+	4e:59
+	(Ljava/lang/Throwable; -> 186 close-BB@0x186)
+
+close-BB@0x6a : [ close-BB@0x6c ]
+	32      (0000006a) move                 v1, v2
+
+close-BB@0x6c : [ close-BB@0x86 close-BB@0xe6 ]
+	33      (0000006c) iget-object          v5, v8, Lk8/c;->m Li8/p;
+	34      (00000070) invoke-virtual       v5, v1, Li8/p;->b(I)Ljava/lang/Object;
+	35      (00000076) move-result-object   v5
+	36      (00000078) invoke-static        v5, Lkotlin/jvm/internal/j;->b(Ljava/lang/Object;)V
+	37      (0000007e) check-cast           v5, Lk8/a;
+	38      (00000082) if-eq                v5, v0, +032h
+
+close-BB@0x86 : [ close-BB@0x96 close-BB@0xa8 ]
+	39      (00000086) invoke-virtual       v5, Ljava/lang/Thread;->getState()Ljava/lang/Thread$State;
+	40      (0000008c) move-result-object   v6
+	41      (0000008e) sget-object          v7, Ljava/lang/Thread$State;->TERMINATED Ljava/lang/Thread$State;
+	42      (00000092) if-eq                v6, v7, +00bh
+
+close-BB@0x96 : [ close-BB@0x86 ]
+	43      (00000096) invoke-static        v5, Ljava/util/concurrent/locks/LockSupport;->unpark(Ljava/lang/Thread;)V
+	44      (0000009c) const-wide/16        v6, 10000
+	45      (000000a0) invoke-virtual       v5, v6, v7, Ljava/lang/Thread;->join(J)V
+	46      (000000a6) goto                 -10h
+
+close-BB@0xa8 : [ close-BB@0xca close-BB@0xd0 ]
+	47      (000000a8) iget-object          v5, v5, Lk8/a;->a Lk8/m;
+	48      (000000ac) iget-object          v6, v8, Lk8/c;->f Lk8/f;
+	49      (000000b0) invoke-virtual       v5, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	50      (000000b6) sget-object          v7, Lk8/m;->b Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;
+	51      (000000ba) invoke-virtual       v7, v5, v3, Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;->getAndSet(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	52      (000000c0) move-result-object   v7
+	53      (000000c2) check-cast           v7, Lk8/i;
+	54      (000000c6) if-eqz               v7, +005h
+
+close-BB@0xca : [ close-BB@0xd0 ]
+	55      (000000ca) invoke-virtual       v6, v7, Li8/k;->a(Ljava/lang/Runnable;)Z
+
+close-BB@0xd0 : [ close-BB@0xdc close-BB@0xde ]
+	56      (000000d0) invoke-virtual       v5, Lk8/m;->a()Lk8/i;
+	57      (000000d6) move-result-object   v7
+	58      (000000d8) if-nez               v7, +003h
+
+close-BB@0xdc : [ close-BB@0xe6 ]
+	59      (000000dc) goto                 +5h
+
+close-BB@0xde : [ close-BB@0xd0 ]
+	60      (000000de) invoke-virtual       v6, v7, Li8/k;->a(Ljava/lang/Runnable;)Z
+	61      (000000e4) goto                 -ah
+
+close-BB@0xe6 : [ close-BB@0xea close-BB@0xf0 ]
+	62      (000000e6) if-eq                v1, v4, +005h
+
+close-BB@0xea : [ close-BB@0x6c ]
+	63      (000000ea) add-int/lit8         v1, v1, 1
+	64      (000000ee) goto                 -41h
+
+close-BB@0xf0 : [ close-BB@0x104 ]
+	65      (000000f0) iget-object          v1, v8, Lk8/c;->f Lk8/f;
+	66      (000000f4) invoke-virtual       v1, Li8/k;->b()V
+	67      (000000fa) iget-object          v1, v8, Lk8/c;->e Lk8/f;
+	68      (000000fe) invoke-virtual       v1, Li8/k;->b()V
+
+close-BB@0x104 : [ close-BB@0x108 close-BB@0x114 ]
+	69      (00000104) if-eqz               v0, +008h
+
+close-BB@0x108 : [ close-BB@0x114 close-BB@0x164 ]
+	70      (00000108) invoke-virtual       v0, v2, Lk8/a;->a(Z)Lk8/i;
+	71      (0000010e) move-result-object   v1
+	72      (00000110) if-nez               v1, +02ah
+
+close-BB@0x114 : [ close-BB@0x128 close-BB@0x164 ]
+	73      (00000114) iget-object          v1, v8, Lk8/c;->e Lk8/f;
+	74      (00000118) invoke-virtual       v1, Li8/k;->d()Ljava/lang/Object;
+	75      (0000011e) move-result-object   v1
+	76      (00000120) check-cast           v1, Lk8/i;
+	77      (00000124) if-nez               v1, +020h
+
+close-BB@0x128 : [ close-BB@0x13c close-BB@0x164 ]
+	78      (00000128) iget-object          v1, v8, Lk8/c;->f Lk8/f;
+	79      (0000012c) invoke-virtual       v1, Li8/k;->d()Ljava/lang/Object;
+	80      (00000132) move-result-object   v1
+	81      (00000134) check-cast           v1, Lk8/i;
+	82      (00000138) if-nez               v1, +016h
+
+close-BB@0x13c : [ close-BB@0x140 close-BB@0x14a ]
+	83      (0000013c) if-eqz               v0, +007h
+
+close-BB@0x140 : [ close-BB@0x14a ]
+	84      (00000140) sget-object          v1, Lk8/b;->e Lk8/b;
+	85      (00000144) invoke-virtual       v0, v1, Lk8/a;->h(Lk8/b;)Z
+
+close-BB@0x14a : 
+	86      (0000014a) sget-object          v0, Lk8/c;->n Ljava/util/concurrent/atomic/AtomicLongFieldUpdater;
+	87      (0000014e) const-wide/16        v1, 0
+	88      (00000152) invoke-virtual       v0, v8, v1, v2, Ljava/util/concurrent/atomic/AtomicLongFieldUpdater;->set(Ljava/lang/Object; J)V
+	89      (00000158) sget-object          v0, Lk8/c;->o Ljava/util/concurrent/atomic/AtomicLongFieldUpdater;
+	90      (0000015c) invoke-virtual       v0, v8, v1, v2, Ljava/util/concurrent/atomic/AtomicLongFieldUpdater;->set(Ljava/lang/Object; J)V
+	91      (00000162) return-void          
+
+close-BB@0x164 : [ close-BB@0x104 ]
+	92      (00000164) invoke-interface     v1, Ljava/lang/Runnable;->run()V
+	93      (0000016a) goto                 -33h
+	164:169
+	(Ljava/lang/Throwable; -> 16c close-BB@0x16c)
+
+close-BB@0x16c : [ close-BB@0x104 ]
+	94      (0000016c) move-exception       v1
+	95      (0000016e) invoke-static        Ljava/lang/Thread;->currentThread()Ljava/lang/Thread;
+	96      (00000174) move-result-object   v3
+	97      (00000176) invoke-virtual       v3, Ljava/lang/Thread;->getUncaughtExceptionHandler()Ljava/lang/Thread$UncaughtExceptionHandler;
+	98      (0000017c) move-result-object   v4
+	99      (0000017e) invoke-interface     v4, v3, v1, Ljava/lang/Thread$UncaughtExceptionHandler;->uncaughtException(Ljava/lang/Thread; Ljava/lang/Throwable;)V
+	100     (00000184) goto                 -40h
+
+close-BB@0x186 : 
+	101     (00000186) move-exception       v0
+	102     (00000188) monitor-exit         v1
+	103     (0000018a) throw                v0
+

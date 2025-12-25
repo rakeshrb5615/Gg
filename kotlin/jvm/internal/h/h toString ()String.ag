@@ -1,0 +1,42 @@
+# Lkotlin/jvm/internal/h;->toString()Ljava/lang/String; [access_flags=public]
+#
+# Parameters:
+# local registers: v0...v2
+#
+# - return:java.lang.String
+
+toString-BB@0x0 : [ toString-BB@0xc toString-BB@0x16 ]
+	0       (00000000) invoke-virtual       v2, Lkotlin/jvm/internal/c;->compute()Lz7/b;
+	1       (00000006) move-result-object   v0
+	2       (00000008) if-eq                v0, v2, +007h
+
+toString-BB@0xc : 
+	3       (0000000c) invoke-virtual       v0, Ljava/lang/Object;->toString()Ljava/lang/String;
+	4       (00000012) move-result-object   v0
+	5       (00000014) return-object        v0
+
+toString-BB@0x16 : [ toString-BB@0x2e toString-BB@0x34 ]
+	6       (00000016) const-string         v0, "<init>"
+	7       (0000001a) invoke-virtual       v2, Lkotlin/jvm/internal/c;->getName()Ljava/lang/String;
+	8       (00000020) move-result-object   v1
+	9       (00000022) invoke-virtual       v0, v1, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	10      (00000028) move-result          v0
+	11      (0000002a) if-eqz               v0, +005h
+
+toString-BB@0x2e : 
+	12      (0000002e) const-string         v0, "constructor (Kotlin reflection is not available)"
+	13      (00000032) return-object        v0
+
+toString-BB@0x34 : 
+	14      (00000034) new-instance         v0, Ljava/lang/StringBuilder;
+	15      (00000038) const-string         v1, "function "
+	16      (0000003c) invoke-direct        v0, v1, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	17      (00000042) invoke-virtual       v2, Lkotlin/jvm/internal/c;->getName()Ljava/lang/String;
+	18      (00000048) move-result-object   v1
+	19      (0000004a) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	20      (00000050) const-string         v1, " (Kotlin reflection is not available)"
+	21      (00000054) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	22      (0000005a) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	23      (00000060) move-result-object   v0
+	24      (00000062) return-object        v0
+

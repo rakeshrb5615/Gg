@@ -1,0 +1,74 @@
+# Lk2/c;->z(La2/k1; I)La2/o0; [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:a2.k1
+# - v7:int
+#
+# - return:a2.o0
+
+z-BB@0x0 : [ z-BB@0x16 z-BB@0x18 ]
+	0       (00000000) iget-object          v0, v5, Lk2/c;->b Ljava/lang/Object;
+	1       (00000004) check-cast           v0, Lr/j;
+	2       (00000008) invoke-virtual       v0, v6, Lr/j;->e(Ljava/lang/Object;)I
+	3       (0000000e) move-result          v6
+	4       (00000010) const/4              v1, 0
+	5       (00000012) if-gez               v6, +003h
+
+z-BB@0x16 : [ z-BB@0x8c ]
+	6       (00000016) goto                 +3bh
+
+z-BB@0x18 : [ z-BB@0x28 z-BB@0x8c ]
+	7       (00000018) invoke-virtual       v0, v6, Lr/j;->j(I)Ljava/lang/Object;
+	8       (0000001e) move-result-object   v2
+	9       (00000020) check-cast           v2, La2/u1;
+	10      (00000024) if-eqz               v2, +034h
+
+z-BB@0x28 : [ z-BB@0x34 z-BB@0x8c ]
+	11      (00000028) iget                 v3, v2, La2/u1;->a I
+	12      (0000002c) and-int              v4, v3, v7
+	13      (00000030) if-eqz               v4, +02eh
+
+z-BB@0x34 : [ z-BB@0x42 z-BB@0x48 ]
+	14      (00000034) not-int              v4, v7
+	15      (00000036) and-int/2addr        v3, v4
+	16      (00000038) iput                 v3, v2, La2/u1;->a I
+	17      (0000003c) const/4              v4, 4
+	18      (0000003e) if-ne                v7, v4, +005h
+
+z-BB@0x42 : [ z-BB@0x54 ]
+	19      (00000042) iget-object          v7, v2, La2/u1;->b La2/o0;
+	20      (00000046) goto                 +7h
+
+z-BB@0x48 : [ z-BB@0x50 z-BB@0x7c ]
+	21      (00000048) const/16             v4, 8
+	22      (0000004c) if-ne                v7, v4, +018h
+
+z-BB@0x50 : [ z-BB@0x54 ]
+	23      (00000050) iget-object          v7, v2, La2/u1;->c La2/o0;
+
+z-BB@0x54 : [ z-BB@0x5c z-BB@0x7a ]
+	24      (00000054) and-int/lit8         v3, v3, 12
+	25      (00000058) if-nez               v3, +011h
+
+z-BB@0x5c : [ z-BB@0x7a ]
+	26      (0000005c) invoke-virtual       v0, v6, Lr/j;->h(I)Ljava/lang/Object;
+	27      (00000062) const/4              v6, 0
+	28      (00000064) iput                 v6, v2, La2/u1;->a I
+	29      (00000068) iput-object          v1, v2, La2/u1;->b La2/o0;
+	30      (0000006c) iput-object          v1, v2, La2/u1;->c La2/o0;
+	31      (00000070) sget-object          v6, La2/u1;->d Lp0/c;
+	32      (00000074) invoke-virtual       v6, v2, Lp0/c;->c(Ljava/lang/Object;)Z
+
+z-BB@0x7a : 
+	33      (0000007a) return-object        v7
+
+z-BB@0x7c : 
+	34      (0000007c) new-instance         v6, Ljava/lang/IllegalArgumentException;
+	35      (00000080) const-string         v7, "Must provide flag PRE or POST"
+	36      (00000084) invoke-direct        v6, v7, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	37      (0000008a) throw                v6
+
+z-BB@0x8c : 
+	38      (0000008c) return-object        v1
+

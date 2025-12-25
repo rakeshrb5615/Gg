@@ -1,0 +1,55 @@
+# Lk2/c;->e(Ljava/lang/CharSequence; I I Lg1/u;)Z [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:java.lang.CharSequence
+# - v5:int
+# - v6:int
+# - v7:g1.u
+#
+# - return:boolean
+
+e-BB@0x0 : [ e-BB@0xe e-BB@0x10 ]
+	0       (00000000) iget                 v0, v7, Lg1/u;->c I
+	1       (00000004) and-int/lit8         v0, v0, 4
+	2       (00000008) const/4              v1, 1
+	3       (0000000a) if-lez               v0, +003h
+
+e-BB@0xe : 
+	4       (0000000e) return               v1
+
+e-BB@0x10 : [ e-BB@0x1c e-BB@0x44 ]
+	5       (00000010) iget-object          v0, v3, Lk2/c;->b Ljava/lang/Object;
+	6       (00000014) check-cast           v0, Lg1/x;
+	7       (00000018) if-nez               v0, +016h
+
+e-BB@0x1c : [ e-BB@0x28 e-BB@0x2e ]
+	8       (0000001c) new-instance         v0, Lg1/x;
+	9       (00000020) instance-of          v2, v4, Landroid/text/Spannable;
+	10      (00000024) if-eqz               v2, +005h
+
+e-BB@0x28 : [ e-BB@0x3a ]
+	11      (00000028) check-cast           v4, Landroid/text/Spannable;
+	12      (0000002c) goto                 +7h
+
+e-BB@0x2e : [ e-BB@0x3a ]
+	13      (0000002e) new-instance         v2, Landroid/text/SpannableString;
+	14      (00000032) invoke-direct        v2, v4, Landroid/text/SpannableString;-><init>(Ljava/lang/CharSequence;)V
+	15      (00000038) move-object          v4, v2
+
+e-BB@0x3a : [ e-BB@0x44 ]
+	16      (0000003a) invoke-direct        v0, v4, Lg1/x;-><init>(Landroid/text/Spannable;)V
+	17      (00000040) iput-object          v0, v3, Lk2/c;->b Ljava/lang/Object;
+
+e-BB@0x44 : 
+	18      (00000044) iget-object          v4, v3, Lk2/c;->c Ljava/lang/Object;
+	19      (00000048) check-cast           v4, La6/e;
+	20      (0000004c) invoke-virtual       v4, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	21      (00000052) new-instance         v4, Lg1/v;
+	22      (00000056) invoke-direct        v4, v7, Lg1/v;-><init>(Lg1/u;)V
+	23      (0000005c) iget-object          v7, v3, Lk2/c;->b Ljava/lang/Object;
+	24      (00000060) check-cast           v7, Lg1/x;
+	25      (00000064) const/16             v0, 33
+	26      (00000068) invoke-virtual       v7, v4, v5, v6, v0, Lg1/x;->setSpan(Ljava/lang/Object; I I I)V
+	27      (0000006e) return               v1
+

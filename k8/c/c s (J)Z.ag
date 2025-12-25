@@ -1,0 +1,49 @@
+# Lk8/c;->s(J)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:long
+#
+# - return:boolean
+
+s-BB@0x0 : [ s-BB@0x26 s-BB@0x28 ]
+	0       (00000000) const-wide/32        v0, 2097151
+	1       (00000006) and-long/2addr       v0, v4
+	2       (00000008) long-to-int          v0, v0
+	3       (0000000a) const-wide           v1, 4398044413952
+	4       (00000014) and-long/2addr       v4, v1
+	5       (00000016) const/16             v1, 21
+	6       (0000001a) shr-long/2addr       v4, v1
+	7       (0000001c) long-to-int          v4, v4
+	8       (0000001e) sub-int/2addr        v0, v4
+	9       (00000020) const/4              v4, 0
+	10      (00000022) if-gez               v0, +003h
+
+s-BB@0x26 : [ s-BB@0x28 ]
+	11      (00000026) move                 v0, v4
+
+s-BB@0x28 : [ s-BB@0x30 s-BB@0x4e ]
+	12      (00000028) iget                 v5, v3, Lk8/c;->a I
+	13      (0000002c) if-ge                v0, v5, +011h
+
+s-BB@0x30 : [ s-BB@0x3e s-BB@0x48 ]
+	14      (00000030) invoke-virtual       v3, Lk8/c;->c()I
+	15      (00000036) move-result          v0
+	16      (00000038) const/4              v1, 1
+	17      (0000003a) if-ne                v0, v1, +007h
+
+s-BB@0x3e : [ s-BB@0x42 s-BB@0x48 ]
+	18      (0000003e) if-le                v5, v1, +005h
+
+s-BB@0x42 : [ s-BB@0x48 ]
+	19      (00000042) invoke-virtual       v3, Lk8/c;->c()I
+
+s-BB@0x48 : [ s-BB@0x4c s-BB@0x4e ]
+	20      (00000048) if-lez               v0, +003h
+
+s-BB@0x4c : 
+	21      (0000004c) return               v1
+
+s-BB@0x4e : 
+	22      (0000004e) return               v4
+

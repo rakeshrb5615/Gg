@@ -1,0 +1,43 @@
+# Lk2/c;->p()Lk2/c; [access_flags=public static synchronized]
+#
+# Parameters:
+# local registers: v0...v2
+#
+# - return:k2.c
+
+p-BB@0x0 : [ p-BB@0x6 ]
+	0       (00000000) const-class          v0, Lk2/c;
+	1       (00000004) monitor-enter        v0
+
+p-BB@0x6 : [ p-BB@0xe p-BB@0x24 ]
+	2       (00000006) sget-object          v1, Lk2/c;->d Lk2/c;
+	3       (0000000a) if-nez               v1, +00dh
+	6:27
+	(Ljava/lang/Throwable; -> 20 p-BB@0x20)
+
+p-BB@0xe : [ p-BB@0x24 ]
+	4       (0000000e) new-instance         v1, Lk2/c;
+	5       (00000012) const/4              v2, 0
+	6       (00000014) invoke-direct        v1, v2, Lk2/c;-><init>(I)V
+	7       (0000001a) sput-object          v1, Lk2/c;->d Lk2/c;
+	8       (0000001e) goto                 +3h
+	6:27
+	(Ljava/lang/Throwable; -> 20 p-BB@0x20)
+
+p-BB@0x20 : [ p-BB@0x2c ]
+	9       (00000020) move-exception       v1
+	10      (00000022) goto                 +5h
+	6:27
+	(Ljava/lang/Throwable; -> 20 p-BB@0x20)
+
+p-BB@0x24 : 
+	11      (00000024) sget-object          v1, Lk2/c;->d Lk2/c;
+	12      (00000028) monitor-exit         v0
+	13      (0000002a) return-object        v1
+
+p-BB@0x2c : 
+	14      (0000002c) monitor-exit         v0
+	15      (0000002e) throw                v1
+	2c:2d
+	(Ljava/lang/Throwable; -> 20 p-BB@0x20)
+

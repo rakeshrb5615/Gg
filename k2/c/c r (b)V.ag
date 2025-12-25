@@ -1,0 +1,80 @@
+# Lk2/c;->r(Le6/b;)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:e6.b
+#
+# - return:void
+
+r-BB@0x0 : [ r-BB@0xdc r-BB@0xde ]
+	0       (00000000) new-instance         v0, Lorg/json/JSONObject;
+	1       (00000004) invoke-direct        v0, Lorg/json/JSONObject;-><init>()V
+	2       (0000000a) const-string         v1, "Fid"
+	3       (0000000e) iget-object          v2, v5, Le6/b;->a Ljava/lang/String;
+	4       (00000012) invoke-virtual       v0, v1, v2, Lorg/json/JSONObject;->put(Ljava/lang/String; Ljava/lang/Object;)Lorg/json/JSONObject;
+	5       (00000018) const-string         v1, "Status"
+	6       (0000001c) iget                 v2, v5, Le6/b;->b I
+	7       (00000020) invoke-static        v2, Lu/e;->c(I)I
+	8       (00000026) move-result          v2
+	9       (00000028) invoke-virtual       v0, v1, v2, Lorg/json/JSONObject;->put(Ljava/lang/String; I)Lorg/json/JSONObject;
+	10      (0000002e) const-string         v1, "AuthToken"
+	11      (00000032) iget-object          v2, v5, Le6/b;->c Ljava/lang/String;
+	12      (00000036) invoke-virtual       v0, v1, v2, Lorg/json/JSONObject;->put(Ljava/lang/String; Ljava/lang/Object;)Lorg/json/JSONObject;
+	13      (0000003c) const-string         v1, "RefreshToken"
+	14      (00000040) iget-object          v2, v5, Le6/b;->d Ljava/lang/String;
+	15      (00000044) invoke-virtual       v0, v1, v2, Lorg/json/JSONObject;->put(Ljava/lang/String; Ljava/lang/Object;)Lorg/json/JSONObject;
+	16      (0000004a) const-string         v1, "TokenCreationEpochInSecs"
+	17      (0000004e) iget-wide            v2, v5, Le6/b;->f J
+	18      (00000052) invoke-virtual       v0, v1, v2, v3, Lorg/json/JSONObject;->put(Ljava/lang/String; J)Lorg/json/JSONObject;
+	19      (00000058) const-string         v1, "ExpiresInSecs"
+	20      (0000005c) iget-wide            v2, v5, Le6/b;->e J
+	21      (00000060) invoke-virtual       v0, v1, v2, v3, Lorg/json/JSONObject;->put(Ljava/lang/String; J)Lorg/json/JSONObject;
+	22      (00000066) const-string         v1, "FisError"
+	23      (0000006a) iget-object          v5, v5, Le6/b;->g Ljava/lang/String;
+	24      (0000006e) invoke-virtual       v0, v1, v5, Lorg/json/JSONObject;->put(Ljava/lang/String; Ljava/lang/Object;)Lorg/json/JSONObject;
+	25      (00000074) const-string         v5, "PersistedInstallation"
+	26      (00000078) const-string         v1, "tmp"
+	27      (0000007c) iget-object          v2, v4, Lk2/c;->c Ljava/lang/Object;
+	28      (00000080) check-cast           v2, Lq4/f;
+	29      (00000084) invoke-virtual       v2, Lq4/f;->a()V
+	30      (0000008a) iget-object          v2, v2, Lq4/f;->a Landroid/content/Context;
+	31      (0000008e) invoke-virtual       v2, Landroid/content/Context;->getFilesDir()Ljava/io/File;
+	32      (00000094) move-result-object   v2
+	33      (00000096) invoke-static        v5, v1, v2, Ljava/io/File;->createTempFile(Ljava/lang/String; Ljava/lang/String; Ljava/io/File;)Ljava/io/File;
+	34      (0000009c) move-result-object   v5
+	35      (0000009e) new-instance         v1, Ljava/io/FileOutputStream;
+	36      (000000a2) invoke-direct        v1, v5, Ljava/io/FileOutputStream;-><init>(Ljava/io/File;)V
+	37      (000000a8) invoke-virtual       v0, Lorg/json/JSONObject;->toString()Ljava/lang/String;
+	38      (000000ae) move-result-object   v0
+	39      (000000b0) const-string         v2, "UTF-8"
+	40      (000000b4) invoke-virtual       v0, v2, Ljava/lang/String;->getBytes(Ljava/lang/String;)[B
+	41      (000000ba) move-result-object   v0
+	42      (000000bc) invoke-virtual       v1, v0, Ljava/io/FileOutputStream;->write([B)V
+	43      (000000c2) invoke-virtual       v1, Ljava/io/FileOutputStream;->close()V
+	44      (000000c8) invoke-virtual       v4, Lk2/c;->o()Ljava/io/File;
+	45      (000000ce) move-result-object   v0
+	46      (000000d0) invoke-virtual       v5, v0, Ljava/io/File;->renameTo(Ljava/io/File;)Z
+	47      (000000d6) move-result          v5
+	48      (000000d8) if-eqz               v5, +003h
+	0:ed
+	(Lorg/json/JSONException; -> ee r-BB@0xee)
+	(Ljava/io/IOException; -> ee r-BB@0xee)
+
+r-BB@0xdc : [ r-BB@0xee ]
+	49      (000000dc) goto                 +9h
+	0:ed
+	(Lorg/json/JSONException; -> ee r-BB@0xee)
+	(Ljava/io/IOException; -> ee r-BB@0xee)
+
+r-BB@0xde : 
+	50      (000000de) new-instance         v5, Ljava/io/IOException;
+	51      (000000e2) const-string         v0, "unable to rename the tmpfile to PersistedInstallation"
+	52      (000000e6) invoke-direct        v5, v0, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+	53      (000000ec) throw                v5
+	0:ed
+	(Lorg/json/JSONException; -> ee r-BB@0xee)
+	(Ljava/io/IOException; -> ee r-BB@0xee)
+
+r-BB@0xee : 
+	54      (000000ee) return-void          
+

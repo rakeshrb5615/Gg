@@ -1,0 +1,42 @@
+# Lkotlin/jvm/internal/j;->h(Ljava/lang/RuntimeException; Ljava/lang/String;)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:java.lang.RuntimeException
+# - v6:java.lang.String
+#
+# - return:void
+
+h-BB@0x0 : [ h-BB@0xe ]
+	0       (00000000) invoke-virtual       v5, Ljava/lang/Throwable;->getStackTrace()[Ljava/lang/StackTraceElement;
+	1       (00000006) move-result-object   v0
+	2       (00000008) array-length         v1, v0
+	3       (0000000a) const/4              v2, -1
+	4       (0000000c) const/4              v3, 0
+
+h-BB@0xe : [ h-BB@0x12 h-BB@0x32 ]
+	5       (0000000e) if-ge                v3, v1, +012h
+
+h-BB@0x12 : [ h-BB@0x2a h-BB@0x2c ]
+	6       (00000012) aget-object          v4, v0, v3
+	7       (00000016) invoke-virtual       v4, Ljava/lang/StackTraceElement;->getClassName()Ljava/lang/String;
+	8       (0000001c) move-result-object   v4
+	9       (0000001e) invoke-virtual       v6, v4, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	10      (00000024) move-result          v4
+	11      (00000026) if-eqz               v4, +003h
+
+h-BB@0x2a : [ h-BB@0x2c ]
+	12      (0000002a) move                 v2, v3
+
+h-BB@0x2c : [ h-BB@0xe ]
+	13      (0000002c) add-int/lit8         v3, v3, 1
+	14      (00000030) goto                 -11h
+
+h-BB@0x32 : 
+	15      (00000032) add-int/lit8         v2, v2, 1
+	16      (00000036) invoke-static        v0, v2, v1, Ljava/util/Arrays;->copyOfRange([Ljava/lang/Object; I I)[Ljava/lang/Object;
+	17      (0000003c) move-result-object   v6
+	18      (0000003e) check-cast           v6, [Ljava/lang/StackTraceElement;
+	19      (00000042) invoke-virtual       v5, v6, Ljava/lang/Throwable;->setStackTrace([Ljava/lang/StackTraceElement;)V
+	20      (00000048) return-void          
+

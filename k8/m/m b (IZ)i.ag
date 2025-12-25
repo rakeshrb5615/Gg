@@ -1,0 +1,45 @@
+# Lk8/m;->b(I Z)Lk8/i; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:int
+# - v6:boolean
+#
+# - return:k8.i
+
+b-BB@0x0 : [ b-BB@0x1a b-BB@0x4a ]
+	0       (00000000) and-int/lit8         v5, v5, 127
+	1       (00000004) iget-object          v0, v4, Lk8/m;->a Ljava/util/concurrent/atomic/AtomicReferenceArray;
+	2       (00000008) invoke-virtual       v0, v5, Ljava/util/concurrent/atomic/AtomicReferenceArray;->get(I)Ljava/lang/Object;
+	3       (0000000e) move-result-object   v1
+	4       (00000010) check-cast           v1, Lk8/i;
+	5       (00000014) const/4              v2, 0
+	6       (00000016) if-eqz               v1, +01ah
+
+b-BB@0x1a : [ b-BB@0x22 b-BB@0x4a ]
+	7       (0000001a) iget-boolean         v3, v1, Lk8/i;->b Z
+	8       (0000001e) if-ne                v3, v6, +016h
+
+b-BB@0x22 : [ b-BB@0x2e b-BB@0x3e ]
+	9       (00000022) invoke-virtual       v0, v5, v1, v2, Ljava/util/concurrent/atomic/AtomicReferenceArray;->compareAndSet(I Ljava/lang/Object; Ljava/lang/Object;)Z
+	10      (00000028) move-result          v3
+	11      (0000002a) if-eqz               v3, +00ah
+
+b-BB@0x2e : [ b-BB@0x32 b-BB@0x3c ]
+	12      (0000002e) if-eqz               v6, +007h
+
+b-BB@0x32 : [ b-BB@0x3c ]
+	13      (00000032) sget-object          v5, Lk8/m;->e Ljava/util/concurrent/atomic/AtomicIntegerFieldUpdater;
+	14      (00000036) invoke-virtual       v5, v4, Ljava/util/concurrent/atomic/AtomicIntegerFieldUpdater;->decrementAndGet(Ljava/lang/Object;)I
+
+b-BB@0x3c : 
+	15      (0000003c) return-object        v1
+
+b-BB@0x3e : [ b-BB@0x4a b-BB@0x22 ]
+	16      (0000003e) invoke-virtual       v0, v5, Ljava/util/concurrent/atomic/AtomicReferenceArray;->get(I)Ljava/lang/Object;
+	17      (00000044) move-result-object   v3
+	18      (00000046) if-eq                v3, v1, -012h
+
+b-BB@0x4a : 
+	19      (0000004a) return-object        v2
+

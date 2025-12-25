@@ -1,0 +1,97 @@
+# Lk4/f;->a([Landroid/content/pm/Signature;)Z [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:android.content.pm.Signature[]
+#
+# - return:boolean
+
+a-BB@0x0 : [ a-BB@0x6 a-BB@0x98 ]
+	0       (00000000) const/4              v0, 0
+	1       (00000002) if-eqz               v6, +04bh
+
+a-BB@0x6 : [ a-BB@0xc a-BB@0x98 ]
+	2       (00000006) array-length         v1, v6
+	3       (00000008) if-eqz               v1, +048h
+
+a-BB@0xc : [ a-BB@0xe ]
+	4       (0000000c) move                 v2, v0
+
+a-BB@0xe : [ a-BB@0x12 a-BB@0xce ]
+	5       (0000000e) if-ge                v2, v1, +060h
+
+a-BB@0x12 : [ a-BB@0x1e ]
+	6       (00000012) aget-object          v3, v6, v2
+	7       (00000016) invoke-virtual       v3, Landroid/content/pm/Signature;->toByteArray()[B
+	8       (0000001c) move-result-object   v3
+
+a-BB@0x1e : [ a-BB@0x4a ]
+	9       (0000001e) const-string         v4, "SHA-256"
+	10      (00000022) invoke-static        v4, Ljava/security/MessageDigest;->getInstance(Ljava/lang/String;)Ljava/security/MessageDigest;
+	11      (00000028) move-result-object   v4
+	12      (0000002a) invoke-virtual       v4, v3, Ljava/security/MessageDigest;->update([B)V
+	13      (00000030) invoke-virtual       v4, Ljava/security/MessageDigest;->digest()[B
+	14      (00000036) move-result-object   v3
+	15      (00000038) const/16             v4, 11
+	16      (0000003c) invoke-static        v3, v4, Landroid/util/Base64;->encodeToString([B I)Ljava/lang/String;
+	17      (00000042) move-result-object   v3
+	18      (00000044) goto                 +3h
+	1e:29
+	(Ljava/security/NoSuchAlgorithmException; -> 46 a-BB@0x46)
+
+a-BB@0x46 : [ a-BB@0x4a ]
+	19      (00000046) const-string         v3, ""
+
+a-BB@0x4a : [ a-BB@0x5a a-BB@0x94 ]
+	20      (0000004a) const-string         v4, "8P1sW0EPJcslw7UzRsiXL64w-O50Ed-RBICtay1g24M"
+	21      (0000004e) invoke-virtual       v4, v3, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	22      (00000054) move-result          v4
+	23      (00000056) if-nez               v4, +01fh
+
+a-BB@0x5a : [ a-BB@0x6e a-BB@0x7e ]
+	24      (0000005a) sget-object          v4, Landroid/os/Build;->TAGS Ljava/lang/String;
+	25      (0000005e) const-string         v5, "dev-keys"
+	26      (00000062) invoke-virtual       v4, v5, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+	27      (00000068) move-result          v5
+	28      (0000006a) if-nez               v5, +00ah
+
+a-BB@0x6e : [ a-BB@0x7e a-BB@0x8e ]
+	29      (0000006e) const-string         v5, "test-keys"
+	30      (00000072) invoke-virtual       v4, v5, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+	31      (00000078) move-result          v4
+	32      (0000007a) if-eqz               v4, +00ah
+
+a-BB@0x7e : [ a-BB@0x8e a-BB@0x94 ]
+	33      (0000007e) const-string         v4, "GXWy8XF3vIml3_MfnmSmyuKBpT3B0dWbHRR_4cgq-gA"
+	34      (00000082) invoke-virtual       v4, v3, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	35      (00000088) move-result          v3
+	36      (0000008a) if-nez               v3, +005h
+
+a-BB@0x8e : [ a-BB@0xe ]
+	37      (0000008e) add-int/lit8         v2, v2, 1
+	38      (00000092) goto                 -42h
+
+a-BB@0x94 : 
+	39      (00000094) const/4              v6, 1
+	40      (00000096) return               v6
+
+a-BB@0x98 : [ a-BB@0xb8 a-BB@0xce ]
+	41      (00000098) new-array            v6, v0, [Ljava/lang/Object;
+	42      (0000009c) sget-object          v1, Lk4/f;->a Lk4/z;
+	43      (000000a0) invoke-virtual       v1, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	44      (000000a6) const/4              v2, 5
+	45      (000000a8) const-string         v3, "PlayCore"
+	46      (000000ac) invoke-static        v3, v2, Landroid/util/Log;->isLoggable(Ljava/lang/String; I)Z
+	47      (000000b2) move-result          v2
+	48      (000000b4) if-eqz               v2, +00dh
+
+a-BB@0xb8 : [ a-BB@0xce ]
+	49      (000000b8) iget-object          v1, v1, Lk4/z;->a Ljava/lang/String;
+	50      (000000bc) const-string         v2, "Phonesky package is not signed -- possibly self-built package. Could not verify."
+	51      (000000c0) invoke-static        v1, v2, v6, Lk4/z;->c(Ljava/lang/String; Ljava/lang/String; [Ljava/lang/Object;)Ljava/lang/String;
+	52      (000000c6) move-result-object   v6
+	53      (000000c8) invoke-static        v3, v6, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+
+a-BB@0xce : 
+	54      (000000ce) return               v0
+
