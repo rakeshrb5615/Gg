@@ -1,0 +1,94 @@
+# Lokhttp3/internal/tls/OkHostnameVerifier;->a(Ljava/security/cert/X509Certificate; I)Ljava/util/List; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:java.security.cert.X509Certificate
+# - v5:int
+#
+# - return:java.util.List
+
+a-BB@0x0 : [ a-BB@0xc a-BB@0xe ]
+	0       (00000000) invoke-virtual       v4, Ljava/security/cert/X509Certificate;->getSubjectAlternativeNames()Ljava/util/Collection;
+	1       (00000006) move-result-object   v4
+	2       (00000008) if-nez               v4, +003h
+	0:83
+	(Ljava/security/cert/CertificateParsingException; -> 88 a-BB@0x88)
+
+a-BB@0xc : [ a-BB@0x88 ]
+	3       (0000000c) goto                 +3eh
+	0:83
+	(Ljava/security/cert/CertificateParsingException; -> 88 a-BB@0x88)
+
+a-BB@0xe : [ a-BB@0x20 ]
+	4       (0000000e) new-instance         v0, Ljava/util/ArrayList;
+	5       (00000012) invoke-direct        v0, Ljava/util/ArrayList;-><init>()V
+	6       (00000018) invoke-interface     v4, Ljava/util/Collection;->iterator()Ljava/util/Iterator;
+	7       (0000001e) move-result-object   v4
+	0:83
+	(Ljava/security/cert/CertificateParsingException; -> 88 a-BB@0x88)
+
+a-BB@0x20 : [ a-BB@0x2c a-BB@0x86 ]
+	8       (00000020) invoke-interface     v4, Ljava/util/Iterator;->hasNext()Z
+	9       (00000026) move-result          v1
+	10      (00000028) if-eqz               v1, +02fh
+	0:83
+	(Ljava/security/cert/CertificateParsingException; -> 88 a-BB@0x88)
+
+a-BB@0x2c : [ a-BB@0x3c a-BB@0x20 ]
+	11      (0000002c) invoke-interface     v4, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	12      (00000032) move-result-object   v1
+	13      (00000034) check-cast           v1, Ljava/util/List;
+	14      (00000038) if-eqz               v1, -00ch
+	0:83
+	(Ljava/security/cert/CertificateParsingException; -> 88 a-BB@0x88)
+
+a-BB@0x3c : [ a-BB@0x4a a-BB@0x4c ]
+	15      (0000003c) invoke-interface     v1, Ljava/util/List;->size()I
+	16      (00000042) move-result          v2
+	17      (00000044) const/4              v3, 2
+	18      (00000046) if-ge                v2, v3, +003h
+	0:83
+	(Ljava/security/cert/CertificateParsingException; -> 88 a-BB@0x88)
+
+a-BB@0x4a : [ a-BB@0x20 ]
+	19      (0000004a) goto                 -15h
+	0:83
+	(Ljava/security/cert/CertificateParsingException; -> 88 a-BB@0x88)
+
+a-BB@0x4c : [ a-BB@0x6a a-BB@0x20 ]
+	20      (0000004c) const/4              v2, 0
+	21      (0000004e) invoke-interface     v1, v2, Ljava/util/List;->get(I)Ljava/lang/Object;
+	22      (00000054) move-result-object   v2
+	23      (00000056) invoke-static        v5, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+	24      (0000005c) move-result-object   v3
+	25      (0000005e) invoke-static        v2, v3, Lkotlin/jvm/internal/j;->a(Ljava/lang/Object; Ljava/lang/Object;)Z
+	26      (00000064) move-result          v2
+	27      (00000066) if-eqz               v2, -023h
+	0:83
+	(Ljava/security/cert/CertificateParsingException; -> 88 a-BB@0x88)
+
+a-BB@0x6a : [ a-BB@0x78 a-BB@0x7a ]
+	28      (0000006a) const/4              v2, 1
+	29      (0000006c) invoke-interface     v1, v2, Ljava/util/List;->get(I)Ljava/lang/Object;
+	30      (00000072) move-result-object   v1
+	31      (00000074) if-nez               v1, +003h
+	0:83
+	(Ljava/security/cert/CertificateParsingException; -> 88 a-BB@0x88)
+
+a-BB@0x78 : [ a-BB@0x20 ]
+	32      (00000078) goto                 -2ch
+	0:83
+	(Ljava/security/cert/CertificateParsingException; -> 88 a-BB@0x88)
+
+a-BB@0x7a : [ a-BB@0x20 ]
+	33      (0000007a) check-cast           v1, Ljava/lang/String;
+	34      (0000007e) invoke-virtual       v0, v1, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	35      (00000084) goto                 -32h
+
+a-BB@0x86 : 
+	36      (00000086) return-object        v0
+
+a-BB@0x88 : 
+	37      (00000088) sget-object          v4, Li7/n;->a Li7/n;
+	38      (0000008c) return-object        v4
+

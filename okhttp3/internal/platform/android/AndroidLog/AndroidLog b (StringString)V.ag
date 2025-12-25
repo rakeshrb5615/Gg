@@ -1,0 +1,50 @@
+# Lokhttp3/internal/platform/android/AndroidLog;->b(Ljava/lang/String; Ljava/lang/String;)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v0
+# - v1:java.lang.String
+# - v2:java.lang.String
+#
+# - return:void
+
+b-BB@0x0 : [ b-BB@0x18 b-BB@0x5c ]
+	0       (00000000) invoke-static        v1, Ljava/util/logging/Logger;->getLogger(Ljava/lang/String;)Ljava/util/logging/Logger;
+	1       (00000006) move-result-object   v1
+	2       (00000008) sget-object          v0, Lokhttp3/internal/platform/android/AndroidLog;->b Ljava/util/concurrent/CopyOnWriteArraySet;
+	3       (0000000c) invoke-virtual       v0, v1, Ljava/util/concurrent/CopyOnWriteArraySet;->add(Ljava/lang/Object;)Z
+	4       (00000012) move-result          v0
+	5       (00000014) if-eqz               v0, +024h
+
+b-BB@0x18 : [ b-BB@0x2e b-BB@0x34 ]
+	6       (00000018) const/4              v0, 0
+	7       (0000001a) invoke-virtual       v1, v0, Ljava/util/logging/Logger;->setUseParentHandlers(Z)V
+	8       (00000020) const/4              v0, 3
+	9       (00000022) invoke-static        v2, v0, Landroid/util/Log;->isLoggable(Ljava/lang/String; I)Z
+	10      (00000028) move-result          v0
+	11      (0000002a) if-eqz               v0, +005h
+
+b-BB@0x2e : [ b-BB@0x4c ]
+	12      (0000002e) sget-object          v2, Ljava/util/logging/Level;->FINE Ljava/util/logging/Level;
+	13      (00000032) goto                 +dh
+
+b-BB@0x34 : [ b-BB@0x42 b-BB@0x48 ]
+	14      (00000034) const/4              v0, 4
+	15      (00000036) invoke-static        v2, v0, Landroid/util/Log;->isLoggable(Ljava/lang/String; I)Z
+	16      (0000003c) move-result          v2
+	17      (0000003e) if-eqz               v2, +005h
+
+b-BB@0x42 : [ b-BB@0x4c ]
+	18      (00000042) sget-object          v2, Ljava/util/logging/Level;->INFO Ljava/util/logging/Level;
+	19      (00000046) goto                 +3h
+
+b-BB@0x48 : [ b-BB@0x4c ]
+	20      (00000048) sget-object          v2, Ljava/util/logging/Level;->WARNING Ljava/util/logging/Level;
+
+b-BB@0x4c : [ b-BB@0x5c ]
+	21      (0000004c) invoke-virtual       v1, v2, Ljava/util/logging/Logger;->setLevel(Ljava/util/logging/Level;)V
+	22      (00000052) sget-object          v2, Lokhttp3/internal/platform/android/AndroidLogHandler;->a Lokhttp3/internal/platform/android/AndroidLogHandler;
+	23      (00000056) invoke-virtual       v1, v2, Ljava/util/logging/Logger;->addHandler(Ljava/util/logging/Handler;)V
+
+b-BB@0x5c : 
+	24      (0000005c) return-void          
+

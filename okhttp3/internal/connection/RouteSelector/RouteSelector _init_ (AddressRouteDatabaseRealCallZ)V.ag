@@ -1,0 +1,75 @@
+# Lokhttp3/internal/connection/RouteSelector;-><init>(Lokhttp3/Address; Lokhttp3/internal/connection/RouteDatabase; Lokhttp3/internal/connection/RealCall; Z)V [access_flags=public constructor]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:okhttp3.Address
+# - v4:okhttp3.internal.connection.RouteDatabase
+# - v5:okhttp3.internal.connection.RealCall
+# - v6:boolean
+#
+# - return:void
+
+<init>-BB@0x0 : [ <init>-BB@0x5c <init>-BB@0x72 ]
+	0       (00000000) const-string         v0, "routeDatabase"
+	1       (00000004) invoke-static        v4, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) invoke-direct        v2, Ljava/lang/Object;-><init>()V
+	3       (00000010) iput-object          v3, v2, Lokhttp3/internal/connection/RouteSelector;->a Lokhttp3/Address;
+	4       (00000014) iput-object          v4, v2, Lokhttp3/internal/connection/RouteSelector;->b Lokhttp3/internal/connection/RouteDatabase;
+	5       (00000018) iput-object          v5, v2, Lokhttp3/internal/connection/RouteSelector;->c Lokhttp3/internal/connection/RealCall;
+	6       (0000001c) iput-boolean         v6, v2, Lokhttp3/internal/connection/RouteSelector;->d Z
+	7       (00000020) sget-object          v4, Li7/n;->a Li7/n;
+	8       (00000024) iput-object          v4, v2, Lokhttp3/internal/connection/RouteSelector;->e Ljava/util/List;
+	9       (00000028) iput-object          v4, v2, Lokhttp3/internal/connection/RouteSelector;->g Ljava/lang/Object;
+	10      (0000002c) new-instance         v4, Ljava/util/ArrayList;
+	11      (00000030) invoke-direct        v4, Ljava/util/ArrayList;-><init>()V
+	12      (00000036) iput-object          v4, v2, Lokhttp3/internal/connection/RouteSelector;->h Ljava/util/ArrayList;
+	13      (0000003a) iget-object          v4, v3, Lokhttp3/Address;->h Lokhttp3/HttpUrl;
+	14      (0000003e) iget-object          v6, v5, Lokhttp3/internal/connection/RealCall;->d Lokhttp3/EventListener;
+	15      (00000042) invoke-virtual       v6, v5, v4, Lokhttp3/EventListener;->r(Lokhttp3/internal/connection/RealCall; Lokhttp3/HttpUrl;)V
+	16      (00000048) invoke-virtual       v4, Lokhttp3/HttpUrl;->h()Ljava/net/URI;
+	17      (0000004e) move-result-object   v0
+	18      (00000050) invoke-virtual       v0, Ljava/net/URI;->getHost()Ljava/lang/String;
+	19      (00000056) move-result-object   v1
+	20      (00000058) if-nez               v1, +00dh
+
+<init>-BB@0x5c : [ <init>-BB@0xae ]
+	21      (0000005c) sget-object          v3, Ljava/net/Proxy;->NO_PROXY Ljava/net/Proxy;
+	22      (00000060) filled-new-array     v3, [Ljava/net/Proxy;
+	23      (00000066) move-result-object   v3
+	24      (00000068) invoke-static        v3, Lokhttp3/internal/_UtilJvmKt;->j([Ljava/lang/Object;)Ljava/util/List;
+	25      (0000006e) move-result-object   v3
+	26      (00000070) goto                 +1fh
+
+<init>-BB@0x72 : [ <init>-BB@0x82 <init>-BB@0x9a ]
+	27      (00000072) iget-object          v3, v3, Lokhttp3/Address;->g Ljava/net/ProxySelector;
+	28      (00000076) invoke-virtual       v3, v0, Ljava/net/ProxySelector;->select(Ljava/net/URI;)Ljava/util/List;
+	29      (0000007c) move-result-object   v3
+	30      (0000007e) if-eqz               v3, +00eh
+
+<init>-BB@0x82 : [ <init>-BB@0x8e <init>-BB@0x90 ]
+	31      (00000082) invoke-interface     v3, Ljava/util/Collection;->isEmpty()Z
+	32      (00000088) move-result          v0
+	33      (0000008a) if-eqz               v0, +003h
+
+<init>-BB@0x8e : [ <init>-BB@0x9a ]
+	34      (0000008e) goto                 +6h
+
+<init>-BB@0x90 : [ <init>-BB@0xae ]
+	35      (00000090) invoke-static        v3, Lokhttp3/internal/_UtilJvmKt;->i(Ljava/util/List;)Ljava/util/List;
+	36      (00000096) move-result-object   v3
+	37      (00000098) goto                 +bh
+
+<init>-BB@0x9a : [ <init>-BB@0xae ]
+	38      (0000009a) sget-object          v3, Ljava/net/Proxy;->NO_PROXY Ljava/net/Proxy;
+	39      (0000009e) filled-new-array     v3, [Ljava/net/Proxy;
+	40      (000000a4) move-result-object   v3
+	41      (000000a6) invoke-static        v3, Lokhttp3/internal/_UtilJvmKt;->j([Ljava/lang/Object;)Ljava/util/List;
+	42      (000000ac) move-result-object   v3
+
+<init>-BB@0xae : 
+	43      (000000ae) iput-object          v3, v2, Lokhttp3/internal/connection/RouteSelector;->e Ljava/util/List;
+	44      (000000b2) const/4              v0, 0
+	45      (000000b4) iput                 v0, v2, Lokhttp3/internal/connection/RouteSelector;->f I
+	46      (000000b8) invoke-virtual       v6, v5, v4, v3, Lokhttp3/EventListener;->q(Lokhttp3/internal/connection/RealCall; Lokhttp3/HttpUrl; Ljava/util/List;)V
+	47      (000000be) return-void          
+

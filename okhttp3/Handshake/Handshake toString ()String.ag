@@ -1,0 +1,110 @@
+# Lokhttp3/Handshake;->toString()Ljava/lang/String; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v6
+#
+# - return:java.lang.String
+
+toString-BB@0x0 : [ toString-BB@0x26 ]
+	0       (00000000) invoke-virtual       v6, Lokhttp3/Handshake;->a()Ljava/util/List;
+	1       (00000006) move-result-object   v0
+	2       (00000008) new-instance         v1, Ljava/util/ArrayList;
+	3       (0000000c) const/16             v2, 10
+	4       (00000010) invoke-static        v0, v2, Li7/j;->X(Ljava/lang/Iterable; I)I
+	5       (00000016) move-result          v3
+	6       (00000018) invoke-direct        v1, v3, Ljava/util/ArrayList;-><init>(I)V
+	7       (0000001e) invoke-interface     v0, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
+	8       (00000024) move-result-object   v0
+
+toString-BB@0x26 : [ toString-BB@0x36 toString-BB@0x76 ]
+	9       (00000026) invoke-interface     v0, Ljava/util/Iterator;->hasNext()Z
+	10      (0000002c) move-result          v3
+	11      (0000002e) const-string         v4, "getType(...)"
+	12      (00000032) if-eqz               v3, +022h
+
+toString-BB@0x36 : [ toString-BB@0x4a toString-BB@0x60 ]
+	13      (00000036) invoke-interface     v0, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	14      (0000003c) move-result-object   v3
+	15      (0000003e) check-cast           v3, Ljava/security/cert/Certificate;
+	16      (00000042) instance-of          v5, v3, Ljava/security/cert/X509Certificate;
+	17      (00000046) if-eqz               v5, +00dh
+
+toString-BB@0x4a : [ toString-BB@0x6e ]
+	18      (0000004a) check-cast           v3, Ljava/security/cert/X509Certificate;
+	19      (0000004e) invoke-virtual       v3, Ljava/security/cert/X509Certificate;->getSubjectDN()Ljava/security/Principal;
+	20      (00000054) move-result-object   v3
+	21      (00000056) invoke-virtual       v3, Ljava/lang/Object;->toString()Ljava/lang/String;
+	22      (0000005c) move-result-object   v3
+	23      (0000005e) goto                 +8h
+
+toString-BB@0x60 : [ toString-BB@0x6e ]
+	24      (00000060) invoke-virtual       v3, Ljava/security/cert/Certificate;->getType()Ljava/lang/String;
+	25      (00000066) move-result-object   v3
+	26      (00000068) invoke-static        v3, v4, Lkotlin/jvm/internal/j;->d(Ljava/lang/Object; Ljava/lang/String;)V
+
+toString-BB@0x6e : [ toString-BB@0x26 ]
+	27      (0000006e) invoke-virtual       v1, v3, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	28      (00000074) goto                 -27h
+
+toString-BB@0x76 : [ toString-BB@0xe2 ]
+	29      (00000076) invoke-virtual       v1, Ljava/lang/Object;->toString()Ljava/lang/String;
+	30      (0000007c) move-result-object   v0
+	31      (0000007e) new-instance         v1, Ljava/lang/StringBuilder;
+	32      (00000082) const-string         v3, "Handshake{tlsVersion="
+	33      (00000086) invoke-direct        v1, v3, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	34      (0000008c) iget-object          v3, v6, Lokhttp3/Handshake;->a Lokhttp3/TlsVersion;
+	35      (00000090) invoke-virtual       v1, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	36      (00000096) const-string         v3, " cipherSuite="
+	37      (0000009a) invoke-virtual       v1, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	38      (000000a0) iget-object          v3, v6, Lokhttp3/Handshake;->b Lokhttp3/CipherSuite;
+	39      (000000a4) invoke-virtual       v1, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	40      (000000aa) const-string         v3, " peerCertificates="
+	41      (000000ae) invoke-virtual       v1, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	42      (000000b4) invoke-virtual       v1, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	43      (000000ba) const-string         v0, " localCertificates="
+	44      (000000be) invoke-virtual       v1, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	45      (000000c4) new-instance         v0, Ljava/util/ArrayList;
+	46      (000000c8) iget-object          v3, v6, Lokhttp3/Handshake;->c Ljava/util/List;
+	47      (000000cc) invoke-static        v3, v2, Li7/j;->X(Ljava/lang/Iterable; I)I
+	48      (000000d2) move-result          v2
+	49      (000000d4) invoke-direct        v0, v2, Ljava/util/ArrayList;-><init>(I)V
+	50      (000000da) invoke-interface     v3, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
+	51      (000000e0) move-result-object   v2
+
+toString-BB@0xe2 : [ toString-BB@0xee toString-BB@0x12e ]
+	52      (000000e2) invoke-interface     v2, Ljava/util/Iterator;->hasNext()Z
+	53      (000000e8) move-result          v3
+	54      (000000ea) if-eqz               v3, +022h
+
+toString-BB@0xee : [ toString-BB@0x102 toString-BB@0x118 ]
+	55      (000000ee) invoke-interface     v2, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	56      (000000f4) move-result-object   v3
+	57      (000000f6) check-cast           v3, Ljava/security/cert/Certificate;
+	58      (000000fa) instance-of          v5, v3, Ljava/security/cert/X509Certificate;
+	59      (000000fe) if-eqz               v5, +00dh
+
+toString-BB@0x102 : [ toString-BB@0x126 ]
+	60      (00000102) check-cast           v3, Ljava/security/cert/X509Certificate;
+	61      (00000106) invoke-virtual       v3, Ljava/security/cert/X509Certificate;->getSubjectDN()Ljava/security/Principal;
+	62      (0000010c) move-result-object   v3
+	63      (0000010e) invoke-virtual       v3, Ljava/lang/Object;->toString()Ljava/lang/String;
+	64      (00000114) move-result-object   v3
+	65      (00000116) goto                 +8h
+
+toString-BB@0x118 : [ toString-BB@0x126 ]
+	66      (00000118) invoke-virtual       v3, Ljava/security/cert/Certificate;->getType()Ljava/lang/String;
+	67      (0000011e) move-result-object   v3
+	68      (00000120) invoke-static        v3, v4, Lkotlin/jvm/internal/j;->d(Ljava/lang/Object; Ljava/lang/String;)V
+
+toString-BB@0x126 : [ toString-BB@0xe2 ]
+	69      (00000126) invoke-virtual       v0, v3, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	70      (0000012c) goto                 -25h
+
+toString-BB@0x12e : 
+	71      (0000012e) invoke-virtual       v1, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	72      (00000134) const/16             v0, 125
+	73      (00000138) invoke-virtual       v1, v0, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+	74      (0000013e) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	75      (00000144) move-result-object   v0
+	76      (00000146) return-object        v0
+

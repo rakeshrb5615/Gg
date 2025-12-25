@@ -1,0 +1,61 @@
+# Lokhttp3/Dispatcher;->a()Ljava/util/concurrent/ExecutorService; [access_flags=public final synchronized]
+#
+# Parameters:
+# local registers: v0...v9
+#
+# - return:java.util.concurrent.ExecutorService
+
+a-BB@0x0 : [ a-BB@0x2 ]
+	0       (00000000) monitor-enter        v9
+
+a-BB@0x2 : [ a-BB@0xa a-BB@0x74 ]
+	1       (00000002) iget-object          v0, v9, Lokhttp3/Dispatcher;->a Ljava/util/concurrent/ThreadPoolExecutor;
+	2       (00000006) if-nez               v0, +037h
+	2:7d
+	(Ljava/lang/Throwable; -> 70 a-BB@0x70)
+
+a-BB@0xa : [ a-BB@0x74 ]
+	3       (0000000a) new-instance         v1, Ljava/util/concurrent/ThreadPoolExecutor;
+	4       (0000000e) sget-object          v6, Ljava/util/concurrent/TimeUnit;->SECONDS Ljava/util/concurrent/TimeUnit;
+	5       (00000012) new-instance         v7, Ljava/util/concurrent/SynchronousQueue;
+	6       (00000016) invoke-direct        v7, Ljava/util/concurrent/SynchronousQueue;-><init>()V
+	7       (0000001c) new-instance         v0, Ljava/lang/StringBuilder;
+	8       (00000020) invoke-direct        v0, Ljava/lang/StringBuilder;-><init>()V
+	9       (00000026) sget-object          v2, Lokhttp3/internal/_UtilJvmKt;->b Ljava/lang/String;
+	10      (0000002a) invoke-virtual       v0, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	11      (00000030) const-string         v2, " Dispatcher"
+	12      (00000034) invoke-virtual       v0, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	13      (0000003a) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	14      (00000040) move-result-object   v0
+	15      (00000042) const-string         v2, "name"
+	16      (00000046) invoke-static        v0, v2, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	17      (0000004c) new-instance         v8, Lokhttp3/internal/b;
+	18      (00000050) const/4              v2, 0
+	19      (00000052) invoke-direct        v8, v0, v2, Lokhttp3/internal/b;-><init>(Ljava/lang/String; Z)V
+	20      (00000058) const/4              v2, 0
+	21      (0000005a) const                v3, 2147483647
+	22      (00000060) const-wide/16        v4, 60
+	23      (00000064) invoke-direct/range  v1 ... v8, Ljava/util/concurrent/ThreadPoolExecutor;-><init>(I I J Ljava/util/concurrent/TimeUnit; Ljava/util/concurrent/BlockingQueue; Ljava/util/concurrent/ThreadFactory;)V
+	24      (0000006a) iput-object          v1, v9, Lokhttp3/Dispatcher;->a Ljava/util/concurrent/ThreadPoolExecutor;
+	25      (0000006e) goto                 +3h
+	2:7d
+	(Ljava/lang/Throwable; -> 70 a-BB@0x70)
+
+a-BB@0x70 : [ a-BB@0x82 ]
+	26      (00000070) move-exception       v0
+	27      (00000072) goto                 +8h
+	2:7d
+	(Ljava/lang/Throwable; -> 70 a-BB@0x70)
+
+a-BB@0x74 : 
+	28      (00000074) iget-object          v0, v9, Lokhttp3/Dispatcher;->a Ljava/util/concurrent/ThreadPoolExecutor;
+	29      (00000078) invoke-static        v0, Lkotlin/jvm/internal/j;->b(Ljava/lang/Object;)V
+	30      (0000007e) monitor-exit         v9
+	31      (00000080) return-object        v0
+
+a-BB@0x82 : 
+	32      (00000082) monitor-exit         v9
+	33      (00000084) throw                v0
+	82:83
+	(Ljava/lang/Throwable; -> 70 a-BB@0x70)
+

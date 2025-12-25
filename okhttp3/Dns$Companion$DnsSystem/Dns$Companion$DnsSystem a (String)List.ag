@@ -1,0 +1,33 @@
+# Lokhttp3/Dns$Companion$DnsSystem;->a(Ljava/lang/String;)Ljava/util/List; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:java.lang.String
+#
+# - return:java.util.List
+
+a-BB@0x0 : [ a-BB@0xa ]
+	0       (00000000) const-string         v0, "hostname"
+	1       (00000004) invoke-static        v4, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+
+a-BB@0xa : 
+	2       (0000000a) invoke-static        v4, Ljava/net/InetAddress;->getAllByName(Ljava/lang/String;)[Ljava/net/InetAddress;
+	3       (00000010) move-result-object   v0
+	4       (00000012) const-string         v1, "getAllByName(...)"
+	5       (00000016) invoke-static        v0, v1, Lkotlin/jvm/internal/j;->d(Ljava/lang/Object; Ljava/lang/String;)V
+	6       (0000001c) invoke-static        v0, Li7/h;->i0([Ljava/lang/Object;)Ljava/util/List;
+	7       (00000022) move-result-object   v4
+	8       (00000024) return-object        v4
+	a:23
+	(Ljava/lang/NullPointerException; -> 26 a-BB@0x26)
+
+a-BB@0x26 : 
+	9       (00000026) move-exception       v0
+	10      (00000028) new-instance         v1, Ljava/net/UnknownHostException;
+	11      (0000002c) const-string         v2, "Broken system behaviour for dns lookup of "
+	12      (00000030) invoke-virtual       v2, v4, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	13      (00000036) move-result-object   v4
+	14      (00000038) invoke-direct        v1, v4, Ljava/net/UnknownHostException;-><init>(Ljava/lang/String;)V
+	15      (0000003e) invoke-virtual       v1, v0, Ljava/lang/Throwable;->initCause(Ljava/lang/Throwable;)Ljava/lang/Throwable;
+	16      (00000044) throw                v1
+

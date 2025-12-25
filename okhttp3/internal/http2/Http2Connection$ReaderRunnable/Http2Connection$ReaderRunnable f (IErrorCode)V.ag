@@ -1,0 +1,72 @@
+# Lokhttp3/internal/http2/Http2Connection$ReaderRunnable;->f(I Lokhttp3/internal/http2/ErrorCode;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:int
+# - v6:okhttp3.internal.http2.ErrorCode
+#
+# - return:void
+
+f-BB@0x0 : [ f-BB@0xc f-BB@0x62 ]
+	0       (00000000) iget-object          v0, v4, Lokhttp3/internal/http2/Http2Connection$ReaderRunnable;->b Lokhttp3/internal/http2/Http2Connection;
+	1       (00000004) sget-object          v1, Lokhttp3/internal/http2/Http2Connection;->F Lokhttp3/internal/http2/Http2Connection$Companion;
+	2       (00000008) if-eqz               v5, +02dh
+
+f-BB@0xc : [ f-BB@0x14 f-BB@0x62 ]
+	3       (0000000c) and-int/lit8         v1, v5, 1
+	4       (00000010) if-nez               v1, +029h
+
+f-BB@0x14 : 
+	5       (00000014) iget-object          v1, v0, Lokhttp3/internal/http2/Http2Connection;->o Lokhttp3/internal/concurrent/TaskQueue;
+	6       (00000018) new-instance         v2, Ljava/lang/StringBuilder;
+	7       (0000001c) invoke-direct        v2, Ljava/lang/StringBuilder;-><init>()V
+	8       (00000022) iget-object          v3, v0, Lokhttp3/internal/http2/Http2Connection;->c Ljava/lang/String;
+	9       (00000026) invoke-virtual       v2, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	10      (0000002c) const/16             v3, 91
+	11      (00000030) invoke-virtual       v2, v3, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+	12      (00000036) invoke-virtual       v2, v5, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	13      (0000003c) const-string         v3, "] onReset"
+	14      (00000040) invoke-virtual       v2, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	15      (00000046) invoke-virtual       v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	16      (0000004c) move-result-object   v2
+	17      (0000004e) new-instance         v3, Lokhttp3/internal/http2/e;
+	18      (00000052) invoke-direct        v3, v0, v5, v6, Lokhttp3/internal/http2/e;-><init>(Lokhttp3/internal/http2/Http2Connection; I Lokhttp3/internal/http2/ErrorCode;)V
+	19      (00000058) const/4              v5, 6
+	20      (0000005a) invoke-static        v1, v2, v3, v5, Lokhttp3/internal/concurrent/TaskQueue;->b(Lokhttp3/internal/concurrent/TaskQueue; Ljava/lang/String; Lu7/a; I)V
+	21      (00000060) return-void          
+
+f-BB@0x62 : [ f-BB@0x6e f-BB@0x94 ]
+	22      (00000062) invoke-virtual       v0, v5, Lokhttp3/internal/http2/Http2Connection;->i(I)Lokhttp3/internal/http2/Http2Stream;
+	23      (00000068) move-result-object   v5
+	24      (0000006a) if-eqz               v5, +015h
+
+f-BB@0x6e : [ f-BB@0x70 ]
+	25      (0000006e) monitor-enter        v5
+
+f-BB@0x70 : [ f-BB@0x7c f-BB@0x8c ]
+	26      (00000070) invoke-virtual       v5, Lokhttp3/internal/http2/Http2Stream;->h()Lokhttp3/internal/http2/ErrorCode;
+	27      (00000076) move-result-object   v0
+	28      (00000078) if-nez               v0, +00ah
+	70:85
+	(Ljava/lang/Throwable; -> 88 f-BB@0x88)
+
+f-BB@0x7c : [ f-BB@0x8c ]
+	29      (0000007c) iput-object          v6, v5, Lokhttp3/internal/http2/Http2Stream;->r Lokhttp3/internal/http2/ErrorCode;
+	30      (00000080) invoke-virtual       v5, Ljava/lang/Object;->notifyAll()V
+	31      (00000086) goto                 +3h
+
+f-BB@0x88 : [ f-BB@0x90 ]
+	32      (00000088) move-exception       v6
+	33      (0000008a) goto                 +3h
+
+f-BB@0x8c : 
+	34      (0000008c) monitor-exit         v5
+	35      (0000008e) return-void          
+
+f-BB@0x90 : 
+	36      (00000090) monitor-exit         v5
+	37      (00000092) throw                v6
+
+f-BB@0x94 : 
+	38      (00000094) return-void          
+

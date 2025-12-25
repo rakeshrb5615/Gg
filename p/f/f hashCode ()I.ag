@@ -1,0 +1,31 @@
+# Lp/f;->hashCode()I [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v4
+#
+# - return:int
+
+hashCode-BB@0x0 : [ hashCode-BB@0xa ]
+	0       (00000000) invoke-virtual       v4, Lp/f;->iterator()Ljava/util/Iterator;
+	1       (00000006) move-result-object   v0
+	2       (00000008) const/4              v1, 0
+
+hashCode-BB@0xa : [ hashCode-BB@0x1c hashCode-BB@0x34 ]
+	3       (0000000a) move-object          v2, v0
+	4       (0000000c) check-cast           v2, Lp/b;
+	5       (00000010) invoke-virtual       v2, Lp/b;->hasNext()Z
+	6       (00000016) move-result          v3
+	7       (00000018) if-eqz               v3, +00eh
+
+hashCode-BB@0x1c : [ hashCode-BB@0xa ]
+	8       (0000001c) invoke-virtual       v2, Lp/b;->next()Ljava/lang/Object;
+	9       (00000022) move-result-object   v2
+	10      (00000024) check-cast           v2, Ljava/util/Map$Entry;
+	11      (00000028) invoke-interface     v2, Ljava/util/Map$Entry;->hashCode()I
+	12      (0000002e) move-result          v2
+	13      (00000030) add-int/2addr        v1, v2
+	14      (00000032) goto                 -14h
+
+hashCode-BB@0x34 : 
+	15      (00000034) return               v1
+

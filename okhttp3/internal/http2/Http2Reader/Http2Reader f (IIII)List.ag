@@ -1,0 +1,227 @@
+# Lokhttp3/internal/http2/Http2Reader;->f(I I I I)Ljava/util/List; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:int
+# - v6:int
+# - v7:int
+# - v8:int
+#
+# - return:java.util.List
+
+f-BB@0x0 : [ f-BB@0x24 ]
+	0       (00000000) iget-object          v0, v4, Lokhttp3/internal/http2/Http2Reader;->b Lokhttp3/internal/http2/Http2Reader$ContinuationSource;
+	1       (00000004) iput                 v5, v0, Lokhttp3/internal/http2/Http2Reader$ContinuationSource;->e I
+	2       (00000008) iput                 v5, v0, Lokhttp3/internal/http2/Http2Reader$ContinuationSource;->b I
+	3       (0000000c) iput                 v6, v0, Lokhttp3/internal/http2/Http2Reader$ContinuationSource;->f I
+	4       (00000010) iput                 v7, v0, Lokhttp3/internal/http2/Http2Reader$ContinuationSource;->c I
+	5       (00000014) iput                 v8, v0, Lokhttp3/internal/http2/Http2Reader$ContinuationSource;->d I
+	6       (00000018) iget-object          v5, v4, Lokhttp3/internal/http2/Http2Reader;->c Lokhttp3/internal/http2/Hpack$Reader;
+	7       (0000001c) iget-object          v6, v5, Lokhttp3/internal/http2/Hpack$Reader;->c Lx8/b0;
+	8       (00000020) iget-object          v7, v5, Lokhttp3/internal/http2/Hpack$Reader;->b Ljava/util/ArrayList;
+
+f-BB@0x24 : [ f-BB@0x30 f-BB@0x272 ]
+	9       (00000024) invoke-virtual       v6, Lx8/b0;->h()Z
+	10      (0000002a) move-result          v8
+	11      (0000002c) if-nez               v8, +123h
+
+f-BB@0x30 : [ f-BB@0x48 f-BB@0x262 ]
+	12      (00000030) invoke-virtual       v6, Lx8/b0;->readByte()B
+	13      (00000036) move-result          v8
+	14      (00000038) sget-object          v0, Lokhttp3/internal/_UtilCommonKt;->a [B
+	15      (0000003c) and-int/lit16        v0, v8, 255
+	16      (00000040) const/16             v1, 128
+	17      (00000044) if-eq                v0, v1, +10fh
+
+f-BB@0x48 : [ f-BB@0x50 f-BB@0xe2 ]
+	18      (00000048) and-int/lit16        v2, v8, 128
+	19      (0000004c) if-ne                v2, v1, +04bh
+
+f-BB@0x50 : [ f-BB@0x64 f-BB@0x8e ]
+	20      (00000050) const/16             v8, 127
+	21      (00000054) invoke-virtual       v5, v0, v8, Lokhttp3/internal/http2/Hpack$Reader;->e(I I)I
+	22      (0000005a) move-result          v8
+	23      (0000005c) add-int/lit8         v0, v8, -1
+	24      (00000060) if-ltz               v0, +017h
+
+f-BB@0x64 : [ f-BB@0x7c f-BB@0x8e ]
+	25      (00000064) sget-object          v1, Lokhttp3/internal/http2/Hpack;->a Lokhttp3/internal/http2/Hpack;
+	26      (00000068) invoke-virtual       v1, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	27      (0000006e) sget-object          v2, Lokhttp3/internal/http2/Hpack;->b [Lokhttp3/internal/http2/Header;
+	28      (00000072) array-length         v3, v2
+	29      (00000074) add-int/lit8         v3, v3, -1
+	30      (00000078) if-gt                v0, v3, +00bh
+
+f-BB@0x7c : [ f-BB@0x24 ]
+	31      (0000007c) invoke-virtual       v1, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	32      (00000082) aget-object          v8, v2, v0
+	33      (00000086) invoke-virtual       v7, v8, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	34      (0000008c) goto                 -34h
+
+f-BB@0x8e : [ f-BB@0xae f-BB@0xca ]
+	35      (0000008e) sget-object          v1, Lokhttp3/internal/http2/Hpack;->a Lokhttp3/internal/http2/Hpack;
+	36      (00000092) invoke-virtual       v1, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	37      (00000098) sget-object          v1, Lokhttp3/internal/http2/Hpack;->b [Lokhttp3/internal/http2/Header;
+	38      (0000009c) array-length         v1, v1
+	39      (0000009e) sub-int/2addr        v0, v1
+	40      (000000a0) iget                 v1, v5, Lokhttp3/internal/http2/Hpack$Reader;->e I
+	41      (000000a4) add-int/lit8         v1, v1, 1
+	42      (000000a8) add-int/2addr        v1, v0
+	43      (000000aa) if-ltz               v1, +010h
+
+f-BB@0xae : [ f-BB@0xb8 f-BB@0xca ]
+	44      (000000ae) iget-object          v0, v5, Lokhttp3/internal/http2/Hpack$Reader;->d [Lokhttp3/internal/http2/Header;
+	45      (000000b2) array-length         v2, v0
+	46      (000000b4) if-ge                v1, v2, +00bh
+
+f-BB@0xb8 : [ f-BB@0x24 ]
+	47      (000000b8) aget-object          v8, v0, v1
+	48      (000000bc) invoke-static        v8, Lkotlin/jvm/internal/j;->b(Ljava/lang/Object;)V
+	49      (000000c2) invoke-virtual       v7, v8, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	50      (000000c8) goto                 -52h
+
+f-BB@0xca : 
+	51      (000000ca) new-instance         v5, Ljava/io/IOException;
+	52      (000000ce) const-string         v6, "Header index too large "
+	53      (000000d2) invoke-static        v8, v6, Lg2/g;->c(I Ljava/lang/String;)Ljava/lang/String;
+	54      (000000d8) move-result-object   v6
+	55      (000000da) invoke-direct        v5, v6, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+	56      (000000e0) throw                v5
+
+f-BB@0xe2 : [ f-BB@0xea f-BB@0x11c ]
+	57      (000000e2) const/16             v1, 64
+	58      (000000e6) if-ne                v0, v1, +01bh
+
+f-BB@0xea : [ f-BB@0x24 ]
+	59      (000000ea) sget-object          v8, Lokhttp3/internal/http2/Hpack;->a Lokhttp3/internal/http2/Hpack;
+	60      (000000ee) invoke-virtual       v5, Lokhttp3/internal/http2/Hpack$Reader;->d()Lx8/j;
+	61      (000000f4) move-result-object   v0
+	62      (000000f6) invoke-virtual       v8, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	63      (000000fc) invoke-static        v0, Lokhttp3/internal/http2/Hpack;->a(Lx8/j;)V
+	64      (00000102) invoke-virtual       v5, Lokhttp3/internal/http2/Hpack$Reader;->d()Lx8/j;
+	65      (00000108) move-result-object   v8
+	66      (0000010a) new-instance         v1, Lokhttp3/internal/http2/Header;
+	67      (0000010e) invoke-direct        v1, v0, v8, Lokhttp3/internal/http2/Header;-><init>(Lx8/j; Lx8/j;)V
+	68      (00000114) invoke-virtual       v5, v1, Lokhttp3/internal/http2/Hpack$Reader;->c(Lokhttp3/internal/http2/Header;)V
+	69      (0000011a) goto                 -7bh
+
+f-BB@0x11c : [ f-BB@0x124 f-BB@0x158 ]
+	70      (0000011c) and-int/lit8         v2, v8, 64
+	71      (00000120) if-ne                v2, v1, +01ch
+
+f-BB@0x124 : [ f-BB@0x24 ]
+	72      (00000124) const/16             v8, 63
+	73      (00000128) invoke-virtual       v5, v0, v8, Lokhttp3/internal/http2/Hpack$Reader;->e(I I)I
+	74      (0000012e) move-result          v8
+	75      (00000130) add-int/lit8         v8, v8, -1
+	76      (00000134) invoke-virtual       v5, v8, Lokhttp3/internal/http2/Hpack$Reader;->b(I)Lx8/j;
+	77      (0000013a) move-result-object   v8
+	78      (0000013c) invoke-virtual       v5, Lokhttp3/internal/http2/Hpack$Reader;->d()Lx8/j;
+	79      (00000142) move-result-object   v0
+	80      (00000144) new-instance         v1, Lokhttp3/internal/http2/Header;
+	81      (00000148) invoke-direct        v1, v8, v0, Lokhttp3/internal/http2/Header;-><init>(Lx8/j; Lx8/j;)V
+	82      (0000014e) invoke-virtual       v5, v1, Lokhttp3/internal/http2/Hpack$Reader;->c(Lokhttp3/internal/http2/Header;)V
+	83      (00000154) goto/16              -098h
+
+f-BB@0x158 : [ f-BB@0x164 f-BB@0x1ec ]
+	84      (00000158) and-int/lit8         v8, v8, 32
+	85      (0000015c) const/16             v1, 32
+	86      (00000160) if-ne                v8, v1, +046h
+
+f-BB@0x164 : [ f-BB@0x178 f-BB@0x1c0 ]
+	87      (00000164) const/16             v8, 31
+	88      (00000168) invoke-virtual       v5, v0, v8, Lokhttp3/internal/http2/Hpack$Reader;->e(I I)I
+	89      (0000016e) move-result          v8
+	90      (00000170) iput                 v8, v5, Lokhttp3/internal/http2/Hpack$Reader;->a I
+	91      (00000174) if-ltz               v8, +026h
+
+f-BB@0x178 : [ f-BB@0x180 f-BB@0x1c0 ]
+	92      (00000178) const/16             v0, 4096
+	93      (0000017c) if-gt                v8, v0, +022h
+
+f-BB@0x180 : [ f-BB@0x188 f-BB@0x24 ]
+	94      (00000180) iget                 v0, v5, Lokhttp3/internal/http2/Hpack$Reader;->g I
+	95      (00000184) if-ge                v8, v0, -0b0h
+
+f-BB@0x188 : [ f-BB@0x18c f-BB@0x1b4 ]
+	96      (00000188) if-nez               v8, +016h
+
+f-BB@0x18c : [ f-BB@0x24 ]
+	97      (0000018c) iget-object          v8, v5, Lokhttp3/internal/http2/Hpack$Reader;->d [Lokhttp3/internal/http2/Header;
+	98      (00000190) array-length         v0, v8
+	99      (00000192) const/4              v1, 0
+	100     (00000194) invoke-static        v8, v1, v0, Li7/h;->d0([Ljava/lang/Object; I I)V
+	101     (0000019a) iget-object          v8, v5, Lokhttp3/internal/http2/Hpack$Reader;->d [Lokhttp3/internal/http2/Header;
+	102     (0000019e) array-length         v8, v8
+	103     (000001a0) add-int/lit8         v8, v8, -1
+	104     (000001a4) iput                 v8, v5, Lokhttp3/internal/http2/Hpack$Reader;->e I
+	105     (000001a8) iput                 v1, v5, Lokhttp3/internal/http2/Hpack$Reader;->f I
+	106     (000001ac) iput                 v1, v5, Lokhttp3/internal/http2/Hpack$Reader;->g I
+	107     (000001b0) goto/16              -0c6h
+
+f-BB@0x1b4 : [ f-BB@0x24 ]
+	108     (000001b4) sub-int/2addr        v0, v8
+	109     (000001b6) invoke-virtual       v5, v0, Lokhttp3/internal/http2/Hpack$Reader;->a(I)I
+	110     (000001bc) goto/16              -0cch
+
+f-BB@0x1c0 : 
+	111     (000001c0) new-instance         v6, Ljava/io/IOException;
+	112     (000001c4) new-instance         v7, Ljava/lang/StringBuilder;
+	113     (000001c8) const-string         v8, "Invalid dynamic table size update "
+	114     (000001cc) invoke-direct        v7, v8, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	115     (000001d2) iget                 v5, v5, Lokhttp3/internal/http2/Hpack$Reader;->a I
+	116     (000001d6) invoke-virtual       v7, v5, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	117     (000001dc) invoke-virtual       v7, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	118     (000001e2) move-result-object   v5
+	119     (000001e4) invoke-direct        v6, v5, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+	120     (000001ea) throw                v6
+
+f-BB@0x1ec : [ f-BB@0x1f4 f-BB@0x22e ]
+	121     (000001ec) const/16             v8, 16
+	122     (000001f0) if-eq                v0, v8, +01fh
+
+f-BB@0x1f4 : [ f-BB@0x1f8 f-BB@0x1fa ]
+	123     (000001f4) if-nez               v0, +003h
+
+f-BB@0x1f8 : [ f-BB@0x22e ]
+	124     (000001f8) goto                 +1bh
+
+f-BB@0x1fa : [ f-BB@0x24 ]
+	125     (000001fa) const/16             v8, 15
+	126     (000001fe) invoke-virtual       v5, v0, v8, Lokhttp3/internal/http2/Hpack$Reader;->e(I I)I
+	127     (00000204) move-result          v8
+	128     (00000206) add-int/lit8         v8, v8, -1
+	129     (0000020a) invoke-virtual       v5, v8, Lokhttp3/internal/http2/Hpack$Reader;->b(I)Lx8/j;
+	130     (00000210) move-result-object   v8
+	131     (00000212) invoke-virtual       v5, Lokhttp3/internal/http2/Hpack$Reader;->d()Lx8/j;
+	132     (00000218) move-result-object   v0
+	133     (0000021a) new-instance         v1, Lokhttp3/internal/http2/Header;
+	134     (0000021e) invoke-direct        v1, v8, v0, Lokhttp3/internal/http2/Header;-><init>(Lx8/j; Lx8/j;)V
+	135     (00000224) invoke-virtual       v7, v1, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	136     (0000022a) goto/16              -103h
+
+f-BB@0x22e : [ f-BB@0x24 ]
+	137     (0000022e) sget-object          v8, Lokhttp3/internal/http2/Hpack;->a Lokhttp3/internal/http2/Hpack;
+	138     (00000232) invoke-virtual       v5, Lokhttp3/internal/http2/Hpack$Reader;->d()Lx8/j;
+	139     (00000238) move-result-object   v0
+	140     (0000023a) invoke-virtual       v8, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	141     (00000240) invoke-static        v0, Lokhttp3/internal/http2/Hpack;->a(Lx8/j;)V
+	142     (00000246) invoke-virtual       v5, Lokhttp3/internal/http2/Hpack$Reader;->d()Lx8/j;
+	143     (0000024c) move-result-object   v8
+	144     (0000024e) new-instance         v1, Lokhttp3/internal/http2/Header;
+	145     (00000252) invoke-direct        v1, v0, v8, Lokhttp3/internal/http2/Header;-><init>(Lx8/j; Lx8/j;)V
+	146     (00000258) invoke-virtual       v7, v1, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	147     (0000025e) goto/16              -11dh
+
+f-BB@0x262 : 
+	148     (00000262) new-instance         v5, Ljava/io/IOException;
+	149     (00000266) const-string         v6, "index == 0"
+	150     (0000026a) invoke-direct        v5, v6, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+	151     (00000270) throw                v5
+
+f-BB@0x272 : 
+	152     (00000272) invoke-static        v7, Li7/i;->j0(Ljava/lang/Iterable;)Ljava/util/List;
+	153     (00000278) move-result-object   v5
+	154     (0000027a) invoke-virtual       v7, Ljava/util/ArrayList;->clear()V
+	155     (00000280) return-object        v5
+

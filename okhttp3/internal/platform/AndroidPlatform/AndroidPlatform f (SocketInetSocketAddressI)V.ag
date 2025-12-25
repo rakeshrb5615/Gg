@@ -1,0 +1,35 @@
+# Lokhttp3/internal/platform/AndroidPlatform;->f(Ljava/net/Socket; Ljava/net/InetSocketAddress; I)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:java.net.Socket
+# - v3:java.net.InetSocketAddress
+# - v4:int
+#
+# - return:void
+
+f-BB@0x0 : [ f-BB@0xa ]
+	0       (00000000) const-string         v0, "address"
+	1       (00000004) invoke-static        v3, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+
+f-BB@0xa : 
+	2       (0000000a) invoke-virtual       v2, v3, v4, Ljava/net/Socket;->connect(Ljava/net/SocketAddress; I)V
+	3       (00000010) return-void          
+	a:f
+	(Ljava/lang/ClassCastException; -> 12 f-BB@0x12)
+
+f-BB@0x12 : [ f-BB@0x20 f-BB@0x30 ]
+	4       (00000012) move-exception       v2
+	5       (00000014) sget                 v3, Landroid/os/Build$VERSION;->SDK_INT I
+	6       (00000018) const/16             v4, 26
+	7       (0000001c) if-ne                v3, v4, +00ah
+
+f-BB@0x20 : 
+	8       (00000020) new-instance         v3, Ljava/io/IOException;
+	9       (00000024) const-string         v4, "Exception in connect"
+	10      (00000028) invoke-direct        v3, v4, v2, Ljava/io/IOException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	11      (0000002e) throw                v3
+
+f-BB@0x30 : 
+	12      (00000030) throw                v2
+

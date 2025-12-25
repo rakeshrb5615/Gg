@@ -1,0 +1,303 @@
+# Lokhttp3/internal/authenticator/JavaNetAuthenticator;->a(Lokhttp3/Route; Lokhttp3/Response;)Lokhttp3/Request; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v20
+# - v21:okhttp3.Route
+# - v22:okhttp3.Response
+#
+# - return:okhttp3.Request
+
+a-BB@0x0 : [ a-BB@0x1e a-BB@0x30 ]
+	0       (00000000) move-object/from16   v1, v21
+	1       (00000004) move-object/from16   v2, v22
+	2       (00000008) iget-object          v3, v2, Lokhttp3/Response;->f Lokhttp3/Headers;
+	3       (0000000c) iget                 v0, v2, Lokhttp3/Response;->d I
+	4       (00000010) const/16             v4, 401
+	5       (00000014) const/4              v5, 0
+	6       (00000016) const/16             v6, 407
+	7       (0000001a) if-eq                v0, v4, +00bh
+
+a-BB@0x1e : [ a-BB@0x22 a-BB@0x28 ]
+	8       (0000001e) if-eq                v0, v6, +005h
+
+a-BB@0x22 : [ a-BB@0xaa ]
+	9       (00000022) sget-object          v0, Li7/n;->a Li7/n;
+	10      (00000026) goto                 +42h
+
+a-BB@0x28 : [ a-BB@0x2c ]
+	11      (00000028) const-string         v0, "Proxy-Authenticate"
+
+a-BB@0x2c : [ a-BB@0x36 ]
+	12      (0000002c) move-object          v4, v0
+	13      (0000002e) goto                 +4h
+
+a-BB@0x30 : [ a-BB@0x2c ]
+	14      (00000030) const-string         v0, "WWW-Authenticate"
+	15      (00000034) goto                 -4h
+
+a-BB@0x36 : [ a-BB@0x4e ]
+	16      (00000036) sget-object          v0, Lokhttp3/internal/http/HttpHeaders;->a Lx8/j;
+	17      (0000003a) new-instance         v7, Ljava/util/ArrayList;
+	18      (0000003e) invoke-direct        v7, Ljava/util/ArrayList;-><init>()V
+	19      (00000044) invoke-virtual       v3, Lokhttp3/Headers;->size()I
+	20      (0000004a) move-result          v8
+	21      (0000004c) move                 v9, v5
+
+a-BB@0x4e : [ a-BB@0x52 a-BB@0xa8 ]
+	22      (0000004e) if-ge                v9, v8, +02dh
+
+a-BB@0x52 : [ a-BB@0x66 a-BB@0xa2 ]
+	23      (00000052) invoke-virtual       v3, v9, Lokhttp3/Headers;->c(I)Ljava/lang/String;
+	24      (00000058) move-result-object   v0
+	25      (0000005a) invoke-virtual       v4, v0, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
+	26      (00000060) move-result          v0
+	27      (00000062) if-eqz               v0, +020h
+
+a-BB@0x66 : [ a-BB@0x7e ]
+	28      (00000066) new-instance         v0, Lx8/g;
+	29      (0000006a) invoke-direct        v0, Ljava/lang/Object;-><init>()V
+	30      (00000070) invoke-virtual       v3, v9, Lokhttp3/Headers;->e(I)Ljava/lang/String;
+	31      (00000076) move-result-object   v10
+	32      (00000078) invoke-virtual       v0, v10, Lx8/g;->S(Ljava/lang/String;)V
+
+a-BB@0x7e : [ a-BB@0xa2 ]
+	33      (0000007e) invoke-static        v0, v7, Lokhttp3/internal/http/HttpHeaders;->b(Lx8/g; Ljava/util/ArrayList;)V
+	34      (00000084) goto                 +fh
+	7e:83
+	(Ljava/io/EOFException; -> 86 a-BB@0x86)
+
+a-BB@0x86 : [ a-BB@0xa2 ]
+	35      (00000086) move-exception       v0
+	36      (00000088) sget-object          v10, Lokhttp3/internal/platform/Platform;->a Lokhttp3/internal/platform/Platform$Companion;
+	37      (0000008c) invoke-virtual       v10, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	38      (00000092) sget-object          v10, Lokhttp3/internal/platform/Platform;->b Lokhttp3/internal/platform/Platform;
+	39      (00000096) const-string         v11, "Unable to parse challenge"
+	40      (0000009a) const/4              v12, 5
+	41      (0000009c) invoke-virtual       v10, v12, v11, v0, Lokhttp3/internal/platform/Platform;->j(I Ljava/lang/String; Ljava/lang/Throwable;)V
+
+a-BB@0xa2 : [ a-BB@0x4e ]
+	42      (000000a2) add-int/lit8         v9, v9, 1
+	43      (000000a6) goto                 -2ch
+
+a-BB@0xa8 : [ a-BB@0xaa ]
+	44      (000000a8) move-object          v0, v7
+
+a-BB@0xaa : [ a-BB@0xba a-BB@0xbc ]
+	45      (000000aa) iget-object          v3, v2, Lokhttp3/Response;->a Lokhttp3/Request;
+	46      (000000ae) iget-object          v4, v3, Lokhttp3/Request;->a Lokhttp3/HttpUrl;
+	47      (000000b2) iget                 v2, v2, Lokhttp3/Response;->d I
+	48      (000000b6) if-ne                v2, v6, +003h
+
+a-BB@0xba : [ a-BB@0xbc ]
+	49      (000000ba) const/4              v5, 1
+
+a-BB@0xbc : [ a-BB@0xc0 a-BB@0xc6 ]
+	50      (000000bc) if-eqz               v1, +005h
+
+a-BB@0xc0 : [ a-BB@0xca ]
+	51      (000000c0) iget-object          v2, v1, Lokhttp3/Route;->b Ljava/net/Proxy;
+	52      (000000c4) goto                 +3h
+
+a-BB@0xc6 : [ a-BB@0xca ]
+	53      (000000c6) sget-object          v2, Ljava/net/Proxy;->NO_PROXY Ljava/net/Proxy;
+
+a-BB@0xca : [ a-BB@0xd2 ]
+	54      (000000ca) invoke-interface     v0, Ljava/util/List;->iterator()Ljava/util/Iterator;
+	55      (000000d0) move-result-object   v0
+
+a-BB@0xd2 : [ a-BB@0xde a-BB@0x304 ]
+	56      (000000d2) invoke-interface     v0, Ljava/util/Iterator;->hasNext()Z
+	57      (000000d8) move-result          v6
+	58      (000000da) if-eqz               v6, +115h
+
+a-BB@0xde : [ a-BB@0xfe a-BB@0x100 ]
+	59      (000000de) invoke-interface     v0, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	60      (000000e4) move-result-object   v6
+	61      (000000e6) check-cast           v6, Lokhttp3/Challenge;
+	62      (000000ea) const-string         v7, "Basic"
+	63      (000000ee) iget-object          v8, v6, Lokhttp3/Challenge;->a Ljava/lang/String;
+	64      (000000f2) invoke-virtual       v7, v8, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
+	65      (000000f8) move-result          v7
+	66      (000000fa) if-nez               v7, +003h
+
+a-BB@0xfe : [ a-BB@0xd2 ]
+	67      (000000fe) goto                 -16h
+
+a-BB@0x100 : [ a-BB@0x104 a-BB@0x110 ]
+	68      (00000100) if-eqz               v1, +008h
+
+a-BB@0x104 : [ a-BB@0x110 a-BB@0x116 ]
+	69      (00000104) iget-object          v7, v1, Lokhttp3/Route;->a Lokhttp3/Address;
+	70      (00000108) iget-object          v7, v7, Lokhttp3/Address;->a Lokhttp3/Dns;
+	71      (0000010c) if-nez               v7, +005h
+
+a-BB@0x110 : [ a-BB@0x11e ]
+	72      (00000110) move-object/from16   v7, v20
+	73      (00000114) goto                 +5h
+
+a-BB@0x116 : [ a-BB@0x122 ]
+	74      (00000116) move-object          v8, v7
+	75      (00000118) move-object/from16   v7, v20
+	76      (0000011c) goto                 +3h
+
+a-BB@0x11e : [ a-BB@0x122 ]
+	77      (0000011e) iget-object          v8, v7, Lokhttp3/internal/authenticator/JavaNetAuthenticator;->b Lokhttp3/Dns;
+
+a-BB@0x122 : [ a-BB@0x12a a-BB@0x1a4 ]
+	78      (00000122) const-string         v9, "realm"
+	79      (00000126) if-eqz               v5, +03fh
+
+a-BB@0x12a : [ a-BB@0x172 ]
+	80      (0000012a) invoke-virtual       v2, Ljava/net/Proxy;->address()Ljava/net/SocketAddress;
+	81      (00000130) move-result-object   v10
+	82      (00000132) const-string         v11, "null cannot be cast to non-null type java.net.InetSocketAddress"
+	83      (00000136) invoke-static        v10, v11, Lkotlin/jvm/internal/j;->c(Ljava/lang/Object; Ljava/lang/String;)V
+	84      (0000013c) check-cast           v10, Ljava/net/InetSocketAddress;
+	85      (00000140) invoke-virtual       v10, Ljava/net/InetSocketAddress;->getHostName()Ljava/lang/String;
+	86      (00000146) move-result-object   v11
+	87      (00000148) invoke-static        v2, v4, v8, Lokhttp3/internal/authenticator/JavaNetAuthenticator;->b(Ljava/net/Proxy; Lokhttp3/HttpUrl; Lokhttp3/Dns;)Ljava/net/InetAddress;
+	88      (0000014e) move-result-object   v12
+	89      (00000150) invoke-virtual       v10, Ljava/net/InetSocketAddress;->getPort()I
+	90      (00000156) move-result          v13
+	91      (00000158) iget-object          v14, v4, Lokhttp3/HttpUrl;->a Ljava/lang/String;
+	92      (0000015c) iget-object          v8, v6, Lokhttp3/Challenge;->b Ljava/util/Map;
+	93      (00000160) invoke-interface     v8, v9, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	94      (00000166) move-result-object   v8
+	95      (00000168) move-object          v15, v8
+	96      (0000016a) check-cast           v15, Ljava/lang/String;
+	97      (0000016e) iget-object          v8, v6, Lokhttp3/Challenge;->a Ljava/lang/String;
+
+a-BB@0x172 : [ a-BB@0x1fc ]
+	98      (00000172) new-instance         v9, Ljava/net/URL;
+	99      (00000176) iget-object          v10, v4, Lokhttp3/HttpUrl;->i Ljava/lang/String;
+	100     (0000017a) invoke-direct        v9, v10, Ljava/net/URL;-><init>(Ljava/lang/String;)V
+	101     (00000180) sget-object          v18, Ljava/net/Authenticator$RequestorType;->PROXY Ljava/net/Authenticator$RequestorType;
+	102     (00000184) move-object/from16   v16, v8
+	103     (00000188) move-object/from16   v17, v9
+	104     (0000018c) invoke-static/range  v11 ... v18, Ljava/net/Authenticator;->requestPasswordAuthentication(Ljava/lang/String; Ljava/net/InetAddress; I Ljava/lang/String; Ljava/lang/String; Ljava/lang/String; Ljava/net/URL; Ljava/net/Authenticator$RequestorType;)Ljava/net/PasswordAuthentication;
+	105     (00000192) move-result-object   v8
+	106     (00000194) goto                 +34h
+	172:17f
+	(Ljava/net/MalformedURLException; -> 196 a-BB@0x196)
+
+a-BB@0x196 : 
+	107     (00000196) move-exception       v0
+	108     (00000198) new-instance         v1, Ljava/lang/RuntimeException;
+	109     (0000019c) invoke-direct        v1, v0, Ljava/lang/RuntimeException;-><init>(Ljava/lang/Throwable;)V
+	110     (000001a2) throw                v1
+
+a-BB@0x1a4 : [ a-BB@0x1d8 ]
+	111     (000001a4) iget-object          v10, v4, Lokhttp3/HttpUrl;->d Ljava/lang/String;
+	112     (000001a8) invoke-static        v2, Lkotlin/jvm/internal/j;->b(Ljava/lang/Object;)V
+	113     (000001ae) invoke-static        v2, v4, v8, Lokhttp3/internal/authenticator/JavaNetAuthenticator;->b(Ljava/net/Proxy; Lokhttp3/HttpUrl; Lokhttp3/Dns;)Ljava/net/InetAddress;
+	114     (000001b4) move-result-object   v8
+	115     (000001b6) move-object          v11, v8
+	116     (000001b8) move-object          v8, v10
+	117     (000001ba) iget                 v10, v4, Lokhttp3/HttpUrl;->e I
+	118     (000001be) move-object          v12, v11
+	119     (000001c0) iget-object          v11, v4, Lokhttp3/HttpUrl;->a Ljava/lang/String;
+	120     (000001c4) iget-object          v13, v6, Lokhttp3/Challenge;->b Ljava/util/Map;
+	121     (000001c8) invoke-interface     v13, v9, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	122     (000001ce) move-result-object   v9
+	123     (000001d0) check-cast           v9, Ljava/lang/String;
+	124     (000001d4) iget-object          v13, v6, Lokhttp3/Challenge;->a Ljava/lang/String;
+
+a-BB@0x1d8 : [ a-BB@0x1fc ]
+	125     (000001d8) new-instance         v14, Ljava/net/URL;
+	126     (000001dc) iget-object          v15, v4, Lokhttp3/HttpUrl;->i Ljava/lang/String;
+	127     (000001e0) invoke-direct        v14, v15, Ljava/net/URL;-><init>(Ljava/lang/String;)V
+	128     (000001e6) sget-object          v15, Ljava/net/Authenticator$RequestorType;->SERVER Ljava/net/Authenticator$RequestorType;
+	129     (000001ea) move-object/from16   v19, v12
+	130     (000001ee) move-object          v12, v9
+	131     (000001f0) move-object/from16   v9, v19
+	132     (000001f4) invoke-static/range  v8 ... v15, Ljava/net/Authenticator;->requestPasswordAuthentication(Ljava/lang/String; Ljava/net/InetAddress; I Ljava/lang/String; Ljava/lang/String; Ljava/lang/String; Ljava/net/URL; Ljava/net/Authenticator$RequestorType;)Ljava/net/PasswordAuthentication;
+	133     (000001fa) move-result-object   v8
+	1d8:1e5
+	(Ljava/net/MalformedURLException; -> 2f6 a-BB@0x2f6)
+
+a-BB@0x1fc : [ a-BB@0x200 a-BB@0xd2 ]
+	134     (000001fc) if-eqz               v8, -095h
+
+a-BB@0x200 : [ a-BB@0x204 a-BB@0x20a ]
+	135     (00000200) if-eqz               v5, +005h
+
+a-BB@0x204 : [ a-BB@0x20e ]
+	136     (00000204) const-string         v0, "Proxy-Authorization"
+	137     (00000208) goto                 +3h
+
+a-BB@0x20a : [ a-BB@0x20e ]
+	138     (0000020a) const-string         v0, "Authorization"
+
+a-BB@0x20e : [ a-BB@0x254 a-BB@0x268 ]
+	139     (0000020e) invoke-virtual       v8, Ljava/net/PasswordAuthentication;->getUserName()Ljava/lang/String;
+	140     (00000214) move-result-object   v1
+	141     (00000216) const-string         v2, "getUserName(...)"
+	142     (0000021a) invoke-static        v1, v2, Lkotlin/jvm/internal/j;->d(Ljava/lang/Object; Ljava/lang/String;)V
+	143     (00000220) invoke-virtual       v8, Ljava/net/PasswordAuthentication;->getPassword()[C
+	144     (00000226) move-result-object   v2
+	145     (00000228) const-string         v4, "getPassword(...)"
+	146     (0000022c) invoke-static        v2, v4, Lkotlin/jvm/internal/j;->d(Ljava/lang/Object; Ljava/lang/String;)V
+	147     (00000232) new-instance         v4, Ljava/lang/String;
+	148     (00000236) invoke-direct        v4, v2, Ljava/lang/String;-><init>([C)V
+	149     (0000023c) iget-object          v2, v6, Lokhttp3/Challenge;->b Ljava/util/Map;
+	150     (00000240) const-string         v5, "charset"
+	151     (00000244) invoke-interface     v2, v5, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	152     (0000024a) move-result-object   v2
+	153     (0000024c) check-cast           v2, Ljava/lang/String;
+	154     (00000250) if-eqz               v2, +00ch
+
+a-BB@0x254 : [ a-BB@0x26c ]
+	155     (00000254) invoke-static        v2, Ljava/nio/charset/Charset;->forName(Ljava/lang/String;)Ljava/nio/charset/Charset;
+	156     (0000025a) move-result-object   v2
+	157     (0000025c) const-string         v6, "forName(...)"
+	158     (00000260) invoke-static        v2, v6, Lkotlin/jvm/internal/j;->d(Ljava/lang/Object; Ljava/lang/String;)V
+	159     (00000266) goto                 +3h
+	254:265
+	(Ljava/lang/Exception; -> 268 a-BB@0x268)
+
+a-BB@0x268 : [ a-BB@0x26c ]
+	160     (00000268) sget-object          v2, Lb8/a;->d Ljava/nio/charset/Charset;
+
+a-BB@0x26c : 
+	161     (0000026c) sget                 v6, Lokhttp3/Credentials;->a I
+	162     (00000270) invoke-static        v2, v5, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	163     (00000276) new-instance         v5, Ljava/lang/StringBuilder;
+	164     (0000027a) invoke-direct        v5, Ljava/lang/StringBuilder;-><init>()V
+	165     (00000280) invoke-virtual       v5, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	166     (00000286) const/16             v1, 58
+	167     (0000028a) invoke-virtual       v5, v1, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+	168     (00000290) invoke-virtual       v5, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	169     (00000296) invoke-virtual       v5, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	170     (0000029c) move-result-object   v1
+	171     (0000029e) sget-object          v4, Lx8/j;->d Lx8/j;
+	172     (000002a2) const-string         v4, "<this>"
+	173     (000002a6) invoke-static        v1, v4, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	174     (000002ac) new-instance         v4, Lx8/j;
+	175     (000002b0) invoke-virtual       v1, v2, Ljava/lang/String;->getBytes(Ljava/nio/charset/Charset;)[B
+	176     (000002b6) move-result-object   v1
+	177     (000002b8) const-string         v2, "getBytes(...)"
+	178     (000002bc) invoke-static        v1, v2, Lkotlin/jvm/internal/j;->d(Ljava/lang/Object; Ljava/lang/String;)V
+	179     (000002c2) invoke-direct        v4, v1, Lx8/j;-><init>([B)V
+	180     (000002c8) invoke-virtual       v4, Lx8/j;->a()Ljava/lang/String;
+	181     (000002ce) move-result-object   v1
+	182     (000002d0) const-string         v2, "Basic "
+	183     (000002d4) invoke-virtual       v2, v1, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	184     (000002da) move-result-object   v1
+	185     (000002dc) invoke-virtual       v3, Lokhttp3/Request;->a()Lokhttp3/Request$Builder;
+	186     (000002e2) move-result-object   v2
+	187     (000002e4) invoke-virtual       v2, v0, v1, Lokhttp3/Request$Builder;->a(Ljava/lang/String; Ljava/lang/String;)V
+	188     (000002ea) new-instance         v0, Lokhttp3/Request;
+	189     (000002ee) invoke-direct        v0, v2, Lokhttp3/Request;-><init>(Lokhttp3/Request$Builder;)V
+	190     (000002f4) return-object        v0
+
+a-BB@0x2f6 : 
+	191     (000002f6) move-exception       v0
+	192     (000002f8) new-instance         v1, Ljava/lang/RuntimeException;
+	193     (000002fc) invoke-direct        v1, v0, Ljava/lang/RuntimeException;-><init>(Ljava/lang/Throwable;)V
+	194     (00000302) throw                v1
+
+a-BB@0x304 : 
+	195     (00000304) move-object/from16   v7, v20
+	196     (00000308) const/4              v0, 0
+	197     (0000030a) return-object        v0
+

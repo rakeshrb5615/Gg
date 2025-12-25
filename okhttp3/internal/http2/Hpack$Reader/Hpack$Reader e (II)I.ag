@@ -1,0 +1,40 @@
+# Lokhttp3/internal/http2/Hpack$Reader;->e(I I)I [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:int
+# - v5:int
+#
+# - return:int
+
+e-BB@0x0 : [ e-BB@0x6 e-BB@0x8 ]
+	0       (00000000) and-int/2addr        v4, v5
+	1       (00000002) if-ge                v4, v5, +003h
+
+e-BB@0x6 : 
+	2       (00000006) return               v4
+
+e-BB@0x8 : [ e-BB@0xa ]
+	3       (00000008) const/4              v4, 0
+
+e-BB@0xa : [ e-BB@0x26 e-BB@0x34 ]
+	4       (0000000a) iget-object          v0, v3, Lokhttp3/internal/http2/Hpack$Reader;->c Lx8/b0;
+	5       (0000000e) invoke-virtual       v0, Lx8/b0;->readByte()B
+	6       (00000014) move-result          v0
+	7       (00000016) sget-object          v1, Lokhttp3/internal/_UtilCommonKt;->a [B
+	8       (0000001a) and-int/lit16        v1, v0, 255
+	9       (0000001e) and-int/lit16        v2, v0, 128
+	10      (00000022) if-eqz               v2, +009h
+
+e-BB@0x26 : [ e-BB@0xa ]
+	11      (00000026) and-int/lit8         v0, v0, 127
+	12      (0000002a) shl-int/2addr        v0, v4
+	13      (0000002c) add-int/2addr        v5, v0
+	14      (0000002e) add-int/lit8         v4, v4, 7
+	15      (00000032) goto                 -14h
+
+e-BB@0x34 : 
+	16      (00000034) shl-int              v4, v1, v4
+	17      (00000038) add-int/2addr        v5, v4
+	18      (0000003a) return               v5
+

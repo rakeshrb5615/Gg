@@ -1,0 +1,42 @@
+# Lokhttp3/ResponseBody$BomAwareReader;->read([C I I)I [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:char[]
+# - v6:int
+# - v7:int
+#
+# - return:int
+
+read-BB@0x0 : [ read-BB@0x12 read-BB@0x4a ]
+	0       (00000000) const-string         v0, "cbuf"
+	1       (00000004) invoke-static        v5, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) iget-boolean         v0, v4, Lokhttp3/ResponseBody$BomAwareReader;->c Z
+	3       (0000000e) if-nez               v0, +01eh
+
+read-BB@0x12 : [ read-BB@0x1a read-BB@0x40 ]
+	4       (00000012) iget-object          v0, v4, Lokhttp3/ResponseBody$BomAwareReader;->d Ljava/io/InputStreamReader;
+	5       (00000016) if-nez               v0, +015h
+
+read-BB@0x1a : [ read-BB@0x40 ]
+	6       (0000001a) new-instance         v0, Ljava/io/InputStreamReader;
+	7       (0000001e) iget-object          v1, v4, Lokhttp3/ResponseBody$BomAwareReader;->a Lx8/i;
+	8       (00000022) invoke-interface     v1, Lx8/i;->w()Ljava/io/InputStream;
+	9       (00000028) move-result-object   v2
+	10      (0000002a) iget-object          v3, v4, Lokhttp3/ResponseBody$BomAwareReader;->b Ljava/nio/charset/Charset;
+	11      (0000002e) invoke-static        v1, v3, Lokhttp3/internal/_UtilJvmKt;->e(Lx8/i; Ljava/nio/charset/Charset;)Ljava/nio/charset/Charset;
+	12      (00000034) move-result-object   v1
+	13      (00000036) invoke-direct        v0, v2, v1, Ljava/io/InputStreamReader;-><init>(Ljava/io/InputStream; Ljava/nio/charset/Charset;)V
+	14      (0000003c) iput-object          v0, v4, Lokhttp3/ResponseBody$BomAwareReader;->d Ljava/io/InputStreamReader;
+
+read-BB@0x40 : 
+	15      (00000040) invoke-virtual       v0, v5, v6, v7, Ljava/io/Reader;->read([C I I)I
+	16      (00000046) move-result          v5
+	17      (00000048) return               v5
+
+read-BB@0x4a : 
+	18      (0000004a) new-instance         v5, Ljava/io/IOException;
+	19      (0000004e) const-string         v6, "Stream closed"
+	20      (00000052) invoke-direct        v5, v6, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+	21      (00000058) throw                v5
+

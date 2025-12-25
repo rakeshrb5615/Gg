@@ -1,0 +1,173 @@
+# Lokhttp3/internal/connection/RealRoutePlanner;->e(Lokhttp3/Route; Ljava/util/ArrayList;)Lokhttp3/internal/connection/ConnectPlan; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v16
+# - v17:okhttp3.Route
+# - v18:java.util.ArrayList
+#
+# - return:okhttp3.internal.connection.ConnectPlan
+
+e-BB@0x0 : [ e-BB@0x1e e-BB@0x86 ]
+	0       (00000000) move-object/from16   v9, v16
+	1       (00000004) move-object/from16   v10, v17
+	2       (00000008) const-string         v0, "route"
+	3       (0000000c) invoke-static        v10, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	4       (00000012) iget-object          v0, v10, Lokhttp3/Route;->a Lokhttp3/Address;
+	5       (00000016) iget-object          v1, v0, Lokhttp3/Address;->c Ljavax/net/ssl/SSLSocketFactory;
+	6       (0000001a) if-nez               v1, +036h
+
+e-BB@0x1e : [ e-BB@0x32 e-BB@0x76 ]
+	7       (0000001e) iget-object          v0, v0, Lokhttp3/Address;->j Ljava/util/List;
+	8       (00000022) sget-object          v1, Lokhttp3/ConnectionSpec;->h Lokhttp3/ConnectionSpec;
+	9       (00000026) invoke-interface     v0, v1, Ljava/util/List;->contains(Ljava/lang/Object;)Z
+	10      (0000002c) move-result          v0
+	11      (0000002e) if-eqz               v0, +024h
+
+e-BB@0x32 : [ e-BB@0x58 e-BB@0x5a ]
+	12      (00000032) iget-object          v0, v10, Lokhttp3/Route;->a Lokhttp3/Address;
+	13      (00000036) iget-object          v0, v0, Lokhttp3/Address;->h Lokhttp3/HttpUrl;
+	14      (0000003a) iget-object          v0, v0, Lokhttp3/HttpUrl;->d Ljava/lang/String;
+	15      (0000003e) sget-object          v1, Lokhttp3/internal/platform/Platform;->a Lokhttp3/internal/platform/Platform$Companion;
+	16      (00000042) invoke-virtual       v1, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	17      (00000048) sget-object          v1, Lokhttp3/internal/platform/Platform;->b Lokhttp3/internal/platform/Platform;
+	18      (0000004c) invoke-virtual       v1, v0, Lokhttp3/internal/platform/Platform;->i(Ljava/lang/String;)Z
+	19      (00000052) move-result          v1
+	20      (00000054) if-eqz               v1, +003h
+
+e-BB@0x58 : [ e-BB@0x9a ]
+	21      (00000058) goto                 +21h
+
+e-BB@0x5a : 
+	22      (0000005a) new-instance         v1, Ljava/net/UnknownServiceException;
+	23      (0000005e) const-string         v2, "CLEARTEXT communication to "
+	24      (00000062) const-string         v3, " not permitted by network security policy"
+	25      (00000066) invoke-static        v2, v0, v3, Lv1/a;->l(Ljava/lang/String; Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	26      (0000006c) move-result-object   v0
+	27      (0000006e) invoke-direct        v1, v0, Ljava/net/UnknownServiceException;-><init>(Ljava/lang/String;)V
+	28      (00000074) throw                v1
+
+e-BB@0x76 : 
+	29      (00000076) new-instance         v0, Ljava/net/UnknownServiceException;
+	30      (0000007a) const-string         v1, "CLEARTEXT communication not enabled for client"
+	31      (0000007e) invoke-direct        v0, v1, Ljava/net/UnknownServiceException;-><init>(Ljava/lang/String;)V
+	32      (00000084) throw                v0
+
+e-BB@0x86 : [ e-BB@0x9a e-BB@0x1f4 ]
+	33      (00000086) iget-object          v0, v0, Lokhttp3/Address;->i Ljava/util/List;
+	34      (0000008a) sget-object          v1, Lokhttp3/Protocol;->m Lokhttp3/Protocol;
+	35      (0000008e) invoke-interface     v0, v1, Ljava/util/List;->contains(Ljava/lang/Object;)Z
+	36      (00000094) move-result          v0
+	37      (00000096) if-nez               v0, +0afh
+
+e-BB@0x9a : [ e-BB@0xb0 e-BB@0xb2 ]
+	38      (0000009a) iget-object          v0, v10, Lokhttp3/Route;->b Ljava/net/Proxy;
+	39      (0000009e) invoke-virtual       v0, Ljava/net/Proxy;->type()Ljava/net/Proxy$Type;
+	40      (000000a4) move-result-object   v0
+	41      (000000a6) sget-object          v1, Ljava/net/Proxy$Type;->HTTP Ljava/net/Proxy$Type;
+	42      (000000aa) const/4              v2, 0
+	43      (000000ac) if-eq                v0, v1, +003h
+
+e-BB@0xb0 : [ e-BB@0xd4 ]
+	44      (000000b0) goto                 +12h
+
+e-BB@0xb2 : [ e-BB@0xbe e-BB@0xd8 ]
+	45      (000000b2) iget-object          v0, v10, Lokhttp3/Route;->a Lokhttp3/Address;
+	46      (000000b6) iget-object          v1, v0, Lokhttp3/Address;->c Ljavax/net/ssl/SSLSocketFactory;
+	47      (000000ba) if-nez               v1, +00fh
+
+e-BB@0xbe : [ e-BB@0xd2 e-BB@0xd4 ]
+	48      (000000be) iget-object          v0, v0, Lokhttp3/Address;->i Ljava/util/List;
+	49      (000000c2) sget-object          v1, Lokhttp3/Protocol;->m Lokhttp3/Protocol;
+	50      (000000c6) invoke-interface     v0, v1, Ljava/util/List;->contains(Ljava/lang/Object;)Z
+	51      (000000cc) move-result          v0
+	52      (000000ce) if-eqz               v0, +003h
+
+e-BB@0xd2 : [ e-BB@0xd8 ]
+	53      (000000d2) goto                 +3h
+
+e-BB@0xd4 : [ e-BB@0x1be ]
+	54      (000000d4) move-object          v13, v2
+	55      (000000d6) goto                 +74h
+
+e-BB@0xd8 : [ e-BB@0x1b8 e-BB@0x1ba ]
+	56      (000000d8) new-instance         v0, Lokhttp3/Request$Builder;
+	57      (000000dc) invoke-direct        v0, Lokhttp3/Request$Builder;-><init>()V
+	58      (000000e2) iget-object          v1, v10, Lokhttp3/Route;->a Lokhttp3/Address;
+	59      (000000e6) iget-object          v1, v1, Lokhttp3/Address;->h Lokhttp3/HttpUrl;
+	60      (000000ea) const-string         v3, "url"
+	61      (000000ee) invoke-static        v1, v3, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	62      (000000f4) iput-object          v1, v0, Lokhttp3/Request$Builder;->a Lokhttp3/HttpUrl;
+	63      (000000f8) const-string         v1, "CONNECT"
+	64      (000000fc) invoke-virtual       v0, v1, v2, Lokhttp3/Request$Builder;->b(Ljava/lang/String; Lokhttp3/RequestBody;)V
+	65      (00000102) iget-object          v1, v10, Lokhttp3/Route;->a Lokhttp3/Address;
+	66      (00000106) iget-object          v2, v1, Lokhttp3/Address;->h Lokhttp3/HttpUrl;
+	67      (0000010a) const/4              v3, 1
+	68      (0000010c) invoke-static        v2, v3, Lokhttp3/internal/_UtilJvmKt;->h(Lokhttp3/HttpUrl; Z)Ljava/lang/String;
+	69      (00000112) move-result-object   v2
+	70      (00000114) const-string         v3, "Host"
+	71      (00000118) invoke-virtual       v0, v3, v2, Lokhttp3/Request$Builder;->a(Ljava/lang/String; Ljava/lang/String;)V
+	72      (0000011e) const-string         v2, "Proxy-Connection"
+	73      (00000122) const-string         v3, "Keep-Alive"
+	74      (00000126) invoke-virtual       v0, v2, v3, Lokhttp3/Request$Builder;->a(Ljava/lang/String; Ljava/lang/String;)V
+	75      (0000012c) const-string         v2, "User-Agent"
+	76      (00000130) const-string         v3, "okhttp/5.3.2"
+	77      (00000134) invoke-virtual       v0, v2, v3, Lokhttp3/Request$Builder;->a(Ljava/lang/String; Ljava/lang/String;)V
+	78      (0000013a) new-instance         v2, Lokhttp3/Request;
+	79      (0000013e) invoke-direct        v2, v0, Lokhttp3/Request;-><init>(Lokhttp3/Request$Builder;)V
+	80      (00000144) new-instance         v0, Lokhttp3/Response$Builder;
+	81      (00000148) invoke-direct        v0, Lokhttp3/Response$Builder;-><init>()V
+	82      (0000014e) iput-object          v2, v0, Lokhttp3/Response$Builder;->a Lokhttp3/Request;
+	83      (00000152) sget-object          v3, Lokhttp3/Protocol;->d Lokhttp3/Protocol;
+	84      (00000156) iput-object          v3, v0, Lokhttp3/Response$Builder;->b Lokhttp3/Protocol;
+	85      (0000015a) const/16             v3, 407
+	86      (0000015e) iput                 v3, v0, Lokhttp3/Response$Builder;->c I
+	87      (00000162) const-string         v3, "Preemptive Authenticate"
+	88      (00000166) iput-object          v3, v0, Lokhttp3/Response$Builder;->d Ljava/lang/String;
+	89      (0000016a) const-wide/16        v3, -1
+	90      (0000016e) iput-wide            v3, v0, Lokhttp3/Response$Builder;->l J
+	91      (00000172) iput-wide            v3, v0, Lokhttp3/Response$Builder;->m J
+	92      (00000176) iget-object          v3, v0, Lokhttp3/Response$Builder;->f Lokhttp3/Headers$Builder;
+	93      (0000017a) invoke-virtual       v3, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	94      (00000180) const-string         v4, "Proxy-Authenticate"
+	95      (00000184) invoke-static        v4, Lokhttp3/internal/_HeadersCommonKt;->b(Ljava/lang/String;)V
+	96      (0000018a) const-string         v5, "OkHttp-Preemptive"
+	97      (0000018e) invoke-static        v5, v4, Lokhttp3/internal/_HeadersCommonKt;->c(Ljava/lang/String; Ljava/lang/String;)V
+	98      (00000194) invoke-virtual       v3, v4, Lokhttp3/Headers$Builder;->d(Ljava/lang/String;)V
+	99      (0000019a) invoke-static        v3, v4, v5, Lokhttp3/internal/_HeadersCommonKt;->a(Lokhttp3/Headers$Builder; Ljava/lang/String; Ljava/lang/String;)V
+	100     (000001a0) invoke-virtual       v0, Lokhttp3/Response$Builder;->a()Lokhttp3/Response;
+	101     (000001a6) move-result-object   v0
+	102     (000001a8) iget-object          v1, v1, Lokhttp3/Address;->f Lokhttp3/Authenticator;
+	103     (000001ac) invoke-interface     v1, v10, v0, Lokhttp3/Authenticator;->a(Lokhttp3/Route; Lokhttp3/Response;)Lokhttp3/Request;
+	104     (000001b2) move-result-object   v0
+	105     (000001b4) if-nez               v0, +003h
+
+e-BB@0x1b8 : [ e-BB@0xd4 ]
+	106     (000001b8) goto                 -72h
+
+e-BB@0x1ba : [ e-BB@0xd4 ]
+	107     (000001ba) move-object          v2, v0
+	108     (000001bc) goto                 -74h
+
+e-BB@0x1be : 
+	109     (000001be) new-instance         v0, Lokhttp3/internal/connection/ConnectPlan;
+	110     (000001c2) iget-object          v1, v9, Lokhttp3/internal/connection/RealRoutePlanner;->a Lokhttp3/internal/concurrent/TaskRunner;
+	111     (000001c6) iget-object          v2, v9, Lokhttp3/internal/connection/RealRoutePlanner;->b Lokhttp3/internal/connection/RealConnectionPool;
+	112     (000001ca) iget                 v3, v9, Lokhttp3/internal/connection/RealRoutePlanner;->c I
+	113     (000001ce) iget                 v4, v9, Lokhttp3/internal/connection/RealRoutePlanner;->d I
+	114     (000001d2) iget                 v5, v9, Lokhttp3/internal/connection/RealRoutePlanner;->e I
+	115     (000001d6) iget                 v6, v9, Lokhttp3/internal/connection/RealRoutePlanner;->f I
+	116     (000001da) iget-boolean         v7, v9, Lokhttp3/internal/connection/RealRoutePlanner;->g Z
+	117     (000001de) iget-object          v8, v9, Lokhttp3/internal/connection/RealRoutePlanner;->k Lokhttp3/internal/connection/RealCall;
+	118     (000001e2) const/4              v14, -1
+	119     (000001e4) const/4              v15, 0
+	120     (000001e6) const/4              v12, 0
+	121     (000001e8) move-object/from16   v11, v18
+	122     (000001ec) invoke-direct/range  v0 ... v15, Lokhttp3/internal/connection/ConnectPlan;-><init>(Lokhttp3/internal/concurrent/TaskRunner; Lokhttp3/internal/connection/RealConnectionPool; I I I I Z Lokhttp3/internal/connection/RealCall; Lokhttp3/internal/connection/RealRoutePlanner; Lokhttp3/Route; Ljava/util/List; I Lokhttp3/Request; I Z)V
+	123     (000001f2) return-object        v0
+
+e-BB@0x1f4 : 
+	124     (000001f4) new-instance         v0, Ljava/net/UnknownServiceException;
+	125     (000001f8) const-string         v1, "H2_PRIOR_KNOWLEDGE cannot be used with HTTPS"
+	126     (000001fc) invoke-direct        v0, v1, Ljava/net/UnknownServiceException;-><init>(Ljava/lang/String;)V
+	127     (00000202) throw                v0
+

@@ -1,0 +1,34 @@
+# Lokhttp3/internal/platform/android/ConscryptSocketAdapter;->d(Ljavax/net/ssl/SSLSocket; Ljava/lang/String; Ljava/util/List;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v0
+# - v1:javax.net.ssl.SSLSocket
+# - v2:java.lang.String
+# - v3:java.util.List
+#
+# - return:void
+
+d-BB@0x0 : [ d-BB@0x16 d-BB@0x48 ]
+	0       (00000000) const-string         v2, "protocols"
+	1       (00000004) invoke-static        v3, v2, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) invoke-virtual       v0, v1, Lokhttp3/internal/platform/android/ConscryptSocketAdapter;->a(Ljavax/net/ssl/SSLSocket;)Z
+	3       (00000010) move-result          v2
+	4       (00000012) if-eqz               v2, +01bh
+
+d-BB@0x16 : [ d-BB@0x48 ]
+	5       (00000016) const/4              v2, 1
+	6       (00000018) invoke-static        v1, v2, Lorg/conscrypt/Conscrypt;->setUseSessionTickets(Ljavax/net/ssl/SSLSocket; Z)V
+	7       (0000001e) sget-object          v2, Lokhttp3/internal/platform/Platform;->a Lokhttp3/internal/platform/Platform$Companion;
+	8       (00000022) invoke-virtual       v2, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	9       (00000028) invoke-static        v3, Lokhttp3/internal/platform/Platform$Companion;->a(Ljava/util/List;)Ljava/util/ArrayList;
+	10      (0000002e) move-result-object   v2
+	11      (00000030) const/4              v3, 0
+	12      (00000032) new-array            v3, v3, [Ljava/lang/String;
+	13      (00000036) invoke-virtual       v2, v3, Ljava/util/ArrayList;->toArray([Ljava/lang/Object;)[Ljava/lang/Object;
+	14      (0000003c) move-result-object   v2
+	15      (0000003e) check-cast           v2, [Ljava/lang/String;
+	16      (00000042) invoke-static        v1, v2, Lorg/conscrypt/Conscrypt;->setApplicationProtocols(Ljavax/net/ssl/SSLSocket; [Ljava/lang/String;)V
+
+d-BB@0x48 : 
+	17      (00000048) return-void          
+

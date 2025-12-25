@@ -1,0 +1,38 @@
+# Lokhttp3/internal/http2/Http2Writer;->flush()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v2
+#
+# - return:void
+
+flush-BB@0x0 : [ flush-BB@0x2 ]
+	0       (00000000) monitor-enter        v2
+
+flush-BB@0x2 : [ flush-BB@0xa flush-BB@0x1c ]
+	1       (00000002) iget-boolean         v0, v2, Lokhttp3/internal/http2/Http2Writer;->d Z
+	2       (00000006) if-nez               v0, +00bh
+	2:13
+	(Ljava/lang/Throwable; -> 18 flush-BB@0x18)
+
+flush-BB@0xa : 
+	3       (0000000a) iget-object          v0, v2, Lokhttp3/internal/http2/Http2Writer;->a Lx8/h;
+	4       (0000000e) invoke-interface     v0, Lx8/h;->flush()V
+	5       (00000014) monitor-exit         v2
+	6       (00000016) return-void          
+
+flush-BB@0x18 : [ flush-BB@0x2c ]
+	7       (00000018) move-exception       v0
+	8       (0000001a) goto                 +9h
+
+flush-BB@0x1c : 
+	9       (0000001c) new-instance         v0, Ljava/io/IOException;
+	10      (00000020) const-string         v1, "closed"
+	11      (00000024) invoke-direct        v0, v1, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+	12      (0000002a) throw                v0
+	1c:2b
+	(Ljava/lang/Throwable; -> 18 flush-BB@0x18)
+
+flush-BB@0x2c : 
+	13      (0000002c) monitor-exit         v2
+	14      (0000002e) throw                v0
+

@@ -1,0 +1,125 @@
+# Lokhttp3/internal/connection/SequentialExchangeFinder;->a()Lokhttp3/internal/connection/RealConnection; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v6
+#
+# - return:okhttp3.internal.connection.RealConnection
+
+a-BB@0x0 : [ a-BB@0x8 ]
+	0       (00000000) iget-object          v0, v6, Lokhttp3/internal/connection/SequentialExchangeFinder;->a Lokhttp3/internal/connection/RealRoutePlanner;
+	1       (00000004) const/4              v1, 0
+	2       (00000006) move-object          v2, v1
+
+a-BB@0x8 : [ a-BB@0x14 a-BB@0x9e ]
+	3       (00000008) iget-object          v3, v0, Lokhttp3/internal/connection/RealRoutePlanner;->k Lokhttp3/internal/connection/RealCall;
+	4       (0000000c) iget-boolean         v3, v3, Lokhttp3/internal/connection/RealCall;->w Z
+	5       (00000010) if-nez               v3, +047h
+
+a-BB@0x14 : [ a-BB@0x28 a-BB@0x76 ]
+	6       (00000014) invoke-virtual       v0, Lokhttp3/internal/connection/RealRoutePlanner;->d()Lokhttp3/internal/connection/RoutePlanner$Plan;
+	7       (0000001a) move-result-object   v3
+	8       (0000001c) invoke-interface     v3, Lokhttp3/internal/connection/RoutePlanner$Plan;->e()Z
+	9       (00000022) move-result          v4
+	10      (00000024) if-nez               v4, +029h
+	14:7d
+	(Ljava/io/IOException; -> 54 a-BB@0x54)
+
+a-BB@0x28 : [ a-BB@0x38 a-BB@0x44 ]
+	11      (00000028) invoke-interface     v3, Lokhttp3/internal/connection/RoutePlanner$Plan;->g()Lokhttp3/internal/connection/RoutePlanner$ConnectResult;
+	12      (0000002e) move-result-object   v4
+	13      (00000030) iget-object          v5, v4, Lokhttp3/internal/connection/RoutePlanner$ConnectResult;->b Lokhttp3/internal/connection/RoutePlanner$Plan;
+	14      (00000034) if-nez               v5, +008h
+	14:7d
+	(Ljava/io/IOException; -> 54 a-BB@0x54)
+
+a-BB@0x38 : [ a-BB@0x40 a-BB@0x44 ]
+	15      (00000038) iget-object          v5, v4, Lokhttp3/internal/connection/RoutePlanner$ConnectResult;->c Ljava/lang/Throwable;
+	16      (0000003c) if-nez               v5, +004h
+	14:7d
+	(Ljava/io/IOException; -> 54 a-BB@0x54)
+
+a-BB@0x40 : [ a-BB@0x46 ]
+	17      (00000040) const/4              v5, 1
+	18      (00000042) goto                 +2h
+	14:7d
+	(Ljava/io/IOException; -> 54 a-BB@0x54)
+
+a-BB@0x44 : [ a-BB@0x46 ]
+	19      (00000044) const/4              v5, 0
+	14:7d
+	(Ljava/io/IOException; -> 54 a-BB@0x54)
+
+a-BB@0x46 : [ a-BB@0x4a a-BB@0x58 ]
+	20      (00000046) if-eqz               v5, +009h
+	14:7d
+	(Ljava/io/IOException; -> 54 a-BB@0x54)
+
+a-BB@0x4a : [ a-BB@0x58 ]
+	21      (0000004a) invoke-interface     v3, Lokhttp3/internal/connection/RoutePlanner$Plan;->c()Lokhttp3/internal/connection/RoutePlanner$ConnectResult;
+	22      (00000050) move-result-object   v4
+	23      (00000052) goto                 +3h
+	14:7d
+	(Ljava/io/IOException; -> 54 a-BB@0x54)
+
+a-BB@0x54 : [ a-BB@0x80 ]
+	24      (00000054) move-exception       v3
+	25      (00000056) goto                 +15h
+	14:7d
+	(Ljava/io/IOException; -> 54 a-BB@0x54)
+
+a-BB@0x58 : [ a-BB@0x64 a-BB@0x74 ]
+	26      (00000058) iget-object          v5, v4, Lokhttp3/internal/connection/RoutePlanner$ConnectResult;->b Lokhttp3/internal/connection/RoutePlanner$Plan;
+	27      (0000005c) iget-object          v4, v4, Lokhttp3/internal/connection/RoutePlanner$ConnectResult;->c Ljava/lang/Throwable;
+	28      (00000060) if-nez               v4, +00ah
+	14:7d
+	(Ljava/io/IOException; -> 54 a-BB@0x54)
+
+a-BB@0x64 : [ a-BB@0x68 a-BB@0x76 ]
+	29      (00000064) if-eqz               v5, +009h
+	14:7d
+	(Ljava/io/IOException; -> 54 a-BB@0x54)
+
+a-BB@0x68 : [ a-BB@0x8 ]
+	30      (00000068) iget-object          v3, v0, Lokhttp3/internal/connection/RealRoutePlanner;->p Li7/g;
+	31      (0000006c) invoke-virtual       v3, v5, Li7/g;->addFirst(Ljava/lang/Object;)V
+	32      (00000072) goto                 -35h
+	14:7d
+	(Ljava/io/IOException; -> 54 a-BB@0x54)
+
+a-BB@0x74 : 
+	33      (00000074) throw                v4
+	14:7d
+	(Ljava/io/IOException; -> 54 a-BB@0x54)
+
+a-BB@0x76 : 
+	34      (00000076) invoke-interface     v3, Lokhttp3/internal/connection/RoutePlanner$Plan;->d()Lokhttp3/internal/connection/RealConnection;
+	35      (0000007c) move-result-object   v0
+	36      (0000007e) return-object        v0
+
+a-BB@0x80 : [ a-BB@0x84 a-BB@0x88 ]
+	37      (00000080) if-nez               v2, +004h
+
+a-BB@0x84 : [ a-BB@0x8e ]
+	38      (00000084) move-object          v2, v3
+	39      (00000086) goto                 +4h
+
+a-BB@0x88 : [ a-BB@0x8e ]
+	40      (00000088) invoke-static        v2, v3, Lq4/b;->a(Ljava/lang/Throwable; Ljava/lang/Throwable;)V
+
+a-BB@0x8e : [ a-BB@0x9a a-BB@0x9c ]
+	41      (0000008e) invoke-virtual       v0, v1, Lokhttp3/internal/connection/RealRoutePlanner;->a(Lokhttp3/internal/connection/RealConnection;)Z
+	42      (00000094) move-result          v3
+	43      (00000096) if-eqz               v3, +003h
+
+a-BB@0x9a : [ a-BB@0x8 ]
+	44      (0000009a) goto                 -49h
+
+a-BB@0x9c : 
+	45      (0000009c) throw                v2
+
+a-BB@0x9e : 
+	46      (0000009e) new-instance         v0, Ljava/io/IOException;
+	47      (000000a2) const-string         v1, "Canceled"
+	48      (000000a6) invoke-direct        v0, v1, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+	49      (000000ac) throw                v0
+

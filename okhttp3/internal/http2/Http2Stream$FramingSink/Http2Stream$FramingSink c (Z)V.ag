@@ -1,0 +1,143 @@
+# Lokhttp3/internal/http2/Http2Stream$FramingSink;->c(Z)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v12
+# - v13:boolean
+#
+# - return:void
+
+c-BB@0x0 : [ c-BB@0x6 ]
+	0       (00000000) iget-object          v1, v12, Lokhttp3/internal/http2/Http2Stream$FramingSink;->d Lokhttp3/internal/http2/Http2Stream;
+	1       (00000004) monitor-enter        v1
+
+c-BB@0x6 : [ c-BB@0x10 ]
+	2       (00000006) iget-object          v0, v1, Lokhttp3/internal/http2/Http2Stream;->q Lokhttp3/internal/http2/Http2Stream$StreamTimeout;
+	3       (0000000a) invoke-virtual       v0, Lx8/d;->h()V
+	6:f
+	(Ljava/lang/Throwable; -> b2 c-BB@0xb2)
+
+c-BB@0x10 : [ c-BB@0x20 c-BB@0x64 ]
+	4       (00000010) iget-wide            v2, v1, Lokhttp3/internal/http2/Http2Stream;->d J
+	5       (00000014) iget-wide            v4, v1, Lokhttp3/internal/http2/Http2Stream;->e J
+	6       (00000018) cmp-long             v0, v2, v4
+	7       (0000001c) if-ltz               v0, +024h
+	10:37
+	(Ljava/lang/Throwable; -> 5e c-BB@0x5e)
+
+c-BB@0x20 : [ c-BB@0x28 c-BB@0x64 ]
+	8       (00000020) iget-boolean         v0, v12, Lokhttp3/internal/http2/Http2Stream$FramingSink;->a Z
+	9       (00000024) if-nez               v0, +020h
+	10:37
+	(Ljava/lang/Throwable; -> 5e c-BB@0x5e)
+
+c-BB@0x28 : [ c-BB@0x30 c-BB@0x64 ]
+	10      (00000028) iget-boolean         v0, v12, Lokhttp3/internal/http2/Http2Stream$FramingSink;->c Z
+	11      (0000002c) if-nez               v0, +01ch
+	10:37
+	(Ljava/lang/Throwable; -> 5e c-BB@0x5e)
+
+c-BB@0x30 : [ c-BB@0x3c c-BB@0x64 ]
+	12      (00000030) invoke-virtual       v1, Lokhttp3/internal/http2/Http2Stream;->h()Lokhttp3/internal/http2/ErrorCode;
+	13      (00000036) move-result-object   v0
+	14      (00000038) if-nez               v0, +016h
+
+c-BB@0x3c : [ c-BB@0x10 ]
+	15      (0000003c) invoke-virtual       v1, Ljava/lang/Object;->wait()V
+	16      (00000042) goto                 -19h
+	3c:41
+	(Ljava/lang/InterruptedException; -> 44 c-BB@0x44)
+	(Ljava/lang/Throwable; -> 5e c-BB@0x5e)
+
+c-BB@0x44 : 
+	17      (00000044) invoke-static        Ljava/lang/Thread;->currentThread()Ljava/lang/Thread;
+	18      (0000004a) move-result-object   v13
+	19      (0000004c) invoke-virtual       v13, Ljava/lang/Thread;->interrupt()V
+	20      (00000052) new-instance         v13, Ljava/io/InterruptedIOException;
+	21      (00000056) invoke-direct        v13, Ljava/io/InterruptedIOException;-><init>()V
+	22      (0000005c) throw                v13
+	44:5d
+	(Ljava/lang/Throwable; -> 5e c-BB@0x5e)
+
+c-BB@0x5e : [ c-BB@0x106 ]
+	23      (0000005e) move-exception       v0
+	24      (00000060) move-object          v13, v0
+	25      (00000062) goto                 +52h
+
+c-BB@0x64 : [ c-BB@0x9c c-BB@0xb8 ]
+	26      (00000064) iget-object          v0, v1, Lokhttp3/internal/http2/Http2Stream;->q Lokhttp3/internal/http2/Http2Stream$StreamTimeout;
+	27      (00000068) invoke-virtual       v0, Lokhttp3/internal/http2/Http2Stream$StreamTimeout;->l()V
+	28      (0000006e) invoke-virtual       v1, Lokhttp3/internal/http2/Http2Stream;->d()V
+	29      (00000074) iget-wide            v2, v1, Lokhttp3/internal/http2/Http2Stream;->e J
+	30      (00000078) iget-wide            v4, v1, Lokhttp3/internal/http2/Http2Stream;->d J
+	31      (0000007c) sub-long/2addr       v2, v4
+	32      (0000007e) iget-object          v0, v12, Lokhttp3/internal/http2/Http2Stream$FramingSink;->b Lx8/g;
+	33      (00000082) iget-wide            v4, v0, Lx8/g;->b J
+	34      (00000086) invoke-static        v2, v3, v4, v5, Ljava/lang/Math;->min(J J)J
+	35      (0000008c) move-result-wide     v10
+	36      (0000008e) iget-wide            v2, v1, Lokhttp3/internal/http2/Http2Stream;->d J
+	37      (00000092) add-long/2addr       v2, v10
+	38      (00000094) iput-wide            v2, v1, Lokhttp3/internal/http2/Http2Stream;->d J
+	39      (00000098) if-eqz               v13, +010h
+	64:a3
+	(Ljava/lang/Throwable; -> b2 c-BB@0xb2)
+
+c-BB@0x9c : [ c-BB@0xac c-BB@0xb8 ]
+	40      (0000009c) iget-object          v13, v12, Lokhttp3/internal/http2/Http2Stream$FramingSink;->b Lx8/g;
+	41      (000000a0) iget-wide            v2, v13, Lx8/g;->b J
+	42      (000000a4) cmp-long             v13, v10, v2
+	43      (000000a8) if-nez               v13, +008h
+
+c-BB@0xac : [ c-BB@0xae ]
+	44      (000000ac) const/4              v13, 1
+
+c-BB@0xae : [ c-BB@0xbc ]
+	45      (000000ae) move                 v8, v13
+	46      (000000b0) goto                 +6h
+
+c-BB@0xb2 : [ c-BB@0x112 ]
+	47      (000000b2) move-exception       v0
+	48      (000000b4) move-object          v13, v0
+	49      (000000b6) goto                 +2eh
+
+c-BB@0xb8 : [ c-BB@0xae ]
+	50      (000000b8) const/4              v13, 0
+	51      (000000ba) goto                 -6h
+
+c-BB@0xbc : [ c-BB@0xcc ]
+	52      (000000bc) monitor-exit         v1
+	53      (000000be) iget-object          v13, v12, Lokhttp3/internal/http2/Http2Stream$FramingSink;->d Lokhttp3/internal/http2/Http2Stream;
+	54      (000000c2) iget-object          v13, v13, Lokhttp3/internal/http2/Http2Stream;->q Lokhttp3/internal/http2/Http2Stream$StreamTimeout;
+	55      (000000c6) invoke-virtual       v13, Lx8/d;->h()V
+
+c-BB@0xcc : 
+	56      (000000cc) iget-object          v13, v12, Lokhttp3/internal/http2/Http2Stream$FramingSink;->d Lokhttp3/internal/http2/Http2Stream;
+	57      (000000d0) iget-object          v6, v13, Lokhttp3/internal/http2/Http2Stream;->b Lokhttp3/internal/http2/Http2Connection;
+	58      (000000d4) iget                 v7, v13, Lokhttp3/internal/http2/Http2Stream;->a I
+	59      (000000d8) iget-object          v9, v12, Lokhttp3/internal/http2/Http2Stream$FramingSink;->b Lx8/g;
+	60      (000000dc) invoke-virtual/range v6 ... v11, Lokhttp3/internal/http2/Http2Connection;->y(I Z Lx8/g; J)V
+	61      (000000e2) iget-object          v13, v12, Lokhttp3/internal/http2/Http2Stream$FramingSink;->d Lokhttp3/internal/http2/Http2Stream;
+	62      (000000e6) iget-object          v13, v13, Lokhttp3/internal/http2/Http2Stream;->q Lokhttp3/internal/http2/Http2Stream$StreamTimeout;
+	63      (000000ea) invoke-virtual       v13, Lokhttp3/internal/http2/Http2Stream$StreamTimeout;->l()V
+	64      (000000f0) return-void          
+	cc:e1
+	(Ljava/lang/Throwable; -> f2 c-BB@0xf2)
+
+c-BB@0xf2 : 
+	65      (000000f2) move-exception       v0
+	66      (000000f4) move-object          v13, v0
+	67      (000000f6) iget-object          v0, v12, Lokhttp3/internal/http2/Http2Stream$FramingSink;->d Lokhttp3/internal/http2/Http2Stream;
+	68      (000000fa) iget-object          v0, v0, Lokhttp3/internal/http2/Http2Stream;->q Lokhttp3/internal/http2/Http2Stream$StreamTimeout;
+	69      (000000fe) invoke-virtual       v0, Lokhttp3/internal/http2/Http2Stream$StreamTimeout;->l()V
+	70      (00000104) throw                v13
+
+c-BB@0x106 : 
+	71      (00000106) iget-object          v0, v1, Lokhttp3/internal/http2/Http2Stream;->q Lokhttp3/internal/http2/Http2Stream$StreamTimeout;
+	72      (0000010a) invoke-virtual       v0, Lokhttp3/internal/http2/Http2Stream$StreamTimeout;->l()V
+	73      (00000110) throw                v13
+	106:111
+	(Ljava/lang/Throwable; -> b2 c-BB@0xb2)
+
+c-BB@0x112 : 
+	74      (00000112) monitor-exit         v1
+	75      (00000114) throw                v13
+

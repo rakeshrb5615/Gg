@@ -1,0 +1,30 @@
+# Lokhttp3/internal/cache/FaultHidingSink;->k(Lx8/g; J)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:x8.g
+# - v4:long
+#
+# - return:void
+
+k-BB@0x0 : [ k-BB@0x8 k-BB@0x10 ]
+	0       (00000000) iget-boolean         v0, v1, Lokhttp3/internal/cache/FaultHidingSink;->b Z
+	1       (00000004) if-eqz               v0, +006h
+
+k-BB@0x8 : 
+	2       (00000008) invoke-virtual       v2, v3, v4, Lx8/g;->skip(J)V
+	3       (0000000e) return-void          
+
+k-BB@0x10 : 
+	4       (00000010) iget-object          v0, v1, Lx8/n;->a Lx8/f0;
+	5       (00000014) invoke-interface     v0, v2, v3, v4, Lx8/f0;->k(Lx8/g; J)V
+	6       (0000001a) return-void          
+	10:19
+	(Ljava/io/IOException; -> 1c k-BB@0x1c)
+
+k-BB@0x1c : 
+	7       (0000001c) const/4              v2, 1
+	8       (0000001e) iput-boolean         v2, v1, Lokhttp3/internal/cache/FaultHidingSink;->b Z
+	9       (00000022) const/4              v2, 0
+	10      (00000024) throw                v2
+

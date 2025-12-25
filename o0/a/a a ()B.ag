@@ -1,0 +1,51 @@
+# Lo0/a;->a()B [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v3
+#
+# - return:byte
+
+a-BB@0x0 : [ a-BB@0x24 a-BB@0x4c ]
+	0       (00000000) iget                 v0, v3, Lo0/a;->c I
+	1       (00000004) add-int/lit8         v0, v0, -1
+	2       (00000008) iget-object          v1, v3, Lo0/a;->a Ljava/lang/CharSequence;
+	3       (0000000c) invoke-interface     v1, v0, Ljava/lang/CharSequence;->charAt(I)C
+	4       (00000012) move-result          v0
+	5       (00000014) iput-char            v0, v3, Lo0/a;->d C
+	6       (00000018) invoke-static        v0, Ljava/lang/Character;->isLowSurrogate(C)Z
+	7       (0000001e) move-result          v0
+	8       (00000020) if-eqz               v0, +016h
+
+a-BB@0x24 : 
+	9       (00000024) iget                 v0, v3, Lo0/a;->c I
+	10      (00000028) invoke-static        v1, v0, Ljava/lang/Character;->codePointBefore(Ljava/lang/CharSequence; I)I
+	11      (0000002e) move-result          v0
+	12      (00000030) iget                 v1, v3, Lo0/a;->c I
+	13      (00000034) invoke-static        v0, Ljava/lang/Character;->charCount(I)I
+	14      (0000003a) move-result          v2
+	15      (0000003c) sub-int/2addr        v1, v2
+	16      (0000003e) iput                 v1, v3, Lo0/a;->c I
+	17      (00000042) invoke-static        v0, Ljava/lang/Character;->getDirectionality(I)B
+	18      (00000048) move-result          v0
+	19      (0000004a) return               v0
+
+a-BB@0x4c : [ a-BB@0x64 a-BB@0x6e ]
+	20      (0000004c) iget                 v0, v3, Lo0/a;->c I
+	21      (00000050) add-int/lit8         v0, v0, -1
+	22      (00000054) iput                 v0, v3, Lo0/a;->c I
+	23      (00000058) iget-char            v0, v3, Lo0/a;->d C
+	24      (0000005c) const/16             v1, 1792
+	25      (00000060) if-ge                v0, v1, +007h
+
+a-BB@0x64 : [ a-BB@0x76 ]
+	26      (00000064) sget-object          v1, Lo0/a;->e [B
+	27      (00000068) aget-byte            v0, v1, v0
+	28      (0000006c) goto                 +5h
+
+a-BB@0x6e : [ a-BB@0x76 ]
+	29      (0000006e) invoke-static        v0, Ljava/lang/Character;->getDirectionality(C)B
+	30      (00000074) move-result          v0
+
+a-BB@0x76 : 
+	31      (00000076) return               v0
+

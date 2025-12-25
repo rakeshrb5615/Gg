@@ -1,0 +1,43 @@
+# Lokhttp3/internal/tls/BasicTrustRootIndex;-><init>([Ljava/security/cert/X509Certificate;)V [access_flags=public varargs constructor]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:java.security.cert.X509Certificate[]
+#
+# - return:void
+
+<init>-BB@0x0 : [ <init>-BB@0x1e ]
+	0       (00000000) const-string         v0, "caCerts"
+	1       (00000004) invoke-static        v7, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) invoke-direct        v6, Ljava/lang/Object;-><init>()V
+	3       (00000010) new-instance         v0, Ljava/util/LinkedHashMap;
+	4       (00000014) invoke-direct        v0, Ljava/util/LinkedHashMap;-><init>()V
+	5       (0000001a) array-length         v1, v7
+	6       (0000001c) const/4              v2, 0
+
+<init>-BB@0x1e : [ <init>-BB@0x22 <init>-BB@0x5a ]
+	7       (0000001e) if-ge                v2, v1, +01eh
+
+<init>-BB@0x22 : [ <init>-BB@0x3a <init>-BB@0x4a ]
+	8       (00000022) aget-object          v3, v7, v2
+	9       (00000026) invoke-virtual       v3, Ljava/security/cert/X509Certificate;->getSubjectX500Principal()Ljavax/security/auth/x500/X500Principal;
+	10      (0000002c) move-result-object   v4
+	11      (0000002e) invoke-virtual       v0, v4, Ljava/util/LinkedHashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	12      (00000034) move-result-object   v5
+	13      (00000036) if-nez               v5, +00ah
+
+<init>-BB@0x3a : [ <init>-BB@0x4a ]
+	14      (0000003a) new-instance         v5, Ljava/util/LinkedHashSet;
+	15      (0000003e) invoke-direct        v5, Ljava/util/LinkedHashSet;-><init>()V
+	16      (00000044) invoke-interface     v0, v4, v5, Ljava/util/Map;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+
+<init>-BB@0x4a : [ <init>-BB@0x1e ]
+	17      (0000004a) check-cast           v5, Ljava/util/Set;
+	18      (0000004e) invoke-interface     v5, v3, Ljava/util/Set;->add(Ljava/lang/Object;)Z
+	19      (00000054) add-int/lit8         v2, v2, 1
+	20      (00000058) goto                 -1dh
+
+<init>-BB@0x5a : 
+	21      (0000005a) iput-object          v0, v6, Lokhttp3/internal/tls/BasicTrustRootIndex;->a Ljava/util/LinkedHashMap;
+	22      (0000005e) return-void          
+

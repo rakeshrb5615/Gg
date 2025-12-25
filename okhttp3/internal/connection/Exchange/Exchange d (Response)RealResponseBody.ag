@@ -1,0 +1,63 @@
+# Lokhttp3/internal/connection/Exchange;->d(Lokhttp3/Response;)Lokhttp3/internal/http/RealResponseBody; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v8
+# - v9:okhttp3.Response
+#
+# - return:okhttp3.internal.http.RealResponseBody
+
+d-BB@0x0 : [ d-BB@0x4 ]
+	0       (00000000) iget-object          v0, v8, Lokhttp3/internal/connection/Exchange;->d Lokhttp3/internal/http/ExchangeCodec;
+
+d-BB@0x4 : [ d-BB@0x18 d-BB@0x1a ]
+	1       (00000004) const-string         v1, "Content-Type"
+	2       (00000008) iget-object          v2, v9, Lokhttp3/Response;->f Lokhttp3/Headers;
+	3       (0000000c) invoke-virtual       v2, v1, Lokhttp3/Headers;->b(Ljava/lang/String;)Ljava/lang/String;
+	4       (00000012) move-result-object   v1
+	5       (00000014) if-nez               v1, +003h
+	4:2d
+	(Ljava/io/IOException; -> 52 d-BB@0x52)
+
+d-BB@0x18 : [ d-BB@0x1a ]
+	6       (00000018) const/4              v1, 0
+	4:2d
+	(Ljava/io/IOException; -> 52 d-BB@0x52)
+
+d-BB@0x1a : [ d-BB@0x32 ]
+	7       (0000001a) invoke-interface     v0, v9, Lokhttp3/internal/http/ExchangeCodec;->f(Lokhttp3/Response;)J
+	8       (00000020) move-result-wide     v5
+	9       (00000022) invoke-interface     v0, v9, Lokhttp3/internal/http/ExchangeCodec;->g(Lokhttp3/Response;)Lx8/h0;
+	10      (00000028) move-result-object   v4
+	11      (0000002a) new-instance         v2, Lokhttp3/internal/connection/Exchange$ResponseBodySource;
+	12      (0000002e) const/4              v7, 0
+	13      (00000030) move-object          v3, v8
+
+d-BB@0x32 : 
+	14      (00000032) invoke-direct/range  v2 ... v7, Lokhttp3/internal/connection/Exchange$ResponseBodySource;-><init>(Lokhttp3/internal/connection/Exchange; Lx8/h0; J Z)V
+	15      (00000038) new-instance         v9, Lokhttp3/internal/http/RealResponseBody;
+	16      (0000003c) invoke-static        v2, Lx8/b;->c(Lx8/h0;)Lx8/b0;
+	17      (00000042) move-result-object   v0
+	18      (00000044) invoke-direct        v9, v1, v5, v6, v0, Lokhttp3/internal/http/RealResponseBody;-><init>(Ljava/lang/String; J Lx8/b0;)V
+	19      (0000004a) return-object        v9
+	32:49
+	(Ljava/io/IOException; -> 4c d-BB@0x4c)
+
+d-BB@0x4c : [ d-BB@0x4e ]
+	20      (0000004c) move-exception       v0
+
+d-BB@0x4e : [ d-BB@0x58 ]
+	21      (0000004e) move-object          v9, v0
+	22      (00000050) goto                 +4h
+
+d-BB@0x52 : [ d-BB@0x4e ]
+	23      (00000052) move-exception       v0
+	24      (00000054) move-object          v3, v8
+	25      (00000056) goto                 -4h
+
+d-BB@0x58 : 
+	26      (00000058) iget-object          v0, v3, Lokhttp3/internal/connection/Exchange;->b Lokhttp3/EventListener;
+	27      (0000005c) iget-object          v1, v3, Lokhttp3/internal/connection/Exchange;->a Lokhttp3/internal/connection/RealCall;
+	28      (00000060) invoke-virtual       v0, v1, v9, Lokhttp3/EventListener;->z(Lokhttp3/Call; Ljava/io/IOException;)V
+	29      (00000066) invoke-virtual       v8, v9, Lokhttp3/internal/connection/Exchange;->f(Ljava/io/IOException;)V
+	30      (0000006c) throw                v9
+

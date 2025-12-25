@@ -1,0 +1,104 @@
+# Lokhttp3/internal/http2/Http2Connection$ReaderRunnable;->invoke()Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v6
+#
+# - return:java.lang.Object
+
+invoke-BB@0x0 : [ invoke-BB@0x10 ]
+	0       (00000000) iget-object          v0, v6, Lokhttp3/internal/http2/Http2Connection$ReaderRunnable;->b Lokhttp3/internal/http2/Http2Connection;
+	1       (00000004) iget-object          v1, v6, Lokhttp3/internal/http2/Http2Connection$ReaderRunnable;->a Lokhttp3/internal/http2/Http2Reader;
+	2       (00000008) sget-object          v2, Lokhttp3/internal/http2/ErrorCode;->e Lokhttp3/internal/http2/ErrorCode;
+	3       (0000000c) const/4              v3, 1
+	4       (0000000e) const/4              v4, 0
+
+invoke-BB@0x10 : [ invoke-BB@0x1c invoke-BB@0x56 ]
+	5       (00000010) invoke-virtual       v1, v3, v6, Lokhttp3/internal/http2/Http2Reader;->c(Z Lokhttp3/internal/http2/Http2Connection$ReaderRunnable;)Z
+	6       (00000016) move-result          v3
+	7       (00000018) if-eqz               v3, +01fh
+	10:17
+	(Ljava/io/IOException; -> 4e invoke-BB@0x4e)
+	(Ljava/lang/Throwable; -> 6a invoke-BB@0x6a)
+
+invoke-BB@0x1c : [ invoke-BB@0x1e ]
+	8       (0000001c) const/4              v3, 0
+
+invoke-BB@0x1e : [ invoke-BB@0x2a invoke-BB@0x1c ]
+	9       (0000001e) invoke-virtual       v1, v3, v6, Lokhttp3/internal/http2/Http2Reader;->c(Z Lokhttp3/internal/http2/Http2Connection$ReaderRunnable;)Z
+	10      (00000024) move-result          v3
+	11      (00000026) if-nez               v3, -005h
+	1e:2d
+	(Ljava/io/IOException; -> 4e invoke-BB@0x4e)
+	(Ljava/lang/Throwable; -> 48 invoke-BB@0x48)
+
+invoke-BB@0x2a : [ invoke-BB@0x2e ]
+	12      (0000002a) sget-object          v3, Lokhttp3/internal/http2/ErrorCode;->c Lokhttp3/internal/http2/ErrorCode;
+	1e:2d
+	(Ljava/io/IOException; -> 4e invoke-BB@0x4e)
+	(Ljava/lang/Throwable; -> 48 invoke-BB@0x48)
+
+invoke-BB@0x2e : [ invoke-BB@0x38 ]
+	13      (0000002e) sget-object          v2, Lokhttp3/internal/http2/ErrorCode;->n Lokhttp3/internal/http2/ErrorCode;
+	14      (00000032) invoke-virtual       v0, v3, v2, v4, Lokhttp3/internal/http2/Http2Connection;->c(Lokhttp3/internal/http2/ErrorCode; Lokhttp3/internal/http2/ErrorCode; Ljava/io/IOException;)V
+	2e:31
+	(Ljava/io/IOException; -> 44 invoke-BB@0x44)
+	(Ljava/lang/Throwable; -> 40 invoke-BB@0x40)
+
+invoke-BB@0x38 : [ invoke-BB@0x7a ]
+	15      (00000038) invoke-static        v1, Lokhttp3/internal/_UtilCommonKt;->b(Ljava/io/Closeable;)V
+	16      (0000003e) goto                 +1eh
+
+invoke-BB@0x40 : [ invoke-BB@0x80 ]
+	17      (00000040) move-exception       v5
+	18      (00000042) goto                 +1fh
+
+invoke-BB@0x44 : [ invoke-BB@0x6e ]
+	19      (00000044) move-exception       v4
+	20      (00000046) goto                 +14h
+
+invoke-BB@0x48 : [ invoke-BB@0x4a ]
+	21      (00000048) move-exception       v5
+
+invoke-BB@0x4a : [ invoke-BB@0x80 ]
+	22      (0000004a) move-object          v3, v2
+	23      (0000004c) goto                 +1ah
+
+invoke-BB@0x4e : [ invoke-BB@0x6e ]
+	24      (0000004e) move-exception       v3
+	25      (00000050) move-object          v4, v3
+	26      (00000052) move-object          v3, v2
+	27      (00000054) goto                 +dh
+
+invoke-BB@0x56 : 
+	28      (00000056) new-instance         v3, Ljava/io/IOException;
+	29      (0000005a) const-string         v5, "Required SETTINGS preface not received"
+	30      (0000005e) invoke-direct        v3, v5, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+	31      (00000064) throw                v3
+	56:65
+	(Ljava/io/IOException; -> 4e invoke-BB@0x4e)
+	(Ljava/lang/Throwable; -> 6a invoke-BB@0x6a)
+
+invoke-BB@0x66 : [ invoke-BB@0x4a ]
+	32      (00000066) move-object          v5, v3
+	33      (00000068) goto                 -fh
+
+invoke-BB@0x6a : [ invoke-BB@0x66 ]
+	34      (0000006a) move-exception       v3
+	35      (0000006c) goto                 -3h
+
+invoke-BB@0x6e : [ invoke-BB@0x38 ]
+	36      (0000006e) sget-object          v2, Lokhttp3/internal/http2/ErrorCode;->d Lokhttp3/internal/http2/ErrorCode;
+	37      (00000072) invoke-virtual       v0, v2, v2, v4, Lokhttp3/internal/http2/Http2Connection;->c(Lokhttp3/internal/http2/ErrorCode; Lokhttp3/internal/http2/ErrorCode; Ljava/io/IOException;)V
+	38      (00000078) goto                 -20h
+	6e:71
+	(Ljava/lang/Throwable; -> 40 invoke-BB@0x40)
+
+invoke-BB@0x7a : 
+	39      (0000007a) sget-object          v0, Lh7/l;->a Lh7/l;
+	40      (0000007e) return-object        v0
+
+invoke-BB@0x80 : 
+	41      (00000080) invoke-virtual       v0, v3, v2, v4, Lokhttp3/internal/http2/Http2Connection;->c(Lokhttp3/internal/http2/ErrorCode; Lokhttp3/internal/http2/ErrorCode; Ljava/io/IOException;)V
+	42      (00000086) invoke-static        v1, Lokhttp3/internal/_UtilCommonKt;->b(Ljava/io/Closeable;)V
+	43      (0000008c) throw                v5
+

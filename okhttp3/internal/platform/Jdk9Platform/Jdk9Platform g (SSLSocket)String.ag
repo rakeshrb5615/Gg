@@ -1,0 +1,31 @@
+# Lokhttp3/internal/platform/Jdk9Platform;->g(Ljavax/net/ssl/SSLSocket;)Ljava/lang/String; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:javax.net.ssl.SSLSocket
+#
+# - return:java.lang.String
+
+g-BB@0x0 : [ g-BB@0xc g-BB@0x20 ]
+	0       (00000000) invoke-virtual       v2, Ljavax/net/ssl/SSLSocket;->getApplicationProtocol()Ljava/lang/String;
+	1       (00000006) move-result-object   v2
+	2       (00000008) if-eqz               v2, +00ch
+	0:17
+	(Ljava/lang/UnsupportedOperationException; -> 20 g-BB@0x20)
+
+g-BB@0xc : [ g-BB@0x1c g-BB@0x1e ]
+	3       (0000000c) const-string         v0, ""
+	4       (00000010) invoke-virtual       v2, v0, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+	5       (00000016) move-result          v0
+	6       (00000018) if-eqz               v0, +003h
+
+g-BB@0x1c : [ g-BB@0x20 ]
+	7       (0000001c) goto                 +2h
+
+g-BB@0x1e : 
+	8       (0000001e) return-object        v2
+
+g-BB@0x20 : 
+	9       (00000020) const/4              v2, 0
+	10      (00000022) return-object        v2
+

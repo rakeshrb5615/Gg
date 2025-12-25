@@ -1,0 +1,32 @@
+# Lokhttp3/Headers;->c(I)Ljava/lang/String; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:int
+#
+# - return:java.lang.String
+
+c-BB@0x0 : [ c-BB@0x18 c-BB@0x1a ]
+	0       (00000000) mul-int/lit8         v0, v4, 2
+	1       (00000004) iget-object          v1, v3, Lokhttp3/Headers;->a [Ljava/lang/String;
+	2       (00000008) invoke-static        v0, v1, Li7/h;->f0(I [Ljava/lang/Object;)Ljava/lang/Object;
+	3       (0000000e) move-result-object   v0
+	4       (00000010) check-cast           v0, Ljava/lang/String;
+	5       (00000014) if-eqz               v0, +003h
+
+c-BB@0x18 : 
+	6       (00000018) return-object        v0
+
+c-BB@0x1a : 
+	7       (0000001a) new-instance         v0, Ljava/lang/IndexOutOfBoundsException;
+	8       (0000001e) new-instance         v1, Ljava/lang/StringBuilder;
+	9       (00000022) const-string         v2, "name["
+	10      (00000026) invoke-direct        v1, v2, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	11      (0000002c) invoke-virtual       v1, v4, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	12      (00000032) const/16             v4, 93
+	13      (00000036) invoke-virtual       v1, v4, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+	14      (0000003c) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	15      (00000042) move-result-object   v4
+	16      (00000044) invoke-direct        v0, v4, Ljava/lang/IndexOutOfBoundsException;-><init>(Ljava/lang/String;)V
+	17      (0000004a) throw                v0
+

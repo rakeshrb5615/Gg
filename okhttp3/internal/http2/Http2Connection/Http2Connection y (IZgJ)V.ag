@@ -1,0 +1,126 @@
+# Lokhttp3/internal/http2/Http2Connection;->y(I Z Lx8/g; J)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v9
+# - v10:int
+# - v11:boolean
+# - v12:x8.g
+# - v13:long
+#
+# - return:void
+
+y-BB@0x0 : [ y-BB@0xe y-BB@0x1a ]
+	0       (00000000) const-wide/16        v0, 0
+	1       (00000004) cmp-long             v2, v12, v0
+	2       (00000008) const/4              v3, 0
+	3       (0000000a) if-nez               v2, +008h
+
+y-BB@0xe : 
+	4       (0000000e) iget-object          v12, v8, Lokhttp3/internal/http2/Http2Connection;->C Lokhttp3/internal/http2/Http2Writer;
+	5       (00000012) invoke-virtual       v12, v10, v9, v11, v3, Lokhttp3/internal/http2/Http2Writer;->f(Z I Lx8/g; I)V
+	6       (00000018) return-void          
+
+y-BB@0x1a : [ y-BB@0x22 y-BB@0xd0 ]
+	7       (0000001a) cmp-long             v2, v12, v0
+	8       (0000001e) if-lez               v2, +059h
+
+y-BB@0x22 : [ y-BB@0x24 ]
+	9       (00000022) monitor-enter        v8
+
+y-BB@0x24 : [ y-BB@0x34 y-BB@0x68 ]
+	10      (00000024) iget-wide            v4, v8, Lokhttp3/internal/http2/Http2Connection;->z J
+	11      (00000028) iget-wide            v6, v8, Lokhttp3/internal/http2/Http2Connection;->A J
+	12      (0000002c) cmp-long             v2, v4, v6
+	13      (00000030) if-ltz               v2, +01ch
+	24:67
+	(Ljava/lang/InterruptedException; -> b2 y-BB@0xb2)
+	(Ljava/lang/Throwable; -> 54 y-BB@0x54)
+
+y-BB@0x34 : [ y-BB@0x4c y-BB@0x58 ]
+	14      (00000034) iget-object          v2, v8, Lokhttp3/internal/http2/Http2Connection;->b Ljava/util/LinkedHashMap;
+	15      (00000038) invoke-static        v9, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+	16      (0000003e) move-result-object   v4
+	17      (00000040) invoke-interface     v2, v4, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z
+	18      (00000046) move-result          v2
+	19      (00000048) if-eqz               v2, +008h
+	24:67
+	(Ljava/lang/InterruptedException; -> b2 y-BB@0xb2)
+	(Ljava/lang/Throwable; -> 54 y-BB@0x54)
+
+y-BB@0x4c : [ y-BB@0x24 ]
+	20      (0000004c) invoke-virtual       v8, Ljava/lang/Object;->wait()V
+	21      (00000052) goto                 -17h
+	24:67
+	(Ljava/lang/InterruptedException; -> b2 y-BB@0xb2)
+	(Ljava/lang/Throwable; -> 54 y-BB@0x54)
+
+y-BB@0x54 : [ y-BB@0xcc ]
+	22      (00000054) move-exception       v9
+	23      (00000056) goto                 +3bh
+	24:67
+	(Ljava/lang/InterruptedException; -> b2 y-BB@0xb2)
+	(Ljava/lang/Throwable; -> 54 y-BB@0x54)
+
+y-BB@0x58 : 
+	24      (00000058) new-instance         v9, Ljava/io/IOException;
+	25      (0000005c) const-string         v10, "stream closed"
+	26      (00000060) invoke-direct        v9, v10, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+	27      (00000066) throw                v9
+	24:67
+	(Ljava/lang/InterruptedException; -> b2 y-BB@0xb2)
+	(Ljava/lang/Throwable; -> 54 y-BB@0x54)
+
+y-BB@0x68 : [ y-BB@0x6a ]
+	28      (00000068) sub-long/2addr       v6, v4
+
+y-BB@0x6a : [ y-BB@0x9c y-BB@0xa8 ]
+	29      (0000006a) invoke-static        v12, v13, v6, v7, Ljava/lang/Math;->min(J J)J
+	30      (00000070) move-result-wide     v4
+	31      (00000072) long-to-int          v2, v4
+	32      (00000074) iget-object          v4, v8, Lokhttp3/internal/http2/Http2Connection;->C Lokhttp3/internal/http2/Http2Writer;
+	33      (00000078) iget                 v4, v4, Lokhttp3/internal/http2/Http2Writer;->c I
+	34      (0000007c) invoke-static        v2, v4, Ljava/lang/Math;->min(I I)I
+	35      (00000082) move-result          v2
+	36      (00000084) iget-wide            v4, v8, Lokhttp3/internal/http2/Http2Connection;->z J
+	37      (00000088) int-to-long          v6, v2
+	38      (0000008a) add-long/2addr       v4, v6
+	39      (0000008c) iput-wide            v4, v8, Lokhttp3/internal/http2/Http2Connection;->z J
+	40      (00000090) monitor-exit         v8
+	41      (00000092) sub-long/2addr       v12, v6
+	42      (00000094) iget-object          v4, v8, Lokhttp3/internal/http2/Http2Connection;->C Lokhttp3/internal/http2/Http2Writer;
+	43      (00000098) if-eqz               v10, +008h
+	6a:8f
+	(Ljava/lang/Throwable; -> 54 y-BB@0x54)
+
+y-BB@0x9c : [ y-BB@0xa4 y-BB@0xa8 ]
+	44      (0000009c) cmp-long             v5, v12, v0
+	45      (000000a0) if-nez               v5, +004h
+
+y-BB@0xa4 : [ y-BB@0xaa ]
+	46      (000000a4) const/4              v5, 1
+	47      (000000a6) goto                 +2h
+
+y-BB@0xa8 : [ y-BB@0xaa ]
+	48      (000000a8) move                 v5, v3
+
+y-BB@0xaa : [ y-BB@0x1a ]
+	49      (000000aa) invoke-virtual       v4, v5, v9, v11, v2, Lokhttp3/internal/http2/Http2Writer;->f(Z I Lx8/g; I)V
+	50      (000000b0) goto                 -4bh
+
+y-BB@0xb2 : 
+	51      (000000b2) invoke-static        Ljava/lang/Thread;->currentThread()Ljava/lang/Thread;
+	52      (000000b8) move-result-object   v9
+	53      (000000ba) invoke-virtual       v9, Ljava/lang/Thread;->interrupt()V
+	54      (000000c0) new-instance         v9, Ljava/io/InterruptedIOException;
+	55      (000000c4) invoke-direct        v9, Ljava/io/InterruptedIOException;-><init>()V
+	56      (000000ca) throw                v9
+	b2:cb
+	(Ljava/lang/Throwable; -> 54 y-BB@0x54)
+
+y-BB@0xcc : 
+	57      (000000cc) monitor-exit         v8
+	58      (000000ce) throw                v9
+
+y-BB@0xd0 : 
+	59      (000000d0) return-void          
+

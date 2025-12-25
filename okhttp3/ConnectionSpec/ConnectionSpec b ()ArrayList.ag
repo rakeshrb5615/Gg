@@ -1,0 +1,37 @@
+# Lokhttp3/ConnectionSpec;->b()Ljava/util/ArrayList; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v6
+#
+# - return:java.util.ArrayList
+
+b-BB@0x0 : [ b-BB@0x8 b-BB@0x3a ]
+	0       (00000000) iget-object          v0, v6, Lokhttp3/ConnectionSpec;->c [Ljava/lang/String;
+	1       (00000004) if-eqz               v0, +01bh
+
+b-BB@0x8 : [ b-BB@0x18 ]
+	2       (00000008) new-instance         v1, Ljava/util/ArrayList;
+	3       (0000000c) array-length         v2, v0
+	4       (0000000e) invoke-direct        v1, v2, Ljava/util/ArrayList;-><init>(I)V
+	5       (00000014) array-length         v2, v0
+	6       (00000016) const/4              v3, 0
+
+b-BB@0x18 : [ b-BB@0x1c b-BB@0x38 ]
+	7       (00000018) if-ge                v3, v2, +010h
+
+b-BB@0x1c : [ b-BB@0x18 ]
+	8       (0000001c) aget-object          v4, v0, v3
+	9       (00000020) sget-object          v5, Lokhttp3/CipherSuite;->b Lokhttp3/CipherSuite$Companion;
+	10      (00000024) invoke-virtual       v5, v4, Lokhttp3/CipherSuite$Companion;->b(Ljava/lang/String;)Lokhttp3/CipherSuite;
+	11      (0000002a) move-result-object   v4
+	12      (0000002c) invoke-virtual       v1, v4, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	13      (00000032) add-int/lit8         v3, v3, 1
+	14      (00000036) goto                 -fh
+
+b-BB@0x38 : 
+	15      (00000038) return-object        v1
+
+b-BB@0x3a : 
+	16      (0000003a) const/4              v0, 0
+	17      (0000003c) return-object        v0
+

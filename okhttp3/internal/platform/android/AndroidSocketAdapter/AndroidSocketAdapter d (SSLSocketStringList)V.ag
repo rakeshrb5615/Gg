@@ -1,0 +1,58 @@
+# Lokhttp3/internal/platform/android/AndroidSocketAdapter;->d(Ljavax/net/ssl/SSLSocket; Ljava/lang/String; Ljava/util/List;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:javax.net.ssl.SSLSocket
+# - v3:java.lang.String
+# - v4:java.util.List
+#
+# - return:void
+
+d-BB@0x0 : [ d-BB@0x1a d-BB@0x76 ]
+	0       (00000000) const-string         v3, "protocols"
+	1       (00000004) invoke-static        v4, v3, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) iget-object          v3, v1, Lokhttp3/internal/platform/android/AndroidSocketAdapter;->a Ljava/lang/Class;
+	3       (0000000e) invoke-virtual       v3, v2, Ljava/lang/Class;->isInstance(Ljava/lang/Object;)Z
+	4       (00000014) move-result          v3
+	5       (00000016) if-eqz               v3, +030h
+
+d-BB@0x1a : 
+	6       (0000001a) iget-object          v3, v1, Lokhttp3/internal/platform/android/AndroidSocketAdapter;->b Ljava/lang/reflect/Method;
+	7       (0000001e) sget-object          v0, Ljava/lang/Boolean;->TRUE Ljava/lang/Boolean;
+	8       (00000022) filled-new-array     v0, [Ljava/lang/Object;
+	9       (00000028) move-result-object   v0
+	10      (0000002a) invoke-virtual       v3, v2, v0, Ljava/lang/reflect/Method;->invoke(Ljava/lang/Object; [Ljava/lang/Object;)Ljava/lang/Object;
+	11      (00000030) iget-object          v3, v1, Lokhttp3/internal/platform/android/AndroidSocketAdapter;->d Ljava/lang/reflect/Method;
+	12      (00000034) sget-object          v0, Lokhttp3/internal/platform/Platform;->a Lokhttp3/internal/platform/Platform$Companion;
+	13      (00000038) invoke-virtual       v0, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	14      (0000003e) invoke-static        v4, Lokhttp3/internal/platform/Platform$Companion;->b(Ljava/util/List;)[B
+	15      (00000044) move-result-object   v4
+	16      (00000046) filled-new-array     v4, [Ljava/lang/Object;
+	17      (0000004c) move-result-object   v4
+	18      (0000004e) invoke-virtual       v3, v2, v4, Ljava/lang/reflect/Method;->invoke(Ljava/lang/Object; [Ljava/lang/Object;)Ljava/lang/Object;
+	19      (00000054) return-void          
+	1a:53
+	(Ljava/lang/IllegalAccessException; -> 5a d-BB@0x5a)
+	(Ljava/lang/reflect/InvocationTargetException; -> 56 d-BB@0x56)
+
+d-BB@0x56 : [ d-BB@0x5e ]
+	20      (00000056) move-exception       v2
+	21      (00000058) goto                 +3h
+
+d-BB@0x5a : [ d-BB@0x6a ]
+	22      (0000005a) move-exception       v2
+	23      (0000005c) goto                 +7h
+
+d-BB@0x5e : 
+	24      (0000005e) new-instance         v3, Ljava/lang/AssertionError;
+	25      (00000062) invoke-direct        v3, v2, Ljava/lang/AssertionError;-><init>(Ljava/lang/Object;)V
+	26      (00000068) throw                v3
+
+d-BB@0x6a : 
+	27      (0000006a) new-instance         v3, Ljava/lang/AssertionError;
+	28      (0000006e) invoke-direct        v3, v2, Ljava/lang/AssertionError;-><init>(Ljava/lang/Object;)V
+	29      (00000074) throw                v3
+
+d-BB@0x76 : 
+	30      (00000076) return-void          
+

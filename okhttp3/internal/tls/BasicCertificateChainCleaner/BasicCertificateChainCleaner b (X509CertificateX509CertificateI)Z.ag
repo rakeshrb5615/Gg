@@ -1,0 +1,43 @@
+# Lokhttp3/internal/tls/BasicCertificateChainCleaner;->b(Ljava/security/cert/X509Certificate; Ljava/security/cert/X509Certificate; I)Z [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:java.security.cert.X509Certificate
+# - v3:java.security.cert.X509Certificate
+# - v4:int
+#
+# - return:boolean
+
+b-BB@0x0 : [ b-BB@0x1c b-BB@0x1e ]
+	0       (00000000) invoke-virtual       v2, Ljava/security/cert/X509Certificate;->getIssuerDN()Ljava/security/Principal;
+	1       (00000006) move-result-object   v0
+	2       (00000008) invoke-virtual       v3, Ljava/security/cert/X509Certificate;->getSubjectDN()Ljava/security/Principal;
+	3       (0000000e) move-result-object   v1
+	4       (00000010) invoke-static        v0, v1, Lkotlin/jvm/internal/j;->a(Ljava/lang/Object; Ljava/lang/Object;)Z
+	5       (00000016) move-result          v0
+	6       (00000018) if-nez               v0, +003h
+
+b-BB@0x1c : [ b-BB@0x3e ]
+	7       (0000001c) goto                 +11h
+
+b-BB@0x1e : [ b-BB@0x2a b-BB@0x2c ]
+	8       (0000001e) invoke-virtual       v3, Ljava/security/cert/X509Certificate;->getBasicConstraints()I
+	9       (00000024) move-result          v0
+	10      (00000026) if-ge                v0, v4, +003h
+
+b-BB@0x2a : [ b-BB@0x3e ]
+	11      (0000002a) goto                 +ah
+
+b-BB@0x2c : 
+	12      (0000002c) invoke-virtual       v3, Ljava/security/cert/Certificate;->getPublicKey()Ljava/security/PublicKey;
+	13      (00000032) move-result-object   v3
+	14      (00000034) invoke-virtual       v2, v3, Ljava/security/cert/Certificate;->verify(Ljava/security/PublicKey;)V
+	15      (0000003a) const/4              v2, 1
+	16      (0000003c) return               v2
+	2c:39
+	(Ljava/security/GeneralSecurityException; -> 3e b-BB@0x3e)
+
+b-BB@0x3e : 
+	17      (0000003e) const/4              v2, 0
+	18      (00000040) return               v2
+

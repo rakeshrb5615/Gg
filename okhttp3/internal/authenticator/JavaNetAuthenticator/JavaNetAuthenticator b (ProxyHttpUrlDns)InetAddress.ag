@@ -1,0 +1,62 @@
+# Lokhttp3/internal/authenticator/JavaNetAuthenticator;->b(Ljava/net/Proxy; Lokhttp3/HttpUrl; Lokhttp3/Dns;)Ljava/net/InetAddress; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:java.net.Proxy
+# - v3:okhttp3.HttpUrl
+# - v4:okhttp3.Dns
+#
+# - return:java.net.InetAddress
+
+b-BB@0x0 : [ b-BB@0xc b-BB@0x10 ]
+	0       (00000000) invoke-virtual       v2, Ljava/net/Proxy;->type()Ljava/net/Proxy$Type;
+	1       (00000006) move-result-object   v0
+	2       (00000008) if-nez               v0, +004h
+
+b-BB@0xc : [ b-BB@0x20 ]
+	3       (0000000c) const/4              v0, -1
+	4       (0000000e) goto                 +9h
+
+b-BB@0x10 : [ b-BB@0x20 ]
+	5       (00000010) sget-object          v1, Lokhttp3/internal/authenticator/JavaNetAuthenticator$WhenMappings;->a [I
+	6       (00000014) invoke-virtual       v0, Ljava/lang/Enum;->ordinal()I
+	7       (0000001a) move-result          v0
+	8       (0000001c) aget                 v0, v1, v0
+
+b-BB@0x20 : [ b-BB@0x26 b-BB@0x5e ]
+	9       (00000020) const/4              v1, 1
+	10      (00000022) if-ne                v0, v1, +01eh
+
+b-BB@0x26 : [ b-BB@0x3e b-BB@0x4e ]
+	11      (00000026) iget-object          v2, v3, Lokhttp3/HttpUrl;->d Ljava/lang/String;
+	12      (0000002a) invoke-interface     v4, v2, Lokhttp3/Dns;->a(Ljava/lang/String;)Ljava/util/List;
+	13      (00000030) move-result-object   v2
+	14      (00000032) invoke-interface     v2, Ljava/util/List;->isEmpty()Z
+	15      (00000038) move-result          v3
+	16      (0000003a) if-nez               v3, +00ah
+
+b-BB@0x3e : 
+	17      (0000003e) const/4              v3, 0
+	18      (00000040) invoke-interface     v2, v3, Ljava/util/List;->get(I)Ljava/lang/Object;
+	19      (00000046) move-result-object   v2
+	20      (00000048) check-cast           v2, Ljava/net/InetAddress;
+	21      (0000004c) return-object        v2
+
+b-BB@0x4e : 
+	22      (0000004e) new-instance         v2, Ljava/util/NoSuchElementException;
+	23      (00000052) const-string         v3, "List is empty."
+	24      (00000056) invoke-direct        v2, v3, Ljava/util/NoSuchElementException;-><init>(Ljava/lang/String;)V
+	25      (0000005c) throw                v2
+
+b-BB@0x5e : 
+	26      (0000005e) invoke-virtual       v2, Ljava/net/Proxy;->address()Ljava/net/SocketAddress;
+	27      (00000064) move-result-object   v2
+	28      (00000066) const-string         v3, "null cannot be cast to non-null type java.net.InetSocketAddress"
+	29      (0000006a) invoke-static        v2, v3, Lkotlin/jvm/internal/j;->c(Ljava/lang/Object; Ljava/lang/String;)V
+	30      (00000070) check-cast           v2, Ljava/net/InetSocketAddress;
+	31      (00000074) invoke-virtual       v2, Ljava/net/InetSocketAddress;->getAddress()Ljava/net/InetAddress;
+	32      (0000007a) move-result-object   v2
+	33      (0000007c) const-string         v3, "getAddress(...)"
+	34      (00000080) invoke-static        v2, v3, Lkotlin/jvm/internal/j;->d(Ljava/lang/Object; Ljava/lang/String;)V
+	35      (00000086) return-object        v2
+

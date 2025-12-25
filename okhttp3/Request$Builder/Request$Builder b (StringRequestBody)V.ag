@@ -1,0 +1,96 @@
+# Lokhttp3/Request$Builder;->b(Ljava/lang/String; Lokhttp3/RequestBody;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:java.lang.String
+# - v4:okhttp3.RequestBody
+#
+# - return:void
+
+b-BB@0x0 : [ b-BB@0x16 b-BB@0xda ]
+	0       (00000000) const-string         v0, "method"
+	1       (00000004) invoke-static        v3, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) invoke-virtual       v3, Ljava/lang/String;->length()I
+	3       (00000010) move-result          v0
+	4       (00000012) if-lez               v0, +064h
+
+b-BB@0x16 : [ b-BB@0x1e b-BB@0xa4 ]
+	5       (00000016) const-string         v0, "method "
+	6       (0000001a) if-nez               v4, +045h
+
+b-BB@0x1e : [ b-BB@0x32 b-BB@0x84 ]
+	7       (0000001e) sget-object          v1, Lokhttp3/internal/http/HttpMethod;->a Lokhttp3/internal/http/HttpMethod;
+	8       (00000022) const-string         v1, "POST"
+	9       (00000026) invoke-virtual       v3, v1, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+	10      (0000002c) move-result          v1
+	11      (0000002e) if-nez               v1, +02bh
+
+b-BB@0x32 : [ b-BB@0x42 b-BB@0x84 ]
+	12      (00000032) const-string         v1, "PUT"
+	13      (00000036) invoke-virtual       v3, v1, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+	14      (0000003c) move-result          v1
+	15      (0000003e) if-nez               v1, +023h
+
+b-BB@0x42 : [ b-BB@0x52 b-BB@0x84 ]
+	16      (00000042) const-string         v1, "PATCH"
+	17      (00000046) invoke-virtual       v3, v1, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+	18      (0000004c) move-result          v1
+	19      (0000004e) if-nez               v1, +01bh
+
+b-BB@0x52 : [ b-BB@0x62 b-BB@0x84 ]
+	20      (00000052) const-string         v1, "PROPPATCH"
+	21      (00000056) invoke-virtual       v3, v1, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+	22      (0000005c) move-result          v1
+	23      (0000005e) if-nez               v1, +013h
+
+b-BB@0x62 : [ b-BB@0x72 b-BB@0x84 ]
+	24      (00000062) const-string         v1, "QUERY"
+	25      (00000066) invoke-virtual       v3, v1, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+	26      (0000006c) move-result          v1
+	27      (0000006e) if-nez               v1, +00bh
+
+b-BB@0x72 : [ b-BB@0x82 b-BB@0x84 ]
+	28      (00000072) const-string         v1, "REPORT"
+	29      (00000076) invoke-virtual       v3, v1, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+	30      (0000007c) move-result          v1
+	31      (0000007e) if-nez               v1, +003h
+
+b-BB@0x82 : [ b-BB@0xb0 ]
+	32      (00000082) goto                 +17h
+
+b-BB@0x84 : 
+	33      (00000084) const-string         v4, " must have a request body."
+	34      (00000088) invoke-static        v0, v3, v4, Lv1/a;->l(Ljava/lang/String; Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	35      (0000008e) move-result-object   v3
+	36      (00000090) new-instance         v4, Ljava/lang/IllegalArgumentException;
+	37      (00000094) invoke-virtual       v3, Ljava/lang/Object;->toString()Ljava/lang/String;
+	38      (0000009a) move-result-object   v3
+	39      (0000009c) invoke-direct        v4, v3, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	40      (000000a2) throw                v4
+
+b-BB@0xa4 : [ b-BB@0xb0 b-BB@0xba ]
+	41      (000000a4) invoke-static        v3, Lokhttp3/internal/http/HttpMethod;->a(Ljava/lang/String;)Z
+	42      (000000aa) move-result          v1
+	43      (000000ac) if-eqz               v1, +007h
+
+b-BB@0xb0 : 
+	44      (000000b0) iput-object          v3, v2, Lokhttp3/Request$Builder;->b Ljava/lang/String;
+	45      (000000b4) iput-object          v4, v2, Lokhttp3/Request$Builder;->d Lokhttp3/RequestBody;
+	46      (000000b8) return-void          
+
+b-BB@0xba : 
+	47      (000000ba) const-string         v4, " must not have a request body."
+	48      (000000be) invoke-static        v0, v3, v4, Lv1/a;->l(Ljava/lang/String; Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	49      (000000c4) move-result-object   v3
+	50      (000000c6) new-instance         v4, Ljava/lang/IllegalArgumentException;
+	51      (000000ca) invoke-virtual       v3, Ljava/lang/Object;->toString()Ljava/lang/String;
+	52      (000000d0) move-result-object   v3
+	53      (000000d2) invoke-direct        v4, v3, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	54      (000000d8) throw                v4
+
+b-BB@0xda : 
+	55      (000000da) new-instance         v3, Ljava/lang/IllegalArgumentException;
+	56      (000000de) const-string         v4, "method.isEmpty() == true"
+	57      (000000e2) invoke-direct        v3, v4, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	58      (000000e8) throw                v3
+

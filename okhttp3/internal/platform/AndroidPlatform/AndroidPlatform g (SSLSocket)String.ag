@@ -1,0 +1,46 @@
+# Lokhttp3/internal/platform/AndroidPlatform;->g(Ljavax/net/ssl/SSLSocket;)Ljava/lang/String; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:javax.net.ssl.SSLSocket
+#
+# - return:java.lang.String
+
+g-BB@0x0 : [ g-BB@0xe ]
+	0       (00000000) iget-object          v0, v6, Lokhttp3/internal/platform/AndroidPlatform;->e Ljava/util/ArrayList;
+	1       (00000004) invoke-virtual       v0, Ljava/util/ArrayList;->size()I
+	2       (0000000a) move-result          v1
+	3       (0000000c) const/4              v2, 0
+
+g-BB@0xe : [ g-BB@0x14 g-BB@0x34 ]
+	4       (0000000e) const/4              v3, 0
+	5       (00000010) if-ge                v2, v1, +012h
+
+g-BB@0x14 : [ g-BB@0x32 g-BB@0xe ]
+	6       (00000014) invoke-virtual       v0, v2, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	7       (0000001a) move-result-object   v4
+	8       (0000001c) add-int/lit8         v2, v2, 1
+	9       (00000020) move-object          v5, v4
+	10      (00000022) check-cast           v5, Lokhttp3/internal/platform/android/SocketAdapter;
+	11      (00000026) invoke-interface     v5, v7, Lokhttp3/internal/platform/android/SocketAdapter;->a(Ljavax/net/ssl/SSLSocket;)Z
+	12      (0000002c) move-result          v5
+	13      (0000002e) if-eqz               v5, -010h
+
+g-BB@0x32 : [ g-BB@0x36 ]
+	14      (00000032) goto                 +2h
+
+g-BB@0x34 : [ g-BB@0x36 ]
+	15      (00000034) move-object          v4, v3
+
+g-BB@0x36 : [ g-BB@0x3e g-BB@0x48 ]
+	16      (00000036) check-cast           v4, Lokhttp3/internal/platform/android/SocketAdapter;
+	17      (0000003a) if-eqz               v4, +007h
+
+g-BB@0x3e : 
+	18      (0000003e) invoke-interface     v4, v7, Lokhttp3/internal/platform/android/SocketAdapter;->c(Ljavax/net/ssl/SSLSocket;)Ljava/lang/String;
+	19      (00000044) move-result-object   v7
+	20      (00000046) return-object        v7
+
+g-BB@0x48 : 
+	21      (00000048) return-object        v3
+

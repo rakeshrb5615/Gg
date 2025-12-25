@@ -1,0 +1,99 @@
+# Lokhttp3/internal/platform/AndroidPlatform;-><init>()V [access_flags=public constructor]
+#
+# Parameters:
+# local registers: v0...v6
+#
+# - return:void
+
+<init>-BB@0x0 : [ <init>-BB@0x20 ]
+	0       (00000000) invoke-direct        v6, Lokhttp3/internal/platform/Platform;-><init>()V
+	1       (00000006) sget-object          v0, Lokhttp3/internal/platform/android/StandardAndroidSocketAdapter;->g Lokhttp3/internal/platform/android/StandardAndroidSocketAdapter$Companion;
+	2       (0000000a) const-string         v1, "com.android.org.conscrypt"
+	3       (0000000e) invoke-virtual       v0, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	4       (00000014) const-string         v0, ".SSLParametersImpl"
+	5       (00000018) const-string         v2, ".OpenSSLSocketFactoryImpl"
+	6       (0000001c) const-string         v3, ".OpenSSLSocketImpl"
+
+<init>-BB@0x20 : [ <init>-BB@0x7e ]
+	7       (00000020) invoke-virtual       v1, v3, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	8       (00000026) move-result-object   v3
+	9       (00000028) invoke-static        v3, Ljava/lang/Class;->forName(Ljava/lang/String;)Ljava/lang/Class;
+	10      (0000002e) move-result-object   v3
+	11      (00000030) invoke-virtual       v1, v2, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	12      (00000036) move-result-object   v2
+	13      (00000038) invoke-static        v2, Ljava/lang/Class;->forName(Ljava/lang/String;)Ljava/lang/Class;
+	14      (0000003e) invoke-virtual       v1, v0, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	15      (00000044) move-result-object   v0
+	16      (00000046) invoke-static        v0, Ljava/lang/Class;->forName(Ljava/lang/String;)Ljava/lang/Class;
+	17      (0000004c) new-instance         v0, Lokhttp3/internal/platform/android/StandardAndroidSocketAdapter;
+	18      (00000050) invoke-direct        v0, v3, Lokhttp3/internal/platform/android/AndroidSocketAdapter;-><init>(Ljava/lang/Class;)V
+	19      (00000056) goto                 +14h
+	20:55
+	(Ljava/lang/Exception; -> 58 <init>-BB@0x58)
+
+<init>-BB@0x58 : [ <init>-BB@0x7e ]
+	20      (00000058) move-exception       v0
+	21      (0000005a) sget-object          v1, Lokhttp3/internal/platform/android/AndroidLog;->a Lokhttp3/internal/platform/android/AndroidLog;
+	22      (0000005e) const-class          v2, Lokhttp3/OkHttpClient;
+	23      (00000062) invoke-virtual       v2, Ljava/lang/Class;->getName()Ljava/lang/String;
+	24      (00000068) move-result-object   v2
+	25      (0000006a) invoke-virtual       v1, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	26      (00000070) const/4              v1, 5
+	27      (00000072) const-string         v3, "unable to load android socket classes"
+	28      (00000076) invoke-static        v2, v1, v3, v0, Lokhttp3/internal/platform/android/AndroidLog;->a(Ljava/lang/String; I Ljava/lang/String; Ljava/lang/Throwable;)V
+	29      (0000007c) const/4              v0, 0
+
+<init>-BB@0x7e : [ <init>-BB@0xfe ]
+	30      (0000007e) new-instance         v1, Lokhttp3/internal/platform/android/DeferredSocketAdapter;
+	31      (00000082) sget-object          v2, Lokhttp3/internal/platform/android/AndroidSocketAdapter;->e Lokhttp3/internal/platform/android/AndroidSocketAdapter$Companion;
+	32      (00000086) invoke-virtual       v2, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	33      (0000008c) sget-object          v2, Lokhttp3/internal/platform/android/AndroidSocketAdapter;->f Lokhttp3/internal/platform/android/AndroidSocketAdapter$Companion$factory$1;
+	34      (00000090) invoke-direct        v1, v2, Lokhttp3/internal/platform/android/DeferredSocketAdapter;-><init>(Lokhttp3/internal/platform/android/DeferredSocketAdapter$Factory;)V
+	35      (00000096) new-instance         v2, Lokhttp3/internal/platform/android/DeferredSocketAdapter;
+	36      (0000009a) sget-object          v3, Lokhttp3/internal/platform/android/ConscryptSocketAdapter;->a Lokhttp3/internal/platform/android/ConscryptSocketAdapter$Companion;
+	37      (0000009e) invoke-virtual       v3, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	38      (000000a4) sget-object          v3, Lokhttp3/internal/platform/android/ConscryptSocketAdapter;->b Lokhttp3/internal/platform/android/ConscryptSocketAdapter$Companion$factory$1;
+	39      (000000a8) invoke-direct        v2, v3, Lokhttp3/internal/platform/android/DeferredSocketAdapter;-><init>(Lokhttp3/internal/platform/android/DeferredSocketAdapter$Factory;)V
+	40      (000000ae) new-instance         v3, Lokhttp3/internal/platform/android/DeferredSocketAdapter;
+	41      (000000b2) sget-object          v4, Lokhttp3/internal/platform/android/BouncyCastleSocketAdapter;->a Lokhttp3/internal/platform/android/BouncyCastleSocketAdapter$Companion;
+	42      (000000b6) invoke-virtual       v4, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	43      (000000bc) sget-object          v4, Lokhttp3/internal/platform/android/BouncyCastleSocketAdapter;->b Lokhttp3/internal/platform/android/BouncyCastleSocketAdapter$Companion$factory$1;
+	44      (000000c0) invoke-direct        v3, v4, Lokhttp3/internal/platform/android/DeferredSocketAdapter;-><init>(Lokhttp3/internal/platform/android/DeferredSocketAdapter$Factory;)V
+	45      (000000c6) const/4              v4, 4
+	46      (000000c8) new-array            v4, v4, [Lokhttp3/internal/platform/android/SocketAdapter;
+	47      (000000cc) const/4              v5, 0
+	48      (000000ce) aput-object          v0, v4, v5
+	49      (000000d2) const/4              v0, 1
+	50      (000000d4) aput-object          v1, v4, v0
+	51      (000000d8) const/4              v0, 2
+	52      (000000da) aput-object          v2, v4, v0
+	53      (000000de) const/4              v0, 3
+	54      (000000e0) aput-object          v3, v4, v0
+	55      (000000e4) invoke-static        v4, Li7/h;->e0([Ljava/lang/Object;)Ljava/util/ArrayList;
+	56      (000000ea) move-result-object   v0
+	57      (000000ec) new-instance         v1, Ljava/util/ArrayList;
+	58      (000000f0) invoke-direct        v1, Ljava/util/ArrayList;-><init>()V
+	59      (000000f6) invoke-virtual       v0, Ljava/util/ArrayList;->size()I
+	60      (000000fc) move-result          v2
+
+<init>-BB@0xfe : [ <init>-BB@0x102 <init>-BB@0x128 ]
+	61      (000000fe) if-ge                v5, v2, +015h
+
+<init>-BB@0x102 : [ <init>-BB@0x120 <init>-BB@0xfe ]
+	62      (00000102) invoke-virtual       v0, v5, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	63      (00000108) move-result-object   v3
+	64      (0000010a) add-int/lit8         v5, v5, 1
+	65      (0000010e) move-object          v4, v3
+	66      (00000110) check-cast           v4, Lokhttp3/internal/platform/android/SocketAdapter;
+	67      (00000114) invoke-interface     v4, Lokhttp3/internal/platform/android/SocketAdapter;->b()Z
+	68      (0000011a) move-result          v4
+	69      (0000011c) if-eqz               v4, -00fh
+
+<init>-BB@0x120 : [ <init>-BB@0xfe ]
+	70      (00000120) invoke-virtual       v1, v3, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	71      (00000126) goto                 -14h
+
+<init>-BB@0x128 : 
+	72      (00000128) iput-object          v1, v6, Lokhttp3/internal/platform/AndroidPlatform;->e Ljava/util/ArrayList;
+	73      (0000012c) return-void          
+

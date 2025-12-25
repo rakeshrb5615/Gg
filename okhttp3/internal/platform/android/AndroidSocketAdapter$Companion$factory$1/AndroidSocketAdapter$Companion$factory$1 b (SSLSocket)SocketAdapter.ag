@@ -1,0 +1,47 @@
+# Lokhttp3/internal/platform/android/AndroidSocketAdapter$Companion$factory$1;->b(Ljavax/net/ssl/SSLSocket;)Lokhttp3/internal/platform/android/SocketAdapter; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:javax.net.ssl.SSLSocket
+#
+# - return:okhttp3.internal.platform.android.SocketAdapter
+
+b-BB@0x0 : [ b-BB@0x14 ]
+	0       (00000000) sget-object          v0, Lokhttp3/internal/platform/android/AndroidSocketAdapter;->e Lokhttp3/internal/platform/android/AndroidSocketAdapter$Companion;
+	1       (00000004) invoke-virtual       v4, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	2       (0000000a) move-result-object   v4
+	3       (0000000c) invoke-virtual       v0, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	4       (00000012) move-object          v0, v4
+
+b-BB@0x14 : [ b-BB@0x2c b-BB@0x62 ]
+	5       (00000014) invoke-virtual       v0, Ljava/lang/Class;->getSimpleName()Ljava/lang/String;
+	6       (0000001a) move-result-object   v1
+	7       (0000001c) const-string         v2, "OpenSSLSocketImpl"
+	8       (00000020) invoke-virtual       v1, v2, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+	9       (00000026) move-result          v1
+	10      (00000028) if-nez               v1, +01dh
+
+b-BB@0x2c : [ b-BB@0x38 b-BB@0x3a ]
+	11      (0000002c) invoke-virtual       v0, Ljava/lang/Class;->getSuperclass()Ljava/lang/Class;
+	12      (00000032) move-result-object   v0
+	13      (00000034) if-eqz               v0, +003h
+
+b-BB@0x38 : [ b-BB@0x14 ]
+	14      (00000038) goto                 -12h
+
+b-BB@0x3a : 
+	15      (0000003a) new-instance         v0, Ljava/lang/AssertionError;
+	16      (0000003e) new-instance         v1, Ljava/lang/StringBuilder;
+	17      (00000042) const-string         v2, "No OpenSSLSocketImpl superclass of socket of type "
+	18      (00000046) invoke-direct        v1, v2, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	19      (0000004c) invoke-virtual       v1, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	20      (00000052) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	21      (00000058) move-result-object   v4
+	22      (0000005a) invoke-direct        v0, v4, Ljava/lang/AssertionError;-><init>(Ljava/lang/Object;)V
+	23      (00000060) throw                v0
+
+b-BB@0x62 : 
+	24      (00000062) new-instance         v4, Lokhttp3/internal/platform/android/AndroidSocketAdapter;
+	25      (00000066) invoke-direct        v4, v0, Lokhttp3/internal/platform/android/AndroidSocketAdapter;-><init>(Ljava/lang/Class;)V
+	26      (0000006c) return-object        v4
+

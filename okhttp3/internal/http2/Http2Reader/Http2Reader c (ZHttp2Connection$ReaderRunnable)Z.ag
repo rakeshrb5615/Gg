@@ -1,0 +1,758 @@
+# Lokhttp3/internal/http2/Http2Reader;->c(Z Lokhttp3/internal/http2/Http2Connection$ReaderRunnable;)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v18
+# - v19:boolean
+# - v20:okhttp3.internal.http2.Http2Connection$ReaderRunnable
+#
+# - return:boolean
+
+c-BB@0x0 : [ c-BB@0x1a ]
+	0       (00000000) move-object/from16   v1, v18
+	1       (00000004) move-object/from16   v0, v20
+	2       (00000008) sget-object          v2, Lokhttp3/internal/http2/Http2Reader;->e Ljava/util/logging/Logger;
+	3       (0000000c) sget-object          v3, Lokhttp3/internal/http2/Http2Reader;->d Lokhttp3/internal/http2/Http2Reader$Companion;
+	4       (00000010) iget-object          v4, v1, Lokhttp3/internal/http2/Http2Reader;->a Lx8/i;
+	5       (00000014) const-wide/16        v5, 9
+	6       (00000018) const/4              v7, 0
+
+c-BB@0x1a : [ c-BB@0x30 c-BB@0x6ae ]
+	7       (0000001a) invoke-interface     v4, v5, v6, Lx8/i;->o(J)V
+	8       (00000020) invoke-static        v4, Lokhttp3/internal/_UtilCommonKt;->l(Lx8/i;)I
+	9       (00000026) move-result          v5
+	10      (00000028) const/16             v6, 16384
+	11      (0000002c) if-gt                v5, v6, +341h
+	1a:1f
+	(Ljava/io/EOFException; -> 6c6 c-BB@0x6c6)
+
+c-BB@0x30 : [ c-BB@0x62 c-BB@0x8a ]
+	12      (00000030) invoke-interface     v4, Lx8/i;->readByte()B
+	13      (00000036) move-result          v8
+	14      (00000038) and-int/lit16        v8, v8, 255
+	15      (0000003c) invoke-interface     v4, Lx8/i;->readByte()B
+	16      (00000042) move-result          v9
+	17      (00000044) and-int/lit16        v10, v9, 255
+	18      (00000048) invoke-interface     v4, Lx8/i;->readInt()I
+	19      (0000004e) move-result          v11
+	20      (00000050) const                v12, 2147483647
+	21      (00000056) and-int/2addr        v11, v12
+	22      (00000058) const/16             v13, 8
+	23      (0000005c) const/4              v14, 1
+	24      (0000005e) if-eq                v8, v13, +016h
+
+c-BB@0x62 : [ c-BB@0x72 c-BB@0x8a ]
+	25      (00000062) sget-object          v15, Ljava/util/logging/Level;->FINE Ljava/util/logging/Level;
+	26      (00000066) invoke-virtual       v2, v15, Ljava/util/logging/Logger;->isLoggable(Ljava/util/logging/Level;)Z
+	27      (0000006c) move-result          v15
+	28      (0000006e) if-eqz               v15, +00eh
+
+c-BB@0x72 : [ c-BB@0x8a ]
+	29      (00000072) sget-object          v15, Lokhttp3/internal/http2/Http2;->a Lokhttp3/internal/http2/Http2;
+	30      (00000076) invoke-virtual       v15, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	31      (0000007c) invoke-static        v14, v11, v5, v8, v10, Lokhttp3/internal/http2/Http2;->b(Z I I I I)Ljava/lang/String;
+	32      (00000082) move-result-object   v15
+	33      (00000084) invoke-virtual       v2, v15, Ljava/util/logging/Logger;->fine(Ljava/lang/String;)V
+
+c-BB@0x8a : [ c-BB@0x90 c-BB@0xd0 ]
+	34      (0000008a) const/4              v15, 4
+	35      (0000008c) if-eqz               v19, +022h
+
+c-BB@0x90 : [ c-BB@0x94 c-BB@0x96 ]
+	36      (00000090) if-ne                v8, v15, +003h
+
+c-BB@0x94 : [ c-BB@0xd0 ]
+	37      (00000094) goto                 +1eh
+
+c-BB@0x96 : 
+	38      (00000096) new-instance         v0, Ljava/io/IOException;
+	39      (0000009a) new-instance         v2, Ljava/lang/StringBuilder;
+	40      (0000009e) const-string         v3, "Expected a SETTINGS frame but was "
+	41      (000000a2) invoke-direct        v2, v3, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	42      (000000a8) sget-object          v3, Lokhttp3/internal/http2/Http2;->a Lokhttp3/internal/http2/Http2;
+	43      (000000ac) invoke-virtual       v3, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	44      (000000b2) invoke-static        v8, Lokhttp3/internal/http2/Http2;->a(I)Ljava/lang/String;
+	45      (000000b8) move-result-object   v3
+	46      (000000ba) invoke-virtual       v2, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	47      (000000c0) invoke-virtual       v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	48      (000000c6) move-result-object   v2
+	49      (000000c8) invoke-direct        v0, v2, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+	50      (000000ce) throw                v0
+
+c-BB@0xd0 : [ D:c-BB@0xe0 0:c-BB@0x642 1:c-BB@0x5dc 2:c-BB@0x5a0 3:c-BB@0x510 4:c-BB@0x3c0 5:c-BB@0x36c 6:c-BB@0x31a 7:c-BB@0x1de 8:c-BB@0xea ]
+	51      (000000d0) const/16             v16, 0
+	52      (000000d4) move/from16          v17, v12
+	53      (000000d8) const/4              v12, 5
+	54      (000000da) packed-switch        v8, +00002f7h
+
+c-BB@0xe0 : 
+	55      (000000e0) int-to-long          v2, v5
+	56      (000000e2) invoke-interface     v4, v2, v3, Lx8/i;->skip(J)V
+	57      (000000e8) return               v14
+
+c-BB@0xea : [ c-BB@0xf2 c-BB@0x1a0 ]
+	58      (000000ea) const-string         v3, "TYPE_WINDOW_UPDATE length !=4: "
+	59      (000000ee) if-ne                v5, v15, +059h
+
+c-BB@0xf2 : [ c-BB@0x110 c-BB@0x18c ]
+	60      (000000f2) invoke-interface     v4, Lx8/i;->readInt()I
+	61      (000000f8) move-result          v3
+	62      (000000fa) const-wide/32        v6, 2147483647
+	63      (00000100) int-to-long          v3, v3
+	64      (00000102) and-long/2addr       v3, v6
+	65      (00000104) const-wide/16        v6, 0
+	66      (00000108) cmp-long             v6, v3, v6
+	67      (0000010c) if-eqz               v6, +040h
+	f2:f9
+	(Ljava/lang/Exception; -> 19c c-BB@0x19c)
+
+c-BB@0x110 : [ c-BB@0x120 c-BB@0x138 ]
+	68      (00000110) sget-object          v7, Ljava/util/logging/Level;->FINE Ljava/util/logging/Level;
+	69      (00000114) invoke-virtual       v2, v7, Ljava/util/logging/Logger;->isLoggable(Ljava/util/logging/Level;)Z
+	70      (0000011a) move-result          v7
+	71      (0000011c) if-eqz               v7, +00eh
+
+c-BB@0x120 : [ c-BB@0x138 ]
+	72      (00000120) sget-object          v7, Lokhttp3/internal/http2/Http2;->a Lokhttp3/internal/http2/Http2;
+	73      (00000124) invoke-virtual       v7, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	74      (0000012a) invoke-static        v14, v11, v5, v3, v4, Lokhttp3/internal/http2/Http2;->c(Z I I J)Ljava/lang/String;
+	75      (00000130) move-result-object   v5
+	76      (00000132) invoke-virtual       v2, v5, Ljava/util/logging/Logger;->fine(Ljava/lang/String;)V
+
+c-BB@0x138 : [ c-BB@0x13c c-BB@0x15c ]
+	77      (00000138) if-nez               v11, +012h
+
+c-BB@0x13c : [ c-BB@0x142 ]
+	78      (0000013c) iget-object          v2, v0, Lokhttp3/internal/http2/Http2Connection$ReaderRunnable;->b Lokhttp3/internal/http2/Http2Connection;
+	79      (00000140) monitor-enter        v2
+
+c-BB@0x142 : 
+	80      (00000142) iget-wide            v5, v2, Lokhttp3/internal/http2/Http2Connection;->A J
+	81      (00000146) add-long/2addr       v5, v3
+	82      (00000148) iput-wide            v5, v2, Lokhttp3/internal/http2/Http2Connection;->A J
+	83      (0000014c) invoke-virtual       v2, Ljava/lang/Object;->notifyAll()V
+	84      (00000152) monitor-exit         v2
+	85      (00000154) return               v14
+	142:151
+	(Ljava/lang/Throwable; -> 156 c-BB@0x156)
+
+c-BB@0x156 : 
+	86      (00000156) move-exception       v0
+	87      (00000158) monitor-exit         v2
+	88      (0000015a) throw                v0
+
+c-BB@0x15c : [ c-BB@0x16c c-BB@0x3d0 ]
+	89      (0000015c) iget-object          v0, v0, Lokhttp3/internal/http2/Http2Connection$ReaderRunnable;->b Lokhttp3/internal/http2/Http2Connection;
+	90      (00000160) invoke-virtual       v0, v11, Lokhttp3/internal/http2/Http2Connection;->f(I)Lokhttp3/internal/http2/Http2Stream;
+	91      (00000166) move-result-object   v2
+	92      (00000168) if-eqz               v2, +134h
+
+c-BB@0x16c : [ c-BB@0x16e ]
+	93      (0000016c) monitor-enter        v2
+
+c-BB@0x16e : [ c-BB@0x17c c-BB@0x182 ]
+	94      (0000016e) iget-wide            v7, v2, Lokhttp3/internal/http2/Http2Stream;->e J
+	95      (00000172) add-long/2addr       v7, v3
+	96      (00000174) iput-wide            v7, v2, Lokhttp3/internal/http2/Http2Stream;->e J
+	97      (00000178) if-lez               v6, +005h
+	16e:181
+	(Ljava/lang/Throwable; -> 186 c-BB@0x186)
+
+c-BB@0x17c : [ c-BB@0x182 ]
+	98      (0000017c) invoke-virtual       v2, Ljava/lang/Object;->notifyAll()V
+	16e:181
+	(Ljava/lang/Throwable; -> 186 c-BB@0x186)
+
+c-BB@0x182 : 
+	99      (00000182) monitor-exit         v2
+	100     (00000184) return               v14
+
+c-BB@0x186 : 
+	101     (00000186) move-exception       v0
+	102     (00000188) monitor-exit         v2
+	103     (0000018a) throw                v0
+
+c-BB@0x18c : 
+	104     (0000018c) new-instance         v0, Ljava/io/IOException;
+	105     (00000190) const-string         v3, "windowSizeIncrement was 0"
+	106     (00000194) invoke-direct        v0, v3, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+	107     (0000019a) throw                v0
+	18c:1c3
+	(Ljava/lang/Exception; -> 19c c-BB@0x19c)
+
+c-BB@0x19c : [ c-BB@0x1c4 ]
+	108     (0000019c) move-exception       v0
+	109     (0000019e) goto                 +13h
+	18c:1c3
+	(Ljava/lang/Exception; -> 19c c-BB@0x19c)
+
+c-BB@0x1a0 : 
+	110     (000001a0) new-instance         v0, Ljava/io/IOException;
+	111     (000001a4) new-instance         v4, Ljava/lang/StringBuilder;
+	112     (000001a8) invoke-direct        v4, v3, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	113     (000001ae) invoke-virtual       v4, v5, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	114     (000001b4) invoke-virtual       v4, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	115     (000001ba) move-result-object   v3
+	116     (000001bc) invoke-direct        v0, v3, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+	117     (000001c2) throw                v0
+	18c:1c3
+	(Ljava/lang/Exception; -> 19c c-BB@0x19c)
+
+c-BB@0x1c4 : 
+	118     (000001c4) sget-object          v3, Lokhttp3/internal/http2/Http2;->a Lokhttp3/internal/http2/Http2;
+	119     (000001c8) invoke-virtual       v3, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	120     (000001ce) invoke-static        v14, v11, v5, v13, v10, Lokhttp3/internal/http2/Http2;->b(Z I I I I)Ljava/lang/String;
+	121     (000001d4) move-result-object   v3
+	122     (000001d6) invoke-virtual       v2, v3, Ljava/util/logging/Logger;->fine(Ljava/lang/String;)V
+	123     (000001dc) throw                v0
+
+c-BB@0x1de : [ c-BB@0x1e2 c-BB@0x302 ]
+	124     (000001de) if-lt                v5, v13, +092h
+
+c-BB@0x1e2 : [ c-BB@0x1e6 c-BB@0x2f2 ]
+	125     (000001e2) if-nez               v11, +088h
+
+c-BB@0x1e6 : [ c-BB@0x20e ]
+	126     (000001e6) invoke-interface     v4, Lx8/i;->readInt()I
+	127     (000001ec) move-result          v2
+	128     (000001ee) invoke-interface     v4, Lx8/i;->readInt()I
+	129     (000001f4) move-result          v3
+	130     (000001f6) sub-int/2addr        v5, v13
+	131     (000001f8) sget-object          v6, Lokhttp3/internal/http2/ErrorCode;->b Lokhttp3/internal/http2/ErrorCode$Companion;
+	132     (000001fc) invoke-virtual       v6, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	133     (00000202) invoke-static        Lokhttp3/internal/http2/ErrorCode;->values()[Lokhttp3/internal/http2/ErrorCode;
+	134     (00000208) move-result-object   v6
+	135     (0000020a) array-length         v8, v6
+	136     (0000020c) move                 v9, v7
+
+c-BB@0x20e : [ c-BB@0x212 c-BB@0x22a ]
+	137     (0000020e) if-ge                v9, v8, +00eh
+
+c-BB@0x212 : [ c-BB@0x21e c-BB@0x224 ]
+	138     (00000212) aget-object          v10, v6, v9
+	139     (00000216) iget                 v11, v10, Lokhttp3/internal/http2/ErrorCode;->a I
+	140     (0000021a) if-ne                v11, v3, +005h
+
+c-BB@0x21e : [ c-BB@0x22a ]
+	141     (0000021e) move-object/from16   v16, v10
+	142     (00000222) goto                 +4h
+
+c-BB@0x224 : [ c-BB@0x20e ]
+	143     (00000224) add-int/lit8         v9, v9, 1
+	144     (00000228) goto                 -dh
+
+c-BB@0x22a : [ c-BB@0x22e c-BB@0x2da ]
+	145     (0000022a) if-eqz               v16, +058h
+
+c-BB@0x22e : [ c-BB@0x236 c-BB@0x240 ]
+	146     (0000022e) sget-object          v3, Lx8/j;->d Lx8/j;
+	147     (00000232) if-lez               v5, +007h
+
+c-BB@0x236 : [ c-BB@0x240 ]
+	148     (00000236) int-to-long          v5, v5
+	149     (00000238) invoke-interface     v4, v5, v6, Lx8/i;->e(J)Lx8/j;
+	150     (0000023e) move-result-object   v3
+
+c-BB@0x240 : [ c-BB@0x256 ]
+	151     (00000240) const-string         v4, "debugData"
+	152     (00000244) invoke-static        v3, v4, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	153     (0000024a) invoke-virtual       v3, Lx8/j;->d()I
+	154     (00000250) iget-object          v3, v0, Lokhttp3/internal/http2/Http2Connection$ReaderRunnable;->b Lokhttp3/internal/http2/Http2Connection;
+	155     (00000254) monitor-enter        v3
+
+c-BB@0x256 : [ c-BB@0x27a ]
+	156     (00000256) iget-object          v4, v3, Lokhttp3/internal/http2/Http2Connection;->b Ljava/util/LinkedHashMap;
+	157     (0000025a) invoke-virtual       v4, Ljava/util/LinkedHashMap;->values()Ljava/util/Collection;
+	158     (00000260) move-result-object   v4
+	159     (00000262) new-array            v5, v7, [Lokhttp3/internal/http2/Http2Stream;
+	160     (00000266) invoke-interface     v4, v5, Ljava/util/Collection;->toArray([Ljava/lang/Object;)[Ljava/lang/Object;
+	161     (0000026c) move-result-object   v4
+	162     (0000026e) iput-boolean         v14, v3, Lokhttp3/internal/http2/Http2Connection;->f Z
+	163     (00000272) monitor-exit         v3
+	164     (00000274) check-cast           v4, [Lokhttp3/internal/http2/Http2Stream;
+	165     (00000278) array-length         v3, v4
+	256:271
+	(Ljava/lang/Throwable; -> 2d4 c-BB@0x2d4)
+
+c-BB@0x27a : [ c-BB@0x27e c-BB@0x3d0 ]
+	166     (0000027a) if-ge                v7, v3, +0abh
+
+c-BB@0x27e : [ c-BB@0x28a c-BB@0x2ce ]
+	167     (0000027e) aget-object          v5, v4, v7
+	168     (00000282) iget                 v6, v5, Lokhttp3/internal/http2/Http2Stream;->a I
+	169     (00000286) if-le                v6, v2, +024h
+
+c-BB@0x28a : [ c-BB@0x296 c-BB@0x2ce ]
+	170     (0000028a) invoke-virtual       v5, Lokhttp3/internal/http2/Http2Stream;->i()Z
+	171     (00000290) move-result          v6
+	172     (00000292) if-eqz               v6, +01eh
+
+c-BB@0x296 : [ c-BB@0x29c ]
+	173     (00000296) sget-object          v6, Lokhttp3/internal/http2/ErrorCode;->m Lokhttp3/internal/http2/ErrorCode;
+	174     (0000029a) monitor-enter        v5
+
+c-BB@0x29c : [ c-BB@0x2a8 c-BB@0x2b8 ]
+	175     (0000029c) invoke-virtual       v5, Lokhttp3/internal/http2/Http2Stream;->h()Lokhttp3/internal/http2/ErrorCode;
+	176     (000002a2) move-result-object   v8
+	177     (000002a4) if-nez               v8, +00ah
+	29c:2b1
+	(Ljava/lang/Throwable; -> 2b4 c-BB@0x2b4)
+
+c-BB@0x2a8 : [ c-BB@0x2b8 ]
+	178     (000002a8) iput-object          v6, v5, Lokhttp3/internal/http2/Http2Stream;->r Lokhttp3/internal/http2/ErrorCode;
+	179     (000002ac) invoke-virtual       v5, Ljava/lang/Object;->notifyAll()V
+	180     (000002b2) goto                 +3h
+
+c-BB@0x2b4 : [ c-BB@0x2ca ]
+	181     (000002b4) move-exception       v0
+	182     (000002b6) goto                 +ah
+
+c-BB@0x2b8 : [ c-BB@0x2ce ]
+	183     (000002b8) monitor-exit         v5
+	184     (000002ba) iget-object          v6, v0, Lokhttp3/internal/http2/Http2Connection$ReaderRunnable;->b Lokhttp3/internal/http2/Http2Connection;
+	185     (000002be) iget                 v5, v5, Lokhttp3/internal/http2/Http2Stream;->a I
+	186     (000002c2) invoke-virtual       v6, v5, Lokhttp3/internal/http2/Http2Connection;->i(I)Lokhttp3/internal/http2/Http2Stream;
+	187     (000002c8) goto                 +3h
+
+c-BB@0x2ca : 
+	188     (000002ca) monitor-exit         v5
+	189     (000002cc) throw                v0
+
+c-BB@0x2ce : [ c-BB@0x27a ]
+	190     (000002ce) add-int/lit8         v7, v7, 1
+	191     (000002d2) goto                 -2ch
+
+c-BB@0x2d4 : 
+	192     (000002d4) move-exception       v0
+	193     (000002d6) monitor-exit         v3
+	194     (000002d8) throw                v0
+
+c-BB@0x2da : 
+	195     (000002da) new-instance         v0, Ljava/io/IOException;
+	196     (000002de) const-string         v2, "TYPE_GOAWAY unexpected error code: "
+	197     (000002e2) invoke-static        v3, v2, Lg2/g;->c(I Ljava/lang/String;)Ljava/lang/String;
+	198     (000002e8) move-result-object   v2
+	199     (000002ea) invoke-direct        v0, v2, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+	200     (000002f0) throw                v0
+
+c-BB@0x2f2 : 
+	201     (000002f2) new-instance         v0, Ljava/io/IOException;
+	202     (000002f6) const-string         v2, "TYPE_GOAWAY streamId != 0"
+	203     (000002fa) invoke-direct        v0, v2, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+	204     (00000300) throw                v0
+
+c-BB@0x302 : 
+	205     (00000302) new-instance         v0, Ljava/io/IOException;
+	206     (00000306) const-string         v2, "TYPE_GOAWAY length < 8: "
+	207     (0000030a) invoke-static        v5, v2, Lg2/g;->c(I Ljava/lang/String;)Ljava/lang/String;
+	208     (00000310) move-result-object   v2
+	209     (00000312) invoke-direct        v0, v2, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+	210     (00000318) throw                v0
+
+c-BB@0x31a : [ c-BB@0x31e c-BB@0x354 ]
+	211     (0000031a) if-ne                v5, v13, +01dh
+
+c-BB@0x31e : [ c-BB@0x322 c-BB@0x344 ]
+	212     (0000031e) if-nez               v11, +013h
+
+c-BB@0x322 : [ c-BB@0x33a c-BB@0x33c ]
+	213     (00000322) invoke-interface     v4, Lx8/i;->readInt()I
+	214     (00000328) move-result          v2
+	215     (0000032a) invoke-interface     v4, Lx8/i;->readInt()I
+	216     (00000330) move-result          v3
+	217     (00000332) and-int/lit8         v4, v9, 1
+	218     (00000336) if-eqz               v4, +003h
+
+c-BB@0x33a : [ c-BB@0x33c ]
+	219     (0000033a) move                 v7, v14
+
+c-BB@0x33c : 
+	220     (0000033c) invoke-virtual       v0, v2, v7, v3, Lokhttp3/internal/http2/Http2Connection$ReaderRunnable;->d(I Z I)V
+	221     (00000342) return               v14
+
+c-BB@0x344 : 
+	222     (00000344) new-instance         v0, Ljava/io/IOException;
+	223     (00000348) const-string         v2, "TYPE_PING streamId != 0"
+	224     (0000034c) invoke-direct        v0, v2, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+	225     (00000352) throw                v0
+
+c-BB@0x354 : 
+	226     (00000354) new-instance         v0, Ljava/io/IOException;
+	227     (00000358) const-string         v2, "TYPE_PING length != 8: "
+	228     (0000035c) invoke-static        v5, v2, Lg2/g;->c(I Ljava/lang/String;)Ljava/lang/String;
+	229     (00000362) move-result-object   v2
+	230     (00000364) invoke-direct        v0, v2, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+	231     (0000036a) throw                v0
+
+c-BB@0x36c : [ c-BB@0x370 c-BB@0x3b0 ]
+	232     (0000036c) if-eqz               v11, +022h
+
+c-BB@0x370 : [ c-BB@0x378 c-BB@0x384 ]
+	233     (00000370) and-int/lit8         v2, v9, 8
+	234     (00000374) if-eqz               v2, +008h
+
+c-BB@0x378 : [ c-BB@0x384 ]
+	235     (00000378) invoke-interface     v4, Lx8/i;->readByte()B
+	236     (0000037e) move-result          v2
+	237     (00000380) and-int/lit16        v7, v2, 255
+
+c-BB@0x384 : 
+	238     (00000384) invoke-interface     v4, Lx8/i;->readInt()I
+	239     (0000038a) move-result          v2
+	240     (0000038c) and-int              v2, v2, v17
+	241     (00000390) sub-int/2addr        v5, v15
+	242     (00000392) invoke-virtual       v3, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	243     (00000398) invoke-static        v5, v10, v7, Lokhttp3/internal/http2/Http2Reader$Companion;->a(I I I)I
+	244     (0000039e) move-result          v3
+	245     (000003a0) invoke-virtual       v1, v3, v7, v10, v11, Lokhttp3/internal/http2/Http2Reader;->f(I I I I)Ljava/util/List;
+	246     (000003a6) move-result-object   v3
+	247     (000003a8) invoke-virtual       v0, v2, v3, Lokhttp3/internal/http2/Http2Connection$ReaderRunnable;->e(I Ljava/util/List;)V
+	248     (000003ae) return               v14
+
+c-BB@0x3b0 : 
+	249     (000003b0) new-instance         v0, Ljava/io/IOException;
+	250     (000003b4) const-string         v2, "PROTOCOL_ERROR: TYPE_PUSH_PROMISE streamId == 0"
+	251     (000003b8) invoke-direct        v0, v2, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+	252     (000003be) throw                v0
+
+c-BB@0x3c0 : [ c-BB@0x3c4 c-BB@0x500 ]
+	253     (000003c0) if-nez               v11, +0a0h
+
+c-BB@0x3c4 : [ c-BB@0x3cc c-BB@0x3e2 ]
+	254     (000003c4) and-int/lit8         v2, v9, 1
+	255     (000003c8) if-eqz               v2, +00dh
+
+c-BB@0x3cc : [ c-BB@0x3d0 c-BB@0x3d2 ]
+	256     (000003cc) if-nez               v5, +003h
+
+c-BB@0x3d0 : 
+	257     (000003d0) return               v14
+
+c-BB@0x3d2 : 
+	258     (000003d2) new-instance         v0, Ljava/io/IOException;
+	259     (000003d6) const-string         v2, "FRAME_SIZE_ERROR ack frame should be empty!"
+	260     (000003da) invoke-direct        v0, v2, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+	261     (000003e0) throw                v0
+
+c-BB@0x3e2 : [ c-BB@0x3ea c-BB@0x4e8 ]
+	262     (000003e2) rem-int/lit8         v2, v5, 6
+	263     (000003e6) if-nez               v2, +081h
+
+c-BB@0x3ea : [ c-BB@0x416 c-BB@0x41a ]
+	264     (000003ea) new-instance         v2, Lokhttp3/internal/http2/Settings;
+	265     (000003ee) invoke-direct        v2, Lokhttp3/internal/http2/Settings;-><init>()V
+	266     (000003f4) invoke-static        v7, v5, Lw3/a;->f(I I)Ly7/e;
+	267     (000003fa) move-result-object   v3
+	268     (000003fc) const/4              v5, 6
+	269     (000003fe) invoke-static        v3, v5, Lw3/a;->e(Ly7/e; I)Ly7/d;
+	270     (00000404) move-result-object   v3
+	271     (00000406) iget                 v7, v3, Ly7/d;->a I
+	272     (0000040a) iget                 v8, v3, Ly7/d;->b I
+	273     (0000040e) iget                 v3, v3, Ly7/d;->c I
+	274     (00000412) if-lez               v3, +004h
+
+c-BB@0x416 : [ c-BB@0x41a c-BB@0x422 ]
+	275     (00000416) if-le                v7, v8, +006h
+
+c-BB@0x41a : [ c-BB@0x41e c-BB@0x4b4 ]
+	276     (0000041a) if-gez               v3, +04dh
+
+c-BB@0x41e : [ c-BB@0x422 c-BB@0x4b4 ]
+	277     (0000041e) if-gt                v8, v7, +04bh
+
+c-BB@0x422 : [ c-BB@0x444 c-BB@0x48c ]
+	278     (00000422) invoke-interface     v4, Lx8/i;->readShort()S
+	279     (00000428) move-result          v9
+	280     (0000042a) sget-object          v10, Lokhttp3/internal/_UtilCommonKt;->a [B
+	281     (0000042e) const                v10, 65535
+	282     (00000434) and-int/2addr        v9, v10
+	283     (00000436) invoke-interface     v4, Lx8/i;->readInt()I
+	284     (0000043c) move-result          v10
+	285     (0000043e) const/4              v11, 2
+	286     (00000440) if-eq                v9, v11, +026h
+
+c-BB@0x444 : [ c-BB@0x448 c-BB@0x476 ]
+	287     (00000444) if-eq                v9, v15, +019h
+
+c-BB@0x448 : [ c-BB@0x44c c-BB@0x44e ]
+	288     (00000448) if-eq                v9, v12, +003h
+
+c-BB@0x44c : [ c-BB@0x4a6 ]
+	289     (0000044c) goto                 +2dh
+
+c-BB@0x44e : [ c-BB@0x452 c-BB@0x45e ]
+	290     (0000044e) if-lt                v10, v6, +008h
+
+c-BB@0x452 : [ c-BB@0x45c c-BB@0x45e ]
+	291     (00000452) const                v11, 16777215
+	292     (00000458) if-gt                v10, v11, +003h
+
+c-BB@0x45c : [ c-BB@0x4a6 ]
+	293     (0000045c) goto                 +25h
+
+c-BB@0x45e : 
+	294     (0000045e) new-instance         v0, Ljava/io/IOException;
+	295     (00000462) const-string         v2, "PROTOCOL_ERROR SETTINGS_MAX_FRAME_SIZE: "
+	296     (00000466) invoke-static        v10, v2, Lg2/g;->c(I Ljava/lang/String;)Ljava/lang/String;
+	297     (0000046c) move-result-object   v2
+	298     (0000046e) invoke-direct        v0, v2, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+	299     (00000474) throw                v0
+
+c-BB@0x476 : [ c-BB@0x47a c-BB@0x47c ]
+	300     (00000476) if-ltz               v10, +003h
+
+c-BB@0x47a : [ c-BB@0x4a6 ]
+	301     (0000047a) goto                 +16h
+
+c-BB@0x47c : 
+	302     (0000047c) new-instance         v0, Ljava/io/IOException;
+	303     (00000480) const-string         v2, "PROTOCOL_ERROR SETTINGS_INITIAL_WINDOW_SIZE > 2^31 - 1"
+	304     (00000484) invoke-direct        v0, v2, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+	305     (0000048a) throw                v0
+
+c-BB@0x48c : [ c-BB@0x490 c-BB@0x4a6 ]
+	306     (0000048c) if-eqz               v10, +00dh
+
+c-BB@0x490 : [ c-BB@0x494 c-BB@0x496 ]
+	307     (00000490) if-ne                v10, v14, +003h
+
+c-BB@0x494 : [ c-BB@0x4a6 ]
+	308     (00000494) goto                 +9h
+
+c-BB@0x496 : 
+	309     (00000496) new-instance         v0, Ljava/io/IOException;
+	310     (0000049a) const-string         v2, "PROTOCOL_ERROR SETTINGS_ENABLE_PUSH != 0 or 1"
+	311     (0000049e) invoke-direct        v0, v2, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+	312     (000004a4) throw                v0
+
+c-BB@0x4a6 : [ c-BB@0x4b0 c-BB@0x4b4 ]
+	313     (000004a6) invoke-virtual       v2, v9, v10, Lokhttp3/internal/http2/Settings;->c(I I)V
+	314     (000004ac) if-eq                v7, v8, +004h
+
+c-BB@0x4b0 : [ c-BB@0x422 ]
+	315     (000004b0) add-int/2addr        v7, v3
+	316     (000004b2) goto                 -48h
+
+c-BB@0x4b4 : 
+	317     (000004b4) iget-object          v3, v0, Lokhttp3/internal/http2/Http2Connection$ReaderRunnable;->b Lokhttp3/internal/http2/Http2Connection;
+	318     (000004b8) iget-object          v4, v3, Lokhttp3/internal/http2/Http2Connection;->n Lokhttp3/internal/concurrent/TaskQueue;
+	319     (000004bc) new-instance         v6, Ljava/lang/StringBuilder;
+	320     (000004c0) invoke-direct        v6, Ljava/lang/StringBuilder;-><init>()V
+	321     (000004c6) iget-object          v3, v3, Lokhttp3/internal/http2/Http2Connection;->c Ljava/lang/String;
+	322     (000004ca) const-string         v7, " applyAndAckSettings"
+	323     (000004ce) invoke-static        v6, v3, v7, Lv1/a;->n(Ljava/lang/StringBuilder; Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	324     (000004d4) move-result-object   v3
+	325     (000004d6) new-instance         v6, Lokhttp3/internal/http2/g;
+	326     (000004da) invoke-direct        v6, v14, v0, v2, Lokhttp3/internal/http2/g;-><init>(I Ljava/lang/Object; Ljava/lang/Object;)V
+	327     (000004e0) invoke-static        v4, v3, v6, v5, Lokhttp3/internal/concurrent/TaskQueue;->b(Lokhttp3/internal/concurrent/TaskQueue; Ljava/lang/String; Lu7/a; I)V
+	328     (000004e6) return               v14
+
+c-BB@0x4e8 : 
+	329     (000004e8) new-instance         v0, Ljava/io/IOException;
+	330     (000004ec) const-string         v2, "TYPE_SETTINGS length % 6 != 0: "
+	331     (000004f0) invoke-static        v5, v2, Lg2/g;->c(I Ljava/lang/String;)Ljava/lang/String;
+	332     (000004f6) move-result-object   v2
+	333     (000004f8) invoke-direct        v0, v2, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+	334     (000004fe) throw                v0
+
+c-BB@0x500 : 
+	335     (00000500) new-instance         v0, Ljava/io/IOException;
+	336     (00000504) const-string         v2, "TYPE_SETTINGS streamId != 0"
+	337     (00000508) invoke-direct        v0, v2, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+	338     (0000050e) throw                v0
+
+c-BB@0x510 : [ c-BB@0x514 c-BB@0x584 ]
+	339     (00000510) if-ne                v5, v15, +03ah
+
+c-BB@0x514 : [ c-BB@0x518 c-BB@0x574 ]
+	340     (00000514) if-eqz               v11, +030h
+
+c-BB@0x518 : [ c-BB@0x534 ]
+	341     (00000518) invoke-interface     v4, Lx8/i;->readInt()I
+	342     (0000051e) move-result          v2
+	343     (00000520) sget-object          v3, Lokhttp3/internal/http2/ErrorCode;->b Lokhttp3/internal/http2/ErrorCode$Companion;
+	344     (00000524) invoke-virtual       v3, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	345     (0000052a) invoke-static        Lokhttp3/internal/http2/ErrorCode;->values()[Lokhttp3/internal/http2/ErrorCode;
+	346     (00000530) move-result-object   v3
+	347     (00000532) array-length         v4, v3
+
+c-BB@0x534 : [ c-BB@0x538 c-BB@0x54c ]
+	348     (00000534) if-ge                v7, v4, +00ch
+
+c-BB@0x538 : [ c-BB@0x544 c-BB@0x546 ]
+	349     (00000538) aget-object          v5, v3, v7
+	350     (0000053c) iget                 v6, v5, Lokhttp3/internal/http2/ErrorCode;->a I
+	351     (00000540) if-ne                v6, v2, +003h
+
+c-BB@0x544 : [ c-BB@0x550 ]
+	352     (00000544) goto                 +6h
+
+c-BB@0x546 : [ c-BB@0x534 ]
+	353     (00000546) add-int/lit8         v7, v7, 1
+	354     (0000054a) goto                 -bh
+
+c-BB@0x54c : [ c-BB@0x550 ]
+	355     (0000054c) move-object/from16   v5, v16
+
+c-BB@0x550 : [ c-BB@0x554 c-BB@0x55c ]
+	356     (00000550) if-eqz               v5, +006h
+
+c-BB@0x554 : 
+	357     (00000554) invoke-virtual       v0, v11, v5, Lokhttp3/internal/http2/Http2Connection$ReaderRunnable;->f(I Lokhttp3/internal/http2/ErrorCode;)V
+	358     (0000055a) return               v14
+
+c-BB@0x55c : 
+	359     (0000055c) new-instance         v0, Ljava/io/IOException;
+	360     (00000560) const-string         v3, "TYPE_RST_STREAM unexpected error code: "
+	361     (00000564) invoke-static        v2, v3, Lg2/g;->c(I Ljava/lang/String;)Ljava/lang/String;
+	362     (0000056a) move-result-object   v2
+	363     (0000056c) invoke-direct        v0, v2, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+	364     (00000572) throw                v0
+
+c-BB@0x574 : 
+	365     (00000574) new-instance         v0, Ljava/io/IOException;
+	366     (00000578) const-string         v2, "TYPE_RST_STREAM streamId == 0"
+	367     (0000057c) invoke-direct        v0, v2, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+	368     (00000582) throw                v0
+
+c-BB@0x584 : 
+	369     (00000584) new-instance         v0, Ljava/io/IOException;
+	370     (00000588) const-string         v2, "TYPE_RST_STREAM length: "
+	371     (0000058c) const-string         v3, " != 4"
+	372     (00000590) invoke-static        v2, v5, v3, Lv1/a;->j(Ljava/lang/String; I Ljava/lang/String;)Ljava/lang/String;
+	373     (00000596) move-result-object   v2
+	374     (00000598) invoke-direct        v0, v2, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+	375     (0000059e) throw                v0
+
+c-BB@0x5a0 : [ c-BB@0x5a4 c-BB@0x5c0 ]
+	376     (000005a0) if-ne                v5, v12, +010h
+
+c-BB@0x5a4 : [ c-BB@0x5a8 c-BB@0x5b0 ]
+	377     (000005a4) if-eqz               v11, +006h
+
+c-BB@0x5a8 : 
+	378     (000005a8) invoke-virtual       v1, v0, v11, Lokhttp3/internal/http2/Http2Reader;->i(Lokhttp3/internal/http2/Http2Connection$ReaderRunnable; I)V
+	379     (000005ae) return               v14
+
+c-BB@0x5b0 : 
+	380     (000005b0) new-instance         v0, Ljava/io/IOException;
+	381     (000005b4) const-string         v2, "TYPE_PRIORITY streamId == 0"
+	382     (000005b8) invoke-direct        v0, v2, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+	383     (000005be) throw                v0
+
+c-BB@0x5c0 : 
+	384     (000005c0) new-instance         v0, Ljava/io/IOException;
+	385     (000005c4) const-string         v2, "TYPE_PRIORITY length: "
+	386     (000005c8) const-string         v3, " != 5"
+	387     (000005cc) invoke-static        v2, v5, v3, Lv1/a;->j(Ljava/lang/String; I Ljava/lang/String;)Ljava/lang/String;
+	388     (000005d2) move-result-object   v2
+	389     (000005d4) invoke-direct        v0, v2, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+	390     (000005da) throw                v0
+
+c-BB@0x5dc : [ c-BB@0x5e0 c-BB@0x632 ]
+	391     (000005dc) if-eqz               v11, +02bh
+
+c-BB@0x5e0 : [ c-BB@0x5e8 c-BB@0x5ec ]
+	392     (000005e0) and-int/lit8         v2, v9, 1
+	393     (000005e4) if-eqz               v2, +004h
+
+c-BB@0x5e8 : [ c-BB@0x5ee ]
+	394     (000005e8) move                 v2, v14
+	395     (000005ea) goto                 +2h
+
+c-BB@0x5ec : [ c-BB@0x5ee ]
+	396     (000005ec) move                 v2, v7
+
+c-BB@0x5ee : [ c-BB@0x5f6 c-BB@0x602 ]
+	397     (000005ee) and-int/lit8         v6, v9, 8
+	398     (000005f2) if-eqz               v6, +008h
+
+c-BB@0x5f6 : [ c-BB@0x602 ]
+	399     (000005f6) invoke-interface     v4, Lx8/i;->readByte()B
+	400     (000005fc) move-result          v4
+	401     (000005fe) and-int/lit16        v7, v4, 255
+
+c-BB@0x602 : [ c-BB@0x60a c-BB@0x614 ]
+	402     (00000602) and-int/lit8         v4, v9, 32
+	403     (00000606) if-eqz               v4, +007h
+
+c-BB@0x60a : [ c-BB@0x614 ]
+	404     (0000060a) invoke-virtual       v1, v0, v11, Lokhttp3/internal/http2/Http2Reader;->i(Lokhttp3/internal/http2/Http2Connection$ReaderRunnable; I)V
+	405     (00000610) add-int/lit8         v5, v5, -5
+
+c-BB@0x614 : 
+	406     (00000614) invoke-virtual       v3, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	407     (0000061a) invoke-static        v5, v10, v7, Lokhttp3/internal/http2/Http2Reader$Companion;->a(I I I)I
+	408     (00000620) move-result          v3
+	409     (00000622) invoke-virtual       v1, v3, v7, v10, v11, Lokhttp3/internal/http2/Http2Reader;->f(I I I I)Ljava/util/List;
+	410     (00000628) move-result-object   v3
+	411     (0000062a) invoke-virtual       v0, v11, v3, v2, Lokhttp3/internal/http2/Http2Connection$ReaderRunnable;->c(I Ljava/util/List; Z)V
+	412     (00000630) return               v14
+
+c-BB@0x632 : 
+	413     (00000632) new-instance         v0, Ljava/io/IOException;
+	414     (00000636) const-string         v2, "PROTOCOL_ERROR: TYPE_HEADERS streamId == 0"
+	415     (0000063a) invoke-direct        v0, v2, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+	416     (00000640) throw                v0
+
+c-BB@0x642 : [ c-BB@0x646 c-BB@0x69e ]
+	417     (00000642) if-eqz               v11, +02eh
+
+c-BB@0x646 : [ c-BB@0x64e c-BB@0x652 ]
+	418     (00000646) and-int/lit8         v2, v9, 1
+	419     (0000064a) if-eqz               v2, +004h
+
+c-BB@0x64e : [ c-BB@0x654 ]
+	420     (0000064e) move                 v2, v14
+	421     (00000650) goto                 +2h
+
+c-BB@0x652 : [ c-BB@0x654 ]
+	422     (00000652) move                 v2, v7
+
+c-BB@0x654 : [ c-BB@0x65c c-BB@0x68e ]
+	423     (00000654) and-int/lit8         v6, v9, 32
+	424     (00000658) if-nez               v6, +01bh
+
+c-BB@0x65c : [ c-BB@0x664 c-BB@0x670 ]
+	425     (0000065c) and-int/lit8         v6, v9, 8
+	426     (00000660) if-eqz               v6, +008h
+
+c-BB@0x664 : [ c-BB@0x670 ]
+	427     (00000664) invoke-interface     v4, Lx8/i;->readByte()B
+	428     (0000066a) move-result          v6
+	429     (0000066c) and-int/lit16        v7, v6, 255
+
+c-BB@0x670 : 
+	430     (00000670) invoke-virtual       v3, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	431     (00000676) invoke-static        v5, v10, v7, Lokhttp3/internal/http2/Http2Reader$Companion;->a(I I I)I
+	432     (0000067c) move-result          v3
+	433     (0000067e) invoke-virtual       v0, v2, v11, v4, v3, Lokhttp3/internal/http2/Http2Connection$ReaderRunnable;->a(Z I Lx8/i; I)V
+	434     (00000684) int-to-long          v2, v7
+	435     (00000686) invoke-interface     v4, v2, v3, Lx8/i;->skip(J)V
+	436     (0000068c) return               v14
+
+c-BB@0x68e : 
+	437     (0000068e) new-instance         v0, Ljava/io/IOException;
+	438     (00000692) const-string         v2, "PROTOCOL_ERROR: FLAG_COMPRESSED without SETTINGS_COMPRESS_DATA"
+	439     (00000696) invoke-direct        v0, v2, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+	440     (0000069c) throw                v0
+
+c-BB@0x69e : 
+	441     (0000069e) new-instance         v0, Ljava/io/IOException;
+	442     (000006a2) const-string         v2, "PROTOCOL_ERROR: TYPE_DATA streamId == 0"
+	443     (000006a6) invoke-direct        v0, v2, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+	444     (000006ac) throw                v0
+
+c-BB@0x6ae : 
+	445     (000006ae) new-instance         v0, Ljava/io/IOException;
+	446     (000006b2) const-string         v2, "FRAME_SIZE_ERROR: "
+	447     (000006b6) invoke-static        v5, v2, Lg2/g;->c(I Ljava/lang/String;)Ljava/lang/String;
+	448     (000006bc) move-result-object   v2
+	449     (000006be) invoke-direct        v0, v2, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+	450     (000006c4) throw                v0
+
+c-BB@0x6c6 : 
+	451     (000006c6) return               v7
+
+c-BB@0x6c8 : 
+	452     (000006c8) packed-switch-payload 0 1 2 3 4 5 6 7 8
+

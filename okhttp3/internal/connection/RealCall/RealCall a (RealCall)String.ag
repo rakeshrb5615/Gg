@@ -1,0 +1,36 @@
+# Lokhttp3/internal/connection/RealCall;->a(Lokhttp3/internal/connection/RealCall;)Ljava/lang/String; [access_flags=public static final]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:okhttp3.internal.connection.RealCall
+#
+# - return:java.lang.String
+
+a-BB@0x0 : [ a-BB@0x12 a-BB@0x18 ]
+	0       (00000000) new-instance         v0, Ljava/lang/StringBuilder;
+	1       (00000004) invoke-direct        v0, Ljava/lang/StringBuilder;-><init>()V
+	2       (0000000a) iget-boolean         v1, v2, Lokhttp3/internal/connection/RealCall;->w Z
+	3       (0000000e) if-eqz               v1, +005h
+
+a-BB@0x12 : [ a-BB@0x1c ]
+	4       (00000012) const-string         v1, "canceled "
+	5       (00000016) goto                 +3h
+
+a-BB@0x18 : [ a-BB@0x1c ]
+	6       (00000018) const-string         v1, ""
+
+a-BB@0x1c : 
+	7       (0000001c) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	8       (00000022) const-string         v1, "call"
+	9       (00000026) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	10      (0000002c) const-string         v1, " to "
+	11      (00000030) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	12      (00000036) iget-object          v2, v2, Lokhttp3/internal/connection/RealCall;->b Lokhttp3/Request;
+	13      (0000003a) iget-object          v2, v2, Lokhttp3/Request;->a Lokhttp3/HttpUrl;
+	14      (0000003e) invoke-virtual       v2, Lokhttp3/HttpUrl;->g()Ljava/lang/String;
+	15      (00000044) move-result-object   v2
+	16      (00000046) invoke-virtual       v0, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	17      (0000004c) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	18      (00000052) move-result-object   v2
+	19      (00000054) return-object        v2
+

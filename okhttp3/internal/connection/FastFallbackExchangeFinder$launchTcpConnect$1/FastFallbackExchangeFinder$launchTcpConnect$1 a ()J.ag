@@ -1,0 +1,40 @@
+# Lokhttp3/internal/connection/FastFallbackExchangeFinder$launchTcpConnect$1;->a()J [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v5
+#
+# - return:long
+
+a-BB@0x0 : [ a-BB@0x4 ]
+	0       (00000000) iget-object          v0, v5, Lokhttp3/internal/connection/FastFallbackExchangeFinder$launchTcpConnect$1;->e Lokhttp3/internal/connection/RoutePlanner$Plan;
+
+a-BB@0x4 : [ a-BB@0x20 ]
+	1       (00000004) invoke-interface     v0, Lokhttp3/internal/connection/RoutePlanner$Plan;->g()Lokhttp3/internal/connection/RoutePlanner$ConnectResult;
+	2       (0000000a) move-result-object   v1
+	3       (0000000c) goto                 +ah
+	4:b
+	(Ljava/lang/Throwable; -> e a-BB@0xe)
+
+a-BB@0xe : [ a-BB@0x20 ]
+	4       (0000000e) move-exception       v1
+	5       (00000010) new-instance         v2, Lokhttp3/internal/connection/RoutePlanner$ConnectResult;
+	6       (00000014) const/4              v3, 0
+	7       (00000016) const/4              v4, 2
+	8       (00000018) invoke-direct        v2, v0, v3, v1, v4, Lokhttp3/internal/connection/RoutePlanner$ConnectResult;-><init>(Lokhttp3/internal/connection/RoutePlanner$Plan; Lokhttp3/internal/connection/ConnectPlan; Ljava/lang/Throwable; I)V
+	9       (0000001e) move-object          v1, v2
+
+a-BB@0x20 : [ a-BB@0x34 a-BB@0x3e ]
+	10      (00000020) iget-object          v2, v5, Lokhttp3/internal/connection/FastFallbackExchangeFinder$launchTcpConnect$1;->f Lokhttp3/internal/connection/FastFallbackExchangeFinder;
+	11      (00000024) iget-object          v3, v2, Lokhttp3/internal/connection/FastFallbackExchangeFinder;->e Ljava/util/concurrent/CopyOnWriteArrayList;
+	12      (00000028) invoke-virtual       v3, v0, Ljava/util/concurrent/CopyOnWriteArrayList;->contains(Ljava/lang/Object;)Z
+	13      (0000002e) move-result          v0
+	14      (00000030) if-eqz               v0, +007h
+
+a-BB@0x34 : [ a-BB@0x3e ]
+	15      (00000034) iget-object          v0, v2, Lokhttp3/internal/connection/FastFallbackExchangeFinder;->f Ljava/util/concurrent/BlockingQueue;
+	16      (00000038) invoke-interface     v0, v1, Ljava/util/concurrent/BlockingQueue;->put(Ljava/lang/Object;)V
+
+a-BB@0x3e : 
+	17      (0000003e) const-wide/16        v0, -1
+	18      (00000042) return-wide          v0
+

@@ -1,0 +1,116 @@
+# Lokhttp3/internal/http/RetryAndFollowUpInterceptor;->c(Ljava/io/IOException; Lokhttp3/internal/connection/RealCall; Lokhttp3/Request;)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:java.io.IOException
+# - v4:okhttp3.internal.connection.RealCall
+# - v5:okhttp3.Request
+#
+# - return:boolean
+
+c-BB@0x0 : [ c-BB@0x10 c-BB@0x12 ]
+	0       (00000000) instance-of          v0, v3, Lokhttp3/internal/http2/ConnectionShutdownException;
+	1       (00000004) iget-object          v1, v2, Lokhttp3/internal/http/RetryAndFollowUpInterceptor;->a Lokhttp3/OkHttpClient;
+	2       (00000008) iget-boolean         v1, v1, Lokhttp3/OkHttpClient;->e Z
+	3       (0000000c) if-nez               v1, +003h
+
+c-BB@0x10 : [ c-BB@0xbe ]
+	4       (00000010) goto                 +57h
+
+c-BB@0x12 : [ c-BB@0x16 c-BB@0x34 ]
+	5       (00000012) if-nez               v0, +011h
+
+c-BB@0x16 : [ c-BB@0x1e c-BB@0x2a ]
+	6       (00000016) iget-object          v5, v5, Lokhttp3/Request;->d Lokhttp3/RequestBody;
+	7       (0000001a) if-eqz               v5, +008h
+
+c-BB@0x1e : [ c-BB@0x2a c-BB@0xbe ]
+	8       (0000001e) invoke-virtual       v5, Lokhttp3/RequestBody;->c()Z
+	9       (00000024) move-result          v5
+	10      (00000026) if-nez               v5, +04ch
+
+c-BB@0x2a : [ c-BB@0x32 c-BB@0x34 ]
+	11      (0000002a) instance-of          v5, v3, Ljava/io/FileNotFoundException;
+	12      (0000002e) if-eqz               v5, +003h
+
+c-BB@0x32 : [ c-BB@0xbe ]
+	13      (00000032) goto                 +46h
+
+c-BB@0x34 : [ c-BB@0x3c c-BB@0x3e ]
+	14      (00000034) instance-of          v5, v3, Ljava/net/ProtocolException;
+	15      (00000038) if-eqz               v5, +003h
+
+c-BB@0x3c : [ c-BB@0xbe ]
+	16      (0000003c) goto                 +41h
+
+c-BB@0x3e : [ c-BB@0x46 c-BB@0x54 ]
+	17      (0000003e) instance-of          v5, v3, Ljava/io/InterruptedIOException;
+	18      (00000042) if-eqz               v5, +009h
+
+c-BB@0x46 : [ c-BB@0x4e c-BB@0xbe ]
+	19      (00000046) instance-of          v3, v3, Ljava/net/SocketTimeoutException;
+	20      (0000004a) if-eqz               v3, +03ah
+
+c-BB@0x4e : [ c-BB@0x52 c-BB@0xbe ]
+	21      (0000004e) if-eqz               v0, +038h
+
+c-BB@0x52 : [ c-BB@0x78 ]
+	22      (00000052) goto                 +13h
+
+c-BB@0x54 : [ c-BB@0x5c c-BB@0x6e ]
+	23      (00000054) instance-of          v5, v3, Ljavax/net/ssl/SSLHandshakeException;
+	24      (00000058) if-eqz               v5, +00bh
+
+c-BB@0x5c : [ c-BB@0x6c c-BB@0x6e ]
+	25      (0000005c) invoke-virtual       v3, Ljava/lang/Throwable;->getCause()Ljava/lang/Throwable;
+	26      (00000062) move-result-object   v5
+	27      (00000064) instance-of          v5, v5, Ljava/security/cert/CertificateException;
+	28      (00000068) if-eqz               v5, +003h
+
+c-BB@0x6c : [ c-BB@0xbe ]
+	29      (0000006c) goto                 +29h
+
+c-BB@0x6e : [ c-BB@0x76 c-BB@0x78 ]
+	30      (0000006e) instance-of          v3, v3, Ljavax/net/ssl/SSLPeerUnverifiedException;
+	31      (00000072) if-eqz               v3, +003h
+
+c-BB@0x76 : [ c-BB@0xbe ]
+	32      (00000076) goto                 +24h
+
+c-BB@0x78 : [ c-BB@0x80 c-BB@0xbe ]
+	33      (00000078) iget-object          v3, v4, Lokhttp3/internal/connection/RealCall;->x Lokhttp3/internal/connection/Exchange;
+	34      (0000007c) if-eqz               v3, +021h
+
+c-BB@0x80 : [ c-BB@0x8a c-BB@0xbe ]
+	35      (00000080) iget-boolean         v3, v3, Lokhttp3/internal/connection/Exchange;->e Z
+	36      (00000084) const/4              v5, 1
+	37      (00000086) if-ne                v3, v5, +01ch
+
+c-BB@0x8a : [ c-BB@0xa4 c-BB@0xae ]
+	38      (0000008a) iget-object          v3, v4, Lokhttp3/internal/connection/RealCall;->n Lokhttp3/internal/connection/ExchangeFinder;
+	39      (0000008e) invoke-static        v3, Lkotlin/jvm/internal/j;->b(Ljava/lang/Object;)V
+	40      (00000094) invoke-interface     v3, Lokhttp3/internal/connection/ExchangeFinder;->b()Lokhttp3/internal/connection/RoutePlanner;
+	41      (0000009a) move-result-object   v3
+	42      (0000009c) iget-object          v4, v4, Lokhttp3/internal/connection/RealCall;->x Lokhttp3/internal/connection/Exchange;
+	43      (000000a0) if-eqz               v4, +007h
+
+c-BB@0xa4 : [ c-BB@0xb0 ]
+	44      (000000a4) invoke-virtual       v4, Lokhttp3/internal/connection/Exchange;->c()Lokhttp3/internal/connection/RealConnection;
+	45      (000000aa) move-result-object   v4
+	46      (000000ac) goto                 +2h
+
+c-BB@0xae : [ c-BB@0xb0 ]
+	47      (000000ae) const/4              v4, 0
+
+c-BB@0xb0 : [ c-BB@0xbc c-BB@0xbe ]
+	48      (000000b0) invoke-interface     v3, v4, Lokhttp3/internal/connection/RoutePlanner;->a(Lokhttp3/internal/connection/RealConnection;)Z
+	49      (000000b6) move-result          v3
+	50      (000000b8) if-eqz               v3, +003h
+
+c-BB@0xbc : 
+	51      (000000bc) return               v5
+
+c-BB@0xbe : 
+	52      (000000be) const/4              v3, 0
+	53      (000000c0) return               v3
+

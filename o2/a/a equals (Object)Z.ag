@@ -1,0 +1,57 @@
+# Lo2/a;->equals(Ljava/lang/Object;)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:java.lang.Object
+#
+# - return:boolean
+
+equals-BB@0x0 : [ equals-BB@0x6 equals-BB@0x8 ]
+	0       (00000000) const/4              v0, 1
+	1       (00000002) if-ne                v6, v5, +003h
+
+equals-BB@0x6 : 
+	2       (00000006) return               v0
+
+equals-BB@0x8 : [ equals-BB@0x12 equals-BB@0x5e ]
+	3       (00000008) instance-of          v1, v6, Lo2/a;
+	4       (0000000c) const/4              v2, 0
+	5       (0000000e) if-eqz               v1, +028h
+
+equals-BB@0x12 : [ equals-BB@0x2e equals-BB@0x5e ]
+	6       (00000012) check-cast           v6, Lo2/a;
+	7       (00000016) iget-object          v1, v6, Lo2/a;->c Lo2/b;
+	8       (0000001a) iget-object          v3, v5, Lo2/a;->a Ljava/lang/Object;
+	9       (0000001e) iget-object          v4, v6, Lo2/a;->a Ljava/lang/Object;
+	10      (00000022) invoke-virtual       v3, v4, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+	11      (00000028) move-result          v3
+	12      (0000002a) if-eqz               v3, +01ah
+
+equals-BB@0x2e : [ equals-BB@0x42 equals-BB@0x5e ]
+	13      (0000002e) iget-object          v3, v5, Lo2/a;->b Lo2/d;
+	14      (00000032) iget-object          v6, v6, Lo2/a;->b Lo2/d;
+	15      (00000036) invoke-virtual       v3, v6, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+	16      (0000003c) move-result          v6
+	17      (0000003e) if-eqz               v6, +010h
+
+equals-BB@0x42 : [ equals-BB@0x4a equals-BB@0x50 ]
+	18      (00000042) iget-object          v6, v5, Lo2/a;->c Lo2/b;
+	19      (00000046) if-nez               v6, +005h
+
+equals-BB@0x4a : [ equals-BB@0x4e equals-BB@0x5e ]
+	20      (0000004a) if-nez               v1, +00ah
+
+equals-BB@0x4e : [ equals-BB@0x5c ]
+	21      (0000004e) goto                 +7h
+
+equals-BB@0x50 : [ equals-BB@0x5c equals-BB@0x5e ]
+	22      (00000050) invoke-virtual       v6, v1, Lo2/b;->equals(Ljava/lang/Object;)Z
+	23      (00000056) move-result          v6
+	24      (00000058) if-eqz               v6, +003h
+
+equals-BB@0x5c : 
+	25      (0000005c) return               v0
+
+equals-BB@0x5e : 
+	26      (0000005e) return               v2
+

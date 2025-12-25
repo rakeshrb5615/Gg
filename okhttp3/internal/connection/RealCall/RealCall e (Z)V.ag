@@ -1,0 +1,55 @@
+# Lokhttp3/internal/connection/RealCall;->e(Z)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v8
+# - v9:boolean
+#
+# - return:void
+
+e-BB@0x0 : [ e-BB@0x2 ]
+	0       (00000000) monitor-enter        v8
+
+e-BB@0x2 : [ e-BB@0xa e-BB@0x3e ]
+	1       (00000002) iget-boolean         v0, v8, Lokhttp3/internal/connection/RealCall;->v Z
+	2       (00000006) if-eqz               v0, +01ch
+	2:5
+	(Ljava/lang/Throwable; -> 4e e-BB@0x4e)
+
+e-BB@0xa : [ e-BB@0x10 e-BB@0x36 ]
+	3       (0000000a) monitor-exit         v8
+	4       (0000000c) if-eqz               v9, +015h
+
+e-BB@0x10 : [ e-BB@0x18 e-BB@0x36 ]
+	5       (00000010) iget-object          v2, v8, Lokhttp3/internal/connection/RealCall;->x Lokhttp3/internal/connection/Exchange;
+	6       (00000014) if-eqz               v2, +011h
+
+e-BB@0x18 : [ e-BB@0x36 ]
+	7       (00000018) iget-object          v9, v2, Lokhttp3/internal/connection/Exchange;->d Lokhttp3/internal/http/ExchangeCodec;
+	8       (0000001c) invoke-interface     v9, Lokhttp3/internal/http/ExchangeCodec;->cancel()V
+	9       (00000022) iget-object          v1, v2, Lokhttp3/internal/connection/Exchange;->a Lokhttp3/internal/connection/RealCall;
+	10      (00000026) const/4              v6, 1
+	11      (00000028) const/4              v7, 0
+	12      (0000002a) const/4              v3, 1
+	13      (0000002c) const/4              v4, 1
+	14      (0000002e) const/4              v5, 1
+	15      (00000030) invoke-virtual/range v1 ... v7, Lokhttp3/internal/connection/RealCall;->h(Lokhttp3/internal/connection/Exchange; Z Z Z Z Ljava/io/IOException;)Ljava/io/IOException;
+
+e-BB@0x36 : 
+	16      (00000036) const/4              v9, 0
+	17      (00000038) iput-object          v9, v8, Lokhttp3/internal/connection/RealCall;->q Lokhttp3/internal/connection/Exchange;
+	18      (0000003c) return-void          
+
+e-BB@0x3e : 
+	19      (0000003e) const-string         v9, "released"
+	20      (00000042) new-instance         v0, Ljava/lang/IllegalStateException;
+	21      (00000046) invoke-direct        v0, v9, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	22      (0000004c) throw                v0
+	3e:4d
+	(Ljava/lang/Throwable; -> 4e e-BB@0x4e)
+
+e-BB@0x4e : 
+	23      (0000004e) move-exception       v0
+	24      (00000050) move-object          v9, v0
+	25      (00000052) monitor-exit         v8
+	26      (00000054) throw                v9
+

@@ -1,0 +1,48 @@
+# Lokhttp3/internal/tls/BasicTrustRootIndex;->a(Ljava/security/cert/X509Certificate;)Ljava/security/cert/X509Certificate; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:java.security.cert.X509Certificate
+#
+# - return:java.security.cert.X509Certificate
+
+a-BB@0x0 : [ a-BB@0x1e a-BB@0x20 ]
+	0       (00000000) invoke-virtual       v5, Ljava/security/cert/X509Certificate;->getIssuerX500Principal()Ljavax/security/auth/x500/X500Principal;
+	1       (00000006) move-result-object   v0
+	2       (00000008) iget-object          v1, v4, Lokhttp3/internal/tls/BasicTrustRootIndex;->a Ljava/util/LinkedHashMap;
+	3       (0000000c) invoke-virtual       v1, v0, Ljava/util/LinkedHashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	4       (00000012) move-result-object   v0
+	5       (00000014) check-cast           v0, Ljava/util/Set;
+	6       (00000018) const/4              v1, 0
+	7       (0000001a) if-nez               v0, +003h
+
+a-BB@0x1e : 
+	8       (0000001e) return-object        v1
+
+a-BB@0x20 : [ a-BB@0x28 ]
+	9       (00000020) invoke-interface     v0, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
+	10      (00000026) move-result-object   v0
+
+a-BB@0x28 : [ a-BB@0x34 a-BB@0x52 ]
+	11      (00000028) invoke-interface     v0, Ljava/util/Iterator;->hasNext()Z
+	12      (0000002e) move-result          v2
+	13      (00000030) if-eqz               v2, +011h
+
+a-BB@0x34 : [ a-BB@0x42 ]
+	14      (00000034) invoke-interface     v0, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	15      (0000003a) move-result-object   v2
+	16      (0000003c) move-object          v3, v2
+	17      (0000003e) check-cast           v3, Ljava/security/cert/X509Certificate;
+
+a-BB@0x42 : [ a-BB@0x52 ]
+	18      (00000042) invoke-virtual       v3, Ljava/security/cert/Certificate;->getPublicKey()Ljava/security/PublicKey;
+	19      (00000048) move-result-object   v3
+	20      (0000004a) invoke-virtual       v5, v3, Ljava/security/cert/Certificate;->verify(Ljava/security/PublicKey;)V
+	21      (00000050) move-object          v1, v2
+	42:4f
+	(Ljava/lang/Exception; -> 28 a-BB@0x28)
+
+a-BB@0x52 : 
+	22      (00000052) check-cast           v1, Ljava/security/cert/X509Certificate;
+	23      (00000056) return-object        v1
+

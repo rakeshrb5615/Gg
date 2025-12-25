@@ -1,0 +1,30 @@
+# Lokhttp3/internal/platform/android/BouncyCastleSocketAdapter;->c(Ljavax/net/ssl/SSLSocket;)Ljava/lang/String; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:javax.net.ssl.SSLSocket
+#
+# - return:java.lang.String
+
+c-BB@0x0 : [ c-BB@0x10 c-BB@0x24 ]
+	0       (00000000) check-cast           v2, Lorg/bouncycastle/jsse/BCSSLSocket;
+	1       (00000004) invoke-interface     v2, Lorg/bouncycastle/jsse/BCSSLSocket;->getApplicationProtocol()Ljava/lang/String;
+	2       (0000000a) move-result-object   v2
+	3       (0000000c) if-eqz               v2, +00ch
+
+c-BB@0x10 : [ c-BB@0x20 c-BB@0x22 ]
+	4       (00000010) const-string         v0, ""
+	5       (00000014) invoke-virtual       v2, v0, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+	6       (0000001a) move-result          v0
+	7       (0000001c) if-eqz               v0, +003h
+
+c-BB@0x20 : [ c-BB@0x24 ]
+	8       (00000020) goto                 +2h
+
+c-BB@0x22 : 
+	9       (00000022) return-object        v2
+
+c-BB@0x24 : 
+	10      (00000024) const/4              v2, 0
+	11      (00000026) return-object        v2
+

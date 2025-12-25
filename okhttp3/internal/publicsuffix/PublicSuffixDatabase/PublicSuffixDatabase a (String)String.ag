@@ -1,0 +1,391 @@
+# Lokhttp3/internal/publicsuffix/PublicSuffixDatabase;->a(Ljava/lang/String;)Ljava/lang/String; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v13
+# - v14:java.lang.String
+#
+# - return:java.lang.String
+
+a-BB@0x0 : [ a-BB@0x2e a-BB@0x84 ]
+	0       (00000000) invoke-static        v14, Ljava/net/IDN;->toUnicode(Ljava/lang/String;)Ljava/lang/String;
+	1       (00000006) move-result-object   v0
+	2       (00000008) invoke-static        v0, Lkotlin/jvm/internal/j;->b(Ljava/lang/Object;)V
+	3       (0000000e) invoke-static        v0, Lokhttp3/internal/publicsuffix/PublicSuffixDatabase;->b(Ljava/lang/String;)Ljava/util/List;
+	4       (00000014) move-result-object   v0
+	5       (00000016) iget-object          v1, v13, Lokhttp3/internal/publicsuffix/PublicSuffixDatabase;->a Lokhttp3/internal/publicsuffix/AssetPublicSuffixList;
+	6       (0000001a) iget-object          v2, v1, Lokhttp3/internal/publicsuffix/BasePublicSuffixList;->b Ljava/util/concurrent/atomic/AtomicBoolean;
+	7       (0000001e) invoke-virtual       v2, Ljava/util/concurrent/atomic/AtomicBoolean;->get()Z
+	8       (00000024) move-result          v3
+	9       (00000026) const/4              v4, 1
+	10      (00000028) const/4              v5, 0
+	11      (0000002a) if-nez               v3, +02dh
+
+a-BB@0x2e : [ a-BB@0x3a a-BB@0x84 ]
+	12      (0000002e) invoke-virtual       v2, v5, v4, Ljava/util/concurrent/atomic/AtomicBoolean;->compareAndSet(Z Z)Z
+	13      (00000034) move-result          v2
+	14      (00000036) if-eqz               v2, +027h
+
+a-BB@0x3a : [ a-BB@0x3c ]
+	15      (0000003a) move                 v2, v5
+
+a-BB@0x3c : [ a-BB@0x46 a-BB@0x9e ]
+	16      (0000003c) invoke-virtual       v1, Lokhttp3/internal/publicsuffix/BasePublicSuffixList;->c()V
+	17      (00000042) if-eqz               v2, +02eh
+	3c:41
+	(Ljava/io/InterruptedIOException; -> 66 a-BB@0x66)
+	(Ljava/io/IOException; -> 5a a-BB@0x5a)
+	(Ljava/lang/Throwable; -> 56 a-BB@0x56)
+
+a-BB@0x46 : [ a-BB@0x9e ]
+	18      (00000046) invoke-static        Ljava/lang/Thread;->currentThread()Ljava/lang/Thread;
+	19      (0000004c) move-result-object   v2
+	20      (0000004e) invoke-virtual       v2, Ljava/lang/Thread;->interrupt()V
+	21      (00000054) goto                 +25h
+
+a-BB@0x56 : [ a-BB@0x70 ]
+	22      (00000056) move-exception       v14
+	23      (00000058) goto                 +ch
+
+a-BB@0x5a : [ a-BB@0x5c ]
+	24      (0000005a) move-exception       v3
+
+a-BB@0x5c : [ a-BB@0x64 a-BB@0x9e ]
+	25      (0000005c) iput-object          v3, v1, Lokhttp3/internal/publicsuffix/BasePublicSuffixList;->f Ljava/io/IOException;
+	26      (00000060) if-eqz               v2, +01fh
+	5c:6b
+	(Ljava/lang/Throwable; -> 56 a-BB@0x56)
+
+a-BB@0x64 : [ a-BB@0x46 ]
+	27      (00000064) goto                 -fh
+	5c:6b
+	(Ljava/lang/Throwable; -> 56 a-BB@0x56)
+
+a-BB@0x66 : [ a-BB@0x3c ]
+	28      (00000066) invoke-static        Ljava/lang/Thread;->interrupted()Z
+	29      (0000006c) move                 v2, v4
+	30      (0000006e) goto                 -19h
+
+a-BB@0x70 : [ a-BB@0x74 a-BB@0x82 ]
+	31      (00000070) if-eqz               v2, +009h
+
+a-BB@0x74 : [ a-BB@0x82 ]
+	32      (00000074) invoke-static        Ljava/lang/Thread;->currentThread()Ljava/lang/Thread;
+	33      (0000007a) move-result-object   v0
+	34      (0000007c) invoke-virtual       v0, Ljava/lang/Thread;->interrupt()V
+
+a-BB@0x82 : 
+	35      (00000082) throw                v14
+
+a-BB@0x84 : [ a-BB@0x9e ]
+	36      (00000084) iget-object          v2, v1, Lokhttp3/internal/publicsuffix/BasePublicSuffixList;->c Ljava/util/concurrent/CountDownLatch;
+	37      (00000088) invoke-virtual       v2, Ljava/util/concurrent/CountDownLatch;->await()V
+	38      (0000008e) goto                 +8h
+	84:8d
+	(Ljava/lang/InterruptedException; -> 90 a-BB@0x90)
+
+a-BB@0x90 : [ a-BB@0x9e ]
+	39      (00000090) invoke-static        Ljava/lang/Thread;->currentThread()Ljava/lang/Thread;
+	40      (00000096) move-result-object   v2
+	41      (00000098) invoke-virtual       v2, Ljava/lang/Thread;->interrupt()V
+
+a-BB@0x9e : [ a-BB@0xa6 a-BB@0x310 ]
+	42      (0000009e) iget-object          v2, v1, Lokhttp3/internal/publicsuffix/BasePublicSuffixList;->d Lx8/j;
+	43      (000000a2) if-eqz               v2, +137h
+
+a-BB@0xa6 : [ a-BB@0xb4 ]
+	44      (000000a6) invoke-interface     v0, Ljava/util/List;->size()I
+	45      (000000ac) move-result          v2
+	46      (000000ae) new-array            v3, v2, [Lx8/j;
+	47      (000000b2) move                 v6, v5
+
+a-BB@0xb4 : [ a-BB@0xb8 a-BB@0xda ]
+	48      (000000b4) if-ge                v6, v2, +013h
+
+a-BB@0xb8 : [ a-BB@0xb4 ]
+	49      (000000b8) sget-object          v7, Lx8/j;->d Lx8/j;
+	50      (000000bc) invoke-interface     v0, v6, Ljava/util/List;->get(I)Ljava/lang/Object;
+	51      (000000c2) move-result-object   v7
+	52      (000000c4) check-cast           v7, Ljava/lang/String;
+	53      (000000c8) invoke-static        v7, Lv3/f;->i(Ljava/lang/String;)Lx8/j;
+	54      (000000ce) move-result-object   v7
+	55      (000000d0) aput-object          v7, v3, v6
+	56      (000000d4) add-int/lit8         v6, v6, 1
+	57      (000000d8) goto                 -12h
+
+a-BB@0xda : [ a-BB@0xdc ]
+	58      (000000da) move                 v6, v5
+
+a-BB@0xdc : [ a-BB@0xe6 a-BB@0x102 ]
+	59      (000000dc) const/4              v7, 0
+	60      (000000de) sget-object          v8, Lokhttp3/internal/publicsuffix/PublicSuffixDatabase;->b Lokhttp3/internal/publicsuffix/PublicSuffixDatabase$Companion;
+	61      (000000e2) if-ge                v6, v2, +010h
+
+a-BB@0xe6 : [ a-BB@0xfa a-BB@0xfc ]
+	62      (000000e6) invoke-virtual       v1, Lokhttp3/internal/publicsuffix/BasePublicSuffixList;->a()Lx8/j;
+	63      (000000ec) move-result-object   v9
+	64      (000000ee) invoke-static        v8, v9, v3, v6, Lokhttp3/internal/publicsuffix/PublicSuffixDatabase$Companion;->a(Lokhttp3/internal/publicsuffix/PublicSuffixDatabase$Companion; Lx8/j; [Lx8/j; I)Ljava/lang/String;
+	65      (000000f4) move-result-object   v9
+	66      (000000f6) if-eqz               v9, +003h
+
+a-BB@0xfa : [ a-BB@0x104 ]
+	67      (000000fa) goto                 +5h
+
+a-BB@0xfc : [ a-BB@0xdc ]
+	68      (000000fc) add-int/lit8         v6, v6, 1
+	69      (00000100) goto                 -12h
+
+a-BB@0x102 : [ a-BB@0x104 ]
+	70      (00000102) move-object          v9, v7
+
+a-BB@0x104 : [ a-BB@0x108 a-BB@0x142 ]
+	71      (00000104) if-le                v2, v4, +01fh
+
+a-BB@0x108 : [ a-BB@0x11a ]
+	72      (00000108) invoke-virtual       v3, Ljava/lang/Object;->clone()Ljava/lang/Object;
+	73      (0000010e) move-result-object   v6
+	74      (00000110) check-cast           v6, [Lx8/j;
+	75      (00000114) array-length         v10, v6
+	76      (00000116) sub-int/2addr        v10, v4
+	77      (00000118) move                 v11, v5
+
+a-BB@0x11a : [ a-BB@0x11e a-BB@0x142 ]
+	78      (0000011a) if-ge                v11, v10, +014h
+
+a-BB@0x11e : [ a-BB@0x13a a-BB@0x13c ]
+	79      (0000011e) sget-object          v12, Lokhttp3/internal/publicsuffix/PublicSuffixDatabase;->c Lx8/j;
+	80      (00000122) aput-object          v12, v6, v11
+	81      (00000126) invoke-virtual       v1, Lokhttp3/internal/publicsuffix/BasePublicSuffixList;->a()Lx8/j;
+	82      (0000012c) move-result-object   v12
+	83      (0000012e) invoke-static        v8, v12, v6, v11, Lokhttp3/internal/publicsuffix/PublicSuffixDatabase$Companion;->a(Lokhttp3/internal/publicsuffix/PublicSuffixDatabase$Companion; Lx8/j; [Lx8/j; I)Ljava/lang/String;
+	84      (00000134) move-result-object   v12
+	85      (00000136) if-eqz               v12, +003h
+
+a-BB@0x13a : [ a-BB@0x144 ]
+	86      (0000013a) goto                 +5h
+
+a-BB@0x13c : [ a-BB@0x11a ]
+	87      (0000013c) add-int/lit8         v11, v11, 1
+	88      (00000140) goto                 -13h
+
+a-BB@0x142 : [ a-BB@0x144 ]
+	89      (00000142) move-object          v12, v7
+
+a-BB@0x144 : [ a-BB@0x148 a-BB@0x178 ]
+	90      (00000144) if-eqz               v12, +01ah
+
+a-BB@0x148 : [ a-BB@0x14c ]
+	91      (00000148) sub-int/2addr        v2, v4
+	92      (0000014a) move                 v6, v5
+
+a-BB@0x14c : [ a-BB@0x150 a-BB@0x178 ]
+	93      (0000014c) if-ge                v6, v2, +016h
+
+a-BB@0x150 : [ a-BB@0x158 a-BB@0x16c ]
+	94      (00000150) iget-object          v10, v1, Lokhttp3/internal/publicsuffix/BasePublicSuffixList;->e Lx8/j;
+	95      (00000154) if-eqz               v10, +00ch
+
+a-BB@0x158 : [ a-BB@0x164 a-BB@0x166 ]
+	96      (00000158) invoke-static        v8, v10, v3, v6, Lokhttp3/internal/publicsuffix/PublicSuffixDatabase$Companion;->a(Lokhttp3/internal/publicsuffix/PublicSuffixDatabase$Companion; Lx8/j; [Lx8/j; I)Ljava/lang/String;
+	97      (0000015e) move-result-object   v10
+	98      (00000160) if-eqz               v10, +003h
+
+a-BB@0x164 : [ a-BB@0x17a ]
+	99      (00000164) goto                 +bh
+
+a-BB@0x166 : [ a-BB@0x14c ]
+	100     (00000166) add-int/lit8         v6, v6, 1
+	101     (0000016a) goto                 -fh
+
+a-BB@0x16c : 
+	102     (0000016c) const-string         v14, "exceptionBytes"
+	103     (00000170) invoke-static        v14, Lkotlin/jvm/internal/j;->i(Ljava/lang/String;)V
+	104     (00000176) throw                v7
+
+a-BB@0x178 : [ a-BB@0x17a ]
+	105     (00000178) move-object          v10, v7
+
+a-BB@0x17a : [ a-BB@0x182 a-BB@0x1a0 ]
+	106     (0000017a) const/16             v1, 46
+	107     (0000017e) if-eqz               v10, +011h
+
+a-BB@0x182 : [ a-BB@0x1f8 ]
+	108     (00000182) const-string         v2, "!"
+	109     (00000186) invoke-virtual       v2, v10, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	110     (0000018c) move-result-object   v2
+	111     (0000018e) new-array            v3, v4, [C
+	112     (00000192) aput-char            v1, v3, v5
+	113     (00000196) invoke-static        v2, v3, Lb8/i;->E0(Ljava/lang/String; [C)Ljava/util/List;
+	114     (0000019c) move-result-object   v1
+	115     (0000019e) goto                 +2dh
+
+a-BB@0x1a0 : [ a-BB@0x1a4 a-BB@0x1ae ]
+	116     (000001a0) if-nez               v9, +007h
+
+a-BB@0x1a4 : [ a-BB@0x1a8 a-BB@0x1ae ]
+	117     (000001a4) if-nez               v12, +005h
+
+a-BB@0x1a8 : [ a-BB@0x1f8 ]
+	118     (000001a8) sget-object          v1, Lokhttp3/internal/publicsuffix/PublicSuffixDatabase;->d Ljava/util/List;
+	119     (000001ac) goto                 +26h
+
+a-BB@0x1ae : [ a-BB@0x1b6 a-BB@0x1c8 ]
+	120     (000001ae) sget-object          v2, Li7/n;->a Li7/n;
+	121     (000001b2) if-eqz               v9, +00bh
+
+a-BB@0x1b6 : [ a-BB@0x1ca ]
+	122     (000001b6) new-array            v3, v4, [C
+	123     (000001ba) aput-char            v1, v3, v5
+	124     (000001be) invoke-static        v9, v3, Lb8/i;->E0(Ljava/lang/String; [C)Ljava/util/List;
+	125     (000001c4) move-result-object   v3
+	126     (000001c6) goto                 +2h
+
+a-BB@0x1c8 : [ a-BB@0x1ca ]
+	127     (000001c8) move-object          v3, v2
+
+a-BB@0x1ca : [ a-BB@0x1ce a-BB@0x1e0 ]
+	128     (000001ca) if-eqz               v12, +00bh
+
+a-BB@0x1ce : [ a-BB@0x1e2 ]
+	129     (000001ce) new-array            v2, v4, [C
+	130     (000001d2) aput-char            v1, v2, v5
+	131     (000001d6) invoke-static        v12, v2, Lb8/i;->E0(Ljava/lang/String; [C)Ljava/util/List;
+	132     (000001dc) move-result-object   v1
+	133     (000001de) goto                 +2h
+
+a-BB@0x1e0 : [ a-BB@0x1e2 ]
+	134     (000001e0) move-object          v1, v2
+
+a-BB@0x1e2 : [ a-BB@0x1f6 a-BB@0x1f8 ]
+	135     (000001e2) invoke-interface     v3, Ljava/util/List;->size()I
+	136     (000001e8) move-result          v2
+	137     (000001ea) invoke-interface     v1, Ljava/util/List;->size()I
+	138     (000001f0) move-result          v6
+	139     (000001f2) if-le                v2, v6, +003h
+
+a-BB@0x1f6 : [ a-BB@0x1f8 ]
+	140     (000001f6) move-object          v1, v3
+
+a-BB@0x1f8 : [ a-BB@0x210 a-BB@0x22a ]
+	141     (000001f8) invoke-interface     v0, Ljava/util/List;->size()I
+	142     (000001fe) move-result          v2
+	143     (00000200) invoke-interface     v1, Ljava/util/List;->size()I
+	144     (00000206) move-result          v3
+	145     (00000208) const/16             v6, 33
+	146     (0000020c) if-ne                v2, v3, +00fh
+
+a-BB@0x210 : [ a-BB@0x228 a-BB@0x22a ]
+	147     (00000210) invoke-interface     v1, v5, Ljava/util/List;->get(I)Ljava/lang/Object;
+	148     (00000216) move-result-object   v2
+	149     (00000218) check-cast           v2, Ljava/lang/String;
+	150     (0000021c) invoke-virtual       v2, v5, Ljava/lang/String;->charAt(I)C
+	151     (00000222) move-result          v2
+	152     (00000224) if-eq                v2, v6, +003h
+
+a-BB@0x228 : 
+	153     (00000228) return-object        v7
+
+a-BB@0x22a : [ a-BB@0x242 a-BB@0x256 ]
+	154     (0000022a) invoke-interface     v1, v5, Ljava/util/List;->get(I)Ljava/lang/Object;
+	155     (00000230) move-result-object   v2
+	156     (00000232) check-cast           v2, Ljava/lang/String;
+	157     (00000236) invoke-virtual       v2, v5, Ljava/lang/String;->charAt(I)C
+	158     (0000023c) move-result          v2
+	159     (0000023e) if-ne                v2, v6, +00ch
+
+a-BB@0x242 : [ a-BB@0x252 ]
+	160     (00000242) invoke-interface     v0, Ljava/util/List;->size()I
+	161     (00000248) move-result          v0
+	162     (0000024a) invoke-interface     v1, Ljava/util/List;->size()I
+	163     (00000250) move-result          v1
+
+a-BB@0x252 : [ a-BB@0x26a ]
+	164     (00000252) sub-int/2addr        v0, v1
+	165     (00000254) goto                 +bh
+
+a-BB@0x256 : [ a-BB@0x252 ]
+	166     (00000256) invoke-interface     v0, Ljava/util/List;->size()I
+	167     (0000025c) move-result          v0
+	168     (0000025e) invoke-interface     v1, Ljava/util/List;->size()I
+	169     (00000264) move-result          v1
+	170     (00000266) add-int/2addr        v1, v4
+	171     (00000268) goto                 -bh
+
+a-BB@0x26a : [ a-BB@0x282 a-BB@0x2ec ]
+	172     (0000026a) invoke-static        v14, Lokhttp3/internal/publicsuffix/PublicSuffixDatabase;->b(Ljava/lang/String;)Ljava/util/List;
+	173     (00000270) move-result-object   v14
+	174     (00000272) new-instance         v1, La8/i;
+	175     (00000276) const/4              v2, 3
+	176     (00000278) invoke-direct        v1, v14, v2, La8/i;-><init>(Ljava/lang/Object; I)V
+	177     (0000027e) if-ltz               v0, +037h
+
+a-BB@0x282 : [ a-BB@0x286 a-BB@0x288 ]
+	178     (00000282) if-nez               v0, +003h
+
+a-BB@0x286 : [ a-BB@0x294 ]
+	179     (00000286) goto                 +7h
+
+a-BB@0x288 : [ a-BB@0x294 ]
+	180     (00000288) new-instance         v14, La8/c;
+	181     (0000028c) invoke-direct        v14, v1, v0, La8/c;-><init>(La8/f; I)V
+	182     (00000292) move-object          v1, v14
+
+a-BB@0x294 : [ a-BB@0x2b0 ]
+	183     (00000294) new-instance         v14, Ljava/lang/StringBuilder;
+	184     (00000298) invoke-direct        v14, Ljava/lang/StringBuilder;-><init>()V
+	185     (0000029e) const-string         v0, ""
+	186     (000002a2) invoke-virtual       v14, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/CharSequence;)Ljava/lang/Appendable;
+	187     (000002a8) invoke-interface     v1, La8/f;->iterator()Ljava/util/Iterator;
+	188     (000002ae) move-result-object   v1
+
+a-BB@0x2b0 : [ a-BB@0x2bc a-BB@0x2dc ]
+	189     (000002b0) invoke-interface     v1, Ljava/util/Iterator;->hasNext()Z
+	190     (000002b6) move-result          v2
+	191     (000002b8) if-eqz               v2, +012h
+
+a-BB@0x2bc : [ a-BB@0x2ca a-BB@0x2d4 ]
+	192     (000002bc) invoke-interface     v1, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	193     (000002c2) move-result-object   v2
+	194     (000002c4) add-int/2addr        v5, v4
+	195     (000002c6) if-le                v5, v4, +007h
+
+a-BB@0x2ca : [ a-BB@0x2d4 ]
+	196     (000002ca) const-string         v3, "."
+	197     (000002ce) invoke-virtual       v14, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/CharSequence;)Ljava/lang/Appendable;
+
+a-BB@0x2d4 : [ a-BB@0x2b0 ]
+	198     (000002d4) invoke-static        v14, v2, v7, Lc4/b;->d(Ljava/lang/StringBuilder; Ljava/lang/Object; Lu7/l;)V
+	199     (000002da) goto                 -15h
+
+a-BB@0x2dc : 
+	200     (000002dc) invoke-virtual       v14, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/CharSequence;)Ljava/lang/Appendable;
+	201     (000002e2) invoke-virtual       v14, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	202     (000002e8) move-result-object   v14
+	203     (000002ea) return-object        v14
+
+a-BB@0x2ec : 
+	204     (000002ec) const-string         v14, "Requested element count "
+	205     (000002f0) const-string         v1, " is less than zero."
+	206     (000002f4) invoke-static        v14, v0, v1, Lv1/a;->j(Ljava/lang/String; I Ljava/lang/String;)Ljava/lang/String;
+	207     (000002fa) move-result-object   v14
+	208     (000002fc) new-instance         v0, Ljava/lang/IllegalArgumentException;
+	209     (00000300) invoke-virtual       v14, Ljava/lang/Object;->toString()Ljava/lang/String;
+	210     (00000306) move-result-object   v14
+	211     (00000308) invoke-direct        v0, v14, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	212     (0000030e) throw                v0
+
+a-BB@0x310 : 
+	213     (00000310) new-instance         v14, Ljava/lang/IllegalStateException;
+	214     (00000314) new-instance         v0, Ljava/lang/StringBuilder;
+	215     (00000318) const-string         v2, "Unable to load "
+	216     (0000031c) invoke-direct        v0, v2, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	217     (00000322) iget-object          v2, v1, Lokhttp3/internal/publicsuffix/AssetPublicSuffixList;->g Ljava/lang/String;
+	218     (00000326) invoke-virtual       v0, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	219     (0000032c) const-string         v2, " resource."
+	220     (00000330) invoke-virtual       v0, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	221     (00000336) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	222     (0000033c) move-result-object   v0
+	223     (0000033e) invoke-direct        v14, v0, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	224     (00000344) iget-object          v0, v1, Lokhttp3/internal/publicsuffix/BasePublicSuffixList;->f Ljava/io/IOException;
+	225     (00000348) invoke-virtual       v14, v0, Ljava/lang/Throwable;->initCause(Ljava/lang/Throwable;)Ljava/lang/Throwable;
+	226     (0000034e) throw                v14
+

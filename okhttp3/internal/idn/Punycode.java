@@ -1,0 +1,51 @@
+package okhttp3.internal.idn;
+public final class Punycode {
+    public static final okhttp3.internal.idn.Punycode a;
+    public static final String b;
+    public static final x8.j c;
+
+    static Punycode()
+    {
+        okhttp3.internal.idn.Punycode.a = new okhttp3.internal.idn.Punycode();
+        okhttp3.internal.idn.Punycode.b = "xn--";
+        okhttp3.internal.idn.Punycode.c = v3.f.i("xn--");
+        return;
+    }
+
+    private Punycode()
+    {
+        return;
+    }
+
+    public static int a(int p0, boolean p1, int p2)
+    {
+        int v0_1;
+        if (p1 == 0) {
+            v0_1 = (p0 / 2);
+        } else {
+            v0_1 = (p0 / 700);
+        }
+        int v1_1 = ((v0_1 / p2) + v0_1);
+        int v0_2 = 0;
+        while (v1_1 > 455) {
+            v1_1 /= 35;
+            v0_2 += 36;
+        }
+        return (((v1_1 * 36) / (v1_1 + 38)) + v0_2);
+    }
+
+    public static int b(int p3)
+    {
+        if (p3 >= 26) {
+            if (p3 >= 36) {
+                StringBuilder v1_1 = new StringBuilder("unexpected digit: ");
+                v1_1.append(p3);
+                throw new IllegalStateException(v1_1.toString().toString());
+            } else {
+                return (p3 + 22);
+            }
+        } else {
+            return (p3 + 97);
+        }
+    }
+}

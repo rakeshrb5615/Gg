@@ -1,0 +1,45 @@
+# Lokhttp3/internal/_UtilCommonKt;->a(J J J)V [access_flags=public static final]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:long
+# - v8:long
+# - v9:long
+#
+# - return:void
+
+a-BB@0x0 : [ a-BB@0x10 a-BB@0x26 ]
+	0       (00000000) or-long              v0, v6, v8
+	1       (00000004) const-wide/16        v2, 0
+	2       (00000008) cmp-long             v0, v0, v2
+	3       (0000000c) if-ltz               v0, +00dh
+
+a-BB@0x10 : [ a-BB@0x18 a-BB@0x26 ]
+	4       (00000010) cmp-long             v0, v6, v4
+	5       (00000014) if-gtz               v0, +009h
+
+a-BB@0x18 : [ a-BB@0x24 a-BB@0x26 ]
+	6       (00000018) sub-long             v0, v4, v6
+	7       (0000001c) cmp-long             v8, v0, v8
+	8       (00000020) if-ltz               v8, +003h
+
+a-BB@0x24 : 
+	9       (00000024) return-void          
+
+a-BB@0x26 : 
+	10      (00000026) new-instance         v8, Ljava/lang/ArrayIndexOutOfBoundsException;
+	11      (0000002a) new-instance         v9, Ljava/lang/StringBuilder;
+	12      (0000002e) const-string         v0, "length="
+	13      (00000032) invoke-direct        v9, v0, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	14      (00000038) invoke-virtual       v9, v4, v5, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+	15      (0000003e) const-string         v4, ", offset="
+	16      (00000042) invoke-virtual       v9, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	17      (00000048) invoke-virtual       v9, v6, v7, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+	18      (0000004e) const-string         v4, ", count="
+	19      (00000052) invoke-virtual       v9, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	20      (00000058) invoke-virtual       v9, v6, v7, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+	21      (0000005e) invoke-virtual       v9, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	22      (00000064) move-result-object   v4
+	23      (00000066) invoke-direct        v8, v4, Ljava/lang/ArrayIndexOutOfBoundsException;-><init>(Ljava/lang/String;)V
+	24      (0000006c) throw                v8
+

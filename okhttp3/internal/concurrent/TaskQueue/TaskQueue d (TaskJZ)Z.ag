@@ -1,0 +1,140 @@
+# Lokhttp3/internal/concurrent/TaskQueue;->d(Lokhttp3/internal/concurrent/Task; J Z)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v12
+# - v13:okhttp3.internal.concurrent.Task
+# - v14:long
+# - v15:boolean
+#
+# - return:boolean
+
+d-BB@0x0 : [ d-BB@0x1a d-BB@0x1c ]
+	0       (00000000) iget-object          v0, v11, Lokhttp3/internal/concurrent/TaskQueue;->a Lokhttp3/internal/concurrent/TaskRunner;
+	1       (00000004) iget-object          v0, v0, Lokhttp3/internal/concurrent/TaskRunner;->b Ljava/util/logging/Logger;
+	2       (00000008) const-string         v1, "task"
+	3       (0000000c) invoke-static        v12, v1, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	4       (00000012) iget-object          v1, v12, Lokhttp3/internal/concurrent/Task;->c Lokhttp3/internal/concurrent/TaskQueue;
+	5       (00000016) if-ne                v1, v11, +003h
+
+d-BB@0x1a : [ d-BB@0x24 ]
+	6       (0000001a) goto                 +5h
+
+d-BB@0x1c : [ d-BB@0x20 d-BB@0x112 ]
+	7       (0000001c) if-nez               v1, +07bh
+
+d-BB@0x20 : [ d-BB@0x24 ]
+	8       (00000020) iput-object          v11, v12, Lokhttp3/internal/concurrent/Task;->c Lokhttp3/internal/concurrent/TaskQueue;
+
+d-BB@0x24 : [ d-BB@0x44 d-BB@0x72 ]
+	9       (00000024) invoke-static        Ljava/lang/System;->nanoTime()J
+	10      (0000002a) move-result-wide     v1
+	11      (0000002c) add-long             v3, v1, v13
+	12      (00000030) iget-object          v5, v11, Lokhttp3/internal/concurrent/TaskQueue;->e Ljava/util/ArrayList;
+	13      (00000034) invoke-virtual       v5, v12, Ljava/util/ArrayList;->indexOf(Ljava/lang/Object;)I
+	14      (0000003a) move-result          v6
+	15      (0000003c) const/4              v7, -1
+	16      (0000003e) const/4              v8, 0
+	17      (00000040) if-eq                v6, v7, +019h
+
+d-BB@0x44 : [ d-BB@0x50 d-BB@0x6c ]
+	18      (00000044) iget-wide            v9, v12, Lokhttp3/internal/concurrent/Task;->d J
+	19      (00000048) cmp-long             v9, v9, v3
+	20      (0000004c) if-gtz               v9, +010h
+
+d-BB@0x50 : [ d-BB@0x60 d-BB@0x110 ]
+	21      (00000050) sget-object          v13, Ljava/util/logging/Level;->FINE Ljava/util/logging/Level;
+	22      (00000054) invoke-virtual       v0, v13, Ljava/util/logging/Logger;->isLoggable(Ljava/util/logging/Level;)Z
+	23      (0000005a) move-result          v13
+	24      (0000005c) if-eqz               v13, +05ah
+
+d-BB@0x60 : 
+	25      (00000060) const-string         v13, "already scheduled"
+	26      (00000064) invoke-static        v0, v12, v11, v13, Lokhttp3/internal/concurrent/TaskLoggerKt;->a(Ljava/util/logging/Logger; Lokhttp3/internal/concurrent/Task; Lokhttp3/internal/concurrent/TaskQueue; Ljava/lang/String;)V
+	27      (0000006a) return               v8
+
+d-BB@0x6c : [ d-BB@0x72 ]
+	28      (0000006c) invoke-virtual       v5, v6, Ljava/util/ArrayList;->remove(I)Ljava/lang/Object;
+
+d-BB@0x72 : [ d-BB@0x86 d-BB@0xbe ]
+	29      (00000072) iput-wide            v3, v12, Lokhttp3/internal/concurrent/Task;->d J
+	30      (00000076) sget-object          v6, Ljava/util/logging/Level;->FINE Ljava/util/logging/Level;
+	31      (0000007a) invoke-virtual       v0, v6, Ljava/util/logging/Logger;->isLoggable(Ljava/util/logging/Level;)Z
+	32      (00000080) move-result          v6
+	33      (00000082) if-eqz               v6, +01eh
+
+d-BB@0x86 : [ d-BB@0x8a d-BB@0xa2 ]
+	34      (00000086) if-eqz               v15, +00eh
+
+d-BB@0x8a : [ d-BB@0xb8 ]
+	35      (0000008a) sub-long/2addr       v3, v1
+	36      (0000008c) invoke-static        v3, v4, Lokhttp3/internal/concurrent/TaskLoggerKt;->b(J)Ljava/lang/String;
+	37      (00000092) move-result-object   v15
+	38      (00000094) const-string         v3, "run again after "
+	39      (00000098) invoke-virtual       v3, v15, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	40      (0000009e) move-result-object   v15
+	41      (000000a0) goto                 +ch
+
+d-BB@0xa2 : [ d-BB@0xb8 ]
+	42      (000000a2) sub-long/2addr       v3, v1
+	43      (000000a4) invoke-static        v3, v4, Lokhttp3/internal/concurrent/TaskLoggerKt;->b(J)Ljava/lang/String;
+	44      (000000aa) move-result-object   v15
+	45      (000000ac) const-string         v3, "scheduled after "
+	46      (000000b0) invoke-virtual       v3, v15, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	47      (000000b6) move-result-object   v15
+
+d-BB@0xb8 : [ d-BB@0xbe ]
+	48      (000000b8) invoke-static        v0, v12, v11, v15, Lokhttp3/internal/concurrent/TaskLoggerKt;->a(Ljava/util/logging/Logger; Lokhttp3/internal/concurrent/Task; Lokhttp3/internal/concurrent/TaskQueue; Ljava/lang/String;)V
+
+d-BB@0xbe : [ d-BB@0xca ]
+	49      (000000be) invoke-virtual       v5, Ljava/util/ArrayList;->size()I
+	50      (000000c4) move-result          v15
+	51      (000000c6) move                 v0, v8
+	52      (000000c8) move                 v3, v0
+
+d-BB@0xca : [ d-BB@0xce d-BB@0xf4 ]
+	53      (000000ca) if-ge                v3, v15, +015h
+
+d-BB@0xce : [ d-BB@0xec d-BB@0xee ]
+	54      (000000ce) invoke-virtual       v5, v3, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	55      (000000d4) move-result-object   v4
+	56      (000000d6) add-int/lit8         v3, v3, 1
+	57      (000000da) check-cast           v4, Lokhttp3/internal/concurrent/Task;
+	58      (000000de) iget-wide            v9, v4, Lokhttp3/internal/concurrent/Task;->d J
+	59      (000000e2) sub-long/2addr       v9, v1
+	60      (000000e4) cmp-long             v4, v9, v13
+	61      (000000e8) if-lez               v4, +003h
+
+d-BB@0xec : [ d-BB@0xf6 ]
+	62      (000000ec) goto                 +5h
+
+d-BB@0xee : [ d-BB@0xca ]
+	63      (000000ee) add-int/lit8         v0, v0, 1
+	64      (000000f2) goto                 -14h
+
+d-BB@0xf4 : [ d-BB@0xf6 ]
+	65      (000000f4) move                 v0, v7
+
+d-BB@0xf6 : [ d-BB@0xfa d-BB@0x102 ]
+	66      (000000f6) if-ne                v0, v7, +006h
+
+d-BB@0xfa : [ d-BB@0x102 ]
+	67      (000000fa) invoke-virtual       v5, Ljava/util/ArrayList;->size()I
+	68      (00000100) move-result          v0
+
+d-BB@0x102 : [ d-BB@0x10c d-BB@0x110 ]
+	69      (00000102) invoke-virtual       v5, v0, v12, Ljava/util/ArrayList;->add(I Ljava/lang/Object;)V
+	70      (00000108) if-nez               v0, +004h
+
+d-BB@0x10c : 
+	71      (0000010c) const/4              v12, 1
+	72      (0000010e) return               v12
+
+d-BB@0x110 : 
+	73      (00000110) return               v8
+
+d-BB@0x112 : 
+	74      (00000112) new-instance         v12, Ljava/lang/IllegalStateException;
+	75      (00000116) const-string         v13, "task is in multiple queues"
+	76      (0000011a) invoke-direct        v12, v13, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	77      (00000120) throw                v12
+

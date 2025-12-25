@@ -1,0 +1,85 @@
+# Lokhttp3/internal/http2/flowcontrol/WindowCounter;->b(Lokhttp3/internal/http2/flowcontrol/WindowCounter; J J I)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:okhttp3.internal.http2.flowcontrol.WindowCounter
+# - v6:long
+# - v7:long
+# - v8:int
+#
+# - return:void
+
+b-BB@0x0 : [ b-BB@0xc b-BB@0xe ]
+	0       (00000000) and-int/lit8         v0, v8, 1
+	1       (00000004) const-wide/16        v1, 0
+	2       (00000008) if-eqz               v0, +003h
+
+b-BB@0xc : [ b-BB@0xe ]
+	3       (0000000c) move-wide            v4, v1
+
+b-BB@0xe : [ b-BB@0x16 b-BB@0x18 ]
+	4       (0000000e) and-int/lit8         v8, v8, 2
+	5       (00000012) if-eqz               v8, +003h
+
+b-BB@0x16 : [ b-BB@0x18 ]
+	6       (00000016) move-wide            v6, v1
+
+b-BB@0x18 : [ b-BB@0x22 b-BB@0x6e ]
+	7       (00000018) monitor-enter        v3
+	8       (0000001a) cmp-long             v8, v4, v1
+	9       (0000001e) if-ltz               v8, +028h
+
+b-BB@0x22 : [ b-BB@0x2a b-BB@0x5e ]
+	10      (00000022) cmp-long             v8, v6, v1
+	11      (00000026) if-ltz               v8, +01ch
+
+b-BB@0x2a : [ b-BB@0x46 b-BB@0x4a ]
+	12      (0000002a) iget-wide            v0, v3, Lokhttp3/internal/http2/flowcontrol/WindowCounter;->b J
+	13      (0000002e) add-long/2addr       v0, v4
+	14      (00000030) iput-wide            v0, v3, Lokhttp3/internal/http2/flowcontrol/WindowCounter;->b J
+	15      (00000034) iget-wide            v4, v3, Lokhttp3/internal/http2/flowcontrol/WindowCounter;->c J
+	16      (00000038) add-long/2addr       v4, v6
+	17      (0000003a) iput-wide            v4, v3, Lokhttp3/internal/http2/flowcontrol/WindowCounter;->c J
+	18      (0000003e) cmp-long             v4, v4, v0
+	19      (00000042) if-gtz               v4, +004h
+	2a:3d
+	(Ljava/lang/Throwable; -> 5a b-BB@0x5a)
+
+b-BB@0x46 : 
+	20      (00000046) monitor-exit         v3
+	21      (00000048) return-void          
+
+b-BB@0x4a : 
+	22      (0000004a) new-instance         v4, Ljava/lang/IllegalStateException;
+	23      (0000004e) const-string         v5, "Check failed."
+	24      (00000052) invoke-direct        v4, v5, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	25      (00000058) throw                v4
+	4a:7f
+	(Ljava/lang/Throwable; -> 5a b-BB@0x5a)
+
+b-BB@0x5a : [ b-BB@0x7e ]
+	26      (0000005a) move-exception       v4
+	27      (0000005c) goto                 +11h
+	4a:7f
+	(Ljava/lang/Throwable; -> 5a b-BB@0x5a)
+
+b-BB@0x5e : 
+	28      (0000005e) new-instance         v4, Ljava/lang/IllegalStateException;
+	29      (00000062) const-string         v5, "Check failed."
+	30      (00000066) invoke-direct        v4, v5, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	31      (0000006c) throw                v4
+	4a:7f
+	(Ljava/lang/Throwable; -> 5a b-BB@0x5a)
+
+b-BB@0x6e : 
+	32      (0000006e) new-instance         v4, Ljava/lang/IllegalStateException;
+	33      (00000072) const-string         v5, "Check failed."
+	34      (00000076) invoke-direct        v4, v5, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	35      (0000007c) throw                v4
+	4a:7f
+	(Ljava/lang/Throwable; -> 5a b-BB@0x5a)
+
+b-BB@0x7e : 
+	36      (0000007e) monitor-exit         v3
+	37      (00000080) throw                v4
+

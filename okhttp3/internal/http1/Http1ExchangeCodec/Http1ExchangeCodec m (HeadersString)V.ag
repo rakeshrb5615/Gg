@@ -1,0 +1,73 @@
+# Lokhttp3/internal/http1/Http1ExchangeCodec;->m(Lokhttp3/Headers; Ljava/lang/String;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:okhttp3.Headers
+# - v7:java.lang.String
+#
+# - return:void
+
+m-BB@0x0 : [ m-BB@0x1c m-BB@0x9e ]
+	0       (00000000) const-string         v0, "headers"
+	1       (00000004) invoke-static        v6, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) const-string         v0, "requestLine"
+	3       (0000000e) invoke-static        v7, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	4       (00000014) iget                 v0, v5, Lokhttp3/internal/http1/Http1ExchangeCodec;->d I
+	5       (00000018) if-nez               v0, +043h
+
+m-BB@0x1c : [ m-BB@0x44 ]
+	6       (0000001c) iget-object          v0, v5, Lokhttp3/internal/http1/Http1ExchangeCodec;->c Lokhttp3/internal/connection/BufferedSocket;
+	7       (00000020) invoke-interface     v0, Lokhttp3/internal/connection/BufferedSocket;->b()Lx8/h;
+	8       (00000026) move-result-object   v1
+	9       (00000028) invoke-interface     v1, v7, Lx8/h;->q(Ljava/lang/String;)Lx8/h;
+	10      (0000002e) move-result-object   v7
+	11      (00000030) const-string         v1, "
+"
+	12      (00000034) invoke-interface     v7, v1, Lx8/h;->q(Ljava/lang/String;)Lx8/h;
+	13      (0000003a) invoke-virtual       v6, Lokhttp3/Headers;->size()I
+	14      (00000040) move-result          v7
+	15      (00000042) const/4              v2, 0
+
+m-BB@0x44 : [ m-BB@0x48 m-BB@0x88 ]
+	16      (00000044) if-ge                v2, v7, +022h
+
+m-BB@0x48 : [ m-BB@0x44 ]
+	17      (00000048) invoke-interface     v0, Lokhttp3/internal/connection/BufferedSocket;->b()Lx8/h;
+	18      (0000004e) move-result-object   v3
+	19      (00000050) invoke-virtual       v6, v2, Lokhttp3/Headers;->c(I)Ljava/lang/String;
+	20      (00000056) move-result-object   v4
+	21      (00000058) invoke-interface     v3, v4, Lx8/h;->q(Ljava/lang/String;)Lx8/h;
+	22      (0000005e) move-result-object   v3
+	23      (00000060) const-string         v4, ": "
+	24      (00000064) invoke-interface     v3, v4, Lx8/h;->q(Ljava/lang/String;)Lx8/h;
+	25      (0000006a) move-result-object   v3
+	26      (0000006c) invoke-virtual       v6, v2, Lokhttp3/Headers;->e(I)Ljava/lang/String;
+	27      (00000072) move-result-object   v4
+	28      (00000074) invoke-interface     v3, v4, Lx8/h;->q(Ljava/lang/String;)Lx8/h;
+	29      (0000007a) move-result-object   v3
+	30      (0000007c) invoke-interface     v3, v1, Lx8/h;->q(Ljava/lang/String;)Lx8/h;
+	31      (00000082) add-int/lit8         v2, v2, 1
+	32      (00000086) goto                 -21h
+
+m-BB@0x88 : 
+	33      (00000088) invoke-interface     v0, Lokhttp3/internal/connection/BufferedSocket;->b()Lx8/h;
+	34      (0000008e) move-result-object   v6
+	35      (00000090) invoke-interface     v6, v1, Lx8/h;->q(Ljava/lang/String;)Lx8/h;
+	36      (00000096) const/4              v6, 1
+	37      (00000098) iput                 v6, v5, Lokhttp3/internal/http1/Http1ExchangeCodec;->d I
+	38      (0000009c) return-void          
+
+m-BB@0x9e : 
+	39      (0000009e) new-instance         v6, Ljava/lang/StringBuilder;
+	40      (000000a2) const-string         v7, "state: "
+	41      (000000a6) invoke-direct        v6, v7, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	42      (000000ac) iget                 v7, v5, Lokhttp3/internal/http1/Http1ExchangeCodec;->d I
+	43      (000000b0) invoke-virtual       v6, v7, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	44      (000000b6) invoke-virtual       v6, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	45      (000000bc) move-result-object   v6
+	46      (000000be) new-instance         v7, Ljava/lang/IllegalStateException;
+	47      (000000c2) invoke-virtual       v6, Ljava/lang/Object;->toString()Ljava/lang/String;
+	48      (000000c8) move-result-object   v6
+	49      (000000ca) invoke-direct        v7, v6, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	50      (000000d0) throw                v7
+

@@ -1,0 +1,25 @@
+# Lp0/d;->c(Ljava/lang/Object;)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:java.lang.Object
+#
+# - return:boolean
+
+c-BB@0x0 : [ c-BB@0x6 ]
+	0       (00000000) iget-object          v0, v1, Lp0/d;->c Ljava/lang/Object;
+	1       (00000004) monitor-enter        v0
+
+c-BB@0x6 : 
+	2       (00000006) invoke-super         v1, v2, Lp0/c;->c(Ljava/lang/Object;)Z
+	3       (0000000c) move-result          v2
+	4       (0000000e) monitor-exit         v0
+	5       (00000010) return               v2
+	6:d
+	(Ljava/lang/Throwable; -> 12 c-BB@0x12)
+
+c-BB@0x12 : 
+	6       (00000012) move-exception       v2
+	7       (00000014) monitor-exit         v0
+	8       (00000016) throw                v2
+

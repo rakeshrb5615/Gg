@@ -1,0 +1,56 @@
+# Lokhttp3/internal/platform/android/AndroidLogHandler;->publish(Ljava/util/logging/LogRecord;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:java.util.logging.LogRecord
+#
+# - return:void
+
+publish-BB@0x0 : [ publish-BB@0x40 publish-BB@0x44 ]
+	0       (00000000) const-string         v0, "record"
+	1       (00000004) invoke-static        v6, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) sget-object          v0, Lokhttp3/internal/platform/android/AndroidLog;->a Lokhttp3/internal/platform/android/AndroidLog;
+	3       (0000000e) invoke-virtual       v6, Ljava/util/logging/LogRecord;->getLoggerName()Ljava/lang/String;
+	4       (00000014) move-result-object   v1
+	5       (00000016) const-string         v2, "getLoggerName(...)"
+	6       (0000001a) invoke-static        v1, v2, Lkotlin/jvm/internal/j;->d(Ljava/lang/Object; Ljava/lang/String;)V
+	7       (00000020) invoke-virtual       v6, Ljava/util/logging/LogRecord;->getLevel()Ljava/util/logging/Level;
+	8       (00000026) move-result-object   v2
+	9       (00000028) invoke-virtual       v2, Ljava/util/logging/Level;->intValue()I
+	10      (0000002e) move-result          v2
+	11      (00000030) sget-object          v3, Ljava/util/logging/Level;->INFO Ljava/util/logging/Level;
+	12      (00000034) invoke-virtual       v3, Ljava/util/logging/Level;->intValue()I
+	13      (0000003a) move-result          v4
+	14      (0000003c) if-le                v2, v4, +004h
+
+publish-BB@0x40 : [ publish-BB@0x66 ]
+	15      (00000040) const/4              v2, 5
+	16      (00000042) goto                 +12h
+
+publish-BB@0x44 : [ publish-BB@0x60 publish-BB@0x64 ]
+	17      (00000044) invoke-virtual       v6, Ljava/util/logging/LogRecord;->getLevel()Ljava/util/logging/Level;
+	18      (0000004a) move-result-object   v2
+	19      (0000004c) invoke-virtual       v2, Ljava/util/logging/Level;->intValue()I
+	20      (00000052) move-result          v2
+	21      (00000054) invoke-virtual       v3, Ljava/util/logging/Level;->intValue()I
+	22      (0000005a) move-result          v3
+	23      (0000005c) if-ne                v2, v3, +004h
+
+publish-BB@0x60 : [ publish-BB@0x66 ]
+	24      (00000060) const/4              v2, 4
+	25      (00000062) goto                 +2h
+
+publish-BB@0x64 : [ publish-BB@0x66 ]
+	26      (00000064) const/4              v2, 3
+
+publish-BB@0x66 : 
+	27      (00000066) invoke-virtual       v6, Ljava/util/logging/LogRecord;->getMessage()Ljava/lang/String;
+	28      (0000006c) move-result-object   v3
+	29      (0000006e) const-string         v4, "getMessage(...)"
+	30      (00000072) invoke-static        v3, v4, Lkotlin/jvm/internal/j;->d(Ljava/lang/Object; Ljava/lang/String;)V
+	31      (00000078) invoke-virtual       v6, Ljava/util/logging/LogRecord;->getThrown()Ljava/lang/Throwable;
+	32      (0000007e) move-result-object   v6
+	33      (00000080) invoke-virtual       v0, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	34      (00000086) invoke-static        v1, v2, v3, v6, Lokhttp3/internal/platform/android/AndroidLog;->a(Ljava/lang/String; I Ljava/lang/String; Ljava/lang/Throwable;)V
+	35      (0000008c) return-void          
+

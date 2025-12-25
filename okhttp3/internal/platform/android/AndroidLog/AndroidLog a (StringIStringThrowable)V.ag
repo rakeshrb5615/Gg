@@ -1,0 +1,86 @@
+# Lokhttp3/internal/platform/android/AndroidLog;->a(Ljava/lang/String; I Ljava/lang/String; Ljava/lang/Throwable;)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:java.lang.String
+# - v6:int
+# - v7:java.lang.String
+# - v8:java.lang.Throwable
+#
+# - return:void
+
+a-BB@0x0 : [ a-BB@0x14 a-BB@0x20 ]
+	0       (00000000) sget-object          v0, Lokhttp3/internal/platform/android/AndroidLog;->c Ljava/util/Map;
+	1       (00000004) invoke-interface     v0, v5, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	2       (0000000a) move-result-object   v0
+	3       (0000000c) check-cast           v0, Ljava/lang/String;
+	4       (00000010) if-nez               v0, +008h
+
+a-BB@0x14 : [ a-BB@0x20 ]
+	5       (00000014) const/16             v0, 23
+	6       (00000018) invoke-static        v0, v5, Lb8/i;->G0(I Ljava/lang/String;)Ljava/lang/String;
+	7       (0000001e) move-result-object   v0
+
+a-BB@0x20 : [ a-BB@0x2c a-BB@0xb4 ]
+	8       (00000020) invoke-static        v0, v6, Landroid/util/Log;->isLoggable(Ljava/lang/String; I)Z
+	9       (00000026) move-result          v5
+	10      (00000028) if-eqz               v5, +046h
+
+a-BB@0x2c : [ a-BB@0x34 a-BB@0x60 ]
+	11      (0000002c) const/16             v5, 10
+	12      (00000030) if-eqz               v8, +018h
+
+a-BB@0x34 : [ a-BB@0x60 ]
+	13      (00000034) new-instance         v1, Ljava/lang/StringBuilder;
+	14      (00000038) invoke-direct        v1, Ljava/lang/StringBuilder;-><init>()V
+	15      (0000003e) invoke-virtual       v1, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	16      (00000044) invoke-virtual       v1, v5, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+	17      (0000004a) invoke-static        v8, Landroid/util/Log;->getStackTraceString(Ljava/lang/Throwable;)Ljava/lang/String;
+	18      (00000050) move-result-object   v7
+	19      (00000052) invoke-virtual       v1, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	20      (00000058) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	21      (0000005e) move-result-object   v7
+
+a-BB@0x60 : [ a-BB@0x6a ]
+	22      (00000060) invoke-virtual       v7, Ljava/lang/String;->length()I
+	23      (00000066) move-result          v8
+	24      (00000068) const/4              v1, 0
+
+a-BB@0x6a : [ a-BB@0x6e a-BB@0xb4 ]
+	25      (0000006a) if-ge                v1, v8, +025h
+
+a-BB@0x6e : [ a-BB@0x7e a-BB@0x80 ]
+	26      (0000006e) const/4              v2, 4
+	27      (00000070) invoke-static        v7, v5, v1, v2, Lb8/i;->v0(Ljava/lang/CharSequence; C I I)I
+	28      (00000076) move-result          v2
+	29      (00000078) const/4              v3, -1
+	30      (0000007a) if-eq                v2, v3, +003h
+
+a-BB@0x7e : [ a-BB@0x82 ]
+	31      (0000007e) goto                 +2h
+
+a-BB@0x80 : [ a-BB@0x82 ]
+	32      (00000080) move                 v2, v8
+
+a-BB@0x82 : [ a-BB@0xaa a-BB@0xb0 ]
+	33      (00000082) add-int/lit16        v3, v1, 4000
+	34      (00000086) invoke-static        v2, v3, Ljava/lang/Math;->min(I I)I
+	35      (0000008c) move-result          v3
+	36      (0000008e) invoke-virtual       v7, v1, v3, Ljava/lang/String;->substring(I I)Ljava/lang/String;
+	37      (00000094) move-result-object   v1
+	38      (00000096) const-string         v4, "substring(...)"
+	39      (0000009a) invoke-static        v1, v4, Lkotlin/jvm/internal/j;->d(Ljava/lang/Object; Ljava/lang/String;)V
+	40      (000000a0) invoke-static        v6, v0, v1, Landroid/util/Log;->println(I Ljava/lang/String; Ljava/lang/String;)I
+	41      (000000a6) if-lt                v3, v2, +005h
+
+a-BB@0xaa : [ a-BB@0x6a ]
+	42      (000000aa) add-int/lit8         v1, v3, 1
+	43      (000000ae) goto                 -22h
+
+a-BB@0xb0 : [ a-BB@0x82 ]
+	44      (000000b0) move                 v1, v3
+	45      (000000b2) goto                 -18h
+
+a-BB@0xb4 : 
+	46      (000000b4) return-void          
+

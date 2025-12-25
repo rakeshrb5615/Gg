@@ -1,0 +1,76 @@
+# Lokhttp3/internal/http2/Http2Stream;-><init>(I Lokhttp3/internal/http2/Http2Connection; Z Z Lokhttp3/Headers;)V [access_flags=public constructor]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:int
+# - v5:okhttp3.internal.http2.Http2Connection
+# - v6:boolean
+# - v7:boolean
+# - v8:okhttp3.Headers
+#
+# - return:void
+
+<init>-BB@0x0 : [ <init>-BB@0x90 <init>-BB@0xb4 ]
+	0       (00000000) const-string         v0, "connection"
+	1       (00000004) invoke-static        v5, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) invoke-direct        v3, Ljava/lang/Object;-><init>()V
+	3       (00000010) iput                 v4, v3, Lokhttp3/internal/http2/Http2Stream;->a I
+	4       (00000014) iput-object          v5, v3, Lokhttp3/internal/http2/Http2Stream;->b Lokhttp3/internal/http2/Http2Connection;
+	5       (00000018) new-instance         v0, Lokhttp3/internal/http2/flowcontrol/WindowCounter;
+	6       (0000001c) invoke-direct        v0, v4, Lokhttp3/internal/http2/flowcontrol/WindowCounter;-><init>(I)V
+	7       (00000022) iput-object          v0, v3, Lokhttp3/internal/http2/Http2Stream;->c Lokhttp3/internal/http2/flowcontrol/WindowCounter;
+	8       (00000026) iget-object          v4, v5, Lokhttp3/internal/http2/Http2Connection;->x Lokhttp3/internal/http2/Settings;
+	9       (0000002a) invoke-virtual       v4, Lokhttp3/internal/http2/Settings;->a()I
+	10      (00000030) move-result          v4
+	11      (00000032) int-to-long          v0, v4
+	12      (00000034) iput-wide            v0, v3, Lokhttp3/internal/http2/Http2Stream;->e J
+	13      (00000038) new-instance         v4, Ljava/util/ArrayDeque;
+	14      (0000003c) invoke-direct        v4, Ljava/util/ArrayDeque;-><init>()V
+	15      (00000042) iput-object          v4, v3, Lokhttp3/internal/http2/Http2Stream;->f Ljava/util/ArrayDeque;
+	16      (00000046) new-instance         v0, Lokhttp3/internal/http2/Http2Stream$FramingSource;
+	17      (0000004a) iget-object          v5, v5, Lokhttp3/internal/http2/Http2Connection;->w Lokhttp3/internal/http2/Settings;
+	18      (0000004e) invoke-virtual       v5, Lokhttp3/internal/http2/Settings;->a()I
+	19      (00000054) move-result          v5
+	20      (00000056) int-to-long          v1, v5
+	21      (00000058) invoke-direct        v0, v3, v1, v2, v7, Lokhttp3/internal/http2/Http2Stream$FramingSource;-><init>(Lokhttp3/internal/http2/Http2Stream; J Z)V
+	22      (0000005e) iput-object          v0, v3, Lokhttp3/internal/http2/Http2Stream;->n Lokhttp3/internal/http2/Http2Stream$FramingSource;
+	23      (00000062) new-instance         v5, Lokhttp3/internal/http2/Http2Stream$FramingSink;
+	24      (00000066) invoke-direct        v5, v3, v6, Lokhttp3/internal/http2/Http2Stream$FramingSink;-><init>(Lokhttp3/internal/http2/Http2Stream; Z)V
+	25      (0000006c) iput-object          v5, v3, Lokhttp3/internal/http2/Http2Stream;->o Lokhttp3/internal/http2/Http2Stream$FramingSink;
+	26      (00000070) new-instance         v5, Lokhttp3/internal/http2/Http2Stream$StreamTimeout;
+	27      (00000074) invoke-direct        v5, v3, Lokhttp3/internal/http2/Http2Stream$StreamTimeout;-><init>(Lokhttp3/internal/http2/Http2Stream;)V
+	28      (0000007a) iput-object          v5, v3, Lokhttp3/internal/http2/Http2Stream;->p Lokhttp3/internal/http2/Http2Stream$StreamTimeout;
+	29      (0000007e) new-instance         v5, Lokhttp3/internal/http2/Http2Stream$StreamTimeout;
+	30      (00000082) invoke-direct        v5, v3, Lokhttp3/internal/http2/Http2Stream$StreamTimeout;-><init>(Lokhttp3/internal/http2/Http2Stream;)V
+	31      (00000088) iput-object          v5, v3, Lokhttp3/internal/http2/Http2Stream;->q Lokhttp3/internal/http2/Http2Stream$StreamTimeout;
+	32      (0000008c) if-eqz               v8, +014h
+
+<init>-BB@0x90 : [ <init>-BB@0x9c <init>-BB@0xa4 ]
+	33      (00000090) invoke-virtual       v3, Lokhttp3/internal/http2/Http2Stream;->i()Z
+	34      (00000096) move-result          v5
+	35      (00000098) if-nez               v5, +006h
+
+<init>-BB@0x9c : 
+	36      (0000009c) invoke-virtual       v4, v8, Ljava/util/ArrayDeque;->add(Ljava/lang/Object;)Z
+	37      (000000a2) return-void          
+
+<init>-BB@0xa4 : 
+	38      (000000a4) new-instance         v4, Ljava/lang/IllegalStateException;
+	39      (000000a8) const-string         v5, "locally-initiated streams shouldn't have headers yet"
+	40      (000000ac) invoke-direct        v4, v5, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	41      (000000b2) throw                v4
+
+<init>-BB@0xb4 : [ <init>-BB@0xc0 <init>-BB@0xc2 ]
+	42      (000000b4) invoke-virtual       v3, Lokhttp3/internal/http2/Http2Stream;->i()Z
+	43      (000000ba) move-result          v4
+	44      (000000bc) if-eqz               v4, +003h
+
+<init>-BB@0xc0 : 
+	45      (000000c0) return-void          
+
+<init>-BB@0xc2 : 
+	46      (000000c2) new-instance         v4, Ljava/lang/IllegalStateException;
+	47      (000000c6) const-string         v5, "remotely-initiated streams should have headers"
+	48      (000000ca) invoke-direct        v4, v5, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	49      (000000d0) throw                v4
+

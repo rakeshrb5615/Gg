@@ -1,0 +1,119 @@
+# Lokhttp3/Route;->toString()Ljava/lang/String; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v11
+#
+# - return:java.lang.String
+
+toString-BB@0x0 : [ toString-BB@0x26 toString-BB@0x3c ]
+	0       (00000000) new-instance         v0, Ljava/lang/StringBuilder;
+	1       (00000004) invoke-direct        v0, Ljava/lang/StringBuilder;-><init>()V
+	2       (0000000a) iget-object          v1, v11, Lokhttp3/Route;->a Lokhttp3/Address;
+	3       (0000000e) iget-object          v1, v1, Lokhttp3/Address;->h Lokhttp3/HttpUrl;
+	4       (00000012) iget-object          v2, v1, Lokhttp3/HttpUrl;->d Ljava/lang/String;
+	5       (00000016) iget-object          v3, v11, Lokhttp3/Route;->c Ljava/net/InetSocketAddress;
+	6       (0000001a) invoke-virtual       v3, Ljava/net/InetSocketAddress;->getAddress()Ljava/net/InetAddress;
+	7       (00000020) move-result-object   v4
+	8       (00000022) if-eqz               v4, +00dh
+
+toString-BB@0x26 : [ toString-BB@0x32 toString-BB@0x3c ]
+	9       (00000026) invoke-virtual       v4, Ljava/net/InetAddress;->getHostAddress()Ljava/lang/String;
+	10      (0000002c) move-result-object   v4
+	11      (0000002e) if-eqz               v4, +007h
+
+toString-BB@0x32 : [ toString-BB@0x3e ]
+	12      (00000032) invoke-static        v4, Lokhttp3/internal/_HostnamesCommonKt;->b(Ljava/lang/String;)Ljava/lang/String;
+	13      (00000038) move-result-object   v4
+	14      (0000003a) goto                 +2h
+
+toString-BB@0x3c : [ toString-BB@0x3e ]
+	15      (0000003c) const/4              v4, 0
+
+toString-BB@0x3e : [ toString-BB@0x56 toString-BB@0x6a ]
+	16      (0000003e) const/16             v5, 58
+	17      (00000042) invoke-static        v2, v5, Lb8/i;->r0(Ljava/lang/CharSequence; C)Z
+	18      (00000048) move-result          v6
+	19      (0000004a) const-string         v7, "]"
+	20      (0000004e) const-string         v8, "["
+	21      (00000052) if-eqz               v6, +00ch
+
+toString-BB@0x56 : [ toString-BB@0x70 ]
+	22      (00000056) invoke-virtual       v0, v8, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	23      (0000005c) invoke-virtual       v0, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	24      (00000062) invoke-virtual       v0, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	25      (00000068) goto                 +4h
+
+toString-BB@0x6a : [ toString-BB@0x70 ]
+	26      (0000006a) invoke-virtual       v0, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+toString-BB@0x70 : [ toString-BB@0x84 toString-BB@0x90 ]
+	27      (00000070) iget                 v6, v1, Lokhttp3/HttpUrl;->e I
+	28      (00000074) invoke-virtual       v3, Ljava/net/InetSocketAddress;->getPort()I
+	29      (0000007a) move-result          v9
+	30      (0000007c) const-string         v10, ":"
+	31      (00000080) if-ne                v6, v9, +008h
+
+toString-BB@0x84 : [ toString-BB@0x90 toString-BB@0xa0 ]
+	32      (00000084) invoke-virtual       v2, v4, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+	33      (0000008a) move-result          v6
+	34      (0000008c) if-eqz               v6, +00ah
+
+toString-BB@0x90 : [ toString-BB@0xa0 ]
+	35      (00000090) invoke-virtual       v0, v10, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	36      (00000096) iget                 v1, v1, Lokhttp3/HttpUrl;->e I
+	37      (0000009a) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+toString-BB@0xa0 : [ toString-BB@0xac toString-BB@0x120 ]
+	38      (000000a0) invoke-virtual       v2, v4, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+	39      (000000a6) move-result          v1
+	40      (000000a8) if-nez               v1, +03ch
+
+toString-BB@0xac : [ toString-BB@0xc0 toString-BB@0xcc ]
+	41      (000000ac) iget-object          v1, v11, Lokhttp3/Route;->b Ljava/net/Proxy;
+	42      (000000b0) sget-object          v2, Ljava/net/Proxy;->NO_PROXY Ljava/net/Proxy;
+	43      (000000b4) invoke-virtual       v1, v2, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+	44      (000000ba) move-result          v1
+	45      (000000bc) if-eqz               v1, +008h
+
+toString-BB@0xc0 : [ toString-BB@0xd6 ]
+	46      (000000c0) const-string         v1, " at "
+	47      (000000c4) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	48      (000000ca) goto                 +6h
+
+toString-BB@0xcc : [ toString-BB@0xd6 ]
+	49      (000000cc) const-string         v1, " via proxy "
+	50      (000000d0) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+toString-BB@0xd6 : [ toString-BB@0xda toString-BB@0xe6 ]
+	51      (000000d6) if-nez               v4, +008h
+
+toString-BB@0xda : [ toString-BB@0x10c ]
+	52      (000000da) const-string         v1, "<unresolved>"
+	53      (000000de) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	54      (000000e4) goto                 +14h
+
+toString-BB@0xe6 : [ toString-BB@0xf2 toString-BB@0x106 ]
+	55      (000000e6) invoke-static        v4, v5, Lb8/i;->r0(Ljava/lang/CharSequence; C)Z
+	56      (000000ec) move-result          v1
+	57      (000000ee) if-eqz               v1, +00ch
+
+toString-BB@0xf2 : [ toString-BB@0x10c ]
+	58      (000000f2) invoke-virtual       v0, v8, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	59      (000000f8) invoke-virtual       v0, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	60      (000000fe) invoke-virtual       v0, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	61      (00000104) goto                 +4h
+
+toString-BB@0x106 : [ toString-BB@0x10c ]
+	62      (00000106) invoke-virtual       v0, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+toString-BB@0x10c : [ toString-BB@0x120 ]
+	63      (0000010c) invoke-virtual       v0, v10, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	64      (00000112) invoke-virtual       v3, Ljava/net/InetSocketAddress;->getPort()I
+	65      (00000118) move-result          v1
+	66      (0000011a) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+toString-BB@0x120 : 
+	67      (00000120) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	68      (00000126) move-result-object   v0
+	69      (00000128) return-object        v0
+

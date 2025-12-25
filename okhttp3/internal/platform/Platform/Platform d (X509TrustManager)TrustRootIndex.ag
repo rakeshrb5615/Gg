@@ -1,0 +1,19 @@
+# Lokhttp3/internal/platform/Platform;->d(Ljavax/net/ssl/X509TrustManager;)Lokhttp3/internal/tls/TrustRootIndex; [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:javax.net.ssl.X509TrustManager
+#
+# - return:okhttp3.internal.tls.TrustRootIndex
+
+d-BB@0x0 : 
+	0       (00000000) new-instance         v0, Lokhttp3/internal/tls/BasicTrustRootIndex;
+	1       (00000004) invoke-interface     v3, Ljavax/net/ssl/X509TrustManager;->getAcceptedIssuers()[Ljava/security/cert/X509Certificate;
+	2       (0000000a) move-result-object   v3
+	3       (0000000c) array-length         v1, v3
+	4       (0000000e) invoke-static        v3, v1, Ljava/util/Arrays;->copyOf([Ljava/lang/Object; I)[Ljava/lang/Object;
+	5       (00000014) move-result-object   v3
+	6       (00000016) check-cast           v3, [Ljava/security/cert/X509Certificate;
+	7       (0000001a) invoke-direct        v0, v3, Lokhttp3/internal/tls/BasicTrustRootIndex;-><init>([Ljava/security/cert/X509Certificate;)V
+	8       (00000020) return-object        v0
+

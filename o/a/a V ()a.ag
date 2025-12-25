@@ -1,0 +1,50 @@
+# Lo/a;->V()Lo/a; [access_flags=public static]
+#
+# Parameters:
+# local registers: v0...v1
+#
+# - return:o.a
+
+V-BB@0x0 : [ V-BB@0x8 V-BB@0xe ]
+	0       (00000000) sget-object          v0, Lo/a;->g Lo/a;
+	1       (00000004) if-eqz               v0, +005h
+
+V-BB@0x8 : 
+	2       (00000008) sget-object          v0, Lo/a;->g Lo/a;
+	3       (0000000c) return-object        v0
+
+V-BB@0xe : [ V-BB@0x14 ]
+	4       (0000000e) const-class          v0, Lo/a;
+	5       (00000012) monitor-enter        v0
+
+V-BB@0x14 : [ V-BB@0x1c V-BB@0x30 ]
+	6       (00000014) sget-object          v1, Lo/a;->g Lo/a;
+	7       (00000018) if-nez               v1, +00ch
+	14:31
+	(Ljava/lang/Throwable; -> 2c V-BB@0x2c)
+
+V-BB@0x1c : [ V-BB@0x30 ]
+	8       (0000001c) new-instance         v1, Lo/a;
+	9       (00000020) invoke-direct        v1, Lo/a;-><init>()V
+	10      (00000026) sput-object          v1, Lo/a;->g Lo/a;
+	11      (0000002a) goto                 +3h
+	14:31
+	(Ljava/lang/Throwable; -> 2c V-BB@0x2c)
+
+V-BB@0x2c : [ V-BB@0x38 ]
+	12      (0000002c) move-exception       v1
+	13      (0000002e) goto                 +5h
+	14:31
+	(Ljava/lang/Throwable; -> 2c V-BB@0x2c)
+
+V-BB@0x30 : 
+	14      (00000030) monitor-exit         v0
+	15      (00000032) sget-object          v0, Lo/a;->g Lo/a;
+	16      (00000036) return-object        v0
+
+V-BB@0x38 : 
+	17      (00000038) monitor-exit         v0
+	18      (0000003a) throw                v1
+	38:39
+	(Ljava/lang/Throwable; -> 2c V-BB@0x2c)
+

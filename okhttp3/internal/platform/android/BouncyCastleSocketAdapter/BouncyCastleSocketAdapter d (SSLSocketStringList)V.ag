@@ -1,0 +1,36 @@
+# Lokhttp3/internal/platform/android/BouncyCastleSocketAdapter;->d(Ljavax/net/ssl/SSLSocket; Ljava/lang/String; Ljava/util/List;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:javax.net.ssl.SSLSocket
+# - v3:java.lang.String
+# - v4:java.util.List
+#
+# - return:void
+
+d-BB@0x0 : [ d-BB@0x16 d-BB@0x52 ]
+	0       (00000000) const-string         v3, "protocols"
+	1       (00000004) invoke-static        v4, v3, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) invoke-virtual       v1, v2, Lokhttp3/internal/platform/android/BouncyCastleSocketAdapter;->a(Ljavax/net/ssl/SSLSocket;)Z
+	3       (00000010) move-result          v3
+	4       (00000012) if-eqz               v3, +020h
+
+d-BB@0x16 : [ d-BB@0x52 ]
+	5       (00000016) check-cast           v2, Lorg/bouncycastle/jsse/BCSSLSocket;
+	6       (0000001a) invoke-interface     v2, Lorg/bouncycastle/jsse/BCSSLSocket;->getParameters()Lorg/bouncycastle/jsse/BCSSLParameters;
+	7       (00000020) move-result-object   v3
+	8       (00000022) sget-object          v0, Lokhttp3/internal/platform/Platform;->a Lokhttp3/internal/platform/Platform$Companion;
+	9       (00000026) invoke-virtual       v0, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	10      (0000002c) invoke-static        v4, Lokhttp3/internal/platform/Platform$Companion;->a(Ljava/util/List;)Ljava/util/ArrayList;
+	11      (00000032) move-result-object   v4
+	12      (00000034) const/4              v0, 0
+	13      (00000036) new-array            v0, v0, [Ljava/lang/String;
+	14      (0000003a) invoke-virtual       v4, v0, Ljava/util/ArrayList;->toArray([Ljava/lang/Object;)[Ljava/lang/Object;
+	15      (00000040) move-result-object   v4
+	16      (00000042) check-cast           v4, [Ljava/lang/String;
+	17      (00000046) invoke-virtual       v3, v4, Lorg/bouncycastle/jsse/BCSSLParameters;->setApplicationProtocols([Ljava/lang/String;)V
+	18      (0000004c) invoke-interface     v2, v3, Lorg/bouncycastle/jsse/BCSSLSocket;->setParameters(Lorg/bouncycastle/jsse/BCSSLParameters;)V
+
+d-BB@0x52 : 
+	19      (00000052) return-void          
+

@@ -1,0 +1,74 @@
+# Lokhttp3/internal/connection/FastFallbackExchangeFinder;->d()Lokhttp3/internal/connection/RoutePlanner$ConnectResult; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v7
+#
+# - return:okhttp3.internal.connection.RoutePlanner$ConnectResult
+
+d-BB@0x0 : [ d-BB@0x12 d-BB@0xbc ]
+	0       (00000000) iget-object          v0, v7, Lokhttp3/internal/connection/FastFallbackExchangeFinder;->a Lokhttp3/internal/connection/RealRoutePlanner;
+	1       (00000004) const/4              v1, 0
+	2       (00000006) invoke-virtual       v0, v1, Lokhttp3/internal/connection/RealRoutePlanner;->a(Lokhttp3/internal/connection/RealConnection;)Z
+	3       (0000000c) move-result          v2
+	4       (0000000e) if-eqz               v2, +057h
+
+d-BB@0x12 : [ d-BB@0x2a ]
+	5       (00000012) invoke-virtual       v0, Lokhttp3/internal/connection/RealRoutePlanner;->d()Lokhttp3/internal/connection/RoutePlanner$Plan;
+	6       (00000018) move-result-object   v2
+	7       (0000001a) goto                 +8h
+	12:19
+	(Ljava/lang/Throwable; -> 1c d-BB@0x1c)
+
+d-BB@0x1c : [ d-BB@0x2a ]
+	8       (0000001c) move-exception       v2
+	9       (0000001e) new-instance         v3, Lokhttp3/internal/connection/FailedPlan;
+	10      (00000022) invoke-direct        v3, v2, Lokhttp3/internal/connection/FailedPlan;-><init>(Ljava/lang/Throwable;)V
+	11      (00000028) move-object          v2, v3
+
+d-BB@0x2a : [ d-BB@0x36 d-BB@0x44 ]
+	12      (0000002a) invoke-interface     v2, Lokhttp3/internal/connection/RoutePlanner$Plan;->e()Z
+	13      (00000030) move-result          v3
+	14      (00000032) if-eqz               v3, +009h
+
+d-BB@0x36 : 
+	15      (00000036) new-instance         v0, Lokhttp3/internal/connection/RoutePlanner$ConnectResult;
+	16      (0000003a) const/4              v3, 6
+	17      (0000003c) invoke-direct        v0, v2, v1, v1, v3, Lokhttp3/internal/connection/RoutePlanner$ConnectResult;-><init>(Lokhttp3/internal/connection/RoutePlanner$Plan; Lokhttp3/internal/connection/ConnectPlan; Ljava/lang/Throwable; I)V
+	18      (00000042) return-object        v0
+
+d-BB@0x44 : [ d-BB@0x4c d-BB@0x56 ]
+	19      (00000044) instance-of          v3, v2, Lokhttp3/internal/connection/FailedPlan;
+	20      (00000048) if-eqz               v3, +007h
+
+d-BB@0x4c : 
+	21      (0000004c) check-cast           v2, Lokhttp3/internal/connection/FailedPlan;
+	22      (00000050) iget-object          v0, v2, Lokhttp3/internal/connection/FailedPlan;->a Lokhttp3/internal/connection/RoutePlanner$ConnectResult;
+	23      (00000054) return-object        v0
+
+d-BB@0x56 : [ d-BB@0xbc ]
+	24      (00000056) iget-object          v3, v7, Lokhttp3/internal/connection/FastFallbackExchangeFinder;->e Ljava/util/concurrent/CopyOnWriteArrayList;
+	25      (0000005a) invoke-virtual       v3, v2, Ljava/util/concurrent/CopyOnWriteArrayList;->add(Ljava/lang/Object;)Z
+	26      (00000060) new-instance         v3, Ljava/lang/StringBuilder;
+	27      (00000064) invoke-direct        v3, Ljava/lang/StringBuilder;-><init>()V
+	28      (0000006a) sget-object          v4, Lokhttp3/internal/_UtilJvmKt;->b Ljava/lang/String;
+	29      (0000006e) invoke-virtual       v3, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	30      (00000074) const-string         v4, " connect "
+	31      (00000078) invoke-virtual       v3, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	32      (0000007e) iget-object          v0, v0, Lokhttp3/internal/connection/RealRoutePlanner;->i Lokhttp3/Address;
+	33      (00000082) iget-object          v0, v0, Lokhttp3/Address;->h Lokhttp3/HttpUrl;
+	34      (00000086) invoke-virtual       v0, Lokhttp3/HttpUrl;->g()Ljava/lang/String;
+	35      (0000008c) move-result-object   v0
+	36      (0000008e) invoke-virtual       v3, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	37      (00000094) invoke-virtual       v3, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	38      (0000009a) move-result-object   v0
+	39      (0000009c) iget-object          v3, v7, Lokhttp3/internal/connection/FastFallbackExchangeFinder;->b Lokhttp3/internal/concurrent/TaskRunner;
+	40      (000000a0) invoke-virtual       v3, Lokhttp3/internal/concurrent/TaskRunner;->d()Lokhttp3/internal/concurrent/TaskQueue;
+	41      (000000a6) move-result-object   v3
+	42      (000000a8) new-instance         v4, Lokhttp3/internal/connection/FastFallbackExchangeFinder$launchTcpConnect$1;
+	43      (000000ac) invoke-direct        v4, v0, v2, v7, Lokhttp3/internal/connection/FastFallbackExchangeFinder$launchTcpConnect$1;-><init>(Ljava/lang/String; Lokhttp3/internal/connection/RoutePlanner$Plan; Lokhttp3/internal/connection/FastFallbackExchangeFinder;)V
+	44      (000000b2) const-wide/16        v5, 0
+	45      (000000b6) invoke-virtual       v3, v4, v5, v6, Lokhttp3/internal/concurrent/TaskQueue;->c(Lokhttp3/internal/concurrent/Task; J)V
+
+d-BB@0xbc : 
+	46      (000000bc) return-object        v1
+

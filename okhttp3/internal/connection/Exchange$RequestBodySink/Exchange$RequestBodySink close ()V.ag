@@ -1,0 +1,51 @@
+# Lokhttp3/internal/connection/Exchange$RequestBodySink;->close()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v4
+#
+# - return:void
+
+close-BB@0x0 : [ close-BB@0x8 close-BB@0xa ]
+	0       (00000000) iget-boolean         v0, v4, Lokhttp3/internal/connection/Exchange$RequestBodySink;->m Z
+	1       (00000004) if-eqz               v0, +003h
+
+close-BB@0x8 : 
+	2       (00000008) return-void          
+
+close-BB@0xa : [ close-BB@0x20 close-BB@0x3e ]
+	3       (0000000a) const/4              v0, 1
+	4       (0000000c) iput-boolean         v0, v4, Lokhttp3/internal/connection/Exchange$RequestBodySink;->m Z
+	5       (00000010) const-wide/16        v0, -1
+	6       (00000014) iget-wide            v2, v4, Lokhttp3/internal/connection/Exchange$RequestBodySink;->b J
+	7       (00000018) cmp-long             v0, v2, v0
+	8       (0000001c) if-eqz               v0, +011h
+
+close-BB@0x20 : [ close-BB@0x2c close-BB@0x2e ]
+	9       (00000020) iget-wide            v0, v4, Lokhttp3/internal/connection/Exchange$RequestBodySink;->e J
+	10      (00000024) cmp-long             v0, v0, v2
+	11      (00000028) if-nez               v0, +003h
+
+close-BB@0x2c : [ close-BB@0x3e ]
+	12      (0000002c) goto                 +9h
+
+close-BB@0x2e : 
+	13      (0000002e) new-instance         v0, Ljava/net/ProtocolException;
+	14      (00000032) const-string         v1, "unexpected end of stream"
+	15      (00000036) invoke-direct        v0, v1, Ljava/net/ProtocolException;-><init>(Ljava/lang/String;)V
+	16      (0000003c) throw                v0
+
+close-BB@0x3e : 
+	17      (0000003e) invoke-super         v4, Lx8/n;->close()V
+	18      (00000044) const/4              v0, 0
+	19      (00000046) invoke-virtual       v4, v0, Lokhttp3/internal/connection/Exchange$RequestBodySink;->c(Ljava/io/IOException;)Ljava/io/IOException;
+	20      (0000004c) return-void          
+	3e:4b
+	(Ljava/io/IOException; -> 4e close-BB@0x4e)
+
+close-BB@0x4e : 
+	21      (0000004e) move-exception       v0
+	22      (00000050) invoke-virtual       v4, v0, Lokhttp3/internal/connection/Exchange$RequestBodySink;->c(Ljava/io/IOException;)Ljava/io/IOException;
+	23      (00000056) move-result-object   v0
+	24      (00000058) invoke-static        v0, Lkotlin/jvm/internal/j;->b(Ljava/lang/Object;)V
+	25      (0000005e) throw                v0
+

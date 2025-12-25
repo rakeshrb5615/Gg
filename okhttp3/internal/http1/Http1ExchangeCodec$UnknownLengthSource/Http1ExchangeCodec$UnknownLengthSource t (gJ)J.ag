@@ -1,0 +1,60 @@
+# Lokhttp3/internal/http1/Http1ExchangeCodec$UnknownLengthSource;->t(Lx8/g; J)J [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:x8.g
+# - v6:long
+#
+# - return:long
+
+t-BB@0x0 : [ t-BB@0x16 t-BB@0x60 ]
+	0       (00000000) const-string         v0, "sink"
+	1       (00000004) invoke-static        v4, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) const-wide/16        v0, 0
+	3       (0000000e) cmp-long             v0, v5, v0
+	4       (00000012) if-ltz               v0, +027h
+
+t-BB@0x16 : [ t-BB@0x1e t-BB@0x50 ]
+	5       (00000016) iget-boolean         v0, v3, Lokhttp3/internal/http1/Http1ExchangeCodec$AbstractSource;->c Z
+	6       (0000001a) if-nez               v0, +01bh
+
+t-BB@0x1e : [ t-BB@0x2a t-BB@0x2c ]
+	7       (0000001e) iget-boolean         v0, v3, Lokhttp3/internal/http1/Http1ExchangeCodec$UnknownLengthSource;->e Z
+	8       (00000022) const-wide/16        v1, -1
+	9       (00000026) if-eqz               v0, +003h
+
+t-BB@0x2a : 
+	10      (0000002a) return-wide          v1
+
+t-BB@0x2c : [ t-BB@0x3c t-BB@0x4e ]
+	11      (0000002c) invoke-super         v3, v4, v5, v6, Lokhttp3/internal/http1/Http1ExchangeCodec$AbstractSource;->t(Lx8/g; J)J
+	12      (00000032) move-result-wide     v4
+	13      (00000034) cmp-long             v6, v4, v1
+	14      (00000038) if-nez               v6, +00bh
+
+t-BB@0x3c : 
+	15      (0000003c) const/4              v4, 1
+	16      (0000003e) iput-boolean         v4, v3, Lokhttp3/internal/http1/Http1ExchangeCodec$UnknownLengthSource;->e Z
+	17      (00000042) sget-object          v4, Lokhttp3/Headers;->c Lokhttp3/Headers;
+	18      (00000046) invoke-virtual       v3, v4, Lokhttp3/internal/http1/Http1ExchangeCodec$AbstractSource;->c(Lokhttp3/Headers;)V
+	19      (0000004c) return-wide          v1
+
+t-BB@0x4e : 
+	20      (0000004e) return-wide          v4
+
+t-BB@0x50 : 
+	21      (00000050) new-instance         v4, Ljava/lang/IllegalStateException;
+	22      (00000054) const-string         v5, "closed"
+	23      (00000058) invoke-direct        v4, v5, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	24      (0000005e) throw                v4
+
+t-BB@0x60 : 
+	25      (00000060) const-string         v4, "byteCount < 0: "
+	26      (00000064) invoke-static        v5, v6, v4, Lv1/a;->g(J Ljava/lang/String;)Ljava/lang/String;
+	27      (0000006a) move-result-object   v4
+	28      (0000006c) new-instance         v5, Ljava/lang/IllegalArgumentException;
+	29      (00000070) invoke-virtual       v4, Ljava/lang/Object;->toString()Ljava/lang/String;
+	30      (00000076) move-result-object   v4
+	31      (00000078) invoke-direct        v5, v4, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	32      (0000007e) throw                v5
+

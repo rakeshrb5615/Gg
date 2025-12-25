@@ -1,0 +1,62 @@
+# Lokhttp3/internal/http1/Http1ExchangeCodec$AbstractSource;->c(Lokhttp3/Headers;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:okhttp3.Headers
+#
+# - return:void
+
+c-BB@0x0 : [ c-BB@0x18 c-BB@0x1a ]
+	0       (00000000) const-string         v0, "trailers"
+	1       (00000004) invoke-static        v6, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) iget-object          v0, v5, Lokhttp3/internal/http1/Http1ExchangeCodec$AbstractSource;->d Lokhttp3/internal/http1/Http1ExchangeCodec;
+	3       (0000000e) iget                 v1, v0, Lokhttp3/internal/http1/Http1ExchangeCodec;->d I
+	4       (00000012) const/4              v2, 6
+	5       (00000014) if-ne                v1, v2, +003h
+
+c-BB@0x18 : [ c-BB@0x66 ]
+	6       (00000018) goto                 +27h
+
+c-BB@0x1a : [ c-BB@0x20 c-BB@0x68 ]
+	7       (0000001a) const/4              v3, 5
+	8       (0000001c) if-ne                v1, v3, +026h
+
+c-BB@0x20 : [ c-BB@0x4c c-BB@0x66 ]
+	9       (00000020) iget-object          v1, v5, Lokhttp3/internal/http1/Http1ExchangeCodec$AbstractSource;->b Lx8/p;
+	10      (00000024) iget-object          v3, v1, Lx8/p;->e Lx8/j0;
+	11      (00000028) sget-object          v4, Lx8/j0;->d Lx8/i0;
+	12      (0000002c) iput-object          v4, v1, Lx8/p;->e Lx8/j0;
+	13      (00000030) invoke-virtual       v3, Lx8/j0;->a()Lx8/j0;
+	14      (00000036) invoke-virtual       v3, Lx8/j0;->b()Lx8/j0;
+	15      (0000003c) iput                 v2, v0, Lokhttp3/internal/http1/Http1ExchangeCodec;->d I
+	16      (00000040) invoke-virtual       v6, Lokhttp3/Headers;->size()I
+	17      (00000046) move-result          v1
+	18      (00000048) if-lez               v1, +00fh
+
+c-BB@0x4c : [ c-BB@0x54 c-BB@0x66 ]
+	19      (0000004c) iget-object          v0, v0, Lokhttp3/internal/http1/Http1ExchangeCodec;->a Lokhttp3/OkHttpClient;
+	20      (00000050) if-eqz               v0, +00bh
+
+c-BB@0x54 : [ c-BB@0x5c c-BB@0x66 ]
+	21      (00000054) iget-object          v0, v0, Lokhttp3/OkHttpClient;->j Lokhttp3/CookieJar;
+	22      (00000058) if-eqz               v0, +007h
+
+c-BB@0x5c : [ c-BB@0x66 ]
+	23      (0000005c) iget-object          v1, v5, Lokhttp3/internal/http1/Http1ExchangeCodec$AbstractSource;->a Lokhttp3/HttpUrl;
+	24      (00000060) invoke-static        v0, v1, v6, Lokhttp3/internal/http/HttpHeaders;->d(Lokhttp3/CookieJar; Lokhttp3/HttpUrl; Lokhttp3/Headers;)V
+
+c-BB@0x66 : 
+	25      (00000066) return-void          
+
+c-BB@0x68 : 
+	26      (00000068) new-instance         v6, Ljava/lang/IllegalStateException;
+	27      (0000006c) new-instance         v1, Ljava/lang/StringBuilder;
+	28      (00000070) const-string         v2, "state: "
+	29      (00000074) invoke-direct        v1, v2, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	30      (0000007a) iget                 v0, v0, Lokhttp3/internal/http1/Http1ExchangeCodec;->d I
+	31      (0000007e) invoke-virtual       v1, v0, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	32      (00000084) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	33      (0000008a) move-result-object   v0
+	34      (0000008c) invoke-direct        v6, v0, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	35      (00000092) throw                v6
+

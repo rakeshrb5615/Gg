@@ -1,0 +1,88 @@
+# Lokhttp3/internal/http2/Http2Writer;->i(I I I I)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:int
+# - v4:int
+# - v5:int
+# - v6:int
+#
+# - return:void
+
+i-BB@0x0 : [ i-BB@0x8 i-BB@0x36 ]
+	0       (00000000) const/16             v0, 8
+	1       (00000004) if-eq                v5, v0, +019h
+
+i-BB@0x8 : [ i-BB@0x1c i-BB@0x36 ]
+	2       (00000008) sget-object          v0, Ljava/util/logging/Level;->FINE Ljava/util/logging/Level;
+	3       (0000000c) sget-object          v1, Lokhttp3/internal/http2/Http2Writer;->f Ljava/util/logging/Logger;
+	4       (00000010) invoke-virtual       v1, v0, Ljava/util/logging/Logger;->isLoggable(Ljava/util/logging/Level;)Z
+	5       (00000016) move-result          v0
+	6       (00000018) if-eqz               v0, +00fh
+
+i-BB@0x1c : [ i-BB@0x36 ]
+	7       (0000001c) sget-object          v0, Lokhttp3/internal/http2/Http2;->a Lokhttp3/internal/http2/Http2;
+	8       (00000020) invoke-virtual       v0, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	9       (00000026) const/4              v0, 0
+	10      (00000028) invoke-static        v0, v3, v4, v5, v6, Lokhttp3/internal/http2/Http2;->b(Z I I I I)Ljava/lang/String;
+	11      (0000002e) move-result-object   v0
+	12      (00000030) invoke-virtual       v1, v0, Ljava/util/logging/Logger;->fine(Ljava/lang/String;)V
+
+i-BB@0x36 : [ i-BB@0x3e i-BB@0xc4 ]
+	13      (00000036) iget                 v0, v2, Lokhttp3/internal/http2/Http2Writer;->c I
+	14      (0000003a) if-gt                v4, v0, +045h
+
+i-BB@0x3e : [ i-BB@0x48 i-BB@0xa4 ]
+	15      (0000003e) const/high16         v0, -2147483648
+	16      (00000042) and-int/2addr        v0, v3
+	17      (00000044) if-nez               v0, +030h
+
+i-BB@0x48 : 
+	18      (00000048) sget-object          v0, Lokhttp3/internal/_UtilCommonKt;->a [B
+	19      (0000004c) const-string         v0, "<this>"
+	20      (00000050) iget-object          v1, v2, Lokhttp3/internal/http2/Http2Writer;->a Lx8/h;
+	21      (00000054) invoke-static        v1, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	22      (0000005a) ushr-int/lit8        v0, v4, 16
+	23      (0000005e) and-int/lit16        v0, v0, 255
+	24      (00000062) invoke-interface     v1, v0, Lx8/h;->writeByte(I)Lx8/h;
+	25      (00000068) ushr-int/lit8        v0, v4, 8
+	26      (0000006c) and-int/lit16        v0, v0, 255
+	27      (00000070) invoke-interface     v1, v0, Lx8/h;->writeByte(I)Lx8/h;
+	28      (00000076) and-int/lit16        v4, v4, 255
+	29      (0000007a) invoke-interface     v1, v4, Lx8/h;->writeByte(I)Lx8/h;
+	30      (00000080) and-int/lit16        v4, v5, 255
+	31      (00000084) invoke-interface     v1, v4, Lx8/h;->writeByte(I)Lx8/h;
+	32      (0000008a) and-int/lit16        v4, v6, 255
+	33      (0000008e) invoke-interface     v1, v4, Lx8/h;->writeByte(I)Lx8/h;
+	34      (00000094) const                v4, 2147483647
+	35      (0000009a) and-int/2addr        v3, v4
+	36      (0000009c) invoke-interface     v1, v3, Lx8/h;->writeInt(I)Lx8/h;
+	37      (000000a2) return-void          
+
+i-BB@0xa4 : 
+	38      (000000a4) const-string         v4, "reserved bit set: "
+	39      (000000a8) invoke-static        v3, v4, Lg2/g;->c(I Ljava/lang/String;)Ljava/lang/String;
+	40      (000000ae) move-result-object   v3
+	41      (000000b0) new-instance         v4, Ljava/lang/IllegalArgumentException;
+	42      (000000b4) invoke-virtual       v3, Ljava/lang/Object;->toString()Ljava/lang/String;
+	43      (000000ba) move-result-object   v3
+	44      (000000bc) invoke-direct        v4, v3, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	45      (000000c2) throw                v4
+
+i-BB@0xc4 : 
+	46      (000000c4) new-instance         v3, Ljava/lang/StringBuilder;
+	47      (000000c8) const-string         v5, "FRAME_SIZE_ERROR length > "
+	48      (000000cc) invoke-direct        v3, v5, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	49      (000000d2) iget                 v5, v2, Lokhttp3/internal/http2/Http2Writer;->c I
+	50      (000000d6) invoke-virtual       v3, v5, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	51      (000000dc) const-string         v5, ": "
+	52      (000000e0) invoke-virtual       v3, v5, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	53      (000000e6) invoke-virtual       v3, v4, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	54      (000000ec) invoke-virtual       v3, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	55      (000000f2) move-result-object   v3
+	56      (000000f4) new-instance         v4, Ljava/lang/IllegalArgumentException;
+	57      (000000f8) invoke-virtual       v3, Ljava/lang/Object;->toString()Ljava/lang/String;
+	58      (000000fe) move-result-object   v3
+	59      (00000100) invoke-direct        v4, v3, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	60      (00000106) throw                v4
+

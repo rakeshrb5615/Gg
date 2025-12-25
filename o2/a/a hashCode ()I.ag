@@ -1,0 +1,36 @@
+# Lo2/a;->hashCode()I [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v3
+#
+# - return:int
+
+hashCode-BB@0x0 : [ hashCode-BB@0x32 hashCode-BB@0x36 ]
+	0       (00000000) const                v0, 1000003
+	1       (00000006) mul-int              v1, v0, v0
+	2       (0000000a) iget-object          v2, v3, Lo2/a;->a Ljava/lang/Object;
+	3       (0000000e) invoke-virtual       v2, Ljava/lang/Object;->hashCode()I
+	4       (00000014) move-result          v2
+	5       (00000016) xor-int/2addr        v1, v2
+	6       (00000018) mul-int/2addr        v1, v0
+	7       (0000001a) iget-object          v2, v3, Lo2/a;->b Lo2/d;
+	8       (0000001e) invoke-virtual       v2, Ljava/lang/Object;->hashCode()I
+	9       (00000024) move-result          v2
+	10      (00000026) xor-int/2addr        v1, v2
+	11      (00000028) mul-int/2addr        v1, v0
+	12      (0000002a) iget-object          v2, v3, Lo2/a;->c Lo2/b;
+	13      (0000002e) if-nez               v2, +004h
+
+hashCode-BB@0x32 : [ hashCode-BB@0x3e ]
+	14      (00000032) const/4              v2, 0
+	15      (00000034) goto                 +5h
+
+hashCode-BB@0x36 : [ hashCode-BB@0x3e ]
+	16      (00000036) invoke-virtual       v2, Lo2/b;->hashCode()I
+	17      (0000003c) move-result          v2
+
+hashCode-BB@0x3e : 
+	18      (0000003e) xor-int/2addr        v1, v2
+	19      (00000040) mul-int/2addr        v1, v0
+	20      (00000042) return               v1
+

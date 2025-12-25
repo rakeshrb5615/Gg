@@ -1,0 +1,94 @@
+# Lokhttp3/internal/connection/RealCall;->g()Lokhttp3/Response; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v9
+#
+# - return:okhttp3.Response
+
+g-BB@0x0 : [ g-BB@0x9e ]
+	0       (00000000) new-instance         v2, Ljava/util/ArrayList;
+	1       (00000004) invoke-direct        v2, Ljava/util/ArrayList;-><init>()V
+	2       (0000000a) iget-object          v0, v9, Lokhttp3/internal/connection/RealCall;->a Lokhttp3/OkHttpClient;
+	3       (0000000e) iget-object          v0, v0, Lokhttp3/OkHttpClient;->b Ljava/util/List;
+	4       (00000012) invoke-static        v0, v2, Li7/i;->Y(Ljava/lang/Iterable; Ljava/util/AbstractCollection;)V
+	5       (00000018) new-instance         v0, Lokhttp3/internal/http/RetryAndFollowUpInterceptor;
+	6       (0000001c) iget-object          v1, v9, Lokhttp3/internal/connection/RealCall;->a Lokhttp3/OkHttpClient;
+	7       (00000020) invoke-direct        v0, v1, Lokhttp3/internal/http/RetryAndFollowUpInterceptor;-><init>(Lokhttp3/OkHttpClient;)V
+	8       (00000026) invoke-virtual       v2, v0, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	9       (0000002c) new-instance         v0, Lokhttp3/internal/http/BridgeInterceptor;
+	10      (00000030) iget-object          v1, v9, Lokhttp3/internal/connection/RealCall;->a Lokhttp3/OkHttpClient;
+	11      (00000034) iget-object          v1, v1, Lokhttp3/OkHttpClient;->j Lokhttp3/CookieJar;
+	12      (00000038) invoke-direct        v0, v1, Lokhttp3/internal/http/BridgeInterceptor;-><init>(Lokhttp3/CookieJar;)V
+	13      (0000003e) invoke-virtual       v2, v0, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	14      (00000044) new-instance         v0, Lokhttp3/internal/cache/CacheInterceptor;
+	15      (00000048) invoke-direct        v0, Ljava/lang/Object;-><init>()V
+	16      (0000004e) invoke-virtual       v2, v0, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	17      (00000054) sget-object          v0, Lokhttp3/internal/connection/ConnectInterceptor;->a Lokhttp3/internal/connection/ConnectInterceptor;
+	18      (00000058) invoke-virtual       v2, v0, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	19      (0000005e) iget-object          v0, v9, Lokhttp3/internal/connection/RealCall;->a Lokhttp3/OkHttpClient;
+	20      (00000062) iget-object          v0, v0, Lokhttp3/OkHttpClient;->c Ljava/util/List;
+	21      (00000066) invoke-static        v0, v2, Li7/i;->Y(Ljava/lang/Iterable; Ljava/util/AbstractCollection;)V
+	22      (0000006c) sget-object          v0, Lokhttp3/internal/http/CallServerInterceptor;->a Lokhttp3/internal/http/CallServerInterceptor;
+	23      (00000070) invoke-virtual       v2, v0, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	24      (00000076) new-instance         v0, Lokhttp3/internal/http/RealInterceptorChain;
+	25      (0000007a) iget-object          v5, v9, Lokhttp3/internal/connection/RealCall;->b Lokhttp3/Request;
+	26      (0000007e) iget-object          v1, v9, Lokhttp3/internal/connection/RealCall;->a Lokhttp3/OkHttpClient;
+	27      (00000082) iget                 v6, v1, Lokhttp3/OkHttpClient;->v I
+	28      (00000086) iget                 v7, v1, Lokhttp3/OkHttpClient;->w I
+	29      (0000008a) iget                 v8, v1, Lokhttp3/OkHttpClient;->x I
+	30      (0000008e) const/4              v3, 0
+	31      (00000090) const/4              v4, 0
+	32      (00000092) move-object          v1, v9
+	33      (00000094) invoke-direct/range  v0 ... v8, Lokhttp3/internal/http/RealInterceptorChain;-><init>(Lokhttp3/internal/connection/RealCall; Ljava/util/ArrayList; I Lokhttp3/internal/connection/Exchange; Lokhttp3/Request; I I I)V
+	34      (0000009a) const/4              v2, 0
+	35      (0000009c) const/4              v3, 0
+
+g-BB@0x9e : [ g-BB@0xae g-BB@0xb6 ]
+	36      (0000009e) invoke-virtual       v0, v5, Lokhttp3/internal/http/RealInterceptorChain;->b(Lokhttp3/Request;)Lokhttp3/Response;
+	37      (000000a4) move-result-object   v0
+	38      (000000a6) iget-boolean         v4, v1, Lokhttp3/internal/connection/RealCall;->w Z
+	39      (000000aa) if-nez               v4, +006h
+	9e:a9
+	(Ljava/io/IOException; -> d0 g-BB@0xd0)
+	(Ljava/lang/Throwable; -> cc g-BB@0xcc)
+
+g-BB@0xae : 
+	40      (000000ae) invoke-virtual       v9, v2, Lokhttp3/internal/connection/RealCall;->j(Ljava/io/IOException;)Ljava/io/IOException;
+	41      (000000b4) return-object        v0
+
+g-BB@0xb6 : 
+	42      (000000b6) invoke-static        v0, Lokhttp3/internal/_UtilCommonKt;->b(Ljava/io/Closeable;)V
+	43      (000000bc) new-instance         v0, Ljava/io/IOException;
+	44      (000000c0) const-string         v4, "Canceled"
+	45      (000000c4) invoke-direct        v0, v4, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+	46      (000000ca) throw                v0
+	b6:cb
+	(Ljava/io/IOException; -> d0 g-BB@0xd0)
+	(Ljava/lang/Throwable; -> cc g-BB@0xcc)
+
+g-BB@0xcc : [ g-BB@0xe8 ]
+	47      (000000cc) move-exception       v0
+	48      (000000ce) goto                 +dh
+
+g-BB@0xd0 : [ g-BB@0xd4 ]
+	49      (000000d0) move-exception       v0
+	50      (000000d2) const/4              v3, 1
+
+g-BB@0xd4 : 
+	51      (000000d4) invoke-virtual       v9, v0, Lokhttp3/internal/connection/RealCall;->j(Ljava/io/IOException;)Ljava/io/IOException;
+	52      (000000da) move-result-object   v0
+	53      (000000dc) const-string         v4, "null cannot be cast to non-null type kotlin.Throwable"
+	54      (000000e0) invoke-static        v0, v4, Lkotlin/jvm/internal/j;->c(Ljava/lang/Object; Ljava/lang/String;)V
+	55      (000000e6) throw                v0
+	d4:e7
+	(Ljava/lang/Throwable; -> cc g-BB@0xcc)
+
+g-BB@0xe8 : [ g-BB@0xec g-BB@0xf2 ]
+	56      (000000e8) if-nez               v3, +005h
+
+g-BB@0xec : [ g-BB@0xf2 ]
+	57      (000000ec) invoke-virtual       v9, v2, Lokhttp3/internal/connection/RealCall;->j(Ljava/io/IOException;)Ljava/io/IOException;
+
+g-BB@0xf2 : 
+	58      (000000f2) throw                v0
+

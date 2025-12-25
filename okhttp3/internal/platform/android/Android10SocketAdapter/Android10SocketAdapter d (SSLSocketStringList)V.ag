@@ -1,0 +1,41 @@
+# Lokhttp3/internal/platform/android/Android10SocketAdapter;->d(Ljavax/net/ssl/SSLSocket; Ljava/lang/String; Ljava/util/List;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:javax.net.ssl.SSLSocket
+# - v3:java.lang.String
+# - v4:java.util.List
+#
+# - return:void
+
+d-BB@0x0 : [ d-BB@0xc ]
+	0       (00000000) const-string         v3, "protocols"
+	1       (00000004) invoke-static        v4, v3, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) const/4              v3, 1
+
+d-BB@0xc : 
+	3       (0000000c) invoke-static        v2, v3, Landroid/net/ssl/SSLSockets;->setUseSessionTickets(Ljavax/net/ssl/SSLSocket; Z)V
+	4       (00000012) invoke-virtual       v2, Ljavax/net/ssl/SSLSocket;->getSSLParameters()Ljavax/net/ssl/SSLParameters;
+	5       (00000018) move-result-object   v3
+	6       (0000001a) sget-object          v0, Lokhttp3/internal/platform/Platform;->a Lokhttp3/internal/platform/Platform$Companion;
+	7       (0000001e) invoke-virtual       v0, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	8       (00000024) invoke-static        v4, Lokhttp3/internal/platform/Platform$Companion;->a(Ljava/util/List;)Ljava/util/ArrayList;
+	9       (0000002a) move-result-object   v4
+	10      (0000002c) const/4              v0, 0
+	11      (0000002e) new-array            v0, v0, [Ljava/lang/String;
+	12      (00000032) invoke-virtual       v4, v0, Ljava/util/ArrayList;->toArray([Ljava/lang/Object;)[Ljava/lang/Object;
+	13      (00000038) move-result-object   v4
+	14      (0000003a) check-cast           v4, [Ljava/lang/String;
+	15      (0000003e) invoke-virtual       v3, v4, Ljavax/net/ssl/SSLParameters;->setApplicationProtocols([Ljava/lang/String;)V
+	16      (00000044) invoke-virtual       v2, v3, Ljavax/net/ssl/SSLSocket;->setSSLParameters(Ljavax/net/ssl/SSLParameters;)V
+	17      (0000004a) return-void          
+	c:49
+	(Ljava/lang/IllegalArgumentException; -> 4c d-BB@0x4c)
+
+d-BB@0x4c : 
+	18      (0000004c) move-exception       v2
+	19      (0000004e) new-instance         v3, Ljava/io/IOException;
+	20      (00000052) const-string         v4, "Android internal error"
+	21      (00000056) invoke-direct        v3, v4, v2, Ljava/io/IOException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	22      (0000005c) throw                v3
+

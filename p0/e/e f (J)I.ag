@@ -1,0 +1,154 @@
+# Lp0/e;->f(J)I [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v12
+# - v13:long
+#
+# - return:int
+
+f-BB@0x0 : [ f-BB@0xc f-BB@0x14 ]
+	0       (00000000) sget-object          v0, Lp0/e;->b [C
+	1       (00000004) array-length         v0, v0
+	2       (00000006) const/4              v1, 0
+	3       (00000008) if-gez               v0, +006h
+
+f-BB@0xc : [ f-BB@0x14 ]
+	4       (0000000c) new-array            v0, v1, [C
+	5       (00000010) sput-object          v0, Lp0/e;->b [C
+
+f-BB@0x14 : [ f-BB@0x26 f-BB@0x30 ]
+	6       (00000014) sget-object          v2, Lp0/e;->b [C
+	7       (00000018) const-wide/16        v3, 0
+	8       (0000001c) cmp-long             v0, v12, v3
+	9       (00000020) const/4              v8, 1
+	10      (00000022) if-nez               v0, +007h
+
+f-BB@0x26 : 
+	11      (00000026) const/16             v12, 48
+	12      (0000002a) aput-char            v12, v2, v1
+	13      (0000002e) return               v8
+
+f-BB@0x30 : [ f-BB@0x34 f-BB@0x3a ]
+	14      (00000030) if-lez               v0, +005h
+
+f-BB@0x34 : [ f-BB@0x40 ]
+	15      (00000034) const/16             v0, 43
+	16      (00000038) goto                 +4h
+
+f-BB@0x3a : [ f-BB@0x40 ]
+	17      (0000003a) neg-long             v12, v12
+	18      (0000003c) const/16             v0, 45
+
+f-BB@0x40 : [ f-BB@0x62 f-BB@0x6c ]
+	19      (00000040) const-wide/16        v3, 1000
+	20      (00000044) rem-long             v5, v12, v3
+	21      (00000048) long-to-int          v9, v5
+	22      (0000004a) div-long/2addr       v12, v3
+	23      (0000004c) long-to-double       v12, v12
+	24      (0000004e) invoke-static        v12, v13, Ljava/lang/Math;->floor(D)D
+	25      (00000054) move-result-wide     v12
+	26      (00000056) double-to-int        v12, v12
+	27      (00000058) const                v13, 86400
+	28      (0000005e) if-le                v12, v13, +007h
+
+f-BB@0x62 : [ f-BB@0x6e ]
+	29      (00000062) div-int              v3, v12, v13
+	30      (00000066) mul-int/2addr        v13, v3
+	31      (00000068) sub-int/2addr        v12, v13
+	32      (0000006a) goto                 +2h
+
+f-BB@0x6c : [ f-BB@0x6e ]
+	33      (0000006c) move                 v3, v1
+
+f-BB@0x6e : [ f-BB@0x76 f-BB@0x82 ]
+	34      (0000006e) const/16             v13, 3600
+	35      (00000072) if-le                v12, v13, +008h
+
+f-BB@0x76 : [ f-BB@0x84 ]
+	36      (00000076) div-int/lit16        v13, v12, 3600
+	37      (0000007a) mul-int/lit16        v4, v13, 3600
+	38      (0000007e) sub-int/2addr        v12, v4
+	39      (00000080) goto                 +2h
+
+f-BB@0x82 : [ f-BB@0x84 ]
+	40      (00000082) move                 v13, v1
+
+f-BB@0x84 : [ f-BB@0x8c f-BB@0x9a ]
+	41      (00000084) const/16             v4, 60
+	42      (00000088) if-le                v12, v4, +009h
+
+f-BB@0x8c : [ f-BB@0x9c ]
+	43      (0000008c) div-int/lit8         v4, v12, 60
+	44      (00000090) mul-int/lit8         v5, v4, 60
+	45      (00000094) sub-int/2addr        v12, v5
+	46      (00000096) move                 v10, v4
+	47      (00000098) goto                 +2h
+
+f-BB@0x9a : [ f-BB@0x9c ]
+	48      (0000009a) move                 v10, v1
+
+f-BB@0x9c : [ f-BB@0xb8 f-BB@0xbc ]
+	49      (0000009c) aput-char            v0, v2, v1
+	50      (000000a0) const/4              v6, 0
+	51      (000000a2) const/4              v7, 0
+	52      (000000a4) const/16             v4, 100
+	53      (000000a8) const/4              v5, 1
+	54      (000000aa) invoke-static/range  v2 ... v7, Lp0/e;->g([C I C I Z I)I
+	55      (000000b0) move-result          v0
+	56      (000000b2) move                 v11, v5
+	57      (000000b4) if-eq                v0, v11, +004h
+
+f-BB@0xb8 : [ f-BB@0xbe ]
+	58      (000000b8) move                 v6, v8
+	59      (000000ba) goto                 +2h
+
+f-BB@0xbc : [ f-BB@0xbe ]
+	60      (000000bc) move                 v6, v1
+
+f-BB@0xbe : [ f-BB@0xd4 f-BB@0xd8 ]
+	61      (000000be) const/4              v7, 0
+	62      (000000c0) const/16             v4, 104
+	63      (000000c4) move                 v3, v13
+	64      (000000c6) move                 v5, v0
+	65      (000000c8) invoke-static/range  v2 ... v7, Lp0/e;->g([C I C I Z I)I
+	66      (000000ce) move-result          v5
+	67      (000000d0) if-eq                v5, v11, +004h
+
+f-BB@0xd4 : [ f-BB@0xda ]
+	68      (000000d4) move                 v6, v8
+	69      (000000d6) goto                 +2h
+
+f-BB@0xd8 : [ f-BB@0xda ]
+	70      (000000d8) move                 v6, v1
+
+f-BB@0xda : [ f-BB@0xee f-BB@0xf2 ]
+	71      (000000da) const/4              v7, 0
+	72      (000000dc) const/16             v4, 109
+	73      (000000e0) move                 v3, v10
+	74      (000000e2) invoke-static/range  v2 ... v7, Lp0/e;->g([C I C I Z I)I
+	75      (000000e8) move-result          v5
+	76      (000000ea) if-eq                v5, v11, +004h
+
+f-BB@0xee : [ f-BB@0xf4 ]
+	77      (000000ee) move                 v6, v8
+	78      (000000f0) goto                 +2h
+
+f-BB@0xf2 : [ f-BB@0xf4 ]
+	79      (000000f2) move                 v6, v1
+
+f-BB@0xf4 : 
+	80      (000000f4) const/4              v7, 0
+	81      (000000f6) const/16             v4, 115
+	82      (000000fa) move                 v3, v12
+	83      (000000fc) invoke-static/range  v2 ... v7, Lp0/e;->g([C I C I Z I)I
+	84      (00000102) move-result          v5
+	85      (00000104) const/4              v6, 1
+	86      (00000106) const/16             v4, 109
+	87      (0000010a) move                 v3, v9
+	88      (0000010c) invoke-static/range  v2 ... v7, Lp0/e;->g([C I C I Z I)I
+	89      (00000112) move-result          v12
+	90      (00000114) const/16             v13, 115
+	91      (00000118) aput-char            v13, v2, v12
+	92      (0000011c) add-int/2addr        v12, v8
+	93      (0000011e) return               v12
+

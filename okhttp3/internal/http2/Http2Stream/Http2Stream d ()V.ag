@@ -1,0 +1,53 @@
+# Lokhttp3/internal/http2/Http2Stream;->d()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v2
+#
+# - return:void
+
+d-BB@0x0 : [ d-BB@0xc d-BB@0x56 ]
+	0       (00000000) iget-object          v0, v2, Lokhttp3/internal/http2/Http2Stream;->o Lokhttp3/internal/http2/Http2Stream$FramingSink;
+	1       (00000004) iget-boolean         v1, v0, Lokhttp3/internal/http2/Http2Stream$FramingSink;->c Z
+	2       (00000008) if-nez               v1, +027h
+
+d-BB@0xc : [ d-BB@0x14 d-BB@0x46 ]
+	3       (0000000c) iget-boolean         v0, v0, Lokhttp3/internal/http2/Http2Stream$FramingSink;->a Z
+	4       (00000010) if-nez               v0, +01bh
+
+d-BB@0x14 : [ d-BB@0x20 d-BB@0x44 ]
+	5       (00000014) invoke-virtual       v2, Lokhttp3/internal/http2/Http2Stream;->h()Lokhttp3/internal/http2/ErrorCode;
+	6       (0000001a) move-result-object   v0
+	7       (0000001c) if-eqz               v0, +014h
+
+d-BB@0x20 : [ d-BB@0x28 d-BB@0x2a ]
+	8       (00000020) iget-object          v0, v2, Lokhttp3/internal/http2/Http2Stream;->s Ljava/io/IOException;
+	9       (00000024) if-eqz               v0, +003h
+
+d-BB@0x28 : [ d-BB@0x42 ]
+	10      (00000028) goto                 +dh
+
+d-BB@0x2a : [ d-BB@0x42 ]
+	11      (0000002a) new-instance         v0, Lokhttp3/internal/http2/StreamResetException;
+	12      (0000002e) invoke-virtual       v2, Lokhttp3/internal/http2/Http2Stream;->h()Lokhttp3/internal/http2/ErrorCode;
+	13      (00000034) move-result-object   v1
+	14      (00000036) invoke-static        v1, Lkotlin/jvm/internal/j;->b(Ljava/lang/Object;)V
+	15      (0000003c) invoke-direct        v0, v1, Lokhttp3/internal/http2/StreamResetException;-><init>(Lokhttp3/internal/http2/ErrorCode;)V
+
+d-BB@0x42 : 
+	16      (00000042) throw                v0
+
+d-BB@0x44 : 
+	17      (00000044) return-void          
+
+d-BB@0x46 : 
+	18      (00000046) new-instance         v0, Ljava/io/IOException;
+	19      (0000004a) const-string         v1, "stream finished"
+	20      (0000004e) invoke-direct        v0, v1, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+	21      (00000054) throw                v0
+
+d-BB@0x56 : 
+	22      (00000056) new-instance         v0, Ljava/io/IOException;
+	23      (0000005a) const-string         v1, "stream closed"
+	24      (0000005e) invoke-direct        v0, v1, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+	25      (00000064) throw                v0
+

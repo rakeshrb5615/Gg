@@ -1,0 +1,86 @@
+# Lokhttp3/internal/connection/Exchange$RequestBodySink;->k(Lx8/g; J)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:x8.g
+# - v7:long
+#
+# - return:void
+
+k-BB@0x0 : [ k-BB@0x8 k-BB@0xae ]
+	0       (00000000) iget-boolean         v0, v4, Lokhttp3/internal/connection/Exchange$RequestBodySink;->m Z
+	1       (00000004) if-nez               v0, +055h
+
+k-BB@0x8 : [ k-BB@0x18 k-BB@0x66 ]
+	2       (00000008) const-wide/16        v0, -1
+	3       (0000000c) iget-wide            v2, v4, Lokhttp3/internal/connection/Exchange$RequestBodySink;->b J
+	4       (00000010) cmp-long             v0, v2, v0
+	5       (00000014) if-eqz               v0, +029h
+
+k-BB@0x18 : [ k-BB@0x26 k-BB@0x28 ]
+	6       (00000018) iget-wide            v0, v4, Lokhttp3/internal/connection/Exchange$RequestBodySink;->e J
+	7       (0000001c) add-long/2addr       v0, v6
+	8       (0000001e) cmp-long             v0, v0, v2
+	9       (00000022) if-gtz               v0, +003h
+
+k-BB@0x26 : [ k-BB@0x66 ]
+	10      (00000026) goto                 +20h
+
+k-BB@0x28 : 
+	11      (00000028) new-instance         v5, Ljava/net/ProtocolException;
+	12      (0000002c) new-instance         v0, Ljava/lang/StringBuilder;
+	13      (00000030) const-string         v1, "expected "
+	14      (00000034) invoke-direct        v0, v1, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	15      (0000003a) invoke-virtual       v0, v2, v3, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+	16      (00000040) const-string         v1, " bytes but received "
+	17      (00000044) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	18      (0000004a) iget-wide            v1, v4, Lokhttp3/internal/connection/Exchange$RequestBodySink;->e J
+	19      (0000004e) add-long/2addr       v1, v6
+	20      (00000050) invoke-virtual       v0, v1, v2, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+	21      (00000056) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	22      (0000005c) move-result-object   v6
+	23      (0000005e) invoke-direct        v5, v6, Ljava/net/ProtocolException;-><init>(Ljava/lang/String;)V
+	24      (00000064) throw                v5
+
+k-BB@0x66 : [ k-BB@0x6e k-BB@0x8c ]
+	25      (00000066) iget-boolean         v0, v4, Lokhttp3/internal/connection/Exchange$RequestBodySink;->f Z
+	26      (0000006a) if-eqz               v0, +011h
+	66:9b
+	(Ljava/io/IOException; -> 88 k-BB@0x88)
+
+k-BB@0x6e : [ k-BB@0x8c ]
+	27      (0000006e) const/4              v0, 0
+	28      (00000070) iput-boolean         v0, v4, Lokhttp3/internal/connection/Exchange$RequestBodySink;->f Z
+	29      (00000074) iget-object          v0, v4, Lokhttp3/internal/connection/Exchange$RequestBodySink;->n Lokhttp3/internal/connection/Exchange;
+	30      (00000078) iget-object          v1, v0, Lokhttp3/internal/connection/Exchange;->b Lokhttp3/EventListener;
+	31      (0000007c) iget-object          v0, v0, Lokhttp3/internal/connection/Exchange;->a Lokhttp3/internal/connection/RealCall;
+	32      (00000080) invoke-virtual       v1, v0, Lokhttp3/EventListener;->t(Lokhttp3/Call;)V
+	33      (00000086) goto                 +3h
+	66:9b
+	(Ljava/io/IOException; -> 88 k-BB@0x88)
+
+k-BB@0x88 : [ k-BB@0x9e ]
+	34      (00000088) move-exception       v5
+	35      (0000008a) goto                 +ah
+	66:9b
+	(Ljava/io/IOException; -> 88 k-BB@0x88)
+
+k-BB@0x8c : 
+	36      (0000008c) invoke-super         v4, v5, v6, v7, Lx8/n;->k(Lx8/g; J)V
+	37      (00000092) iget-wide            v0, v4, Lokhttp3/internal/connection/Exchange$RequestBodySink;->e J
+	38      (00000096) add-long/2addr       v0, v6
+	39      (00000098) iput-wide            v0, v4, Lokhttp3/internal/connection/Exchange$RequestBodySink;->e J
+	40      (0000009c) return-void          
+
+k-BB@0x9e : 
+	41      (0000009e) invoke-virtual       v4, v5, Lokhttp3/internal/connection/Exchange$RequestBodySink;->c(Ljava/io/IOException;)Ljava/io/IOException;
+	42      (000000a4) move-result-object   v5
+	43      (000000a6) invoke-static        v5, Lkotlin/jvm/internal/j;->b(Ljava/lang/Object;)V
+	44      (000000ac) throw                v5
+
+k-BB@0xae : 
+	45      (000000ae) new-instance         v5, Ljava/lang/IllegalStateException;
+	46      (000000b2) const-string         v6, "closed"
+	47      (000000b6) invoke-direct        v5, v6, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	48      (000000bc) throw                v5
+

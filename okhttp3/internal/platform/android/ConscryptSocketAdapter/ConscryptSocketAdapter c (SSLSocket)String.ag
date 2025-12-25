@@ -1,0 +1,22 @@
+# Lokhttp3/internal/platform/android/ConscryptSocketAdapter;->c(Ljavax/net/ssl/SSLSocket;)Ljava/lang/String; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:javax.net.ssl.SSLSocket
+#
+# - return:java.lang.String
+
+c-BB@0x0 : [ c-BB@0xc c-BB@0x16 ]
+	0       (00000000) invoke-virtual       v1, v2, Lokhttp3/internal/platform/android/ConscryptSocketAdapter;->a(Ljavax/net/ssl/SSLSocket;)Z
+	1       (00000006) move-result          v0
+	2       (00000008) if-eqz               v0, +007h
+
+c-BB@0xc : 
+	3       (0000000c) invoke-static        v2, Lorg/conscrypt/Conscrypt;->getApplicationProtocol(Ljavax/net/ssl/SSLSocket;)Ljava/lang/String;
+	4       (00000012) move-result-object   v2
+	5       (00000014) return-object        v2
+
+c-BB@0x16 : 
+	6       (00000016) const/4              v2, 0
+	7       (00000018) return-object        v2
+

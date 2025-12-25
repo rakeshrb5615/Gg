@@ -1,0 +1,35 @@
+# Lokhttp3/internal/http1/Http1ExchangeCodec;->k(Lokhttp3/HttpUrl; J)Lx8/h0; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:okhttp3.HttpUrl
+# - v5:long
+#
+# - return:x8.h0
+
+k-BB@0x0 : [ k-BB@0xa k-BB@0x1c ]
+	0       (00000000) iget                 v0, v2, Lokhttp3/internal/http1/Http1ExchangeCodec;->d I
+	1       (00000004) const/4              v1, 4
+	2       (00000006) if-ne                v0, v1, +00bh
+
+k-BB@0xa : 
+	3       (0000000a) const/4              v0, 5
+	4       (0000000c) iput                 v0, v2, Lokhttp3/internal/http1/Http1ExchangeCodec;->d I
+	5       (00000010) new-instance         v0, Lokhttp3/internal/http1/Http1ExchangeCodec$FixedLengthSource;
+	6       (00000014) invoke-direct        v0, v2, v3, v4, v5, Lokhttp3/internal/http1/Http1ExchangeCodec$FixedLengthSource;-><init>(Lokhttp3/internal/http1/Http1ExchangeCodec; Lokhttp3/HttpUrl; J)V
+	7       (0000001a) return-object        v0
+
+k-BB@0x1c : 
+	8       (0000001c) new-instance         v3, Ljava/lang/StringBuilder;
+	9       (00000020) const-string         v4, "state: "
+	10      (00000024) invoke-direct        v3, v4, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	11      (0000002a) iget                 v4, v2, Lokhttp3/internal/http1/Http1ExchangeCodec;->d I
+	12      (0000002e) invoke-virtual       v3, v4, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	13      (00000034) invoke-virtual       v3, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	14      (0000003a) move-result-object   v3
+	15      (0000003c) new-instance         v4, Ljava/lang/IllegalStateException;
+	16      (00000040) invoke-virtual       v3, Ljava/lang/Object;->toString()Ljava/lang/String;
+	17      (00000046) move-result-object   v3
+	18      (00000048) invoke-direct        v4, v3, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	19      (0000004e) throw                v4
+

@@ -1,0 +1,53 @@
+# Lokhttp3/internal/connection/RealConnection;->d(Lokhttp3/OkHttpClient; Lokhttp3/Route; Ljava/io/IOException;)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:okhttp3.OkHttpClient
+# - v4:okhttp3.Route
+# - v5:java.io.IOException
+#
+# - return:void
+
+d-BB@0x0 : [ d-BB@0x28 d-BB@0x4e ]
+	0       (00000000) const-string         v0, "failedRoute"
+	1       (00000004) invoke-static        v4, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) const-string         v0, "failure"
+	3       (0000000e) invoke-static        v5, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	4       (00000014) iget-object          v0, v4, Lokhttp3/Route;->b Ljava/net/Proxy;
+	5       (00000018) invoke-virtual       v0, Ljava/net/Proxy;->type()Ljava/net/Proxy$Type;
+	6       (0000001e) move-result-object   v0
+	7       (00000020) sget-object          v1, Ljava/net/Proxy$Type;->DIRECT Ljava/net/Proxy$Type;
+	8       (00000024) if-eq                v0, v1, +015h
+
+d-BB@0x28 : [ d-BB@0x4e ]
+	9       (00000028) iget-object          v0, v4, Lokhttp3/Route;->a Lokhttp3/Address;
+	10      (0000002c) iget-object          v1, v0, Lokhttp3/Address;->g Ljava/net/ProxySelector;
+	11      (00000030) iget-object          v0, v0, Lokhttp3/Address;->h Lokhttp3/HttpUrl;
+	12      (00000034) invoke-virtual       v0, Lokhttp3/HttpUrl;->h()Ljava/net/URI;
+	13      (0000003a) move-result-object   v0
+	14      (0000003c) iget-object          v2, v4, Lokhttp3/Route;->b Ljava/net/Proxy;
+	15      (00000040) invoke-virtual       v2, Ljava/net/Proxy;->address()Ljava/net/SocketAddress;
+	16      (00000046) move-result-object   v2
+	17      (00000048) invoke-virtual       v1, v0, v2, v5, Ljava/net/ProxySelector;->connectFailed(Ljava/net/URI; Ljava/net/SocketAddress; Ljava/io/IOException;)V
+
+d-BB@0x4e : [ d-BB@0x54 ]
+	18      (0000004e) iget-object          v3, v3, Lokhttp3/OkHttpClient;->y Lokhttp3/internal/connection/RouteDatabase;
+	19      (00000052) monitor-enter        v3
+
+d-BB@0x54 : 
+	20      (00000054) iget-object          v5, v3, Lokhttp3/internal/connection/RouteDatabase;->a Ljava/util/LinkedHashSet;
+	21      (00000058) invoke-interface     v5, v4, Ljava/util/Set;->add(Ljava/lang/Object;)Z
+	22      (0000005e) monitor-exit         v3
+	23      (00000060) return-void          
+	54:5d
+	(Ljava/lang/Throwable; -> 62 d-BB@0x62)
+
+d-BB@0x62 : [ d-BB@0x64 ]
+	24      (00000062) move-exception       v4
+
+d-BB@0x64 : 
+	25      (00000064) monitor-exit         v3
+	26      (00000066) throw                v4
+	64:65
+	(Ljava/lang/Throwable; -> 62 d-BB@0x62)
+

@@ -1,0 +1,259 @@
+# Lokhttp3/internal/connection/ConnectPlan;->j(Ljavax/net/ssl/SSLSocket; Lokhttp3/ConnectionSpec;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v13
+# - v14:javax.net.ssl.SSLSocket
+# - v15:okhttp3.ConnectionSpec
+#
+# - return:void
+
+j-BB@0x0 : [ j-BB@0x10 ]
+	0       (00000000) const-string         v0, "Hostname "
+	1       (00000004) const-string         v1, "
+            |Hostname "
+	2       (00000008) iget-object          v2, v13, Lokhttp3/internal/connection/ConnectPlan;->p Lokhttp3/Route;
+	3       (0000000c) iget-object          v2, v2, Lokhttp3/Route;->a Lokhttp3/Address;
+
+j-BB@0x10 : [ j-BB@0x18 j-BB@0x42 ]
+	4       (00000010) iget-boolean         v3, v15, Lokhttp3/ConnectionSpec;->b Z
+	5       (00000014) if-eqz               v3, +017h
+	10:2bd
+	(Ljava/lang/Throwable; -> 3a j-BB@0x3a)
+
+j-BB@0x18 : [ j-BB@0x42 ]
+	6       (00000018) sget-object          v3, Lokhttp3/internal/platform/Platform;->a Lokhttp3/internal/platform/Platform$Companion;
+	7       (0000001c) invoke-virtual       v3, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	8       (00000022) sget-object          v3, Lokhttp3/internal/platform/Platform;->b Lokhttp3/internal/platform/Platform;
+	9       (00000026) iget-object          v4, v2, Lokhttp3/Address;->h Lokhttp3/HttpUrl;
+	10      (0000002a) iget-object          v4, v4, Lokhttp3/HttpUrl;->d Ljava/lang/String;
+	11      (0000002e) iget-object          v5, v2, Lokhttp3/Address;->i Ljava/util/List;
+	12      (00000032) invoke-virtual       v3, v14, v4, v5, Lokhttp3/internal/platform/Platform;->e(Ljavax/net/ssl/SSLSocket; Ljava/lang/String; Ljava/util/List;)V
+	13      (00000038) goto                 +5h
+	10:2bd
+	(Ljava/lang/Throwable; -> 3a j-BB@0x3a)
+
+j-BB@0x3a : [ j-BB@0x2f2 ]
+	14      (0000003a) move-exception       v0
+	15      (0000003c) move-object          v15, v0
+	16      (0000003e) goto/16              +15ah
+	10:2bd
+	(Ljava/lang/Throwable; -> 3a j-BB@0x3a)
+
+j-BB@0x42 : [ j-BB@0x86 j-BB@0x20a ]
+	17      (00000042) invoke-virtual       v14, Ljavax/net/ssl/SSLSocket;->startHandshake()V
+	18      (00000048) invoke-virtual       v14, Ljavax/net/ssl/SSLSocket;->getSession()Ljavax/net/ssl/SSLSession;
+	19      (0000004e) move-result-object   v3
+	20      (00000050) sget-object          v4, Lokhttp3/Handshake;->e Lokhttp3/Handshake$Companion;
+	21      (00000054) invoke-static        v3, Lkotlin/jvm/internal/j;->b(Ljava/lang/Object;)V
+	22      (0000005a) invoke-virtual       v4, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	23      (00000060) invoke-static        v3, Lokhttp3/Handshake$Companion;->a(Ljavax/net/ssl/SSLSession;)Lokhttp3/Handshake;
+	24      (00000066) move-result-object   v4
+	25      (00000068) iget-object          v5, v2, Lokhttp3/Address;->d Ljavax/net/ssl/HostnameVerifier;
+	26      (0000006c) invoke-static        v5, Lkotlin/jvm/internal/j;->b(Ljava/lang/Object;)V
+	27      (00000072) iget-object          v6, v2, Lokhttp3/Address;->h Lokhttp3/HttpUrl;
+	28      (00000076) iget-object          v6, v6, Lokhttp3/HttpUrl;->d Ljava/lang/String;
+	29      (0000007a) invoke-interface     v5, v6, v3, Ljavax/net/ssl/HostnameVerifier;->verify(Ljava/lang/String; Ljavax/net/ssl/SSLSession;)Z
+	30      (00000080) move-result          v3
+	31      (00000082) if-nez               v3, +0c4h
+	10:2bd
+	(Ljava/lang/Throwable; -> 3a j-BB@0x3a)
+
+j-BB@0x86 : [ j-BB@0x9a j-BB@0x1d4 ]
+	32      (00000086) invoke-virtual       v4, Lokhttp3/Handshake;->a()Ljava/util/List;
+	33      (0000008c) move-result-object   v15
+	34      (0000008e) invoke-interface     v15, Ljava/util/Collection;->isEmpty()Z
+	35      (00000094) move-result          v3
+	36      (00000096) if-nez               v3, +09fh
+	10:2bd
+	(Ljava/lang/Throwable; -> 3a j-BB@0x3a)
+
+j-BB@0x9a : 
+	37      (0000009a) const/4              v0, 0
+	38      (0000009c) invoke-interface     v15, v0, Ljava/util/List;->get(I)Ljava/lang/Object;
+	39      (000000a2) move-result-object   v15
+	40      (000000a4) const-string         v3, "null cannot be cast to non-null type java.security.cert.X509Certificate"
+	41      (000000a8) invoke-static        v15, v3, Lkotlin/jvm/internal/j;->c(Ljava/lang/Object; Ljava/lang/String;)V
+	42      (000000ae) check-cast           v15, Ljava/security/cert/X509Certificate;
+	43      (000000b2) new-instance         v3, Ljavax/net/ssl/SSLPeerUnverifiedException;
+	44      (000000b6) new-instance         v4, Ljava/lang/StringBuilder;
+	45      (000000ba) invoke-direct        v4, v1, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	46      (000000c0) iget-object          v1, v2, Lokhttp3/Address;->h Lokhttp3/HttpUrl;
+	47      (000000c4) iget-object          v1, v1, Lokhttp3/HttpUrl;->d Ljava/lang/String;
+	48      (000000c8) invoke-virtual       v4, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	49      (000000ce) const-string         v1, " not verified:
+            |    certificate: "
+	50      (000000d2) invoke-virtual       v4, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	51      (000000d8) sget-object          v1, Lokhttp3/CertificatePinner;->c Lokhttp3/CertificatePinner$Companion;
+	52      (000000dc) invoke-virtual       v1, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	53      (000000e2) new-instance         v1, Ljava/lang/StringBuilder;
+	54      (000000e6) const-string         v2, "sha256/"
+	55      (000000ea) invoke-direct        v1, v2, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	56      (000000f0) sget-object          v2, Lx8/j;->d Lx8/j;
+	57      (000000f4) invoke-virtual       v15, Ljava/security/cert/Certificate;->getPublicKey()Ljava/security/PublicKey;
+	58      (000000fa) move-result-object   v2
+	59      (000000fc) invoke-interface     v2, Ljava/security/Key;->getEncoded()[B
+	60      (00000102) move-result-object   v2
+	61      (00000104) const-string         v5, "getEncoded(...)"
+	62      (00000108) invoke-static        v2, v5, Lkotlin/jvm/internal/j;->d(Ljava/lang/Object; Ljava/lang/String;)V
+	63      (0000010e) sget-object          v5, Lx8/j;->d Lx8/j;
+	64      (00000112) array-length         v5, v2
+	65      (00000114) array-length         v6, v2
+	66      (00000116) int-to-long          v7, v6
+	67      (00000118) int-to-long          v9, v0
+	68      (0000011a) int-to-long          v11, v5
+	69      (0000011c) invoke-static/range  v7 ... v12, Lx8/b;->e(J J J)V
+	70      (00000122) new-instance         v6, Lx8/j;
+	71      (00000126) invoke-static        v2, v0, v5, Li7/h;->b0([B I I)[B
+	72      (0000012c) move-result-object   v0
+	73      (0000012e) invoke-direct        v6, v0, Lx8/j;-><init>([B)V
+	74      (00000134) const-string         v0, "SHA-256"
+	75      (00000138) invoke-virtual       v6, v0, Lx8/j;->c(Ljava/lang/String;)Lx8/j;
+	76      (0000013e) move-result-object   v0
+	77      (00000140) invoke-virtual       v0, Lx8/j;->a()Ljava/lang/String;
+	78      (00000146) move-result-object   v0
+	79      (00000148) invoke-virtual       v1, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	80      (0000014e) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	81      (00000154) move-result-object   v0
+	82      (00000156) invoke-virtual       v4, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	83      (0000015c) const-string         v0, "
+            |    DN: "
+	84      (00000160) invoke-virtual       v4, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	85      (00000166) invoke-virtual       v15, Ljava/security/cert/X509Certificate;->getSubjectDN()Ljava/security/Principal;
+	86      (0000016c) move-result-object   v0
+	87      (0000016e) invoke-interface     v0, Ljava/security/Principal;->getName()Ljava/lang/String;
+	88      (00000174) move-result-object   v0
+	89      (00000176) invoke-virtual       v4, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	90      (0000017c) const-string         v0, "
+            |    subjectAltNames: "
+	91      (00000180) invoke-virtual       v4, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	92      (00000186) sget-object          v0, Lokhttp3/internal/tls/OkHostnameVerifier;->a Lokhttp3/internal/tls/OkHostnameVerifier;
+	93      (0000018a) invoke-virtual       v0, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	94      (00000190) const/4              v0, 7
+	95      (00000192) invoke-static        v15, v0, Lokhttp3/internal/tls/OkHostnameVerifier;->a(Ljava/security/cert/X509Certificate; I)Ljava/util/List;
+	96      (00000198) move-result-object   v0
+	97      (0000019a) const/4              v1, 2
+	98      (0000019c) invoke-static        v15, v1, Lokhttp3/internal/tls/OkHostnameVerifier;->a(Ljava/security/cert/X509Certificate; I)Ljava/util/List;
+	99      (000001a2) move-result-object   v15
+	100     (000001a4) invoke-static        v0, v15, Li7/i;->e0(Ljava/util/Collection; Ljava/util/List;)Ljava/util/ArrayList;
+	101     (000001aa) move-result-object   v15
+	102     (000001ac) invoke-virtual       v4, v15, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	103     (000001b2) const-string         v15, "
+            "
+	104     (000001b6) invoke-virtual       v4, v15, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	105     (000001bc) invoke-virtual       v4, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	106     (000001c2) move-result-object   v15
+	107     (000001c4) invoke-static        v15, Lb8/j;->k0(Ljava/lang/String;)Ljava/lang/String;
+	108     (000001ca) move-result-object   v15
+	109     (000001cc) invoke-direct        v3, v15, Ljavax/net/ssl/SSLPeerUnverifiedException;-><init>(Ljava/lang/String;)V
+	110     (000001d2) throw                v3
+	10:2bd
+	(Ljava/lang/Throwable; -> 3a j-BB@0x3a)
+
+j-BB@0x1d4 : 
+	111     (000001d4) new-instance         v15, Ljavax/net/ssl/SSLPeerUnverifiedException;
+	112     (000001d8) new-instance         v1, Ljava/lang/StringBuilder;
+	113     (000001dc) invoke-direct        v1, v0, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	114     (000001e2) iget-object          v0, v2, Lokhttp3/Address;->h Lokhttp3/HttpUrl;
+	115     (000001e6) iget-object          v0, v0, Lokhttp3/HttpUrl;->d Ljava/lang/String;
+	116     (000001ea) invoke-virtual       v1, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	117     (000001f0) const-string         v0, " not verified (no certificates)"
+	118     (000001f4) invoke-virtual       v1, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	119     (000001fa) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	120     (00000200) move-result-object   v0
+	121     (00000202) invoke-direct        v15, v0, Ljavax/net/ssl/SSLPeerUnverifiedException;-><init>(Ljava/lang/String;)V
+	122     (00000208) throw                v15
+	10:2bd
+	(Ljava/lang/Throwable; -> 3a j-BB@0x3a)
+
+j-BB@0x20a : [ j-BB@0x264 j-BB@0x2d4 ]
+	123     (0000020a) iget-object          v0, v2, Lokhttp3/Address;->e Lokhttp3/CertificatePinner;
+	124     (0000020e) invoke-static        v0, Lkotlin/jvm/internal/j;->b(Ljava/lang/Object;)V
+	125     (00000214) new-instance         v1, Lokhttp3/Handshake;
+	126     (00000218) iget-object          v3, v4, Lokhttp3/Handshake;->a Lokhttp3/TlsVersion;
+	127     (0000021c) iget-object          v5, v4, Lokhttp3/Handshake;->b Lokhttp3/CipherSuite;
+	128     (00000220) iget-object          v6, v4, Lokhttp3/Handshake;->c Ljava/util/List;
+	129     (00000224) new-instance         v7, Lokhttp3/internal/connection/a;
+	130     (00000228) invoke-direct        v7, v0, v4, v2, Lokhttp3/internal/connection/a;-><init>(Lokhttp3/CertificatePinner; Lokhttp3/Handshake; Lokhttp3/Address;)V
+	131     (0000022e) invoke-direct        v1, v3, v5, v6, v7, Lokhttp3/Handshake;-><init>(Lokhttp3/TlsVersion; Lokhttp3/CipherSuite; Ljava/util/List; Lu7/a;)V
+	132     (00000234) iput-object          v1, v13, Lokhttp3/internal/connection/ConnectPlan;->y Lokhttp3/Handshake;
+	133     (00000238) iget-object          v1, v2, Lokhttp3/Address;->h Lokhttp3/HttpUrl;
+	134     (0000023c) iget-object          v1, v1, Lokhttp3/HttpUrl;->d Ljava/lang/String;
+	135     (00000240) const-string         v2, "hostname"
+	136     (00000244) invoke-static        v1, v2, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	137     (0000024a) iget-object          v0, v0, Lokhttp3/CertificatePinner;->a Ljava/util/Set;
+	138     (0000024e) invoke-interface     v0, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
+	139     (00000254) move-result-object   v0
+	140     (00000256) invoke-interface     v0, Ljava/util/Iterator;->hasNext()Z
+	141     (0000025c) move-result          v1
+	142     (0000025e) const/4              v2, 0
+	143     (00000260) if-nez               v1, +03ah
+	10:2bd
+	(Ljava/lang/Throwable; -> 3a j-BB@0x3a)
+
+j-BB@0x264 : [ j-BB@0x26c j-BB@0x282 ]
+	144     (00000264) iget-boolean         v15, v15, Lokhttp3/ConnectionSpec;->b Z
+	145     (00000268) if-eqz               v15, +00dh
+	10:2bd
+	(Ljava/lang/Throwable; -> 3a j-BB@0x3a)
+
+j-BB@0x26c : [ j-BB@0x282 ]
+	146     (0000026c) sget-object          v15, Lokhttp3/internal/platform/Platform;->a Lokhttp3/internal/platform/Platform$Companion;
+	147     (00000270) invoke-virtual       v15, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	148     (00000276) sget-object          v15, Lokhttp3/internal/platform/Platform;->b Lokhttp3/internal/platform/Platform;
+	149     (0000027a) invoke-virtual       v15, v14, Lokhttp3/internal/platform/Platform;->g(Ljavax/net/ssl/SSLSocket;)Ljava/lang/String;
+	150     (00000280) move-result-object   v2
+	10:2bd
+	(Ljava/lang/Throwable; -> 3a j-BB@0x3a)
+
+j-BB@0x282 : [ j-BB@0x2a2 j-BB@0x2b6 ]
+	151     (00000282) iput-object          v14, v13, Lokhttp3/internal/connection/ConnectPlan;->x Ljava/net/Socket;
+	152     (00000286) new-instance         v15, Lj6/s;
+	153     (0000028a) invoke-direct        v15, v14, Lj6/s;-><init>(Ljava/net/Socket;)V
+	154     (00000290) new-instance         v0, Lokhttp3/internal/connection/BufferedSocketKt$asBufferedSocket$1;
+	155     (00000294) invoke-direct        v0, v15, Lokhttp3/internal/connection/BufferedSocketKt$asBufferedSocket$1;-><init>(Lj6/s;)V
+	156     (0000029a) iput-object          v0, v13, Lokhttp3/internal/connection/ConnectPlan;->A Lokhttp3/internal/connection/BufferedSocketKt$asBufferedSocket$1;
+	157     (0000029e) if-eqz               v2, +00ch
+	10:2bd
+	(Ljava/lang/Throwable; -> 3a j-BB@0x3a)
+
+j-BB@0x2a2 : [ j-BB@0x2ba ]
+	158     (000002a2) sget-object          v15, Lokhttp3/Protocol;->b Lokhttp3/Protocol$Companion;
+	159     (000002a6) invoke-virtual       v15, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	160     (000002ac) invoke-static        v2, Lokhttp3/Protocol$Companion;->a(Ljava/lang/String;)Lokhttp3/Protocol;
+	161     (000002b2) move-result-object   v15
+	162     (000002b4) goto                 +3h
+	10:2bd
+	(Ljava/lang/Throwable; -> 3a j-BB@0x3a)
+
+j-BB@0x2b6 : [ j-BB@0x2ba ]
+	163     (000002b6) sget-object          v15, Lokhttp3/Protocol;->d Lokhttp3/Protocol;
+	10:2bd
+	(Ljava/lang/Throwable; -> 3a j-BB@0x3a)
+
+j-BB@0x2ba : 
+	164     (000002ba) iput-object          v15, v13, Lokhttp3/internal/connection/ConnectPlan;->z Lokhttp3/Protocol;
+	165     (000002be) sget-object          v14, Lokhttp3/internal/platform/Platform;->a Lokhttp3/internal/platform/Platform$Companion;
+	166     (000002c2) invoke-virtual       v14, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	167     (000002c8) sget-object          v14, Lokhttp3/internal/platform/Platform;->b Lokhttp3/internal/platform/Platform;
+	168     (000002cc) invoke-virtual       v14, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	169     (000002d2) return-void          
+
+j-BB@0x2d4 : 
+	170     (000002d4) invoke-interface     v0, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	171     (000002da) move-result-object   v15
+	172     (000002dc) check-cast           v15, Lokhttp3/CertificatePinner$Pin;
+	173     (000002e0) invoke-virtual       v15, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	174     (000002e6) const-string         v15, "**."
+	175     (000002ea) invoke-static        v2, v15, Lb8/p;->p0(Ljava/lang/String; Ljava/lang/String;)Z
+	176     (000002f0) throw                v2
+	2d4:2f1
+	(Ljava/lang/Throwable; -> 3a j-BB@0x3a)
+
+j-BB@0x2f2 : 
+	177     (000002f2) sget-object          v0, Lokhttp3/internal/platform/Platform;->a Lokhttp3/internal/platform/Platform$Companion;
+	178     (000002f6) invoke-virtual       v0, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	179     (000002fc) sget-object          v0, Lokhttp3/internal/platform/Platform;->b Lokhttp3/internal/platform/Platform;
+	180     (00000300) invoke-virtual       v0, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	181     (00000306) invoke-static        v14, Lokhttp3/internal/_UtilJvmKt;->b(Ljava/net/Socket;)V
+	182     (0000030c) throw                v15
+

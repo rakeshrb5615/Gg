@@ -1,0 +1,114 @@
+# Lokhttp3/internal/connection/Exchange;->g()Lokhttp3/internal/connection/Exchange$upgradeToSocket$1; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v3
+#
+# - return:okhttp3.internal.connection.Exchange$upgradeToSocket$1
+
+g-BB@0x0 : [ g-BB@0xc g-BB@0xd4 ]
+	0       (00000000) iget-object          v0, v3, Lokhttp3/internal/connection/Exchange;->a Lokhttp3/internal/connection/RealCall;
+	1       (00000004) iget-boolean         v1, v0, Lokhttp3/internal/connection/RealCall;->p Z
+	2       (00000008) if-nez               v1, +066h
+
+g-BB@0xc : [ g-BB@0x1e ]
+	3       (0000000c) const/4              v1, 1
+	4       (0000000e) iput-boolean         v1, v0, Lokhttp3/internal/connection/RealCall;->p Z
+	5       (00000012) iget-object          v2, v0, Lokhttp3/internal/connection/RealCall;->e Lokhttp3/internal/connection/RealCall$timeout$1;
+	6       (00000016) invoke-virtual       v2, Lx8/d;->i()Z
+	7       (0000001c) monitor-enter        v0
+
+g-BB@0x1e : [ g-BB@0x26 g-BB@0xc0 ]
+	8       (0000001e) iget-object          v2, v0, Lokhttp3/internal/connection/RealCall;->x Lokhttp3/internal/connection/Exchange;
+	9       (00000022) if-eqz               v2, +04fh
+	1e:53
+	(Ljava/lang/Throwable; -> 8c g-BB@0x8c)
+
+g-BB@0x26 : [ g-BB@0x2e g-BB@0xb0 ]
+	10      (00000026) iget-boolean         v2, v0, Lokhttp3/internal/connection/RealCall;->t Z
+	11      (0000002a) if-nez               v2, +043h
+	1e:53
+	(Ljava/lang/Throwable; -> 8c g-BB@0x8c)
+
+g-BB@0x2e : [ g-BB@0x36 g-BB@0xb0 ]
+	12      (0000002e) iget-boolean         v2, v0, Lokhttp3/internal/connection/RealCall;->u Z
+	13      (00000032) if-nez               v2, +03fh
+	1e:53
+	(Ljava/lang/Throwable; -> 8c g-BB@0x8c)
+
+g-BB@0x36 : [ g-BB@0x3e g-BB@0xa0 ]
+	14      (00000036) iget-boolean         v2, v0, Lokhttp3/internal/connection/RealCall;->r Z
+	15      (0000003a) if-nez               v2, +033h
+	1e:53
+	(Ljava/lang/Throwable; -> 8c g-BB@0x8c)
+
+g-BB@0x3e : [ g-BB@0x46 g-BB@0x90 ]
+	16      (0000003e) iget-boolean         v2, v0, Lokhttp3/internal/connection/RealCall;->s Z
+	17      (00000042) if-eqz               v2, +027h
+	1e:53
+	(Ljava/lang/Throwable; -> 8c g-BB@0x8c)
+
+g-BB@0x46 : 
+	18      (00000046) const/4              v2, 0
+	19      (00000048) iput-boolean         v2, v0, Lokhttp3/internal/connection/RealCall;->s Z
+	20      (0000004c) iput-boolean         v1, v0, Lokhttp3/internal/connection/RealCall;->t Z
+	21      (00000050) iput-boolean         v1, v0, Lokhttp3/internal/connection/RealCall;->u Z
+	22      (00000054) monitor-exit         v0
+	23      (00000056) iget-object          v0, v3, Lokhttp3/internal/connection/Exchange;->d Lokhttp3/internal/http/ExchangeCodec;
+	24      (0000005a) invoke-interface     v0, Lokhttp3/internal/http/ExchangeCodec;->h()Lokhttp3/internal/http/ExchangeCodec$Carrier;
+	25      (00000060) move-result-object   v0
+	26      (00000062) const-string         v1, "null cannot be cast to non-null type okhttp3.internal.connection.RealConnection"
+	27      (00000066) invoke-static        v0, v1, Lkotlin/jvm/internal/j;->c(Ljava/lang/Object; Ljava/lang/String;)V
+	28      (0000006c) check-cast           v0, Lokhttp3/internal/connection/RealConnection;
+	29      (00000070) iget-object          v1, v0, Lokhttp3/internal/connection/RealConnection;->e Ljava/net/Socket;
+	30      (00000074) invoke-virtual       v1, v2, Ljava/net/Socket;->setSoTimeout(I)V
+	31      (0000007a) invoke-virtual       v0, Lokhttp3/internal/connection/RealConnection;->h()V
+	32      (00000080) new-instance         v0, Lokhttp3/internal/connection/Exchange$upgradeToSocket$1;
+	33      (00000084) invoke-direct        v0, v3, Lokhttp3/internal/connection/Exchange$upgradeToSocket$1;-><init>(Lokhttp3/internal/connection/Exchange;)V
+	34      (0000008a) return-object        v0
+
+g-BB@0x8c : [ g-BB@0xd0 ]
+	35      (0000008c) move-exception       v1
+	36      (0000008e) goto                 +21h
+
+g-BB@0x90 : 
+	37      (00000090) new-instance         v1, Ljava/lang/IllegalStateException;
+	38      (00000094) const-string         v2, "Check failed."
+	39      (00000098) invoke-direct        v1, v2, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	40      (0000009e) throw                v1
+	90:cf
+	(Ljava/lang/Throwable; -> 8c g-BB@0x8c)
+
+g-BB@0xa0 : 
+	41      (000000a0) new-instance         v1, Ljava/lang/IllegalStateException;
+	42      (000000a4) const-string         v2, "Check failed."
+	43      (000000a8) invoke-direct        v1, v2, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	44      (000000ae) throw                v1
+	90:cf
+	(Ljava/lang/Throwable; -> 8c g-BB@0x8c)
+
+g-BB@0xb0 : 
+	45      (000000b0) new-instance         v1, Ljava/lang/IllegalStateException;
+	46      (000000b4) const-string         v2, "Check failed."
+	47      (000000b8) invoke-direct        v1, v2, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	48      (000000be) throw                v1
+	90:cf
+	(Ljava/lang/Throwable; -> 8c g-BB@0x8c)
+
+g-BB@0xc0 : 
+	49      (000000c0) new-instance         v1, Ljava/lang/IllegalStateException;
+	50      (000000c4) const-string         v2, "Check failed."
+	51      (000000c8) invoke-direct        v1, v2, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	52      (000000ce) throw                v1
+	90:cf
+	(Ljava/lang/Throwable; -> 8c g-BB@0x8c)
+
+g-BB@0xd0 : 
+	53      (000000d0) monitor-exit         v0
+	54      (000000d2) throw                v1
+
+g-BB@0xd4 : 
+	55      (000000d4) new-instance         v0, Ljava/lang/IllegalStateException;
+	56      (000000d8) const-string         v1, "Check failed."
+	57      (000000dc) invoke-direct        v0, v1, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	58      (000000e2) throw                v0
+

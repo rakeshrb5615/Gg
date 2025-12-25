@@ -1,0 +1,44 @@
+# Lp/f;->toString()Ljava/lang/String; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v4
+#
+# - return:java.lang.String
+
+toString-BB@0x0 : [ toString-BB@0x16 ]
+	0       (00000000) new-instance         v0, Ljava/lang/StringBuilder;
+	1       (00000004) const-string         v1, "["
+	2       (00000008) invoke-direct        v0, v1, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	3       (0000000e) invoke-virtual       v4, Lp/f;->iterator()Ljava/util/Iterator;
+	4       (00000014) move-result-object   v1
+
+toString-BB@0x16 : [ toString-BB@0x28 toString-BB@0x5a ]
+	5       (00000016) move-object          v2, v1
+	6       (00000018) check-cast           v2, Lp/b;
+	7       (0000001c) invoke-virtual       v2, Lp/b;->hasNext()Z
+	8       (00000022) move-result          v3
+	9       (00000024) if-eqz               v3, +01bh
+
+toString-BB@0x28 : [ toString-BB@0x4e toString-BB@0x16 ]
+	10      (00000028) invoke-virtual       v2, Lp/b;->next()Ljava/lang/Object;
+	11      (0000002e) move-result-object   v3
+	12      (00000030) check-cast           v3, Ljava/util/Map$Entry;
+	13      (00000034) invoke-virtual       v3, Ljava/lang/Object;->toString()Ljava/lang/String;
+	14      (0000003a) move-result-object   v3
+	15      (0000003c) invoke-virtual       v0, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	16      (00000042) invoke-virtual       v2, Lp/b;->hasNext()Z
+	17      (00000048) move-result          v2
+	18      (0000004a) if-eqz               v2, -01ah
+
+toString-BB@0x4e : [ toString-BB@0x16 ]
+	19      (0000004e) const-string         v2, ", "
+	20      (00000052) invoke-virtual       v0, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	21      (00000058) goto                 -21h
+
+toString-BB@0x5a : 
+	22      (0000005a) const-string         v1, "]"
+	23      (0000005e) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	24      (00000064) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	25      (0000006a) move-result-object   v0
+	26      (0000006c) return-object        v0
+

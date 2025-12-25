@@ -1,0 +1,116 @@
+# Lo5/d;->a(I)Lo5/c; [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v8
+# - v9:int
+#
+# - return:o5.c
+
+a-BB@0x0 : [ a-BB@0x8 ]
+	0       (00000000) const-string         v0, "FirebaseCrashlytics"
+	1       (00000004) const/4              v1, 2
+	2       (00000006) const/4              v2, 0
+
+a-BB@0x8 : [ a-BB@0x14 a-BB@0xc4 ]
+	3       (00000008) invoke-static        v1, v9, Lu/e;->a(I I)Z
+	4       (0000000e) move-result          v3
+	5       (00000010) if-nez               v3, +05ah
+	8:87
+	(Ljava/lang/Exception; -> 8a a-BB@0x8a)
+
+a-BB@0x14 : [ a-BB@0x2a a-BB@0xae ]
+	6       (00000014) iget-object          v3, v8, Lo5/d;->e Ljava/lang/Object;
+	7       (00000018) check-cast           v3, Lj6/o;
+	8       (0000001c) invoke-virtual       v3, Lj6/o;->G()Lorg/json/JSONObject;
+	9       (00000022) move-result-object   v3
+	10      (00000024) const/4              v4, 3
+	11      (00000026) if-eqz               v3, +044h
+	8:87
+	(Ljava/lang/Exception; -> 8a a-BB@0x8a)
+
+a-BB@0x2a : [ a-BB@0x66 a-BB@0x8e ]
+	12      (0000002a) iget-object          v5, v8, Lo5/d;->c Ljava/lang/Object;
+	13      (0000002e) check-cast           v5, Lj6/o;
+	14      (00000032) invoke-virtual       v5, v3, Lj6/o;->E(Lorg/json/JSONObject;)Lo5/c;
+	15      (00000038) move-result-object   v5
+	16      (0000003a) const-string         v6, "Loaded cached settings: "
+	17      (0000003e) invoke-static        v3, v6, Lo5/d;->d(Lorg/json/JSONObject; Ljava/lang/String;)V
+	18      (00000044) iget-object          v3, v8, Lo5/d;->d Ljava/lang/Object;
+	19      (00000048) check-cast           v3, Lc5/c;
+	20      (0000004c) invoke-virtual       v3, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	21      (00000052) invoke-static        Ljava/lang/System;->currentTimeMillis()J
+	22      (00000058) move-result-wide     v6
+	23      (0000005a) invoke-static        v4, v9, Lu/e;->a(I I)Z
+	24      (00000060) move-result          v9
+	25      (00000062) if-nez               v9, +016h
+	8:87
+	(Ljava/lang/Exception; -> 8a a-BB@0x8a)
+
+a-BB@0x66 : [ a-BB@0x72 a-BB@0x8e ]
+	26      (00000066) iget-wide            v3, v5, Lo5/c;->c J
+	27      (0000006a) cmp-long             v9, v3, v6
+	28      (0000006e) if-gez               v9, +010h
+	8:87
+	(Ljava/lang/Exception; -> 8a a-BB@0x8a)
+
+a-BB@0x72 : [ a-BB@0x82 a-BB@0xc4 ]
+	29      (00000072) const-string         v9, "Cached settings have expired."
+	30      (00000076) invoke-static        v0, v1, Landroid/util/Log;->isLoggable(Ljava/lang/String; I)Z
+	31      (0000007c) move-result          v1
+	32      (0000007e) if-eqz               v1, +023h
+	8:87
+	(Ljava/lang/Exception; -> 8a a-BB@0x8a)
+
+a-BB@0x82 : 
+	33      (00000082) invoke-static        v0, v9, v2, Landroid/util/Log;->v(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+	34      (00000088) return-object        v2
+
+a-BB@0x8a : [ a-BB@0xc6 ]
+	35      (0000008a) move-exception       v9
+	36      (0000008c) goto                 +1dh
+
+a-BB@0x8e : [ a-BB@0x9e a-BB@0xa4 ]
+	37      (0000008e) const-string         v9, "Returning cached settings."
+	38      (00000092) invoke-static        v0, v1, Landroid/util/Log;->isLoggable(Ljava/lang/String; I)Z
+	39      (00000098) move-result          v1
+	40      (0000009a) if-eqz               v1, +005h
+	8e:a3
+	(Ljava/lang/Exception; -> aa a-BB@0xaa)
+
+a-BB@0x9e : [ a-BB@0xa4 ]
+	41      (0000009e) invoke-static        v0, v9, v2, Landroid/util/Log;->v(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+	8e:a3
+	(Ljava/lang/Exception; -> aa a-BB@0xaa)
+
+a-BB@0xa4 : 
+	42      (000000a4) return-object        v5
+
+a-BB@0xa6 : [ a-BB@0xc6 ]
+	43      (000000a6) move-object          v2, v5
+	44      (000000a8) goto                 +fh
+
+a-BB@0xaa : [ a-BB@0xa6 ]
+	45      (000000aa) move-exception       v9
+	46      (000000ac) goto                 -3h
+
+a-BB@0xae : [ a-BB@0xbe a-BB@0xc4 ]
+	47      (000000ae) const-string         v9, "No cached settings data found."
+	48      (000000b2) invoke-static        v0, v4, Landroid/util/Log;->isLoggable(Ljava/lang/String; I)Z
+	49      (000000b8) move-result          v1
+	50      (000000ba) if-eqz               v1, +005h
+	ae:c3
+	(Ljava/lang/Exception; -> 8a a-BB@0x8a)
+
+a-BB@0xbe : [ a-BB@0xc4 ]
+	51      (000000be) invoke-static        v0, v9, v2, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+	ae:c3
+	(Ljava/lang/Exception; -> 8a a-BB@0x8a)
+
+a-BB@0xc4 : 
+	52      (000000c4) return-object        v2
+
+a-BB@0xc6 : 
+	53      (000000c6) const-string         v1, "Failed to get cached settings"
+	54      (000000ca) invoke-static        v0, v1, v9, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+	55      (000000d0) return-object        v2
+

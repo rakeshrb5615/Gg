@@ -1,0 +1,41 @@
+# Lokhttp3/internal/_UtilJvmKt;->b(Ljava/net/Socket;)V [access_flags=public static final]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:java.net.Socket
+#
+# - return:void
+
+b-BB@0x0 : [ b-BB@0xa ]
+	0       (00000000) const-string         v0, "<this>"
+	1       (00000004) invoke-static        v2, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+
+b-BB@0xa : [ b-BB@0x10 ]
+	2       (0000000a) invoke-virtual       v2, Ljava/net/Socket;->close()V
+	a:f
+	(Ljava/lang/AssertionError; -> 30 b-BB@0x30)
+	(Ljava/lang/RuntimeException; -> 12 b-BB@0x12)
+	(Ljava/lang/Exception; -> 10 b-BB@0x10)
+
+b-BB@0x10 : 
+	3       (00000010) return-void          
+
+b-BB@0x12 : [ b-BB@0x2c b-BB@0x2e ]
+	4       (00000012) move-exception       v2
+	5       (00000014) invoke-virtual       v2, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+	6       (0000001a) move-result-object   v0
+	7       (0000001c) const-string         v1, "bio == null"
+	8       (00000020) invoke-static        v0, v1, Lkotlin/jvm/internal/j;->a(Ljava/lang/Object; Ljava/lang/Object;)Z
+	9       (00000026) move-result          v0
+	10      (00000028) if-eqz               v0, +003h
+
+b-BB@0x2c : 
+	11      (0000002c) return-void          
+
+b-BB@0x2e : 
+	12      (0000002e) throw                v2
+
+b-BB@0x30 : 
+	13      (00000030) move-exception       v2
+	14      (00000032) throw                v2
+

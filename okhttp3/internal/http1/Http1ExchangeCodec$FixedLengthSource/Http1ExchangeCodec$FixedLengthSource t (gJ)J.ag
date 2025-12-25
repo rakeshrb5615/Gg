@@ -1,0 +1,78 @@
+# Lokhttp3/internal/http1/Http1ExchangeCodec$FixedLengthSource;->t(Lx8/g; J)J [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v8
+# - v9:x8.g
+# - v10:long
+#
+# - return:long
+
+t-BB@0x0 : [ t-BB@0x16 t-BB@0x9e ]
+	0       (00000000) const-string         v0, "sink"
+	1       (00000004) invoke-static        v8, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) const-wide/16        v0, 0
+	3       (0000000e) cmp-long             v2, v9, v0
+	4       (00000012) if-ltz               v2, +046h
+
+t-BB@0x16 : [ t-BB@0x1e t-BB@0x8e ]
+	5       (00000016) iget-boolean         v2, v7, Lokhttp3/internal/http1/Http1ExchangeCodec$AbstractSource;->c Z
+	6       (0000001a) if-nez               v2, +03ah
+
+t-BB@0x1e : [ t-BB@0x2e t-BB@0x30 ]
+	7       (0000001e) iget-wide            v2, v7, Lokhttp3/internal/http1/Http1ExchangeCodec$FixedLengthSource;->e J
+	8       (00000022) cmp-long             v4, v2, v0
+	9       (00000026) const-wide/16        v5, -1
+	10      (0000002a) if-nez               v4, +003h
+
+t-BB@0x2e : 
+	11      (0000002e) return-wide          v5
+
+t-BB@0x30 : [ t-BB@0x48 t-BB@0x66 ]
+	12      (00000030) invoke-static        v2, v3, v9, v10, Ljava/lang/Math;->min(J J)J
+	13      (00000036) move-result-wide     v9
+	14      (00000038) invoke-super         v7, v8, v9, v10, Lokhttp3/internal/http1/Http1ExchangeCodec$AbstractSource;->t(Lx8/g; J)J
+	15      (0000003e) move-result-wide     v8
+	16      (00000040) cmp-long             v10, v8, v5
+	17      (00000044) if-eqz               v10, +011h
+
+t-BB@0x48 : [ t-BB@0x5a t-BB@0x64 ]
+	18      (00000048) iget-wide            v2, v7, Lokhttp3/internal/http1/Http1ExchangeCodec$FixedLengthSource;->e J
+	19      (0000004c) sub-long/2addr       v2, v8
+	20      (0000004e) iput-wide            v2, v7, Lokhttp3/internal/http1/Http1ExchangeCodec$FixedLengthSource;->e J
+	21      (00000052) cmp-long             v10, v2, v0
+	22      (00000056) if-nez               v10, +007h
+
+t-BB@0x5a : [ t-BB@0x64 ]
+	23      (0000005a) sget-object          v10, Lokhttp3/Headers;->c Lokhttp3/Headers;
+	24      (0000005e) invoke-virtual       v7, v10, Lokhttp3/internal/http1/Http1ExchangeCodec$AbstractSource;->c(Lokhttp3/Headers;)V
+
+t-BB@0x64 : 
+	25      (00000064) return-wide          v8
+
+t-BB@0x66 : 
+	26      (00000066) iget-object          v8, v7, Lokhttp3/internal/http1/Http1ExchangeCodec$FixedLengthSource;->f Lokhttp3/internal/http1/Http1ExchangeCodec;
+	27      (0000006a) iget-object          v8, v8, Lokhttp3/internal/http1/Http1ExchangeCodec;->b Lokhttp3/internal/http/ExchangeCodec$Carrier;
+	28      (0000006e) invoke-interface     v8, Lokhttp3/internal/http/ExchangeCodec$Carrier;->h()V
+	29      (00000074) new-instance         v8, Ljava/net/ProtocolException;
+	30      (00000078) const-string         v9, "unexpected end of stream"
+	31      (0000007c) invoke-direct        v8, v9, Ljava/net/ProtocolException;-><init>(Ljava/lang/String;)V
+	32      (00000082) sget-object          v9, Lokhttp3/internal/http1/Http1ExchangeCodec;->f Lokhttp3/Headers;
+	33      (00000086) invoke-virtual       v7, v9, Lokhttp3/internal/http1/Http1ExchangeCodec$AbstractSource;->c(Lokhttp3/Headers;)V
+	34      (0000008c) throw                v8
+
+t-BB@0x8e : 
+	35      (0000008e) new-instance         v8, Ljava/lang/IllegalStateException;
+	36      (00000092) const-string         v9, "closed"
+	37      (00000096) invoke-direct        v8, v9, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	38      (0000009c) throw                v8
+
+t-BB@0x9e : 
+	39      (0000009e) const-string         v8, "byteCount < 0: "
+	40      (000000a2) invoke-static        v9, v10, v8, Lv1/a;->g(J Ljava/lang/String;)Ljava/lang/String;
+	41      (000000a8) move-result-object   v8
+	42      (000000aa) new-instance         v9, Ljava/lang/IllegalArgumentException;
+	43      (000000ae) invoke-virtual       v8, Ljava/lang/Object;->toString()Ljava/lang/String;
+	44      (000000b4) move-result-object   v8
+	45      (000000b6) invoke-direct        v9, v8, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	46      (000000bc) throw                v9
+

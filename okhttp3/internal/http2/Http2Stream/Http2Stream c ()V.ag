@@ -1,0 +1,86 @@
+# Lokhttp3/internal/http2/Http2Stream;->c()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v2
+#
+# - return:void
+
+c-BB@0x0 : [ c-BB@0x6 ]
+	0       (00000000) sget-object          v0, Lokhttp3/internal/_UtilJvmKt;->a Ljava/util/TimeZone;
+	1       (00000004) monitor-enter        v2
+
+c-BB@0x6 : [ c-BB@0x12 c-BB@0x38 ]
+	2       (00000006) iget-object          v0, v2, Lokhttp3/internal/http2/Http2Stream;->n Lokhttp3/internal/http2/Http2Stream$FramingSource;
+	3       (0000000a) iget-boolean         v1, v0, Lokhttp3/internal/http2/Http2Stream$FramingSource;->b Z
+	4       (0000000e) if-nez               v1, +015h
+	6:41
+	(Ljava/lang/Throwable; -> 30 c-BB@0x30)
+
+c-BB@0x12 : [ c-BB@0x1a c-BB@0x38 ]
+	5       (00000012) iget-boolean         v0, v0, Lokhttp3/internal/http2/Http2Stream$FramingSource;->e Z
+	6       (00000016) if-eqz               v0, +011h
+	6:41
+	(Ljava/lang/Throwable; -> 30 c-BB@0x30)
+
+c-BB@0x1a : [ c-BB@0x26 c-BB@0x34 ]
+	7       (0000001a) iget-object          v0, v2, Lokhttp3/internal/http2/Http2Stream;->o Lokhttp3/internal/http2/Http2Stream$FramingSink;
+	8       (0000001e) iget-boolean         v1, v0, Lokhttp3/internal/http2/Http2Stream$FramingSink;->a Z
+	9       (00000022) if-nez               v1, +009h
+	6:41
+	(Ljava/lang/Throwable; -> 30 c-BB@0x30)
+
+c-BB@0x26 : [ c-BB@0x2e c-BB@0x38 ]
+	10      (00000026) iget-boolean         v0, v0, Lokhttp3/internal/http2/Http2Stream$FramingSink;->c Z
+	11      (0000002a) if-eqz               v0, +007h
+	6:41
+	(Ljava/lang/Throwable; -> 30 c-BB@0x30)
+
+c-BB@0x2e : [ c-BB@0x34 ]
+	12      (0000002e) goto                 +3h
+	6:41
+	(Ljava/lang/Throwable; -> 30 c-BB@0x30)
+
+c-BB@0x30 : [ c-BB@0x6a ]
+	13      (00000030) move-exception       v0
+	14      (00000032) goto                 +1ch
+	6:41
+	(Ljava/lang/Throwable; -> 30 c-BB@0x30)
+
+c-BB@0x34 : [ c-BB@0x3a ]
+	15      (00000034) const/4              v0, 1
+	16      (00000036) goto                 +2h
+	6:41
+	(Ljava/lang/Throwable; -> 30 c-BB@0x30)
+
+c-BB@0x38 : [ c-BB@0x3a ]
+	17      (00000038) const/4              v0, 0
+	6:41
+	(Ljava/lang/Throwable; -> 30 c-BB@0x30)
+
+c-BB@0x3a : [ c-BB@0x48 c-BB@0x56 ]
+	18      (0000003a) invoke-virtual       v2, Lokhttp3/internal/http2/Http2Stream;->j()Z
+	19      (00000040) move-result          v1
+	20      (00000042) monitor-exit         v2
+	21      (00000044) if-eqz               v0, +009h
+
+c-BB@0x48 : 
+	22      (00000048) sget-object          v0, Lokhttp3/internal/http2/ErrorCode;->n Lokhttp3/internal/http2/ErrorCode;
+	23      (0000004c) const/4              v1, 0
+	24      (0000004e) invoke-virtual       v2, v0, v1, Lokhttp3/internal/http2/Http2Stream;->e(Lokhttp3/internal/http2/ErrorCode; Ljava/io/IOException;)V
+	25      (00000054) return-void          
+
+c-BB@0x56 : [ c-BB@0x5a c-BB@0x68 ]
+	26      (00000056) if-nez               v1, +009h
+
+c-BB@0x5a : [ c-BB@0x68 ]
+	27      (0000005a) iget-object          v0, v2, Lokhttp3/internal/http2/Http2Stream;->b Lokhttp3/internal/http2/Http2Connection;
+	28      (0000005e) iget                 v1, v2, Lokhttp3/internal/http2/Http2Stream;->a I
+	29      (00000062) invoke-virtual       v0, v1, Lokhttp3/internal/http2/Http2Connection;->i(I)Lokhttp3/internal/http2/Http2Stream;
+
+c-BB@0x68 : 
+	30      (00000068) return-void          
+
+c-BB@0x6a : 
+	31      (0000006a) monitor-exit         v2
+	32      (0000006c) throw                v0
+

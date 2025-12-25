@@ -1,0 +1,41 @@
+# Lokhttp3/internal/idn/Punycode;->a(I Z I)I [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v-1
+# - v0:int
+# - v1:boolean
+# - v2:int
+#
+# - return:int
+
+a-BB@0x0 : [ a-BB@0x4 a-BB@0xa ]
+	0       (00000000) if-eqz               v1, +005h
+
+a-BB@0x4 : [ a-BB@0xe ]
+	1       (00000004) div-int/lit16        v0, v0, 700
+	2       (00000008) goto                 +3h
+
+a-BB@0xa : [ a-BB@0xe ]
+	3       (0000000a) div-int/lit8         v0, v0, 2
+
+a-BB@0xe : [ a-BB@0x16 ]
+	4       (0000000e) div-int              v1, v0, v2
+	5       (00000012) add-int/2addr        v1, v0
+	6       (00000014) const/4              v0, 0
+
+a-BB@0x16 : [ a-BB@0x1e a-BB@0x28 ]
+	7       (00000016) const/16             v2, 455
+	8       (0000001a) if-le                v1, v2, +007h
+
+a-BB@0x1e : [ a-BB@0x16 ]
+	9       (0000001e) div-int/lit8         v1, v1, 35
+	10      (00000022) add-int/lit8         v0, v0, 36
+	11      (00000026) goto                 -8h
+
+a-BB@0x28 : 
+	12      (00000028) mul-int/lit8         v2, v1, 36
+	13      (0000002c) add-int/lit8         v1, v1, 38
+	14      (00000030) div-int/2addr        v2, v1
+	15      (00000032) add-int/2addr        v2, v0
+	16      (00000034) return               v2
+

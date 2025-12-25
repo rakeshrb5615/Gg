@@ -1,0 +1,51 @@
+# Lo/b;->V(Landroid/os/Looper;)Landroid/os/Handler; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:android.os.Looper
+#
+# - return:android.os.Handler
+
+V-BB@0x0 : [ V-BB@0xc V-BB@0x16 ]
+	0       (00000000) sget                 v0, Landroid/os/Build$VERSION;->SDK_INT I
+	1       (00000004) const/16             v1, 28
+	2       (00000008) if-lt                v0, v1, +007h
+
+V-BB@0xc : 
+	3       (0000000c) invoke-static        v4, Le0/a;->a(Landroid/os/Looper;)Landroid/os/Handler;
+	4       (00000012) move-result-object   v4
+	5       (00000014) return-object        v4
+
+V-BB@0x16 : 
+	6       (00000016) const-class          v0, Landroid/os/Handler;
+	7       (0000001a) const-class          v1, Landroid/os/Looper;
+	8       (0000001e) const-class          v2, Landroid/os/Handler$Callback;
+	9       (00000022) sget-object          v3, Ljava/lang/Boolean;->TYPE Ljava/lang/Class;
+	10      (00000026) filled-new-array     v1, v2, v3, [Ljava/lang/Class;
+	11      (0000002c) move-result-object   v1
+	12      (0000002e) invoke-virtual       v0, v1, Ljava/lang/Class;->getDeclaredConstructor([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
+	13      (00000034) move-result-object   v0
+	14      (00000036) sget-object          v1, Ljava/lang/Boolean;->TRUE Ljava/lang/Boolean;
+	15      (0000003a) const/4              v2, 0
+	16      (0000003c) filled-new-array     v4, v2, v1, [Ljava/lang/Object;
+	17      (00000042) move-result-object   v1
+	18      (00000044) invoke-virtual       v0, v1, Ljava/lang/reflect/Constructor;->newInstance([Ljava/lang/Object;)Ljava/lang/Object;
+	19      (0000004a) move-result-object   v0
+	20      (0000004c) check-cast           v0, Landroid/os/Handler;
+	21      (00000050) return-object        v0
+	16:4f
+	(Ljava/lang/IllegalAccessException; -> 5e V-BB@0x5e)
+	(Ljava/lang/InstantiationException; -> 5e V-BB@0x5e)
+	(Ljava/lang/NoSuchMethodException; -> 5e V-BB@0x5e)
+	(Ljava/lang/reflect/InvocationTargetException; -> 52 V-BB@0x52)
+
+V-BB@0x52 : 
+	22      (00000052) new-instance         v0, Landroid/os/Handler;
+	23      (00000056) invoke-direct        v0, v4, Landroid/os/Handler;-><init>(Landroid/os/Looper;)V
+	24      (0000005c) return-object        v0
+
+V-BB@0x5e : 
+	25      (0000005e) new-instance         v0, Landroid/os/Handler;
+	26      (00000062) invoke-direct        v0, v4, Landroid/os/Handler;-><init>(Landroid/os/Looper;)V
+	27      (00000068) return-object        v0
+

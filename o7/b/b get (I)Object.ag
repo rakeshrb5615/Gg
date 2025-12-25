@@ -1,0 +1,29 @@
+# Lo7/b;->get(I)Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:int
+#
+# - return:java.lang.Object
+
+get-BB@0x0 : [ get-BB@0xa get-BB@0x14 ]
+	0       (00000000) iget-object          v0, v4, Lo7/b;->a [Ljava/lang/Enum;
+	1       (00000004) array-length         v1, v0
+	2       (00000006) if-ltz               v5, +007h
+
+get-BB@0xa : [ get-BB@0xe get-BB@0x14 ]
+	3       (0000000a) if-ge                v5, v1, +005h
+
+get-BB@0xe : 
+	4       (0000000e) aget-object          v5, v0, v5
+	5       (00000012) return-object        v5
+
+get-BB@0x14 : 
+	6       (00000014) new-instance         v0, Ljava/lang/IndexOutOfBoundsException;
+	7       (00000018) const-string         v2, "index: "
+	8       (0000001c) const-string         v3, ", size: "
+	9       (00000020) invoke-static        v2, v5, v1, v3, Lv1/a;->i(Ljava/lang/String; I I Ljava/lang/String;)Ljava/lang/String;
+	10      (00000026) move-result-object   v5
+	11      (00000028) invoke-direct        v0, v5, Ljava/lang/IndexOutOfBoundsException;-><init>(Ljava/lang/String;)V
+	12      (0000002e) throw                v0
+

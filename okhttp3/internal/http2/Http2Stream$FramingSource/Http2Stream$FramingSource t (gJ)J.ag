@@ -1,0 +1,278 @@
+# Lokhttp3/internal/http2/Http2Stream$FramingSource;->t(Lx8/g; J)J [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v27
+# - v28:x8.g
+# - v29:long
+#
+# - return:long
+
+t-BB@0x0 : [ t-BB@0x22 t-BB@0x1e0 ]
+	0       (00000000) move-object/from16   v1, v26
+	1       (00000004) move-object/from16   v0, v27
+	2       (00000008) move-wide/from16     v2, v28
+	3       (0000000c) const-string         v4, "sink"
+	4       (00000010) invoke-static        v0, v4, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	5       (00000016) const-wide/16        v4, 0
+	6       (0000001a) cmp-long             v6, v2, v4
+	7       (0000001e) if-ltz               v6, +0e1h
+
+t-BB@0x22 : [ t-BB@0x28 ]
+	8       (00000022) iget-object          v6, v1, Lokhttp3/internal/http2/Http2Stream$FramingSource;->f Lokhttp3/internal/http2/Http2Stream;
+	9       (00000026) monitor-enter        v6
+
+t-BB@0x28 : [ t-BB@0x46 t-BB@0x54 ]
+	10      (00000028) sget                 v7, Lokhttp3/internal/http2/Http2Stream;->t I
+	11      (0000002c) iget-object          v7, v6, Lokhttp3/internal/http2/Http2Stream;->b Lokhttp3/internal/http2/Http2Connection;
+	12      (00000030) invoke-virtual       v7, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	13      (00000036) iget-object          v7, v6, Lokhttp3/internal/http2/Http2Stream;->o Lokhttp3/internal/http2/Http2Stream$FramingSink;
+	14      (0000003a) iget-boolean         v8, v7, Lokhttp3/internal/http2/Http2Stream$FramingSink;->c Z
+	15      (0000003e) const/4              v9, 1
+	16      (00000040) const/4              v10, 0
+	17      (00000042) if-nez               v8, +009h
+	28:63
+	(Ljava/lang/Throwable; -> 66 t-BB@0x66)
+
+t-BB@0x46 : [ t-BB@0x4e t-BB@0x50 ]
+	18      (00000046) iget-boolean         v7, v7, Lokhttp3/internal/http2/Http2Stream$FramingSink;->a Z
+	19      (0000004a) if-eqz               v7, +003h
+	28:63
+	(Ljava/lang/Throwable; -> 66 t-BB@0x66)
+
+t-BB@0x4e : [ t-BB@0x54 ]
+	20      (0000004e) goto                 +3h
+	28:63
+	(Ljava/lang/Throwable; -> 66 t-BB@0x66)
+
+t-BB@0x50 : [ t-BB@0x56 ]
+	21      (00000050) move                 v7, v10
+	22      (00000052) goto                 +2h
+	28:63
+	(Ljava/lang/Throwable; -> 66 t-BB@0x66)
+
+t-BB@0x54 : [ t-BB@0x56 ]
+	23      (00000054) move                 v7, v9
+	28:63
+	(Ljava/lang/Throwable; -> 66 t-BB@0x66)
+
+t-BB@0x56 : [ t-BB@0x5a t-BB@0x6c ]
+	24      (00000056) if-eqz               v7, +00bh
+	28:63
+	(Ljava/lang/Throwable; -> 66 t-BB@0x66)
+
+t-BB@0x5a : [ t-BB@0x6c ]
+	25      (0000005a) iget-object          v8, v6, Lokhttp3/internal/http2/Http2Stream;->p Lokhttp3/internal/http2/Http2Stream$StreamTimeout;
+	26      (0000005e) invoke-virtual       v8, Lx8/d;->h()V
+	27      (00000064) goto                 +4h
+
+t-BB@0x66 : [ t-BB@0x1dc ]
+	28      (00000066) move-exception       v0
+	29      (00000068) goto/16              +0bah
+
+t-BB@0x6c : [ t-BB@0x78 t-BB@0xa8 ]
+	30      (0000006c) invoke-virtual       v6, Lokhttp3/internal/http2/Http2Stream;->h()Lokhttp3/internal/http2/ErrorCode;
+	31      (00000072) move-result-object   v8
+	32      (00000074) if-eqz               v8, +01ah
+	6c:149
+	(Ljava/lang/Throwable; -> a2 t-BB@0xa2)
+
+t-BB@0x78 : [ t-BB@0x80 t-BB@0xa8 ]
+	33      (00000078) iget-boolean         v8, v1, Lokhttp3/internal/http2/Http2Stream$FramingSource;->b Z
+	34      (0000007c) if-nez               v8, +016h
+	6c:149
+	(Ljava/lang/Throwable; -> a2 t-BB@0xa2)
+
+t-BB@0x80 : [ t-BB@0x88 t-BB@0xaa ]
+	35      (00000080) iget-object          v8, v6, Lokhttp3/internal/http2/Http2Stream;->s Ljava/io/IOException;
+	36      (00000084) if-nez               v8, +013h
+	6c:149
+	(Ljava/lang/Throwable; -> a2 t-BB@0xa2)
+
+t-BB@0x88 : [ t-BB@0xaa ]
+	37      (00000088) new-instance         v8, Lokhttp3/internal/http2/StreamResetException;
+	38      (0000008c) invoke-virtual       v6, Lokhttp3/internal/http2/Http2Stream;->h()Lokhttp3/internal/http2/ErrorCode;
+	39      (00000092) move-result-object   v11
+	40      (00000094) invoke-static        v11, Lkotlin/jvm/internal/j;->b(Ljava/lang/Object;)V
+	41      (0000009a) invoke-direct        v8, v11, Lokhttp3/internal/http2/StreamResetException;-><init>(Lokhttp3/internal/http2/ErrorCode;)V
+	42      (000000a0) goto                 +5h
+	6c:149
+	(Ljava/lang/Throwable; -> a2 t-BB@0xa2)
+
+t-BB@0xa2 : [ t-BB@0x1cc ]
+	43      (000000a2) move-exception       v0
+	44      (000000a4) goto/16              +094h
+	6c:149
+	(Ljava/lang/Throwable; -> a2 t-BB@0xa2)
+
+t-BB@0xa8 : [ t-BB@0xaa ]
+	45      (000000a8) const/4              v8, 0
+	6c:149
+	(Ljava/lang/Throwable; -> a2 t-BB@0xa2)
+
+t-BB@0xaa : [ t-BB@0xb2 t-BB@0x1bc ]
+	46      (000000aa) iget-boolean         v11, v1, Lokhttp3/internal/http2/Http2Stream$FramingSource;->e Z
+	47      (000000ae) if-nez               v11, +087h
+	6c:149
+	(Ljava/lang/Throwable; -> a2 t-BB@0xa2)
+
+t-BB@0xb2 : [ t-BB@0xc6 t-BB@0x146 ]
+	48      (000000b2) iget-object          v11, v1, Lokhttp3/internal/http2/Http2Stream$FramingSource;->d Lx8/g;
+	49      (000000b6) iget-wide            v12, v11, Lx8/g;->b J
+	50      (000000ba) cmp-long             v14, v12, v4
+	51      (000000be) const-wide/16        v15, -1
+	52      (000000c2) if-lez               v14, +042h
+	6c:149
+	(Ljava/lang/Throwable; -> a2 t-BB@0xa2)
+
+t-BB@0xc6 : [ t-BB@0xfc t-BB@0x142 ]
+	53      (000000c6) invoke-static        v2, v3, v12, v13, Ljava/lang/Math;->min(J J)J
+	54      (000000cc) move-result-wide     v12
+	55      (000000ce) invoke-virtual       v11, v0, v12, v13, Lx8/g;->t(Lx8/g; J)J
+	56      (000000d4) move-result-wide     v18
+	57      (000000d6) iget-object          v9, v6, Lokhttp3/internal/http2/Http2Stream;->c Lokhttp3/internal/http2/flowcontrol/WindowCounter;
+	58      (000000da) const-wide/16        v20, 0
+	59      (000000de) const/16             v22, 2
+	60      (000000e2) move-object/from16   v17, v9
+	61      (000000e6) invoke-static/range  v17 ... v22, Lokhttp3/internal/http2/flowcontrol/WindowCounter;->b(Lokhttp3/internal/http2/flowcontrol/WindowCounter; J J I)V
+	62      (000000ec) iget-object          v9, v6, Lokhttp3/internal/http2/Http2Stream;->c Lokhttp3/internal/http2/flowcontrol/WindowCounter;
+	63      (000000f0) invoke-virtual       v9, Lokhttp3/internal/http2/flowcontrol/WindowCounter;->a()J
+	64      (000000f6) move-result-wide     v11
+	65      (000000f8) if-nez               v8, +025h
+	6c:149
+	(Ljava/lang/Throwable; -> a2 t-BB@0xa2)
+
+t-BB@0xfc : [ t-BB@0x11a t-BB@0x142 ]
+	66      (000000fc) iget-object          v9, v6, Lokhttp3/internal/http2/Http2Stream;->b Lokhttp3/internal/http2/Http2Connection;
+	67      (00000100) iget-object          v9, v9, Lokhttp3/internal/http2/Http2Connection;->w Lokhttp3/internal/http2/Settings;
+	68      (00000104) invoke-virtual       v9, Lokhttp3/internal/http2/Settings;->a()I
+	69      (0000010a) move-result          v9
+	70      (0000010c) div-int/lit8         v9, v9, 2
+	71      (00000110) int-to-long          v13, v9
+	72      (00000112) cmp-long             v9, v11, v13
+	73      (00000116) if-ltz               v9, +016h
+	6c:149
+	(Ljava/lang/Throwable; -> a2 t-BB@0xa2)
+
+t-BB@0x11a : [ t-BB@0x142 ]
+	74      (0000011a) iget-object          v9, v6, Lokhttp3/internal/http2/Http2Stream;->b Lokhttp3/internal/http2/Http2Connection;
+	75      (0000011e) iget                 v13, v6, Lokhttp3/internal/http2/Http2Stream;->a I
+	76      (00000122) invoke-virtual       v9, v13, v11, v12, Lokhttp3/internal/http2/Http2Connection;->A(I J)V
+	77      (00000128) iget-object          v9, v6, Lokhttp3/internal/http2/Http2Stream;->c Lokhttp3/internal/http2/flowcontrol/WindowCounter;
+	78      (0000012c) const-wide/16        v21, 0
+	79      (00000130) const/16             v25, 1
+	80      (00000134) move-object/from16   v20, v9
+	81      (00000138) move-wide/from16     v23, v11
+	82      (0000013c) invoke-static/range  v20 ... v25, Lokhttp3/internal/http2/flowcontrol/WindowCounter;->b(Lokhttp3/internal/http2/flowcontrol/WindowCounter; J J I)V
+	6c:149
+	(Ljava/lang/Throwable; -> a2 t-BB@0xa2)
+
+t-BB@0x142 : [ t-BB@0x17c ]
+	83      (00000142) move                 v9, v10
+	84      (00000144) goto                 +1ch
+	6c:149
+	(Ljava/lang/Throwable; -> a2 t-BB@0xa2)
+
+t-BB@0x146 : [ t-BB@0x14e t-BB@0x178 ]
+	85      (00000146) iget-boolean         v11, v1, Lokhttp3/internal/http2/Http2Stream$FramingSource;->b Z
+	86      (0000014a) if-nez               v11, +017h
+
+t-BB@0x14e : [ t-BB@0x152 t-BB@0x178 ]
+	87      (0000014e) if-nez               v8, +015h
+
+t-BB@0x152 : [ t-BB@0x158 ]
+	88      (00000152) invoke-virtual       v6, Ljava/lang/Object;->wait()V
+	152:157
+	(Ljava/lang/InterruptedException; -> 15e t-BB@0x15e)
+	(Ljava/lang/Throwable; -> a2 t-BB@0xa2)
+
+t-BB@0x158 : [ t-BB@0x17c ]
+	89      (00000158) move-wide/from16     v18, v15
+	90      (0000015c) goto                 +10h
+
+t-BB@0x15e : 
+	91      (0000015e) invoke-static        Ljava/lang/Thread;->currentThread()Ljava/lang/Thread;
+	92      (00000164) move-result-object   v0
+	93      (00000166) invoke-virtual       v0, Ljava/lang/Thread;->interrupt()V
+	94      (0000016c) new-instance         v0, Ljava/io/InterruptedIOException;
+	95      (00000170) invoke-direct        v0, Ljava/io/InterruptedIOException;-><init>()V
+	96      (00000176) throw                v0
+	15e:177
+	(Ljava/lang/Throwable; -> a2 t-BB@0xa2)
+
+t-BB@0x178 : [ t-BB@0x158 ]
+	97      (00000178) move                 v9, v10
+	98      (0000017a) goto                 -11h
+
+t-BB@0x17c : [ t-BB@0x180 t-BB@0x18a ]
+	99      (0000017c) if-eqz               v7, +007h
+
+t-BB@0x180 : [ t-BB@0x18a ]
+	100     (00000180) iget-object          v7, v6, Lokhttp3/internal/http2/Http2Stream;->p Lokhttp3/internal/http2/Http2Stream$StreamTimeout;
+	101     (00000184) invoke-virtual       v7, Lokhttp3/internal/http2/Http2Stream$StreamTimeout;->l()V
+	180:189
+	(Ljava/lang/Throwable; -> 66 t-BB@0x66)
+
+t-BB@0x18a : [ t-BB@0x1a6 t-BB@0x1aa ]
+	102     (0000018a) monitor-exit         v6
+	103     (0000018c) iget-object          v6, v1, Lokhttp3/internal/http2/Http2Stream$FramingSource;->f Lokhttp3/internal/http2/Http2Stream;
+	104     (00000190) iget-object          v7, v6, Lokhttp3/internal/http2/Http2Stream;->b Lokhttp3/internal/http2/Http2Connection;
+	105     (00000194) iget-object          v7, v7, Lokhttp3/internal/http2/Http2Connection;->v Lokhttp3/internal/http2/FlowControlListener;
+	106     (00000198) iget-object          v6, v6, Lokhttp3/internal/http2/Http2Stream;->c Lokhttp3/internal/http2/flowcontrol/WindowCounter;
+	107     (0000019c) invoke-interface     v7, v6, Lokhttp3/internal/http2/FlowControlListener;->a(Lokhttp3/internal/http2/flowcontrol/WindowCounter;)V
+	108     (000001a2) if-eqz               v9, +004h
+
+t-BB@0x1a6 : [ t-BB@0x22 ]
+	109     (000001a6) goto/16              -0c2h
+
+t-BB@0x1aa : [ t-BB@0x1b2 t-BB@0x1b4 ]
+	110     (000001aa) cmp-long             v0, v18, v15
+	111     (000001ae) if-eqz               v0, +003h
+
+t-BB@0x1b2 : 
+	112     (000001b2) return-wide          v18
+
+t-BB@0x1b4 : [ t-BB@0x1b8 t-BB@0x1ba ]
+	113     (000001b4) if-nez               v8, +003h
+
+t-BB@0x1b8 : 
+	114     (000001b8) return-wide          v15
+
+t-BB@0x1ba : 
+	115     (000001ba) throw                v8
+
+t-BB@0x1bc : 
+	116     (000001bc) new-instance         v0, Ljava/io/IOException;
+	117     (000001c0) const-string         v2, "stream closed"
+	118     (000001c4) invoke-direct        v0, v2, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+	119     (000001ca) throw                v0
+	1bc:1cb
+	(Ljava/lang/Throwable; -> a2 t-BB@0xa2)
+
+t-BB@0x1cc : [ t-BB@0x1d0 t-BB@0x1da ]
+	120     (000001cc) if-eqz               v7, +007h
+
+t-BB@0x1d0 : [ t-BB@0x1da ]
+	121     (000001d0) iget-object          v2, v6, Lokhttp3/internal/http2/Http2Stream;->p Lokhttp3/internal/http2/Http2Stream$StreamTimeout;
+	122     (000001d4) invoke-virtual       v2, Lokhttp3/internal/http2/Http2Stream$StreamTimeout;->l()V
+	1d0:1db
+	(Ljava/lang/Throwable; -> 66 t-BB@0x66)
+
+t-BB@0x1da : 
+	123     (000001da) throw                v0
+	1d0:1db
+	(Ljava/lang/Throwable; -> 66 t-BB@0x66)
+
+t-BB@0x1dc : 
+	124     (000001dc) monitor-exit         v6
+	125     (000001de) throw                v0
+
+t-BB@0x1e0 : 
+	126     (000001e0) const-string         v0, "byteCount < 0: "
+	127     (000001e4) invoke-static        v2, v3, v0, Lv1/a;->g(J Ljava/lang/String;)Ljava/lang/String;
+	128     (000001ea) move-result-object   v0
+	129     (000001ec) new-instance         v2, Ljava/lang/IllegalArgumentException;
+	130     (000001f0) invoke-virtual       v0, Ljava/lang/Object;->toString()Ljava/lang/String;
+	131     (000001f6) move-result-object   v0
+	132     (000001f8) invoke-direct        v2, v0, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	133     (000001fe) throw                v2
+

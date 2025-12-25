@@ -1,0 +1,232 @@
+# Lokhttp3/internal/http1/Http1ExchangeCodec$ChunkedSource;->t(Lx8/g; J)J [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v13
+# - v14:x8.g
+# - v15:long
+#
+# - return:long
+
+t-BB@0x0 : [ t-BB@0x1e t-BB@0x250 ]
+	0       (00000000) iget-object          v0, v12, Lokhttp3/internal/http1/Http1ExchangeCodec$ChunkedSource;->m Lokhttp3/internal/http1/Http1ExchangeCodec;
+	1       (00000004) iget-object          v1, v0, Lokhttp3/internal/http1/Http1ExchangeCodec;->c Lokhttp3/internal/connection/BufferedSocket;
+	2       (00000008) const-string         v2, "sink"
+	3       (0000000c) invoke-static        v13, v2, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	4       (00000012) const-wide/16        v2, 0
+	5       (00000016) cmp-long             v4, v14, v2
+	6       (0000001a) if-ltz               v4, +11bh
+
+t-BB@0x1e : [ t-BB@0x26 t-BB@0x240 ]
+	7       (0000001e) iget-boolean         v4, v12, Lokhttp3/internal/http1/Http1ExchangeCodec$AbstractSource;->c Z
+	8       (00000022) if-nez               v4, +10fh
+
+t-BB@0x26 : [ t-BB@0x32 t-BB@0x36 ]
+	9       (00000026) iget-boolean         v4, v12, Lokhttp3/internal/http1/Http1ExchangeCodec$ChunkedSource;->f Z
+	10      (0000002a) const-wide/16        v5, -1
+	11      (0000002e) if-nez               v4, +004h
+
+t-BB@0x32 : [ t-BB@0x1a6 ]
+	12      (00000032) goto/16              +0bah
+
+t-BB@0x36 : [ t-BB@0x42 t-BB@0x4a ]
+	13      (00000036) iget-wide            v7, v12, Lokhttp3/internal/http1/Http1ExchangeCodec$ChunkedSource;->e J
+	14      (0000003a) cmp-long             v4, v7, v2
+	15      (0000003e) if-eqz               v4, +006h
+
+t-BB@0x42 : [ t-BB@0x4a t-BB@0x1a8 ]
+	16      (00000042) cmp-long             v4, v7, v5
+	17      (00000046) if-nez               v4, +0b1h
+
+t-BB@0x4a : [ t-BB@0x56 t-BB@0x64 ]
+	18      (0000004a) const-string         v4, "expected chunk size and optional extensions but was ""
+	19      (0000004e) cmp-long             v7, v7, v5
+	20      (00000052) if-eqz               v7, +009h
+
+t-BB@0x56 : [ t-BB@0x64 ]
+	21      (00000056) invoke-interface     v1, Lokhttp3/internal/connection/BufferedSocket;->a()Lx8/i;
+	22      (0000005c) move-result-object   v7
+	23      (0000005e) invoke-interface     v7, Lx8/i;->g()Ljava/lang/String;
+
+t-BB@0x64 : [ t-BB@0xa4 t-BB@0x1f4 ]
+	24      (00000064) invoke-interface     v1, Lokhttp3/internal/connection/BufferedSocket;->a()Lx8/i;
+	25      (0000006a) move-result-object   v7
+	26      (0000006c) invoke-interface     v7, Lx8/i;->u()J
+	27      (00000072) move-result-wide     v7
+	28      (00000074) iput-wide            v7, v12, Lokhttp3/internal/http1/Http1ExchangeCodec$ChunkedSource;->e J
+	29      (00000078) invoke-interface     v1, Lokhttp3/internal/connection/BufferedSocket;->a()Lx8/i;
+	30      (0000007e) move-result-object   v1
+	31      (00000080) invoke-interface     v1, Lx8/i;->g()Ljava/lang/String;
+	32      (00000086) move-result-object   v1
+	33      (00000088) invoke-static        v1, Lb8/i;->H0(Ljava/lang/String;)Ljava/lang/CharSequence;
+	34      (0000008e) move-result-object   v1
+	35      (00000090) invoke-virtual       v1, Ljava/lang/Object;->toString()Ljava/lang/String;
+	36      (00000096) move-result-object   v1
+	37      (00000098) iget-wide            v7, v12, Lokhttp3/internal/http1/Http1ExchangeCodec$ChunkedSource;->e J
+	38      (0000009c) cmp-long             v7, v7, v2
+	39      (000000a0) if-ltz               v7, +0aah
+	64:bb
+	(Ljava/lang/NumberFormatException; -> c2 t-BB@0xc2)
+
+t-BB@0xa4 : [ t-BB@0xb0 t-BB@0xc8 ]
+	40      (000000a4) invoke-virtual       v1, Ljava/lang/String;->length()I
+	41      (000000aa) move-result          v7
+	42      (000000ac) if-lez               v7, +00eh
+	64:bb
+	(Ljava/lang/NumberFormatException; -> c2 t-BB@0xc2)
+
+t-BB@0xb0 : [ t-BB@0xc0 t-BB@0x1f4 ]
+	43      (000000b0) const-string         v7, ";"
+	44      (000000b4) invoke-static        v1, v7, Lb8/p;->p0(Ljava/lang/String; Ljava/lang/String;)Z
+	45      (000000ba) move-result          v7
+	46      (000000bc) if-eqz               v7, +09ch
+
+t-BB@0xc0 : [ t-BB@0xc8 ]
+	47      (000000c0) goto                 +4h
+
+t-BB@0xc2 : [ t-BB@0x22c ]
+	48      (000000c2) move-exception       v13
+	49      (000000c4) goto/16              +0b4h
+
+t-BB@0xc8 : [ t-BB@0xd4 t-BB@0x19e ]
+	50      (000000c8) iget-wide            v7, v12, Lokhttp3/internal/http1/Http1ExchangeCodec$ChunkedSource;->e J
+	51      (000000cc) cmp-long             v1, v7, v2
+	52      (000000d0) if-nez               v1, +067h
+
+t-BB@0xd4 : [ t-BB@0xee ]
+	53      (000000d4) const/4              v1, 0
+	54      (000000d6) iput-boolean         v1, v12, Lokhttp3/internal/http1/Http1ExchangeCodec$ChunkedSource;->f Z
+	55      (000000da) iget-object          v2, v0, Lokhttp3/internal/http1/Http1ExchangeCodec;->e Lokhttp3/internal/http1/HeadersReader;
+	56      (000000de) invoke-virtual       v2, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	57      (000000e4) new-instance         v3, Lokhttp3/Headers$Builder;
+	58      (000000e8) invoke-direct        v3, Lokhttp3/Headers$Builder;-><init>()V
+
+t-BB@0xee : [ t-BB@0x11e t-BB@0x12e ]
+	59      (000000ee) iget-object          v4, v2, Lokhttp3/internal/http1/HeadersReader;->a Lx8/i;
+	60      (000000f2) iget-wide            v7, v2, Lokhttp3/internal/http1/HeadersReader;->b J
+	61      (000000f6) invoke-interface     v4, v7, v8, Lx8/i;->l(J)Ljava/lang/String;
+	62      (000000fc) move-result-object   v4
+	63      (000000fe) iget-wide            v7, v2, Lokhttp3/internal/http1/HeadersReader;->b J
+	64      (00000102) invoke-virtual       v4, Ljava/lang/String;->length()I
+	65      (00000108) move-result          v9
+	66      (0000010a) int-to-long          v9, v9
+	67      (0000010c) sub-long/2addr       v7, v9
+	68      (0000010e) iput-wide            v7, v2, Lokhttp3/internal/http1/HeadersReader;->b J
+	69      (00000112) invoke-virtual       v4, Ljava/lang/String;->length()I
+	70      (00000118) move-result          v7
+	71      (0000011a) if-nez               v7, +00ah
+
+t-BB@0x11e : [ t-BB@0x19e ]
+	72      (0000011e) invoke-virtual       v3, Lokhttp3/Headers$Builder;->c()Lokhttp3/Headers;
+	73      (00000124) move-result-object   v1
+	74      (00000126) invoke-virtual       v12, v1, Lokhttp3/internal/http1/Http1ExchangeCodec$AbstractSource;->c(Lokhttp3/Headers;)V
+	75      (0000012c) goto                 +39h
+
+t-BB@0x12e : [ t-BB@0x148 t-BB@0x170 ]
+	76      (0000012e) const/4              v7, 4
+	77      (00000130) const/16             v8, 58
+	78      (00000134) const/4              v9, 1
+	79      (00000136) invoke-static        v4, v8, v9, v7, Lb8/i;->v0(Ljava/lang/CharSequence; C I I)I
+	80      (0000013c) move-result          v7
+	81      (0000013e) const/4              v10, -1
+	82      (00000140) const-string         v11, "substring(...)"
+	83      (00000144) if-eq                v7, v10, +016h
+
+t-BB@0x148 : [ t-BB@0xee ]
+	84      (00000148) invoke-virtual       v4, v1, v7, Ljava/lang/String;->substring(I I)Ljava/lang/String;
+	85      (0000014e) move-result-object   v8
+	86      (00000150) invoke-static        v8, v11, Lkotlin/jvm/internal/j;->d(Ljava/lang/Object; Ljava/lang/String;)V
+	87      (00000156) add-int/lit8         v7, v7, 1
+	88      (0000015a) invoke-virtual       v4, v7, Ljava/lang/String;->substring(I)Ljava/lang/String;
+	89      (00000160) move-result-object   v4
+	90      (00000162) invoke-static        v4, v11, Lkotlin/jvm/internal/j;->d(Ljava/lang/Object; Ljava/lang/String;)V
+	91      (00000168) invoke-virtual       v3, v8, v4, Lokhttp3/Headers$Builder;->b(Ljava/lang/String; Ljava/lang/String;)V
+	92      (0000016e) goto                 -40h
+
+t-BB@0x170 : [ t-BB@0x180 t-BB@0x196 ]
+	93      (00000170) invoke-virtual       v4, v1, Ljava/lang/String;->charAt(I)C
+	94      (00000176) move-result          v7
+	95      (00000178) const-string         v10, ""
+	96      (0000017c) if-ne                v7, v8, +00dh
+
+t-BB@0x180 : [ t-BB@0xee ]
+	97      (00000180) invoke-virtual       v4, v9, Ljava/lang/String;->substring(I)Ljava/lang/String;
+	98      (00000186) move-result-object   v4
+	99      (00000188) invoke-static        v4, v11, Lkotlin/jvm/internal/j;->d(Ljava/lang/Object; Ljava/lang/String;)V
+	100     (0000018e) invoke-virtual       v3, v10, v4, Lokhttp3/Headers$Builder;->b(Ljava/lang/String; Ljava/lang/String;)V
+	101     (00000194) goto                 -53h
+
+t-BB@0x196 : [ t-BB@0xee ]
+	102     (00000196) invoke-virtual       v3, v10, v4, Lokhttp3/Headers$Builder;->b(Ljava/lang/String; Ljava/lang/String;)V
+	103     (0000019c) goto                 -57h
+
+t-BB@0x19e : [ t-BB@0x1a6 t-BB@0x1a8 ]
+	104     (0000019e) iget-boolean         v1, v12, Lokhttp3/internal/http1/Http1ExchangeCodec$ChunkedSource;->f Z
+	105     (000001a2) if-nez               v1, +003h
+
+t-BB@0x1a6 : 
+	106     (000001a6) return-wide          v5
+
+t-BB@0x1a8 : [ t-BB@0x1c4 t-BB@0x1d0 ]
+	107     (000001a8) iget-wide            v1, v12, Lokhttp3/internal/http1/Http1ExchangeCodec$ChunkedSource;->e J
+	108     (000001ac) invoke-static        v14, v15, v1, v2, Ljava/lang/Math;->min(J J)J
+	109     (000001b2) move-result-wide     v14
+	110     (000001b4) invoke-super         v12, v13, v14, v15, Lokhttp3/internal/http1/Http1ExchangeCodec$AbstractSource;->t(Lx8/g; J)J
+	111     (000001ba) move-result-wide     v13
+	112     (000001bc) cmp-long             v15, v13, v5
+	113     (000001c0) if-eqz               v15, +008h
+
+t-BB@0x1c4 : 
+	114     (000001c4) iget-wide            v0, v12, Lokhttp3/internal/http1/Http1ExchangeCodec$ChunkedSource;->e J
+	115     (000001c8) sub-long/2addr       v0, v13
+	116     (000001ca) iput-wide            v0, v12, Lokhttp3/internal/http1/Http1ExchangeCodec$ChunkedSource;->e J
+	117     (000001ce) return-wide          v13
+
+t-BB@0x1d0 : 
+	118     (000001d0) iget-object          v13, v0, Lokhttp3/internal/http1/Http1ExchangeCodec;->b Lokhttp3/internal/http/ExchangeCodec$Carrier;
+	119     (000001d4) invoke-interface     v13, Lokhttp3/internal/http/ExchangeCodec$Carrier;->h()V
+	120     (000001da) new-instance         v13, Ljava/net/ProtocolException;
+	121     (000001de) const-string         v14, "unexpected end of stream"
+	122     (000001e2) invoke-direct        v13, v14, Ljava/net/ProtocolException;-><init>(Ljava/lang/String;)V
+	123     (000001e8) sget-object          v14, Lokhttp3/internal/http1/Http1ExchangeCodec;->f Lokhttp3/Headers;
+	124     (000001ec) invoke-virtual       v12, v14, Lokhttp3/internal/http1/Http1ExchangeCodec$AbstractSource;->c(Lokhttp3/Headers;)V
+	125     (000001f2) throw                v13
+
+t-BB@0x1f4 : 
+	126     (000001f4) new-instance         v13, Ljava/net/ProtocolException;
+	127     (000001f8) new-instance         v14, Ljava/lang/StringBuilder;
+	128     (000001fc) invoke-direct        v14, v4, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	129     (00000202) iget-wide            v2, v12, Lokhttp3/internal/http1/Http1ExchangeCodec$ChunkedSource;->e J
+	130     (00000206) invoke-virtual       v14, v2, v3, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+	131     (0000020c) invoke-virtual       v14, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	132     (00000212) const/16             v15, 34
+	133     (00000216) invoke-virtual       v14, v15, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+	134     (0000021c) invoke-virtual       v14, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	135     (00000222) move-result-object   v14
+	136     (00000224) invoke-direct        v13, v14, Ljava/net/ProtocolException;-><init>(Ljava/lang/String;)V
+	137     (0000022a) throw                v13
+	1f4:22b
+	(Ljava/lang/NumberFormatException; -> c2 t-BB@0xc2)
+
+t-BB@0x22c : 
+	138     (0000022c) new-instance         v14, Ljava/net/ProtocolException;
+	139     (00000230) invoke-virtual       v13, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+	140     (00000236) move-result-object   v13
+	141     (00000238) invoke-direct        v14, v13, Ljava/net/ProtocolException;-><init>(Ljava/lang/String;)V
+	142     (0000023e) throw                v14
+
+t-BB@0x240 : 
+	143     (00000240) new-instance         v13, Ljava/lang/IllegalStateException;
+	144     (00000244) const-string         v14, "closed"
+	145     (00000248) invoke-direct        v13, v14, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	146     (0000024e) throw                v13
+
+t-BB@0x250 : 
+	147     (00000250) const-string         v13, "byteCount < 0: "
+	148     (00000254) invoke-static        v14, v15, v13, Lv1/a;->g(J Ljava/lang/String;)Ljava/lang/String;
+	149     (0000025a) move-result-object   v13
+	150     (0000025c) new-instance         v14, Ljava/lang/IllegalArgumentException;
+	151     (00000260) invoke-virtual       v13, Ljava/lang/Object;->toString()Ljava/lang/String;
+	152     (00000266) move-result-object   v13
+	153     (00000268) invoke-direct        v14, v13, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	154     (0000026e) throw                v14
+

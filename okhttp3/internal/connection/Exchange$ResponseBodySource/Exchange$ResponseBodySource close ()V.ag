@@ -1,0 +1,33 @@
+# Lokhttp3/internal/connection/Exchange$ResponseBodySource;->close()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v1
+#
+# - return:void
+
+close-BB@0x0 : [ close-BB@0x8 close-BB@0xa ]
+	0       (00000000) iget-boolean         v0, v1, Lokhttp3/internal/connection/Exchange$ResponseBodySource;->m Z
+	1       (00000004) if-eqz               v0, +003h
+
+close-BB@0x8 : 
+	2       (00000008) return-void          
+
+close-BB@0xa : [ close-BB@0x10 ]
+	3       (0000000a) const/4              v0, 1
+	4       (0000000c) iput-boolean         v0, v1, Lokhttp3/internal/connection/Exchange$ResponseBodySource;->m Z
+
+close-BB@0x10 : 
+	5       (00000010) invoke-super         v1, Lx8/o;->close()V
+	6       (00000016) const/4              v0, 0
+	7       (00000018) invoke-virtual       v1, v0, Lokhttp3/internal/connection/Exchange$ResponseBodySource;->c(Ljava/io/IOException;)Ljava/io/IOException;
+	8       (0000001e) return-void          
+	10:1d
+	(Ljava/io/IOException; -> 20 close-BB@0x20)
+
+close-BB@0x20 : 
+	9       (00000020) move-exception       v0
+	10      (00000022) invoke-virtual       v1, v0, Lokhttp3/internal/connection/Exchange$ResponseBodySource;->c(Ljava/io/IOException;)Ljava/io/IOException;
+	11      (00000028) move-result-object   v0
+	12      (0000002a) invoke-static        v0, Lkotlin/jvm/internal/j;->b(Ljava/lang/Object;)V
+	13      (00000030) throw                v0
+

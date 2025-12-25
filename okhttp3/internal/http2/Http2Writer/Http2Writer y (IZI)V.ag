@@ -1,0 +1,49 @@
+# Lokhttp3/internal/http2/Http2Writer;->y(I Z I)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:int
+# - v5:boolean
+# - v6:int
+#
+# - return:void
+
+y-BB@0x0 : [ y-BB@0x2 ]
+	0       (00000000) monitor-enter        v3
+
+y-BB@0x2 : [ y-BB@0xa y-BB@0x3e ]
+	1       (00000002) iget-boolean         v0, v3, Lokhttp3/internal/http2/Http2Writer;->d Z
+	2       (00000006) if-nez               v0, +01ch
+	2:35
+	(Ljava/lang/Throwable; -> 3a y-BB@0x3a)
+
+y-BB@0xa : 
+	3       (0000000a) const/16             v0, 8
+	4       (0000000e) const/4              v1, 6
+	5       (00000010) const/4              v2, 0
+	6       (00000012) invoke-virtual       v3, v2, v0, v1, v5, Lokhttp3/internal/http2/Http2Writer;->i(I I I I)V
+	7       (00000018) iget-object          v5, v3, Lokhttp3/internal/http2/Http2Writer;->a Lx8/h;
+	8       (0000001c) invoke-interface     v5, v4, Lx8/h;->writeInt(I)Lx8/h;
+	9       (00000022) iget-object          v4, v3, Lokhttp3/internal/http2/Http2Writer;->a Lx8/h;
+	10      (00000026) invoke-interface     v4, v6, Lx8/h;->writeInt(I)Lx8/h;
+	11      (0000002c) iget-object          v4, v3, Lokhttp3/internal/http2/Http2Writer;->a Lx8/h;
+	12      (00000030) invoke-interface     v4, Lx8/h;->flush()V
+	13      (00000036) monitor-exit         v3
+	14      (00000038) return-void          
+
+y-BB@0x3a : [ y-BB@0x4e ]
+	15      (0000003a) move-exception       v4
+	16      (0000003c) goto                 +9h
+
+y-BB@0x3e : 
+	17      (0000003e) new-instance         v4, Ljava/io/IOException;
+	18      (00000042) const-string         v5, "closed"
+	19      (00000046) invoke-direct        v4, v5, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+	20      (0000004c) throw                v4
+	3e:4d
+	(Ljava/lang/Throwable; -> 3a y-BB@0x3a)
+
+y-BB@0x4e : 
+	21      (0000004e) monitor-exit         v3
+	22      (00000050) throw                v4
+

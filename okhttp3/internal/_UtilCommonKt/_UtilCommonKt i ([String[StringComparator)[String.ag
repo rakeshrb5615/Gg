@@ -1,0 +1,59 @@
+# Lokhttp3/internal/_UtilCommonKt;->i([Ljava/lang/String; [Ljava/lang/String; Ljava/util/Comparator;)[Ljava/lang/String; [access_flags=public static final]
+#
+# Parameters:
+# - local registers: v0...v7
+# - v8:java.lang.String[]
+# - v9:java.lang.String[]
+# - v10:java.util.Comparator
+#
+# - return:java.lang.String[]
+
+i-BB@0x0 : [ i-BB@0x2e ]
+	0       (00000000) const-string         v0, "<this>"
+	1       (00000004) invoke-static        v8, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) const-string         v0, "other"
+	3       (0000000e) invoke-static        v9, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	4       (00000014) const-string         v0, "comparator"
+	5       (00000018) invoke-static        v10, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	6       (0000001e) new-instance         v0, Ljava/util/ArrayList;
+	7       (00000022) invoke-direct        v0, Ljava/util/ArrayList;-><init>()V
+	8       (00000028) array-length         v1, v8
+	9       (0000002a) const/4              v2, 0
+	10      (0000002c) move                 v3, v2
+
+i-BB@0x2e : [ i-BB@0x32 i-BB@0x62 ]
+	11      (0000002e) if-ge                v3, v1, +01ah
+
+i-BB@0x32 : [ i-BB@0x3a ]
+	12      (00000032) aget-object          v4, v8, v3
+	13      (00000036) array-length         v5, v9
+	14      (00000038) move                 v6, v2
+
+i-BB@0x3a : [ i-BB@0x3e i-BB@0x5c ]
+	15      (0000003a) if-ge                v6, v5, +011h
+
+i-BB@0x3e : [ i-BB@0x4e i-BB@0x56 ]
+	16      (0000003e) aget-object          v7, v9, v6
+	17      (00000042) invoke-interface     v10, v4, v7, Ljava/util/Comparator;->compare(Ljava/lang/Object; Ljava/lang/Object;)I
+	18      (00000048) move-result          v7
+	19      (0000004a) if-nez               v7, +006h
+
+i-BB@0x4e : [ i-BB@0x5c ]
+	20      (0000004e) invoke-interface     v0, v4, Ljava/util/List;->add(Ljava/lang/Object;)Z
+	21      (00000054) goto                 +4h
+
+i-BB@0x56 : [ i-BB@0x3a ]
+	22      (00000056) add-int/lit8         v6, v6, 1
+	23      (0000005a) goto                 -10h
+
+i-BB@0x5c : [ i-BB@0x2e ]
+	24      (0000005c) add-int/lit8         v3, v3, 1
+	25      (00000060) goto                 -19h
+
+i-BB@0x62 : 
+	26      (00000062) new-array            v8, v2, [Ljava/lang/String;
+	27      (00000066) invoke-interface     v0, v8, Ljava/util/Collection;->toArray([Ljava/lang/Object;)[Ljava/lang/Object;
+	28      (0000006c) move-result-object   v8
+	29      (0000006e) check-cast           v8, [Ljava/lang/String;
+	30      (00000072) return-object        v8
+

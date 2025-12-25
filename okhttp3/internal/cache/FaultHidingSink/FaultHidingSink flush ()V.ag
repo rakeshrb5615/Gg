@@ -1,0 +1,26 @@
+# Lokhttp3/internal/cache/FaultHidingSink;->flush()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v1
+#
+# - return:void
+
+flush-BB@0x0 : [ flush-BB@0x8 flush-BB@0xa ]
+	0       (00000000) iget-boolean         v0, v1, Lokhttp3/internal/cache/FaultHidingSink;->b Z
+	1       (00000004) if-eqz               v0, +003h
+
+flush-BB@0x8 : 
+	2       (00000008) return-void          
+
+flush-BB@0xa : 
+	3       (0000000a) invoke-super         v1, Lx8/n;->flush()V
+	4       (00000010) return-void          
+	a:f
+	(Ljava/io/IOException; -> 12 flush-BB@0x12)
+
+flush-BB@0x12 : 
+	5       (00000012) const/4              v0, 1
+	6       (00000014) iput-boolean         v0, v1, Lokhttp3/internal/cache/FaultHidingSink;->b Z
+	7       (00000018) const/4              v0, 0
+	8       (0000001a) throw                v0
+

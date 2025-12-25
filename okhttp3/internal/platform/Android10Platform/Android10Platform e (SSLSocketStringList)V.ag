@@ -1,0 +1,47 @@
+# Lokhttp3/internal/platform/Android10Platform;->e(Ljavax/net/ssl/SSLSocket; Ljava/lang/String; Ljava/util/List;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:javax.net.ssl.SSLSocket
+# - v7:java.lang.String
+# - v8:java.util.List
+#
+# - return:void
+
+e-BB@0x0 : [ e-BB@0x18 ]
+	0       (00000000) const-string         v0, "protocols"
+	1       (00000004) invoke-static        v8, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) iget-object          v0, v5, Lokhttp3/internal/platform/Android10Platform;->e Ljava/util/ArrayList;
+	3       (0000000e) invoke-virtual       v0, Ljava/util/ArrayList;->size()I
+	4       (00000014) move-result          v1
+	5       (00000016) const/4              v2, 0
+
+e-BB@0x18 : [ e-BB@0x1c e-BB@0x3c ]
+	6       (00000018) if-ge                v2, v1, +012h
+
+e-BB@0x1c : [ e-BB@0x3a e-BB@0x18 ]
+	7       (0000001c) invoke-virtual       v0, v2, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	8       (00000022) move-result-object   v3
+	9       (00000024) add-int/lit8         v2, v2, 1
+	10      (00000028) move-object          v4, v3
+	11      (0000002a) check-cast           v4, Lokhttp3/internal/platform/android/SocketAdapter;
+	12      (0000002e) invoke-interface     v4, v6, Lokhttp3/internal/platform/android/SocketAdapter;->a(Ljavax/net/ssl/SSLSocket;)Z
+	13      (00000034) move-result          v4
+	14      (00000036) if-eqz               v4, -00fh
+
+e-BB@0x3a : [ e-BB@0x3e ]
+	15      (0000003a) goto                 +2h
+
+e-BB@0x3c : [ e-BB@0x3e ]
+	16      (0000003c) const/4              v3, 0
+
+e-BB@0x3e : [ e-BB@0x46 e-BB@0x4c ]
+	17      (0000003e) check-cast           v3, Lokhttp3/internal/platform/android/SocketAdapter;
+	18      (00000042) if-eqz               v3, +005h
+
+e-BB@0x46 : [ e-BB@0x4c ]
+	19      (00000046) invoke-interface     v3, v6, v7, v8, Lokhttp3/internal/platform/android/SocketAdapter;->d(Ljavax/net/ssl/SSLSocket; Ljava/lang/String; Ljava/util/List;)V
+
+e-BB@0x4c : 
+	20      (0000004c) return-void          
+

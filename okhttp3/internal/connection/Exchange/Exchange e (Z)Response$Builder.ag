@@ -1,0 +1,34 @@
+# Lokhttp3/internal/connection/Exchange;->e(Z)Lokhttp3/Response$Builder; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:boolean
+#
+# - return:okhttp3.Response$Builder
+
+e-BB@0x0 : [ e-BB@0x10 e-BB@0x1a ]
+	0       (00000000) iget-object          v0, v2, Lokhttp3/internal/connection/Exchange;->d Lokhttp3/internal/http/ExchangeCodec;
+	1       (00000004) invoke-interface     v0, v3, Lokhttp3/internal/http/ExchangeCodec;->j(Z)Lokhttp3/Response$Builder;
+	2       (0000000a) move-result-object   v3
+	3       (0000000c) if-eqz               v3, +007h
+	0:13
+	(Ljava/io/IOException; -> 16 e-BB@0x16)
+
+e-BB@0x10 : 
+	4       (00000010) iput-object          v2, v3, Lokhttp3/Response$Builder;->n Lokhttp3/internal/connection/Exchange;
+	5       (00000014) return-object        v3
+
+e-BB@0x16 : [ e-BB@0x1c ]
+	6       (00000016) move-exception       v3
+	7       (00000018) goto                 +2h
+
+e-BB@0x1a : 
+	8       (0000001a) return-object        v3
+
+e-BB@0x1c : 
+	9       (0000001c) iget-object          v0, v2, Lokhttp3/internal/connection/Exchange;->b Lokhttp3/EventListener;
+	10      (00000020) iget-object          v1, v2, Lokhttp3/internal/connection/Exchange;->a Lokhttp3/internal/connection/RealCall;
+	11      (00000024) invoke-virtual       v0, v1, v3, Lokhttp3/EventListener;->z(Lokhttp3/Call; Ljava/io/IOException;)V
+	12      (0000002a) invoke-virtual       v2, v3, Lokhttp3/internal/connection/Exchange;->f(Ljava/io/IOException;)V
+	13      (00000030) throw                v3
+

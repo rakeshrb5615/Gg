@@ -1,0 +1,58 @@
+# Lokhttp3/internal/platform/Platform$Companion;->a(Ljava/util/List;)Ljava/util/ArrayList; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:java.util.List
+#
+# - return:java.util.ArrayList
+
+a-BB@0x0 : [ a-BB@0x1c ]
+	0       (00000000) const-string         v0, "protocols"
+	1       (00000004) invoke-static        v4, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) new-instance         v0, Ljava/util/ArrayList;
+	3       (0000000e) invoke-direct        v0, Ljava/util/ArrayList;-><init>()V
+	4       (00000014) invoke-interface     v4, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
+	5       (0000001a) move-result-object   v4
+
+a-BB@0x1c : [ a-BB@0x28 a-BB@0x46 ]
+	6       (0000001c) invoke-interface     v4, Ljava/util/Iterator;->hasNext()Z
+	7       (00000022) move-result          v1
+	8       (00000024) if-eqz               v1, +011h
+
+a-BB@0x28 : [ a-BB@0x3e a-BB@0x1c ]
+	9       (00000028) invoke-interface     v4, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	10      (0000002e) move-result-object   v1
+	11      (00000030) move-object          v2, v1
+	12      (00000032) check-cast           v2, Lokhttp3/Protocol;
+	13      (00000036) sget-object          v3, Lokhttp3/Protocol;->c Lokhttp3/Protocol;
+	14      (0000003a) if-eq                v2, v3, -00fh
+
+a-BB@0x3e : [ a-BB@0x1c ]
+	15      (0000003e) invoke-virtual       v0, v1, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	16      (00000044) goto                 -14h
+
+a-BB@0x46 : [ a-BB@0x66 ]
+	17      (00000046) new-instance         v4, Ljava/util/ArrayList;
+	18      (0000004a) const/16             v1, 10
+	19      (0000004e) invoke-static        v0, v1, Li7/j;->X(Ljava/lang/Iterable; I)I
+	20      (00000054) move-result          v1
+	21      (00000056) invoke-direct        v4, v1, Ljava/util/ArrayList;-><init>(I)V
+	22      (0000005c) invoke-virtual       v0, Ljava/util/ArrayList;->size()I
+	23      (00000062) move-result          v1
+	24      (00000064) const/4              v2, 0
+
+a-BB@0x66 : [ a-BB@0x6a a-BB@0x86 ]
+	25      (00000066) if-ge                v2, v1, +010h
+
+a-BB@0x6a : [ a-BB@0x66 ]
+	26      (0000006a) invoke-virtual       v0, v2, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	27      (00000070) move-result-object   v3
+	28      (00000072) add-int/lit8         v2, v2, 1
+	29      (00000076) check-cast           v3, Lokhttp3/Protocol;
+	30      (0000007a) iget-object          v3, v3, Lokhttp3/Protocol;->a Ljava/lang/String;
+	31      (0000007e) invoke-virtual       v4, v3, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	32      (00000084) goto                 -fh
+
+a-BB@0x86 : 
+	33      (00000086) return-object        v4
+

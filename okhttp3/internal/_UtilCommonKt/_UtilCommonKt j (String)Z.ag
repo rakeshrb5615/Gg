@@ -1,0 +1,45 @@
+# Lokhttp3/internal/_UtilCommonKt;->j(Ljava/lang/String;)Z [access_flags=public static final]
+#
+# Parameters:
+# - local registers: v0...v0
+# - v1:java.lang.String
+#
+# - return:boolean
+
+j-BB@0x0 : [ j-BB@0x1a j-BB@0x50 ]
+	0       (00000000) const-string         v0, "name"
+	1       (00000004) invoke-static        v1, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) const-string         v0, "Authorization"
+	3       (0000000e) invoke-virtual       v1, v0, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
+	4       (00000014) move-result          v0
+	5       (00000016) if-nez               v0, +01dh
+
+j-BB@0x1a : [ j-BB@0x2a j-BB@0x50 ]
+	6       (0000001a) const-string         v0, "Cookie"
+	7       (0000001e) invoke-virtual       v1, v0, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
+	8       (00000024) move-result          v0
+	9       (00000026) if-nez               v0, +015h
+
+j-BB@0x2a : [ j-BB@0x3a j-BB@0x50 ]
+	10      (0000002a) const-string         v0, "Proxy-Authorization"
+	11      (0000002e) invoke-virtual       v1, v0, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
+	12      (00000034) move-result          v0
+	13      (00000036) if-nez               v0, +00dh
+
+j-BB@0x3a : [ j-BB@0x4a j-BB@0x4c ]
+	14      (0000003a) const-string         v0, "Set-Cookie"
+	15      (0000003e) invoke-virtual       v1, v0, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
+	16      (00000044) move-result          v1
+	17      (00000046) if-eqz               v1, +003h
+
+j-BB@0x4a : [ j-BB@0x50 ]
+	18      (0000004a) goto                 +3h
+
+j-BB@0x4c : 
+	19      (0000004c) const/4              v1, 0
+	20      (0000004e) return               v1
+
+j-BB@0x50 : 
+	21      (00000050) const/4              v1, 1
+	22      (00000052) return               v1
+

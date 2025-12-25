@@ -1,0 +1,48 @@
+# Lokhttp3/internal/connection/RealCall;->cancel()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v2
+#
+# - return:void
+
+cancel-BB@0x0 : [ cancel-BB@0x8 cancel-BB@0xa ]
+	0       (00000000) iget-boolean         v0, v2, Lokhttp3/internal/connection/RealCall;->w Z
+	1       (00000004) if-eqz               v0, +003h
+
+cancel-BB@0x8 : 
+	2       (00000008) return-void          
+
+cancel-BB@0xa : [ cancel-BB@0x18 cancel-BB@0x22 ]
+	3       (0000000a) const/4              v0, 1
+	4       (0000000c) iput-boolean         v0, v2, Lokhttp3/internal/connection/RealCall;->w Z
+	5       (00000010) iget-object          v0, v2, Lokhttp3/internal/connection/RealCall;->x Lokhttp3/internal/connection/Exchange;
+	6       (00000014) if-eqz               v0, +007h
+
+cancel-BB@0x18 : [ cancel-BB@0x22 ]
+	7       (00000018) iget-object          v0, v0, Lokhttp3/internal/connection/Exchange;->d Lokhttp3/internal/http/ExchangeCodec;
+	8       (0000001c) invoke-interface     v0, Lokhttp3/internal/http/ExchangeCodec;->cancel()V
+
+cancel-BB@0x22 : [ cancel-BB@0x38 ]
+	9       (00000022) iget-object          v0, v2, Lokhttp3/internal/connection/RealCall;->y Ljava/util/concurrent/CopyOnWriteArrayList;
+	10      (00000026) invoke-virtual       v0, Ljava/util/concurrent/CopyOnWriteArrayList;->iterator()Ljava/util/Iterator;
+	11      (0000002c) move-result-object   v0
+	12      (0000002e) const-string         v1, "iterator(...)"
+	13      (00000032) invoke-static        v0, v1, Lkotlin/jvm/internal/j;->d(Ljava/lang/Object; Ljava/lang/String;)V
+
+cancel-BB@0x38 : [ cancel-BB@0x44 cancel-BB@0x58 ]
+	14      (00000038) invoke-interface     v0, Ljava/util/Iterator;->hasNext()Z
+	15      (0000003e) move-result          v1
+	16      (00000040) if-eqz               v1, +00ch
+
+cancel-BB@0x44 : [ cancel-BB@0x38 ]
+	17      (00000044) invoke-interface     v0, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	18      (0000004a) move-result-object   v1
+	19      (0000004c) check-cast           v1, Lokhttp3/internal/connection/RoutePlanner$Plan;
+	20      (00000050) invoke-interface     v1, Lokhttp3/internal/connection/RoutePlanner$Plan;->cancel()V
+	21      (00000056) goto                 -fh
+
+cancel-BB@0x58 : 
+	22      (00000058) iget-object          v0, v2, Lokhttp3/internal/connection/RealCall;->d Lokhttp3/EventListener;
+	23      (0000005c) invoke-virtual       v0, v2, Lokhttp3/EventListener;->f(Lokhttp3/internal/connection/RealCall;)V
+	24      (00000062) return-void          
+

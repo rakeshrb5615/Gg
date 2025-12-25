@@ -1,0 +1,74 @@
+# Lp/f;->b(Ljava/lang/Object;)Ljava/lang/Object; [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:java.lang.Object
+#
+# - return:java.lang.Object
+
+b-BB@0x0 : [ b-BB@0xe b-BB@0x10 ]
+	0       (00000000) invoke-virtual       v3, v4, Lp/f;->a(Ljava/lang/Object;)Lp/c;
+	1       (00000006) move-result-object   v4
+	2       (00000008) const/4              v0, 0
+	3       (0000000a) if-nez               v4, +003h
+
+b-BB@0xe : 
+	4       (0000000e) return-object        v0
+
+b-BB@0x10 : [ b-BB@0x2c b-BB@0x5c ]
+	5       (00000010) iget                 v1, v3, Lp/f;->d I
+	6       (00000014) add-int/lit8         v1, v1, -1
+	7       (00000018) iput                 v1, v3, Lp/f;->d I
+	8       (0000001c) iget-object          v1, v3, Lp/f;->c Ljava/util/WeakHashMap;
+	9       (00000020) invoke-virtual       v1, Ljava/util/WeakHashMap;->isEmpty()Z
+	10      (00000026) move-result          v2
+	11      (00000028) if-nez               v2, +01ah
+
+b-BB@0x2c : [ b-BB@0x3c ]
+	12      (0000002c) invoke-virtual       v1, Ljava/util/WeakHashMap;->keySet()Ljava/util/Set;
+	13      (00000032) move-result-object   v1
+	14      (00000034) invoke-interface     v1, Ljava/util/Set;->iterator()Ljava/util/Iterator;
+	15      (0000003a) move-result-object   v1
+
+b-BB@0x3c : [ b-BB@0x48 b-BB@0x5c ]
+	16      (0000003c) invoke-interface     v1, Ljava/util/Iterator;->hasNext()Z
+	17      (00000042) move-result          v2
+	18      (00000044) if-eqz               v2, +00ch
+
+b-BB@0x48 : [ b-BB@0x3c ]
+	19      (00000048) invoke-interface     v1, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	20      (0000004e) move-result-object   v2
+	21      (00000050) check-cast           v2, Lp/e;
+	22      (00000054) invoke-virtual       v2, v4, Lp/e;->a(Lp/c;)V
+	23      (0000005a) goto                 -fh
+
+b-BB@0x5c : [ b-BB@0x64 b-BB@0x6e ]
+	24      (0000005c) iget-object          v1, v4, Lp/c;->d Lp/c;
+	25      (00000060) if-eqz               v1, +007h
+
+b-BB@0x64 : [ b-BB@0x76 ]
+	26      (00000064) iget-object          v2, v4, Lp/c;->c Lp/c;
+	27      (00000068) iput-object          v2, v1, Lp/c;->c Lp/c;
+	28      (0000006c) goto                 +5h
+
+b-BB@0x6e : [ b-BB@0x76 ]
+	29      (0000006e) iget-object          v2, v4, Lp/c;->c Lp/c;
+	30      (00000072) iput-object          v2, v3, Lp/f;->a Lp/c;
+
+b-BB@0x76 : [ b-BB@0x7e b-BB@0x84 ]
+	31      (00000076) iget-object          v2, v4, Lp/c;->c Lp/c;
+	32      (0000007a) if-eqz               v2, +005h
+
+b-BB@0x7e : [ b-BB@0x88 ]
+	33      (0000007e) iput-object          v1, v2, Lp/c;->d Lp/c;
+	34      (00000082) goto                 +3h
+
+b-BB@0x84 : [ b-BB@0x88 ]
+	35      (00000084) iput-object          v1, v3, Lp/f;->b Lp/c;
+
+b-BB@0x88 : 
+	36      (00000088) iput-object          v0, v4, Lp/c;->c Lp/c;
+	37      (0000008c) iput-object          v0, v4, Lp/c;->d Lp/c;
+	38      (00000090) iget-object          v4, v4, Lp/c;->b Ljava/lang/Object;
+	39      (00000094) return-object        v4
+

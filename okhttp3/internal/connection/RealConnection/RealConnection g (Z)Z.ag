@@ -1,0 +1,159 @@
+# Lokhttp3/internal/connection/RealConnection;->g(Z)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v9
+# - v10:boolean
+#
+# - return:boolean
+
+g-BB@0x0 : [ g-BB@0x1e g-BB@0x10e ]
+	0       (00000000) sget-object          v0, Lokhttp3/internal/_UtilJvmKt;->a Ljava/util/TimeZone;
+	1       (00000004) invoke-static        Ljava/lang/System;->nanoTime()J
+	2       (0000000a) move-result-wide     v0
+	3       (0000000c) iget-object          v2, v9, Lokhttp3/internal/connection/RealConnection;->d Ljava/net/Socket;
+	4       (00000010) invoke-virtual       v2, Ljava/net/Socket;->isClosed()Z
+	5       (00000016) move-result          v2
+	6       (00000018) const/4              v3, 0
+	7       (0000001a) if-nez               v2, +07ah
+
+g-BB@0x1e : [ g-BB@0x2e g-BB@0x10e ]
+	8       (0000001e) iget-object          v2, v9, Lokhttp3/internal/connection/RealConnection;->e Ljava/net/Socket;
+	9       (00000022) invoke-virtual       v2, Ljava/net/Socket;->isClosed()Z
+	10      (00000028) move-result          v2
+	11      (0000002a) if-nez               v2, +072h
+
+g-BB@0x2e : [ g-BB@0x3e g-BB@0x10e ]
+	12      (0000002e) iget-object          v2, v9, Lokhttp3/internal/connection/RealConnection;->e Ljava/net/Socket;
+	13      (00000032) invoke-virtual       v2, Ljava/net/Socket;->isInputShutdown()Z
+	14      (00000038) move-result          v2
+	15      (0000003a) if-nez               v2, +06ah
+
+g-BB@0x3e : [ g-BB@0x4e g-BB@0x50 ]
+	16      (0000003e) iget-object          v2, v9, Lokhttp3/internal/connection/RealConnection;->e Ljava/net/Socket;
+	17      (00000042) invoke-virtual       v2, Ljava/net/Socket;->isOutputShutdown()Z
+	18      (00000048) move-result          v2
+	19      (0000004a) if-eqz               v2, +003h
+
+g-BB@0x4e : [ g-BB@0x10e ]
+	20      (0000004e) goto                 +60h
+
+g-BB@0x50 : [ g-BB@0x5a g-BB@0x94 ]
+	21      (00000050) iget-object          v2, v9, Lokhttp3/internal/connection/RealConnection;->p Lokhttp3/internal/http2/Http2Connection;
+	22      (00000054) const/4              v4, 1
+	23      (00000056) if-eqz               v2, +01fh
+
+g-BB@0x5a : [ g-BB@0x5c ]
+	24      (0000005a) monitor-enter        v2
+
+g-BB@0x5c : [ g-BB@0x64 g-BB@0x68 ]
+	25      (0000005c) iget-boolean         v10, v2, Lokhttp3/internal/http2/Http2Connection;->f Z
+	26      (00000060) if-eqz               v10, +004h
+	5c:5f
+	(Ljava/lang/Throwable; -> 88 g-BB@0x88)
+
+g-BB@0x64 : 
+	27      (00000064) monitor-exit         v2
+	28      (00000066) return               v3
+
+g-BB@0x68 : [ g-BB@0x78 g-BB@0x8c ]
+	29      (00000068) iget-wide            v5, v2, Lokhttp3/internal/http2/Http2Connection;->t J
+	30      (0000006c) iget-wide            v7, v2, Lokhttp3/internal/http2/Http2Connection;->s J
+	31      (00000070) cmp-long             v10, v5, v7
+	32      (00000074) if-gez               v10, +00ch
+	68:7b
+	(Ljava/lang/Throwable; -> 88 g-BB@0x88)
+
+g-BB@0x78 : [ g-BB@0x84 g-BB@0x8c ]
+	33      (00000078) iget-wide            v5, v2, Lokhttp3/internal/http2/Http2Connection;->u J
+	34      (0000007c) cmp-long             v10, v0, v5
+	35      (00000080) if-ltz               v10, +006h
+
+g-BB@0x84 : 
+	36      (00000084) monitor-exit         v2
+	37      (00000086) return               v3
+
+g-BB@0x88 : [ g-BB@0x90 ]
+	38      (00000088) move-exception       v10
+	39      (0000008a) goto                 +3h
+
+g-BB@0x8c : 
+	40      (0000008c) monitor-exit         v2
+	41      (0000008e) return               v4
+
+g-BB@0x90 : 
+	42      (00000090) monitor-exit         v2
+	43      (00000092) throw                v10
+
+g-BB@0x94 : [ g-BB@0x96 ]
+	44      (00000094) monitor-enter        v9
+
+g-BB@0x96 : [ g-BB@0xb0 g-BB@0x106 ]
+	45      (00000096) iget-wide            v5, v9, Lokhttp3/internal/connection/RealConnection;->x J
+	46      (0000009a) sub-long/2addr       v0, v5
+	47      (0000009c) monitor-exit         v9
+	48      (0000009e) const-wide           v5, 10000000000
+	49      (000000a8) cmp-long             v0, v0, v5
+	50      (000000ac) if-ltz               v0, +02dh
+	96:99
+	(Ljava/lang/Throwable; -> 108 g-BB@0x108)
+
+g-BB@0xb0 : [ g-BB@0xb4 g-BB@0x106 ]
+	51      (000000b0) if-eqz               v10, +02bh
+
+g-BB@0xb4 : [ g-BB@0xd8 ]
+	52      (000000b4) iget-object          v10, v9, Lokhttp3/internal/connection/RealConnection;->e Ljava/net/Socket;
+	53      (000000b8) iget-object          v0, v9, Lokhttp3/internal/connection/RealConnection;->n Lokhttp3/internal/connection/BufferedSocket;
+	54      (000000bc) invoke-interface     v0, Lokhttp3/internal/connection/BufferedSocket;->a()Lx8/i;
+	55      (000000c2) move-result-object   v0
+	56      (000000c4) const-string         v1, "<this>"
+	57      (000000c8) invoke-static        v10, v1, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	58      (000000ce) const-string         v1, "source"
+	59      (000000d2) invoke-static        v0, v1, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+
+g-BB@0xd8 : [ g-BB@0xe0 ]
+	60      (000000d8) invoke-virtual       v10, Ljava/net/Socket;->getSoTimeout()I
+	61      (000000de) move-result          v1
+	d8:df
+	(Ljava/net/SocketTimeoutException; -> 102 g-BB@0x102)
+	(Ljava/io/IOException; -> 104 g-BB@0x104)
+
+g-BB@0xe0 : [ g-BB@0xf0 ]
+	62      (000000e0) invoke-virtual       v10, v4, Ljava/net/Socket;->setSoTimeout(I)V
+	63      (000000e6) invoke-interface     v0, Lx8/i;->h()Z
+	64      (000000ec) move-result          v0
+	65      (000000ee) xor-int/2addr        v0, v4
+	e0:ed
+	(Ljava/lang/Throwable; -> f8 g-BB@0xf8)
+
+g-BB@0xf0 : 
+	66      (000000f0) invoke-virtual       v10, v1, Ljava/net/Socket;->setSoTimeout(I)V
+	67      (000000f6) return               v0
+	f0:101
+	(Ljava/net/SocketTimeoutException; -> 102 g-BB@0x102)
+	(Ljava/io/IOException; -> 104 g-BB@0x104)
+
+g-BB@0xf8 : 
+	68      (000000f8) move-exception       v0
+	69      (000000fa) invoke-virtual       v10, v1, Ljava/net/Socket;->setSoTimeout(I)V
+	70      (00000100) throw                v0
+	f0:101
+	(Ljava/net/SocketTimeoutException; -> 102 g-BB@0x102)
+	(Ljava/io/IOException; -> 104 g-BB@0x104)
+
+g-BB@0x102 : [ g-BB@0x104 ]
+	71      (00000102) move                 v3, v4
+
+g-BB@0x104 : 
+	72      (00000104) return               v3
+
+g-BB@0x106 : 
+	73      (00000106) return               v4
+
+g-BB@0x108 : 
+	74      (00000108) move-exception       v10
+	75      (0000010a) monitor-exit         v9
+	76      (0000010c) throw                v10
+
+g-BB@0x10e : 
+	77      (0000010e) return               v3
+

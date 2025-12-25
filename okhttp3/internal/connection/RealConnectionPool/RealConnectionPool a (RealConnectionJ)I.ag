@@ -1,0 +1,66 @@
+# Lokhttp3/internal/connection/RealConnectionPool;->a(Lokhttp3/internal/connection/RealConnection; J)I [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v7
+# - v8:okhttp3.internal.connection.RealConnection
+# - v9:long
+#
+# - return:int
+
+a-BB@0x0 : [ a-BB@0xc ]
+	0       (00000000) sget-object          v0, Lokhttp3/internal/_UtilJvmKt;->a Ljava/util/TimeZone;
+	1       (00000004) iget-object          v0, v7, Lokhttp3/internal/connection/RealConnection;->w Ljava/util/ArrayList;
+	2       (00000008) const/4              v1, 0
+	3       (0000000a) move                 v2, v1
+
+a-BB@0xc : [ a-BB@0x18 a-BB@0xa2 ]
+	4       (0000000c) invoke-virtual       v0, Ljava/util/ArrayList;->size()I
+	5       (00000012) move-result          v3
+	6       (00000014) if-ge                v2, v3, +047h
+
+a-BB@0x18 : [ a-BB@0x30 a-BB@0x36 ]
+	7       (00000018) invoke-virtual       v0, v2, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	8       (0000001e) move-result-object   v3
+	9       (00000020) check-cast           v3, Ljava/lang/ref/Reference;
+	10      (00000024) invoke-virtual       v3, Ljava/lang/ref/Reference;->get()Ljava/lang/Object;
+	11      (0000002a) move-result-object   v4
+	12      (0000002c) if-eqz               v4, +005h
+
+a-BB@0x30 : [ a-BB@0xc ]
+	13      (00000030) add-int/lit8         v2, v2, 1
+	14      (00000034) goto                 -14h
+
+a-BB@0x36 : [ a-BB@0x96 a-BB@0xc ]
+	15      (00000036) check-cast           v3, Lokhttp3/internal/connection/RealCall$CallReference;
+	16      (0000003a) new-instance         v4, Ljava/lang/StringBuilder;
+	17      (0000003e) const-string         v5, "A connection to "
+	18      (00000042) invoke-direct        v4, v5, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	19      (00000048) iget-object          v5, v7, Lokhttp3/internal/connection/RealConnection;->c Lokhttp3/Route;
+	20      (0000004c) iget-object          v5, v5, Lokhttp3/Route;->a Lokhttp3/Address;
+	21      (00000050) iget-object          v5, v5, Lokhttp3/Address;->h Lokhttp3/HttpUrl;
+	22      (00000054) invoke-virtual       v4, v5, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	23      (0000005a) const-string         v5, " was leaked. Did you forget to close a response body?"
+	24      (0000005e) invoke-virtual       v4, v5, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	25      (00000064) invoke-virtual       v4, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	26      (0000006a) move-result-object   v4
+	27      (0000006c) sget-object          v5, Lokhttp3/internal/platform/Platform;->a Lokhttp3/internal/platform/Platform$Companion;
+	28      (00000070) invoke-virtual       v5, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	29      (00000076) sget-object          v5, Lokhttp3/internal/platform/Platform;->b Lokhttp3/internal/platform/Platform;
+	30      (0000007a) iget-object          v3, v3, Lokhttp3/internal/connection/RealCall$CallReference;->a Ljava/lang/Object;
+	31      (0000007e) invoke-virtual       v5, v3, v4, Lokhttp3/internal/platform/Platform;->k(Ljava/lang/Object; Ljava/lang/String;)V
+	32      (00000084) invoke-virtual       v0, v2, Ljava/util/ArrayList;->remove(I)Ljava/lang/Object;
+	33      (0000008a) invoke-virtual       v0, Ljava/util/ArrayList;->isEmpty()Z
+	34      (00000090) move-result          v3
+	35      (00000092) if-eqz               v3, -043h
+
+a-BB@0x96 : 
+	36      (00000096) iget-wide            v2, v6, Lokhttp3/internal/connection/RealConnectionPool;->b J
+	37      (0000009a) sub-long/2addr       v8, v2
+	38      (0000009c) iput-wide            v8, v7, Lokhttp3/internal/connection/RealConnection;->x J
+	39      (000000a0) return               v1
+
+a-BB@0xa2 : 
+	40      (000000a2) invoke-virtual       v0, Ljava/util/ArrayList;->size()I
+	41      (000000a8) move-result          v7
+	42      (000000aa) return               v7
+

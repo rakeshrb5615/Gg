@@ -1,0 +1,354 @@
+# Lokhttp3/internal/http/RetryAndFollowUpInterceptor;->b(Lokhttp3/Response; Lokhttp3/internal/connection/Exchange;)Lokhttp3/Request; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v11
+# - v12:okhttp3.Response
+# - v13:okhttp3.internal.connection.Exchange
+#
+# - return:okhttp3.Request
+
+b-BB@0x0 : [ b-BB@0x6 b-BB@0x14 ]
+	0       (00000000) const/4              v0, 0
+	1       (00000002) if-eqz               v13, +009h
+
+b-BB@0x6 : [ b-BB@0x16 ]
+	2       (00000006) invoke-virtual       v13, Lokhttp3/internal/connection/Exchange;->c()Lokhttp3/internal/connection/RealConnection;
+	3       (0000000c) move-result-object   v1
+	4       (0000000e) iget-object          v1, v1, Lokhttp3/internal/connection/RealConnection;->c Lokhttp3/Route;
+	5       (00000012) goto                 +2h
+
+b-BB@0x14 : [ b-BB@0x16 ]
+	6       (00000014) move-object          v1, v0
+
+b-BB@0x16 : [ b-BB@0x32 b-BB@0x1b6 ]
+	7       (00000016) iget                 v2, v12, Lokhttp3/Response;->d I
+	8       (0000001a) iget-object          v3, v12, Lokhttp3/Response;->a Lokhttp3/Request;
+	9       (0000001e) iget-object          v4, v3, Lokhttp3/Request;->b Ljava/lang/String;
+	10      (00000022) const/4              v5, 0
+	11      (00000024) const/4              v6, 1
+	12      (00000026) const/16             v7, 308
+	13      (0000002a) const/16             v8, 307
+	14      (0000002e) if-eq                v2, v8, +0c4h
+
+b-BB@0x32 : [ b-BB@0x36 b-BB@0x1b6 ]
+	15      (00000032) if-eq                v2, v7, +0c2h
+
+b-BB@0x36 : [ b-BB@0x3e b-BB@0x1a4 ]
+	16      (00000036) const/16             v9, 401
+	17      (0000003a) if-eq                v2, v9, +0b5h
+
+b-BB@0x3e : [ b-BB@0x46 b-BB@0x122 ]
+	18      (0000003e) const/16             v9, 421
+	19      (00000042) if-eq                v2, v9, +070h
+
+b-BB@0x46 : [ b-BB@0x4e b-BB@0xf6 ]
+	20      (00000046) const/16             v13, 503
+	21      (0000004a) if-eq                v2, v13, +056h
+
+b-BB@0x4e : [ b-BB@0x56 b-BB@0xba ]
+	22      (0000004e) const/16             v13, 407
+	23      (00000052) if-eq                v2, v13, +034h
+
+b-BB@0x56 : [ b-BB@0x5e b-BB@0x68 ]
+	24      (00000056) const/16             v13, 408
+	25      (0000005a) if-eq                v2, v13, +007h
+
+b-BB@0x5e : [ D:b-BB@0x64 300:b-BB@0x1b6 301:b-BB@0x1b6 302:b-BB@0x1b6 303:b-BB@0x1b6 ]
+	26      (0000005e) packed-switch        v2, +000014bh
+
+b-BB@0x64 : [ b-BB@0x230 ]
+	27      (00000064) goto/16              +0e6h
+
+b-BB@0x68 : [ b-BB@0x74 b-BB@0x78 ]
+	28      (00000068) iget-object          v1, v11, Lokhttp3/internal/http/RetryAndFollowUpInterceptor;->a Lokhttp3/OkHttpClient;
+	29      (0000006c) iget-boolean         v1, v1, Lokhttp3/OkHttpClient;->e Z
+	30      (00000070) if-nez               v1, +004h
+
+b-BB@0x74 : [ b-BB@0x230 ]
+	31      (00000074) goto/16              +0deh
+
+b-BB@0x78 : [ b-BB@0x80 b-BB@0x90 ]
+	32      (00000078) iget-object          v1, v3, Lokhttp3/Request;->d Lokhttp3/RequestBody;
+	33      (0000007c) if-eqz               v1, +00ah
+
+b-BB@0x80 : [ b-BB@0x8c b-BB@0x90 ]
+	34      (00000080) invoke-virtual       v1, Lokhttp3/RequestBody;->c()Z
+	35      (00000086) move-result          v1
+	36      (00000088) if-eqz               v1, +004h
+
+b-BB@0x8c : [ b-BB@0x230 ]
+	37      (0000008c) goto/16              +0d2h
+
+b-BB@0x90 : [ b-BB@0x98 b-BB@0xa4 ]
+	38      (00000090) iget-object          v1, v12, Lokhttp3/Response;->q Lokhttp3/Response;
+	39      (00000094) if-eqz               v1, +008h
+
+b-BB@0x98 : [ b-BB@0xa0 b-BB@0xa4 ]
+	40      (00000098) iget                 v1, v1, Lokhttp3/Response;->d I
+	41      (0000009c) if-ne                v1, v13, +004h
+
+b-BB@0xa0 : [ b-BB@0x230 ]
+	42      (000000a0) goto/16              +0c8h
+
+b-BB@0xa4 : [ b-BB@0xb0 b-BB@0xb4 ]
+	43      (000000a4) invoke-static        v12, v5, Lokhttp3/internal/http/RetryAndFollowUpInterceptor;->d(Lokhttp3/Response; I)I
+	44      (000000aa) move-result          v13
+	45      (000000ac) if-lez               v13, +004h
+
+b-BB@0xb0 : [ b-BB@0x230 ]
+	46      (000000b0) goto/16              +0c0h
+
+b-BB@0xb4 : 
+	47      (000000b4) iget-object          v12, v12, Lokhttp3/Response;->a Lokhttp3/Request;
+	48      (000000b8) return-object        v12
+
+b-BB@0xba : [ b-BB@0xd4 b-BB@0xe6 ]
+	49      (000000ba) invoke-static        v1, Lkotlin/jvm/internal/j;->b(Ljava/lang/Object;)V
+	50      (000000c0) iget-object          v13, v1, Lokhttp3/Route;->b Ljava/net/Proxy;
+	51      (000000c4) invoke-virtual       v13, Ljava/net/Proxy;->type()Ljava/net/Proxy$Type;
+	52      (000000ca) move-result-object   v13
+	53      (000000cc) sget-object          v0, Ljava/net/Proxy$Type;->HTTP Ljava/net/Proxy$Type;
+	54      (000000d0) if-ne                v13, v0, +00bh
+
+b-BB@0xd4 : 
+	55      (000000d4) iget-object          v13, v11, Lokhttp3/internal/http/RetryAndFollowUpInterceptor;->a Lokhttp3/OkHttpClient;
+	56      (000000d8) iget-object          v13, v13, Lokhttp3/OkHttpClient;->m Lokhttp3/Authenticator;
+	57      (000000dc) invoke-interface     v13, v1, v12, Lokhttp3/Authenticator;->a(Lokhttp3/Route; Lokhttp3/Response;)Lokhttp3/Request;
+	58      (000000e2) move-result-object   v12
+	59      (000000e4) return-object        v12
+
+b-BB@0xe6 : 
+	60      (000000e6) new-instance         v12, Ljava/net/ProtocolException;
+	61      (000000ea) const-string         v13, "Received HTTP_PROXY_AUTH (407) code while not using proxy"
+	62      (000000ee) invoke-direct        v12, v13, Ljava/net/ProtocolException;-><init>(Ljava/lang/String;)V
+	63      (000000f4) throw                v12
+
+b-BB@0xf6 : [ b-BB@0xfe b-BB@0x10a ]
+	64      (000000f6) iget-object          v1, v12, Lokhttp3/Response;->q Lokhttp3/Response;
+	65      (000000fa) if-eqz               v1, +008h
+
+b-BB@0xfe : [ b-BB@0x106 b-BB@0x10a ]
+	66      (000000fe) iget                 v1, v1, Lokhttp3/Response;->d I
+	67      (00000102) if-ne                v1, v13, +004h
+
+b-BB@0x106 : [ b-BB@0x230 ]
+	68      (00000106) goto/16              +095h
+
+b-BB@0x10a : [ b-BB@0x11c b-BB@0x230 ]
+	69      (0000010a) const                v13, 2147483647
+	70      (00000110) invoke-static        v12, v13, Lokhttp3/internal/http/RetryAndFollowUpInterceptor;->d(Lokhttp3/Response; I)I
+	71      (00000116) move-result          v13
+	72      (00000118) if-nez               v13, +08ch
+
+b-BB@0x11c : 
+	73      (0000011c) iget-object          v12, v12, Lokhttp3/Response;->a Lokhttp3/Request;
+	74      (00000120) return-object        v12
+
+b-BB@0x122 : [ b-BB@0x12a b-BB@0x13a ]
+	75      (00000122) iget-object          v1, v3, Lokhttp3/Request;->d Lokhttp3/RequestBody;
+	76      (00000126) if-eqz               v1, +00ah
+
+b-BB@0x12a : [ b-BB@0x136 b-BB@0x13a ]
+	77      (0000012a) invoke-virtual       v1, Lokhttp3/RequestBody;->c()Z
+	78      (00000130) move-result          v1
+	79      (00000132) if-eqz               v1, +004h
+
+b-BB@0x136 : [ b-BB@0x230 ]
+	80      (00000136) goto/16              +07dh
+
+b-BB@0x13a : [ b-BB@0x13e b-BB@0x230 ]
+	81      (0000013a) if-eqz               v13, +07bh
+
+b-BB@0x13e : [ b-BB@0x186 b-BB@0x188 ]
+	82      (0000013e) iget-object          v1, v13, Lokhttp3/internal/connection/Exchange;->c Lokhttp3/internal/connection/ExchangeFinder;
+	83      (00000142) invoke-interface     v1, Lokhttp3/internal/connection/ExchangeFinder;->b()Lokhttp3/internal/connection/RoutePlanner;
+	84      (00000148) move-result-object   v1
+	85      (0000014a) invoke-interface     v1, Lokhttp3/internal/connection/RoutePlanner;->b()Lokhttp3/Address;
+	86      (00000150) move-result-object   v1
+	87      (00000152) iget-object          v1, v1, Lokhttp3/Address;->h Lokhttp3/HttpUrl;
+	88      (00000156) iget-object          v1, v1, Lokhttp3/HttpUrl;->d Ljava/lang/String;
+	89      (0000015a) iget-object          v2, v13, Lokhttp3/internal/connection/Exchange;->d Lokhttp3/internal/http/ExchangeCodec;
+	90      (0000015e) invoke-interface     v2, Lokhttp3/internal/http/ExchangeCodec;->h()Lokhttp3/internal/http/ExchangeCodec$Carrier;
+	91      (00000164) move-result-object   v2
+	92      (00000166) invoke-interface     v2, Lokhttp3/internal/http/ExchangeCodec$Carrier;->f()Lokhttp3/Route;
+	93      (0000016c) move-result-object   v2
+	94      (0000016e) iget-object          v2, v2, Lokhttp3/Route;->a Lokhttp3/Address;
+	95      (00000172) iget-object          v2, v2, Lokhttp3/Address;->h Lokhttp3/HttpUrl;
+	96      (00000176) iget-object          v2, v2, Lokhttp3/HttpUrl;->d Ljava/lang/String;
+	97      (0000017a) invoke-static        v1, v2, Lkotlin/jvm/internal/j;->a(Ljava/lang/Object; Ljava/lang/Object;)Z
+	98      (00000180) move-result          v1
+	99      (00000182) if-eqz               v1, +003h
+
+b-BB@0x186 : [ b-BB@0x230 ]
+	100     (00000186) goto                 +55h
+
+b-BB@0x188 : [ b-BB@0x192 ]
+	101     (00000188) invoke-virtual       v13, Lokhttp3/internal/connection/Exchange;->c()Lokhttp3/internal/connection/RealConnection;
+	102     (0000018e) move-result-object   v13
+	103     (00000190) monitor-enter        v13
+
+b-BB@0x192 : 
+	104     (00000192) iput-boolean         v6, v13, Lokhttp3/internal/connection/RealConnection;->r Z
+	105     (00000196) monitor-exit         v13
+	106     (00000198) iget-object          v12, v12, Lokhttp3/Response;->a Lokhttp3/Request;
+	107     (0000019c) return-object        v12
+	192:195
+	(Ljava/lang/Throwable; -> 19e b-BB@0x19e)
+
+b-BB@0x19e : 
+	108     (0000019e) move-exception       v12
+	109     (000001a0) monitor-exit         v13
+	110     (000001a2) throw                v12
+
+b-BB@0x1a4 : 
+	111     (000001a4) iget-object          v13, v11, Lokhttp3/internal/http/RetryAndFollowUpInterceptor;->a Lokhttp3/OkHttpClient;
+	112     (000001a8) iget-object          v13, v13, Lokhttp3/OkHttpClient;->g Lokhttp3/Authenticator;
+	113     (000001ac) invoke-interface     v13, v1, v12, Lokhttp3/Authenticator;->a(Lokhttp3/Route; Lokhttp3/Response;)Lokhttp3/Request;
+	114     (000001b2) move-result-object   v12
+	115     (000001b4) return-object        v12
+
+b-BB@0x1b6 : [ b-BB@0x1c6 b-BB@0x1c8 ]
+	116     (000001b6) const-string         v13, "PROPFIND"
+	117     (000001ba) iget-object          v1, v11, Lokhttp3/internal/http/RetryAndFollowUpInterceptor;->a Lokhttp3/OkHttpClient;
+	118     (000001be) iget-boolean         v2, v1, Lokhttp3/OkHttpClient;->h Z
+	119     (000001c2) if-nez               v2, +003h
+
+b-BB@0x1c6 : [ b-BB@0x230 ]
+	120     (000001c6) goto                 +35h
+
+b-BB@0x1c8 : [ b-BB@0x1dc b-BB@0x1de ]
+	121     (000001c8) const-string         v2, "Location"
+	122     (000001cc) iget-object          v3, v12, Lokhttp3/Response;->f Lokhttp3/Headers;
+	123     (000001d0) invoke-virtual       v3, v2, Lokhttp3/Headers;->b(Ljava/lang/String;)Ljava/lang/String;
+	124     (000001d6) move-result-object   v2
+	125     (000001d8) if-nez               v2, +003h
+
+b-BB@0x1dc : [ b-BB@0x1de ]
+	126     (000001dc) move-object          v2, v0
+
+b-BB@0x1de : [ b-BB@0x1e6 b-BB@0x1e8 ]
+	127     (000001de) iget-object          v3, v12, Lokhttp3/Response;->a Lokhttp3/Request;
+	128     (000001e2) if-nez               v2, +003h
+
+b-BB@0x1e6 : [ b-BB@0x230 ]
+	129     (000001e6) goto                 +25h
+
+b-BB@0x1e8 : [ b-BB@0x1fe b-BB@0x208 ]
+	130     (000001e8) iget-object          v9, v3, Lokhttp3/Request;->a Lokhttp3/HttpUrl;
+	131     (000001ec) invoke-virtual       v9, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	132     (000001f2) invoke-virtual       v9, v2, Lokhttp3/HttpUrl;->f(Ljava/lang/String;)Lokhttp3/HttpUrl$Builder;
+	133     (000001f8) move-result-object   v2
+	134     (000001fa) if-eqz               v2, +007h
+
+b-BB@0x1fe : [ b-BB@0x20a ]
+	135     (000001fe) invoke-virtual       v2, Lokhttp3/HttpUrl$Builder;->a()Lokhttp3/HttpUrl;
+	136     (00000204) move-result-object   v2
+	137     (00000206) goto                 +2h
+
+b-BB@0x208 : [ b-BB@0x20a ]
+	138     (00000208) move-object          v2, v0
+
+b-BB@0x20a : [ b-BB@0x20e b-BB@0x210 ]
+	139     (0000020a) if-nez               v2, +003h
+
+b-BB@0x20e : [ b-BB@0x230 ]
+	140     (0000020e) goto                 +11h
+
+b-BB@0x210 : [ b-BB@0x228 b-BB@0x232 ]
+	141     (00000210) iget-object          v9, v2, Lokhttp3/HttpUrl;->a Ljava/lang/String;
+	142     (00000214) iget-object          v10, v3, Lokhttp3/Request;->a Lokhttp3/HttpUrl;
+	143     (00000218) iget-object          v10, v10, Lokhttp3/HttpUrl;->a Ljava/lang/String;
+	144     (0000021c) invoke-static        v9, v10, Lkotlin/jvm/internal/j;->a(Ljava/lang/Object; Ljava/lang/Object;)Z
+	145     (00000222) move-result          v9
+	146     (00000224) if-nez               v9, +007h
+
+b-BB@0x228 : [ b-BB@0x230 b-BB@0x232 ]
+	147     (00000228) iget-boolean         v1, v1, Lokhttp3/OkHttpClient;->i Z
+	148     (0000022c) if-nez               v1, +003h
+
+b-BB@0x230 : 
+	149     (00000230) return-object        v0
+
+b-BB@0x232 : [ b-BB@0x246 b-BB@0x2c6 ]
+	150     (00000232) invoke-virtual       v3, Lokhttp3/Request;->a()Lokhttp3/Request$Builder;
+	151     (00000238) move-result-object   v1
+	152     (0000023a) invoke-static        v4, Lokhttp3/internal/http/HttpMethod;->a(Ljava/lang/String;)Z
+	153     (00000240) move-result          v9
+	154     (00000242) if-eqz               v9, +042h
+
+b-BB@0x246 : [ b-BB@0x260 b-BB@0x268 ]
+	155     (00000246) iget                 v12, v12, Lokhttp3/Response;->d I
+	156     (0000024a) sget-object          v9, Lokhttp3/internal/http/HttpMethod;->a Lokhttp3/internal/http/HttpMethod;
+	157     (0000024e) invoke-virtual       v9, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	158     (00000254) invoke-virtual       v4, v13, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+	159     (0000025a) move-result          v9
+	160     (0000025c) if-nez               v9, +006h
+
+b-BB@0x260 : [ b-BB@0x264 b-BB@0x268 ]
+	161     (00000260) if-eq                v12, v7, +004h
+
+b-BB@0x264 : [ b-BB@0x268 b-BB@0x26a ]
+	162     (00000264) if-ne                v12, v8, +003h
+
+b-BB@0x268 : [ b-BB@0x26a ]
+	163     (00000268) move                 v5, v6
+
+b-BB@0x26a : [ b-BB@0x276 b-BB@0x28a ]
+	164     (0000026a) invoke-virtual       v4, v13, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+	165     (00000270) move-result          v13
+	166     (00000272) if-nez               v13, +00ch
+
+b-BB@0x276 : [ b-BB@0x27a b-BB@0x28a ]
+	167     (00000276) if-eq                v12, v7, +00ah
+
+b-BB@0x27a : [ b-BB@0x27e b-BB@0x28a ]
+	168     (0000027a) if-eq                v12, v8, +008h
+
+b-BB@0x27e : [ b-BB@0x298 ]
+	169     (0000027e) const-string         v12, "GET"
+	170     (00000282) invoke-virtual       v1, v12, v0, Lokhttp3/Request$Builder;->b(Ljava/lang/String; Lokhttp3/RequestBody;)V
+	171     (00000288) goto                 +8h
+
+b-BB@0x28a : [ b-BB@0x28e b-BB@0x292 ]
+	172     (0000028a) if-eqz               v5, +004h
+
+b-BB@0x28e : [ b-BB@0x292 ]
+	173     (0000028e) iget-object          v0, v3, Lokhttp3/Request;->d Lokhttp3/RequestBody;
+
+b-BB@0x292 : [ b-BB@0x298 ]
+	174     (00000292) invoke-virtual       v1, v4, v0, Lokhttp3/Request$Builder;->b(Ljava/lang/String; Lokhttp3/RequestBody;)V
+
+b-BB@0x298 : [ b-BB@0x29c b-BB@0x2c6 ]
+	175     (00000298) if-nez               v5, +017h
+
+b-BB@0x29c : [ b-BB@0x2c6 ]
+	176     (0000029c) const-string         v12, "Transfer-Encoding"
+	177     (000002a0) iget-object          v13, v1, Lokhttp3/Request$Builder;->c Lokhttp3/Headers$Builder;
+	178     (000002a4) invoke-virtual       v13, v12, Lokhttp3/Headers$Builder;->d(Ljava/lang/String;)V
+	179     (000002aa) const-string         v12, "Content-Length"
+	180     (000002ae) iget-object          v13, v1, Lokhttp3/Request$Builder;->c Lokhttp3/Headers$Builder;
+	181     (000002b2) invoke-virtual       v13, v12, Lokhttp3/Headers$Builder;->d(Ljava/lang/String;)V
+	182     (000002b8) const-string         v12, "Content-Type"
+	183     (000002bc) iget-object          v13, v1, Lokhttp3/Request$Builder;->c Lokhttp3/Headers$Builder;
+	184     (000002c0) invoke-virtual       v13, v12, Lokhttp3/Headers$Builder;->d(Ljava/lang/String;)V
+
+b-BB@0x2c6 : [ b-BB@0x2d6 b-BB@0x2e4 ]
+	185     (000002c6) iget-object          v12, v3, Lokhttp3/Request;->a Lokhttp3/HttpUrl;
+	186     (000002ca) invoke-static        v12, v2, Lokhttp3/internal/_UtilJvmKt;->a(Lokhttp3/HttpUrl; Lokhttp3/HttpUrl;)Z
+	187     (000002d0) move-result          v12
+	188     (000002d2) if-nez               v12, +009h
+
+b-BB@0x2d6 : [ b-BB@0x2e4 ]
+	189     (000002d6) const-string         v12, "Authorization"
+	190     (000002da) iget-object          v13, v1, Lokhttp3/Request$Builder;->c Lokhttp3/Headers$Builder;
+	191     (000002de) invoke-virtual       v13, v12, Lokhttp3/Headers$Builder;->d(Ljava/lang/String;)V
+
+b-BB@0x2e4 : 
+	192     (000002e4) iput-object          v2, v1, Lokhttp3/Request$Builder;->a Lokhttp3/HttpUrl;
+	193     (000002e8) new-instance         v12, Lokhttp3/Request;
+	194     (000002ec) invoke-direct        v12, v1, Lokhttp3/Request;-><init>(Lokhttp3/Request$Builder;)V
+	195     (000002f2) return-object        v12
+
+b-BB@0x2f4 : 
+	196     (000002f4) packed-switch-payload 12c 12d 12e 12f
+

@@ -1,0 +1,44 @@
+# Lokhttp3/internal/connection/RealConnection;->a(Lokhttp3/internal/http2/Http2Connection; Lokhttp3/internal/http2/Settings;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v0
+# - v1:okhttp3.internal.http2.Http2Connection
+# - v2:okhttp3.internal.http2.Settings
+#
+# - return:void
+
+a-BB@0x0 : [ a-BB@0xc ]
+	0       (00000000) const-string         v1, "settings"
+	1       (00000004) invoke-static        v2, v1, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) monitor-enter        v0
+
+a-BB@0xc : [ a-BB@0x18 a-BB@0x24 ]
+	3       (0000000c) iget                 v1, v2, Lokhttp3/internal/http2/Settings;->a I
+	4       (00000010) and-int/lit8         v1, v1, 8
+	5       (00000014) if-eqz               v1, +008h
+	c:2d
+	(Ljava/lang/Throwable; -> 32 a-BB@0x32)
+
+a-BB@0x18 : [ a-BB@0x2a ]
+	6       (00000018) iget-object          v1, v2, Lokhttp3/internal/http2/Settings;->b [I
+	7       (0000001c) const/4              v2, 3
+	8       (0000001e) aget                 v1, v1, v2
+	9       (00000022) goto                 +4h
+	c:2d
+	(Ljava/lang/Throwable; -> 32 a-BB@0x32)
+
+a-BB@0x24 : [ a-BB@0x2a ]
+	10      (00000024) const                v1, 2147483647
+	c:2d
+	(Ljava/lang/Throwable; -> 32 a-BB@0x32)
+
+a-BB@0x2a : 
+	11      (0000002a) iput                 v1, v0, Lokhttp3/internal/connection/RealConnection;->v I
+	12      (0000002e) monitor-exit         v0
+	13      (00000030) return-void          
+
+a-BB@0x32 : 
+	14      (00000032) move-exception       v1
+	15      (00000034) monitor-exit         v0
+	16      (00000036) throw                v1
+

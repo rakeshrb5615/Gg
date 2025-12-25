@@ -1,0 +1,64 @@
+# Lokhttp3/internal/connection/RealCall;->j(Ljava/io/IOException;)Ljava/io/IOException; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:java.io.IOException
+#
+# - return:java.io.IOException
+
+j-BB@0x0 : [ j-BB@0x2 ]
+	0       (00000000) monitor-enter        v2
+
+j-BB@0x2 : [ j-BB@0xc j-BB@0x38 ]
+	1       (00000002) iget-boolean         v0, v2, Lokhttp3/internal/connection/RealCall;->v Z
+	2       (00000006) const/4              v1, 0
+	3       (00000008) if-eqz               v0, +018h
+	2:2b
+	(Ljava/lang/Throwable; -> 34 j-BB@0x34)
+
+j-BB@0xc : [ j-BB@0x18 j-BB@0x38 ]
+	4       (0000000c) iput-boolean         v1, v2, Lokhttp3/internal/connection/RealCall;->v Z
+	5       (00000010) iget-boolean         v0, v2, Lokhttp3/internal/connection/RealCall;->r Z
+	6       (00000014) if-nez               v0, +012h
+	2:2b
+	(Ljava/lang/Throwable; -> 34 j-BB@0x34)
+
+j-BB@0x18 : [ j-BB@0x20 j-BB@0x38 ]
+	7       (00000018) iget-boolean         v0, v2, Lokhttp3/internal/connection/RealCall;->s Z
+	8       (0000001c) if-nez               v0, +00eh
+	2:2b
+	(Ljava/lang/Throwable; -> 34 j-BB@0x34)
+
+j-BB@0x20 : [ j-BB@0x28 j-BB@0x38 ]
+	9       (00000020) iget-boolean         v0, v2, Lokhttp3/internal/connection/RealCall;->t Z
+	10      (00000024) if-nez               v0, +00ah
+	2:2b
+	(Ljava/lang/Throwable; -> 34 j-BB@0x34)
+
+j-BB@0x28 : [ j-BB@0x30 j-BB@0x38 ]
+	11      (00000028) iget-boolean         v0, v2, Lokhttp3/internal/connection/RealCall;->u Z
+	12      (0000002c) if-nez               v0, +006h
+
+j-BB@0x30 : [ j-BB@0x38 ]
+	13      (00000030) const/4              v1, 1
+	14      (00000032) goto                 +3h
+
+j-BB@0x34 : [ j-BB@0x48 ]
+	15      (00000034) move-exception       v3
+	16      (00000036) goto                 +9h
+
+j-BB@0x38 : [ j-BB@0x3e j-BB@0x46 ]
+	17      (00000038) monitor-exit         v2
+	18      (0000003a) if-eqz               v1, +006h
+
+j-BB@0x3e : [ j-BB@0x46 ]
+	19      (0000003e) invoke-virtual       v2, v3, Lokhttp3/internal/connection/RealCall;->d(Ljava/io/IOException;)Ljava/io/IOException;
+	20      (00000044) move-result-object   v3
+
+j-BB@0x46 : 
+	21      (00000046) return-object        v3
+
+j-BB@0x48 : 
+	22      (00000048) monitor-exit         v2
+	23      (0000004a) throw                v3
+

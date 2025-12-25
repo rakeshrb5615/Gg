@@ -1,0 +1,42 @@
+# Lokhttp3/Headers;->b(Ljava/lang/String;)Ljava/lang/String; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:java.lang.String
+#
+# - return:java.lang.String
+
+b-BB@0x0 : [ b-BB@0x24 b-BB@0x48 ]
+	0       (00000000) const-string         v0, "namesAndValues"
+	1       (00000004) iget-object          v1, v4, Lokhttp3/Headers;->a [Ljava/lang/String;
+	2       (00000008) invoke-static        v1, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	3       (0000000e) array-length         v0, v1
+	4       (00000010) add-int/lit8         v0, v0, -2
+	5       (00000014) const/4              v2, 0
+	6       (00000016) const/4              v3, -2
+	7       (00000018) invoke-static        v0, v2, v3, Lc4/b;->D(I I I)I
+	8       (0000001e) move-result          v2
+	9       (00000020) if-gt                v2, v0, +014h
+
+b-BB@0x24 : [ b-BB@0x34 b-BB@0x3e ]
+	10      (00000024) aget-object          v3, v1, v0
+	11      (00000028) invoke-virtual       v5, v3, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
+	12      (0000002e) move-result          v3
+	13      (00000030) if-eqz               v3, +007h
+
+b-BB@0x34 : 
+	14      (00000034) add-int/lit8         v0, v0, 1
+	15      (00000038) aget-object          v5, v1, v0
+	16      (0000003c) return-object        v5
+
+b-BB@0x3e : [ b-BB@0x42 b-BB@0x48 ]
+	17      (0000003e) if-eq                v0, v2, +005h
+
+b-BB@0x42 : [ b-BB@0x24 ]
+	18      (00000042) add-int/lit8         v0, v0, -2
+	19      (00000046) goto                 -11h
+
+b-BB@0x48 : 
+	20      (00000048) const/4              v5, 0
+	21      (0000004a) return-object        v5
+

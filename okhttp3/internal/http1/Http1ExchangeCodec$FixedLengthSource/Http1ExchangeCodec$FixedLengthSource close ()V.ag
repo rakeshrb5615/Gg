@@ -1,0 +1,52 @@
+# Lokhttp3/internal/http1/Http1ExchangeCodec$FixedLengthSource;->close()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v4
+#
+# - return:void
+
+close-BB@0x0 : [ close-BB@0x8 close-BB@0xa ]
+	0       (00000000) iget-boolean         v0, v4, Lokhttp3/internal/http1/Http1ExchangeCodec$AbstractSource;->c Z
+	1       (00000004) if-eqz               v0, +003h
+
+close-BB@0x8 : 
+	2       (00000008) return-void          
+
+close-BB@0xa : [ close-BB@0x1a close-BB@0x58 ]
+	3       (0000000a) iget-wide            v0, v4, Lokhttp3/internal/http1/Http1ExchangeCodec$FixedLengthSource;->e J
+	4       (0000000e) const-wide/16        v2, 0
+	5       (00000012) cmp-long             v0, v0, v2
+	6       (00000016) if-eqz               v0, +021h
+
+close-BB@0x1a : [ close-BB@0x30 ]
+	7       (0000001a) sget-object          v0, Ljava/util/concurrent/TimeUnit;->MILLISECONDS Ljava/util/concurrent/TimeUnit;
+	8       (0000001e) sget-object          v1, Lokhttp3/internal/_UtilJvmKt;->a Ljava/util/TimeZone;
+	9       (00000022) const-string         v1, "timeUnit"
+	10      (00000026) invoke-static        v0, v1, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	11      (0000002c) const/16             v0, 100
+
+close-BB@0x30 : [ close-BB@0x3c ]
+	12      (00000030) invoke-static        v4, v0, Lokhttp3/internal/_UtilJvmKt;->f(Lx8/h0; I)Z
+	13      (00000036) move-result          v0
+	14      (00000038) goto                 +2h
+	30:37
+	(Ljava/io/IOException; -> 3a close-BB@0x3a)
+
+close-BB@0x3a : [ close-BB@0x3c ]
+	15      (0000003a) const/4              v0, 0
+
+close-BB@0x3c : [ close-BB@0x40 close-BB@0x58 ]
+	16      (0000003c) if-nez               v0, +00eh
+
+close-BB@0x40 : [ close-BB@0x58 ]
+	17      (00000040) iget-object          v0, v4, Lokhttp3/internal/http1/Http1ExchangeCodec$FixedLengthSource;->f Lokhttp3/internal/http1/Http1ExchangeCodec;
+	18      (00000044) iget-object          v0, v0, Lokhttp3/internal/http1/Http1ExchangeCodec;->b Lokhttp3/internal/http/ExchangeCodec$Carrier;
+	19      (00000048) invoke-interface     v0, Lokhttp3/internal/http/ExchangeCodec$Carrier;->h()V
+	20      (0000004e) sget-object          v0, Lokhttp3/internal/http1/Http1ExchangeCodec;->f Lokhttp3/Headers;
+	21      (00000052) invoke-virtual       v4, v0, Lokhttp3/internal/http1/Http1ExchangeCodec$AbstractSource;->c(Lokhttp3/Headers;)V
+
+close-BB@0x58 : 
+	22      (00000058) const/4              v0, 1
+	23      (0000005a) iput-boolean         v0, v4, Lokhttp3/internal/http1/Http1ExchangeCodec$AbstractSource;->c Z
+	24      (0000005e) return-void          
+

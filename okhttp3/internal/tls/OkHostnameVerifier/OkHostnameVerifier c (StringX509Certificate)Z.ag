@@ -1,0 +1,268 @@
+# Lokhttp3/internal/tls/OkHostnameVerifier;->c(Ljava/lang/String; Ljava/security/cert/X509Certificate;)Z [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v10
+# - v11:java.lang.String
+# - v12:java.security.cert.X509Certificate
+#
+# - return:boolean
+
+c-BB@0x0 : [ c-BB@0x34 c-BB@0x8e ]
+	0       (00000000) const-string         v0, "host"
+	1       (00000004) invoke-static        v11, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) sget-object          v0, Lokhttp3/internal/_HostnamesCommonKt;->a Lb8/h;
+	3       (0000000e) sget-object          v0, Lokhttp3/internal/_HostnamesCommonKt;->a Lb8/h;
+	4       (00000012) invoke-virtual       v0, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	5       (00000018) iget-object          v0, v0, Lb8/h;->a Ljava/util/regex/Pattern;
+	6       (0000001c) invoke-virtual       v0, v11, Ljava/util/regex/Pattern;->matcher(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;
+	7       (00000022) move-result-object   v0
+	8       (00000024) invoke-virtual       v0, Ljava/util/regex/Matcher;->matches()Z
+	9       (0000002a) move-result          v0
+	10      (0000002c) const/4              v1, 1
+	11      (0000002e) const/4              v2, 0
+	12      (00000030) if-eqz               v0, +02fh
+
+c-BB@0x34 : [ c-BB@0x52 c-BB@0x56 ]
+	13      (00000034) invoke-static        v11, Lokhttp3/internal/_HostnamesCommonKt;->b(Ljava/lang/String;)Ljava/lang/String;
+	14      (0000003a) move-result-object   v11
+	15      (0000003c) const/4              v0, 7
+	16      (0000003e) invoke-static        v12, v0, Lokhttp3/internal/tls/OkHostnameVerifier;->a(Ljava/security/cert/X509Certificate; I)Ljava/util/List;
+	17      (00000044) move-result-object   v12
+	18      (00000046) invoke-interface     v12, Ljava/util/Collection;->isEmpty()Z
+	19      (0000004c) move-result          v0
+	20      (0000004e) if-eqz               v0, +004h
+
+c-BB@0x52 : [ c-BB@0x268 ]
+	21      (00000052) goto/16              +10bh
+
+c-BB@0x56 : [ c-BB@0x5e ]
+	22      (00000056) invoke-interface     v12, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
+	23      (0000005c) move-result-object   v12
+
+c-BB@0x5e : [ c-BB@0x6a c-BB@0x268 ]
+	24      (0000005e) invoke-interface     v12, Ljava/util/Iterator;->hasNext()Z
+	25      (00000064) move-result          v0
+	26      (00000066) if-eqz               v0, +101h
+
+c-BB@0x6a : [ c-BB@0x8a c-BB@0x5e ]
+	27      (0000006a) invoke-interface     v12, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	28      (00000070) move-result-object   v0
+	29      (00000072) check-cast           v0, Ljava/lang/String;
+	30      (00000076) invoke-static        v0, Lokhttp3/internal/_HostnamesCommonKt;->b(Ljava/lang/String;)Ljava/lang/String;
+	31      (0000007c) move-result-object   v0
+	32      (0000007e) invoke-static        v11, v0, Lkotlin/jvm/internal/j;->a(Ljava/lang/Object; Ljava/lang/Object;)Z
+	33      (00000084) move-result          v0
+	34      (00000086) if-eqz               v0, -014h
+
+c-BB@0x8a : [ c-BB@0x266 ]
+	35      (0000008a) goto/16              +0eeh
+
+c-BB@0x8e : [ c-BB@0xa2 c-BB@0xba ]
+	36      (0000008e) invoke-static        v11, Lokhttp3/internal/tls/OkHostnameVerifier;->b(Ljava/lang/String;)Z
+	37      (00000094) move-result          v0
+	38      (00000096) const-string         v3, "toLowerCase(...)"
+	39      (0000009a) const-string         v4, "US"
+	40      (0000009e) if-eqz               v0, +00eh
+
+c-BB@0xa2 : [ c-BB@0xba ]
+	41      (000000a2) sget-object          v0, Ljava/util/Locale;->US Ljava/util/Locale;
+	42      (000000a6) invoke-static        v0, v4, Lkotlin/jvm/internal/j;->d(Ljava/lang/Object; Ljava/lang/String;)V
+	43      (000000ac) invoke-virtual       v11, v0, Ljava/lang/String;->toLowerCase(Ljava/util/Locale;)Ljava/lang/String;
+	44      (000000b2) move-result-object   v11
+	45      (000000b4) invoke-static        v11, v3, Lkotlin/jvm/internal/j;->d(Ljava/lang/Object; Ljava/lang/String;)V
+
+c-BB@0xba : [ c-BB@0xd0 c-BB@0xd4 ]
+	46      (000000ba) const/4              v0, 2
+	47      (000000bc) invoke-static        v12, v0, Lokhttp3/internal/tls/OkHostnameVerifier;->a(Ljava/security/cert/X509Certificate; I)Ljava/util/List;
+	48      (000000c2) move-result-object   v12
+	49      (000000c4) invoke-interface     v12, Ljava/util/Collection;->isEmpty()Z
+	50      (000000ca) move-result          v0
+	51      (000000cc) if-eqz               v0, +004h
+
+c-BB@0xd0 : [ c-BB@0x268 ]
+	52      (000000d0) goto/16              +0cch
+
+c-BB@0xd4 : [ c-BB@0xdc ]
+	53      (000000d4) invoke-interface     v12, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
+	54      (000000da) move-result-object   v12
+
+c-BB@0xdc : [ c-BB@0xe8 c-BB@0x268 ]
+	55      (000000dc) invoke-interface     v12, Ljava/util/Iterator;->hasNext()Z
+	56      (000000e2) move-result          v0
+	57      (000000e4) if-eqz               v0, +0c2h
+
+c-BB@0xe8 : [ c-BB@0x10a c-BB@0x10e ]
+	58      (000000e8) invoke-interface     v12, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	59      (000000ee) move-result-object   v0
+	60      (000000f0) check-cast           v0, Ljava/lang/String;
+	61      (000000f4) sget-object          v5, Lokhttp3/internal/tls/OkHostnameVerifier;->a Lokhttp3/internal/tls/OkHostnameVerifier;
+	62      (000000f8) invoke-virtual       v5, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	63      (000000fe) invoke-virtual       v11, Ljava/lang/String;->length()I
+	64      (00000104) move-result          v5
+	65      (00000106) if-nez               v5, +004h
+
+c-BB@0x10a : [ c-BB@0x202 ]
+	66      (0000010a) goto/16              +07ch
+
+c-BB@0x10e : [ c-BB@0x11e c-BB@0x202 ]
+	67      (0000010e) const-string         v5, "."
+	68      (00000112) invoke-static        v11, v5, Lb8/p;->p0(Ljava/lang/String; Ljava/lang/String;)Z
+	69      (00000118) move-result          v6
+	70      (0000011a) if-nez               v6, +074h
+
+c-BB@0x11e : [ c-BB@0x12e c-BB@0x132 ]
+	71      (0000011e) const-string         v6, ".."
+	72      (00000122) invoke-static        v11, v6, v2, Lb8/p;->l0(Ljava/lang/String; Ljava/lang/String; Z)Z
+	73      (00000128) move-result          v7
+	74      (0000012a) if-eqz               v7, +004h
+
+c-BB@0x12e : [ c-BB@0x202 ]
+	75      (0000012e) goto/16              +06ah
+
+c-BB@0x132 : [ c-BB@0x136 c-BB@0x202 ]
+	76      (00000132) if-eqz               v0, +068h
+
+c-BB@0x136 : [ c-BB@0x142 c-BB@0x144 ]
+	77      (00000136) invoke-virtual       v0, Ljava/lang/String;->length()I
+	78      (0000013c) move-result          v7
+	79      (0000013e) if-nez               v7, +003h
+
+c-BB@0x142 : [ c-BB@0x202 ]
+	80      (00000142) goto                 +60h
+
+c-BB@0x144 : [ c-BB@0x150 c-BB@0x202 ]
+	81      (00000144) invoke-static        v0, v5, Lb8/p;->p0(Ljava/lang/String; Ljava/lang/String;)Z
+	82      (0000014a) move-result          v7
+	83      (0000014c) if-nez               v7, +05bh
+
+c-BB@0x150 : [ c-BB@0x15c c-BB@0x15e ]
+	84      (00000150) invoke-static        v0, v6, v2, Lb8/p;->l0(Ljava/lang/String; Ljava/lang/String; Z)Z
+	85      (00000156) move-result          v6
+	86      (00000158) if-eqz               v6, +003h
+
+c-BB@0x15c : [ c-BB@0x202 ]
+	87      (0000015c) goto                 +53h
+
+c-BB@0x15e : [ c-BB@0x16a c-BB@0x174 ]
+	88      (0000015e) invoke-static        v11, v5, v2, Lb8/p;->l0(Ljava/lang/String; Ljava/lang/String; Z)Z
+	89      (00000164) move-result          v6
+	90      (00000166) if-nez               v6, +007h
+
+c-BB@0x16a : [ c-BB@0x176 ]
+	91      (0000016a) invoke-virtual       v11, v5, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	92      (00000170) move-result-object   v6
+	93      (00000172) goto                 +2h
+
+c-BB@0x174 : [ c-BB@0x176 ]
+	94      (00000174) move-object          v6, v11
+
+c-BB@0x176 : [ c-BB@0x182 c-BB@0x18a ]
+	95      (00000176) invoke-static        v0, v5, v2, Lb8/p;->l0(Ljava/lang/String; Ljava/lang/String; Z)Z
+	96      (0000017c) move-result          v7
+	97      (0000017e) if-nez               v7, +006h
+
+c-BB@0x182 : [ c-BB@0x18a ]
+	98      (00000182) invoke-virtual       v0, v5, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	99      (00000188) move-result-object   v0
+
+c-BB@0x18a : [ c-BB@0x196 c-BB@0x1ae ]
+	100     (0000018a) invoke-static        v0, Lokhttp3/internal/tls/OkHostnameVerifier;->b(Ljava/lang/String;)Z
+	101     (00000190) move-result          v5
+	102     (00000192) if-eqz               v5, +00eh
+
+c-BB@0x196 : [ c-BB@0x1ae ]
+	103     (00000196) sget-object          v5, Ljava/util/Locale;->US Ljava/util/Locale;
+	104     (0000019a) invoke-static        v5, v4, Lkotlin/jvm/internal/j;->d(Ljava/lang/Object; Ljava/lang/String;)V
+	105     (000001a0) invoke-virtual       v0, v5, Ljava/lang/String;->toLowerCase(Ljava/util/Locale;)Ljava/lang/String;
+	106     (000001a6) move-result-object   v0
+	107     (000001a8) invoke-static        v0, v3, Lkotlin/jvm/internal/j;->d(Ljava/lang/Object; Ljava/lang/String;)V
+
+c-BB@0x1ae : [ c-BB@0x1be c-BB@0x1c8 ]
+	108     (000001ae) const-string         v5, "*"
+	109     (000001b2) invoke-static        v0, v5, Lb8/i;->s0(Ljava/lang/CharSequence; Ljava/lang/String;)Z
+	110     (000001b8) move-result          v5
+	111     (000001ba) if-nez               v5, +007h
+
+c-BB@0x1be : [ c-BB@0x262 ]
+	112     (000001be) invoke-static        v6, v0, Lkotlin/jvm/internal/j;->a(Ljava/lang/Object; Ljava/lang/Object;)Z
+	113     (000001c4) move-result          v0
+	114     (000001c6) goto                 +4eh
+
+c-BB@0x1c8 : [ c-BB@0x1d8 c-BB@0x202 ]
+	115     (000001c8) const-string         v5, "*."
+	116     (000001cc) invoke-static        v0, v5, Lb8/p;->p0(Ljava/lang/String; Ljava/lang/String;)Z
+	117     (000001d2) move-result          v7
+	118     (000001d4) if-eqz               v7, +017h
+
+c-BB@0x1d8 : [ c-BB@0x1ec c-BB@0x1ee ]
+	119     (000001d8) const/16             v7, 42
+	120     (000001dc) const/4              v8, 4
+	121     (000001de) invoke-static        v0, v7, v1, v8, Lb8/i;->v0(Ljava/lang/CharSequence; C I I)I
+	122     (000001e4) move-result          v7
+	123     (000001e6) const/4              v9, -1
+	124     (000001e8) if-eq                v7, v9, +003h
+
+c-BB@0x1ec : [ c-BB@0x202 ]
+	125     (000001ec) goto                 +bh
+
+c-BB@0x1ee : [ c-BB@0x202 c-BB@0x206 ]
+	126     (000001ee) invoke-virtual       v6, Ljava/lang/String;->length()I
+	127     (000001f4) move-result          v7
+	128     (000001f6) invoke-virtual       v0, Ljava/lang/String;->length()I
+	129     (000001fc) move-result          v10
+	130     (000001fe) if-ge                v7, v10, +004h
+
+c-BB@0x202 : [ c-BB@0x262 ]
+	131     (00000202) move                 v0, v2
+	132     (00000204) goto                 +2fh
+
+c-BB@0x206 : [ c-BB@0x212 c-BB@0x214 ]
+	133     (00000206) invoke-virtual       v5, v0, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+	134     (0000020c) move-result          v5
+	135     (0000020e) if-eqz               v5, +003h
+
+c-BB@0x212 : [ c-BB@0x202 ]
+	136     (00000212) goto                 -8h
+
+c-BB@0x214 : [ c-BB@0x232 c-BB@0x234 ]
+	137     (00000214) invoke-virtual       v0, v1, Ljava/lang/String;->substring(I)Ljava/lang/String;
+	138     (0000021a) move-result-object   v0
+	139     (0000021c) const-string         v5, "substring(...)"
+	140     (00000220) invoke-static        v0, v5, Lkotlin/jvm/internal/j;->d(Ljava/lang/Object; Ljava/lang/String;)V
+	141     (00000226) invoke-static        v6, v0, v2, Lb8/p;->l0(Ljava/lang/String; Ljava/lang/String; Z)Z
+	142     (0000022c) move-result          v5
+	143     (0000022e) if-nez               v5, +003h
+
+c-BB@0x232 : [ c-BB@0x202 ]
+	144     (00000232) goto                 -18h
+
+c-BB@0x234 : [ c-BB@0x24a c-BB@0x260 ]
+	145     (00000234) invoke-virtual       v6, Ljava/lang/String;->length()I
+	146     (0000023a) move-result          v5
+	147     (0000023c) invoke-virtual       v0, Ljava/lang/String;->length()I
+	148     (00000242) move-result          v0
+	149     (00000244) sub-int/2addr        v5, v0
+	150     (00000246) if-lez               v5, +00dh
+
+c-BB@0x24a : [ c-BB@0x25e c-BB@0x260 ]
+	151     (0000024a) add-int/lit8         v5, v5, -1
+	152     (0000024e) const/16             v0, 46
+	153     (00000252) invoke-static        v6, v0, v5, v8, Lb8/i;->z0(Ljava/lang/String; C I I)I
+	154     (00000258) move-result          v0
+	155     (0000025a) if-eq                v0, v9, +003h
+
+c-BB@0x25e : [ c-BB@0x202 ]
+	156     (0000025e) goto                 -2eh
+
+c-BB@0x260 : [ c-BB@0x262 ]
+	157     (00000260) move                 v0, v1
+
+c-BB@0x262 : [ c-BB@0x266 c-BB@0xdc ]
+	158     (00000262) if-eqz               v0, -0c3h
+
+c-BB@0x266 : 
+	159     (00000266) return               v1
+
+c-BB@0x268 : 
+	160     (00000268) return               v2
+

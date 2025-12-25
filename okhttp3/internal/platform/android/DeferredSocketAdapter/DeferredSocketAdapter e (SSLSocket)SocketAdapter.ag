@@ -1,0 +1,51 @@
+# Lokhttp3/internal/platform/android/DeferredSocketAdapter;->e(Ljavax/net/ssl/SSLSocket;)Lokhttp3/internal/platform/android/SocketAdapter; [access_flags=public final synchronized]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:javax.net.ssl.SSLSocket
+#
+# - return:okhttp3.internal.platform.android.SocketAdapter
+
+e-BB@0x0 : [ e-BB@0x2 ]
+	0       (00000000) monitor-enter        v1
+
+e-BB@0x2 : [ e-BB@0xa e-BB@0x30 ]
+	1       (00000002) iget-object          v0, v1, Lokhttp3/internal/platform/android/DeferredSocketAdapter;->b Lokhttp3/internal/platform/android/SocketAdapter;
+	2       (00000006) if-nez               v0, +015h
+	2:33
+	(Ljava/lang/Throwable; -> 2c e-BB@0x2c)
+
+e-BB@0xa : [ e-BB@0x1a e-BB@0x30 ]
+	3       (0000000a) iget-object          v0, v1, Lokhttp3/internal/platform/android/DeferredSocketAdapter;->a Lokhttp3/internal/platform/android/DeferredSocketAdapter$Factory;
+	4       (0000000e) invoke-interface     v0, v2, Lokhttp3/internal/platform/android/DeferredSocketAdapter$Factory;->a(Ljavax/net/ssl/SSLSocket;)Z
+	5       (00000014) move-result          v0
+	6       (00000016) if-eqz               v0, +00dh
+	2:33
+	(Ljava/lang/Throwable; -> 2c e-BB@0x2c)
+
+e-BB@0x1a : [ e-BB@0x30 ]
+	7       (0000001a) iget-object          v0, v1, Lokhttp3/internal/platform/android/DeferredSocketAdapter;->a Lokhttp3/internal/platform/android/DeferredSocketAdapter$Factory;
+	8       (0000001e) invoke-interface     v0, v2, Lokhttp3/internal/platform/android/DeferredSocketAdapter$Factory;->b(Ljavax/net/ssl/SSLSocket;)Lokhttp3/internal/platform/android/SocketAdapter;
+	9       (00000024) move-result-object   v2
+	10      (00000026) iput-object          v2, v1, Lokhttp3/internal/platform/android/DeferredSocketAdapter;->b Lokhttp3/internal/platform/android/SocketAdapter;
+	11      (0000002a) goto                 +3h
+	2:33
+	(Ljava/lang/Throwable; -> 2c e-BB@0x2c)
+
+e-BB@0x2c : [ e-BB@0x38 ]
+	12      (0000002c) move-exception       v2
+	13      (0000002e) goto                 +5h
+	2:33
+	(Ljava/lang/Throwable; -> 2c e-BB@0x2c)
+
+e-BB@0x30 : 
+	14      (00000030) iget-object          v2, v1, Lokhttp3/internal/platform/android/DeferredSocketAdapter;->b Lokhttp3/internal/platform/android/SocketAdapter;
+	15      (00000034) monitor-exit         v1
+	16      (00000036) return-object        v2
+
+e-BB@0x38 : 
+	17      (00000038) monitor-exit         v1
+	18      (0000003a) throw                v2
+	38:39
+	(Ljava/lang/Throwable; -> 2c e-BB@0x2c)
+

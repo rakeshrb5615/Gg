@@ -1,0 +1,133 @@
+# Lokhttp3/MultipartBody;->e(Lx8/h; Z)J [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v16
+# - v17:x8.h
+# - v18:boolean
+#
+# - return:long
+
+e-BB@0x0 : [ e-BB@0x8 e-BB@0x16 ]
+	0       (00000000) move-object/from16   v0, v16
+	1       (00000004) if-eqz               v18, +009h
+
+e-BB@0x8 : [ e-BB@0x1e ]
+	2       (00000008) new-instance         v1, Lx8/g;
+	3       (0000000c) invoke-direct        v1, Ljava/lang/Object;-><init>()V
+	4       (00000012) move-object          v2, v1
+	5       (00000014) goto                 +5h
+
+e-BB@0x16 : [ e-BB@0x1e ]
+	6       (00000016) const/4              v1, 0
+	7       (00000018) move-object          v2, v1
+	8       (0000001a) move-object/from16   v1, v17
+
+e-BB@0x1e : [ e-BB@0x32 ]
+	9       (0000001e) iget-object          v3, v0, Lokhttp3/MultipartBody;->c Ljava/util/List;
+	10      (00000022) invoke-interface     v3, Ljava/util/List;->size()I
+	11      (00000028) move-result          v4
+	12      (0000002a) const/4              v5, 0
+	13      (0000002c) const-wide/16        v6, 0
+	14      (00000030) move                 v8, v5
+
+e-BB@0x32 : [ e-BB@0x42 e-BB@0x124 ]
+	15      (00000032) iget-object          v9, v0, Lokhttp3/MultipartBody;->b Lx8/j;
+	16      (00000036) sget-object          v10, Lokhttp3/MultipartBody;->j [B
+	17      (0000003a) sget-object          v11, Lokhttp3/MultipartBody;->i [B
+	18      (0000003e) if-ge                v8, v4, +073h
+
+e-BB@0x42 : [ e-BB@0x78 ]
+	19      (00000042) invoke-interface     v3, v8, Ljava/util/List;->get(I)Ljava/lang/Object;
+	20      (00000048) move-result-object   v12
+	21      (0000004a) check-cast           v12, Lokhttp3/MultipartBody$Part;
+	22      (0000004e) iget-object          v13, v12, Lokhttp3/MultipartBody$Part;->a Lokhttp3/Headers;
+	23      (00000052) iget-object          v12, v12, Lokhttp3/MultipartBody$Part;->b Lokhttp3/RequestBody;
+	24      (00000056) invoke-static        v1, Lkotlin/jvm/internal/j;->b(Ljava/lang/Object;)V
+	25      (0000005c) invoke-interface     v1, v10, Lx8/h;->write([B)Lx8/h;
+	26      (00000062) invoke-interface     v1, v9, Lx8/h;->j(Lx8/j;)Lx8/h;
+	27      (00000068) invoke-interface     v1, v11, Lx8/h;->write([B)Lx8/h;
+	28      (0000006e) invoke-virtual       v13, Lokhttp3/Headers;->size()I
+	29      (00000074) move-result          v9
+	30      (00000076) move                 v10, v5
+
+e-BB@0x78 : [ e-BB@0x7c e-BB@0xb4 ]
+	31      (00000078) if-ge                v10, v9, +01eh
+
+e-BB@0x7c : [ e-BB@0x78 ]
+	32      (0000007c) invoke-virtual       v13, v10, Lokhttp3/Headers;->c(I)Ljava/lang/String;
+	33      (00000082) move-result-object   v14
+	34      (00000084) invoke-interface     v1, v14, Lx8/h;->q(Ljava/lang/String;)Lx8/h;
+	35      (0000008a) move-result-object   v14
+	36      (0000008c) sget-object          v15, Lokhttp3/MultipartBody;->h [B
+	37      (00000090) invoke-interface     v14, v15, Lx8/h;->write([B)Lx8/h;
+	38      (00000096) move-result-object   v14
+	39      (00000098) invoke-virtual       v13, v10, Lokhttp3/Headers;->e(I)Ljava/lang/String;
+	40      (0000009e) move-result-object   v15
+	41      (000000a0) invoke-interface     v14, v15, Lx8/h;->q(Ljava/lang/String;)Lx8/h;
+	42      (000000a6) move-result-object   v14
+	43      (000000a8) invoke-interface     v14, v11, Lx8/h;->write([B)Lx8/h;
+	44      (000000ae) add-int/lit8         v10, v10, 1
+	45      (000000b2) goto                 -1dh
+
+e-BB@0xb4 : [ e-BB@0xc0 e-BB@0xde ]
+	46      (000000b4) invoke-virtual       v12, Lokhttp3/RequestBody;->b()Lokhttp3/MediaType;
+	47      (000000ba) move-result-object   v9
+	48      (000000bc) if-eqz               v9, +011h
+
+e-BB@0xc0 : [ e-BB@0xde ]
+	49      (000000c0) const-string         v10, "Content-Type: "
+	50      (000000c4) invoke-interface     v1, v10, Lx8/h;->q(Ljava/lang/String;)Lx8/h;
+	51      (000000ca) move-result-object   v10
+	52      (000000cc) iget-object          v9, v9, Lokhttp3/MediaType;->a Ljava/lang/String;
+	53      (000000d0) invoke-interface     v10, v9, Lx8/h;->q(Ljava/lang/String;)Lx8/h;
+	54      (000000d6) move-result-object   v9
+	55      (000000d8) invoke-interface     v9, v11, Lx8/h;->write([B)Lx8/h;
+
+e-BB@0xde : [ e-BB@0xf2 e-BB@0x104 ]
+	56      (000000de) invoke-virtual       v12, Lokhttp3/RequestBody;->a()J
+	57      (000000e4) move-result-wide     v9
+	58      (000000e6) const-wide/16        v13, -1
+	59      (000000ea) cmp-long             v15, v9, v13
+	60      (000000ee) if-nez               v15, +00bh
+
+e-BB@0xf2 : [ e-BB@0xf6 e-BB@0x104 ]
+	61      (000000f2) if-eqz               v18, +009h
+
+e-BB@0xf6 : 
+	62      (000000f6) invoke-static        v2, Lkotlin/jvm/internal/j;->b(Ljava/lang/Object;)V
+	63      (000000fc) invoke-virtual       v2, Lx8/g;->s()V
+	64      (00000102) return-wide          v13
+
+e-BB@0x104 : [ e-BB@0x10e e-BB@0x112 ]
+	65      (00000104) invoke-interface     v1, v11, Lx8/h;->write([B)Lx8/h;
+	66      (0000010a) if-eqz               v18, +004h
+
+e-BB@0x10e : [ e-BB@0x118 ]
+	67      (0000010e) add-long/2addr       v6, v9
+	68      (00000110) goto                 +4h
+
+e-BB@0x112 : [ e-BB@0x118 ]
+	69      (00000112) invoke-virtual       v12, v1, Lokhttp3/RequestBody;->d(Lx8/h;)V
+
+e-BB@0x118 : [ e-BB@0x32 ]
+	70      (00000118) invoke-interface     v1, v11, Lx8/h;->write([B)Lx8/h;
+	71      (0000011e) add-int/lit8         v8, v8, 1
+	72      (00000122) goto                 -78h
+
+e-BB@0x124 : [ e-BB@0x146 e-BB@0x158 ]
+	73      (00000124) invoke-static        v1, Lkotlin/jvm/internal/j;->b(Ljava/lang/Object;)V
+	74      (0000012a) invoke-interface     v1, v10, Lx8/h;->write([B)Lx8/h;
+	75      (00000130) invoke-interface     v1, v9, Lx8/h;->j(Lx8/j;)Lx8/h;
+	76      (00000136) invoke-interface     v1, v10, Lx8/h;->write([B)Lx8/h;
+	77      (0000013c) invoke-interface     v1, v11, Lx8/h;->write([B)Lx8/h;
+	78      (00000142) if-eqz               v18, +00bh
+
+e-BB@0x146 : [ e-BB@0x158 ]
+	79      (00000146) invoke-static        v2, Lkotlin/jvm/internal/j;->b(Ljava/lang/Object;)V
+	80      (0000014c) iget-wide            v3, v2, Lx8/g;->b J
+	81      (00000150) add-long/2addr       v6, v3
+	82      (00000152) invoke-virtual       v2, Lx8/g;->s()V
+
+e-BB@0x158 : 
+	83      (00000158) return-wide          v6
+

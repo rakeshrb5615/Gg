@@ -1,0 +1,37 @@
+# Lokhttp3/internal/idn/Punycode;->b(I)I [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:int
+#
+# - return:int
+
+b-BB@0x0 : [ b-BB@0x8 b-BB@0xe ]
+	0       (00000000) const/16             v0, 26
+	1       (00000004) if-ge                v3, v0, +005h
+
+b-BB@0x8 : 
+	2       (00000008) add-int/lit8         v3, v3, 97
+	3       (0000000c) return               v3
+
+b-BB@0xe : [ b-BB@0x16 b-BB@0x1c ]
+	4       (0000000e) const/16             v0, 36
+	5       (00000012) if-ge                v3, v0, +005h
+
+b-BB@0x16 : 
+	6       (00000016) add-int/lit8         v3, v3, 22
+	7       (0000001a) return               v3
+
+b-BB@0x1c : 
+	8       (0000001c) new-instance         v0, Ljava/lang/IllegalStateException;
+	9       (00000020) new-instance         v1, Ljava/lang/StringBuilder;
+	10      (00000024) const-string         v2, "unexpected digit: "
+	11      (00000028) invoke-direct        v1, v2, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	12      (0000002e) invoke-virtual       v1, v3, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	13      (00000034) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	14      (0000003a) move-result-object   v3
+	15      (0000003c) invoke-virtual       v3, Ljava/lang/Object;->toString()Ljava/lang/String;
+	16      (00000042) move-result-object   v3
+	17      (00000044) invoke-direct        v0, v3, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	18      (0000004a) throw                v0
+

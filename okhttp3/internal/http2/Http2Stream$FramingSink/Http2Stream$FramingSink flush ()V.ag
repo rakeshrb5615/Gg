@@ -1,0 +1,41 @@
+# Lokhttp3/internal/http2/Http2Stream$FramingSink;->flush()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v4
+#
+# - return:void
+
+flush-BB@0x0 : [ flush-BB@0xa ]
+	0       (00000000) iget-object          v0, v4, Lokhttp3/internal/http2/Http2Stream$FramingSink;->d Lokhttp3/internal/http2/Http2Stream;
+	1       (00000004) sget-object          v1, Lokhttp3/internal/_UtilJvmKt;->a Ljava/util/TimeZone;
+	2       (00000008) monitor-enter        v0
+
+flush-BB@0xa : [ flush-BB@0x12 ]
+	3       (0000000a) invoke-virtual       v0, Lokhttp3/internal/http2/Http2Stream;->d()V
+	4       (00000010) monitor-exit         v0
+	a:f
+	(Ljava/lang/Throwable; -> 40 flush-BB@0x40)
+
+flush-BB@0x12 : [ flush-BB@0x26 flush-BB@0x3e ]
+	5       (00000012) iget-object          v0, v4, Lokhttp3/internal/http2/Http2Stream$FramingSink;->b Lx8/g;
+	6       (00000016) iget-wide            v0, v0, Lx8/g;->b J
+	7       (0000001a) const-wide/16        v2, 0
+	8       (0000001e) cmp-long             v0, v0, v2
+	9       (00000022) if-lez               v0, +00eh
+
+flush-BB@0x26 : [ flush-BB@0x12 ]
+	10      (00000026) const/4              v0, 0
+	11      (00000028) invoke-virtual       v4, v0, Lokhttp3/internal/http2/Http2Stream$FramingSink;->c(Z)V
+	12      (0000002e) iget-object          v0, v4, Lokhttp3/internal/http2/Http2Stream$FramingSink;->d Lokhttp3/internal/http2/Http2Stream;
+	13      (00000032) iget-object          v0, v0, Lokhttp3/internal/http2/Http2Stream;->b Lokhttp3/internal/http2/Http2Connection;
+	14      (00000036) invoke-virtual       v0, Lokhttp3/internal/http2/Http2Connection;->flush()V
+	15      (0000003c) goto                 -15h
+
+flush-BB@0x3e : 
+	16      (0000003e) return-void          
+
+flush-BB@0x40 : 
+	17      (00000040) move-exception       v1
+	18      (00000042) monitor-exit         v0
+	19      (00000044) throw                v1
+

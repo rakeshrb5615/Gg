@@ -1,0 +1,409 @@
+# Lokhttp3/internal/http/RetryAndFollowUpInterceptor;->a(Lokhttp3/internal/http/RealInterceptorChain;)Lokhttp3/Response; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v35
+# - v36:okhttp3.internal.http.RealInterceptorChain
+#
+# - return:okhttp3.Response
+
+a-BB@0x0 : [ a-BB@0x28 ]
+	0       (00000000) move-object/from16   v1, v35
+	1       (00000004) move-object/from16   v2, v36
+	2       (00000008) iget-object          v0, v2, Lokhttp3/internal/http/RealInterceptorChain;->e Lokhttp3/Request;
+	3       (0000000c) iget-object          v14, v2, Lokhttp3/internal/http/RealInterceptorChain;->a Lokhttp3/internal/connection/RealCall;
+	4       (00000010) sget-object          v3, Li7/n;->a Li7/n;
+	5       (00000014) const/4              v4, 0
+	6       (00000016) const/16             v16, 0
+	7       (0000001a) const/4              v5, 1
+	8       (0000001c) move-object          v15, v0
+	9       (0000001e) move/from16          v18, v4
+	10      (00000022) move                 v0, v5
+	11      (00000024) move-object/from16   v17, v16
+
+a-BB@0x28 : [ a-BB@0x30 a-BB@0x38e ]
+	12      (00000028) iget-object          v6, v14, Lokhttp3/internal/connection/RealCall;->q Lokhttp3/internal/connection/Exchange;
+	13      (0000002c) if-nez               v6, +1b1h
+
+a-BB@0x30 : [ a-BB@0x32 ]
+	14      (00000030) monitor-enter        v14
+
+a-BB@0x32 : [ a-BB@0x3a a-BB@0x37a ]
+	15      (00000032) iget-boolean         v6, v14, Lokhttp3/internal/connection/RealCall;->s Z
+	16      (00000036) if-nez               v6, +1a2h
+	32:4d
+	(Ljava/lang/Throwable; -> 366 a-BB@0x366)
+
+a-BB@0x3a : [ a-BB@0x42 a-BB@0x36a ]
+	17      (0000003a) iget-boolean         v6, v14, Lokhttp3/internal/connection/RealCall;->r Z
+	18      (0000003e) if-nez               v6, +196h
+	32:4d
+	(Ljava/lang/Throwable; -> 366 a-BB@0x366)
+
+a-BB@0x42 : [ a-BB@0x4a a-BB@0x36a ]
+	19      (00000042) iget-boolean         v6, v14, Lokhttp3/internal/connection/RealCall;->u Z
+	20      (00000046) if-nez               v6, +192h
+	32:4d
+	(Ljava/lang/Throwable; -> 366 a-BB@0x366)
+
+a-BB@0x4a : [ a-BB@0x52 a-BB@0x36a ]
+	21      (0000004a) iget-boolean         v6, v14, Lokhttp3/internal/connection/RealCall;->t Z
+	22      (0000004e) if-nez               v6, +18eh
+
+a-BB@0x52 : [ a-BB@0x58 a-BB@0x190 ]
+	23      (00000052) monitor-exit         v14
+	24      (00000054) if-eqz               v0, +09eh
+
+a-BB@0x58 : [ a-BB@0xbe a-BB@0xf0 ]
+	25      (00000058) move-object          v6, v3
+	26      (0000005a) new-instance         v3, Lokhttp3/internal/connection/RealRoutePlanner;
+	27      (0000005e) iget-object          v0, v14, Lokhttp3/internal/connection/RealCall;->a Lokhttp3/OkHttpClient;
+	28      (00000062) move                 v7, v4
+	29      (00000064) iget-object          v4, v0, Lokhttp3/OkHttpClient;->z Lokhttp3/internal/concurrent/TaskRunner;
+	30      (00000068) move                 v8, v5
+	31      (0000006a) iget-object          v5, v14, Lokhttp3/internal/connection/RealCall;->c Lokhttp3/internal/connection/RealConnectionPool;
+	32      (0000006e) move-object          v9, v6
+	33      (00000070) iget                 v6, v0, Lokhttp3/OkHttpClient;->w I
+	34      (00000074) move                 v10, v7
+	35      (00000076) iget                 v7, v0, Lokhttp3/OkHttpClient;->x I
+	36      (0000007a) move                 v11, v8
+	37      (0000007c) iget                 v8, v2, Lokhttp3/internal/http/RealInterceptorChain;->f I
+	38      (00000080) move-object          v12, v9
+	39      (00000082) iget                 v9, v2, Lokhttp3/internal/http/RealInterceptorChain;->g I
+	40      (00000086) move                 v13, v10
+	41      (00000088) iget-boolean         v10, v0, Lokhttp3/OkHttpClient;->e Z
+	42      (0000008c) move/from16          v19, v11
+	43      (00000090) iget-boolean         v11, v0, Lokhttp3/OkHttpClient;->f Z
+	44      (00000094) iget-object          v13, v15, Lokhttp3/Request;->a Lokhttp3/HttpUrl;
+	45      (00000098) move-object/from16   v20, v3
+	46      (0000009c) const-string         v3, "url"
+	47      (000000a0) invoke-static        v13, v3, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	48      (000000a6) iget-object          v3, v13, Lokhttp3/HttpUrl;->a Ljava/lang/String;
+	49      (000000aa) move-object/from16   v21, v4
+	50      (000000ae) const-string         v4, "https"
+	51      (000000b2) invoke-static        v3, v4, Lkotlin/jvm/internal/j;->a(Ljava/lang/Object; Ljava/lang/Object;)Z
+	52      (000000b8) move-result          v3
+	53      (000000ba) if-eqz               v3, +01bh
+
+a-BB@0xbe : [ a-BB@0xc6 a-BB@0xe0 ]
+	54      (000000be) iget-object          v3, v0, Lokhttp3/OkHttpClient;->o Ljavax/net/ssl/SSLSocketFactory;
+	55      (000000c2) if-eqz               v3, +00fh
+
+a-BB@0xc6 : [ a-BB@0xfc ]
+	56      (000000c6) iget-object          v4, v0, Lokhttp3/OkHttpClient;->s Lokhttp3/internal/tls/OkHostnameVerifier;
+	57      (000000ca) move-object/from16   v22, v3
+	58      (000000ce) iget-object          v3, v0, Lokhttp3/OkHttpClient;->t Lokhttp3/CertificatePinner;
+	59      (000000d2) move-object/from16   v29, v3
+	60      (000000d6) move-object/from16   v28, v4
+	61      (000000da) move-object/from16   v27, v22
+	62      (000000de) goto                 +fh
+
+a-BB@0xe0 : 
+	63      (000000e0) new-instance         v0, Ljava/lang/IllegalStateException;
+	64      (000000e4) const-string         v2, "CLEARTEXT-only client"
+	65      (000000e8) invoke-direct        v0, v2, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	66      (000000ee) throw                v0
+
+a-BB@0xf0 : [ a-BB@0xfc ]
+	67      (000000f0) move-object/from16   v27, v16
+	68      (000000f4) move-object/from16   v28, v27
+	69      (000000f8) move-object/from16   v29, v28
+
+a-BB@0xfc : [ a-BB@0x170 a-BB@0x180 ]
+	70      (000000fc) new-instance         v22, Lokhttp3/Address;
+	71      (00000100) iget-object          v3, v13, Lokhttp3/HttpUrl;->d Ljava/lang/String;
+	72      (00000104) iget                 v4, v13, Lokhttp3/HttpUrl;->e I
+	73      (00000108) iget-object          v13, v0, Lokhttp3/OkHttpClient;->k Lokhttp3/Dns;
+	74      (0000010c) move-object/from16   v23, v3
+	75      (00000110) iget-object          v3, v0, Lokhttp3/OkHttpClient;->n Ljavax/net/SocketFactory;
+	76      (00000114) move-object/from16   v26, v3
+	77      (00000118) iget-object          v3, v0, Lokhttp3/OkHttpClient;->m Lokhttp3/Authenticator;
+	78      (0000011c) move-object/from16   v30, v3
+	79      (00000120) iget-object          v3, v0, Lokhttp3/OkHttpClient;->r Ljava/util/List;
+	80      (00000124) move-object/from16   v31, v3
+	81      (00000128) iget-object          v3, v0, Lokhttp3/OkHttpClient;->q Ljava/util/List;
+	82      (0000012c) iget-object          v0, v0, Lokhttp3/OkHttpClient;->l Ljava/net/ProxySelector;
+	83      (00000130) move-object/from16   v33, v0
+	84      (00000134) move-object/from16   v32, v3
+	85      (00000138) move/from16          v24, v4
+	86      (0000013c) move-object/from16   v25, v13
+	87      (00000140) invoke-direct/range  v22 ... v33, Lokhttp3/Address;-><init>(Ljava/lang/String; I Lokhttp3/Dns; Ljavax/net/SocketFactory; Ljavax/net/ssl/SSLSocketFactory; Lokhttp3/internal/tls/OkHostnameVerifier; Lokhttp3/CertificatePinner; Lokhttp3/Authenticator; Ljava/util/List; Ljava/util/List; Ljava/net/ProxySelector;)V
+	88      (00000146) iget-object          v0, v14, Lokhttp3/internal/connection/RealCall;->a Lokhttp3/OkHttpClient;
+	89      (0000014a) iget-object          v13, v0, Lokhttp3/OkHttpClient;->y Lokhttp3/internal/connection/RouteDatabase;
+	90      (0000014e) move-object/from16   v34, v12
+	91      (00000152) move-object/from16   v3, v20
+	92      (00000156) move-object/from16   v4, v21
+	93      (0000015a) move-object/from16   v12, v22
+	94      (0000015e) invoke-direct/range  v3 ... v15, Lokhttp3/internal/connection/RealRoutePlanner;-><init>(Lokhttp3/internal/concurrent/TaskRunner; Lokhttp3/internal/connection/RealConnectionPool; I I I I Z Z Lokhttp3/Address; Lokhttp3/internal/connection/RouteDatabase; Lokhttp3/internal/connection/RealCall; Lokhttp3/Request;)V
+	95      (00000164) iget-object          v0, v14, Lokhttp3/internal/connection/RealCall;->a Lokhttp3/OkHttpClient;
+	96      (00000168) iget-boolean         v4, v0, Lokhttp3/OkHttpClient;->f Z
+	97      (0000016c) if-eqz               v4, +00ah
+
+a-BB@0x170 : [ a-BB@0x18a ]
+	98      (00000170) new-instance         v4, Lokhttp3/internal/connection/FastFallbackExchangeFinder;
+	99      (00000174) iget-object          v0, v0, Lokhttp3/OkHttpClient;->z Lokhttp3/internal/concurrent/TaskRunner;
+	100     (00000178) invoke-direct        v4, v3, v0, Lokhttp3/internal/connection/FastFallbackExchangeFinder;-><init>(Lokhttp3/internal/connection/RealRoutePlanner; Lokhttp3/internal/concurrent/TaskRunner;)V
+	101     (0000017e) goto                 +6h
+
+a-BB@0x180 : [ a-BB@0x18a ]
+	102     (00000180) new-instance         v4, Lokhttp3/internal/connection/SequentialExchangeFinder;
+	103     (00000184) invoke-direct        v4, v3, Lokhttp3/internal/connection/SequentialExchangeFinder;-><init>(Lokhttp3/internal/connection/RealRoutePlanner;)V
+
+a-BB@0x18a : [ a-BB@0x194 ]
+	104     (0000018a) iput-object          v4, v14, Lokhttp3/internal/connection/RealCall;->n Lokhttp3/internal/connection/ExchangeFinder;
+	105     (0000018e) goto                 +3h
+
+a-BB@0x190 : [ a-BB@0x194 ]
+	106     (00000190) move-object/from16   v34, v3
+
+a-BB@0x194 : [ a-BB@0x19c a-BB@0x34c ]
+	107     (00000194) iget-boolean         v0, v14, Lokhttp3/internal/connection/RealCall;->w Z
+	108     (00000198) if-nez               v0, +0dah
+	194:197
+	(Ljava/lang/Throwable; -> 26e a-BB@0x26e)
+
+a-BB@0x19c : [ a-BB@0x1a4 ]
+	109     (0000019c) invoke-virtual       v2, v15, Lokhttp3/internal/http/RealInterceptorChain;->b(Lokhttp3/Request;)Lokhttp3/Response;
+	110     (000001a2) move-result-object   v0
+	19c:1a3
+	(Ljava/io/IOException; -> 2b6 a-BB@0x2b6)
+	(Ljava/lang/Throwable; -> 26e a-BB@0x26e)
+
+a-BB@0x1a4 : [ a-BB@0x1b4 a-BB@0x1c6 ]
+	111     (000001a4) invoke-virtual       v0, Lokhttp3/Response;->c()Lokhttp3/Response$Builder;
+	112     (000001aa) move-result-object   v0
+	113     (000001ac) iput-object          v15, v0, Lokhttp3/Response$Builder;->a Lokhttp3/Request;
+	114     (000001b0) if-eqz               v17, +00bh
+	1a4:1af
+	(Ljava/lang/Throwable; -> 26e a-BB@0x26e)
+
+a-BB@0x1b4 : [ a-BB@0x1ca ]
+	115     (000001b4) invoke-static/range  v17, Lokhttp3/internal/UnreadableResponseBodyKt;->a(Lokhttp3/Response;)Lokhttp3/Response;
+	116     (000001ba) move-result-object   v3
+	117     (000001bc) goto                 +7h
+	1b4:1bb
+	(Ljava/lang/Throwable; -> 1be a-BB@0x1be)
+
+a-BB@0x1be : [ a-BB@0x35e ]
+	118     (000001be) move-exception       v0
+	119     (000001c0) const/4              v4, 1
+	120     (000001c2) goto/16              +0ceh
+
+a-BB@0x1c6 : [ a-BB@0x1ca ]
+	121     (000001c6) move-object/from16   v3, v16
+
+a-BB@0x1ca : [ a-BB@0x1e6 a-BB@0x204 ]
+	122     (000001ca) iput-object          v3, v0, Lokhttp3/Response$Builder;->k Lokhttp3/Response;
+	123     (000001ce) invoke-virtual       v0, Lokhttp3/Response$Builder;->a()Lokhttp3/Response;
+	124     (000001d4) move-result-object   v0
+	125     (000001d6) iget-object          v3, v14, Lokhttp3/internal/connection/RealCall;->q Lokhttp3/internal/connection/Exchange;
+	126     (000001da) invoke-virtual       v1, v0, v3, Lokhttp3/internal/http/RetryAndFollowUpInterceptor;->b(Lokhttp3/Response; Lokhttp3/internal/connection/Exchange;)Lokhttp3/Request;
+	127     (000001e0) move-result-object   v15
+	128     (000001e2) if-nez               v15, +011h
+	1ca:1e1
+	(Ljava/lang/Throwable; -> 26e a-BB@0x26e)
+
+a-BB@0x1e6 : 
+	129     (000001e6) iget-object          v2, v14, Lokhttp3/internal/connection/RealCall;->d Lokhttp3/EventListener;
+	130     (000001ea) invoke-virtual       v2, v14, v0, Lokhttp3/EventListener;->p(Lokhttp3/internal/connection/RealCall; Lokhttp3/Response;)V
+	131     (000001f0) const/4              v7, 0
+	132     (000001f2) invoke-virtual       v14, v7, Lokhttp3/internal/connection/RealCall;->e(Z)V
+	133     (000001f8) return-object        v0
+	1e6:1ef
+	(Ljava/lang/Throwable; -> 1fa a-BB@0x1fa)
+
+a-BB@0x1fa : [ a-BB@0x1fe ]
+	134     (000001fa) move-exception       v0
+	135     (000001fc) const/4              v7, 0
+
+a-BB@0x1fe : [ a-BB@0x35e ]
+	136     (000001fe) move                 v4, v7
+	137     (00000200) goto/16              +0afh
+
+a-BB@0x204 : [ a-BB@0x206 ]
+	138     (00000204) const/4              v7, 0
+
+a-BB@0x206 : [ a-BB@0x20e a-BB@0x230 ]
+	139     (00000206) iget-object          v3, v15, Lokhttp3/Request;->d Lokhttp3/RequestBody;
+	140     (0000020a) if-eqz               v3, +013h
+	206:209
+	(Ljava/lang/Throwable; -> 26e a-BB@0x26e)
+
+a-BB@0x20e : [ a-BB@0x21a a-BB@0x230 ]
+	141     (0000020e) invoke-virtual       v3, Lokhttp3/RequestBody;->c()Z
+	142     (00000214) move-result          v3
+	143     (00000216) if-eqz               v3, +00dh
+	20e:215
+	(Ljava/lang/Throwable; -> 1be a-BB@0x1be)
+
+a-BB@0x21a : 
+	144     (0000021a) iget-object          v2, v14, Lokhttp3/internal/connection/RealCall;->d Lokhttp3/EventListener;
+	145     (0000021e) invoke-virtual       v2, v14, v0, Lokhttp3/EventListener;->p(Lokhttp3/internal/connection/RealCall; Lokhttp3/Response;)V
+	146     (00000224) invoke-virtual       v14, v7, Lokhttp3/internal/connection/RealCall;->e(Z)V
+	147     (0000022a) return-object        v0
+	21a:223
+	(Ljava/lang/Throwable; -> 22c a-BB@0x22c)
+
+a-BB@0x22c : [ a-BB@0x1fe ]
+	148     (0000022c) move-exception       v0
+	149     (0000022e) goto                 -18h
+
+a-BB@0x230 : [ a-BB@0x246 a-BB@0x278 ]
+	150     (00000230) iget-object          v3, v0, Lokhttp3/Response;->m Lokhttp3/ResponseBody;
+	151     (00000234) invoke-static        v3, Lokhttp3/internal/_UtilCommonKt;->b(Ljava/io/Closeable;)V
+	152     (0000023a) add-int/lit8         v3, v18, 1
+	153     (0000023e) const/16             v4, 20
+	154     (00000242) if-gt                v3, v4, +01bh
+	230:24f
+	(Ljava/lang/Throwable; -> 26e a-BB@0x26e)
+
+a-BB@0x246 : [ a-BB@0x28 ]
+	155     (00000246) iget-object          v4, v14, Lokhttp3/internal/connection/RealCall;->d Lokhttp3/EventListener;
+	156     (0000024a) invoke-virtual       v4, v14, v0, Lokhttp3/EventListener;->p(Lokhttp3/internal/connection/RealCall; Lokhttp3/Response;)V
+	157     (00000250) const/4              v8, 1
+	158     (00000252) invoke-virtual       v14, v8, Lokhttp3/internal/connection/RealCall;->e(Z)V
+	159     (00000258) move-object/from16   v17, v0
+	160     (0000025c) move/from16          v18, v3
+	161     (00000260) move                 v4, v7
+	162     (00000262) move                 v0, v8
+	163     (00000264) move                 v5, v0
+	164     (00000266) move-object/from16   v3, v34
+	165     (0000026a) goto/16              -121h
+
+a-BB@0x26e : [ a-BB@0x272 ]
+	166     (0000026e) move-exception       v0
+	167     (00000270) const/4              v8, 1
+
+a-BB@0x272 : [ a-BB@0x35e ]
+	168     (00000272) move                 v4, v8
+	169     (00000274) goto/16              +075h
+
+a-BB@0x278 : [ a-BB@0x27a ]
+	170     (00000278) const/4              v8, 1
+
+a-BB@0x27a : 
+	171     (0000027a) iget-object          v2, v14, Lokhttp3/internal/connection/RealCall;->d Lokhttp3/EventListener;
+	172     (0000027e) invoke-virtual       v2, v14, v0, Lokhttp3/EventListener;->p(Lokhttp3/internal/connection/RealCall; Lokhttp3/Response;)V
+	173     (00000284) new-instance         v0, Ljava/net/ProtocolException;
+	174     (00000288) new-instance         v2, Ljava/lang/StringBuilder;
+	175     (0000028c) invoke-direct        v2, Ljava/lang/StringBuilder;-><init>()V
+	176     (00000292) const-string         v4, "Too many follow-up requests: "
+	177     (00000296) invoke-virtual       v2, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	178     (0000029c) invoke-virtual       v2, v3, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	179     (000002a2) invoke-virtual       v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	180     (000002a8) move-result-object   v2
+	181     (000002aa) invoke-direct        v0, v2, Ljava/net/ProtocolException;-><init>(Ljava/lang/String;)V
+	182     (000002b0) throw                v0
+	27a:33b
+	(Ljava/lang/Throwable; -> 2b2 a-BB@0x2b2)
+
+a-BB@0x2b2 : [ a-BB@0x272 ]
+	183     (000002b2) move-exception       v0
+	184     (000002b4) goto                 -21h
+	27a:33b
+	(Ljava/lang/Throwable; -> 2b2 a-BB@0x2b2)
+
+a-BB@0x2b6 : [ a-BB@0x2d2 a-BB@0x30e ]
+	185     (000002b6) move-exception       v0
+	186     (000002b8) const/4              v7, 0
+	187     (000002ba) const/4              v8, 1
+	188     (000002bc) invoke-virtual       v1, v0, v14, v15, Lokhttp3/internal/http/RetryAndFollowUpInterceptor;->c(Ljava/io/IOException; Lokhttp3/internal/connection/RealCall; Lokhttp3/Request;)Z
+	189     (000002c2) move-result          v3
+	190     (000002c4) iget-object          v4, v14, Lokhttp3/internal/connection/RealCall;->d Lokhttp3/EventListener;
+	191     (000002c8) invoke-virtual       v4, v14, v0, Lokhttp3/EventListener;->C(Lokhttp3/internal/connection/RealCall; Ljava/io/IOException;)V
+	192     (000002ce) if-nez               v3, +020h
+	27a:33b
+	(Ljava/lang/Throwable; -> 2b2 a-BB@0x2b2)
+
+a-BB@0x2d2 : [ a-BB@0x2ec ]
+	193     (000002d2) sget-object          v2, Lokhttp3/internal/_UtilCommonKt;->a [B
+	194     (000002d6) const-string         v2, "suppressed"
+	195     (000002da) move-object/from16   v6, v34
+	196     (000002de) invoke-static        v6, v2, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	197     (000002e4) invoke-interface     v6, Ljava/util/List;->iterator()Ljava/util/Iterator;
+	198     (000002ea) move-result-object   v2
+	27a:33b
+	(Ljava/lang/Throwable; -> 2b2 a-BB@0x2b2)
+
+a-BB@0x2ec : [ a-BB@0x2f8 a-BB@0x30c ]
+	199     (000002ec) invoke-interface     v2, Ljava/util/Iterator;->hasNext()Z
+	200     (000002f2) move-result          v3
+	201     (000002f4) if-eqz               v3, +00ch
+	27a:33b
+	(Ljava/lang/Throwable; -> 2b2 a-BB@0x2b2)
+
+a-BB@0x2f8 : [ a-BB@0x2ec ]
+	202     (000002f8) invoke-interface     v2, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	203     (000002fe) move-result-object   v3
+	204     (00000300) check-cast           v3, Ljava/lang/Exception;
+	205     (00000304) invoke-static        v0, v3, Lq4/b;->a(Ljava/lang/Throwable; Ljava/lang/Throwable;)V
+	206     (0000030a) goto                 -fh
+	27a:33b
+	(Ljava/lang/Throwable; -> 2b2 a-BB@0x2b2)
+
+a-BB@0x30c : 
+	207     (0000030c) throw                v0
+	27a:33b
+	(Ljava/lang/Throwable; -> 2b2 a-BB@0x2b2)
+
+a-BB@0x30e : [ a-BB@0x28 ]
+	208     (0000030e) move-object/from16   v6, v34
+	209     (00000312) const-string         v3, "<this>"
+	210     (00000316) invoke-static        v6, v3, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	211     (0000031c) new-instance         v3, Ljava/util/ArrayList;
+	212     (00000320) invoke-interface     v6, Ljava/util/Collection;->size()I
+	213     (00000326) move-result          v4
+	214     (00000328) add-int/2addr        v4, v8
+	215     (0000032a) invoke-direct        v3, v4, Ljava/util/ArrayList;-><init>(I)V
+	216     (00000330) invoke-virtual       v3, v6, Ljava/util/ArrayList;->addAll(Ljava/util/Collection;)Z
+	217     (00000336) invoke-virtual       v3, v0, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	218     (0000033c) invoke-virtual       v14, v8, Lokhttp3/internal/connection/RealCall;->e(Z)V
+	219     (00000342) move                 v0, v7
+	220     (00000344) move                 v4, v0
+	221     (00000346) move                 v5, v8
+	222     (00000348) goto/16              -190h
+
+a-BB@0x34c : [ a-BB@0x34e ]
+	223     (0000034c) const/4              v8, 1
+
+a-BB@0x34e : 
+	224     (0000034e) new-instance         v0, Ljava/io/IOException;
+	225     (00000352) const-string         v2, "Canceled"
+	226     (00000356) invoke-direct        v0, v2, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+	227     (0000035c) throw                v0
+	34e:35d
+	(Ljava/lang/Throwable; -> 2b2 a-BB@0x2b2)
+
+a-BB@0x35e : 
+	228     (0000035e) invoke-virtual       v14, v4, Lokhttp3/internal/connection/RealCall;->e(Z)V
+	229     (00000364) throw                v0
+
+a-BB@0x366 : [ a-BB@0x38a ]
+	230     (00000366) move-exception       v0
+	231     (00000368) goto                 +11h
+
+a-BB@0x36a : 
+	232     (0000036a) new-instance         v0, Ljava/lang/IllegalStateException;
+	233     (0000036e) const-string         v2, "Check failed."
+	234     (00000372) invoke-direct        v0, v2, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	235     (00000378) throw                v0
+	36a:389
+	(Ljava/lang/Throwable; -> 366 a-BB@0x366)
+
+a-BB@0x37a : 
+	236     (0000037a) const-string         v0, "cannot make a new request because the previous response is still open: please call response.close()"
+	237     (0000037e) new-instance         v2, Ljava/lang/IllegalStateException;
+	238     (00000382) invoke-direct        v2, v0, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	239     (00000388) throw                v2
+	36a:389
+	(Ljava/lang/Throwable; -> 366 a-BB@0x366)
+
+a-BB@0x38a : 
+	240     (0000038a) monitor-exit         v14
+	241     (0000038c) throw                v0
+
+a-BB@0x38e : 
+	242     (0000038e) new-instance         v0, Ljava/lang/IllegalStateException;
+	243     (00000392) const-string         v2, "Check failed."
+	244     (00000396) invoke-direct        v0, v2, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	245     (0000039c) throw                v0
+

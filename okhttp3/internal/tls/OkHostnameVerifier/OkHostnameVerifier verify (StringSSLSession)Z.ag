@@ -1,0 +1,38 @@
+# Lokhttp3/internal/tls/OkHostnameVerifier;->verify(Ljava/lang/String; Ljavax/net/ssl/SSLSession;)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:java.lang.String
+# - v4:javax.net.ssl.SSLSession
+#
+# - return:boolean
+
+verify-BB@0x0 : [ verify-BB@0x22 verify-BB@0x24 ]
+	0       (00000000) const-string         v0, "host"
+	1       (00000004) invoke-static        v3, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) const-string         v0, "session"
+	3       (0000000e) invoke-static        v4, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	4       (00000014) invoke-static        v3, Lokhttp3/internal/tls/OkHostnameVerifier;->b(Ljava/lang/String;)Z
+	5       (0000001a) move-result          v0
+	6       (0000001c) const/4              v1, 0
+	7       (0000001e) if-nez               v0, +003h
+
+verify-BB@0x22 : [ verify-BB@0x48 ]
+	8       (00000022) goto                 +13h
+
+verify-BB@0x24 : 
+	9       (00000024) invoke-interface     v4, Ljavax/net/ssl/SSLSession;->getPeerCertificates()[Ljava/security/cert/Certificate;
+	10      (0000002a) move-result-object   v4
+	11      (0000002c) aget-object          v4, v4, v1
+	12      (00000030) const-string         v0, "null cannot be cast to non-null type java.security.cert.X509Certificate"
+	13      (00000034) invoke-static        v4, v0, Lkotlin/jvm/internal/j;->c(Ljava/lang/Object; Ljava/lang/String;)V
+	14      (0000003a) check-cast           v4, Ljava/security/cert/X509Certificate;
+	15      (0000003e) invoke-static        v3, v4, Lokhttp3/internal/tls/OkHostnameVerifier;->c(Ljava/lang/String; Ljava/security/cert/X509Certificate;)Z
+	16      (00000044) move-result          v3
+	17      (00000046) return               v3
+	24:45
+	(Ljavax/net/ssl/SSLException; -> 48 verify-BB@0x48)
+
+verify-BB@0x48 : 
+	18      (00000048) return               v1
+

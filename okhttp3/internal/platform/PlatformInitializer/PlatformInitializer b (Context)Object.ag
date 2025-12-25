@@ -1,0 +1,35 @@
+# Lokhttp3/internal/platform/PlatformInitializer;->b(Landroid/content/Context;)Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:android.content.Context
+#
+# - return:java.lang.Object
+
+b-BB@0x0 : [ b-BB@0x26 b-BB@0x2c ]
+	0       (00000000) const-string         v0, "context"
+	1       (00000004) invoke-static        v2, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) sget-object          v0, Lokhttp3/internal/platform/PlatformRegistry;->a Lokhttp3/internal/platform/PlatformRegistry;
+	3       (0000000e) invoke-virtual       v0, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	4       (00000014) sget-object          v0, Lokhttp3/internal/platform/Platform;->a Lokhttp3/internal/platform/Platform$Companion;
+	5       (00000018) invoke-virtual       v0, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	6       (0000001e) sget-object          v0, Lokhttp3/internal/platform/Platform;->b Lokhttp3/internal/platform/Platform;
+	7       (00000022) if-eqz               v0, +005h
+
+b-BB@0x26 : [ b-BB@0x2e ]
+	8       (00000026) check-cast           v0, Lokhttp3/internal/platform/ContextAwarePlatform;
+	9       (0000002a) goto                 +2h
+
+b-BB@0x2c : [ b-BB@0x2e ]
+	10      (0000002c) const/4              v0, 0
+
+b-BB@0x2e : [ b-BB@0x32 b-BB@0x38 ]
+	11      (0000002e) if-eqz               v0, +005h
+
+b-BB@0x32 : [ b-BB@0x38 ]
+	12      (00000032) invoke-interface     v0, v2, Lokhttp3/internal/platform/ContextAwarePlatform;->a(Landroid/content/Context;)V
+
+b-BB@0x38 : 
+	13      (00000038) sget-object          v2, Lokhttp3/internal/platform/Platform;->b Lokhttp3/internal/platform/Platform;
+	14      (0000003c) return-object        v2
+

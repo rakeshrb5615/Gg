@@ -1,0 +1,22 @@
+# Lp0/c;->b(Lu/b;)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:u.b
+#
+# - return:void
+
+b-BB@0x0 : [ b-BB@0xe b-BB@0x1a ]
+	0       (00000000) iget                 v0, v3, Lp0/c;->b I
+	1       (00000004) iget-object          v1, v3, Lp0/c;->a [Ljava/lang/Object;
+	2       (00000008) array-length         v2, v1
+	3       (0000000a) if-ge                v0, v2, +008h
+
+b-BB@0xe : [ b-BB@0x1a ]
+	4       (0000000e) aput-object          v4, v1, v0
+	5       (00000012) add-int/lit8         v0, v0, 1
+	6       (00000016) iput                 v0, v3, Lp0/c;->b I
+
+b-BB@0x1a : 
+	7       (0000001a) return-void          
+

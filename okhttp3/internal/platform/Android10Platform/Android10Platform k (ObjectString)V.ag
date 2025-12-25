@@ -1,0 +1,27 @@
+# Lokhttp3/internal/platform/Android10Platform;->k(Ljava/lang/Object; Ljava/lang/String;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:java.lang.Object
+# - v4:java.lang.String
+#
+# - return:void
+
+k-BB@0x0 : [ k-BB@0x16 k-BB@0x2c ]
+	0       (00000000) const-string         v0, "message"
+	1       (00000004) invoke-static        v4, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) sget                 v0, Landroid/os/Build$VERSION;->SDK_INT I
+	3       (0000000e) const/16             v1, 30
+	4       (00000012) if-lt                v0, v1, +00dh
+
+k-BB@0x16 : 
+	5       (00000016) const-string         v4, "null cannot be cast to non-null type android.util.CloseGuard"
+	6       (0000001a) invoke-static        v3, v4, Lkotlin/jvm/internal/j;->c(Ljava/lang/Object; Ljava/lang/String;)V
+	7       (00000020) check-cast           v3, Landroid/util/CloseGuard;
+	8       (00000024) invoke-virtual       v3, Landroid/util/CloseGuard;->warnIfOpen()V
+	9       (0000002a) return-void          
+
+k-BB@0x2c : 
+	10      (0000002c) invoke-super         v2, v3, v4, Lokhttp3/internal/platform/Platform;->k(Ljava/lang/Object; Ljava/lang/String;)V
+	11      (00000032) return-void          
+

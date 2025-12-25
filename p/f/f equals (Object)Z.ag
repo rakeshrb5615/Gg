@@ -1,0 +1,91 @@
+# Lp/f;->equals(Ljava/lang/Object;)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:java.lang.Object
+#
+# - return:boolean
+
+equals-BB@0x0 : [ equals-BB@0x6 equals-BB@0x8 ]
+	0       (00000000) const/4              v0, 1
+	1       (00000002) if-ne                v7, v6, +003h
+
+equals-BB@0x6 : 
+	2       (00000006) return               v0
+
+equals-BB@0x8 : [ equals-BB@0x12 equals-BB@0x14 ]
+	3       (00000008) instance-of          v1, v7, Lp/f;
+	4       (0000000c) const/4              v2, 0
+	5       (0000000e) if-nez               v1, +003h
+
+equals-BB@0x12 : 
+	6       (00000012) return               v2
+
+equals-BB@0x14 : [ equals-BB@0x24 equals-BB@0x26 ]
+	7       (00000014) check-cast           v7, Lp/f;
+	8       (00000018) iget                 v1, v6, Lp/f;->d I
+	9       (0000001c) iget                 v3, v7, Lp/f;->d I
+	10      (00000020) if-eq                v1, v3, +003h
+
+equals-BB@0x24 : 
+	11      (00000024) return               v2
+
+equals-BB@0x26 : [ equals-BB@0x36 ]
+	12      (00000026) invoke-virtual       v6, Lp/f;->iterator()Ljava/util/Iterator;
+	13      (0000002c) move-result-object   v1
+	14      (0000002e) invoke-virtual       v7, Lp/f;->iterator()Ljava/util/Iterator;
+	15      (00000034) move-result-object   v7
+
+equals-BB@0x36 : [ equals-BB@0x48 equals-BB@0x88 ]
+	16      (00000036) move-object          v3, v1
+	17      (00000038) check-cast           v3, Lp/b;
+	18      (0000003c) invoke-virtual       v3, Lp/b;->hasNext()Z
+	19      (00000042) move-result          v4
+	20      (00000044) if-eqz               v4, +022h
+
+equals-BB@0x48 : [ equals-BB@0x5a equals-BB@0x88 ]
+	21      (00000048) move-object          v4, v7
+	22      (0000004a) check-cast           v4, Lp/b;
+	23      (0000004e) invoke-virtual       v4, Lp/b;->hasNext()Z
+	24      (00000054) move-result          v5
+	25      (00000056) if-eqz               v5, +019h
+
+equals-BB@0x5a : [ equals-BB@0x72 equals-BB@0x76 ]
+	26      (0000005a) invoke-virtual       v3, Lp/b;->next()Ljava/lang/Object;
+	27      (00000060) move-result-object   v3
+	28      (00000062) check-cast           v3, Ljava/util/Map$Entry;
+	29      (00000066) invoke-virtual       v4, Lp/b;->next()Ljava/lang/Object;
+	30      (0000006c) move-result-object   v4
+	31      (0000006e) if-nez               v3, +004h
+
+equals-BB@0x72 : [ equals-BB@0x76 equals-BB@0x86 ]
+	32      (00000072) if-nez               v4, +00ah
+
+equals-BB@0x76 : [ equals-BB@0x7a equals-BB@0x36 ]
+	33      (00000076) if-eqz               v3, -020h
+
+equals-BB@0x7a : [ equals-BB@0x86 equals-BB@0x36 ]
+	34      (0000007a) invoke-interface     v3, v4, Ljava/util/Map$Entry;->equals(Ljava/lang/Object;)Z
+	35      (00000080) move-result          v3
+	36      (00000082) if-nez               v3, -026h
+
+equals-BB@0x86 : 
+	37      (00000086) return               v2
+
+equals-BB@0x88 : [ equals-BB@0x94 equals-BB@0xa6 ]
+	38      (00000088) invoke-virtual       v3, Lp/b;->hasNext()Z
+	39      (0000008e) move-result          v1
+	40      (00000090) if-nez               v1, +00bh
+
+equals-BB@0x94 : [ equals-BB@0xa4 equals-BB@0xa6 ]
+	41      (00000094) check-cast           v7, Lp/b;
+	42      (00000098) invoke-virtual       v7, Lp/b;->hasNext()Z
+	43      (0000009e) move-result          v7
+	44      (000000a0) if-nez               v7, +003h
+
+equals-BB@0xa4 : 
+	45      (000000a4) return               v0
+
+equals-BB@0xa6 : 
+	46      (000000a6) return               v2
+

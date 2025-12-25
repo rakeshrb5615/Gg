@@ -1,0 +1,58 @@
+# Lp0/c;->c(Ljava/lang/Object;)Z [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:java.lang.Object
+#
+# - return:boolean
+
+c-BB@0x0 : [ c-BB@0x12 ]
+	0       (00000000) const-string         v0, "instance"
+	1       (00000004) invoke-static        v7, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) iget                 v0, v6, Lp0/c;->b I
+	3       (0000000e) const/4              v1, 0
+	4       (00000010) move                 v2, v1
+
+c-BB@0x12 : [ c-BB@0x1c c-BB@0x2e ]
+	5       (00000012) iget-object          v3, v6, Lp0/c;->a [Ljava/lang/Object;
+	6       (00000016) const/4              v4, 1
+	7       (00000018) if-ge                v2, v0, +00bh
+
+c-BB@0x1c : [ c-BB@0x24 c-BB@0x28 ]
+	8       (0000001c) aget-object          v5, v3, v2
+	9       (00000020) if-ne                v5, v7, +004h
+
+c-BB@0x24 : [ c-BB@0x30 ]
+	10      (00000024) move                 v0, v4
+	11      (00000026) goto                 +5h
+
+c-BB@0x28 : [ c-BB@0x12 ]
+	12      (00000028) add-int/lit8         v2, v2, 1
+	13      (0000002c) goto                 -dh
+
+c-BB@0x2e : [ c-BB@0x30 ]
+	14      (0000002e) move                 v0, v1
+
+c-BB@0x30 : [ c-BB@0x34 c-BB@0x4c ]
+	15      (00000030) if-nez               v0, +00eh
+
+c-BB@0x34 : [ c-BB@0x3e c-BB@0x4a ]
+	16      (00000034) iget                 v0, v6, Lp0/c;->b I
+	17      (00000038) array-length         v2, v3
+	18      (0000003a) if-ge                v0, v2, +008h
+
+c-BB@0x3e : 
+	19      (0000003e) aput-object          v7, v3, v0
+	20      (00000042) add-int/2addr        v0, v4
+	21      (00000044) iput                 v0, v6, Lp0/c;->b I
+	22      (00000048) return               v4
+
+c-BB@0x4a : 
+	23      (0000004a) return               v1
+
+c-BB@0x4c : 
+	24      (0000004c) new-instance         v7, Ljava/lang/IllegalStateException;
+	25      (00000050) const-string         v0, "Already in the pool!"
+	26      (00000054) invoke-direct        v7, v0, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	27      (0000005a) throw                v7
+

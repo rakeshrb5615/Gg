@@ -1,0 +1,40 @@
+# Lokhttp3/internal/connection/RealConnectionPool;-><init>(Lokhttp3/internal/concurrent/TaskRunner; Lokhttp3/internal/connection/ConnectionListener;)V [access_flags=public constructor]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:okhttp3.internal.concurrent.TaskRunner
+# - v5:okhttp3.internal.connection.ConnectionListener
+#
+# - return:void
+
+<init>-BB@0x0 : 
+	0       (00000000) sget-object          v0, Ljava/util/concurrent/TimeUnit;->MINUTES Ljava/util/concurrent/TimeUnit;
+	1       (00000004) const-string         v1, "taskRunner"
+	2       (00000008) invoke-static        v4, v1, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	3       (0000000e) const-string         v1, "timeUnit"
+	4       (00000012) invoke-static        v0, v1, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	5       (00000018) const-string         v1, "connectionListener"
+	6       (0000001c) invoke-static        v5, v1, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	7       (00000022) invoke-direct        v3, Ljava/lang/Object;-><init>()V
+	8       (00000028) iput-object          v5, v3, Lokhttp3/internal/connection/RealConnectionPool;->a Lokhttp3/internal/connection/ConnectionListener;
+	9       (0000002c) const-wide/16        v1, 5
+	10      (00000030) invoke-virtual       v0, v1, v2, Ljava/util/concurrent/TimeUnit;->toNanos(J)J
+	11      (00000036) move-result-wide     v0
+	12      (00000038) iput-wide            v0, v3, Lokhttp3/internal/connection/RealConnectionPool;->b J
+	13      (0000003c) invoke-virtual       v4, Lokhttp3/internal/concurrent/TaskRunner;->d()Lokhttp3/internal/concurrent/TaskQueue;
+	14      (00000042) move-result-object   v4
+	15      (00000044) iput-object          v4, v3, Lokhttp3/internal/connection/RealConnectionPool;->c Lokhttp3/internal/concurrent/TaskQueue;
+	16      (00000048) new-instance         v4, Ljava/lang/StringBuilder;
+	17      (0000004c) invoke-direct        v4, Ljava/lang/StringBuilder;-><init>()V
+	18      (00000052) sget-object          v5, Lokhttp3/internal/_UtilJvmKt;->b Ljava/lang/String;
+	19      (00000056) const-string         v0, " ConnectionPool connection closer"
+	20      (0000005a) invoke-static        v4, v5, v0, Lv1/a;->n(Ljava/lang/StringBuilder; Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	21      (00000060) move-result-object   v4
+	22      (00000062) new-instance         v5, Lokhttp3/internal/connection/RealConnectionPool$cleanupTask$1;
+	23      (00000066) invoke-direct        v5, v3, v4, Lokhttp3/internal/connection/RealConnectionPool$cleanupTask$1;-><init>(Lokhttp3/internal/connection/RealConnectionPool; Ljava/lang/String;)V
+	24      (0000006c) iput-object          v5, v3, Lokhttp3/internal/connection/RealConnectionPool;->d Lokhttp3/internal/connection/RealConnectionPool$cleanupTask$1;
+	25      (00000070) new-instance         v4, Ljava/util/concurrent/ConcurrentLinkedQueue;
+	26      (00000074) invoke-direct        v4, Ljava/util/concurrent/ConcurrentLinkedQueue;-><init>()V
+	27      (0000007a) iput-object          v4, v3, Lokhttp3/internal/connection/RealConnectionPool;->e Ljava/util/concurrent/ConcurrentLinkedQueue;
+	28      (0000007e) return-void          
+

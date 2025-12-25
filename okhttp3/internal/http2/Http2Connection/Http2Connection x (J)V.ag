@@ -1,0 +1,59 @@
+# Lokhttp3/internal/http2/Http2Connection;->x(J)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v7
+# - v8:long
+#
+# - return:void
+
+x-BB@0x0 : [ x-BB@0x2 ]
+	0       (00000000) monitor-enter        v6
+
+x-BB@0x2 : [ x-BB@0x3a x-BB@0x5a ]
+	1       (00000002) iget-object          v0, v6, Lokhttp3/internal/http2/Http2Connection;->y Lokhttp3/internal/http2/flowcontrol/WindowCounter;
+	2       (00000006) const-wide/16        v3, 0
+	3       (0000000a) const/4              v5, 2
+	4       (0000000c) move-wide            v1, v7
+	5       (0000000e) invoke-static/range  v0 ... v5, Lokhttp3/internal/http2/flowcontrol/WindowCounter;->b(Lokhttp3/internal/http2/flowcontrol/WindowCounter; J J I)V
+	6       (00000014) iget-object          v7, v6, Lokhttp3/internal/http2/Http2Connection;->y Lokhttp3/internal/http2/flowcontrol/WindowCounter;
+	7       (00000018) invoke-virtual       v7, Lokhttp3/internal/http2/flowcontrol/WindowCounter;->a()J
+	8       (0000001e) move-result-wide     v3
+	9       (00000020) iget-object          v7, v6, Lokhttp3/internal/http2/Http2Connection;->w Lokhttp3/internal/http2/Settings;
+	10      (00000024) invoke-virtual       v7, Lokhttp3/internal/http2/Settings;->a()I
+	11      (0000002a) move-result          v7
+	12      (0000002c) div-int/lit8         v7, v7, 2
+	13      (00000030) int-to-long          v7, v7
+	14      (00000032) cmp-long             v7, v3, v7
+	15      (00000036) if-ltz               v7, +012h
+	2:67
+	(Ljava/lang/Throwable; -> 54 x-BB@0x54)
+
+x-BB@0x3a : [ x-BB@0x5a ]
+	16      (0000003a) const/4              v7, 0
+	17      (0000003c) invoke-virtual       v6, v7, v3, v4, Lokhttp3/internal/http2/Http2Connection;->A(I J)V
+	18      (00000042) iget-object          v0, v6, Lokhttp3/internal/http2/Http2Connection;->y Lokhttp3/internal/http2/flowcontrol/WindowCounter;
+	19      (00000046) const-wide/16        v1, 0
+	20      (0000004a) const/4              v5, 1
+	21      (0000004c) invoke-static/range  v0 ... v5, Lokhttp3/internal/http2/flowcontrol/WindowCounter;->b(Lokhttp3/internal/http2/flowcontrol/WindowCounter; J J I)V
+	22      (00000052) goto                 +4h
+	2:67
+	(Ljava/lang/Throwable; -> 54 x-BB@0x54)
+
+x-BB@0x54 : [ x-BB@0x6c ]
+	23      (00000054) move-exception       v0
+	24      (00000056) move-object          v7, v0
+	25      (00000058) goto                 +ah
+	2:67
+	(Ljava/lang/Throwable; -> 54 x-BB@0x54)
+
+x-BB@0x5a : 
+	26      (0000005a) iget-object          v7, v6, Lokhttp3/internal/http2/Http2Connection;->v Lokhttp3/internal/http2/FlowControlListener;
+	27      (0000005e) iget-object          v8, v6, Lokhttp3/internal/http2/Http2Connection;->y Lokhttp3/internal/http2/flowcontrol/WindowCounter;
+	28      (00000062) invoke-interface     v7, v8, Lokhttp3/internal/http2/FlowControlListener;->b(Lokhttp3/internal/http2/flowcontrol/WindowCounter;)V
+	29      (00000068) monitor-exit         v6
+	30      (0000006a) return-void          
+
+x-BB@0x6c : 
+	31      (0000006c) monitor-exit         v6
+	32      (0000006e) throw                v7
+

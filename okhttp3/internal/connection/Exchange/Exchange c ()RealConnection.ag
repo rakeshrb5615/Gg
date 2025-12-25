@@ -1,0 +1,33 @@
+# Lokhttp3/internal/connection/Exchange;->c()Lokhttp3/internal/connection/RealConnection; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v2
+#
+# - return:okhttp3.internal.connection.RealConnection
+
+c-BB@0x0 : [ c-BB@0x14 c-BB@0x1a ]
+	0       (00000000) iget-object          v0, v2, Lokhttp3/internal/connection/Exchange;->d Lokhttp3/internal/http/ExchangeCodec;
+	1       (00000004) invoke-interface     v0, Lokhttp3/internal/http/ExchangeCodec;->h()Lokhttp3/internal/http/ExchangeCodec$Carrier;
+	2       (0000000a) move-result-object   v0
+	3       (0000000c) instance-of          v1, v0, Lokhttp3/internal/connection/RealConnection;
+	4       (00000010) if-eqz               v1, +005h
+
+c-BB@0x14 : [ c-BB@0x1c ]
+	5       (00000014) check-cast           v0, Lokhttp3/internal/connection/RealConnection;
+	6       (00000018) goto                 +2h
+
+c-BB@0x1a : [ c-BB@0x1c ]
+	7       (0000001a) const/4              v0, 0
+
+c-BB@0x1c : [ c-BB@0x20 c-BB@0x22 ]
+	8       (0000001c) if-eqz               v0, +003h
+
+c-BB@0x20 : 
+	9       (00000020) return-object        v0
+
+c-BB@0x22 : 
+	10      (00000022) new-instance         v0, Ljava/lang/IllegalStateException;
+	11      (00000026) const-string         v1, "no connection for CONNECT tunnels"
+	12      (0000002a) invoke-direct        v0, v1, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	13      (00000030) throw                v0
+

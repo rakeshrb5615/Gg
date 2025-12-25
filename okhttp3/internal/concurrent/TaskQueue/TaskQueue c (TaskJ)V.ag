@@ -1,0 +1,95 @@
+# Lokhttp3/internal/concurrent/TaskQueue;->c(Lokhttp3/internal/concurrent/Task; J)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:okhttp3.internal.concurrent.Task
+# - v5:long
+#
+# - return:void
+
+c-BB@0x0 : [ c-BB@0x10 ]
+	0       (00000000) const-string         v0, "task"
+	1       (00000004) invoke-static        v3, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) iget-object          v0, v2, Lokhttp3/internal/concurrent/TaskQueue;->a Lokhttp3/internal/concurrent/TaskRunner;
+	3       (0000000e) monitor-enter        v0
+
+c-BB@0x10 : [ c-BB@0x18 c-BB@0x7a ]
+	4       (00000010) iget-boolean         v1, v2, Lokhttp3/internal/concurrent/TaskQueue;->c Z
+	5       (00000014) if-eqz               v1, +033h
+	10:41
+	(Ljava/lang/Throwable; -> 44 c-BB@0x44)
+
+c-BB@0x18 : [ c-BB@0x20 c-BB@0x4c ]
+	6       (00000018) iget-boolean         v4, v3, Lokhttp3/internal/concurrent/Task;->b Z
+	7       (0000001c) if-eqz               v4, +018h
+	10:41
+	(Ljava/lang/Throwable; -> 44 c-BB@0x44)
+
+c-BB@0x20 : [ c-BB@0x38 c-BB@0x48 ]
+	8       (00000020) iget-object          v4, v2, Lokhttp3/internal/concurrent/TaskQueue;->a Lokhttp3/internal/concurrent/TaskRunner;
+	9       (00000024) iget-object          v4, v4, Lokhttp3/internal/concurrent/TaskRunner;->b Ljava/util/logging/Logger;
+	10      (00000028) sget-object          v5, Ljava/util/logging/Level;->FINE Ljava/util/logging/Level;
+	11      (0000002c) invoke-virtual       v4, v5, Ljava/util/logging/Logger;->isLoggable(Ljava/util/logging/Level;)Z
+	12      (00000032) move-result          v5
+	13      (00000034) if-eqz               v5, +00ah
+	10:41
+	(Ljava/lang/Throwable; -> 44 c-BB@0x44)
+
+c-BB@0x38 : [ c-BB@0x48 ]
+	14      (00000038) const-string         v5, "schedule canceled (queue is shutdown)"
+	15      (0000003c) invoke-static        v4, v3, v2, v5, Lokhttp3/internal/concurrent/TaskLoggerKt;->a(Ljava/util/logging/Logger; Lokhttp3/internal/concurrent/Task; Lokhttp3/internal/concurrent/TaskQueue; Ljava/lang/String;)V
+	16      (00000042) goto                 +3h
+
+c-BB@0x44 : [ c-BB@0x96 ]
+	17      (00000044) move-exception       v3
+	18      (00000046) goto                 +28h
+
+c-BB@0x48 : 
+	19      (00000048) monitor-exit         v0
+	20      (0000004a) return-void          
+
+c-BB@0x4c : [ c-BB@0x64 c-BB@0x6e ]
+	21      (0000004c) iget-object          v4, v2, Lokhttp3/internal/concurrent/TaskQueue;->a Lokhttp3/internal/concurrent/TaskRunner;
+	22      (00000050) iget-object          v4, v4, Lokhttp3/internal/concurrent/TaskRunner;->b Ljava/util/logging/Logger;
+	23      (00000054) sget-object          v5, Ljava/util/logging/Level;->FINE Ljava/util/logging/Level;
+	24      (00000058) invoke-virtual       v4, v5, Ljava/util/logging/Logger;->isLoggable(Ljava/util/logging/Level;)Z
+	25      (0000005e) move-result          v5
+	26      (00000060) if-eqz               v5, +007h
+	4c:91
+	(Ljava/lang/Throwable; -> 44 c-BB@0x44)
+
+c-BB@0x64 : [ c-BB@0x6e ]
+	27      (00000064) const-string         v5, "schedule failed (queue is shutdown)"
+	28      (00000068) invoke-static        v4, v3, v2, v5, Lokhttp3/internal/concurrent/TaskLoggerKt;->a(Ljava/util/logging/Logger; Lokhttp3/internal/concurrent/Task; Lokhttp3/internal/concurrent/TaskQueue; Ljava/lang/String;)V
+	4c:91
+	(Ljava/lang/Throwable; -> 44 c-BB@0x44)
+
+c-BB@0x6e : 
+	29      (0000006e) new-instance         v3, Ljava/util/concurrent/RejectedExecutionException;
+	30      (00000072) invoke-direct        v3, Ljava/util/concurrent/RejectedExecutionException;-><init>()V
+	31      (00000078) throw                v3
+	4c:91
+	(Ljava/lang/Throwable; -> 44 c-BB@0x44)
+
+c-BB@0x7a : [ c-BB@0x88 c-BB@0x92 ]
+	32      (0000007a) const/4              v1, 0
+	33      (0000007c) invoke-virtual       v2, v3, v4, v5, v1, Lokhttp3/internal/concurrent/TaskQueue;->d(Lokhttp3/internal/concurrent/Task; J Z)Z
+	34      (00000082) move-result          v3
+	35      (00000084) if-eqz               v3, +007h
+	4c:91
+	(Ljava/lang/Throwable; -> 44 c-BB@0x44)
+
+c-BB@0x88 : [ c-BB@0x92 ]
+	36      (00000088) iget-object          v3, v2, Lokhttp3/internal/concurrent/TaskQueue;->a Lokhttp3/internal/concurrent/TaskRunner;
+	37      (0000008c) invoke-virtual       v3, v2, Lokhttp3/internal/concurrent/TaskRunner;->c(Lokhttp3/internal/concurrent/TaskQueue;)V
+	4c:91
+	(Ljava/lang/Throwable; -> 44 c-BB@0x44)
+
+c-BB@0x92 : 
+	38      (00000092) monitor-exit         v0
+	39      (00000094) return-void          
+
+c-BB@0x96 : 
+	40      (00000096) monitor-exit         v0
+	41      (00000098) throw                v3
+

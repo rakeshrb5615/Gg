@@ -1,0 +1,199 @@
+# Lp2/c;->a(Lr2/i;)Lr2/i; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:r2.i
+#
+# - return:r2.i
+
+a-BB@0x0 : [ a-BB@0x24 a-BB@0x232 ]
+	0       (00000000) iget-object          v0, v6, Lp2/c;->b Landroid/net/ConnectivityManager;
+	1       (00000004) invoke-virtual       v0, Landroid/net/ConnectivityManager;->getActiveNetworkInfo()Landroid/net/NetworkInfo;
+	2       (0000000a) move-result-object   v0
+	3       (0000000c) invoke-virtual       v7, Lr2/i;->c()Lr2/h;
+	4       (00000012) move-result-object   v7
+	5       (00000014) sget                 v1, Landroid/os/Build$VERSION;->SDK_INT I
+	6       (00000018) iget-object          v2, v7, Lr2/h;->f Ljava/util/HashMap;
+	7       (0000001c) const-string         v3, "Property "autoMetadata" has not been set"
+	8       (00000020) if-eqz               v2, +109h
+
+a-BB@0x24 : [ a-BB@0xcc a-BB@0x226 ]
+	9       (00000024) invoke-static        v1, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
+	10      (0000002a) move-result-object   v1
+	11      (0000002c) const-string         v4, "sdk-version"
+	12      (00000030) invoke-virtual       v2, v4, v1, Ljava/util/HashMap;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	13      (00000036) const-string         v1, "model"
+	14      (0000003a) sget-object          v2, Landroid/os/Build;->MODEL Ljava/lang/String;
+	15      (0000003e) invoke-virtual       v7, v1, v2, Lr2/h;->a(Ljava/lang/String; Ljava/lang/String;)V
+	16      (00000044) const-string         v1, "hardware"
+	17      (00000048) sget-object          v2, Landroid/os/Build;->HARDWARE Ljava/lang/String;
+	18      (0000004c) invoke-virtual       v7, v1, v2, Lr2/h;->a(Ljava/lang/String; Ljava/lang/String;)V
+	19      (00000052) const-string         v1, "device"
+	20      (00000056) sget-object          v2, Landroid/os/Build;->DEVICE Ljava/lang/String;
+	21      (0000005a) invoke-virtual       v7, v1, v2, Lr2/h;->a(Ljava/lang/String; Ljava/lang/String;)V
+	22      (00000060) const-string         v1, "product"
+	23      (00000064) sget-object          v2, Landroid/os/Build;->PRODUCT Ljava/lang/String;
+	24      (00000068) invoke-virtual       v7, v1, v2, Lr2/h;->a(Ljava/lang/String; Ljava/lang/String;)V
+	25      (0000006e) const-string         v1, "os-uild"
+	26      (00000072) sget-object          v2, Landroid/os/Build;->ID Ljava/lang/String;
+	27      (00000076) invoke-virtual       v7, v1, v2, Lr2/h;->a(Ljava/lang/String; Ljava/lang/String;)V
+	28      (0000007c) const-string         v1, "manufacturer"
+	29      (00000080) sget-object          v2, Landroid/os/Build;->MANUFACTURER Ljava/lang/String;
+	30      (00000084) invoke-virtual       v7, v1, v2, Lr2/h;->a(Ljava/lang/String; Ljava/lang/String;)V
+	31      (0000008a) const-string         v1, "fingerprint"
+	32      (0000008e) sget-object          v2, Landroid/os/Build;->FINGERPRINT Ljava/lang/String;
+	33      (00000092) invoke-virtual       v7, v1, v2, Lr2/h;->a(Ljava/lang/String; Ljava/lang/String;)V
+	34      (00000098) invoke-static        Ljava/util/Calendar;->getInstance()Ljava/util/Calendar;
+	35      (0000009e) invoke-static        Ljava/util/TimeZone;->getDefault()Ljava/util/TimeZone;
+	36      (000000a4) move-result-object   v1
+	37      (000000a6) invoke-static        Ljava/util/Calendar;->getInstance()Ljava/util/Calendar;
+	38      (000000ac) move-result-object   v2
+	39      (000000ae) invoke-virtual       v2, Ljava/util/Calendar;->getTimeInMillis()J
+	40      (000000b4) move-result-wide     v4
+	41      (000000b6) invoke-virtual       v1, v4, v5, Ljava/util/TimeZone;->getOffset(J)I
+	42      (000000bc) move-result          v1
+	43      (000000be) div-int/lit16        v1, v1, 1000
+	44      (000000c2) int-to-long          v1, v1
+	45      (000000c4) iget-object          v4, v7, Lr2/h;->f Ljava/util/HashMap;
+	46      (000000c8) if-eqz               v4, +0afh
+
+a-BB@0xcc : [ a-BB@0xe4 a-BB@0xec ]
+	47      (000000cc) invoke-static        v1, v2, Ljava/lang/String;->valueOf(J)Ljava/lang/String;
+	48      (000000d2) move-result-object   v1
+	49      (000000d4) const-string         v2, "tz-offset"
+	50      (000000d8) invoke-virtual       v4, v2, v1, Ljava/util/HashMap;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	51      (000000de) const/4              v1, -1
+	52      (000000e0) if-nez               v0, +006h
+
+a-BB@0xe4 : [ a-BB@0xf4 ]
+	53      (000000e4) sget-object          v2, Lq2/h0;->a Landroid/util/SparseArray;
+	54      (000000e8) move                 v2, v1
+	55      (000000ea) goto                 +5h
+
+a-BB@0xec : [ a-BB@0xf4 ]
+	56      (000000ec) invoke-virtual       v0, Landroid/net/NetworkInfo;->getType()I
+	57      (000000f2) move-result          v2
+
+a-BB@0xf4 : [ a-BB@0xfc a-BB@0x21a ]
+	58      (000000f4) iget-object          v4, v7, Lr2/h;->f Ljava/util/HashMap;
+	59      (000000f8) if-eqz               v4, +091h
+
+a-BB@0xfc : [ a-BB@0x114 a-BB@0x11c ]
+	60      (000000fc) invoke-static        v2, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
+	61      (00000102) move-result-object   v2
+	62      (00000104) const-string         v5, "net-type"
+	63      (00000108) invoke-virtual       v4, v5, v2, Ljava/util/HashMap;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	64      (0000010e) const/4              v2, 0
+	65      (00000110) if-nez               v0, +006h
+
+a-BB@0x114 : [ a-BB@0x118 ]
+	66      (00000114) sget-object          v0, Lq2/g0;->a Landroid/util/SparseArray;
+
+a-BB@0x118 : [ a-BB@0x146 ]
+	67      (00000118) move                 v0, v2
+	68      (0000011a) goto                 +16h
+
+a-BB@0x11c : [ a-BB@0x128 a-BB@0x132 ]
+	69      (0000011c) invoke-virtual       v0, Landroid/net/NetworkInfo;->getSubtype()I
+	70      (00000122) move-result          v0
+	71      (00000124) if-ne                v0, v1, +007h
+
+a-BB@0x128 : [ a-BB@0x146 ]
+	72      (00000128) sget-object          v0, Lq2/g0;->a Landroid/util/SparseArray;
+	73      (0000012c) const/16             v0, 100
+	74      (00000130) goto                 +bh
+
+a-BB@0x132 : [ a-BB@0x146 a-BB@0x118 ]
+	75      (00000132) sget-object          v4, Lq2/g0;->a Landroid/util/SparseArray;
+	76      (00000136) invoke-virtual       v4, v0, Landroid/util/SparseArray;->get(I)Ljava/lang/Object;
+	77      (0000013c) move-result-object   v4
+	78      (0000013e) check-cast           v4, Lq2/g0;
+	79      (00000142) if-eqz               v4, -015h
+
+a-BB@0x146 : [ a-BB@0x14e a-BB@0x20e ]
+	80      (00000146) iget-object          v4, v7, Lr2/h;->f Ljava/util/HashMap;
+	81      (0000014a) if-eqz               v4, +062h
+
+a-BB@0x14e : [ a-BB@0x1b4 a-BB@0x1b6 ]
+	82      (0000014e) invoke-static        v0, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
+	83      (00000154) move-result-object   v0
+	84      (00000156) const-string         v3, "mobile-subtype"
+	85      (0000015a) invoke-virtual       v4, v3, v0, Ljava/util/HashMap;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	86      (00000160) invoke-static        Ljava/util/Locale;->getDefault()Ljava/util/Locale;
+	87      (00000166) move-result-object   v0
+	88      (00000168) invoke-virtual       v0, Ljava/util/Locale;->getCountry()Ljava/lang/String;
+	89      (0000016e) move-result-object   v0
+	90      (00000170) const-string         v3, "country"
+	91      (00000174) invoke-virtual       v7, v3, v0, Lr2/h;->a(Ljava/lang/String; Ljava/lang/String;)V
+	92      (0000017a) invoke-static        Ljava/util/Locale;->getDefault()Ljava/util/Locale;
+	93      (00000180) move-result-object   v0
+	94      (00000182) invoke-virtual       v0, Ljava/util/Locale;->getLanguage()Ljava/lang/String;
+	95      (00000188) move-result-object   v0
+	96      (0000018a) const-string         v3, "locale"
+	97      (0000018e) invoke-virtual       v7, v3, v0, Lr2/h;->a(Ljava/lang/String; Ljava/lang/String;)V
+	98      (00000194) const-string         v0, "phone"
+	99      (00000198) iget-object          v3, v6, Lp2/c;->c Landroid/content/Context;
+	100     (0000019c) invoke-virtual       v3, v0, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+	101     (000001a2) move-result-object   v0
+	102     (000001a4) check-cast           v0, Landroid/telephony/TelephonyManager;
+	103     (000001a8) invoke-virtual       v0, Landroid/telephony/TelephonyManager;->getSimOperator()Ljava/lang/String;
+	104     (000001ae) move-result-object   v0
+	105     (000001b0) if-eqz               v0, +003h
+
+a-BB@0x1b4 : [ a-BB@0x1ba ]
+	106     (000001b4) goto                 +3h
+
+a-BB@0x1b6 : [ a-BB@0x1ba ]
+	107     (000001b6) const-string         v0, ""
+
+a-BB@0x1ba : [ a-BB@0x1c4 ]
+	108     (000001ba) const-string         v4, "mcc_mnc"
+	109     (000001be) invoke-virtual       v7, v4, v0, Lr2/h;->a(Ljava/lang/String; Ljava/lang/String;)V
+
+a-BB@0x1c4 : [ a-BB@0x1f2 ]
+	110     (000001c4) invoke-virtual       v3, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
+	111     (000001ca) move-result-object   v0
+	112     (000001cc) invoke-virtual       v3, Landroid/content/Context;->getPackageName()Ljava/lang/String;
+	113     (000001d2) move-result-object   v3
+	114     (000001d4) invoke-virtual       v0, v3, v2, Landroid/content/pm/PackageManager;->getPackageInfo(Ljava/lang/String; I)Landroid/content/pm/PackageInfo;
+	115     (000001da) move-result-object   v0
+	116     (000001dc) iget                 v1, v0, Landroid/content/pm/PackageInfo;->versionCode I
+	117     (000001e0) goto                 +9h
+	1c4:1df
+	(Landroid/content/pm/PackageManager$NameNotFoundException; -> 1e2 a-BB@0x1e2)
+
+a-BB@0x1e2 : [ a-BB@0x1f2 ]
+	118     (000001e2) move-exception       v0
+	119     (000001e4) const-string         v2, "CctTransportBackend"
+	120     (000001e8) const-string         v3, "Unable to find version code for package"
+	121     (000001ec) invoke-static        v0, v2, v3, Lc4/b;->w(Ljava/lang/Exception; Ljava/lang/String; Ljava/lang/String;)V
+
+a-BB@0x1f2 : 
+	122     (000001f2) invoke-static        v1, Ljava/lang/Integer;->toString(I)Ljava/lang/String;
+	123     (000001f8) move-result-object   v0
+	124     (000001fa) const-string         v1, "application_build"
+	125     (000001fe) invoke-virtual       v7, v1, v0, Lr2/h;->a(Ljava/lang/String; Ljava/lang/String;)V
+	126     (00000204) invoke-virtual       v7, Lr2/h;->b()Lr2/i;
+	127     (0000020a) move-result-object   v7
+	128     (0000020c) return-object        v7
+
+a-BB@0x20e : 
+	129     (0000020e) new-instance         v7, Ljava/lang/IllegalStateException;
+	130     (00000212) invoke-direct        v7, v3, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	131     (00000218) throw                v7
+
+a-BB@0x21a : 
+	132     (0000021a) new-instance         v7, Ljava/lang/IllegalStateException;
+	133     (0000021e) invoke-direct        v7, v3, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	134     (00000224) throw                v7
+
+a-BB@0x226 : 
+	135     (00000226) new-instance         v7, Ljava/lang/IllegalStateException;
+	136     (0000022a) invoke-direct        v7, v3, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	137     (00000230) throw                v7
+
+a-BB@0x232 : 
+	138     (00000232) new-instance         v7, Ljava/lang/IllegalStateException;
+	139     (00000236) invoke-direct        v7, v3, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	140     (0000023c) throw                v7
+

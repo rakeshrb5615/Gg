@@ -1,0 +1,40 @@
+# Lokhttp3/internal/http1/Http1ExchangeCodec$ChunkedSink;->k(Lx8/g; J)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:x8.g
+# - v5:long
+#
+# - return:void
+
+k-BB@0x0 : [ k-BB@0x8 k-BB@0x44 ]
+	0       (00000000) iget-boolean         v0, v2, Lokhttp3/internal/http1/Http1ExchangeCodec$ChunkedSink;->b Z
+	1       (00000004) if-nez               v0, +020h
+
+k-BB@0x8 : [ k-BB@0x14 k-BB@0x16 ]
+	2       (00000008) const-wide/16        v0, 0
+	3       (0000000c) cmp-long             v0, v4, v0
+	4       (00000010) if-nez               v0, +003h
+
+k-BB@0x14 : 
+	5       (00000014) return-void          
+
+k-BB@0x16 : 
+	6       (00000016) iget-object          v0, v2, Lokhttp3/internal/http1/Http1ExchangeCodec$ChunkedSink;->c Lokhttp3/internal/http1/Http1ExchangeCodec;
+	7       (0000001a) iget-object          v0, v0, Lokhttp3/internal/http1/Http1ExchangeCodec;->c Lokhttp3/internal/connection/BufferedSocket;
+	8       (0000001e) invoke-interface     v0, Lokhttp3/internal/connection/BufferedSocket;->b()Lx8/h;
+	9       (00000024) move-result-object   v0
+	10      (00000026) invoke-interface     v0, v4, v5, Lx8/h;->d(J)Lx8/h;
+	11      (0000002c) const-string         v1, "
+"
+	12      (00000030) invoke-interface     v0, v1, Lx8/h;->q(Ljava/lang/String;)Lx8/h;
+	13      (00000036) invoke-interface     v0, v3, v4, v5, Lx8/f0;->k(Lx8/g; J)V
+	14      (0000003c) invoke-interface     v0, v1, Lx8/h;->q(Ljava/lang/String;)Lx8/h;
+	15      (00000042) return-void          
+
+k-BB@0x44 : 
+	16      (00000044) new-instance         v3, Ljava/lang/IllegalStateException;
+	17      (00000048) const-string         v4, "closed"
+	18      (0000004c) invoke-direct        v3, v4, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	19      (00000052) throw                v3
+

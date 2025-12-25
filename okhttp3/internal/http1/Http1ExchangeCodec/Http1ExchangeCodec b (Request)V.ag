@@ -1,0 +1,54 @@
+# Lokhttp3/internal/http1/Http1ExchangeCodec;->b(Lokhttp3/Request;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:okhttp3.Request
+#
+# - return:void
+
+b-BB@0x0 : [ b-BB@0x62 b-BB@0x72 ]
+	0       (00000000) sget-object          v0, Lokhttp3/internal/http/RequestLine;->a Lokhttp3/internal/http/RequestLine;
+	1       (00000004) iget-object          v1, v5, Lokhttp3/internal/http1/Http1ExchangeCodec;->b Lokhttp3/internal/http/ExchangeCodec$Carrier;
+	2       (00000008) invoke-interface     v1, Lokhttp3/internal/http/ExchangeCodec$Carrier;->f()Lokhttp3/Route;
+	3       (0000000e) move-result-object   v1
+	4       (00000010) iget-object          v1, v1, Lokhttp3/Route;->b Ljava/net/Proxy;
+	5       (00000014) invoke-virtual       v1, Ljava/net/Proxy;->type()Ljava/net/Proxy$Type;
+	6       (0000001a) move-result-object   v1
+	7       (0000001c) const-string         v2, "type(...)"
+	8       (00000020) invoke-static        v1, v2, Lkotlin/jvm/internal/j;->d(Ljava/lang/Object; Ljava/lang/String;)V
+	9       (00000026) invoke-virtual       v0, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	10      (0000002c) new-instance         v0, Ljava/lang/StringBuilder;
+	11      (00000030) invoke-direct        v0, Ljava/lang/StringBuilder;-><init>()V
+	12      (00000036) iget-object          v2, v6, Lokhttp3/Request;->b Ljava/lang/String;
+	13      (0000003a) invoke-virtual       v0, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	14      (00000040) const/16             v2, 32
+	15      (00000044) invoke-virtual       v0, v2, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+	16      (0000004a) iget-object          v2, v6, Lokhttp3/Request;->a Lokhttp3/HttpUrl;
+	17      (0000004e) iget-object          v3, v2, Lokhttp3/HttpUrl;->a Ljava/lang/String;
+	18      (00000052) const-string         v4, "https"
+	19      (00000056) invoke-static        v3, v4, Lkotlin/jvm/internal/j;->a(Ljava/lang/Object; Ljava/lang/Object;)Z
+	20      (0000005c) move-result          v3
+	21      (0000005e) if-nez               v3, +00ah
+
+b-BB@0x62 : [ b-BB@0x6a b-BB@0x72 ]
+	22      (00000062) sget-object          v3, Ljava/net/Proxy$Type;->HTTP Ljava/net/Proxy$Type;
+	23      (00000066) if-ne                v1, v3, +006h
+
+b-BB@0x6a : [ b-BB@0x80 ]
+	24      (0000006a) invoke-virtual       v0, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	25      (00000070) goto                 +8h
+
+b-BB@0x72 : [ b-BB@0x80 ]
+	26      (00000072) invoke-static        v2, Lokhttp3/internal/http/RequestLine;->a(Lokhttp3/HttpUrl;)Ljava/lang/String;
+	27      (00000078) move-result-object   v1
+	28      (0000007a) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+b-BB@0x80 : 
+	29      (00000080) const-string         v1, " HTTP/1.1"
+	30      (00000084) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	31      (0000008a) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	32      (00000090) move-result-object   v0
+	33      (00000092) iget-object          v6, v6, Lokhttp3/Request;->c Lokhttp3/Headers;
+	34      (00000096) invoke-virtual       v5, v6, v0, Lokhttp3/internal/http1/Http1ExchangeCodec;->m(Lokhttp3/Headers; Ljava/lang/String;)V
+	35      (0000009c) return-void          
+

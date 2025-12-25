@@ -1,0 +1,83 @@
+# Lokhttp3/internal/http2/Http2Writer;->s(I Lokhttp3/internal/http2/ErrorCode; [B)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:int
+# - v5:okhttp3.internal.http2.ErrorCode
+# - v6:byte[]
+#
+# - return:void
+
+s-BB@0x0 : [ s-BB@0x2 ]
+	0       (00000000) monitor-enter        v3
+
+s-BB@0x2 : [ s-BB@0xa s-BB@0x70 ]
+	1       (00000002) iget-boolean         v0, v3, Lokhttp3/internal/http2/Http2Writer;->d Z
+	2       (00000006) if-nez               v0, +035h
+	2:57
+	(Ljava/lang/Throwable; -> 5c s-BB@0x5c)
+
+s-BB@0xa : [ s-BB@0x14 s-BB@0x60 ]
+	3       (0000000a) iget                 v0, v5, Lokhttp3/internal/http2/ErrorCode;->a I
+	4       (0000000e) const/4              v1, -1
+	5       (00000010) if-eq                v0, v1, +028h
+	2:57
+	(Ljava/lang/Throwable; -> 5c s-BB@0x5c)
+
+s-BB@0x14 : [ s-BB@0x42 s-BB@0x44 ]
+	6       (00000014) array-length         v0, v6
+	7       (00000016) add-int/lit8         v0, v0, 8
+	8       (0000001a) const/4              v1, 7
+	9       (0000001c) const/4              v2, 0
+	10      (0000001e) invoke-virtual       v3, v2, v0, v1, v2, Lokhttp3/internal/http2/Http2Writer;->i(I I I I)V
+	11      (00000024) iget-object          v0, v3, Lokhttp3/internal/http2/Http2Writer;->a Lx8/h;
+	12      (00000028) invoke-interface     v0, v4, Lx8/h;->writeInt(I)Lx8/h;
+	13      (0000002e) iget-object          v4, v3, Lokhttp3/internal/http2/Http2Writer;->a Lx8/h;
+	14      (00000032) iget                 v5, v5, Lokhttp3/internal/http2/ErrorCode;->a I
+	15      (00000036) invoke-interface     v4, v5, Lx8/h;->writeInt(I)Lx8/h;
+	16      (0000003c) array-length         v4, v6
+	17      (0000003e) if-nez               v4, +003h
+	2:57
+	(Ljava/lang/Throwable; -> 5c s-BB@0x5c)
+
+s-BB@0x42 : [ s-BB@0x4e ]
+	18      (00000042) goto                 +6h
+	2:57
+	(Ljava/lang/Throwable; -> 5c s-BB@0x5c)
+
+s-BB@0x44 : [ s-BB@0x4e ]
+	19      (00000044) iget-object          v4, v3, Lokhttp3/internal/http2/Http2Writer;->a Lx8/h;
+	20      (00000048) invoke-interface     v4, v6, Lx8/h;->write([B)Lx8/h;
+	2:57
+	(Ljava/lang/Throwable; -> 5c s-BB@0x5c)
+
+s-BB@0x4e : 
+	21      (0000004e) iget-object          v4, v3, Lokhttp3/internal/http2/Http2Writer;->a Lx8/h;
+	22      (00000052) invoke-interface     v4, Lx8/h;->flush()V
+	23      (00000058) monitor-exit         v3
+	24      (0000005a) return-void          
+
+s-BB@0x5c : [ s-BB@0x80 ]
+	25      (0000005c) move-exception       v4
+	26      (0000005e) goto                 +11h
+
+s-BB@0x60 : 
+	27      (00000060) const-string         v4, "errorCode.httpCode == -1"
+	28      (00000064) new-instance         v5, Ljava/lang/IllegalArgumentException;
+	29      (00000068) invoke-direct        v5, v4, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	30      (0000006e) throw                v5
+	60:7f
+	(Ljava/lang/Throwable; -> 5c s-BB@0x5c)
+
+s-BB@0x70 : 
+	31      (00000070) new-instance         v4, Ljava/io/IOException;
+	32      (00000074) const-string         v5, "closed"
+	33      (00000078) invoke-direct        v4, v5, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+	34      (0000007e) throw                v4
+	60:7f
+	(Ljava/lang/Throwable; -> 5c s-BB@0x5c)
+
+s-BB@0x80 : 
+	35      (00000080) monitor-exit         v3
+	36      (00000082) throw                v4
+

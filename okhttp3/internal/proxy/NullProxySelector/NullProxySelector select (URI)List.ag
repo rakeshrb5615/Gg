@@ -1,0 +1,23 @@
+# Lokhttp3/internal/proxy/NullProxySelector;->select(Ljava/net/URI;)Ljava/util/List; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:java.net.URI
+#
+# - return:java.util.List
+
+select-BB@0x0 : [ select-BB@0x4 select-BB@0x12 ]
+	0       (00000000) if-eqz               v2, +009h
+
+select-BB@0x4 : 
+	1       (00000004) sget-object          v2, Ljava/net/Proxy;->NO_PROXY Ljava/net/Proxy;
+	2       (00000008) invoke-static        v2, La/a;->G(Ljava/lang/Object;)Ljava/util/List;
+	3       (0000000e) move-result-object   v2
+	4       (00000010) return-object        v2
+
+select-BB@0x12 : 
+	5       (00000012) new-instance         v2, Ljava/lang/IllegalArgumentException;
+	6       (00000016) const-string         v0, "uri must not be null"
+	7       (0000001a) invoke-direct        v2, v0, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	8       (00000020) throw                v2
+

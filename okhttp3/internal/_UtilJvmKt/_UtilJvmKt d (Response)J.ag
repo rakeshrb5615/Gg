@@ -1,0 +1,28 @@
+# Lokhttp3/internal/_UtilJvmKt;->d(Lokhttp3/Response;)J [access_flags=public static final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:okhttp3.Response
+#
+# - return:long
+
+d-BB@0x0 : [ d-BB@0x18 d-BB@0x24 ]
+	0       (00000000) iget-object          v3, v3, Lokhttp3/Response;->f Lokhttp3/Headers;
+	1       (00000004) const-string         v0, "Content-Length"
+	2       (00000008) invoke-virtual       v3, v0, Lokhttp3/Headers;->b(Ljava/lang/String;)Ljava/lang/String;
+	3       (0000000e) move-result-object   v3
+	4       (00000010) const-wide/16        v0, -1
+	5       (00000014) if-eqz               v3, +008h
+
+d-BB@0x18 : [ d-BB@0x1c ]
+	6       (00000018) sget-object          v2, Lokhttp3/internal/_UtilCommonKt;->a [B
+
+d-BB@0x1c : [ d-BB@0x24 ]
+	7       (0000001c) invoke-static        v3, Ljava/lang/Long;->parseLong(Ljava/lang/String;)J
+	8       (00000022) move-result-wide     v0
+	1c:23
+	(Ljava/lang/NumberFormatException; -> 24 d-BB@0x24)
+
+d-BB@0x24 : 
+	9       (00000024) return-wide          v0
+

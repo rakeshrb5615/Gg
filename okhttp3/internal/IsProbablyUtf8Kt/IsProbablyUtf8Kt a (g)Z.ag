@@ -1,0 +1,116 @@
+# Lokhttp3/internal/IsProbablyUtf8Kt;->a(Lx8/g;)Z [access_flags=public static final]
+#
+# Parameters:
+# - local registers: v0...v9
+# - v10:x8.g
+#
+# - return:boolean
+
+a-BB@0x0 : [ a-BB@0xa ]
+	0       (00000000) const-string         v0, "<this>"
+	1       (00000004) invoke-static        v10, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+
+a-BB@0xa : [ a-BB@0x22 ]
+	2       (0000000a) new-instance         v0, Lx8/z;
+	3       (0000000e) invoke-direct        v0, v10, Lx8/z;-><init>(Lx8/i;)V
+	4       (00000014) invoke-static        v0, Lx8/b;->c(Lx8/h0;)Lx8/b0;
+	5       (0000001a) move-result-object   v10
+	6       (0000001c) const-wide/16        v0, 0
+	7       (00000020) move-wide            v2, v0
+	a:b3
+	(Ljava/io/EOFException; -> c2 a-BB@0xc2)
+
+a-BB@0x22 : [ a-BB@0x2e a-BB@0xbe ]
+	8       (00000022) const-wide/16        v4, 16
+	9       (00000026) cmp-long             v4, v2, v4
+	10      (0000002a) if-gez               v4, +04ah
+	a:b3
+	(Ljava/io/EOFException; -> c2 a-BB@0xc2)
+
+a-BB@0x2e : [ a-BB@0x3a a-BB@0x3c ]
+	11      (0000002e) invoke-virtual       v10, Lx8/b0;->h()Z
+	12      (00000034) move-result          v4
+	13      (00000036) if-eqz               v4, +003h
+	a:b3
+	(Ljava/io/EOFException; -> c2 a-BB@0xc2)
+
+a-BB@0x3a : [ a-BB@0xbe ]
+	14      (0000003a) goto                 +42h
+	a:b3
+	(Ljava/io/EOFException; -> c2 a-BB@0xc2)
+
+a-BB@0x3c : [ a-BB@0x5e a-BB@0x6a ]
+	15      (0000003c) const-wide/16        v4, 1
+	16      (00000040) invoke-virtual       v10, v4, v5, Lx8/b0;->o(J)V
+	17      (00000046) iget-object          v6, v10, Lx8/b0;->b Lx8/g;
+	18      (0000004a) invoke-virtual       v6, v0, v1, Lx8/g;->A(J)B
+	19      (00000050) move-result          v7
+	20      (00000052) and-int/lit16        v8, v7, 224
+	21      (00000056) const/16             v9, 192
+	22      (0000005a) if-ne                v8, v9, +008h
+	a:b3
+	(Ljava/io/EOFException; -> c2 a-BB@0xc2)
+
+a-BB@0x5e : [ a-BB@0x98 ]
+	23      (0000005e) const-wide/16        v7, 2
+	24      (00000062) invoke-virtual       v10, v7, v8, Lx8/b0;->o(J)V
+	25      (00000068) goto                 +18h
+	a:b3
+	(Ljava/io/EOFException; -> c2 a-BB@0xc2)
+
+a-BB@0x6a : [ a-BB@0x76 a-BB@0x82 ]
+	26      (0000006a) and-int/lit16        v8, v7, 240
+	27      (0000006e) const/16             v9, 224
+	28      (00000072) if-ne                v8, v9, +008h
+	a:b3
+	(Ljava/io/EOFException; -> c2 a-BB@0xc2)
+
+a-BB@0x76 : [ a-BB@0x98 ]
+	29      (00000076) const-wide/16        v7, 3
+	30      (0000007a) invoke-virtual       v10, v7, v8, Lx8/b0;->o(J)V
+	31      (00000080) goto                 +ch
+	a:b3
+	(Ljava/io/EOFException; -> c2 a-BB@0xc2)
+
+a-BB@0x82 : [ a-BB@0x8e a-BB@0x98 ]
+	32      (00000082) and-int/lit16        v7, v7, 248
+	33      (00000086) const/16             v8, 240
+	34      (0000008a) if-ne                v7, v8, +007h
+	a:b3
+	(Ljava/io/EOFException; -> c2 a-BB@0xc2)
+
+a-BB@0x8e : [ a-BB@0x98 ]
+	35      (0000008e) const-wide/16        v7, 4
+	36      (00000092) invoke-virtual       v10, v7, v8, Lx8/b0;->o(J)V
+	a:b3
+	(Ljava/io/EOFException; -> c2 a-BB@0xc2)
+
+a-BB@0x98 : [ a-BB@0xac a-BB@0xba ]
+	37      (00000098) invoke-virtual       v6, Lx8/g;->H()I
+	38      (0000009e) move-result          v6
+	39      (000000a0) invoke-static        v6, Ljava/lang/Character;->isISOControl(I)Z
+	40      (000000a6) move-result          v7
+	41      (000000a8) if-eqz               v7, +009h
+	a:b3
+	(Ljava/io/EOFException; -> c2 a-BB@0xc2)
+
+a-BB@0xac : [ a-BB@0xb8 a-BB@0xba ]
+	42      (000000ac) invoke-static        v6, Ljava/lang/Character;->isWhitespace(I)Z
+	43      (000000b2) move-result          v6
+	44      (000000b4) if-nez               v6, +003h
+
+a-BB@0xb8 : [ a-BB@0xc2 ]
+	45      (000000b8) goto                 +5h
+
+a-BB@0xba : [ a-BB@0x22 ]
+	46      (000000ba) add-long/2addr       v2, v4
+	47      (000000bc) goto                 -4dh
+
+a-BB@0xbe : 
+	48      (000000be) const/4              v10, 1
+	49      (000000c0) return               v10
+
+a-BB@0xc2 : 
+	50      (000000c2) const/4              v10, 0
+	51      (000000c4) return               v10
+

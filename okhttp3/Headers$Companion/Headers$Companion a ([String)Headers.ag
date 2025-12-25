@@ -1,0 +1,82 @@
+# Lokhttp3/Headers$Companion;->a([Ljava/lang/String;)Lokhttp3/Headers; [access_flags=public static varargs]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:java.lang.String[]
+#
+# - return:okhttp3.Headers
+
+a-BB@0x0 : [ a-BB@0x22 a-BB@0xb0 ]
+	0       (00000000) array-length         v0, v6
+	1       (00000002) invoke-static        v6, v0, Ljava/util/Arrays;->copyOf([Ljava/lang/Object; I)[Ljava/lang/Object;
+	2       (00000008) move-result-object   v6
+	3       (0000000a) check-cast           v6, [Ljava/lang/String;
+	4       (0000000e) const-string         v0, "inputNamesAndValues"
+	5       (00000012) invoke-static        v6, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	6       (00000018) array-length         v0, v6
+	7       (0000001a) const/4              v1, 2
+	8       (0000001c) rem-int/2addr        v0, v1
+	9       (0000001e) if-nez               v0, +049h
+
+a-BB@0x22 : [ a-BB@0x36 ]
+	10      (00000022) array-length         v0, v6
+	11      (00000024) invoke-static        v6, v0, Ljava/util/Arrays;->copyOf([Ljava/lang/Object; I)[Ljava/lang/Object;
+	12      (0000002a) move-result-object   v0
+	13      (0000002c) check-cast           v0, [Ljava/lang/String;
+	14      (00000030) array-length         v2, v0
+	15      (00000032) const/4              v3, 0
+	16      (00000034) move                 v4, v3
+
+a-BB@0x36 : [ a-BB@0x3a a-BB@0x70 ]
+	17      (00000036) if-ge                v4, v2, +01dh
+
+a-BB@0x3a : [ a-BB@0x42 a-BB@0x60 ]
+	18      (0000003a) aget-object          v5, v0, v4
+	19      (0000003e) if-eqz               v5, +011h
+
+a-BB@0x42 : [ a-BB@0x36 ]
+	20      (00000042) aget-object          v5, v6, v4
+	21      (00000046) invoke-static        v5, Lb8/i;->H0(Ljava/lang/String;)Ljava/lang/CharSequence;
+	22      (0000004c) move-result-object   v5
+	23      (0000004e) invoke-virtual       v5, Ljava/lang/Object;->toString()Ljava/lang/String;
+	24      (00000054) move-result-object   v5
+	25      (00000056) aput-object          v5, v0, v4
+	26      (0000005a) add-int/lit8         v4, v4, 1
+	27      (0000005e) goto                 -14h
+
+a-BB@0x60 : 
+	28      (00000060) new-instance         v6, Ljava/lang/IllegalArgumentException;
+	29      (00000064) const-string         v0, "Headers cannot be null"
+	30      (00000068) invoke-direct        v6, v0, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	31      (0000006e) throw                v6
+
+a-BB@0x70 : [ a-BB@0x82 a-BB@0xa4 ]
+	32      (00000070) array-length         v6, v0
+	33      (00000072) add-int/lit8         v6, v6, -1
+	34      (00000076) invoke-static        v3, v6, v1, Lc4/b;->D(I I I)I
+	35      (0000007c) move-result          v6
+	36      (0000007e) if-ltz               v6, +013h
+
+a-BB@0x82 : [ a-BB@0x9e a-BB@0xa4 ]
+	37      (00000082) aget-object          v1, v0, v3
+	38      (00000086) add-int/lit8         v2, v3, 1
+	39      (0000008a) aget-object          v2, v0, v2
+	40      (0000008e) invoke-static        v1, Lokhttp3/internal/_HeadersCommonKt;->b(Ljava/lang/String;)V
+	41      (00000094) invoke-static        v2, v1, Lokhttp3/internal/_HeadersCommonKt;->c(Ljava/lang/String; Ljava/lang/String;)V
+	42      (0000009a) if-eq                v3, v6, +005h
+
+a-BB@0x9e : [ a-BB@0x82 ]
+	43      (0000009e) add-int/lit8         v3, v3, 2
+	44      (000000a2) goto                 -10h
+
+a-BB@0xa4 : 
+	45      (000000a4) new-instance         v6, Lokhttp3/Headers;
+	46      (000000a8) invoke-direct        v6, v0, Lokhttp3/Headers;-><init>([Ljava/lang/String;)V
+	47      (000000ae) return-object        v6
+
+a-BB@0xb0 : 
+	48      (000000b0) new-instance         v6, Ljava/lang/IllegalArgumentException;
+	49      (000000b4) const-string         v0, "Expected alternating header names and values"
+	50      (000000b8) invoke-direct        v6, v0, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	51      (000000be) throw                v6
+
