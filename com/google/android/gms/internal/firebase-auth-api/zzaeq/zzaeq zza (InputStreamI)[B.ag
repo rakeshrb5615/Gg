@@ -1,0 +1,50 @@
+# Lcom/google/android/gms/internal/firebase-auth-api/zzaeq;->zza(Ljava/io/InputStream; I)[B [access_flags=private static]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:java.io.InputStream
+# - v4:int
+#
+# - return:byte[]
+
+zza-BB@0x0 : [ zza-BB@0xe ]
+	0       (00000000) new-instance         v4, Ljava/io/ByteArrayOutputStream;
+	1       (00000004) invoke-direct        v4, Ljava/io/ByteArrayOutputStream;-><init>()V
+	2       (0000000a) const/16             v0, 128
+
+zza-BB@0xe : [ zza-BB@0x12 ]
+	3       (0000000e) new-array            v0, v0, [B
+	e:35
+	(Ljava/lang/Throwable; -> 2a zza-BB@0x2a)
+
+zza-BB@0x12 : [ zza-BB@0x20 zza-BB@0x2e ]
+	4       (00000012) invoke-virtual       v3, v0, Ljava/io/InputStream;->read([B)I
+	5       (00000018) move-result          v1
+	6       (0000001a) const/4              v2, -1
+	7       (0000001c) if-eq                v1, v2, +009h
+	e:35
+	(Ljava/lang/Throwable; -> 2a zza-BB@0x2a)
+
+zza-BB@0x20 : [ zza-BB@0x12 ]
+	8       (00000020) const/4              v2, 0
+	9       (00000022) invoke-virtual       v4, v0, v2, v1, Ljava/io/ByteArrayOutputStream;->write([B I I)V
+	10      (00000028) goto                 -bh
+	e:35
+	(Ljava/lang/Throwable; -> 2a zza-BB@0x2a)
+
+zza-BB@0x2a : [ zza-BB@0x3e ]
+	11      (0000002a) move-exception       v3
+	12      (0000002c) goto                 +9h
+	e:35
+	(Ljava/lang/Throwable; -> 2a zza-BB@0x2a)
+
+zza-BB@0x2e : 
+	13      (0000002e) invoke-virtual       v4, Ljava/io/ByteArrayOutputStream;->toByteArray()[B
+	14      (00000034) move-result-object   v3
+	15      (00000036) invoke-virtual       v4, Ljava/io/ByteArrayOutputStream;->close()V
+	16      (0000003c) return-object        v3
+
+zza-BB@0x3e : 
+	17      (0000003e) invoke-virtual       v4, Ljava/io/ByteArrayOutputStream;->close()V
+	18      (00000044) throw                v3
+

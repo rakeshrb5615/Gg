@@ -1,0 +1,112 @@
+# Lcom/google/android/gms/fido/u2f/api/common/SignRequestParams;-><init>(Ljava/lang/Integer; Ljava/lang/Double; Landroid/net/Uri; [B Ljava/util/List; Lcom/google/android/gms/fido/u2f/api/common/ChannelIdValue; Ljava/lang/String;)V [access_flags=public constructor]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:java.lang.Integer
+# - v4:java.lang.Double
+# - v5:android.net.Uri
+# - v6:byte[]
+# - v7:java.util.List
+# - v8:com.google.android.gms.fido.u2f.api.common.ChannelIdValue
+# - v9:java.lang.String
+#
+# - return:void
+
+<init>-BB@0x0 : [ <init>-BB@0x1e <init>-BB@0x2e ]
+	0       (00000000) invoke-direct        v2, Lcom/google/android/gms/fido/u2f/api/common/RequestParams;-><init>()V
+	1       (00000006) iput-object          v3, v2, Lcom/google/android/gms/fido/u2f/api/common/SignRequestParams;->zza Ljava/lang/Integer;
+	2       (0000000a) iput-object          v4, v2, Lcom/google/android/gms/fido/u2f/api/common/SignRequestParams;->zzb Ljava/lang/Double;
+	3       (0000000e) iput-object          v5, v2, Lcom/google/android/gms/fido/u2f/api/common/SignRequestParams;->zzc Landroid/net/Uri;
+	4       (00000012) iput-object          v6, v2, Lcom/google/android/gms/fido/u2f/api/common/SignRequestParams;->zzd [B
+	5       (00000016) const/4              v3, 0
+	6       (00000018) const/4              v4, 1
+	7       (0000001a) if-eqz               v7, +00ah
+
+<init>-BB@0x1e : [ <init>-BB@0x2a <init>-BB@0x2e ]
+	8       (0000001e) invoke-interface     v7, Ljava/util/List;->isEmpty()Z
+	9       (00000024) move-result          v6
+	10      (00000026) if-nez               v6, +004h
+
+<init>-BB@0x2a : [ <init>-BB@0x30 ]
+	11      (0000002a) move                 v6, v4
+	12      (0000002c) goto                 +2h
+
+<init>-BB@0x2e : [ <init>-BB@0x30 ]
+	13      (0000002e) move                 v6, v3
+
+<init>-BB@0x30 : [ <init>-BB@0x50 <init>-BB@0x56 ]
+	14      (00000030) const-string         v0, "registeredKeys must not be null or empty"
+	15      (00000034) invoke-static        v6, v0, Lcom/google/android/gms/common/internal/Preconditions;->checkArgument(Z Ljava/lang/Object;)V
+	16      (0000003a) iput-object          v7, v2, Lcom/google/android/gms/fido/u2f/api/common/SignRequestParams;->zze Ljava/util/List;
+	17      (0000003e) iput-object          v8, v2, Lcom/google/android/gms/fido/u2f/api/common/SignRequestParams;->zzf Lcom/google/android/gms/fido/u2f/api/common/ChannelIdValue;
+	18      (00000042) new-instance         v6, Ljava/util/HashSet;
+	19      (00000046) invoke-direct        v6, Ljava/util/HashSet;-><init>()V
+	20      (0000004c) if-eqz               v5, +005h
+
+<init>-BB@0x50 : [ <init>-BB@0x56 ]
+	21      (00000050) invoke-virtual       v6, v5, Ljava/util/HashSet;->add(Ljava/lang/Object;)Z
+
+<init>-BB@0x56 : [ <init>-BB@0x5e ]
+	22      (00000056) invoke-interface     v7, Ljava/util/List;->iterator()Ljava/util/Iterator;
+	23      (0000005c) move-result-object   v7
+
+<init>-BB@0x5e : [ <init>-BB@0x6a <init>-BB@0xca ]
+	24      (0000005e) invoke-interface     v7, Ljava/util/Iterator;->hasNext()Z
+	25      (00000064) move-result          v8
+	26      (00000066) if-eqz               v8, +032h
+
+<init>-BB@0x6a : [ <init>-BB@0x82 <init>-BB@0x86 ]
+	27      (0000006a) invoke-interface     v7, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	28      (00000070) move-result-object   v8
+	29      (00000072) check-cast           v8, Lcom/google/android/gms/fido/u2f/api/common/RegisteredKey;
+	30      (00000076) invoke-virtual       v8, Lcom/google/android/gms/fido/u2f/api/common/RegisteredKey;->getAppId()Ljava/lang/String;
+	31      (0000007c) move-result-object   v0
+	32      (0000007e) if-nez               v0, +004h
+
+<init>-BB@0x82 : [ <init>-BB@0x86 <init>-BB@0x8a ]
+	33      (00000082) if-eqz               v5, +004h
+
+<init>-BB@0x86 : [ <init>-BB@0x8c ]
+	34      (00000086) move                 v0, v4
+	35      (00000088) goto                 +2h
+
+<init>-BB@0x8a : [ <init>-BB@0x8c ]
+	36      (0000008a) move                 v0, v3
+
+<init>-BB@0x8c : [ <init>-BB@0xb2 <init>-BB@0x5e ]
+	37      (0000008c) const-string         v1, "registered key has null appId and no request appId is provided"
+	38      (00000090) invoke-static        v0, v1, Lcom/google/android/gms/common/internal/Preconditions;->checkArgument(Z Ljava/lang/Object;)V
+	39      (00000096) invoke-virtual       v8, Lcom/google/android/gms/fido/u2f/api/common/RegisteredKey;->getChallengeValue()Ljava/lang/String;
+	40      (0000009c) const-string         v0, "register request has null challenge and no default challenge isprovided"
+	41      (000000a0) invoke-static        v4, v0, Lcom/google/android/gms/common/internal/Preconditions;->checkArgument(Z Ljava/lang/Object;)V
+	42      (000000a6) invoke-virtual       v8, Lcom/google/android/gms/fido/u2f/api/common/RegisteredKey;->getAppId()Ljava/lang/String;
+	43      (000000ac) move-result-object   v0
+	44      (000000ae) if-eqz               v0, -028h
+
+<init>-BB@0xb2 : [ <init>-BB@0x5e ]
+	45      (000000b2) invoke-virtual       v8, Lcom/google/android/gms/fido/u2f/api/common/RegisteredKey;->getAppId()Ljava/lang/String;
+	46      (000000b8) move-result-object   v8
+	47      (000000ba) invoke-static        v8, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
+	48      (000000c0) move-result-object   v8
+	49      (000000c2) invoke-virtual       v6, v8, Ljava/util/HashSet;->add(Ljava/lang/Object;)Z
+	50      (000000c8) goto                 -35h
+
+<init>-BB@0xca : [ <init>-BB@0xd2 <init>-BB@0xe2 ]
+	51      (000000ca) iput-object          v6, v2, Lcom/google/android/gms/fido/u2f/api/common/SignRequestParams;->zzh Ljava/util/Set;
+	52      (000000ce) if-eqz               v9, +00ah
+
+<init>-BB@0xd2 : [ <init>-BB@0xe2 <init>-BB@0xe4 ]
+	53      (000000d2) invoke-virtual       v9, Ljava/lang/String;->length()I
+	54      (000000d8) move-result          v5
+	55      (000000da) const/16             v6, 80
+	56      (000000de) if-gt                v5, v6, +003h
+
+<init>-BB@0xe2 : [ <init>-BB@0xe4 ]
+	57      (000000e2) move                 v3, v4
+
+<init>-BB@0xe4 : 
+	58      (000000e4) const-string         v4, "Display Hint cannot be longer than 80 characters"
+	59      (000000e8) invoke-static        v3, v4, Lcom/google/android/gms/common/internal/Preconditions;->checkArgument(Z Ljava/lang/Object;)V
+	60      (000000ee) iput-object          v9, v2, Lcom/google/android/gms/fido/u2f/api/common/SignRequestParams;->zzg Ljava/lang/String;
+	61      (000000f2) return-void          
+

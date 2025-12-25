@@ -1,0 +1,59 @@
+# Lcom/google/android/gms/common/GoogleSignatureVerifier;->isUidGoogleSigned(I)Z [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:int
+#
+# - return:boolean
+
+isUidGoogleSigned-BB@0x0 : [ isUidGoogleSigned-BB@0x18 isUidGoogleSigned-BB@0x4e ]
+	0       (00000000) iget-object          v0, v5, Lcom/google/android/gms/common/GoogleSignatureVerifier;->zzb Landroid/content/Context;
+	1       (00000004) invoke-virtual       v0, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
+	2       (0000000a) move-result-object   v0
+	3       (0000000c) invoke-virtual       v0, v6, Landroid/content/pm/PackageManager;->getPackagesForUid(I)[Ljava/lang/String;
+	4       (00000012) move-result-object   v6
+	5       (00000014) if-eqz               v6, +01dh
+
+isUidGoogleSigned-BB@0x18 : [ isUidGoogleSigned-BB@0x1e isUidGoogleSigned-BB@0x20 ]
+	6       (00000018) array-length         v0, v6
+	7       (0000001a) if-nez               v0, +003h
+
+isUidGoogleSigned-BB@0x1e : [ isUidGoogleSigned-BB@0x4e ]
+	8       (0000001e) goto                 +18h
+
+isUidGoogleSigned-BB@0x20 : [ isUidGoogleSigned-BB@0x26 ]
+	9       (00000020) const/4              v1, 0
+	10      (00000022) const/4              v2, 0
+	11      (00000024) move                 v3, v1
+
+isUidGoogleSigned-BB@0x26 : [ isUidGoogleSigned-BB@0x2a isUidGoogleSigned-BB@0x46 ]
+	12      (00000026) if-ge                v3, v0, +010h
+
+isUidGoogleSigned-BB@0x2a : [ isUidGoogleSigned-BB@0x3e isUidGoogleSigned-BB@0x40 ]
+	13      (0000002a) aget-object          v2, v6, v3
+	14      (0000002e) invoke-direct        v5, v2, v1, v1, Lcom/google/android/gms/common/GoogleSignatureVerifier;->zzb(Ljava/lang/String; Z Z)Lcom/google/android/gms/common/zzy;
+	15      (00000034) move-result-object   v2
+	16      (00000036) iget-boolean         v4, v2, Lcom/google/android/gms/common/zzy;->zza Z
+	17      (0000003a) if-eqz               v4, +003h
+
+isUidGoogleSigned-BB@0x3e : [ isUidGoogleSigned-BB@0x5a ]
+	18      (0000003e) goto                 +eh
+
+isUidGoogleSigned-BB@0x40 : [ isUidGoogleSigned-BB@0x26 ]
+	19      (00000040) add-int/lit8         v3, v3, 1
+	20      (00000044) goto                 -fh
+
+isUidGoogleSigned-BB@0x46 : [ isUidGoogleSigned-BB@0x5a ]
+	21      (00000046) invoke-static        v2, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;
+	22      (0000004c) goto                 +7h
+
+isUidGoogleSigned-BB@0x4e : [ isUidGoogleSigned-BB@0x5a ]
+	23      (0000004e) const-string         v6, "no pkgs"
+	24      (00000052) invoke-static        v6, Lcom/google/android/gms/common/zzy;->zzc(Ljava/lang/String;)Lcom/google/android/gms/common/zzy;
+	25      (00000058) move-result-object   v2
+
+isUidGoogleSigned-BB@0x5a : 
+	26      (0000005a) invoke-virtual       v2, Lcom/google/android/gms/common/zzy;->zze()V
+	27      (00000060) iget-boolean         v6, v2, Lcom/google/android/gms/common/zzy;->zza Z
+	28      (00000064) return               v6
+

@@ -1,0 +1,29 @@
+# Lcom/android/billingclient/api/Purchase;->getAccountIdentifiers()Lcom/android/billingclient/api/AccountIdentifiers; [access_flags=public]
+#
+# Parameters:
+# local registers: v0...v3
+#
+# - return:com.android.billingclient.api.AccountIdentifiers
+
+getAccountIdentifiers-BB@0x0 : [ getAccountIdentifiers-BB@0x20 getAccountIdentifiers-BB@0x28 ]
+	0       (00000000) iget-object          v0, v3, Lcom/android/billingclient/api/Purchase;->zzc Lorg/json/JSONObject;
+	1       (00000004) const-string         v1, "obfuscatedAccountId"
+	2       (00000008) invoke-virtual       v0, v1, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+	3       (0000000e) move-result-object   v1
+	4       (00000010) const-string         v2, "obfuscatedProfileId"
+	5       (00000014) invoke-virtual       v0, v2, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+	6       (0000001a) move-result-object   v0
+	7       (0000001c) if-nez               v1, +006h
+
+getAccountIdentifiers-BB@0x20 : [ getAccountIdentifiers-BB@0x24 getAccountIdentifiers-BB@0x28 ]
+	8       (00000020) if-nez               v0, +004h
+
+getAccountIdentifiers-BB@0x24 : 
+	9       (00000024) const/4              v0, 0
+	10      (00000026) return-object        v0
+
+getAccountIdentifiers-BB@0x28 : 
+	11      (00000028) new-instance         v2, Lcom/android/billingclient/api/AccountIdentifiers;
+	12      (0000002c) invoke-direct        v2, v1, v0, Lcom/android/billingclient/api/AccountIdentifiers;-><init>(Ljava/lang/String; Ljava/lang/String;)V
+	13      (00000032) return-object        v2
+

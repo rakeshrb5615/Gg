@@ -1,0 +1,30 @@
+# Lcom/google/android/gms/location/ActivityRecognitionResult;->zza(Landroid/content/Intent;)Ljava/util/List; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:android.content.Intent
+#
+# - return:java.util.List
+
+zza-BB@0x0 : [ zza-BB@0x4 zza-BB@0x6 ]
+	0       (00000000) if-nez               v2, +003h
+
+zza-BB@0x4 : [ zza-BB@0x24 ]
+	1       (00000004) goto                 +10h
+
+zza-BB@0x6 : [ zza-BB@0x16 zza-BB@0x24 ]
+	2       (00000006) const-string         v0, "com.google.android.location.internal.EXTRA_ACTIVITY_RESULT_LIST"
+	3       (0000000a) invoke-virtual       v2, v0, Landroid/content/Intent;->hasExtra(Ljava/lang/String;)Z
+	4       (00000010) move-result          v1
+	5       (00000012) if-eqz               v1, +009h
+
+zza-BB@0x16 : 
+	6       (00000016) sget-object          v1, Lcom/google/android/gms/location/ActivityRecognitionResult;->CREATOR Landroid/os/Parcelable$Creator;
+	7       (0000001a) invoke-static        v2, v0, v1, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelableSerializer;->deserializeIterableFromIntentExtra(Landroid/content/Intent; Ljava/lang/String; Landroid/os/Parcelable$Creator;)Ljava/util/ArrayList;
+	8       (00000020) move-result-object   v2
+	9       (00000022) return-object        v2
+
+zza-BB@0x24 : 
+	10      (00000024) const/4              v2, 0
+	11      (00000026) return-object        v2
+

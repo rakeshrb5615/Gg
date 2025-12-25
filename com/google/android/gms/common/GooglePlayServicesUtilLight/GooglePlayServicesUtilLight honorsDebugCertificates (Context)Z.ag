@@ -1,0 +1,125 @@
+# Lcom/google/android/gms/common/GooglePlayServicesUtilLight;->honorsDebugCertificates(Landroid/content/Context;)Z [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:android.content.Context
+#
+# - return:boolean
+
+honorsDebugCertificates-BB@0x0 : [ honorsDebugCertificates-BB@0xc honorsDebugCertificates-BB@0x8c ]
+	0       (00000000) sget-boolean         v0, Lcom/google/android/gms/common/GooglePlayServicesUtilLight;->zzb Z
+	1       (00000004) const/4              v1, 0
+	2       (00000006) const/4              v2, 1
+	3       (00000008) if-nez               v0, +042h
+
+honorsDebugCertificates-BB@0xc : [ honorsDebugCertificates-BB@0x20 honorsDebugCertificates-BB@0x28 ]
+	4       (0000000c) invoke-static        v5, Lcom/google/android/gms/common/wrappers/Wrappers;->packageManager(Landroid/content/Context;)Lcom/google/android/gms/common/wrappers/PackageManagerWrapper;
+	5       (00000012) move-result-object   v0
+	6       (00000014) sget                 v3, Landroid/os/Build$VERSION;->SDK_INT I
+	7       (00000018) const/16             v4, 28
+	8       (0000001c) if-lt                v3, v4, +006h
+	c:6b
+	(Landroid/content/pm/PackageManager$NameNotFoundException; -> 64 honorsDebugCertificates-BB@0x64)
+	(Ljava/lang/Throwable; -> 60 honorsDebugCertificates-BB@0x60)
+
+honorsDebugCertificates-BB@0x20 : [ honorsDebugCertificates-BB@0x2c ]
+	9       (00000020) const                v3, 134217792
+	10      (00000026) goto                 +3h
+	c:6b
+	(Landroid/content/pm/PackageManager$NameNotFoundException; -> 64 honorsDebugCertificates-BB@0x64)
+	(Ljava/lang/Throwable; -> 60 honorsDebugCertificates-BB@0x60)
+
+honorsDebugCertificates-BB@0x28 : [ honorsDebugCertificates-BB@0x2c ]
+	11      (00000028) const/16             v3, 64
+	c:6b
+	(Landroid/content/pm/PackageManager$NameNotFoundException; -> 64 honorsDebugCertificates-BB@0x64)
+	(Ljava/lang/Throwable; -> 60 honorsDebugCertificates-BB@0x60)
+
+honorsDebugCertificates-BB@0x2c : [ honorsDebugCertificates-BB@0x42 honorsDebugCertificates-BB@0x68 ]
+	12      (0000002c) const-string         v4, "com.google.android.gms"
+	13      (00000030) invoke-virtual       v0, v4, v3, Lcom/google/android/gms/common/wrappers/PackageManagerWrapper;->getPackageInfo(Ljava/lang/String; I)Landroid/content/pm/PackageInfo;
+	14      (00000036) move-result-object   v0
+	15      (00000038) invoke-static        v5, Lcom/google/android/gms/common/GoogleSignatureVerifier;->getInstance(Landroid/content/Context;)Lcom/google/android/gms/common/GoogleSignatureVerifier;
+	16      (0000003e) if-eqz               v0, +015h
+	c:6b
+	(Landroid/content/pm/PackageManager$NameNotFoundException; -> 64 honorsDebugCertificates-BB@0x64)
+	(Ljava/lang/Throwable; -> 60 honorsDebugCertificates-BB@0x60)
+
+honorsDebugCertificates-BB@0x42 : [ honorsDebugCertificates-BB@0x4e honorsDebugCertificates-BB@0x68 ]
+	17      (00000042) invoke-static        v0, v1, Lcom/google/android/gms/common/GoogleSignatureVerifier;->zza(Landroid/content/pm/PackageInfo; Z)Z
+	18      (00000048) move-result          v5
+	19      (0000004a) if-nez               v5, +00fh
+	c:6b
+	(Landroid/content/pm/PackageManager$NameNotFoundException; -> 64 honorsDebugCertificates-BB@0x64)
+	(Ljava/lang/Throwable; -> 60 honorsDebugCertificates-BB@0x60)
+
+honorsDebugCertificates-BB@0x4e : [ honorsDebugCertificates-BB@0x5a honorsDebugCertificates-BB@0x68 ]
+	20      (0000004e) invoke-static        v0, v2, Lcom/google/android/gms/common/GoogleSignatureVerifier;->zza(Landroid/content/pm/PackageInfo; Z)Z
+	21      (00000054) move-result          v5
+	22      (00000056) if-eqz               v5, +009h
+	c:6b
+	(Landroid/content/pm/PackageManager$NameNotFoundException; -> 64 honorsDebugCertificates-BB@0x64)
+	(Ljava/lang/Throwable; -> 60 honorsDebugCertificates-BB@0x60)
+
+honorsDebugCertificates-BB@0x5a : [ honorsDebugCertificates-BB@0x6c ]
+	23      (0000005a) sput-boolean         v2, Lcom/google/android/gms/common/GooglePlayServicesUtilLight;->zza Z
+	24      (0000005e) goto                 +7h
+	c:6b
+	(Landroid/content/pm/PackageManager$NameNotFoundException; -> 64 honorsDebugCertificates-BB@0x64)
+	(Ljava/lang/Throwable; -> 60 honorsDebugCertificates-BB@0x60)
+
+honorsDebugCertificates-BB@0x60 : [ honorsDebugCertificates-BB@0x86 ]
+	25      (00000060) move-exception       v5
+	26      (00000062) goto                 +12h
+	c:6b
+	(Landroid/content/pm/PackageManager$NameNotFoundException; -> 64 honorsDebugCertificates-BB@0x64)
+	(Ljava/lang/Throwable; -> 60 honorsDebugCertificates-BB@0x60)
+
+honorsDebugCertificates-BB@0x64 : [ honorsDebugCertificates-BB@0x72 ]
+	27      (00000064) move-exception       v5
+	28      (00000066) goto                 +6h
+	c:6b
+	(Landroid/content/pm/PackageManager$NameNotFoundException; -> 64 honorsDebugCertificates-BB@0x64)
+	(Ljava/lang/Throwable; -> 60 honorsDebugCertificates-BB@0x60)
+
+honorsDebugCertificates-BB@0x68 : [ honorsDebugCertificates-BB@0x6c ]
+	29      (00000068) sput-boolean         v1, Lcom/google/android/gms/common/GooglePlayServicesUtilLight;->zza Z
+	c:6b
+	(Landroid/content/pm/PackageManager$NameNotFoundException; -> 64 honorsDebugCertificates-BB@0x64)
+	(Ljava/lang/Throwable; -> 60 honorsDebugCertificates-BB@0x60)
+
+honorsDebugCertificates-BB@0x6c : [ honorsDebugCertificates-BB@0x8c ]
+	30      (0000006c) sput-boolean         v2, Lcom/google/android/gms/common/GooglePlayServicesUtilLight;->zzb Z
+	31      (00000070) goto                 +eh
+
+honorsDebugCertificates-BB@0x72 : [ honorsDebugCertificates-BB@0x8c ]
+	32      (00000072) const-string         v0, "GooglePlayServicesUtil"
+	33      (00000076) const-string         v3, "Cannot find Google Play services package name."
+	34      (0000007a) invoke-static        v0, v3, v5, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+	35      (00000080) sput-boolean         v2, Lcom/google/android/gms/common/GooglePlayServicesUtilLight;->zzb Z
+	36      (00000084) goto                 +4h
+	72:7f
+	(Ljava/lang/Throwable; -> 60 honorsDebugCertificates-BB@0x60)
+
+honorsDebugCertificates-BB@0x86 : 
+	37      (00000086) sput-boolean         v2, Lcom/google/android/gms/common/GooglePlayServicesUtilLight;->zzb Z
+	38      (0000008a) throw                v5
+
+honorsDebugCertificates-BB@0x8c : [ honorsDebugCertificates-BB@0x94 honorsDebugCertificates-BB@0xa4 ]
+	39      (0000008c) sget-boolean         v5, Lcom/google/android/gms/common/GooglePlayServicesUtilLight;->zza Z
+	40      (00000090) if-nez               v5, +00ah
+
+honorsDebugCertificates-BB@0x94 : [ honorsDebugCertificates-BB@0xa0 honorsDebugCertificates-BB@0xa2 ]
+	41      (00000094) invoke-static        Lcom/google/android/gms/common/util/DeviceProperties;->isUserBuild()Z
+	42      (0000009a) move-result          v5
+	43      (0000009c) if-nez               v5, +003h
+
+honorsDebugCertificates-BB@0xa0 : [ honorsDebugCertificates-BB@0xa4 ]
+	44      (000000a0) goto                 +2h
+
+honorsDebugCertificates-BB@0xa2 : 
+	45      (000000a2) return               v1
+
+honorsDebugCertificates-BB@0xa4 : 
+	46      (000000a4) return               v2
+

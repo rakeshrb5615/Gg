@@ -1,0 +1,170 @@
+# Lcom/android/billingclient/api/ProxyBillingActivity;->onActivityResult(I I Landroid/content/Intent;)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:int
+# - v7:int
+# - v8:android.content.Intent
+#
+# - return:void
+
+onActivityResult-BB@0x0 : [ onActivityResult-BB@0x16 onActivityResult-BB@0x7e ]
+	0       (00000000) invoke-super         v5, v6, v7, v8, Landroid/app/Activity;->onActivityResult(I I Landroid/content/Intent;)V
+	1       (00000006) const/16             v0, 100
+	2       (0000000a) const/16             v1, 110
+	3       (0000000e) const-string         v2, "ProxyBillingActivity"
+	4       (00000012) if-eq                v6, v0, +036h
+
+onActivityResult-BB@0x16 : [ onActivityResult-BB@0x1a onActivityResult-BB@0x1c ]
+	5       (00000016) if-ne                v6, v1, +003h
+
+onActivityResult-BB@0x1a : [ onActivityResult-BB@0x7e ]
+	6       (0000001a) goto                 +32h
+
+onActivityResult-BB@0x1c : [ onActivityResult-BB@0x24 onActivityResult-BB@0x4e ]
+	7       (0000001c) const/16             v7, 101
+	8       (00000020) if-ne                v6, v7, +017h
+
+onActivityResult-BB@0x24 : [ onActivityResult-BB@0x34 onActivityResult-BB@0x1ba ]
+	9       (00000024) invoke-static        v8, v2, Lcom/google/android/gms/internal/play_billing/zzc;->zza(Landroid/content/Intent; Ljava/lang/String;)I
+	10      (0000002a) move-result          v6
+	11      (0000002c) iget-object          v7, v5, Lcom/android/billingclient/api/ProxyBillingActivity;->inAppMessageResultReceiver Landroid/os/ResultReceiver;
+	12      (00000030) if-eqz               v7, +0c5h
+
+onActivityResult-BB@0x34 : [ onActivityResult-BB@0x38 onActivityResult-BB@0x3c ]
+	13      (00000034) if-nez               v8, +004h
+
+onActivityResult-BB@0x38 : [ onActivityResult-BB@0x44 ]
+	14      (00000038) const/4              v8, 0
+	15      (0000003a) goto                 +5h
+
+onActivityResult-BB@0x3c : [ onActivityResult-BB@0x44 ]
+	16      (0000003c) invoke-virtual       v8, Landroid/content/Intent;->getExtras()Landroid/os/Bundle;
+	17      (00000042) move-result-object   v8
+
+onActivityResult-BB@0x44 : [ onActivityResult-BB@0x1ba ]
+	18      (00000044) invoke-virtual       v7, v6, v8, Landroid/os/ResultReceiver;->send(I Landroid/os/Bundle;)V
+	19      (0000004a) goto/16              +0b8h
+
+onActivityResult-BB@0x4e : [ onActivityResult-BB@0x1ba ]
+	20      (0000004e) new-instance         v7, Ljava/lang/StringBuilder;
+	21      (00000052) const-string         v8, "Got onActivityResult with wrong requestCode: "
+	22      (00000056) invoke-direct        v7, v8, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	23      (0000005c) invoke-virtual       v7, v6, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	24      (00000062) const-string         v6, "; skipping..."
+	25      (00000066) invoke-virtual       v7, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	26      (0000006c) invoke-virtual       v7, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	27      (00000072) move-result-object   v6
+	28      (00000074) invoke-static        v2, v6, Lcom/google/android/gms/internal/play_billing/zzc;->zzn(Ljava/lang/String; Ljava/lang/String;)V
+	29      (0000007a) goto/16              +0a0h
+
+onActivityResult-BB@0x7e : [ onActivityResult-BB@0x94 onActivityResult-BB@0x9a ]
+	30      (0000007e) invoke-static        v8, v2, Lcom/google/android/gms/internal/play_billing/zzc;->zzh(Landroid/content/Intent; Ljava/lang/String;)Lcom/android/billingclient/api/BillingResult;
+	31      (00000084) move-result-object   v0
+	32      (00000086) invoke-virtual       v0, Lcom/android/billingclient/api/BillingResult;->getResponseCode()I
+	33      (0000008c) move-result          v0
+	34      (0000008e) const/4              v3, -1
+	35      (00000090) if-ne                v7, v3, +005h
+
+onActivityResult-BB@0x94 : [ onActivityResult-BB@0x98 onActivityResult-BB@0xce ]
+	36      (00000094) if-eqz               v0, +01dh
+
+onActivityResult-BB@0x98 : [ onActivityResult-BB@0x9a ]
+	37      (00000098) move                 v7, v3
+
+onActivityResult-BB@0x9a : [ onActivityResult-BB@0xce ]
+	38      (0000009a) new-instance         v3, Ljava/lang/StringBuilder;
+	39      (0000009e) const-string         v4, "Activity finished with resultCode "
+	40      (000000a2) invoke-direct        v3, v4, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	41      (000000a8) invoke-virtual       v3, v7, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	42      (000000ae) const-string         v4, " and billing's responseCode: "
+	43      (000000b2) invoke-virtual       v3, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	44      (000000b8) invoke-virtual       v3, v0, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	45      (000000be) invoke-virtual       v3, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	46      (000000c4) move-result-object   v0
+	47      (000000c6) invoke-static        v2, v0, Lcom/google/android/gms/internal/play_billing/zzc;->zzn(Ljava/lang/String; Ljava/lang/String;)V
+	48      (000000cc) move                 v3, v7
+
+onActivityResult-BB@0xce : [ onActivityResult-BB@0xd2 onActivityResult-BB@0x164 ]
+	49      (000000ce) if-eqz               v8, +04bh
+
+onActivityResult-BB@0xd2 : [ onActivityResult-BB@0xde onActivityResult-BB@0x148 ]
+	50      (000000d2) invoke-virtual       v8, Landroid/content/Intent;->getExtras()Landroid/os/Bundle;
+	51      (000000d8) move-result-object   v7
+	52      (000000da) if-eqz               v7, +037h
+
+onActivityResult-BB@0xde : [ onActivityResult-BB@0xfe onActivityResult-BB@0x10e ]
+	53      (000000de) invoke-virtual       v8, Landroid/content/Intent;->getExtras()Landroid/os/Bundle;
+	54      (000000e4) move-result-object   v7
+	55      (000000e6) const-string         v0, "ALTERNATIVE_BILLING_USER_CHOICE_DATA"
+	56      (000000ea) invoke-virtual       v7, v0, Landroid/os/BaseBundle;->getString(Ljava/lang/String;)Ljava/lang/String;
+	57      (000000f0) move-result-object   v7
+	58      (000000f2) const-string         v0, "LAUNCH_BILLING_FLOW"
+	59      (000000f6) const-string         v2, "INTENT_SOURCE"
+	60      (000000fa) if-eqz               v7, +00ah
+
+onActivityResult-BB@0xfe : [ onActivityResult-BB@0x12a ]
+	61      (000000fe) invoke-direct        v5, v7, Lcom/android/billingclient/api/ProxyBillingActivity;->makeAlternativeBillingIntent(Ljava/lang/String;)Landroid/content/Intent;
+	62      (00000104) move-result-object   v7
+	63      (00000106) invoke-virtual       v7, v2, v0, Landroid/content/Intent;->putExtra(Ljava/lang/String; Ljava/lang/String;)Landroid/content/Intent;
+	64      (0000010c) goto                 +fh
+
+onActivityResult-BB@0x10e : [ onActivityResult-BB@0x12a ]
+	65      (0000010e) invoke-direct        v5, Lcom/android/billingclient/api/ProxyBillingActivity;->makePurchasesUpdatedIntent()Landroid/content/Intent;
+	66      (00000114) move-result-object   v7
+	67      (00000116) invoke-virtual       v8, Landroid/content/Intent;->getExtras()Landroid/os/Bundle;
+	68      (0000011c) move-result-object   v8
+	69      (0000011e) invoke-virtual       v7, v8, Landroid/content/Intent;->putExtras(Landroid/os/Bundle;)Landroid/content/Intent;
+	70      (00000124) invoke-virtual       v7, v2, v0, Landroid/content/Intent;->putExtra(Ljava/lang/String; Ljava/lang/String;)Landroid/content/Intent;
+
+onActivityResult-BB@0x12a : [ onActivityResult-BB@0x1a4 ]
+	71      (0000012a) iget-wide            v2, v5, Lcom/android/billingclient/api/ProxyBillingActivity;->billingClientTransactionId J
+	72      (0000012e) const-string         v8, "billingClientTransactionId"
+	73      (00000132) invoke-virtual       v7, v8, v2, v3, Landroid/content/Intent;->putExtra(Ljava/lang/String; J)Landroid/content/Intent;
+	74      (00000138) iget-boolean         v8, v5, Lcom/android/billingclient/api/ProxyBillingActivity;->wasServiceAutoReconnected Z
+	75      (0000013c) const-string         v0, "wasServiceAutoReconnected"
+	76      (00000140) invoke-virtual       v7, v0, v8, Landroid/content/Intent;->putExtra(Ljava/lang/String; Z)Landroid/content/Intent;
+	77      (00000146) goto                 +2fh
+
+onActivityResult-BB@0x148 : [ onActivityResult-BB@0x1a4 ]
+	78      (00000148) const-string         v7, "Got null bundle!"
+	79      (0000014c) invoke-static        v2, v7, Lcom/google/android/gms/internal/play_billing/zzc;->zzn(Ljava/lang/String; Ljava/lang/String;)V
+	80      (00000152) sget-object          v7, Lcom/google/android/gms/internal/play_billing/zzie;->zzv Lcom/google/android/gms/internal/play_billing/zzie;
+	81      (00000156) iget-wide            v2, v5, Lcom/android/billingclient/api/ProxyBillingActivity;->billingClientTransactionId J
+	82      (0000015a) invoke-direct        v5, v7, v2, v3, Lcom/android/billingclient/api/ProxyBillingActivity;->makePurchaseUpdatedIntentWithInternalErrorReason(Lcom/google/android/gms/internal/play_billing/zzie; J)Landroid/content/Intent;
+	83      (00000160) move-result-object   v7
+	84      (00000162) goto                 +21h
+
+onActivityResult-BB@0x164 : [ onActivityResult-BB@0x1a4 ]
+	85      (00000164) new-instance         v7, Ljava/lang/StringBuilder;
+	86      (00000168) const-string         v8, "Got null data with resultCode "
+	87      (0000016c) invoke-direct        v7, v8, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	88      (00000172) invoke-virtual       v7, v3, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	89      (00000178) const-string         v8, "!"
+	90      (0000017c) invoke-virtual       v7, v8, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	91      (00000182) invoke-virtual       v7, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	92      (00000188) move-result-object   v7
+	93      (0000018a) invoke-static        v2, v7, Lcom/google/android/gms/internal/play_billing/zzc;->zzn(Ljava/lang/String; Ljava/lang/String;)V
+	94      (00000190) invoke-direct        v5, v3, Lcom/android/billingclient/api/ProxyBillingActivity;->getReasonForNullData(I)Lcom/google/android/gms/internal/play_billing/zzie;
+	95      (00000196) move-result-object   v7
+	96      (00000198) iget-wide            v2, v5, Lcom/android/billingclient/api/ProxyBillingActivity;->billingClientTransactionId J
+	97      (0000019c) invoke-direct        v5, v7, v2, v3, Lcom/android/billingclient/api/ProxyBillingActivity;->makePurchaseUpdatedIntentWithInternalErrorReason(Lcom/google/android/gms/internal/play_billing/zzie; J)Landroid/content/Intent;
+	98      (000001a2) move-result-object   v7
+
+onActivityResult-BB@0x1a4 : [ onActivityResult-BB@0x1a8 onActivityResult-BB@0x1b4 ]
+	99      (000001a4) if-ne                v6, v1, +008h
+
+onActivityResult-BB@0x1a8 : [ onActivityResult-BB@0x1b4 ]
+	100     (000001a8) const-string         v6, "IS_FIRST_PARTY_PURCHASE"
+	101     (000001ac) const/4              v8, 1
+	102     (000001ae) invoke-virtual       v7, v6, v8, Landroid/content/Intent;->putExtra(Ljava/lang/String; Z)Landroid/content/Intent;
+
+onActivityResult-BB@0x1b4 : [ onActivityResult-BB@0x1ba ]
+	103     (000001b4) invoke-virtual       v5, v7, Landroid/content/Context;->sendBroadcast(Landroid/content/Intent;)V
+
+onActivityResult-BB@0x1ba : 
+	104     (000001ba) const/4              v6, 0
+	105     (000001bc) iput-boolean         v6, v5, Lcom/android/billingclient/api/ProxyBillingActivity;->sendCancelledBroadcastIfFinished Z
+	106     (000001c0) invoke-virtual       v5, Landroid/app/Activity;->finish()V
+	107     (000001c6) return-void          
+

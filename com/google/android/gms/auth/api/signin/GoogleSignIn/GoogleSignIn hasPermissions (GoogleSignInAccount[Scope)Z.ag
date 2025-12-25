@@ -1,0 +1,26 @@
+# Lcom/google/android/gms/auth/api/signin/GoogleSignIn;->hasPermissions(Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount; [Lcom/google/android/gms/common/api/Scope;)Z [access_flags=public static varargs]
+#
+# Parameters:
+# - local registers: v0...v0
+# - v1:com.google.android.gms.auth.api.signin.GoogleSignInAccount
+# - v2:com.google.android.gms.common.api.Scope[]
+#
+# - return:boolean
+
+hasPermissions-BB@0x0 : [ hasPermissions-BB@0x4 hasPermissions-BB@0x8 ]
+	0       (00000000) if-nez               v1, +004h
+
+hasPermissions-BB@0x4 : 
+	1       (00000004) const/4              v1, 0
+	2       (00000006) return               v1
+
+hasPermissions-BB@0x8 : 
+	3       (00000008) new-instance         v0, Ljava/util/HashSet;
+	4       (0000000c) invoke-direct        v0, Ljava/util/HashSet;-><init>()V
+	5       (00000012) invoke-static        v0, v2, Ljava/util/Collections;->addAll(Ljava/util/Collection; [Ljava/lang/Object;)Z
+	6       (00000018) invoke-virtual       v1, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->getGrantedScopes()Ljava/util/Set;
+	7       (0000001e) move-result-object   v1
+	8       (00000020) invoke-interface     v1, v0, Ljava/util/Set;->containsAll(Ljava/util/Collection;)Z
+	9       (00000026) move-result          v1
+	10      (00000028) return               v1
+

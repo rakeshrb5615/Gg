@@ -1,0 +1,64 @@
+# Lcom/google/android/gms/auth/api/signin/zbc;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object; [access_flags=public final bridge synthetic]
+#
+# Parameters:
+# - local registers: v0...v7
+# - v8:android.os.Parcel
+#
+# - return:java.lang.Object
+
+createFromParcel-BB@0x0 : [ createFromParcel-BB@0x12 ]
+	0       (00000000) invoke-static        v8, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelReader;->validateObjectHeader(Landroid/os/Parcel;)I
+	1       (00000006) move-result          v0
+	2       (00000008) const-string         v1, ""
+	3       (0000000c) const/4              v2, 0
+	4       (0000000e) move-object          v3, v2
+	5       (00000010) move-object          v2, v1
+
+createFromParcel-BB@0x12 : [ createFromParcel-BB@0x1e createFromParcel-BB@0x70 ]
+	6       (00000012) invoke-virtual       v8, Landroid/os/Parcel;->dataPosition()I
+	7       (00000018) move-result          v4
+	8       (0000001a) if-ge                v4, v0, +02bh
+
+createFromParcel-BB@0x1e : [ createFromParcel-BB@0x34 createFromParcel-BB@0x66 ]
+	9       (0000001e) invoke-static        v8, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelReader;->readHeader(Landroid/os/Parcel;)I
+	10      (00000024) move-result          v4
+	11      (00000026) invoke-static        v4, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelReader;->getFieldId(I)I
+	12      (0000002c) move-result          v5
+	13      (0000002e) const/4              v6, 4
+	14      (00000030) if-eq                v5, v6, +01bh
+
+createFromParcel-BB@0x34 : [ createFromParcel-BB@0x3a createFromParcel-BB@0x54 ]
+	15      (00000034) const/4              v6, 7
+	16      (00000036) if-eq                v5, v6, +00fh
+
+createFromParcel-BB@0x3a : [ createFromParcel-BB@0x42 createFromParcel-BB@0x4a ]
+	17      (0000003a) const/16             v6, 8
+	18      (0000003e) if-eq                v5, v6, +006h
+
+createFromParcel-BB@0x42 : [ createFromParcel-BB@0x12 ]
+	19      (00000042) invoke-static        v8, v4, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelReader;->skipUnknownField(Landroid/os/Parcel; I)V
+	20      (00000048) goto                 -1bh
+
+createFromParcel-BB@0x4a : [ createFromParcel-BB@0x12 ]
+	21      (0000004a) invoke-static        v8, v4, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelReader;->createString(Landroid/os/Parcel; I)Ljava/lang/String;
+	22      (00000050) move-result-object   v2
+	23      (00000052) goto                 -20h
+
+createFromParcel-BB@0x54 : [ createFromParcel-BB@0x12 ]
+	24      (00000054) sget-object          v3, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->CREATOR Landroid/os/Parcelable$Creator;
+	25      (00000058) invoke-static        v8, v4, v3, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelReader;->createParcelable(Landroid/os/Parcel; I Landroid/os/Parcelable$Creator;)Landroid/os/Parcelable;
+	26      (0000005e) move-result-object   v3
+	27      (00000060) check-cast           v3, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;
+	28      (00000064) goto                 -29h
+
+createFromParcel-BB@0x66 : [ createFromParcel-BB@0x12 ]
+	29      (00000066) invoke-static        v8, v4, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelReader;->createString(Landroid/os/Parcel; I)Ljava/lang/String;
+	30      (0000006c) move-result-object   v1
+	31      (0000006e) goto                 -2eh
+
+createFromParcel-BB@0x70 : 
+	32      (00000070) invoke-static        v8, v0, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelReader;->ensureAtEnd(Landroid/os/Parcel; I)V
+	33      (00000076) new-instance         v8, Lcom/google/android/gms/auth/api/signin/SignInAccount;
+	34      (0000007a) invoke-direct        v8, v1, v3, v2, Lcom/google/android/gms/auth/api/signin/SignInAccount;-><init>(Ljava/lang/String; Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount; Ljava/lang/String;)V
+	35      (00000080) return-object        v8
+

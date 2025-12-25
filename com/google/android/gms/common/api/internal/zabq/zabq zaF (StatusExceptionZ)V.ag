@@ -1,0 +1,79 @@
+# Lcom/google/android/gms/common/api/internal/zabq;->zaF(Lcom/google/android/gms/common/api/Status; Ljava/lang/Exception; Z)V [access_flags=private final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:com.google.android.gms.common.api.Status
+# - v6:java.lang.Exception
+# - v7:boolean
+#
+# - return:void
+
+zaF-BB@0x0 : [ zaF-BB@0x1a zaF-BB@0x1e ]
+	0       (00000000) iget-object          v0, v4, Lcom/google/android/gms/common/api/internal/zabq;->zaa Lcom/google/android/gms/common/api/internal/GoogleApiManager;
+	1       (00000004) invoke-static        v0, Lcom/google/android/gms/common/api/internal/GoogleApiManager;->zad(Lcom/google/android/gms/common/api/internal/GoogleApiManager;)Landroid/os/Handler;
+	2       (0000000a) move-result-object   v0
+	3       (0000000c) invoke-static        v0, Lcom/google/android/gms/common/internal/Preconditions;->checkHandlerThread(Landroid/os/Handler;)V
+	4       (00000012) const/4              v0, 1
+	5       (00000014) const/4              v1, 0
+	6       (00000016) if-eqz               v5, +004h
+
+zaF-BB@0x1a : [ zaF-BB@0x20 ]
+	7       (0000001a) move                 v2, v1
+	8       (0000001c) goto                 +2h
+
+zaF-BB@0x1e : [ zaF-BB@0x20 ]
+	9       (0000001e) move                 v2, v0
+
+zaF-BB@0x20 : [ zaF-BB@0x24 zaF-BB@0x26 ]
+	10      (00000020) if-eqz               v6, +003h
+
+zaF-BB@0x24 : [ zaF-BB@0x26 ]
+	11      (00000024) move                 v0, v1
+
+zaF-BB@0x26 : [ zaF-BB@0x2a zaF-BB@0x78 ]
+	12      (00000026) if-eq                v2, v0, +029h
+
+zaF-BB@0x2a : [ zaF-BB@0x36 ]
+	13      (0000002a) iget-object          v0, v4, Lcom/google/android/gms/common/api/internal/zabq;->zab Ljava/util/Queue;
+	14      (0000002e) invoke-interface     v0, Ljava/util/Collection;->iterator()Ljava/util/Iterator;
+	15      (00000034) move-result-object   v0
+
+zaF-BB@0x36 : [ zaF-BB@0x42 zaF-BB@0x76 ]
+	16      (00000036) invoke-interface     v0, Ljava/util/Iterator;->hasNext()Z
+	17      (0000003c) move-result          v1
+	18      (0000003e) if-eqz               v1, +01ch
+
+zaF-BB@0x42 : [ zaF-BB@0x52 zaF-BB@0x5c ]
+	19      (00000042) invoke-interface     v0, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	20      (00000048) move-result-object   v1
+	21      (0000004a) check-cast           v1, Lcom/google/android/gms/common/api/internal/zai;
+	22      (0000004e) if-eqz               v7, +007h
+
+zaF-BB@0x52 : [ zaF-BB@0x5c zaF-BB@0x36 ]
+	23      (00000052) iget                 v2, v1, Lcom/google/android/gms/common/api/internal/zai;->zac I
+	24      (00000056) const/4              v3, 2
+	25      (00000058) if-ne                v2, v3, -011h
+
+zaF-BB@0x5c : [ zaF-BB@0x60 zaF-BB@0x68 ]
+	26      (0000005c) if-eqz               v5, +006h
+
+zaF-BB@0x60 : [ zaF-BB@0x6e ]
+	27      (00000060) invoke-virtual       v1, v5, Lcom/google/android/gms/common/api/internal/zai;->zad(Lcom/google/android/gms/common/api/Status;)V
+	28      (00000066) goto                 +4h
+
+zaF-BB@0x68 : [ zaF-BB@0x6e ]
+	29      (00000068) invoke-virtual       v1, v6, Lcom/google/android/gms/common/api/internal/zai;->zae(Ljava/lang/Exception;)V
+
+zaF-BB@0x6e : [ zaF-BB@0x36 ]
+	30      (0000006e) invoke-interface     v0, Ljava/util/Iterator;->remove()V
+	31      (00000074) goto                 -1fh
+
+zaF-BB@0x76 : 
+	32      (00000076) return-void          
+
+zaF-BB@0x78 : 
+	33      (00000078) new-instance         v5, Ljava/lang/IllegalArgumentException;
+	34      (0000007c) const-string         v6, "Status XOR exception should be null"
+	35      (00000080) invoke-direct        v5, v6, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	36      (00000086) throw                v5
+

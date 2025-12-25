@@ -1,0 +1,29 @@
+# Lcom/google/android/gms/location/LocationAvailability;->extractLocationAvailability(Landroid/content/Intent;)Lcom/google/android/gms/location/LocationAvailability; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:android.content.Intent
+#
+# - return:com.google.android.gms.location.LocationAvailability
+
+extractLocationAvailability-BB@0x0 : [ extractLocationAvailability-BB@0xe extractLocationAvailability-BB@0x10 ]
+	0       (00000000) invoke-static        v2, Lcom/google/android/gms/location/LocationAvailability;->hasLocationAvailability(Landroid/content/Intent;)Z
+	1       (00000006) move-result          v0
+	2       (00000008) const/4              v1, 0
+	3       (0000000a) if-nez               v0, +003h
+
+extractLocationAvailability-BB@0xe : 
+	4       (0000000e) return-object        v1
+
+extractLocationAvailability-BB@0x10 : 
+	5       (00000010) const-string         v0, "com.google.android.gms.location.EXTRA_LOCATION_AVAILABILITY"
+	6       (00000014) invoke-virtual       v2, v0, Landroid/content/Intent;->getParcelableExtra(Ljava/lang/String;)Landroid/os/Parcelable;
+	7       (0000001a) move-result-object   v2
+	8       (0000001c) check-cast           v2, Lcom/google/android/gms/location/LocationAvailability;
+	9       (00000020) return-object        v2
+	10:1f
+	(Ljava/lang/ClassCastException; -> 22 extractLocationAvailability-BB@0x22)
+
+extractLocationAvailability-BB@0x22 : 
+	10      (00000022) return-object        v1
+

@@ -1,0 +1,67 @@
+# Lcom/google/android/gms/common/api/internal/zza;->zza(Landroid/app/Activity;)Lcom/google/android/gms/common/api/internal/zza; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:android.app.Activity
+#
+# - return:com.google.android.gms.common.api.internal.zza
+
+zza-BB@0x0 : [ zza-BB@0x18 zza-BB@0x2c ]
+	0       (00000000) const-string         v0, "LifecycleFragmentImpl"
+	1       (00000004) sget-object          v1, Lcom/google/android/gms/common/api/internal/zza;->zza Ljava/util/WeakHashMap;
+	2       (00000008) invoke-virtual       v1, v4, Ljava/util/WeakHashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	3       (0000000e) move-result-object   v2
+	4       (00000010) check-cast           v2, Ljava/lang/ref/WeakReference;
+	5       (00000014) if-eqz               v2, +00ch
+
+zza-BB@0x18 : [ zza-BB@0x28 zza-BB@0x2a ]
+	6       (00000018) invoke-virtual       v2, Ljava/lang/ref/Reference;->get()Ljava/lang/Object;
+	7       (0000001e) move-result-object   v2
+	8       (00000020) check-cast           v2, Lcom/google/android/gms/common/api/internal/zza;
+	9       (00000024) if-nez               v2, +003h
+
+zza-BB@0x28 : [ zza-BB@0x2c ]
+	10      (00000028) goto                 +2h
+
+zza-BB@0x2a : 
+	11      (0000002a) return-object        v2
+
+zza-BB@0x2c : [ zza-BB@0x44 zza-BB@0x50 ]
+	12      (0000002c) invoke-virtual       v4, Landroid/app/Activity;->getFragmentManager()Landroid/app/FragmentManager;
+	13      (00000032) move-result-object   v2
+	14      (00000034) invoke-virtual       v2, v0, Landroid/app/FragmentManager;->findFragmentByTag(Ljava/lang/String;)Landroid/app/Fragment;
+	15      (0000003a) move-result-object   v2
+	16      (0000003c) check-cast           v2, Lcom/google/android/gms/common/api/internal/zza;
+	17      (00000040) if-eqz               v2, +008h
+	2c:3f
+	(Ljava/lang/ClassCastException; -> 8a zza-BB@0x8a)
+
+zza-BB@0x44 : [ zza-BB@0x50 zza-BB@0x78 ]
+	18      (00000044) invoke-virtual       v2, Landroid/app/Fragment;->isRemoving()Z
+	19      (0000004a) move-result          v3
+	20      (0000004c) if-eqz               v3, +016h
+
+zza-BB@0x50 : [ zza-BB@0x78 ]
+	21      (00000050) new-instance         v2, Lcom/google/android/gms/common/api/internal/zza;
+	22      (00000054) invoke-direct        v2, Lcom/google/android/gms/common/api/internal/zza;-><init>()V
+	23      (0000005a) invoke-virtual       v4, Landroid/app/Activity;->getFragmentManager()Landroid/app/FragmentManager;
+	24      (00000060) move-result-object   v3
+	25      (00000062) invoke-virtual       v3, Landroid/app/FragmentManager;->beginTransaction()Landroid/app/FragmentTransaction;
+	26      (00000068) move-result-object   v3
+	27      (0000006a) invoke-virtual       v3, v2, v0, Landroid/app/FragmentTransaction;->add(Landroid/app/Fragment; Ljava/lang/String;)Landroid/app/FragmentTransaction;
+	28      (00000070) move-result-object   v0
+	29      (00000072) invoke-virtual       v0, Landroid/app/FragmentTransaction;->commitAllowingStateLoss()I
+
+zza-BB@0x78 : 
+	30      (00000078) new-instance         v0, Ljava/lang/ref/WeakReference;
+	31      (0000007c) invoke-direct        v0, v2, Ljava/lang/ref/WeakReference;-><init>(Ljava/lang/Object;)V
+	32      (00000082) invoke-virtual       v1, v4, v0, Ljava/util/WeakHashMap;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	33      (00000088) return-object        v2
+
+zza-BB@0x8a : 
+	34      (0000008a) move-exception       v4
+	35      (0000008c) new-instance         v0, Ljava/lang/IllegalStateException;
+	36      (00000090) const-string         v1, "Fragment with tag LifecycleFragmentImpl is not a LifecycleFragmentImpl"
+	37      (00000094) invoke-direct        v0, v1, v4, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	38      (0000009a) throw                v0
+

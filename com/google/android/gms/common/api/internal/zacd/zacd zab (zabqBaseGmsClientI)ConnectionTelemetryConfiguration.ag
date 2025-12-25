@@ -1,0 +1,63 @@
+# Lcom/google/android/gms/common/api/internal/zacd;->zab(Lcom/google/android/gms/common/api/internal/zabq; Lcom/google/android/gms/common/internal/BaseGmsClient; I)Lcom/google/android/gms/common/internal/ConnectionTelemetryConfiguration; [access_flags=private static]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:com.google.android.gms.common.api.internal.zabq
+# - v3:com.google.android.gms.common.internal.BaseGmsClient
+# - v4:int
+#
+# - return:com.google.android.gms.common.internal.ConnectionTelemetryConfiguration
+
+zab-BB@0x0 : [ zab-BB@0xe zab-BB@0x66 ]
+	0       (00000000) invoke-virtual       v3, Lcom/google/android/gms/common/internal/BaseGmsClient;->getTelemetryConfiguration()Lcom/google/android/gms/common/internal/ConnectionTelemetryConfiguration;
+	1       (00000006) move-result-object   v3
+	2       (00000008) const/4              v0, 0
+	3       (0000000a) if-eqz               v3, +02eh
+
+zab-BB@0xe : [ zab-BB@0x1a zab-BB@0x66 ]
+	4       (0000000e) invoke-virtual       v3, Lcom/google/android/gms/common/internal/ConnectionTelemetryConfiguration;->getMethodInvocationTelemetryEnabled()Z
+	5       (00000014) move-result          v1
+	6       (00000016) if-eqz               v1, +028h
+
+zab-BB@0x1a : [ zab-BB@0x26 zab-BB@0x42 ]
+	7       (0000001a) invoke-virtual       v3, Lcom/google/android/gms/common/internal/ConnectionTelemetryConfiguration;->getMethodInvocationMethodKeyAllowlist()[I
+	8       (00000020) move-result-object   v1
+	9       (00000022) if-nez               v1, +010h
+
+zab-BB@0x26 : [ zab-BB@0x32 zab-BB@0x34 ]
+	10      (00000026) invoke-virtual       v3, Lcom/google/android/gms/common/internal/ConnectionTelemetryConfiguration;->getMethodInvocationMethodKeyDisallowlist()[I
+	11      (0000002c) move-result-object   v1
+	12      (0000002e) if-nez               v1, +003h
+
+zab-BB@0x32 : [ zab-BB@0x50 ]
+	13      (00000032) goto                 +fh
+
+zab-BB@0x34 : [ zab-BB@0x40 zab-BB@0x50 ]
+	14      (00000034) invoke-static        v1, v4, Lcom/google/android/gms/common/util/ArrayUtils;->contains([I I)Z
+	15      (0000003a) move-result          v4
+	16      (0000003c) if-eqz               v4, +00ah
+
+zab-BB@0x40 : [ zab-BB@0x66 ]
+	17      (00000040) goto                 +13h
+
+zab-BB@0x42 : [ zab-BB@0x4e zab-BB@0x50 ]
+	18      (00000042) invoke-static        v1, v4, Lcom/google/android/gms/common/util/ArrayUtils;->contains([I I)Z
+	19      (00000048) move-result          v4
+	20      (0000004a) if-nez               v4, +003h
+
+zab-BB@0x4e : [ zab-BB@0x66 ]
+	21      (0000004e) goto                 +ch
+
+zab-BB@0x50 : [ zab-BB@0x64 zab-BB@0x66 ]
+	22      (00000050) invoke-virtual       v2, Lcom/google/android/gms/common/api/internal/zabq;->zac()I
+	23      (00000056) move-result          v2
+	24      (00000058) invoke-virtual       v3, Lcom/google/android/gms/common/internal/ConnectionTelemetryConfiguration;->getMaxMethodInvocationsLogged()I
+	25      (0000005e) move-result          v4
+	26      (00000060) if-ge                v2, v4, +003h
+
+zab-BB@0x64 : 
+	27      (00000064) return-object        v3
+
+zab-BB@0x66 : 
+	28      (00000066) return-object        v0
+

@@ -1,0 +1,26 @@
+# Lcom/google/android/gms/common/util/ArrayUtils;->toArrayList([Ljava/lang/Object;)Ljava/util/ArrayList; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:java.lang.Object[]
+#
+# - return:java.util.ArrayList
+
+toArrayList-BB@0x0 : [ toArrayList-BB@0xe ]
+	0       (00000000) array-length         v0, v4
+	1       (00000002) new-instance         v1, Ljava/util/ArrayList;
+	2       (00000006) invoke-direct        v1, v0, Ljava/util/ArrayList;-><init>(I)V
+	3       (0000000c) const/4              v2, 0
+
+toArrayList-BB@0xe : [ toArrayList-BB@0x12 toArrayList-BB@0x22 ]
+	4       (0000000e) if-ge                v2, v0, +00ah
+
+toArrayList-BB@0x12 : [ toArrayList-BB@0xe ]
+	5       (00000012) aget-object          v3, v4, v2
+	6       (00000016) invoke-virtual       v1, v3, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	7       (0000001c) add-int/lit8         v2, v2, 1
+	8       (00000020) goto                 -9h
+
+toArrayList-BB@0x22 : 
+	9       (00000022) return-object        v1
+

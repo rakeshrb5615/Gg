@@ -1,0 +1,106 @@
+# Lcom/google/android/gms/common/api/internal/zacz;->handleMessage(Landroid/os/Message;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:android.os.Message
+#
+# - return:void
+
+handleMessage-BB@0x0 : [ handleMessage-BB@0x8 handleMessage-BB@0x66 ]
+	0       (00000000) iget                 v0, v5, Landroid/os/Message;->what I
+	1       (00000004) if-eqz               v0, +031h
+
+handleMessage-BB@0x8 : [ handleMessage-BB@0xe handleMessage-BB@0x36 ]
+	2       (00000008) const/4              v1, 1
+	3       (0000000a) if-eq                v0, v1, +016h
+
+handleMessage-BB@0xe : 
+	4       (0000000e) new-instance         v5, Ljava/lang/StringBuilder;
+	5       (00000012) const-string         v1, "TransformationResultHandler received unknown message type: "
+	6       (00000016) invoke-direct        v5, v1, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	7       (0000001c) invoke-virtual       v5, v0, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	8       (00000022) invoke-virtual       v5, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	9       (00000028) move-result-object   v5
+	10      (0000002a) const-string         v0, "TransformedResultImpl"
+	11      (0000002e) invoke-static        v0, v5, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String;)I
+	12      (00000034) return-void          
+
+handleMessage-BB@0x36 : 
+	13      (00000036) iget-object          v5, v5, Landroid/os/Message;->obj Ljava/lang/Object;
+	14      (0000003a) check-cast           v5, Ljava/lang/RuntimeException;
+	15      (0000003e) invoke-virtual       v5, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+	16      (00000044) move-result-object   v0
+	17      (00000046) invoke-static        v0, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
+	18      (0000004c) move-result-object   v0
+	19      (0000004e) const-string         v1, "Runtime exception on the transformation worker thread: "
+	20      (00000052) const-string         v2, "TransformedResultImpl"
+	21      (00000056) invoke-virtual       v1, v0, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	22      (0000005c) move-result-object   v0
+	23      (0000005e) invoke-static        v2, v0, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String;)I
+	24      (00000064) throw                v5
+
+handleMessage-BB@0x66 : [ handleMessage-BB@0x7c ]
+	25      (00000066) iget-object          v5, v5, Landroid/os/Message;->obj Ljava/lang/Object;
+	26      (0000006a) check-cast           v5, Lcom/google/android/gms/common/api/PendingResult;
+	27      (0000006e) iget-object          v0, v4, Lcom/google/android/gms/common/api/internal/zacz;->zaa Lcom/google/android/gms/common/api/internal/zada;
+	28      (00000072) invoke-static        v0, Lcom/google/android/gms/common/api/internal/zada;->zad(Lcom/google/android/gms/common/api/internal/zada;)Ljava/lang/Object;
+	29      (00000078) move-result-object   v0
+	30      (0000007a) monitor-enter        v0
+
+handleMessage-BB@0x7c : [ handleMessage-BB@0x98 handleMessage-BB@0xb6 ]
+	31      (0000007c) iget-object          v1, v4, Lcom/google/android/gms/common/api/internal/zacz;->zaa Lcom/google/android/gms/common/api/internal/zada;
+	32      (00000080) invoke-static        v1, Lcom/google/android/gms/common/api/internal/zada;->zac(Lcom/google/android/gms/common/api/internal/zada;)Lcom/google/android/gms/common/api/internal/zada;
+	33      (00000086) move-result-object   v1
+	34      (00000088) invoke-static        v1, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;
+	35      (0000008e) move-result-object   v1
+	36      (00000090) check-cast           v1, Lcom/google/android/gms/common/api/internal/zada;
+	37      (00000094) if-nez               v5, +011h
+	7c:dd
+	(Ljava/lang/Throwable; -> b2 handleMessage-BB@0xb2)
+
+handleMessage-BB@0x98 : [ handleMessage-BB@0xd8 ]
+	38      (00000098) new-instance         v5, Lcom/google/android/gms/common/api/Status;
+	39      (0000009c) const-string         v2, "Transform returned null"
+	40      (000000a0) const/16             v3, 13
+	41      (000000a4) invoke-direct        v5, v3, v2, Lcom/google/android/gms/common/api/Status;-><init>(I Ljava/lang/String;)V
+	42      (000000aa) invoke-static        v1, v5, Lcom/google/android/gms/common/api/internal/zada;->zag(Lcom/google/android/gms/common/api/internal/zada; Lcom/google/android/gms/common/api/Status;)V
+	43      (000000b0) goto                 +14h
+	7c:dd
+	(Ljava/lang/Throwable; -> b2 handleMessage-BB@0xb2)
+
+handleMessage-BB@0xb2 : [ handleMessage-BB@0xdc ]
+	44      (000000b2) move-exception       v5
+	45      (000000b4) goto                 +14h
+	7c:dd
+	(Ljava/lang/Throwable; -> b2 handleMessage-BB@0xb2)
+
+handleMessage-BB@0xb6 : [ handleMessage-BB@0xbe handleMessage-BB@0xd2 ]
+	46      (000000b6) instance-of          v2, v5, Lcom/google/android/gms/common/api/internal/zacp;
+	47      (000000ba) if-eqz               v2, +00ch
+	7c:dd
+	(Ljava/lang/Throwable; -> b2 handleMessage-BB@0xb2)
+
+handleMessage-BB@0xbe : [ handleMessage-BB@0xd8 ]
+	48      (000000be) check-cast           v5, Lcom/google/android/gms/common/api/internal/zacp;
+	49      (000000c2) invoke-virtual       v5, Lcom/google/android/gms/common/api/internal/zacp;->zaa()Lcom/google/android/gms/common/api/Status;
+	50      (000000c8) move-result-object   v5
+	51      (000000ca) invoke-static        v1, v5, Lcom/google/android/gms/common/api/internal/zada;->zag(Lcom/google/android/gms/common/api/internal/zada; Lcom/google/android/gms/common/api/Status;)V
+	52      (000000d0) goto                 +4h
+	7c:dd
+	(Ljava/lang/Throwable; -> b2 handleMessage-BB@0xb2)
+
+handleMessage-BB@0xd2 : [ handleMessage-BB@0xd8 ]
+	53      (000000d2) invoke-virtual       v1, v5, Lcom/google/android/gms/common/api/internal/zada;->zai(Lcom/google/android/gms/common/api/PendingResult;)V
+	7c:dd
+	(Ljava/lang/Throwable; -> b2 handleMessage-BB@0xb2)
+
+handleMessage-BB@0xd8 : 
+	54      (000000d8) monitor-exit         v0
+	55      (000000da) return-void          
+	7c:dd
+	(Ljava/lang/Throwable; -> b2 handleMessage-BB@0xb2)
+
+handleMessage-BB@0xdc : 
+	56      (000000dc) monitor-exit         v0
+	57      (000000de) throw                v5
+

@@ -1,0 +1,44 @@
+# Lcom/google/android/gms/measurement/internal/zzav;->zzk(Ljava/lang/String; Ljava/lang/String;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:java.lang.String
+# - v6:java.lang.String
+#
+# - return:void
+
+zzk-BB@0x0 : [ zzk-BB@0x18 ]
+	0       (00000000) invoke-static        v5, Lcom/google/android/gms/common/internal/Preconditions;->checkNotEmpty(Ljava/lang/String;)Ljava/lang/String;
+	1       (00000006) invoke-static        v6, Lcom/google/android/gms/common/internal/Preconditions;->checkNotEmpty(Ljava/lang/String;)Ljava/lang/String;
+	2       (0000000c) invoke-virtual       v4, Lcom/google/android/gms/measurement/internal/zzje;->zzg()V
+	3       (00000012) invoke-virtual       v4, Lcom/google/android/gms/measurement/internal/zzos;->zzaw()V
+
+zzk-BB@0x18 : 
+	4       (00000018) invoke-virtual       v4, Lcom/google/android/gms/measurement/internal/zzav;->zze()Landroid/database/sqlite/SQLiteDatabase;
+	5       (0000001e) move-result-object   v0
+	6       (00000020) const-string         v1, "user_attributes"
+	7       (00000024) const-string         v2, "app_id=? and name=?"
+	8       (00000028) filled-new-array     v5, v6, [Ljava/lang/String;
+	9       (0000002e) move-result-object   v3
+	10      (00000030) invoke-virtual       v0, v1, v2, v3, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String; Ljava/lang/String; [Ljava/lang/String;)I
+	11      (00000036) return-void          
+	18:35
+	(Landroid/database/sqlite/SQLiteException; -> 38 zzk-BB@0x38)
+
+zzk-BB@0x38 : 
+	12      (00000038) move-exception       v0
+	13      (0000003a) iget-object          v1, v4, Lcom/google/android/gms/measurement/internal/zzje;->zzu Lcom/google/android/gms/measurement/internal/zzic;
+	14      (0000003e) invoke-virtual       v1, Lcom/google/android/gms/measurement/internal/zzic;->zzaV()Lcom/google/android/gms/measurement/internal/zzgu;
+	15      (00000044) move-result-object   v2
+	16      (00000046) invoke-virtual       v2, Lcom/google/android/gms/measurement/internal/zzgu;->zzb()Lcom/google/android/gms/measurement/internal/zzgs;
+	17      (0000004c) move-result-object   v2
+	18      (0000004e) invoke-static        v5, Lcom/google/android/gms/measurement/internal/zzgu;->zzl(Ljava/lang/String;)Ljava/lang/Object;
+	19      (00000054) move-result-object   v5
+	20      (00000056) invoke-virtual       v1, Lcom/google/android/gms/measurement/internal/zzic;->zzl()Lcom/google/android/gms/measurement/internal/zzgn;
+	21      (0000005c) move-result-object   v1
+	22      (0000005e) invoke-virtual       v1, v6, Lcom/google/android/gms/measurement/internal/zzgn;->zzc(Ljava/lang/String;)Ljava/lang/String;
+	23      (00000064) move-result-object   v6
+	24      (00000066) const-string         v1, "Error deleting user property. appId"
+	25      (0000006a) invoke-virtual       v2, v1, v5, v6, v0, Lcom/google/android/gms/measurement/internal/zzgs;->zzd(Ljava/lang/String; Ljava/lang/Object; Ljava/lang/Object; Ljava/lang/Object;)V
+	26      (00000070) return-void          
+

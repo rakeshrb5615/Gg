@@ -1,0 +1,46 @@
+# Lcom/google/android/gms/common/util/DeviceProperties;->zza(Landroid/content/res/Resources;)Z [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:android.content.res.Resources
+#
+# - return:boolean
+
+zza-BB@0x0 : [ zza-BB@0x6 zza-BB@0x8 ]
+	0       (00000000) const/4              v0, 0
+	1       (00000002) if-nez               v3, +003h
+
+zza-BB@0x6 : 
+	2       (00000006) return               v0
+
+zza-BB@0x8 : [ zza-BB@0x10 zza-BB@0x40 ]
+	3       (00000008) sget-object          v1, Lcom/google/android/gms/common/util/DeviceProperties;->zze Ljava/lang/Boolean;
+	4       (0000000c) if-nez               v1, +01ah
+
+zza-BB@0x10 : [ zza-BB@0x26 zza-BB@0x34 ]
+	5       (00000010) invoke-virtual       v3, Landroid/content/res/Resources;->getConfiguration()Landroid/content/res/Configuration;
+	6       (00000016) move-result-object   v3
+	7       (00000018) iget                 v1, v3, Landroid/content/res/Configuration;->screenLayout I
+	8       (0000001c) and-int/lit8         v1, v1, 15
+	9       (00000020) const/4              v2, 3
+	10      (00000022) if-gt                v1, v2, +009h
+
+zza-BB@0x26 : [ zza-BB@0x32 zza-BB@0x34 ]
+	11      (00000026) iget                 v3, v3, Landroid/content/res/Configuration;->smallestScreenWidthDp I
+	12      (0000002a) const/16             v1, 600
+	13      (0000002e) if-lt                v3, v1, +003h
+
+zza-BB@0x32 : [ zza-BB@0x34 ]
+	14      (00000032) const/4              v0, 1
+
+zza-BB@0x34 : [ zza-BB@0x40 ]
+	15      (00000034) invoke-static        v0, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+	16      (0000003a) move-result-object   v3
+	17      (0000003c) sput-object          v3, Lcom/google/android/gms/common/util/DeviceProperties;->zze Ljava/lang/Boolean;
+
+zza-BB@0x40 : 
+	18      (00000040) sget-object          v3, Lcom/google/android/gms/common/util/DeviceProperties;->zze Ljava/lang/Boolean;
+	19      (00000044) invoke-virtual       v3, Ljava/lang/Boolean;->booleanValue()Z
+	20      (0000004a) move-result          v3
+	21      (0000004c) return               v3
+

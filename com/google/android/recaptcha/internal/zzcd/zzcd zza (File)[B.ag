@@ -1,0 +1,150 @@
+# Lcom/google/android/recaptcha/internal/zzcd;->zza(Ljava/io/File;)[B [access_flags=public static final]
+#
+# Parameters:
+# - local registers: v0...v8
+# - v9:java.io.File
+#
+# - return:byte[]
+
+zza-BB@0x0 : [ zza-BB@0x14 ]
+	0       (00000000) const-string         v0, "<this>"
+	1       (00000004) invoke-static        v9, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) new-instance         v0, Ljava/io/FileInputStream;
+	3       (0000000e) invoke-direct        v0, v9, Ljava/io/FileInputStream;-><init>(Ljava/io/File;)V
+
+zza-BB@0x14 : [ zza-BB@0x2e zza-BB@0x106 ]
+	4       (00000014) invoke-virtual       v9, Ljava/io/File;->length()J
+	5       (0000001a) move-result-wide     v1
+	6       (0000001c) const-wide/32        v3, 2147483647
+	7       (00000022) cmp-long             v3, v1, v3
+	8       (00000026) const-string         v4, "File "
+	9       (0000002a) if-gtz               v3, +06eh
+	14:1b
+	(Ljava/lang/Throwable; -> 50 zza-BB@0x50)
+
+zza-BB@0x2e : [ zza-BB@0x30 ]
+	10      (0000002e) long-to-int          v1, v1
+
+zza-BB@0x30 : [ zza-BB@0x3a ]
+	11      (00000030) new-array            v2, v1, [B
+	12      (00000034) const/4              v3, 0
+	13      (00000036) move                 v5, v1
+	14      (00000038) move                 v6, v3
+	30:45
+	(Ljava/lang/Throwable; -> 50 zza-BB@0x50)
+
+zza-BB@0x3a : [ zza-BB@0x3e zza-BB@0x56 ]
+	15      (0000003a) if-lez               v5, +00eh
+	30:45
+	(Ljava/lang/Throwable; -> 50 zza-BB@0x50)
+
+zza-BB@0x3e : [ zza-BB@0x4a zza-BB@0x56 ]
+	16      (0000003e) invoke-virtual       v0, v2, v6, v5, Ljava/io/FileInputStream;->read([B I I)I
+	17      (00000044) move-result          v7
+	18      (00000046) if-ltz               v7, +008h
+
+zza-BB@0x4a : [ zza-BB@0x3a ]
+	19      (0000004a) sub-int/2addr        v5, v7
+	20      (0000004c) add-int/2addr        v6, v7
+	21      (0000004e) goto                 -ah
+
+zza-BB@0x50 : [ zza-BB@0x144 ]
+	22      (00000050) move-exception       v9
+	23      (00000052) goto/16              +079h
+
+zza-BB@0x56 : [ zza-BB@0x5e zza-BB@0x6e ]
+	24      (00000056) const-string         v7, "copyOf(...)"
+	25      (0000005a) if-lez               v5, +00ah
+
+zza-BB@0x5e : [ zza-BB@0xca ]
+	26      (0000005e) invoke-static        v2, v6, Ljava/util/Arrays;->copyOf([B I)[B
+	27      (00000064) move-result-object   v2
+	28      (00000066) invoke-static        v2, v7, Lkotlin/jvm/internal/j;->d(Ljava/lang/Object; Ljava/lang/String;)V
+	29      (0000006c) goto                 +2fh
+	5e:c9
+	(Ljava/lang/Throwable; -> 50 zza-BB@0x50)
+
+zza-BB@0x6e : [ zza-BB@0x7c zza-BB@0x7e ]
+	30      (0000006e) invoke-virtual       v0, Ljava/io/FileInputStream;->read()I
+	31      (00000074) move-result          v5
+	32      (00000076) const/4              v6, -1
+	33      (00000078) if-ne                v5, v6, +003h
+	5e:c9
+	(Ljava/lang/Throwable; -> 50 zza-BB@0x50)
+
+zza-BB@0x7c : [ zza-BB@0xca ]
+	34      (0000007c) goto                 +27h
+	5e:c9
+	(Ljava/lang/Throwable; -> 50 zza-BB@0x50)
+
+zza-BB@0x7e : [ zza-BB@0xa6 zza-BB@0xd2 ]
+	35      (0000007e) new-instance         v6, Ls7/a;
+	36      (00000082) const/16             v8, 8193
+	37      (00000086) invoke-direct        v6, v8, Ljava/io/ByteArrayOutputStream;-><init>(I)V
+	38      (0000008c) invoke-virtual       v6, v5, Ljava/io/OutputStream;->write(I)V
+	39      (00000092) invoke-static        v0, v6, Lc4/b;->o(Ljava/io/InputStream; Ljava/io/ByteArrayOutputStream;)V
+	40      (00000098) invoke-virtual       v6, Ljava/io/ByteArrayOutputStream;->size()I
+	41      (0000009e) move-result          v5
+	42      (000000a0) add-int/2addr        v5, v1
+	43      (000000a2) if-ltz               v5, +018h
+	5e:c9
+	(Ljava/lang/Throwable; -> 50 zza-BB@0x50)
+
+zza-BB@0xa6 : [ zza-BB@0xca ]
+	44      (000000a6) invoke-virtual       v6, Ls7/a;->c()[B
+	45      (000000ac) move-result-object   v9
+	46      (000000ae) invoke-static        v2, v5, Ljava/util/Arrays;->copyOf([B I)[B
+	47      (000000b4) move-result-object   v2
+	48      (000000b6) invoke-static        v2, v7, Lkotlin/jvm/internal/j;->d(Ljava/lang/Object; Ljava/lang/String;)V
+	49      (000000bc) invoke-virtual       v6, Ljava/io/ByteArrayOutputStream;->size()I
+	50      (000000c2) move-result          v4
+	51      (000000c4) invoke-static        v9, v1, v2, v3, v4, Li7/h;->Y([B I [B I I)V
+	5e:c9
+	(Ljava/lang/Throwable; -> 50 zza-BB@0x50)
+
+zza-BB@0xca : 
+	52      (000000ca) invoke-virtual       v0, Ljava/io/FileInputStream;->close()V
+	53      (000000d0) return-object        v2
+
+zza-BB@0xd2 : 
+	54      (000000d2) new-instance         v1, Ljava/lang/OutOfMemoryError;
+	55      (000000d6) new-instance         v2, Ljava/lang/StringBuilder;
+	56      (000000da) invoke-direct        v2, Ljava/lang/StringBuilder;-><init>()V
+	57      (000000e0) invoke-virtual       v2, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	58      (000000e6) invoke-virtual       v2, v9, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	59      (000000ec) const-string         v9, " is too big to fit in memory."
+	60      (000000f0) invoke-virtual       v2, v9, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	61      (000000f6) invoke-virtual       v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	62      (000000fc) move-result-object   v9
+	63      (000000fe) invoke-direct        v1, v9, Ljava/lang/OutOfMemoryError;-><init>(Ljava/lang/String;)V
+	64      (00000104) throw                v1
+	d2:143
+	(Ljava/lang/Throwable; -> 50 zza-BB@0x50)
+
+zza-BB@0x106 : 
+	65      (00000106) new-instance         v3, Ljava/lang/OutOfMemoryError;
+	66      (0000010a) new-instance         v5, Ljava/lang/StringBuilder;
+	67      (0000010e) invoke-direct        v5, v4, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	68      (00000114) invoke-virtual       v5, v9, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	69      (0000011a) const-string         v9, " is too big ("
+	70      (0000011e) invoke-virtual       v5, v9, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	71      (00000124) invoke-virtual       v5, v1, v2, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+	72      (0000012a) const-string         v9, " bytes) to fit in memory."
+	73      (0000012e) invoke-virtual       v5, v9, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	74      (00000134) invoke-virtual       v5, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	75      (0000013a) move-result-object   v9
+	76      (0000013c) invoke-direct        v3, v9, Ljava/lang/OutOfMemoryError;-><init>(Ljava/lang/String;)V
+	77      (00000142) throw                v3
+	d2:143
+	(Ljava/lang/Throwable; -> 50 zza-BB@0x50)
+
+zza-BB@0x144 : 
+	78      (00000144) throw                v9
+	144:145
+	(Ljava/lang/Throwable; -> 146 zza-BB@0x146)
+
+zza-BB@0x146 : 
+	79      (00000146) move-exception       v1
+	80      (00000148) invoke-static        v0, v9, Lj5/t1;->f(Ljava/io/Closeable; Ljava/lang/Throwable;)V
+	81      (0000014e) throw                v1
+

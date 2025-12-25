@@ -1,0 +1,44 @@
+# Lcom/android/billingclient/api/SkuDetails;-><init>(Ljava/lang/String;)V [access_flags=public constructor]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:java.lang.String
+#
+# - return:void
+
+<init>-BB@0x0 : [ <init>-BB@0x30 <init>-BB@0x5a ]
+	0       (00000000) invoke-direct        v1, Ljava/lang/Object;-><init>()V
+	1       (00000006) iput-object          v2, v1, Lcom/android/billingclient/api/SkuDetails;->zza Ljava/lang/String;
+	2       (0000000a) new-instance         v0, Lorg/json/JSONObject;
+	3       (0000000e) invoke-direct        v0, v2, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+	4       (00000014) iput-object          v0, v1, Lcom/android/billingclient/api/SkuDetails;->zzb Lorg/json/JSONObject;
+	5       (00000018) const-string         v2, "productId"
+	6       (0000001c) invoke-virtual       v0, v2, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+	7       (00000022) move-result-object   v2
+	8       (00000024) invoke-static        v2, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+	9       (0000002a) move-result          v2
+	10      (0000002c) if-nez               v2, +017h
+
+<init>-BB@0x30 : [ <init>-BB@0x48 <init>-BB@0x4a ]
+	11      (00000030) const-string         v2, "type"
+	12      (00000034) invoke-virtual       v0, v2, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+	13      (0000003a) move-result-object   v2
+	14      (0000003c) invoke-static        v2, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+	15      (00000042) move-result          v2
+	16      (00000044) if-nez               v2, +003h
+
+<init>-BB@0x48 : 
+	17      (00000048) return-void          
+
+<init>-BB@0x4a : 
+	18      (0000004a) new-instance         v2, Ljava/lang/IllegalArgumentException;
+	19      (0000004e) const-string         v0, "SkuType cannot be empty."
+	20      (00000052) invoke-direct        v2, v0, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	21      (00000058) throw                v2
+
+<init>-BB@0x5a : 
+	22      (0000005a) new-instance         v2, Ljava/lang/IllegalArgumentException;
+	23      (0000005e) const-string         v0, "SKU cannot be empty."
+	24      (00000062) invoke-direct        v2, v0, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	25      (00000068) throw                v2
+

@@ -1,0 +1,68 @@
+# Lcom/google/android/gms/internal/location/zzer;->zze(I I I)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v0
+# - v1:int
+# - v2:int
+# - v3:int
+#
+# - return:void
+
+zze-BB@0x0 : [ zze-BB@0x4 zze-BB@0x10 ]
+	0       (00000000) if-ltz               v1, +008h
+
+zze-BB@0x4 : [ zze-BB@0x8 zze-BB@0x10 ]
+	1       (00000004) if-lt                v2, v1, +006h
+
+zze-BB@0x8 : [ zze-BB@0xc zze-BB@0xe ]
+	2       (00000008) if-le                v2, v3, +003h
+
+zze-BB@0xc : [ zze-BB@0x10 ]
+	3       (0000000c) goto                 +2h
+
+zze-BB@0xe : 
+	4       (0000000e) return-void          
+
+zze-BB@0x10 : [ zze-BB@0x18 zze-BB@0x5a ]
+	5       (00000010) new-instance         v0, Ljava/lang/IndexOutOfBoundsException;
+	6       (00000014) if-ltz               v1, +023h
+
+zze-BB@0x18 : [ zze-BB@0x1c zze-BB@0x5a ]
+	7       (00000018) if-gt                v1, v3, +021h
+
+zze-BB@0x1c : [ zze-BB@0x20 zze-BB@0x4c ]
+	8       (0000001c) if-ltz               v2, +018h
+
+zze-BB@0x20 : [ zze-BB@0x24 zze-BB@0x26 ]
+	9       (00000020) if-le                v2, v3, +003h
+
+zze-BB@0x24 : [ zze-BB@0x4c ]
+	10      (00000024) goto                 +14h
+
+zze-BB@0x26 : [ zze-BB@0x66 ]
+	11      (00000026) invoke-static        v2, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+	12      (0000002c) move-result-object   v2
+	13      (0000002e) invoke-static        v1, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+	14      (00000034) move-result-object   v1
+	15      (00000036) filled-new-array     v2, v1, [Ljava/lang/Object;
+	16      (0000003c) move-result-object   v1
+	17      (0000003e) const-string         v2, "end index (%s) must not be less than start index (%s)"
+	18      (00000042) invoke-static        v2, v1, Lcom/google/android/gms/internal/location/zzes;->zza(Ljava/lang/String; [Ljava/lang/Object;)Ljava/lang/String;
+	19      (00000048) move-result-object   v1
+	20      (0000004a) goto                 +eh
+
+zze-BB@0x4c : [ zze-BB@0x66 ]
+	21      (0000004c) const-string         v1, "end index"
+	22      (00000050) invoke-static        v2, v3, v1, Lcom/google/android/gms/internal/location/zzer;->zzf(I I Ljava/lang/String;)Ljava/lang/String;
+	23      (00000056) move-result-object   v1
+	24      (00000058) goto                 +7h
+
+zze-BB@0x5a : [ zze-BB@0x66 ]
+	25      (0000005a) const-string         v2, "start index"
+	26      (0000005e) invoke-static        v1, v3, v2, Lcom/google/android/gms/internal/location/zzer;->zzf(I I Ljava/lang/String;)Ljava/lang/String;
+	27      (00000064) move-result-object   v1
+
+zze-BB@0x66 : 
+	28      (00000066) invoke-direct        v0, v1, Ljava/lang/IndexOutOfBoundsException;-><init>(Ljava/lang/String;)V
+	29      (0000006c) throw                v0
+

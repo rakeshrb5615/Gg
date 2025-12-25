@@ -1,0 +1,61 @@
+# Lcom/google/android/gms/common/api/internal/zact;->zad(Lcom/google/android/gms/common/api/internal/zact; Lcom/google/android/gms/signin/internal/zak;)V [access_flags=public static bridge synthetic]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:com.google.android.gms.common.api.internal.zact
+# - v5:com.google.android.gms.signin.internal.zak
+#
+# - return:void
+
+zad-BB@0x0 : [ zad-BB@0x14 zad-BB@0x92 ]
+	0       (00000000) invoke-virtual       v5, Lcom/google/android/gms/signin/internal/zak;->zaa()Lcom/google/android/gms/common/ConnectionResult;
+	1       (00000006) move-result-object   v0
+	2       (00000008) invoke-virtual       v0, Lcom/google/android/gms/common/ConnectionResult;->isSuccess()Z
+	3       (0000000e) move-result          v1
+	4       (00000010) if-eqz               v1, +041h
+
+zad-BB@0x14 : [ zad-BB@0x3c zad-BB@0x7a ]
+	5       (00000014) invoke-virtual       v5, Lcom/google/android/gms/signin/internal/zak;->zab()Lcom/google/android/gms/common/internal/zav;
+	6       (0000001a) move-result-object   v5
+	7       (0000001c) invoke-static        v5, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;
+	8       (00000022) move-result-object   v5
+	9       (00000024) check-cast           v5, Lcom/google/android/gms/common/internal/zav;
+	10      (00000028) invoke-virtual       v5, Lcom/google/android/gms/common/internal/zav;->zaa()Lcom/google/android/gms/common/ConnectionResult;
+	11      (0000002e) move-result-object   v0
+	12      (00000030) invoke-virtual       v0, Lcom/google/android/gms/common/ConnectionResult;->isSuccess()Z
+	13      (00000036) move-result          v1
+	14      (00000038) if-nez               v1, +021h
+
+zad-BB@0x3c : 
+	15      (0000003c) invoke-static        v0, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
+	16      (00000042) move-result-object   v5
+	17      (00000044) new-instance         v1, Ljava/lang/Exception;
+	18      (00000048) invoke-direct        v1, Ljava/lang/Exception;-><init>()V
+	19      (0000004e) const-string         v2, "SignInCoordinator"
+	20      (00000052) const-string         v3, "Sign-in succeeded with resolve account failure: "
+	21      (00000056) invoke-virtual       v3, v5, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	22      (0000005c) move-result-object   v5
+	23      (0000005e) invoke-static        v2, v5, v1, Landroid/util/Log;->wtf(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+	24      (00000064) iget-object          v5, v4, Lcom/google/android/gms/common/api/internal/zact;->zah Lcom/google/android/gms/common/api/internal/zacs;
+	25      (00000068) invoke-interface     v5, v0, Lcom/google/android/gms/common/api/internal/zacs;->zae(Lcom/google/android/gms/common/ConnectionResult;)V
+	26      (0000006e) iget-object          v4, v4, Lcom/google/android/gms/common/api/internal/zact;->zag Lcom/google/android/gms/signin/zae;
+	27      (00000072) invoke-interface     v4, Lcom/google/android/gms/common/api/Api$Client;->disconnect()V
+	28      (00000078) return-void          
+
+zad-BB@0x7a : [ zad-BB@0x9c ]
+	29      (0000007a) iget-object          v0, v4, Lcom/google/android/gms/common/api/internal/zact;->zah Lcom/google/android/gms/common/api/internal/zacs;
+	30      (0000007e) invoke-virtual       v5, Lcom/google/android/gms/common/internal/zav;->zab()Lcom/google/android/gms/common/internal/IAccountAccessor;
+	31      (00000084) move-result-object   v5
+	32      (00000086) iget-object          v1, v4, Lcom/google/android/gms/common/api/internal/zact;->zae Ljava/util/Set;
+	33      (0000008a) invoke-interface     v0, v5, v1, Lcom/google/android/gms/common/api/internal/zacs;->zaf(Lcom/google/android/gms/common/internal/IAccountAccessor; Ljava/util/Set;)V
+	34      (00000090) goto                 +6h
+
+zad-BB@0x92 : [ zad-BB@0x9c ]
+	35      (00000092) iget-object          v5, v4, Lcom/google/android/gms/common/api/internal/zact;->zah Lcom/google/android/gms/common/api/internal/zacs;
+	36      (00000096) invoke-interface     v5, v0, Lcom/google/android/gms/common/api/internal/zacs;->zae(Lcom/google/android/gms/common/ConnectionResult;)V
+
+zad-BB@0x9c : 
+	37      (0000009c) iget-object          v4, v4, Lcom/google/android/gms/common/api/internal/zact;->zag Lcom/google/android/gms/signin/zae;
+	38      (000000a0) invoke-interface     v4, Lcom/google/android/gms/common/api/Api$Client;->disconnect()V
+	39      (000000a6) return-void          
+

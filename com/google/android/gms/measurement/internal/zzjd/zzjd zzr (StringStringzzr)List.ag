@@ -1,0 +1,50 @@
+# Lcom/google/android/gms/measurement/internal/zzjd;->zzr(Ljava/lang/String; Ljava/lang/String; Lcom/google/android/gms/measurement/internal/zzr;)Ljava/util/List; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:java.lang.String
+# - v4:java.lang.String
+# - v5:com.google.android.gms.measurement.internal.zzr
+#
+# - return:java.util.List
+
+zzr-BB@0x0 : [ zzr-BB@0x30 ]
+	0       (00000000) const/4              v0, 0
+	1       (00000002) invoke-direct        v2, v5, v0, Lcom/google/android/gms/measurement/internal/zzjd;->zzN(Lcom/google/android/gms/measurement/internal/zzr; Z)V
+	2       (00000008) iget-object          v5, v5, Lcom/google/android/gms/measurement/internal/zzr;->zza Ljava/lang/String;
+	3       (0000000c) invoke-static        v5, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;
+	4       (00000012) iget-object          v0, v2, Lcom/google/android/gms/measurement/internal/zzjd;->zza Lcom/google/android/gms/measurement/internal/zzpg;
+	5       (00000016) invoke-virtual       v0, Lcom/google/android/gms/measurement/internal/zzpg;->zzaW()Lcom/google/android/gms/measurement/internal/zzhz;
+	6       (0000001c) move-result-object   v0
+	7       (0000001e) new-instance         v1, Lcom/google/android/gms/measurement/internal/zzil;
+	8       (00000022) invoke-direct        v1, v2, v5, v3, v4, Lcom/google/android/gms/measurement/internal/zzil;-><init>(Lcom/google/android/gms/measurement/internal/zzjd; Ljava/lang/String; Ljava/lang/String; Ljava/lang/String;)V
+	9       (00000028) invoke-virtual       v0, v1, Lcom/google/android/gms/measurement/internal/zzhz;->zzh(Ljava/util/concurrent/Callable;)Ljava/util/concurrent/Future;
+	10      (0000002e) move-result-object   v3
+
+zzr-BB@0x30 : 
+	11      (00000030) invoke-interface     v3, Ljava/util/concurrent/Future;->get()Ljava/lang/Object;
+	12      (00000036) move-result-object   v3
+	13      (00000038) check-cast           v3, Ljava/util/List;
+	14      (0000003c) return-object        v3
+	30:3b
+	(Ljava/lang/InterruptedException; -> 42 zzr-BB@0x42)
+	(Ljava/util/concurrent/ExecutionException; -> 3e zzr-BB@0x3e)
+
+zzr-BB@0x3e : [ zzr-BB@0x44 ]
+	15      (0000003e) move-exception       v3
+	16      (00000040) goto                 +2h
+
+zzr-BB@0x42 : [ zzr-BB@0x44 ]
+	17      (00000042) move-exception       v3
+
+zzr-BB@0x44 : 
+	18      (00000044) iget-object          v4, v2, Lcom/google/android/gms/measurement/internal/zzjd;->zza Lcom/google/android/gms/measurement/internal/zzpg;
+	19      (00000048) invoke-virtual       v4, Lcom/google/android/gms/measurement/internal/zzpg;->zzaV()Lcom/google/android/gms/measurement/internal/zzgu;
+	20      (0000004e) move-result-object   v4
+	21      (00000050) invoke-virtual       v4, Lcom/google/android/gms/measurement/internal/zzgu;->zzb()Lcom/google/android/gms/measurement/internal/zzgs;
+	22      (00000056) move-result-object   v4
+	23      (00000058) const-string         v5, "Failed to get conditional user properties"
+	24      (0000005c) invoke-virtual       v4, v5, v3, Lcom/google/android/gms/measurement/internal/zzgs;->zzb(Ljava/lang/String; Ljava/lang/Object;)V
+	25      (00000062) sget-object          v3, Ljava/util/Collections;->EMPTY_LIST Ljava/util/List;
+	26      (00000066) return-object        v3
+

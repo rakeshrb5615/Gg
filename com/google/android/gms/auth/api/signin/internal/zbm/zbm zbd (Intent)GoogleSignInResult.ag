@@ -1,0 +1,46 @@
+# Lcom/google/android/gms/auth/api/signin/internal/zbm;->zbd(Landroid/content/Intent;)Lcom/google/android/gms/auth/api/signin/GoogleSignInResult; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:android.content.Intent
+#
+# - return:com.google.android.gms.auth.api.signin.GoogleSignInResult
+
+zbd-BB@0x0 : [ zbd-BB@0x6 zbd-BB@0x16 ]
+	0       (00000000) const/4              v0, 0
+	1       (00000002) if-nez               v3, +00ah
+
+zbd-BB@0x6 : 
+	2       (00000006) new-instance         v3, Lcom/google/android/gms/auth/api/signin/GoogleSignInResult;
+	3       (0000000a) sget-object          v1, Lcom/google/android/gms/common/api/Status;->RESULT_INTERNAL_ERROR Lcom/google/android/gms/common/api/Status;
+	4       (0000000e) invoke-direct        v3, v0, v1, Lcom/google/android/gms/auth/api/signin/GoogleSignInResult;-><init>(Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount; Lcom/google/android/gms/common/api/Status;)V
+	5       (00000014) return-object        v3
+
+zbd-BB@0x16 : [ zbd-BB@0x3a zbd-BB@0x4e ]
+	6       (00000016) const-string         v1, "googleSignInStatus"
+	7       (0000001a) invoke-virtual       v3, v1, Landroid/content/Intent;->getParcelableExtra(Ljava/lang/String;)Landroid/os/Parcelable;
+	8       (00000020) move-result-object   v1
+	9       (00000022) check-cast           v1, Lcom/google/android/gms/common/api/Status;
+	10      (00000026) const-string         v2, "googleSignInAccount"
+	11      (0000002a) invoke-virtual       v3, v2, Landroid/content/Intent;->getParcelableExtra(Ljava/lang/String;)Landroid/os/Parcelable;
+	12      (00000030) move-result-object   v3
+	13      (00000032) check-cast           v3, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;
+	14      (00000036) if-nez               v3, +00ch
+
+zbd-BB@0x3a : [ zbd-BB@0x42 zbd-BB@0x46 ]
+	15      (0000003a) new-instance         v3, Lcom/google/android/gms/auth/api/signin/GoogleSignInResult;
+	16      (0000003e) if-nez               v1, +004h
+
+zbd-BB@0x42 : [ zbd-BB@0x46 ]
+	17      (00000042) sget-object          v1, Lcom/google/android/gms/common/api/Status;->RESULT_INTERNAL_ERROR Lcom/google/android/gms/common/api/Status;
+
+zbd-BB@0x46 : 
+	18      (00000046) invoke-direct        v3, v0, v1, Lcom/google/android/gms/auth/api/signin/GoogleSignInResult;-><init>(Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount; Lcom/google/android/gms/common/api/Status;)V
+	19      (0000004c) return-object        v3
+
+zbd-BB@0x4e : 
+	20      (0000004e) new-instance         v0, Lcom/google/android/gms/auth/api/signin/GoogleSignInResult;
+	21      (00000052) sget-object          v1, Lcom/google/android/gms/common/api/Status;->RESULT_SUCCESS Lcom/google/android/gms/common/api/Status;
+	22      (00000056) invoke-direct        v0, v3, v1, Lcom/google/android/gms/auth/api/signin/GoogleSignInResult;-><init>(Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount; Lcom/google/android/gms/common/api/Status;)V
+	23      (0000005c) return-object        v0
+

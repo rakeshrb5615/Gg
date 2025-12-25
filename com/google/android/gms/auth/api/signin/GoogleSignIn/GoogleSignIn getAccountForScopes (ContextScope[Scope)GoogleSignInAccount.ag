@@ -1,0 +1,30 @@
+# Lcom/google/android/gms/auth/api/signin/GoogleSignIn;->getAccountForScopes(Landroid/content/Context; Lcom/google/android/gms/common/api/Scope; [Lcom/google/android/gms/common/api/Scope;)Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount; [access_flags=public static varargs]
+#
+# Parameters:
+# - local registers: v0...v0
+# - v1:android.content.Context
+# - v2:com.google.android.gms.common.api.Scope
+# - v3:com.google.android.gms.common.api.Scope[]
+#
+# - return:com.google.android.gms.auth.api.signin.GoogleSignInAccount
+
+getAccountForScopes-BB@0x0 : [ getAccountForScopes-BB@0x20 getAccountForScopes-BB@0x28 ]
+	0       (00000000) const-string         v0, "please provide a valid Context object"
+	1       (00000004) invoke-static        v1, v0, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	2       (0000000a) const-string         v0, "please provide at least one valid scope"
+	3       (0000000e) invoke-static        v2, v0, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	4       (00000014) invoke-static        v1, Lcom/google/android/gms/auth/api/signin/GoogleSignIn;->getLastSignedInAccount(Landroid/content/Context;)Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;
+	5       (0000001a) move-result-object   v1
+	6       (0000001c) if-nez               v1, +006h
+
+getAccountForScopes-BB@0x20 : [ getAccountForScopes-BB@0x28 ]
+	7       (00000020) invoke-static        Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->createDefault()Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;
+	8       (00000026) move-result-object   v1
+
+getAccountForScopes-BB@0x28 : 
+	9       (00000028) filled-new-array     v2, [Lcom/google/android/gms/common/api/Scope;
+	10      (0000002e) move-result-object   v2
+	11      (00000030) invoke-virtual       v1, v2, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->requestExtraScopes([Lcom/google/android/gms/common/api/Scope;)Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;
+	12      (00000036) invoke-virtual       v1, v3, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->requestExtraScopes([Lcom/google/android/gms/common/api/Scope;)Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;
+	13      (0000003c) return-object        v1
+

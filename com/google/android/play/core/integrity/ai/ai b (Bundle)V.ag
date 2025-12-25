@@ -1,0 +1,64 @@
+# Lcom/google/android/play/core/integrity/ai;->b(Landroid/os/Bundle;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:android.os.Bundle
+#
+# - return:void
+
+b-BB@0x0 : [ b-BB@0x3e b-BB@0x4a ]
+	0       (00000000) iget-object          v0, v4, Lcom/google/android/play/core/integrity/ai;->a Lcom/google/android/play/core/integrity/aj;
+	1       (00000004) iget-object          v0, v0, Lcom/google/android/play/core/integrity/aj;->a Lk4/d;
+	2       (00000008) iget-object          v1, v4, Lcom/google/android/play/core/integrity/ai;->c Lcom/google/android/gms/tasks/TaskCompletionSource;
+	3       (0000000c) invoke-virtual       v0, v1, Lk4/d;->d(Lcom/google/android/gms/tasks/TaskCompletionSource;)V
+	4       (00000012) iget-object          v0, v4, Lcom/google/android/play/core/integrity/ai;->b Lk4/z;
+	5       (00000016) const/4              v1, 0
+	6       (00000018) new-array            v1, v1, [Ljava/lang/Object;
+	7       (0000001c) const-string         v2, "onRequestIntegrityToken"
+	8       (00000020) invoke-virtual       v0, v2, v1, Lk4/z;->b(Ljava/lang/String; [Ljava/lang/Object;)V
+	9       (00000026) iget-object          v0, v4, Lcom/google/android/play/core/integrity/ai;->a Lcom/google/android/play/core/integrity/aj;
+	10      (0000002a) invoke-static        v0, Lcom/google/android/play/core/integrity/aj;->d(Lcom/google/android/play/core/integrity/aj;)Lcom/google/android/play/core/integrity/k;
+	11      (00000030) move-result-object   v0
+	12      (00000032) invoke-interface     v0, v5, Lcom/google/android/play/core/integrity/k;->a(Landroid/os/Bundle;)Lcom/google/android/gms/common/api/ApiException;
+	13      (00000038) move-result-object   v0
+	14      (0000003a) if-eqz               v0, +008h
+
+b-BB@0x3e : 
+	15      (0000003e) iget-object          v5, v4, Lcom/google/android/play/core/integrity/ai;->c Lcom/google/android/gms/tasks/TaskCompletionSource;
+	16      (00000042) invoke-virtual       v5, v0, Lcom/google/android/gms/tasks/TaskCompletionSource;->trySetException(Ljava/lang/Exception;)Z
+	17      (00000048) return-void          
+
+b-BB@0x4a : [ b-BB@0x5a b-BB@0x76 ]
+	18      (0000004a) const-string         v0, "token"
+	19      (0000004e) invoke-virtual       v5, v0, Landroid/os/BaseBundle;->getString(Ljava/lang/String;)Ljava/lang/String;
+	20      (00000054) move-result-object   v0
+	21      (00000056) if-nez               v0, +010h
+
+b-BB@0x5a : 
+	22      (0000005a) iget-object          v5, v4, Lcom/google/android/play/core/integrity/ai;->c Lcom/google/android/gms/tasks/TaskCompletionSource;
+	23      (0000005e) new-instance         v0, Lcom/google/android/play/core/integrity/IntegrityServiceException;
+	24      (00000062) const/16             v1, -100
+	25      (00000066) const/4              v2, 0
+	26      (00000068) invoke-direct        v0, v1, v2, Lcom/google/android/play/core/integrity/IntegrityServiceException;-><init>(I Ljava/lang/Throwable;)V
+	27      (0000006e) invoke-virtual       v5, v0, Lcom/google/android/gms/tasks/TaskCompletionSource;->trySetException(Ljava/lang/Exception;)Z
+	28      (00000074) return-void          
+
+b-BB@0x76 : 
+	29      (00000076) const-string         v1, "request.token.sid"
+	30      (0000007a) invoke-virtual       v5, v1, Landroid/os/BaseBundle;->getLong(Ljava/lang/String;)J
+	31      (00000080) move-result-wide     v1
+	32      (00000082) iget-object          v5, v4, Lcom/google/android/play/core/integrity/ai;->a Lcom/google/android/play/core/integrity/aj;
+	33      (00000086) new-instance         v3, Lcom/google/android/play/core/integrity/ah;
+	34      (0000008a) invoke-static        v5, Lcom/google/android/play/core/integrity/aj;->g(Lcom/google/android/play/core/integrity/aj;)Ljava/lang/String;
+	35      (00000090) move-result-object   v5
+	36      (00000092) invoke-direct        v3, v4, v5, v1, v2, Lcom/google/android/play/core/integrity/ah;-><init>(Lcom/google/android/play/core/integrity/ai; Ljava/lang/String; J)V
+	37      (00000098) iget-object          v5, v4, Lcom/google/android/play/core/integrity/ai;->c Lcom/google/android/gms/tasks/TaskCompletionSource;
+	38      (0000009c) new-instance         v1, Lcom/google/android/play/core/integrity/a;
+	39      (000000a0) invoke-direct        v1, Lcom/google/android/play/core/integrity/a;-><init>()V
+	40      (000000a6) invoke-virtual       v1, v0, Lcom/google/android/play/core/integrity/a;->b(Ljava/lang/String;)Lcom/google/android/play/core/integrity/ap;
+	41      (000000ac) invoke-virtual       v1, v3, Lcom/google/android/play/core/integrity/a;->a(Lcom/google/android/play/core/integrity/y;)Lcom/google/android/play/core/integrity/ap;
+	42      (000000b2) invoke-virtual       v1, Lcom/google/android/play/core/integrity/a;->c()Lcom/google/android/play/core/integrity/aq;
+	43      (000000b8) move-result-object   v0
+	44      (000000ba) invoke-virtual       v5, v0, Lcom/google/android/gms/tasks/TaskCompletionSource;->trySetResult(Ljava/lang/Object;)Z
+	45      (000000c0) return-void          
+

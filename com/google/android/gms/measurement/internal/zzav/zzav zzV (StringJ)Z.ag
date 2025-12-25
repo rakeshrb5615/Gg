@@ -1,0 +1,60 @@
+# Lcom/google/android/gms/measurement/internal/zzav;->zzV(Ljava/lang/String; J)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:java.lang.String
+# - v8:long
+#
+# - return:boolean
+
+zzV-BB@0x0 : [ zzV-BB@0x2 ]
+	0       (00000000) const/4              v0, 0
+
+zzV-BB@0x2 : [ zzV-BB@0x2a zzV-BB@0x2c ]
+	1       (00000002) const-string         v1, "select count(*) from raw_events where app_id=? and timestamp >= ? and name not like '!_%' escape '!' limit 1;"
+	2       (00000006) invoke-static        v7, v8, Ljava/lang/String;->valueOf(J)Ljava/lang/String;
+	3       (0000000c) move-result-object   v2
+	4       (0000000e) filled-new-array     v6, v2, [Ljava/lang/String;
+	5       (00000014) move-result-object   v2
+	6       (00000016) const-wide/16        v3, 0
+	7       (0000001a) invoke-direct        v5, v1, v2, v3, v4, Lcom/google/android/gms/measurement/internal/zzav;->zzaz(Ljava/lang/String; [Ljava/lang/String; J)J
+	8       (00000020) move-result-wide     v1
+	9       (00000022) cmp-long             v1, v1, v3
+	10      (00000026) if-lez               v1, +003h
+	2:47
+	(Landroid/database/sqlite/SQLiteException; -> 56 zzV-BB@0x56)
+
+zzV-BB@0x2a : 
+	11      (0000002a) return               v0
+	2:47
+	(Landroid/database/sqlite/SQLiteException; -> 56 zzV-BB@0x56)
+
+zzV-BB@0x2c : [ zzV-BB@0x50 zzV-BB@0x54 ]
+	12      (0000002c) const-string         v1, "select count(*) from raw_events where app_id=? and timestamp >= ? and name like '!_%' escape '!' limit 1;"
+	13      (00000030) invoke-static        v7, v8, Ljava/lang/String;->valueOf(J)Ljava/lang/String;
+	14      (00000036) move-result-object   v7
+	15      (00000038) filled-new-array     v6, v7, [Ljava/lang/String;
+	16      (0000003e) move-result-object   v6
+	17      (00000040) invoke-direct        v5, v1, v6, v3, v4, Lcom/google/android/gms/measurement/internal/zzav;->zzaz(Ljava/lang/String; [Ljava/lang/String; J)J
+	18      (00000046) move-result-wide     v6
+	19      (00000048) cmp-long             v6, v6, v3
+	20      (0000004c) if-lez               v6, +004h
+
+zzV-BB@0x50 : 
+	21      (00000050) const/4              v6, 1
+	22      (00000052) return               v6
+
+zzV-BB@0x54 : 
+	23      (00000054) return               v0
+
+zzV-BB@0x56 : 
+	24      (00000056) move-exception       v6
+	25      (00000058) iget-object          v7, v5, Lcom/google/android/gms/measurement/internal/zzje;->zzu Lcom/google/android/gms/measurement/internal/zzic;
+	26      (0000005c) invoke-virtual       v7, Lcom/google/android/gms/measurement/internal/zzic;->zzaV()Lcom/google/android/gms/measurement/internal/zzgu;
+	27      (00000062) move-result-object   v7
+	28      (00000064) invoke-virtual       v7, Lcom/google/android/gms/measurement/internal/zzgu;->zzb()Lcom/google/android/gms/measurement/internal/zzgs;
+	29      (0000006a) move-result-object   v7
+	30      (0000006c) const-string         v8, "Error checking backfill conditions"
+	31      (00000070) invoke-virtual       v7, v8, v6, Lcom/google/android/gms/measurement/internal/zzgs;->zzb(Ljava/lang/String; Ljava/lang/Object;)V
+	32      (00000076) return               v0
+

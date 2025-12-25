@@ -1,0 +1,36 @@
+# Lcom/google/android/gms/tasks/Tasks;->zza(Lcom/google/android/gms/tasks/Task;)Ljava/lang/Object; [access_flags=private static]
+#
+# Parameters:
+# - local registers: v0...v0
+# - v1:com.google.android.gms.tasks.Task
+#
+# - return:java.lang.Object
+
+zza-BB@0x0 : [ zza-BB@0xc zza-BB@0x16 ]
+	0       (00000000) invoke-virtual       v1, Lcom/google/android/gms/tasks/Task;->isSuccessful()Z
+	1       (00000006) move-result          v0
+	2       (00000008) if-eqz               v0, +007h
+
+zza-BB@0xc : 
+	3       (0000000c) invoke-virtual       v1, Lcom/google/android/gms/tasks/Task;->getResult()Ljava/lang/Object;
+	4       (00000012) move-result-object   v1
+	5       (00000014) return-object        v1
+
+zza-BB@0x16 : [ zza-BB@0x22 zza-BB@0x32 ]
+	6       (00000016) invoke-virtual       v1, Lcom/google/android/gms/tasks/Task;->isCanceled()Z
+	7       (0000001c) move-result          v0
+	8       (0000001e) if-eqz               v0, +00ah
+
+zza-BB@0x22 : 
+	9       (00000022) new-instance         v1, Ljava/util/concurrent/CancellationException;
+	10      (00000026) const-string         v0, "Task is already canceled"
+	11      (0000002a) invoke-direct        v1, v0, Ljava/util/concurrent/CancellationException;-><init>(Ljava/lang/String;)V
+	12      (00000030) throw                v1
+
+zza-BB@0x32 : 
+	13      (00000032) new-instance         v0, Ljava/util/concurrent/ExecutionException;
+	14      (00000036) invoke-virtual       v1, Lcom/google/android/gms/tasks/Task;->getException()Ljava/lang/Exception;
+	15      (0000003c) move-result-object   v1
+	16      (0000003e) invoke-direct        v0, v1, Ljava/util/concurrent/ExecutionException;-><init>(Ljava/lang/Throwable;)V
+	17      (00000044) throw                v0
+

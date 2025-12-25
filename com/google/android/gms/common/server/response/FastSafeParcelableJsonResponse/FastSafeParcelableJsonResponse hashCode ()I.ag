@@ -1,0 +1,43 @@
+# Lcom/google/android/gms/common/server/response/FastSafeParcelableJsonResponse;->hashCode()I [access_flags=public]
+#
+# Parameters:
+# local registers: v0...v4
+#
+# - return:int
+
+hashCode-BB@0x0 : [ hashCode-BB@0x1a ]
+	0       (00000000) invoke-virtual       v4, Lcom/google/android/gms/common/server/response/FastJsonResponse;->getFieldMappings()Ljava/util/Map;
+	1       (00000006) move-result-object   v0
+	2       (00000008) invoke-interface     v0, Ljava/util/Map;->values()Ljava/util/Collection;
+	3       (0000000e) move-result-object   v0
+	4       (00000010) invoke-interface     v0, Ljava/util/Collection;->iterator()Ljava/util/Iterator;
+	5       (00000016) move-result-object   v0
+	6       (00000018) const/4              v1, 0
+
+hashCode-BB@0x1a : [ hashCode-BB@0x26 hashCode-BB@0x5e ]
+	7       (0000001a) invoke-interface     v0, Ljava/util/Iterator;->hasNext()Z
+	8       (00000020) move-result          v2
+	9       (00000022) if-eqz               v2, +01eh
+
+hashCode-BB@0x26 : [ hashCode-BB@0x3e hashCode-BB@0x1a ]
+	10      (00000026) invoke-interface     v0, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	11      (0000002c) move-result-object   v2
+	12      (0000002e) check-cast           v2, Lcom/google/android/gms/common/server/response/FastJsonResponse$Field;
+	13      (00000032) invoke-virtual       v4, v2, Lcom/google/android/gms/common/server/response/FastJsonResponse;->isFieldSet(Lcom/google/android/gms/common/server/response/FastJsonResponse$Field;)Z
+	14      (00000038) move-result          v3
+	15      (0000003a) if-eqz               v3, -010h
+
+hashCode-BB@0x3e : [ hashCode-BB@0x1a ]
+	16      (0000003e) mul-int/lit8         v1, v1, 31
+	17      (00000042) invoke-virtual       v4, v2, Lcom/google/android/gms/common/server/response/FastJsonResponse;->getFieldValue(Lcom/google/android/gms/common/server/response/FastJsonResponse$Field;)Ljava/lang/Object;
+	18      (00000048) move-result-object   v2
+	19      (0000004a) invoke-static        v2, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;
+	20      (00000050) move-result-object   v2
+	21      (00000052) invoke-virtual       v2, Ljava/lang/Object;->hashCode()I
+	22      (00000058) move-result          v2
+	23      (0000005a) add-int/2addr        v1, v2
+	24      (0000005c) goto                 -21h
+
+hashCode-BB@0x5e : 
+	25      (0000005e) return               v1
+

@@ -1,0 +1,33 @@
+# Lcom/google/android/gms/common/internal/zap;->onComplete(Lcom/google/android/gms/common/api/Status;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:com.google.android.gms.common.api.Status
+#
+# - return:void
+
+onComplete-BB@0x0 : [ onComplete-BB@0xc onComplete-BB@0x38 ]
+	0       (00000000) invoke-virtual       v4, Lcom/google/android/gms/common/api/Status;->isSuccess()Z
+	1       (00000006) move-result          v0
+	2       (00000008) if-eqz               v0, +018h
+
+onComplete-BB@0xc : 
+	3       (0000000c) iget-object          v4, v3, Lcom/google/android/gms/common/internal/zap;->zaa Lcom/google/android/gms/common/api/PendingResult;
+	4       (00000010) const-wide/16        v0, 0
+	5       (00000014) sget-object          v2, Ljava/util/concurrent/TimeUnit;->MILLISECONDS Ljava/util/concurrent/TimeUnit;
+	6       (00000018) invoke-virtual       v4, v0, v1, v2, Lcom/google/android/gms/common/api/PendingResult;->await(J Ljava/util/concurrent/TimeUnit;)Lcom/google/android/gms/common/api/Result;
+	7       (0000001e) move-result-object   v4
+	8       (00000020) iget-object          v0, v3, Lcom/google/android/gms/common/internal/zap;->zab Lcom/google/android/gms/tasks/TaskCompletionSource;
+	9       (00000024) iget-object          v1, v3, Lcom/google/android/gms/common/internal/zap;->zac Lcom/google/android/gms/common/internal/PendingResultUtil$ResultConverter;
+	10      (00000028) invoke-interface     v1, v4, Lcom/google/android/gms/common/internal/PendingResultUtil$ResultConverter;->convert(Lcom/google/android/gms/common/api/Result;)Ljava/lang/Object;
+	11      (0000002e) move-result-object   v4
+	12      (00000030) invoke-virtual       v0, v4, Lcom/google/android/gms/tasks/TaskCompletionSource;->setResult(Ljava/lang/Object;)V
+	13      (00000036) return-void          
+
+onComplete-BB@0x38 : 
+	14      (00000038) iget-object          v0, v3, Lcom/google/android/gms/common/internal/zap;->zab Lcom/google/android/gms/tasks/TaskCompletionSource;
+	15      (0000003c) invoke-static        v4, Lcom/google/android/gms/common/internal/ApiExceptionUtil;->fromStatus(Lcom/google/android/gms/common/api/Status;)Lcom/google/android/gms/common/api/ApiException;
+	16      (00000042) move-result-object   v4
+	17      (00000044) invoke-virtual       v0, v4, Lcom/google/android/gms/tasks/TaskCompletionSource;->setException(Ljava/lang/Exception;)V
+	18      (0000004a) return-void          
+

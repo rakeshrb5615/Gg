@@ -1,0 +1,54 @@
+# Lcom/google/android/gms/location/LocationResult;->toString()Ljava/lang/String; [access_flags=public]
+#
+# Parameters:
+# local registers: v0...v4
+#
+# - return:java.lang.String
+
+toString-BB@0x0 : [ toString-BB@0x3c ]
+	0       (00000000) new-instance         v0, Ljava/lang/StringBuilder;
+	1       (00000004) const-string         v1, "LocationResult"
+	2       (00000008) invoke-direct        v0, v1, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	3       (0000000e) sget                 v1, Lcom/google/android/gms/location/zzak;->zza I
+	4       (00000012) iget-object          v1, v4, Lcom/google/android/gms/location/LocationResult;->zzb Ljava/util/List;
+	5       (00000016) invoke-interface     v1, Ljava/util/List;->size()I
+	6       (0000001c) move-result          v2
+	7       (0000001e) mul-int/lit8         v2, v2, 100
+	8       (00000022) invoke-virtual       v0, v2, Ljava/lang/StringBuilder;->ensureCapacity(I)V
+	9       (00000028) const-string         v2, "["
+	10      (0000002c) invoke-virtual       v0, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	11      (00000032) invoke-interface     v1, Ljava/util/List;->iterator()Ljava/util/Iterator;
+	12      (00000038) move-result-object   v1
+	13      (0000003a) const/4              v2, 0
+
+toString-BB@0x3c : [ toString-BB@0x48 toString-BB@0x68 ]
+	14      (0000003c) invoke-interface     v1, Ljava/util/Iterator;->hasNext()Z
+	15      (00000042) move-result          v3
+	16      (00000044) if-eqz               v3, +012h
+
+toString-BB@0x48 : [ toString-BB@0x3c ]
+	17      (00000048) invoke-interface     v1, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	18      (0000004e) move-result-object   v2
+	19      (00000050) check-cast           v2, Landroid/location/Location;
+	20      (00000054) invoke-static        v2, v0, Lcom/google/android/gms/location/zzak;->zza(Landroid/location/Location; Ljava/lang/StringBuilder;)Ljava/lang/StringBuilder;
+	21      (0000005a) const-string         v2, ", "
+	22      (0000005e) invoke-virtual       v0, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	23      (00000064) const/4              v2, 1
+	24      (00000066) goto                 -15h
+
+toString-BB@0x68 : [ toString-BB@0x6c toString-BB@0x7e ]
+	25      (00000068) if-eqz               v2, +00bh
+
+toString-BB@0x6c : [ toString-BB@0x7e ]
+	26      (0000006c) invoke-virtual       v0, Ljava/lang/StringBuilder;->length()I
+	27      (00000072) move-result          v1
+	28      (00000074) add-int/lit8         v1, v1, -2
+	29      (00000078) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->setLength(I)V
+
+toString-BB@0x7e : 
+	30      (0000007e) const-string         v1, "]"
+	31      (00000082) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	32      (00000088) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	33      (0000008e) move-result-object   v0
+	34      (00000090) return-object        v0
+

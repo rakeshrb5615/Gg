@@ -1,0 +1,112 @@
+# Lcom/google/android/gms/internal/location/zzeo;->zzc(J Ljava/lang/StringBuilder;)Ljava/lang/StringBuilder; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v9
+# - v10:long
+# - v11:java.lang.StringBuilder
+#
+# - return:java.lang.StringBuilder
+
+zzc-BB@0x0 : [ zzc-BB@0xc zzc-BB@0x18 ]
+	0       (00000000) const-wide/16        v0, 0
+	1       (00000004) cmp-long             v2, v9, v0
+	2       (00000008) if-nez               v2, +008h
+
+zzc-BB@0xc : 
+	3       (0000000c) const-string         v9, "0s"
+	4       (00000010) invoke-virtual       v11, v9, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	5       (00000016) return-object        v11
+
+zzc-BB@0x18 : [ zzc-BB@0x32 zzc-BB@0x58 ]
+	6       (00000018) invoke-virtual       v11, Ljava/lang/StringBuilder;->length()I
+	7       (0000001e) move-result          v3
+	8       (00000020) add-int/lit8         v3, v3, 27
+	9       (00000024) invoke-virtual       v11, v3, Ljava/lang/StringBuilder;->ensureCapacity(I)V
+	10      (0000002a) const/4              v3, 1
+	11      (0000002c) const/4              v4, 0
+	12      (0000002e) if-gez               v2, +015h
+
+zzc-BB@0x32 : [ zzc-BB@0x48 zzc-BB@0x4c ]
+	13      (00000032) const-string         v2, "-"
+	14      (00000036) invoke-virtual       v11, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	15      (0000003c) const-wide/high16    v5, -9223372036854775808
+	16      (00000040) cmp-long             v2, v9, v5
+	17      (00000044) if-eqz               v2, +004h
+
+zzc-BB@0x48 : [ zzc-BB@0x58 ]
+	18      (00000048) neg-long             v9, v9
+	19      (0000004a) goto                 +7h
+
+zzc-BB@0x4c : [ zzc-BB@0x58 ]
+	20      (0000004c) const-wide           v9, 9223372036854775807
+	21      (00000056) move                 v4, v3
+
+zzc-BB@0x58 : [ zzc-BB@0x66 zzc-BB@0x7c ]
+	22      (00000058) const-wide/32        v5, 86400000
+	23      (0000005e) cmp-long             v2, v9, v5
+	24      (00000062) if-ltz               v2, +00dh
+
+zzc-BB@0x66 : [ zzc-BB@0x7c ]
+	25      (00000066) div-long             v7, v9, v5
+	26      (0000006a) invoke-virtual       v11, v7, v8, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+	27      (00000070) const-string         v2, "d"
+	28      (00000074) invoke-virtual       v11, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	29      (0000007a) rem-long/2addr       v9, v5
+
+zzc-BB@0x7c : [ zzc-BB@0x80 zzc-BB@0x82 ]
+	30      (0000007c) if-eq                v3, v4, +003h
+
+zzc-BB@0x80 : [ zzc-BB@0x88 ]
+	31      (00000080) goto                 +4h
+
+zzc-BB@0x82 : [ zzc-BB@0x88 ]
+	32      (00000082) const-wide/32        v9, 25975808
+
+zzc-BB@0x88 : [ zzc-BB@0x96 zzc-BB@0xac ]
+	33      (00000088) const-wide/32        v2, 3600000
+	34      (0000008e) cmp-long             v4, v9, v2
+	35      (00000092) if-ltz               v4, +00dh
+
+zzc-BB@0x96 : [ zzc-BB@0xac ]
+	36      (00000096) div-long             v4, v9, v2
+	37      (0000009a) invoke-virtual       v11, v4, v5, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+	38      (000000a0) const-string         v4, "h"
+	39      (000000a4) invoke-virtual       v11, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	40      (000000aa) rem-long/2addr       v9, v2
+
+zzc-BB@0xac : [ zzc-BB@0xba zzc-BB@0xd0 ]
+	41      (000000ac) const-wide/32        v2, 60000
+	42      (000000b2) cmp-long             v4, v9, v2
+	43      (000000b6) if-ltz               v4, +00dh
+
+zzc-BB@0xba : [ zzc-BB@0xd0 ]
+	44      (000000ba) div-long             v4, v9, v2
+	45      (000000be) invoke-virtual       v11, v4, v5, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+	46      (000000c4) const-string         v4, "m"
+	47      (000000c8) invoke-virtual       v11, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	48      (000000ce) rem-long/2addr       v9, v2
+
+zzc-BB@0xd0 : [ zzc-BB@0xdc zzc-BB@0xf2 ]
+	49      (000000d0) const-wide/16        v2, 1000
+	50      (000000d4) cmp-long             v4, v9, v2
+	51      (000000d8) if-ltz               v4, +00dh
+
+zzc-BB@0xdc : [ zzc-BB@0xf2 ]
+	52      (000000dc) div-long             v4, v9, v2
+	53      (000000e0) invoke-virtual       v11, v4, v5, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+	54      (000000e6) const-string         v4, "s"
+	55      (000000ea) invoke-virtual       v11, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	56      (000000f0) rem-long/2addr       v9, v2
+
+zzc-BB@0xf2 : [ zzc-BB@0xfa zzc-BB@0x10a ]
+	57      (000000f2) cmp-long             v0, v9, v0
+	58      (000000f6) if-lez               v0, +00ah
+
+zzc-BB@0xfa : [ zzc-BB@0x10a ]
+	59      (000000fa) invoke-virtual       v11, v9, v10, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+	60      (00000100) const-string         v9, "ms"
+	61      (00000104) invoke-virtual       v11, v9, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+zzc-BB@0x10a : 
+	62      (0000010a) return-object        v11
+

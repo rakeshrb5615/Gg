@@ -1,0 +1,50 @@
+# Lcom/google/android/gms/common/util/Hex;->bytesToStringUppercase([B Z)Ljava/lang/String; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:byte[]
+# - v6:boolean
+#
+# - return:java.lang.String
+
+bytesToStringUppercase-BB@0x0 : [ bytesToStringUppercase-BB@0x12 ]
+	0       (00000000) array-length         v0, v5
+	1       (00000002) add-int              v1, v0, v0
+	2       (00000006) new-instance         v2, Ljava/lang/StringBuilder;
+	3       (0000000a) invoke-direct        v2, v1, Ljava/lang/StringBuilder;-><init>(I)V
+	4       (00000010) const/4              v1, 0
+
+bytesToStringUppercase-BB@0x12 : [ bytesToStringUppercase-BB@0x16 bytesToStringUppercase-BB@0x60 ]
+	5       (00000012) if-ge                v1, v0, +027h
+
+bytesToStringUppercase-BB@0x16 : [ bytesToStringUppercase-BB@0x1a bytesToStringUppercase-BB@0x2e ]
+	6       (00000016) if-eqz               v6, +00ch
+
+bytesToStringUppercase-BB@0x1a : [ bytesToStringUppercase-BB@0x22 bytesToStringUppercase-BB@0x2e ]
+	7       (0000001a) add-int/lit8         v3, v0, -1
+	8       (0000001e) if-ne                v1, v3, +008h
+
+bytesToStringUppercase-BB@0x22 : [ bytesToStringUppercase-BB@0x2e bytesToStringUppercase-BB@0x60 ]
+	9       (00000022) aget-byte            v3, v5, v1
+	10      (00000026) and-int/lit16        v3, v3, 255
+	11      (0000002a) if-eqz               v3, +01bh
+
+bytesToStringUppercase-BB@0x2e : [ bytesToStringUppercase-BB@0x12 ]
+	12      (0000002e) sget-object          v3, Lcom/google/android/gms/common/util/Hex;->zza [C
+	13      (00000032) aget-byte            v4, v5, v1
+	14      (00000036) and-int/lit16        v4, v4, 240
+	15      (0000003a) ushr-int/lit8        v4, v4, 4
+	16      (0000003e) aget-char            v4, v3, v4
+	17      (00000042) invoke-virtual       v2, v4, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+	18      (00000048) aget-byte            v4, v5, v1
+	19      (0000004c) and-int/lit8         v4, v4, 15
+	20      (00000050) aget-char            v3, v3, v4
+	21      (00000054) invoke-virtual       v2, v3, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+	22      (0000005a) add-int/lit8         v1, v1, 1
+	23      (0000005e) goto                 -26h
+
+bytesToStringUppercase-BB@0x60 : 
+	24      (00000060) invoke-virtual       v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	25      (00000066) move-result-object   v5
+	26      (00000068) return-object        v5
+

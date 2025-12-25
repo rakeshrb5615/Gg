@@ -1,0 +1,59 @@
+# Lcom/google/android/gms/internal/firebase-auth-api/zzhu;->zza([B Ljava/nio/ByteBuffer; Ljava/nio/ByteBuffer;)V [access_flags=private final]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:byte[]
+# - v8:java.nio.ByteBuffer
+# - v9:java.nio.ByteBuffer
+#
+# - return:void
+
+zza-BB@0x0 : [ zza-BB@0xe zza-BB@0x54 ]
+	0       (00000000) array-length         v0, v7
+	1       (00000002) invoke-virtual       v6, Lcom/google/android/gms/internal/firebase-auth-api/zzhu;->zza()I
+	2       (00000008) move-result          v1
+	3       (0000000a) if-ne                v0, v1, +025h
+
+zza-BB@0xe : [ zza-BB@0x20 ]
+	4       (0000000e) invoke-virtual       v9, Ljava/nio/Buffer;->remaining()I
+	5       (00000014) move-result          v0
+	6       (00000016) div-int/lit8         v1, v0, 64
+	7       (0000001a) add-int/lit8         v2, v1, 1
+	8       (0000001e) const/4              v3, 0
+
+zza-BB@0x20 : [ zza-BB@0x24 zza-BB@0x52 ]
+	9       (00000020) if-ge                v3, v2, +019h
+
+zza-BB@0x24 : [ zza-BB@0x3a zza-BB@0x46 ]
+	10      (00000024) iget                 v4, v6, Lcom/google/android/gms/internal/firebase-auth-api/zzhu;->zzb I
+	11      (00000028) add-int/2addr        v4, v3
+	12      (0000002a) invoke-virtual       v6, v7, v4, Lcom/google/android/gms/internal/firebase-auth-api/zzhu;->zza([B I)Ljava/nio/ByteBuffer;
+	13      (00000030) move-result-object   v4
+	14      (00000032) const/16             v5, 64
+	15      (00000036) if-ne                v3, v1, +008h
+
+zza-BB@0x3a : [ zza-BB@0x4c ]
+	16      (0000003a) rem-int/lit8         v5, v0, 64
+	17      (0000003e) invoke-static        v8, v9, v4, v5, Lcom/google/android/gms/internal/firebase-auth-api/zzyz;->zza(Ljava/nio/ByteBuffer; Ljava/nio/ByteBuffer; Ljava/nio/ByteBuffer; I)V
+	18      (00000044) goto                 +4h
+
+zza-BB@0x46 : [ zza-BB@0x4c ]
+	19      (00000046) invoke-static        v8, v9, v4, v5, Lcom/google/android/gms/internal/firebase-auth-api/zzyz;->zza(Ljava/nio/ByteBuffer; Ljava/nio/ByteBuffer; Ljava/nio/ByteBuffer; I)V
+
+zza-BB@0x4c : [ zza-BB@0x20 ]
+	20      (0000004c) add-int/lit8         v3, v3, 1
+	21      (00000050) goto                 -18h
+
+zza-BB@0x52 : 
+	22      (00000052) return-void          
+
+zza-BB@0x54 : 
+	23      (00000054) new-instance         v7, Ljava/security/GeneralSecurityException;
+	24      (00000058) invoke-virtual       v6, Lcom/google/android/gms/internal/firebase-auth-api/zzhu;->zza()I
+	25      (0000005e) move-result          v8
+	26      (00000060) const-string         v9, "The nonce length (in bytes) must be "
+	27      (00000064) invoke-static        v8, v9, Lg2/g;->c(I Ljava/lang/String;)Ljava/lang/String;
+	28      (0000006a) move-result-object   v8
+	29      (0000006c) invoke-direct        v7, v8, Ljava/security/GeneralSecurityException;-><init>(Ljava/lang/String;)V
+	30      (00000072) throw                v7
+

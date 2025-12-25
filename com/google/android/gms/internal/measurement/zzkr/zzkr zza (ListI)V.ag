@@ -1,0 +1,43 @@
+# Lcom/google/android/gms/internal/measurement/zzkr;->zza(Ljava/util/List; I)V [access_flags=private static]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:java.util.List
+# - v4:int
+#
+# - return:void
+
+zza-BB@0x0 : [ zza-BB@0x52 ]
+	0       (00000000) invoke-interface     v3, Ljava/util/List;->size()I
+	1       (00000006) move-result          v0
+	2       (00000008) sub-int/2addr        v0, v4
+	3       (0000000a) invoke-static        v0, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
+	4       (00000010) move-result-object   v1
+	5       (00000012) invoke-virtual       v1, Ljava/lang/String;->length()I
+	6       (00000018) move-result          v1
+	7       (0000001a) new-instance         v2, Ljava/lang/StringBuilder;
+	8       (0000001e) add-int/lit8         v1, v1, 26
+	9       (00000022) invoke-direct        v2, v1, Ljava/lang/StringBuilder;-><init>(I)V
+	10      (00000028) const-string         v1, "Element at index "
+	11      (0000002c) invoke-virtual       v2, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	12      (00000032) invoke-virtual       v2, v0, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	13      (00000038) const-string         v0, " is null."
+	14      (0000003c) invoke-virtual       v2, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	15      (00000042) invoke-virtual       v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	16      (00000048) move-result-object   v0
+	17      (0000004a) invoke-interface     v3, Ljava/util/List;->size()I
+	18      (00000050) move-result          v1
+
+zza-BB@0x52 : [ zza-BB@0x5a zza-BB@0x62 ]
+	19      (00000052) add-int/lit8         v1, v1, -1
+	20      (00000056) if-lt                v1, v4, +006h
+
+zza-BB@0x5a : [ zza-BB@0x52 ]
+	21      (0000005a) invoke-interface     v3, v1, Ljava/util/List;->remove(I)Ljava/lang/Object;
+	22      (00000060) goto                 -7h
+
+zza-BB@0x62 : 
+	23      (00000062) new-instance         v3, Ljava/lang/NullPointerException;
+	24      (00000066) invoke-direct        v3, v0, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
+	25      (0000006c) throw                v3
+

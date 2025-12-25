@@ -1,0 +1,66 @@
+# Lcom/google/android/recaptcha/internal/zzbm;->zzd(Ljava/lang/String;)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v9
+# - v10:java.lang.String
+#
+# - return:boolean
+
+zzd-BB@0x0 : [ zzd-BB@0x2 ]
+	0       (00000000) const/4              v0, 0
+
+zzd-BB@0x2 : [ zzd-BB@0x1c zzd-BB@0x68 ]
+	1       (00000002) iget-object          v1, v9, Lcom/google/android/recaptcha/internal/zzbm;->zza Landroid/content/Context;
+	2       (00000006) invoke-virtual       v1, Landroid/content/Context;->getCacheDir()Ljava/io/File;
+	3       (0000000c) move-result-object   v1
+	4       (0000000e) invoke-virtual       v1, Ljava/io/File;->listFiles()[Ljava/io/File;
+	5       (00000014) move-result-object   v1
+	6       (00000016) const/4              v2, 0
+	7       (00000018) if-eqz               v1, +028h
+	2:59
+	(Ljava/lang/Exception; -> 70 zzd-BB@0x70)
+
+zzd-BB@0x1c : [ zzd-BB@0x20 ]
+	8       (0000001c) array-length         v3, v1
+	9       (0000001e) move                 v4, v0
+	2:59
+	(Ljava/lang/Exception; -> 70 zzd-BB@0x70)
+
+zzd-BB@0x20 : [ zzd-BB@0x24 zzd-BB@0x68 ]
+	10      (00000020) if-ge                v4, v3, +024h
+	2:59
+	(Ljava/lang/Exception; -> 70 zzd-BB@0x70)
+
+zzd-BB@0x24 : [ zzd-BB@0x5e zzd-BB@0x62 ]
+	11      (00000024) aget-object          v5, v1, v4
+	12      (00000028) invoke-virtual       v5, Ljava/io/File;->getName()Ljava/lang/String;
+	13      (0000002e) move-result-object   v6
+	14      (00000030) iget-object          v7, v9, Lcom/google/android/recaptcha/internal/zzbm;->zzb Ljava/lang/String;
+	15      (00000034) new-instance         v8, Ljava/lang/StringBuilder;
+	16      (00000038) invoke-direct        v8, Ljava/lang/StringBuilder;-><init>()V
+	17      (0000003e) invoke-virtual       v8, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	18      (00000044) invoke-virtual       v8, v10, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	19      (0000004a) invoke-virtual       v8, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	20      (00000050) move-result-object   v7
+	21      (00000052) invoke-static        v6, v7, Lkotlin/jvm/internal/j;->a(Ljava/lang/Object; Ljava/lang/Object;)Z
+	22      (00000058) move-result          v6
+	23      (0000005a) if-eqz               v6, +004h
+
+zzd-BB@0x5e : [ zzd-BB@0x68 ]
+	24      (0000005e) move-object          v2, v5
+	25      (00000060) goto                 +4h
+
+zzd-BB@0x62 : [ zzd-BB@0x20 ]
+	26      (00000062) add-int/lit8         v4, v4, 1
+	27      (00000066) goto                 -23h
+
+zzd-BB@0x68 : [ zzd-BB@0x6c zzd-BB@0x70 ]
+	28      (00000068) if-eqz               v2, +004h
+
+zzd-BB@0x6c : 
+	29      (0000006c) const/4              v10, 1
+	30      (0000006e) return               v10
+
+zzd-BB@0x70 : 
+	31      (00000070) return               v0
+

@@ -1,0 +1,110 @@
+# Lcom/google/android/gms/common/api/internal/zabq;->zao()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v8
+#
+# - return:void
+
+zao-BB@0x0 : [ zao-BB@0x26 zao-BB@0x130 ]
+	0       (00000000) const-string         v0, "The service for "
+	1       (00000004) iget-object          v1, v8, Lcom/google/android/gms/common/api/internal/zabq;->zaa Lcom/google/android/gms/common/api/internal/GoogleApiManager;
+	2       (00000008) invoke-static        v1, Lcom/google/android/gms/common/api/internal/GoogleApiManager;->zad(Lcom/google/android/gms/common/api/internal/GoogleApiManager;)Landroid/os/Handler;
+	3       (0000000e) move-result-object   v1
+	4       (00000010) invoke-static        v1, Lcom/google/android/gms/common/internal/Preconditions;->checkHandlerThread(Landroid/os/Handler;)V
+	5       (00000016) iget-object          v1, v8, Lcom/google/android/gms/common/api/internal/zabq;->zac Lcom/google/android/gms/common/api/Api$Client;
+	6       (0000001a) invoke-interface     v1, Lcom/google/android/gms/common/api/Api$Client;->isConnected()Z
+	7       (00000020) move-result          v1
+	8       (00000022) if-nez               v1, +087h
+
+zao-BB@0x26 : [ zao-BB@0x36 zao-BB@0x3a ]
+	9       (00000026) iget-object          v1, v8, Lcom/google/android/gms/common/api/internal/zabq;->zac Lcom/google/android/gms/common/api/Api$Client;
+	10      (0000002a) invoke-interface     v1, Lcom/google/android/gms/common/api/Api$Client;->isConnecting()Z
+	11      (00000030) move-result          v1
+	12      (00000032) if-eqz               v1, +004h
+
+zao-BB@0x36 : [ zao-BB@0x130 ]
+	13      (00000036) goto/16              +07dh
+
+zao-BB@0x3a : [ zao-BB@0x3e ]
+	14      (0000003a) const/16             v1, 10
+
+zao-BB@0x3e : [ zao-BB@0x62 zao-BB@0xc8 ]
+	15      (0000003e) iget-object          v2, v8, Lcom/google/android/gms/common/api/internal/zabq;->zaa Lcom/google/android/gms/common/api/internal/GoogleApiManager;
+	16      (00000042) invoke-static        v2, Lcom/google/android/gms/common/api/internal/GoogleApiManager;->zal(Lcom/google/android/gms/common/api/internal/GoogleApiManager;)Lcom/google/android/gms/common/internal/zal;
+	17      (00000048) move-result-object   v3
+	18      (0000004a) invoke-static        v2, Lcom/google/android/gms/common/api/internal/GoogleApiManager;->zac(Lcom/google/android/gms/common/api/internal/GoogleApiManager;)Landroid/content/Context;
+	19      (00000050) move-result-object   v2
+	20      (00000052) iget-object          v4, v8, Lcom/google/android/gms/common/api/internal/zabq;->zac Lcom/google/android/gms/common/api/Api$Client;
+	21      (00000056) invoke-virtual       v3, v2, v4, Lcom/google/android/gms/common/internal/zal;->zab(Landroid/content/Context; Lcom/google/android/gms/common/api/Api$Client;)I
+	22      (0000005c) move-result          v2
+	23      (0000005e) if-eqz               v2, +035h
+	3e:c1
+	(Ljava/lang/IllegalStateException; -> c4 zao-BB@0xc4)
+
+zao-BB@0x62 : 
+	24      (00000062) new-instance         v3, Lcom/google/android/gms/common/ConnectionResult;
+	25      (00000066) const/4              v4, 0
+	26      (00000068) invoke-direct        v3, v2, v4, Lcom/google/android/gms/common/ConnectionResult;-><init>(I Landroid/app/PendingIntent;)V
+	27      (0000006e) const-string         v2, "GoogleApiManager"
+	28      (00000072) iget-object          v5, v8, Lcom/google/android/gms/common/api/internal/zabq;->zac Lcom/google/android/gms/common/api/Api$Client;
+	29      (00000076) invoke-virtual       v5, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	30      (0000007c) move-result-object   v5
+	31      (0000007e) invoke-virtual       v5, Ljava/lang/Class;->getName()Ljava/lang/String;
+	32      (00000084) move-result-object   v5
+	33      (00000086) invoke-virtual       v3, Lcom/google/android/gms/common/ConnectionResult;->toString()Ljava/lang/String;
+	34      (0000008c) move-result-object   v6
+	35      (0000008e) new-instance         v7, Ljava/lang/StringBuilder;
+	36      (00000092) invoke-direct        v7, v0, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	37      (00000098) invoke-virtual       v7, v5, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	38      (0000009e) const-string         v0, " is not available: "
+	39      (000000a2) invoke-virtual       v7, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	40      (000000a8) invoke-virtual       v7, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	41      (000000ae) invoke-virtual       v7, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	42      (000000b4) move-result-object   v0
+	43      (000000b6) invoke-static        v2, v0, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+	44      (000000bc) invoke-virtual       v8, v3, v4, Lcom/google/android/gms/common/api/internal/zabq;->zar(Lcom/google/android/gms/common/ConnectionResult; Ljava/lang/Exception;)V
+	45      (000000c2) return-void          
+
+zao-BB@0xc4 : [ zao-BB@0x120 ]
+	46      (000000c4) move-exception       v0
+	47      (000000c6) goto                 +2dh
+
+zao-BB@0xc8 : [ zao-BB@0xea zao-BB@0x100 ]
+	48      (000000c8) iget-object          v0, v8, Lcom/google/android/gms/common/api/internal/zabq;->zaa Lcom/google/android/gms/common/api/internal/GoogleApiManager;
+	49      (000000cc) iget-object          v2, v8, Lcom/google/android/gms/common/api/internal/zabq;->zac Lcom/google/android/gms/common/api/Api$Client;
+	50      (000000d0) iget-object          v3, v8, Lcom/google/android/gms/common/api/internal/zabq;->zad Lcom/google/android/gms/common/api/internal/ApiKey;
+	51      (000000d4) new-instance         v4, Lcom/google/android/gms/common/api/internal/zabu;
+	52      (000000d8) invoke-direct        v4, v0, v2, v3, Lcom/google/android/gms/common/api/internal/zabu;-><init>(Lcom/google/android/gms/common/api/internal/GoogleApiManager; Lcom/google/android/gms/common/api/Api$Client; Lcom/google/android/gms/common/api/internal/ApiKey;)V
+	53      (000000de) invoke-interface     v2, Lcom/google/android/gms/common/api/Api$Client;->requiresSignIn()Z
+	54      (000000e4) move-result          v0
+	55      (000000e6) if-eqz               v0, +00dh
+
+zao-BB@0xea : [ zao-BB@0x100 ]
+	56      (000000ea) iget-object          v0, v8, Lcom/google/android/gms/common/api/internal/zabq;->zai Lcom/google/android/gms/common/api/internal/zact;
+	57      (000000ee) invoke-static        v0, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;
+	58      (000000f4) move-result-object   v0
+	59      (000000f6) check-cast           v0, Lcom/google/android/gms/common/api/internal/zact;
+	60      (000000fa) invoke-virtual       v0, v4, Lcom/google/android/gms/common/api/internal/zact;->zae(Lcom/google/android/gms/common/api/internal/zacs;)V
+
+zao-BB@0x100 : 
+	61      (00000100) iget-object          v0, v8, Lcom/google/android/gms/common/api/internal/zabq;->zac Lcom/google/android/gms/common/api/Api$Client;
+	62      (00000104) invoke-interface     v0, v4, Lcom/google/android/gms/common/api/Api$Client;->connect(Lcom/google/android/gms/common/internal/BaseGmsClient$ConnectionProgressReportCallbacks;)V
+	63      (0000010a) return-void          
+	100:109
+	(Ljava/lang/SecurityException; -> 10c zao-BB@0x10c)
+
+zao-BB@0x10c : 
+	64      (0000010c) move-exception       v0
+	65      (0000010e) new-instance         v2, Lcom/google/android/gms/common/ConnectionResult;
+	66      (00000112) invoke-direct        v2, v1, Lcom/google/android/gms/common/ConnectionResult;-><init>(I)V
+	67      (00000118) invoke-virtual       v8, v2, v0, Lcom/google/android/gms/common/api/internal/zabq;->zar(Lcom/google/android/gms/common/ConnectionResult; Ljava/lang/Exception;)V
+	68      (0000011e) return-void          
+
+zao-BB@0x120 : [ zao-BB@0x130 ]
+	69      (00000120) new-instance         v2, Lcom/google/android/gms/common/ConnectionResult;
+	70      (00000124) invoke-direct        v2, v1, Lcom/google/android/gms/common/ConnectionResult;-><init>(I)V
+	71      (0000012a) invoke-virtual       v8, v2, v0, Lcom/google/android/gms/common/api/internal/zabq;->zar(Lcom/google/android/gms/common/ConnectionResult; Ljava/lang/Exception;)V
+
+zao-BB@0x130 : 
+	72      (00000130) return-void          
+

@@ -1,0 +1,25 @@
+# Lcom/google/android/gms/internal/auth/zzbz;->toByteArray()[B [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v3
+#
+# - return:byte[]
+
+toByteArray-BB@0x0 : 
+	0       (00000000) invoke-virtual       v3, Lcom/google/android/gms/common/server/response/FastJsonResponse;->toString()Ljava/lang/String;
+	1       (00000006) move-result-object   v0
+	2       (00000008) const-string         v1, "UTF-8"
+	3       (0000000c) invoke-virtual       v0, v1, Ljava/lang/String;->getBytes(Ljava/lang/String;)[B
+	4       (00000012) move-result-object   v0
+	5       (00000014) return-object        v0
+	0:13
+	(Ljava/io/UnsupportedEncodingException; -> 16 toByteArray-BB@0x16)
+
+toByteArray-BB@0x16 : 
+	6       (00000016) move-exception       v0
+	7       (00000018) const-string         v1, "AUTH"
+	8       (0000001c) const-string         v2, "Error serializing object."
+	9       (00000020) invoke-static        v1, v2, v0, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+	10      (00000026) const/4              v0, 0
+	11      (00000028) return-object        v0
+

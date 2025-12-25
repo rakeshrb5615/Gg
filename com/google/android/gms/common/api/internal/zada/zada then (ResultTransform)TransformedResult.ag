@@ -1,0 +1,63 @@
+# Lcom/google/android/gms/common/api/internal/zada;->then(Lcom/google/android/gms/common/api/ResultTransform;)Lcom/google/android/gms/common/api/TransformedResult; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:com.google.android.gms.common.api.ResultTransform
+#
+# - return:com.google.android.gms.common.api.TransformedResult
+
+then-BB@0x0 : [ then-BB@0x6 ]
+	0       (00000000) iget-object          v0, v5, Lcom/google/android/gms/common/api/internal/zada;->zae Ljava/lang/Object;
+	1       (00000004) monitor-enter        v0
+
+then-BB@0x6 : [ then-BB@0x12 then-BB@0x16 ]
+	2       (00000006) iget-object          v1, v5, Lcom/google/android/gms/common/api/internal/zada;->zaa Lcom/google/android/gms/common/api/ResultTransform;
+	3       (0000000a) const/4              v2, 0
+	4       (0000000c) const/4              v3, 1
+	5       (0000000e) if-nez               v1, +004h
+	6:59
+	(Ljava/lang/Throwable; -> 56 then-BB@0x56)
+
+then-BB@0x12 : [ then-BB@0x18 ]
+	6       (00000012) move                 v1, v3
+	7       (00000014) goto                 +2h
+	6:59
+	(Ljava/lang/Throwable; -> 56 then-BB@0x56)
+
+then-BB@0x16 : [ then-BB@0x18 ]
+	8       (00000016) move                 v1, v2
+	6:59
+	(Ljava/lang/Throwable; -> 56 then-BB@0x56)
+
+then-BB@0x18 : [ then-BB@0x2a then-BB@0x2c ]
+	9       (00000018) const-string         v4, "Cannot call then() twice."
+	10      (0000001c) invoke-static        v1, v4, Lcom/google/android/gms/common/internal/Preconditions;->checkState(Z Ljava/lang/Object;)V
+	11      (00000022) iget-object          v1, v5, Lcom/google/android/gms/common/api/internal/zada;->zac Lcom/google/android/gms/common/api/ResultCallbacks;
+	12      (00000026) if-nez               v1, +003h
+	6:59
+	(Ljava/lang/Throwable; -> 56 then-BB@0x56)
+
+then-BB@0x2a : [ then-BB@0x2c ]
+	13      (0000002a) move                 v2, v3
+	6:59
+	(Ljava/lang/Throwable; -> 56 then-BB@0x56)
+
+then-BB@0x2c : 
+	14      (0000002c) const-string         v1, "Cannot call then() and andFinally() on the same TransformedResult."
+	15      (00000030) invoke-static        v2, v1, Lcom/google/android/gms/common/internal/Preconditions;->checkState(Z Ljava/lang/Object;)V
+	16      (00000036) iput-object          v6, v5, Lcom/google/android/gms/common/api/internal/zada;->zaa Lcom/google/android/gms/common/api/ResultTransform;
+	17      (0000003a) new-instance         v6, Lcom/google/android/gms/common/api/internal/zada;
+	18      (0000003e) iget-object          v1, v5, Lcom/google/android/gms/common/api/internal/zada;->zag Ljava/lang/ref/WeakReference;
+	19      (00000042) invoke-direct        v6, v1, Lcom/google/android/gms/common/api/internal/zada;-><init>(Ljava/lang/ref/WeakReference;)V
+	20      (00000048) iput-object          v6, v5, Lcom/google/android/gms/common/api/internal/zada;->zab Lcom/google/android/gms/common/api/internal/zada;
+	21      (0000004c) invoke-direct        v5, Lcom/google/android/gms/common/api/internal/zada;->zak()V
+	22      (00000052) monitor-exit         v0
+	23      (00000054) return-object        v6
+	6:59
+	(Ljava/lang/Throwable; -> 56 then-BB@0x56)
+
+then-BB@0x56 : 
+	24      (00000056) move-exception       v6
+	25      (00000058) monitor-exit         v0
+	26      (0000005a) throw                v6
+

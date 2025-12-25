@@ -1,0 +1,216 @@
+# Lcom/google/android/gms/common/api/GoogleApiClient$Builder;->build()Lcom/google/android/gms/common/api/GoogleApiClient; [access_flags=public]
+#
+# Parameters:
+# local registers: v0...v18
+#
+# - return:com.google.android.gms.common.api.GoogleApiClient
+
+build-BB@0x0 : [ build-BB@0x6a ]
+	0       (00000000) move-object/from16   v1, v18
+	1       (00000004) iget-object          v0, v1, Lcom/google/android/gms/common/api/GoogleApiClient$Builder;->zaj Ljava/util/Map;
+	2       (00000008) invoke-interface     v0, Ljava/util/Map;->isEmpty()Z
+	3       (0000000e) move-result          v0
+	4       (00000010) const/4              v2, 1
+	5       (00000012) xor-int/2addr        v0, v2
+	6       (00000014) const-string         v3, "must call addApi() to add at least one API"
+	7       (00000018) invoke-static        v0, v3, Lcom/google/android/gms/common/internal/Preconditions;->checkArgument(Z Ljava/lang/Object;)V
+	8       (0000001e) invoke-virtual       v1, Lcom/google/android/gms/common/api/GoogleApiClient$Builder;->zaa()Lcom/google/android/gms/common/internal/ClientSettings;
+	9       (00000024) move-result-object   v7
+	10      (00000026) invoke-virtual       v7, Lcom/google/android/gms/common/internal/ClientSettings;->zad()Ljava/util/Map;
+	11      (0000002c) move-result-object   v0
+	12      (0000002e) new-instance         v11, Lr/e;
+	13      (00000032) const/4              v3, 0
+	14      (00000034) invoke-direct        v11, v3, Lr/j;-><init>(I)V
+	15      (0000003a) new-instance         v14, Lr/e;
+	16      (0000003e) invoke-direct        v14, v3, Lr/j;-><init>(I)V
+	17      (00000044) new-instance         v12, Ljava/util/ArrayList;
+	18      (00000048) invoke-direct        v12, Ljava/util/ArrayList;-><init>()V
+	19      (0000004e) iget-object          v4, v1, Lcom/google/android/gms/common/api/GoogleApiClient$Builder;->zaj Ljava/util/Map;
+	20      (00000052) invoke-interface     v4, Ljava/util/Map;->keySet()Ljava/util/Set;
+	21      (00000058) move-result-object   v4
+	22      (0000005a) invoke-interface     v4, Ljava/util/Set;->iterator()Ljava/util/Iterator;
+	23      (00000060) move-result-object   v13
+	24      (00000062) const/4              v4, 0
+	25      (00000064) move/from16          v16, v3
+	26      (00000068) move-object          v15, v4
+
+build-BB@0x6a : [ build-BB@0x76 build-BB@0x154 ]
+	27      (0000006a) invoke-interface     v13, Ljava/util/Iterator;->hasNext()Z
+	28      (00000070) move-result          v4
+	29      (00000072) if-eqz               v4, +071h
+
+build-BB@0x76 : [ build-BB@0x9a build-BB@0x9e ]
+	30      (00000076) invoke-interface     v13, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	31      (0000007c) move-result-object   v4
+	32      (0000007e) check-cast           v4, Lcom/google/android/gms/common/api/Api;
+	33      (00000082) iget-object          v5, v1, Lcom/google/android/gms/common/api/GoogleApiClient$Builder;->zaj Ljava/util/Map;
+	34      (00000086) invoke-interface     v5, v4, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	35      (0000008c) move-result-object   v8
+	36      (0000008e) invoke-interface     v0, v4, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	37      (00000094) move-result-object   v5
+	38      (00000096) if-eqz               v5, +004h
+
+build-BB@0x9a : [ build-BB@0xa0 ]
+	39      (0000009a) move                 v5, v2
+	40      (0000009c) goto                 +2h
+
+build-BB@0x9e : [ build-BB@0xa0 ]
+	41      (0000009e) move                 v5, v3
+
+build-BB@0xa0 : [ build-BB@0x108 build-BB@0x116 ]
+	42      (000000a0) invoke-static        v5, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+	43      (000000a6) move-result-object   v6
+	44      (000000a8) invoke-virtual       v11, v4, v6, Lr/j;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	45      (000000ae) new-instance         v9, Lcom/google/android/gms/common/api/internal/zat;
+	46      (000000b2) invoke-direct        v9, v4, v5, Lcom/google/android/gms/common/api/internal/zat;-><init>(Lcom/google/android/gms/common/api/Api; Z)V
+	47      (000000b8) invoke-virtual       v12, v9, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	48      (000000be) invoke-virtual       v4, Lcom/google/android/gms/common/api/Api;->zaa()Lcom/google/android/gms/common/api/Api$AbstractClientBuilder;
+	49      (000000c4) move-result-object   v5
+	50      (000000c6) invoke-static        v5, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;
+	51      (000000cc) move-result-object   v5
+	52      (000000ce) check-cast           v5, Lcom/google/android/gms/common/api/Api$AbstractClientBuilder;
+	53      (000000d2) move-object          v6, v4
+	54      (000000d4) move-object          v4, v5
+	55      (000000d6) iget-object          v5, v1, Lcom/google/android/gms/common/api/GoogleApiClient$Builder;->zai Landroid/content/Context;
+	56      (000000da) move-object          v10, v6
+	57      (000000dc) iget-object          v6, v1, Lcom/google/android/gms/common/api/GoogleApiClient$Builder;->zan Landroid/os/Looper;
+	58      (000000e0) move-object/from16   v17, v10
+	59      (000000e4) move-object          v10, v9
+	60      (000000e6) invoke-virtual/range v4 ... v10, Lcom/google/android/gms/common/api/Api$AbstractClientBuilder;->buildClient(Landroid/content/Context; Landroid/os/Looper; Lcom/google/android/gms/common/internal/ClientSettings; Ljava/lang/Object; Lcom/google/android/gms/common/api/GoogleApiClient$ConnectionCallbacks; Lcom/google/android/gms/common/api/GoogleApiClient$OnConnectionFailedListener;)Lcom/google/android/gms/common/api/Api$Client;
+	61      (000000ec) move-result-object   v5
+	62      (000000ee) invoke-virtual/range v17, Lcom/google/android/gms/common/api/Api;->zab()Lcom/google/android/gms/common/api/Api$AnyClientKey;
+	63      (000000f4) move-result-object   v6
+	64      (000000f6) invoke-virtual       v14, v6, v5, Lr/j;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	65      (000000fc) invoke-virtual       v4, Lcom/google/android/gms/common/api/Api$BaseClientBuilder;->getPriority()I
+	66      (00000102) move-result          v4
+	67      (00000104) if-ne                v4, v2, +009h
+
+build-BB@0x108 : [ build-BB@0x10c build-BB@0x112 ]
+	68      (00000108) if-eqz               v8, +005h
+
+build-BB@0x10c : [ build-BB@0x116 ]
+	69      (0000010c) move/from16          v16, v2
+	70      (00000110) goto                 +3h
+
+build-BB@0x112 : [ build-BB@0x116 ]
+	71      (00000112) move/from16          v16, v3
+
+build-BB@0x116 : [ build-BB@0x122 build-BB@0x6a ]
+	72      (00000116) invoke-interface     v5, Lcom/google/android/gms/common/api/Api$Client;->providesSignIn()Z
+	73      (0000011c) move-result          v4
+	74      (0000011e) if-eqz               v4, -05ah
+
+build-BB@0x122 : [ build-BB@0x126 build-BB@0x12c ]
+	75      (00000122) if-nez               v15, +005h
+
+build-BB@0x126 : [ build-BB@0x6a ]
+	76      (00000126) move-object/from16   v15, v17
+	77      (0000012a) goto                 -60h
+
+build-BB@0x12c : 
+	78      (0000012c) new-instance         v0, Ljava/lang/IllegalStateException;
+	79      (00000130) invoke-virtual/range v17, Lcom/google/android/gms/common/api/Api;->zad()Ljava/lang/String;
+	80      (00000136) move-result-object   v2
+	81      (00000138) invoke-virtual       v15, Lcom/google/android/gms/common/api/Api;->zad()Ljava/lang/String;
+	82      (0000013e) move-result-object   v3
+	83      (00000140) const-string         v4, " cannot be used with "
+	84      (00000144) invoke-static        v2, v4, v3, Lg2/g;->e(Ljava/lang/String; Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	85      (0000014a) move-result-object   v2
+	86      (0000014c) invoke-direct        v0, v2, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	87      (00000152) throw                v0
+
+build-BB@0x154 : [ build-BB@0x158 build-BB@0x1d0 ]
+	88      (00000154) if-eqz               v15, +03eh
+
+build-BB@0x158 : [ build-BB@0x15c build-BB@0x1ac ]
+	89      (00000158) if-nez               v16, +02ah
+
+build-BB@0x15c : [ build-BB@0x164 build-BB@0x166 ]
+	90      (0000015c) iget-object          v0, v1, Lcom/google/android/gms/common/api/GoogleApiClient$Builder;->zaa Landroid/accounts/Account;
+	91      (00000160) if-nez               v0, +003h
+
+build-BB@0x164 : [ build-BB@0x166 ]
+	92      (00000164) move                 v3, v2
+
+build-BB@0x166 : [ build-BB@0x1d0 ]
+	93      (00000166) invoke-virtual       v15, Lcom/google/android/gms/common/api/Api;->zad()Ljava/lang/String;
+	94      (0000016c) move-result-object   v0
+	95      (0000016e) filled-new-array     v0, [Ljava/lang/Object;
+	96      (00000174) move-result-object   v0
+	97      (00000176) const-string         v4, "Must not set an account in GoogleApiClient.Builder when using %s. Set account in GoogleSignInOptions.Builder instead"
+	98      (0000017a) invoke-static        v3, v4, v0, Lcom/google/android/gms/common/internal/Preconditions;->checkState(Z Ljava/lang/String; [Ljava/lang/Object;)V
+	99      (00000180) iget-object          v0, v1, Lcom/google/android/gms/common/api/GoogleApiClient$Builder;->zab Ljava/util/Set;
+	100     (00000184) iget-object          v3, v1, Lcom/google/android/gms/common/api/GoogleApiClient$Builder;->zac Ljava/util/Set;
+	101     (00000188) invoke-virtual       v0, v3, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+	102     (0000018e) move-result          v0
+	103     (00000190) invoke-virtual       v15, Lcom/google/android/gms/common/api/Api;->zad()Ljava/lang/String;
+	104     (00000196) move-result-object   v3
+	105     (00000198) filled-new-array     v3, [Ljava/lang/Object;
+	106     (0000019e) move-result-object   v3
+	107     (000001a0) const-string         v4, "Must not set scopes in GoogleApiClient.Builder when using %s. Set account in GoogleSignInOptions.Builder instead."
+	108     (000001a4) invoke-static        v0, v4, v3, Lcom/google/android/gms/common/internal/Preconditions;->checkState(Z Ljava/lang/String; [Ljava/lang/Object;)V
+	109     (000001aa) goto                 +13h
+
+build-BB@0x1ac : 
+	110     (000001ac) new-instance         v0, Ljava/lang/IllegalStateException;
+	111     (000001b0) invoke-virtual       v15, Lcom/google/android/gms/common/api/Api;->zad()Ljava/lang/String;
+	112     (000001b6) move-result-object   v2
+	113     (000001b8) const-string         v3, "With using "
+	114     (000001bc) const-string         v4, ", GamesOptions can only be specified within GoogleSignInOptions.Builder"
+	115     (000001c0) invoke-static        v3, v2, v4, Lv1/a;->l(Ljava/lang/String; Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	116     (000001c6) move-result-object   v2
+	117     (000001c8) invoke-direct        v0, v2, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	118     (000001ce) throw                v0
+
+build-BB@0x1d0 : [ build-BB@0x220 ]
+	119     (000001d0) invoke-virtual       v14, Lr/e;->values()Ljava/util/Collection;
+	120     (000001d6) move-result-object   v0
+	121     (000001d8) invoke-static        v0, v2, Lcom/google/android/gms/common/api/internal/zabe;->zad(Ljava/lang/Iterable; Z)I
+	122     (000001de) move-result          v16
+	123     (000001e0) iget-object          v5, v1, Lcom/google/android/gms/common/api/GoogleApiClient$Builder;->zai Landroid/content/Context;
+	124     (000001e4) new-instance         v4, Lcom/google/android/gms/common/api/internal/zabe;
+	125     (000001e8) new-instance         v6, Ljava/util/concurrent/locks/ReentrantLock;
+	126     (000001ec) invoke-direct        v6, Ljava/util/concurrent/locks/ReentrantLock;-><init>()V
+	127     (000001f2) move-object          v8, v7
+	128     (000001f4) iget-object          v7, v1, Lcom/google/android/gms/common/api/GoogleApiClient$Builder;->zan Landroid/os/Looper;
+	129     (000001f8) iget-object          v9, v1, Lcom/google/android/gms/common/api/GoogleApiClient$Builder;->zao Lcom/google/android/gms/common/GoogleApiAvailability;
+	130     (000001fc) iget-object          v10, v1, Lcom/google/android/gms/common/api/GoogleApiClient$Builder;->zap Lcom/google/android/gms/common/api/Api$AbstractClientBuilder;
+	131     (00000200) move-object/from16   v17, v12
+	132     (00000204) iget-object          v12, v1, Lcom/google/android/gms/common/api/GoogleApiClient$Builder;->zaq Ljava/util/ArrayList;
+	133     (00000208) iget-object          v13, v1, Lcom/google/android/gms/common/api/GoogleApiClient$Builder;->zar Ljava/util/ArrayList;
+	134     (0000020c) iget                 v15, v1, Lcom/google/android/gms/common/api/GoogleApiClient$Builder;->zal I
+	135     (00000210) invoke-direct/range  v4 ... v17, Lcom/google/android/gms/common/api/internal/zabe;-><init>(Landroid/content/Context; Ljava/util/concurrent/locks/Lock; Landroid/os/Looper; Lcom/google/android/gms/common/internal/ClientSettings; Lcom/google/android/gms/common/GoogleApiAvailability; Lcom/google/android/gms/common/api/Api$AbstractClientBuilder; Ljava/util/Map; Ljava/util/List; Ljava/util/List; Ljava/util/Map; I I Ljava/util/ArrayList;)V
+	136     (00000216) invoke-static        Lcom/google/android/gms/common/api/GoogleApiClient;->zaq()Ljava/util/Set;
+	137     (0000021c) move-result-object   v2
+	138     (0000021e) monitor-enter        v2
+
+build-BB@0x220 : [ build-BB@0x238 build-BB@0x252 ]
+	139     (00000220) invoke-static        Lcom/google/android/gms/common/api/GoogleApiClient;->zaq()Ljava/util/Set;
+	140     (00000226) move-result-object   v0
+	141     (00000228) invoke-interface     v0, v4, Ljava/util/Set;->add(Ljava/lang/Object;)Z
+	142     (0000022e) monitor-exit         v2
+	143     (00000230) iget                 v0, v1, Lcom/google/android/gms/common/api/GoogleApiClient$Builder;->zal I
+	144     (00000234) if-ltz               v0, +00fh
+	220:22f
+	(Ljava/lang/Throwable; -> 254 build-BB@0x254)
+
+build-BB@0x238 : [ build-BB@0x252 ]
+	145     (00000238) iget-object          v0, v1, Lcom/google/android/gms/common/api/GoogleApiClient$Builder;->zak Lcom/google/android/gms/common/api/internal/LifecycleActivity;
+	146     (0000023c) invoke-static        v0, Lcom/google/android/gms/common/api/internal/zak;->zaa(Lcom/google/android/gms/common/api/internal/LifecycleActivity;)Lcom/google/android/gms/common/api/internal/zak;
+	147     (00000242) move-result-object   v0
+	148     (00000244) iget                 v2, v1, Lcom/google/android/gms/common/api/GoogleApiClient$Builder;->zal I
+	149     (00000248) iget-object          v3, v1, Lcom/google/android/gms/common/api/GoogleApiClient$Builder;->zam Lcom/google/android/gms/common/api/GoogleApiClient$OnConnectionFailedListener;
+	150     (0000024c) invoke-virtual       v0, v2, v4, v3, Lcom/google/android/gms/common/api/internal/zak;->zad(I Lcom/google/android/gms/common/api/GoogleApiClient; Lcom/google/android/gms/common/api/GoogleApiClient$OnConnectionFailedListener;)V
+
+build-BB@0x252 : 
+	151     (00000252) return-object        v4
+
+build-BB@0x254 : [ build-BB@0x256 ]
+	152     (00000254) move-exception       v0
+
+build-BB@0x256 : 
+	153     (00000256) monitor-exit         v2
+	154     (00000258) throw                v0
+	256:257
+	(Ljava/lang/Throwable; -> 254 build-BB@0x254)
+

@@ -1,0 +1,33 @@
+# Lcom/google/android/gms/common/internal/safeparcel/SafeParcelWriter;->writeBigInteger(Landroid/os/Parcel; I Ljava/math/BigInteger; Z)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v-1
+# - v0:android.os.Parcel
+# - v1:int
+# - v2:java.math.BigInteger
+# - v3:boolean
+#
+# - return:void
+
+writeBigInteger-BB@0x0 : [ writeBigInteger-BB@0x4 writeBigInteger-BB@0x12 ]
+	0       (00000000) if-nez               v2, +009h
+
+writeBigInteger-BB@0x4 : [ writeBigInteger-BB@0x8 writeBigInteger-BB@0x10 ]
+	1       (00000004) if-eqz               v3, +006h
+
+writeBigInteger-BB@0x8 : [ writeBigInteger-BB@0x10 ]
+	2       (00000008) const/4              v2, 0
+	3       (0000000a) invoke-static        v0, v1, v2, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelWriter;->zza(Landroid/os/Parcel; I I)V
+
+writeBigInteger-BB@0x10 : 
+	4       (00000010) return-void          
+
+writeBigInteger-BB@0x12 : 
+	5       (00000012) invoke-static        v0, v1, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelWriter;->zzb(Landroid/os/Parcel; I)I
+	6       (00000018) move-result          v1
+	7       (0000001a) invoke-virtual       v2, Ljava/math/BigInteger;->toByteArray()[B
+	8       (00000020) move-result-object   v2
+	9       (00000022) invoke-virtual       v0, v2, Landroid/os/Parcel;->writeByteArray([B)V
+	10      (00000028) invoke-static        v0, v1, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelWriter;->zzc(Landroid/os/Parcel; I)V
+	11      (0000002e) return-void          
+

@@ -1,0 +1,64 @@
+# Lcom/google/android/recaptcha/internal/zzjp;->iterator()Ljava/util/Iterator; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v5
+#
+# - return:java.util.Iterator
+
+iterator-BB@0x0 : [ iterator-BB@0xc iterator-BB@0x3e ]
+	0       (00000000) iget-object          v0, v5, Lcom/google/android/recaptcha/internal/zzjp;->zza Ljava/lang/Iterable;
+	1       (00000004) instance-of          v1, v0, Ljava/util/List;
+	2       (00000008) if-eqz               v1, +01bh
+
+iterator-BB@0xc : 
+	3       (0000000c) check-cast           v0, Ljava/util/List;
+	4       (00000010) invoke-interface     v0, Ljava/util/List;->size()I
+	5       (00000016) move-result          v1
+	6       (00000018) iget                 v2, v5, Lcom/google/android/recaptcha/internal/zzjp;->zzb I
+	7       (0000001c) invoke-static        v1, v2, Ljava/lang/Math;->min(I I)I
+	8       (00000022) move-result          v1
+	9       (00000024) invoke-interface     v0, Ljava/util/List;->size()I
+	10      (0000002a) move-result          v2
+	11      (0000002c) invoke-interface     v0, v1, v2, Ljava/util/List;->subList(I I)Ljava/util/List;
+	12      (00000032) move-result-object   v0
+	13      (00000034) invoke-interface     v0, Ljava/util/List;->iterator()Ljava/util/Iterator;
+	14      (0000003a) move-result-object   v0
+	15      (0000003c) return-object        v0
+
+iterator-BB@0x3e : [ iterator-BB@0x56 iterator-BB@0x5a ]
+	16      (0000003e) iget                 v1, v5, Lcom/google/android/recaptcha/internal/zzjp;->zzb I
+	17      (00000042) invoke-interface     v0, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
+	18      (00000048) move-result-object   v0
+	19      (0000004a) invoke-virtual       v0, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	20      (00000050) const/4              v2, 0
+	21      (00000052) if-ltz               v1, +004h
+
+iterator-BB@0x56 : [ iterator-BB@0x5c ]
+	22      (00000056) const/4              v3, 1
+	23      (00000058) goto                 +2h
+
+iterator-BB@0x5a : [ iterator-BB@0x5c ]
+	24      (0000005a) move                 v3, v2
+
+iterator-BB@0x5c : [ iterator-BB@0x66 ]
+	25      (0000005c) const-string         v4, "numberToAdvance must be nonnegative"
+	26      (00000060) invoke-static        v3, v4, Lcom/google/android/recaptcha/internal/zzjf;->zzb(Z Ljava/lang/Object;)V
+
+iterator-BB@0x66 : [ iterator-BB@0x6a iterator-BB@0x82 ]
+	27      (00000066) if-ge                v2, v1, +00eh
+
+iterator-BB@0x6a : [ iterator-BB@0x76 iterator-BB@0x82 ]
+	28      (0000006a) invoke-interface     v0, Ljava/util/Iterator;->hasNext()Z
+	29      (00000070) move-result          v3
+	30      (00000072) if-eqz               v3, +008h
+
+iterator-BB@0x76 : [ iterator-BB@0x66 ]
+	31      (00000076) invoke-interface     v0, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	32      (0000007c) add-int/lit8         v2, v2, 1
+	33      (00000080) goto                 -dh
+
+iterator-BB@0x82 : 
+	34      (00000082) new-instance         v1, Lcom/google/android/recaptcha/internal/zzjo;
+	35      (00000086) invoke-direct        v1, v5, v0, Lcom/google/android/recaptcha/internal/zzjo;-><init>(Lcom/google/android/recaptcha/internal/zzjp; Ljava/util/Iterator;)V
+	36      (0000008c) return-object        v1
+

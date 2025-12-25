@@ -1,0 +1,146 @@
+# Lcom/google/android/gms/internal/fido/zzaq;->zza(Ljava/lang/String; [Ljava/lang/Object;)Ljava/lang/String; [access_flags=public static varargs]
+#
+# Parameters:
+# - local registers: v0...v9
+# - v10:java.lang.String
+# - v11:java.lang.Object[]
+#
+# - return:java.lang.String
+
+zza-BB@0x0 : [ zza-BB@0x4 ]
+	0       (00000000) const/4              v1, 0
+	1       (00000002) move                 v2, v1
+
+zza-BB@0x4 : [ zza-BB@0xa zza-BB@0xcc ]
+	2       (00000004) array-length         v0, v11
+	3       (00000006) if-ge                v2, v0, +063h
+
+zza-BB@0xa : [ zza-BB@0x12 zza-BB@0x18 ]
+	4       (0000000a) aget-object          v3, v11, v2
+	5       (0000000e) if-nez               v3, +005h
+
+zza-BB@0x12 : [ zza-BB@0xc2 ]
+	6       (00000012) const-string         v0, "null"
+	7       (00000016) goto                 +56h
+
+zza-BB@0x18 : [ zza-BB@0xc2 ]
+	8       (00000018) invoke-virtual       v3, Ljava/lang/Object;->toString()Ljava/lang/String;
+	9       (0000001e) move-result-object   v0
+	10      (00000020) goto                 +51h
+	18:1f
+	(Ljava/lang/Exception; -> 22 zza-BB@0x22)
+
+zza-BB@0x22 : [ zza-BB@0xc2 ]
+	11      (00000022) move-exception       v0
+	12      (00000024) move-object          v8, v0
+	13      (00000026) invoke-virtual       v3, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	14      (0000002c) move-result-object   v0
+	15      (0000002e) invoke-virtual       v0, Ljava/lang/Class;->getName()Ljava/lang/String;
+	16      (00000034) move-result-object   v0
+	17      (00000036) invoke-static        v3, Ljava/lang/System;->identityHashCode(Ljava/lang/Object;)I
+	18      (0000003c) move-result          v3
+	19      (0000003e) invoke-static        v3, Ljava/lang/Integer;->toHexString(I)Ljava/lang/String;
+	20      (00000044) move-result-object   v3
+	21      (00000046) const-string         v4, "@"
+	22      (0000004a) invoke-static        v0, v4, v3, Lg2/g;->e(Ljava/lang/String; Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	23      (00000050) move-result-object   v0
+	24      (00000052) const-string         v3, "com.google.common.base.Strings"
+	25      (00000056) invoke-static        v3, Ljava/util/logging/Logger;->getLogger(Ljava/lang/String;)Ljava/util/logging/Logger;
+	26      (0000005c) move-result-object   v3
+	27      (0000005e) sget-object          v4, Ljava/util/logging/Level;->WARNING Ljava/util/logging/Level;
+	28      (00000062) const-string         v6, "lenientToString"
+	29      (00000066) const-string         v5, "Exception during lenientFormat for "
+	30      (0000006a) invoke-virtual       v5, v0, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	31      (00000070) move-result-object   v7
+	32      (00000072) const-string         v5, "com.google.common.base.Strings"
+	33      (00000076) invoke-virtual/range v3 ... v8, Ljava/util/logging/Logger;->logp(Ljava/util/logging/Level; Ljava/lang/String; Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)V
+	34      (0000007c) invoke-virtual       v8, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	35      (00000082) move-result-object   v3
+	36      (00000084) invoke-virtual       v3, Ljava/lang/Class;->getName()Ljava/lang/String;
+	37      (0000008a) move-result-object   v3
+	38      (0000008c) new-instance         v4, Ljava/lang/StringBuilder;
+	39      (00000090) const-string         v5, "<"
+	40      (00000094) invoke-direct        v4, v5, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	41      (0000009a) invoke-virtual       v4, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	42      (000000a0) const-string         v0, " threw "
+	43      (000000a4) invoke-virtual       v4, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	44      (000000aa) invoke-virtual       v4, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	45      (000000b0) const-string         v0, ">"
+	46      (000000b4) invoke-virtual       v4, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	47      (000000ba) invoke-virtual       v4, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	48      (000000c0) move-result-object   v0
+
+zza-BB@0xc2 : [ zza-BB@0x4 ]
+	49      (000000c2) aput-object          v0, v11, v2
+	50      (000000c6) add-int/lit8         v2, v2, 1
+	51      (000000ca) goto                 -63h
+
+zza-BB@0xcc : [ zza-BB@0xe6 ]
+	52      (000000cc) invoke-virtual       v10, Ljava/lang/String;->length()I
+	53      (000000d2) move-result          v2
+	54      (000000d4) mul-int/lit8         v0, v0, 16
+	55      (000000d8) new-instance         v3, Ljava/lang/StringBuilder;
+	56      (000000dc) add-int/2addr        v2, v0
+	57      (000000de) invoke-direct        v3, v2, Ljava/lang/StringBuilder;-><init>(I)V
+	58      (000000e4) move                 v0, v1
+
+zza-BB@0xe6 : [ zza-BB@0xec zza-BB@0x120 ]
+	59      (000000e6) array-length         v2, v11
+	60      (000000e8) if-ge                v1, v2, +01ch
+
+zza-BB@0xec : [ zza-BB@0xfe zza-BB@0x100 ]
+	61      (000000ec) const-string         v4, "%s"
+	62      (000000f0) invoke-virtual       v10, v4, v0, Ljava/lang/String;->indexOf(Ljava/lang/String; I)I
+	63      (000000f6) move-result          v4
+	64      (000000f8) const/4              v5, -1
+	65      (000000fa) if-ne                v4, v5, +003h
+
+zza-BB@0xfe : [ zza-BB@0x120 ]
+	66      (000000fe) goto                 +11h
+
+zza-BB@0x100 : [ zza-BB@0xe6 ]
+	67      (00000100) invoke-virtual       v3, v10, v0, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/CharSequence; I I)Ljava/lang/StringBuilder;
+	68      (00000106) add-int/lit8         v0, v1, 1
+	69      (0000010a) aget-object          v1, v11, v1
+	70      (0000010e) invoke-virtual       v3, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	71      (00000114) add-int/lit8         v1, v4, 2
+	72      (00000118) move                 v9, v1
+	73      (0000011a) move                 v1, v0
+	74      (0000011c) move                 v0, v9
+	75      (0000011e) goto                 -1ch
+
+zza-BB@0x120 : [ zza-BB@0x132 zza-BB@0x176 ]
+	76      (00000120) invoke-virtual       v10, Ljava/lang/String;->length()I
+	77      (00000126) move-result          v4
+	78      (00000128) invoke-virtual       v3, v10, v0, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/CharSequence; I I)Ljava/lang/StringBuilder;
+	79      (0000012e) if-ge                v1, v2, +024h
+
+zza-BB@0x132 : [ zza-BB@0x14a ]
+	80      (00000132) const-string         v10, " ["
+	81      (00000136) invoke-virtual       v3, v10, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	82      (0000013c) add-int/lit8         v10, v1, 1
+	83      (00000140) aget-object          v0, v11, v1
+	84      (00000144) invoke-virtual       v3, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+zza-BB@0x14a : [ zza-BB@0x150 zza-BB@0x16c ]
+	85      (0000014a) array-length         v0, v11
+	86      (0000014c) if-ge                v10, v0, +010h
+
+zza-BB@0x150 : [ zza-BB@0x14a ]
+	87      (00000150) const-string         v0, ", "
+	88      (00000154) invoke-virtual       v3, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	89      (0000015a) add-int/lit8         v0, v10, 1
+	90      (0000015e) aget-object          v10, v11, v10
+	91      (00000162) invoke-virtual       v3, v10, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	92      (00000168) move                 v10, v0
+	93      (0000016a) goto                 -10h
+
+zza-BB@0x16c : [ zza-BB@0x176 ]
+	94      (0000016c) const/16             v10, 93
+	95      (00000170) invoke-virtual       v3, v10, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+
+zza-BB@0x176 : 
+	96      (00000176) invoke-virtual       v3, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	97      (0000017c) move-result-object   v10
+	98      (0000017e) return-object        v10
+

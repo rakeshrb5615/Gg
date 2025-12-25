@@ -1,0 +1,37 @@
+# Lcom/google/android/gms/common/GooglePlayServicesUtilLight;->isRestrictedUserProfile(Landroid/content/Context;)Z [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:android.content.Context
+#
+# - return:boolean
+
+isRestrictedUserProfile-BB@0x0 : [ isRestrictedUserProfile-BB@0x2a isRestrictedUserProfile-BB@0x4a ]
+	0       (00000000) const-string         v0, "user"
+	1       (00000004) invoke-virtual       v2, v0, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+	2       (0000000a) move-result-object   v0
+	3       (0000000c) invoke-static        v0, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;
+	4       (00000012) check-cast           v0, Landroid/os/UserManager;
+	5       (00000016) invoke-virtual       v2, Landroid/content/Context;->getPackageName()Ljava/lang/String;
+	6       (0000001c) move-result-object   v2
+	7       (0000001e) invoke-virtual       v0, v2, Landroid/os/UserManager;->getApplicationRestrictions(Ljava/lang/String;)Landroid/os/Bundle;
+	8       (00000024) move-result-object   v2
+	9       (00000026) if-eqz               v2, +012h
+
+isRestrictedUserProfile-BB@0x2a : [ isRestrictedUserProfile-BB@0x46 isRestrictedUserProfile-BB@0x4a ]
+	10      (0000002a) const-string         v0, "true"
+	11      (0000002e) const-string         v1, "restricted_profile"
+	12      (00000032) invoke-virtual       v2, v1, Landroid/os/BaseBundle;->getString(Ljava/lang/String;)Ljava/lang/String;
+	13      (00000038) move-result-object   v2
+	14      (0000003a) invoke-virtual       v0, v2, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	15      (00000040) move-result          v2
+	16      (00000042) if-eqz               v2, +004h
+
+isRestrictedUserProfile-BB@0x46 : 
+	17      (00000046) const/4              v2, 1
+	18      (00000048) return               v2
+
+isRestrictedUserProfile-BB@0x4a : 
+	19      (0000004a) const/4              v2, 0
+	20      (0000004c) return               v2
+

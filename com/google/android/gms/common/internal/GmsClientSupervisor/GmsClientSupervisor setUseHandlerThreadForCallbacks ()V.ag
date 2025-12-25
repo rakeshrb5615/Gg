@@ -1,0 +1,51 @@
+# Lcom/google/android/gms/common/internal/GmsClientSupervisor;->setUseHandlerThreadForCallbacks()V [access_flags=public static]
+#
+# Parameters:
+# local registers: v0...v2
+#
+# - return:void
+
+setUseHandlerThreadForCallbacks-BB@0x0 : [ setUseHandlerThreadForCallbacks-BB@0x6 ]
+	0       (00000000) sget-object          v0, Lcom/google/android/gms/common/internal/GmsClientSupervisor;->zzb Ljava/lang/Object;
+	1       (00000004) monitor-enter        v0
+
+setUseHandlerThreadForCallbacks-BB@0x6 : [ setUseHandlerThreadForCallbacks-BB@0xe setUseHandlerThreadForCallbacks-BB@0x32 ]
+	2       (00000006) sget-object          v1, Lcom/google/android/gms/common/internal/GmsClientSupervisor;->zzd Lcom/google/android/gms/common/internal/zzq;
+	3       (0000000a) if-eqz               v1, +014h
+	6:3d
+	(Ljava/lang/Throwable; -> 2e setUseHandlerThreadForCallbacks-BB@0x2e)
+
+setUseHandlerThreadForCallbacks-BB@0xe : [ setUseHandlerThreadForCallbacks-BB@0x16 setUseHandlerThreadForCallbacks-BB@0x32 ]
+	4       (0000000e) sget-boolean         v2, Lcom/google/android/gms/common/internal/GmsClientSupervisor;->zzf Z
+	5       (00000012) if-nez               v2, +010h
+	6:3d
+	(Ljava/lang/Throwable; -> 2e setUseHandlerThreadForCallbacks-BB@0x2e)
+
+setUseHandlerThreadForCallbacks-BB@0x16 : [ setUseHandlerThreadForCallbacks-BB@0x32 ]
+	6       (00000016) invoke-static        Lcom/google/android/gms/common/internal/GmsClientSupervisor;->getOrStartHandlerThread()Landroid/os/HandlerThread;
+	7       (0000001c) move-result-object   v2
+	8       (0000001e) invoke-virtual       v2, Landroid/os/HandlerThread;->getLooper()Landroid/os/Looper;
+	9       (00000024) move-result-object   v2
+	10      (00000026) invoke-virtual       v1, v2, Lcom/google/android/gms/common/internal/zzq;->zzd(Landroid/os/Looper;)V
+	11      (0000002c) goto                 +3h
+	6:3d
+	(Ljava/lang/Throwable; -> 2e setUseHandlerThreadForCallbacks-BB@0x2e)
+
+setUseHandlerThreadForCallbacks-BB@0x2e : [ setUseHandlerThreadForCallbacks-BB@0x3c ]
+	12      (0000002e) move-exception       v1
+	13      (00000030) goto                 +6h
+	6:3d
+	(Ljava/lang/Throwable; -> 2e setUseHandlerThreadForCallbacks-BB@0x2e)
+
+setUseHandlerThreadForCallbacks-BB@0x32 : 
+	14      (00000032) const/4              v1, 1
+	15      (00000034) sput-boolean         v1, Lcom/google/android/gms/common/internal/GmsClientSupervisor;->zzf Z
+	16      (00000038) monitor-exit         v0
+	17      (0000003a) return-void          
+	6:3d
+	(Ljava/lang/Throwable; -> 2e setUseHandlerThreadForCallbacks-BB@0x2e)
+
+setUseHandlerThreadForCallbacks-BB@0x3c : 
+	18      (0000003c) monitor-exit         v0
+	19      (0000003e) throw                v1
+

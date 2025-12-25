@@ -1,0 +1,114 @@
+# Lcom/google/android/gms/auth/api/signin/internal/SignInHubActivity;->onCreate(Landroid/os/Bundle;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:android.os.Bundle
+#
+# - return:void
+
+onCreate-BB@0x0 : [ onCreate-BB@0x2c onCreate-BB@0x38 ]
+	0       (00000000) invoke-super         v4, v5, Landroidx/fragment/app/j0;->onCreate(Landroid/os/Bundle;)V
+	1       (00000006) invoke-virtual       v4, Landroid/app/Activity;->getIntent()Landroid/content/Intent;
+	2       (0000000c) move-result-object   v0
+	3       (0000000e) invoke-virtual       v0, Landroid/content/Intent;->getAction()Ljava/lang/String;
+	4       (00000014) move-result-object   v1
+	5       (00000016) invoke-virtual       v1, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	6       (0000001c) const-string         v2, "com.google.android.gms.auth.NO_IMPL"
+	7       (00000020) invoke-virtual       v2, v1, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	8       (00000026) move-result          v2
+	9       (00000028) if-eqz               v2, +008h
+
+onCreate-BB@0x2c : 
+	10      (0000002c) const/16             v5, 12500
+	11      (00000030) invoke-direct        v4, v5, Lcom/google/android/gms/auth/api/signin/internal/SignInHubActivity;->zbd(I)V
+	12      (00000036) return-void          
+
+onCreate-BB@0x38 : [ onCreate-BB@0x4c onCreate-BB@0x88 ]
+	13      (00000038) const-string         v2, "com.google.android.gms.auth.GOOGLE_SIGN_IN"
+	14      (0000003c) invoke-virtual       v1, v2, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	15      (00000042) move-result          v2
+	16      (00000044) const-string         v3, "AuthSignInClient"
+	17      (00000048) if-nez               v2, +020h
+
+onCreate-BB@0x4c : [ onCreate-BB@0x5c onCreate-BB@0x5e ]
+	18      (0000004c) const-string         v2, "com.google.android.gms.auth.APPAUTH_SIGN_IN"
+	19      (00000050) invoke-virtual       v1, v2, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	20      (00000056) move-result          v2
+	21      (00000058) if-eqz               v2, +003h
+
+onCreate-BB@0x5c : [ onCreate-BB@0x88 ]
+	22      (0000005c) goto                 +16h
+
+onCreate-BB@0x5e : 
+	23      (0000005e) invoke-virtual       v0, Landroid/content/Intent;->getAction()Ljava/lang/String;
+	24      (00000064) move-result-object   v5
+	25      (00000066) invoke-static        v5, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
+	26      (0000006c) move-result-object   v5
+	27      (0000006e) const-string         v0, "Unknown action: "
+	28      (00000072) invoke-virtual       v0, v5, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	29      (00000078) move-result-object   v5
+	30      (0000007a) invoke-static        v3, v5, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String;)I
+	31      (00000080) invoke-virtual       v4, Landroid/app/Activity;->finish()V
+	32      (00000086) return-void          
+
+onCreate-BB@0x88 : [ onCreate-BB@0xac onCreate-BB@0xc4 ]
+	33      (00000088) const-string         v2, "config"
+	34      (0000008c) invoke-virtual       v0, v2, Landroid/content/Intent;->getBundleExtra(Ljava/lang/String;)Landroid/os/Bundle;
+	35      (00000092) move-result-object   v0
+	36      (00000094) invoke-virtual       v0, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	37      (0000009a) invoke-virtual       v0, v2, Landroid/os/Bundle;->getParcelable(Ljava/lang/String;)Landroid/os/Parcelable;
+	38      (000000a0) move-result-object   v0
+	39      (000000a2) check-cast           v0, Lcom/google/android/gms/auth/api/signin/internal/SignInConfiguration;
+	40      (000000a6) const/4              v2, 0
+	41      (000000a8) if-nez               v0, +00eh
+
+onCreate-BB@0xac : 
+	42      (000000ac) const-string         v5, "Activity started with invalid configuration."
+	43      (000000b0) invoke-static        v3, v5, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String;)I
+	44      (000000b6) invoke-virtual       v4, v2, Landroid/app/Activity;->setResult(I)V
+	45      (000000bc) invoke-virtual       v4, Landroid/app/Activity;->finish()V
+	46      (000000c2) return-void          
+
+onCreate-BB@0xc4 : [ onCreate-BB@0xcc onCreate-BB@0xf4 ]
+	47      (000000c4) iput-object          v0, v4, Lcom/google/android/gms/auth/api/signin/internal/SignInHubActivity;->zbc Lcom/google/android/gms/auth/api/signin/internal/SignInConfiguration;
+	48      (000000c8) if-nez               v5, +016h
+
+onCreate-BB@0xcc : [ onCreate-BB@0xd4 onCreate-BB@0xe6 ]
+	49      (000000cc) sget-boolean         v5, Lcom/google/android/gms/auth/api/signin/internal/SignInHubActivity;->zba Z
+	50      (000000d0) if-eqz               v5, +00bh
+
+onCreate-BB@0xd4 : 
+	51      (000000d4) invoke-virtual       v4, v2, Landroid/app/Activity;->setResult(I)V
+	52      (000000da) const/16             v5, 12502
+	53      (000000de) invoke-direct        v4, v5, Lcom/google/android/gms/auth/api/signin/internal/SignInHubActivity;->zbd(I)V
+	54      (000000e4) return-void          
+
+onCreate-BB@0xe6 : 
+	55      (000000e6) const/4              v5, 1
+	56      (000000e8) sput-boolean         v5, Lcom/google/android/gms/auth/api/signin/internal/SignInHubActivity;->zba Z
+	57      (000000ec) invoke-direct        v4, v1, Lcom/google/android/gms/auth/api/signin/internal/SignInHubActivity;->zbe(Ljava/lang/String;)V
+	58      (000000f2) return-void          
+
+onCreate-BB@0xf4 : [ onCreate-BB@0x108 onCreate-BB@0x138 ]
+	59      (000000f4) const-string         v0, "signingInGoogleApiClients"
+	60      (000000f8) invoke-virtual       v5, v0, Landroid/os/BaseBundle;->getBoolean(Ljava/lang/String;)Z
+	61      (000000fe) move-result          v0
+	62      (00000100) iput-boolean         v0, v4, Lcom/google/android/gms/auth/api/signin/internal/SignInHubActivity;->zbd Z
+	63      (00000104) if-eqz               v0, +01ah
+
+onCreate-BB@0x108 : [ onCreate-BB@0x138 ]
+	64      (00000108) const-string         v0, "signInResultCode"
+	65      (0000010c) invoke-virtual       v5, v0, Landroid/os/BaseBundle;->getInt(Ljava/lang/String;)I
+	66      (00000112) move-result          v0
+	67      (00000114) iput                 v0, v4, Lcom/google/android/gms/auth/api/signin/internal/SignInHubActivity;->zbe I
+	68      (00000118) const-string         v0, "signInResultData"
+	69      (0000011c) invoke-virtual       v5, v0, Landroid/os/Bundle;->getParcelable(Ljava/lang/String;)Landroid/os/Parcelable;
+	70      (00000122) move-result-object   v5
+	71      (00000124) check-cast           v5, Landroid/content/Intent;
+	72      (00000128) invoke-virtual       v5, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	73      (0000012e) iput-object          v5, v4, Lcom/google/android/gms/auth/api/signin/internal/SignInHubActivity;->zbf Landroid/content/Intent;
+	74      (00000132) invoke-direct        v4, Lcom/google/android/gms/auth/api/signin/internal/SignInHubActivity;->zbc()V
+
+onCreate-BB@0x138 : 
+	75      (00000138) return-void          
+

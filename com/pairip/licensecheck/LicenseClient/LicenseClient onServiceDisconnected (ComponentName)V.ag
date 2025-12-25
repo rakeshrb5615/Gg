@@ -1,0 +1,34 @@
+# Lcom/pairip/licensecheck/LicenseClient;->onServiceDisconnected(Landroid/content/ComponentName;)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:android.content.ComponentName
+#
+# - return:void
+
+onServiceDisconnected-BB@0x0 : [ onServiceDisconnected-BB@0x18 onServiceDisconnected-BB@0x2c ]
+	0       (00000000) sget-object          v2, Lcom/pairip/licensecheck/LicenseClient;->licenseCheckState Lcom/pairip/licensecheck/LicenseClient$LicenseCheckState;
+	1       (00000004) sget-object          v0, Lcom/pairip/licensecheck/LicenseClient$LicenseCheckState;->REPEATED_CHECK_REQUIRED Lcom/pairip/licensecheck/LicenseClient$LicenseCheckState;
+	2       (00000008) invoke-virtual       v2, v0, Lcom/pairip/licensecheck/LicenseClient$LicenseCheckState;->equals(Ljava/lang/Object;)Z
+	3       (0000000e) move-result          v2
+	4       (00000010) const-string         v0, "LicenseClient"
+	5       (00000014) if-eqz               v2, +00ch
+
+onServiceDisconnected-BB@0x18 : [ onServiceDisconnected-BB@0x20 onServiceDisconnected-BB@0x2c ]
+	6       (00000018) iget-boolean         v2, v1, Lcom/pairip/licensecheck/LicenseClient;->waitingForRepeatedCheck Z
+	7       (0000001c) if-eqz               v2, +008h
+
+onServiceDisconnected-BB@0x20 : 
+	8       (00000020) const-string         v2, "Ignoring service disconnection in REPEATED_CHECK_REQUIRED state."
+	9       (00000024) invoke-static        v0, v2, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String;)I
+	10      (0000002a) return-void          
+
+onServiceDisconnected-BB@0x2c : 
+	11      (0000002c) const-string         v2, "Unexpectedly disconnected from the licensing service."
+	12      (00000030) invoke-static        v0, v2, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+	13      (00000036) new-instance         v2, Lcom/pairip/licensecheck/LicenseCheckException;
+	14      (0000003a) const-string         v0, "Licensing service unexpectedly disconnected."
+	15      (0000003e) invoke-direct        v2, v0, Lcom/pairip/licensecheck/LicenseCheckException;-><init>(Ljava/lang/String;)V
+	16      (00000044) invoke-direct        v1, v2, Lcom/pairip/licensecheck/LicenseClient;->retryOrThrow(Lcom/pairip/licensecheck/LicenseCheckException;)V
+	17      (0000004a) return-void          
+

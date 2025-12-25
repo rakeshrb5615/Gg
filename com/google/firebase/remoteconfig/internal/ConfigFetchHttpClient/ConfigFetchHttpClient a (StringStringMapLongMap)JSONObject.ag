@@ -1,0 +1,153 @@
+# Lcom/google/firebase/remoteconfig/internal/ConfigFetchHttpClient;->a(Ljava/lang/String; Ljava/lang/String; Ljava/util/Map; Ljava/lang/Long; Ljava/util/Map;)Lorg/json/JSONObject; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:java.lang.String
+# - v7:java.lang.String
+# - v8:java.util.Map
+# - v9:java.lang.Long
+# - v10:java.util.Map
+#
+# - return:org.json.JSONObject
+
+a-BB@0x0 : [ a-BB@0xe a-BB@0x1ba ]
+	0       (00000000) new-instance         v0, Ljava/util/HashMap;
+	1       (00000004) invoke-direct        v0, Ljava/util/HashMap;-><init>()V
+	2       (0000000a) if-eqz               v6, +0d8h
+
+a-BB@0xe : [ a-BB@0x9c ]
+	3       (0000000e) const-string         v1, "appInstanceId"
+	4       (00000012) invoke-virtual       v0, v1, v6, Ljava/util/HashMap;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	5       (00000018) const-string         v6, "appInstanceIdToken"
+	6       (0000001c) invoke-virtual       v0, v6, v7, Ljava/util/HashMap;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	7       (00000022) const-string         v6, "appId"
+	8       (00000026) iget-object          v7, v5, Lcom/google/firebase/remoteconfig/internal/ConfigFetchHttpClient;->b Ljava/lang/String;
+	9       (0000002a) invoke-virtual       v0, v6, v7, Ljava/util/HashMap;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	10      (00000030) iget-object          v6, v5, Lcom/google/firebase/remoteconfig/internal/ConfigFetchHttpClient;->a Landroid/content/Context;
+	11      (00000034) invoke-virtual       v6, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+	12      (0000003a) move-result-object   v7
+	13      (0000003c) invoke-virtual       v7, Landroid/content/res/Resources;->getConfiguration()Landroid/content/res/Configuration;
+	14      (00000042) move-result-object   v7
+	15      (00000044) iget-object          v7, v7, Landroid/content/res/Configuration;->locale Ljava/util/Locale;
+	16      (00000048) const-string         v1, "countryCode"
+	17      (0000004c) invoke-virtual       v7, Ljava/util/Locale;->getCountry()Ljava/lang/String;
+	18      (00000052) move-result-object   v2
+	19      (00000054) invoke-virtual       v0, v1, v2, Ljava/util/HashMap;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	20      (0000005a) sget                 v1, Landroid/os/Build$VERSION;->SDK_INT I
+	21      (0000005e) invoke-virtual       v7, Ljava/util/Locale;->toLanguageTag()Ljava/lang/String;
+	22      (00000064) move-result-object   v7
+	23      (00000066) const-string         v2, "languageCode"
+	24      (0000006a) invoke-virtual       v0, v2, v7, Ljava/util/HashMap;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	25      (00000070) const-string         v7, "platformVersion"
+	26      (00000074) invoke-static        v1, Ljava/lang/Integer;->toString(I)Ljava/lang/String;
+	27      (0000007a) move-result-object   v2
+	28      (0000007c) invoke-virtual       v0, v7, v2, Ljava/util/HashMap;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	29      (00000082) invoke-static        Ljava/util/TimeZone;->getDefault()Ljava/util/TimeZone;
+	30      (00000088) move-result-object   v7
+	31      (0000008a) invoke-virtual       v7, Ljava/util/TimeZone;->getID()Ljava/lang/String;
+	32      (00000090) move-result-object   v7
+	33      (00000092) const-string         v2, "timeZone"
+	34      (00000096) invoke-virtual       v0, v2, v7, Ljava/util/HashMap;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+
+a-BB@0x9c : [ a-BB@0xba a-BB@0xf2 ]
+	35      (0000009c) invoke-virtual       v6, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
+	36      (000000a2) move-result-object   v7
+	37      (000000a4) invoke-virtual       v6, Landroid/content/Context;->getPackageName()Ljava/lang/String;
+	38      (000000aa) move-result-object   v2
+	39      (000000ac) const/4              v3, 0
+	40      (000000ae) invoke-virtual       v7, v2, v3, Landroid/content/pm/PackageManager;->getPackageInfo(Ljava/lang/String; I)Landroid/content/pm/PackageInfo;
+	41      (000000b4) move-result-object   v7
+	42      (000000b6) if-eqz               v7, +01eh
+	9c:f1
+	(Landroid/content/pm/PackageManager$NameNotFoundException; -> f2 a-BB@0xf2)
+
+a-BB@0xba : [ a-BB@0xd4 a-BB@0xde ]
+	43      (000000ba) const-string         v2, "appVersion"
+	44      (000000be) iget-object          v3, v7, Landroid/content/pm/PackageInfo;->versionName Ljava/lang/String;
+	45      (000000c2) invoke-virtual       v0, v2, v3, Ljava/util/HashMap;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	46      (000000c8) const-string         v2, "appBuild"
+	47      (000000cc) const/16             v3, 28
+	48      (000000d0) if-lt                v1, v3, +007h
+	9c:f1
+	(Landroid/content/pm/PackageManager$NameNotFoundException; -> f2 a-BB@0xf2)
+
+a-BB@0xd4 : [ a-BB@0xe4 ]
+	49      (000000d4) invoke-static        v7, Le0/a;->d(Landroid/content/pm/PackageInfo;)J
+	50      (000000da) move-result-wide     v3
+	51      (000000dc) goto                 +4h
+	9c:f1
+	(Landroid/content/pm/PackageManager$NameNotFoundException; -> f2 a-BB@0xf2)
+
+a-BB@0xde : [ a-BB@0xe4 ]
+	52      (000000de) iget                 v7, v7, Landroid/content/pm/PackageInfo;->versionCode I
+	53      (000000e2) int-to-long          v3, v7
+	9c:f1
+	(Landroid/content/pm/PackageManager$NameNotFoundException; -> f2 a-BB@0xf2)
+
+a-BB@0xe4 : [ a-BB@0xf2 ]
+	54      (000000e4) invoke-static        v3, v4, Ljava/lang/Long;->toString(J)Ljava/lang/String;
+	55      (000000ea) move-result-object   v7
+	56      (000000ec) invoke-virtual       v0, v2, v7, Ljava/util/HashMap;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	9c:f1
+	(Landroid/content/pm/PackageManager$NameNotFoundException; -> f2 a-BB@0xf2)
+
+a-BB@0xf2 : [ a-BB@0x132 a-BB@0x174 ]
+	57      (000000f2) const-string         v7, "packageName"
+	58      (000000f6) invoke-virtual       v6, Landroid/content/Context;->getPackageName()Ljava/lang/String;
+	59      (000000fc) move-result-object   v6
+	60      (000000fe) invoke-virtual       v0, v7, v6, Ljava/util/HashMap;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	61      (00000104) const-string         v6, "sdkVersion"
+	62      (00000108) const-string         v7, "23.0.1"
+	63      (0000010c) invoke-virtual       v0, v6, v7, Ljava/util/HashMap;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	64      (00000112) new-instance         v6, Lorg/json/JSONObject;
+	65      (00000116) invoke-direct        v6, v8, Lorg/json/JSONObject;-><init>(Ljava/util/Map;)V
+	66      (0000011c) const-string         v7, "analyticsUserProperties"
+	67      (00000120) invoke-virtual       v0, v7, v6, Ljava/util/HashMap;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	68      (00000126) invoke-interface     v10, Ljava/util/Map;->isEmpty()Z
+	69      (0000012c) move-result          v6
+	70      (0000012e) if-nez               v6, +023h
+
+a-BB@0x132 : [ a-BB@0x174 ]
+	71      (00000132) new-instance         v6, Lorg/json/JSONObject;
+	72      (00000136) invoke-direct        v6, v10, Lorg/json/JSONObject;-><init>(Ljava/util/Map;)V
+	73      (0000013c) const-string         v7, "customSignals"
+	74      (00000140) invoke-virtual       v0, v7, v6, Ljava/util/HashMap;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	75      (00000146) new-instance         v6, Ljava/lang/StringBuilder;
+	76      (0000014a) const-string         v7, "Keys of custom signals during fetch: "
+	77      (0000014e) invoke-direct        v6, v7, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	78      (00000154) invoke-interface     v10, Ljava/util/Map;->keySet()Ljava/util/Set;
+	79      (0000015a) move-result-object   v7
+	80      (0000015c) invoke-virtual       v6, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	81      (00000162) invoke-virtual       v6, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	82      (00000168) move-result-object   v6
+	83      (0000016a) const-string         v7, "FirebaseRemoteConfig"
+	84      (0000016e) invoke-static        v7, v6, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String;)I
+
+a-BB@0x174 : [ a-BB@0x178 a-BB@0x1ae ]
+	85      (00000174) if-eqz               v9, +01dh
+
+a-BB@0x178 : [ a-BB@0x1ae ]
+	86      (00000178) new-instance         v6, Ljava/text/SimpleDateFormat;
+	87      (0000017c) const-string         v7, "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+	88      (00000180) sget-object          v8, Ljava/util/Locale;->US Ljava/util/Locale;
+	89      (00000184) invoke-direct        v6, v7, v8, Ljava/text/SimpleDateFormat;-><init>(Ljava/lang/String; Ljava/util/Locale;)V
+	90      (0000018a) const-string         v7, "UTC"
+	91      (0000018e) invoke-static        v7, Ljava/util/TimeZone;->getTimeZone(Ljava/lang/String;)Ljava/util/TimeZone;
+	92      (00000194) move-result-object   v7
+	93      (00000196) invoke-virtual       v6, v7, Ljava/text/DateFormat;->setTimeZone(Ljava/util/TimeZone;)V
+	94      (0000019c) invoke-virtual       v6, v9, Ljava/text/Format;->format(Ljava/lang/Object;)Ljava/lang/String;
+	95      (000001a2) move-result-object   v6
+	96      (000001a4) const-string         v7, "firstOpenTime"
+	97      (000001a8) invoke-virtual       v0, v7, v6, Ljava/util/HashMap;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+
+a-BB@0x1ae : 
+	98      (000001ae) new-instance         v6, Lorg/json/JSONObject;
+	99      (000001b2) invoke-direct        v6, v0, Lorg/json/JSONObject;-><init>(Ljava/util/Map;)V
+	100     (000001b8) return-object        v6
+
+a-BB@0x1ba : 
+	101     (000001ba) new-instance         v6, Lm6/c;
+	102     (000001be) const-string         v7, "Fetch failed: Firebase installation id is null."
+	103     (000001c2) invoke-direct        v6, v7, Lq4/h;-><init>(Ljava/lang/String;)V
+	104     (000001c8) throw                v6
+

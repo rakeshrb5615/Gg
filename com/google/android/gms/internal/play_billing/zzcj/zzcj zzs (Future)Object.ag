@@ -1,0 +1,46 @@
+# Lcom/google/android/gms/internal/play_billing/zzcj;->zzs(Ljava/util/concurrent/Future;)Ljava/lang/Object; [access_flags=private static]
+#
+# Parameters:
+# - local registers: v0...v0
+# - v1:java.util.concurrent.Future
+#
+# - return:java.lang.Object
+
+zzs-BB@0x0 : [ zzs-BB@0x2 ]
+	0       (00000000) const/4              v0, 0
+
+zzs-BB@0x2 : [ zzs-BB@0xe zzs-BB@0x1c ]
+	1       (00000002) invoke-interface     v1, Ljava/util/concurrent/Future;->get()Ljava/lang/Object;
+	2       (00000008) move-result-object   v1
+	3       (0000000a) if-eqz               v0, +009h
+	2:9
+	(Ljava/lang/InterruptedException; -> 36 zzs-BB@0x36)
+	(Ljava/lang/Throwable; -> 1e zzs-BB@0x1e)
+
+zzs-BB@0xe : [ zzs-BB@0x1c ]
+	4       (0000000e) invoke-static        Ljava/lang/Thread;->currentThread()Ljava/lang/Thread;
+	5       (00000014) move-result-object   v0
+	6       (00000016) invoke-virtual       v0, Ljava/lang/Thread;->interrupt()V
+
+zzs-BB@0x1c : 
+	7       (0000001c) return-object        v1
+
+zzs-BB@0x1e : [ zzs-BB@0x24 zzs-BB@0x26 ]
+	8       (0000001e) move-exception       v1
+	9       (00000020) if-nez               v0, +003h
+
+zzs-BB@0x24 : [ zzs-BB@0x34 ]
+	10      (00000024) goto                 +8h
+
+zzs-BB@0x26 : [ zzs-BB@0x34 ]
+	11      (00000026) invoke-static        Ljava/lang/Thread;->currentThread()Ljava/lang/Thread;
+	12      (0000002c) move-result-object   v0
+	13      (0000002e) invoke-virtual       v0, Ljava/lang/Thread;->interrupt()V
+
+zzs-BB@0x34 : 
+	14      (00000034) throw                v1
+
+zzs-BB@0x36 : [ zzs-BB@0x2 ]
+	15      (00000036) const/4              v0, 1
+	16      (00000038) goto                 -1bh
+

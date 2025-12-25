@@ -1,0 +1,44 @@
+# Lcom/google/android/gms/common/moduleinstall/internal/zay;->getInstallModulesIntent([Lcom/google/android/gms/common/api/OptionalModuleApi;)Lcom/google/android/gms/tasks/Task; [access_flags=public final varargs]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:com.google.android.gms.common.api.OptionalModuleApi[]
+#
+# - return:com.google.android.gms.tasks.Task
+
+getInstallModulesIntent-BB@0x0 : [ getInstallModulesIntent-BB@0x1e getInstallModulesIntent-BB@0x34 ]
+	0       (00000000) const/4              v0, 1
+	1       (00000002) invoke-static        v0, v3, Lcom/google/android/gms/common/moduleinstall/internal/zay;->zad(Z [Lcom/google/android/gms/common/api/OptionalModuleApi;)Lcom/google/android/gms/common/moduleinstall/internal/ApiFeatureRequest;
+	2       (00000008) move-result-object   v3
+	3       (0000000a) invoke-virtual       v3, Lcom/google/android/gms/common/moduleinstall/internal/ApiFeatureRequest;->getApiFeatures()Ljava/util/List;
+	4       (00000010) move-result-object   v0
+	5       (00000012) invoke-interface     v0, Ljava/util/List;->isEmpty()Z
+	6       (00000018) move-result          v0
+	7       (0000001a) if-eqz               v0, +00dh
+
+getInstallModulesIntent-BB@0x1e : 
+	8       (0000001e) new-instance         v3, Lcom/google/android/gms/common/moduleinstall/ModuleInstallIntentResponse;
+	9       (00000022) const/4              v0, 0
+	10      (00000024) invoke-direct        v3, v0, Lcom/google/android/gms/common/moduleinstall/ModuleInstallIntentResponse;-><init>(Landroid/app/PendingIntent;)V
+	11      (0000002a) invoke-static        v3, Lcom/google/android/gms/tasks/Tasks;->forResult(Ljava/lang/Object;)Lcom/google/android/gms/tasks/Task;
+	12      (00000030) move-result-object   v3
+	13      (00000032) return-object        v3
+
+getInstallModulesIntent-BB@0x34 : 
+	14      (00000034) invoke-static        Lcom/google/android/gms/common/api/internal/TaskApiCall;->builder()Lcom/google/android/gms/common/api/internal/TaskApiCall$Builder;
+	15      (0000003a) move-result-object   v0
+	16      (0000003c) sget-object          v1, Lcom/google/android/gms/internal/base/zav;->zaa Lcom/google/android/gms/common/Feature;
+	17      (00000040) filled-new-array     v1, [Lcom/google/android/gms/common/Feature;
+	18      (00000046) move-result-object   v1
+	19      (00000048) invoke-virtual       v0, v1, Lcom/google/android/gms/common/api/internal/TaskApiCall$Builder;->setFeatures([Lcom/google/android/gms/common/Feature;)Lcom/google/android/gms/common/api/internal/TaskApiCall$Builder;
+	20      (0000004e) const/16             v1, 27307
+	21      (00000052) invoke-virtual       v0, v1, Lcom/google/android/gms/common/api/internal/TaskApiCall$Builder;->setMethodKey(I)Lcom/google/android/gms/common/api/internal/TaskApiCall$Builder;
+	22      (00000058) new-instance         v1, Lcom/google/android/gms/common/moduleinstall/internal/zan;
+	23      (0000005c) invoke-direct        v1, v2, v3, Lcom/google/android/gms/common/moduleinstall/internal/zan;-><init>(Lcom/google/android/gms/common/moduleinstall/internal/zay; Lcom/google/android/gms/common/moduleinstall/internal/ApiFeatureRequest;)V
+	24      (00000062) invoke-virtual       v0, v1, Lcom/google/android/gms/common/api/internal/TaskApiCall$Builder;->run(Lcom/google/android/gms/common/api/internal/RemoteCall;)Lcom/google/android/gms/common/api/internal/TaskApiCall$Builder;
+	25      (00000068) invoke-virtual       v0, Lcom/google/android/gms/common/api/internal/TaskApiCall$Builder;->build()Lcom/google/android/gms/common/api/internal/TaskApiCall;
+	26      (0000006e) move-result-object   v3
+	27      (00000070) invoke-virtual       v2, v3, Lcom/google/android/gms/common/api/GoogleApi;->doRead(Lcom/google/android/gms/common/api/internal/TaskApiCall;)Lcom/google/android/gms/tasks/Task;
+	28      (00000076) move-result-object   v3
+	29      (00000078) return-object        v3
+

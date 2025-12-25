@@ -1,0 +1,92 @@
+# Lcom/google/android/gms/internal/firebase-auth-api/zznj;->zza(Ljava/security/spec/ECPoint; Ljava/security/spec/EllipticCurve;)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:java.security.spec.ECPoint
+# - v5:java.security.spec.EllipticCurve
+#
+# - return:void
+
+zza-BB@0x0 : [ zza-BB@0x1c zza-BB@0xd8 ]
+	0       (00000000) invoke-static        v5, Lcom/google/android/gms/internal/firebase-auth-api/zznj;->zza(Ljava/security/spec/EllipticCurve;)Ljava/math/BigInteger;
+	1       (00000006) move-result-object   v0
+	2       (00000008) invoke-virtual       v4, Ljava/security/spec/ECPoint;->getAffineX()Ljava/math/BigInteger;
+	3       (0000000e) move-result-object   v1
+	4       (00000010) invoke-virtual       v4, Ljava/security/spec/ECPoint;->getAffineY()Ljava/math/BigInteger;
+	5       (00000016) move-result-object   v4
+	6       (00000018) if-eqz               v1, +060h
+
+zza-BB@0x1c : [ zza-BB@0x20 zza-BB@0xd8 ]
+	7       (0000001c) if-eqz               v4, +05eh
+
+zza-BB@0x20 : [ zza-BB@0x2e zza-BB@0xc8 ]
+	8       (00000020) invoke-virtual       v1, Ljava/math/BigInteger;->signum()I
+	9       (00000026) move-result          v2
+	10      (00000028) const/4              v3, -1
+	11      (0000002a) if-eq                v2, v3, +04fh
+
+zza-BB@0x2e : [ zza-BB@0x3a zza-BB@0xc8 ]
+	12      (0000002e) invoke-virtual       v1, v0, Ljava/math/BigInteger;->compareTo(Ljava/math/BigInteger;)I
+	13      (00000034) move-result          v2
+	14      (00000036) if-gez               v2, +049h
+
+zza-BB@0x3a : [ zza-BB@0x46 zza-BB@0xb8 ]
+	15      (0000003a) invoke-virtual       v4, Ljava/math/BigInteger;->signum()I
+	16      (00000040) move-result          v2
+	17      (00000042) if-eq                v2, v3, +03bh
+
+zza-BB@0x46 : [ zza-BB@0x52 zza-BB@0xb8 ]
+	18      (00000046) invoke-virtual       v4, v0, Ljava/math/BigInteger;->compareTo(Ljava/math/BigInteger;)I
+	19      (0000004c) move-result          v2
+	20      (0000004e) if-gez               v2, +035h
+
+zza-BB@0x52 : [ zza-BB@0xa6 zza-BB@0xa8 ]
+	21      (00000052) invoke-virtual       v4, v4, Ljava/math/BigInteger;->multiply(Ljava/math/BigInteger;)Ljava/math/BigInteger;
+	22      (00000058) move-result-object   v4
+	23      (0000005a) invoke-virtual       v4, v0, Ljava/math/BigInteger;->mod(Ljava/math/BigInteger;)Ljava/math/BigInteger;
+	24      (00000060) move-result-object   v4
+	25      (00000062) invoke-virtual       v1, v1, Ljava/math/BigInteger;->multiply(Ljava/math/BigInteger;)Ljava/math/BigInteger;
+	26      (00000068) move-result-object   v2
+	27      (0000006a) invoke-virtual       v5, Ljava/security/spec/EllipticCurve;->getA()Ljava/math/BigInteger;
+	28      (00000070) move-result-object   v3
+	29      (00000072) invoke-virtual       v2, v3, Ljava/math/BigInteger;->add(Ljava/math/BigInteger;)Ljava/math/BigInteger;
+	30      (00000078) move-result-object   v2
+	31      (0000007a) invoke-virtual       v2, v1, Ljava/math/BigInteger;->multiply(Ljava/math/BigInteger;)Ljava/math/BigInteger;
+	32      (00000080) move-result-object   v1
+	33      (00000082) invoke-virtual       v5, Ljava/security/spec/EllipticCurve;->getB()Ljava/math/BigInteger;
+	34      (00000088) move-result-object   v5
+	35      (0000008a) invoke-virtual       v1, v5, Ljava/math/BigInteger;->add(Ljava/math/BigInteger;)Ljava/math/BigInteger;
+	36      (00000090) move-result-object   v5
+	37      (00000092) invoke-virtual       v5, v0, Ljava/math/BigInteger;->mod(Ljava/math/BigInteger;)Ljava/math/BigInteger;
+	38      (00000098) move-result-object   v5
+	39      (0000009a) invoke-virtual       v4, v5, Ljava/math/BigInteger;->equals(Ljava/lang/Object;)Z
+	40      (000000a0) move-result          v4
+	41      (000000a2) if-eqz               v4, +003h
+
+zza-BB@0xa6 : 
+	42      (000000a6) return-void          
+
+zza-BB@0xa8 : 
+	43      (000000a8) new-instance         v4, Ljava/security/GeneralSecurityException;
+	44      (000000ac) const-string         v5, "Point is not on curve"
+	45      (000000b0) invoke-direct        v4, v5, Ljava/security/GeneralSecurityException;-><init>(Ljava/lang/String;)V
+	46      (000000b6) throw                v4
+
+zza-BB@0xb8 : 
+	47      (000000b8) new-instance         v4, Ljava/security/GeneralSecurityException;
+	48      (000000bc) const-string         v5, "y is out of range"
+	49      (000000c0) invoke-direct        v4, v5, Ljava/security/GeneralSecurityException;-><init>(Ljava/lang/String;)V
+	50      (000000c6) throw                v4
+
+zza-BB@0xc8 : 
+	51      (000000c8) new-instance         v4, Ljava/security/GeneralSecurityException;
+	52      (000000cc) const-string         v5, "x is out of range"
+	53      (000000d0) invoke-direct        v4, v5, Ljava/security/GeneralSecurityException;-><init>(Ljava/lang/String;)V
+	54      (000000d6) throw                v4
+
+zza-BB@0xd8 : 
+	55      (000000d8) new-instance         v4, Ljava/security/GeneralSecurityException;
+	56      (000000dc) const-string         v5, "point is at infinity"
+	57      (000000e0) invoke-direct        v4, v5, Ljava/security/GeneralSecurityException;-><init>(Ljava/lang/String;)V
+	58      (000000e6) throw                v4
+

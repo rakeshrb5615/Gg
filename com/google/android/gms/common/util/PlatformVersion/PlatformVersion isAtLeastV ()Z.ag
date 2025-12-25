@@ -1,0 +1,37 @@
+# Lcom/google/android/gms/common/util/PlatformVersion;->isAtLeastV()Z [access_flags=public static]
+#
+# Parameters:
+# local registers: v0...v1
+#
+# - return:boolean
+
+isAtLeastV-BB@0x0 : [ isAtLeastV-BB@0x10 isAtLeastV-BB@0x3c ]
+	0       (00000000) sget                 v0, Lm0/a;->a I
+	1       (00000004) sget                 v0, Landroid/os/Build$VERSION;->SDK_INT I
+	2       (00000008) const/16             v1, 35
+	3       (0000000c) if-ge                v0, v1, +018h
+
+isAtLeastV-BB@0x10 : [ isAtLeastV-BB@0x18 isAtLeastV-BB@0x38 ]
+	4       (00000010) const/16             v1, 34
+	5       (00000014) if-lt                v0, v1, +012h
+
+isAtLeastV-BB@0x18 : [ isAtLeastV-BB@0x36 isAtLeastV-BB@0x38 ]
+	6       (00000018) sget-object          v0, Landroid/os/Build$VERSION;->CODENAME Ljava/lang/String;
+	7       (0000001c) const-string         v1, "CODENAME"
+	8       (00000020) invoke-static        v0, v1, Lkotlin/jvm/internal/j;->d(Ljava/lang/Object; Ljava/lang/String;)V
+	9       (00000026) const-string         v0, "VanillaIceCream"
+	10      (0000002a) invoke-static        v0, Lm0/a;->a(Ljava/lang/String;)Z
+	11      (00000030) move-result          v0
+	12      (00000032) if-eqz               v0, +003h
+
+isAtLeastV-BB@0x36 : [ isAtLeastV-BB@0x3c ]
+	13      (00000036) goto                 +3h
+
+isAtLeastV-BB@0x38 : 
+	14      (00000038) const/4              v0, 0
+	15      (0000003a) return               v0
+
+isAtLeastV-BB@0x3c : 
+	16      (0000003c) const/4              v0, 1
+	17      (0000003e) return               v0
+

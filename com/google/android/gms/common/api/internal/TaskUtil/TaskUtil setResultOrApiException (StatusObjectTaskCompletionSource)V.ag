@@ -1,0 +1,25 @@
+# Lcom/google/android/gms/common/api/internal/TaskUtil;->setResultOrApiException(Lcom/google/android/gms/common/api/Status; Ljava/lang/Object; Lcom/google/android/gms/tasks/TaskCompletionSource;)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v0
+# - v1:com.google.android.gms.common.api.Status
+# - v2:java.lang.Object
+# - v3:com.google.android.gms.tasks.TaskCompletionSource
+#
+# - return:void
+
+setResultOrApiException-BB@0x0 : [ setResultOrApiException-BB@0xc setResultOrApiException-BB@0x14 ]
+	0       (00000000) invoke-virtual       v1, Lcom/google/android/gms/common/api/Status;->isSuccess()Z
+	1       (00000006) move-result          v0
+	2       (00000008) if-eqz               v0, +006h
+
+setResultOrApiException-BB@0xc : 
+	3       (0000000c) invoke-virtual       v3, v2, Lcom/google/android/gms/tasks/TaskCompletionSource;->setResult(Ljava/lang/Object;)V
+	4       (00000012) return-void          
+
+setResultOrApiException-BB@0x14 : 
+	5       (00000014) invoke-static        v1, Lcom/google/android/gms/common/internal/ApiExceptionUtil;->fromStatus(Lcom/google/android/gms/common/api/Status;)Lcom/google/android/gms/common/api/ApiException;
+	6       (0000001a) move-result-object   v1
+	7       (0000001c) invoke-virtual       v3, v1, Lcom/google/android/gms/tasks/TaskCompletionSource;->setException(Ljava/lang/Exception;)V
+	8       (00000022) return-void          
+

@@ -1,0 +1,39 @@
+# Lcom/google/android/gms/internal/play_billing/zzc;->zzq(Ljava/lang/String; Ljava/lang/String;)Lcom/android/billingclient/api/Purchase; [access_flags=private static]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:java.lang.String
+# - v4:java.lang.String
+#
+# - return:com.android.billingclient.api.Purchase
+
+zzq-BB@0x0 : [ zzq-BB@0xa zzq-BB@0x38 ]
+	0       (00000000) const/4              v0, 0
+	1       (00000002) const-string         v1, "BillingHelper"
+	2       (00000006) if-eqz               v3, +019h
+
+zzq-BB@0xa : [ zzq-BB@0xe zzq-BB@0x38 ]
+	3       (0000000a) if-eqz               v4, +017h
+
+zzq-BB@0xe : 
+	4       (0000000e) new-instance         v2, Lcom/android/billingclient/api/Purchase;
+	5       (00000012) invoke-direct        v2, v3, v4, Lcom/android/billingclient/api/Purchase;-><init>(Ljava/lang/String; Ljava/lang/String;)V
+	6       (00000018) return-object        v2
+	e:17
+	(Lorg/json/JSONException; -> 1a zzq-BB@0x1a)
+
+zzq-BB@0x1a : 
+	7       (0000001a) move-exception       v3
+	8       (0000001c) const-string         v4, "Got JSONException while parsing purchase data: "
+	9       (00000020) invoke-virtual       v3, Ljava/lang/Object;->toString()Ljava/lang/String;
+	10      (00000026) move-result-object   v3
+	11      (00000028) invoke-virtual       v4, v3, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	12      (0000002e) move-result-object   v3
+	13      (00000030) invoke-static        v1, v3, Lcom/google/android/gms/internal/play_billing/zzc;->zzn(Ljava/lang/String; Ljava/lang/String;)V
+	14      (00000036) return-object        v0
+
+zzq-BB@0x38 : 
+	15      (00000038) const-string         v3, "Received a null purchase data."
+	16      (0000003c) invoke-static        v1, v3, Lcom/google/android/gms/internal/play_billing/zzc;->zzm(Ljava/lang/String; Ljava/lang/String;)V
+	17      (00000042) return-object        v0
+

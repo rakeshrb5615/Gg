@@ -1,0 +1,70 @@
+# Lcom/google/android/gms/internal/common/zzr;->zzb(I I Ljava/lang/String;)I [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v0
+# - v1:int
+# - v2:int
+# - v3:java.lang.String
+#
+# - return:int
+
+zzb-BB@0x0 : [ zzb-BB@0x4 zzb-BB@0xc ]
+	0       (00000000) if-ltz               v1, +006h
+
+zzb-BB@0x4 : [ zzb-BB@0x8 zzb-BB@0xa ]
+	1       (00000004) if-lt                v1, v2, +003h
+
+zzb-BB@0x8 : [ zzb-BB@0xc ]
+	2       (00000008) goto                 +2h
+
+zzb-BB@0xa : 
+	3       (0000000a) return               v1
+
+zzb-BB@0xc : [ zzb-BB@0x18 zzb-BB@0x78 ]
+	4       (0000000c) new-instance         v3, Ljava/lang/IndexOutOfBoundsException;
+	5       (00000010) const-string         v0, "index"
+	6       (00000014) if-ltz               v1, +032h
+
+zzb-BB@0x18 : [ zzb-BB@0x1c zzb-BB@0x52 ]
+	7       (00000018) if-gez               v2, +01dh
+
+zzb-BB@0x1c : 
+	8       (0000001c) new-instance         v1, Ljava/lang/IllegalArgumentException;
+	9       (00000020) invoke-static        v2, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
+	10      (00000026) move-result-object   v3
+	11      (00000028) invoke-virtual       v3, Ljava/lang/String;->length()I
+	12      (0000002e) move-result          v3
+	13      (00000030) new-instance         v0, Ljava/lang/StringBuilder;
+	14      (00000034) add-int/lit8         v3, v3, 15
+	15      (00000038) invoke-direct        v0, v3, Ljava/lang/StringBuilder;-><init>(I)V
+	16      (0000003e) const-string         v3, "negative size: "
+	17      (00000042) invoke-static        v0, v3, v2, Lv1/a;->m(Ljava/lang/StringBuilder; Ljava/lang/String; I)Ljava/lang/String;
+	18      (00000048) move-result-object   v2
+	19      (0000004a) invoke-direct        v1, v2, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	20      (00000050) throw                v1
+
+zzb-BB@0x52 : [ zzb-BB@0x94 ]
+	21      (00000052) invoke-static        v1, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+	22      (00000058) move-result-object   v1
+	23      (0000005a) invoke-static        v2, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+	24      (00000060) move-result-object   v2
+	25      (00000062) filled-new-array     v0, v1, v2, [Ljava/lang/Object;
+	26      (00000068) move-result-object   v1
+	27      (0000006a) const-string         v2, "%s (%s) must be less than size (%s)"
+	28      (0000006e) invoke-static        v2, v1, Lcom/google/android/gms/internal/common/zzx;->zza(Ljava/lang/String; [Ljava/lang/Object;)Ljava/lang/String;
+	29      (00000074) move-result-object   v1
+	30      (00000076) goto                 +fh
+
+zzb-BB@0x78 : [ zzb-BB@0x94 ]
+	31      (00000078) invoke-static        v1, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+	32      (0000007e) move-result-object   v1
+	33      (00000080) filled-new-array     v0, v1, [Ljava/lang/Object;
+	34      (00000086) move-result-object   v1
+	35      (00000088) const-string         v2, "%s (%s) must not be negative"
+	36      (0000008c) invoke-static        v2, v1, Lcom/google/android/gms/internal/common/zzx;->zza(Ljava/lang/String; [Ljava/lang/Object;)Ljava/lang/String;
+	37      (00000092) move-result-object   v1
+
+zzb-BB@0x94 : 
+	38      (00000094) invoke-direct        v3, v1, Ljava/lang/IndexOutOfBoundsException;-><init>(Ljava/lang/String;)V
+	39      (0000009a) throw                v3
+

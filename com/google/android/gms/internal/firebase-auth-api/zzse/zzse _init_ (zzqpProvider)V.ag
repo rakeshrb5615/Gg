@@ -1,0 +1,57 @@
+# Lcom/google/android/gms/internal/firebase-auth-api/zzse;-><init>(Lcom/google/android/gms/internal/firebase-auth-api/zzqp; Ljava/security/Provider;)V [access_flags=private constructor]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:com.google.android.gms.internal.firebase-auth-api.zzqp
+# - v3:java.security.Provider
+#
+# - return:void
+
+<init>-BB@0x0 : [ <init>-BB@0xa <init>-BB@0x7c ]
+	0       (00000000) invoke-direct        v1, Ljava/lang/Object;-><init>()V
+	1       (00000006) if-eqz               v3, +03bh
+
+<init>-BB@0xa : [ <init>-BB@0x1a <init>-BB@0x6c ]
+	2       (0000000a) sget-object          v0, Lcom/google/android/gms/internal/firebase-auth-api/zzse;->zza Lcom/google/android/gms/internal/firebase-auth-api/zziv$zza;
+	3       (0000000e) invoke-virtual       v0, Lcom/google/android/gms/internal/firebase-auth-api/zziv$zza;->zza()Z
+	4       (00000014) move-result          v0
+	5       (00000016) if-eqz               v0, +02bh
+
+<init>-BB@0x1a : 
+	6       (0000001a) const-string         v0, "AESCMAC"
+	7       (0000001e) invoke-static        v0, v3, Ljavax/crypto/Mac;->getInstance(Ljava/lang/String; Ljava/security/Provider;)Ljavax/crypto/Mac;
+	8       (00000024) invoke-virtual       v2, Lcom/google/android/gms/internal/firebase-auth-api/zzqp;->zze()Lcom/google/android/gms/internal/firebase-auth-api/zzaaj;
+	9       (0000002a) move-result-object   v3
+	10      (0000002c) invoke-virtual       v3, Lcom/google/android/gms/internal/firebase-auth-api/zzaaj;->zzb()[B
+	11      (00000032) new-instance         v3, Ljavax/crypto/spec/SecretKeySpec;
+	12      (00000036) invoke-virtual       v2, Lcom/google/android/gms/internal/firebase-auth-api/zzqp;->zzf()Lcom/google/android/gms/internal/firebase-auth-api/zzaal;
+	13      (0000003c) move-result-object   v2
+	14      (0000003e) invoke-static        Lcom/google/android/gms/internal/firebase-auth-api/zzbf;->zza()Lcom/google/android/gms/internal/firebase-auth-api/zzch;
+	15      (00000044) move-result-object   v0
+	16      (00000046) invoke-virtual       v2, v0, Lcom/google/android/gms/internal/firebase-auth-api/zzaal;->zza(Lcom/google/android/gms/internal/firebase-auth-api/zzch;)[B
+	17      (0000004c) move-result-object   v2
+	18      (0000004e) const-string         v0, "AES"
+	19      (00000052) invoke-direct        v3, v2, v0, Ljavax/crypto/spec/SecretKeySpec;-><init>([B Ljava/lang/String;)V
+	20      (00000058) return-void          
+	1a:23
+	(Ljava/security/NoSuchAlgorithmException; -> 5a <init>-BB@0x5a)
+
+<init>-BB@0x5a : 
+	21      (0000005a) move-exception       v2
+	22      (0000005c) new-instance         v3, Ljava/security/GeneralSecurityException;
+	23      (00000060) const-string         v0, "AES-CMAC not available."
+	24      (00000064) invoke-direct        v3, v0, v2, Ljava/security/GeneralSecurityException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	25      (0000006a) throw                v3
+
+<init>-BB@0x6c : 
+	26      (0000006c) new-instance         v2, Ljava/security/GeneralSecurityException;
+	27      (00000070) const-string         v3, "Cannot use AES-CMAC in FIPS-mode."
+	28      (00000074) invoke-direct        v2, v3, Ljava/security/GeneralSecurityException;-><init>(Ljava/lang/String;)V
+	29      (0000007a) throw                v2
+
+<init>-BB@0x7c : 
+	30      (0000007c) new-instance         v2, Ljava/lang/IllegalArgumentException;
+	31      (00000080) const-string         v3, "conscrypt is null"
+	32      (00000084) invoke-direct        v2, v3, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	33      (0000008a) throw                v2
+

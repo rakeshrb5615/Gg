@@ -1,0 +1,45 @@
+# Lcom/google/android/gms/common/internal/safeparcel/SafeParcelableSerializer;->deserializeIterableFromBundle(Landroid/os/Bundle; Ljava/lang/String; Landroid/os/Parcelable$Creator;)Ljava/util/ArrayList; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:android.os.Bundle
+# - v4:java.lang.String
+# - v5:android.os.Parcelable$Creator
+#
+# - return:java.util.ArrayList
+
+deserializeIterableFromBundle-BB@0x0 : [ deserializeIterableFromBundle-BB@0x10 deserializeIterableFromBundle-BB@0x14 ]
+	0       (00000000) invoke-virtual       v3, v4, Landroid/os/Bundle;->getSerializable(Ljava/lang/String;)Ljava/io/Serializable;
+	1       (00000006) move-result-object   v3
+	2       (00000008) check-cast           v3, Ljava/util/ArrayList;
+	3       (0000000c) if-nez               v3, +004h
+
+deserializeIterableFromBundle-BB@0x10 : 
+	4       (00000010) const/4              v3, 0
+	5       (00000012) return-object        v3
+
+deserializeIterableFromBundle-BB@0x14 : [ deserializeIterableFromBundle-BB@0x30 ]
+	6       (00000014) new-instance         v4, Ljava/util/ArrayList;
+	7       (00000018) invoke-virtual       v3, Ljava/util/ArrayList;->size()I
+	8       (0000001e) move-result          v0
+	9       (00000020) invoke-direct        v4, v0, Ljava/util/ArrayList;-><init>(I)V
+	10      (00000026) invoke-interface     v3, Ljava/util/List;->size()I
+	11      (0000002c) move-result          v0
+	12      (0000002e) const/4              v1, 0
+
+deserializeIterableFromBundle-BB@0x30 : [ deserializeIterableFromBundle-BB@0x34 deserializeIterableFromBundle-BB@0x54 ]
+	13      (00000030) if-ge                v1, v0, +012h
+
+deserializeIterableFromBundle-BB@0x34 : [ deserializeIterableFromBundle-BB@0x30 ]
+	14      (00000034) invoke-interface     v3, v1, Ljava/util/List;->get(I)Ljava/lang/Object;
+	15      (0000003a) move-result-object   v2
+	16      (0000003c) check-cast           v2, [B
+	17      (00000040) invoke-static        v2, v5, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelableSerializer;->deserializeFromBytes([B Landroid/os/Parcelable$Creator;)Lcom/google/android/gms/common/internal/safeparcel/SafeParcelable;
+	18      (00000046) move-result-object   v2
+	19      (00000048) invoke-virtual       v4, v2, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	20      (0000004e) add-int/lit8         v1, v1, 1
+	21      (00000052) goto                 -11h
+
+deserializeIterableFromBundle-BB@0x54 : 
+	22      (00000054) return-object        v4
+

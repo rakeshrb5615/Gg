@@ -1,0 +1,30 @@
+# Lcom/google/android/material/slider/Slider;->setFocusedThumbIndex(I)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:int
+#
+# - return:void
+
+setFocusedThumbIndex-BB@0x0 : [ setFocusedThumbIndex-BB@0x4 setFocusedThumbIndex-BB@0x2a ]
+	0       (00000000) if-ltz               v2, +015h
+
+setFocusedThumbIndex-BB@0x4 : [ setFocusedThumbIndex-BB@0x14 setFocusedThumbIndex-BB@0x2a ]
+	1       (00000004) iget-object          v0, v1, Lx3/e;->s0 Ljava/util/ArrayList;
+	2       (00000008) invoke-virtual       v0, Ljava/util/ArrayList;->size()I
+	3       (0000000e) move-result          v0
+	4       (00000010) if-ge                v2, v0, +00dh
+
+setFocusedThumbIndex-BB@0x14 : 
+	5       (00000014) iput                 v2, v1, Lx3/e;->u0 I
+	6       (00000018) iget-object          v0, v1, Lx3/e;->n Lx3/c;
+	7       (0000001c) invoke-virtual       v0, v2, Ly0/b;->w(I)Z
+	8       (00000022) invoke-virtual       v1, Landroid/view/View;->postInvalidate()V
+	9       (00000028) return-void          
+
+setFocusedThumbIndex-BB@0x2a : 
+	10      (0000002a) new-instance         v2, Ljava/lang/IllegalArgumentException;
+	11      (0000002e) const-string         v0, "index out of range"
+	12      (00000032) invoke-direct        v2, v0, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	13      (00000038) throw                v2
+

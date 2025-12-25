@@ -1,0 +1,43 @@
+# Lcom/google/android/gms/measurement/internal/zznt;->zzd(Landroid/content/Intent;)Landroid/os/IBinder; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:android.content.Intent
+#
+# - return:android.os.IBinder
+
+zzd-BB@0x0 : [ zzd-BB@0xa zzd-BB@0x16 ]
+	0       (00000000) const-string         v0, "FA"
+	1       (00000004) const/4              v1, 0
+	2       (00000006) if-nez               v4, +008h
+
+zzd-BB@0xa : 
+	3       (0000000a) const-string         v4, "onBind called with null intent"
+	4       (0000000e) invoke-static        v0, v4, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String;)I
+	5       (00000014) return-object        v1
+
+zzd-BB@0x16 : [ zzd-BB@0x2e zzd-BB@0x46 ]
+	6       (00000016) invoke-virtual       v4, Landroid/content/Intent;->getAction()Ljava/lang/String;
+	7       (0000001c) move-result-object   v4
+	8       (0000001e) const-string         v2, "com.google.android.gms.measurement.START"
+	9       (00000022) invoke-virtual       v2, v4, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	10      (00000028) move-result          v2
+	11      (0000002a) if-eqz               v2, +00eh
+
+zzd-BB@0x2e : 
+	12      (0000002e) iget-object          v4, v3, Lcom/google/android/gms/measurement/internal/zznt;->zza Landroid/content/Context;
+	13      (00000032) new-instance         v0, Lcom/google/android/gms/measurement/internal/zzjd;
+	14      (00000036) invoke-static        v4, Lcom/google/android/gms/measurement/internal/zzpg;->zza(Landroid/content/Context;)Lcom/google/android/gms/measurement/internal/zzpg;
+	15      (0000003c) move-result-object   v4
+	16      (0000003e) invoke-direct        v0, v4, v1, Lcom/google/android/gms/measurement/internal/zzjd;-><init>(Lcom/google/android/gms/measurement/internal/zzpg; Ljava/lang/String;)V
+	17      (00000044) return-object        v0
+
+zzd-BB@0x46 : 
+	18      (00000046) invoke-static        v4, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
+	19      (0000004c) move-result-object   v4
+	20      (0000004e) const-string         v2, "onBind received unknown action: "
+	21      (00000052) invoke-virtual       v2, v4, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	22      (00000058) move-result-object   v4
+	23      (0000005a) invoke-static        v0, v4, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+	24      (00000060) return-object        v1
+

@@ -1,0 +1,39 @@
+# Lcom/google/android/gms/fido/u2f/api/common/Error;->toJsonObject()Lorg/json/JSONObject; [access_flags=public]
+#
+# Parameters:
+# local registers: v0...v3
+#
+# - return:org.json.JSONObject
+
+toJsonObject-BB@0x0 : [ toJsonObject-BB@0xa ]
+	0       (00000000) new-instance         v0, Lorg/json/JSONObject;
+	1       (00000004) invoke-direct        v0, Lorg/json/JSONObject;-><init>()V
+
+toJsonObject-BB@0xa : [ toJsonObject-BB@0x28 toJsonObject-BB@0x38 ]
+	2       (0000000a) const-string         v1, "errorCode"
+	3       (0000000e) iget-object          v2, v3, Lcom/google/android/gms/fido/u2f/api/common/Error;->zza Lcom/google/android/gms/fido/u2f/api/common/ErrorCode;
+	4       (00000012) invoke-virtual       v2, Lcom/google/android/gms/fido/u2f/api/common/ErrorCode;->getCode()I
+	5       (00000018) move-result          v2
+	6       (0000001a) invoke-virtual       v0, v1, v2, Lorg/json/JSONObject;->put(Ljava/lang/String; I)Lorg/json/JSONObject;
+	7       (00000020) iget-object          v1, v3, Lcom/google/android/gms/fido/u2f/api/common/Error;->zzb Ljava/lang/String;
+	8       (00000024) if-eqz               v1, +00ah
+	a:31
+	(Lorg/json/JSONException; -> 34 toJsonObject-BB@0x34)
+
+toJsonObject-BB@0x28 : 
+	9       (00000028) const-string         v2, "errorMessage"
+	10      (0000002c) invoke-virtual       v0, v2, v1, Lorg/json/JSONObject;->put(Ljava/lang/String; Ljava/lang/Object;)Lorg/json/JSONObject;
+	11      (00000032) return-object        v0
+
+toJsonObject-BB@0x34 : [ toJsonObject-BB@0x3a ]
+	12      (00000034) move-exception       v0
+	13      (00000036) goto                 +2h
+
+toJsonObject-BB@0x38 : 
+	14      (00000038) return-object        v0
+
+toJsonObject-BB@0x3a : 
+	15      (0000003a) new-instance         v1, Ljava/lang/RuntimeException;
+	16      (0000003e) invoke-direct        v1, v0, Ljava/lang/RuntimeException;-><init>(Ljava/lang/Throwable;)V
+	17      (00000044) throw                v1
+

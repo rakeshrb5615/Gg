@@ -1,0 +1,54 @@
+# Lcom/google/android/recaptcha/internal/zzcd;->zzb(Ljava/io/File; [B)V [access_flags=public static final]
+#
+# Parameters:
+# - local registers: v0...v0
+# - v1:java.io.File
+# - v2:byte[]
+#
+# - return:void
+
+zzb-BB@0x0 : [ zzb-BB@0xc zzb-BB@0x2a ]
+	0       (00000000) invoke-virtual       v1, Ljava/io/File;->exists()Z
+	1       (00000006) move-result          v0
+	2       (00000008) if-eqz               v0, +011h
+
+zzb-BB@0xc : [ zzb-BB@0x18 zzb-BB@0x1a ]
+	3       (0000000c) invoke-virtual       v1, Ljava/io/File;->delete()Z
+	4       (00000012) move-result          v0
+	5       (00000014) if-eqz               v0, +003h
+
+zzb-BB@0x18 : [ zzb-BB@0x2a ]
+	6       (00000018) goto                 +9h
+
+zzb-BB@0x1a : 
+	7       (0000001a) new-instance         v1, Ljava/io/IOException;
+	8       (0000001e) const-string         v2, "Unable to delete existing encrypted file"
+	9       (00000022) invoke-direct        v1, v2, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+	10      (00000028) throw                v1
+
+zzb-BB@0x2a : [ zzb-BB@0x3e ]
+	11      (0000002a) const-string         v0, "array"
+	12      (0000002e) invoke-static        v2, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	13      (00000034) new-instance         v0, Ljava/io/FileOutputStream;
+	14      (00000038) invoke-direct        v0, v1, Ljava/io/FileOutputStream;-><init>(Ljava/io/File;)V
+
+zzb-BB@0x3e : 
+	15      (0000003e) invoke-virtual       v0, v2, Ljava/io/FileOutputStream;->write([B)V
+	16      (00000044) invoke-virtual       v0, Ljava/io/FileOutputStream;->close()V
+	17      (0000004a) return-void          
+	3e:43
+	(Ljava/lang/Throwable; -> 4c zzb-BB@0x4c)
+
+zzb-BB@0x4c : [ zzb-BB@0x4e ]
+	18      (0000004c) move-exception       v1
+
+zzb-BB@0x4e : 
+	19      (0000004e) throw                v1
+	4e:4f
+	(Ljava/lang/Throwable; -> 50 zzb-BB@0x50)
+
+zzb-BB@0x50 : 
+	20      (00000050) move-exception       v2
+	21      (00000052) invoke-static        v0, v1, Lj5/t1;->f(Ljava/io/Closeable; Ljava/lang/Throwable;)V
+	22      (00000058) throw                v2
+

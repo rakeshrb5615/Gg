@@ -1,0 +1,29 @@
+package com.google.android.gms.common.moduleinstall;
+public final class ModuleInstallStatusCodes extends com.google.android.gms.common.api.CommonStatusCodes {
+    public static final int INSUFFICIENT_STORAGE = 46003;
+    public static final int MODULE_NOT_FOUND = 46002;
+    public static final int NOT_ALLOWED_MODULE = 46001;
+    public static final int SUCCESS = 0;
+    public static final int UNKNOWN_MODULE = 46000;
+
+    private ModuleInstallStatusCodes()
+    {
+        return;
+    }
+
+    public static String getStatusCodeString(int p0)
+    {
+        switch (p0) {
+            case 46000:
+                return "UNKNOWN_MODULE";
+            case 46001:
+                return "NOT_ALLOWED_MODULE";
+            case 46002:
+                return "MODULE_NOT_FOUND";
+            case 46003:
+                return "INSUFFICIENT_STORAGE";
+            default:
+                return com.google.android.gms.common.api.CommonStatusCodes.getStatusCodeString(p0);
+        }
+    }
+}

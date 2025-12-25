@@ -1,0 +1,110 @@
+# Lcom/google/android/gms/common/util/ArrayUtils;->removeAll([Ljava/lang/Object; [Ljava/lang/Object;)[Ljava/lang/Object; [access_flags=public static varargs]
+#
+# Parameters:
+# - local registers: v0...v7
+# - v8:java.lang.Object[]
+# - v9:java.lang.Object[]
+#
+# - return:java.lang.Object[]
+
+removeAll-BB@0x0 : [ removeAll-BB@0x6 removeAll-BB@0x8 ]
+	0       (00000000) const/4              v0, 0
+	1       (00000002) if-nez               v8, +003h
+
+removeAll-BB@0x6 : 
+	2       (00000006) return-object        v0
+
+removeAll-BB@0x8 : [ removeAll-BB@0xc removeAll-BB@0xa6 ]
+	3       (00000008) if-eqz               v9, +04fh
+
+removeAll-BB@0xc : [ removeAll-BB@0x12 removeAll-BB@0x14 ]
+	4       (0000000c) array-length         v1, v9
+	5       (0000000e) if-nez               v1, +003h
+
+removeAll-BB@0x12 : [ removeAll-BB@0xa6 ]
+	6       (00000012) goto                 +4ah
+
+removeAll-BB@0x14 : [ removeAll-BB@0x3a removeAll-BB@0x66 ]
+	7       (00000014) invoke-virtual       v9, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	8       (0000001a) move-result-object   v2
+	9       (0000001c) array-length         v3, v8
+	10      (0000001e) invoke-virtual       v2, Ljava/lang/Class;->getComponentType()Ljava/lang/Class;
+	11      (00000024) move-result-object   v2
+	12      (00000026) invoke-static        v2, v3, Ljava/lang/reflect/Array;->newInstance(Ljava/lang/Class; I)Ljava/lang/Object;
+	13      (0000002c) move-result-object   v2
+	14      (0000002e) check-cast           v2, [Ljava/lang/Object;
+	15      (00000032) const/4              v4, 0
+	16      (00000034) const/4              v5, 1
+	17      (00000036) if-ne                v1, v5, +018h
+
+removeAll-BB@0x3a : [ removeAll-BB@0x3e ]
+	18      (0000003a) move                 v1, v4
+	19      (0000003c) move                 v5, v1
+
+removeAll-BB@0x3e : [ removeAll-BB@0x42 removeAll-BB@0x8e ]
+	20      (0000003e) if-ge                v1, v3, +028h
+
+removeAll-BB@0x42 : [ removeAll-BB@0x56 removeAll-BB@0x60 ]
+	21      (00000042) aget-object          v6, v8, v1
+	22      (00000046) aget-object          v7, v9, v4
+	23      (0000004a) invoke-static        v7, v6, Lcom/google/android/gms/common/internal/Objects;->equal(Ljava/lang/Object; Ljava/lang/Object;)Z
+	24      (00000050) move-result          v7
+	25      (00000052) if-nez               v7, +007h
+
+removeAll-BB@0x56 : [ removeAll-BB@0x60 ]
+	26      (00000056) add-int/lit8         v7, v5, 1
+	27      (0000005a) aput-object          v6, v2, v5
+	28      (0000005e) move                 v5, v7
+
+removeAll-BB@0x60 : [ removeAll-BB@0x3e ]
+	29      (00000060) add-int/lit8         v1, v1, 1
+	30      (00000064) goto                 -13h
+
+removeAll-BB@0x66 : [ removeAll-BB@0x68 ]
+	31      (00000066) move                 v1, v4
+
+removeAll-BB@0x68 : [ removeAll-BB@0x6c removeAll-BB@0x8c ]
+	32      (00000068) if-ge                v4, v3, +012h
+
+removeAll-BB@0x6c : [ removeAll-BB@0x7c removeAll-BB@0x86 ]
+	33      (0000006c) aget-object          v5, v8, v4
+	34      (00000070) invoke-static        v9, v5, Lcom/google/android/gms/common/util/ArrayUtils;->contains([Ljava/lang/Object; Ljava/lang/Object;)Z
+	35      (00000076) move-result          v6
+	36      (00000078) if-nez               v6, +007h
+
+removeAll-BB@0x7c : [ removeAll-BB@0x86 ]
+	37      (0000007c) add-int/lit8         v6, v1, 1
+	38      (00000080) aput-object          v5, v2, v1
+	39      (00000084) move                 v1, v6
+
+removeAll-BB@0x86 : [ removeAll-BB@0x68 ]
+	40      (00000086) add-int/lit8         v4, v4, 1
+	41      (0000008a) goto                 -11h
+
+removeAll-BB@0x8c : [ removeAll-BB@0x8e ]
+	42      (0000008c) move                 v5, v1
+
+removeAll-BB@0x8e : [ removeAll-BB@0x92 removeAll-BB@0x94 ]
+	43      (0000008e) if-nez               v2, +003h
+
+removeAll-BB@0x92 : 
+	44      (00000092) return-object        v0
+
+removeAll-BB@0x94 : [ removeAll-BB@0x9a removeAll-BB@0x9c ]
+	45      (00000094) array-length         v8, v2
+	46      (00000096) if-ne                v5, v8, +003h
+
+removeAll-BB@0x9a : 
+	47      (0000009a) return-object        v2
+
+removeAll-BB@0x9c : 
+	48      (0000009c) invoke-static        v2, v5, Ljava/util/Arrays;->copyOf([Ljava/lang/Object; I)[Ljava/lang/Object;
+	49      (000000a2) move-result-object   v8
+	50      (000000a4) return-object        v8
+
+removeAll-BB@0xa6 : 
+	51      (000000a6) array-length         v9, v8
+	52      (000000a8) invoke-static        v8, v9, Ljava/util/Arrays;->copyOf([Ljava/lang/Object; I)[Ljava/lang/Object;
+	53      (000000ae) move-result-object   v8
+	54      (000000b0) return-object        v8
+

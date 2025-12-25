@@ -1,0 +1,32 @@
+# Lcom/google/android/gms/common/internal/safeparcel/SafeParcelReader;->ensureAtEnd(Landroid/os/Parcel; I)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:android.os.Parcel
+# - v4:int
+#
+# - return:void
+
+ensureAtEnd-BB@0x0 : [ ensureAtEnd-BB@0xc ensureAtEnd-BB@0xe ]
+	0       (00000000) invoke-virtual       v3, Landroid/os/Parcel;->dataPosition()I
+	1       (00000006) move-result          v0
+	2       (00000008) if-ne                v0, v4, +003h
+
+ensureAtEnd-BB@0xc : 
+	3       (0000000c) return-void          
+
+ensureAtEnd-BB@0xe : 
+	4       (0000000e) new-instance         v0, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelReader$ParseException;
+	5       (00000012) invoke-static        v4, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
+	6       (00000018) move-result-object   v1
+	7       (0000001a) invoke-virtual       v1, Ljava/lang/String;->length()I
+	8       (00000020) move-result          v1
+	9       (00000022) new-instance         v2, Ljava/lang/StringBuilder;
+	10      (00000026) add-int/lit8         v1, v1, 26
+	11      (0000002a) invoke-direct        v2, v1, Ljava/lang/StringBuilder;-><init>(I)V
+	12      (00000030) const-string         v1, "Overread allowed size end="
+	13      (00000034) invoke-static        v2, v1, v4, Lv1/a;->m(Ljava/lang/StringBuilder; Ljava/lang/String; I)Ljava/lang/String;
+	14      (0000003a) move-result-object   v4
+	15      (0000003c) invoke-direct        v0, v4, v3, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelReader$ParseException;-><init>(Ljava/lang/String; Landroid/os/Parcel;)V
+	16      (00000042) throw                v0
+

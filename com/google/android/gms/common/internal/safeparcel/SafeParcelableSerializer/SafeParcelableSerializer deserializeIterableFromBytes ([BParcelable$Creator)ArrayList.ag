@@ -1,0 +1,38 @@
+# Lcom/google/android/gms/common/internal/safeparcel/SafeParcelableSerializer;->deserializeIterableFromBytes([B Landroid/os/Parcelable$Creator;)Ljava/util/ArrayList; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:byte[]
+# - v4:android.os.Parcelable$Creator
+#
+# - return:java.util.ArrayList
+
+deserializeIterableFromBytes-BB@0x0 : [ deserializeIterableFromBytes-BB@0x4 deserializeIterableFromBytes-BB@0x8 ]
+	0       (00000000) if-nez               v3, +004h
+
+deserializeIterableFromBytes-BB@0x4 : 
+	1       (00000004) const/4              v3, 0
+	2       (00000006) return-object        v3
+
+deserializeIterableFromBytes-BB@0x8 : [ deserializeIterableFromBytes-BB@0x20 ]
+	3       (00000008) invoke-static        Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
+	4       (0000000e) move-result-object   v0
+	5       (00000010) array-length         v1, v3
+	6       (00000012) const/4              v2, 0
+	7       (00000014) invoke-virtual       v0, v3, v2, v1, Landroid/os/Parcel;->unmarshall([B I I)V
+	8       (0000001a) invoke-virtual       v0, v2, Landroid/os/Parcel;->setDataPosition(I)V
+
+deserializeIterableFromBytes-BB@0x20 : 
+	9       (00000020) new-instance         v3, Ljava/util/ArrayList;
+	10      (00000024) invoke-direct        v3, Ljava/util/ArrayList;-><init>()V
+	11      (0000002a) invoke-virtual       v0, v3, v4, Landroid/os/Parcel;->readTypedList(Ljava/util/List; Landroid/os/Parcelable$Creator;)V
+	12      (00000030) invoke-virtual       v0, Landroid/os/Parcel;->recycle()V
+	13      (00000036) return-object        v3
+	20:2f
+	(Ljava/lang/Throwable; -> 38 deserializeIterableFromBytes-BB@0x38)
+
+deserializeIterableFromBytes-BB@0x38 : 
+	14      (00000038) move-exception       v3
+	15      (0000003a) invoke-virtual       v0, Landroid/os/Parcel;->recycle()V
+	16      (00000040) throw                v3
+

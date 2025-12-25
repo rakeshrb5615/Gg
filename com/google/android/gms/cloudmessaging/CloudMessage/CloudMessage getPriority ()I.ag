@@ -1,0 +1,39 @@
+# Lcom/google/android/gms/cloudmessaging/CloudMessage;->getPriority()I [access_flags=public]
+#
+# Parameters:
+# local registers: v0...v2
+#
+# - return:int
+
+getPriority-BB@0x0 : [ getPriority-BB@0x14 getPriority-BB@0x48 ]
+	0       (00000000) iget-object          v0, v2, Lcom/google/android/gms/cloudmessaging/CloudMessage;->zza Landroid/content/Intent;
+	1       (00000004) const-string         v1, "google.delivered_priority"
+	2       (00000008) invoke-virtual       v0, v1, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
+	3       (0000000e) move-result-object   v0
+	4       (00000010) if-nez               v0, +01ch
+
+getPriority-BB@0x14 : [ getPriority-BB@0x34 getPriority-BB@0x38 ]
+	5       (00000014) iget-object          v0, v2, Lcom/google/android/gms/cloudmessaging/CloudMessage;->zza Landroid/content/Intent;
+	6       (00000018) const-string         v1, "google.priority_reduced"
+	7       (0000001c) invoke-virtual       v0, v1, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
+	8       (00000022) move-result-object   v0
+	9       (00000024) const-string         v1, "1"
+	10      (00000028) invoke-static        v0, v1, Ljava/util/Objects;->equals(Ljava/lang/Object; Ljava/lang/Object;)Z
+	11      (0000002e) move-result          v0
+	12      (00000030) if-eqz               v0, +004h
+
+getPriority-BB@0x34 : 
+	13      (00000034) const/4              v0, 2
+	14      (00000036) return               v0
+
+getPriority-BB@0x38 : [ getPriority-BB@0x48 ]
+	15      (00000038) iget-object          v0, v2, Lcom/google/android/gms/cloudmessaging/CloudMessage;->zza Landroid/content/Intent;
+	16      (0000003c) const-string         v1, "google.priority"
+	17      (00000040) invoke-virtual       v0, v1, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
+	18      (00000046) move-result-object   v0
+
+getPriority-BB@0x48 : 
+	19      (00000048) invoke-static        v0, Lcom/google/android/gms/cloudmessaging/CloudMessage;->zzb(Ljava/lang/String;)I
+	20      (0000004e) move-result          v0
+	21      (00000050) return               v0
+

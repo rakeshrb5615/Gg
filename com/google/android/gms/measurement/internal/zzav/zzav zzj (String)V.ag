@@ -1,0 +1,253 @@
+# Lcom/google/android/gms/measurement/internal/zzav;->zzj(Ljava/lang/String;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v19
+# - v20:java.lang.String
+#
+# - return:void
+
+zzj-BB@0x0 : [ zzj-BB@0x54 ]
+	0       (00000000) move-object/from16   v1, v19
+	1       (00000004) move-object/from16   v2, v20
+	2       (00000008) const-string         v3, "events_snapshot"
+	3       (0000000c) new-instance         v0, Ljava/util/ArrayList;
+	4       (00000010) const-string         v4, "lifetime_count"
+	5       (00000014) const-string         v5, "name"
+	6       (00000018) filled-new-array     v5, v4, [Ljava/lang/String;
+	7       (0000001e) move-result-object   v4
+	8       (00000020) invoke-static        v4, Ljava/util/Arrays;->asList([Ljava/lang/Object;)Ljava/util/List;
+	9       (00000026) move-result-object   v4
+	10      (00000028) invoke-direct        v0, v4, Ljava/util/ArrayList;-><init>(Ljava/util/Collection;)V
+	11      (0000002e) const-string         v4, "events"
+	12      (00000032) const-string         v5, "_f"
+	13      (00000036) invoke-direct        v1, v4, v2, v5, Lcom/google/android/gms/measurement/internal/zzav;->zzaC(Ljava/lang/String; Ljava/lang/String; Ljava/lang/String;)Lcom/google/android/gms/measurement/internal/zzbc;
+	14      (0000003c) move-result-object   v6
+	15      (0000003e) const-string         v7, "_v"
+	16      (00000042) invoke-direct        v1, v4, v2, v7, Lcom/google/android/gms/measurement/internal/zzav;->zzaC(Ljava/lang/String; Ljava/lang/String; Ljava/lang/String;)Lcom/google/android/gms/measurement/internal/zzbc;
+	17      (00000048) move-result-object   v8
+	18      (0000004a) invoke-direct        v1, v4, v2, Lcom/google/android/gms/measurement/internal/zzav;->zzaE(Ljava/lang/String; Ljava/lang/String;)V
+	19      (00000050) const/4              v9, 0
+	20      (00000052) const/4              v10, 0
+
+zzj-BB@0x54 : [ zzj-BB@0x9e zzj-BB@0xc0 ]
+	21      (00000054) invoke-virtual       v1, Lcom/google/android/gms/measurement/internal/zzav;->zze()Landroid/database/sqlite/SQLiteDatabase;
+	22      (0000005a) move-result-object   v11
+	23      (0000005c) const-string         v12, "events_snapshot"
+	24      (00000060) new-array            v13, v10, [Ljava/lang/String;
+	25      (00000064) invoke-virtual       v0, v13, Ljava/util/ArrayList;->toArray([Ljava/lang/Object;)[Ljava/lang/Object;
+	26      (0000006a) move-result-object   v0
+	27      (0000006c) move-object          v13, v0
+	28      (0000006e) check-cast           v13, [Ljava/lang/String;
+	29      (00000072) const-string         v14, "app_id=?"
+	30      (00000076) filled-new-array     v2, [Ljava/lang/String;
+	31      (0000007c) move-result-object   v15
+	32      (0000007e) const/16             v17, 0
+	33      (00000082) const/16             v18, 0
+	34      (00000086) const/16             v16, 0
+	35      (0000008a) invoke-virtual/range v11 ... v18, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String; [Ljava/lang/String; Ljava/lang/String; [Ljava/lang/String; Ljava/lang/String; Ljava/lang/String; Ljava/lang/String;)Landroid/database/Cursor;
+	36      (00000090) move-result-object   v9
+	37      (00000092) invoke-interface     v9, Landroid/database/Cursor;->moveToFirst()Z
+	38      (00000098) move-result          v0
+	39      (0000009a) if-nez               v0, +013h
+	54:99
+	(Landroid/database/sqlite/SQLiteException; -> 13c zzj-BB@0x13c)
+	(Ljava/lang/Throwable; -> 136 zzj-BB@0x136)
+
+zzj-BB@0x9e : [ zzj-BB@0xa8 zzj-BB@0xb2 ]
+	40      (0000009e) invoke-interface     v9, Landroid/database/Cursor;->close()V
+	41      (000000a4) if-eqz               v6, +007h
+
+zzj-BB@0xa8 : [ zzj-BB@0x186 ]
+	42      (000000a8) invoke-direct        v1, v4, v6, Lcom/google/android/gms/measurement/internal/zzav;->zzaD(Ljava/lang/String; Lcom/google/android/gms/measurement/internal/zzbc;)V
+	43      (000000ae) goto/16              +06ch
+
+zzj-BB@0xb2 : [ zzj-BB@0xb6 zzj-BB@0x186 ]
+	44      (000000b2) if-eqz               v8, +06ah
+
+zzj-BB@0xb6 : [ zzj-BB@0x186 ]
+	45      (000000b6) invoke-direct        v1, v4, v8, Lcom/google/android/gms/measurement/internal/zzav;->zzaD(Ljava/lang/String; Lcom/google/android/gms/measurement/internal/zzbc;)V
+	46      (000000bc) goto/16              +065h
+
+zzj-BB@0xc0 : [ zzj-BB@0xc4 ]
+	47      (000000c0) move                 v11, v10
+	48      (000000c2) move                 v12, v11
+
+zzj-BB@0xc4 : [ zzj-BB@0xe2 zzj-BB@0x100 ]
+	49      (000000c4) invoke-interface     v9, v10, Landroid/database/Cursor;->getString(I)Ljava/lang/String;
+	50      (000000ca) move-result-object   v0
+	51      (000000cc) const/4              v13, 1
+	52      (000000ce) invoke-interface     v9, v13, Landroid/database/Cursor;->getLong(I)J
+	53      (000000d4) move-result-wide     v14
+	54      (000000d6) const-wide/16        v16, 1
+	55      (000000da) cmp-long             v14, v14, v16
+	56      (000000de) if-ltz               v14, +011h
+	c4:127
+	(Landroid/database/sqlite/SQLiteException; -> 11c zzj-BB@0x11c)
+	(Ljava/lang/Throwable; -> 118 zzj-BB@0x118)
+
+zzj-BB@0xe2 : [ zzj-BB@0xee zzj-BB@0xf2 ]
+	57      (000000e2) invoke-virtual       v5, v0, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	58      (000000e8) move-result          v14
+	59      (000000ea) if-eqz               v14, +004h
+	c4:127
+	(Landroid/database/sqlite/SQLiteException; -> 11c zzj-BB@0x11c)
+	(Ljava/lang/Throwable; -> 118 zzj-BB@0x118)
+
+zzj-BB@0xee : [ zzj-BB@0x100 ]
+	60      (000000ee) move                 v11, v13
+	61      (000000f0) goto                 +8h
+	c4:127
+	(Landroid/database/sqlite/SQLiteException; -> 11c zzj-BB@0x11c)
+	(Ljava/lang/Throwable; -> 118 zzj-BB@0x118)
+
+zzj-BB@0xf2 : [ zzj-BB@0xfe zzj-BB@0x100 ]
+	62      (000000f2) invoke-virtual       v7, v0, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	63      (000000f8) move-result          v14
+	64      (000000fa) if-eqz               v14, +003h
+	c4:127
+	(Landroid/database/sqlite/SQLiteException; -> 11c zzj-BB@0x11c)
+	(Ljava/lang/Throwable; -> 118 zzj-BB@0x118)
+
+zzj-BB@0xfe : [ zzj-BB@0x100 ]
+	65      (000000fe) move                 v12, v13
+	c4:127
+	(Landroid/database/sqlite/SQLiteException; -> 11c zzj-BB@0x11c)
+	(Ljava/lang/Throwable; -> 118 zzj-BB@0x118)
+
+zzj-BB@0x100 : [ zzj-BB@0x104 zzj-BB@0x120 ]
+	66      (00000100) if-eqz               v0, +010h
+	c4:127
+	(Landroid/database/sqlite/SQLiteException; -> 11c zzj-BB@0x11c)
+	(Ljava/lang/Throwable; -> 118 zzj-BB@0x118)
+
+zzj-BB@0x104 : [ zzj-BB@0x110 zzj-BB@0x120 ]
+	67      (00000104) invoke-direct        v1, v3, v2, v0, Lcom/google/android/gms/measurement/internal/zzav;->zzaC(Ljava/lang/String; Ljava/lang/String; Ljava/lang/String;)Lcom/google/android/gms/measurement/internal/zzbc;
+	68      (0000010a) move-result-object   v0
+	69      (0000010c) if-eqz               v0, +00ah
+	c4:127
+	(Landroid/database/sqlite/SQLiteException; -> 11c zzj-BB@0x11c)
+	(Ljava/lang/Throwable; -> 118 zzj-BB@0x118)
+
+zzj-BB@0x110 : [ zzj-BB@0x120 ]
+	70      (00000110) invoke-direct        v1, v4, v0, Lcom/google/android/gms/measurement/internal/zzav;->zzaD(Ljava/lang/String; Lcom/google/android/gms/measurement/internal/zzbc;)V
+	71      (00000116) goto                 +5h
+	c4:127
+	(Landroid/database/sqlite/SQLiteException; -> 11c zzj-BB@0x11c)
+	(Ljava/lang/Throwable; -> 118 zzj-BB@0x118)
+
+zzj-BB@0x118 : [ zzj-BB@0x12e ]
+	72      (00000118) move-exception       v0
+	73      (0000011a) goto                 +ah
+	c4:127
+	(Landroid/database/sqlite/SQLiteException; -> 11c zzj-BB@0x11c)
+	(Ljava/lang/Throwable; -> 118 zzj-BB@0x118)
+
+zzj-BB@0x11c : [ zzj-BB@0x132 ]
+	74      (0000011c) move-exception       v0
+	75      (0000011e) goto                 +ah
+	c4:127
+	(Landroid/database/sqlite/SQLiteException; -> 11c zzj-BB@0x11c)
+	(Ljava/lang/Throwable; -> 118 zzj-BB@0x118)
+
+zzj-BB@0x120 : [ zzj-BB@0x12c zzj-BB@0xc4 ]
+	76      (00000120) invoke-interface     v9, Landroid/database/Cursor;->moveToNext()Z
+	77      (00000126) move-result          v0
+	78      (00000128) if-nez               v0, -032h
+
+zzj-BB@0x12c : [ zzj-BB@0x168 ]
+	79      (0000012c) goto                 +1eh
+
+zzj-BB@0x12e : [ zzj-BB@0x190 ]
+	80      (0000012e) move                 v10, v11
+	81      (00000130) goto                 +30h
+
+zzj-BB@0x132 : [ zzj-BB@0x140 ]
+	82      (00000132) move                 v10, v11
+	83      (00000134) goto                 +6h
+
+zzj-BB@0x136 : [ zzj-BB@0x190 ]
+	84      (00000136) move-exception       v0
+	85      (00000138) move                 v12, v10
+	86      (0000013a) goto                 +2bh
+
+zzj-BB@0x13c : [ zzj-BB@0x140 ]
+	87      (0000013c) move-exception       v0
+	88      (0000013e) move                 v12, v10
+
+zzj-BB@0x140 : [ zzj-BB@0x168 ]
+	89      (00000140) iget-object          v5, v1, Lcom/google/android/gms/measurement/internal/zzje;->zzu Lcom/google/android/gms/measurement/internal/zzic;
+	90      (00000144) invoke-virtual       v5, Lcom/google/android/gms/measurement/internal/zzic;->zzaV()Lcom/google/android/gms/measurement/internal/zzgu;
+	91      (0000014a) move-result-object   v5
+	92      (0000014c) invoke-virtual       v5, Lcom/google/android/gms/measurement/internal/zzgu;->zzb()Lcom/google/android/gms/measurement/internal/zzgs;
+	93      (00000152) move-result-object   v5
+	94      (00000154) const-string         v7, "Error querying snapshot. appId"
+	95      (00000158) invoke-static        v2, Lcom/google/android/gms/measurement/internal/zzgu;->zzl(Ljava/lang/String;)Ljava/lang/Object;
+	96      (0000015e) move-result-object   v11
+	97      (00000160) invoke-virtual       v5, v7, v11, v0, Lcom/google/android/gms/measurement/internal/zzgs;->zzc(Ljava/lang/String; Ljava/lang/Object; Ljava/lang/Object;)V
+	98      (00000166) move                 v11, v10
+	140:165
+	(Ljava/lang/Throwable; -> 18e zzj-BB@0x18e)
+
+zzj-BB@0x168 : [ zzj-BB@0x16c zzj-BB@0x172 ]
+	99      (00000168) if-eqz               v9, +005h
+
+zzj-BB@0x16c : [ zzj-BB@0x172 ]
+	100     (0000016c) invoke-interface     v9, Landroid/database/Cursor;->close()V
+
+zzj-BB@0x172 : [ zzj-BB@0x176 zzj-BB@0x17c ]
+	101     (00000172) if-nez               v11, +005h
+
+zzj-BB@0x176 : [ zzj-BB@0x17a zzj-BB@0x17c ]
+	102     (00000176) if-eqz               v6, +003h
+
+zzj-BB@0x17a : [ zzj-BB@0xa8 ]
+	103     (0000017a) goto                 -69h
+
+zzj-BB@0x17c : [ zzj-BB@0x180 zzj-BB@0x186 ]
+	104     (0000017c) if-nez               v12, +005h
+
+zzj-BB@0x180 : [ zzj-BB@0x184 zzj-BB@0x186 ]
+	105     (00000180) if-eqz               v8, +003h
+
+zzj-BB@0x184 : [ zzj-BB@0xb6 ]
+	106     (00000184) goto                 -67h
+
+zzj-BB@0x186 : 
+	107     (00000186) invoke-direct        v1, v3, v2, Lcom/google/android/gms/measurement/internal/zzav;->zzaE(Ljava/lang/String; Ljava/lang/String;)V
+	108     (0000018c) return-void          
+
+zzj-BB@0x18e : [ zzj-BB@0x190 ]
+	109     (0000018e) move-exception       v0
+
+zzj-BB@0x190 : [ zzj-BB@0x194 zzj-BB@0x19a ]
+	110     (00000190) if-eqz               v9, +005h
+
+zzj-BB@0x194 : [ zzj-BB@0x19a ]
+	111     (00000194) invoke-interface     v9, Landroid/database/Cursor;->close()V
+
+zzj-BB@0x19a : [ zzj-BB@0x19e zzj-BB@0x1ac ]
+	112     (0000019a) if-nez               v10, +009h
+
+zzj-BB@0x19e : [ zzj-BB@0x1a2 zzj-BB@0x1a4 ]
+	113     (0000019e) if-nez               v6, +003h
+
+zzj-BB@0x1a2 : [ zzj-BB@0x1ac ]
+	114     (000001a2) goto                 +5h
+
+zzj-BB@0x1a4 : [ zzj-BB@0x1ba ]
+	115     (000001a4) invoke-direct        v1, v4, v6, Lcom/google/android/gms/measurement/internal/zzav;->zzaD(Ljava/lang/String; Lcom/google/android/gms/measurement/internal/zzbc;)V
+	116     (000001aa) goto                 +8h
+
+zzj-BB@0x1ac : [ zzj-BB@0x1b0 zzj-BB@0x1ba ]
+	117     (000001ac) if-nez               v12, +007h
+
+zzj-BB@0x1b0 : [ zzj-BB@0x1b4 zzj-BB@0x1ba ]
+	118     (000001b0) if-eqz               v8, +005h
+
+zzj-BB@0x1b4 : [ zzj-BB@0x1ba ]
+	119     (000001b4) invoke-direct        v1, v4, v8, Lcom/google/android/gms/measurement/internal/zzav;->zzaD(Ljava/lang/String; Lcom/google/android/gms/measurement/internal/zzbc;)V
+
+zzj-BB@0x1ba : 
+	120     (000001ba) invoke-direct        v1, v3, v2, Lcom/google/android/gms/measurement/internal/zzav;->zzaE(Ljava/lang/String; Ljava/lang/String;)V
+	121     (000001c0) throw                v0
+

@@ -1,0 +1,46 @@
+# Lcom/google/android/gms/common/util/WorkSourceUtil;->getNames(Landroid/os/WorkSource;)Ljava/util/List; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:android.os.WorkSource
+#
+# - return:java.util.List
+
+getNames-BB@0x0 : [ getNames-BB@0x10 getNames-BB@0x14 ]
+	0       (00000000) new-instance         v0, Ljava/util/ArrayList;
+	1       (00000004) invoke-direct        v0, Ljava/util/ArrayList;-><init>()V
+	2       (0000000a) const/4              v1, 0
+	3       (0000000c) if-nez               v5, +004h
+
+getNames-BB@0x10 : [ getNames-BB@0x1c ]
+	4       (00000010) move                 v2, v1
+	5       (00000012) goto                 +5h
+
+getNames-BB@0x14 : [ getNames-BB@0x1c ]
+	6       (00000014) invoke-static        v5, Lcom/google/android/gms/common/util/WorkSourceUtil;->size(Landroid/os/WorkSource;)I
+	7       (0000001a) move-result          v2
+
+getNames-BB@0x1c : [ getNames-BB@0x20 getNames-BB@0x4a ]
+	8       (0000001c) if-eqz               v2, +017h
+
+getNames-BB@0x20 : [ getNames-BB@0x24 getNames-BB@0x4a ]
+	9       (00000020) if-ge                v1, v2, +015h
+
+getNames-BB@0x24 : [ getNames-BB@0x38 getNames-BB@0x44 ]
+	10      (00000024) invoke-static        v5, v1, Lcom/google/android/gms/common/util/WorkSourceUtil;->getName(Landroid/os/WorkSource; I)Ljava/lang/String;
+	11      (0000002a) move-result-object   v3
+	12      (0000002c) invoke-static        v3, Lcom/google/android/gms/common/util/Strings;->isEmptyOrWhitespace(Ljava/lang/String;)Z
+	13      (00000032) move-result          v4
+	14      (00000034) if-nez               v4, +008h
+
+getNames-BB@0x38 : [ getNames-BB@0x44 ]
+	15      (00000038) invoke-static        v3, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;
+	16      (0000003e) invoke-virtual       v0, v3, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+getNames-BB@0x44 : [ getNames-BB@0x20 ]
+	17      (00000044) add-int/lit8         v1, v1, 1
+	18      (00000048) goto                 -14h
+
+getNames-BB@0x4a : 
+	19      (0000004a) return-object        v0
+

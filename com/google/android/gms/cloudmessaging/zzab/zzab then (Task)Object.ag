@@ -1,0 +1,27 @@
+# Lcom/google/android/gms/cloudmessaging/zzab;->then(Lcom/google/android/gms/tasks/Task;)Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:com.google.android.gms.tasks.Task
+#
+# - return:java.lang.Object
+
+then-BB@0x0 : [ then-BB@0x20 then-BB@0x2c ]
+	0       (00000000) invoke-virtual       v2, Lcom/google/android/gms/tasks/Task;->getResult()Ljava/lang/Object;
+	1       (00000006) move-result-object   v2
+	2       (00000008) check-cast           v2, Landroid/os/Bundle;
+	3       (0000000c) const-string         v0, "notification_data"
+	4       (00000010) invoke-virtual       v2, v0, Landroid/os/Bundle;->getParcelable(Ljava/lang/String;)Landroid/os/Parcelable;
+	5       (00000016) move-result-object   v2
+	6       (00000018) check-cast           v2, Landroid/content/Intent;
+	7       (0000001c) if-eqz               v2, +008h
+
+then-BB@0x20 : 
+	8       (00000020) new-instance         v0, Lcom/google/android/gms/cloudmessaging/CloudMessage;
+	9       (00000024) invoke-direct        v0, v2, Lcom/google/android/gms/cloudmessaging/CloudMessage;-><init>(Landroid/content/Intent;)V
+	10      (0000002a) return-object        v0
+
+then-BB@0x2c : 
+	11      (0000002c) const/4              v2, 0
+	12      (0000002e) return-object        v2
+

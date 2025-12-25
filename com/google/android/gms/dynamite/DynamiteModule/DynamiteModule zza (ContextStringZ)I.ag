@@ -1,0 +1,591 @@
+# Lcom/google/android/gms/dynamite/DynamiteModule;->zza(Landroid/content/Context; Ljava/lang/String; Z)I [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v11
+# - v12:android.content.Context
+# - v13:java.lang.String
+# - v14:boolean
+#
+# - return:int
+
+zza-BB@0x0 : [ zza-BB@0x8 ]
+	0       (00000000) const-string         v1, "Failed to retrieve remote module version: "
+	1       (00000004) const-string         v2, "Failed to load module via V2: "
+
+zza-BB@0x8 : [ zza-BB@0xe ]
+	2       (00000008) const-class          v3, Lcom/google/android/gms/dynamite/DynamiteModule;
+	3       (0000000c) monitor-enter        v3
+	8:d
+	(Ljava/lang/Throwable; -> 1e8 zza-BB@0x1e8)
+
+zza-BB@0xe : [ zza-BB@0x1a zza-BB@0x1d0 ]
+	4       (0000000e) sget-object          v0, Lcom/google/android/gms/dynamite/DynamiteModule;->zzc Ljava/lang/Boolean;
+	5       (00000012) const/4              v4, 0
+	6       (00000014) const/4              v5, 0
+	7       (00000016) if-nez               v0, +0ddh
+	e:11
+	(Ljava/lang/Throwable; -> 9e zza-BB@0x9e)
+
+zza-BB@0x1a : [ zza-BB@0x54 ]
+	8       (0000001a) invoke-virtual       v12, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;
+	9       (00000020) move-result-object   v0
+	10      (00000022) invoke-virtual       v0, Landroid/content/Context;->getClassLoader()Ljava/lang/ClassLoader;
+	11      (00000028) move-result-object   v0
+	12      (0000002a) const-class          v6, Lcom/google/android/gms/dynamite/DynamiteModule$DynamiteLoaderClassLoader;
+	13      (0000002e) invoke-virtual       v6, Ljava/lang/Class;->getName()Ljava/lang/String;
+	14      (00000034) move-result-object   v6
+	15      (00000036) invoke-virtual       v0, v6, Ljava/lang/ClassLoader;->loadClass(Ljava/lang/String;)Ljava/lang/Class;
+	16      (0000003c) move-result-object   v0
+	17      (0000003e) const-string         v6, "sClassLoader"
+	18      (00000042) invoke-virtual       v0, v6, Ljava/lang/Class;->getDeclaredField(Ljava/lang/String;)Ljava/lang/reflect/Field;
+	19      (00000048) move-result-object   v0
+	20      (0000004a) invoke-virtual       v0, Ljava/lang/reflect/Field;->getDeclaringClass()Ljava/lang/Class;
+	21      (00000050) move-result-object   v6
+	22      (00000052) monitor-enter        v6
+	1a:53
+	(Ljava/lang/ClassNotFoundException; -> 18a zza-BB@0x18a)
+	(Ljava/lang/IllegalAccessException; -> 186 zza-BB@0x186)
+	(Ljava/lang/NoSuchFieldException; -> 182 zza-BB@0x182)
+	(Ljava/lang/Throwable; -> 9e zza-BB@0x9e)
+
+zza-BB@0x54 : [ zza-BB@0x6c zza-BB@0x7a ]
+	23      (00000054) invoke-virtual       v0, v4, Ljava/lang/reflect/Field;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	24      (0000005a) move-result-object   v7
+	25      (0000005c) check-cast           v7, Ljava/lang/ClassLoader;
+	26      (00000060) invoke-static        Ljava/lang/ClassLoader;->getSystemClassLoader()Ljava/lang/ClassLoader;
+	27      (00000066) move-result-object   v8
+	28      (00000068) if-ne                v7, v8, +009h
+	54:6f
+	(Ljava/lang/Throwable; -> 74 zza-BB@0x74)
+
+zza-BB@0x6c : [ zza-BB@0x17a ]
+	29      (0000006c) sget-object          v0, Ljava/lang/Boolean;->FALSE Ljava/lang/Boolean;
+	30      (00000070) goto/16              +085h
+
+zza-BB@0x74 : [ zza-BB@0x17e ]
+	31      (00000074) move-exception       v0
+	32      (00000076) goto/16              +084h
+
+zza-BB@0x7a : [ zza-BB@0x7e zza-BB@0x8c ]
+	33      (0000007a) if-eqz               v7, +009h
+
+zza-BB@0x7e : [ zza-BB@0x84 ]
+	34      (0000007e) invoke-static        v7, Lcom/google/android/gms/dynamite/DynamiteModule;->zzf(Ljava/lang/ClassLoader;)V
+	7e:83
+	(Lcom/google/android/gms/dynamite/DynamiteModule$LoadingException; -> 84 zza-BB@0x84)
+	(Ljava/lang/Throwable; -> 74 zza-BB@0x74)
+
+zza-BB@0x84 : [ zza-BB@0x17a ]
+	35      (00000084) sget-object          v0, Ljava/lang/Boolean;->TRUE Ljava/lang/Boolean;
+	36      (00000088) goto/16              +079h
+	84:99
+	(Ljava/lang/Throwable; -> 74 zza-BB@0x74)
+
+zza-BB@0x8c : [ zza-BB@0x98 zza-BB@0xa6 ]
+	37      (0000008c) invoke-static        v12, Lcom/google/android/gms/dynamite/DynamiteModule;->zzb(Landroid/content/Context;)Z
+	38      (00000092) move-result          v7
+	39      (00000094) if-nez               v7, +009h
+	84:99
+	(Ljava/lang/Throwable; -> 74 zza-BB@0x74)
+
+zza-BB@0x98 : [ zza-BB@0x9a ]
+	40      (00000098) monitor-exit         v6
+	84:99
+	(Ljava/lang/Throwable; -> 74 zza-BB@0x74)
+
+zza-BB@0x9a : 
+	41      (0000009a) monitor-exit         v3
+	42      (0000009c) return               v5
+	9a:9b
+	(Ljava/lang/Throwable; -> 9e zza-BB@0x9e)
+
+zza-BB@0x9e : [ zza-BB@0x3e0 ]
+	43      (0000009e) move-exception       v0
+	44      (000000a0) move-object          v13, v0
+	45      (000000a2) goto/16              +19fh
+
+zza-BB@0xa6 : [ zza-BB@0xae zza-BB@0x168 ]
+	46      (000000a6) sget-boolean         v7, Lcom/google/android/gms/dynamite/DynamiteModule;->zze Z
+	47      (000000aa) if-nez               v7, +05fh
+	a6:b9
+	(Ljava/lang/Throwable; -> 74 zza-BB@0x74)
+
+zza-BB@0xae : [ zza-BB@0xbe zza-BB@0xc0 ]
+	48      (000000ae) sget-object          v7, Ljava/lang/Boolean;->TRUE Ljava/lang/Boolean;
+	49      (000000b2) invoke-virtual       v7, v4, Ljava/lang/Boolean;->equals(Ljava/lang/Object;)Z
+	50      (000000b8) move-result          v8
+	51      (000000ba) if-eqz               v8, +003h
+
+zza-BB@0xbe : [ zza-BB@0x168 ]
+	52      (000000be) goto                 +55h
+
+zza-BB@0xc0 : [ zza-BB@0xc2 ]
+	53      (000000c0) const/4              v8, 1
+
+zza-BB@0xc2 : [ zza-BB@0xd2 zza-BB@0x14e ]
+	54      (000000c2) invoke-static        v12, v13, v14, v8, Lcom/google/android/gms/dynamite/DynamiteModule;->zzc(Landroid/content/Context; Ljava/lang/String; Z Z)I
+	55      (000000c8) move-result          v8
+	56      (000000ca) sget-object          v9, Lcom/google/android/gms/dynamite/DynamiteModule;->zzd Ljava/lang/String;
+	57      (000000ce) if-eqz               v9, +040h
+	c2:147
+	(Lcom/google/android/gms/dynamite/DynamiteModule$LoadingException; -> 154 zza-BB@0x154)
+	(Ljava/lang/Throwable; -> 74 zza-BB@0x74)
+
+zza-BB@0xd2 : [ zza-BB@0xde zza-BB@0xe0 ]
+	58      (000000d2) invoke-virtual       v9, Ljava/lang/String;->isEmpty()Z
+	59      (000000d8) move-result          v9
+	60      (000000da) if-eqz               v9, +003h
+	c2:147
+	(Lcom/google/android/gms/dynamite/DynamiteModule$LoadingException; -> 154 zza-BB@0x154)
+	(Ljava/lang/Throwable; -> 74 zza-BB@0x74)
+
+zza-BB@0xde : [ zza-BB@0x14e ]
+	61      (000000de) goto                 +38h
+	c2:147
+	(Lcom/google/android/gms/dynamite/DynamiteModule$LoadingException; -> 154 zza-BB@0x154)
+	(Ljava/lang/Throwable; -> 74 zza-BB@0x74)
+
+zza-BB@0xe0 : [ zza-BB@0xec zza-BB@0xee ]
+	62      (000000e0) invoke-static        Lcom/google/android/gms/dynamite/zzb;->zza()Ljava/lang/ClassLoader;
+	63      (000000e6) move-result-object   v9
+	64      (000000e8) if-eqz               v9, +003h
+	c2:147
+	(Lcom/google/android/gms/dynamite/DynamiteModule$LoadingException; -> 154 zza-BB@0x154)
+	(Ljava/lang/Throwable; -> 74 zza-BB@0x74)
+
+zza-BB@0xec : [ zza-BB@0x138 ]
+	65      (000000ec) goto                 +26h
+	c2:147
+	(Lcom/google/android/gms/dynamite/DynamiteModule$LoadingException; -> 154 zza-BB@0x154)
+	(Ljava/lang/Throwable; -> 74 zza-BB@0x74)
+
+zza-BB@0xee : [ zza-BB@0xfa zza-BB@0x11c ]
+	66      (000000ee) sget                 v9, Landroid/os/Build$VERSION;->SDK_INT I
+	67      (000000f2) const/16             v10, 29
+	68      (000000f6) if-lt                v9, v10, +013h
+	c2:147
+	(Lcom/google/android/gms/dynamite/DynamiteModule$LoadingException; -> 154 zza-BB@0x154)
+	(Ljava/lang/Throwable; -> 74 zza-BB@0x74)
+
+zza-BB@0xfa : [ zza-BB@0x138 ]
+	69      (000000fa) invoke-static        Lcom/google/android/gms/dynamite/a;->b()V
+	70      (00000100) sget-object          v9, Lcom/google/android/gms/dynamite/DynamiteModule;->zzd Ljava/lang/String;
+	71      (00000104) invoke-static        v9, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;
+	72      (0000010a) invoke-static        Ljava/lang/ClassLoader;->getSystemClassLoader()Ljava/lang/ClassLoader;
+	73      (00000110) move-result-object   v10
+	74      (00000112) invoke-static        v9, v10, Lcom/google/android/gms/dynamite/a;->a(Ljava/lang/String; Ljava/lang/ClassLoader;)Ldalvik/system/DelegateLastClassLoader;
+	75      (00000118) move-result-object   v9
+	76      (0000011a) goto                 +fh
+	c2:147
+	(Lcom/google/android/gms/dynamite/DynamiteModule$LoadingException; -> 154 zza-BB@0x154)
+	(Ljava/lang/Throwable; -> 74 zza-BB@0x74)
+
+zza-BB@0x11c : [ zza-BB@0x138 ]
+	77      (0000011c) new-instance         v9, Lcom/google/android/gms/dynamite/zzd;
+	78      (00000120) sget-object          v10, Lcom/google/android/gms/dynamite/DynamiteModule;->zzd Ljava/lang/String;
+	79      (00000124) invoke-static        v10, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;
+	80      (0000012a) invoke-static        Ljava/lang/ClassLoader;->getSystemClassLoader()Ljava/lang/ClassLoader;
+	81      (00000130) move-result-object   v11
+	82      (00000132) invoke-direct        v9, v10, v11, Lcom/google/android/gms/dynamite/zzd;-><init>(Ljava/lang/String; Ljava/lang/ClassLoader;)V
+	c2:147
+	(Lcom/google/android/gms/dynamite/DynamiteModule$LoadingException; -> 154 zza-BB@0x154)
+	(Ljava/lang/Throwable; -> 74 zza-BB@0x74)
+
+zza-BB@0x138 : [ zza-BB@0x148 ]
+	83      (00000138) invoke-static        v9, Lcom/google/android/gms/dynamite/DynamiteModule;->zzf(Ljava/lang/ClassLoader;)V
+	84      (0000013e) invoke-virtual       v0, v4, v9, Ljava/lang/reflect/Field;->set(Ljava/lang/Object; Ljava/lang/Object;)V
+	85      (00000144) sput-object          v7, Lcom/google/android/gms/dynamite/DynamiteModule;->zzc Ljava/lang/Boolean;
+	c2:147
+	(Lcom/google/android/gms/dynamite/DynamiteModule$LoadingException; -> 154 zza-BB@0x154)
+	(Ljava/lang/Throwable; -> 74 zza-BB@0x74)
+
+zza-BB@0x148 : [ zza-BB@0x14a ]
+	86      (00000148) monitor-exit         v6
+	148:149
+	(Ljava/lang/Throwable; -> 74 zza-BB@0x74)
+
+zza-BB@0x14a : 
+	87      (0000014a) monitor-exit         v3
+	88      (0000014c) return               v8
+	14a:14b
+	(Ljava/lang/Throwable; -> 9e zza-BB@0x9e)
+
+zza-BB@0x14e : [ zza-BB@0x150 ]
+	89      (0000014e) monitor-exit         v6
+	14e:14f
+	(Ljava/lang/Throwable; -> 74 zza-BB@0x74)
+
+zza-BB@0x150 : 
+	90      (00000150) monitor-exit         v3
+	91      (00000152) return               v8
+	150:151
+	(Ljava/lang/Throwable; -> 9e zza-BB@0x9e)
+
+zza-BB@0x154 : [ zza-BB@0x17a ]
+	92      (00000154) invoke-static        Ljava/lang/ClassLoader;->getSystemClassLoader()Ljava/lang/ClassLoader;
+	93      (0000015a) move-result-object   v7
+	94      (0000015c) invoke-virtual       v0, v4, v7, Ljava/lang/reflect/Field;->set(Ljava/lang/Object; Ljava/lang/Object;)V
+	95      (00000162) sget-object          v0, Ljava/lang/Boolean;->FALSE Ljava/lang/Boolean;
+	96      (00000166) goto                 +ah
+	154:17f
+	(Ljava/lang/Throwable; -> 74 zza-BB@0x74)
+
+zza-BB@0x168 : [ zza-BB@0x17a ]
+	97      (00000168) invoke-static        Ljava/lang/ClassLoader;->getSystemClassLoader()Ljava/lang/ClassLoader;
+	98      (0000016e) move-result-object   v7
+	99      (00000170) invoke-virtual       v0, v4, v7, Ljava/lang/reflect/Field;->set(Ljava/lang/Object; Ljava/lang/Object;)V
+	100     (00000176) sget-object          v0, Ljava/lang/Boolean;->FALSE Ljava/lang/Boolean;
+	154:17f
+	(Ljava/lang/Throwable; -> 74 zza-BB@0x74)
+
+zza-BB@0x17a : [ zza-BB@0x1cc ]
+	101     (0000017a) monitor-exit         v6
+	102     (0000017c) goto                 +28h
+	154:17f
+	(Ljava/lang/Throwable; -> 74 zza-BB@0x74)
+
+zza-BB@0x17e : [ zza-BB@0x180 ]
+	103     (0000017e) monitor-exit         v6
+	154:17f
+	(Ljava/lang/Throwable; -> 74 zza-BB@0x74)
+
+zza-BB@0x180 : 
+	104     (00000180) throw                v0
+	180:181
+	(Ljava/lang/ClassNotFoundException; -> 18a zza-BB@0x18a)
+	(Ljava/lang/IllegalAccessException; -> 186 zza-BB@0x186)
+	(Ljava/lang/NoSuchFieldException; -> 182 zza-BB@0x182)
+	(Ljava/lang/Throwable; -> 9e zza-BB@0x9e)
+
+zza-BB@0x182 : [ zza-BB@0x18c ]
+	105     (00000182) move-exception       v0
+	106     (00000184) goto                 +4h
+
+zza-BB@0x186 : [ zza-BB@0x18c ]
+	107     (00000186) move-exception       v0
+	108     (00000188) goto                 +2h
+
+zza-BB@0x18a : [ zza-BB@0x18c ]
+	109     (0000018a) move-exception       v0
+
+zza-BB@0x18c : [ zza-BB@0x1cc ]
+	110     (0000018c) const-string         v6, "DynamiteModule"
+	111     (00000190) invoke-virtual       v0, Ljava/lang/Object;->toString()Ljava/lang/String;
+	112     (00000196) move-result-object   v0
+	113     (00000198) invoke-virtual       v0, Ljava/lang/String;->length()I
+	114     (0000019e) move-result          v7
+	115     (000001a0) add-int/lit8         v7, v7, 30
+	116     (000001a4) new-instance         v8, Ljava/lang/StringBuilder;
+	117     (000001a8) invoke-direct        v8, v7, Ljava/lang/StringBuilder;-><init>(I)V
+	118     (000001ae) invoke-virtual       v8, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	119     (000001b4) invoke-virtual       v8, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	120     (000001ba) invoke-virtual       v8, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	121     (000001c0) move-result-object   v0
+	122     (000001c2) invoke-static        v6, v0, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+	123     (000001c8) sget-object          v0, Ljava/lang/Boolean;->FALSE Ljava/lang/Boolean;
+	18c:1d1
+	(Ljava/lang/Throwable; -> 9e zza-BB@0x9e)
+
+zza-BB@0x1cc : [ zza-BB@0x1d0 ]
+	124     (000001cc) sput-object          v0, Lcom/google/android/gms/dynamite/DynamiteModule;->zzc Ljava/lang/Boolean;
+	18c:1d1
+	(Ljava/lang/Throwable; -> 9e zza-BB@0x9e)
+
+zza-BB@0x1d0 : [ zza-BB@0x1d2 ]
+	125     (000001d0) monitor-exit         v3
+	18c:1d1
+	(Ljava/lang/Throwable; -> 9e zza-BB@0x9e)
+
+zza-BB@0x1d2 : [ zza-BB@0x1de zza-BB@0x23a ]
+	126     (000001d2) invoke-virtual       v0, Ljava/lang/Boolean;->booleanValue()Z
+	127     (000001d8) move-result          v0
+	128     (000001da) if-eqz               v0, +030h
+	1d2:1d9
+	(Ljava/lang/Throwable; -> 1e8 zza-BB@0x1e8)
+
+zza-BB@0x1de : 
+	129     (000001de) invoke-static        v12, v13, v14, v5, Lcom/google/android/gms/dynamite/DynamiteModule;->zzc(Landroid/content/Context; Ljava/lang/String; Z Z)I
+	130     (000001e4) move-result          v12
+	131     (000001e6) return               v12
+	1de:1e5
+	(Lcom/google/android/gms/dynamite/DynamiteModule$LoadingException; -> 1f0 zza-BB@0x1f0)
+	(Ljava/lang/Throwable; -> 1e8 zza-BB@0x1e8)
+
+zza-BB@0x1e8 : [ zza-BB@0x3e4 ]
+	132     (000001e8) move-exception       v0
+	133     (000001ea) move-object          v13, v0
+	134     (000001ec) goto/16              +0fch
+
+zza-BB@0x1f0 : [ zza-BB@0x1f4 ]
+	135     (000001f0) move-exception       v0
+	136     (000001f2) move-object          v13, v0
+
+zza-BB@0x1f4 : 
+	137     (000001f4) const-string         v14, "DynamiteModule"
+	138     (000001f8) invoke-virtual       v13, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+	139     (000001fe) move-result-object   v13
+	140     (00000200) invoke-static        v13, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
+	141     (00000206) move-result-object   v0
+	142     (00000208) invoke-virtual       v0, Ljava/lang/String;->length()I
+	143     (0000020e) move-result          v0
+	144     (00000210) add-int/lit8         v0, v0, 42
+	145     (00000214) new-instance         v2, Ljava/lang/StringBuilder;
+	146     (00000218) invoke-direct        v2, v0, Ljava/lang/StringBuilder;-><init>(I)V
+	147     (0000021e) invoke-virtual       v2, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	148     (00000224) invoke-virtual       v2, v13, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	149     (0000022a) invoke-virtual       v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	150     (00000230) move-result-object   v13
+	151     (00000232) invoke-static        v14, v13, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+	152     (00000238) return               v5
+	1f4:245
+	(Ljava/lang/Throwable; -> 1e8 zza-BB@0x1e8)
+
+zza-BB@0x23a : [ zza-BB@0x24a zza-BB@0x24e ]
+	153     (0000023a) const-string         v1, "Failed to retrieve remote module version: "
+	154     (0000023e) invoke-static        v12, Lcom/google/android/gms/dynamite/DynamiteModule;->zzg(Landroid/content/Context;)Lcom/google/android/gms/dynamite/zzp;
+	155     (00000244) move-result-object   v6
+	156     (00000246) if-nez               v6, +004h
+
+zza-BB@0x24a : [ zza-BB@0x3cc ]
+	157     (0000024a) goto/16              +0c1h
+
+zza-BB@0x24e : [ zza-BB@0x25c zza-BB@0x32e ]
+	158     (0000024e) invoke-virtual       v6, Lcom/google/android/gms/dynamite/zzp;->zzi()I
+	159     (00000254) move-result          v0
+	160     (00000256) const/4              v2, 3
+	161     (00000258) if-lt                v0, v2, +06bh
+	24e:2c3
+	(Landroid/os/RemoteException; -> 284 zza-BB@0x284)
+	(Ljava/lang/Throwable; -> 3ce zza-BB@0x3ce)
+
+zza-BB@0x25c : [ zza-BB@0x270 zza-BB@0x28c ]
+	162     (0000025c) sget-object          v0, Lcom/google/android/gms/dynamite/DynamiteModule;->zzh Ljava/lang/ThreadLocal;
+	163     (00000260) invoke-virtual       v0, Ljava/lang/ThreadLocal;->get()Ljava/lang/Object;
+	164     (00000266) move-result-object   v0
+	165     (00000268) check-cast           v0, Lcom/google/android/gms/dynamite/zzn;
+	166     (0000026c) if-eqz               v0, +010h
+	24e:2c3
+	(Landroid/os/RemoteException; -> 284 zza-BB@0x284)
+	(Ljava/lang/Throwable; -> 3ce zza-BB@0x3ce)
+
+zza-BB@0x270 : [ zza-BB@0x278 zza-BB@0x28c ]
+	167     (00000270) iget-object          v0, v0, Lcom/google/android/gms/dynamite/zzn;->zza Landroid/database/Cursor;
+	168     (00000274) if-eqz               v0, +00ch
+	24e:2c3
+	(Landroid/os/RemoteException; -> 284 zza-BB@0x284)
+	(Ljava/lang/Throwable; -> 3ce zza-BB@0x3ce)
+
+zza-BB@0x278 : [ zza-BB@0x3cc ]
+	169     (00000278) invoke-interface     v0, v5, Landroid/database/Cursor;->getInt(I)I
+	170     (0000027e) move-result          v5
+	171     (00000280) goto/16              +0a6h
+	24e:2c3
+	(Landroid/os/RemoteException; -> 284 zza-BB@0x284)
+	(Ljava/lang/Throwable; -> 3ce zza-BB@0x3ce)
+
+zza-BB@0x284 : [ zza-BB@0x37c ]
+	172     (00000284) move-exception       v0
+	173     (00000286) move-object          v13, v0
+	174     (00000288) goto/16              +07ah
+	24e:2c3
+	(Landroid/os/RemoteException; -> 284 zza-BB@0x284)
+	(Ljava/lang/Throwable; -> 3ce zza-BB@0x3ce)
+
+zza-BB@0x28c : [ zza-BB@0x2c8 zza-BB@0x30c ]
+	175     (0000028c) invoke-static        v12, Lcom/google/android/gms/dynamic/ObjectWrapper;->wrap(Ljava/lang/Object;)Lcom/google/android/gms/dynamic/IObjectWrapper;
+	176     (00000292) move-result-object   v7
+	177     (00000294) sget-object          v0, Lcom/google/android/gms/dynamite/DynamiteModule;->zzi Ljava/lang/ThreadLocal;
+	178     (00000298) invoke-virtual       v0, Ljava/lang/ThreadLocal;->get()Ljava/lang/Object;
+	179     (0000029e) move-result-object   v0
+	180     (000002a0) check-cast           v0, Ljava/lang/Long;
+	181     (000002a4) invoke-virtual       v0, Ljava/lang/Long;->longValue()J
+	182     (000002aa) move-result-wide     v10
+	183     (000002ac) move-object          v8, v13
+	184     (000002ae) move                 v9, v14
+	185     (000002b0) invoke-virtual/range v6 ... v11, Lcom/google/android/gms/dynamite/zzp;->zzj(Lcom/google/android/gms/dynamic/IObjectWrapper; Ljava/lang/String; Z J)Lcom/google/android/gms/dynamic/IObjectWrapper;
+	186     (000002b6) move-result-object   v13
+	187     (000002b8) invoke-static        v13, Lcom/google/android/gms/dynamic/ObjectWrapper;->unwrap(Lcom/google/android/gms/dynamic/IObjectWrapper;)Ljava/lang/Object;
+	188     (000002be) move-result-object   v13
+	189     (000002c0) check-cast           v13, Landroid/database/Cursor;
+	190     (000002c4) if-eqz               v13, +024h
+
+zza-BB@0x2c8 : [ zza-BB@0x2d4 zza-BB@0x2d6 ]
+	191     (000002c8) invoke-interface     v13, Landroid/database/Cursor;->moveToFirst()Z
+	192     (000002ce) move-result          v14
+	193     (000002d0) if-nez               v14, +003h
+	2c8:2e9
+	(Landroid/os/RemoteException; -> 2f6 zza-BB@0x2f6)
+	(Ljava/lang/Throwable; -> 2f0 zza-BB@0x2f0)
+
+zza-BB@0x2d4 : [ zza-BB@0x30c ]
+	194     (000002d4) goto                 +1ch
+	2c8:2e9
+	(Landroid/os/RemoteException; -> 2f6 zza-BB@0x2f6)
+	(Ljava/lang/Throwable; -> 2f0 zza-BB@0x2f0)
+
+zza-BB@0x2d6 : [ zza-BB@0x2e2 zza-BB@0x2fc ]
+	195     (000002d6) invoke-interface     v13, v5, Landroid/database/Cursor;->getInt(I)I
+	196     (000002dc) move-result          v14
+	197     (000002de) if-lez               v14, +00fh
+	2c8:2e9
+	(Landroid/os/RemoteException; -> 2f6 zza-BB@0x2f6)
+	(Ljava/lang/Throwable; -> 2f0 zza-BB@0x2f0)
+
+zza-BB@0x2e2 : [ zza-BB@0x2ee zza-BB@0x2fc ]
+	198     (000002e2) invoke-static        v13, Lcom/google/android/gms/dynamite/DynamiteModule;->zzd(Landroid/database/Cursor;)Z
+	199     (000002e8) move-result          v0
+	200     (000002ea) if-eqz               v0, +009h
+
+zza-BB@0x2ee : [ zza-BB@0x2fe ]
+	201     (000002ee) goto                 +8h
+
+zza-BB@0x2f0 : [ zza-BB@0x326 ]
+	202     (000002f0) move-exception       v0
+	203     (000002f2) move-object          v14, v0
+	204     (000002f4) goto                 +19h
+
+zza-BB@0x2f6 : [ zza-BB@0x32a ]
+	205     (000002f6) move-exception       v0
+	206     (000002f8) move-object          v14, v0
+	207     (000002fa) goto                 +18h
+
+zza-BB@0x2fc : [ zza-BB@0x2fe ]
+	208     (000002fc) move-object          v4, v13
+
+zza-BB@0x2fe : [ zza-BB@0x302 zza-BB@0x308 ]
+	209     (000002fe) if-eqz               v4, +005h
+
+zza-BB@0x302 : [ zza-BB@0x308 ]
+	210     (00000302) invoke-interface     v4, Landroid/database/Cursor;->close()V
+	302:307
+	(Ljava/lang/Throwable; -> 1e8 zza-BB@0x1e8)
+
+zza-BB@0x308 : [ zza-BB@0x3cc ]
+	211     (00000308) move                 v5, v14
+	212     (0000030a) goto                 +61h
+
+zza-BB@0x30c : [ zza-BB@0x31e zza-BB@0x3cc ]
+	213     (0000030c) const-string         v14, "DynamiteModule"
+	214     (00000310) const-string         v0, "Failed to retrieve remote module version."
+	215     (00000314) invoke-static        v14, v0, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+	216     (0000031a) if-eqz               v13, +059h
+	30c:319
+	(Landroid/os/RemoteException; -> 2f6 zza-BB@0x2f6)
+	(Ljava/lang/Throwable; -> 2f0 zza-BB@0x2f0)
+
+zza-BB@0x31e : [ zza-BB@0x3cc ]
+	217     (0000031e) invoke-interface     v13, Landroid/database/Cursor;->close()V
+	218     (00000324) goto                 +54h
+	31e:323
+	(Ljava/lang/Throwable; -> 1e8 zza-BB@0x1e8)
+
+zza-BB@0x326 : [ zza-BB@0x3d4 ]
+	219     (00000326) move-object          v4, v13
+	220     (00000328) goto                 +56h
+
+zza-BB@0x32a : [ zza-BB@0x37e ]
+	221     (0000032a) move-object          v4, v13
+	222     (0000032c) goto                 +29h
+
+zza-BB@0x32e : [ zza-BB@0x338 zza-BB@0x358 ]
+	223     (0000032e) move-object          v8, v13
+	224     (00000330) move                 v9, v14
+	225     (00000332) const/4              v13, 2
+	226     (00000334) if-ne                v0, v13, +012h
+
+zza-BB@0x338 : [ zza-BB@0x3cc ]
+	227     (00000338) const-string         v13, "DynamiteModule"
+	228     (0000033c) const-string         v14, "IDynamite loader version = 2, no high precision latency measurement."
+	229     (00000340) invoke-static        v13, v14, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+	230     (00000346) invoke-static        v12, Lcom/google/android/gms/dynamic/ObjectWrapper;->wrap(Ljava/lang/Object;)Lcom/google/android/gms/dynamic/IObjectWrapper;
+	231     (0000034c) move-result-object   v13
+	232     (0000034e) invoke-virtual       v6, v13, v8, v9, Lcom/google/android/gms/dynamite/zzp;->zzh(Lcom/google/android/gms/dynamic/IObjectWrapper; Ljava/lang/String; Z)I
+	233     (00000354) move-result          v5
+	234     (00000356) goto                 +3bh
+	338:375
+	(Landroid/os/RemoteException; -> 284 zza-BB@0x284)
+	(Ljava/lang/Throwable; -> 3ce zza-BB@0x3ce)
+
+zza-BB@0x358 : [ zza-BB@0x3cc ]
+	235     (00000358) const-string         v13, "DynamiteModule"
+	236     (0000035c) const-string         v14, "IDynamite loader version < 2, falling back to getModuleVersion2"
+	237     (00000360) invoke-static        v13, v14, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+	238     (00000366) invoke-static        v12, Lcom/google/android/gms/dynamic/ObjectWrapper;->wrap(Ljava/lang/Object;)Lcom/google/android/gms/dynamic/IObjectWrapper;
+	239     (0000036c) move-result-object   v13
+	240     (0000036e) invoke-virtual       v6, v13, v8, v9, Lcom/google/android/gms/dynamite/zzp;->zzf(Lcom/google/android/gms/dynamic/IObjectWrapper; Ljava/lang/String; Z)I
+	241     (00000374) move-result          v5
+	242     (00000376) goto                 +2bh
+
+zza-BB@0x378 : [ zza-BB@0x3d4 ]
+	243     (00000378) move-object          v14, v13
+	244     (0000037a) goto                 +2dh
+
+zza-BB@0x37c : [ zza-BB@0x37e ]
+	245     (0000037c) move-object          v14, v13
+
+zza-BB@0x37e : [ zza-BB@0x3c6 zza-BB@0x3cc ]
+	246     (0000037e) const-string         v13, "DynamiteModule"
+	247     (00000382) invoke-virtual       v14, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+	248     (00000388) move-result-object   v14
+	249     (0000038a) invoke-static        v14, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
+	250     (00000390) move-result-object   v0
+	251     (00000392) invoke-virtual       v0, Ljava/lang/String;->length()I
+	252     (00000398) move-result          v0
+	253     (0000039a) add-int/lit8         v0, v0, 42
+	254     (0000039e) new-instance         v2, Ljava/lang/StringBuilder;
+	255     (000003a2) invoke-direct        v2, v0, Ljava/lang/StringBuilder;-><init>(I)V
+	256     (000003a8) invoke-virtual       v2, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	257     (000003ae) invoke-virtual       v2, v14, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	258     (000003b4) invoke-virtual       v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	259     (000003ba) move-result-object   v14
+	260     (000003bc) invoke-static        v13, v14, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+	261     (000003c2) if-eqz               v4, +005h
+	37e:3c1
+	(Ljava/lang/Throwable; -> 3ce zza-BB@0x3ce)
+
+zza-BB@0x3c6 : [ zza-BB@0x3cc ]
+	262     (000003c6) invoke-interface     v4, Landroid/database/Cursor;->close()V
+	3c6:3df
+	(Ljava/lang/Throwable; -> 1e8 zza-BB@0x1e8)
+
+zza-BB@0x3cc : 
+	263     (000003cc) return               v5
+	3c6:3df
+	(Ljava/lang/Throwable; -> 1e8 zza-BB@0x1e8)
+
+zza-BB@0x3ce : [ zza-BB@0x378 ]
+	264     (000003ce) move-exception       v0
+	265     (000003d0) move-object          v13, v0
+	266     (000003d2) goto                 -2dh
+	3c6:3df
+	(Ljava/lang/Throwable; -> 1e8 zza-BB@0x1e8)
+
+zza-BB@0x3d4 : [ zza-BB@0x3d8 zza-BB@0x3de ]
+	267     (000003d4) if-eqz               v4, +005h
+	3c6:3df
+	(Ljava/lang/Throwable; -> 1e8 zza-BB@0x1e8)
+
+zza-BB@0x3d8 : [ zza-BB@0x3de ]
+	268     (000003d8) invoke-interface     v4, Landroid/database/Cursor;->close()V
+	3c6:3df
+	(Ljava/lang/Throwable; -> 1e8 zza-BB@0x1e8)
+
+zza-BB@0x3de : 
+	269     (000003de) throw                v14
+	3c6:3df
+	(Ljava/lang/Throwable; -> 1e8 zza-BB@0x1e8)
+
+zza-BB@0x3e0 : [ zza-BB@0x3e2 ]
+	270     (000003e0) monitor-exit         v3
+	3e0:3e1
+	(Ljava/lang/Throwable; -> 9e zza-BB@0x9e)
+
+zza-BB@0x3e2 : 
+	271     (000003e2) throw                v13
+	3e2:3e3
+	(Ljava/lang/Throwable; -> 1e8 zza-BB@0x1e8)
+
+zza-BB@0x3e4 : 
+	272     (000003e4) invoke-static        v12, v13, Lcom/google/android/gms/common/util/CrashUtils;->addDynamiteErrorToDropBox(Landroid/content/Context; Ljava/lang/Throwable;)Z
+	273     (000003ea) throw                v13
+

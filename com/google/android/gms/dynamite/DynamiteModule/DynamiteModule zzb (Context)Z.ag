@@ -1,0 +1,102 @@
+# Lcom/google/android/gms/dynamite/DynamiteModule;->zzb(Landroid/content/Context;)Z [access_flags=private static]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:android.content.Context
+#
+# - return:boolean
+
+zzb-BB@0x0 : [ zzb-BB@0x14 zzb-BB@0x16 ]
+	0       (00000000) sget-object          v0, Ljava/lang/Boolean;->TRUE Ljava/lang/Boolean;
+	1       (00000004) const/4              v1, 0
+	2       (00000006) invoke-virtual       v0, v1, Ljava/lang/Boolean;->equals(Ljava/lang/Object;)Z
+	3       (0000000c) move-result          v1
+	4       (0000000e) const/4              v2, 1
+	5       (00000010) if-eqz               v1, +003h
+
+zzb-BB@0x14 : 
+	6       (00000014) return               v2
+
+zzb-BB@0x16 : [ zzb-BB@0x26 zzb-BB@0x28 ]
+	7       (00000016) sget-object          v1, Lcom/google/android/gms/dynamite/DynamiteModule;->zzg Ljava/lang/Boolean;
+	8       (0000001a) invoke-virtual       v0, v1, Ljava/lang/Boolean;->equals(Ljava/lang/Object;)Z
+	9       (00000020) move-result          v0
+	10      (00000022) if-eqz               v0, +003h
+
+zzb-BB@0x26 : 
+	11      (00000026) return               v2
+
+zzb-BB@0x28 : [ zzb-BB@0x36 zzb-BB@0xc4 ]
+	12      (00000028) sget-object          v0, Lcom/google/android/gms/dynamite/DynamiteModule;->zzg Ljava/lang/Boolean;
+	13      (0000002c) const-string         v1, "DynamiteModule"
+	14      (00000030) const/4              v3, 0
+	15      (00000032) if-nez               v0, +049h
+
+zzb-BB@0x36 : [ zzb-BB@0x4a zzb-BB@0x4e ]
+	16      (00000036) invoke-virtual       v6, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
+	17      (0000003c) move-result-object   v0
+	18      (0000003e) invoke-static        Lcom/google/android/gms/common/util/PlatformVersion;->isAtLeastQ()Z
+	19      (00000044) move-result          v4
+	20      (00000046) if-eq                v2, v4, +004h
+
+zzb-BB@0x4a : [ zzb-BB@0x52 ]
+	21      (0000004a) move                 v4, v3
+	22      (0000004c) goto                 +3h
+
+zzb-BB@0x4e : [ zzb-BB@0x52 ]
+	23      (0000004e) const/high16         v4, 268435456
+
+zzb-BB@0x52 : [ zzb-BB@0x78 zzb-BB@0x92 ]
+	24      (00000052) const-string         v5, "com.google.android.gms.chimera"
+	25      (00000056) invoke-virtual       v0, v5, v4, Landroid/content/pm/PackageManager;->resolveContentProvider(Ljava/lang/String; I)Landroid/content/pm/ProviderInfo;
+	26      (0000005c) move-result-object   v0
+	27      (0000005e) invoke-static        Lcom/google/android/gms/common/GoogleApiAvailabilityLight;->getInstance()Lcom/google/android/gms/common/GoogleApiAvailabilityLight;
+	28      (00000064) move-result-object   v4
+	29      (00000066) const                v5, 10000000
+	30      (0000006c) invoke-virtual       v4, v6, v5, Lcom/google/android/gms/common/GoogleApiAvailabilityLight;->isGooglePlayServicesAvailable(Landroid/content/Context; I)I
+	31      (00000072) move-result          v6
+	32      (00000074) if-nez               v6, +00fh
+
+zzb-BB@0x78 : [ zzb-BB@0x7c zzb-BB@0x92 ]
+	33      (00000078) if-eqz               v0, +00dh
+
+zzb-BB@0x7c : [ zzb-BB@0x90 zzb-BB@0x92 ]
+	34      (0000007c) const-string         v6, "com.google.android.gms"
+	35      (00000080) iget-object          v4, v0, Landroid/content/pm/ProviderInfo;->packageName Ljava/lang/String;
+	36      (00000084) invoke-virtual       v6, v4, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	37      (0000008a) move-result          v6
+	38      (0000008c) if-eqz               v6, +003h
+
+zzb-BB@0x90 : [ zzb-BB@0x92 ]
+	39      (00000090) move                 v3, v2
+
+zzb-BB@0x92 : [ zzb-BB@0xa2 zzb-BB@0xc4 ]
+	40      (00000092) invoke-static        v3, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+	41      (00000098) move-result-object   v6
+	42      (0000009a) sput-object          v6, Lcom/google/android/gms/dynamite/DynamiteModule;->zzg Ljava/lang/Boolean;
+	43      (0000009e) if-eqz               v3, +013h
+
+zzb-BB@0xa2 : [ zzb-BB@0xaa zzb-BB@0xc4 ]
+	44      (000000a2) iget-object          v6, v0, Landroid/content/pm/ProviderInfo;->applicationInfo Landroid/content/pm/ApplicationInfo;
+	45      (000000a6) if-eqz               v6, +00fh
+
+zzb-BB@0xaa : [ zzb-BB@0xb6 zzb-BB@0xc4 ]
+	46      (000000aa) iget                 v6, v6, Landroid/content/pm/ApplicationInfo;->flags I
+	47      (000000ae) and-int/lit16        v6, v6, 129
+	48      (000000b2) if-nez               v6, +009h
+
+zzb-BB@0xb6 : [ zzb-BB@0xc4 ]
+	49      (000000b6) const-string         v6, "Non-system-image GmsCore APK, forcing V1"
+	50      (000000ba) invoke-static        v1, v6, Landroid/util/Log;->i(Ljava/lang/String; Ljava/lang/String;)I
+	51      (000000c0) sput-boolean         v2, Lcom/google/android/gms/dynamite/DynamiteModule;->zze Z
+
+zzb-BB@0xc4 : [ zzb-BB@0xc8 zzb-BB@0xd2 ]
+	52      (000000c4) if-nez               v3, +007h
+
+zzb-BB@0xc8 : [ zzb-BB@0xd2 ]
+	53      (000000c8) const-string         v6, "Invalid GmsCore APK, remote loading disabled."
+	54      (000000cc) invoke-static        v1, v6, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String;)I
+
+zzb-BB@0xd2 : 
+	55      (000000d2) return               v3
+

@@ -1,0 +1,29 @@
+# Lcom/android/billingclient/api/zzbq;->onPurchasesUpdated(Lcom/android/billingclient/api/BillingResult; Ljava/util/List;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:com.android.billingclient.api.BillingResult
+# - v3:java.util.List
+#
+# - return:void
+
+onPurchasesUpdated-BB@0x0 : [ onPurchasesUpdated-BB@0x4 onPurchasesUpdated-BB@0x8 ]
+	0       (00000000) if-nez               v3, +004h
+
+onPurchasesUpdated-BB@0x4 : [ onPurchasesUpdated-BB@0x8 ]
+	1       (00000004) sget-object          v3, Ljava/util/Collections;->EMPTY_LIST Ljava/util/List;
+
+onPurchasesUpdated-BB@0x8 : 
+	2       (00000008) invoke-interface     v3, Ljava/util/List;->size()I
+	3       (0000000e) move-result          v0
+	4       (00000010) new-array            v0, v0, [Lcom/android/billingclient/api/Purchase;
+	5       (00000014) invoke-interface     v3, v0, Ljava/util/List;->toArray([Ljava/lang/Object;)[Ljava/lang/Object;
+	6       (0000001a) move-result-object   v3
+	7       (0000001c) check-cast           v3, [Lcom/android/billingclient/api/Purchase;
+	8       (00000020) invoke-virtual       v2, Lcom/android/billingclient/api/BillingResult;->getResponseCode()I
+	9       (00000026) move-result          v0
+	10      (00000028) invoke-virtual       v2, Lcom/android/billingclient/api/BillingResult;->getDebugMessage()Ljava/lang/String;
+	11      (0000002e) move-result-object   v2
+	12      (00000030) invoke-static        v0, v2, v3, Lcom/android/billingclient/api/zzbq;->nativeOnPurchasesUpdated(I Ljava/lang/String; [Lcom/android/billingclient/api/Purchase;)V
+	13      (00000036) return-void          
+

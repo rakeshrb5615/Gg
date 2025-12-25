@@ -1,0 +1,40 @@
+# Lcom/google/android/gms/common/api/AvailabilityException;->getConnectionResult(Lcom/google/android/gms/common/api/GoogleApi;)Lcom/google/android/gms/common/ConnectionResult; [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:com.google.android.gms.common.api.GoogleApi
+#
+# - return:com.google.android.gms.common.ConnectionResult
+
+getConnectionResult-BB@0x0 : [ getConnectionResult-BB@0x30 getConnectionResult-BB@0x34 ]
+	0       (00000000) iget-object          v0, v4, Lcom/google/android/gms/common/api/AvailabilityException;->zaa Lr/e;
+	1       (00000004) invoke-virtual       v5, Lcom/google/android/gms/common/api/GoogleApi;->getApiKey()Lcom/google/android/gms/common/api/internal/ApiKey;
+	2       (0000000a) move-result-object   v5
+	3       (0000000c) invoke-virtual       v0, v5, Lr/j;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	4       (00000012) move-result-object   v0
+	5       (00000014) invoke-virtual       v5, Lcom/google/android/gms/common/api/internal/ApiKey;->zaa()Ljava/lang/String;
+	6       (0000001a) move-result-object   v1
+	7       (0000001c) const-string         v2, "The given API ("
+	8       (00000020) const-string         v3, ") was not part of the availability request."
+	9       (00000024) invoke-static        v2, v1, v3, Lv1/a;->l(Ljava/lang/String; Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	10      (0000002a) move-result-object   v1
+	11      (0000002c) if-eqz               v0, +004h
+
+getConnectionResult-BB@0x30 : [ getConnectionResult-BB@0x36 ]
+	12      (00000030) const/4              v0, 1
+	13      (00000032) goto                 +2h
+
+getConnectionResult-BB@0x34 : [ getConnectionResult-BB@0x36 ]
+	14      (00000034) const/4              v0, 0
+
+getConnectionResult-BB@0x36 : 
+	15      (00000036) invoke-static        v0, v1, Lcom/google/android/gms/common/internal/Preconditions;->checkArgument(Z Ljava/lang/Object;)V
+	16      (0000003c) iget-object          v0, v4, Lcom/google/android/gms/common/api/AvailabilityException;->zaa Lr/e;
+	17      (00000040) invoke-virtual       v0, v5, Lr/j;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	18      (00000046) move-result-object   v5
+	19      (00000048) check-cast           v5, Lcom/google/android/gms/common/ConnectionResult;
+	20      (0000004c) invoke-static        v5, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;
+	21      (00000052) move-result-object   v5
+	22      (00000054) check-cast           v5, Lcom/google/android/gms/common/ConnectionResult;
+	23      (00000058) return-object        v5
+

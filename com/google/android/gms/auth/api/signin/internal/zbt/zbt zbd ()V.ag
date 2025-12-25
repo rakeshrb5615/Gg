@@ -1,0 +1,29 @@
+# Lcom/google/android/gms/auth/api/signin/internal/zbt;->zbd()V [access_flags=private final]
+#
+# Parameters:
+# local registers: v0...v4
+#
+# - return:void
+
+zbd-BB@0x0 : [ zbd-BB@0x18 zbd-BB@0x1a ]
+	0       (00000000) iget-object          v0, v4, Lcom/google/android/gms/auth/api/signin/internal/zbt;->zba Landroid/content/Context;
+	1       (00000004) invoke-static        Landroid/os/Binder;->getCallingUid()I
+	2       (0000000a) move-result          v1
+	3       (0000000c) invoke-static        v0, v1, Lcom/google/android/gms/common/util/UidVerifier;->isGooglePlayServicesUid(Landroid/content/Context; I)Z
+	4       (00000012) move-result          v0
+	5       (00000014) if-eqz               v0, +003h
+
+zbd-BB@0x18 : 
+	6       (00000018) return-void          
+
+zbd-BB@0x1a : 
+	7       (0000001a) new-instance         v0, Ljava/lang/SecurityException;
+	8       (0000001e) invoke-static        Landroid/os/Binder;->getCallingUid()I
+	9       (00000024) move-result          v1
+	10      (00000026) const-string         v2, "Calling UID "
+	11      (0000002a) const-string         v3, " is not Google Play services."
+	12      (0000002e) invoke-static        v2, v1, v3, Lv1/a;->j(Ljava/lang/String; I Ljava/lang/String;)Ljava/lang/String;
+	13      (00000034) move-result-object   v1
+	14      (00000036) invoke-direct        v0, v1, Ljava/lang/SecurityException;-><init>(Ljava/lang/String;)V
+	15      (0000003c) throw                v0
+

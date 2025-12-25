@@ -1,0 +1,76 @@
+# Lcom/google/android/gms/internal/measurement/zzfb;->zzC(Ljava/lang/String; Ljava/lang/String; Z)Ljava/util/Map; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:java.lang.String
+# - v8:java.lang.String
+# - v9:boolean
+#
+# - return:java.util.Map
+
+zzC-BB@0x0 : [ zzC-BB@0x32 zzC-BB@0xa4 ]
+	0       (00000000) new-instance         v5, Lcom/google/android/gms/internal/measurement/zzco;
+	1       (00000004) invoke-direct        v5, Lcom/google/android/gms/internal/measurement/zzco;-><init>()V
+	2       (0000000a) new-instance         v0, Lcom/google/android/gms/internal/measurement/zzeb;
+	3       (0000000e) move-object          v1, v6
+	4       (00000010) move-object          v2, v7
+	5       (00000012) move-object          v3, v8
+	6       (00000014) move                 v4, v9
+	7       (00000016) invoke-direct/range  v0 ... v5, Lcom/google/android/gms/internal/measurement/zzeb;-><init>(Lcom/google/android/gms/internal/measurement/zzfb; Ljava/lang/String; Ljava/lang/String; Z Lcom/google/android/gms/internal/measurement/zzco;)V
+	8       (0000001c) invoke-direct        v6, v0, Lcom/google/android/gms/internal/measurement/zzfb;->zzS(Lcom/google/android/gms/internal/measurement/zzeq;)V
+	9       (00000022) const-wide/16        v7, 5000
+	10      (00000026) invoke-virtual       v5, v7, v8, Lcom/google/android/gms/internal/measurement/zzco;->zze(J)Landroid/os/Bundle;
+	11      (0000002c) move-result-object   v7
+	12      (0000002e) if-eqz               v7, +03bh
+
+zzC-BB@0x32 : [ zzC-BB@0x3e zzC-BB@0x40 ]
+	13      (00000032) invoke-virtual       v7, Landroid/os/BaseBundle;->size()I
+	14      (00000038) move-result          v8
+	15      (0000003a) if-nez               v8, +003h
+
+zzC-BB@0x3e : [ zzC-BB@0xa4 ]
+	16      (0000003e) goto                 +33h
+
+zzC-BB@0x40 : [ zzC-BB@0x62 ]
+	17      (00000040) new-instance         v8, Ljava/util/HashMap;
+	18      (00000044) invoke-virtual       v7, Landroid/os/BaseBundle;->size()I
+	19      (0000004a) move-result          v9
+	20      (0000004c) invoke-direct        v8, v9, Ljava/util/HashMap;-><init>(I)V
+	21      (00000052) invoke-virtual       v7, Landroid/os/BaseBundle;->keySet()Ljava/util/Set;
+	22      (00000058) move-result-object   v9
+	23      (0000005a) invoke-interface     v9, Ljava/util/Set;->iterator()Ljava/util/Iterator;
+	24      (00000060) move-result-object   v9
+
+zzC-BB@0x62 : [ zzC-BB@0x6e zzC-BB@0xa2 ]
+	25      (00000062) invoke-interface     v9, Ljava/util/Iterator;->hasNext()Z
+	26      (00000068) move-result          v0
+	27      (0000006a) if-eqz               v0, +01ch
+
+zzC-BB@0x6e : [ zzC-BB@0x8a zzC-BB@0x9a ]
+	28      (0000006e) invoke-interface     v9, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	29      (00000074) move-result-object   v0
+	30      (00000076) check-cast           v0, Ljava/lang/String;
+	31      (0000007a) invoke-virtual       v7, v0, Landroid/os/BaseBundle;->get(Ljava/lang/String;)Ljava/lang/Object;
+	32      (00000080) move-result-object   v2
+	33      (00000082) instance-of          v3, v2, Ljava/lang/Double;
+	34      (00000086) if-nez               v3, +00ah
+
+zzC-BB@0x8a : [ zzC-BB@0x92 zzC-BB@0x9a ]
+	35      (0000008a) instance-of          v3, v2, Ljava/lang/Long;
+	36      (0000008e) if-nez               v3, +006h
+
+zzC-BB@0x92 : [ zzC-BB@0x9a zzC-BB@0x62 ]
+	37      (00000092) instance-of          v3, v2, Ljava/lang/String;
+	38      (00000096) if-eqz               v3, -01ah
+
+zzC-BB@0x9a : [ zzC-BB@0x62 ]
+	39      (0000009a) invoke-virtual       v8, v0, v2, Ljava/util/HashMap;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	40      (000000a0) goto                 -1fh
+
+zzC-BB@0xa2 : 
+	41      (000000a2) return-object        v8
+
+zzC-BB@0xa4 : 
+	42      (000000a4) sget-object          v7, Ljava/util/Collections;->EMPTY_MAP Ljava/util/Map;
+	43      (000000a8) return-object        v7
+

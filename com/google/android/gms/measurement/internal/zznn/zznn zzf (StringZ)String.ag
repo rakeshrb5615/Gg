@@ -1,0 +1,48 @@
+# Lcom/google/android/gms/measurement/internal/zznn;->zzf(Ljava/lang/String; Z)Ljava/lang/String; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:java.lang.String
+# - v4:boolean
+#
+# - return:java.lang.String
+
+zzf-BB@0x0 : [ zzf-BB@0xa zzf-BB@0x1c ]
+	0       (00000000) invoke-virtual       v2, Lcom/google/android/gms/measurement/internal/zzje;->zzg()V
+	1       (00000006) if-eqz               v4, +00bh
+
+zzf-BB@0xa : [ zzf-BB@0x20 ]
+	2       (0000000a) invoke-virtual       v2, v3, Lcom/google/android/gms/measurement/internal/zznn;->zzd(Ljava/lang/String;)Landroid/util/Pair;
+	3       (00000010) move-result-object   v3
+	4       (00000012) iget-object          v3, v3, Landroid/util/Pair;->first Ljava/lang/Object;
+	5       (00000016) check-cast           v3, Ljava/lang/String;
+	6       (0000001a) goto                 +3h
+
+zzf-BB@0x1c : [ zzf-BB@0x20 ]
+	7       (0000001c) const-string         v3, "00000000-0000-0000-0000-000000000000"
+
+zzf-BB@0x20 : [ zzf-BB@0x2c zzf-BB@0x30 ]
+	8       (00000020) invoke-static        Lcom/google/android/gms/measurement/internal/zzpp;->zzO()Ljava/security/MessageDigest;
+	9       (00000026) move-result-object   v4
+	10      (00000028) if-nez               v4, +004h
+
+zzf-BB@0x2c : 
+	11      (0000002c) const/4              v3, 0
+	12      (0000002e) return-object        v3
+
+zzf-BB@0x30 : 
+	13      (00000030) sget-object          v0, Ljava/util/Locale;->US Ljava/util/Locale;
+	14      (00000034) new-instance         v1, Ljava/math/BigInteger;
+	15      (00000038) invoke-virtual       v3, Ljava/lang/String;->getBytes()[B
+	16      (0000003e) move-result-object   v3
+	17      (00000040) invoke-virtual       v4, v3, Ljava/security/MessageDigest;->digest([B)[B
+	18      (00000046) move-result-object   v3
+	19      (00000048) const/4              v4, 1
+	20      (0000004a) invoke-direct        v1, v4, v3, Ljava/math/BigInteger;-><init>(I [B)V
+	21      (00000050) filled-new-array     v1, [Ljava/lang/Object;
+	22      (00000056) move-result-object   v3
+	23      (00000058) const-string         v4, "%032X"
+	24      (0000005c) invoke-static        v0, v4, v3, Ljava/lang/String;->format(Ljava/util/Locale; Ljava/lang/String; [Ljava/lang/Object;)Ljava/lang/String;
+	25      (00000062) move-result-object   v3
+	26      (00000064) return-object        v3
+

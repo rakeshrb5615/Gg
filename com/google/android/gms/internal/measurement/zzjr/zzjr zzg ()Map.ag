@@ -1,0 +1,179 @@
+# Lcom/google/android/gms/internal/measurement/zzjr;->zzg()Ljava/util/Map; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v8
+#
+# - return:java.util.Map
+
+zzg-BB@0x0 : [ zzg-BB@0x18 zzg-BB@0x28 ]
+	0       (00000000) iget-object          v0, v8, Lcom/google/android/gms/internal/measurement/zzjr;->zzc Landroid/content/ContentResolver;
+	1       (00000004) iget-object          v2, v8, Lcom/google/android/gms/internal/measurement/zzjr;->zzd Landroid/net/Uri;
+	2       (00000008) invoke-virtual       v0, v2, Landroid/content/ContentResolver;->acquireUnstableContentProviderClient(Landroid/net/Uri;)Landroid/content/ContentProviderClient;
+	3       (0000000e) move-result-object   v1
+	4       (00000010) const-string         v7, "ConfigurationContentLdr"
+	5       (00000014) if-nez               v1, +00ah
+
+zzg-BB@0x18 : 
+	6       (00000018) const-string         v0, "Unable to acquire ContentProviderClient, using default values"
+	7       (0000001c) invoke-static        v7, v0, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+	8       (00000022) sget-object          v0, Ljava/util/Collections;->EMPTY_MAP Ljava/util/Map;
+	9       (00000026) return-object        v0
+
+zzg-BB@0x28 : [ zzg-BB@0x3e zzg-BB@0x5a ]
+	10      (00000028) sget-object          v3, Lcom/google/android/gms/internal/measurement/zzjr;->zza [Ljava/lang/String;
+	11      (0000002c) const/4              v5, 0
+	12      (0000002e) const/4              v6, 0
+	13      (00000030) const/4              v4, 0
+	14      (00000032) invoke-virtual/range v1 ... v6, Landroid/content/ContentProviderClient;->query(Landroid/net/Uri; [Ljava/lang/String; Ljava/lang/String; [Ljava/lang/String; Ljava/lang/String;)Landroid/database/Cursor;
+	15      (00000038) move-result-object   v2
+	16      (0000003a) if-nez               v2, +010h
+	28:39
+	(Landroid/os/RemoteException; -> 7c zzg-BB@0x7c)
+	(Ljava/lang/Throwable; -> 78 zzg-BB@0x78)
+
+zzg-BB@0x3e : 
+	17      (0000003e) const-string         v0, "ContentProvider query returned null cursor, using default values"
+	18      (00000042) invoke-static        v7, v0, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+	19      (00000048) sget-object          v0, Ljava/util/Collections;->EMPTY_MAP Ljava/util/Map;
+	20      (0000004c) invoke-virtual       v1, Landroid/content/ContentProviderClient;->release()Z
+	21      (00000052) return-object        v0
+	3e:4b
+	(Ljava/lang/Throwable; -> 54 zzg-BB@0x54)
+
+zzg-BB@0x54 : [ zzg-BB@0x100 ]
+	22      (00000054) move-exception       v0
+	23      (00000056) move-object          v3, v0
+	24      (00000058) goto                 +54h
+
+zzg-BB@0x5a : [ zzg-BB@0x66 zzg-BB@0x80 ]
+	25      (0000005a) invoke-interface     v2, Landroid/database/Cursor;->getCount()I
+	26      (00000060) move-result          v0
+	27      (00000062) if-nez               v0, +00fh
+	5a:69
+	(Ljava/lang/Throwable; -> 54 zzg-BB@0x54)
+
+zzg-BB@0x66 : [ zzg-BB@0x6a ]
+	28      (00000066) sget-object          v0, Ljava/util/Collections;->EMPTY_MAP Ljava/util/Map;
+	5a:69
+	(Ljava/lang/Throwable; -> 54 zzg-BB@0x54)
+
+zzg-BB@0x6a : 
+	29      (0000006a) invoke-interface     v2, Landroid/database/Cursor;->close()V
+	30      (00000070) invoke-virtual       v1, Landroid/content/ContentProviderClient;->release()Z
+	31      (00000076) return-object        v0
+	6a:6f
+	(Landroid/os/RemoteException; -> 7c zzg-BB@0x7c)
+	(Ljava/lang/Throwable; -> 78 zzg-BB@0x78)
+
+zzg-BB@0x78 : [ zzg-BB@0x12c ]
+	32      (00000078) move-exception       v0
+	33      (0000007a) goto                 +59h
+
+zzg-BB@0x7c : [ zzg-BB@0x116 ]
+	34      (0000007c) move-exception       v0
+	35      (0000007e) goto                 +4ch
+
+zzg-BB@0x80 : [ zzg-BB@0x88 zzg-BB@0x94 ]
+	36      (00000080) const/16             v3, 256
+	37      (00000084) if-gt                v0, v3, +008h
+
+zzg-BB@0x88 : [ zzg-BB@0xa2 ]
+	38      (00000088) new-instance         v3, Lr/e;
+	39      (0000008c) invoke-direct        v3, v0, Lr/j;-><init>(I)V
+	40      (00000092) goto                 +8h
+	88:e3
+	(Ljava/lang/Throwable; -> 54 zzg-BB@0x54)
+
+zzg-BB@0x94 : [ zzg-BB@0xa2 ]
+	41      (00000094) new-instance         v3, Ljava/util/HashMap;
+	42      (00000098) const/high16         v4, 1065353216
+	43      (0000009c) invoke-direct        v3, v0, v4, Ljava/util/HashMap;-><init>(I F)V
+	88:e3
+	(Ljava/lang/Throwable; -> 54 zzg-BB@0x54)
+
+zzg-BB@0xa2 : [ zzg-BB@0xae zzg-BB@0xca ]
+	44      (000000a2) invoke-interface     v2, Landroid/database/Cursor;->moveToNext()Z
+	45      (000000a8) move-result          v0
+	46      (000000aa) if-eqz               v0, +010h
+	88:e3
+	(Ljava/lang/Throwable; -> 54 zzg-BB@0x54)
+
+zzg-BB@0xae : [ zzg-BB@0xa2 ]
+	47      (000000ae) const/4              v0, 0
+	48      (000000b0) invoke-interface     v2, v0, Landroid/database/Cursor;->getString(I)Ljava/lang/String;
+	49      (000000b6) move-result-object   v0
+	50      (000000b8) const/4              v4, 1
+	51      (000000ba) invoke-interface     v2, v4, Landroid/database/Cursor;->getString(I)Ljava/lang/String;
+	52      (000000c0) move-result-object   v4
+	53      (000000c2) invoke-interface     v3, v0, v4, Ljava/util/Map;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	54      (000000c8) goto                 -13h
+	88:e3
+	(Ljava/lang/Throwable; -> 54 zzg-BB@0x54)
+
+zzg-BB@0xca : [ zzg-BB@0xd6 zzg-BB@0xf2 ]
+	55      (000000ca) invoke-interface     v2, Landroid/database/Cursor;->isAfterLast()Z
+	56      (000000d0) move-result          v0
+	57      (000000d2) if-nez               v0, +010h
+	88:e3
+	(Ljava/lang/Throwable; -> 54 zzg-BB@0x54)
+
+zzg-BB@0xd6 : [ zzg-BB@0xe4 ]
+	58      (000000d6) const-string         v0, "Cursor read incomplete (ContentProvider dead?), using default values"
+	59      (000000da) invoke-static        v7, v0, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+	60      (000000e0) sget-object          v0, Ljava/util/Collections;->EMPTY_MAP Ljava/util/Map;
+	88:e3
+	(Ljava/lang/Throwable; -> 54 zzg-BB@0x54)
+
+zzg-BB@0xe4 : 
+	61      (000000e4) invoke-interface     v2, Landroid/database/Cursor;->close()V
+	62      (000000ea) invoke-virtual       v1, Landroid/content/ContentProviderClient;->release()Z
+	63      (000000f0) return-object        v0
+	e4:e9
+	(Landroid/os/RemoteException; -> 7c zzg-BB@0x7c)
+	(Ljava/lang/Throwable; -> 78 zzg-BB@0x78)
+
+zzg-BB@0xf2 : 
+	64      (000000f2) invoke-interface     v2, Landroid/database/Cursor;->close()V
+	65      (000000f8) invoke-virtual       v1, Landroid/content/ContentProviderClient;->release()Z
+	66      (000000fe) return-object        v3
+	f2:f7
+	(Landroid/os/RemoteException; -> 7c zzg-BB@0x7c)
+	(Ljava/lang/Throwable; -> 78 zzg-BB@0x78)
+
+zzg-BB@0x100 : [ zzg-BB@0x104 zzg-BB@0x114 ]
+	67      (00000100) if-eqz               v2, +00ah
+
+zzg-BB@0x104 : [ zzg-BB@0x114 ]
+	68      (00000104) invoke-interface     v2, Landroid/database/Cursor;->close()V
+	69      (0000010a) goto                 +5h
+	104:109
+	(Ljava/lang/Throwable; -> 10c zzg-BB@0x10c)
+
+zzg-BB@0x10c : [ zzg-BB@0x10e ]
+	70      (0000010c) move-exception       v0
+
+zzg-BB@0x10e : [ zzg-BB@0x114 ]
+	71      (0000010e) invoke-virtual       v3, v0, Ljava/lang/Throwable;->addSuppressed(Ljava/lang/Throwable;)V
+	10e:115
+	(Landroid/os/RemoteException; -> 7c zzg-BB@0x7c)
+	(Ljava/lang/Throwable; -> 78 zzg-BB@0x78)
+
+zzg-BB@0x114 : 
+	72      (00000114) throw                v3
+	10e:115
+	(Landroid/os/RemoteException; -> 7c zzg-BB@0x7c)
+	(Ljava/lang/Throwable; -> 78 zzg-BB@0x78)
+
+zzg-BB@0x116 : 
+	73      (00000116) const-string         v2, "ContentProvider query failed, using default values"
+	74      (0000011a) invoke-static        v7, v2, v0, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+	75      (00000120) sget-object          v0, Ljava/util/Collections;->EMPTY_MAP Ljava/util/Map;
+	76      (00000124) invoke-virtual       v1, Landroid/content/ContentProviderClient;->release()Z
+	77      (0000012a) return-object        v0
+	116:123
+	(Ljava/lang/Throwable; -> 78 zzg-BB@0x78)
+
+zzg-BB@0x12c : 
+	78      (0000012c) invoke-virtual       v1, Landroid/content/ContentProviderClient;->release()Z
+	79      (00000132) throw                v0
+

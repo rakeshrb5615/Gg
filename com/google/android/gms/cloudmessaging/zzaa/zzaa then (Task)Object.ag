@@ -1,0 +1,47 @@
+# Lcom/google/android/gms/cloudmessaging/zzaa;->then(Lcom/google/android/gms/tasks/Task;)Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:com.google.android.gms.tasks.Task
+#
+# - return:java.lang.Object
+
+then-BB@0x0 : [ then-BB@0xc then-BB@0x1a ]
+	0       (00000000) invoke-virtual       v4, Lcom/google/android/gms/tasks/Task;->isSuccessful()Z
+	1       (00000006) move-result          v0
+	2       (00000008) if-eqz               v0, +009h
+
+then-BB@0xc : 
+	3       (0000000c) invoke-virtual       v4, Lcom/google/android/gms/tasks/Task;->getResult()Ljava/lang/Object;
+	4       (00000012) move-result-object   v4
+	5       (00000014) check-cast           v4, Landroid/os/Bundle;
+	6       (00000018) return-object        v4
+
+then-BB@0x1a : [ then-BB@0x2c then-BB@0x2e ]
+	7       (0000001a) const/4              v0, 3
+	8       (0000001c) const-string         v1, "Rpc"
+	9       (00000020) invoke-static        v1, v0, Landroid/util/Log;->isLoggable(Ljava/lang/String; I)Z
+	10      (00000026) move-result          v0
+	11      (00000028) if-nez               v0, +003h
+
+then-BB@0x2c : [ then-BB@0x50 ]
+	12      (0000002c) goto                 +12h
+
+then-BB@0x2e : [ then-BB@0x50 ]
+	13      (0000002e) invoke-virtual       v4, Lcom/google/android/gms/tasks/Task;->getException()Ljava/lang/Exception;
+	14      (00000034) move-result-object   v0
+	15      (00000036) invoke-static        v0, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
+	16      (0000003c) move-result-object   v0
+	17      (0000003e) const-string         v2, "Error making request: "
+	18      (00000042) invoke-virtual       v2, v0, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	19      (00000048) move-result-object   v0
+	20      (0000004a) invoke-static        v1, v0, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String;)I
+
+then-BB@0x50 : 
+	21      (00000050) new-instance         v0, Ljava/io/IOException;
+	22      (00000054) invoke-virtual       v4, Lcom/google/android/gms/tasks/Task;->getException()Ljava/lang/Exception;
+	23      (0000005a) move-result-object   v4
+	24      (0000005c) const-string         v1, "SERVICE_NOT_AVAILABLE"
+	25      (00000060) invoke-direct        v0, v1, v4, Ljava/io/IOException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	26      (00000066) throw                v0
+

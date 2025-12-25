@@ -1,0 +1,30 @@
+# Lcom/google/android/gms/auth/api/signin/internal/Storage;->clear()V [access_flags=public]
+#
+# Parameters:
+# local registers: v0...v2
+#
+# - return:void
+
+clear-BB@0x0 : [ clear-BB@0xa ]
+	0       (00000000) iget-object          v0, v2, Lcom/google/android/gms/auth/api/signin/internal/Storage;->zac Ljava/util/concurrent/locks/Lock;
+	1       (00000004) invoke-interface     v0, Ljava/util/concurrent/locks/Lock;->lock()V
+
+clear-BB@0xa : 
+	2       (0000000a) iget-object          v0, v2, Lcom/google/android/gms/auth/api/signin/internal/Storage;->zad Landroid/content/SharedPreferences;
+	3       (0000000e) invoke-interface     v0, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
+	4       (00000014) move-result-object   v0
+	5       (00000016) invoke-interface     v0, Landroid/content/SharedPreferences$Editor;->clear()Landroid/content/SharedPreferences$Editor;
+	6       (0000001c) move-result-object   v0
+	7       (0000001e) invoke-interface     v0, Landroid/content/SharedPreferences$Editor;->apply()V
+	8       (00000024) iget-object          v0, v2, Lcom/google/android/gms/auth/api/signin/internal/Storage;->zac Ljava/util/concurrent/locks/Lock;
+	9       (00000028) invoke-interface     v0, Ljava/util/concurrent/locks/Lock;->unlock()V
+	10      (0000002e) return-void          
+	a:23
+	(Ljava/lang/Throwable; -> 30 clear-BB@0x30)
+
+clear-BB@0x30 : 
+	11      (00000030) move-exception       v0
+	12      (00000032) iget-object          v1, v2, Lcom/google/android/gms/auth/api/signin/internal/Storage;->zac Ljava/util/concurrent/locks/Lock;
+	13      (00000036) invoke-interface     v1, Ljava/util/concurrent/locks/Lock;->unlock()V
+	14      (0000003c) throw                v0
+

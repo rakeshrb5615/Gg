@@ -1,0 +1,89 @@
+# Lcom/google/android/gms/measurement/internal/zzav;->zzJ(Ljava/util/List;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:java.util.List
+#
+# - return:void
+
+zzJ-BB@0x0 : [ zzJ-BB@0x34 zzJ-BB@0x36 ]
+	0       (00000000) invoke-virtual       v6, Lcom/google/android/gms/measurement/internal/zzje;->zzg()V
+	1       (00000006) invoke-virtual       v6, Lcom/google/android/gms/measurement/internal/zzos;->zzaw()V
+	2       (0000000c) invoke-static        v7, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;
+	3       (00000012) invoke-interface     v7, Ljava/util/List;->size()I
+	4       (00000018) move-result          v0
+	5       (0000001a) invoke-static        v0, Lcom/google/android/gms/common/internal/Preconditions;->checkNotZero(I)I
+	6       (00000020) const-string         v0, " AND (retry_count IS NULL OR retry_count < 2147483647)"
+	7       (00000024) const-string         v1, "UPDATE queue SET retry_count = IFNULL(retry_count, 0) + 1 WHERE rowid IN "
+	8       (00000028) invoke-virtual       v6, Lcom/google/android/gms/measurement/internal/zzav;->zzag()Z
+	9       (0000002e) move-result          v2
+	10      (00000030) if-nez               v2, +003h
+
+zzJ-BB@0x34 : 
+	11      (00000034) return-void          
+
+zzJ-BB@0x36 : [ zzJ-BB@0xac zzJ-BB@0xba ]
+	12      (00000036) const-string         v2, ","
+	13      (0000003a) invoke-static        v2, v7, Landroid/text/TextUtils;->join(Ljava/lang/CharSequence; Ljava/lang/Iterable;)Ljava/lang/String;
+	14      (00000040) move-result-object   v7
+	15      (00000042) invoke-static        v7, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
+	16      (00000048) move-result-object   v2
+	17      (0000004a) invoke-virtual       v2, Ljava/lang/String;->length()I
+	18      (00000050) move-result          v2
+	19      (00000052) new-instance         v3, Ljava/lang/StringBuilder;
+	20      (00000056) add-int/lit8         v2, v2, 2
+	21      (0000005a) invoke-direct        v3, v2, Ljava/lang/StringBuilder;-><init>(I)V
+	22      (00000060) const-string         v2, "("
+	23      (00000064) const-string         v4, ")"
+	24      (00000068) invoke-static        v3, v2, v7, v4, Lv1/a;->o(Ljava/lang/StringBuilder; Ljava/lang/String; Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	25      (0000006e) move-result-object   v7
+	26      (00000070) invoke-virtual       v7, Ljava/lang/String;->length()I
+	27      (00000076) move-result          v2
+	28      (00000078) new-instance         v3, Ljava/lang/StringBuilder;
+	29      (0000007c) add-int/lit8         v2, v2, 80
+	30      (00000080) invoke-direct        v3, v2, Ljava/lang/StringBuilder;-><init>(I)V
+	31      (00000086) const-string         v2, "SELECT COUNT(1) FROM queue WHERE rowid IN "
+	32      (0000008a) const-string         v4, " AND retry_count =  2147483647 LIMIT 1"
+	33      (0000008e) invoke-static        v3, v2, v7, v4, Lv1/a;->o(Ljava/lang/StringBuilder; Ljava/lang/String; Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	34      (00000094) move-result-object   v2
+	35      (00000096) const/4              v3, 0
+	36      (00000098) invoke-direct        v6, v2, v3, Lcom/google/android/gms/measurement/internal/zzav;->zzay(Ljava/lang/String; [Ljava/lang/String;)J
+	37      (0000009e) move-result-wide     v2
+	38      (000000a0) const-wide/16        v4, 0
+	39      (000000a4) cmp-long             v2, v2, v4
+	40      (000000a8) if-lez               v2, +009h
+
+zzJ-BB@0xac : [ zzJ-BB@0xba ]
+	41      (000000ac) iget-object          v2, v6, Lcom/google/android/gms/measurement/internal/zzje;->zzu Lcom/google/android/gms/measurement/internal/zzic;
+	42      (000000b0) const-string         v3, "The number of upload retries exceeds the limit. Will remain unchanged."
+	43      (000000b4) invoke-static        v2, v3, Lv1/a;->v(Lcom/google/android/gms/measurement/internal/zzic; Ljava/lang/String;)V
+
+zzJ-BB@0xba : 
+	44      (000000ba) invoke-virtual       v6, Lcom/google/android/gms/measurement/internal/zzav;->zze()Landroid/database/sqlite/SQLiteDatabase;
+	45      (000000c0) move-result-object   v2
+	46      (000000c2) invoke-virtual       v7, Ljava/lang/String;->length()I
+	47      (000000c8) move-result          v3
+	48      (000000ca) add-int/lit8         v3, v3, 127
+	49      (000000ce) new-instance         v4, Ljava/lang/StringBuilder;
+	50      (000000d2) invoke-direct        v4, v3, Ljava/lang/StringBuilder;-><init>(I)V
+	51      (000000d8) invoke-virtual       v4, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	52      (000000de) invoke-virtual       v4, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	53      (000000e4) invoke-virtual       v4, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	54      (000000ea) invoke-virtual       v4, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	55      (000000f0) move-result-object   v7
+	56      (000000f2) invoke-virtual       v2, v7, Landroid/database/sqlite/SQLiteDatabase;->execSQL(Ljava/lang/String;)V
+	57      (000000f8) return-void          
+	ba:f7
+	(Landroid/database/sqlite/SQLiteException; -> fa zzJ-BB@0xfa)
+
+zzJ-BB@0xfa : 
+	58      (000000fa) move-exception       v7
+	59      (000000fc) iget-object          v0, v6, Lcom/google/android/gms/measurement/internal/zzje;->zzu Lcom/google/android/gms/measurement/internal/zzic;
+	60      (00000100) invoke-virtual       v0, Lcom/google/android/gms/measurement/internal/zzic;->zzaV()Lcom/google/android/gms/measurement/internal/zzgu;
+	61      (00000106) move-result-object   v0
+	62      (00000108) invoke-virtual       v0, Lcom/google/android/gms/measurement/internal/zzgu;->zzb()Lcom/google/android/gms/measurement/internal/zzgs;
+	63      (0000010e) move-result-object   v0
+	64      (00000110) const-string         v1, "Error incrementing retry count. error"
+	65      (00000114) invoke-virtual       v0, v1, v7, Lcom/google/android/gms/measurement/internal/zzgs;->zzb(Ljava/lang/String; Ljava/lang/Object;)V
+	66      (0000011a) return-void          
+

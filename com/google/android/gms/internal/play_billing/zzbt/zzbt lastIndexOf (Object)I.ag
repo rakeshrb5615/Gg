@@ -1,0 +1,40 @@
+# Lcom/google/android/gms/internal/play_billing/zzbt;->lastIndexOf(Ljava/lang/Object;)I [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:java.lang.Object
+#
+# - return:int
+
+lastIndexOf-BB@0x0 : [ lastIndexOf-BB@0x6 lastIndexOf-BB@0x8 ]
+	0       (00000000) const/4              v0, -1
+	1       (00000002) if-nez               v4, +003h
+
+lastIndexOf-BB@0x6 : 
+	2       (00000006) return               v0
+
+lastIndexOf-BB@0x8 : [ lastIndexOf-BB@0x12 ]
+	3       (00000008) invoke-interface     v3, Ljava/util/List;->size()I
+	4       (0000000e) move-result          v1
+	5       (00000010) add-int/2addr        v1, v0
+
+lastIndexOf-BB@0x12 : [ lastIndexOf-BB@0x16 lastIndexOf-BB@0x32 ]
+	6       (00000012) if-ltz               v1, +010h
+
+lastIndexOf-BB@0x16 : [ lastIndexOf-BB@0x2a lastIndexOf-BB@0x2c ]
+	7       (00000016) invoke-interface     v3, v1, Ljava/util/List;->get(I)Ljava/lang/Object;
+	8       (0000001c) move-result-object   v2
+	9       (0000001e) invoke-virtual       v4, v2, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+	10      (00000024) move-result          v2
+	11      (00000026) if-eqz               v2, +003h
+
+lastIndexOf-BB@0x2a : 
+	12      (0000002a) return               v1
+
+lastIndexOf-BB@0x2c : [ lastIndexOf-BB@0x12 ]
+	13      (0000002c) add-int/lit8         v1, v1, -1
+	14      (00000030) goto                 -fh
+
+lastIndexOf-BB@0x32 : 
+	15      (00000032) return               v0
+

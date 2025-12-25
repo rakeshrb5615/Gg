@@ -1,0 +1,303 @@
+# Lcom/google/android/gms/common/GooglePlayServicesUtilLight;->isGooglePlayServicesAvailable(Landroid/content/Context; I)I [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v10
+# - v11:android.content.Context
+# - v12:int
+#
+# - return:int
+
+isGooglePlayServicesAvailable-BB@0x0 : [ isGooglePlayServicesAvailable-BB@0x4 ]
+	0       (00000000) const-string         v0, "GooglePlayServicesUtil"
+
+isGooglePlayServicesAvailable-BB@0x4 : [ isGooglePlayServicesAvailable-BB@0x22 ]
+	1       (00000004) invoke-virtual       v11, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+	2       (0000000a) move-result-object   v1
+	3       (0000000c) sget                 v2, Lcom/google/android/gms/common/R$string;->common_google_play_services_unknown_issue I
+	4       (00000010) invoke-virtual       v1, v2, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
+	5       (00000016) goto                 +6h
+	4:15
+	(Ljava/lang/Throwable; -> 18 isGooglePlayServicesAvailable-BB@0x18)
+
+isGooglePlayServicesAvailable-BB@0x18 : [ isGooglePlayServicesAvailable-BB@0x22 ]
+	6       (00000018) const-string         v1, "The Google Play services resources were not found. Check your project configuration to ensure that the resources are included."
+	7       (0000001c) invoke-static        v0, v1, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String;)I
+
+isGooglePlayServicesAvailable-BB@0x22 : [ isGooglePlayServicesAvailable-BB@0x3a isGooglePlayServicesAvailable-BB@0x7a ]
+	8       (00000022) invoke-virtual       v11, Landroid/content/Context;->getPackageName()Ljava/lang/String;
+	9       (00000028) move-result-object   v1
+	10      (0000002a) const-string         v2, "com.google.android.gms"
+	11      (0000002e) invoke-virtual       v2, v1, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	12      (00000034) move-result          v1
+	13      (00000036) if-nez               v1, +022h
+
+isGooglePlayServicesAvailable-BB@0x3a : [ isGooglePlayServicesAvailable-BB@0x4a isGooglePlayServicesAvailable-BB@0x4c ]
+	14      (0000003a) sget-object          v1, Lcom/google/android/gms/common/GooglePlayServicesUtilLight;->zzc Ljava/util/concurrent/atomic/AtomicBoolean;
+	15      (0000003e) invoke-virtual       v1, Ljava/util/concurrent/atomic/AtomicBoolean;->get()Z
+	16      (00000044) move-result          v1
+	17      (00000046) if-eqz               v1, +003h
+
+isGooglePlayServicesAvailable-BB@0x4a : [ isGooglePlayServicesAvailable-BB@0x7a ]
+	18      (0000004a) goto                 +18h
+
+isGooglePlayServicesAvailable-BB@0x4c : [ isGooglePlayServicesAvailable-BB@0x58 isGooglePlayServicesAvailable-BB@0x6e ]
+	19      (0000004c) invoke-static        v11, Lcom/google/android/gms/common/internal/zzae;->zzb(Landroid/content/Context;)I
+	20      (00000052) move-result          v1
+	21      (00000054) if-eqz               v1, +00dh
+
+isGooglePlayServicesAvailable-BB@0x58 : [ isGooglePlayServicesAvailable-BB@0x60 isGooglePlayServicesAvailable-BB@0x62 ]
+	22      (00000058) sget                 v3, Lcom/google/android/gms/common/GooglePlayServicesUtilLight;->GOOGLE_PLAY_SERVICES_VERSION_CODE I
+	23      (0000005c) if-ne                v1, v3, +003h
+
+isGooglePlayServicesAvailable-BB@0x60 : [ isGooglePlayServicesAvailable-BB@0x7a ]
+	24      (00000060) goto                 +dh
+
+isGooglePlayServicesAvailable-BB@0x62 : 
+	25      (00000062) new-instance         v11, Lcom/google/android/gms/common/GooglePlayServicesIncorrectManifestValueException;
+	26      (00000066) invoke-direct        v11, v1, Lcom/google/android/gms/common/GooglePlayServicesIncorrectManifestValueException;-><init>(I)V
+	27      (0000006c) throw                v11
+
+isGooglePlayServicesAvailable-BB@0x6e : 
+	28      (0000006e) new-instance         v11, Lcom/google/android/gms/common/GooglePlayServicesMissingManifestValueException;
+	29      (00000072) invoke-direct        v11, Lcom/google/android/gms/common/GooglePlayServicesMissingManifestValueException;-><init>()V
+	30      (00000078) throw                v11
+
+isGooglePlayServicesAvailable-BB@0x7a : [ isGooglePlayServicesAvailable-BB@0x8a isGooglePlayServicesAvailable-BB@0x9a ]
+	31      (0000007a) invoke-static        v11, Lcom/google/android/gms/common/util/DeviceProperties;->isWearableWithoutPlayStore(Landroid/content/Context;)Z
+	32      (00000080) move-result          v1
+	33      (00000082) const/4              v3, 1
+	34      (00000084) const/4              v4, 0
+	35      (00000086) if-nez               v1, +00ah
+
+isGooglePlayServicesAvailable-BB@0x8a : [ isGooglePlayServicesAvailable-BB@0x96 isGooglePlayServicesAvailable-BB@0x9a ]
+	36      (0000008a) invoke-static        v11, Lcom/google/android/gms/common/util/DeviceProperties;->zzd(Landroid/content/Context;)Z
+	37      (00000090) move-result          v1
+	38      (00000092) if-nez               v1, +004h
+
+isGooglePlayServicesAvailable-BB@0x96 : [ isGooglePlayServicesAvailable-BB@0x9c ]
+	39      (00000096) move                 v1, v3
+	40      (00000098) goto                 +2h
+
+isGooglePlayServicesAvailable-BB@0x9a : [ isGooglePlayServicesAvailable-BB@0x9c ]
+	41      (0000009a) move                 v1, v4
+
+isGooglePlayServicesAvailable-BB@0x9c : [ isGooglePlayServicesAvailable-BB@0xa0 isGooglePlayServicesAvailable-BB@0xa4 ]
+	42      (0000009c) if-ltz               v12, +004h
+
+isGooglePlayServicesAvailable-BB@0xa0 : [ isGooglePlayServicesAvailable-BB@0xa6 ]
+	43      (000000a0) move                 v5, v3
+	44      (000000a2) goto                 +2h
+
+isGooglePlayServicesAvailable-BB@0xa4 : [ isGooglePlayServicesAvailable-BB@0xa6 ]
+	45      (000000a4) move                 v5, v4
+
+isGooglePlayServicesAvailable-BB@0xa6 : [ isGooglePlayServicesAvailable-BB@0xc8 isGooglePlayServicesAvailable-BB@0x10a ]
+	46      (000000a6) invoke-static        v5, Lcom/google/android/gms/common/internal/Preconditions;->checkArgument(Z)V
+	47      (000000ac) invoke-virtual       v11, Landroid/content/Context;->getPackageName()Ljava/lang/String;
+	48      (000000b2) move-result-object   v5
+	49      (000000b4) invoke-virtual       v11, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
+	50      (000000ba) move-result-object   v6
+	51      (000000bc) const/16             v7, 28
+	52      (000000c0) const/16             v8, 9
+	53      (000000c4) if-eqz               v1, +023h
+
+isGooglePlayServicesAvailable-BB@0xc8 : [ isGooglePlayServicesAvailable-BB@0xd0 isGooglePlayServicesAvailable-BB@0xd8 ]
+	54      (000000c8) sget                 v9, Landroid/os/Build$VERSION;->SDK_INT I
+	55      (000000cc) if-lt                v9, v7, +006h
+	c8:e7
+	(Landroid/content/pm/PackageManager$NameNotFoundException; -> ea isGooglePlayServicesAvailable-BB@0xea)
+
+isGooglePlayServicesAvailable-BB@0xd0 : [ isGooglePlayServicesAvailable-BB@0xdc ]
+	56      (000000d0) const                v9, 134225984
+	57      (000000d6) goto                 +3h
+	c8:e7
+	(Landroid/content/pm/PackageManager$NameNotFoundException; -> ea isGooglePlayServicesAvailable-BB@0xea)
+
+isGooglePlayServicesAvailable-BB@0xd8 : [ isGooglePlayServicesAvailable-BB@0xdc ]
+	58      (000000d8) const/16             v9, 8256
+	c8:e7
+	(Landroid/content/pm/PackageManager$NameNotFoundException; -> ea isGooglePlayServicesAvailable-BB@0xea)
+
+isGooglePlayServicesAvailable-BB@0xdc : [ isGooglePlayServicesAvailable-BB@0x10c ]
+	59      (000000dc) const-string         v10, "com.android.vending"
+	60      (000000e0) invoke-virtual       v6, v10, v9, Landroid/content/pm/PackageManager;->getPackageInfo(Ljava/lang/String; I)Landroid/content/pm/PackageInfo;
+	61      (000000e6) move-result-object   v9
+	62      (000000e8) goto                 +12h
+
+isGooglePlayServicesAvailable-BB@0xea : [ isGooglePlayServicesAvailable-BB@0x104 ]
+	63      (000000ea) invoke-static        v5, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
+	64      (000000f0) move-result-object   v11
+	65      (000000f2) const-string         v12, " requires the Google Play Store, but it is missing."
+	66      (000000f6) invoke-virtual       v11, v12, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	67      (000000fc) move-result-object   v11
+	68      (000000fe) invoke-static        v0, v11, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+
+isGooglePlayServicesAvailable-BB@0x104 : [ isGooglePlayServicesAvailable-BB@0x2c4 ]
+	69      (00000104) move                 v3, v8
+	70      (00000106) goto/16              +0dfh
+
+isGooglePlayServicesAvailable-BB@0x10a : [ isGooglePlayServicesAvailable-BB@0x10c ]
+	71      (0000010a) const/4              v9, 0
+
+isGooglePlayServicesAvailable-BB@0x10c : [ isGooglePlayServicesAvailable-BB@0x114 isGooglePlayServicesAvailable-BB@0x11c ]
+	72      (0000010c) sget                 v10, Landroid/os/Build$VERSION;->SDK_INT I
+	73      (00000110) if-lt                v10, v7, +006h
+	10c:127
+	(Landroid/content/pm/PackageManager$NameNotFoundException; -> 2aa isGooglePlayServicesAvailable-BB@0x2aa)
+
+isGooglePlayServicesAvailable-BB@0x114 : [ isGooglePlayServicesAvailable-BB@0x120 ]
+	74      (00000114) const                v7, 134217792
+	75      (0000011a) goto                 +3h
+	10c:127
+	(Landroid/content/pm/PackageManager$NameNotFoundException; -> 2aa isGooglePlayServicesAvailable-BB@0x2aa)
+
+isGooglePlayServicesAvailable-BB@0x11c : [ isGooglePlayServicesAvailable-BB@0x120 ]
+	76      (0000011c) const/16             v7, 64
+	10c:127
+	(Landroid/content/pm/PackageManager$NameNotFoundException; -> 2aa isGooglePlayServicesAvailable-BB@0x2aa)
+
+isGooglePlayServicesAvailable-BB@0x120 : [ isGooglePlayServicesAvailable-BB@0x13a isGooglePlayServicesAvailable-BB@0x156 ]
+	77      (00000120) invoke-virtual       v6, v2, v7, Landroid/content/pm/PackageManager;->getPackageInfo(Ljava/lang/String; I)Landroid/content/pm/PackageInfo;
+	78      (00000126) move-result-object   v7
+	79      (00000128) invoke-static        v11, Lcom/google/android/gms/common/GoogleSignatureVerifier;->getInstance(Landroid/content/Context;)Lcom/google/android/gms/common/GoogleSignatureVerifier;
+	80      (0000012e) invoke-static        v7, v3, Lcom/google/android/gms/common/GoogleSignatureVerifier;->zza(Landroid/content/pm/PackageInfo; Z)Z
+	81      (00000134) move-result          v11
+	82      (00000136) if-nez               v11, +010h
+
+isGooglePlayServicesAvailable-BB@0x13a : [ isGooglePlayServicesAvailable-BB@0x104 ]
+	83      (0000013a) invoke-static        v5, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
+	84      (00000140) move-result-object   v11
+	85      (00000142) const-string         v12, " requires Google Play services, but their signature is invalid."
+	86      (00000146) invoke-virtual       v11, v12, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	87      (0000014c) move-result-object   v11
+	88      (0000014e) invoke-static        v0, v11, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+	89      (00000154) goto                 -28h
+
+isGooglePlayServicesAvailable-BB@0x156 : [ isGooglePlayServicesAvailable-BB@0x15a isGooglePlayServicesAvailable-BB@0x188 ]
+	90      (00000156) if-eqz               v1, +019h
+
+isGooglePlayServicesAvailable-BB@0x15a : [ isGooglePlayServicesAvailable-BB@0x16c isGooglePlayServicesAvailable-BB@0x188 ]
+	91      (0000015a) invoke-static        v9, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;
+	92      (00000160) invoke-static        v9, v3, Lcom/google/android/gms/common/GoogleSignatureVerifier;->zza(Landroid/content/pm/PackageInfo; Z)Z
+	93      (00000166) move-result          v11
+	94      (00000168) if-nez               v11, +010h
+
+isGooglePlayServicesAvailable-BB@0x16c : [ isGooglePlayServicesAvailable-BB@0x104 ]
+	95      (0000016c) invoke-static        v5, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
+	96      (00000172) move-result-object   v11
+	97      (00000174) const-string         v12, " requires Google Play Store, but its signature is invalid."
+	98      (00000178) invoke-virtual       v11, v12, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	99      (0000017e) move-result-object   v11
+	100     (00000180) invoke-static        v0, v11, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+	101     (00000186) goto                 -41h
+
+isGooglePlayServicesAvailable-BB@0x188 : [ isGooglePlayServicesAvailable-BB@0x18c isGooglePlayServicesAvailable-BB@0x1c8 ]
+	102     (00000188) if-eqz               v1, +020h
+
+isGooglePlayServicesAvailable-BB@0x18c : [ isGooglePlayServicesAvailable-BB@0x190 isGooglePlayServicesAvailable-BB@0x1c8 ]
+	103     (0000018c) if-eqz               v9, +01eh
+
+isGooglePlayServicesAvailable-BB@0x190 : [ isGooglePlayServicesAvailable-BB@0x1ac isGooglePlayServicesAvailable-BB@0x1c8 ]
+	104     (00000190) iget-object          v11, v9, Landroid/content/pm/PackageInfo;->signatures [Landroid/content/pm/Signature;
+	105     (00000194) aget-object          v11, v11, v4
+	106     (00000198) iget-object          v1, v7, Landroid/content/pm/PackageInfo;->signatures [Landroid/content/pm/Signature;
+	107     (0000019c) aget-object          v1, v1, v4
+	108     (000001a0) invoke-virtual       v11, v1, Landroid/content/pm/Signature;->equals(Ljava/lang/Object;)Z
+	109     (000001a6) move-result          v11
+	110     (000001a8) if-nez               v11, +010h
+
+isGooglePlayServicesAvailable-BB@0x1ac : [ isGooglePlayServicesAvailable-BB@0x104 ]
+	111     (000001ac) invoke-static        v5, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
+	112     (000001b2) move-result-object   v11
+	113     (000001b4) const-string         v12, " requires Google Play Store, but its signature doesn't match that of Google Play services."
+	114     (000001b8) invoke-virtual       v11, v12, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	115     (000001be) move-result-object   v11
+	116     (000001c0) invoke-static        v0, v11, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+	117     (000001c6) goto                 -61h
+
+isGooglePlayServicesAvailable-BB@0x1c8 : [ isGooglePlayServicesAvailable-BB@0x1e0 isGooglePlayServicesAvailable-BB@0x26c ]
+	118     (000001c8) iget                 v11, v7, Landroid/content/pm/PackageInfo;->versionCode I
+	119     (000001cc) invoke-static        v11, Lcom/google/android/gms/common/util/zzb;->zza(I)I
+	120     (000001d2) move-result          v11
+	121     (000001d4) invoke-static        v12, Lcom/google/android/gms/common/util/zzb;->zza(I)I
+	122     (000001da) move-result          v1
+	123     (000001dc) if-ge                v11, v1, +048h
+
+isGooglePlayServicesAvailable-BB@0x1e0 : [ isGooglePlayServicesAvailable-BB@0x2c4 ]
+	124     (000001e0) iget                 v11, v7, Landroid/content/pm/PackageInfo;->versionCode I
+	125     (000001e4) invoke-static        v5, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
+	126     (000001ea) move-result-object   v1
+	127     (000001ec) invoke-virtual       v1, Ljava/lang/String;->length()I
+	128     (000001f2) move-result          v1
+	129     (000001f4) invoke-static        v12, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
+	130     (000001fa) move-result-object   v2
+	131     (000001fc) add-int/lit8         v1, v1, 49
+	132     (00000200) invoke-virtual       v2, Ljava/lang/String;->length()I
+	133     (00000206) move-result          v2
+	134     (00000208) invoke-static        v11, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
+	135     (0000020e) move-result-object   v3
+	136     (00000210) add-int/2addr        v1, v2
+	137     (00000212) add-int/lit8         v1, v1, 11
+	138     (00000216) invoke-virtual       v3, Ljava/lang/String;->length()I
+	139     (0000021c) move-result          v2
+	140     (0000021e) new-instance         v3, Ljava/lang/StringBuilder;
+	141     (00000222) add-int/2addr        v1, v2
+	142     (00000224) invoke-direct        v3, v1, Ljava/lang/StringBuilder;-><init>(I)V
+	143     (0000022a) const-string         v1, "Google Play services out of date for "
+	144     (0000022e) invoke-virtual       v3, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	145     (00000234) invoke-virtual       v3, v5, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	146     (0000023a) const-string         v1, ".  Requires "
+	147     (0000023e) invoke-virtual       v3, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	148     (00000244) invoke-virtual       v3, v12, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	149     (0000024a) const-string         v12, " but found "
+	150     (0000024e) invoke-virtual       v3, v12, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	151     (00000254) invoke-virtual       v3, v11, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	152     (0000025a) invoke-virtual       v3, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	153     (00000260) move-result-object   v11
+	154     (00000262) invoke-static        v0, v11, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+	155     (00000268) const/4              v3, 2
+	156     (0000026a) goto                 +2dh
+
+isGooglePlayServicesAvailable-BB@0x26c : [ isGooglePlayServicesAvailable-BB@0x274 isGooglePlayServicesAvailable-BB@0x29c ]
+	157     (0000026c) iget-object          v11, v7, Landroid/content/pm/PackageInfo;->applicationInfo Landroid/content/pm/ApplicationInfo;
+	158     (00000270) if-nez               v11, +016h
+
+isGooglePlayServicesAvailable-BB@0x274 : [ isGooglePlayServicesAvailable-BB@0x29c ]
+	159     (00000274) invoke-virtual       v6, v2, v4, Landroid/content/pm/PackageManager;->getApplicationInfo(Ljava/lang/String; I)Landroid/content/pm/ApplicationInfo;
+	160     (0000027a) move-result-object   v11
+	161     (0000027c) goto                 +10h
+	274:27b
+	(Landroid/content/pm/PackageManager$NameNotFoundException; -> 27e isGooglePlayServicesAvailable-BB@0x27e)
+
+isGooglePlayServicesAvailable-BB@0x27e : [ isGooglePlayServicesAvailable-BB@0x2c4 ]
+	162     (0000027e) move-exception       v11
+	163     (00000280) invoke-static        v5, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
+	164     (00000286) move-result-object   v12
+	165     (00000288) const-string         v1, " requires Google Play services, but they're missing when getting application info."
+	166     (0000028c) invoke-virtual       v12, v1, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	167     (00000292) move-result-object   v12
+	168     (00000294) invoke-static        v0, v12, v11, Landroid/util/Log;->wtf(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+	169     (0000029a) goto                 +15h
+
+isGooglePlayServicesAvailable-BB@0x29c : [ isGooglePlayServicesAvailable-BB@0x2a4 isGooglePlayServicesAvailable-BB@0x2a8 ]
+	170     (0000029c) iget-boolean         v11, v11, Landroid/content/pm/ApplicationInfo;->enabled Z
+	171     (000002a0) if-nez               v11, +004h
+
+isGooglePlayServicesAvailable-BB@0x2a4 : [ isGooglePlayServicesAvailable-BB@0x2c4 ]
+	172     (000002a4) const/4              v3, 3
+	173     (000002a6) goto                 +fh
+
+isGooglePlayServicesAvailable-BB@0x2a8 : 
+	174     (000002a8) return               v4
+
+isGooglePlayServicesAvailable-BB@0x2aa : [ isGooglePlayServicesAvailable-BB@0x2c4 ]
+	175     (000002aa) invoke-static        v5, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
+	176     (000002b0) move-result-object   v11
+	177     (000002b2) const-string         v12, " requires Google Play services, but they are missing."
+	178     (000002b6) invoke-virtual       v11, v12, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	179     (000002bc) move-result-object   v11
+	180     (000002be) invoke-static        v0, v11, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+
+isGooglePlayServicesAvailable-BB@0x2c4 : 
+	181     (000002c4) return               v3
+

@@ -1,0 +1,73 @@
+# Lcom/google/android/gms/fido/fido2/api/common/COSEAlgorithmIdentifier;->fromCoseValue(I)Lcom/google/android/gms/fido/fido2/api/common/COSEAlgorithmIdentifier; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:int
+#
+# - return:com.google.android.gms.fido.fido2.api.common.COSEAlgorithmIdentifier
+
+fromCoseValue-BB@0x0 : [ fromCoseValue-BB@0x14 fromCoseValue-BB@0x1a ]
+	0       (00000000) new-instance         v0, Lcom/google/android/gms/fido/fido2/api/common/COSEAlgorithmIdentifier;
+	1       (00000004) sget-object          v1, Lcom/google/android/gms/fido/fido2/api/common/RSAAlgorithm;->LEGACY_RS1 Lcom/google/android/gms/fido/fido2/api/common/RSAAlgorithm;
+	2       (00000008) invoke-virtual       v1, Lcom/google/android/gms/fido/fido2/api/common/RSAAlgorithm;->getAlgoValue()I
+	3       (0000000e) move-result          v1
+	4       (00000010) if-ne                v7, v1, +005h
+
+fromCoseValue-BB@0x14 : [ fromCoseValue-BB@0x66 ]
+	5       (00000014) sget-object          v7, Lcom/google/android/gms/fido/fido2/api/common/RSAAlgorithm;->RS1 Lcom/google/android/gms/fido/fido2/api/common/RSAAlgorithm;
+	6       (00000018) goto                 +27h
+
+fromCoseValue-BB@0x1a : [ fromCoseValue-BB@0x28 ]
+	7       (0000001a) invoke-static        Lcom/google/android/gms/fido/fido2/api/common/RSAAlgorithm;->values()[Lcom/google/android/gms/fido/fido2/api/common/RSAAlgorithm;
+	8       (00000020) move-result-object   v1
+	9       (00000022) array-length         v2, v1
+	10      (00000024) const/4              v3, 0
+	11      (00000026) move                 v4, v3
+
+fromCoseValue-BB@0x28 : [ fromCoseValue-BB@0x2c fromCoseValue-BB@0x46 ]
+	12      (00000028) if-ge                v4, v2, +00fh
+
+fromCoseValue-BB@0x2c : [ fromCoseValue-BB@0x3c fromCoseValue-BB@0x40 ]
+	13      (0000002c) aget-object          v5, v1, v4
+	14      (00000030) invoke-virtual       v5, Lcom/google/android/gms/fido/fido2/api/common/RSAAlgorithm;->getAlgoValue()I
+	15      (00000036) move-result          v6
+	16      (00000038) if-ne                v6, v7, +004h
+
+fromCoseValue-BB@0x3c : [ fromCoseValue-BB@0x66 ]
+	17      (0000003c) move-object          v7, v5
+	18      (0000003e) goto                 +14h
+
+fromCoseValue-BB@0x40 : [ fromCoseValue-BB@0x28 ]
+	19      (00000040) add-int/lit8         v4, v4, 1
+	20      (00000044) goto                 -eh
+
+fromCoseValue-BB@0x46 : [ fromCoseValue-BB@0x50 ]
+	21      (00000046) invoke-static        Lcom/google/android/gms/fido/fido2/api/common/EC2Algorithm;->values()[Lcom/google/android/gms/fido/fido2/api/common/EC2Algorithm;
+	22      (0000004c) move-result-object   v1
+	23      (0000004e) array-length         v2, v1
+
+fromCoseValue-BB@0x50 : [ fromCoseValue-BB@0x54 fromCoseValue-BB@0x74 ]
+	24      (00000050) if-ge                v3, v2, +012h
+
+fromCoseValue-BB@0x54 : [ fromCoseValue-BB@0x64 fromCoseValue-BB@0x6e ]
+	25      (00000054) aget-object          v4, v1, v3
+	26      (00000058) invoke-virtual       v4, Lcom/google/android/gms/fido/fido2/api/common/EC2Algorithm;->getAlgoValue()I
+	27      (0000005e) move-result          v5
+	28      (00000060) if-ne                v5, v7, +007h
+
+fromCoseValue-BB@0x64 : [ fromCoseValue-BB@0x66 ]
+	29      (00000064) move-object          v7, v4
+
+fromCoseValue-BB@0x66 : 
+	30      (00000066) invoke-direct        v0, v7, Lcom/google/android/gms/fido/fido2/api/common/COSEAlgorithmIdentifier;-><init>(Lcom/google/android/gms/fido/fido2/api/common/Algorithm;)V
+	31      (0000006c) return-object        v0
+
+fromCoseValue-BB@0x6e : [ fromCoseValue-BB@0x50 ]
+	32      (0000006e) add-int/lit8         v3, v3, 1
+	33      (00000072) goto                 -11h
+
+fromCoseValue-BB@0x74 : 
+	34      (00000074) new-instance         v0, Lcom/google/android/gms/fido/fido2/api/common/COSEAlgorithmIdentifier$UnsupportedAlgorithmIdentifierException;
+	35      (00000078) invoke-direct        v0, v7, Lcom/google/android/gms/fido/fido2/api/common/COSEAlgorithmIdentifier$UnsupportedAlgorithmIdentifierException;-><init>(I)V
+	36      (0000007e) throw                v0
+

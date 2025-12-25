@@ -1,0 +1,66 @@
+# Lcom/google/android/gms/location/ActivityTransitionRequest;-><init>(Ljava/util/List; Ljava/lang/String; Ljava/util/List; Ljava/lang/String;)V [access_flags=public constructor]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:java.util.List
+# - v7:java.lang.String
+# - v8:java.util.List
+# - v9:java.lang.String
+#
+# - return:void
+
+<init>-BB@0x0 : [ <init>-BB@0x42 ]
+	0       (00000000) invoke-direct        v5, Lcom/google/android/gms/common/internal/safeparcel/AbstractSafeParcelable;-><init>()V
+	1       (00000006) const-string         v0, "transitions can't be null"
+	2       (0000000a) invoke-static        v6, v0, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	3       (00000010) invoke-interface     v6, Ljava/util/List;->isEmpty()Z
+	4       (00000016) move-result          v0
+	5       (00000018) xor-int/lit8         v0, v0, 1
+	6       (0000001c) const-string         v1, "transitions can't be empty."
+	7       (00000020) invoke-static        v0, v1, Lcom/google/android/gms/common/internal/Preconditions;->checkArgument(Z Ljava/lang/Object;)V
+	8       (00000026) invoke-static        v6, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;
+	9       (0000002c) new-instance         v0, Ljava/util/TreeSet;
+	10      (00000030) sget-object          v1, Lcom/google/android/gms/location/ActivityTransitionRequest;->IS_SAME_TRANSITION Ljava/util/Comparator;
+	11      (00000034) invoke-direct        v0, v1, Ljava/util/TreeSet;-><init>(Ljava/util/Comparator;)V
+	12      (0000003a) invoke-interface     v6, Ljava/util/List;->iterator()Ljava/util/Iterator;
+	13      (00000040) move-result-object   v1
+
+<init>-BB@0x42 : [ <init>-BB@0x4e <init>-BB@0x7e ]
+	14      (00000042) invoke-interface     v1, Ljava/util/Iterator;->hasNext()Z
+	15      (00000048) move-result          v2
+	16      (0000004a) if-eqz               v2, +01ah
+
+<init>-BB@0x4e : [ <init>-BB@0x42 ]
+	17      (0000004e) invoke-interface     v1, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	18      (00000054) move-result-object   v2
+	19      (00000056) check-cast           v2, Lcom/google/android/gms/location/ActivityTransition;
+	20      (0000005a) invoke-virtual       v0, v2, Ljava/util/TreeSet;->add(Ljava/lang/Object;)Z
+	21      (00000060) move-result          v3
+	22      (00000062) filled-new-array     v2, [Ljava/lang/Object;
+	23      (00000068) move-result-object   v2
+	24      (0000006a) const-string         v4, "Found duplicated transition: %s."
+	25      (0000006e) invoke-static        v4, v2, Ljava/lang/String;->format(Ljava/lang/String; [Ljava/lang/Object;)Ljava/lang/String;
+	26      (00000074) move-result-object   v2
+	27      (00000076) invoke-static        v3, v2, Lcom/google/android/gms/common/internal/Preconditions;->checkArgument(Z Ljava/lang/Object;)V
+	28      (0000007c) goto                 -1dh
+
+<init>-BB@0x7e : [ <init>-BB@0x92 <init>-BB@0x98 ]
+	29      (0000007e) invoke-static        v6, Ljava/util/Collections;->unmodifiableList(Ljava/util/List;)Ljava/util/List;
+	30      (00000084) move-result-object   v6
+	31      (00000086) iput-object          v6, v5, Lcom/google/android/gms/location/ActivityTransitionRequest;->zza Ljava/util/List;
+	32      (0000008a) iput-object          v7, v5, Lcom/google/android/gms/location/ActivityTransitionRequest;->zzb Ljava/lang/String;
+	33      (0000008e) if-nez               v8, +005h
+
+<init>-BB@0x92 : [ <init>-BB@0xa0 ]
+	34      (00000092) sget-object          v6, Ljava/util/Collections;->EMPTY_LIST Ljava/util/List;
+	35      (00000096) goto                 +5h
+
+<init>-BB@0x98 : [ <init>-BB@0xa0 ]
+	36      (00000098) invoke-static        v8, Ljava/util/Collections;->unmodifiableList(Ljava/util/List;)Ljava/util/List;
+	37      (0000009e) move-result-object   v6
+
+<init>-BB@0xa0 : 
+	38      (000000a0) iput-object          v6, v5, Lcom/google/android/gms/location/ActivityTransitionRequest;->zzc Ljava/util/List;
+	39      (000000a4) iput-object          v9, v5, Lcom/google/android/gms/location/ActivityTransitionRequest;->zzd Ljava/lang/String;
+	40      (000000a8) return-void          
+

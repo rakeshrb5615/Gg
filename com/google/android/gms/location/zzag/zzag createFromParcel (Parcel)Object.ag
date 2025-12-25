@@ -1,0 +1,42 @@
+# Lcom/google/android/gms/location/zzag;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object; [access_flags=public final bridge synthetic]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:android.os.Parcel
+#
+# - return:java.lang.Object
+
+createFromParcel-BB@0x0 : [ createFromParcel-BB@0xc ]
+	0       (00000000) invoke-static        v6, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelReader;->validateObjectHeader(Landroid/os/Parcel;)I
+	1       (00000006) move-result          v0
+	2       (00000008) sget-object          v1, Lcom/google/android/gms/location/LocationResult;->zza Ljava/util/List;
+
+createFromParcel-BB@0xc : [ createFromParcel-BB@0x18 createFromParcel-BB@0x44 ]
+	3       (0000000c) invoke-virtual       v6, Landroid/os/Parcel;->dataPosition()I
+	4       (00000012) move-result          v2
+	5       (00000014) if-ge                v2, v0, +018h
+
+createFromParcel-BB@0x18 : [ createFromParcel-BB@0x2e createFromParcel-BB@0x36 ]
+	6       (00000018) invoke-static        v6, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelReader;->readHeader(Landroid/os/Parcel;)I
+	7       (0000001e) move-result          v2
+	8       (00000020) invoke-static        v2, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelReader;->getFieldId(I)I
+	9       (00000026) move-result          v3
+	10      (00000028) const/4              v4, 1
+	11      (0000002a) if-eq                v3, v4, +006h
+
+createFromParcel-BB@0x2e : [ createFromParcel-BB@0xc ]
+	12      (0000002e) invoke-static        v6, v2, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelReader;->skipUnknownField(Landroid/os/Parcel; I)V
+	13      (00000034) goto                 -14h
+
+createFromParcel-BB@0x36 : [ createFromParcel-BB@0xc ]
+	14      (00000036) sget-object          v1, Landroid/location/Location;->CREATOR Landroid/os/Parcelable$Creator;
+	15      (0000003a) invoke-static        v6, v2, v1, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelReader;->createTypedList(Landroid/os/Parcel; I Landroid/os/Parcelable$Creator;)Ljava/util/ArrayList;
+	16      (00000040) move-result-object   v1
+	17      (00000042) goto                 -1bh
+
+createFromParcel-BB@0x44 : 
+	18      (00000044) invoke-static        v6, v0, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelReader;->ensureAtEnd(Landroid/os/Parcel; I)V
+	19      (0000004a) new-instance         v6, Lcom/google/android/gms/location/LocationResult;
+	20      (0000004e) invoke-direct        v6, v1, Lcom/google/android/gms/location/LocationResult;-><init>(Ljava/util/List;)V
+	21      (00000054) return-object        v6
+

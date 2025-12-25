@@ -1,0 +1,61 @@
+# Lcom/google/android/gms/common/internal/safeparcel/SafeParcelWriter;->writeParcelList(Landroid/os/Parcel; I Ljava/util/List; Z)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:android.os.Parcel
+# - v5:int
+# - v6:java.util.List
+# - v7:boolean
+#
+# - return:void
+
+writeParcelList-BB@0x0 : [ writeParcelList-BB@0x6 writeParcelList-BB@0x12 ]
+	0       (00000000) const/4              v0, 0
+	1       (00000002) if-nez               v6, +008h
+
+writeParcelList-BB@0x6 : [ writeParcelList-BB@0xa writeParcelList-BB@0x10 ]
+	2       (00000006) if-eqz               v7, +005h
+
+writeParcelList-BB@0xa : [ writeParcelList-BB@0x10 ]
+	3       (0000000a) invoke-static        v4, v5, v0, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelWriter;->zza(Landroid/os/Parcel; I I)V
+
+writeParcelList-BB@0x10 : 
+	4       (00000010) return-void          
+
+writeParcelList-BB@0x12 : [ writeParcelList-BB@0x2a ]
+	5       (00000012) invoke-static        v4, v5, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelWriter;->zzb(Landroid/os/Parcel; I)I
+	6       (00000018) move-result          v5
+	7       (0000001a) invoke-interface     v6, Ljava/util/List;->size()I
+	8       (00000020) move-result          v7
+	9       (00000022) invoke-virtual       v4, v7, Landroid/os/Parcel;->writeInt(I)V
+	10      (00000028) move                 v1, v0
+
+writeParcelList-BB@0x2a : [ writeParcelList-BB@0x2e writeParcelList-BB@0x68 ]
+	11      (0000002a) if-ge                v1, v7, +01fh
+
+writeParcelList-BB@0x2e : [ writeParcelList-BB@0x3e writeParcelList-BB@0x5c ]
+	12      (0000002e) invoke-interface     v6, v1, Ljava/util/List;->get(I)Ljava/lang/Object;
+	13      (00000034) move-result-object   v2
+	14      (00000036) check-cast           v2, Landroid/os/Parcel;
+	15      (0000003a) if-eqz               v2, +011h
+
+writeParcelList-BB@0x3e : [ writeParcelList-BB@0x62 ]
+	16      (0000003e) invoke-virtual       v2, Landroid/os/Parcel;->dataSize()I
+	17      (00000044) move-result          v3
+	18      (00000046) invoke-virtual       v4, v3, Landroid/os/Parcel;->writeInt(I)V
+	19      (0000004c) invoke-virtual       v2, Landroid/os/Parcel;->dataSize()I
+	20      (00000052) move-result          v3
+	21      (00000054) invoke-virtual       v4, v2, v0, v3, Landroid/os/Parcel;->appendFrom(Landroid/os/Parcel; I I)V
+	22      (0000005a) goto                 +4h
+
+writeParcelList-BB@0x5c : [ writeParcelList-BB@0x62 ]
+	23      (0000005c) invoke-virtual       v4, v0, Landroid/os/Parcel;->writeInt(I)V
+
+writeParcelList-BB@0x62 : [ writeParcelList-BB@0x2a ]
+	24      (00000062) add-int/lit8         v1, v1, 1
+	25      (00000066) goto                 -1eh
+
+writeParcelList-BB@0x68 : 
+	26      (00000068) invoke-static        v4, v5, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelWriter;->zzc(Landroid/os/Parcel; I)V
+	27      (0000006e) return-void          
+

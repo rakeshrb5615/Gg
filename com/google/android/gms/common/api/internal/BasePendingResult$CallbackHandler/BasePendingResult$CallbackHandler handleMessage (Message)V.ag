@@ -1,0 +1,53 @@
+# Lcom/google/android/gms/common/api/internal/BasePendingResult$CallbackHandler;->handleMessage(Landroid/os/Message;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:android.os.Message
+#
+# - return:void
+
+handleMessage-BB@0x0 : [ handleMessage-BB@0xa handleMessage-BB@0x46 ]
+	0       (00000000) iget                 v0, v3, Landroid/os/Message;->what I
+	1       (00000004) const/4              v1, 1
+	2       (00000006) if-eq                v0, v1, +020h
+
+handleMessage-BB@0xa : [ handleMessage-BB@0x10 handleMessage-BB@0x32 ]
+	3       (0000000a) const/4              v1, 2
+	4       (0000000c) if-eq                v0, v1, +013h
+
+handleMessage-BB@0x10 : 
+	5       (00000010) const-string         v3, "Don't know how to handle message: "
+	6       (00000014) invoke-static        v0, v3, Lg2/g;->c(I Ljava/lang/String;)Ljava/lang/String;
+	7       (0000001a) move-result-object   v3
+	8       (0000001c) new-instance         v0, Ljava/lang/Exception;
+	9       (00000020) invoke-direct        v0, Ljava/lang/Exception;-><init>()V
+	10      (00000026) const-string         v1, "BasePendingResult"
+	11      (0000002a) invoke-static        v1, v3, v0, Landroid/util/Log;->wtf(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+	12      (00000030) return-void          
+
+handleMessage-BB@0x32 : 
+	13      (00000032) iget-object          v3, v3, Landroid/os/Message;->obj Ljava/lang/Object;
+	14      (00000036) check-cast           v3, Lcom/google/android/gms/common/api/internal/BasePendingResult;
+	15      (0000003a) sget-object          v0, Lcom/google/android/gms/common/api/Status;->RESULT_TIMEOUT Lcom/google/android/gms/common/api/Status;
+	16      (0000003e) invoke-virtual       v3, v0, Lcom/google/android/gms/common/api/internal/BasePendingResult;->forceFailureUnlessReady(Lcom/google/android/gms/common/api/Status;)V
+	17      (00000044) return-void          
+
+handleMessage-BB@0x46 : [ handleMessage-BB@0x5e ]
+	18      (00000046) iget-object          v3, v3, Landroid/os/Message;->obj Ljava/lang/Object;
+	19      (0000004a) check-cast           v3, Landroid/util/Pair;
+	20      (0000004e) iget-object          v0, v3, Landroid/util/Pair;->first Ljava/lang/Object;
+	21      (00000052) check-cast           v0, Lcom/google/android/gms/common/api/ResultCallback;
+	22      (00000056) iget-object          v3, v3, Landroid/util/Pair;->second Ljava/lang/Object;
+	23      (0000005a) check-cast           v3, Lcom/google/android/gms/common/api/Result;
+
+handleMessage-BB@0x5e : 
+	24      (0000005e) invoke-interface     v0, v3, Lcom/google/android/gms/common/api/ResultCallback;->onResult(Lcom/google/android/gms/common/api/Result;)V
+	25      (00000064) return-void          
+	5e:63
+	(Ljava/lang/RuntimeException; -> 66 handleMessage-BB@0x66)
+
+handleMessage-BB@0x66 : 
+	26      (00000066) move-exception       v0
+	27      (00000068) invoke-static        v3, Lcom/google/android/gms/common/api/internal/BasePendingResult;->zal(Lcom/google/android/gms/common/api/Result;)V
+	28      (0000006e) throw                v0
+

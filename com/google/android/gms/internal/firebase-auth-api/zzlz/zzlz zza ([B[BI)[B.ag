@@ -1,0 +1,62 @@
+# Lcom/google/android/gms/internal/firebase-auth-api/zzlz;->zza([B [B I)[B [access_flags=private final]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:byte[]
+# - v8:byte[]
+# - v9:int
+#
+# - return:byte[]
+
+zza-BB@0x0 : [ zza-BB@0x24 zza-BB@0x86 ]
+	0       (00000000) sget-object          v0, Lcom/google/android/gms/internal/firebase-auth-api/zzzj;->zzb Lcom/google/android/gms/internal/firebase-auth-api/zzzj;
+	1       (00000004) iget-object          v1, v6, Lcom/google/android/gms/internal/firebase-auth-api/zzlz;->zza Ljava/lang/String;
+	2       (00000008) invoke-virtual       v0, v1, Lcom/google/android/gms/internal/firebase-auth-api/zzzj;->zza(Ljava/lang/String;)Ljava/lang/Object;
+	3       (0000000e) move-result-object   v0
+	4       (00000010) check-cast           v0, Ljavax/crypto/Mac;
+	5       (00000014) invoke-virtual       v0, Ljavax/crypto/Mac;->getMacLength()I
+	6       (0000001a) move-result          v1
+	7       (0000001c) mul-int/lit16        v1, v1, 255
+	8       (00000020) if-gt                v9, v1, +033h
+
+zza-BB@0x24 : [ zza-BB@0x46 ]
+	9       (00000024) new-array            v1, v9, [B
+	10      (00000028) new-instance         v2, Ljavax/crypto/spec/SecretKeySpec;
+	11      (0000002c) iget-object          v3, v6, Lcom/google/android/gms/internal/firebase-auth-api/zzlz;->zza Ljava/lang/String;
+	12      (00000030) invoke-direct        v2, v7, v3, Ljavax/crypto/spec/SecretKeySpec;-><init>([B Ljava/lang/String;)V
+	13      (00000036) invoke-virtual       v0, v2, Ljavax/crypto/Mac;->init(Ljava/security/Key;)V
+	14      (0000003c) const/4              v7, 0
+	15      (0000003e) new-array            v2, v7, [B
+	16      (00000042) const/4              v3, 1
+	17      (00000044) move                 v4, v7
+
+zza-BB@0x46 : [ zza-BB@0x6a zza-BB@0x7c ]
+	18      (00000046) invoke-virtual       v0, v2, Ljavax/crypto/Mac;->update([B)V
+	19      (0000004c) invoke-virtual       v0, v8, Ljavax/crypto/Mac;->update([B)V
+	20      (00000052) int-to-byte          v2, v3
+	21      (00000054) invoke-virtual       v0, v2, Ljavax/crypto/Mac;->update(B)V
+	22      (0000005a) invoke-virtual       v0, Ljavax/crypto/Mac;->doFinal()[B
+	23      (00000060) move-result-object   v2
+	24      (00000062) array-length         v5, v2
+	25      (00000064) add-int/2addr        v5, v4
+	26      (00000066) if-ge                v5, v9, +00bh
+
+zza-BB@0x6a : [ zza-BB@0x46 ]
+	27      (0000006a) array-length         v5, v2
+	28      (0000006c) invoke-static        v2, v7, v1, v4, v5, Ljava/lang/System;->arraycopy(Ljava/lang/Object; I Ljava/lang/Object; I I)V
+	29      (00000072) array-length         v5, v2
+	30      (00000074) add-int/2addr        v4, v5
+	31      (00000076) add-int/lit8         v3, v3, 1
+	32      (0000007a) goto                 -1ah
+
+zza-BB@0x7c : 
+	33      (0000007c) sub-int/2addr        v9, v4
+	34      (0000007e) invoke-static        v2, v7, v1, v4, v9, Ljava/lang/System;->arraycopy(Ljava/lang/Object; I Ljava/lang/Object; I I)V
+	35      (00000084) return-object        v1
+
+zza-BB@0x86 : 
+	36      (00000086) new-instance         v7, Ljava/security/GeneralSecurityException;
+	37      (0000008a) const-string         v8, "size too large"
+	38      (0000008e) invoke-direct        v7, v8, Ljava/security/GeneralSecurityException;-><init>(Ljava/lang/String;)V
+	39      (00000094) throw                v7
+

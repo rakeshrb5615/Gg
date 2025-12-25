@@ -1,0 +1,54 @@
+# Lcom/google/android/recaptcha/internal/zzlg;->zzJ(I)Ljava/util/List; [access_flags=private final]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:int
+#
+# - return:java.util.List
+
+zzJ-BB@0x0 : [ zzJ-BB@0xa ]
+	0       (00000000) new-instance         v0, Ljava/util/ArrayList;
+	1       (00000004) invoke-direct        v0, Ljava/util/ArrayList;-><init>()V
+
+zzJ-BB@0xa : [ zzJ-BB@0xe zzJ-BB@0x62 ]
+	2       (0000000a) if-lez               v7, +02ch
+
+zzJ-BB@0xe : [ zzJ-BB@0x20 ]
+	3       (0000000e) const/16             v1, 4096
+	4       (00000012) invoke-static        v7, v1, Ljava/lang/Math;->min(I I)I
+	5       (00000018) move-result          v1
+	6       (0000001a) new-array            v2, v1, [B
+	7       (0000001e) const/4              v3, 0
+
+zzJ-BB@0x20 : [ zzJ-BB@0x24 zzJ-BB@0x58 ]
+	8       (00000020) if-ge                v3, v1, +01ch
+
+zzJ-BB@0x24 : [ zzJ-BB@0x3a zzJ-BB@0x48 ]
+	9       (00000024) iget-object          v4, v6, Lcom/google/android/recaptcha/internal/zzlg;->zze Ljava/io/InputStream;
+	10      (00000028) sub-int              v5, v1, v3
+	11      (0000002c) invoke-virtual       v4, v2, v3, v5, Ljava/io/InputStream;->read([B I I)I
+	12      (00000032) move-result          v4
+	13      (00000034) const/4              v5, -1
+	14      (00000036) if-eq                v4, v5, +009h
+
+zzJ-BB@0x3a : [ zzJ-BB@0x20 ]
+	15      (0000003a) iget                 v5, v6, Lcom/google/android/recaptcha/internal/zzlg;->zzk I
+	16      (0000003e) add-int/2addr        v5, v4
+	17      (00000040) iput                 v5, v6, Lcom/google/android/recaptcha/internal/zzlg;->zzk I
+	18      (00000044) add-int/2addr        v3, v4
+	19      (00000046) goto                 -13h
+
+zzJ-BB@0x48 : 
+	20      (00000048) new-instance         v7, Lcom/google/android/recaptcha/internal/zznn;
+	21      (0000004c) const-string         v0, "While parsing a protocol message, the input ended unexpectedly in the middle of a field.  This could mean either that the input has been truncated or that an embedded message misreported its own length."
+	22      (00000050) invoke-direct        v7, v0, Lcom/google/android/recaptcha/internal/zznn;-><init>(Ljava/lang/String;)V
+	23      (00000056) throw                v7
+
+zzJ-BB@0x58 : [ zzJ-BB@0xa ]
+	24      (00000058) sub-int/2addr        v7, v1
+	25      (0000005a) invoke-virtual       v0, v2, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	26      (00000060) goto                 -2bh
+
+zzJ-BB@0x62 : 
+	27      (00000062) return-object        v0
+

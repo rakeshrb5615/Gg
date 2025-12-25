@@ -1,0 +1,118 @@
+# Lcom/android/billingclient/api/zzbi;->zza(Landroid/os/Bundle;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v8
+# - v9:android.os.Bundle
+#
+# - return:void
+
+zza-BB@0x0 : [ zza-BB@0x6 zza-BB@0x14 ]
+	0       (00000000) const/4              v0, 6
+	1       (00000002) if-nez               v9, +009h
+
+zza-BB@0x6 : 
+	2       (00000006) iget-object          v9, v8, Lcom/android/billingclient/api/zzbi;->zzb Landroid/os/ResultReceiver;
+	3       (0000000a) const/4              v1, 0
+	4       (0000000c) invoke-virtual       v9, v0, v1, Landroid/os/ResultReceiver;->send(I Landroid/os/Bundle;)V
+	5       (00000012) return-void          
+
+zza-BB@0x14 : [ zza-BB@0x28 zza-BB@0x3e ]
+	6       (00000014) const-string         v1, "RESPONSE_CODE"
+	7       (00000018) invoke-virtual       v9, v1, Landroid/os/BaseBundle;->containsKey(Ljava/lang/String;)Z
+	8       (0000001e) move-result          v2
+	9       (00000020) const-string         v3, "BillingClient"
+	10      (00000024) if-nez               v2, +00dh
+
+zza-BB@0x28 : 
+	11      (00000028) const-string         v1, "Response bundle doesn't contain a response code"
+	12      (0000002c) invoke-static        v3, v1, Lcom/google/android/gms/internal/play_billing/zzc;->zzn(Ljava/lang/String; Ljava/lang/String;)V
+	13      (00000032) iget-object          v1, v8, Lcom/android/billingclient/api/zzbi;->zzb Landroid/os/ResultReceiver;
+	14      (00000036) invoke-virtual       v1, v0, v9, Landroid/os/ResultReceiver;->send(I Landroid/os/Bundle;)V
+	15      (0000003c) return-void          
+
+zza-BB@0x3e : [ zza-BB@0x4a zza-BB@0x78 ]
+	16      (0000003e) invoke-static        v9, v3, Lcom/google/android/gms/internal/play_billing/zzc;->zzb(Landroid/os/Bundle; Ljava/lang/String;)I
+	17      (00000044) move-result          v2
+	18      (00000046) if-eqz               v2, +019h
+
+zza-BB@0x4a : 
+	19      (0000004a) new-instance         v0, Ljava/lang/StringBuilder;
+	20      (0000004e) const-string         v1, "Unable to launch intent for alternative billing only dialog"
+	21      (00000052) invoke-direct        v0, v1, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	22      (00000058) invoke-virtual       v0, v2, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	23      (0000005e) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	24      (00000064) move-result-object   v0
+	25      (00000066) invoke-static        v3, v0, Lcom/google/android/gms/internal/play_billing/zzc;->zzn(Ljava/lang/String; Ljava/lang/String;)V
+	26      (0000006c) iget-object          v0, v8, Lcom/android/billingclient/api/zzbi;->zzb Landroid/os/ResultReceiver;
+	27      (00000070) invoke-virtual       v0, v2, v9, Landroid/os/ResultReceiver;->send(I Landroid/os/Bundle;)V
+	28      (00000076) return-void          
+
+zza-BB@0x78 : [ zza-BB@0x8c zza-BB@0xa4 ]
+	29      (00000078) const-string         v2, "ALTERNATIVE_BILLING_ONLY_DIALOG_INTENT"
+	30      (0000007c) invoke-virtual       v9, v2, Landroid/os/Bundle;->getParcelable(Ljava/lang/String;)Landroid/os/Parcelable;
+	31      (00000082) move-result-object   v4
+	32      (00000084) check-cast           v4, Landroid/app/PendingIntent;
+	33      (00000088) if-nez               v4, +00eh
+
+zza-BB@0x8c : 
+	34      (0000008c) const-string         v0, "User has acknowledged the alternative billing only dialog before."
+	35      (00000090) invoke-static        v3, v0, Lcom/google/android/gms/internal/play_billing/zzc;->zzm(Ljava/lang/String; Ljava/lang/String;)V
+	36      (00000096) iget-object          v0, v8, Lcom/android/billingclient/api/zzbi;->zzb Landroid/os/ResultReceiver;
+	37      (0000009a) const/4              v1, 0
+	38      (0000009c) invoke-virtual       v0, v1, v9, Landroid/os/ResultReceiver;->send(I Landroid/os/Bundle;)V
+	39      (000000a2) return-void          
+
+zza-BB@0xa4 : 
+	40      (000000a4) iget-object          v9, v8, Lcom/android/billingclient/api/zzbi;->zza Ljava/lang/ref/WeakReference;
+	41      (000000a8) invoke-virtual       v9, Ljava/lang/ref/Reference;->get()Ljava/lang/Object;
+	42      (000000ae) move-result-object   v9
+	43      (000000b0) check-cast           v9, Landroid/app/Activity;
+	44      (000000b4) new-instance         v5, Landroid/content/Intent;
+	45      (000000b8) const-class          v6, Lcom/android/billingclient/api/ProxyBillingActivityV2;
+	46      (000000bc) invoke-direct        v5, v9, v6, Landroid/content/Intent;-><init>(Landroid/content/Context; Ljava/lang/Class;)V
+	47      (000000c2) const-string         v6, "alternative_billing_only_dialog_result_receiver"
+	48      (000000c6) iget-object          v7, v8, Lcom/android/billingclient/api/zzbi;->zzb Landroid/os/ResultReceiver;
+	49      (000000ca) invoke-virtual       v5, v6, v7, Landroid/content/Intent;->putExtra(Ljava/lang/String; Landroid/os/Parcelable;)Landroid/content/Intent;
+	50      (000000d0) invoke-virtual       v5, v2, v4, Landroid/content/Intent;->putExtra(Ljava/lang/String; Landroid/os/Parcelable;)Landroid/content/Intent;
+	51      (000000d6) invoke-virtual       v9, v5, Landroid/app/Activity;->startActivity(Landroid/content/Intent;)V
+	52      (000000dc) return-void          
+	a4:db
+	(Ljava/lang/RuntimeException; -> de zza-BB@0xde)
+
+zza-BB@0xde : 
+	53      (000000de) move-exception       v9
+	54      (000000e0) const-string         v2, "Runtime error while launching intent for alternative billing only dialog."
+	55      (000000e4) invoke-static        v3, v2, v9, Lcom/google/android/gms/internal/play_billing/zzc;->zzo(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)V
+	56      (000000ea) new-instance         v2, Landroid/os/Bundle;
+	57      (000000ee) invoke-direct        v2, Landroid/os/Bundle;-><init>()V
+	58      (000000f4) invoke-virtual       v2, v1, v0, Landroid/os/BaseBundle;->putInt(Ljava/lang/String; I)V
+	59      (000000fa) const-string         v1, "DEBUG_MESSAGE"
+	60      (000000fe) const-string         v3, "An internal error occurred."
+	61      (00000102) invoke-virtual       v2, v1, v3, Landroid/os/BaseBundle;->putString(Ljava/lang/String; Ljava/lang/String;)V
+	62      (00000108) sget-object          v1, Lcom/google/android/gms/internal/play_billing/zzie;->zzax Lcom/google/android/gms/internal/play_billing/zzie;
+	63      (0000010c) invoke-virtual       v1, Lcom/google/android/gms/internal/play_billing/zzie;->zza()I
+	64      (00000112) move-result          v1
+	65      (00000114) const-string         v3, "INTERNAL_LOG_ERROR_REASON"
+	66      (00000118) invoke-virtual       v2, v3, v1, Landroid/os/BaseBundle;->putInt(Ljava/lang/String; I)V
+	67      (0000011e) invoke-virtual       v9, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	68      (00000124) move-result-object   v1
+	69      (00000126) invoke-virtual       v1, Ljava/lang/Class;->getName()Ljava/lang/String;
+	70      (0000012c) move-result-object   v1
+	71      (0000012e) invoke-virtual       v9, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+	72      (00000134) move-result-object   v9
+	73      (00000136) invoke-static        v9, Lcom/google/android/gms/internal/play_billing/zzbj;->zzb(Ljava/lang/String;)Ljava/lang/String;
+	74      (0000013c) move-result-object   v9
+	75      (0000013e) new-instance         v3, Ljava/lang/StringBuilder;
+	76      (00000142) invoke-direct        v3, Ljava/lang/StringBuilder;-><init>()V
+	77      (00000148) invoke-virtual       v3, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	78      (0000014e) const-string         v1, ": "
+	79      (00000152) invoke-virtual       v3, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	80      (00000158) invoke-virtual       v3, v9, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	81      (0000015e) invoke-virtual       v3, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	82      (00000164) move-result-object   v9
+	83      (00000166) const-string         v1, "INTERNAL_LOG_ERROR_ADDITIONAL_DETAILS"
+	84      (0000016a) invoke-virtual       v2, v1, v9, Landroid/os/BaseBundle;->putString(Ljava/lang/String; Ljava/lang/String;)V
+	85      (00000170) iget-object          v9, v8, Lcom/android/billingclient/api/zzbi;->zzb Landroid/os/ResultReceiver;
+	86      (00000174) invoke-virtual       v9, v0, v2, Landroid/os/ResultReceiver;->send(I Landroid/os/Bundle;)V
+	87      (0000017a) return-void          
+

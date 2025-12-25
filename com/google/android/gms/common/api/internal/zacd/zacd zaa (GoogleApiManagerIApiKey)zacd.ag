@@ -1,0 +1,105 @@
+# Lcom/google/android/gms/common/api/internal/zacd;->zaa(Lcom/google/android/gms/common/api/internal/GoogleApiManager; I Lcom/google/android/gms/common/api/internal/ApiKey;)Lcom/google/android/gms/common/api/internal/zacd; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v10
+# - v11:com.google.android.gms.common.api.internal.GoogleApiManager
+# - v12:int
+# - v13:com.google.android.gms.common.api.internal.ApiKey
+#
+# - return:com.google.android.gms.common.api.internal.zacd
+
+zaa-BB@0x0 : [ zaa-BB@0xc zaa-BB@0xe ]
+	0       (00000000) invoke-virtual       v11, Lcom/google/android/gms/common/api/internal/GoogleApiManager;->zaD()Z
+	1       (00000006) move-result          v0
+	2       (00000008) if-nez               v0, +003h
+
+zaa-BB@0xc : [ zaa-BB@0x92 ]
+	3       (0000000c) goto                 +43h
+
+zaa-BB@0xe : [ zaa-BB@0x22 zaa-BB@0x96 ]
+	4       (0000000e) invoke-static        Lcom/google/android/gms/common/internal/RootTelemetryConfigManager;->getInstance()Lcom/google/android/gms/common/internal/RootTelemetryConfigManager;
+	5       (00000014) move-result-object   v0
+	6       (00000016) invoke-virtual       v0, Lcom/google/android/gms/common/internal/RootTelemetryConfigManager;->getConfig()Lcom/google/android/gms/common/internal/RootTelemetryConfiguration;
+	7       (0000001c) move-result-object   v0
+	8       (0000001e) if-eqz               v0, +03ch
+
+zaa-BB@0x22 : [ zaa-BB@0x2e zaa-BB@0x92 ]
+	9       (00000022) invoke-virtual       v0, Lcom/google/android/gms/common/internal/RootTelemetryConfiguration;->getMethodInvocationTelemetryEnabled()Z
+	10      (00000028) move-result          v1
+	11      (0000002a) if-eqz               v1, +034h
+
+zaa-BB@0x2e : [ zaa-BB@0x42 zaa-BB@0x98 ]
+	12      (0000002e) invoke-virtual       v0, Lcom/google/android/gms/common/internal/RootTelemetryConfiguration;->getMethodTimingTelemetryEnabled()Z
+	13      (00000034) move-result          v0
+	14      (00000036) invoke-virtual       v11, v13, Lcom/google/android/gms/common/api/internal/GoogleApiManager;->zai(Lcom/google/android/gms/common/api/internal/ApiKey;)Lcom/google/android/gms/common/api/internal/zabq;
+	15      (0000003c) move-result-object   v1
+	16      (0000003e) if-eqz               v1, +02dh
+
+zaa-BB@0x42 : [ zaa-BB@0x52 zaa-BB@0x92 ]
+	17      (00000042) invoke-virtual       v1, Lcom/google/android/gms/common/api/internal/zabq;->zaf()Lcom/google/android/gms/common/api/Api$Client;
+	18      (00000048) move-result-object   v2
+	19      (0000004a) instance-of          v2, v2, Lcom/google/android/gms/common/internal/BaseGmsClient;
+	20      (0000004e) if-eqz               v2, +022h
+
+zaa-BB@0x52 : [ zaa-BB@0x6a zaa-BB@0x98 ]
+	21      (00000052) invoke-virtual       v1, Lcom/google/android/gms/common/api/internal/zabq;->zaf()Lcom/google/android/gms/common/api/Api$Client;
+	22      (00000058) move-result-object   v2
+	23      (0000005a) check-cast           v2, Lcom/google/android/gms/common/internal/BaseGmsClient;
+	24      (0000005e) invoke-virtual       v2, Lcom/google/android/gms/common/internal/BaseGmsClient;->hasConnectionInfo()Z
+	25      (00000064) move-result          v3
+	26      (00000066) if-eqz               v3, +019h
+
+zaa-BB@0x6a : [ zaa-BB@0x76 zaa-BB@0x98 ]
+	27      (0000006a) invoke-virtual       v2, Lcom/google/android/gms/common/internal/BaseGmsClient;->isConnecting()Z
+	28      (00000070) move-result          v3
+	29      (00000072) if-nez               v3, +013h
+
+zaa-BB@0x76 : [ zaa-BB@0x82 zaa-BB@0x92 ]
+	30      (00000076) invoke-static        v1, v2, v12, Lcom/google/android/gms/common/api/internal/zacd;->zab(Lcom/google/android/gms/common/api/internal/zabq; Lcom/google/android/gms/common/internal/BaseGmsClient; I)Lcom/google/android/gms/common/internal/ConnectionTelemetryConfiguration;
+	31      (0000007c) move-result-object   v0
+	32      (0000007e) if-eqz               v0, +00ah
+
+zaa-BB@0x82 : [ zaa-BB@0x98 ]
+	33      (00000082) invoke-virtual       v1, Lcom/google/android/gms/common/api/internal/zabq;->zaq()V
+	34      (00000088) invoke-virtual       v0, Lcom/google/android/gms/common/internal/ConnectionTelemetryConfiguration;->getMethodTimingTelemetryEnabled()Z
+	35      (0000008e) move-result          v0
+	36      (00000090) goto                 +4h
+
+zaa-BB@0x92 : 
+	37      (00000092) const/4              v11, 0
+	38      (00000094) return-object        v11
+
+zaa-BB@0x96 : [ zaa-BB@0x98 ]
+	39      (00000096) const/4              v0, 1
+
+zaa-BB@0x98 : [ zaa-BB@0xa4 zaa-BB@0xb0 ]
+	40      (00000098) new-instance         v1, Lcom/google/android/gms/common/api/internal/zacd;
+	41      (0000009c) const-wide/16        v2, 0
+	42      (000000a0) if-eqz               v0, +008h
+
+zaa-BB@0xa4 : [ zaa-BB@0xb2 ]
+	43      (000000a4) invoke-static        Ljava/lang/System;->currentTimeMillis()J
+	44      (000000aa) move-result-wide     v4
+	45      (000000ac) move-wide            v5, v4
+	46      (000000ae) goto                 +2h
+
+zaa-BB@0xb0 : [ zaa-BB@0xb2 ]
+	47      (000000b0) move-wide            v5, v2
+
+zaa-BB@0xb2 : [ zaa-BB@0xb6 zaa-BB@0xbe ]
+	48      (000000b2) if-eqz               v0, +006h
+
+zaa-BB@0xb6 : [ zaa-BB@0xbe ]
+	49      (000000b6) invoke-static        Landroid/os/SystemClock;->elapsedRealtime()J
+	50      (000000bc) move-result-wide     v2
+
+zaa-BB@0xbe : 
+	51      (000000be) move-wide            v7, v2
+	52      (000000c0) const/4              v9, 0
+	53      (000000c2) const/4              v10, 0
+	54      (000000c4) move-object          v2, v11
+	55      (000000c6) move                 v3, v12
+	56      (000000c8) move-object          v4, v13
+	57      (000000ca) invoke-direct/range  v1 ... v10, Lcom/google/android/gms/common/api/internal/zacd;-><init>(Lcom/google/android/gms/common/api/internal/GoogleApiManager; I Lcom/google/android/gms/common/api/internal/ApiKey; J J Ljava/lang/String; Ljava/lang/String;)V
+	58      (000000d0) return-object        v1
+

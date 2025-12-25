@@ -1,0 +1,31 @@
+# Lcom/google/android/gms/auth/api/signin/GoogleSignInClient;->revokeAccess()Lcom/google/android/gms/tasks/Task; [access_flags=public]
+#
+# Parameters:
+# local registers: v0...v4
+#
+# - return:com.google.android.gms.tasks.Task
+
+revokeAccess-BB@0x0 : [ revokeAccess-BB@0x1e revokeAccess-BB@0x22 ]
+	0       (00000000) invoke-virtual       v4, Lcom/google/android/gms/common/api/GoogleApi;->asGoogleApiClient()Lcom/google/android/gms/common/api/GoogleApiClient;
+	1       (00000006) move-result-object   v0
+	2       (00000008) invoke-virtual       v4, Lcom/google/android/gms/common/api/GoogleApi;->getApplicationContext()Landroid/content/Context;
+	3       (0000000e) move-result-object   v1
+	4       (00000010) invoke-direct        v4, Lcom/google/android/gms/auth/api/signin/GoogleSignInClient;->zba()I
+	5       (00000016) move-result          v2
+	6       (00000018) const/4              v3, 3
+	7       (0000001a) if-ne                v2, v3, +004h
+
+revokeAccess-BB@0x1e : [ revokeAccess-BB@0x24 ]
+	8       (0000001e) const/4              v2, 1
+	9       (00000020) goto                 +2h
+
+revokeAccess-BB@0x22 : [ revokeAccess-BB@0x24 ]
+	10      (00000022) const/4              v2, 0
+
+revokeAccess-BB@0x24 : 
+	11      (00000024) invoke-static        v0, v1, v2, Lcom/google/android/gms/auth/api/signin/internal/zbm;->zbf(Lcom/google/android/gms/common/api/GoogleApiClient; Landroid/content/Context; Z)Lcom/google/android/gms/common/api/PendingResult;
+	12      (0000002a) move-result-object   v0
+	13      (0000002c) invoke-static        v0, Lcom/google/android/gms/common/internal/PendingResultUtil;->toVoidTask(Lcom/google/android/gms/common/api/PendingResult;)Lcom/google/android/gms/tasks/Task;
+	14      (00000032) move-result-object   v0
+	15      (00000034) return-object        v0
+

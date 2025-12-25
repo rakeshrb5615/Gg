@@ -1,0 +1,118 @@
+# Lcom/google/android/gms/auth/CookieUtil;->getCookieValue(Ljava/lang/String; Ljava/lang/String; Ljava/lang/String; Ljava/lang/String; Ljava/lang/Boolean; Ljava/lang/Boolean; Ljava/lang/Long;)Ljava/lang/String; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v0
+# - v1:java.lang.String
+# - v2:java.lang.String
+# - v3:java.lang.String
+# - v4:java.lang.String
+# - v5:java.lang.Boolean
+# - v6:java.lang.Boolean
+# - v7:java.lang.Long
+#
+# - return:java.lang.String
+
+getCookieValue-BB@0x0 : [ getCookieValue-BB@0x4 getCookieValue-BB@0x8 ]
+	0       (00000000) if-nez               v1, +004h
+
+getCookieValue-BB@0x4 : [ getCookieValue-BB@0x8 ]
+	1       (00000004) const-string         v1, ""
+
+getCookieValue-BB@0x8 : [ getCookieValue-BB@0x28 getCookieValue-BB@0x2e ]
+	2       (00000008) new-instance         v0, Ljava/lang/StringBuilder;
+	3       (0000000c) invoke-direct        v0, v1, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	4       (00000012) const/16             v1, 61
+	5       (00000016) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+	6       (0000001c) invoke-static        v2, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+	7       (00000022) move-result          v1
+	8       (00000024) if-nez               v1, +005h
+
+getCookieValue-BB@0x28 : [ getCookieValue-BB@0x2e ]
+	9       (00000028) invoke-virtual       v0, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+getCookieValue-BB@0x2e : [ getCookieValue-BB@0x3a getCookieValue-BB@0x44 ]
+	10      (0000002e) invoke-static        v5, Lcom/google/android/gms/auth/CookieUtil;->zza(Ljava/lang/Boolean;)Z
+	11      (00000034) move-result          v1
+	12      (00000036) if-eqz               v1, +007h
+
+getCookieValue-BB@0x3a : [ getCookieValue-BB@0x44 ]
+	13      (0000003a) const-string         v1, ";HttpOnly"
+	14      (0000003e) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+getCookieValue-BB@0x44 : [ getCookieValue-BB@0x50 getCookieValue-BB@0x5a ]
+	15      (00000044) invoke-static        v6, Lcom/google/android/gms/auth/CookieUtil;->zza(Ljava/lang/Boolean;)Z
+	16      (0000004a) move-result          v1
+	17      (0000004c) if-eqz               v1, +007h
+
+getCookieValue-BB@0x50 : [ getCookieValue-BB@0x5a ]
+	18      (00000050) const-string         v1, ";Secure"
+	19      (00000054) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+getCookieValue-BB@0x5a : [ getCookieValue-BB@0x66 getCookieValue-BB@0x76 ]
+	20      (0000005a) invoke-static        v3, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+	21      (00000060) move-result          v1
+	22      (00000062) if-nez               v1, +00ah
+
+getCookieValue-BB@0x66 : [ getCookieValue-BB@0x76 ]
+	23      (00000066) const-string         v1, ";Domain="
+	24      (0000006a) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	25      (00000070) invoke-virtual       v0, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+getCookieValue-BB@0x76 : [ getCookieValue-BB@0x82 getCookieValue-BB@0x92 ]
+	26      (00000076) invoke-static        v4, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+	27      (0000007c) move-result          v1
+	28      (0000007e) if-nez               v1, +00ah
+
+getCookieValue-BB@0x82 : [ getCookieValue-BB@0x92 ]
+	29      (00000082) const-string         v1, ";Path="
+	30      (00000086) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	31      (0000008c) invoke-virtual       v0, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+getCookieValue-BB@0x92 : [ getCookieValue-BB@0x96 getCookieValue-BB@0xba ]
+	32      (00000092) if-eqz               v7, +014h
+
+getCookieValue-BB@0x96 : [ getCookieValue-BB@0xaa getCookieValue-BB@0xba ]
+	33      (00000096) invoke-virtual       v7, Ljava/lang/Long;->longValue()J
+	34      (0000009c) move-result-wide     v1
+	35      (0000009e) const-wide/16        v3, 0
+	36      (000000a2) cmp-long             v1, v1, v3
+	37      (000000a6) if-lez               v1, +00ah
+
+getCookieValue-BB@0xaa : [ getCookieValue-BB@0xba ]
+	38      (000000aa) const-string         v1, ";Max-Age="
+	39      (000000ae) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	40      (000000b4) invoke-virtual       v0, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+getCookieValue-BB@0xba : [ getCookieValue-BB@0xc8 getCookieValue-BB@0xd2 ]
+	41      (000000ba) const/4              v1, 0
+	42      (000000bc) invoke-static        v1, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+	43      (000000c2) move-result          v2
+	44      (000000c4) if-nez               v2, +007h
+
+getCookieValue-BB@0xc8 : [ getCookieValue-BB@0xd2 ]
+	45      (000000c8) const-string         v2, ";Priority=null"
+	46      (000000cc) invoke-virtual       v0, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+getCookieValue-BB@0xd2 : [ getCookieValue-BB@0xde getCookieValue-BB@0xe8 ]
+	47      (000000d2) invoke-static        v1, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+	48      (000000d8) move-result          v2
+	49      (000000da) if-nez               v2, +007h
+
+getCookieValue-BB@0xde : [ getCookieValue-BB@0xe8 ]
+	50      (000000de) const-string         v2, ";SameSite=null"
+	51      (000000e2) invoke-virtual       v0, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+getCookieValue-BB@0xe8 : [ getCookieValue-BB@0xf4 getCookieValue-BB@0xfe ]
+	52      (000000e8) invoke-static        v1, Lcom/google/android/gms/auth/CookieUtil;->zza(Ljava/lang/Boolean;)Z
+	53      (000000ee) move-result          v1
+	54      (000000f0) if-eqz               v1, +007h
+
+getCookieValue-BB@0xf4 : [ getCookieValue-BB@0xfe ]
+	55      (000000f4) const-string         v1, ";SameParty"
+	56      (000000f8) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+getCookieValue-BB@0xfe : 
+	57      (000000fe) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	58      (00000104) move-result-object   v1
+	59      (00000106) return-object        v1
+

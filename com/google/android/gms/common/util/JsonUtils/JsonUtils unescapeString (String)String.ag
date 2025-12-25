@@ -1,0 +1,131 @@
+# Lcom/google/android/gms/common/util/JsonUtils;->unescapeString(Ljava/lang/String;)Ljava/lang/String; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:java.lang.String
+#
+# - return:java.lang.String
+
+unescapeString-BB@0x0 : [ unescapeString-BB@0xc unescapeString-BB@0x112 ]
+	0       (00000000) invoke-static        v4, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+	1       (00000006) move-result          v0
+	2       (00000008) if-nez               v0, +085h
+
+unescapeString-BB@0xc : [ unescapeString-BB@0x22 ]
+	3       (0000000c) invoke-static        v4, Lcom/google/android/gms/common/util/zzf;->zza(Ljava/lang/String;)Ljava/lang/String;
+	4       (00000012) move-result-object   v4
+	5       (00000014) sget-object          v0, Lcom/google/android/gms/common/util/JsonUtils;->zza Ljava/util/regex/Pattern;
+	6       (00000018) invoke-virtual       v0, v4, Ljava/util/regex/Pattern;->matcher(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;
+	7       (0000001e) move-result-object   v0
+	8       (00000020) const/4              v1, 0
+
+unescapeString-BB@0x22 : [ unescapeString-BB@0x2e unescapeString-BB@0xfe ]
+	9       (00000022) invoke-virtual       v0, Ljava/util/regex/Matcher;->find()Z
+	10      (00000028) move-result          v2
+	11      (0000002a) if-eqz               v2, +06ah
+
+unescapeString-BB@0x2e : [ unescapeString-BB@0x32 unescapeString-BB@0x3c ]
+	12      (0000002e) if-nez               v1, +007h
+
+unescapeString-BB@0x32 : [ unescapeString-BB@0x3c ]
+	13      (00000032) new-instance         v1, Ljava/lang/StringBuffer;
+	14      (00000036) invoke-direct        v1, Ljava/lang/StringBuffer;-><init>()V
+
+unescapeString-BB@0x3c : [ unescapeString-BB@0x56 unescapeString-BB@0xf2 ]
+	15      (0000003c) invoke-virtual       v0, Ljava/util/regex/Matcher;->group()Ljava/lang/String;
+	16      (00000042) move-result-object   v2
+	17      (00000044) const/4              v3, 1
+	18      (00000046) invoke-virtual       v2, v3, Ljava/lang/String;->charAt(I)C
+	19      (0000004c) move-result          v2
+	20      (0000004e) const/16             v3, 34
+	21      (00000052) if-eq                v2, v3, +050h
+
+unescapeString-BB@0x56 : [ unescapeString-BB@0x5e unescapeString-BB@0xe6 ]
+	22      (00000056) const/16             v3, 47
+	23      (0000005a) if-eq                v2, v3, +046h
+
+unescapeString-BB@0x5e : [ unescapeString-BB@0x66 unescapeString-BB@0xda ]
+	24      (0000005e) const/16             v3, 92
+	25      (00000062) if-eq                v2, v3, +03ch
+
+unescapeString-BB@0x66 : [ unescapeString-BB@0x6e unescapeString-BB@0xce ]
+	26      (00000066) const/16             v3, 98
+	27      (0000006a) if-eq                v2, v3, +032h
+
+unescapeString-BB@0x6e : [ unescapeString-BB@0x76 unescapeString-BB@0xc2 ]
+	28      (0000006e) const/16             v3, 102
+	29      (00000072) if-eq                v2, v3, +028h
+
+unescapeString-BB@0x76 : [ unescapeString-BB@0x7e unescapeString-BB@0xb6 ]
+	30      (00000076) const/16             v3, 110
+	31      (0000007a) if-eq                v2, v3, +01eh
+
+unescapeString-BB@0x7e : [ unescapeString-BB@0x86 unescapeString-BB@0xaa ]
+	32      (0000007e) const/16             v3, 114
+	33      (00000082) if-eq                v2, v3, +014h
+
+unescapeString-BB@0x86 : [ unescapeString-BB@0x8e unescapeString-BB@0x9a ]
+	34      (00000086) const/16             v3, 116
+	35      (0000008a) if-ne                v2, v3, +008h
+
+unescapeString-BB@0x8e : [ unescapeString-BB@0x22 ]
+	36      (0000008e) const-string         v2, "	"
+	37      (00000092) invoke-virtual       v0, v1, v2, Ljava/util/regex/Matcher;->appendReplacement(Ljava/lang/StringBuffer; Ljava/lang/String;)Ljava/util/regex/Matcher;
+	38      (00000098) goto                 -3bh
+
+unescapeString-BB@0x9a : 
+	39      (0000009a) new-instance         v4, Ljava/lang/IllegalStateException;
+	40      (0000009e) const-string         v0, "Found an escaped character that should never be."
+	41      (000000a2) invoke-direct        v4, v0, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	42      (000000a8) throw                v4
+
+unescapeString-BB@0xaa : [ unescapeString-BB@0x22 ]
+	43      (000000aa) const-string         v2, ""
+	44      (000000ae) invoke-virtual       v0, v1, v2, Ljava/util/regex/Matcher;->appendReplacement(Ljava/lang/StringBuffer; Ljava/lang/String;)Ljava/util/regex/Matcher;
+	45      (000000b4) goto                 -49h
+
+unescapeString-BB@0xb6 : [ unescapeString-BB@0x22 ]
+	46      (000000b6) const-string         v2, "
+"
+	47      (000000ba) invoke-virtual       v0, v1, v2, Ljava/util/regex/Matcher;->appendReplacement(Ljava/lang/StringBuffer; Ljava/lang/String;)Ljava/util/regex/Matcher;
+	48      (000000c0) goto                 -4fh
+
+unescapeString-BB@0xc2 : [ unescapeString-BB@0x22 ]
+	49      (000000c2) const-string         v2, ""
+	50      (000000c6) invoke-virtual       v0, v1, v2, Ljava/util/regex/Matcher;->appendReplacement(Ljava/lang/StringBuffer; Ljava/lang/String;)Ljava/util/regex/Matcher;
+	51      (000000cc) goto                 -55h
+
+unescapeString-BB@0xce : [ unescapeString-BB@0x22 ]
+	52      (000000ce) const-string         v2, ""
+	53      (000000d2) invoke-virtual       v0, v1, v2, Ljava/util/regex/Matcher;->appendReplacement(Ljava/lang/StringBuffer; Ljava/lang/String;)Ljava/util/regex/Matcher;
+	54      (000000d8) goto                 -5bh
+
+unescapeString-BB@0xda : [ unescapeString-BB@0x22 ]
+	55      (000000da) const-string         v2, "\\"
+	56      (000000de) invoke-virtual       v0, v1, v2, Ljava/util/regex/Matcher;->appendReplacement(Ljava/lang/StringBuffer; Ljava/lang/String;)Ljava/util/regex/Matcher;
+	57      (000000e4) goto                 -61h
+
+unescapeString-BB@0xe6 : [ unescapeString-BB@0x22 ]
+	58      (000000e6) const-string         v2, "/"
+	59      (000000ea) invoke-virtual       v0, v1, v2, Ljava/util/regex/Matcher;->appendReplacement(Ljava/lang/StringBuffer; Ljava/lang/String;)Ljava/util/regex/Matcher;
+	60      (000000f0) goto                 -67h
+
+unescapeString-BB@0xf2 : [ unescapeString-BB@0x22 ]
+	61      (000000f2) const-string         v2, """
+	62      (000000f6) invoke-virtual       v0, v1, v2, Ljava/util/regex/Matcher;->appendReplacement(Ljava/lang/StringBuffer; Ljava/lang/String;)Ljava/util/regex/Matcher;
+	63      (000000fc) goto                 -6dh
+
+unescapeString-BB@0xfe : [ unescapeString-BB@0x102 unescapeString-BB@0x104 ]
+	64      (000000fe) if-nez               v1, +003h
+
+unescapeString-BB@0x102 : 
+	65      (00000102) return-object        v4
+
+unescapeString-BB@0x104 : [ unescapeString-BB@0x112 ]
+	66      (00000104) invoke-virtual       v0, v1, Ljava/util/regex/Matcher;->appendTail(Ljava/lang/StringBuffer;)Ljava/lang/StringBuffer;
+	67      (0000010a) invoke-virtual       v1, Ljava/lang/StringBuffer;->toString()Ljava/lang/String;
+	68      (00000110) move-result-object   v4
+
+unescapeString-BB@0x112 : 
+	69      (00000112) return-object        v4
+

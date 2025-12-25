@@ -1,0 +1,54 @@
+# Lcom/google/android/gms/internal/measurement/zzh;->zzi(D)D [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:double
+#
+# - return:double
+
+zzi-BB@0x0 : [ zzi-BB@0x10 zzi-BB@0x12 ]
+	0       (00000000) invoke-static        v3, v4, Ljava/lang/Double;->isNaN(D)Z
+	1       (00000006) move-result          v0
+	2       (00000008) const-wide/16        v1, 0
+	3       (0000000c) if-eqz               v0, +003h
+
+zzi-BB@0x10 : 
+	4       (00000010) return-wide          v1
+
+zzi-BB@0x12 : [ zzi-BB@0x1e zzi-BB@0x4c ]
+	5       (00000012) invoke-static        v3, v4, Ljava/lang/Double;->isInfinite(D)Z
+	6       (00000018) move-result          v0
+	7       (0000001a) if-nez               v0, +019h
+
+zzi-BB@0x1e : [ zzi-BB@0x26 zzi-BB@0x4c ]
+	8       (0000001e) cmpl-double          v0, v3, v1
+	9       (00000022) if-eqz               v0, +015h
+
+zzi-BB@0x26 : [ zzi-BB@0x2a zzi-BB@0x2c ]
+	10      (00000026) if-nez               v0, +003h
+
+zzi-BB@0x2a : [ zzi-BB@0x4c ]
+	11      (0000002a) goto                 +11h
+
+zzi-BB@0x2c : [ zzi-BB@0x30 zzi-BB@0x34 ]
+	12      (0000002c) if-lez               v0, +004h
+
+zzi-BB@0x30 : [ zzi-BB@0x36 ]
+	13      (00000030) const/4              v0, 1
+	14      (00000032) goto                 +2h
+
+zzi-BB@0x34 : [ zzi-BB@0x36 ]
+	15      (00000034) const/4              v0, -1
+
+zzi-BB@0x36 : 
+	16      (00000036) invoke-static        v3, v4, Ljava/lang/Math;->abs(D)D
+	17      (0000003c) move-result-wide     v3
+	18      (0000003e) invoke-static        v3, v4, Ljava/lang/Math;->floor(D)D
+	19      (00000044) move-result-wide     v3
+	20      (00000046) int-to-double        v0, v0
+	21      (00000048) mul-double/2addr     v0, v3
+	22      (0000004a) return-wide          v0
+
+zzi-BB@0x4c : 
+	23      (0000004c) return-wide          v3
+

@@ -1,0 +1,21 @@
+# Lcom/google/android/gms/common/internal/BaseGmsClient;->checkConnected()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v2
+#
+# - return:void
+
+checkConnected-BB@0x0 : [ checkConnected-BB@0xc checkConnected-BB@0xe ]
+	0       (00000000) invoke-virtual       v2, Lcom/google/android/gms/common/internal/BaseGmsClient;->isConnected()Z
+	1       (00000006) move-result          v0
+	2       (00000008) if-eqz               v0, +003h
+
+checkConnected-BB@0xc : 
+	3       (0000000c) return-void          
+
+checkConnected-BB@0xe : 
+	4       (0000000e) new-instance         v0, Ljava/lang/IllegalStateException;
+	5       (00000012) const-string         v1, "Not connected. Call connect() and wait for onConnected() to be called."
+	6       (00000016) invoke-direct        v0, v1, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	7       (0000001c) throw                v0
+

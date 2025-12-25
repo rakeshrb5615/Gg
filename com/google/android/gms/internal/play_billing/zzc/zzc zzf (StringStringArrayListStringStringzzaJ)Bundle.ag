@@ -1,0 +1,130 @@
+# Lcom/google/android/gms/internal/play_billing/zzc;->zzf(Ljava/lang/String; Ljava/lang/String; Ljava/util/ArrayList; Ljava/lang/String; Ljava/lang/String; Lcom/google/android/gms/internal/play_billing/zza; J)Landroid/os/Bundle; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:java.lang.String
+# - v7:java.lang.String
+# - v8:java.util.ArrayList
+# - v9:java.lang.String
+# - v10:java.lang.String
+# - v11:com.google.android.gms.internal.play_billing.zza
+# - v12:long
+#
+# - return:android.os.Bundle
+
+zzf-BB@0x0 : [ zzf-BB@0x80 zzf-BB@0x8a ]
+	0       (00000000) new-instance         v8, Landroid/os/Bundle;
+	1       (00000004) invoke-direct        v8, Landroid/os/Bundle;-><init>()V
+	2       (0000000a) invoke-static        v8, v5, v6, v11, v12, Lcom/google/android/gms/internal/play_billing/zzc;->zzc(Landroid/os/Bundle; Ljava/lang/String; Ljava/lang/String; J)Landroid/os/Bundle;
+	3       (00000010) const-string         v5, "enablePendingPurchases"
+	4       (00000014) const/4              v6, 1
+	5       (00000016) invoke-virtual       v8, v5, v6, Landroid/os/BaseBundle;->putBoolean(Ljava/lang/String; Z)V
+	6       (0000001c) const-string         v5, "SKU_DETAILS_RESPONSE_FORMAT"
+	7       (00000020) const-string         v9, "PRODUCT_DETAILS"
+	8       (00000024) invoke-virtual       v8, v5, v9, Landroid/os/BaseBundle;->putString(Ljava/lang/String; Ljava/lang/String;)V
+	9       (0000002a) new-instance         v5, Ljava/util/ArrayList;
+	10      (0000002e) const-string         v9, "subs"
+	11      (00000032) const-string         v11, "inapp"
+	12      (00000036) invoke-static        v9, v11, Lcom/google/android/gms/internal/play_billing/zzbt;->zzm(Ljava/lang/Object; Ljava/lang/Object;)Lcom/google/android/gms/internal/play_billing/zzbt;
+	13      (0000003c) move-result-object   v9
+	14      (0000003e) invoke-direct        v5, v9, Ljava/util/ArrayList;-><init>(Ljava/util/Collection;)V
+	15      (00000044) const-string         v9, "PRODUCT_TYPES_TO_RETURN_MULTIPLE_OFFERS"
+	16      (00000048) invoke-virtual       v8, v9, v5, Landroid/os/Bundle;->putStringArrayList(Ljava/lang/String; Ljava/util/ArrayList;)V
+	17      (0000004e) new-instance         v5, Ljava/util/ArrayList;
+	18      (00000052) invoke-static        v11, Lcom/google/android/gms/internal/play_billing/zzbt;->zzl(Ljava/lang/Object;)Lcom/google/android/gms/internal/play_billing/zzbt;
+	19      (00000058) move-result-object   v9
+	20      (0000005a) invoke-direct        v5, v9, Ljava/util/ArrayList;-><init>(Ljava/util/Collection;)V
+	21      (00000060) const-string         v9, "PRODUCT_TYPES_TO_RETURN_RENT_OFFERS"
+	22      (00000064) invoke-virtual       v8, v9, v5, Landroid/os/Bundle;->putStringArrayList(Ljava/lang/String; Ljava/util/ArrayList;)V
+	23      (0000006a) const-string         v5, "SHOULD_RETURN_UNFETCHED_PRODUCTS"
+	24      (0000006e) invoke-virtual       v8, v5, v6, Landroid/os/BaseBundle;->putBoolean(Ljava/lang/String; Z)V
+	25      (00000074) invoke-static        v10, Lcom/google/android/gms/internal/play_billing/zza;->zzb(Lcom/google/android/gms/internal/play_billing/zza;)Z
+	26      (0000007a) move-result          v5
+	27      (0000007c) if-eqz               v5, +007h
+
+zzf-BB@0x80 : [ zzf-BB@0x8a ]
+	28      (00000080) const-string         v5, "enablePendingPurchaseForSubscriptions"
+	29      (00000084) invoke-virtual       v8, v5, v6, Landroid/os/BaseBundle;->putBoolean(Ljava/lang/String; Z)V
+
+zzf-BB@0x8a : [ zzf-BB@0xb6 ]
+	30      (0000008a) new-instance         v5, Ljava/util/ArrayList;
+	31      (0000008e) invoke-direct        v5, Ljava/util/ArrayList;-><init>()V
+	32      (00000094) new-instance         v9, Ljava/util/ArrayList;
+	33      (00000098) invoke-direct        v9, Ljava/util/ArrayList;-><init>()V
+	34      (0000009e) new-instance         v10, Ljava/util/ArrayList;
+	35      (000000a2) invoke-direct        v10, Ljava/util/ArrayList;-><init>()V
+	36      (000000a8) invoke-interface     v7, Ljava/util/List;->size()I
+	37      (000000ae) move-result          v11
+	38      (000000b0) const/4              v12, 0
+	39      (000000b2) move                 v0, v12
+	40      (000000b4) move                 v1, v0
+
+zzf-BB@0xb6 : [ zzf-BB@0xbc zzf-BB@0x11a ]
+	41      (000000b6) const/4              v2, 0
+	42      (000000b8) if-ge                v12, v11, +031h
+
+zzf-BB@0xbc : [ zzf-BB@0x104 zzf-BB@0x114 ]
+	43      (000000bc) invoke-interface     v7, v12, Ljava/util/List;->get(I)Ljava/lang/Object;
+	44      (000000c2) move-result-object   v3
+	45      (000000c4) check-cast           v3, Lcom/android/billingclient/api/QueryProductDetailsParams$Product;
+	46      (000000c8) invoke-virtual       v5, v2, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	47      (000000ce) invoke-static        v2, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+	48      (000000d4) move-result          v4
+	49      (000000d6) xor-int/2addr        v4, v6
+	50      (000000d8) or-int/2addr         v0, v4
+	51      (000000da) invoke-virtual       v10, v2, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	52      (000000e0) invoke-static        v2, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+	53      (000000e6) move-result          v4
+	54      (000000e8) xor-int/2addr        v4, v6
+	55      (000000ea) or-int/2addr         v1, v4
+	56      (000000ec) invoke-virtual       v3, Lcom/android/billingclient/api/QueryProductDetailsParams$Product;->zzb()Ljava/lang/String;
+	57      (000000f2) move-result-object   v3
+	58      (000000f4) const-string         v4, "first_party"
+	59      (000000f8) invoke-virtual       v3, v4, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	60      (000000fe) move-result          v3
+	61      (00000100) if-eqz               v3, +00ah
+
+zzf-BB@0x104 : [ zzf-BB@0x114 ]
+	62      (00000104) const-string         v3, "Serialized DocId is required for constructing ExtraParams to query ProductDetails for all first party products."
+	63      (00000108) invoke-static        v2, v3, Lcom/google/android/gms/internal/play_billing/zzbg;->zzc(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	64      (0000010e) invoke-virtual       v9, v2, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+zzf-BB@0x114 : [ zzf-BB@0xb6 ]
+	65      (00000114) add-int/lit8         v12, v12, 1
+	66      (00000118) goto                 -31h
+
+zzf-BB@0x11a : [ zzf-BB@0x11e zzf-BB@0x128 ]
+	67      (0000011a) if-eqz               v0, +007h
+
+zzf-BB@0x11e : [ zzf-BB@0x128 ]
+	68      (0000011e) const-string         v6, "SKU_OFFER_ID_TOKEN_LIST"
+	69      (00000122) invoke-virtual       v8, v6, v5, Landroid/os/Bundle;->putStringArrayList(Ljava/lang/String; Ljava/util/ArrayList;)V
+
+zzf-BB@0x128 : [ zzf-BB@0x134 zzf-BB@0x13e ]
+	70      (00000128) invoke-virtual       v9, Ljava/util/ArrayList;->isEmpty()Z
+	71      (0000012e) move-result          v5
+	72      (00000130) if-nez               v5, +007h
+
+zzf-BB@0x134 : [ zzf-BB@0x13e ]
+	73      (00000134) const-string         v5, "SKU_SERIALIZED_DOCID_LIST"
+	74      (00000138) invoke-virtual       v8, v5, v9, Landroid/os/Bundle;->putStringArrayList(Ljava/lang/String; Ljava/util/ArrayList;)V
+
+zzf-BB@0x13e : [ zzf-BB@0x14a zzf-BB@0x154 ]
+	75      (0000013e) invoke-static        v2, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+	76      (00000144) move-result          v5
+	77      (00000146) if-nez               v5, +007h
+
+zzf-BB@0x14a : [ zzf-BB@0x154 ]
+	78      (0000014a) const-string         v5, "accountName"
+	79      (0000014e) invoke-virtual       v8, v5, v2, Landroid/os/BaseBundle;->putString(Ljava/lang/String; Ljava/lang/String;)V
+
+zzf-BB@0x154 : [ zzf-BB@0x158 zzf-BB@0x162 ]
+	80      (00000154) if-eqz               v1, +007h
+
+zzf-BB@0x158 : [ zzf-BB@0x162 ]
+	81      (00000158) const-string         v5, "SKU_DYNAMIC_PRODUCT_TOKEN_LIST"
+	82      (0000015c) invoke-virtual       v8, v5, v10, Landroid/os/Bundle;->putStringArrayList(Ljava/lang/String; Ljava/util/ArrayList;)V
+
+zzf-BB@0x162 : 
+	83      (00000162) return-object        v8
+

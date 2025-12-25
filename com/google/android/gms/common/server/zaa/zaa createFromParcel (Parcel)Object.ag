@@ -1,0 +1,62 @@
+# Lcom/google/android/gms/common/server/zaa;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object; [access_flags=public final bridge synthetic]
+#
+# Parameters:
+# - local registers: v0...v7
+# - v8:android.os.Parcel
+#
+# - return:java.lang.Object
+
+createFromParcel-BB@0x0 : [ createFromParcel-BB@0x10 ]
+	0       (00000000) invoke-static        v8, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelReader;->validateObjectHeader(Landroid/os/Parcel;)I
+	1       (00000006) move-result          v0
+	2       (00000008) const/4              v1, 0
+	3       (0000000a) const/4              v2, 0
+	4       (0000000c) move-object          v3, v2
+	5       (0000000e) move                 v2, v1
+
+createFromParcel-BB@0x10 : [ createFromParcel-BB@0x1c createFromParcel-BB@0x64 ]
+	6       (00000010) invoke-virtual       v8, Landroid/os/Parcel;->dataPosition()I
+	7       (00000016) move-result          v4
+	8       (00000018) if-ge                v4, v0, +026h
+
+createFromParcel-BB@0x1c : [ createFromParcel-BB@0x32 createFromParcel-BB@0x5a ]
+	9       (0000001c) invoke-static        v8, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelReader;->readHeader(Landroid/os/Parcel;)I
+	10      (00000022) move-result          v4
+	11      (00000024) invoke-static        v4, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelReader;->getFieldId(I)I
+	12      (0000002a) move-result          v5
+	13      (0000002c) const/4              v6, 1
+	14      (0000002e) if-eq                v5, v6, +016h
+
+createFromParcel-BB@0x32 : [ createFromParcel-BB@0x38 createFromParcel-BB@0x50 ]
+	15      (00000032) const/4              v6, 2
+	16      (00000034) if-eq                v5, v6, +00eh
+
+createFromParcel-BB@0x38 : [ createFromParcel-BB@0x3e createFromParcel-BB@0x46 ]
+	17      (00000038) const/4              v6, 3
+	18      (0000003a) if-eq                v5, v6, +006h
+
+createFromParcel-BB@0x3e : [ createFromParcel-BB@0x10 ]
+	19      (0000003e) invoke-static        v8, v4, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelReader;->skipUnknownField(Landroid/os/Parcel; I)V
+	20      (00000044) goto                 -1ah
+
+createFromParcel-BB@0x46 : [ createFromParcel-BB@0x10 ]
+	21      (00000046) invoke-static        v8, v4, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelReader;->readInt(Landroid/os/Parcel; I)I
+	22      (0000004c) move-result          v2
+	23      (0000004e) goto                 -1fh
+
+createFromParcel-BB@0x50 : [ createFromParcel-BB@0x10 ]
+	24      (00000050) invoke-static        v8, v4, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelReader;->createString(Landroid/os/Parcel; I)Ljava/lang/String;
+	25      (00000056) move-result-object   v3
+	26      (00000058) goto                 -24h
+
+createFromParcel-BB@0x5a : [ createFromParcel-BB@0x10 ]
+	27      (0000005a) invoke-static        v8, v4, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelReader;->readInt(Landroid/os/Parcel; I)I
+	28      (00000060) move-result          v1
+	29      (00000062) goto                 -29h
+
+createFromParcel-BB@0x64 : 
+	30      (00000064) invoke-static        v8, v0, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelReader;->ensureAtEnd(Landroid/os/Parcel; I)V
+	31      (0000006a) new-instance         v8, Lcom/google/android/gms/common/server/FavaDiagnosticsEntity;
+	32      (0000006e) invoke-direct        v8, v1, v3, v2, Lcom/google/android/gms/common/server/FavaDiagnosticsEntity;-><init>(I Ljava/lang/String; I)V
+	33      (00000074) return-object        v8
+

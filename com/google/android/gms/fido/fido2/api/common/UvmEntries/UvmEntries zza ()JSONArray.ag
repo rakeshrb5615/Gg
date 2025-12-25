@@ -1,0 +1,61 @@
+# Lcom/google/android/gms/fido/fido2/api/common/UvmEntries;->zza()Lorg/json/JSONArray; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v5
+#
+# - return:org.json.JSONArray
+
+zza-BB@0x0 : [ zza-BB@0x12 zza-BB@0x78 ]
+	0       (00000000) new-instance         v0, Lorg/json/JSONArray;
+	1       (00000004) invoke-direct        v0, Lorg/json/JSONArray;-><init>()V
+	2       (0000000a) iget-object          v1, v5, Lcom/google/android/gms/fido/fido2/api/common/UvmEntries;->zza Ljava/util/List;
+	3       (0000000e) if-eqz               v1, +035h
+	0:6d
+	(Lorg/json/JSONException; -> 74 zza-BB@0x74)
+
+zza-BB@0x12 : [ zza-BB@0x14 ]
+	4       (00000012) const/4              v1, 0
+	0:6d
+	(Lorg/json/JSONException; -> 74 zza-BB@0x74)
+
+zza-BB@0x14 : [ zza-BB@0x24 zza-BB@0x78 ]
+	5       (00000014) iget-object          v2, v5, Lcom/google/android/gms/fido/fido2/api/common/UvmEntries;->zza Ljava/util/List;
+	6       (00000018) invoke-interface     v2, Ljava/util/List;->size()I
+	7       (0000001e) move-result          v2
+	8       (00000020) if-ge                v1, v2, +02ch
+	0:6d
+	(Lorg/json/JSONException; -> 74 zza-BB@0x74)
+
+zza-BB@0x24 : [ zza-BB@0x14 ]
+	9       (00000024) iget-object          v2, v5, Lcom/google/android/gms/fido/fido2/api/common/UvmEntries;->zza Ljava/util/List;
+	10      (00000028) invoke-interface     v2, v1, Ljava/util/List;->get(I)Ljava/lang/Object;
+	11      (0000002e) move-result-object   v2
+	12      (00000030) check-cast           v2, Lcom/google/android/gms/fido/fido2/api/common/UvmEntry;
+	13      (00000034) new-instance         v3, Lorg/json/JSONArray;
+	14      (00000038) invoke-direct        v3, Lorg/json/JSONArray;-><init>()V
+	15      (0000003e) invoke-virtual       v2, Lcom/google/android/gms/fido/fido2/api/common/UvmEntry;->getMatcherProtectionType()S
+	16      (00000044) move-result          v4
+	17      (00000046) invoke-virtual       v3, v4, Lorg/json/JSONArray;->put(I)Lorg/json/JSONArray;
+	18      (0000004c) invoke-virtual       v2, Lcom/google/android/gms/fido/fido2/api/common/UvmEntry;->getKeyProtectionType()S
+	19      (00000052) move-result          v4
+	20      (00000054) invoke-virtual       v3, v4, Lorg/json/JSONArray;->put(I)Lorg/json/JSONArray;
+	21      (0000005a) invoke-virtual       v2, Lcom/google/android/gms/fido/fido2/api/common/UvmEntry;->getMatcherProtectionType()S
+	22      (00000060) move-result          v2
+	23      (00000062) invoke-virtual       v3, v2, Lorg/json/JSONArray;->put(I)Lorg/json/JSONArray;
+	24      (00000068) invoke-virtual       v0, v1, v3, Lorg/json/JSONArray;->put(I Ljava/lang/Object;)Lorg/json/JSONArray;
+	25      (0000006e) add-int/lit8         v1, v1, 1
+	26      (00000072) goto                 -2fh
+
+zza-BB@0x74 : [ zza-BB@0x7a ]
+	27      (00000074) move-exception       v0
+	28      (00000076) goto                 +2h
+
+zza-BB@0x78 : 
+	29      (00000078) return-object        v0
+
+zza-BB@0x7a : 
+	30      (0000007a) new-instance         v1, Ljava/lang/RuntimeException;
+	31      (0000007e) const-string         v2, "Error encoding UvmEntries to JSON object"
+	32      (00000082) invoke-direct        v1, v2, v0, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	33      (00000088) throw                v1
+

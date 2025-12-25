@@ -1,0 +1,87 @@
+# Lcom/google/android/material/behavior/HideViewOnScrollBehavior;->o(Landroidx/coordinatorlayout/widget/CoordinatorLayout; Landroid/view/View; I I I [I)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v0
+# - v1:androidx.coordinatorlayout.widget.CoordinatorLayout
+# - v2:android.view.View
+# - v3:int
+# - v4:int
+# - v5:int
+# - v6:int[]
+#
+# - return:void
+
+o-BB@0x0 : [ o-BB@0x4 o-BB@0xa4 ]
+	0       (00000000) if-lez               v3, +052h
+
+o-BB@0x4 : [ o-BB@0xe o-BB@0x10 ]
+	1       (00000004) iget                 v1, v0, Lcom/google/android/material/behavior/HideViewOnScrollBehavior;->j I
+	2       (00000008) const/4              v3, 1
+	3       (0000000a) if-ne                v1, v3, +003h
+
+o-BB@0xe : [ o-BB@0xae ]
+	4       (0000000e) goto                 +50h
+
+o-BB@0x10 : [ o-BB@0x18 o-BB@0x26 ]
+	5       (00000010) iget-object          v1, v0, Lcom/google/android/material/behavior/HideViewOnScrollBehavior;->b Landroid/view/accessibility/AccessibilityManager;
+	6       (00000014) if-eqz               v1, +009h
+
+o-BB@0x18 : [ o-BB@0x24 o-BB@0x26 ]
+	7       (00000018) invoke-virtual       v1, Landroid/view/accessibility/AccessibilityManager;->isTouchExplorationEnabled()Z
+	8       (0000001e) move-result          v1
+	9       (00000020) if-eqz               v1, +003h
+
+o-BB@0x24 : [ o-BB@0xae ]
+	10      (00000024) goto                 +45h
+
+o-BB@0x26 : [ o-BB@0x2e o-BB@0x3a ]
+	11      (00000026) iget-object          v1, v0, Lcom/google/android/material/behavior/HideViewOnScrollBehavior;->k Landroid/view/ViewPropertyAnimator;
+	12      (0000002a) if-eqz               v1, +008h
+
+o-BB@0x2e : [ o-BB@0x3a ]
+	13      (0000002e) invoke-virtual       v1, Landroid/view/ViewPropertyAnimator;->cancel()V
+	14      (00000034) invoke-virtual       v2, Landroid/view/View;->clearAnimation()V
+
+o-BB@0x3a : [ o-BB@0x56 o-BB@0x9a ]
+	15      (0000003a) iput                 v3, v0, Lcom/google/android/material/behavior/HideViewOnScrollBehavior;->j I
+	16      (0000003e) iget-object          v1, v0, Lcom/google/android/material/behavior/HideViewOnScrollBehavior;->d Ljava/util/LinkedHashSet;
+	17      (00000042) invoke-virtual       v1, Ljava/util/AbstractCollection;->iterator()Ljava/util/Iterator;
+	18      (00000048) move-result-object   v1
+	19      (0000004a) invoke-interface     v1, Ljava/util/Iterator;->hasNext()Z
+	20      (00000050) move-result          v3
+	21      (00000052) if-nez               v3, +024h
+
+o-BB@0x56 : 
+	22      (00000056) iget                 v1, v0, Lcom/google/android/material/behavior/HideViewOnScrollBehavior;->i I
+	23      (0000005a) iget                 v3, v0, Lcom/google/android/material/behavior/HideViewOnScrollBehavior;->f I
+	24      (0000005e) int-to-long          v3, v3
+	25      (00000060) iget-object          v5, v0, Lcom/google/android/material/behavior/HideViewOnScrollBehavior;->h Landroid/animation/TimeInterpolator;
+	26      (00000064) iget-object          v6, v0, Lcom/google/android/material/behavior/HideViewOnScrollBehavior;->a Lq4/b;
+	27      (00000068) invoke-virtual       v6, v2, v1, Lq4/b;->A(Landroid/view/View; I)Landroid/view/ViewPropertyAnimator;
+	28      (0000006e) move-result-object   v1
+	29      (00000070) invoke-virtual       v1, v5, Landroid/view/ViewPropertyAnimator;->setInterpolator(Landroid/animation/TimeInterpolator;)Landroid/view/ViewPropertyAnimator;
+	30      (00000076) move-result-object   v1
+	31      (00000078) invoke-virtual       v1, v3, v4, Landroid/view/ViewPropertyAnimator;->setDuration(J)Landroid/view/ViewPropertyAnimator;
+	32      (0000007e) move-result-object   v1
+	33      (00000080) new-instance         v2, Lf2/o;
+	34      (00000084) const/4              v3, 2
+	35      (00000086) invoke-direct        v2, v0, v3, Lf2/o;-><init>(Ljava/lang/Object; I)V
+	36      (0000008c) invoke-virtual       v1, v2, Landroid/view/ViewPropertyAnimator;->setListener(Landroid/animation/Animator$AnimatorListener;)Landroid/view/ViewPropertyAnimator;
+	37      (00000092) move-result-object   v1
+	38      (00000094) iput-object          v1, v0, Lcom/google/android/material/behavior/HideViewOnScrollBehavior;->k Landroid/view/ViewPropertyAnimator;
+	39      (00000098) return-void          
+
+o-BB@0x9a : 
+	40      (0000009a) invoke-static        v1, Lv1/a;->e(Ljava/util/Iterator;)Ljava/lang/ClassCastException;
+	41      (000000a0) move-result-object   v1
+	42      (000000a2) throw                v1
+
+o-BB@0xa4 : [ o-BB@0xa8 o-BB@0xae ]
+	43      (000000a4) if-gez               v3, +005h
+
+o-BB@0xa8 : [ o-BB@0xae ]
+	44      (000000a8) invoke-virtual       v0, v2, Lcom/google/android/material/behavior/HideViewOnScrollBehavior;->w(Landroid/view/View;)V
+
+o-BB@0xae : 
+	45      (000000ae) return-void          
+

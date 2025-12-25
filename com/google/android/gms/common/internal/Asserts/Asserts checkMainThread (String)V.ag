@@ -1,0 +1,56 @@
+# Lcom/google/android/gms/common/internal/Asserts;->checkMainThread(Ljava/lang/String;)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:java.lang.String
+#
+# - return:void
+
+checkMainThread-BB@0x0 : [ checkMainThread-BB@0x1c checkMainThread-BB@0x1e ]
+	0       (00000000) invoke-static        Landroid/os/Looper;->getMainLooper()Landroid/os/Looper;
+	1       (00000006) move-result-object   v0
+	2       (00000008) invoke-virtual       v0, Landroid/os/Looper;->getThread()Ljava/lang/Thread;
+	3       (0000000e) move-result-object   v0
+	4       (00000010) invoke-static        Ljava/lang/Thread;->currentThread()Ljava/lang/Thread;
+	5       (00000016) move-result-object   v1
+	6       (00000018) if-ne                v0, v1, +003h
+
+checkMainThread-BB@0x1c : 
+	7       (0000001c) return-void          
+
+checkMainThread-BB@0x1e : 
+	8       (0000001e) invoke-static        Ljava/lang/Thread;->currentThread()Ljava/lang/Thread;
+	9       (00000024) move-result-object   v0
+	10      (00000026) invoke-static        v0, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
+	11      (0000002c) move-result-object   v0
+	12      (0000002e) invoke-static        Landroid/os/Looper;->getMainLooper()Landroid/os/Looper;
+	13      (00000034) move-result-object   v1
+	14      (00000036) invoke-virtual       v1, Landroid/os/Looper;->getThread()Ljava/lang/Thread;
+	15      (0000003c) move-result-object   v1
+	16      (0000003e) invoke-static        v1, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
+	17      (00000044) move-result-object   v1
+	18      (00000046) invoke-virtual       v0, Ljava/lang/String;->length()I
+	19      (0000004c) move-result          v2
+	20      (0000004e) add-int/lit8         v2, v2, 56
+	21      (00000052) invoke-virtual       v1, Ljava/lang/String;->length()I
+	22      (00000058) move-result          v3
+	23      (0000005a) add-int/2addr        v3, v2
+	24      (0000005c) new-instance         v2, Ljava/lang/StringBuilder;
+	25      (00000060) add-int/lit8         v3, v3, 1
+	26      (00000064) invoke-direct        v2, v3, Ljava/lang/StringBuilder;-><init>(I)V
+	27      (0000006a) const-string         v3, "checkMainThread: current thread "
+	28      (0000006e) invoke-virtual       v2, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	29      (00000074) invoke-virtual       v2, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	30      (0000007a) const-string         v0, " IS NOT the main thread "
+	31      (0000007e) invoke-virtual       v2, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	32      (00000084) invoke-virtual       v2, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	33      (0000008a) const-string         v0, "!"
+	34      (0000008e) invoke-virtual       v2, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	35      (00000094) invoke-virtual       v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	36      (0000009a) move-result-object   v0
+	37      (0000009c) const-string         v1, "Asserts"
+	38      (000000a0) invoke-static        v1, v0, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String;)I
+	39      (000000a6) new-instance         v0, Ljava/lang/IllegalStateException;
+	40      (000000aa) invoke-direct        v0, v4, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	41      (000000b0) throw                v0
+

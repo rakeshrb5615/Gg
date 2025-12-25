@@ -1,0 +1,174 @@
+# Lcom/google/android/gms/ads/identifier/AdvertisingIdClient;->zzb(Z)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:boolean
+#
+# - return:void
+
+zzb-BB@0x0 : [ zzb-BB@0xc ]
+	0       (00000000) const-string         v0, "Calling this from your main thread can lead to deadlock"
+	1       (00000004) invoke-static        v0, Lcom/google/android/gms/common/internal/Preconditions;->checkNotMainThread(Ljava/lang/String;)V
+	2       (0000000a) monitor-enter        v5
+
+zzb-BB@0xc : [ zzb-BB@0x14 zzb-BB@0x22 ]
+	3       (0000000c) iget-boolean         v0, v5, Lcom/google/android/gms/ads/identifier/AdvertisingIdClient;->zzc Z
+	4       (00000010) if-eqz               v0, +009h
+	c:25
+	(Ljava/lang/Throwable; -> 1c zzb-BB@0x1c)
+
+zzb-BB@0x14 : [ zzb-BB@0x22 ]
+	5       (00000014) invoke-virtual       v5, Lcom/google/android/gms/ads/identifier/AdvertisingIdClient;->zza()V
+	6       (0000001a) goto                 +4h
+	c:25
+	(Ljava/lang/Throwable; -> 1c zzb-BB@0x1c)
+
+zzb-BB@0x1c : [ zzb-BB@0x122 ]
+	7       (0000001c) move-exception       v6
+	8       (0000001e) goto/16              +082h
+	c:25
+	(Ljava/lang/Throwable; -> 1c zzb-BB@0x1c)
+
+zzb-BB@0x22 : [ zzb-BB@0x26 ]
+	9       (00000022) iget-object          v0, v5, Lcom/google/android/gms/ads/identifier/AdvertisingIdClient;->zzg Landroid/content/Context;
+	c:25
+	(Ljava/lang/Throwable; -> 1c zzb-BB@0x1c)
+
+zzb-BB@0x26 : [ zzb-BB@0x3a ]
+	10      (00000026) invoke-virtual       v0, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
+	11      (0000002c) move-result-object   v1
+	12      (0000002e) const-string         v2, "com.android.vending"
+	13      (00000032) const/4              v3, 0
+	14      (00000034) invoke-virtual       v1, v2, v3, Landroid/content/pm/PackageManager;->getPackageInfo(Ljava/lang/String; I)Landroid/content/pm/PackageInfo;
+	26:39
+	(Landroid/content/pm/PackageManager$NameNotFoundException; -> 112 zzb-BB@0x112)
+	(Ljava/lang/Throwable; -> 1c zzb-BB@0x1c)
+
+zzb-BB@0x3a : [ zzb-BB@0x54 zzb-BB@0x6c ]
+	15      (0000003a) invoke-static        Lcom/google/android/gms/common/GoogleApiAvailabilityLight;->getInstance()Lcom/google/android/gms/common/GoogleApiAvailabilityLight;
+	16      (00000040) move-result-object   v1
+	17      (00000042) const                v2, 12451000
+	18      (00000048) invoke-virtual       v1, v0, v2, Lcom/google/android/gms/common/GoogleApiAvailabilityLight;->isGooglePlayServicesAvailable(Landroid/content/Context; I)I
+	19      (0000004e) move-result          v1
+	20      (00000050) if-eqz               v1, +00eh
+	3a:8d
+	(Ljava/lang/Throwable; -> 1c zzb-BB@0x1c)
+
+zzb-BB@0x54 : [ zzb-BB@0x5a zzb-BB@0x5c ]
+	21      (00000054) const/4              v2, 2
+	22      (00000056) if-ne                v1, v2, +003h
+	3a:8d
+	(Ljava/lang/Throwable; -> 1c zzb-BB@0x1c)
+
+zzb-BB@0x5a : [ zzb-BB@0x6c ]
+	23      (0000005a) goto                 +9h
+	3a:8d
+	(Ljava/lang/Throwable; -> 1c zzb-BB@0x1c)
+
+zzb-BB@0x5c : 
+	24      (0000005c) new-instance         v6, Ljava/io/IOException;
+	25      (00000060) const-string         v0, "Google Play services not available"
+	26      (00000064) invoke-direct        v6, v0, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+	27      (0000006a) throw                v6
+	3a:8d
+	(Ljava/lang/Throwable; -> 1c zzb-BB@0x1c)
+
+zzb-BB@0x6c : [ zzb-BB@0x8e ]
+	28      (0000006c) new-instance         v1, Lcom/google/android/gms/common/BlockingServiceConnection;
+	29      (00000070) invoke-direct        v1, Lcom/google/android/gms/common/BlockingServiceConnection;-><init>()V
+	30      (00000076) new-instance         v2, Landroid/content/Intent;
+	31      (0000007a) const-string         v3, "com.google.android.gms.ads.identifier.service.START"
+	32      (0000007e) invoke-direct        v2, v3, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
+	33      (00000084) const-string         v3, "com.google.android.gms"
+	34      (00000088) invoke-virtual       v2, v3, Landroid/content/Intent;->setPackage(Ljava/lang/String;)Landroid/content/Intent;
+	3a:8d
+	(Ljava/lang/Throwable; -> 1c zzb-BB@0x1c)
+
+zzb-BB@0x8e : [ zzb-BB@0xa4 zzb-BB@0xf4 ]
+	35      (0000008e) invoke-static        Lcom/google/android/gms/common/stats/ConnectionTracker;->getInstance()Lcom/google/android/gms/common/stats/ConnectionTracker;
+	36      (00000094) move-result-object   v3
+	37      (00000096) const/4              v4, 1
+	38      (00000098) invoke-virtual       v3, v0, v2, v1, v4, Lcom/google/android/gms/common/stats/ConnectionTracker;->bindService(Landroid/content/Context; Landroid/content/Intent; Landroid/content/ServiceConnection; I)Z
+	39      (0000009e) move-result          v0
+	40      (000000a0) if-eqz               v0, +02ah
+	8e:9f
+	(Ljava/lang/Throwable; -> 104 zzb-BB@0x104)
+
+zzb-BB@0xa4 : [ zzb-BB@0xa8 ]
+	41      (000000a4) iput-object          v1, v5, Lcom/google/android/gms/ads/identifier/AdvertisingIdClient;->zza Lcom/google/android/gms/common/BlockingServiceConnection;
+	a4:a7
+	(Ljava/lang/Throwable; -> 1c zzb-BB@0x1c)
+
+zzb-BB@0xa8 : [ zzb-BB@0xc0 ]
+	42      (000000a8) sget-object          v0, Ljava/util/concurrent/TimeUnit;->MILLISECONDS Ljava/util/concurrent/TimeUnit;
+	43      (000000ac) const-wide/16        v2, 10000
+	44      (000000b0) invoke-virtual       v1, v2, v3, v0, Lcom/google/android/gms/common/BlockingServiceConnection;->getServiceWithTimeout(J Ljava/util/concurrent/TimeUnit;)Landroid/os/IBinder;
+	45      (000000b6) move-result-object   v0
+	46      (000000b8) invoke-static        v0, Lcom/google/android/gms/internal/ads_identifier/zze;->zza(Landroid/os/IBinder;)Lcom/google/android/gms/internal/ads_identifier/zzf;
+	47      (000000be) move-result-object   v0
+	a8:bf
+	(Ljava/lang/InterruptedException; -> e4 zzb-BB@0xe4)
+	(Ljava/lang/Throwable; -> d6 zzb-BB@0xd6)
+
+zzb-BB@0xc0 : [ zzb-BB@0xcc zzb-BB@0xd2 ]
+	48      (000000c0) iput-object          v0, v5, Lcom/google/android/gms/ads/identifier/AdvertisingIdClient;->zzb Lcom/google/android/gms/internal/ads_identifier/zzf;
+	49      (000000c4) iput-boolean         v4, v5, Lcom/google/android/gms/ads/identifier/AdvertisingIdClient;->zzc Z
+	50      (000000c8) if-eqz               v6, +005h
+	c0:123
+	(Ljava/lang/Throwable; -> 1c zzb-BB@0x1c)
+
+zzb-BB@0xcc : [ zzb-BB@0xd2 ]
+	51      (000000cc) invoke-direct        v5, Lcom/google/android/gms/ads/identifier/AdvertisingIdClient;->zze()V
+	c0:123
+	(Ljava/lang/Throwable; -> 1c zzb-BB@0x1c)
+
+zzb-BB@0xd2 : 
+	52      (000000d2) monitor-exit         v5
+	53      (000000d4) return-void          
+	c0:123
+	(Ljava/lang/Throwable; -> 1c zzb-BB@0x1c)
+
+zzb-BB@0xd6 : 
+	54      (000000d6) move-exception       v6
+	55      (000000d8) new-instance         v0, Ljava/io/IOException;
+	56      (000000dc) invoke-direct        v0, v6, Ljava/io/IOException;-><init>(Ljava/lang/Throwable;)V
+	57      (000000e2) throw                v0
+	c0:123
+	(Ljava/lang/Throwable; -> 1c zzb-BB@0x1c)
+
+zzb-BB@0xe4 : 
+	58      (000000e4) new-instance         v6, Ljava/io/IOException;
+	59      (000000e8) const-string         v0, "Interrupted exception"
+	60      (000000ec) invoke-direct        v6, v0, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+	61      (000000f2) throw                v6
+	c0:123
+	(Ljava/lang/Throwable; -> 1c zzb-BB@0x1c)
+
+zzb-BB@0xf4 : 
+	62      (000000f4) new-instance         v6, Ljava/io/IOException;
+	63      (000000f8) const-string         v0, "Connection failure"
+	64      (000000fc) invoke-direct        v6, v0, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+	65      (00000102) throw                v6
+	c0:123
+	(Ljava/lang/Throwable; -> 1c zzb-BB@0x1c)
+
+zzb-BB@0x104 : 
+	66      (00000104) move-exception       v6
+	67      (00000106) new-instance         v0, Ljava/io/IOException;
+	68      (0000010a) invoke-direct        v0, v6, Ljava/io/IOException;-><init>(Ljava/lang/Throwable;)V
+	69      (00000110) throw                v0
+	c0:123
+	(Ljava/lang/Throwable; -> 1c zzb-BB@0x1c)
+
+zzb-BB@0x112 : 
+	70      (00000112) new-instance         v6, Lcom/google/android/gms/common/GooglePlayServicesNotAvailableException;
+	71      (00000116) const/16             v0, 9
+	72      (0000011a) invoke-direct        v6, v0, Lcom/google/android/gms/common/GooglePlayServicesNotAvailableException;-><init>(I)V
+	73      (00000120) throw                v6
+	c0:123
+	(Ljava/lang/Throwable; -> 1c zzb-BB@0x1c)
+
+zzb-BB@0x122 : 
+	74      (00000122) monitor-exit         v5
+	75      (00000124) throw                v6
+

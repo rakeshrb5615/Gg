@@ -1,0 +1,51 @@
+# Lcom/google/android/gms/common/api/internal/zabe;->connect(I)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:int
+#
+# - return:void
+
+connect-BB@0x0 : [ connect-BB@0x16 connect-BB@0x26 ]
+	0       (00000000) const-string         v0, "Illegal sign-in mode: "
+	1       (00000004) iget-object          v1, v3, Lcom/google/android/gms/common/api/internal/zabe;->zaj Ljava/util/concurrent/locks/Lock;
+	2       (00000008) invoke-interface     v1, Ljava/util/concurrent/locks/Lock;->lock()V
+	3       (0000000e) const/4              v1, 3
+	4       (00000010) const/4              v2, 1
+	5       (00000012) if-eq                v4, v1, +00ah
+
+connect-BB@0x16 : [ connect-BB@0x1a connect-BB@0x26 ]
+	6       (00000016) if-eq                v4, v2, +008h
+
+connect-BB@0x1a : [ connect-BB@0x20 connect-BB@0x24 ]
+	7       (0000001a) const/4              v1, 2
+	8       (0000001c) if-ne                v4, v1, +004h
+
+connect-BB@0x20 : [ connect-BB@0x26 ]
+	9       (00000020) move                 v4, v1
+	10      (00000022) goto                 +2h
+
+connect-BB@0x24 : [ connect-BB@0x26 ]
+	11      (00000024) const/4              v2, 0
+
+connect-BB@0x26 : 
+	12      (00000026) new-instance         v1, Ljava/lang/StringBuilder;
+	13      (0000002a) invoke-direct        v1, v0, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	14      (00000030) invoke-virtual       v1, v4, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	15      (00000036) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	16      (0000003c) move-result-object   v0
+	17      (0000003e) invoke-static        v2, v0, Lcom/google/android/gms/common/internal/Preconditions;->checkArgument(Z Ljava/lang/Object;)V
+	18      (00000044) invoke-direct        v3, v4, Lcom/google/android/gms/common/api/internal/zabe;->zal(I)V
+	19      (0000004a) invoke-direct        v3, Lcom/google/android/gms/common/api/internal/zabe;->zan()V
+	20      (00000050) iget-object          v4, v3, Lcom/google/android/gms/common/api/internal/zabe;->zaj Ljava/util/concurrent/locks/Lock;
+	21      (00000054) invoke-interface     v4, Ljava/util/concurrent/locks/Lock;->unlock()V
+	22      (0000005a) return-void          
+	26:4f
+	(Ljava/lang/Throwable; -> 5c connect-BB@0x5c)
+
+connect-BB@0x5c : 
+	23      (0000005c) move-exception       v4
+	24      (0000005e) iget-object          v0, v3, Lcom/google/android/gms/common/api/internal/zabe;->zaj Ljava/util/concurrent/locks/Lock;
+	25      (00000062) invoke-interface     v0, Ljava/util/concurrent/locks/Lock;->unlock()V
+	26      (00000068) throw                v4
+

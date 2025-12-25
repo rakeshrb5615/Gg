@@ -1,0 +1,86 @@
+# Lcom/android/billingclient/api/BillingClientImpl;->showInAppMessages(Landroid/app/Activity; Lcom/android/billingclient/api/InAppMessageParams; Lcom/android/billingclient/api/InAppMessageResponseListener;)Lcom/android/billingclient/api/BillingResult; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v8
+# - v9:android.app.Activity
+# - v10:com.android.billingclient.api.InAppMessageParams
+# - v11:com.android.billingclient.api.InAppMessageResponseListener
+#
+# - return:com.android.billingclient.api.BillingResult
+
+showInAppMessages-BB@0x0 : [ showInAppMessages-BB@0x14 showInAppMessages-BB@0x24 ]
+	0       (00000000) const-wide/16        v0, 3000
+	1       (00000004) invoke-direct        v8, v0, v1, Lcom/android/billingclient/api/BillingClientImpl;->zzaW(J)Z
+	2       (0000000a) move-result          v0
+	3       (0000000c) const-string         v1, "BillingClient"
+	4       (00000010) if-nez               v0, +00ah
+
+showInAppMessages-BB@0x14 : 
+	5       (00000014) const-string         v9, "Service disconnected."
+	6       (00000018) invoke-static        v1, v9, Lcom/google/android/gms/internal/play_billing/zzc;->zzn(Ljava/lang/String; Ljava/lang/String;)V
+	7       (0000001e) sget-object          v9, Lcom/android/billingclient/api/zzcj;->zzj Lcom/android/billingclient/api/BillingResult;
+	8       (00000022) return-object        v9
+
+showInAppMessages-BB@0x24 : [ showInAppMessages-BB@0x2c showInAppMessages-BB@0x3c ]
+	9       (00000024) iget-boolean         v0, v8, Lcom/android/billingclient/api/BillingClientImpl;->zzq Z
+	10      (00000028) if-nez               v0, +00ah
+
+showInAppMessages-BB@0x2c : 
+	11      (0000002c) const-string         v9, "Current client doesn't support showing in-app messages."
+	12      (00000030) invoke-static        v1, v9, Lcom/google/android/gms/internal/play_billing/zzc;->zzn(Ljava/lang/String; Ljava/lang/String;)V
+	13      (00000036) sget-object          v9, Lcom/android/billingclient/api/zzcj;->zzs Lcom/android/billingclient/api/BillingResult;
+	14      (0000003a) return-object        v9
+
+showInAppMessages-BB@0x3c : [ showInAppMessages-BB@0xc4 showInAppMessages-BB@0xce ]
+	15      (0000003c) const                v0, 16908290
+	16      (00000042) invoke-virtual       v9, v0, Landroid/app/Activity;->findViewById(I)Landroid/view/View;
+	17      (00000048) move-result-object   v0
+	18      (0000004a) invoke-virtual       v0, Landroid/view/View;->getWindowToken()Landroid/os/IBinder;
+	19      (00000050) move-result-object   v1
+	20      (00000052) new-instance         v2, Landroid/graphics/Rect;
+	21      (00000056) invoke-direct        v2, Landroid/graphics/Rect;-><init>()V
+	22      (0000005c) invoke-virtual       v0, v2, Landroid/view/View;->getGlobalVisibleRect(Landroid/graphics/Rect;)Z
+	23      (00000062) new-instance         v0, Landroid/os/Bundle;
+	24      (00000066) invoke-direct        v0, Landroid/os/Bundle;-><init>()V
+	25      (0000006c) const-string         v3, "KEY_WINDOW_TOKEN"
+	26      (00000070) invoke-virtual       v0, v3, v1, Landroid/os/Bundle;->putBinder(Ljava/lang/String; Landroid/os/IBinder;)V
+	27      (00000076) iget                 v1, v2, Landroid/graphics/Rect;->left I
+	28      (0000007a) const-string         v3, "KEY_DIMEN_LEFT"
+	29      (0000007e) invoke-virtual       v0, v3, v1, Landroid/os/BaseBundle;->putInt(Ljava/lang/String; I)V
+	30      (00000084) iget                 v1, v2, Landroid/graphics/Rect;->top I
+	31      (00000088) const-string         v3, "KEY_DIMEN_TOP"
+	32      (0000008c) invoke-virtual       v0, v3, v1, Landroid/os/BaseBundle;->putInt(Ljava/lang/String; I)V
+	33      (00000092) iget                 v1, v2, Landroid/graphics/Rect;->right I
+	34      (00000096) const-string         v3, "KEY_DIMEN_RIGHT"
+	35      (0000009a) invoke-virtual       v0, v3, v1, Landroid/os/BaseBundle;->putInt(Ljava/lang/String; I)V
+	36      (000000a0) iget                 v1, v2, Landroid/graphics/Rect;->bottom I
+	37      (000000a4) const-string         v2, "KEY_DIMEN_BOTTOM"
+	38      (000000a8) invoke-virtual       v0, v2, v1, Landroid/os/BaseBundle;->putInt(Ljava/lang/String; I)V
+	39      (000000ae) iget-object          v1, v8, Lcom/android/billingclient/api/BillingClientImpl;->zzc Ljava/lang/String;
+	40      (000000b2) const-string         v2, "playBillingLibraryVersion"
+	41      (000000b6) invoke-virtual       v0, v2, v1, Landroid/os/BaseBundle;->putString(Ljava/lang/String; Ljava/lang/String;)V
+	42      (000000bc) iget-object          v1, v8, Lcom/android/billingclient/api/BillingClientImpl;->zzd Ljava/lang/String;
+	43      (000000c0) if-eqz               v1, +007h
+
+showInAppMessages-BB@0xc4 : [ showInAppMessages-BB@0xce ]
+	44      (000000c4) const-string         v2, "playBillingLibraryWrapperVersion"
+	45      (000000c8) invoke-virtual       v0, v2, v1, Landroid/os/BaseBundle;->putString(Ljava/lang/String; Ljava/lang/String;)V
+
+showInAppMessages-BB@0xce : 
+	46      (000000ce) invoke-virtual       v10, Lcom/android/billingclient/api/InAppMessageParams;->zza()Ljava/util/ArrayList;
+	47      (000000d4) move-result-object   v10
+	48      (000000d6) const-string         v1, "KEY_CATEGORY_IDS"
+	49      (000000da) invoke-virtual       v0, v1, v10, Landroid/os/Bundle;->putIntegerArrayList(Ljava/lang/String; Ljava/util/ArrayList;)V
+	50      (000000e0) iget-object          v6, v8, Lcom/android/billingclient/api/BillingClientImpl;->zze Landroid/os/Handler;
+	51      (000000e4) new-instance         v10, Lcom/android/billingclient/api/zzax;
+	52      (000000e8) invoke-direct        v10, v8, v6, v11, Lcom/android/billingclient/api/zzax;-><init>(Lcom/android/billingclient/api/BillingClientImpl; Landroid/os/Handler; Lcom/android/billingclient/api/InAppMessageResponseListener;)V
+	53      (000000ee) new-instance         v2, Lcom/android/billingclient/api/zzas;
+	54      (000000f2) invoke-direct        v2, v8, v0, v9, v10, Lcom/android/billingclient/api/zzas;-><init>(Lcom/android/billingclient/api/BillingClientImpl; Landroid/os/Bundle; Landroid/app/Activity; Landroid/os/ResultReceiver;)V
+	55      (000000f8) const/4              v5, 0
+	56      (000000fa) invoke-virtual       v8, Lcom/android/billingclient/api/BillingClientImpl;->zzF()Ljava/util/concurrent/ExecutorService;
+	57      (00000100) move-result-object   v7
+	58      (00000102) const-wide/16        v3, 5000
+	59      (00000106) invoke-static/range  v2 ... v7, Lcom/android/billingclient/api/BillingClientImpl;->zzG(Ljava/util/concurrent/Callable; J Ljava/lang/Runnable; Landroid/os/Handler; Ljava/util/concurrent/ExecutorService;)Ljava/util/concurrent/Future;
+	60      (0000010c) sget-object          v9, Lcom/android/billingclient/api/zzcj;->zzi Lcom/android/billingclient/api/BillingResult;
+	61      (00000110) return-object        v9
+

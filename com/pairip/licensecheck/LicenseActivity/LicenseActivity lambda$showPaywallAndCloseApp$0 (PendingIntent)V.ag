@@ -1,0 +1,43 @@
+# Lcom/pairip/licensecheck/LicenseActivity;->lambda$showPaywallAndCloseApp$0(Landroid/app/PendingIntent;)V [access_flags=private synthetic]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:android.app.PendingIntent
+#
+# - return:void
+
+lambda$showPaywallAndCloseApp$0-BB@0x0 : [ lambda$showPaywallAndCloseApp$0-BB@0xc lambda$showPaywallAndCloseApp$0-BB@0x2e ]
+	0       (00000000) sget                 v0, Landroid/os/Build$VERSION;->SDK_INT I
+	1       (00000004) const/16             v1, 34
+	2       (00000008) if-lt                v0, v1, +013h
+	0:39
+	(Landroid/app/PendingIntent$CanceledException; -> 3c lambda$showPaywallAndCloseApp$0-BB@0x3c)
+
+lambda$showPaywallAndCloseApp$0-BB@0xc : [ lambda$showPaywallAndCloseApp$0-BB@0x34 ]
+	3       (0000000c) invoke-static        Landroid/app/ActivityOptions;->makeBasic()Landroid/app/ActivityOptions;
+	4       (00000012) move-result-object   v0
+	5       (00000014) const/4              v1, 1
+	6       (00000016) invoke-virtual       v0, v1, Landroid/app/ActivityOptions;->setPendingIntentBackgroundActivityStartMode(I)Landroid/app/ActivityOptions;
+	7       (0000001c) move-result-object   v0
+	8       (0000001e) invoke-virtual       v0, Landroid/app/ActivityOptions;->toBundle()Landroid/os/Bundle;
+	9       (00000024) move-result-object   v0
+	10      (00000026) invoke-virtual       v3, v0, Landroid/app/PendingIntent;->send(Landroid/os/Bundle;)V
+	11      (0000002c) goto                 +4h
+	0:39
+	(Landroid/app/PendingIntent$CanceledException; -> 3c lambda$showPaywallAndCloseApp$0-BB@0x3c)
+
+lambda$showPaywallAndCloseApp$0-BB@0x2e : [ lambda$showPaywallAndCloseApp$0-BB@0x34 ]
+	12      (0000002e) invoke-virtual       v3, Landroid/app/PendingIntent;->send()V
+	0:39
+	(Landroid/app/PendingIntent$CanceledException; -> 3c lambda$showPaywallAndCloseApp$0-BB@0x3c)
+
+lambda$showPaywallAndCloseApp$0-BB@0x34 : 
+	13      (00000034) invoke-virtual       v2, Lcom/pairip/licensecheck/LicenseActivity;->closeApp()V
+	14      (0000003a) return-void          
+
+lambda$showPaywallAndCloseApp$0-BB@0x3c : 
+	15      (0000003c) move-exception       v3
+	16      (0000003e) const-string         v0, "Paywall intent unexpectedly cancelled."
+	17      (00000042) invoke-direct        v2, v0, v3, Lcom/pairip/licensecheck/LicenseActivity;->logAndShowErrorDialog(Ljava/lang/String; Ljava/lang/Exception;)V
+	18      (00000048) return-void          
+

@@ -1,0 +1,306 @@
+# Lcom/google/android/gms/measurement/internal/zzav;->zzx(J Ljava/lang/String; J Z Z Z Z Z Z Z)Lcom/google/android/gms/measurement/internal/zzar; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v15
+# - v16:long
+# - v17:java.lang.String
+# - v18:long
+# - v19:boolean
+# - v20:boolean
+# - v21:boolean
+# - v22:boolean
+# - v23:boolean
+# - v24:boolean
+# - v25:boolean
+#
+# - return:com.google.android.gms.measurement.internal.zzar
+
+zzx-BB@0x0 : [ zzx-BB@0x26 ]
+	0       (00000000) invoke-static/range  v16, Lcom/google/android/gms/common/internal/Preconditions;->checkNotEmpty(Ljava/lang/String;)Ljava/lang/String;
+	1       (00000006) invoke-virtual       v13, Lcom/google/android/gms/measurement/internal/zzje;->zzg()V
+	2       (0000000c) invoke-virtual       v13, Lcom/google/android/gms/measurement/internal/zzos;->zzaw()V
+	3       (00000012) filled-new-array/range v16, [Ljava/lang/String;
+	4       (00000018) move-result-object   v0
+	5       (0000001a) new-instance         v1, Lcom/google/android/gms/measurement/internal/zzar;
+	6       (0000001e) invoke-direct        v1, Lcom/google/android/gms/measurement/internal/zzar;-><init>()V
+	7       (00000024) const/4              v2, 0
+
+zzx-BB@0x26 : [ zzx-BB@0x80 zzx-BB@0xba ]
+	8       (00000026) invoke-virtual       v13, Lcom/google/android/gms/measurement/internal/zzav;->zze()Landroid/database/sqlite/SQLiteDatabase;
+	9       (0000002c) move-result-object   v3
+	10      (0000002e) const-string         v4, "apps"
+	11      (00000032) const-string         v5, "day"
+	12      (00000036) const-string         v6, "daily_events_count"
+	13      (0000003a) const-string         v7, "daily_public_events_count"
+	14      (0000003e) const-string         v8, "daily_conversions_count"
+	15      (00000042) const-string         v9, "daily_error_events_count"
+	16      (00000046) const-string         v10, "daily_realtime_events_count"
+	17      (0000004a) const-string         v11, "daily_realtime_dcu_count"
+	18      (0000004e) const-string         v12, "daily_registered_triggers_count"
+	19      (00000052) filled-new-array/range v5 ... v12, [Ljava/lang/String;
+	20      (00000058) move-result-object   v5
+	21      (0000005a) const-string         v6, "app_id=?"
+	22      (0000005e) filled-new-array/range v16, [Ljava/lang/String;
+	23      (00000064) move-result-object   v7
+	24      (00000066) const/4              v9, 0
+	25      (00000068) const/4              v10, 0
+	26      (0000006a) const/4              v8, 0
+	27      (0000006c) invoke-virtual/range v3 ... v10, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String; [Ljava/lang/String; Ljava/lang/String; [Ljava/lang/String; Ljava/lang/String; Ljava/lang/String; Ljava/lang/String;)Landroid/database/Cursor;
+	28      (00000072) move-result-object   v2
+	29      (00000074) invoke-interface     v2, Landroid/database/Cursor;->moveToFirst()Z
+	30      (0000007a) move-result          v4
+	31      (0000007c) if-nez               v4, +01fh
+	26:261
+	(Landroid/database/sqlite/SQLiteException; -> b2 zzx-BB@0xb2)
+	(Ljava/lang/Throwable; -> aa zzx-BB@0xaa)
+
+zzx-BB@0x80 : [ zzx-BB@0x28a ]
+	32      (00000080) iget-object          v14, v13, Lcom/google/android/gms/measurement/internal/zzje;->zzu Lcom/google/android/gms/measurement/internal/zzic;
+	33      (00000084) invoke-virtual       v14, Lcom/google/android/gms/measurement/internal/zzic;->zzaV()Lcom/google/android/gms/measurement/internal/zzgu;
+	34      (0000008a) move-result-object   v14
+	35      (0000008c) invoke-virtual       v14, Lcom/google/android/gms/measurement/internal/zzgu;->zze()Lcom/google/android/gms/measurement/internal/zzgs;
+	36      (00000092) move-result-object   v14
+	37      (00000094) const-string         v15, "Not updating daily counts, app is not known. appId"
+	38      (00000098) invoke-static/range  v16, Lcom/google/android/gms/measurement/internal/zzgu;->zzl(Ljava/lang/String;)Ljava/lang/Object;
+	39      (0000009e) move-result-object   v0
+	40      (000000a0) invoke-virtual       v14, v15, v0, Lcom/google/android/gms/measurement/internal/zzgs;->zzb(Ljava/lang/String; Ljava/lang/Object;)V
+	41      (000000a6) goto/16              +0f2h
+	26:261
+	(Landroid/database/sqlite/SQLiteException; -> b2 zzx-BB@0xb2)
+	(Ljava/lang/Throwable; -> aa zzx-BB@0xaa)
+
+zzx-BB@0xaa : [ zzx-BB@0x296 ]
+	42      (000000aa) move-exception       v0
+	43      (000000ac) move-object          v14, v0
+	44      (000000ae) goto/16              +0f4h
+	26:261
+	(Landroid/database/sqlite/SQLiteException; -> b2 zzx-BB@0xb2)
+	(Ljava/lang/Throwable; -> aa zzx-BB@0xaa)
+
+zzx-BB@0xb2 : [ zzx-BB@0x264 ]
+	45      (000000b2) move-exception       v0
+	46      (000000b4) move-object          v14, v0
+	47      (000000b6) goto/16              +0d7h
+	26:261
+	(Landroid/database/sqlite/SQLiteException; -> b2 zzx-BB@0xb2)
+	(Ljava/lang/Throwable; -> aa zzx-BB@0xaa)
+
+zzx-BB@0xba : [ zzx-BB@0xcc zzx-BB@0x12e ]
+	48      (000000ba) const/4              v4, 0
+	49      (000000bc) invoke-interface     v2, v4, Landroid/database/Cursor;->getLong(I)J
+	50      (000000c2) move-result-wide     v4
+	51      (000000c4) cmp-long             v4, v4, v14
+	52      (000000c8) if-nez               v4, +033h
+	26:261
+	(Landroid/database/sqlite/SQLiteException; -> b2 zzx-BB@0xb2)
+	(Ljava/lang/Throwable; -> aa zzx-BB@0xaa)
+
+zzx-BB@0xcc : [ zzx-BB@0x12e ]
+	53      (000000cc) const/4              v4, 1
+	54      (000000ce) invoke-interface     v2, v4, Landroid/database/Cursor;->getLong(I)J
+	55      (000000d4) move-result-wide     v4
+	56      (000000d6) iput-wide            v4, v1, Lcom/google/android/gms/measurement/internal/zzar;->zzb J
+	57      (000000da) const/4              v4, 2
+	58      (000000dc) invoke-interface     v2, v4, Landroid/database/Cursor;->getLong(I)J
+	59      (000000e2) move-result-wide     v4
+	60      (000000e4) iput-wide            v4, v1, Lcom/google/android/gms/measurement/internal/zzar;->zza J
+	61      (000000e8) const/4              v4, 3
+	62      (000000ea) invoke-interface     v2, v4, Landroid/database/Cursor;->getLong(I)J
+	63      (000000f0) move-result-wide     v4
+	64      (000000f2) iput-wide            v4, v1, Lcom/google/android/gms/measurement/internal/zzar;->zzc J
+	65      (000000f6) const/4              v4, 4
+	66      (000000f8) invoke-interface     v2, v4, Landroid/database/Cursor;->getLong(I)J
+	67      (000000fe) move-result-wide     v4
+	68      (00000100) iput-wide            v4, v1, Lcom/google/android/gms/measurement/internal/zzar;->zzd J
+	69      (00000104) const/4              v4, 5
+	70      (00000106) invoke-interface     v2, v4, Landroid/database/Cursor;->getLong(I)J
+	71      (0000010c) move-result-wide     v4
+	72      (0000010e) iput-wide            v4, v1, Lcom/google/android/gms/measurement/internal/zzar;->zze J
+	73      (00000112) const/4              v4, 6
+	74      (00000114) invoke-interface     v2, v4, Landroid/database/Cursor;->getLong(I)J
+	75      (0000011a) move-result-wide     v4
+	76      (0000011c) iput-wide            v4, v1, Lcom/google/android/gms/measurement/internal/zzar;->zzf J
+	77      (00000120) const/4              v4, 7
+	78      (00000122) invoke-interface     v2, v4, Landroid/database/Cursor;->getLong(I)J
+	79      (00000128) move-result-wide     v4
+	80      (0000012a) iput-wide            v4, v1, Lcom/google/android/gms/measurement/internal/zzar;->zzg J
+	26:261
+	(Landroid/database/sqlite/SQLiteException; -> b2 zzx-BB@0xb2)
+	(Ljava/lang/Throwable; -> aa zzx-BB@0xaa)
+
+zzx-BB@0x12e : [ zzx-BB@0x132 zzx-BB@0x13e ]
+	81      (0000012e) if-eqz               v19, +008h
+	26:261
+	(Landroid/database/sqlite/SQLiteException; -> b2 zzx-BB@0xb2)
+	(Ljava/lang/Throwable; -> aa zzx-BB@0xaa)
+
+zzx-BB@0x132 : [ zzx-BB@0x13e ]
+	82      (00000132) iget-wide            v4, v1, Lcom/google/android/gms/measurement/internal/zzar;->zzb J
+	83      (00000136) add-long             v4, v4, v17
+	84      (0000013a) iput-wide            v4, v1, Lcom/google/android/gms/measurement/internal/zzar;->zzb J
+	26:261
+	(Landroid/database/sqlite/SQLiteException; -> b2 zzx-BB@0xb2)
+	(Ljava/lang/Throwable; -> aa zzx-BB@0xaa)
+
+zzx-BB@0x13e : [ zzx-BB@0x142 zzx-BB@0x14e ]
+	85      (0000013e) if-eqz               v20, +008h
+	26:261
+	(Landroid/database/sqlite/SQLiteException; -> b2 zzx-BB@0xb2)
+	(Ljava/lang/Throwable; -> aa zzx-BB@0xaa)
+
+zzx-BB@0x142 : [ zzx-BB@0x14e ]
+	86      (00000142) iget-wide            v4, v1, Lcom/google/android/gms/measurement/internal/zzar;->zza J
+	87      (00000146) add-long             v4, v4, v17
+	88      (0000014a) iput-wide            v4, v1, Lcom/google/android/gms/measurement/internal/zzar;->zza J
+	26:261
+	(Landroid/database/sqlite/SQLiteException; -> b2 zzx-BB@0xb2)
+	(Ljava/lang/Throwable; -> aa zzx-BB@0xaa)
+
+zzx-BB@0x14e : [ zzx-BB@0x152 zzx-BB@0x15e ]
+	89      (0000014e) if-eqz               v21, +008h
+	26:261
+	(Landroid/database/sqlite/SQLiteException; -> b2 zzx-BB@0xb2)
+	(Ljava/lang/Throwable; -> aa zzx-BB@0xaa)
+
+zzx-BB@0x152 : [ zzx-BB@0x15e ]
+	90      (00000152) iget-wide            v4, v1, Lcom/google/android/gms/measurement/internal/zzar;->zzc J
+	91      (00000156) add-long             v4, v4, v17
+	92      (0000015a) iput-wide            v4, v1, Lcom/google/android/gms/measurement/internal/zzar;->zzc J
+	26:261
+	(Landroid/database/sqlite/SQLiteException; -> b2 zzx-BB@0xb2)
+	(Ljava/lang/Throwable; -> aa zzx-BB@0xaa)
+
+zzx-BB@0x15e : [ zzx-BB@0x162 zzx-BB@0x16e ]
+	93      (0000015e) if-eqz               v22, +008h
+	26:261
+	(Landroid/database/sqlite/SQLiteException; -> b2 zzx-BB@0xb2)
+	(Ljava/lang/Throwable; -> aa zzx-BB@0xaa)
+
+zzx-BB@0x162 : [ zzx-BB@0x16e ]
+	94      (00000162) iget-wide            v4, v1, Lcom/google/android/gms/measurement/internal/zzar;->zzd J
+	95      (00000166) add-long             v4, v4, v17
+	96      (0000016a) iput-wide            v4, v1, Lcom/google/android/gms/measurement/internal/zzar;->zzd J
+	26:261
+	(Landroid/database/sqlite/SQLiteException; -> b2 zzx-BB@0xb2)
+	(Ljava/lang/Throwable; -> aa zzx-BB@0xaa)
+
+zzx-BB@0x16e : [ zzx-BB@0x172 zzx-BB@0x17e ]
+	97      (0000016e) if-eqz               v23, +008h
+	26:261
+	(Landroid/database/sqlite/SQLiteException; -> b2 zzx-BB@0xb2)
+	(Ljava/lang/Throwable; -> aa zzx-BB@0xaa)
+
+zzx-BB@0x172 : [ zzx-BB@0x17e ]
+	98      (00000172) iget-wide            v4, v1, Lcom/google/android/gms/measurement/internal/zzar;->zze J
+	99      (00000176) add-long             v4, v4, v17
+	100     (0000017a) iput-wide            v4, v1, Lcom/google/android/gms/measurement/internal/zzar;->zze J
+	26:261
+	(Landroid/database/sqlite/SQLiteException; -> b2 zzx-BB@0xb2)
+	(Ljava/lang/Throwable; -> aa zzx-BB@0xaa)
+
+zzx-BB@0x17e : [ zzx-BB@0x182 zzx-BB@0x18e ]
+	101     (0000017e) if-eqz               v24, +008h
+	26:261
+	(Landroid/database/sqlite/SQLiteException; -> b2 zzx-BB@0xb2)
+	(Ljava/lang/Throwable; -> aa zzx-BB@0xaa)
+
+zzx-BB@0x182 : [ zzx-BB@0x18e ]
+	102     (00000182) iget-wide            v4, v1, Lcom/google/android/gms/measurement/internal/zzar;->zzf J
+	103     (00000186) add-long             v4, v4, v17
+	104     (0000018a) iput-wide            v4, v1, Lcom/google/android/gms/measurement/internal/zzar;->zzf J
+	26:261
+	(Landroid/database/sqlite/SQLiteException; -> b2 zzx-BB@0xb2)
+	(Ljava/lang/Throwable; -> aa zzx-BB@0xaa)
+
+zzx-BB@0x18e : [ zzx-BB@0x192 zzx-BB@0x19e ]
+	105     (0000018e) if-eqz               v25, +008h
+	26:261
+	(Landroid/database/sqlite/SQLiteException; -> b2 zzx-BB@0xb2)
+	(Ljava/lang/Throwable; -> aa zzx-BB@0xaa)
+
+zzx-BB@0x192 : [ zzx-BB@0x19e ]
+	106     (00000192) iget-wide            v4, v1, Lcom/google/android/gms/measurement/internal/zzar;->zzg J
+	107     (00000196) add-long             v4, v4, v17
+	108     (0000019a) iput-wide            v4, v1, Lcom/google/android/gms/measurement/internal/zzar;->zzg J
+	26:261
+	(Landroid/database/sqlite/SQLiteException; -> b2 zzx-BB@0xb2)
+	(Ljava/lang/Throwable; -> aa zzx-BB@0xaa)
+
+zzx-BB@0x19e : [ zzx-BB@0x28a ]
+	109     (0000019e) new-instance         v4, Landroid/content/ContentValues;
+	110     (000001a2) invoke-direct        v4, Landroid/content/ContentValues;-><init>()V
+	111     (000001a8) const-string         v5, "day"
+	112     (000001ac) invoke-static        v14, v15, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+	113     (000001b2) move-result-object   v14
+	114     (000001b4) invoke-virtual       v4, v5, v14, Landroid/content/ContentValues;->put(Ljava/lang/String; Ljava/lang/Long;)V
+	115     (000001ba) const-string         v14, "daily_public_events_count"
+	116     (000001be) iget-wide            v5, v1, Lcom/google/android/gms/measurement/internal/zzar;->zza J
+	117     (000001c2) invoke-static        v5, v6, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+	118     (000001c8) move-result-object   v15
+	119     (000001ca) invoke-virtual       v4, v14, v15, Landroid/content/ContentValues;->put(Ljava/lang/String; Ljava/lang/Long;)V
+	120     (000001d0) const-string         v14, "daily_events_count"
+	121     (000001d4) iget-wide            v5, v1, Lcom/google/android/gms/measurement/internal/zzar;->zzb J
+	122     (000001d8) invoke-static        v5, v6, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+	123     (000001de) move-result-object   v15
+	124     (000001e0) invoke-virtual       v4, v14, v15, Landroid/content/ContentValues;->put(Ljava/lang/String; Ljava/lang/Long;)V
+	125     (000001e6) const-string         v14, "daily_conversions_count"
+	126     (000001ea) iget-wide            v5, v1, Lcom/google/android/gms/measurement/internal/zzar;->zzc J
+	127     (000001ee) invoke-static        v5, v6, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+	128     (000001f4) move-result-object   v15
+	129     (000001f6) invoke-virtual       v4, v14, v15, Landroid/content/ContentValues;->put(Ljava/lang/String; Ljava/lang/Long;)V
+	130     (000001fc) const-string         v14, "daily_error_events_count"
+	131     (00000200) iget-wide            v5, v1, Lcom/google/android/gms/measurement/internal/zzar;->zzd J
+	132     (00000204) invoke-static        v5, v6, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+	133     (0000020a) move-result-object   v15
+	134     (0000020c) invoke-virtual       v4, v14, v15, Landroid/content/ContentValues;->put(Ljava/lang/String; Ljava/lang/Long;)V
+	135     (00000212) const-string         v14, "daily_realtime_events_count"
+	136     (00000216) iget-wide            v5, v1, Lcom/google/android/gms/measurement/internal/zzar;->zze J
+	137     (0000021a) invoke-static        v5, v6, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+	138     (00000220) move-result-object   v15
+	139     (00000222) invoke-virtual       v4, v14, v15, Landroid/content/ContentValues;->put(Ljava/lang/String; Ljava/lang/Long;)V
+	140     (00000228) const-string         v14, "daily_realtime_dcu_count"
+	141     (0000022c) iget-wide            v5, v1, Lcom/google/android/gms/measurement/internal/zzar;->zzf J
+	142     (00000230) invoke-static        v5, v6, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+	143     (00000236) move-result-object   v15
+	144     (00000238) invoke-virtual       v4, v14, v15, Landroid/content/ContentValues;->put(Ljava/lang/String; Ljava/lang/Long;)V
+	145     (0000023e) const-string         v14, "daily_registered_triggers_count"
+	146     (00000242) iget-wide            v5, v1, Lcom/google/android/gms/measurement/internal/zzar;->zzg J
+	147     (00000246) invoke-static        v5, v6, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+	148     (0000024c) move-result-object   v15
+	149     (0000024e) invoke-virtual       v4, v14, v15, Landroid/content/ContentValues;->put(Ljava/lang/String; Ljava/lang/Long;)V
+	150     (00000254) const-string         v14, "apps"
+	151     (00000258) const-string         v15, "app_id=?"
+	152     (0000025c) invoke-virtual       v3, v14, v4, v15, v0, Landroid/database/sqlite/SQLiteDatabase;->update(Ljava/lang/String; Landroid/content/ContentValues; Ljava/lang/String; [Ljava/lang/String;)I
+	153     (00000262) goto                 +14h
+
+zzx-BB@0x264 : [ zzx-BB@0x28a ]
+	154     (00000264) iget-object          v15, v13, Lcom/google/android/gms/measurement/internal/zzje;->zzu Lcom/google/android/gms/measurement/internal/zzic;
+	155     (00000268) invoke-virtual       v15, Lcom/google/android/gms/measurement/internal/zzic;->zzaV()Lcom/google/android/gms/measurement/internal/zzgu;
+	156     (0000026e) move-result-object   v15
+	157     (00000270) invoke-virtual       v15, Lcom/google/android/gms/measurement/internal/zzgu;->zzb()Lcom/google/android/gms/measurement/internal/zzgs;
+	158     (00000276) move-result-object   v15
+	159     (00000278) const-string         v0, "Error updating daily counts. appId"
+	160     (0000027c) invoke-static/range  v16, Lcom/google/android/gms/measurement/internal/zzgu;->zzl(Ljava/lang/String;)Ljava/lang/Object;
+	161     (00000282) move-result-object   v3
+	162     (00000284) invoke-virtual       v15, v0, v3, v14, Lcom/google/android/gms/measurement/internal/zzgs;->zzc(Ljava/lang/String; Ljava/lang/Object; Ljava/lang/Object;)V
+	264:289
+	(Ljava/lang/Throwable; -> aa zzx-BB@0xaa)
+
+zzx-BB@0x28a : [ zzx-BB@0x28e zzx-BB@0x294 ]
+	163     (0000028a) if-eqz               v2, +005h
+
+zzx-BB@0x28e : [ zzx-BB@0x294 ]
+	164     (0000028e) invoke-interface     v2, Landroid/database/Cursor;->close()V
+
+zzx-BB@0x294 : 
+	165     (00000294) return-object        v1
+
+zzx-BB@0x296 : [ zzx-BB@0x29a zzx-BB@0x2a0 ]
+	166     (00000296) if-eqz               v2, +005h
+
+zzx-BB@0x29a : [ zzx-BB@0x2a0 ]
+	167     (0000029a) invoke-interface     v2, Landroid/database/Cursor;->close()V
+
+zzx-BB@0x2a0 : 
+	168     (000002a0) throw                v14
+

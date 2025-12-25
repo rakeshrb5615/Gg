@@ -1,0 +1,104 @@
+# Lcom/google/android/gms/dynamic/ObjectWrapper;->unwrap(Lcom/google/android/gms/dynamic/IObjectWrapper;)Ljava/lang/Object; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:com.google.android.gms.dynamic.IObjectWrapper
+#
+# - return:java.lang.Object
+
+unwrap-BB@0x0 : [ unwrap-BB@0x8 unwrap-BB@0x12 ]
+	0       (00000000) instance-of          v0, v7, Lcom/google/android/gms/dynamic/ObjectWrapper;
+	1       (00000004) if-eqz               v0, +007h
+
+unwrap-BB@0x8 : 
+	2       (00000008) check-cast           v7, Lcom/google/android/gms/dynamic/ObjectWrapper;
+	3       (0000000c) iget-object          v7, v7, Lcom/google/android/gms/dynamic/ObjectWrapper;->zza Ljava/lang/Object;
+	4       (00000010) return-object        v7
+
+unwrap-BB@0x12 : [ unwrap-BB@0x34 ]
+	5       (00000012) invoke-interface     v7, Landroid/os/IInterface;->asBinder()Landroid/os/IBinder;
+	6       (00000018) move-result-object   v7
+	7       (0000001a) invoke-virtual       v7, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	8       (00000020) move-result-object   v0
+	9       (00000022) invoke-virtual       v0, Ljava/lang/Class;->getDeclaredFields()[Ljava/lang/reflect/Field;
+	10      (00000028) move-result-object   v0
+	11      (0000002a) array-length         v1, v0
+	12      (0000002c) const/4              v2, 0
+	13      (0000002e) const/4              v3, 0
+	14      (00000030) move-object          v4, v3
+	15      (00000032) move                 v3, v2
+
+unwrap-BB@0x34 : [ unwrap-BB@0x38 unwrap-BB@0x54 ]
+	16      (00000034) if-ge                v2, v1, +010h
+
+unwrap-BB@0x38 : [ unwrap-BB@0x48 unwrap-BB@0x4e ]
+	17      (00000038) aget-object          v5, v0, v2
+	18      (0000003c) invoke-virtual       v5, Ljava/lang/reflect/Field;->isSynthetic()Z
+	19      (00000042) move-result          v6
+	20      (00000044) if-nez               v6, +005h
+
+unwrap-BB@0x48 : [ unwrap-BB@0x4e ]
+	21      (00000048) add-int/lit8         v3, v3, 1
+	22      (0000004c) move-object          v4, v5
+
+unwrap-BB@0x4e : [ unwrap-BB@0x34 ]
+	23      (0000004e) add-int/lit8         v2, v2, 1
+	24      (00000052) goto                 -fh
+
+unwrap-BB@0x54 : [ unwrap-BB@0x5a unwrap-BB@0xb0 ]
+	25      (00000054) const/4              v1, 1
+	26      (00000056) if-ne                v3, v1, +02dh
+
+unwrap-BB@0x5a : [ unwrap-BB@0x6c unwrap-BB@0xa0 ]
+	27      (0000005a) invoke-static        v4, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;
+	28      (00000060) invoke-virtual       v4, Ljava/lang/reflect/AccessibleObject;->isAccessible()Z
+	29      (00000066) move-result          v0
+	30      (00000068) if-nez               v0, +01ch
+
+unwrap-BB@0x6c : [ unwrap-BB@0x72 ]
+	31      (0000006c) invoke-virtual       v4, v1, Ljava/lang/reflect/AccessibleObject;->setAccessible(Z)V
+
+unwrap-BB@0x72 : 
+	32      (00000072) invoke-virtual       v4, v7, Ljava/lang/reflect/Field;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	33      (00000078) move-result-object   v7
+	34      (0000007a) return-object        v7
+	72:79
+	(Ljava/lang/NullPointerException; -> 8e unwrap-BB@0x8e)
+	(Ljava/lang/IllegalAccessException; -> 7c unwrap-BB@0x7c)
+
+unwrap-BB@0x7c : 
+	35      (0000007c) move-exception       v7
+	36      (0000007e) new-instance         v0, Ljava/lang/IllegalArgumentException;
+	37      (00000082) const-string         v1, "Could not access the field in remoteBinder."
+	38      (00000086) invoke-direct        v0, v1, v7, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	39      (0000008c) throw                v0
+
+unwrap-BB@0x8e : 
+	40      (0000008e) move-exception       v7
+	41      (00000090) new-instance         v0, Ljava/lang/IllegalArgumentException;
+	42      (00000094) const-string         v1, "Binder object is null."
+	43      (00000098) invoke-direct        v0, v1, v7, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	44      (0000009e) throw                v0
+
+unwrap-BB@0xa0 : 
+	45      (000000a0) new-instance         v7, Ljava/lang/IllegalArgumentException;
+	46      (000000a4) const-string         v0, "IObjectWrapper declared field not private!"
+	47      (000000a8) invoke-direct        v7, v0, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	48      (000000ae) throw                v7
+
+unwrap-BB@0xb0 : 
+	49      (000000b0) new-instance         v7, Ljava/lang/IllegalArgumentException;
+	50      (000000b4) array-length         v0, v0
+	51      (000000b6) invoke-static        v0, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
+	52      (000000bc) move-result-object   v1
+	53      (000000be) invoke-virtual       v1, Ljava/lang/String;->length()I
+	54      (000000c4) move-result          v1
+	55      (000000c6) new-instance         v2, Ljava/lang/StringBuilder;
+	56      (000000ca) add-int/lit8         v1, v1, 53
+	57      (000000ce) invoke-direct        v2, v1, Ljava/lang/StringBuilder;-><init>(I)V
+	58      (000000d4) const-string         v1, "Unexpected number of IObjectWrapper declared fields: "
+	59      (000000d8) invoke-static        v2, v1, v0, Lv1/a;->m(Ljava/lang/StringBuilder; Ljava/lang/String; I)Ljava/lang/String;
+	60      (000000de) move-result-object   v0
+	61      (000000e0) invoke-direct        v7, v0, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	62      (000000e6) throw                v7
+

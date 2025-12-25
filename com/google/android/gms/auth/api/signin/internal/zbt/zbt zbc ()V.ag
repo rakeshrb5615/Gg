@@ -1,0 +1,35 @@
+# Lcom/google/android/gms/auth/api/signin/internal/zbt;->zbc()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v3
+#
+# - return:void
+
+zbc-BB@0x0 : [ zbc-BB@0x22 zbc-BB@0x2a ]
+	0       (00000000) invoke-direct        v3, Lcom/google/android/gms/auth/api/signin/internal/zbt;->zbd()V
+	1       (00000006) iget-object          v0, v3, Lcom/google/android/gms/auth/api/signin/internal/zbt;->zba Landroid/content/Context;
+	2       (0000000a) invoke-static        v0, Lcom/google/android/gms/auth/api/signin/internal/Storage;->getInstance(Landroid/content/Context;)Lcom/google/android/gms/auth/api/signin/internal/Storage;
+	3       (00000010) move-result-object   v0
+	4       (00000012) invoke-virtual       v0, Lcom/google/android/gms/auth/api/signin/internal/Storage;->getSavedDefaultGoogleSignInAccount()Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;
+	5       (00000018) move-result-object   v1
+	6       (0000001a) sget-object          v2, Lcom/google/android/gms/auth/api/signin/GoogleSignInOptions;->DEFAULT_SIGN_IN Lcom/google/android/gms/auth/api/signin/GoogleSignInOptions;
+	7       (0000001e) if-eqz               v1, +006h
+
+zbc-BB@0x22 : [ zbc-BB@0x2a ]
+	8       (00000022) invoke-virtual       v0, Lcom/google/android/gms/auth/api/signin/internal/Storage;->getSavedDefaultGoogleSignInOptions()Lcom/google/android/gms/auth/api/signin/GoogleSignInOptions;
+	9       (00000028) move-result-object   v2
+
+zbc-BB@0x2a : [ zbc-BB@0x3a zbc-BB@0x42 ]
+	10      (0000002a) iget-object          v0, v3, Lcom/google/android/gms/auth/api/signin/internal/zbt;->zba Landroid/content/Context;
+	11      (0000002e) invoke-static        v0, v2, Lcom/google/android/gms/auth/api/signin/GoogleSignIn;->getClient(Landroid/content/Context; Lcom/google/android/gms/auth/api/signin/GoogleSignInOptions;)Lcom/google/android/gms/auth/api/signin/GoogleSignInClient;
+	12      (00000034) move-result-object   v0
+	13      (00000036) if-eqz               v1, +006h
+
+zbc-BB@0x3a : 
+	14      (0000003a) invoke-virtual       v0, Lcom/google/android/gms/auth/api/signin/GoogleSignInClient;->revokeAccess()Lcom/google/android/gms/tasks/Task;
+	15      (00000040) return-void          
+
+zbc-BB@0x42 : 
+	16      (00000042) invoke-virtual       v0, Lcom/google/android/gms/auth/api/signin/GoogleSignInClient;->signOut()Lcom/google/android/gms/tasks/Task;
+	17      (00000048) return-void          
+

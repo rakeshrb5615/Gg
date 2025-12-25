@@ -1,0 +1,52 @@
+# Lcom/google/android/gms/internal/firebase-auth-api/zzzo;->zza(Ljava/lang/String;)Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:java.lang.String
+#
+# - return:java.lang.Object
+
+zza-BB@0x0 : [ zza-BB@0x26 ]
+	0       (00000000) const-string         v0, "AndroidOpenSSL"
+	1       (00000004) const-string         v1, "Conscrypt"
+	2       (00000008) const-string         v2, "GmsCore_OpenSSL"
+	3       (0000000c) filled-new-array     v2, v0, v1, [Ljava/lang/String;
+	4       (00000012) move-result-object   v0
+	5       (00000014) invoke-static        v0, Lcom/google/android/gms/internal/firebase-auth-api/zzzj;->zza([Ljava/lang/String;)Ljava/util/List;
+	6       (0000001a) move-result-object   v0
+	7       (0000001c) invoke-interface     v0, Ljava/util/List;->iterator()Ljava/util/Iterator;
+	8       (00000022) move-result-object   v0
+	9       (00000024) const/4              v1, 0
+
+zza-BB@0x26 : [ zza-BB@0x32 zza-BB@0x56 ]
+	10      (00000026) invoke-interface     v0, Ljava/util/Iterator;->hasNext()Z
+	11      (0000002c) move-result          v2
+	12      (0000002e) if-eqz               v2, +014h
+
+zza-BB@0x32 : [ zza-BB@0x3e ]
+	13      (00000032) invoke-interface     v0, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	14      (00000038) move-result-object   v2
+	15      (0000003a) check-cast           v2, Ljava/security/Provider;
+
+zza-BB@0x3e : 
+	16      (0000003e) iget-object          v3, v4, Lcom/google/android/gms/internal/firebase-auth-api/zzzo;->zza Lcom/google/android/gms/internal/firebase-auth-api/zzzp;
+	17      (00000042) invoke-interface     v3, v5, v2, Lcom/google/android/gms/internal/firebase-auth-api/zzzp;->zza(Ljava/lang/String; Ljava/security/Provider;)Ljava/lang/Object;
+	18      (00000048) move-result-object   v5
+	19      (0000004a) return-object        v5
+	3e:49
+	(Ljava/lang/Exception; -> 4c zza-BB@0x4c)
+
+zza-BB@0x4c : [ zza-BB@0x52 zza-BB@0x26 ]
+	20      (0000004c) move-exception       v2
+	21      (0000004e) if-nez               v1, -014h
+
+zza-BB@0x52 : [ zza-BB@0x26 ]
+	22      (00000052) move-object          v1, v2
+	23      (00000054) goto                 -17h
+
+zza-BB@0x56 : 
+	24      (00000056) new-instance         v5, Ljava/security/GeneralSecurityException;
+	25      (0000005a) const-string         v0, "No good Provider found."
+	26      (0000005e) invoke-direct        v5, v0, v1, Ljava/security/GeneralSecurityException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	27      (00000064) throw                v5
+

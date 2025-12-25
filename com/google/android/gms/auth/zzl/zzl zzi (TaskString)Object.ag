@@ -1,0 +1,69 @@
+# Lcom/google/android/gms/auth/zzl;->zzi(Lcom/google/android/gms/tasks/Task; Ljava/lang/String;)Ljava/lang/Object; [access_flags=private static]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:com.google.android.gms.tasks.Task
+# - v4:java.lang.String
+#
+# - return:java.lang.Object
+
+zzi-BB@0x0 : [ zzi-BB@0x6 ]
+	0       (00000000) const-string         v0, " to finish."
+	1       (00000004) const/4              v1, 0
+
+zzi-BB@0x6 : 
+	2       (00000006) invoke-static        v3, Lcom/google/android/gms/tasks/Tasks;->await(Lcom/google/android/gms/tasks/Task;)Ljava/lang/Object;
+	3       (0000000c) move-result-object   v3
+	4       (0000000e) return-object        v3
+	6:d
+	(Ljava/util/concurrent/ExecutionException; -> 60 zzi-BB@0x60)
+	(Ljava/lang/InterruptedException; -> 38 zzi-BB@0x38)
+	(Ljava/util/concurrent/CancellationException; -> 10 zzi-BB@0x10)
+
+zzi-BB@0x10 : 
+	5       (00000010) move-exception       v3
+	6       (00000012) const-string         v2, "Canceled while waiting for the task of "
+	7       (00000016) invoke-static        v2, v4, v0, Lv1/a;->l(Ljava/lang/String; Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	8       (0000001c) move-result-object   v4
+	9       (0000001e) sget-object          v0, Lcom/google/android/gms/auth/zzl;->zzd Lcom/google/android/gms/common/logging/Logger;
+	10      (00000022) new-array            v1, v1, [Ljava/lang/Object;
+	11      (00000026) invoke-virtual       v0, v4, v1, Lcom/google/android/gms/common/logging/Logger;->w(Ljava/lang/String; [Ljava/lang/Object;)V
+	12      (0000002c) new-instance         v0, Ljava/io/IOException;
+	13      (00000030) invoke-direct        v0, v4, v3, Ljava/io/IOException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	14      (00000036) throw                v0
+
+zzi-BB@0x38 : 
+	15      (00000038) move-exception       v3
+	16      (0000003a) const-string         v2, "Interrupted while waiting for the task of "
+	17      (0000003e) invoke-static        v2, v4, v0, Lv1/a;->l(Ljava/lang/String; Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	18      (00000044) move-result-object   v4
+	19      (00000046) sget-object          v0, Lcom/google/android/gms/auth/zzl;->zzd Lcom/google/android/gms/common/logging/Logger;
+	20      (0000004a) new-array            v1, v1, [Ljava/lang/Object;
+	21      (0000004e) invoke-virtual       v0, v4, v1, Lcom/google/android/gms/common/logging/Logger;->w(Ljava/lang/String; [Ljava/lang/Object;)V
+	22      (00000054) new-instance         v0, Ljava/io/IOException;
+	23      (00000058) invoke-direct        v0, v4, v3, Ljava/io/IOException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	24      (0000005e) throw                v0
+
+zzi-BB@0x60 : [ zzi-BB@0x72 zzi-BB@0x78 ]
+	25      (00000060) move-exception       v3
+	26      (00000062) invoke-virtual       v3, Ljava/lang/Throwable;->getCause()Ljava/lang/Throwable;
+	27      (00000068) move-result-object   v0
+	28      (0000006a) instance-of          v2, v0, Lcom/google/android/gms/common/api/ApiException;
+	29      (0000006e) if-eqz               v2, +005h
+
+zzi-BB@0x72 : 
+	30      (00000072) check-cast           v0, Lcom/google/android/gms/common/api/ApiException;
+	31      (00000076) throw                v0
+
+zzi-BB@0x78 : 
+	32      (00000078) const-string         v0, "Unable to get a result for "
+	33      (0000007c) const-string         v2, " due to ExecutionException."
+	34      (00000080) invoke-static        v0, v4, v2, Lv1/a;->l(Ljava/lang/String; Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	35      (00000086) move-result-object   v4
+	36      (00000088) sget-object          v0, Lcom/google/android/gms/auth/zzl;->zzd Lcom/google/android/gms/common/logging/Logger;
+	37      (0000008c) new-array            v1, v1, [Ljava/lang/Object;
+	38      (00000090) invoke-virtual       v0, v4, v1, Lcom/google/android/gms/common/logging/Logger;->w(Ljava/lang/String; [Ljava/lang/Object;)V
+	39      (00000096) new-instance         v0, Ljava/io/IOException;
+	40      (0000009a) invoke-direct        v0, v4, v3, Ljava/io/IOException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	41      (000000a0) throw                v0
+

@@ -1,0 +1,29 @@
+# Lcom/google/android/gms/common/data/FreezableUtils;->freeze([Lcom/google/android/gms/common/data/Freezable;)Ljava/util/ArrayList; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:com.google.android.gms.common.data.Freezable[]
+#
+# - return:java.util.ArrayList
+
+freeze-BB@0x0 : [ freeze-BB@0xe ]
+	0       (00000000) new-instance         v0, Ljava/util/ArrayList;
+	1       (00000004) array-length         v1, v3
+	2       (00000006) invoke-direct        v0, v1, Ljava/util/ArrayList;-><init>(I)V
+	3       (0000000c) const/4              v1, 0
+
+freeze-BB@0xe : [ freeze-BB@0x14 freeze-BB@0x2c ]
+	4       (0000000e) array-length         v2, v3
+	5       (00000010) if-ge                v1, v2, +00eh
+
+freeze-BB@0x14 : [ freeze-BB@0xe ]
+	6       (00000014) aget-object          v2, v3, v1
+	7       (00000018) invoke-interface     v2, Lcom/google/android/gms/common/data/Freezable;->freeze()Ljava/lang/Object;
+	8       (0000001e) move-result-object   v2
+	9       (00000020) invoke-virtual       v0, v2, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	10      (00000026) add-int/lit8         v1, v1, 1
+	11      (0000002a) goto                 -eh
+
+freeze-BB@0x2c : 
+	12      (0000002c) return-object        v0
+

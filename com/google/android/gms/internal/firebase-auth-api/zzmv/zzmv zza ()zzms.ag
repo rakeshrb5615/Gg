@@ -1,0 +1,84 @@
+# Lcom/google/android/gms/internal/firebase-auth-api/zzmv;->zza()Lcom/google/android/gms/internal/firebase-auth-api/zzms; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v5
+#
+# - return:com.google.android.gms.internal.firebase-auth-api.zzms
+
+zza-BB@0x0 : [ zza-BB@0x42 zza-BB@0xce ]
+	0       (00000000) const-string         v0, "XDH"
+	1       (00000004) iget-object          v1, v5, Lcom/google/android/gms/internal/firebase-auth-api/zzmv;->zzc Ljava/security/Provider;
+	2       (00000008) invoke-static        v0, v1, Ljava/security/KeyPairGenerator;->getInstance(Ljava/lang/String; Ljava/security/Provider;)Ljava/security/KeyPairGenerator;
+	3       (0000000e) move-result-object   v0
+	4       (00000010) const/16             v1, 255
+	5       (00000014) invoke-virtual       v0, v1, Ljava/security/KeyPairGenerator;->initialize(I)V
+	6       (0000001a) invoke-virtual       v0, Ljava/security/KeyPairGenerator;->generateKeyPair()Ljava/security/KeyPair;
+	7       (00000020) move-result-object   v0
+	8       (00000022) invoke-virtual       v0, Ljava/security/KeyPair;->getPrivate()Ljava/security/PrivateKey;
+	9       (00000028) move-result-object   v1
+	10      (0000002a) invoke-interface     v1, Ljava/security/Key;->getEncoded()[B
+	11      (00000030) move-result-object   v1
+	12      (00000032) array-length         v2, v1
+	13      (00000034) sget-object          v3, Lcom/google/android/gms/internal/firebase-auth-api/zzmv;->zza [B
+	14      (00000038) array-length         v4, v3
+	15      (0000003a) add-int/lit8         v4, v4, 32
+	16      (0000003e) if-ne                v2, v4, +048h
+
+zza-BB@0x42 : [ zza-BB@0x4e zza-BB@0xbe ]
+	17      (00000042) invoke-static        v3, v1, Lcom/google/android/gms/internal/firebase-auth-api/zzqn;->zza([B [B)Z
+	18      (00000048) move-result          v2
+	19      (0000004a) if-eqz               v2, +03ah
+
+zza-BB@0x4e : [ zza-BB@0x7a zza-BB@0xae ]
+	20      (0000004e) array-length         v2, v3
+	21      (00000050) array-length         v3, v1
+	22      (00000052) invoke-static        v1, v2, v3, Ljava/util/Arrays;->copyOfRange([B I I)[B
+	23      (00000058) move-result-object   v1
+	24      (0000005a) invoke-virtual       v0, Ljava/security/KeyPair;->getPublic()Ljava/security/PublicKey;
+	25      (00000060) move-result-object   v0
+	26      (00000062) invoke-interface     v0, Ljava/security/Key;->getEncoded()[B
+	27      (00000068) move-result-object   v0
+	28      (0000006a) array-length         v2, v0
+	29      (0000006c) sget-object          v3, Lcom/google/android/gms/internal/firebase-auth-api/zzmv;->zzb [B
+	30      (00000070) array-length         v4, v3
+	31      (00000072) add-int/lit8         v4, v4, 32
+	32      (00000076) if-ne                v2, v4, +01ch
+
+zza-BB@0x7a : [ zza-BB@0x86 zza-BB@0x9e ]
+	33      (0000007a) invoke-static        v3, v0, Lcom/google/android/gms/internal/firebase-auth-api/zzqn;->zza([B [B)Z
+	34      (00000080) move-result          v2
+	35      (00000082) if-eqz               v2, +00eh
+
+zza-BB@0x86 : 
+	36      (00000086) array-length         v2, v3
+	37      (00000088) array-length         v3, v0
+	38      (0000008a) invoke-static        v0, v2, v3, Ljava/util/Arrays;->copyOfRange([B I I)[B
+	39      (00000090) move-result-object   v0
+	40      (00000092) new-instance         v2, Lcom/google/android/gms/internal/firebase-auth-api/zzms;
+	41      (00000096) invoke-direct        v2, v1, v0, Lcom/google/android/gms/internal/firebase-auth-api/zzms;-><init>([B [B)V
+	42      (0000009c) return-object        v2
+
+zza-BB@0x9e : 
+	43      (0000009e) new-instance         v0, Ljava/security/GeneralSecurityException;
+	44      (000000a2) const-string         v1, "Invalid encoded public key prefix"
+	45      (000000a6) invoke-direct        v0, v1, Ljava/security/GeneralSecurityException;-><init>(Ljava/lang/String;)V
+	46      (000000ac) throw                v0
+
+zza-BB@0xae : 
+	47      (000000ae) new-instance         v0, Ljava/security/GeneralSecurityException;
+	48      (000000b2) const-string         v1, "Invalid encoded public key length"
+	49      (000000b6) invoke-direct        v0, v1, Ljava/security/GeneralSecurityException;-><init>(Ljava/lang/String;)V
+	50      (000000bc) throw                v0
+
+zza-BB@0xbe : 
+	51      (000000be) new-instance         v0, Ljava/security/GeneralSecurityException;
+	52      (000000c2) const-string         v1, "Invalid encoded private key prefix"
+	53      (000000c6) invoke-direct        v0, v1, Ljava/security/GeneralSecurityException;-><init>(Ljava/lang/String;)V
+	54      (000000cc) throw                v0
+
+zza-BB@0xce : 
+	55      (000000ce) new-instance         v0, Ljava/security/GeneralSecurityException;
+	56      (000000d2) const-string         v1, "Invalid encoded private key length"
+	57      (000000d6) invoke-direct        v0, v1, Ljava/security/GeneralSecurityException;-><init>(Ljava/lang/String;)V
+	58      (000000dc) throw                v0
+

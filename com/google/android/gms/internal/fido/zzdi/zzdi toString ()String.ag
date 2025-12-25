@@ -1,0 +1,73 @@
+# Lcom/google/android/gms/internal/fido/zzdi;->toString()Ljava/lang/String; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v7
+#
+# - return:java.lang.String
+
+toString-BB@0x0 : [ toString-BB@0x10 toString-BB@0x16 ]
+	0       (00000000) iget-object          v0, v7, Lcom/google/android/gms/internal/fido/zzdi;->zza Lcom/google/android/gms/internal/fido/zzaz;
+	1       (00000004) invoke-virtual       v0, Ljava/util/AbstractCollection;->isEmpty()Z
+	2       (0000000a) move-result          v0
+	3       (0000000c) if-eqz               v0, +005h
+
+toString-BB@0x10 : 
+	4       (00000010) const-string         v0, "[]"
+	5       (00000014) return-object        v0
+
+toString-BB@0x16 : [ toString-BB@0x2e ]
+	6       (00000016) new-instance         v0, Ljava/util/ArrayList;
+	7       (0000001a) invoke-direct        v0, Ljava/util/ArrayList;-><init>()V
+	8       (00000020) iget-object          v1, v7, Lcom/google/android/gms/internal/fido/zzdi;->zza Lcom/google/android/gms/internal/fido/zzaz;
+	9       (00000024) invoke-interface     v1, Ljava/util/List;->size()I
+	10      (0000002a) move-result          v2
+	11      (0000002c) const/4              v3, 0
+
+toString-BB@0x2e : [ toString-BB@0x32 toString-BB@0x62 ]
+	12      (0000002e) if-ge                v3, v2, +01ah
+
+toString-BB@0x32 : [ toString-BB@0x2e ]
+	13      (00000032) invoke-interface     v1, v3, Ljava/util/List;->get(I)Ljava/lang/Object;
+	14      (00000038) move-result-object   v4
+	15      (0000003a) check-cast           v4, Lcom/google/android/gms/internal/fido/zzdr;
+	16      (0000003e) invoke-virtual       v4, Ljava/lang/Object;->toString()Ljava/lang/String;
+	17      (00000044) move-result-object   v4
+	18      (00000046) const-string         v5, "
+"
+	19      (0000004a) const-string         v6, "
+  "
+	20      (0000004e) invoke-virtual       v4, v5, v6, Ljava/lang/String;->replace(Ljava/lang/CharSequence; Ljava/lang/CharSequence;)Ljava/lang/String;
+	21      (00000054) move-result-object   v4
+	22      (00000056) invoke-virtual       v0, v4, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	23      (0000005c) add-int/lit8         v3, v3, 1
+	24      (00000060) goto                 -19h
+
+toString-BB@0x62 : [ toString-BB@0x84 ]
+	25      (00000062) const-string         v1, ",
+  "
+	26      (00000066) invoke-static        v1, Lcom/google/android/gms/internal/fido/zzag;->zza(Ljava/lang/String;)Lcom/google/android/gms/internal/fido/zzag;
+	27      (0000006c) move-result-object   v1
+	28      (0000006e) new-instance         v2, Ljava/lang/StringBuilder;
+	29      (00000072) const-string         v3, "[
+  "
+	30      (00000076) invoke-direct        v2, v3, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	31      (0000007c) invoke-virtual       v0, Ljava/util/ArrayList;->iterator()Ljava/util/Iterator;
+	32      (00000082) move-result-object   v0
+
+toString-BB@0x84 : 
+	33      (00000084) invoke-virtual       v1, v2, v0, Lcom/google/android/gms/internal/fido/zzag;->zzb(Ljava/lang/Appendable; Ljava/util/Iterator;)Ljava/lang/Appendable;
+	34      (0000008a) const-string         v0, "
+]"
+	35      (0000008e) invoke-virtual       v2, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	36      (00000094) invoke-virtual       v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	37      (0000009a) move-result-object   v0
+	38      (0000009c) return-object        v0
+	84:89
+	(Ljava/io/IOException; -> 9e toString-BB@0x9e)
+
+toString-BB@0x9e : 
+	39      (0000009e) move-exception       v0
+	40      (000000a0) new-instance         v1, Ljava/lang/AssertionError;
+	41      (000000a4) invoke-direct        v1, v0, Ljava/lang/AssertionError;-><init>(Ljava/lang/Object;)V
+	42      (000000aa) throw                v1
+

@@ -1,0 +1,65 @@
+# Lcom/google/android/gms/internal/firebase-auth-api/zznc;->zzb([B [B)[B [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v7
+# - v8:byte[]
+# - v9:byte[]
+#
+# - return:byte[]
+
+zzb-BB@0x0 : [ zzb-BB@0xc zzb-BB@0x8c ]
+	0       (00000000) array-length         v0, v8
+	1       (00000002) const                v1, 2147483619
+	2       (00000008) if-gt                v0, v1, +042h
+
+zzb-BB@0xc : [ zzb-BB@0x50 zzb-BB@0x7c ]
+	3       (0000000c) array-length         v0, v8
+	4       (0000000e) add-int/lit8         v0, v0, 28
+	5       (00000012) new-array            v5, v0, [B
+	6       (00000016) const-string         v0, "AES/GCM/NoPadding"
+	7       (0000001a) invoke-static        v0, Ljavax/crypto/Cipher;->getInstance(Ljava/lang/String;)Ljavax/crypto/Cipher;
+	8       (00000020) move-result-object   v1
+	9       (00000022) const/4              v0, 1
+	10      (00000024) iget-object          v2, v7, Lcom/google/android/gms/internal/firebase-auth-api/zznc;->zza Ljavax/crypto/SecretKey;
+	11      (00000028) invoke-virtual       v1, v0, v2, Ljavax/crypto/Cipher;->init(I Ljava/security/Key;)V
+	12      (0000002e) invoke-virtual       v1, v9, Ljavax/crypto/Cipher;->updateAAD([B)V
+	13      (00000034) array-length         v4, v8
+	14      (00000036) const/16             v6, 12
+	15      (0000003a) const/4              v3, 0
+	16      (0000003c) move-object          v2, v8
+	17      (0000003e) invoke-virtual/range v1 ... v6, Ljavax/crypto/Cipher;->doFinal([B I I [B I)I
+	18      (00000044) move-result          v8
+	19      (00000046) array-length         v9, v2
+	20      (00000048) add-int/lit8         v9, v9, 16
+	21      (0000004c) if-ne                v8, v9, +018h
+
+zzb-BB@0x50 : [ zzb-BB@0x62 zzb-BB@0x6c ]
+	22      (00000050) invoke-virtual       v1, Ljavax/crypto/Cipher;->getIV()[B
+	23      (00000056) move-result-object   v8
+	24      (00000058) array-length         v9, v8
+	25      (0000005a) const/16             v0, 12
+	26      (0000005e) if-ne                v9, v0, +007h
+
+zzb-BB@0x62 : 
+	27      (00000062) const/4              v9, 0
+	28      (00000064) invoke-static        v8, v9, v5, v9, v0, Ljava/lang/System;->arraycopy(Ljava/lang/Object; I Ljava/lang/Object; I I)V
+	29      (0000006a) return-object        v5
+
+zzb-BB@0x6c : 
+	30      (0000006c) new-instance         v8, Ljava/security/GeneralSecurityException;
+	31      (00000070) const-string         v9, "IV has unexpected length"
+	32      (00000074) invoke-direct        v8, v9, Ljava/security/GeneralSecurityException;-><init>(Ljava/lang/String;)V
+	33      (0000007a) throw                v8
+
+zzb-BB@0x7c : 
+	34      (0000007c) new-instance         v8, Ljava/security/GeneralSecurityException;
+	35      (00000080) const-string         v9, "encryption failed: bytesWritten is wrong"
+	36      (00000084) invoke-direct        v8, v9, Ljava/security/GeneralSecurityException;-><init>(Ljava/lang/String;)V
+	37      (0000008a) throw                v8
+
+zzb-BB@0x8c : 
+	38      (0000008c) new-instance         v8, Ljava/security/GeneralSecurityException;
+	39      (00000090) const-string         v9, "plaintext too long"
+	40      (00000094) invoke-direct        v8, v9, Ljava/security/GeneralSecurityException;-><init>(Ljava/lang/String;)V
+	41      (0000009a) throw                v8
+

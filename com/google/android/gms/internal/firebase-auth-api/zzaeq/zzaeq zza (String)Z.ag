@@ -1,0 +1,65 @@
+# Lcom/google/android/gms/internal/firebase-auth-api/zzaeq;->zza(Ljava/lang/String;)Z [access_flags=private static]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:java.lang.String
+#
+# - return:boolean
+
+zza-BB@0x0 : [ zza-BB@0x2 ]
+	0       (00000000) const/4              v0, 0
+
+zza-BB@0x2 : [ zza-BB@0x34 zza-BB@0x84 ]
+	1       (00000002) new-instance         v1, Ljava/net/URI;
+	2       (00000006) new-instance         v2, Ljava/lang/StringBuilder;
+	3       (0000000a) const-string         v3, "https://"
+	4       (0000000e) invoke-direct        v2, v3, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	5       (00000014) invoke-virtual       v2, v5, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	6       (0000001a) invoke-virtual       v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	7       (00000020) move-result-object   v2
+	8       (00000022) invoke-direct        v1, v2, Ljava/net/URI;-><init>(Ljava/lang/String;)V
+	9       (00000028) invoke-virtual       v1, Ljava/net/URI;->getHost()Ljava/lang/String;
+	10      (0000002e) move-result-object   v1
+	11      (00000030) if-eqz               v1, +02ah
+	2:4f
+	(Ljava/net/URISyntaxException; -> 56 zza-BB@0x56)
+
+zza-BB@0x34 : [ zza-BB@0x44 zza-BB@0x5a ]
+	12      (00000034) const-string         v2, "firebaseapp.com"
+	13      (00000038) invoke-virtual       v1, v2, Ljava/lang/String;->endsWith(Ljava/lang/String;)Z
+	14      (0000003e) move-result          v2
+	15      (00000040) if-nez               v2, +00dh
+	2:4f
+	(Ljava/net/URISyntaxException; -> 56 zza-BB@0x56)
+
+zza-BB@0x44 : [ zza-BB@0x54 zza-BB@0x84 ]
+	16      (00000044) const-string         v2, "web.app"
+	17      (00000048) invoke-virtual       v1, v2, Ljava/lang/String;->endsWith(Ljava/lang/String;)Z
+	18      (0000004e) move-result          v5
+	19      (00000050) if-eqz               v5, +01ah
+
+zza-BB@0x54 : [ zza-BB@0x5a ]
+	20      (00000054) goto                 +3h
+
+zza-BB@0x56 : [ zza-BB@0x5e ]
+	21      (00000056) move-exception       v1
+	22      (00000058) goto                 +3h
+
+zza-BB@0x5a : 
+	23      (0000005a) const/4              v5, 1
+	24      (0000005c) return               v5
+
+zza-BB@0x5e : [ zza-BB@0x84 ]
+	25      (0000005e) sget-object          v2, Lcom/google/android/gms/internal/firebase-auth-api/zzaeq;->zza Lcom/google/android/gms/common/logging/Logger;
+	26      (00000062) invoke-virtual       v1, Ljava/net/URISyntaxException;->getMessage()Ljava/lang/String;
+	27      (00000068) move-result-object   v1
+	28      (0000006a) const-string         v3, "Error parsing URL for auth domain check: "
+	29      (0000006e) const-string         v4, ". "
+	30      (00000072) invoke-static        v3, v5, v4, v1, Lg2/g;->f(Ljava/lang/String; Ljava/lang/String; Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	31      (00000078) move-result-object   v5
+	32      (0000007a) new-array            v1, v0, [Ljava/lang/Object;
+	33      (0000007e) invoke-virtual       v2, v5, v1, Lcom/google/android/gms/common/logging/Logger;->e(Ljava/lang/String; [Ljava/lang/Object;)V
+
+zza-BB@0x84 : 
+	34      (00000084) return               v0
+

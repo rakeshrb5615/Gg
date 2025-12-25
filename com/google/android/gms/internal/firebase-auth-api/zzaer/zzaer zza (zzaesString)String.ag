@@ -1,0 +1,94 @@
+# Lcom/google/android/gms/internal/firebase-auth-api/zzaer;->zza(Lcom/google/android/gms/internal/firebase-auth-api/zzaes; Ljava/lang/String;)Ljava/lang/String; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:com.google.android.gms.internal.firebase-auth-api.zzaes
+# - v5:java.lang.String
+#
+# - return:java.lang.String
+
+zza-BB@0x0 : [ zza-BB@0x2 ]
+	0       (00000000) const/4              v4, 0
+
+zza-BB@0x2 : [ zza-BB@0x32 ]
+	1       (00000002) const-string         v0, "SHA-256"
+	2       (00000006) invoke-static        v0, Ljava/security/MessageDigest;->getInstance(Ljava/lang/String;)Ljava/security/MessageDigest;
+	3       (0000000c) move-result-object   v0
+	4       (0000000e) invoke-virtual       v5, Ljava/lang/String;->getBytes()[B
+	5       (00000014) move-result-object   v5
+	6       (00000016) invoke-virtual       v0, v5, Ljava/security/MessageDigest;->digest([B)[B
+	7       (0000001c) move-result-object   v5
+	8       (0000001e) new-instance         v0, Ljava/lang/String;
+	9       (00000022) invoke-direct        v0, v5, Ljava/lang/String;-><init>([B)V
+	10      (00000028) invoke-virtual       v0, Ljava/lang/String;->length()I
+	11      (0000002e) move-result          v5
+	12      (00000030) move                 v1, v4
+	2:7d
+	(Ljava/security/NoSuchAlgorithmException; -> 88 zza-BB@0x88)
+
+zza-BB@0x32 : [ zza-BB@0x36 zza-BB@0x86 ]
+	13      (00000032) if-ge                v1, v5, +02ah
+	2:7d
+	(Ljava/security/NoSuchAlgorithmException; -> 88 zza-BB@0x88)
+
+zza-BB@0x36 : [ zza-BB@0x4a zza-BB@0x80 ]
+	14      (00000036) invoke-virtual       v0, v1, Ljava/lang/String;->charAt(I)C
+	15      (0000003c) move-result          v2
+	16      (0000003e) invoke-static        v2, Lcom/google/android/gms/internal/firebase-auth-api/zzg;->zza(C)Z
+	17      (00000044) move-result          v2
+	18      (00000046) if-eqz               v2, +01dh
+	2:7d
+	(Ljava/security/NoSuchAlgorithmException; -> 88 zza-BB@0x88)
+
+zza-BB@0x4a : [ zza-BB@0x52 ]
+	19      (0000004a) invoke-virtual       v0, Ljava/lang/String;->toCharArray()[C
+	20      (00000050) move-result-object   v0
+	2:7d
+	(Ljava/security/NoSuchAlgorithmException; -> 88 zza-BB@0x88)
+
+zza-BB@0x52 : [ zza-BB@0x56 zza-BB@0x76 ]
+	21      (00000052) if-ge                v1, v5, +012h
+	2:7d
+	(Ljava/security/NoSuchAlgorithmException; -> 88 zza-BB@0x88)
+
+zza-BB@0x56 : [ zza-BB@0x66 zza-BB@0x70 ]
+	22      (00000056) aget-char            v2, v0, v1
+	23      (0000005a) invoke-static        v2, Lcom/google/android/gms/internal/firebase-auth-api/zzg;->zza(C)Z
+	24      (00000060) move-result          v3
+	25      (00000062) if-eqz               v3, +007h
+	2:7d
+	(Ljava/security/NoSuchAlgorithmException; -> 88 zza-BB@0x88)
+
+zza-BB@0x66 : [ zza-BB@0x70 ]
+	26      (00000066) xor-int/lit8         v2, v2, 32
+	27      (0000006a) int-to-char          v2, v2
+	28      (0000006c) aput-char            v2, v0, v1
+	2:7d
+	(Ljava/security/NoSuchAlgorithmException; -> 88 zza-BB@0x88)
+
+zza-BB@0x70 : [ zza-BB@0x52 ]
+	29      (00000070) add-int/lit8         v1, v1, 1
+	30      (00000074) goto                 -11h
+	2:7d
+	(Ljava/security/NoSuchAlgorithmException; -> 88 zza-BB@0x88)
+
+zza-BB@0x76 : 
+	31      (00000076) invoke-static        v0, Ljava/lang/String;->valueOf([C)Ljava/lang/String;
+	32      (0000007c) move-result-object   v4
+	33      (0000007e) return-object        v4
+
+zza-BB@0x80 : [ zza-BB@0x32 ]
+	34      (00000080) add-int/lit8         v1, v1, 1
+	35      (00000084) goto                 -29h
+
+zza-BB@0x86 : 
+	36      (00000086) return-object        v0
+
+zza-BB@0x88 : 
+	37      (00000088) sget-object          v5, Lcom/google/android/gms/internal/firebase-auth-api/zzaes;->zza Lcom/google/android/gms/common/logging/Logger;
+	38      (0000008c) const-string         v0, "Failed to get SHA-256 MessageDigest"
+	39      (00000090) new-array            v4, v4, [Ljava/lang/Object;
+	40      (00000094) invoke-virtual       v5, v0, v4, Lcom/google/android/gms/common/logging/Logger;->e(Ljava/lang/String; [Ljava/lang/Object;)V
+	41      (0000009a) const/4              v4, 0
+	42      (0000009c) return-object        v4
+

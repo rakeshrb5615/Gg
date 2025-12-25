@@ -1,0 +1,43 @@
+# Lcom/google/android/gms/common/internal/safeparcel/SafeParcelWriter;->writeByteArrayArray(Landroid/os/Parcel; I [[B Z)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:android.os.Parcel
+# - v3:int
+# - v4:byte[][]
+# - v5:boolean
+#
+# - return:void
+
+writeByteArrayArray-BB@0x0 : [ writeByteArrayArray-BB@0x6 writeByteArrayArray-BB@0x12 ]
+	0       (00000000) const/4              v0, 0
+	1       (00000002) if-nez               v4, +008h
+
+writeByteArrayArray-BB@0x6 : [ writeByteArrayArray-BB@0xa writeByteArrayArray-BB@0x10 ]
+	2       (00000006) if-eqz               v5, +005h
+
+writeByteArrayArray-BB@0xa : [ writeByteArrayArray-BB@0x10 ]
+	3       (0000000a) invoke-static        v2, v3, v0, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelWriter;->zza(Landroid/os/Parcel; I I)V
+
+writeByteArrayArray-BB@0x10 : 
+	4       (00000010) return-void          
+
+writeByteArrayArray-BB@0x12 : [ writeByteArrayArray-BB@0x22 ]
+	5       (00000012) invoke-static        v2, v3, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelWriter;->zzb(Landroid/os/Parcel; I)I
+	6       (00000018) move-result          v3
+	7       (0000001a) array-length         v5, v4
+	8       (0000001c) invoke-virtual       v2, v5, Landroid/os/Parcel;->writeInt(I)V
+
+writeByteArrayArray-BB@0x22 : [ writeByteArrayArray-BB@0x26 writeByteArrayArray-BB@0x36 ]
+	9       (00000022) if-ge                v0, v5, +00ah
+
+writeByteArrayArray-BB@0x26 : [ writeByteArrayArray-BB@0x22 ]
+	10      (00000026) aget-object          v1, v4, v0
+	11      (0000002a) invoke-virtual       v2, v1, Landroid/os/Parcel;->writeByteArray([B)V
+	12      (00000030) add-int/lit8         v0, v0, 1
+	13      (00000034) goto                 -9h
+
+writeByteArrayArray-BB@0x36 : 
+	14      (00000036) invoke-static        v2, v3, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelWriter;->zzc(Landroid/os/Parcel; I)V
+	15      (0000003c) return-void          
+

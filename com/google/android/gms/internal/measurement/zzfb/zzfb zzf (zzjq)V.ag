@@ -1,0 +1,94 @@
+# Lcom/google/android/gms/internal/measurement/zzfb;->zzf(Lcom/google/android/gms/measurement/internal/zzjq;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:com.google.android.gms.measurement.internal.zzjq
+#
+# - return:void
+
+zzf-BB@0x0 : [ zzf-BB@0xe ]
+	0       (00000000) invoke-static        v4, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;
+	1       (00000006) iget-object          v0, v3, Lcom/google/android/gms/internal/measurement/zzfb;->zzf Ljava/util/List;
+	2       (0000000a) monitor-enter        v0
+	3       (0000000c) const/4              v1, 0
+
+zzf-BB@0xe : [ zzf-BB@0x1a zzf-BB@0x52 ]
+	4       (0000000e) invoke-interface     v0, Ljava/util/List;->size()I
+	5       (00000014) move-result          v2
+	6       (00000016) if-ge                v1, v2, +01eh
+	e:6d
+	(Ljava/lang/Throwable; -> 48 zzf-BB@0x48)
+
+zzf-BB@0x1a : [ zzf-BB@0x36 zzf-BB@0x4c ]
+	7       (0000001a) invoke-interface     v0, v1, Ljava/util/List;->get(I)Ljava/lang/Object;
+	8       (00000020) move-result-object   v2
+	9       (00000022) check-cast           v2, Landroid/util/Pair;
+	10      (00000026) iget-object          v2, v2, Landroid/util/Pair;->first Ljava/lang/Object;
+	11      (0000002a) invoke-virtual       v4, v2, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+	12      (00000030) move-result          v2
+	13      (00000032) if-eqz               v2, +00dh
+	e:6d
+	(Ljava/lang/Throwable; -> 48 zzf-BB@0x48)
+
+zzf-BB@0x36 : 
+	14      (00000036) iget-object          v4, v3, Lcom/google/android/gms/internal/measurement/zzfb;->zzd Ljava/lang/String;
+	15      (0000003a) const-string         v1, "OnEventListener already registered."
+	16      (0000003e) invoke-static        v4, v1, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+	17      (00000044) monitor-exit         v0
+	18      (00000046) return-void          
+	e:6d
+	(Ljava/lang/Throwable; -> 48 zzf-BB@0x48)
+
+zzf-BB@0x48 : [ zzf-BB@0xa2 ]
+	19      (00000048) move-exception       v4
+	20      (0000004a) goto                 +2ch
+	e:6d
+	(Ljava/lang/Throwable; -> 48 zzf-BB@0x48)
+
+zzf-BB@0x4c : [ zzf-BB@0xe ]
+	21      (0000004c) add-int/lit8         v1, v1, 1
+	22      (00000050) goto                 -21h
+	e:6d
+	(Ljava/lang/Throwable; -> 48 zzf-BB@0x48)
+
+zzf-BB@0x52 : [ zzf-BB@0x76 zzf-BB@0x90 ]
+	23      (00000052) new-instance         v1, Lcom/google/android/gms/internal/measurement/zzes;
+	24      (00000056) invoke-direct        v1, v4, Lcom/google/android/gms/internal/measurement/zzes;-><init>(Lcom/google/android/gms/measurement/internal/zzjq;)V
+	25      (0000005c) new-instance         v2, Landroid/util/Pair;
+	26      (00000060) invoke-direct        v2, v4, v1, Landroid/util/Pair;-><init>(Ljava/lang/Object; Ljava/lang/Object;)V
+	27      (00000066) invoke-interface     v0, v2, Ljava/util/List;->add(Ljava/lang/Object;)Z
+	28      (0000006c) monitor-exit         v0
+	29      (0000006e) iget-object          v4, v3, Lcom/google/android/gms/internal/measurement/zzfb;->zzj Lcom/google/android/gms/internal/measurement/zzcr;
+	30      (00000072) if-eqz               v4, +00fh
+
+zzf-BB@0x76 : 
+	31      (00000076) iget-object          v4, v3, Lcom/google/android/gms/internal/measurement/zzfb;->zzj Lcom/google/android/gms/internal/measurement/zzcr;
+	32      (0000007a) invoke-interface     v4, v1, Lcom/google/android/gms/internal/measurement/zzcr;->registerOnMeasurementEventListener(Lcom/google/android/gms/internal/measurement/zzda;)V
+	33      (00000080) return-void          
+	76:7f
+	(Landroid/os/RemoteException; -> 82 zzf-BB@0x82)
+	(Landroid/os/BadParcelableException; -> 82 zzf-BB@0x82)
+	(Ljava/lang/IllegalArgumentException; -> 82 zzf-BB@0x82)
+	(Ljava/lang/IllegalStateException; -> 82 zzf-BB@0x82)
+	(Landroid/os/NetworkOnMainThreadException; -> 82 zzf-BB@0x82)
+	(Ljava/lang/NullPointerException; -> 82 zzf-BB@0x82)
+	(Ljava/lang/SecurityException; -> 82 zzf-BB@0x82)
+	(Ljava/lang/UnsupportedOperationException; -> 82 zzf-BB@0x82)
+
+zzf-BB@0x82 : [ zzf-BB@0x90 ]
+	34      (00000082) iget-object          v4, v3, Lcom/google/android/gms/internal/measurement/zzfb;->zzd Ljava/lang/String;
+	35      (00000086) const-string         v0, "Failed to register event listener on calling thread. Trying again on the dynamite thread."
+	36      (0000008a) invoke-static        v4, v0, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+
+zzf-BB@0x90 : 
+	37      (00000090) new-instance         v4, Lcom/google/android/gms/internal/measurement/zzen;
+	38      (00000094) invoke-direct        v4, v3, v1, Lcom/google/android/gms/internal/measurement/zzen;-><init>(Lcom/google/android/gms/internal/measurement/zzfb; Lcom/google/android/gms/internal/measurement/zzes;)V
+	39      (0000009a) invoke-direct        v3, v4, Lcom/google/android/gms/internal/measurement/zzfb;->zzS(Lcom/google/android/gms/internal/measurement/zzeq;)V
+	40      (000000a0) return-void          
+
+zzf-BB@0xa2 : 
+	41      (000000a2) monitor-exit         v0
+	42      (000000a4) throw                v4
+	a2:a3
+	(Ljava/lang/Throwable; -> 48 zzf-BB@0x48)
+

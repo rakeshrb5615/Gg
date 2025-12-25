@@ -1,0 +1,87 @@
+# Lcom/google/android/gms/internal/play_billing/zzds;->zzg(Ljava/lang/Iterable; Ljava/util/List;)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:java.lang.Iterable
+# - v5:java.util.List
+#
+# - return:void
+
+zzg-BB@0x0 : [ zzg-BB@0x1a zzg-BB@0x32 ]
+	0       (00000000) sget-object          v0, Lcom/google/android/gms/internal/play_billing/zzfo;->zzb [B
+	1       (00000004) move-object          v0, v4
+	2       (00000006) check-cast           v0, Ljava/util/Collection;
+	3       (0000000a) invoke-interface     v0, Ljava/util/Collection;->size()I
+	4       (00000010) move-result          v0
+	5       (00000012) instance-of          v1, v5, Ljava/util/ArrayList;
+	6       (00000016) if-eqz               v1, +00eh
+
+zzg-BB@0x1a : [ zzg-BB@0x50 ]
+	7       (0000001a) move-object          v1, v5
+	8       (0000001c) check-cast           v1, Ljava/util/ArrayList;
+	9       (00000020) invoke-interface     v5, Ljava/util/List;->size()I
+	10      (00000026) move-result          v2
+	11      (00000028) add-int/2addr        v2, v0
+	12      (0000002a) invoke-virtual       v1, v2, Ljava/util/ArrayList;->ensureCapacity(I)V
+	13      (00000030) goto                 +10h
+
+zzg-BB@0x32 : [ zzg-BB@0x3a zzg-BB@0x50 ]
+	14      (00000032) instance-of          v1, v5, Lcom/google/android/gms/internal/play_billing/zzgt;
+	15      (00000036) if-eqz               v1, +00dh
+
+zzg-BB@0x3a : [ zzg-BB@0x50 ]
+	16      (0000003a) move-object          v1, v5
+	17      (0000003c) check-cast           v1, Lcom/google/android/gms/internal/play_billing/zzgt;
+	18      (00000040) invoke-interface     v5, Ljava/util/List;->size()I
+	19      (00000046) move-result          v2
+	20      (00000048) add-int/2addr        v2, v0
+	21      (0000004a) invoke-virtual       v1, v2, Lcom/google/android/gms/internal/play_billing/zzgt;->zzf(I)V
+
+zzg-BB@0x50 : [ zzg-BB@0x66 ]
+	22      (00000050) invoke-interface     v5, Ljava/util/List;->size()I
+	23      (00000056) move-result          v0
+	24      (00000058) check-cast           v4, Ljava/util/List;
+	25      (0000005c) invoke-interface     v4, Ljava/util/List;->size()I
+	26      (00000062) move-result          v1
+	27      (00000064) const/4              v2, 0
+
+zzg-BB@0x66 : [ zzg-BB@0x6a zzg-BB@0xc0 ]
+	28      (00000066) if-ge                v2, v1, +02dh
+
+zzg-BB@0x6a : [ zzg-BB@0x76 zzg-BB@0xb4 ]
+	29      (0000006a) invoke-interface     v4, v2, Ljava/util/List;->get(I)Ljava/lang/Object;
+	30      (00000070) move-result-object   v3
+	31      (00000072) if-nez               v3, +021h
+
+zzg-BB@0x76 : [ zzg-BB@0x98 ]
+	32      (00000076) invoke-interface     v5, Ljava/util/List;->size()I
+	33      (0000007c) move-result          v4
+	34      (0000007e) sub-int/2addr        v4, v0
+	35      (00000080) const-string         v1, "Element at index "
+	36      (00000084) const-string         v2, " is null."
+	37      (00000088) invoke-static        v1, v4, v2, Lv1/a;->j(Ljava/lang/String; I Ljava/lang/String;)Ljava/lang/String;
+	38      (0000008e) move-result-object   v4
+	39      (00000090) invoke-interface     v5, Ljava/util/List;->size()I
+	40      (00000096) move-result          v1
+
+zzg-BB@0x98 : [ zzg-BB@0xa0 zzg-BB@0xa8 ]
+	41      (00000098) add-int/lit8         v1, v1, -1
+	42      (0000009c) if-lt                v1, v0, +006h
+
+zzg-BB@0xa0 : [ zzg-BB@0x98 ]
+	43      (000000a0) invoke-interface     v5, v1, Ljava/util/List;->remove(I)Ljava/lang/Object;
+	44      (000000a6) goto                 -7h
+
+zzg-BB@0xa8 : 
+	45      (000000a8) new-instance         v5, Ljava/lang/NullPointerException;
+	46      (000000ac) invoke-direct        v5, v4, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
+	47      (000000b2) throw                v5
+
+zzg-BB@0xb4 : [ zzg-BB@0x66 ]
+	48      (000000b4) invoke-interface     v5, v3, Ljava/util/List;->add(Ljava/lang/Object;)Z
+	49      (000000ba) add-int/lit8         v2, v2, 1
+	50      (000000be) goto                 -2ch
+
+zzg-BB@0xc0 : 
+	51      (000000c0) return-void          
+

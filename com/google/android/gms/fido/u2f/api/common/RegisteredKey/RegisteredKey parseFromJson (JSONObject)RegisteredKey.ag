@@ -1,0 +1,40 @@
+# Lcom/google/android/gms/fido/u2f/api/common/RegisteredKey;->parseFromJson(Lorg/json/JSONObject;)Lcom/google/android/gms/fido/u2f/api/common/RegisteredKey; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:org.json.JSONObject
+#
+# - return:com.google.android.gms.fido.u2f.api.common.RegisteredKey
+
+parseFromJson-BB@0x0 : [ parseFromJson-BB@0x12 parseFromJson-BB@0x1c ]
+	0       (00000000) const-string         v0, "challenge"
+	1       (00000004) invoke-virtual       v5, v0, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
+	2       (0000000a) move-result          v1
+	3       (0000000c) const/4              v2, 0
+	4       (0000000e) if-eqz               v1, +007h
+
+parseFromJson-BB@0x12 : [ parseFromJson-BB@0x1e ]
+	5       (00000012) invoke-virtual       v5, v0, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
+	6       (00000018) move-result-object   v0
+	7       (0000001a) goto                 +2h
+
+parseFromJson-BB@0x1c : [ parseFromJson-BB@0x1e ]
+	8       (0000001c) move-object          v0, v2
+
+parseFromJson-BB@0x1e : [ parseFromJson-BB@0x36 parseFromJson-BB@0x3e ]
+	9       (0000001e) invoke-static        v5, Lcom/google/android/gms/fido/u2f/api/common/KeyHandle;->parseFromJson(Lorg/json/JSONObject;)Lcom/google/android/gms/fido/u2f/api/common/KeyHandle;
+	10      (00000024) move-result-object   v1
+	11      (00000026) const-string         v3, "appId"
+	12      (0000002a) invoke-virtual       v5, v3, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
+	13      (00000030) move-result          v4
+	14      (00000032) if-eqz               v4, +006h
+
+parseFromJson-BB@0x36 : [ parseFromJson-BB@0x3e ]
+	15      (00000036) invoke-virtual       v5, v3, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
+	16      (0000003c) move-result-object   v2
+
+parseFromJson-BB@0x3e : 
+	17      (0000003e) new-instance         v5, Lcom/google/android/gms/fido/u2f/api/common/RegisteredKey;
+	18      (00000042) invoke-direct        v5, v1, v0, v2, Lcom/google/android/gms/fido/u2f/api/common/RegisteredKey;-><init>(Lcom/google/android/gms/fido/u2f/api/common/KeyHandle; Ljava/lang/String; Ljava/lang/String;)V
+	19      (00000048) return-object        v5
+

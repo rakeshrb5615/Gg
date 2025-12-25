@@ -1,0 +1,40 @@
+# Lcom/google/android/gms/internal/play_billing/zzbt;->indexOf(Ljava/lang/Object;)I [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:java.lang.Object
+#
+# - return:int
+
+indexOf-BB@0x0 : [ indexOf-BB@0x6 indexOf-BB@0x8 ]
+	0       (00000000) const/4              v0, -1
+	1       (00000002) if-nez               v5, +003h
+
+indexOf-BB@0x6 : 
+	2       (00000006) return               v0
+
+indexOf-BB@0x8 : [ indexOf-BB@0x12 ]
+	3       (00000008) invoke-interface     v4, Ljava/util/List;->size()I
+	4       (0000000e) move-result          v1
+	5       (00000010) const/4              v2, 0
+
+indexOf-BB@0x12 : [ indexOf-BB@0x16 indexOf-BB@0x32 ]
+	6       (00000012) if-ge                v2, v1, +010h
+
+indexOf-BB@0x16 : [ indexOf-BB@0x2a indexOf-BB@0x2c ]
+	7       (00000016) invoke-interface     v4, v2, Ljava/util/List;->get(I)Ljava/lang/Object;
+	8       (0000001c) move-result-object   v3
+	9       (0000001e) invoke-virtual       v5, v3, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+	10      (00000024) move-result          v3
+	11      (00000026) if-eqz               v3, +003h
+
+indexOf-BB@0x2a : 
+	12      (0000002a) return               v2
+
+indexOf-BB@0x2c : [ indexOf-BB@0x12 ]
+	13      (0000002c) add-int/lit8         v2, v2, 1
+	14      (00000030) goto                 -fh
+
+indexOf-BB@0x32 : 
+	15      (00000032) return               v0
+

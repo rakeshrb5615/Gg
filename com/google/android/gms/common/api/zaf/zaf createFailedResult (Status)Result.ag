@@ -1,0 +1,28 @@
+# Lcom/google/android/gms/common/api/zaf;->createFailedResult(Lcom/google/android/gms/common/api/Status;)Lcom/google/android/gms/common/api/Result; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:com.google.android.gms.common.api.Status
+#
+# - return:com.google.android.gms.common.api.Result
+
+createFailedResult-BB@0x0 : [ createFailedResult-BB@0x20 createFailedResult-BB@0x26 ]
+	0       (00000000) iget-object          v0, v1, Lcom/google/android/gms/common/api/zaf;->zae Lcom/google/android/gms/common/api/Result;
+	1       (00000004) invoke-virtual       v2, Lcom/google/android/gms/common/api/Status;->getStatusCode()I
+	2       (0000000a) move-result          v2
+	3       (0000000c) invoke-interface     v0, Lcom/google/android/gms/common/api/Result;->getStatus()Lcom/google/android/gms/common/api/Status;
+	4       (00000012) move-result-object   v0
+	5       (00000014) invoke-virtual       v0, Lcom/google/android/gms/common/api/Status;->getStatusCode()I
+	6       (0000001a) move-result          v0
+	7       (0000001c) if-ne                v2, v0, +005h
+
+createFailedResult-BB@0x20 : 
+	8       (00000020) iget-object          v2, v1, Lcom/google/android/gms/common/api/zaf;->zae Lcom/google/android/gms/common/api/Result;
+	9       (00000024) return-object        v2
+
+createFailedResult-BB@0x26 : 
+	10      (00000026) new-instance         v2, Ljava/lang/UnsupportedOperationException;
+	11      (0000002a) const-string         v0, "Creating failed results is not supported"
+	12      (0000002e) invoke-direct        v2, v0, Ljava/lang/UnsupportedOperationException;-><init>(Ljava/lang/String;)V
+	13      (00000034) throw                v2
+

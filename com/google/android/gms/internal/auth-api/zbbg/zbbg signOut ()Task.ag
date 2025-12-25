@@ -1,0 +1,60 @@
+# Lcom/google/android/gms/internal/auth-api/zbbg;->signOut()Lcom/google/android/gms/tasks/Task; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v3
+#
+# - return:com.google.android.gms.tasks.Task
+
+signOut-BB@0x0 : [ signOut-BB@0x3c ]
+	0       (00000000) invoke-virtual       v3, Lcom/google/android/gms/common/api/GoogleApi;->getApplicationContext()Landroid/content/Context;
+	1       (00000006) move-result-object   v0
+	2       (00000008) const-string         v1, "com.google.android.gms.signin"
+	3       (0000000c) const/4              v2, 0
+	4       (0000000e) invoke-virtual       v0, v1, v2, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String; I)Landroid/content/SharedPreferences;
+	5       (00000014) move-result-object   v0
+	6       (00000016) invoke-interface     v0, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
+	7       (0000001c) move-result-object   v0
+	8       (0000001e) invoke-interface     v0, Landroid/content/SharedPreferences$Editor;->clear()Landroid/content/SharedPreferences$Editor;
+	9       (00000024) move-result-object   v0
+	10      (00000026) invoke-interface     v0, Landroid/content/SharedPreferences$Editor;->apply()V
+	11      (0000002c) invoke-static        Lcom/google/android/gms/common/api/GoogleApiClient;->getAllClients()Ljava/util/Set;
+	12      (00000032) move-result-object   v0
+	13      (00000034) invoke-interface     v0, Ljava/util/Set;->iterator()Ljava/util/Iterator;
+	14      (0000003a) move-result-object   v0
+
+signOut-BB@0x3c : [ signOut-BB@0x48 signOut-BB@0x5c ]
+	15      (0000003c) invoke-interface     v0, Ljava/util/Iterator;->hasNext()Z
+	16      (00000042) move-result          v1
+	17      (00000044) if-eqz               v1, +00ch
+
+signOut-BB@0x48 : [ signOut-BB@0x3c ]
+	18      (00000048) invoke-interface     v0, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	19      (0000004e) move-result-object   v1
+	20      (00000050) check-cast           v1, Lcom/google/android/gms/common/api/GoogleApiClient;
+	21      (00000054) invoke-virtual       v1, Lcom/google/android/gms/common/api/GoogleApiClient;->maybeSignOut()V
+	22      (0000005a) goto                 -fh
+
+signOut-BB@0x5c : 
+	23      (0000005c) invoke-static        Lcom/google/android/gms/common/api/internal/GoogleApiManager;->reportSignOut()V
+	24      (00000062) invoke-static        Lcom/google/android/gms/common/api/internal/TaskApiCall;->builder()Lcom/google/android/gms/common/api/internal/TaskApiCall$Builder;
+	25      (00000068) move-result-object   v0
+	26      (0000006a) sget-object          v1, Lcom/google/android/gms/internal/auth-api/zbbi;->zbb Lcom/google/android/gms/common/Feature;
+	27      (0000006e) filled-new-array     v1, [Lcom/google/android/gms/common/Feature;
+	28      (00000074) move-result-object   v1
+	29      (00000076) invoke-virtual       v0, v1, Lcom/google/android/gms/common/api/internal/TaskApiCall$Builder;->setFeatures([Lcom/google/android/gms/common/Feature;)Lcom/google/android/gms/common/api/internal/TaskApiCall$Builder;
+	30      (0000007c) move-result-object   v0
+	31      (0000007e) new-instance         v1, Lcom/google/android/gms/internal/auth-api/zbaz;
+	32      (00000082) invoke-direct        v1, v3, Lcom/google/android/gms/internal/auth-api/zbaz;-><init>(Lcom/google/android/gms/internal/auth-api/zbbg;)V
+	33      (00000088) invoke-virtual       v0, v1, Lcom/google/android/gms/common/api/internal/TaskApiCall$Builder;->run(Lcom/google/android/gms/common/api/internal/RemoteCall;)Lcom/google/android/gms/common/api/internal/TaskApiCall$Builder;
+	34      (0000008e) move-result-object   v0
+	35      (00000090) invoke-virtual       v0, v2, Lcom/google/android/gms/common/api/internal/TaskApiCall$Builder;->setAutoResolveMissingFeatures(Z)Lcom/google/android/gms/common/api/internal/TaskApiCall$Builder;
+	36      (00000096) move-result-object   v0
+	37      (00000098) const/16             v1, 1554
+	38      (0000009c) invoke-virtual       v0, v1, Lcom/google/android/gms/common/api/internal/TaskApiCall$Builder;->setMethodKey(I)Lcom/google/android/gms/common/api/internal/TaskApiCall$Builder;
+	39      (000000a2) move-result-object   v0
+	40      (000000a4) invoke-virtual       v0, Lcom/google/android/gms/common/api/internal/TaskApiCall$Builder;->build()Lcom/google/android/gms/common/api/internal/TaskApiCall;
+	41      (000000aa) move-result-object   v0
+	42      (000000ac) invoke-virtual       v3, v0, Lcom/google/android/gms/common/api/GoogleApi;->doWrite(Lcom/google/android/gms/common/api/internal/TaskApiCall;)Lcom/google/android/gms/tasks/Task;
+	43      (000000b2) move-result-object   v0
+	44      (000000b4) return-object        v0
+

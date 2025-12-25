@@ -1,0 +1,36 @@
+# Lcom/pairip/licensecheck/RepeatedCheckMetadata;-><init>(J J)V [access_flags=public constructor]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:long
+# - v7:long
+#
+# - return:void
+
+<init>-BB@0x0 : [ <init>-BB@0x12 <init>-BB@0x34 ]
+	0       (00000000) invoke-direct        v3, Ljava/lang/Object;-><init>()V
+	1       (00000006) const-wide/16        v0, 0
+	2       (0000000a) cmp-long             v2, v4, v0
+	3       (0000000e) if-lez               v2, +013h
+
+<init>-BB@0x12 : [ <init>-BB@0x1a <init>-BB@0x24 ]
+	4       (00000012) cmp-long             v2, v6, v0
+	5       (00000016) if-lez               v2, +007h
+
+<init>-BB@0x1a : 
+	6       (0000001a) iput-wide            v4, v3, Lcom/pairip/licensecheck/RepeatedCheckMetadata;->durationToRetryMillis J
+	7       (0000001e) iput-wide            v6, v3, Lcom/pairip/licensecheck/RepeatedCheckMetadata;->timeToRetryMillis J
+	8       (00000022) return-void          
+
+<init>-BB@0x24 : 
+	9       (00000024) new-instance         v4, Ljava/lang/IllegalArgumentException;
+	10      (00000028) const-string         v5, "Time to retry must be positive."
+	11      (0000002c) invoke-direct        v4, v5, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	12      (00000032) throw                v4
+
+<init>-BB@0x34 : 
+	13      (00000034) new-instance         v4, Ljava/lang/IllegalArgumentException;
+	14      (00000038) const-string         v5, "Duration to retry must be positive."
+	15      (0000003c) invoke-direct        v4, v5, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	16      (00000042) throw                v4
+

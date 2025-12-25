@@ -1,0 +1,41 @@
+# Lcom/google/android/gms/common/util/DeviceProperties;->isLatchsky(Landroid/content/Context;)Z [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:android.content.Context
+#
+# - return:boolean
+
+isLatchsky-BB@0x0 : [ isLatchsky-BB@0x8 isLatchsky-BB@0x40 ]
+	0       (00000000) sget-object          v0, Lcom/google/android/gms/common/util/DeviceProperties;->zzh Ljava/lang/Boolean;
+	1       (00000004) if-nez               v0, +01eh
+
+isLatchsky-BB@0x8 : [ isLatchsky-BB@0x22 isLatchsky-BB@0x34 ]
+	2       (00000008) invoke-virtual       v2, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
+	3       (0000000e) move-result-object   v2
+	4       (00000010) const-string         v0, "com.google.android.feature.services_updater"
+	5       (00000014) invoke-virtual       v2, v0, Landroid/content/pm/PackageManager;->hasSystemFeature(Ljava/lang/String;)Z
+	6       (0000001a) move-result          v0
+	7       (0000001c) const/4              v1, 0
+	8       (0000001e) if-eqz               v0, +00bh
+
+isLatchsky-BB@0x22 : [ isLatchsky-BB@0x32 isLatchsky-BB@0x34 ]
+	9       (00000022) const-string         v0, "cn.google.services"
+	10      (00000026) invoke-virtual       v2, v0, Landroid/content/pm/PackageManager;->hasSystemFeature(Ljava/lang/String;)Z
+	11      (0000002c) move-result          v2
+	12      (0000002e) if-eqz               v2, +003h
+
+isLatchsky-BB@0x32 : [ isLatchsky-BB@0x34 ]
+	13      (00000032) const/4              v1, 1
+
+isLatchsky-BB@0x34 : [ isLatchsky-BB@0x40 ]
+	14      (00000034) invoke-static        v1, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+	15      (0000003a) move-result-object   v2
+	16      (0000003c) sput-object          v2, Lcom/google/android/gms/common/util/DeviceProperties;->zzh Ljava/lang/Boolean;
+
+isLatchsky-BB@0x40 : 
+	17      (00000040) sget-object          v2, Lcom/google/android/gms/common/util/DeviceProperties;->zzh Ljava/lang/Boolean;
+	18      (00000044) invoke-virtual       v2, Ljava/lang/Boolean;->booleanValue()Z
+	19      (0000004a) move-result          v2
+	20      (0000004c) return               v2
+

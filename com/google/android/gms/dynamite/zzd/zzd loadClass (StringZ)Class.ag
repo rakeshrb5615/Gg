@@ -1,0 +1,33 @@
+# Lcom/google/android/gms/dynamite/zzd;->loadClass(Ljava/lang/String; Z)Ljava/lang/Class; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:java.lang.String
+# - v3:boolean
+#
+# - return:java.lang.Class
+
+loadClass-BB@0x0 : [ loadClass-BB@0x10 loadClass-BB@0x2a ]
+	0       (00000000) const-string         v0, "java."
+	1       (00000004) invoke-virtual       v2, v0, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
+	2       (0000000a) move-result          v0
+	3       (0000000c) if-nez               v0, +00fh
+
+loadClass-BB@0x10 : [ loadClass-BB@0x20 loadClass-BB@0x2a ]
+	4       (00000010) const-string         v0, "android."
+	5       (00000014) invoke-virtual       v2, v0, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
+	6       (0000001a) move-result          v0
+	7       (0000001c) if-nez               v0, +007h
+
+loadClass-BB@0x20 : 
+	8       (00000020) invoke-virtual       v1, v2, Ljava/lang/ClassLoader;->findClass(Ljava/lang/String;)Ljava/lang/Class;
+	9       (00000026) move-result-object   v2
+	10      (00000028) return-object        v2
+	20:27
+	(Ljava/lang/ClassNotFoundException; -> 2a loadClass-BB@0x2a)
+
+loadClass-BB@0x2a : 
+	11      (0000002a) invoke-super         v1, v2, v3, Ljava/lang/ClassLoader;->loadClass(Ljava/lang/String; Z)Ljava/lang/Class;
+	12      (00000030) move-result-object   v2
+	13      (00000032) return-object        v2
+

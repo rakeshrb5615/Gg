@@ -1,0 +1,48 @@
+# Lcom/google/android/gms/internal/fido/zzbc;->zzh(I)I [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:int
+#
+# - return:int
+
+zzh-BB@0x0 : [ zzh-BB@0x14 zzh-BB@0x3e ]
+	0       (00000000) const/4              v0, 2
+	1       (00000002) invoke-static        v5, v0, Ljava/lang/Math;->max(I I)I
+	2       (00000008) move-result          v5
+	3       (0000000a) const                v0, 751619276
+	4       (00000010) if-ge                v5, v0, +017h
+
+zzh-BB@0x14 : [ zzh-BB@0x20 ]
+	5       (00000014) add-int/lit8         v0, v5, -1
+	6       (00000018) invoke-static        v0, Ljava/lang/Integer;->highestOneBit(I)I
+	7       (0000001e) move-result          v0
+
+zzh-BB@0x20 : [ zzh-BB@0x3a zzh-BB@0x3c ]
+	8       (00000020) add-int/2addr        v0, v0
+	9       (00000022) int-to-double        v1, v0
+	10      (00000024) const-wide           v3, 4604480259023595110
+	11      (0000002e) mul-double/2addr     v1, v3
+	12      (00000030) int-to-double        v3, v5
+	13      (00000032) cmpg-double          v1, v1, v3
+	14      (00000036) if-gez               v1, +003h
+
+zzh-BB@0x3a : [ zzh-BB@0x20 ]
+	15      (0000003a) goto                 -dh
+
+zzh-BB@0x3c : 
+	16      (0000003c) return               v0
+
+zzh-BB@0x3e : [ zzh-BB@0x46 zzh-BB@0x48 ]
+	17      (0000003e) const/high16         v0, 1073741824
+	18      (00000042) if-ge                v5, v0, +003h
+
+zzh-BB@0x46 : 
+	19      (00000046) return               v0
+
+zzh-BB@0x48 : 
+	20      (00000048) new-instance         v5, Ljava/lang/IllegalArgumentException;
+	21      (0000004c) const-string         v0, "collection too large"
+	22      (00000050) invoke-direct        v5, v0, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	23      (00000056) throw                v5
+

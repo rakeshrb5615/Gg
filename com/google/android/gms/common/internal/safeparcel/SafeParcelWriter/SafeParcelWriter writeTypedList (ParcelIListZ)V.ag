@@ -1,0 +1,56 @@
+# Lcom/google/android/gms/common/internal/safeparcel/SafeParcelWriter;->writeTypedList(Landroid/os/Parcel; I Ljava/util/List; Z)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:android.os.Parcel
+# - v4:int
+# - v5:java.util.List
+# - v6:boolean
+#
+# - return:void
+
+writeTypedList-BB@0x0 : [ writeTypedList-BB@0x6 writeTypedList-BB@0x12 ]
+	0       (00000000) const/4              v0, 0
+	1       (00000002) if-nez               v5, +008h
+
+writeTypedList-BB@0x6 : [ writeTypedList-BB@0xa writeTypedList-BB@0x10 ]
+	2       (00000006) if-eqz               v6, +005h
+
+writeTypedList-BB@0xa : [ writeTypedList-BB@0x10 ]
+	3       (0000000a) invoke-static        v3, v4, v0, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelWriter;->zza(Landroid/os/Parcel; I I)V
+
+writeTypedList-BB@0x10 : 
+	4       (00000010) return-void          
+
+writeTypedList-BB@0x12 : [ writeTypedList-BB@0x2a ]
+	5       (00000012) invoke-static        v3, v4, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelWriter;->zzb(Landroid/os/Parcel; I)I
+	6       (00000018) move-result          v4
+	7       (0000001a) invoke-interface     v5, Ljava/util/List;->size()I
+	8       (00000020) move-result          v6
+	9       (00000022) invoke-virtual       v3, v6, Landroid/os/Parcel;->writeInt(I)V
+	10      (00000028) move                 v1, v0
+
+writeTypedList-BB@0x2a : [ writeTypedList-BB@0x2e writeTypedList-BB@0x52 ]
+	11      (0000002a) if-ge                v1, v6, +014h
+
+writeTypedList-BB@0x2e : [ writeTypedList-BB@0x3e writeTypedList-BB@0x46 ]
+	12      (0000002e) invoke-interface     v5, v1, Ljava/util/List;->get(I)Ljava/lang/Object;
+	13      (00000034) move-result-object   v2
+	14      (00000036) check-cast           v2, Landroid/os/Parcelable;
+	15      (0000003a) if-nez               v2, +006h
+
+writeTypedList-BB@0x3e : [ writeTypedList-BB@0x4c ]
+	16      (0000003e) invoke-virtual       v3, v0, Landroid/os/Parcel;->writeInt(I)V
+	17      (00000044) goto                 +4h
+
+writeTypedList-BB@0x46 : [ writeTypedList-BB@0x4c ]
+	18      (00000046) invoke-static        v3, v2, v0, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelWriter;->zzd(Landroid/os/Parcel; Landroid/os/Parcelable; I)V
+
+writeTypedList-BB@0x4c : [ writeTypedList-BB@0x2a ]
+	19      (0000004c) add-int/lit8         v1, v1, 1
+	20      (00000050) goto                 -13h
+
+writeTypedList-BB@0x52 : 
+	21      (00000052) invoke-static        v3, v4, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelWriter;->zzc(Landroid/os/Parcel; I)V
+	22      (00000058) return-void          
+

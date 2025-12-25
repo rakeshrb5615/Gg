@@ -1,0 +1,46 @@
+# Lcom/google/android/gms/common/util/ArrayUtils;->contains([Ljava/lang/Object; Ljava/lang/Object;)Z [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:java.lang.Object[]
+# - v5:java.lang.Object
+#
+# - return:boolean
+
+contains-BB@0x0 : [ contains-BB@0x6 contains-BB@0xa ]
+	0       (00000000) const/4              v0, 0
+	1       (00000002) if-eqz               v4, +004h
+
+contains-BB@0x6 : [ contains-BB@0xc ]
+	2       (00000006) array-length         v1, v4
+	3       (00000008) goto                 +2h
+
+contains-BB@0xa : [ contains-BB@0xc ]
+	4       (0000000a) move                 v1, v0
+
+contains-BB@0xc : [ contains-BB@0xe ]
+	5       (0000000c) move                 v2, v0
+
+contains-BB@0xe : [ contains-BB@0x12 contains-BB@0x30 ]
+	6       (0000000e) if-ge                v2, v1, +011h
+
+contains-BB@0x12 : [ contains-BB@0x22 contains-BB@0x2a ]
+	7       (00000012) aget-object          v3, v4, v2
+	8       (00000016) invoke-static        v3, v5, Lcom/google/android/gms/common/internal/Objects;->equal(Ljava/lang/Object; Ljava/lang/Object;)Z
+	9       (0000001c) move-result          v3
+	10      (0000001e) if-eqz               v3, +006h
+
+contains-BB@0x22 : [ contains-BB@0x26 contains-BB@0x30 ]
+	11      (00000022) if-ltz               v2, +007h
+
+contains-BB@0x26 : 
+	12      (00000026) const/4              v4, 1
+	13      (00000028) return               v4
+
+contains-BB@0x2a : [ contains-BB@0xe ]
+	14      (0000002a) add-int/lit8         v2, v2, 1
+	15      (0000002e) goto                 -10h
+
+contains-BB@0x30 : 
+	16      (00000030) return               v0
+

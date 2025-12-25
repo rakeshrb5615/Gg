@@ -1,0 +1,342 @@
+# Lcom/google/firebase/auth/internal/GenericIdpActivity;->onResume()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v17
+#
+# - return:void
+
+onResume-BB@0x0 : [ onResume-BB@0x2e onResume-BB@0x332 ]
+	0       (00000000) move-object/from16   v5, v17
+	1       (00000004) invoke-super         v5, Landroidx/fragment/app/j0;->onResume()V
+	2       (0000000a) const-string         v0, "android.intent.action.VIEW"
+	3       (0000000e) invoke-virtual       v5, Landroid/app/Activity;->getIntent()Landroid/content/Intent;
+	4       (00000014) move-result-object   v1
+	5       (00000016) invoke-virtual       v1, Landroid/content/Intent;->getAction()Ljava/lang/String;
+	6       (0000001c) move-result-object   v1
+	7       (0000001e) invoke-virtual       v0, v1, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	8       (00000024) move-result          v0
+	9       (00000026) const/4              v6, 1
+	10      (00000028) const/4              v7, 0
+	11      (0000002a) if-eqz               v0, +184h
+
+onResume-BB@0x2e : [ onResume-BB@0x46 onResume-BB@0x62 ]
+	12      (0000002e) invoke-virtual       v5, Landroid/app/Activity;->getIntent()Landroid/content/Intent;
+	13      (00000034) move-result-object   v0
+	14      (00000036) const-string         v1, "firebaseError"
+	15      (0000003a) invoke-virtual       v0, v1, Landroid/content/Intent;->hasExtra(Ljava/lang/String;)Z
+	16      (00000040) move-result          v1
+	17      (00000042) if-eqz               v1, +010h
+
+onResume-BB@0x46 : 
+	18      (00000046) const-string         v1, "firebaseError"
+	19      (0000004a) invoke-virtual       v0, v1, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
+	20      (00000050) move-result-object   v0
+	21      (00000052) invoke-static        v0, Lz4/v;->a(Ljava/lang/String;)Lcom/google/android/gms/common/api/Status;
+	22      (00000058) move-result-object   v0
+	23      (0000005a) invoke-virtual       v5, v0, Lcom/google/firebase/auth/internal/GenericIdpActivity;->i(Lcom/google/android/gms/common/api/Status;)V
+	24      (00000060) return-void          
+
+onResume-BB@0x62 : [ onResume-BB@0x72 onResume-BB@0x32a ]
+	25      (00000062) const-string         v1, "link"
+	26      (00000066) invoke-virtual       v0, v1, Landroid/content/Intent;->hasExtra(Ljava/lang/String;)Z
+	27      (0000006c) move-result          v1
+	28      (0000006e) if-eqz               v1, +15eh
+
+onResume-BB@0x72 : [ onResume-BB@0x82 onResume-BB@0x32a ]
+	29      (00000072) const-string         v1, "eventId"
+	30      (00000076) invoke-virtual       v0, v1, Landroid/content/Intent;->hasExtra(Ljava/lang/String;)Z
+	31      (0000007c) move-result          v1
+	32      (0000007e) if-eqz               v1, +156h
+
+onResume-BB@0x82 : [ onResume-BB@0xc4 ]
+	33      (00000082) const-string         v1, "link"
+	34      (00000086) invoke-virtual       v0, v1, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
+	35      (0000008c) move-result-object   v1
+	36      (0000008e) const-string         v2, "eventId"
+	37      (00000092) invoke-virtual       v0, v2, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
+	38      (00000098) move-result-object   v2
+	39      (0000009a) invoke-virtual       v5, Landroid/content/Context;->getPackageName()Ljava/lang/String;
+	40      (000000a0) move-result-object   v3
+	41      (000000a2) const-string         v4, "encryptionEnabled"
+	42      (000000a6) invoke-virtual       v0, v4, v6, Landroid/content/Intent;->getBooleanExtra(Ljava/lang/String; Z)Z
+	43      (000000ac) move-result          v0
+	44      (000000ae) sget-object          v4, Lz4/z;->a Lz4/z;
+	45      (000000b2) const-string         v6, "com.google.firebase.auth.internal.EVENT_ID."
+	46      (000000b6) const-string         v8, "com.google.firebase.auth.internal.EVENT_ID."
+	47      (000000ba) const-string         v9, "com.google.firebase.auth.internal.EVENT_ID."
+	48      (000000be) const-string         v10, "com.google.firebase.auth.internal.EVENT_ID."
+	49      (000000c2) monitor-enter        v4
+
+onResume-BB@0xc4 : [ onResume-BB@0x1b8 onResume-BB@0x1d6 ]
+	50      (000000c4) invoke-static        v3, Lcom/google/android/gms/common/internal/Preconditions;->checkNotEmpty(Ljava/lang/String;)Ljava/lang/String;
+	51      (000000ca) invoke-static        v2, Lcom/google/android/gms/common/internal/Preconditions;->checkNotEmpty(Ljava/lang/String;)Ljava/lang/String;
+	52      (000000d0) invoke-static        v5, v3, Lz4/z;->a(Landroid/content/Context; Ljava/lang/String;)Landroid/content/SharedPreferences;
+	53      (000000d6) move-result-object   v3
+	54      (000000d8) new-instance         v11, Ljava/lang/StringBuilder;
+	55      (000000dc) invoke-direct        v11, v10, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	56      (000000e2) invoke-virtual       v11, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	57      (000000e8) const-string         v10, ".SESSION_ID"
+	58      (000000ec) invoke-virtual       v11, v10, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	59      (000000f2) invoke-virtual       v11, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	60      (000000f8) move-result-object   v10
+	61      (000000fa) new-instance         v11, Ljava/lang/StringBuilder;
+	62      (000000fe) invoke-direct        v11, v9, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	63      (00000104) invoke-virtual       v11, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	64      (0000010a) const-string         v9, ".OPERATION"
+	65      (0000010e) invoke-virtual       v11, v9, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	66      (00000114) invoke-virtual       v11, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	67      (0000011a) move-result-object   v9
+	68      (0000011c) new-instance         v11, Ljava/lang/StringBuilder;
+	69      (00000120) invoke-direct        v11, v8, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	70      (00000126) invoke-virtual       v11, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	71      (0000012c) const-string         v8, ".PROVIDER_ID"
+	72      (00000130) invoke-virtual       v11, v8, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	73      (00000136) invoke-virtual       v11, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	74      (0000013c) move-result-object   v8
+	75      (0000013e) new-instance         v11, Ljava/lang/StringBuilder;
+	76      (00000142) invoke-direct        v11, v6, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	77      (00000148) invoke-virtual       v11, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	78      (0000014e) const-string         v2, ".FIREBASE_APP_NAME"
+	79      (00000152) invoke-virtual       v11, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	80      (00000158) invoke-virtual       v11, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	81      (0000015e) move-result-object   v2
+	82      (00000160) const/4              v6, 0
+	83      (00000162) invoke-interface     v3, v10, v6, Landroid/content/SharedPreferences;->getString(Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	84      (00000168) move-result-object   v12
+	85      (0000016a) invoke-interface     v3, v9, v6, Landroid/content/SharedPreferences;->getString(Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	86      (00000170) move-result-object   v13
+	87      (00000172) invoke-interface     v3, v8, v6, Landroid/content/SharedPreferences;->getString(Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	88      (00000178) move-result-object   v14
+	89      (0000017a) const-string         v11, "com.google.firebase.auth.api.gms.config.tenant.id"
+	90      (0000017e) invoke-interface     v3, v11, v6, Landroid/content/SharedPreferences;->getString(Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	91      (00000184) move-result-object   v15
+	92      (00000186) invoke-interface     v3, v2, v6, Landroid/content/SharedPreferences;->getString(Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	93      (0000018c) move-result-object   v16
+	94      (0000018e) invoke-interface     v3, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
+	95      (00000194) move-result-object   v3
+	96      (00000196) invoke-interface     v3, v10, Landroid/content/SharedPreferences$Editor;->remove(Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
+	97      (0000019c) invoke-interface     v3, v9, Landroid/content/SharedPreferences$Editor;->remove(Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
+	98      (000001a2) invoke-interface     v3, v8, Landroid/content/SharedPreferences$Editor;->remove(Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
+	99      (000001a8) invoke-interface     v3, v2, Landroid/content/SharedPreferences$Editor;->remove(Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
+	100     (000001ae) invoke-interface     v3, Landroid/content/SharedPreferences$Editor;->apply()V
+	101     (000001b4) if-eqz               v12, +011h
+	c4:1c9
+	(Ljava/lang/Throwable; -> 1d0 onResume-BB@0x1d0)
+
+onResume-BB@0x1b8 : [ onResume-BB@0x1bc onResume-BB@0x1d6 ]
+	102     (000001b8) if-eqz               v13, +00fh
+	c4:1c9
+	(Ljava/lang/Throwable; -> 1d0 onResume-BB@0x1d0)
+
+onResume-BB@0x1bc : [ onResume-BB@0x1c0 onResume-BB@0x1d6 ]
+	103     (000001bc) if-eqz               v14, +00dh
+	c4:1c9
+	(Ljava/lang/Throwable; -> 1d0 onResume-BB@0x1d0)
+
+onResume-BB@0x1c0 : [ onResume-BB@0x1d8 ]
+	104     (000001c0) new-instance         v11, Lz4/b0;
+	105     (000001c4) invoke-direct/range  v11 ... v16, Lz4/b0;-><init>(Ljava/lang/String; Ljava/lang/String; Ljava/lang/String; Ljava/lang/String; Ljava/lang/String;)V
+	106     (000001ca) monitor-exit         v4
+	107     (000001cc) move-object          v6, v11
+	108     (000001ce) goto                 +5h
+
+onResume-BB@0x1d0 : [ onResume-BB@0x326 ]
+	109     (000001d0) move-exception       v0
+	110     (000001d2) goto/16              +0aah
+
+onResume-BB@0x1d6 : [ onResume-BB@0x1d8 ]
+	111     (000001d6) monitor-exit         v4
+
+onResume-BB@0x1d8 : [ onResume-BB@0x1dc onResume-BB@0x1e2 ]
+	112     (000001d8) if-nez               v6, +005h
+
+onResume-BB@0x1dc : [ onResume-BB@0x1e2 ]
+	113     (000001dc) invoke-virtual       v5, Lcom/google/firebase/auth/internal/GenericIdpActivity;->j()V
+
+onResume-BB@0x1e2 : [ onResume-BB@0x1e6 onResume-BB@0x212 ]
+	114     (000001e2) if-eqz               v0, +018h
+
+onResume-BB@0x1e6 : [ onResume-BB@0x212 ]
+	115     (000001e6) invoke-virtual       v5, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;
+	116     (000001ec) move-result-object   v0
+	117     (000001ee) iget-object          v2, v6, Lz4/b0;->e Ljava/lang/String;
+	118     (000001f2) invoke-static        v2, Lq4/f;->e(Ljava/lang/String;)Lq4/f;
+	119     (000001f8) move-result-object   v2
+	120     (000001fa) invoke-virtual       v2, Lq4/f;->f()Ljava/lang/String;
+	121     (00000200) move-result-object   v2
+	122     (00000202) invoke-static        v0, v2, Lz4/a0;->c(Landroid/content/Context; Ljava/lang/String;)Lz4/a0;
+	123     (00000208) move-result-object   v0
+	124     (0000020a) invoke-virtual       v0, v1, Lz4/a0;->b(Ljava/lang/String;)Ljava/lang/String;
+	125     (00000210) move-result-object   v1
+
+onResume-BB@0x212 : [ onResume-BB@0x23a onResume-BB@0x27a ]
+	126     (00000212) new-instance         v0, Lcom/google/android/gms/internal/firebase-auth-api/zzajb;
+	127     (00000216) invoke-direct        v0, v6, v1, Lcom/google/android/gms/internal/firebase-auth-api/zzajb;-><init>(Lz4/b0; Ljava/lang/String;)V
+	128     (0000021c) iget-object          v1, v6, Lz4/b0;->d Ljava/lang/String;
+	129     (00000220) iget-object          v2, v6, Lz4/b0;->b Ljava/lang/String;
+	130     (00000224) invoke-virtual       v0, v1, Lcom/google/android/gms/internal/firebase-auth-api/zzajb;->zzb(Ljava/lang/String;)Lcom/google/android/gms/internal/firebase-auth-api/zzajb;
+	131     (0000022a) const-string         v3, "com.google.firebase.auth.internal.NONGMSCORE_SIGN_IN"
+	132     (0000022e) invoke-virtual       v3, v2, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	133     (00000234) move-result          v3
+	134     (00000236) if-nez               v3, +022h
+
+onResume-BB@0x23a : [ onResume-BB@0x24a onResume-BB@0x27a ]
+	135     (0000023a) const-string         v3, "com.google.firebase.auth.internal.NONGMSCORE_LINK"
+	136     (0000023e) invoke-virtual       v3, v2, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	137     (00000244) move-result          v3
+	138     (00000246) if-nez               v3, +01ah
+
+onResume-BB@0x24a : [ onResume-BB@0x25a onResume-BB@0x25c ]
+	139     (0000024a) const-string         v3, "com.google.firebase.auth.internal.NONGMSCORE_REAUTHENTICATE"
+	140     (0000024e) invoke-virtual       v3, v2, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	141     (00000254) move-result          v3
+	142     (00000256) if-eqz               v3, +003h
+
+onResume-BB@0x25a : [ onResume-BB@0x27a ]
+	143     (0000025a) goto                 +10h
+
+onResume-BB@0x25c : 
+	144     (0000025c) const-string         v0, "GenericIdpActivity"
+	145     (00000260) const-string         v1, "unsupported operation: "
+	146     (00000264) invoke-virtual       v1, v2, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	147     (0000026a) move-result-object   v1
+	148     (0000026c) invoke-static        v0, v1, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String;)I
+	149     (00000272) invoke-virtual       v5, Lcom/google/firebase/auth/internal/GenericIdpActivity;->j()V
+	150     (00000278) return-void          
+
+onResume-BB@0x27a : 
+	151     (0000027a) const-wide/16        v3, 0
+	152     (0000027e) sput-wide            v3, Lcom/google/firebase/auth/internal/GenericIdpActivity;->b J
+	153     (00000282) iput-boolean         v7, v5, Lcom/google/firebase/auth/internal/GenericIdpActivity;->a Z
+	154     (00000286) new-instance         v3, Landroid/content/Intent;
+	155     (0000028a) invoke-direct        v3, Landroid/content/Intent;-><init>()V
+	156     (00000290) const-string         v4, "com.google.firebase.auth.internal.VERIFY_ASSERTION_REQUEST"
+	157     (00000294) invoke-static        v0, v3, v4, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelableSerializer;->serializeToIntentExtra(Lcom/google/android/gms/common/internal/safeparcel/SafeParcelable; Landroid/content/Intent; Ljava/lang/String;)V
+	158     (0000029a) const-string         v4, "com.google.firebase.auth.internal.OPERATION"
+	159     (0000029e) invoke-virtual       v3, v4, v2, Landroid/content/Intent;->putExtra(Ljava/lang/String; Ljava/lang/String;)Landroid/content/Intent;
+	160     (000002a4) const-string         v4, "com.google.firebase.auth.ACTION_RECEIVE_FIREBASE_AUTH_INTENT"
+	161     (000002a8) invoke-virtual       v3, v4, Landroid/content/Intent;->setAction(Ljava/lang/String;)Landroid/content/Intent;
+	162     (000002ae) invoke-static        v5, Lr1/a;->a(Landroidx/fragment/app/j0;)Lr1/a;
+	163     (000002b4) move-result-object   v4
+	164     (000002b6) invoke-virtual       v4, v3, Lr1/a;->b(Landroid/content/Intent;)V
+	165     (000002bc) invoke-virtual       v5, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;
+	166     (000002c2) move-result-object   v3
+	167     (000002c4) const-string         v4, "com.google.firebase.auth.internal.ProcessDeathHelper"
+	168     (000002c8) invoke-virtual       v3, v4, v7, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String; I)Landroid/content/SharedPreferences;
+	169     (000002ce) move-result-object   v3
+	170     (000002d0) invoke-interface     v3, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
+	171     (000002d6) move-result-object   v3
+	172     (000002d8) const-string         v4, "verifyAssertionRequest"
+	173     (000002dc) invoke-static        v0, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelableSerializer;->serializeToString(Lcom/google/android/gms/common/internal/safeparcel/SafeParcelable;)Ljava/lang/String;
+	174     (000002e2) move-result-object   v0
+	175     (000002e4) invoke-interface     v3, v4, v0, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String; Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
+	176     (000002ea) const-string         v0, "operation"
+	177     (000002ee) invoke-interface     v3, v0, v2, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String; Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
+	178     (000002f4) const-string         v0, "tenantId"
+	179     (000002f8) invoke-interface     v3, v0, v1, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String; Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
+	180     (000002fe) const-string         v0, "timestamp"
+	181     (00000302) invoke-static        Lcom/google/android/gms/common/util/DefaultClock;->getInstance()Lcom/google/android/gms/common/util/Clock;
+	182     (00000308) move-result-object   v1
+	183     (0000030a) invoke-interface     v1, Lcom/google/android/gms/common/util/Clock;->currentTimeMillis()J
+	184     (00000310) move-result-wide     v1
+	185     (00000312) invoke-interface     v3, v0, v1, v2, Landroid/content/SharedPreferences$Editor;->putLong(Ljava/lang/String; J)Landroid/content/SharedPreferences$Editor;
+	186     (00000318) invoke-interface     v3, Landroid/content/SharedPreferences$Editor;->commit()Z
+	187     (0000031e) invoke-virtual       v5, Landroid/app/Activity;->finish()V
+	188     (00000324) return-void          
+
+onResume-BB@0x326 : 
+	189     (00000326) monitor-exit         v4
+	190     (00000328) throw                v0
+	326:327
+	(Ljava/lang/Throwable; -> 1d0 onResume-BB@0x1d0)
+
+onResume-BB@0x32a : 
+	191     (0000032a) invoke-virtual       v5, Lcom/google/firebase/auth/internal/GenericIdpActivity;->j()V
+	192     (00000330) return-void          
+
+onResume-BB@0x332 : [ onResume-BB@0x33a onResume-BB@0x446 ]
+	193     (00000332) iget-boolean         v0, v5, Lcom/google/firebase/auth/internal/GenericIdpActivity;->a Z
+	194     (00000336) if-nez               v0, +088h
+
+onResume-BB@0x33a : [ onResume-BB@0x342 ]
+	195     (0000033a) invoke-virtual       v5, Landroid/content/Context;->getPackageName()Ljava/lang/String;
+	196     (00000340) move-result-object   v1
+
+onResume-BB@0x342 : [ onResume-BB@0x38e onResume-BB@0x3b0 ]
+	197     (00000342) invoke-static        v5, v1, Lcom/google/android/gms/common/util/AndroidUtilsLight;->getPackageCertificateHashBytes(Landroid/content/Context; Ljava/lang/String;)[B
+	198     (00000348) move-result-object   v0
+	199     (0000034a) invoke-static        v0, Lcom/google/android/gms/common/util/Hex;->bytesToStringUppercase([B)Ljava/lang/String;
+	200     (00000350) move-result-object   v0
+	201     (00000352) sget-object          v2, Ljava/util/Locale;->US Ljava/util/Locale;
+	202     (00000356) invoke-virtual       v0, v2, Ljava/lang/String;->toLowerCase(Ljava/util/Locale;)Ljava/lang/String;
+	203     (0000035c) move-result-object   v2
+	204     (0000035e) invoke-virtual       v5, Landroid/app/Activity;->getIntent()Landroid/content/Intent;
+	205     (00000364) move-result-object   v0
+	206     (00000366) const-string         v3, "com.google.firebase.auth.KEY_FIREBASE_APP_NAME"
+	207     (0000036a) invoke-virtual       v0, v3, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
+	208     (00000370) move-result-object   v0
+	209     (00000372) invoke-static        v0, Lq4/f;->e(Ljava/lang/String;)Lq4/f;
+	210     (00000378) move-result-object   v4
+	211     (0000037a) invoke-static        v4, Lcom/google/firebase/auth/FirebaseAuth;->getInstance(Lq4/f;)Lcom/google/firebase/auth/FirebaseAuth;
+	212     (00000380) move-result-object   v8
+	213     (00000382) invoke-static        v4, Lcom/google/android/gms/internal/firebase-auth-api/zzagl;->zza(Lq4/f;)Z
+	214     (00000388) move-result          v0
+	215     (0000038a) if-nez               v0, +013h
+	342:35d
+	(Landroid/content/pm/PackageManager$NameNotFoundException; -> 3fa onResume-BB@0x3fa)
+
+onResume-BB@0x38e : [ onResume-BB@0x440 ]
+	216     (0000038e) new-instance         v0, Lcom/google/android/gms/internal/firebase-auth-api/zzaeq;
+	217     (00000392) invoke-virtual       v5, Landroid/app/Activity;->getIntent()Landroid/content/Intent;
+	218     (00000398) move-result-object   v3
+	219     (0000039a) invoke-direct/range  v0 ... v5, Lcom/google/android/gms/internal/firebase-auth-api/zzaeq;-><init>(Ljava/lang/String; Ljava/lang/String; Landroid/content/Intent; Lq4/f; Lcom/google/android/gms/internal/firebase-auth-api/zzaes;)V
+	220     (000003a0) iget-object          v1, v8, Lcom/google/firebase/auth/FirebaseAuth;->s Ljava/util/concurrent/Executor;
+	221     (000003a4) new-array            v2, v7, [Ljava/lang/Void;
+	222     (000003a8) invoke-virtual       v0, v1, v2, Landroid/os/AsyncTask;->executeOnExecutor(Ljava/util/concurrent/Executor; [Ljava/lang/Object;)Landroid/os/AsyncTask;
+	223     (000003ae) goto                 +49h
+
+onResume-BB@0x3b0 : [ onResume-BB@0x440 ]
+	224     (000003b0) invoke-virtual       v4, Lq4/f;->a()V
+	225     (000003b6) iget-object          v0, v4, Lq4/f;->c Lq4/j;
+	226     (000003ba) iget-object          v0, v0, Lq4/j;->a Ljava/lang/String;
+	227     (000003be) invoke-static        v0, Lcom/google/android/gms/internal/firebase-auth-api/zzagl;->zza(Ljava/lang/String;)Ljava/lang/String;
+	228     (000003c4) move-result-object   v0
+	229     (000003c6) invoke-static        v0, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
+	230     (000003cc) move-result-object   v0
+	231     (000003ce) invoke-virtual       v0, Landroid/net/Uri;->buildUpon()Landroid/net/Uri$Builder;
+	232     (000003d4) move-result-object   v0
+	233     (000003d6) invoke-virtual       v5, Landroid/app/Activity;->getIntent()Landroid/content/Intent;
+	234     (000003dc) move-result-object   v3
+	235     (000003de) invoke-virtual       v5, v0, v3, v1, v2, Lcom/google/firebase/auth/internal/GenericIdpActivity;->h(Landroid/net/Uri$Builder; Landroid/content/Intent; Ljava/lang/String; Ljava/lang/String;)Landroid/net/Uri$Builder;
+	236     (000003e4) move-result-object   v0
+	237     (000003e6) invoke-virtual       v0, Landroid/net/Uri$Builder;->build()Landroid/net/Uri;
+	238     (000003ec) move-result-object   v0
+	239     (000003ee) iget-object          v2, v8, Lcom/google/firebase/auth/FirebaseAuth;->p Lc6/b;
+	240     (000003f2) invoke-virtual       v5, v0, v1, v2, Lcom/google/firebase/auth/internal/GenericIdpActivity;->zza(Landroid/net/Uri; Ljava/lang/String; Lc6/b;)V
+	241     (000003f8) goto                 +24h
+
+onResume-BB@0x3fa : [ onResume-BB@0x440 ]
+	242     (000003fa) move-exception       v0
+	243     (000003fc) const-string         v2, "GenericIdpActivity"
+	244     (00000400) invoke-static        v0, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
+	245     (00000406) move-result-object   v0
+	246     (00000408) new-instance         v3, Ljava/lang/StringBuilder;
+	247     (0000040c) const-string         v4, "Could not get package signature: "
+	248     (00000410) invoke-direct        v3, v4, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	249     (00000416) invoke-virtual       v3, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	250     (0000041c) const-string         v4, " "
+	251     (00000420) invoke-virtual       v3, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	252     (00000426) invoke-virtual       v3, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	253     (0000042c) invoke-virtual       v3, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	254     (00000432) move-result-object   v0
+	255     (00000434) invoke-static        v2, v0, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String;)I
+	256     (0000043a) invoke-static        v5, v1, Lcom/google/android/gms/internal/firebase-auth-api/zzaer;->zzb(Lcom/google/android/gms/internal/firebase-auth-api/zzaes; Ljava/lang/String;)V
+
+onResume-BB@0x440 : 
+	257     (00000440) iput-boolean         v6, v5, Lcom/google/firebase/auth/internal/GenericIdpActivity;->a Z
+	258     (00000444) return-void          
+
+onResume-BB@0x446 : 
+	259     (00000446) invoke-virtual       v5, Lcom/google/firebase/auth/internal/GenericIdpActivity;->j()V
+	260     (0000044c) return-void          
+

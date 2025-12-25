@@ -1,0 +1,34 @@
+# Lcom/google/android/gms/location/LocationRequest;->setSmallestDisplacement(F)Lcom/google/android/gms/location/LocationRequest; [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:float
+#
+# - return:com.google.android.gms.location.LocationRequest
+
+setSmallestDisplacement-BB@0x0 : [ setSmallestDisplacement-BB@0xa setSmallestDisplacement-BB@0x10 ]
+	0       (00000000) const/4              v0, 0
+	1       (00000002) cmpg-float           v0, v4, v0
+	2       (00000006) if-ltz               v0, +005h
+
+setSmallestDisplacement-BB@0xa : 
+	3       (0000000a) iput                 v4, v3, Lcom/google/android/gms/location/LocationRequest;->zzg F
+	4       (0000000e) return-object        v3
+
+setSmallestDisplacement-BB@0x10 : 
+	5       (00000010) new-instance         v0, Ljava/lang/IllegalArgumentException;
+	6       (00000014) invoke-static        v4, Ljava/lang/String;->valueOf(F)Ljava/lang/String;
+	7       (0000001a) move-result-object   v1
+	8       (0000001c) invoke-virtual       v1, Ljava/lang/String;->length()I
+	9       (00000022) move-result          v1
+	10      (00000024) new-instance         v2, Ljava/lang/StringBuilder;
+	11      (00000028) add-int/lit8         v1, v1, 22
+	12      (0000002c) invoke-direct        v2, v1, Ljava/lang/StringBuilder;-><init>(I)V
+	13      (00000032) const-string         v1, "invalid displacement: "
+	14      (00000036) invoke-virtual       v2, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	15      (0000003c) invoke-virtual       v2, v4, Ljava/lang/StringBuilder;->append(F)Ljava/lang/StringBuilder;
+	16      (00000042) invoke-virtual       v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	17      (00000048) move-result-object   v4
+	18      (0000004a) invoke-direct        v0, v4, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	19      (00000050) throw                v0
+

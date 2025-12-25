@@ -1,0 +1,46 @@
+# Lcom/google/android/gms/common/api/internal/GoogleServices;->initialize(Landroid/content/Context;)Lcom/google/android/gms/common/api/Status; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:android.content.Context
+#
+# - return:com.google.android.gms.common.api.Status
+
+initialize-BB@0x0 : [ initialize-BB@0x10 ]
+	0       (00000000) const-string         v0, "Context must not be null."
+	1       (00000004) invoke-static        v2, v0, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	2       (0000000a) sget-object          v0, Lcom/google/android/gms/common/api/internal/GoogleServices;->zza Ljava/lang/Object;
+	3       (0000000e) monitor-enter        v0
+
+initialize-BB@0x10 : [ initialize-BB@0x18 initialize-BB@0x2c ]
+	4       (00000010) sget-object          v1, Lcom/google/android/gms/common/api/internal/GoogleServices;->zzb Lcom/google/android/gms/common/api/internal/GoogleServices;
+	5       (00000014) if-nez               v1, +00ch
+	10:39
+	(Ljava/lang/Throwable; -> 28 initialize-BB@0x28)
+
+initialize-BB@0x18 : [ initialize-BB@0x2c ]
+	6       (00000018) new-instance         v1, Lcom/google/android/gms/common/api/internal/GoogleServices;
+	7       (0000001c) invoke-direct        v1, v2, Lcom/google/android/gms/common/api/internal/GoogleServices;-><init>(Landroid/content/Context;)V
+	8       (00000022) sput-object          v1, Lcom/google/android/gms/common/api/internal/GoogleServices;->zzb Lcom/google/android/gms/common/api/internal/GoogleServices;
+	9       (00000026) goto                 +3h
+	10:39
+	(Ljava/lang/Throwable; -> 28 initialize-BB@0x28)
+
+initialize-BB@0x28 : [ initialize-BB@0x38 ]
+	10      (00000028) move-exception       v2
+	11      (0000002a) goto                 +7h
+	10:39
+	(Ljava/lang/Throwable; -> 28 initialize-BB@0x28)
+
+initialize-BB@0x2c : 
+	12      (0000002c) sget-object          v2, Lcom/google/android/gms/common/api/internal/GoogleServices;->zzb Lcom/google/android/gms/common/api/internal/GoogleServices;
+	13      (00000030) iget-object          v2, v2, Lcom/google/android/gms/common/api/internal/GoogleServices;->zzd Lcom/google/android/gms/common/api/Status;
+	14      (00000034) monitor-exit         v0
+	15      (00000036) return-object        v2
+	10:39
+	(Ljava/lang/Throwable; -> 28 initialize-BB@0x28)
+
+initialize-BB@0x38 : 
+	16      (00000038) monitor-exit         v0
+	17      (0000003a) throw                v2
+

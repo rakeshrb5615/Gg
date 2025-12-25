@@ -1,0 +1,42 @@
+# Lcom/google/android/gms/internal/fido/zzcm;->compare(Ljava/lang/Object; Ljava/lang/Object;)I [access_flags=public final bridge synthetic]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:java.lang.Object
+# - v6:java.lang.Object
+#
+# - return:int
+
+compare-BB@0x0 : [ compare-BB@0x16 ]
+	0       (00000000) check-cast           v5, [B
+	1       (00000004) check-cast           v6, [B
+	2       (00000008) array-length         v0, v5
+	3       (0000000a) array-length         v1, v6
+	4       (0000000c) invoke-static        v0, v1, Ljava/lang/Math;->min(I I)I
+	5       (00000012) move-result          v0
+	6       (00000014) const/4              v1, 0
+
+compare-BB@0x16 : [ compare-BB@0x1a compare-BB@0x38 ]
+	7       (00000016) if-ge                v1, v0, +011h
+
+compare-BB@0x1a : [ compare-BB@0x30 compare-BB@0x32 ]
+	8       (0000001a) aget-byte            v2, v5, v1
+	9       (0000001e) aget-byte            v3, v6, v1
+	10      (00000022) and-int/lit16        v2, v2, 255
+	11      (00000026) and-int/lit16        v3, v3, 255
+	12      (0000002a) sub-int/2addr        v2, v3
+	13      (0000002c) if-eqz               v2, +003h
+
+compare-BB@0x30 : 
+	14      (00000030) return               v2
+
+compare-BB@0x32 : [ compare-BB@0x16 ]
+	15      (00000032) add-int/lit8         v1, v1, 1
+	16      (00000036) goto                 -10h
+
+compare-BB@0x38 : 
+	17      (00000038) array-length         v5, v5
+	18      (0000003a) array-length         v6, v6
+	19      (0000003c) sub-int/2addr        v5, v6
+	20      (0000003e) return               v5
+

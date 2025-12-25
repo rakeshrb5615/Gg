@@ -1,0 +1,48 @@
+# Lcom/google/android/gms/common/api/internal/zabq;->zaO(Z)Z [access_flags=private final]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:boolean
+#
+# - return:boolean
+
+zaO-BB@0x0 : [ zaO-BB@0x22 zaO-BB@0x60 ]
+	0       (00000000) iget-object          v0, v1, Lcom/google/android/gms/common/api/internal/zabq;->zaa Lcom/google/android/gms/common/api/internal/GoogleApiManager;
+	1       (00000004) invoke-static        v0, Lcom/google/android/gms/common/api/internal/GoogleApiManager;->zad(Lcom/google/android/gms/common/api/internal/GoogleApiManager;)Landroid/os/Handler;
+	2       (0000000a) move-result-object   v0
+	3       (0000000c) invoke-static        v0, Lcom/google/android/gms/common/internal/Preconditions;->checkHandlerThread(Landroid/os/Handler;)V
+	4       (00000012) iget-object          v0, v1, Lcom/google/android/gms/common/api/internal/zabq;->zac Lcom/google/android/gms/common/api/Api$Client;
+	5       (00000016) invoke-interface     v0, Lcom/google/android/gms/common/api/Api$Client;->isConnected()Z
+	6       (0000001c) move-result          v0
+	7       (0000001e) if-eqz               v0, +021h
+
+zaO-BB@0x22 : [ zaO-BB@0x32 zaO-BB@0x60 ]
+	8       (00000022) iget-object          v0, v1, Lcom/google/android/gms/common/api/internal/zabq;->zag Ljava/util/Map;
+	9       (00000026) invoke-interface     v0, Ljava/util/Map;->isEmpty()Z
+	10      (0000002c) move-result          v0
+	11      (0000002e) if-eqz               v0, +019h
+
+zaO-BB@0x32 : [ zaO-BB@0x42 zaO-BB@0x4e ]
+	12      (00000032) iget-object          v0, v1, Lcom/google/android/gms/common/api/internal/zabq;->zae Lcom/google/android/gms/common/api/internal/zaad;
+	13      (00000036) invoke-virtual       v0, Lcom/google/android/gms/common/api/internal/zaad;->zag()Z
+	14      (0000003c) move-result          v0
+	15      (0000003e) if-eqz               v0, +008h
+
+zaO-BB@0x42 : [ zaO-BB@0x46 zaO-BB@0x60 ]
+	16      (00000042) if-eqz               v2, +00fh
+
+zaO-BB@0x46 : [ zaO-BB@0x60 ]
+	17      (00000046) invoke-direct        v1, Lcom/google/android/gms/common/api/internal/zabq;->zaJ()V
+	18      (0000004c) goto                 +ah
+
+zaO-BB@0x4e : 
+	19      (0000004e) iget-object          v2, v1, Lcom/google/android/gms/common/api/internal/zabq;->zac Lcom/google/android/gms/common/api/Api$Client;
+	20      (00000052) const-string         v0, "Timing out service connection."
+	21      (00000056) invoke-interface     v2, v0, Lcom/google/android/gms/common/api/Api$Client;->disconnect(Ljava/lang/String;)V
+	22      (0000005c) const/4              v2, 1
+	23      (0000005e) return               v2
+
+zaO-BB@0x60 : 
+	24      (00000060) const/4              v2, 0
+	25      (00000062) return               v2
+

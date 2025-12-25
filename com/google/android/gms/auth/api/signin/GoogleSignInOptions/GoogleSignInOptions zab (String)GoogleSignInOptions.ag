@@ -1,0 +1,117 @@
+# Lcom/google/android/gms/auth/api/signin/GoogleSignInOptions;->zab(Ljava/lang/String;)Lcom/google/android/gms/auth/api/signin/GoogleSignInOptions; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v16
+# - v17:java.lang.String
+#
+# - return:com.google.android.gms.auth.api.signin.GoogleSignInOptions
+
+zab-BB@0x0 : [ zab-BB@0xe zab-BB@0x10 ]
+	0       (00000000) invoke-static/range  v17, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+	1       (00000006) move-result          v0
+	2       (00000008) const/4              v1, 0
+	3       (0000000a) if-eqz               v0, +003h
+
+zab-BB@0xe : 
+	4       (0000000e) return-object        v1
+
+zab-BB@0x10 : [ zab-BB@0x3e ]
+	5       (00000010) new-instance         v0, Lorg/json/JSONObject;
+	6       (00000014) move-object/from16   v2, v17
+	7       (00000018) invoke-direct        v0, v2, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+	8       (0000001e) new-instance         v2, Ljava/util/HashSet;
+	9       (00000022) invoke-direct        v2, Ljava/util/HashSet;-><init>()V
+	10      (00000028) const-string         v3, "scopes"
+	11      (0000002c) invoke-virtual       v0, v3, Lorg/json/JSONObject;->getJSONArray(Ljava/lang/String;)Lorg/json/JSONArray;
+	12      (00000032) move-result-object   v3
+	13      (00000034) invoke-virtual       v3, Lorg/json/JSONArray;->length()I
+	14      (0000003a) move-result          v4
+	15      (0000003c) const/4              v5, 0
+
+zab-BB@0x3e : [ zab-BB@0x42 zab-BB@0x60 ]
+	16      (0000003e) if-ge                v5, v4, +011h
+
+zab-BB@0x42 : [ zab-BB@0x3e ]
+	17      (00000042) new-instance         v6, Lcom/google/android/gms/common/api/Scope;
+	18      (00000046) invoke-virtual       v3, v5, Lorg/json/JSONArray;->getString(I)Ljava/lang/String;
+	19      (0000004c) move-result-object   v7
+	20      (0000004e) invoke-direct        v6, v7, Lcom/google/android/gms/common/api/Scope;-><init>(Ljava/lang/String;)V
+	21      (00000054) invoke-virtual       v2, v6, Ljava/util/HashSet;->add(Ljava/lang/Object;)Z
+	22      (0000005a) add-int/lit8         v5, v5, 1
+	23      (0000005e) goto                 -10h
+
+zab-BB@0x60 : [ zab-BB@0x70 zab-BB@0x7a ]
+	24      (00000060) const-string         v3, "accountName"
+	25      (00000064) invoke-virtual       v0, v3, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
+	26      (0000006a) move-result          v4
+	27      (0000006c) if-eqz               v4, +007h
+
+zab-BB@0x70 : [ zab-BB@0x7c ]
+	28      (00000070) invoke-virtual       v0, v3, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+	29      (00000076) move-result-object   v3
+	30      (00000078) goto                 +2h
+
+zab-BB@0x7a : [ zab-BB@0x7c ]
+	31      (0000007a) move-object          v3, v1
+
+zab-BB@0x7c : [ zab-BB@0x88 zab-BB@0x9a ]
+	32      (0000007c) invoke-static        v3, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+	33      (00000082) move-result          v4
+	34      (00000084) if-nez               v4, +00bh
+
+zab-BB@0x88 : [ zab-BB@0x9c ]
+	35      (00000088) new-instance         v4, Landroid/accounts/Account;
+	36      (0000008c) const-string         v5, "com.google"
+	37      (00000090) invoke-direct        v4, v3, v5, Landroid/accounts/Account;-><init>(Ljava/lang/String; Ljava/lang/String;)V
+	38      (00000096) move-object          v9, v4
+	39      (00000098) goto                 +2h
+
+zab-BB@0x9a : [ zab-BB@0x9c ]
+	40      (0000009a) move-object          v9, v1
+
+zab-BB@0x9c : [ zab-BB@0xde zab-BB@0xea ]
+	41      (0000009c) new-instance         v6, Lcom/google/android/gms/auth/api/signin/GoogleSignInOptions;
+	42      (000000a0) new-instance         v8, Ljava/util/ArrayList;
+	43      (000000a4) invoke-direct        v8, v2, Ljava/util/ArrayList;-><init>(Ljava/util/Collection;)V
+	44      (000000aa) const-string         v2, "idTokenRequested"
+	45      (000000ae) invoke-virtual       v0, v2, Lorg/json/JSONObject;->getBoolean(Ljava/lang/String;)Z
+	46      (000000b4) move-result          v10
+	47      (000000b6) const-string         v2, "serverAuthRequested"
+	48      (000000ba) invoke-virtual       v0, v2, Lorg/json/JSONObject;->getBoolean(Ljava/lang/String;)Z
+	49      (000000c0) move-result          v11
+	50      (000000c2) const-string         v2, "forceCodeForRefreshToken"
+	51      (000000c6) invoke-virtual       v0, v2, Lorg/json/JSONObject;->getBoolean(Ljava/lang/String;)Z
+	52      (000000cc) move-result          v12
+	53      (000000ce) const-string         v2, "serverClientId"
+	54      (000000d2) invoke-virtual       v0, v2, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
+	55      (000000d8) move-result          v3
+	56      (000000da) if-eqz               v3, +008h
+
+zab-BB@0xde : [ zab-BB@0xec ]
+	57      (000000de) invoke-virtual       v0, v2, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+	58      (000000e4) move-result-object   v2
+	59      (000000e6) move-object          v13, v2
+	60      (000000e8) goto                 +2h
+
+zab-BB@0xea : [ zab-BB@0xec ]
+	61      (000000ea) move-object          v13, v1
+
+zab-BB@0xec : [ zab-BB@0xfc zab-BB@0x104 ]
+	62      (000000ec) const-string         v2, "hostedDomain"
+	63      (000000f0) invoke-virtual       v0, v2, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
+	64      (000000f6) move-result          v3
+	65      (000000f8) if-eqz               v3, +006h
+
+zab-BB@0xfc : [ zab-BB@0x104 ]
+	66      (000000fc) invoke-virtual       v0, v2, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+	67      (00000102) move-result-object   v1
+
+zab-BB@0x104 : 
+	68      (00000104) move-object          v14, v1
+	69      (00000106) new-instance         v15, Ljava/util/HashMap;
+	70      (0000010a) invoke-direct        v15, Ljava/util/HashMap;-><init>()V
+	71      (00000110) const/16             v16, 0
+	72      (00000114) const/4              v7, 3
+	73      (00000116) invoke-direct/range  v6 ... v16, Lcom/google/android/gms/auth/api/signin/GoogleSignInOptions;-><init>(I Ljava/util/ArrayList; Landroid/accounts/Account; Z Z Z Ljava/lang/String; Ljava/lang/String; Ljava/util/Map; Ljava/lang/String;)V
+	74      (0000011c) return-object        v6
+

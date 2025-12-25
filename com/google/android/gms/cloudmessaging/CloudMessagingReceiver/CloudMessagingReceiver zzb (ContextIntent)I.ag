@@ -1,0 +1,59 @@
+# Lcom/google/android/gms/cloudmessaging/CloudMessagingReceiver;->zzb(Landroid/content/Context; Landroid/content/Intent;)I [access_flags=private final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:android.content.Context
+# - v5:android.content.Intent
+#
+# - return:int
+
+zzb-BB@0x0 : [ zzb-BB@0x18 zzb-BB@0x2a ]
+	0       (00000000) const-string         v0, "pending_intent"
+	1       (00000004) invoke-virtual       v5, v0, Landroid/content/Intent;->getParcelableExtra(Ljava/lang/String;)Landroid/os/Parcelable;
+	2       (0000000a) move-result-object   v1
+	3       (0000000c) check-cast           v1, Landroid/app/PendingIntent;
+	4       (00000010) const-string         v2, "CloudMessagingReceiver"
+	5       (00000014) if-eqz               v1, +00bh
+
+zzb-BB@0x18 : [ zzb-BB@0x2a ]
+	6       (00000018) invoke-virtual       v1, Landroid/app/PendingIntent;->send()V
+	7       (0000001e) goto                 +6h
+	18:1d
+	(Landroid/app/PendingIntent$CanceledException; -> 20 zzb-BB@0x20)
+
+zzb-BB@0x20 : [ zzb-BB@0x2a ]
+	8       (00000020) const-string         v1, "Notification pending intent canceled"
+	9       (00000024) invoke-static        v2, v1, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String;)I
+
+zzb-BB@0x2a : [ zzb-BB@0x36 zzb-BB@0x3e ]
+	10      (0000002a) invoke-virtual       v5, Landroid/content/Intent;->getExtras()Landroid/os/Bundle;
+	11      (00000030) move-result-object   v1
+	12      (00000032) if-eqz               v1, +006h
+
+zzb-BB@0x36 : [ zzb-BB@0x48 ]
+	13      (00000036) invoke-virtual       v1, v0, Landroid/os/Bundle;->remove(Ljava/lang/String;)V
+	14      (0000003c) goto                 +6h
+
+zzb-BB@0x3e : [ zzb-BB@0x48 ]
+	15      (0000003e) new-instance         v1, Landroid/os/Bundle;
+	16      (00000042) invoke-direct        v1, Landroid/os/Bundle;-><init>()V
+
+zzb-BB@0x48 : [ zzb-BB@0x60 zzb-BB@0x6a ]
+	17      (00000048) invoke-virtual       v5, Landroid/content/Intent;->getAction()Ljava/lang/String;
+	18      (0000004e) move-result-object   v5
+	19      (00000050) const-string         v0, "com.google.firebase.messaging.NOTIFICATION_DISMISS"
+	20      (00000054) invoke-static        v5, v0, Ljava/util/Objects;->equals(Ljava/lang/Object; Ljava/lang/Object;)Z
+	21      (0000005a) move-result          v5
+	22      (0000005c) if-eqz               v5, +007h
+
+zzb-BB@0x60 : 
+	23      (00000060) invoke-virtual       v3, v4, v1, Lcom/google/android/gms/cloudmessaging/CloudMessagingReceiver;->onNotificationDismissed(Landroid/content/Context; Landroid/os/Bundle;)V
+	24      (00000066) const/4              v4, -1
+	25      (00000068) return               v4
+
+zzb-BB@0x6a : 
+	26      (0000006a) const-string         v4, "Unknown notification action"
+	27      (0000006e) invoke-static        v2, v4, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String;)I
+	28      (00000074) const/16             v4, 500
+	29      (00000078) return               v4
+

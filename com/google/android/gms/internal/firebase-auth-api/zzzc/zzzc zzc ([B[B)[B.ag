@@ -1,0 +1,33 @@
+# Lcom/google/android/gms/internal/firebase-auth-api/zzzc;->zzc([B [B)[B [access_flags=private final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:byte[]
+# - v5:byte[]
+#
+# - return:byte[]
+
+zzc-BB@0x0 : [ zzc-BB@0xa zzc-BB@0x30 ]
+	0       (00000000) array-length         v0, v4
+	1       (00000002) const/16             v1, 28
+	2       (00000006) if-lt                v0, v1, +015h
+
+zzc-BB@0xa : 
+	3       (0000000a) const/16             v0, 12
+	4       (0000000e) invoke-static        v4, v0, Ljava/util/Arrays;->copyOf([B I)[B
+	5       (00000014) move-result-object   v1
+	6       (00000016) array-length         v2, v4
+	7       (00000018) sub-int/2addr        v2, v0
+	8       (0000001a) invoke-static        v4, v0, v2, Ljava/nio/ByteBuffer;->wrap([B I I)Ljava/nio/ByteBuffer;
+	9       (00000020) move-result-object   v4
+	10      (00000022) iget-object          v0, v3, Lcom/google/android/gms/internal/firebase-auth-api/zzzc;->zza Lcom/google/android/gms/internal/firebase-auth-api/zzht;
+	11      (00000026) invoke-virtual       v0, v4, v1, v5, Lcom/google/android/gms/internal/firebase-auth-api/zzht;->zza(Ljava/nio/ByteBuffer; [B [B)[B
+	12      (0000002c) move-result-object   v4
+	13      (0000002e) return-object        v4
+
+zzc-BB@0x30 : 
+	14      (00000030) new-instance         v4, Ljava/security/GeneralSecurityException;
+	15      (00000034) const-string         v5, "ciphertext too short"
+	16      (00000038) invoke-direct        v4, v5, Ljava/security/GeneralSecurityException;-><init>(Ljava/lang/String;)V
+	17      (0000003e) throw                v4
+

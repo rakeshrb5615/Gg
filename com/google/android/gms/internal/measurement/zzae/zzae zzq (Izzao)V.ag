@@ -1,0 +1,68 @@
+# Lcom/google/android/gms/internal/measurement/zzae;->zzq(I Lcom/google/android/gms/internal/measurement/zzao;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:int
+# - v7:com.google.android.gms.internal.measurement.zzao
+#
+# - return:void
+
+zzq-BB@0x0 : [ zzq-BB@0x4 zzq-BB@0x6a ]
+	0       (00000000) if-ltz               v6, +035h
+
+zzq-BB@0x4 : [ zzq-BB@0x10 zzq-BB@0x18 ]
+	1       (00000004) invoke-virtual       v5, Lcom/google/android/gms/internal/measurement/zzae;->zzh()I
+	2       (0000000a) move-result          v0
+	3       (0000000c) if-lt                v6, v0, +006h
+
+zzq-BB@0x10 : 
+	4       (00000010) invoke-virtual       v5, v6, v7, Lcom/google/android/gms/internal/measurement/zzae;->zzn(I Lcom/google/android/gms/internal/measurement/zzao;)V
+	5       (00000016) return-void          
+
+zzq-BB@0x18 : [ zzq-BB@0x30 ]
+	6       (00000018) iget-object          v0, v5, Lcom/google/android/gms/internal/measurement/zzae;->zza Ljava/util/SortedMap;
+	7       (0000001c) invoke-interface     v0, Ljava/util/SortedMap;->lastKey()Ljava/lang/Object;
+	8       (00000022) move-result-object   v1
+	9       (00000024) check-cast           v1, Ljava/lang/Integer;
+	10      (00000028) invoke-virtual       v1, Ljava/lang/Integer;->intValue()I
+	11      (0000002e) move-result          v1
+
+zzq-BB@0x30 : [ zzq-BB@0x34 zzq-BB@0x62 ]
+	12      (00000030) if-lt                v1, v6, +019h
+
+zzq-BB@0x34 : [ zzq-BB@0x4c zzq-BB@0x5c ]
+	13      (00000034) invoke-static        v1, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+	14      (0000003a) move-result-object   v2
+	15      (0000003c) invoke-interface     v0, v2, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	16      (00000042) move-result-object   v3
+	17      (00000044) check-cast           v3, Lcom/google/android/gms/internal/measurement/zzao;
+	18      (00000048) if-eqz               v3, +00ah
+
+zzq-BB@0x4c : [ zzq-BB@0x5c ]
+	19      (0000004c) add-int/lit8         v4, v1, 1
+	20      (00000050) invoke-virtual       v5, v4, v3, Lcom/google/android/gms/internal/measurement/zzae;->zzn(I Lcom/google/android/gms/internal/measurement/zzao;)V
+	21      (00000056) invoke-interface     v0, v2, Ljava/util/Map;->remove(Ljava/lang/Object;)Ljava/lang/Object;
+
+zzq-BB@0x5c : [ zzq-BB@0x30 ]
+	22      (0000005c) add-int/lit8         v1, v1, -1
+	23      (00000060) goto                 -18h
+
+zzq-BB@0x62 : 
+	24      (00000062) invoke-virtual       v5, v6, v7, Lcom/google/android/gms/internal/measurement/zzae;->zzn(I Lcom/google/android/gms/internal/measurement/zzao;)V
+	25      (00000068) return-void          
+
+zzq-BB@0x6a : 
+	26      (0000006a) new-instance         v7, Ljava/lang/IllegalArgumentException;
+	27      (0000006e) invoke-static        v6, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
+	28      (00000074) move-result-object   v0
+	29      (00000076) invoke-virtual       v0, Ljava/lang/String;->length()I
+	30      (0000007c) move-result          v0
+	31      (0000007e) new-instance         v1, Ljava/lang/StringBuilder;
+	32      (00000082) add-int/lit8         v0, v0, 21
+	33      (00000086) invoke-direct        v1, v0, Ljava/lang/StringBuilder;-><init>(I)V
+	34      (0000008c) const-string         v0, "Invalid value index: "
+	35      (00000090) invoke-static        v1, v0, v6, Lv1/a;->m(Ljava/lang/StringBuilder; Ljava/lang/String; I)Ljava/lang/String;
+	36      (00000096) move-result-object   v6
+	37      (00000098) invoke-direct        v7, v6, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	38      (0000009e) throw                v7
+

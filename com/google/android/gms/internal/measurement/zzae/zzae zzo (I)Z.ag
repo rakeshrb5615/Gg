@@ -1,0 +1,42 @@
+# Lcom/google/android/gms/internal/measurement/zzae;->zzo(I)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:int
+#
+# - return:boolean
+
+zzo-BB@0x0 : [ zzo-BB@0x4 zzo-BB@0x32 ]
+	0       (00000000) if-ltz               v4, +019h
+
+zzo-BB@0x4 : [ zzo-BB@0x20 zzo-BB@0x32 ]
+	1       (00000004) iget-object          v0, v3, Lcom/google/android/gms/internal/measurement/zzae;->zza Ljava/util/SortedMap;
+	2       (00000008) invoke-interface     v0, Ljava/util/SortedMap;->lastKey()Ljava/lang/Object;
+	3       (0000000e) move-result-object   v1
+	4       (00000010) check-cast           v1, Ljava/lang/Integer;
+	5       (00000014) invoke-virtual       v1, Ljava/lang/Integer;->intValue()I
+	6       (0000001a) move-result          v1
+	7       (0000001c) if-gt                v4, v1, +00bh
+
+zzo-BB@0x20 : 
+	8       (00000020) invoke-static        v4, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+	9       (00000026) move-result-object   v4
+	10      (00000028) invoke-interface     v0, v4, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z
+	11      (0000002e) move-result          v4
+	12      (00000030) return               v4
+
+zzo-BB@0x32 : 
+	13      (00000032) new-instance         v0, Ljava/lang/IndexOutOfBoundsException;
+	14      (00000036) invoke-static        v4, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
+	15      (0000003c) move-result-object   v1
+	16      (0000003e) invoke-virtual       v1, Ljava/lang/String;->length()I
+	17      (00000044) move-result          v1
+	18      (00000046) new-instance         v2, Ljava/lang/StringBuilder;
+	19      (0000004a) add-int/lit8         v1, v1, 21
+	20      (0000004e) invoke-direct        v2, v1, Ljava/lang/StringBuilder;-><init>(I)V
+	21      (00000054) const-string         v1, "Out of bounds index: "
+	22      (00000058) invoke-static        v2, v1, v4, Lv1/a;->m(Ljava/lang/StringBuilder; Ljava/lang/String; I)Ljava/lang/String;
+	23      (0000005e) move-result-object   v4
+	24      (00000060) invoke-direct        v0, v4, Ljava/lang/IndexOutOfBoundsException;-><init>(Ljava/lang/String;)V
+	25      (00000066) throw                v0
+

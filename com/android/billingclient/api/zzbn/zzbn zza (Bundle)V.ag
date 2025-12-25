@@ -1,0 +1,71 @@
+# Lcom/android/billingclient/api/zzbn;->zza(Landroid/os/Bundle;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v7
+# - v8:android.os.Bundle
+#
+# - return:void
+
+zza-BB@0x0 : [ zza-BB@0xc zza-BB@0x18 ]
+	0       (00000000) iget-object          v0, v7, Lcom/android/billingclient/api/zzbn;->zzb Landroid/os/ResultReceiver;
+	1       (00000004) const-string         v1, "BillingClient"
+	2       (00000008) if-nez               v0, +008h
+
+zza-BB@0xc : 
+	3       (0000000c) const-string         v8, "Unable to send result for in-app messaging"
+	4       (00000010) invoke-static        v1, v8, Lcom/google/android/gms/internal/play_billing/zzc;->zzn(Ljava/lang/String; Ljava/lang/String;)V
+	5       (00000016) return-void          
+
+zza-BB@0x18 : [ zza-BB@0x20 zza-BB@0x28 ]
+	6       (00000018) const/4              v2, 0
+	7       (0000001a) const/4              v3, 0
+	8       (0000001c) if-nez               v8, +006h
+
+zza-BB@0x20 : 
+	9       (00000020) invoke-virtual       v0, v3, v2, Landroid/os/ResultReceiver;->send(I Landroid/os/Bundle;)V
+	10      (00000026) return-void          
+
+zza-BB@0x28 : [ zza-BB@0x4c zza-BB@0x94 ]
+	11      (00000028) iget-object          v4, v7, Lcom/android/billingclient/api/zzbn;->zza Ljava/lang/ref/WeakReference;
+	12      (0000002c) invoke-virtual       v4, Ljava/lang/ref/Reference;->get()Ljava/lang/Object;
+	13      (00000032) move-result-object   v4
+	14      (00000034) check-cast           v4, Landroid/app/Activity;
+	15      (00000038) const-string         v5, "KEY_LAUNCH_INTENT"
+	16      (0000003c) invoke-virtual       v8, v5, Landroid/os/Bundle;->getParcelable(Ljava/lang/String;)Landroid/os/Parcelable;
+	17      (00000042) move-result-object   v8
+	18      (00000044) check-cast           v8, Landroid/app/PendingIntent;
+	19      (00000048) if-eqz               v4, +026h
+
+zza-BB@0x4c : [ zza-BB@0x50 zza-BB@0x52 ]
+	20      (0000004c) if-nez               v8, +003h
+
+zza-BB@0x50 : [ zza-BB@0x94 ]
+	21      (00000050) goto                 +22h
+
+zza-BB@0x52 : 
+	22      (00000052) new-instance         v5, Landroid/content/Intent;
+	23      (00000056) const-class          v6, Lcom/android/billingclient/api/ProxyBillingActivity;
+	24      (0000005a) invoke-direct        v5, v4, v6, Landroid/content/Intent;-><init>(Landroid/content/Context; Ljava/lang/Class;)V
+	25      (00000060) const-string         v6, "in_app_message_result_receiver"
+	26      (00000064) invoke-virtual       v5, v6, v0, Landroid/content/Intent;->putExtra(Ljava/lang/String; Landroid/os/Parcelable;)Landroid/content/Intent;
+	27      (0000006a) const-string         v0, "IN_APP_MESSAGE_INTENT"
+	28      (0000006e) invoke-virtual       v5, v0, v8, Landroid/content/Intent;->putExtra(Ljava/lang/String; Landroid/os/Parcelable;)Landroid/content/Intent;
+	29      (00000074) invoke-virtual       v4, v5, Landroid/app/Activity;->startActivity(Landroid/content/Intent;)V
+	30      (0000007a) return-void          
+	52:79
+	(Ljava/util/concurrent/CancellationException; -> 7c zza-BB@0x7c)
+
+zza-BB@0x7c : 
+	31      (0000007c) move-exception       v8
+	32      (0000007e) iget-object          v0, v7, Lcom/android/billingclient/api/zzbn;->zzb Landroid/os/ResultReceiver;
+	33      (00000082) invoke-virtual       v0, v3, v2, Landroid/os/ResultReceiver;->send(I Landroid/os/Bundle;)V
+	34      (00000088) const-string         v0, "Exception caught while launching intent for in-app messaging."
+	35      (0000008c) invoke-static        v1, v0, v8, Lcom/google/android/gms/internal/play_billing/zzc;->zzo(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)V
+	36      (00000092) return-void          
+
+zza-BB@0x94 : 
+	37      (00000094) invoke-virtual       v0, v3, v2, Landroid/os/ResultReceiver;->send(I Landroid/os/Bundle;)V
+	38      (0000009a) const-string         v8, "Unable to launch intent for in-app messaging"
+	39      (0000009e) invoke-static        v1, v8, Lcom/google/android/gms/internal/play_billing/zzc;->zzn(Ljava/lang/String; Ljava/lang/String;)V
+	40      (000000a4) return-void          
+

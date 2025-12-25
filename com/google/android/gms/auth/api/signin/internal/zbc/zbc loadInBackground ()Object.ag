@@ -1,0 +1,52 @@
+# Lcom/google/android/gms/auth/api/signin/internal/zbc;->loadInBackground()Ljava/lang/Object; [access_flags=public final bridge synthetic]
+#
+# Parameters:
+# local registers: v0...v5
+#
+# - return:java.lang.Object
+
+loadInBackground-BB@0x0 : [ loadInBackground-BB@0xe ]
+	0       (00000000) iget-object          v0, v5, Lcom/google/android/gms/auth/api/signin/internal/zbc;->zbb Ljava/util/Set;
+	1       (00000004) invoke-interface     v0, Ljava/util/Set;->iterator()Ljava/util/Iterator;
+	2       (0000000a) move-result-object   v0
+	3       (0000000c) const/4              v1, 0
+
+loadInBackground-BB@0xe : [ loadInBackground-BB@0x1a loadInBackground-BB@0x38 ]
+	4       (0000000e) invoke-interface     v0, Ljava/util/Iterator;->hasNext()Z
+	5       (00000014) move-result          v2
+	6       (00000016) if-eqz               v2, +011h
+
+loadInBackground-BB@0x1a : [ loadInBackground-BB@0x32 loadInBackground-BB@0xe ]
+	7       (0000001a) invoke-interface     v0, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	8       (00000020) move-result-object   v2
+	9       (00000022) check-cast           v2, Lcom/google/android/gms/common/api/GoogleApiClient;
+	10      (00000026) invoke-virtual       v2, v5, Lcom/google/android/gms/common/api/GoogleApiClient;->maybeSignIn(Lcom/google/android/gms/common/api/internal/SignInConnectionListener;)Z
+	11      (0000002c) move-result          v2
+	12      (0000002e) if-eqz               v2, -010h
+
+loadInBackground-BB@0x32 : [ loadInBackground-BB@0xe ]
+	13      (00000032) add-int/lit8         v1, v1, 1
+	14      (00000036) goto                 -14h
+
+loadInBackground-BB@0x38 : [ loadInBackground-BB@0x6a ]
+	15      (00000038) iget-object          v0, v5, Lcom/google/android/gms/auth/api/signin/internal/zbc;->zba Ljava/util/concurrent/Semaphore;
+	16      (0000003c) sget-object          v2, Ljava/util/concurrent/TimeUnit;->SECONDS Ljava/util/concurrent/TimeUnit;
+	17      (00000040) const-wide/16        v3, 5
+	18      (00000044) invoke-virtual       v0, v1, v3, v4, v2, Ljava/util/concurrent/Semaphore;->tryAcquire(I J Ljava/util/concurrent/TimeUnit;)Z
+	19      (0000004a) goto                 +10h
+	38:49
+	(Ljava/lang/InterruptedException; -> 4c loadInBackground-BB@0x4c)
+
+loadInBackground-BB@0x4c : [ loadInBackground-BB@0x6a ]
+	20      (0000004c) move-exception       v0
+	21      (0000004e) const-string         v1, "GACSignInLoader"
+	22      (00000052) const-string         v2, "Unexpected InterruptedException"
+	23      (00000056) invoke-static        v1, v2, v0, Landroid/util/Log;->i(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+	24      (0000005c) invoke-static        Ljava/lang/Thread;->currentThread()Ljava/lang/Thread;
+	25      (00000062) move-result-object   v0
+	26      (00000064) invoke-virtual       v0, Ljava/lang/Thread;->interrupt()V
+
+loadInBackground-BB@0x6a : 
+	27      (0000006a) const/4              v0, 0
+	28      (0000006c) return-object        v0
+

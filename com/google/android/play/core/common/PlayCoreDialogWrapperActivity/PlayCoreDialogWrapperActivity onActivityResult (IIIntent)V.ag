@@ -1,0 +1,42 @@
+# Lcom/google/android/play/core/common/PlayCoreDialogWrapperActivity;->onActivityResult(I I Landroid/content/Intent;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v0
+# - v1:int
+# - v2:int
+# - v3:android.content.Intent
+#
+# - return:void
+
+onActivityResult-BB@0x0 : [ onActivityResult-BB@0xa onActivityResult-BB@0x42 ]
+	0       (00000000) invoke-super         v0, v1, v2, v3, Landroid/app/Activity;->onActivityResult(I I Landroid/content/Intent;)V
+	1       (00000006) if-nez               v1, +01eh
+
+onActivityResult-BB@0xa : [ onActivityResult-BB@0x12 onActivityResult-BB@0x42 ]
+	2       (0000000a) iget-object          v1, v0, Lcom/google/android/play/core/common/PlayCoreDialogWrapperActivity;->a Landroid/os/ResultReceiver;
+	3       (0000000e) if-eqz               v1, +01ah
+
+onActivityResult-BB@0x12 : [ onActivityResult-BB@0x18 onActivityResult-BB@0x2c ]
+	4       (00000012) const/4              v3, -1
+	5       (00000014) if-ne                v2, v3, +00ch
+
+onActivityResult-BB@0x18 : [ onActivityResult-BB@0x42 ]
+	6       (00000018) new-instance         v2, Landroid/os/Bundle;
+	7       (0000001c) invoke-direct        v2, Landroid/os/Bundle;-><init>()V
+	8       (00000022) const/4              v3, 1
+	9       (00000024) invoke-virtual       v1, v3, v2, Landroid/os/ResultReceiver;->send(I Landroid/os/Bundle;)V
+	10      (0000002a) goto                 +ch
+
+onActivityResult-BB@0x2c : [ onActivityResult-BB@0x30 onActivityResult-BB@0x42 ]
+	11      (0000002c) if-nez               v2, +00bh
+
+onActivityResult-BB@0x30 : [ onActivityResult-BB@0x42 ]
+	12      (00000030) new-instance         v2, Landroid/os/Bundle;
+	13      (00000034) invoke-direct        v2, Landroid/os/Bundle;-><init>()V
+	14      (0000003a) const/4              v3, 2
+	15      (0000003c) invoke-virtual       v1, v3, v2, Landroid/os/ResultReceiver;->send(I Landroid/os/Bundle;)V
+
+onActivityResult-BB@0x42 : 
+	16      (00000042) invoke-virtual       v0, Landroid/app/Activity;->finish()V
+	17      (00000048) return-void          
+

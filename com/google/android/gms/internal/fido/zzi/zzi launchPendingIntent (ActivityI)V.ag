@@ -1,0 +1,31 @@
+# Lcom/google/android/gms/internal/fido/zzi;->launchPendingIntent(Landroid/app/Activity; I)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v8
+# - v9:android.app.Activity
+# - v10:int
+#
+# - return:void
+
+launchPendingIntent-BB@0x0 : [ launchPendingIntent-BB@0x8 launchPendingIntent-BB@0x24 ]
+	0       (00000000) iget-object          v0, v8, Lcom/google/android/gms/internal/fido/zzi;->zza Landroid/app/PendingIntent;
+	1       (00000004) if-eqz               v0, +010h
+
+launchPendingIntent-BB@0x8 : 
+	2       (00000008) invoke-virtual       v0, Landroid/app/PendingIntent;->getIntentSender()Landroid/content/IntentSender;
+	3       (0000000e) move-result-object   v2
+	4       (00000010) const/4              v6, 0
+	5       (00000012) const/4              v7, 0
+	6       (00000014) const/4              v4, 0
+	7       (00000016) const/4              v5, 0
+	8       (00000018) move-object          v1, v9
+	9       (0000001a) move                 v3, v10
+	10      (0000001c) invoke-virtual/range v1 ... v7, Landroid/app/Activity;->startIntentSenderForResult(Landroid/content/IntentSender; I Landroid/content/Intent; I I I)V
+	11      (00000022) return-void          
+
+launchPendingIntent-BB@0x24 : 
+	12      (00000024) new-instance         v9, Ljava/lang/IllegalStateException;
+	13      (00000028) const-string         v10, "No PendingIntent available"
+	14      (0000002c) invoke-direct        v9, v10, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	15      (00000032) throw                v9
+

@@ -1,0 +1,89 @@
+# Lcom/google/android/gms/measurement/internal/zzpp;->zzad(Landroid/content/Context; Ljava/lang/String;)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:android.content.Context
+# - v4:java.lang.String
+#
+# - return:boolean
+
+zzad-BB@0x0 : [ zzad-BB@0xe ]
+	0       (00000000) new-instance         v0, Ljavax/security/auth/x500/X500Principal;
+	1       (00000004) const-string         v1, "CN=Android Debug,O=Android,C=US"
+	2       (00000008) invoke-direct        v0, v1, Ljavax/security/auth/x500/X500Principal;-><init>(Ljava/lang/String;)V
+
+zzad-BB@0xe : [ zzad-BB@0x26 zzad-BB@0xbc ]
+	3       (0000000e) invoke-static        v3, Lcom/google/android/gms/common/wrappers/Wrappers;->packageManager(Landroid/content/Context;)Lcom/google/android/gms/common/wrappers/PackageManagerWrapper;
+	4       (00000014) move-result-object   v3
+	5       (00000016) const/16             v1, 64
+	6       (0000001a) invoke-virtual       v3, v4, v1, Lcom/google/android/gms/common/wrappers/PackageManagerWrapper;->getPackageInfo(Ljava/lang/String; I)Landroid/content/pm/PackageInfo;
+	7       (00000020) move-result-object   v3
+	8       (00000022) if-eqz               v3, +04dh
+	e:73
+	(Ljava/security/cert/CertificateException; -> 7a zzad-BB@0x7a)
+	(Landroid/content/pm/PackageManager$NameNotFoundException; -> 76 zzad-BB@0x76)
+
+zzad-BB@0x26 : [ zzad-BB@0x2e zzad-BB@0xbc ]
+	9       (00000026) iget-object          v3, v3, Landroid/content/pm/PackageInfo;->signatures [Landroid/content/pm/Signature;
+	10      (0000002a) if-eqz               v3, +049h
+	e:73
+	(Ljava/security/cert/CertificateException; -> 7a zzad-BB@0x7a)
+	(Landroid/content/pm/PackageManager$NameNotFoundException; -> 76 zzad-BB@0x76)
+
+zzad-BB@0x2e : [ zzad-BB@0x34 zzad-BB@0xbc ]
+	11      (0000002e) array-length         v4, v3
+	12      (00000030) if-lez               v4, +046h
+	e:73
+	(Ljava/security/cert/CertificateException; -> 7a zzad-BB@0x7a)
+	(Landroid/content/pm/PackageManager$NameNotFoundException; -> 76 zzad-BB@0x76)
+
+zzad-BB@0x34 : 
+	13      (00000034) const/4              v4, 0
+	14      (00000036) aget-object          v3, v3, v4
+	15      (0000003a) const-string         v4, "X.509"
+	16      (0000003e) invoke-static        v4, Ljava/security/cert/CertificateFactory;->getInstance(Ljava/lang/String;)Ljava/security/cert/CertificateFactory;
+	17      (00000044) move-result-object   v4
+	18      (00000046) new-instance         v1, Ljava/io/ByteArrayInputStream;
+	19      (0000004a) invoke-virtual       v3, Landroid/content/pm/Signature;->toByteArray()[B
+	20      (00000050) move-result-object   v3
+	21      (00000052) invoke-direct        v1, v3, Ljava/io/ByteArrayInputStream;-><init>([B)V
+	22      (00000058) invoke-virtual       v4, v1, Ljava/security/cert/CertificateFactory;->generateCertificate(Ljava/io/InputStream;)Ljava/security/cert/Certificate;
+	23      (0000005e) move-result-object   v3
+	24      (00000060) check-cast           v3, Ljava/security/cert/X509Certificate;
+	25      (00000064) invoke-virtual       v3, Ljava/security/cert/X509Certificate;->getSubjectX500Principal()Ljavax/security/auth/x500/X500Principal;
+	26      (0000006a) move-result-object   v3
+	27      (0000006c) invoke-virtual       v3, v0, Ljavax/security/auth/x500/X500Principal;->equals(Ljava/lang/Object;)Z
+	28      (00000072) move-result          v3
+	29      (00000074) return               v3
+
+zzad-BB@0x76 : [ zzad-BB@0x7e ]
+	30      (00000076) move-exception       v3
+	31      (00000078) goto                 +3h
+
+zzad-BB@0x7a : [ zzad-BB@0x9e ]
+	32      (0000007a) move-exception       v3
+	33      (0000007c) goto                 +11h
+
+zzad-BB@0x7e : [ zzad-BB@0xbc ]
+	34      (0000007e) iget-object          v4, v2, Lcom/google/android/gms/measurement/internal/zzje;->zzu Lcom/google/android/gms/measurement/internal/zzic;
+	35      (00000082) invoke-virtual       v4, Lcom/google/android/gms/measurement/internal/zzic;->zzaV()Lcom/google/android/gms/measurement/internal/zzgu;
+	36      (00000088) move-result-object   v4
+	37      (0000008a) invoke-virtual       v4, Lcom/google/android/gms/measurement/internal/zzgu;->zzb()Lcom/google/android/gms/measurement/internal/zzgs;
+	38      (00000090) move-result-object   v4
+	39      (00000092) const-string         v0, "Package name not found"
+	40      (00000096) invoke-virtual       v4, v0, v3, Lcom/google/android/gms/measurement/internal/zzgs;->zzb(Ljava/lang/String; Ljava/lang/Object;)V
+	41      (0000009c) goto                 +10h
+
+zzad-BB@0x9e : [ zzad-BB@0xbc ]
+	42      (0000009e) iget-object          v4, v2, Lcom/google/android/gms/measurement/internal/zzje;->zzu Lcom/google/android/gms/measurement/internal/zzic;
+	43      (000000a2) invoke-virtual       v4, Lcom/google/android/gms/measurement/internal/zzic;->zzaV()Lcom/google/android/gms/measurement/internal/zzgu;
+	44      (000000a8) move-result-object   v4
+	45      (000000aa) invoke-virtual       v4, Lcom/google/android/gms/measurement/internal/zzgu;->zzb()Lcom/google/android/gms/measurement/internal/zzgs;
+	46      (000000b0) move-result-object   v4
+	47      (000000b2) const-string         v0, "Error obtaining certificate"
+	48      (000000b6) invoke-virtual       v4, v0, v3, Lcom/google/android/gms/measurement/internal/zzgs;->zzb(Ljava/lang/String; Ljava/lang/Object;)V
+
+zzad-BB@0xbc : 
+	49      (000000bc) const/4              v3, 1
+	50      (000000be) return               v3
+

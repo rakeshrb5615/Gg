@@ -1,0 +1,32 @@
+# Lcom/google/android/gms/internal/auth/zzbe;->requiresSignIn()Z [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v2
+#
+# - return:boolean
+
+requiresSignIn-BB@0x0 : [ requiresSignIn-BB@0x1c requiresSignIn-BB@0x38 ]
+	0       (00000000) invoke-virtual       v2, Lcom/google/android/gms/common/internal/GmsClient;->getClientSettings()Lcom/google/android/gms/common/internal/ClientSettings;
+	1       (00000006) move-result-object   v0
+	2       (00000008) invoke-virtual       v0, Lcom/google/android/gms/common/internal/ClientSettings;->getAccountName()Ljava/lang/String;
+	3       (0000000e) move-result-object   v1
+	4       (00000010) invoke-static        v1, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+	5       (00000016) move-result          v1
+	6       (00000018) if-nez               v1, +010h
+
+requiresSignIn-BB@0x1c : [ requiresSignIn-BB@0x34 requiresSignIn-BB@0x38 ]
+	7       (0000001c) sget-object          v1, Lcom/google/android/gms/auth/api/AuthProxy;->API Lcom/google/android/gms/common/api/Api;
+	8       (00000020) invoke-virtual       v0, v1, Lcom/google/android/gms/common/internal/ClientSettings;->getApplicableScopes(Lcom/google/android/gms/common/api/Api;)Ljava/util/Set;
+	9       (00000026) move-result-object   v0
+	10      (00000028) invoke-interface     v0, Ljava/util/Set;->isEmpty()Z
+	11      (0000002e) move-result          v0
+	12      (00000030) if-nez               v0, +004h
+
+requiresSignIn-BB@0x34 : 
+	13      (00000034) const/4              v0, 1
+	14      (00000036) return               v0
+
+requiresSignIn-BB@0x38 : 
+	15      (00000038) const/4              v0, 0
+	16      (0000003a) return               v0
+

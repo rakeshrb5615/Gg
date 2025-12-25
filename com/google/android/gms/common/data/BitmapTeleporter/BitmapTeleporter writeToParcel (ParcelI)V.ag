@@ -1,0 +1,132 @@
+# Lcom/google/android/gms/common/data/BitmapTeleporter;->writeToParcel(Landroid/os/Parcel; I)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:android.os.Parcel
+# - v8:int
+#
+# - return:void
+
+writeToParcel-BB@0x0 : [ writeToParcel-BB@0x8 writeToParcel-BB@0x124 ]
+	0       (00000000) iget-object          v0, v6, Lcom/google/android/gms/common/data/BitmapTeleporter;->zab Landroid/os/ParcelFileDescriptor;
+	1       (00000004) if-nez               v0, +090h
+
+writeToParcel-BB@0x8 : [ writeToParcel-BB@0x4c writeToParcel-BB@0x114 ]
+	2       (00000008) iget-object          v0, v6, Lcom/google/android/gms/common/data/BitmapTeleporter;->zad Landroid/graphics/Bitmap;
+	3       (0000000c) invoke-static        v0, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;
+	4       (00000012) move-result-object   v0
+	5       (00000014) check-cast           v0, Landroid/graphics/Bitmap;
+	6       (00000018) invoke-virtual       v0, Landroid/graphics/Bitmap;->getRowBytes()I
+	7       (0000001e) move-result          v1
+	8       (00000020) invoke-virtual       v0, Landroid/graphics/Bitmap;->getHeight()I
+	9       (00000026) move-result          v2
+	10      (00000028) mul-int/2addr        v2, v1
+	11      (0000002a) invoke-static        v2, Ljava/nio/ByteBuffer;->allocate(I)Ljava/nio/ByteBuffer;
+	12      (00000030) move-result-object   v1
+	13      (00000032) invoke-virtual       v0, v1, Landroid/graphics/Bitmap;->copyPixelsToBuffer(Ljava/nio/Buffer;)V
+	14      (00000038) invoke-virtual       v1, Ljava/nio/ByteBuffer;->array()[B
+	15      (0000003e) move-result-object   v1
+	16      (00000040) new-instance         v2, Ljava/io/BufferedOutputStream;
+	17      (00000044) iget-object          v3, v6, Lcom/google/android/gms/common/data/BitmapTeleporter;->zaf Ljava/io/File;
+	18      (00000048) if-eqz               v3, +066h
+
+writeToParcel-BB@0x4c : [ writeToParcel-BB@0x5c ]
+	19      (0000004c) const-string         v4, "teleporter"
+	20      (00000050) const-string         v5, ".tmp"
+	21      (00000054) invoke-static        v4, v5, v3, Ljava/io/File;->createTempFile(Ljava/lang/String; Ljava/lang/String; Ljava/io/File;)Ljava/io/File;
+	22      (0000005a) move-result-object   v3
+	4c:5b
+	(Ljava/io/IOException; -> 102 writeToParcel-BB@0x102)
+
+writeToParcel-BB@0x5c : [ writeToParcel-BB@0x8c ]
+	23      (0000005c) new-instance         v4, Ljava/io/FileOutputStream;
+	24      (00000060) invoke-direct        v4, v3, Ljava/io/FileOutputStream;-><init>(Ljava/io/File;)V
+	25      (00000066) const/high16         v5, 268435456
+	26      (0000006a) invoke-static        v3, v5, Landroid/os/ParcelFileDescriptor;->open(Ljava/io/File; I)Landroid/os/ParcelFileDescriptor;
+	27      (00000070) move-result-object   v5
+	28      (00000072) iput-object          v5, v6, Lcom/google/android/gms/common/data/BitmapTeleporter;->zab Landroid/os/ParcelFileDescriptor;
+	29      (00000076) invoke-virtual       v3, Ljava/io/File;->delete()Z
+	30      (0000007c) invoke-direct        v2, v4, Ljava/io/BufferedOutputStream;-><init>(Ljava/io/OutputStream;)V
+	31      (00000082) new-instance         v3, Ljava/io/DataOutputStream;
+	32      (00000086) invoke-direct        v3, v2, Ljava/io/DataOutputStream;-><init>(Ljava/io/OutputStream;)V
+	5c:75
+	(Ljava/io/FileNotFoundException; -> f2 writeToParcel-BB@0xf2)
+
+writeToParcel-BB@0x8c : [ writeToParcel-BB@0x124 ]
+	33      (0000008c) array-length         v2, v1
+	34      (0000008e) invoke-virtual       v3, v2, Ljava/io/DataOutputStream;->writeInt(I)V
+	35      (00000094) invoke-virtual       v0, Landroid/graphics/Bitmap;->getWidth()I
+	36      (0000009a) move-result          v2
+	37      (0000009c) invoke-virtual       v3, v2, Ljava/io/DataOutputStream;->writeInt(I)V
+	38      (000000a2) invoke-virtual       v0, Landroid/graphics/Bitmap;->getHeight()I
+	39      (000000a8) move-result          v2
+	40      (000000aa) invoke-virtual       v3, v2, Ljava/io/DataOutputStream;->writeInt(I)V
+	41      (000000b0) invoke-virtual       v0, Landroid/graphics/Bitmap;->getConfig()Landroid/graphics/Bitmap$Config;
+	42      (000000b6) move-result-object   v0
+	43      (000000b8) invoke-virtual       v0, Ljava/lang/Object;->toString()Ljava/lang/String;
+	44      (000000be) move-result-object   v0
+	45      (000000c0) invoke-virtual       v3, v0, Ljava/io/DataOutputStream;->writeUTF(Ljava/lang/String;)V
+	46      (000000c6) invoke-virtual       v3, v1, Ljava/io/OutputStream;->write([B)V
+	47      (000000cc) invoke-static        v3, Lcom/google/android/gms/common/data/BitmapTeleporter;->zaa(Ljava/io/Closeable;)V
+	48      (000000d2) goto                 +29h
+	8c:cb
+	(Ljava/io/IOException; -> d8 writeToParcel-BB@0xd8)
+	(Ljava/lang/Throwable; -> d4 writeToParcel-BB@0xd4)
+
+writeToParcel-BB@0xd4 : [ writeToParcel-BB@0xea ]
+	49      (000000d4) move-exception       v7
+	50      (000000d6) goto                 +ah
+
+writeToParcel-BB@0xd8 : [ writeToParcel-BB@0xda ]
+	51      (000000d8) move-exception       v7
+
+writeToParcel-BB@0xda : 
+	52      (000000da) new-instance         v8, Ljava/lang/IllegalStateException;
+	53      (000000de) const-string         v0, "Could not write into unlinked file"
+	54      (000000e2) invoke-direct        v8, v0, v7, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	55      (000000e8) throw                v8
+	da:e9
+	(Ljava/lang/Throwable; -> d4 writeToParcel-BB@0xd4)
+
+writeToParcel-BB@0xea : 
+	56      (000000ea) invoke-static        v3, Lcom/google/android/gms/common/data/BitmapTeleporter;->zaa(Ljava/io/Closeable;)V
+	57      (000000f0) throw                v7
+
+writeToParcel-BB@0xf2 : 
+	58      (000000f2) new-instance         v7, Ljava/lang/IllegalStateException;
+	59      (000000f6) const-string         v8, "Temporary file is somehow already deleted"
+	60      (000000fa) invoke-direct        v7, v8, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	61      (00000100) throw                v7
+
+writeToParcel-BB@0x102 : 
+	62      (00000102) move-exception       v7
+	63      (00000104) new-instance         v8, Ljava/lang/IllegalStateException;
+	64      (00000108) const-string         v0, "Could not create temporary file"
+	65      (0000010c) invoke-direct        v8, v0, v7, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	66      (00000112) throw                v8
+
+writeToParcel-BB@0x114 : 
+	67      (00000114) new-instance         v7, Ljava/lang/IllegalStateException;
+	68      (00000118) const-string         v8, "setTempDir() must be called before writing this object to a parcel"
+	69      (0000011c) invoke-direct        v7, v8, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	70      (00000122) throw                v7
+
+writeToParcel-BB@0x124 : 
+	71      (00000124) const/4              v0, 1
+	72      (00000126) or-int/2addr         v8, v0
+	73      (00000128) invoke-static        v7, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelWriter;->beginObjectHeader(Landroid/os/Parcel;)I
+	74      (0000012e) move-result          v1
+	75      (00000130) iget                 v2, v6, Lcom/google/android/gms/common/data/BitmapTeleporter;->zaa I
+	76      (00000134) invoke-static        v7, v0, v2, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelWriter;->writeInt(Landroid/os/Parcel; I I)V
+	77      (0000013a) iget-object          v0, v6, Lcom/google/android/gms/common/data/BitmapTeleporter;->zab Landroid/os/ParcelFileDescriptor;
+	78      (0000013e) const/4              v2, 0
+	79      (00000140) const/4              v3, 2
+	80      (00000142) invoke-static        v7, v3, v0, v8, v2, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelWriter;->writeParcelable(Landroid/os/Parcel; I Landroid/os/Parcelable; I Z)V
+	81      (00000148) const/4              v8, 3
+	82      (0000014a) iget                 v0, v6, Lcom/google/android/gms/common/data/BitmapTeleporter;->zac I
+	83      (0000014e) invoke-static        v7, v8, v0, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelWriter;->writeInt(Landroid/os/Parcel; I I)V
+	84      (00000154) invoke-static        v7, v1, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelWriter;->finishObjectHeader(Landroid/os/Parcel; I)V
+	85      (0000015a) const/4              v7, 0
+	86      (0000015c) iput-object          v7, v6, Lcom/google/android/gms/common/data/BitmapTeleporter;->zab Landroid/os/ParcelFileDescriptor;
+	87      (00000160) return-void          
+

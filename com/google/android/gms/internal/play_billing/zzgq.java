@@ -1,0 +1,8 @@
+package com.google.android.gms.internal.play_billing;
+final class zzgq {
+
+    public zzgq()
+    {
+        return;
+    }
+}

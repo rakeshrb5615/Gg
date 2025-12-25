@@ -1,0 +1,57 @@
+# Lcom/google/android/gms/cloudmessaging/zzg;->run()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v4
+#
+# - return:void
+
+run-BB@0x0 : [ run-BB@0x18 run-BB@0x24 ]
+	0       (00000000) iget-object          v0, v4, Lcom/google/android/gms/cloudmessaging/zzg;->zzb Lcom/google/android/gms/cloudmessaging/CloudMessage;
+	1       (00000004) invoke-virtual       v0, Lcom/google/android/gms/cloudmessaging/CloudMessage;->getMessageId()Ljava/lang/String;
+	2       (0000000a) move-result-object   v1
+	3       (0000000c) invoke-static        v1, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+	4       (00000012) move-result          v1
+	5       (00000014) if-eqz               v1, +008h
+
+run-BB@0x18 : [ run-BB@0x80 ]
+	6       (00000018) const/4              v0, 0
+	7       (0000001a) invoke-static        v0, Lcom/google/android/gms/tasks/Tasks;->forResult(Ljava/lang/Object;)Lcom/google/android/gms/tasks/Task;
+	8       (00000020) move-result-object   v0
+	9       (00000022) goto                 +2fh
+
+run-BB@0x24 : [ run-BB@0x4c run-BB@0x5e ]
+	10      (00000024) new-instance         v1, Landroid/os/Bundle;
+	11      (00000028) invoke-direct        v1, Landroid/os/Bundle;-><init>()V
+	12      (0000002e) invoke-virtual       v0, Lcom/google/android/gms/cloudmessaging/CloudMessage;->getMessageId()Ljava/lang/String;
+	13      (00000034) move-result-object   v2
+	14      (00000036) const-string         v3, "google.message_id"
+	15      (0000003a) invoke-virtual       v1, v3, v2, Landroid/os/BaseBundle;->putString(Ljava/lang/String; Ljava/lang/String;)V
+	16      (00000040) invoke-virtual       v0, Lcom/google/android/gms/cloudmessaging/CloudMessage;->zza()Ljava/lang/Integer;
+	17      (00000046) move-result-object   v0
+	18      (00000048) if-eqz               v0, +00bh
+
+run-BB@0x4c : [ run-BB@0x5e ]
+	19      (0000004c) const-string         v2, "google.product_id"
+	20      (00000050) invoke-virtual       v0, Ljava/lang/Integer;->intValue()I
+	21      (00000056) move-result          v0
+	22      (00000058) invoke-virtual       v1, v2, v0, Landroid/os/BaseBundle;->putInt(Ljava/lang/String; I)V
+
+run-BB@0x5e : [ run-BB@0x80 ]
+	23      (0000005e) iget-object          v0, v4, Lcom/google/android/gms/cloudmessaging/zzg;->zza Landroid/content/Context;
+	24      (00000062) const-string         v2, "supports_message_handled"
+	25      (00000066) const/4              v3, 1
+	26      (00000068) invoke-virtual       v1, v2, v3, Landroid/os/BaseBundle;->putBoolean(Ljava/lang/String; Z)V
+	27      (0000006e) invoke-static        v0, Lcom/google/android/gms/cloudmessaging/zzv;->zzb(Landroid/content/Context;)Lcom/google/android/gms/cloudmessaging/zzv;
+	28      (00000074) move-result-object   v0
+	29      (00000076) const/4              v2, 2
+	30      (00000078) invoke-virtual       v0, v2, v1, Lcom/google/android/gms/cloudmessaging/zzv;->zzc(I Landroid/os/Bundle;)Lcom/google/android/gms/tasks/Task;
+	31      (0000007e) move-result-object   v0
+
+run-BB@0x80 : 
+	32      (00000080) iget-object          v1, v4, Lcom/google/android/gms/cloudmessaging/zzg;->zzc Ljava/util/concurrent/CountDownLatch;
+	33      (00000084) sget-object          v2, Lcom/google/android/gms/cloudmessaging/zze;->zza Lcom/google/android/gms/cloudmessaging/zze;
+	34      (00000088) new-instance         v3, Lcom/google/android/gms/cloudmessaging/zzf;
+	35      (0000008c) invoke-direct        v3, v1, Lcom/google/android/gms/cloudmessaging/zzf;-><init>(Ljava/util/concurrent/CountDownLatch;)V
+	36      (00000092) invoke-virtual       v0, v2, v3, Lcom/google/android/gms/tasks/Task;->addOnCompleteListener(Ljava/util/concurrent/Executor; Lcom/google/android/gms/tasks/OnCompleteListener;)Lcom/google/android/gms/tasks/Task;
+	37      (00000098) return-void          
+

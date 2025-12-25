@@ -1,0 +1,41 @@
+# Lcom/google/android/gms/internal/auth/zzfy;->zzc(Ljava/lang/String;)Ljava/lang/String; [access_flags=private static final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:java.lang.String
+#
+# - return:java.lang.String
+
+zzc-BB@0x0 : [ zzc-BB@0xc ]
+	0       (00000000) new-instance         v0, Ljava/lang/StringBuilder;
+	1       (00000004) invoke-direct        v0, Ljava/lang/StringBuilder;-><init>()V
+	2       (0000000a) const/4              v1, 0
+
+zzc-BB@0xc : [ zzc-BB@0x18 zzc-BB@0x4a ]
+	3       (0000000c) invoke-virtual       v4, Ljava/lang/String;->length()I
+	4       (00000012) move-result          v2
+	5       (00000014) if-ge                v1, v2, +01bh
+
+zzc-BB@0x18 : [ zzc-BB@0x2c zzc-BB@0x36 ]
+	6       (00000018) invoke-virtual       v4, v1, Ljava/lang/String;->charAt(I)C
+	7       (0000001e) move-result          v2
+	8       (00000020) invoke-static        v2, Ljava/lang/Character;->isUpperCase(C)Z
+	9       (00000026) move-result          v3
+	10      (00000028) if-eqz               v3, +007h
+
+zzc-BB@0x2c : [ zzc-BB@0x36 ]
+	11      (0000002c) const-string         v3, "_"
+	12      (00000030) invoke-virtual       v0, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+zzc-BB@0x36 : [ zzc-BB@0xc ]
+	13      (00000036) invoke-static        v2, Ljava/lang/Character;->toLowerCase(C)C
+	14      (0000003c) move-result          v2
+	15      (0000003e) invoke-virtual       v0, v2, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+	16      (00000044) add-int/lit8         v1, v1, 1
+	17      (00000048) goto                 -1eh
+
+zzc-BB@0x4a : 
+	18      (0000004a) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	19      (00000050) move-result-object   v4
+	20      (00000052) return-object        v4
+

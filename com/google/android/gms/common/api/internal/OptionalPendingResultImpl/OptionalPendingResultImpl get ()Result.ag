@@ -1,0 +1,27 @@
+# Lcom/google/android/gms/common/api/internal/OptionalPendingResultImpl;->get()Lcom/google/android/gms/common/api/Result; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v4
+#
+# - return:com.google.android.gms.common.api.Result
+
+get-BB@0x0 : [ get-BB@0x10 get-BB@0x26 ]
+	0       (00000000) iget-object          v0, v4, Lcom/google/android/gms/common/api/internal/OptionalPendingResultImpl;->zaa Lcom/google/android/gms/common/api/internal/BasePendingResult;
+	1       (00000004) invoke-virtual       v0, Lcom/google/android/gms/common/api/internal/BasePendingResult;->isReady()Z
+	2       (0000000a) move-result          v0
+	3       (0000000c) if-eqz               v0, +00dh
+
+get-BB@0x10 : 
+	4       (00000010) iget-object          v0, v4, Lcom/google/android/gms/common/api/internal/OptionalPendingResultImpl;->zaa Lcom/google/android/gms/common/api/internal/BasePendingResult;
+	5       (00000014) const-wide/16        v1, 0
+	6       (00000018) sget-object          v3, Ljava/util/concurrent/TimeUnit;->MILLISECONDS Ljava/util/concurrent/TimeUnit;
+	7       (0000001c) invoke-virtual       v0, v1, v2, v3, Lcom/google/android/gms/common/api/internal/BasePendingResult;->await(J Ljava/util/concurrent/TimeUnit;)Lcom/google/android/gms/common/api/Result;
+	8       (00000022) move-result-object   v0
+	9       (00000024) return-object        v0
+
+get-BB@0x26 : 
+	10      (00000026) new-instance         v0, Ljava/lang/IllegalStateException;
+	11      (0000002a) const-string         v1, "Result is not available. Check that isDone() returns true before calling get()."
+	12      (0000002e) invoke-direct        v0, v1, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	13      (00000034) throw                v0
+

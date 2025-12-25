@@ -1,0 +1,36 @@
+# Lcom/google/android/gms/fido/u2f/api/messagebased/RequestType;->fromString(Ljava/lang/String;)Lcom/google/android/gms/fido/u2f/api/messagebased/RequestType; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:java.lang.String
+#
+# - return:com.google.android.gms.fido.u2f.api.messagebased.RequestType
+
+fromString-BB@0x0 : [ fromString-BB@0xc ]
+	0       (00000000) invoke-static        Lcom/google/android/gms/fido/u2f/api/messagebased/RequestType;->values()[Lcom/google/android/gms/fido/u2f/api/messagebased/RequestType;
+	1       (00000006) move-result-object   v0
+	2       (00000008) array-length         v1, v0
+	3       (0000000a) const/4              v2, 0
+
+fromString-BB@0xc : [ fromString-BB@0x10 fromString-BB@0x2c ]
+	4       (0000000c) if-ge                v2, v1, +010h
+
+fromString-BB@0x10 : [ fromString-BB@0x24 fromString-BB@0x26 ]
+	5       (00000010) aget-object          v3, v0, v2
+	6       (00000014) iget-object          v4, v3, Lcom/google/android/gms/fido/u2f/api/messagebased/RequestType;->zzb Ljava/lang/String;
+	7       (00000018) invoke-virtual       v5, v4, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	8       (0000001e) move-result          v4
+	9       (00000020) if-eqz               v4, +003h
+
+fromString-BB@0x24 : 
+	10      (00000024) return-object        v3
+
+fromString-BB@0x26 : [ fromString-BB@0xc ]
+	11      (00000026) add-int/lit8         v2, v2, 1
+	12      (0000002a) goto                 -fh
+
+fromString-BB@0x2c : 
+	13      (0000002c) new-instance         v0, Lcom/google/android/gms/fido/u2f/api/messagebased/RequestType$UnsupportedRequestTypeException;
+	14      (00000030) invoke-direct        v0, v5, Lcom/google/android/gms/fido/u2f/api/messagebased/RequestType$UnsupportedRequestTypeException;-><init>(Ljava/lang/String;)V
+	15      (00000036) throw                v0
+

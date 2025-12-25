@@ -1,0 +1,39 @@
+# Lcom/google/android/gms/common/internal/GmsClient;->zaa(Ljava/util/Set;)Ljava/util/Set; [access_flags=private final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:java.util.Set
+#
+# - return:java.util.Set
+
+zaa-BB@0x0 : [ zaa-BB@0x10 ]
+	0       (00000000) invoke-virtual       v3, v4, Lcom/google/android/gms/common/internal/GmsClient;->validateScopes(Ljava/util/Set;)Ljava/util/Set;
+	1       (00000006) move-result-object   v0
+	2       (00000008) invoke-interface     v0, Ljava/util/Set;->iterator()Ljava/util/Iterator;
+	3       (0000000e) move-result-object   v1
+
+zaa-BB@0x10 : [ zaa-BB@0x1c zaa-BB@0x46 ]
+	4       (00000010) invoke-interface     v1, Ljava/util/Iterator;->hasNext()Z
+	5       (00000016) move-result          v2
+	6       (00000018) if-eqz               v2, +017h
+
+zaa-BB@0x1c : [ zaa-BB@0x34 zaa-BB@0x36 ]
+	7       (0000001c) invoke-interface     v1, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	8       (00000022) move-result-object   v2
+	9       (00000024) check-cast           v2, Lcom/google/android/gms/common/api/Scope;
+	10      (00000028) invoke-interface     v4, v2, Ljava/util/Set;->contains(Ljava/lang/Object;)Z
+	11      (0000002e) move-result          v2
+	12      (00000030) if-eqz               v2, +003h
+
+zaa-BB@0x34 : [ zaa-BB@0x10 ]
+	13      (00000034) goto                 -12h
+
+zaa-BB@0x36 : 
+	14      (00000036) new-instance         v4, Ljava/lang/IllegalStateException;
+	15      (0000003a) const-string         v0, "Expanding scopes is not permitted, use implied scopes instead"
+	16      (0000003e) invoke-direct        v4, v0, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	17      (00000044) throw                v4
+
+zaa-BB@0x46 : 
+	18      (00000046) return-object        v0
+

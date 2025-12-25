@@ -1,0 +1,25 @@
+# Lcom/android/billingclient/api/PendingPurchasesParams$Builder;->build()Lcom/android/billingclient/api/PendingPurchasesParams; [access_flags=public]
+#
+# Parameters:
+# local registers: v0...v4
+#
+# - return:com.android.billingclient.api.PendingPurchasesParams
+
+build-BB@0x0 : [ build-BB@0x8 build-BB@0x1c ]
+	0       (00000000) iget-boolean         v0, v4, Lcom/android/billingclient/api/PendingPurchasesParams$Builder;->enableOneTimeProducts Z
+	1       (00000004) if-eqz               v0, +00ch
+
+build-BB@0x8 : 
+	2       (00000008) new-instance         v0, Lcom/android/billingclient/api/PendingPurchasesParams;
+	3       (0000000c) iget-boolean         v1, v4, Lcom/android/billingclient/api/PendingPurchasesParams$Builder;->enablePrepaidPlans Z
+	4       (00000010) const/4              v2, 0
+	5       (00000012) const/4              v3, 1
+	6       (00000014) invoke-direct        v0, v3, v1, v2, Lcom/android/billingclient/api/PendingPurchasesParams;-><init>(Z Z Lcom/android/billingclient/api/zzcr;)V
+	7       (0000001a) return-object        v0
+
+build-BB@0x1c : 
+	8       (0000001c) new-instance         v0, Ljava/lang/IllegalArgumentException;
+	9       (00000020) const-string         v1, "Pending purchases for one-time products must be supported."
+	10      (00000024) invoke-direct        v0, v1, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	11      (0000002a) throw                v0
+

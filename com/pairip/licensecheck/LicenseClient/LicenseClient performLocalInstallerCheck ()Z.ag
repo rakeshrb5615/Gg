@@ -1,0 +1,144 @@
+# Lcom/pairip/licensecheck/LicenseClient;->performLocalInstallerCheck()Z [access_flags=private]
+#
+# Parameters:
+# local registers: v0...v6
+#
+# - return:boolean
+
+performLocalInstallerCheck-BB@0x0 : [ performLocalInstallerCheck-BB@0x6 ]
+	0       (00000000) const-string         v0, "LicenseClient"
+	1       (00000004) const/4              v1, 0
+
+performLocalInstallerCheck-BB@0x6 : [ performLocalInstallerCheck-BB@0x12 performLocalInstallerCheck-BB@0x1e ]
+	2       (00000006) sget                 v2, Landroid/os/Build$VERSION;->SDK_INT I
+	3       (0000000a) const/16             v3, 30
+	4       (0000000e) if-ge                v2, v3, +008h
+	6:cd
+	(Ljava/lang/Exception; -> d0 performLocalInstallerCheck-BB@0xd0)
+
+performLocalInstallerCheck-BB@0x12 : 
+	5       (00000012) const-string         v2, "Local install check bypassed due to old SDK version."
+	6       (00000016) invoke-static        v0, v2, Landroid/util/Log;->i(Ljava/lang/String; Ljava/lang/String;)I
+	7       (0000001c) return               v1
+	6:cd
+	(Ljava/lang/Exception; -> d0 performLocalInstallerCheck-BB@0xd0)
+
+performLocalInstallerCheck-BB@0x1e : [ performLocalInstallerCheck-BB@0x2e performLocalInstallerCheck-BB@0x3a ]
+	8       (0000001e) iget-object          v2, v6, Lcom/pairip/licensecheck/LicenseClient;->context Landroid/content/Context;
+	9       (00000022) invoke-virtual       v2, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
+	10      (00000028) move-result-object   v2
+	11      (0000002a) if-nez               v2, +008h
+	6:cd
+	(Ljava/lang/Exception; -> d0 performLocalInstallerCheck-BB@0xd0)
+
+performLocalInstallerCheck-BB@0x2e : 
+	12      (0000002e) const-string         v2, "Local install check bypassed due to package manager not found."
+	13      (00000032) invoke-static        v0, v2, Landroid/util/Log;->i(Ljava/lang/String; Ljava/lang/String;)I
+	14      (00000038) return               v1
+	6:cd
+	(Ljava/lang/Exception; -> d0 performLocalInstallerCheck-BB@0xd0)
+
+performLocalInstallerCheck-BB@0x3a : [ performLocalInstallerCheck-BB@0x4a performLocalInstallerCheck-BB@0xc4 ]
+	15      (0000003a) sget-object          v3, Lcom/pairip/licensecheck/LicenseClient;->packageName Ljava/lang/String;
+	16      (0000003e) invoke-virtual       v2, v3, v1, Landroid/content/pm/PackageManager;->getPackageInfo(Ljava/lang/String; I)Landroid/content/pm/PackageInfo;
+	17      (00000044) move-result-object   v3
+	18      (00000046) if-eqz               v3, +03fh
+	6:cd
+	(Ljava/lang/Exception; -> d0 performLocalInstallerCheck-BB@0xd0)
+
+performLocalInstallerCheck-BB@0x4a : [ performLocalInstallerCheck-BB@0x52 performLocalInstallerCheck-BB@0x54 ]
+	19      (0000004a) iget-object          v4, v3, Landroid/content/pm/PackageInfo;->applicationInfo Landroid/content/pm/ApplicationInfo;
+	20      (0000004e) if-nez               v4, +003h
+	6:cd
+	(Ljava/lang/Exception; -> d0 performLocalInstallerCheck-BB@0xd0)
+
+performLocalInstallerCheck-BB@0x52 : [ performLocalInstallerCheck-BB@0xc4 ]
+	21      (00000052) goto                 +39h
+	6:cd
+	(Ljava/lang/Exception; -> d0 performLocalInstallerCheck-BB@0xd0)
+
+performLocalInstallerCheck-BB@0x54 : [ performLocalInstallerCheck-BB@0x66 performLocalInstallerCheck-BB@0xb8 ]
+	22      (00000054) iget-object          v3, v3, Landroid/content/pm/PackageInfo;->applicationInfo Landroid/content/pm/ApplicationInfo;
+	23      (00000058) iget                 v3, v3, Landroid/content/pm/ApplicationInfo;->flags I
+	24      (0000005c) and-int/lit8         v4, v3, 1
+	25      (00000060) const/4              v5, 1
+	26      (00000062) if-nez               v4, +02bh
+	6:cd
+	(Ljava/lang/Exception; -> d0 performLocalInstallerCheck-BB@0xd0)
+
+performLocalInstallerCheck-BB@0x66 : [ performLocalInstallerCheck-BB@0x6e performLocalInstallerCheck-BB@0x70 ]
+	27      (00000066) and-int/lit16        v3, v3, 128
+	28      (0000006a) if-eqz               v3, +003h
+	6:cd
+	(Ljava/lang/Exception; -> d0 performLocalInstallerCheck-BB@0xd0)
+
+performLocalInstallerCheck-BB@0x6e : [ performLocalInstallerCheck-BB@0xb8 ]
+	29      (0000006e) goto                 +25h
+	6:cd
+	(Ljava/lang/Exception; -> d0 performLocalInstallerCheck-BB@0xd0)
+
+performLocalInstallerCheck-BB@0x70 : [ performLocalInstallerCheck-BB@0x80 performLocalInstallerCheck-BB@0x8c ]
+	30      (00000070) sget-object          v3, Lcom/pairip/licensecheck/LicenseClient;->packageName Ljava/lang/String;
+	31      (00000074) invoke-virtual       v2, v3, Landroid/content/pm/PackageManager;->getInstallSourceInfo(Ljava/lang/String;)Landroid/content/pm/InstallSourceInfo;
+	32      (0000007a) move-result-object   v2
+	33      (0000007c) if-nez               v2, +008h
+	6:cd
+	(Ljava/lang/Exception; -> d0 performLocalInstallerCheck-BB@0xd0)
+
+performLocalInstallerCheck-BB@0x80 : 
+	34      (00000080) const-string         v2, "Local install check bypassed due to install source info not found."
+	35      (00000084) invoke-static        v0, v2, Landroid/util/Log;->i(Ljava/lang/String; Ljava/lang/String;)I
+	36      (0000008a) return               v1
+	6:cd
+	(Ljava/lang/Exception; -> d0 performLocalInstallerCheck-BB@0xd0)
+
+performLocalInstallerCheck-BB@0x8c : [ performLocalInstallerCheck-BB@0x98 performLocalInstallerCheck-BB@0xac ]
+	37      (0000008c) invoke-virtual       v2, Landroid/content/pm/InstallSourceInfo;->getInstallingPackageName()Ljava/lang/String;
+	38      (00000092) move-result-object   v2
+	39      (00000094) if-eqz               v2, +00ch
+	6:cd
+	(Ljava/lang/Exception; -> d0 performLocalInstallerCheck-BB@0xd0)
+
+performLocalInstallerCheck-BB@0x98 : [ performLocalInstallerCheck-BB@0xa8 performLocalInstallerCheck-BB@0xaa ]
+	40      (00000098) const-string         v3, "com.android.vending"
+	41      (0000009c) invoke-virtual       v2, v3, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	42      (000000a2) move-result          v2
+	43      (000000a4) if-nez               v2, +003h
+	6:cd
+	(Ljava/lang/Exception; -> d0 performLocalInstallerCheck-BB@0xd0)
+
+performLocalInstallerCheck-BB@0xa8 : [ performLocalInstallerCheck-BB@0xac ]
+	44      (000000a8) goto                 +2h
+	6:cd
+	(Ljava/lang/Exception; -> d0 performLocalInstallerCheck-BB@0xd0)
+
+performLocalInstallerCheck-BB@0xaa : 
+	45      (000000aa) return               v5
+	6:cd
+	(Ljava/lang/Exception; -> d0 performLocalInstallerCheck-BB@0xd0)
+
+performLocalInstallerCheck-BB@0xac : 
+	46      (000000ac) const-string         v2, "Local install check failed due to wrong installer."
+	47      (000000b0) invoke-static        v0, v2, Landroid/util/Log;->i(Ljava/lang/String; Ljava/lang/String;)I
+	48      (000000b6) return               v1
+	6:cd
+	(Ljava/lang/Exception; -> d0 performLocalInstallerCheck-BB@0xd0)
+
+performLocalInstallerCheck-BB@0xb8 : 
+	49      (000000b8) const-string         v2, "Local install check passed due to system app."
+	50      (000000bc) invoke-static        v0, v2, Landroid/util/Log;->i(Ljava/lang/String; Ljava/lang/String;)I
+	51      (000000c2) return               v5
+	6:cd
+	(Ljava/lang/Exception; -> d0 performLocalInstallerCheck-BB@0xd0)
+
+performLocalInstallerCheck-BB@0xc4 : 
+	52      (000000c4) const-string         v2, "Local install check bypassed due to app package info not found."
+	53      (000000c8) invoke-static        v0, v2, Landroid/util/Log;->i(Ljava/lang/String; Ljava/lang/String;)I
+	54      (000000ce) return               v1
+
+performLocalInstallerCheck-BB@0xd0 : 
+	55      (000000d0) move-exception       v2
+	56      (000000d2) const-string         v3, "Could not obtain package info for local installer check."
+	57      (000000d6) invoke-static        v0, v3, v2, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+	58      (000000dc) return               v1
+

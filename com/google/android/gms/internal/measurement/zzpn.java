@@ -1,0 +1,28 @@
+package com.google.android.gms.internal.measurement;
+public final class zzpn implements com.google.android.gms.internal.measurement.zzpm {
+    public static final com.google.android.gms.internal.measurement.zzkm zza;
+    public static final com.google.android.gms.internal.measurement.zzkm zzb;
+
+    static zzpn()
+    {
+        com.google.android.gms.internal.measurement.zzkm v0_4 = new com.google.android.gms.internal.measurement.zzkg(com.google.android.gms.internal.measurement.zzkb.zza("com.google.android.gms.measurement")).zza().zzb();
+        com.google.android.gms.internal.measurement.zzpn.zza = v0_4.zzd("measurement.set_default_event_parameters_propagate_clear.client.dev", 1);
+        com.google.android.gms.internal.measurement.zzpn.zzb = v0_4.zzd("measurement.set_default_event_parameters_propagate_clear.service", 1);
+        return;
+    }
+
+    public zzpn()
+    {
+        return;
+    }
+
+    public final boolean zza()
+    {
+        return ((Boolean) com.google.android.gms.internal.measurement.zzpn.zza.zzd()).booleanValue();
+    }
+
+    public final boolean zzb()
+    {
+        return ((Boolean) com.google.android.gms.internal.measurement.zzpn.zzb.zzd()).booleanValue();
+    }
+}

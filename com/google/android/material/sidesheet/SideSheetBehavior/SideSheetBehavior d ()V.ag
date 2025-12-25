@@ -1,0 +1,87 @@
+# Lcom/google/android/material/sidesheet/SideSheetBehavior;->d()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v10
+#
+# - return:void
+
+d-BB@0x0 : [ d-BB@0x8 d-BB@0xa ]
+	0       (00000000) iget-object          v0, v10, Lcom/google/android/material/sidesheet/SideSheetBehavior;->t Lr3/h;
+	1       (00000004) if-nez               v0, +003h
+
+d-BB@0x8 : [ d-BB@0x32 ]
+	2       (00000008) goto                 +15h
+
+d-BB@0xa : [ d-BB@0x16 d-BB@0x24 ]
+	3       (0000000a) iget-object          v1, v0, Lr3/a;->b Landroid/view/View;
+	4       (0000000e) iget-object          v2, v0, Lr3/a;->f Lc/a;
+	5       (00000012) if-nez               v2, +009h
+
+d-BB@0x16 : [ d-BB@0x24 ]
+	6       (00000016) const-string         v2, "MaterialBackHelper"
+	7       (0000001a) const-string         v3, "Must call startBackProgress() and updateBackProgress() before cancelBackProgress()"
+	8       (0000001e) invoke-static        v2, v3, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+
+d-BB@0x24 : [ d-BB@0x32 d-BB@0x34 ]
+	9       (00000024) iget-object          v2, v0, Lr3/a;->f Lc/a;
+	10      (00000028) const/4              v3, 0
+	11      (0000002a) iput-object          v3, v0, Lr3/a;->f Lc/a;
+	12      (0000002e) if-nez               v2, +003h
+
+d-BB@0x32 : 
+	13      (00000032) return-void          
+
+d-BB@0x34 : [ d-BB@0x8a d-BB@0xcc ]
+	14      (00000034) new-instance         v2, Landroid/animation/AnimatorSet;
+	15      (00000038) invoke-direct        v2, Landroid/animation/AnimatorSet;-><init>()V
+	16      (0000003e) sget-object          v3, Landroid/view/View;->SCALE_X Landroid/util/Property;
+	17      (00000042) const/4              v4, 1
+	18      (00000044) new-array            v5, v4, [F
+	19      (00000048) const/4              v6, 0
+	20      (0000004a) const/high16         v7, 1065353216
+	21      (0000004e) aput                 v7, v5, v6
+	22      (00000052) invoke-static        v1, v3, v5, Landroid/animation/ObjectAnimator;->ofFloat(Ljava/lang/Object; Landroid/util/Property; [F)Landroid/animation/ObjectAnimator;
+	23      (00000058) move-result-object   v3
+	24      (0000005a) sget-object          v5, Landroid/view/View;->SCALE_Y Landroid/util/Property;
+	25      (0000005e) new-array            v8, v4, [F
+	26      (00000062) aput                 v7, v8, v6
+	27      (00000066) invoke-static        v1, v5, v8, Landroid/animation/ObjectAnimator;->ofFloat(Ljava/lang/Object; Landroid/util/Property; [F)Landroid/animation/ObjectAnimator;
+	28      (0000006c) move-result-object   v5
+	29      (0000006e) const/4              v8, 2
+	30      (00000070) new-array            v8, v8, [Landroid/animation/Animator;
+	31      (00000074) aput-object          v3, v8, v6
+	32      (00000078) aput-object          v5, v8, v4
+	33      (0000007c) invoke-virtual       v2, v8, Landroid/animation/AnimatorSet;->playTogether([Landroid/animation/Animator;)V
+	34      (00000082) instance-of          v3, v1, Landroid/view/ViewGroup;
+	35      (00000086) if-eqz               v3, +023h
+
+d-BB@0x8a : [ d-BB@0x90 ]
+	36      (0000008a) check-cast           v1, Landroid/view/ViewGroup;
+	37      (0000008e) move                 v3, v6
+
+d-BB@0x90 : [ d-BB@0x9c d-BB@0xcc ]
+	38      (00000090) invoke-virtual       v1, Landroid/view/ViewGroup;->getChildCount()I
+	39      (00000096) move-result          v5
+	40      (00000098) if-ge                v3, v5, +01ah
+
+d-BB@0x9c : [ d-BB@0x90 ]
+	41      (0000009c) invoke-virtual       v1, v3, Landroid/view/ViewGroup;->getChildAt(I)Landroid/view/View;
+	42      (000000a2) move-result-object   v5
+	43      (000000a4) sget-object          v8, Landroid/view/View;->SCALE_Y Landroid/util/Property;
+	44      (000000a8) new-array            v9, v4, [F
+	45      (000000ac) aput                 v7, v9, v6
+	46      (000000b0) invoke-static        v5, v8, v9, Landroid/animation/ObjectAnimator;->ofFloat(Ljava/lang/Object; Landroid/util/Property; [F)Landroid/animation/ObjectAnimator;
+	47      (000000b6) move-result-object   v5
+	48      (000000b8) new-array            v8, v4, [Landroid/animation/Animator;
+	49      (000000bc) aput-object          v5, v8, v6
+	50      (000000c0) invoke-virtual       v2, v8, Landroid/animation/AnimatorSet;->playTogether([Landroid/animation/Animator;)V
+	51      (000000c6) add-int/lit8         v3, v3, 1
+	52      (000000ca) goto                 -1dh
+
+d-BB@0xcc : 
+	53      (000000cc) iget                 v0, v0, Lr3/a;->e I
+	54      (000000d0) int-to-long          v0, v0
+	55      (000000d2) invoke-virtual       v2, v0, v1, Landroid/animation/AnimatorSet;->setDuration(J)Landroid/animation/AnimatorSet;
+	56      (000000d8) invoke-virtual       v2, Landroid/animation/AnimatorSet;->start()V
+	57      (000000de) return-void          
+

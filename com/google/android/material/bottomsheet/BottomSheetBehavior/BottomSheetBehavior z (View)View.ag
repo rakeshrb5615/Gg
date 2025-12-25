@@ -1,0 +1,55 @@
+# Lcom/google/android/material/bottomsheet/BottomSheetBehavior;->z(Landroid/view/View;)Landroid/view/View; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:android.view.View
+#
+# - return:android.view.View
+
+z-BB@0x0 : [ z-BB@0xc z-BB@0xe ]
+	0       (00000000) invoke-virtual       v3, Landroid/view/View;->getVisibility()I
+	1       (00000006) move-result          v0
+	2       (00000008) if-eqz               v0, +003h
+
+z-BB@0xc : [ z-BB@0x52 ]
+	3       (0000000c) goto                 +23h
+
+z-BB@0xe : [ z-BB@0x1a z-BB@0x1c ]
+	4       (0000000e) invoke-virtual       v3, Landroid/view/View;->isNestedScrollingEnabled()Z
+	5       (00000014) move-result          v0
+	6       (00000016) if-eqz               v0, +003h
+
+z-BB@0x1a : 
+	7       (0000001a) return-object        v3
+
+z-BB@0x1c : [ z-BB@0x24 z-BB@0x52 ]
+	8       (0000001c) instance-of          v0, v3, Landroid/view/ViewGroup;
+	9       (00000020) if-eqz               v0, +019h
+
+z-BB@0x24 : [ z-BB@0x32 ]
+	10      (00000024) check-cast           v3, Landroid/view/ViewGroup;
+	11      (00000028) invoke-virtual       v3, Landroid/view/ViewGroup;->getChildCount()I
+	12      (0000002e) move-result          v0
+	13      (00000030) const/4              v1, 0
+
+z-BB@0x32 : [ z-BB@0x36 z-BB@0x52 ]
+	14      (00000032) if-ge                v1, v0, +010h
+
+z-BB@0x36 : [ z-BB@0x4a z-BB@0x4c ]
+	15      (00000036) invoke-virtual       v3, v1, Landroid/view/ViewGroup;->getChildAt(I)Landroid/view/View;
+	16      (0000003c) move-result-object   v2
+	17      (0000003e) invoke-static        v2, Lcom/google/android/material/bottomsheet/BottomSheetBehavior;->z(Landroid/view/View;)Landroid/view/View;
+	18      (00000044) move-result-object   v2
+	19      (00000046) if-eqz               v2, +003h
+
+z-BB@0x4a : 
+	20      (0000004a) return-object        v2
+
+z-BB@0x4c : [ z-BB@0x32 ]
+	21      (0000004c) add-int/lit8         v1, v1, 1
+	22      (00000050) goto                 -fh
+
+z-BB@0x52 : 
+	23      (00000052) const/4              v3, 0
+	24      (00000054) return-object        v3
+

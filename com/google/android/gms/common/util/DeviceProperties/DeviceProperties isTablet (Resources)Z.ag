@@ -1,0 +1,51 @@
+# Lcom/google/android/gms/common/util/DeviceProperties;->isTablet(Landroid/content/res/Resources;)Z [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:android.content.res.Resources
+#
+# - return:boolean
+
+isTablet-BB@0x0 : [ isTablet-BB@0x6 isTablet-BB@0x8 ]
+	0       (00000000) const/4              v0, 0
+	1       (00000002) if-nez               v4, +003h
+
+isTablet-BB@0x6 : 
+	2       (00000006) return               v0
+
+isTablet-BB@0x8 : [ isTablet-BB@0x10 isTablet-BB@0x46 ]
+	3       (00000008) sget-object          v1, Lcom/google/android/gms/common/util/DeviceProperties;->zzc Ljava/lang/Boolean;
+	4       (0000000c) if-nez               v1, +01dh
+
+isTablet-BB@0x10 : [ isTablet-BB@0x28 isTablet-BB@0x2c ]
+	5       (00000010) invoke-virtual       v4, Landroid/content/res/Resources;->getConfiguration()Landroid/content/res/Configuration;
+	6       (00000016) move-result-object   v1
+	7       (00000018) iget                 v1, v1, Landroid/content/res/Configuration;->screenLayout I
+	8       (0000001c) and-int/lit8         v1, v1, 15
+	9       (00000020) const/4              v2, 3
+	10      (00000022) const/4              v3, 1
+	11      (00000024) if-le                v1, v2, +004h
+
+isTablet-BB@0x28 : [ isTablet-BB@0x3a ]
+	12      (00000028) move                 v0, v3
+	13      (0000002a) goto                 +8h
+
+isTablet-BB@0x2c : [ isTablet-BB@0x38 isTablet-BB@0x3a ]
+	14      (0000002c) invoke-static        v4, Lcom/google/android/gms/common/util/DeviceProperties;->zza(Landroid/content/res/Resources;)Z
+	15      (00000032) move-result          v4
+	16      (00000034) if-eqz               v4, +003h
+
+isTablet-BB@0x38 : [ isTablet-BB@0x28 ]
+	17      (00000038) goto                 -8h
+
+isTablet-BB@0x3a : [ isTablet-BB@0x46 ]
+	18      (0000003a) invoke-static        v0, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+	19      (00000040) move-result-object   v4
+	20      (00000042) sput-object          v4, Lcom/google/android/gms/common/util/DeviceProperties;->zzc Ljava/lang/Boolean;
+
+isTablet-BB@0x46 : 
+	21      (00000046) sget-object          v4, Lcom/google/android/gms/common/util/DeviceProperties;->zzc Ljava/lang/Boolean;
+	22      (0000004a) invoke-virtual       v4, Ljava/lang/Boolean;->booleanValue()Z
+	23      (00000050) move-result          v4
+	24      (00000052) return               v4
+

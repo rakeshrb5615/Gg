@@ -1,0 +1,56 @@
+# Lcom/google/android/gms/common/api/GoogleApi;->zab(Landroid/os/Looper; Lcom/google/android/gms/common/api/internal/zabq;)Lcom/google/android/gms/common/api/Api$Client; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v8
+# - v9:android.os.Looper
+# - v10:com.google.android.gms.common.api.internal.zabq
+#
+# - return:com.google.android.gms.common.api.Api$Client
+
+zab-BB@0x0 : [ zab-BB@0x4c zab-BB@0x60 ]
+	0       (00000000) invoke-virtual       v8, Lcom/google/android/gms/common/api/GoogleApi;->createClientSettingsBuilder()Lcom/google/android/gms/common/internal/ClientSettings$Builder;
+	1       (00000006) move-result-object   v0
+	2       (00000008) invoke-virtual       v0, Lcom/google/android/gms/common/internal/ClientSettings$Builder;->build()Lcom/google/android/gms/common/internal/ClientSettings;
+	3       (0000000e) move-result-object   v4
+	4       (00000010) iget-object          v0, v8, Lcom/google/android/gms/common/api/GoogleApi;->zad Lcom/google/android/gms/common/api/Api;
+	5       (00000014) invoke-virtual       v0, Lcom/google/android/gms/common/api/Api;->zaa()Lcom/google/android/gms/common/api/Api$AbstractClientBuilder;
+	6       (0000001a) move-result-object   v0
+	7       (0000001c) invoke-static        v0, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;
+	8       (00000022) move-result-object   v0
+	9       (00000024) move-object          v1, v0
+	10      (00000026) check-cast           v1, Lcom/google/android/gms/common/api/Api$AbstractClientBuilder;
+	11      (0000002a) iget-object          v5, v8, Lcom/google/android/gms/common/api/GoogleApi;->zae Lcom/google/android/gms/common/api/Api$ApiOptions;
+	12      (0000002e) iget-object          v2, v8, Lcom/google/android/gms/common/api/GoogleApi;->zab Landroid/content/Context;
+	13      (00000032) move-object          v7, v10
+	14      (00000034) move-object          v3, v9
+	15      (00000036) move-object          v6, v10
+	16      (00000038) invoke-virtual/range v1 ... v7, Lcom/google/android/gms/common/api/Api$AbstractClientBuilder;->buildClient(Landroid/content/Context; Landroid/os/Looper; Lcom/google/android/gms/common/internal/ClientSettings; Ljava/lang/Object; Lcom/google/android/gms/common/api/GoogleApiClient$ConnectionCallbacks; Lcom/google/android/gms/common/api/GoogleApiClient$OnConnectionFailedListener;)Lcom/google/android/gms/common/api/Api$Client;
+	17      (0000003e) move-result-object   v9
+	18      (00000040) invoke-virtual       v8, Lcom/google/android/gms/common/api/GoogleApi;->getContextAttributionTag()Ljava/lang/String;
+	19      (00000046) move-result-object   v10
+	20      (00000048) if-eqz               v10, +00ch
+
+zab-BB@0x4c : [ zab-BB@0x54 zab-BB@0x60 ]
+	21      (0000004c) instance-of          v0, v9, Lcom/google/android/gms/common/internal/BaseGmsClient;
+	22      (00000050) if-eqz               v0, +008h
+
+zab-BB@0x54 : [ zab-BB@0x60 ]
+	23      (00000054) move-object          v0, v9
+	24      (00000056) check-cast           v0, Lcom/google/android/gms/common/internal/BaseGmsClient;
+	25      (0000005a) invoke-virtual       v0, v10, Lcom/google/android/gms/common/internal/BaseGmsClient;->setAttributionTag(Ljava/lang/String;)V
+
+zab-BB@0x60 : [ zab-BB@0x64 zab-BB@0x78 ]
+	26      (00000060) if-eqz               v10, +00ch
+
+zab-BB@0x64 : [ zab-BB@0x6c zab-BB@0x78 ]
+	27      (00000064) instance-of          v0, v9, Lcom/google/android/gms/common/api/internal/NonGmsServiceBrokerClient;
+	28      (00000068) if-eqz               v0, +008h
+
+zab-BB@0x6c : [ zab-BB@0x78 ]
+	29      (0000006c) move-object          v0, v9
+	30      (0000006e) check-cast           v0, Lcom/google/android/gms/common/api/internal/NonGmsServiceBrokerClient;
+	31      (00000072) invoke-virtual       v0, v10, Lcom/google/android/gms/common/api/internal/NonGmsServiceBrokerClient;->zac(Ljava/lang/String;)V
+
+zab-BB@0x78 : 
+	32      (00000078) return-object        v9
+

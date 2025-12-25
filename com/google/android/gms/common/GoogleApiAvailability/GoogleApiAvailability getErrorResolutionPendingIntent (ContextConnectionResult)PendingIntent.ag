@@ -1,0 +1,27 @@
+# Lcom/google/android/gms/common/GoogleApiAvailability;->getErrorResolutionPendingIntent(Landroid/content/Context; Lcom/google/android/gms/common/ConnectionResult;)Landroid/app/PendingIntent; [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:android.content.Context
+# - v3:com.google.android.gms.common.ConnectionResult
+#
+# - return:android.app.PendingIntent
+
+getErrorResolutionPendingIntent-BB@0x0 : [ getErrorResolutionPendingIntent-BB@0xc getErrorResolutionPendingIntent-BB@0x16 ]
+	0       (00000000) invoke-virtual       v3, Lcom/google/android/gms/common/ConnectionResult;->hasResolution()Z
+	1       (00000006) move-result          v0
+	2       (00000008) if-eqz               v0, +007h
+
+getErrorResolutionPendingIntent-BB@0xc : 
+	3       (0000000c) invoke-virtual       v3, Lcom/google/android/gms/common/ConnectionResult;->getResolution()Landroid/app/PendingIntent;
+	4       (00000012) move-result-object   v2
+	5       (00000014) return-object        v2
+
+getErrorResolutionPendingIntent-BB@0x16 : 
+	6       (00000016) invoke-virtual       v3, Lcom/google/android/gms/common/ConnectionResult;->getErrorCode()I
+	7       (0000001c) move-result          v3
+	8       (0000001e) const/4              v0, 0
+	9       (00000020) invoke-virtual       v1, v2, v3, v0, Lcom/google/android/gms/common/GoogleApiAvailability;->getErrorResolutionPendingIntent(Landroid/content/Context; I I)Landroid/app/PendingIntent;
+	10      (00000026) move-result-object   v2
+	11      (00000028) return-object        v2
+

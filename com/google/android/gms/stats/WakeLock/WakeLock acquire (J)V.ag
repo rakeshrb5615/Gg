@@ -1,0 +1,139 @@
+# Lcom/google/android/gms/stats/WakeLock;->acquire(J)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v10
+# - v11:long
+#
+# - return:void
+
+acquire-BB@0x0 : [ acquire-BB@0x38 acquire-BB@0x40 ]
+	0       (00000000) iget-object          v0, v9, Lcom/google/android/gms/stats/WakeLock;->zzt Ljava/util/concurrent/atomic/AtomicInteger;
+	1       (00000004) invoke-virtual       v0, Ljava/util/concurrent/atomic/AtomicInteger;->incrementAndGet()I
+	2       (0000000a) sget-wide            v0, Lcom/google/android/gms/stats/WakeLock;->zzb J
+	3       (0000000e) const-wide           v2, 9223372036854775807
+	4       (00000018) invoke-static        v2, v3, v0, v1, Ljava/lang/Math;->min(J J)J
+	5       (0000001e) move-result-wide     v0
+	6       (00000020) const-wide/16        v4, 1
+	7       (00000024) invoke-static        v0, v1, v4, v5, Ljava/lang/Math;->max(J J)J
+	8       (0000002a) move-result-wide     v0
+	9       (0000002c) const-wide/16        v4, 0
+	10      (00000030) cmp-long             v4, v10, v4
+	11      (00000034) if-lez               v4, +006h
+
+acquire-BB@0x38 : [ acquire-BB@0x40 ]
+	12      (00000038) invoke-static        v10, v11, v0, v1, Ljava/lang/Math;->min(J J)J
+	13      (0000003e) move-result-wide     v0
+
+acquire-BB@0x40 : [ acquire-BB@0x46 ]
+	14      (00000040) iget-object          v10, v9, Lcom/google/android/gms/stats/WakeLock;->zzf Ljava/lang/Object;
+	15      (00000044) monitor-enter        v10
+
+acquire-BB@0x46 : [ acquire-BB@0x56 acquire-BB@0x7c ]
+	16      (00000046) invoke-virtual       v9, Lcom/google/android/gms/stats/WakeLock;->isHeld()Z
+	17      (0000004c) move-result          v11
+	18      (0000004e) const/4              v4, 0
+	19      (00000050) const/4              v5, 0
+	20      (00000052) if-nez               v11, +015h
+	46:12b
+	(Ljava/lang/Throwable; -> 78 acquire-BB@0x78)
+
+acquire-BB@0x56 : [ acquire-BB@0x7c ]
+	21      (00000056) invoke-static        v4, v5, Lcom/google/android/gms/internal/stats/zzb;->zza(Z Lcom/google/android/gms/internal/stats/zzc;)Lcom/google/android/gms/internal/stats/zzb;
+	22      (0000005c) move-result-object   v11
+	23      (0000005e) iput-object          v11, v9, Lcom/google/android/gms/stats/WakeLock;->zza Lcom/google/android/gms/internal/stats/zzb;
+	24      (00000062) iget-object          v11, v9, Lcom/google/android/gms/stats/WakeLock;->zzg Landroid/os/PowerManager$WakeLock;
+	25      (00000066) invoke-virtual       v11, Landroid/os/PowerManager$WakeLock;->acquire()V
+	26      (0000006c) iget-object          v11, v9, Lcom/google/android/gms/stats/WakeLock;->zzn Lcom/google/android/gms/common/util/Clock;
+	27      (00000070) invoke-interface     v11, Lcom/google/android/gms/common/util/Clock;->elapsedRealtime()J
+	28      (00000076) goto                 +3h
+	46:12b
+	(Ljava/lang/Throwable; -> 78 acquire-BB@0x78)
+
+acquire-BB@0x78 : [ acquire-BB@0x12a ]
+	29      (00000078) move-exception       v11
+	30      (0000007a) goto                 +58h
+	46:12b
+	(Ljava/lang/Throwable; -> 78 acquire-BB@0x78)
+
+acquire-BB@0x7c : [ acquire-BB@0xae acquire-BB@0xc2 ]
+	31      (0000007c) iget                 v11, v9, Lcom/google/android/gms/stats/WakeLock;->zzh I
+	32      (00000080) add-int/lit8         v11, v11, 1
+	33      (00000084) iput                 v11, v9, Lcom/google/android/gms/stats/WakeLock;->zzh I
+	34      (00000088) iget                 v11, v9, Lcom/google/android/gms/stats/WakeLock;->zzm I
+	35      (0000008c) add-int/lit8         v11, v11, 1
+	36      (00000090) iput                 v11, v9, Lcom/google/android/gms/stats/WakeLock;->zzm I
+	37      (00000094) invoke-direct        v9, v5, Lcom/google/android/gms/stats/WakeLock;->zzb(Ljava/lang/String;)Ljava/lang/String;
+	38      (0000009a) iget-object          v11, v9, Lcom/google/android/gms/stats/WakeLock;->zzs Ljava/util/Map;
+	39      (0000009e) invoke-interface     v11, v5, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	40      (000000a4) move-result-object   v11
+	41      (000000a6) check-cast           v11, Lcom/google/android/gms/stats/zzc;
+	42      (000000aa) if-nez               v11, +00ch
+	46:12b
+	(Ljava/lang/Throwable; -> 78 acquire-BB@0x78)
+
+acquire-BB@0xae : [ acquire-BB@0xc2 ]
+	43      (000000ae) new-instance         v11, Lcom/google/android/gms/stats/zzc;
+	44      (000000b2) invoke-direct        v11, v5, Lcom/google/android/gms/stats/zzc;-><init>(Lcom/google/android/gms/stats/zzb;)V
+	45      (000000b8) iget-object          v6, v9, Lcom/google/android/gms/stats/WakeLock;->zzs Ljava/util/Map;
+	46      (000000bc) invoke-interface     v6, v5, v11, Ljava/util/Map;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	46:12b
+	(Ljava/lang/Throwable; -> 78 acquire-BB@0x78)
+
+acquire-BB@0xc2 : [ acquire-BB@0xe6 acquire-BB@0xea ]
+	47      (000000c2) iget                 v5, v11, Lcom/google/android/gms/stats/zzc;->zza I
+	48      (000000c6) add-int/lit8         v5, v5, 1
+	49      (000000ca) iput                 v5, v11, Lcom/google/android/gms/stats/zzc;->zza I
+	50      (000000ce) iget-object          v11, v9, Lcom/google/android/gms/stats/WakeLock;->zzn Lcom/google/android/gms/common/util/Clock;
+	51      (000000d2) invoke-interface     v11, Lcom/google/android/gms/common/util/Clock;->elapsedRealtime()J
+	52      (000000d8) move-result-wide     v5
+	53      (000000da) sub-long             v7, v2, v5
+	54      (000000de) cmp-long             v11, v7, v0
+	55      (000000e2) if-lez               v11, +004h
+	46:12b
+	(Ljava/lang/Throwable; -> 78 acquire-BB@0x78)
+
+acquire-BB@0xe6 : [ acquire-BB@0xea ]
+	56      (000000e6) add-long             v2, v5, v0
+	46:12b
+	(Ljava/lang/Throwable; -> 78 acquire-BB@0x78)
+
+acquire-BB@0xea : [ acquire-BB@0xf6 acquire-BB@0x126 ]
+	57      (000000ea) iget-wide            v5, v9, Lcom/google/android/gms/stats/WakeLock;->zzj J
+	58      (000000ee) cmp-long             v11, v2, v5
+	59      (000000f2) if-lez               v11, +01ah
+	46:12b
+	(Ljava/lang/Throwable; -> 78 acquire-BB@0x78)
+
+acquire-BB@0xf6 : [ acquire-BB@0x102 acquire-BB@0x108 ]
+	60      (000000f6) iput-wide            v2, v9, Lcom/google/android/gms/stats/WakeLock;->zzj J
+	61      (000000fa) iget-object          v11, v9, Lcom/google/android/gms/stats/WakeLock;->zzi Ljava/util/concurrent/Future;
+	62      (000000fe) if-eqz               v11, +005h
+	46:12b
+	(Ljava/lang/Throwable; -> 78 acquire-BB@0x78)
+
+acquire-BB@0x102 : [ acquire-BB@0x108 ]
+	63      (00000102) invoke-interface     v11, v4, Ljava/util/concurrent/Future;->cancel(Z)Z
+	46:12b
+	(Ljava/lang/Throwable; -> 78 acquire-BB@0x78)
+
+acquire-BB@0x108 : [ acquire-BB@0x126 ]
+	64      (00000108) iget-object          v11, v9, Lcom/google/android/gms/stats/WakeLock;->zzu Ljava/util/concurrent/ScheduledExecutorService;
+	65      (0000010c) new-instance         v2, Lcom/google/android/gms/stats/zza;
+	66      (00000110) invoke-direct        v2, v9, Lcom/google/android/gms/stats/zza;-><init>(Lcom/google/android/gms/stats/WakeLock;)V
+	67      (00000116) sget-object          v3, Ljava/util/concurrent/TimeUnit;->MILLISECONDS Ljava/util/concurrent/TimeUnit;
+	68      (0000011a) invoke-interface     v11, v2, v0, v1, v3, Ljava/util/concurrent/ScheduledExecutorService;->schedule(Ljava/lang/Runnable; J Ljava/util/concurrent/TimeUnit;)Ljava/util/concurrent/ScheduledFuture;
+	69      (00000120) move-result-object   v11
+	70      (00000122) iput-object          v11, v9, Lcom/google/android/gms/stats/WakeLock;->zzi Ljava/util/concurrent/Future;
+	46:12b
+	(Ljava/lang/Throwable; -> 78 acquire-BB@0x78)
+
+acquire-BB@0x126 : 
+	71      (00000126) monitor-exit         v10
+	72      (00000128) return-void          
+	46:12b
+	(Ljava/lang/Throwable; -> 78 acquire-BB@0x78)
+
+acquire-BB@0x12a : 
+	73      (0000012a) monitor-exit         v10
+	74      (0000012c) throw                v11
+

@@ -1,0 +1,38 @@
+# Lcom/google/android/gms/common/stats/StatsUtils;->getEventKey(Landroid/os/PowerManager$WakeLock; Ljava/lang/String;)Ljava/lang/String; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:android.os.PowerManager$WakeLock
+# - v5:java.lang.String
+#
+# - return:java.lang.String
+
+getEventKey-BB@0x0 : [ getEventKey-BB@0x32 getEventKey-BB@0x36 ]
+	0       (00000000) invoke-static        Landroid/os/Process;->myPid()I
+	1       (00000006) move-result          v0
+	2       (00000008) int-to-long          v0, v0
+	3       (0000000a) invoke-static        v4, Ljava/lang/System;->identityHashCode(Ljava/lang/Object;)I
+	4       (00000010) move-result          v4
+	5       (00000012) int-to-long          v2, v4
+	6       (00000014) const/16             v4, 32
+	7       (00000018) shl-long/2addr       v0, v4
+	8       (0000001a) or-long/2addr        v0, v2
+	9       (0000001c) invoke-static        v0, v1, Ljava/lang/String;->valueOf(J)Ljava/lang/String;
+	10      (00000022) move-result-object   v4
+	11      (00000024) const/4              v0, 1
+	12      (00000026) invoke-static        v5, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+	13      (0000002c) move-result          v1
+	14      (0000002e) if-ne                v0, v1, +004h
+
+getEventKey-BB@0x32 : [ getEventKey-BB@0x36 ]
+	15      (00000032) const-string         v5, ""
+
+getEventKey-BB@0x36 : 
+	16      (00000036) invoke-static        v4, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
+	17      (0000003c) move-result-object   v4
+	18      (0000003e) invoke-static        v5, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
+	19      (00000044) move-result-object   v5
+	20      (00000046) invoke-virtual       v4, v5, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	21      (0000004c) move-result-object   v4
+	22      (0000004e) return-object        v4
+

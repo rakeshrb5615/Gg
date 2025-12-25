@@ -1,0 +1,30 @@
+# Lcom/google/android/gms/common/data/BitmapTeleporter;->release()V [access_flags=public]
+#
+# Parameters:
+# local registers: v0...v3
+#
+# - return:void
+
+release-BB@0x0 : [ release-BB@0x8 release-BB@0x30 ]
+	0       (00000000) iget-boolean         v0, v3, Lcom/google/android/gms/common/data/BitmapTeleporter;->zae Z
+	1       (00000004) if-nez               v0, +016h
+
+release-BB@0x8 : 
+	2       (00000008) iget-object          v0, v3, Lcom/google/android/gms/common/data/BitmapTeleporter;->zab Landroid/os/ParcelFileDescriptor;
+	3       (0000000c) invoke-static        v0, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;
+	4       (00000012) move-result-object   v0
+	5       (00000014) check-cast           v0, Landroid/os/ParcelFileDescriptor;
+	6       (00000018) invoke-virtual       v0, Landroid/os/ParcelFileDescriptor;->close()V
+	7       (0000001e) return-void          
+	8:1d
+	(Ljava/io/IOException; -> 20 release-BB@0x20)
+
+release-BB@0x20 : [ release-BB@0x30 ]
+	8       (00000020) move-exception       v0
+	9       (00000022) const-string         v1, "BitmapTeleporter"
+	10      (00000026) const-string         v2, "Could not close PFD"
+	11      (0000002a) invoke-static        v1, v2, v0, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+
+release-BB@0x30 : 
+	12      (00000030) return-void          
+

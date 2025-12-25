@@ -1,0 +1,53 @@
+# Lcom/google/android/gms/internal/firebase-auth-api/zzhh;->zzb(Ljavax/crypto/Cipher;)Z [access_flags=private static]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:javax.crypto.Cipher
+#
+# - return:boolean
+
+zzb-BB@0x0 : [ zzb-BB@0x6 ]
+	0       (00000000) const-string         v0, "ChaCha20"
+	1       (00000004) const/4              v1, 0
+
+zzb-BB@0x6 : [ zzb-BB@0x3c zzb-BB@0x3e ]
+	2       (00000006) new-instance         v2, Ljavax/crypto/spec/IvParameterSpec;
+	3       (0000000a) sget-object          v3, Lcom/google/android/gms/internal/firebase-auth-api/zzhh;->zzc [B
+	4       (0000000e) invoke-direct        v2, v3, Ljavax/crypto/spec/IvParameterSpec;-><init>([B)V
+	5       (00000014) new-instance         v3, Ljavax/crypto/spec/SecretKeySpec;
+	6       (00000018) sget-object          v4, Lcom/google/android/gms/internal/firebase-auth-api/zzhh;->zzb [B
+	7       (0000001c) invoke-direct        v3, v4, v0, Ljavax/crypto/spec/SecretKeySpec;-><init>([B Ljava/lang/String;)V
+	8       (00000022) const/4              v5, 2
+	9       (00000024) invoke-virtual       v7, v5, v3, v2, Ljavax/crypto/Cipher;->init(I Ljava/security/Key; Ljava/security/spec/AlgorithmParameterSpec;)V
+	10      (0000002a) sget-object          v3, Lcom/google/android/gms/internal/firebase-auth-api/zzhh;->zzd [B
+	11      (0000002e) invoke-virtual       v7, v3, Ljavax/crypto/Cipher;->doFinal([B)[B
+	12      (00000034) move-result-object   v6
+	13      (00000036) array-length         v6, v6
+	14      (00000038) if-eqz               v6, +003h
+	6:57
+	(Ljava/security/GeneralSecurityException; -> 62 zzb-BB@0x62)
+
+zzb-BB@0x3c : 
+	15      (0000003c) return               v1
+	6:57
+	(Ljava/security/GeneralSecurityException; -> 62 zzb-BB@0x62)
+
+zzb-BB@0x3e : [ zzb-BB@0x5c zzb-BB@0x5e ]
+	16      (0000003e) new-instance         v6, Ljavax/crypto/spec/SecretKeySpec;
+	17      (00000042) invoke-direct        v6, v4, v0, Ljavax/crypto/spec/SecretKeySpec;-><init>([B Ljava/lang/String;)V
+	18      (00000048) invoke-virtual       v7, v5, v6, v2, Ljavax/crypto/Cipher;->init(I Ljava/security/Key; Ljava/security/spec/AlgorithmParameterSpec;)V
+	19      (0000004e) invoke-virtual       v7, v3, Ljavax/crypto/Cipher;->doFinal([B)[B
+	20      (00000054) move-result-object   v7
+	21      (00000056) array-length         v7, v7
+	22      (00000058) if-eqz               v7, +003h
+
+zzb-BB@0x5c : 
+	23      (0000005c) return               v1
+
+zzb-BB@0x5e : 
+	24      (0000005e) const/4              v7, 1
+	25      (00000060) return               v7
+
+zzb-BB@0x62 : 
+	26      (00000062) return               v1
+

@@ -1,0 +1,174 @@
+# Lcom/google/android/gms/common/internal/LibraryVersion;->getVersion(Ljava/lang/String;)Ljava/lang/String; [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v9
+# - v10:java.lang.String
+#
+# - return:java.lang.String
+
+getVersion-BB@0x0 : [ getVersion-BB@0x2a getVersion-BB@0x38 ]
+	0       (00000000) const-string         v0, "LibraryVersion"
+	1       (00000004) const-string         v1, "/"
+	2       (00000008) const-string         v2, "Please provide a valid libraryName"
+	3       (0000000c) invoke-static        v10, v2, Lcom/google/android/gms/common/internal/Preconditions;->checkNotEmpty(Ljava/lang/String; Ljava/lang/Object;)Ljava/lang/String;
+	4       (00000012) const-string         v2, " version is "
+	5       (00000016) const-string         v3, "Failed to get app version for libraryName: "
+	6       (0000001a) iget-object          v4, v9, Lcom/google/android/gms/common/internal/LibraryVersion;->zzc Ljava/util/concurrent/ConcurrentHashMap;
+	7       (0000001e) invoke-virtual       v4, v10, Ljava/util/concurrent/ConcurrentHashMap;->containsKey(Ljava/lang/Object;)Z
+	8       (00000024) move-result          v5
+	9       (00000026) if-eqz               v5, +009h
+
+getVersion-BB@0x2a : 
+	10      (0000002a) invoke-virtual       v4, v10, Ljava/util/concurrent/ConcurrentHashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	11      (00000030) move-result-object   v10
+	12      (00000032) check-cast           v10, Ljava/lang/String;
+	13      (00000036) return-object        v10
+
+getVersion-BB@0x38 : [ getVersion-BB@0x44 ]
+	14      (00000038) new-instance         v4, Ljava/util/Properties;
+	15      (0000003c) invoke-direct        v4, Ljava/util/Properties;-><init>()V
+	16      (00000042) const/4              v5, 0
+
+getVersion-BB@0x44 : [ getVersion-BB@0x76 getVersion-BB@0xec ]
+	17      (00000044) new-instance         v6, Ljava/lang/StringBuilder;
+	18      (00000048) invoke-direct        v6, v1, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	19      (0000004e) invoke-virtual       v6, v10, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	20      (00000054) const-string         v1, ".properties"
+	21      (00000058) invoke-virtual       v6, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	22      (0000005e) invoke-virtual       v6, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	23      (00000064) move-result-object   v1
+	24      (00000066) const-class          v6, Lcom/google/android/gms/common/internal/LibraryVersion;
+	25      (0000006a) invoke-virtual       v6, v1, Ljava/lang/Class;->getResourceAsStream(Ljava/lang/String;)Ljava/io/InputStream;
+	26      (00000070) move-result-object   v1
+	27      (00000072) if-eqz               v1, +03dh
+	44:71
+	(Ljava/io/IOException; -> 12e getVersion-BB@0x12e)
+	(Ljava/lang/Throwable; -> 134 getVersion-BB@0x134)
+
+getVersion-BB@0x76 : [ getVersion-BB@0x17c ]
+	28      (00000076) invoke-virtual       v4, v1, Ljava/util/Properties;->load(Ljava/io/InputStream;)V
+	29      (0000007c) const-string         v6, "version"
+	30      (00000080) invoke-virtual       v4, v6, v5, Ljava/util/Properties;->getProperty(Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	31      (00000086) move-result-object   v5
+	32      (00000088) sget-object          v4, Lcom/google/android/gms/common/internal/LibraryVersion;->zza Lcom/google/android/gms/common/internal/GmsLogger;
+	33      (0000008c) invoke-static        v10, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
+	34      (00000092) move-result-object   v6
+	35      (00000094) invoke-virtual       v6, Ljava/lang/String;->length()I
+	36      (0000009a) move-result          v6
+	37      (0000009c) add-int/lit8         v6, v6, 12
+	38      (000000a0) invoke-static        v5, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
+	39      (000000a6) move-result-object   v7
+	40      (000000a8) invoke-virtual       v7, Ljava/lang/String;->length()I
+	41      (000000ae) move-result          v7
+	42      (000000b0) add-int/2addr        v6, v7
+	43      (000000b2) new-instance         v7, Ljava/lang/StringBuilder;
+	44      (000000b6) invoke-direct        v7, v6, Ljava/lang/StringBuilder;-><init>(I)V
+	45      (000000bc) invoke-virtual       v7, v10, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	46      (000000c2) invoke-virtual       v7, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	47      (000000c8) invoke-virtual       v7, v5, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	48      (000000ce) invoke-virtual       v7, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	49      (000000d4) move-result-object   v2
+	50      (000000d6) invoke-virtual       v4, v0, v2, Lcom/google/android/gms/common/internal/GmsLogger;->v(Ljava/lang/String; Ljava/lang/String;)V
+	51      (000000dc) goto                 +50h
+	76:127
+	(Ljava/io/IOException; -> e2 getVersion-BB@0xe2)
+	(Ljava/lang/Throwable; -> de getVersion-BB@0xde)
+
+getVersion-BB@0xde : [ getVersion-BB@0x12a ]
+	52      (000000de) move-exception       v10
+	53      (000000e0) goto                 +25h
+	76:127
+	(Ljava/io/IOException; -> e2 getVersion-BB@0xe2)
+	(Ljava/lang/Throwable; -> de getVersion-BB@0xde)
+
+getVersion-BB@0xe2 : [ getVersion-BB@0x13a ]
+	54      (000000e2) move-exception       v2
+	55      (000000e4) move-object          v8, v5
+	56      (000000e6) move-object          v5, v1
+	57      (000000e8) move-object          v1, v8
+	58      (000000ea) goto                 +28h
+	76:127
+	(Ljava/io/IOException; -> e2 getVersion-BB@0xe2)
+	(Ljava/lang/Throwable; -> de getVersion-BB@0xde)
+
+getVersion-BB@0xec : [ getVersion-BB@0x17c ]
+	59      (000000ec) sget-object          v2, Lcom/google/android/gms/common/internal/LibraryVersion;->zza Lcom/google/android/gms/common/internal/GmsLogger;
+	60      (000000f0) invoke-static        v10, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
+	61      (000000f6) move-result-object   v4
+	62      (000000f8) invoke-virtual       v4, Ljava/lang/String;->length()I
+	63      (000000fe) move-result          v4
+	64      (00000100) add-int/lit8         v4, v4, 43
+	65      (00000104) new-instance         v6, Ljava/lang/StringBuilder;
+	66      (00000108) invoke-direct        v6, v4, Ljava/lang/StringBuilder;-><init>(I)V
+	67      (0000010e) invoke-virtual       v6, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	68      (00000114) invoke-virtual       v6, v10, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	69      (0000011a) invoke-virtual       v6, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	70      (00000120) move-result-object   v4
+	71      (00000122) invoke-virtual       v2, v0, v4, Lcom/google/android/gms/common/internal/GmsLogger;->w(Ljava/lang/String; Ljava/lang/String;)V
+	72      (00000128) goto                 +2ah
+
+getVersion-BB@0x12a : [ getVersion-BB@0x1a8 ]
+	73      (0000012a) move-object          v5, v1
+	74      (0000012c) goto                 +3eh
+
+getVersion-BB@0x12e : [ getVersion-BB@0x138 ]
+	75      (0000012e) move-exception       v1
+	76      (00000130) move-object          v2, v1
+	77      (00000132) goto                 +3h
+
+getVersion-BB@0x134 : [ getVersion-BB@0x1a8 ]
+	78      (00000134) move-exception       v10
+	79      (00000136) goto                 +39h
+
+getVersion-BB@0x138 : [ getVersion-BB@0x13a ]
+	80      (00000138) move-object          v1, v5
+
+getVersion-BB@0x13a : [ getVersion-BB@0x17c ]
+	81      (0000013a) sget-object          v4, Lcom/google/android/gms/common/internal/LibraryVersion;->zza Lcom/google/android/gms/common/internal/GmsLogger;
+	82      (0000013e) invoke-static        v10, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
+	83      (00000144) move-result-object   v6
+	84      (00000146) invoke-virtual       v6, Ljava/lang/String;->length()I
+	85      (0000014c) move-result          v6
+	86      (0000014e) add-int/lit8         v6, v6, 43
+	87      (00000152) new-instance         v7, Ljava/lang/StringBuilder;
+	88      (00000156) invoke-direct        v7, v6, Ljava/lang/StringBuilder;-><init>(I)V
+	89      (0000015c) invoke-virtual       v7, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	90      (00000162) invoke-virtual       v7, v10, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	91      (00000168) invoke-virtual       v7, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	92      (0000016e) move-result-object   v3
+	93      (00000170) invoke-virtual       v4, v0, v3, v2, Lcom/google/android/gms/common/internal/GmsLogger;->e(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)V
+	94      (00000176) move-object          v8, v5
+	95      (00000178) move-object          v5, v1
+	96      (0000017a) move-object          v1, v8
+	13a:175
+	(Ljava/lang/Throwable; -> 134 getVersion-BB@0x134)
+
+getVersion-BB@0x17c : [ getVersion-BB@0x180 getVersion-BB@0x186 ]
+	97      (0000017c) if-eqz               v1, +005h
+
+getVersion-BB@0x180 : [ getVersion-BB@0x186 ]
+	98      (00000180) invoke-static        v1, Lcom/google/android/gms/common/util/IOUtils;->closeQuietly(Ljava/io/Closeable;)V
+
+getVersion-BB@0x186 : [ getVersion-BB@0x18a getVersion-BB@0x19c ]
+	99      (00000186) if-nez               v5, +00bh
+
+getVersion-BB@0x18a : [ getVersion-BB@0x19c ]
+	100     (0000018a) sget-object          v1, Lcom/google/android/gms/common/internal/LibraryVersion;->zza Lcom/google/android/gms/common/internal/GmsLogger;
+	101     (0000018e) const-string         v2, ".properties file is dropped during release process. Failure to read app version is expected during Google internal testing where locally-built libraries are used"
+	102     (00000192) invoke-virtual       v1, v0, v2, Lcom/google/android/gms/common/internal/GmsLogger;->d(Ljava/lang/String; Ljava/lang/String;)V
+	103     (00000198) const-string         v5, "UNKNOWN"
+
+getVersion-BB@0x19c : 
+	104     (0000019c) iget-object          v0, v9, Lcom/google/android/gms/common/internal/LibraryVersion;->zzc Ljava/util/concurrent/ConcurrentHashMap;
+	105     (000001a0) invoke-virtual       v0, v10, v5, Ljava/util/concurrent/ConcurrentHashMap;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	106     (000001a6) return-object        v5
+
+getVersion-BB@0x1a8 : [ getVersion-BB@0x1ac getVersion-BB@0x1b2 ]
+	107     (000001a8) if-eqz               v5, +005h
+
+getVersion-BB@0x1ac : [ getVersion-BB@0x1b2 ]
+	108     (000001ac) invoke-static        v5, Lcom/google/android/gms/common/util/IOUtils;->closeQuietly(Ljava/io/Closeable;)V
+
+getVersion-BB@0x1b2 : 
+	109     (000001b2) throw                v10
+

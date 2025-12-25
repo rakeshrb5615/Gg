@@ -1,0 +1,49 @@
+# Lcom/google/android/gms/tasks/Tasks;->withTimeout(Lcom/google/android/gms/tasks/Task; J Ljava/util/concurrent/TimeUnit;)Lcom/google/android/gms/tasks/Task; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:com.google.android.gms.tasks.Task
+# - v6:long
+# - v7:java.util.concurrent.TimeUnit
+#
+# - return:com.google.android.gms.tasks.Task
+
+withTimeout-BB@0x0 : [ withTimeout-BB@0x16 withTimeout-BB@0x1a ]
+	0       (00000000) const-string         v0, "Task must not be null"
+	1       (00000004) invoke-static        v4, v0, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	2       (0000000a) const-wide/16        v0, 0
+	3       (0000000e) cmp-long             v0, v5, v0
+	4       (00000012) if-lez               v0, +004h
+
+withTimeout-BB@0x16 : [ withTimeout-BB@0x1c ]
+	5       (00000016) const/4              v0, 1
+	6       (00000018) goto                 +2h
+
+withTimeout-BB@0x1a : [ withTimeout-BB@0x1c ]
+	7       (0000001a) const/4              v0, 0
+
+withTimeout-BB@0x1c : 
+	8       (0000001c) const-string         v1, "Timeout must be positive"
+	9       (00000020) invoke-static        v0, v1, Lcom/google/android/gms/common/internal/Preconditions;->checkArgument(Z Ljava/lang/Object;)V
+	10      (00000026) const-string         v0, "TimeUnit must not be null"
+	11      (0000002a) invoke-static        v7, v0, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	12      (00000030) new-instance         v0, Lcom/google/android/gms/tasks/zzb;
+	13      (00000034) invoke-direct        v0, Lcom/google/android/gms/tasks/zzb;-><init>()V
+	14      (0000003a) new-instance         v1, Lcom/google/android/gms/tasks/TaskCompletionSource;
+	15      (0000003e) invoke-direct        v1, v0, Lcom/google/android/gms/tasks/TaskCompletionSource;-><init>(Lcom/google/android/gms/tasks/CancellationToken;)V
+	16      (00000044) new-instance         v2, Lcom/google/android/gms/internal/tasks/zza;
+	17      (00000048) invoke-static        Landroid/os/Looper;->getMainLooper()Landroid/os/Looper;
+	18      (0000004e) move-result-object   v3
+	19      (00000050) invoke-direct        v2, v3, Lcom/google/android/gms/internal/tasks/zza;-><init>(Landroid/os/Looper;)V
+	20      (00000056) new-instance         v3, Lcom/google/android/gms/tasks/zzx;
+	21      (0000005a) invoke-direct        v3, v1, Lcom/google/android/gms/tasks/zzx;-><init>(Lcom/google/android/gms/tasks/TaskCompletionSource;)V
+	22      (00000060) invoke-virtual       v7, v5, v6, Ljava/util/concurrent/TimeUnit;->toMillis(J)J
+	23      (00000066) move-result-wide     v5
+	24      (00000068) invoke-virtual       v2, v3, v5, v6, Landroid/os/Handler;->postDelayed(Ljava/lang/Runnable; J)Z
+	25      (0000006e) new-instance         v5, Lcom/google/android/gms/tasks/zzy;
+	26      (00000072) invoke-direct        v5, v2, v1, v0, Lcom/google/android/gms/tasks/zzy;-><init>(Lcom/google/android/gms/internal/tasks/zza; Lcom/google/android/gms/tasks/TaskCompletionSource; Lcom/google/android/gms/tasks/zzb;)V
+	27      (00000078) invoke-virtual       v4, v5, Lcom/google/android/gms/tasks/Task;->addOnCompleteListener(Lcom/google/android/gms/tasks/OnCompleteListener;)Lcom/google/android/gms/tasks/Task;
+	28      (0000007e) invoke-virtual       v1, Lcom/google/android/gms/tasks/TaskCompletionSource;->getTask()Lcom/google/android/gms/tasks/Task;
+	29      (00000084) move-result-object   v4
+	30      (00000086) return-object        v4
+

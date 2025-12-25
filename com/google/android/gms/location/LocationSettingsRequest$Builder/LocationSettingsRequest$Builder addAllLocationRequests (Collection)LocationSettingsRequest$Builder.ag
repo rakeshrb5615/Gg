@@ -1,0 +1,31 @@
+# Lcom/google/android/gms/location/LocationSettingsRequest$Builder;->addAllLocationRequests(Ljava/util/Collection;)Lcom/google/android/gms/location/LocationSettingsRequest$Builder; [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:java.util.Collection
+#
+# - return:com.google.android.gms.location.LocationSettingsRequest$Builder
+
+addAllLocationRequests-BB@0x0 : [ addAllLocationRequests-BB@0x8 ]
+	0       (00000000) invoke-interface     v3, Ljava/util/Collection;->iterator()Ljava/util/Iterator;
+	1       (00000006) move-result-object   v3
+
+addAllLocationRequests-BB@0x8 : [ addAllLocationRequests-BB@0x14 addAllLocationRequests-BB@0x30 ]
+	2       (00000008) invoke-interface     v3, Ljava/util/Iterator;->hasNext()Z
+	3       (0000000e) move-result          v0
+	4       (00000010) if-eqz               v0, +010h
+
+addAllLocationRequests-BB@0x14 : [ addAllLocationRequests-BB@0x24 addAllLocationRequests-BB@0x8 ]
+	5       (00000014) invoke-interface     v3, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	6       (0000001a) move-result-object   v0
+	7       (0000001c) check-cast           v0, Lcom/google/android/gms/location/LocationRequest;
+	8       (00000020) if-eqz               v0, -00ch
+
+addAllLocationRequests-BB@0x24 : [ addAllLocationRequests-BB@0x8 ]
+	9       (00000024) iget-object          v1, v2, Lcom/google/android/gms/location/LocationSettingsRequest$Builder;->zza Ljava/util/ArrayList;
+	10      (00000028) invoke-virtual       v1, v0, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	11      (0000002e) goto                 -13h
+
+addAllLocationRequests-BB@0x30 : 
+	12      (00000030) return-object        v2
+

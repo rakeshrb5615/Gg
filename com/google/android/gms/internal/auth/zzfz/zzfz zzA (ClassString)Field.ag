@@ -1,0 +1,57 @@
+# Lcom/google/android/gms/internal/auth/zzfz;->zzA(Ljava/lang/Class; Ljava/lang/String;)Ljava/lang/reflect/Field; [access_flags=private static]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:java.lang.Class
+# - v6:java.lang.String
+#
+# - return:java.lang.reflect.Field
+
+zzA-BB@0x0 : 
+	0       (00000000) invoke-virtual       v5, v6, Ljava/lang/Class;->getDeclaredField(Ljava/lang/String;)Ljava/lang/reflect/Field;
+	1       (00000006) move-result-object   v5
+	2       (00000008) return-object        v5
+	0:7
+	(Ljava/lang/NoSuchFieldException; -> a zzA-BB@0xa)
+
+zzA-BB@0xa : [ zzA-BB@0x16 ]
+	3       (0000000a) invoke-virtual       v5, Ljava/lang/Class;->getDeclaredFields()[Ljava/lang/reflect/Field;
+	4       (00000010) move-result-object   v0
+	5       (00000012) array-length         v1, v0
+	6       (00000014) const/4              v2, 0
+
+zzA-BB@0x16 : [ zzA-BB@0x1a zzA-BB@0x3a ]
+	7       (00000016) if-ge                v2, v1, +012h
+
+zzA-BB@0x1a : [ zzA-BB@0x32 zzA-BB@0x34 ]
+	8       (0000001a) aget-object          v3, v0, v2
+	9       (0000001e) invoke-virtual       v3, Ljava/lang/reflect/Field;->getName()Ljava/lang/String;
+	10      (00000024) move-result-object   v4
+	11      (00000026) invoke-virtual       v6, v4, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	12      (0000002c) move-result          v4
+	13      (0000002e) if-eqz               v4, +003h
+
+zzA-BB@0x32 : 
+	14      (00000032) return-object        v3
+
+zzA-BB@0x34 : [ zzA-BB@0x16 ]
+	15      (00000034) add-int/lit8         v2, v2, 1
+	16      (00000038) goto                 -11h
+
+zzA-BB@0x3a : 
+	17      (0000003a) new-instance         v1, Ljava/lang/RuntimeException;
+	18      (0000003e) invoke-virtual       v5, Ljava/lang/Class;->getName()Ljava/lang/String;
+	19      (00000044) move-result-object   v5
+	20      (00000046) invoke-static        v0, Ljava/util/Arrays;->toString([Ljava/lang/Object;)Ljava/lang/String;
+	21      (0000004c) move-result-object   v0
+	22      (0000004e) const-string         v2, " for "
+	23      (00000052) const-string         v3, " not found. Known fields are "
+	24      (00000056) const-string         v4, "Field "
+	25      (0000005a) invoke-static        v4, v6, v2, v5, v3, Lv1/a;->r(Ljava/lang/String; Ljava/lang/String; Ljava/lang/String; Ljava/lang/String; Ljava/lang/String;)Ljava/lang/StringBuilder;
+	26      (00000060) move-result-object   v5
+	27      (00000062) invoke-virtual       v5, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	28      (00000068) invoke-virtual       v5, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	29      (0000006e) move-result-object   v5
+	30      (00000070) invoke-direct        v1, v5, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
+	31      (00000076) throw                v1
+

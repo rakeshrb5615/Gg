@@ -1,0 +1,122 @@
+# Lcom/google/android/gms/location/LocationResult;->equals(Ljava/lang/Object;)Z [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v8
+# - v9:java.lang.Object
+#
+# - return:boolean
+
+equals-BB@0x0 : [ equals-BB@0xa equals-BB@0x118 ]
+	0       (00000000) instance-of          v0, v9, Lcom/google/android/gms/location/LocationResult;
+	1       (00000004) const/4              v1, 0
+	2       (00000006) if-eqz               v0, +089h
+
+equals-BB@0xa : [ equals-BB@0x1a equals-BB@0x2c ]
+	3       (0000000a) check-cast           v9, Lcom/google/android/gms/location/LocationResult;
+	4       (0000000e) sget                 v0, Landroid/os/Build$VERSION;->SDK_INT I
+	5       (00000012) const/16             v2, 31
+	6       (00000016) if-lt                v0, v2, +00bh
+
+equals-BB@0x1a : 
+	7       (0000001a) iget-object          v0, v8, Lcom/google/android/gms/location/LocationResult;->zzb Ljava/util/List;
+	8       (0000001e) iget-object          v9, v9, Lcom/google/android/gms/location/LocationResult;->zzb Ljava/util/List;
+	9       (00000022) invoke-virtual       v0, v9, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+	10      (00000028) move-result          v9
+	11      (0000002a) return               v9
+
+equals-BB@0x2c : [ equals-BB@0x48 equals-BB@0x4a ]
+	12      (0000002c) iget-object          v0, v8, Lcom/google/android/gms/location/LocationResult;->zzb Ljava/util/List;
+	13      (00000030) invoke-interface     v0, Ljava/util/List;->size()I
+	14      (00000036) move-result          v0
+	15      (00000038) iget-object          v2, v9, Lcom/google/android/gms/location/LocationResult;->zzb Ljava/util/List;
+	16      (0000003c) invoke-interface     v2, Ljava/util/List;->size()I
+	17      (00000042) move-result          v2
+	18      (00000044) if-eq                v0, v2, +003h
+
+equals-BB@0x48 : 
+	19      (00000048) return               v1
+
+equals-BB@0x4a : [ equals-BB@0x62 ]
+	20      (0000004a) iget-object          v0, v8, Lcom/google/android/gms/location/LocationResult;->zzb Ljava/util/List;
+	21      (0000004e) invoke-interface     v0, Ljava/util/List;->iterator()Ljava/util/Iterator;
+	22      (00000054) move-result-object   v0
+	23      (00000056) iget-object          v9, v9, Lcom/google/android/gms/location/LocationResult;->zzb Ljava/util/List;
+	24      (0000005a) invoke-interface     v9, Ljava/util/List;->iterator()Ljava/util/Iterator;
+	25      (00000060) move-result-object   v9
+
+equals-BB@0x62 : [ equals-BB@0x6e equals-BB@0x114 ]
+	26      (00000062) invoke-interface     v0, Ljava/util/Iterator;->hasNext()Z
+	27      (00000068) move-result          v2
+	28      (0000006a) if-eqz               v2, +055h
+
+equals-BB@0x6e : [ equals-BB@0xa2 equals-BB@0xa4 ]
+	29      (0000006e) invoke-interface     v0, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	30      (00000074) move-result-object   v2
+	31      (00000076) check-cast           v2, Landroid/location/Location;
+	32      (0000007a) invoke-interface     v9, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	33      (00000080) move-result-object   v3
+	34      (00000082) check-cast           v3, Landroid/location/Location;
+	35      (00000086) invoke-virtual       v2, Landroid/location/Location;->getLatitude()D
+	36      (0000008c) move-result-wide     v4
+	37      (0000008e) invoke-virtual       v3, Landroid/location/Location;->getLatitude()D
+	38      (00000094) move-result-wide     v6
+	39      (00000096) invoke-static        v4, v5, v6, v7, Ljava/lang/Double;->compare(D D)I
+	40      (0000009c) move-result          v4
+	41      (0000009e) if-eqz               v4, +003h
+
+equals-BB@0xa2 : 
+	42      (000000a2) return               v1
+
+equals-BB@0xa4 : [ equals-BB@0xc0 equals-BB@0xc2 ]
+	43      (000000a4) invoke-virtual       v2, Landroid/location/Location;->getLongitude()D
+	44      (000000aa) move-result-wide     v4
+	45      (000000ac) invoke-virtual       v3, Landroid/location/Location;->getLongitude()D
+	46      (000000b2) move-result-wide     v6
+	47      (000000b4) invoke-static        v4, v5, v6, v7, Ljava/lang/Double;->compare(D D)I
+	48      (000000ba) move-result          v4
+	49      (000000bc) if-eqz               v4, +003h
+
+equals-BB@0xc0 : 
+	50      (000000c0) return               v1
+
+equals-BB@0xc2 : [ equals-BB@0xda equals-BB@0xdc ]
+	51      (000000c2) invoke-virtual       v2, Landroid/location/Location;->getTime()J
+	52      (000000c8) move-result-wide     v4
+	53      (000000ca) invoke-virtual       v3, Landroid/location/Location;->getTime()J
+	54      (000000d0) move-result-wide     v6
+	55      (000000d2) cmp-long             v4, v4, v6
+	56      (000000d6) if-eqz               v4, +003h
+
+equals-BB@0xda : 
+	57      (000000da) return               v1
+
+equals-BB@0xdc : [ equals-BB@0xf4 equals-BB@0xf6 ]
+	58      (000000dc) invoke-virtual       v2, Landroid/location/Location;->getElapsedRealtimeNanos()J
+	59      (000000e2) move-result-wide     v4
+	60      (000000e4) invoke-virtual       v3, Landroid/location/Location;->getElapsedRealtimeNanos()J
+	61      (000000ea) move-result-wide     v6
+	62      (000000ec) cmp-long             v4, v4, v6
+	63      (000000f0) if-eqz               v4, +003h
+
+equals-BB@0xf4 : 
+	64      (000000f4) return               v1
+
+equals-BB@0xf6 : [ equals-BB@0x112 equals-BB@0x62 ]
+	65      (000000f6) invoke-virtual       v2, Landroid/location/Location;->getProvider()Ljava/lang/String;
+	66      (000000fc) move-result-object   v2
+	67      (000000fe) invoke-virtual       v3, Landroid/location/Location;->getProvider()Ljava/lang/String;
+	68      (00000104) move-result-object   v3
+	69      (00000106) invoke-static        v2, v3, Lcom/google/android/gms/common/internal/Objects;->equal(Ljava/lang/Object; Ljava/lang/Object;)Z
+	70      (0000010c) move-result          v2
+	71      (0000010e) if-nez               v2, -056h
+
+equals-BB@0x112 : 
+	72      (00000112) return               v1
+
+equals-BB@0x114 : 
+	73      (00000114) const/4              v9, 1
+	74      (00000116) return               v9
+
+equals-BB@0x118 : 
+	75      (00000118) return               v1
+

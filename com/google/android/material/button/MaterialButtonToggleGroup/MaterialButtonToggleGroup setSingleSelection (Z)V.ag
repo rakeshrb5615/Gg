@@ -1,0 +1,39 @@
+# Lcom/google/android/material/button/MaterialButtonToggleGroup;->setSingleSelection(Z)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:boolean
+#
+# - return:void
+
+setSingleSelection-BB@0x0 : [ setSingleSelection-BB@0x8 setSingleSelection-BB@0x1c ]
+	0       (00000000) iget-boolean         v0, v2, Lcom/google/android/material/button/MaterialButtonToggleGroup;->s Z
+	1       (00000004) if-eq                v0, v3, +00ch
+
+setSingleSelection-BB@0x8 : [ setSingleSelection-BB@0x1c ]
+	2       (00000008) iput-boolean         v3, v2, Lcom/google/android/material/button/MaterialButtonToggleGroup;->s Z
+	3       (0000000c) new-instance         v3, Ljava/util/HashSet;
+	4       (00000010) invoke-direct        v3, Ljava/util/HashSet;-><init>()V
+	5       (00000016) invoke-virtual       v2, v3, Lcom/google/android/material/button/MaterialButtonToggleGroup;->g(Ljava/util/Set;)V
+
+setSingleSelection-BB@0x1c : [ setSingleSelection-BB@0x26 ]
+	6       (0000001c) invoke-direct        v2, Lcom/google/android/material/button/MaterialButtonToggleGroup;->getChildrenA11yClassName()Ljava/lang/String;
+	7       (00000022) move-result-object   v3
+	8       (00000024) const/4              v0, 0
+
+setSingleSelection-BB@0x26 : [ setSingleSelection-BB@0x32 setSingleSelection-BB@0x4a ]
+	9       (00000026) invoke-virtual       v2, Landroid/view/ViewGroup;->getChildCount()I
+	10      (0000002c) move-result          v1
+	11      (0000002e) if-ge                v0, v1, +00eh
+
+setSingleSelection-BB@0x32 : [ setSingleSelection-BB@0x26 ]
+	12      (00000032) invoke-virtual       v2, v0, Landroid/view/ViewGroup;->getChildAt(I)Landroid/view/View;
+	13      (00000038) move-result-object   v1
+	14      (0000003a) check-cast           v1, Lcom/google/android/material/button/MaterialButton;
+	15      (0000003e) invoke-virtual       v1, v3, Lcom/google/android/material/button/MaterialButton;->setA11yClassName(Ljava/lang/String;)V
+	16      (00000044) add-int/lit8         v0, v0, 1
+	17      (00000048) goto                 -11h
+
+setSingleSelection-BB@0x4a : 
+	18      (0000004a) return-void          
+

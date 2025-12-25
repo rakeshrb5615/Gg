@@ -1,0 +1,45 @@
+# Lcom/google/android/gms/common/api/internal/GoogleApiManager;->reportSignOut()V [access_flags=public static]
+#
+# Parameters:
+# local registers: v0...v2
+#
+# - return:void
+
+reportSignOut-BB@0x0 : [ reportSignOut-BB@0x6 ]
+	0       (00000000) sget-object          v0, Lcom/google/android/gms/common/api/internal/GoogleApiManager;->zac Ljava/lang/Object;
+	1       (00000004) monitor-enter        v0
+
+reportSignOut-BB@0x6 : [ reportSignOut-BB@0xe reportSignOut-BB@0x34 ]
+	2       (00000006) sget-object          v1, Lcom/google/android/gms/common/api/internal/GoogleApiManager;->zad Lcom/google/android/gms/common/api/internal/GoogleApiManager;
+	3       (0000000a) if-eqz               v1, +015h
+	6:39
+	(Ljava/lang/Throwable; -> 30 reportSignOut-BB@0x30)
+
+reportSignOut-BB@0xe : [ reportSignOut-BB@0x34 ]
+	4       (0000000e) iget-object          v2, v1, Lcom/google/android/gms/common/api/internal/GoogleApiManager;->zam Ljava/util/concurrent/atomic/AtomicInteger;
+	5       (00000012) invoke-virtual       v2, Ljava/util/concurrent/atomic/AtomicInteger;->incrementAndGet()I
+	6       (00000018) iget-object          v1, v1, Lcom/google/android/gms/common/api/internal/GoogleApiManager;->zar Landroid/os/Handler;
+	7       (0000001c) const/16             v2, 10
+	8       (00000020) invoke-virtual       v1, v2, Landroid/os/Handler;->obtainMessage(I)Landroid/os/Message;
+	9       (00000026) move-result-object   v2
+	10      (00000028) invoke-virtual       v1, v2, Landroid/os/Handler;->sendMessageAtFrontOfQueue(Landroid/os/Message;)Z
+	11      (0000002e) goto                 +3h
+	6:39
+	(Ljava/lang/Throwable; -> 30 reportSignOut-BB@0x30)
+
+reportSignOut-BB@0x30 : [ reportSignOut-BB@0x38 ]
+	12      (00000030) move-exception       v1
+	13      (00000032) goto                 +3h
+	6:39
+	(Ljava/lang/Throwable; -> 30 reportSignOut-BB@0x30)
+
+reportSignOut-BB@0x34 : 
+	14      (00000034) monitor-exit         v0
+	15      (00000036) return-void          
+	6:39
+	(Ljava/lang/Throwable; -> 30 reportSignOut-BB@0x30)
+
+reportSignOut-BB@0x38 : 
+	16      (00000038) monitor-exit         v0
+	17      (0000003a) throw                v1
+

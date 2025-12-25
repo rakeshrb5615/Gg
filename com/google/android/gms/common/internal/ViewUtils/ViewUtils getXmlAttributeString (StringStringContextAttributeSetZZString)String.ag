@@ -1,0 +1,152 @@
+# Lcom/google/android/gms/common/internal/ViewUtils;->getXmlAttributeString(Ljava/lang/String; Ljava/lang/String; Landroid/content/Context; Landroid/util/AttributeSet; Z Z Ljava/lang/String;)Ljava/lang/String; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:java.lang.String
+# - v5:java.lang.String
+# - v6:android.content.Context
+# - v7:android.util.AttributeSet
+# - v8:boolean
+# - v9:boolean
+# - v10:java.lang.String
+#
+# - return:java.lang.String
+
+getXmlAttributeString-BB@0x0 : [ getXmlAttributeString-BB@0x8 getXmlAttributeString-BB@0xc ]
+	0       (00000000) const-string         v0, ":string/"
+	1       (00000004) if-nez               v7, +004h
+
+getXmlAttributeString-BB@0x8 : [ getXmlAttributeString-BB@0x14 ]
+	2       (00000008) const/4              v4, 0
+	3       (0000000a) goto                 +5h
+
+getXmlAttributeString-BB@0xc : [ getXmlAttributeString-BB@0x14 ]
+	4       (0000000c) invoke-interface     v7, v4, v5, Landroid/util/AttributeSet;->getAttributeValue(Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	5       (00000012) move-result-object   v4
+
+getXmlAttributeString-BB@0x14 : [ getXmlAttributeString-BB@0x18 getXmlAttributeString-BB@0x16a ]
+	6       (00000014) if-eqz               v4, +0abh
+
+getXmlAttributeString-BB@0x18 : [ getXmlAttributeString-BB@0x28 getXmlAttributeString-BB@0x16a ]
+	7       (00000018) const-string         v7, "@string/"
+	8       (0000001c) invoke-virtual       v4, v7, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
+	9       (00000022) move-result          v7
+	10      (00000024) if-eqz               v7, +0a3h
+
+getXmlAttributeString-BB@0x28 : [ getXmlAttributeString-BB@0x2c getXmlAttributeString-BB@0x16a ]
+	11      (00000028) if-eqz               v8, +0a1h
+
+getXmlAttributeString-BB@0x2c : [ getXmlAttributeString-BB@0x4a ]
+	12      (0000002c) const/16             v7, 8
+	13      (00000030) invoke-virtual       v4, v7, Ljava/lang/String;->substring(I)Ljava/lang/String;
+	14      (00000036) move-result-object   v8
+	15      (00000038) invoke-virtual       v6, Landroid/content/Context;->getPackageName()Ljava/lang/String;
+	16      (0000003e) move-result-object   v1
+	17      (00000040) new-instance         v2, Landroid/util/TypedValue;
+	18      (00000044) invoke-direct        v2, Landroid/util/TypedValue;-><init>()V
+
+getXmlAttributeString-BB@0x4a : [ getXmlAttributeString-BB@0xfa ]
+	19      (0000004a) invoke-virtual       v6, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+	20      (00000050) move-result-object   v6
+	21      (00000052) invoke-static        v1, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
+	22      (00000058) move-result-object   v3
+	23      (0000005a) invoke-virtual       v3, Ljava/lang/String;->length()I
+	24      (00000060) move-result          v3
+	25      (00000062) add-int/2addr        v3, v7
+	26      (00000064) invoke-static        v8, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
+	27      (0000006a) move-result-object   v7
+	28      (0000006c) invoke-virtual       v7, Ljava/lang/String;->length()I
+	29      (00000072) move-result          v7
+	30      (00000074) add-int/2addr        v3, v7
+	31      (00000076) new-instance         v7, Ljava/lang/StringBuilder;
+	32      (0000007a) invoke-direct        v7, v3, Ljava/lang/StringBuilder;-><init>(I)V
+	33      (00000080) invoke-virtual       v7, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	34      (00000086) invoke-virtual       v7, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	35      (0000008c) invoke-virtual       v7, v8, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	36      (00000092) invoke-virtual       v7, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	37      (00000098) move-result-object   v7
+	38      (0000009a) const/4              v8, 1
+	39      (0000009c) invoke-virtual       v6, v7, v2, v8, Landroid/content/res/Resources;->getValue(Ljava/lang/String; Landroid/util/TypedValue; Z)V
+	40      (000000a2) goto                 +2ch
+	4a:a1
+	(Landroid/content/res/Resources$NotFoundException; -> a4 getXmlAttributeString-BB@0xa4)
+
+getXmlAttributeString-BB@0xa4 : [ getXmlAttributeString-BB@0xfa ]
+	41      (000000a4) invoke-static        v5, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
+	42      (000000aa) move-result-object   v6
+	43      (000000ac) invoke-virtual       v6, Ljava/lang/String;->length()I
+	44      (000000b2) move-result          v6
+	45      (000000b4) add-int/lit8         v6, v6, 30
+	46      (000000b8) invoke-virtual       v4, Ljava/lang/String;->length()I
+	47      (000000be) move-result          v7
+	48      (000000c0) new-instance         v8, Ljava/lang/StringBuilder;
+	49      (000000c4) add-int/2addr        v6, v7
+	50      (000000c6) invoke-direct        v8, v6, Ljava/lang/StringBuilder;-><init>(I)V
+	51      (000000cc) const-string         v6, "Could not find resource for "
+	52      (000000d0) invoke-virtual       v8, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	53      (000000d6) invoke-virtual       v8, v5, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	54      (000000dc) const-string         v6, ": "
+	55      (000000e0) invoke-virtual       v8, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	56      (000000e6) invoke-virtual       v8, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	57      (000000ec) invoke-virtual       v8, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	58      (000000f2) move-result-object   v6
+	59      (000000f4) invoke-static        v10, v6, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+
+getXmlAttributeString-BB@0xfa : [ getXmlAttributeString-BB@0x102 getXmlAttributeString-BB@0x10c ]
+	60      (000000fa) iget-object          v6, v2, Landroid/util/TypedValue;->string Ljava/lang/CharSequence;
+	61      (000000fe) if-eqz               v6, +007h
+
+getXmlAttributeString-BB@0x102 : [ getXmlAttributeString-BB@0x16a ]
+	62      (00000102) invoke-virtual       v6, Ljava/lang/Object;->toString()Ljava/lang/String;
+	63      (00000108) move-result-object   v4
+	64      (0000010a) goto                 +30h
+
+getXmlAttributeString-BB@0x10c : [ getXmlAttributeString-BB@0x16a ]
+	65      (0000010c) invoke-virtual       v2, Ljava/lang/Object;->toString()Ljava/lang/String;
+	66      (00000112) move-result-object   v6
+	67      (00000114) invoke-static        v5, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
+	68      (0000011a) move-result-object   v7
+	69      (0000011c) invoke-virtual       v7, Ljava/lang/String;->length()I
+	70      (00000122) move-result          v7
+	71      (00000124) add-int/lit8         v7, v7, 28
+	72      (00000128) invoke-virtual       v6, Ljava/lang/String;->length()I
+	73      (0000012e) move-result          v8
+	74      (00000130) new-instance         v0, Ljava/lang/StringBuilder;
+	75      (00000134) add-int/2addr        v7, v8
+	76      (00000136) invoke-direct        v0, v7, Ljava/lang/StringBuilder;-><init>(I)V
+	77      (0000013c) const-string         v7, "Resource "
+	78      (00000140) invoke-virtual       v0, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	79      (00000146) invoke-virtual       v0, v5, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	80      (0000014c) const-string         v7, " was not a string: "
+	81      (00000150) invoke-virtual       v0, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	82      (00000156) invoke-virtual       v0, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	83      (0000015c) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	84      (00000162) move-result-object   v6
+	85      (00000164) invoke-static        v10, v6, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+
+getXmlAttributeString-BB@0x16a : [ getXmlAttributeString-BB@0x16e getXmlAttributeString-BB@0x1b8 ]
+	86      (0000016a) if-eqz               v9, +027h
+
+getXmlAttributeString-BB@0x16e : [ getXmlAttributeString-BB@0x172 getXmlAttributeString-BB@0x1b8 ]
+	87      (0000016e) if-nez               v4, +025h
+
+getXmlAttributeString-BB@0x172 : [ getXmlAttributeString-BB@0x1b8 ]
+	88      (00000172) invoke-static        v5, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
+	89      (00000178) move-result-object   v6
+	90      (0000017a) invoke-virtual       v6, Ljava/lang/String;->length()I
+	91      (00000180) move-result          v6
+	92      (00000182) new-instance         v7, Ljava/lang/StringBuilder;
+	93      (00000186) add-int/lit8         v6, v6, 33
+	94      (0000018a) invoke-direct        v7, v6, Ljava/lang/StringBuilder;-><init>(I)V
+	95      (00000190) const-string         v6, "Required XML attribute ""
+	96      (00000194) invoke-virtual       v7, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	97      (0000019a) invoke-virtual       v7, v5, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	98      (000001a0) const-string         v5, "" missing"
+	99      (000001a4) invoke-virtual       v7, v5, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	100     (000001aa) invoke-virtual       v7, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	101     (000001b0) move-result-object   v5
+	102     (000001b2) invoke-static        v10, v5, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+
+getXmlAttributeString-BB@0x1b8 : 
+	103     (000001b8) return-object        v4
+

@@ -1,0 +1,87 @@
+# Lcom/android/billingclient/api/ProxyBillingActivityV2;->zzc(Le/a;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:e.a
+#
+# - return:void
+
+zzc-BB@0x0 : [ zzc-BB@0xc zzc-BB@0x10 ]
+	0       (00000000) iget-object          v0, v6, Le/a;->b Landroid/content/Intent;
+	1       (00000004) iget                 v6, v6, Le/a;->a I
+	2       (00000008) if-nez               v0, +004h
+
+zzc-BB@0xc : [ zzc-BB@0x18 ]
+	3       (0000000c) const/4              v1, 0
+	4       (0000000e) goto                 +5h
+
+zzc-BB@0x10 : [ zzc-BB@0x18 ]
+	5       (00000010) invoke-virtual       v0, Landroid/content/Intent;->getExtras()Landroid/os/Bundle;
+	6       (00000016) move-result-object   v1
+
+zzc-BB@0x18 : [ zzc-BB@0x22 zzc-BB@0x8e ]
+	7       (00000018) const/4              v2, -1
+	8       (0000001a) const-string         v3, "ProxyBillingActivityV2"
+	9       (0000001e) if-eq                v6, v2, +038h
+
+zzc-BB@0x22 : [ zzc-BB@0x26 zzc-BB@0x30 ]
+	10      (00000022) if-nez               v1, +007h
+
+zzc-BB@0x26 : [ zzc-BB@0x30 ]
+	11      (00000026) new-instance         v1, Landroid/os/Bundle;
+	12      (0000002a) invoke-direct        v1, Landroid/os/Bundle;-><init>()V
+
+zzc-BB@0x30 : [ zzc-BB@0x8e ]
+	13      (00000030) new-instance         v2, Ljava/lang/StringBuilder;
+	14      (00000034) const-string         v4, "External offer flow finished with resultCode: "
+	15      (00000038) invoke-direct        v2, v4, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	16      (0000003e) invoke-virtual       v2, v6, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	17      (00000044) invoke-virtual       v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	18      (0000004a) move-result-object   v2
+	19      (0000004c) invoke-static        v3, v2, Lcom/google/android/gms/internal/play_billing/zzc;->zzn(Ljava/lang/String; Ljava/lang/String;)V
+	20      (00000052) sget-object          v2, Lcom/google/android/gms/internal/play_billing/zzie;->zzbv Lcom/google/android/gms/internal/play_billing/zzie;
+	21      (00000056) invoke-virtual       v2, Lcom/google/android/gms/internal/play_billing/zzie;->zza()I
+	22      (0000005c) move-result          v2
+	23      (0000005e) const-string         v4, "INTERNAL_LOG_ERROR_REASON"
+	24      (00000062) invoke-virtual       v1, v4, v2, Landroid/os/BaseBundle;->putInt(Ljava/lang/String; I)V
+	25      (00000068) new-instance         v2, Ljava/lang/StringBuilder;
+	26      (0000006c) const-string         v4, "External offer flow finished with error resultCode: "
+	27      (00000070) invoke-direct        v2, v4, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	28      (00000076) invoke-virtual       v2, v6, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	29      (0000007c) invoke-virtual       v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	30      (00000082) move-result-object   v6
+	31      (00000084) const-string         v2, "INTERNAL_LOG_ERROR_ADDITIONAL_DETAILS"
+	32      (00000088) invoke-virtual       v1, v2, v6, Landroid/os/BaseBundle;->putString(Ljava/lang/String; Ljava/lang/String;)V
+
+zzc-BB@0x8e : [ zzc-BB@0xa6 zzc-BB@0xae ]
+	33      (0000008e) invoke-static        v0, v3, Lcom/google/android/gms/internal/play_billing/zzc;->zzh(Landroid/content/Intent; Ljava/lang/String;)Lcom/android/billingclient/api/BillingResult;
+	34      (00000094) move-result-object   v6
+	35      (00000096) invoke-virtual       v6, Lcom/android/billingclient/api/BillingResult;->getResponseCode()I
+	36      (0000009c) move-result          v6
+	37      (0000009e) iget-object          v0, v5, Lcom/android/billingclient/api/ProxyBillingActivityV2;->zzf Landroid/os/ResultReceiver;
+	38      (000000a2) if-eqz               v0, +006h
+
+zzc-BB@0xa6 : [ zzc-BB@0xb8 ]
+	39      (000000a6) invoke-virtual       v0, v6, v1, Landroid/os/ResultReceiver;->send(I Landroid/os/Bundle;)V
+	40      (000000ac) goto                 +6h
+
+zzc-BB@0xae : [ zzc-BB@0xb8 ]
+	41      (000000ae) const-string         v0, "External offer flow result receiver is null"
+	42      (000000b2) invoke-static        v3, v0, Lcom/google/android/gms/internal/play_billing/zzc;->zzn(Ljava/lang/String; Ljava/lang/String;)V
+
+zzc-BB@0xb8 : [ zzc-BB@0xbc zzc-BB@0xde ]
+	43      (000000b8) if-eqz               v6, +013h
+
+zzc-BB@0xbc : [ zzc-BB@0xde ]
+	44      (000000bc) new-instance         v0, Ljava/lang/StringBuilder;
+	45      (000000c0) const-string         v1, "External offer flow finished with billing responseCode: "
+	46      (000000c4) invoke-direct        v0, v1, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	47      (000000ca) invoke-virtual       v0, v6, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	48      (000000d0) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	49      (000000d6) move-result-object   v6
+	50      (000000d8) invoke-static        v3, v6, Lcom/google/android/gms/internal/play_billing/zzc;->zzn(Ljava/lang/String; Ljava/lang/String;)V
+
+zzc-BB@0xde : 
+	51      (000000de) invoke-virtual       v5, Landroid/app/Activity;->finish()V
+	52      (000000e4) return-void          
+

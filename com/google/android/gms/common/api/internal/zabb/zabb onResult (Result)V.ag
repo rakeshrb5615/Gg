@@ -1,0 +1,44 @@
+# Lcom/google/android/gms/common/api/internal/zabb;->onResult(Lcom/google/android/gms/common/api/Result;)V [access_flags=public final bridge synthetic]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:com.google.android.gms.common.api.Result
+#
+# - return:void
+
+onResult-BB@0x0 : [ onResult-BB@0x2a onResult-BB@0x4a ]
+	0       (00000000) check-cast           v2, Lcom/google/android/gms/common/api/Status;
+	1       (00000004) iget-object          v0, v1, Lcom/google/android/gms/common/api/internal/zabb;->zad Lcom/google/android/gms/common/api/internal/zabe;
+	2       (00000008) invoke-static        v0, Lcom/google/android/gms/common/api/internal/zabe;->zae(Lcom/google/android/gms/common/api/internal/zabe;)Landroid/content/Context;
+	3       (0000000e) move-result-object   v0
+	4       (00000010) invoke-static        v0, Lcom/google/android/gms/auth/api/signin/internal/Storage;->getInstance(Landroid/content/Context;)Lcom/google/android/gms/auth/api/signin/internal/Storage;
+	5       (00000016) move-result-object   v0
+	6       (00000018) invoke-virtual       v0, Lcom/google/android/gms/auth/api/signin/internal/Storage;->zac()V
+	7       (0000001e) invoke-virtual       v2, Lcom/google/android/gms/common/api/Status;->isSuccess()Z
+	8       (00000024) move-result          v0
+	9       (00000026) if-eqz               v0, +012h
+
+onResult-BB@0x2a : [ onResult-BB@0x3a onResult-BB@0x4a ]
+	10      (0000002a) iget-object          v0, v1, Lcom/google/android/gms/common/api/internal/zabb;->zad Lcom/google/android/gms/common/api/internal/zabe;
+	11      (0000002e) invoke-virtual       v0, Lcom/google/android/gms/common/api/internal/zabe;->isConnected()Z
+	12      (00000034) move-result          v0
+	13      (00000036) if-eqz               v0, +00ah
+
+onResult-BB@0x3a : [ onResult-BB@0x4a ]
+	14      (0000003a) iget-object          v0, v1, Lcom/google/android/gms/common/api/internal/zabb;->zad Lcom/google/android/gms/common/api/internal/zabe;
+	15      (0000003e) invoke-virtual       v0, Lcom/google/android/gms/common/api/internal/zabe;->disconnect()V
+	16      (00000044) invoke-virtual       v0, Lcom/google/android/gms/common/api/internal/zabe;->connect()V
+
+onResult-BB@0x4a : [ onResult-BB@0x5c onResult-BB@0x66 ]
+	17      (0000004a) iget-object          v0, v1, Lcom/google/android/gms/common/api/internal/zabb;->zaa Lcom/google/android/gms/common/api/internal/StatusPendingResult;
+	18      (0000004e) invoke-virtual       v0, v2, Lcom/google/android/gms/common/api/internal/BasePendingResult;->setResult(Lcom/google/android/gms/common/api/Result;)V
+	19      (00000054) iget-boolean         v2, v1, Lcom/google/android/gms/common/api/internal/zabb;->zab Z
+	20      (00000058) if-eqz               v2, +007h
+
+onResult-BB@0x5c : [ onResult-BB@0x66 ]
+	21      (0000005c) iget-object          v2, v1, Lcom/google/android/gms/common/api/internal/zabb;->zac Lcom/google/android/gms/common/api/GoogleApiClient;
+	22      (00000060) invoke-virtual       v2, Lcom/google/android/gms/common/api/GoogleApiClient;->disconnect()V
+
+onResult-BB@0x66 : 
+	23      (00000066) return-void          
+

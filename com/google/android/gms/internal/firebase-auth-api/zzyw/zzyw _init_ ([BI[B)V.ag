@@ -1,0 +1,63 @@
+# Lcom/google/android/gms/internal/firebase-auth-api/zzyw;-><init>([B I [B)V [access_flags=private constructor]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:byte[]
+# - v3:int
+# - v4:byte[]
+#
+# - return:void
+
+<init>-BB@0x0 : [ <init>-BB@0x16 <init>-BB@0x8a ]
+	0       (00000000) invoke-direct        v1, Ljava/lang/Object;-><init>()V
+	1       (00000006) sget-object          v0, Lcom/google/android/gms/internal/firebase-auth-api/zzyw;->zza Lcom/google/android/gms/internal/firebase-auth-api/zziv$zza;
+	2       (0000000a) invoke-virtual       v0, Lcom/google/android/gms/internal/firebase-auth-api/zziv$zza;->zza()Z
+	3       (00000010) move-result          v0
+	4       (00000012) if-eqz               v0, +03ch
+
+<init>-BB@0x16 : [ <init>-BB@0x1e <init>-BB@0x38 ]
+	5       (00000016) const/16             v0, 12
+	6       (0000001a) if-eq                v3, v0, +00fh
+
+<init>-BB@0x1e : [ <init>-BB@0x26 <init>-BB@0x28 ]
+	7       (0000001e) const/16             v0, 16
+	8       (00000022) if-ne                v3, v0, +003h
+
+<init>-BB@0x26 : [ <init>-BB@0x38 ]
+	9       (00000026) goto                 +9h
+
+<init>-BB@0x28 : 
+	10      (00000028) new-instance         v2, Ljava/lang/IllegalArgumentException;
+	11      (0000002c) const-string         v3, "IV size should be either 12 or 16 bytes"
+	12      (00000030) invoke-direct        v2, v3, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	13      (00000036) throw                v2
+
+<init>-BB@0x38 : 
+	14      (00000038) iput                 v3, v1, Lcom/google/android/gms/internal/firebase-auth-api/zzyw;->zzf I
+	15      (0000003c) array-length         v3, v2
+	16      (0000003e) invoke-static        v3, Lcom/google/android/gms/internal/firebase-auth-api/zzaai;->zza(I)V
+	17      (00000044) new-instance         v3, Ljavax/crypto/spec/SecretKeySpec;
+	18      (00000048) const-string         v0, "AES"
+	19      (0000004c) invoke-direct        v3, v2, v0, Ljavax/crypto/spec/SecretKeySpec;-><init>([B Ljava/lang/String;)V
+	20      (00000052) iput-object          v3, v1, Lcom/google/android/gms/internal/firebase-auth-api/zzyw;->zze Ljavax/crypto/spec/SecretKeySpec;
+	21      (00000056) array-length         v3, v2
+	22      (00000058) invoke-static        v3, Lcom/google/android/gms/internal/firebase-auth-api/zzsr;->zza(I)Lcom/google/android/gms/internal/firebase-auth-api/zzsr;
+	23      (0000005e) move-result-object   v3
+	24      (00000060) invoke-static        Lcom/google/android/gms/internal/firebase-auth-api/zzbf;->zza()Lcom/google/android/gms/internal/firebase-auth-api/zzch;
+	25      (00000066) move-result-object   v0
+	26      (00000068) invoke-static        v2, v0, Lcom/google/android/gms/internal/firebase-auth-api/zzaal;->zza([B Lcom/google/android/gms/internal/firebase-auth-api/zzch;)Lcom/google/android/gms/internal/firebase-auth-api/zzaal;
+	27      (0000006e) move-result-object   v2
+	28      (00000070) invoke-static        v3, v2, Lcom/google/android/gms/internal/firebase-auth-api/zzso;->zza(Lcom/google/android/gms/internal/firebase-auth-api/zzsr; Lcom/google/android/gms/internal/firebase-auth-api/zzaal;)Lcom/google/android/gms/internal/firebase-auth-api/zzso;
+	29      (00000076) move-result-object   v2
+	30      (00000078) invoke-static        v2, Lcom/google/android/gms/internal/firebase-auth-api/zzzz;->zza(Lcom/google/android/gms/internal/firebase-auth-api/zzso;)Lcom/google/android/gms/internal/firebase-auth-api/zzsq;
+	31      (0000007e) move-result-object   v2
+	32      (00000080) iput-object          v2, v1, Lcom/google/android/gms/internal/firebase-auth-api/zzyw;->zzd Lcom/google/android/gms/internal/firebase-auth-api/zzsq;
+	33      (00000084) iput-object          v4, v1, Lcom/google/android/gms/internal/firebase-auth-api/zzyw;->zzc [B
+	34      (00000088) return-void          
+
+<init>-BB@0x8a : 
+	35      (0000008a) new-instance         v2, Ljava/security/GeneralSecurityException;
+	36      (0000008e) const-string         v3, "Can not use AES-EAX in FIPS-mode."
+	37      (00000092) invoke-direct        v2, v3, Ljava/security/GeneralSecurityException;-><init>(Ljava/lang/String;)V
+	38      (00000098) throw                v2
+

@@ -1,0 +1,38 @@
+# Lcom/google/android/material/datepicker/q;->onDismiss(Landroid/content/DialogInterface;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:android.content.DialogInterface
+#
+# - return:void
+
+onDismiss-BB@0x0 : [ onDismiss-BB@0xc ]
+	0       (00000000) iget-object          v0, v2, Lcom/google/android/material/datepicker/q;->b Ljava/util/LinkedHashSet;
+	1       (00000004) invoke-virtual       v0, Ljava/util/AbstractCollection;->iterator()Ljava/util/Iterator;
+	2       (0000000a) move-result-object   v0
+
+onDismiss-BB@0xc : [ onDismiss-BB@0x18 onDismiss-BB@0x2c ]
+	3       (0000000c) invoke-interface     v0, Ljava/util/Iterator;->hasNext()Z
+	4       (00000012) move-result          v1
+	5       (00000014) if-eqz               v1, +00ch
+
+onDismiss-BB@0x18 : [ onDismiss-BB@0xc ]
+	6       (00000018) invoke-interface     v0, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	7       (0000001e) move-result-object   v1
+	8       (00000020) check-cast           v1, Landroid/content/DialogInterface$OnDismissListener;
+	9       (00000024) invoke-interface     v1, v3, Landroid/content/DialogInterface$OnDismissListener;->onDismiss(Landroid/content/DialogInterface;)V
+	10      (0000002a) goto                 -fh
+
+onDismiss-BB@0x2c : [ onDismiss-BB@0x3c onDismiss-BB@0x42 ]
+	11      (0000002c) invoke-virtual       v2, Landroidx/fragment/app/e0;->getView()Landroid/view/View;
+	12      (00000032) move-result-object   v0
+	13      (00000034) check-cast           v0, Landroid/view/ViewGroup;
+	14      (00000038) if-eqz               v0, +005h
+
+onDismiss-BB@0x3c : [ onDismiss-BB@0x42 ]
+	15      (0000003c) invoke-virtual       v0, Landroid/view/ViewGroup;->removeAllViews()V
+
+onDismiss-BB@0x42 : 
+	16      (00000042) invoke-super         v2, v3, Landroidx/fragment/app/s;->onDismiss(Landroid/content/DialogInterface;)V
+	17      (00000048) return-void          
+

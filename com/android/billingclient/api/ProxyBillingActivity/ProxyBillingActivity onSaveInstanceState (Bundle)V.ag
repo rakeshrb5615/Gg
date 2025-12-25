@@ -1,0 +1,35 @@
+# Lcom/android/billingclient/api/ProxyBillingActivity;->onSaveInstanceState(Landroid/os/Bundle;)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:android.os.Bundle
+#
+# - return:void
+
+onSaveInstanceState-BB@0x0 : [ onSaveInstanceState-BB@0xe onSaveInstanceState-BB@0x18 ]
+	0       (00000000) invoke-super         v3, v4, Landroid/app/Activity;->onSaveInstanceState(Landroid/os/Bundle;)V
+	1       (00000006) iget-object          v0, v3, Lcom/android/billingclient/api/ProxyBillingActivity;->inAppMessageResultReceiver Landroid/os/ResultReceiver;
+	2       (0000000a) if-eqz               v0, +007h
+
+onSaveInstanceState-BB@0xe : [ onSaveInstanceState-BB@0x18 ]
+	3       (0000000e) const-string         v1, "in_app_message_result_receiver"
+	4       (00000012) invoke-virtual       v4, v1, v0, Landroid/os/Bundle;->putParcelable(Ljava/lang/String; Landroid/os/Parcelable;)V
+
+onSaveInstanceState-BB@0x18 : 
+	5       (00000018) iget-boolean         v0, v3, Lcom/android/billingclient/api/ProxyBillingActivity;->sendCancelledBroadcastIfFinished Z
+	6       (0000001c) const-string         v1, "send_cancelled_broadcast_if_finished"
+	7       (00000020) invoke-virtual       v4, v1, v0, Landroid/os/BaseBundle;->putBoolean(Ljava/lang/String; Z)V
+	8       (00000026) iget-boolean         v0, v3, Lcom/android/billingclient/api/ProxyBillingActivity;->isFlowFromFirstPartyClient Z
+	9       (0000002a) const-string         v1, "IS_FLOW_FROM_FIRST_PARTY_CLIENT"
+	10      (0000002e) invoke-virtual       v4, v1, v0, Landroid/os/BaseBundle;->putBoolean(Ljava/lang/String; Z)V
+	11      (00000034) iget                 v0, v3, Lcom/android/billingclient/api/ProxyBillingActivity;->activityCode I
+	12      (00000038) const-string         v1, "activity_code"
+	13      (0000003c) invoke-virtual       v4, v1, v0, Landroid/os/BaseBundle;->putInt(Ljava/lang/String; I)V
+	14      (00000042) iget-wide            v0, v3, Lcom/android/billingclient/api/ProxyBillingActivity;->billingClientTransactionId J
+	15      (00000046) const-string         v2, "billingClientTransactionId"
+	16      (0000004a) invoke-virtual       v4, v2, v0, v1, Landroid/os/BaseBundle;->putLong(Ljava/lang/String; J)V
+	17      (00000050) iget-boolean         v0, v3, Lcom/android/billingclient/api/ProxyBillingActivity;->wasServiceAutoReconnected Z
+	18      (00000054) const-string         v1, "wasServiceAutoReconnected"
+	19      (00000058) invoke-virtual       v4, v1, v0, Landroid/os/BaseBundle;->putBoolean(Ljava/lang/String; Z)V
+	20      (0000005e) return-void          
+

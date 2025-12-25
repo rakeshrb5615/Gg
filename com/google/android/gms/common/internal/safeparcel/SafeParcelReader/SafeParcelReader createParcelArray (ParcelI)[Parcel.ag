@@ -1,0 +1,57 @@
+# Lcom/google/android/gms/common/internal/safeparcel/SafeParcelReader;->createParcelArray(Landroid/os/Parcel; I)[Landroid/os/Parcel; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v7
+# - v8:android.os.Parcel
+# - v9:int
+#
+# - return:android.os.Parcel[]
+
+createParcelArray-BB@0x0 : [ createParcelArray-BB@0x16 createParcelArray-BB@0x18 ]
+	0       (00000000) invoke-static        v8, v9, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelReader;->readSize(Landroid/os/Parcel; I)I
+	1       (00000006) move-result          v9
+	2       (00000008) invoke-virtual       v8, Landroid/os/Parcel;->dataPosition()I
+	3       (0000000e) move-result          v0
+	4       (00000010) const/4              v1, 0
+	5       (00000012) if-nez               v9, +003h
+
+createParcelArray-BB@0x16 : 
+	6       (00000016) return-object        v1
+
+createParcelArray-BB@0x18 : [ createParcelArray-BB@0x26 ]
+	7       (00000018) invoke-virtual       v8, Landroid/os/Parcel;->readInt()I
+	8       (0000001e) move-result          v2
+	9       (00000020) new-array            v3, v2, [Landroid/os/Parcel;
+	10      (00000024) const/4              v4, 0
+
+createParcelArray-BB@0x26 : [ createParcelArray-BB@0x2a createParcelArray-BB@0x64 ]
+	11      (00000026) if-ge                v4, v2, +01fh
+
+createParcelArray-BB@0x2a : [ createParcelArray-BB@0x36 createParcelArray-BB@0x5a ]
+	12      (0000002a) invoke-virtual       v8, Landroid/os/Parcel;->readInt()I
+	13      (00000030) move-result          v5
+	14      (00000032) if-eqz               v5, +014h
+
+createParcelArray-BB@0x36 : [ createParcelArray-BB@0x5e ]
+	15      (00000036) invoke-virtual       v8, Landroid/os/Parcel;->dataPosition()I
+	16      (0000003c) move-result          v6
+	17      (0000003e) invoke-static        Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
+	18      (00000044) move-result-object   v7
+	19      (00000046) invoke-virtual       v7, v8, v6, v5, Landroid/os/Parcel;->appendFrom(Landroid/os/Parcel; I I)V
+	20      (0000004c) aput-object          v7, v3, v4
+	21      (00000050) add-int/2addr        v6, v5
+	22      (00000052) invoke-virtual       v8, v6, Landroid/os/Parcel;->setDataPosition(I)V
+	23      (00000058) goto                 +3h
+
+createParcelArray-BB@0x5a : [ createParcelArray-BB@0x5e ]
+	24      (0000005a) aput-object          v1, v3, v4
+
+createParcelArray-BB@0x5e : [ createParcelArray-BB@0x26 ]
+	25      (0000005e) add-int/lit8         v4, v4, 1
+	26      (00000062) goto                 -1eh
+
+createParcelArray-BB@0x64 : 
+	27      (00000064) add-int/2addr        v0, v9
+	28      (00000066) invoke-virtual       v8, v0, Landroid/os/Parcel;->setDataPosition(I)V
+	29      (0000006c) return-object        v3
+

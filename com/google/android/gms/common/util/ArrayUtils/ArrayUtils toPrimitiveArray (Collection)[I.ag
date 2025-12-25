@@ -1,0 +1,50 @@
+# Lcom/google/android/gms/common/util/ArrayUtils;->toPrimitiveArray(Ljava/util/Collection;)[I [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:java.util.Collection
+#
+# - return:int[]
+
+toPrimitiveArray-BB@0x0 : [ toPrimitiveArray-BB@0x6 toPrimitiveArray-BB@0x56 ]
+	0       (00000000) const/4              v0, 0
+	1       (00000002) if-eqz               v4, +02ah
+
+toPrimitiveArray-BB@0x6 : [ toPrimitiveArray-BB@0x12 toPrimitiveArray-BB@0x14 ]
+	2       (00000006) invoke-interface     v4, Ljava/util/Collection;->isEmpty()Z
+	3       (0000000c) move-result          v1
+	4       (0000000e) if-eqz               v1, +003h
+
+toPrimitiveArray-BB@0x12 : [ toPrimitiveArray-BB@0x56 ]
+	5       (00000012) goto                 +22h
+
+toPrimitiveArray-BB@0x14 : [ toPrimitiveArray-BB@0x28 ]
+	6       (00000014) invoke-interface     v4, Ljava/util/Collection;->size()I
+	7       (0000001a) move-result          v1
+	8       (0000001c) new-array            v1, v1, [I
+	9       (00000020) invoke-interface     v4, Ljava/util/Collection;->iterator()Ljava/util/Iterator;
+	10      (00000026) move-result-object   v4
+
+toPrimitiveArray-BB@0x28 : [ toPrimitiveArray-BB@0x34 toPrimitiveArray-BB@0x54 ]
+	11      (00000028) invoke-interface     v4, Ljava/util/Iterator;->hasNext()Z
+	12      (0000002e) move-result          v2
+	13      (00000030) if-eqz               v2, +012h
+
+toPrimitiveArray-BB@0x34 : [ toPrimitiveArray-BB@0x28 ]
+	14      (00000034) invoke-interface     v4, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	15      (0000003a) move-result-object   v2
+	16      (0000003c) check-cast           v2, Ljava/lang/Integer;
+	17      (00000040) add-int/lit8         v3, v0, 1
+	18      (00000044) invoke-virtual       v2, Ljava/lang/Integer;->intValue()I
+	19      (0000004a) move-result          v2
+	20      (0000004c) aput                 v2, v1, v0
+	21      (00000050) move                 v0, v3
+	22      (00000052) goto                 -15h
+
+toPrimitiveArray-BB@0x54 : 
+	23      (00000054) return-object        v1
+
+toPrimitiveArray-BB@0x56 : 
+	24      (00000056) new-array            v4, v0, [I
+	25      (0000005a) return-object        v4
+

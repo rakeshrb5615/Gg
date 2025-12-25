@@ -1,0 +1,80 @@
+# Lcom/google/android/gms/internal/firebase-auth-api/zzzf;->zza(Ljava/security/interfaces/ECPrivateKey; Ljava/security/spec/ECPoint;)[B [access_flags=private static]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:java.security.interfaces.ECPrivateKey
+# - v5:java.security.spec.ECPoint
+#
+# - return:byte[]
+
+zza-BB@0x0 : [ zza-BB@0x60 ]
+	0       (00000000) invoke-interface     v4, Ljava/security/interfaces/ECKey;->getParams()Ljava/security/spec/ECParameterSpec;
+	1       (00000006) move-result-object   v0
+	2       (00000008) invoke-virtual       v0, Ljava/security/spec/ECParameterSpec;->getCurve()Ljava/security/spec/EllipticCurve;
+	3       (0000000e) move-result-object   v0
+	4       (00000010) invoke-static        v5, v0, Lcom/google/android/gms/internal/firebase-auth-api/zznj;->zza(Ljava/security/spec/ECPoint; Ljava/security/spec/EllipticCurve;)V
+	5       (00000016) invoke-interface     v4, Ljava/security/interfaces/ECKey;->getParams()Ljava/security/spec/ECParameterSpec;
+	6       (0000001c) move-result-object   v0
+	7       (0000001e) new-instance         v1, Ljava/security/spec/ECPublicKeySpec;
+	8       (00000022) invoke-direct        v1, v5, v0, Ljava/security/spec/ECPublicKeySpec;-><init>(Ljava/security/spec/ECPoint; Ljava/security/spec/ECParameterSpec;)V
+	9       (00000028) sget-object          v5, Lcom/google/android/gms/internal/firebase-auth-api/zzzj;->zze Lcom/google/android/gms/internal/firebase-auth-api/zzzj;
+	10      (0000002c) const-string         v0, "EC"
+	11      (00000030) invoke-virtual       v5, v0, Lcom/google/android/gms/internal/firebase-auth-api/zzzj;->zza(Ljava/lang/String;)Ljava/lang/Object;
+	12      (00000036) move-result-object   v5
+	13      (00000038) check-cast           v5, Ljava/security/KeyFactory;
+	14      (0000003c) invoke-virtual       v5, v1, Ljava/security/KeyFactory;->generatePublic(Ljava/security/spec/KeySpec;)Ljava/security/PublicKey;
+	15      (00000042) move-result-object   v5
+	16      (00000044) sget-object          v0, Lcom/google/android/gms/internal/firebase-auth-api/zzzj;->zzc Lcom/google/android/gms/internal/firebase-auth-api/zzzj;
+	17      (00000048) const-string         v1, "ECDH"
+	18      (0000004c) invoke-virtual       v0, v1, Lcom/google/android/gms/internal/firebase-auth-api/zzzj;->zza(Ljava/lang/String;)Ljava/lang/Object;
+	19      (00000052) move-result-object   v0
+	20      (00000054) check-cast           v0, Ljavax/crypto/KeyAgreement;
+	21      (00000058) invoke-virtual       v0, v4, Ljavax/crypto/KeyAgreement;->init(Ljava/security/Key;)V
+	22      (0000005e) const/4              v1, 1
+
+zza-BB@0x60 : [ zza-BB@0x96 zza-BB@0xb2 ]
+	23      (00000060) invoke-virtual       v0, v5, v1, Ljavax/crypto/KeyAgreement;->doPhase(Ljava/security/Key; Z)Ljava/security/Key;
+	24      (00000066) invoke-virtual       v0, Ljavax/crypto/KeyAgreement;->generateSecret()[B
+	25      (0000006c) move-result-object   v5
+	26      (0000006e) invoke-interface     v4, Ljava/security/interfaces/ECKey;->getParams()Ljava/security/spec/ECParameterSpec;
+	27      (00000074) move-result-object   v4
+	28      (00000076) invoke-virtual       v4, Ljava/security/spec/ECParameterSpec;->getCurve()Ljava/security/spec/EllipticCurve;
+	29      (0000007c) move-result-object   v4
+	30      (0000007e) new-instance         v0, Ljava/math/BigInteger;
+	31      (00000082) invoke-direct        v0, v1, v5, Ljava/math/BigInteger;-><init>(I [B)V
+	32      (00000088) invoke-virtual       v0, Ljava/math/BigInteger;->signum()I
+	33      (0000008e) move-result          v2
+	34      (00000090) const/4              v3, -1
+	35      (00000092) if-eq                v2, v3, +010h
+	60:c1
+	(Ljava/lang/IllegalStateException; -> c2 zza-BB@0xc2)
+
+zza-BB@0x96 : [ zza-BB@0xaa zza-BB@0xb2 ]
+	36      (00000096) invoke-static        v4, Lcom/google/android/gms/internal/firebase-auth-api/zznj;->zza(Ljava/security/spec/EllipticCurve;)Ljava/math/BigInteger;
+	37      (0000009c) move-result-object   v2
+	38      (0000009e) invoke-virtual       v0, v2, Ljava/math/BigInteger;->compareTo(Ljava/math/BigInteger;)I
+	39      (000000a4) move-result          v2
+	40      (000000a6) if-gez               v2, +006h
+	60:c1
+	(Ljava/lang/IllegalStateException; -> c2 zza-BB@0xc2)
+
+zza-BB@0xaa : 
+	41      (000000aa) invoke-static        v0, v1, v4, Lcom/google/android/gms/internal/firebase-auth-api/zzzf;->zza(Ljava/math/BigInteger; Z Ljava/security/spec/EllipticCurve;)Ljava/math/BigInteger;
+	42      (000000b0) return-object        v5
+	60:c1
+	(Ljava/lang/IllegalStateException; -> c2 zza-BB@0xc2)
+
+zza-BB@0xb2 : 
+	43      (000000b2) new-instance         v4, Ljava/security/GeneralSecurityException;
+	44      (000000b6) const-string         v5, "shared secret is out of range"
+	45      (000000ba) invoke-direct        v4, v5, Ljava/security/GeneralSecurityException;-><init>(Ljava/lang/String;)V
+	46      (000000c0) throw                v4
+	60:c1
+	(Ljava/lang/IllegalStateException; -> c2 zza-BB@0xc2)
+
+zza-BB@0xc2 : 
+	47      (000000c2) move-exception       v4
+	48      (000000c4) new-instance         v5, Ljava/security/GeneralSecurityException;
+	49      (000000c8) invoke-direct        v5, v4, Ljava/security/GeneralSecurityException;-><init>(Ljava/lang/Throwable;)V
+	50      (000000ce) throw                v5
+

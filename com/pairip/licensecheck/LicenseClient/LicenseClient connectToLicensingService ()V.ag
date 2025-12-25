@@ -1,0 +1,46 @@
+# Lcom/pairip/licensecheck/LicenseClient;->connectToLicensingService()V [access_flags=private]
+#
+# Parameters:
+# local registers: v0...v3
+#
+# - return:void
+
+connectToLicensingService-BB@0x0 : [ connectToLicensingService-BB@0x30 ]
+	0       (00000000) const-string         v0, "LicenseClient"
+	1       (00000004) const-string         v1, "Connecting to the licensing service..."
+	2       (00000008) invoke-static        v0, v1, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String;)I
+	3       (0000000e) new-instance         v0, Landroid/content/Intent;
+	4       (00000012) const-string         v1, "com.android.vending.licensing.ILicensingService"
+	5       (00000016) invoke-direct        v0, v1, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
+	6       (0000001c) const-string         v2, "com.android.vending"
+	7       (00000020) invoke-virtual       v0, v2, Landroid/content/Intent;->setPackage(Ljava/lang/String;)Landroid/content/Intent;
+	8       (00000026) move-result-object   v0
+	9       (00000028) invoke-virtual       v0, v1, Landroid/content/Intent;->setAction(Ljava/lang/String;)Landroid/content/Intent;
+	10      (0000002e) move-result-object   v0
+
+connectToLicensingService-BB@0x30 : [ connectToLicensingService-BB@0x42 connectToLicensingService-BB@0x56 ]
+	11      (00000030) iget-object          v1, v3, Lcom/pairip/licensecheck/LicenseClient;->context Landroid/content/Context;
+	12      (00000034) const/4              v2, 1
+	13      (00000036) invoke-virtual       v1, v0, v3, v2, Landroid/content/Context;->bindService(Landroid/content/Intent; Landroid/content/ServiceConnection; I)Z
+	14      (0000003c) move-result          v0
+	15      (0000003e) if-nez               v0, +00ch
+	30:3d
+	(Ljava/lang/SecurityException; -> 58 connectToLicensingService-BB@0x58)
+
+connectToLicensingService-BB@0x42 : [ connectToLicensingService-BB@0x56 ]
+	16      (00000042) new-instance         v0, Lcom/pairip/licensecheck/LicenseCheckException;
+	17      (00000046) const-string         v1, "Could not bind with the licensing service."
+	18      (0000004a) invoke-direct        v0, v1, Lcom/pairip/licensecheck/LicenseCheckException;-><init>(Ljava/lang/String;)V
+	19      (00000050) invoke-direct        v3, v0, Lcom/pairip/licensecheck/LicenseClient;->retryOrThrow(Lcom/pairip/licensecheck/LicenseCheckException;)V
+
+connectToLicensingService-BB@0x56 : 
+	20      (00000056) return-void          
+
+connectToLicensingService-BB@0x58 : 
+	21      (00000058) move-exception       v0
+	22      (0000005a) new-instance         v1, Lcom/pairip/licensecheck/LicenseCheckException;
+	23      (0000005e) const-string         v2, "Not allowed to bind with the licensing service."
+	24      (00000062) invoke-direct        v1, v2, v0, Lcom/pairip/licensecheck/LicenseCheckException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	25      (00000068) invoke-direct        v3, v1, Lcom/pairip/licensecheck/LicenseClient;->retryOrThrow(Lcom/pairip/licensecheck/LicenseCheckException;)V
+	26      (0000006e) return-void          
+

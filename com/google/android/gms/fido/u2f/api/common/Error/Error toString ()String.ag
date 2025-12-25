@@ -1,0 +1,39 @@
+# Lcom/google/android/gms/fido/u2f/api/common/Error;->toString()Ljava/lang/String; [access_flags=public]
+#
+# Parameters:
+# local registers: v0...v5
+#
+# - return:java.lang.String
+
+toString-BB@0x0 : [ toString-BB@0x10 toString-BB@0x2a ]
+	0       (00000000) iget-object          v0, v5, Lcom/google/android/gms/fido/u2f/api/common/Error;->zzb Ljava/lang/String;
+	1       (00000004) const-string         v1, "}"
+	2       (00000008) const-string         v2, "{errorCode: "
+	3       (0000000c) if-nez               v0, +00fh
+
+toString-BB@0x10 : 
+	4       (00000010) sget-object          v0, Ljava/util/Locale;->ENGLISH Ljava/util/Locale;
+	5       (00000014) iget-object          v0, v5, Lcom/google/android/gms/fido/u2f/api/common/Error;->zza Lcom/google/android/gms/fido/u2f/api/common/ErrorCode;
+	6       (00000018) invoke-virtual       v0, Lcom/google/android/gms/fido/u2f/api/common/ErrorCode;->getCode()I
+	7       (0000001e) move-result          v0
+	8       (00000020) invoke-static        v2, v0, v1, Lv1/a;->j(Ljava/lang/String; I Ljava/lang/String;)Ljava/lang/String;
+	9       (00000026) move-result-object   v0
+	10      (00000028) return-object        v0
+
+toString-BB@0x2a : 
+	11      (0000002a) sget-object          v0, Ljava/util/Locale;->ENGLISH Ljava/util/Locale;
+	12      (0000002e) iget-object          v0, v5, Lcom/google/android/gms/fido/u2f/api/common/Error;->zza Lcom/google/android/gms/fido/u2f/api/common/ErrorCode;
+	13      (00000032) invoke-virtual       v0, Lcom/google/android/gms/fido/u2f/api/common/ErrorCode;->getCode()I
+	14      (00000038) move-result          v0
+	15      (0000003a) iget-object          v3, v5, Lcom/google/android/gms/fido/u2f/api/common/Error;->zzb Ljava/lang/String;
+	16      (0000003e) new-instance         v4, Ljava/lang/StringBuilder;
+	17      (00000042) invoke-direct        v4, v2, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	18      (00000048) invoke-virtual       v4, v0, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	19      (0000004e) const-string         v0, ", errorMessage: "
+	20      (00000052) invoke-virtual       v4, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	21      (00000058) invoke-virtual       v4, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	22      (0000005e) invoke-virtual       v4, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	23      (00000064) invoke-virtual       v4, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	24      (0000006a) move-result-object   v0
+	25      (0000006c) return-object        v0
+

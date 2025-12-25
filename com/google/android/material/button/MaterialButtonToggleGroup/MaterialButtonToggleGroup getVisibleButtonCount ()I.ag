@@ -1,0 +1,40 @@
+# Lcom/google/android/material/button/MaterialButtonToggleGroup;->getVisibleButtonCount()I [access_flags=private]
+#
+# Parameters:
+# local registers: v0...v4
+#
+# - return:int
+
+getVisibleButtonCount-BB@0x0 : [ getVisibleButtonCount-BB@0x4 ]
+	0       (00000000) const/4              v0, 0
+	1       (00000002) move                 v1, v0
+
+getVisibleButtonCount-BB@0x4 : [ getVisibleButtonCount-BB@0x10 getVisibleButtonCount-BB@0x42 ]
+	2       (00000004) invoke-virtual       v4, Landroid/view/ViewGroup;->getChildCount()I
+	3       (0000000a) move-result          v2
+	4       (0000000c) if-ge                v0, v2, +01bh
+
+getVisibleButtonCount-BB@0x10 : [ getVisibleButtonCount-BB@0x20 getVisibleButtonCount-BB@0x3c ]
+	5       (00000010) invoke-virtual       v4, v0, Landroid/view/ViewGroup;->getChildAt(I)Landroid/view/View;
+	6       (00000016) move-result-object   v2
+	7       (00000018) instance-of          v2, v2, Lcom/google/android/material/button/MaterialButton;
+	8       (0000001c) if-eqz               v2, +010h
+
+getVisibleButtonCount-BB@0x20 : [ getVisibleButtonCount-BB@0x38 getVisibleButtonCount-BB@0x3c ]
+	9       (00000020) invoke-virtual       v4, v0, Landroid/view/ViewGroup;->getChildAt(I)Landroid/view/View;
+	10      (00000026) move-result-object   v2
+	11      (00000028) invoke-virtual       v2, Landroid/view/View;->getVisibility()I
+	12      (0000002e) move-result          v2
+	13      (00000030) const/16             v3, 8
+	14      (00000034) if-eq                v2, v3, +004h
+
+getVisibleButtonCount-BB@0x38 : [ getVisibleButtonCount-BB@0x3c ]
+	15      (00000038) add-int/lit8         v1, v1, 1
+
+getVisibleButtonCount-BB@0x3c : [ getVisibleButtonCount-BB@0x4 ]
+	16      (0000003c) add-int/lit8         v0, v0, 1
+	17      (00000040) goto                 -1eh
+
+getVisibleButtonCount-BB@0x42 : 
+	18      (00000042) return               v1
+

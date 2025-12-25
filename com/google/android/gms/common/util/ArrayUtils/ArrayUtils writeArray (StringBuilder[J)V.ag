@@ -1,0 +1,32 @@
+# Lcom/google/android/gms/common/util/ArrayUtils;->writeArray(Ljava/lang/StringBuilder; [J)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:java.lang.StringBuilder
+# - v5:long[]
+#
+# - return:void
+
+writeArray-BB@0x0 : [ writeArray-BB@0x4 ]
+	0       (00000000) array-length         v0, v5
+	1       (00000002) const/4              v1, 0
+
+writeArray-BB@0x4 : [ writeArray-BB@0x8 writeArray-BB@0x26 ]
+	2       (00000004) if-ge                v1, v0, +011h
+
+writeArray-BB@0x8 : [ writeArray-BB@0xc writeArray-BB@0x16 ]
+	3       (00000008) if-eqz               v1, +007h
+
+writeArray-BB@0xc : [ writeArray-BB@0x16 ]
+	4       (0000000c) const-string         v2, ","
+	5       (00000010) invoke-virtual       v4, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+writeArray-BB@0x16 : [ writeArray-BB@0x4 ]
+	6       (00000016) aget-wide            v2, v5, v1
+	7       (0000001a) invoke-virtual       v4, v2, v3, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+	8       (00000020) add-int/lit8         v1, v1, 1
+	9       (00000024) goto                 -10h
+
+writeArray-BB@0x26 : 
+	10      (00000026) return-void          
+

@@ -1,0 +1,71 @@
+# Lcom/google/android/gms/common/api/internal/BasePendingResult;->zab(Lcom/google/android/gms/common/api/Result;)V [access_flags=private final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:com.google.android.gms.common.api.Result
+#
+# - return:void
+
+zab-BB@0x0 : [ zab-BB@0x28 zab-BB@0x2e ]
+	0       (00000000) iput-object          v5, v4, Lcom/google/android/gms/common/api/internal/BasePendingResult;->zaj Lcom/google/android/gms/common/api/Result;
+	1       (00000004) invoke-interface     v5, Lcom/google/android/gms/common/api/Result;->getStatus()Lcom/google/android/gms/common/api/Status;
+	2       (0000000a) move-result-object   v5
+	3       (0000000c) iput-object          v5, v4, Lcom/google/android/gms/common/api/internal/BasePendingResult;->zak Lcom/google/android/gms/common/api/Status;
+	4       (00000010) const/4              v5, 0
+	5       (00000012) iput-object          v5, v4, Lcom/google/android/gms/common/api/internal/BasePendingResult;->zao Lcom/google/android/gms/common/internal/ICancelToken;
+	6       (00000016) iget-object          v0, v4, Lcom/google/android/gms/common/api/internal/BasePendingResult;->zaf Ljava/util/concurrent/CountDownLatch;
+	7       (0000001a) invoke-virtual       v0, Ljava/util/concurrent/CountDownLatch;->countDown()V
+	8       (00000020) iget-boolean         v0, v4, Lcom/google/android/gms/common/api/internal/BasePendingResult;->zam Z
+	9       (00000024) if-eqz               v0, +005h
+
+zab-BB@0x28 : [ zab-BB@0x70 ]
+	10      (00000028) iput-object          v5, v4, Lcom/google/android/gms/common/api/internal/BasePendingResult;->zah Lcom/google/android/gms/common/api/ResultCallback;
+	11      (0000002c) goto                 +22h
+
+zab-BB@0x2e : [ zab-BB@0x36 zab-BB@0x52 ]
+	12      (0000002e) iget-object          v0, v4, Lcom/google/android/gms/common/api/internal/BasePendingResult;->zah Lcom/google/android/gms/common/api/ResultCallback;
+	13      (00000032) if-nez               v0, +010h
+
+zab-BB@0x36 : [ zab-BB@0x42 zab-BB@0x70 ]
+	14      (00000036) iget-object          v0, v4, Lcom/google/android/gms/common/api/internal/BasePendingResult;->zaj Lcom/google/android/gms/common/api/Result;
+	15      (0000003a) instance-of          v0, v0, Lcom/google/android/gms/common/api/Releasable;
+	16      (0000003e) if-eqz               v0, +019h
+
+zab-BB@0x42 : [ zab-BB@0x70 ]
+	17      (00000042) new-instance         v0, Lcom/google/android/gms/common/api/internal/zas;
+	18      (00000046) invoke-direct        v0, v4, v5, Lcom/google/android/gms/common/api/internal/zas;-><init>(Lcom/google/android/gms/common/api/internal/BasePendingResult; Lcom/google/android/gms/common/api/internal/zar;)V
+	19      (0000004c) iput-object          v0, v4, Lcom/google/android/gms/common/api/internal/BasePendingResult;->resultGuardian Lcom/google/android/gms/common/api/internal/zas;
+	20      (00000050) goto                 +10h
+
+zab-BB@0x52 : [ zab-BB@0x70 ]
+	21      (00000052) iget-object          v5, v4, Lcom/google/android/gms/common/api/internal/BasePendingResult;->zab Lcom/google/android/gms/common/api/internal/BasePendingResult$CallbackHandler;
+	22      (00000056) const/4              v1, 2
+	23      (00000058) invoke-virtual       v5, v1, Landroid/os/Handler;->removeMessages(I)V
+	24      (0000005e) iget-object          v5, v4, Lcom/google/android/gms/common/api/internal/BasePendingResult;->zab Lcom/google/android/gms/common/api/internal/BasePendingResult$CallbackHandler;
+	25      (00000062) invoke-direct        v4, Lcom/google/android/gms/common/api/internal/BasePendingResult;->zaa()Lcom/google/android/gms/common/api/Result;
+	26      (00000068) move-result-object   v1
+	27      (0000006a) invoke-virtual       v5, v0, v1, Lcom/google/android/gms/common/api/internal/BasePendingResult$CallbackHandler;->zaa(Lcom/google/android/gms/common/api/ResultCallback; Lcom/google/android/gms/common/api/Result;)V
+
+zab-BB@0x70 : [ zab-BB@0x7e ]
+	28      (00000070) iget-object          v5, v4, Lcom/google/android/gms/common/api/internal/BasePendingResult;->zag Ljava/util/ArrayList;
+	29      (00000074) invoke-interface     v5, Ljava/util/List;->size()I
+	30      (0000007a) move-result          v0
+	31      (0000007c) const/4              v1, 0
+
+zab-BB@0x7e : [ zab-BB@0x82 zab-BB@0x9e ]
+	32      (0000007e) if-ge                v1, v0, +010h
+
+zab-BB@0x82 : [ zab-BB@0x7e ]
+	33      (00000082) invoke-interface     v5, v1, Ljava/util/List;->get(I)Ljava/lang/Object;
+	34      (00000088) move-result-object   v2
+	35      (0000008a) check-cast           v2, Lcom/google/android/gms/common/api/PendingResult$StatusListener;
+	36      (0000008e) iget-object          v3, v4, Lcom/google/android/gms/common/api/internal/BasePendingResult;->zak Lcom/google/android/gms/common/api/Status;
+	37      (00000092) invoke-interface     v2, v3, Lcom/google/android/gms/common/api/PendingResult$StatusListener;->onComplete(Lcom/google/android/gms/common/api/Status;)V
+	38      (00000098) add-int/lit8         v1, v1, 1
+	39      (0000009c) goto                 -fh
+
+zab-BB@0x9e : 
+	40      (0000009e) iget-object          v5, v4, Lcom/google/android/gms/common/api/internal/BasePendingResult;->zag Ljava/util/ArrayList;
+	41      (000000a2) invoke-virtual       v5, Ljava/util/ArrayList;->clear()V
+	42      (000000a8) return-void          
+

@@ -1,0 +1,32 @@
+# Lcom/pairip/licensecheck/LicenseClient;->handleError(Lcom/pairip/licensecheck/LicenseCheckException;)V [access_flags=private]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:com.pairip.licensecheck.LicenseCheckException
+#
+# - return:void
+
+handleError-BB@0x0 : [ handleError-BB@0x42 handleError-BB@0x44 ]
+	0       (00000000) invoke-static        v3, Landroid/util/Log;->getStackTraceString(Ljava/lang/Throwable;)Ljava/lang/String;
+	1       (00000006) move-result-object   v3
+	2       (00000008) new-instance         v0, Ljava/lang/StringBuilder;
+	3       (0000000c) const-string         v1, "Error while checking license: "
+	4       (00000010) invoke-direct        v0, v1, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	5       (00000016) invoke-virtual       v0, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	6       (0000001c) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	7       (00000022) move-result-object   v3
+	8       (00000024) const-string         v0, "LicenseClient"
+	9       (00000028) invoke-static        v0, v3, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String;)I
+	10      (0000002e) sget-object          v3, Lcom/pairip/licensecheck/LicenseClient;->licenseCheckState Lcom/pairip/licensecheck/LicenseClient$LicenseCheckState;
+	11      (00000032) sget-object          v0, Lcom/pairip/licensecheck/LicenseClient$LicenseCheckState;->FULL_CHECK_OK Lcom/pairip/licensecheck/LicenseClient$LicenseCheckState;
+	12      (00000036) invoke-virtual       v3, v0, Lcom/pairip/licensecheck/LicenseClient$LicenseCheckState;->equals(Ljava/lang/Object;)Z
+	13      (0000003c) move-result          v3
+	14      (0000003e) if-eqz               v3, +003h
+
+handleError-BB@0x42 : 
+	15      (00000042) return-void          
+
+handleError-BB@0x44 : 
+	16      (00000044) invoke-direct        v2, Lcom/pairip/licensecheck/LicenseClient;->startErrorDialogActivity()V
+	17      (0000004a) return-void          
+

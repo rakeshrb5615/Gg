@@ -1,0 +1,26 @@
+# Lcom/google/android/gms/internal/firebase-auth-api/zznj;->zza(Ljava/security/spec/EllipticCurve;)Ljava/math/BigInteger; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v0
+# - v1:java.security.spec.EllipticCurve
+#
+# - return:java.math.BigInteger
+
+zza-BB@0x0 : [ zza-BB@0x10 zza-BB@0x1e ]
+	0       (00000000) invoke-virtual       v1, Ljava/security/spec/EllipticCurve;->getField()Ljava/security/spec/ECField;
+	1       (00000006) move-result-object   v1
+	2       (00000008) instance-of          v0, v1, Ljava/security/spec/ECFieldFp;
+	3       (0000000c) if-eqz               v0, +009h
+
+zza-BB@0x10 : 
+	4       (00000010) check-cast           v1, Ljava/security/spec/ECFieldFp;
+	5       (00000014) invoke-virtual       v1, Ljava/security/spec/ECFieldFp;->getP()Ljava/math/BigInteger;
+	6       (0000001a) move-result-object   v1
+	7       (0000001c) return-object        v1
+
+zza-BB@0x1e : 
+	8       (0000001e) new-instance         v1, Ljava/security/GeneralSecurityException;
+	9       (00000022) const-string         v0, "Only curves over prime order fields are supported"
+	10      (00000026) invoke-direct        v1, v0, Ljava/security/GeneralSecurityException;-><init>(Ljava/lang/String;)V
+	11      (0000002c) throw                v1
+

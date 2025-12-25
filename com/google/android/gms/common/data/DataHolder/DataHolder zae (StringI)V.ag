@@ -1,0 +1,55 @@
+# Lcom/google/android/gms/common/data/DataHolder;->zae(Ljava/lang/String; I)V [access_flags=private final]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:java.lang.String
+# - v3:int
+#
+# - return:void
+
+zae-BB@0x0 : [ zae-BB@0x8 zae-BB@0x4e ]
+	0       (00000000) iget-object          v0, v1, Lcom/google/android/gms/common/data/DataHolder;->zab Landroid/os/Bundle;
+	1       (00000004) if-eqz               v0, +025h
+
+zae-BB@0x8 : [ zae-BB@0x14 zae-BB@0x4e ]
+	2       (00000008) invoke-virtual       v0, v2, Landroid/os/BaseBundle;->containsKey(Ljava/lang/String;)Z
+	3       (0000000e) move-result          v0
+	4       (00000010) if-eqz               v0, +01fh
+
+zae-BB@0x14 : [ zae-BB@0x20 zae-BB@0x3e ]
+	5       (00000014) invoke-virtual       v1, Lcom/google/android/gms/common/data/DataHolder;->isClosed()Z
+	6       (0000001a) move-result          v2
+	7       (0000001c) if-nez               v2, +011h
+
+zae-BB@0x20 : [ zae-BB@0x24 zae-BB@0x2e ]
+	8       (00000020) if-ltz               v3, +007h
+
+zae-BB@0x24 : [ zae-BB@0x2c zae-BB@0x2e ]
+	9       (00000024) iget                 v2, v1, Lcom/google/android/gms/common/data/DataHolder;->zad I
+	10      (00000028) if-ge                v3, v2, +003h
+
+zae-BB@0x2c : 
+	11      (0000002c) return-void          
+
+zae-BB@0x2e : 
+	12      (0000002e) new-instance         v2, Landroid/database/CursorIndexOutOfBoundsException;
+	13      (00000032) iget                 v0, v1, Lcom/google/android/gms/common/data/DataHolder;->zad I
+	14      (00000036) invoke-direct        v2, v3, v0, Landroid/database/CursorIndexOutOfBoundsException;-><init>(I I)V
+	15      (0000003c) throw                v2
+
+zae-BB@0x3e : 
+	16      (0000003e) new-instance         v2, Ljava/lang/IllegalArgumentException;
+	17      (00000042) const-string         v3, "Buffer is closed."
+	18      (00000046) invoke-direct        v2, v3, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	19      (0000004c) throw                v2
+
+zae-BB@0x4e : 
+	20      (0000004e) invoke-static        v2, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
+	21      (00000054) move-result-object   v2
+	22      (00000056) new-instance         v3, Ljava/lang/IllegalArgumentException;
+	23      (0000005a) const-string         v0, "No such column: "
+	24      (0000005e) invoke-virtual       v0, v2, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	25      (00000064) move-result-object   v2
+	26      (00000066) invoke-direct        v3, v2, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	27      (0000006c) throw                v3
+

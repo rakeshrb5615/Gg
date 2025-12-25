@@ -1,0 +1,5 @@
+package com.google.android.gms.common.moduleinstall;
+public interface InstallStatusListener {
+
+    public abstract void onInstallStatusUpdated();
+}

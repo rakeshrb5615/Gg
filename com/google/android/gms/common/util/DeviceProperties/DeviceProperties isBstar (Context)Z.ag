@@ -1,0 +1,40 @@
+# Lcom/google/android/gms/common/util/DeviceProperties;->isBstar(Landroid/content/Context;)Z [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:android.content.Context
+#
+# - return:boolean
+
+isBstar-BB@0x0 : [ isBstar-BB@0x8 isBstar-BB@0x3c ]
+	0       (00000000) sget-object          v0, Lcom/google/android/gms/common/util/DeviceProperties;->zzo Ljava/lang/Boolean;
+	1       (00000004) if-nez               v0, +01ch
+
+isBstar-BB@0x8 : [ isBstar-BB@0x16 isBstar-BB@0x30 ]
+	2       (00000008) invoke-static        Lcom/google/android/gms/common/util/PlatformVersion;->isAtLeastR()Z
+	3       (0000000e) move-result          v0
+	4       (00000010) const/4              v1, 0
+	5       (00000012) if-eqz               v0, +00fh
+
+isBstar-BB@0x16 : [ isBstar-BB@0x2e isBstar-BB@0x30 ]
+	6       (00000016) invoke-virtual       v2, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
+	7       (0000001c) move-result-object   v2
+	8       (0000001e) const-string         v0, "com.google.android.play.feature.HPE_EXPERIENCE"
+	9       (00000022) invoke-virtual       v2, v0, Landroid/content/pm/PackageManager;->hasSystemFeature(Ljava/lang/String;)Z
+	10      (00000028) move-result          v2
+	11      (0000002a) if-eqz               v2, +003h
+
+isBstar-BB@0x2e : [ isBstar-BB@0x30 ]
+	12      (0000002e) const/4              v1, 1
+
+isBstar-BB@0x30 : [ isBstar-BB@0x3c ]
+	13      (00000030) invoke-static        v1, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+	14      (00000036) move-result-object   v2
+	15      (00000038) sput-object          v2, Lcom/google/android/gms/common/util/DeviceProperties;->zzo Ljava/lang/Boolean;
+
+isBstar-BB@0x3c : 
+	16      (0000003c) sget-object          v2, Lcom/google/android/gms/common/util/DeviceProperties;->zzo Ljava/lang/Boolean;
+	17      (00000040) invoke-virtual       v2, Ljava/lang/Boolean;->booleanValue()Z
+	18      (00000046) move-result          v2
+	19      (00000048) return               v2
+

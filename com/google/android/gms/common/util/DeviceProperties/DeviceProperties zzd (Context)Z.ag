@@ -1,0 +1,43 @@
+# Lcom/google/android/gms/common/util/DeviceProperties;->zzd(Landroid/content/Context;)Z [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v0
+# - v1:android.content.Context
+#
+# - return:boolean
+
+zzd-BB@0x0 : [ zzd-BB@0x8 zzd-BB@0x4a ]
+	0       (00000000) sget-object          v0, Lcom/google/android/gms/common/util/DeviceProperties;->zzj Ljava/lang/Boolean;
+	1       (00000004) if-nez               v0, +023h
+
+zzd-BB@0x8 : [ zzd-BB@0x14 zzd-BB@0x2a ]
+	2       (00000008) invoke-static        Lcom/google/android/gms/common/util/PlatformVersion;->isAtLeastO()Z
+	3       (0000000e) move-result          v0
+	4       (00000010) if-eqz               v0, +00dh
+
+zzd-BB@0x14 : [ zzd-BB@0x3e ]
+	5       (00000014) invoke-virtual       v1, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
+	6       (0000001a) move-result-object   v1
+	7       (0000001c) const-string         v0, "android.hardware.type.embedded"
+	8       (00000020) invoke-virtual       v1, v0, Landroid/content/pm/PackageManager;->hasSystemFeature(Ljava/lang/String;)Z
+	9       (00000026) move-result          v1
+	10      (00000028) goto                 +bh
+
+zzd-BB@0x2a : [ zzd-BB@0x3e ]
+	11      (0000002a) invoke-virtual       v1, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
+	12      (00000030) move-result-object   v1
+	13      (00000032) const-string         v0, "android.hardware.type.iot"
+	14      (00000036) invoke-virtual       v1, v0, Landroid/content/pm/PackageManager;->hasSystemFeature(Ljava/lang/String;)Z
+	15      (0000003c) move-result          v1
+
+zzd-BB@0x3e : [ zzd-BB@0x4a ]
+	16      (0000003e) invoke-static        v1, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+	17      (00000044) move-result-object   v1
+	18      (00000046) sput-object          v1, Lcom/google/android/gms/common/util/DeviceProperties;->zzj Ljava/lang/Boolean;
+
+zzd-BB@0x4a : 
+	19      (0000004a) sget-object          v1, Lcom/google/android/gms/common/util/DeviceProperties;->zzj Ljava/lang/Boolean;
+	20      (0000004e) invoke-virtual       v1, Ljava/lang/Boolean;->booleanValue()Z
+	21      (00000054) move-result          v1
+	22      (00000056) return               v1
+

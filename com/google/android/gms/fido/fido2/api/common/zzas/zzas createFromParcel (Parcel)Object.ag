@@ -1,0 +1,35 @@
+# Lcom/google/android/gms/fido/fido2/api/common/zzas;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object; [access_flags=public final bridge synthetic]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:android.os.Parcel
+#
+# - return:java.lang.Object
+
+createFromParcel-BB@0x0 : [ createFromParcel-BB@0xc createFromParcel-BB@0x16 ]
+	0       (00000000) invoke-virtual       v2, Landroid/os/Parcel;->readString()Ljava/lang/String;
+	1       (00000006) move-result-object   v2
+	2       (00000008) if-nez               v2, +007h
+
+createFromParcel-BB@0xc : [ createFromParcel-BB@0x16 ]
+	3       (0000000c) const-string         v2, ""
+	4       (00000010) goto                 +3h
+	c:1d
+	(Lcom/google/android/gms/fido/fido2/api/common/ResidentKeyRequirement$UnsupportedResidentKeyRequirementException; -> 12 createFromParcel-BB@0x12)
+
+createFromParcel-BB@0x12 : [ createFromParcel-BB@0x20 ]
+	5       (00000012) move-exception       v2
+	6       (00000014) goto                 +6h
+	c:1d
+	(Lcom/google/android/gms/fido/fido2/api/common/ResidentKeyRequirement$UnsupportedResidentKeyRequirementException; -> 12 createFromParcel-BB@0x12)
+
+createFromParcel-BB@0x16 : 
+	7       (00000016) invoke-static        v2, Lcom/google/android/gms/fido/fido2/api/common/ResidentKeyRequirement;->fromString(Ljava/lang/String;)Lcom/google/android/gms/fido/fido2/api/common/ResidentKeyRequirement;
+	8       (0000001c) move-result-object   v2
+	9       (0000001e) return-object        v2
+
+createFromParcel-BB@0x20 : 
+	10      (00000020) new-instance         v0, Ljava/lang/RuntimeException;
+	11      (00000024) invoke-direct        v0, v2, Ljava/lang/RuntimeException;-><init>(Ljava/lang/Throwable;)V
+	12      (0000002a) throw                v0
+

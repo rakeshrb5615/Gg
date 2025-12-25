@@ -1,0 +1,236 @@
+# Lcom/google/android/gms/common/internal/BaseGmsClient;->getRemoteService(Lcom/google/android/gms/common/internal/IAccountAccessor; Ljava/util/Set;)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v18
+# - v19:com.google.android.gms.common.internal.IAccountAccessor
+# - v20:java.util.Set
+#
+# - return:void
+
+getRemoteService-BB@0x0 : [ getRemoteService-BB@0x20 getRemoteService-BB@0x2a ]
+	0       (00000000) move-object/from16   v1, v18
+	1       (00000004) move-object/from16   v0, v20
+	2       (00000008) invoke-virtual       v1, Lcom/google/android/gms/common/internal/BaseGmsClient;->getGetServiceRequestExtraArgs()Landroid/os/Bundle;
+	3       (0000000e) move-result-object   v2
+	4       (00000010) new-instance         v3, Lcom/google/android/gms/common/internal/GetServiceRequest;
+	5       (00000014) sget                 v4, Landroid/os/Build$VERSION;->SDK_INT I
+	6       (00000018) const/16             v5, 31
+	7       (0000001c) if-ge                v4, v5, +007h
+
+getRemoteService-BB@0x20 : [ getRemoteService-BB@0x24 ]
+	8       (00000020) iget-object          v4, v1, Lcom/google/android/gms/common/internal/BaseGmsClient;->zzA Ljava/lang/String;
+
+getRemoteService-BB@0x24 : [ getRemoteService-BB@0x6a ]
+	9       (00000024) move-object/from16   v17, v4
+	10      (00000028) goto                 +21h
+
+getRemoteService-BB@0x2a : [ getRemoteService-BB@0x32 getRemoteService-BB@0x38 ]
+	11      (0000002a) iget-object          v4, v1, Lcom/google/android/gms/common/internal/BaseGmsClient;->zzB Lcom/google/android/gms/common/wrappers/AttributionSourceWrapper;
+	12      (0000002e) if-nez               v4, +005h
+
+getRemoteService-BB@0x32 : [ getRemoteService-BB@0x24 ]
+	13      (00000032) iget-object          v4, v1, Lcom/google/android/gms/common/internal/BaseGmsClient;->zzA Ljava/lang/String;
+	14      (00000036) goto                 -9h
+
+getRemoteService-BB@0x38 : [ getRemoteService-BB@0x48 getRemoteService-BB@0x4e ]
+	15      (00000038) iget-object          v4, v1, Lcom/google/android/gms/common/internal/BaseGmsClient;->zzB Lcom/google/android/gms/common/wrappers/AttributionSourceWrapper;
+	16      (0000003c) invoke-virtual       v4, Lcom/google/android/gms/common/wrappers/AttributionSourceWrapper;->getAttributionSource()Landroid/content/AttributionSource;
+	17      (00000042) move-result-object   v4
+	18      (00000044) if-nez               v4, +005h
+
+getRemoteService-BB@0x48 : [ getRemoteService-BB@0x24 ]
+	19      (00000048) iget-object          v4, v1, Lcom/google/android/gms/common/internal/BaseGmsClient;->zzA Ljava/lang/String;
+	20      (0000004c) goto                 -14h
+
+getRemoteService-BB@0x4e : [ getRemoteService-BB@0x5a getRemoteService-BB@0x60 ]
+	21      (0000004e) invoke-virtual       v4, Landroid/content/AttributionSource;->getAttributionTag()Ljava/lang/String;
+	22      (00000054) move-result-object   v5
+	23      (00000056) if-nez               v5, +005h
+
+getRemoteService-BB@0x5a : [ getRemoteService-BB@0x24 ]
+	24      (0000005a) iget-object          v4, v1, Lcom/google/android/gms/common/internal/BaseGmsClient;->zzA Ljava/lang/String;
+	25      (0000005e) goto                 -1dh
+
+getRemoteService-BB@0x60 : [ getRemoteService-BB@0x24 ]
+	26      (00000060) invoke-virtual       v4, Landroid/content/AttributionSource;->getAttributionTag()Ljava/lang/String;
+	27      (00000066) move-result-object   v4
+	28      (00000068) goto                 -22h
+
+getRemoteService-BB@0x6a : [ getRemoteService-BB@0xb4 getRemoteService-BB@0xca ]
+	29      (0000006a) iget                 v5, v1, Lcom/google/android/gms/common/internal/BaseGmsClient;->zzy I
+	30      (0000006e) sget                 v6, Lcom/google/android/gms/common/GoogleApiAvailabilityLight;->GOOGLE_PLAY_SERVICES_VERSION_CODE I
+	31      (00000072) sget-object          v9, Lcom/google/android/gms/common/internal/GetServiceRequest;->zza [Lcom/google/android/gms/common/api/Scope;
+	32      (00000076) new-instance         v10, Landroid/os/Bundle;
+	33      (0000007a) invoke-direct        v10, Landroid/os/Bundle;-><init>()V
+	34      (00000080) sget-object          v12, Lcom/google/android/gms/common/internal/GetServiceRequest;->zzb [Lcom/google/android/gms/common/Feature;
+	35      (00000084) const/4              v15, 0
+	36      (00000086) const/16             v16, 0
+	37      (0000008a) const/4              v4, 6
+	38      (0000008c) const/4              v7, 0
+	39      (0000008e) const/4              v8, 0
+	40      (00000090) const/4              v11, 0
+	41      (00000092) const/4              v14, 1
+	42      (00000094) move-object          v13, v12
+	43      (00000096) invoke-direct/range  v3 ... v17, Lcom/google/android/gms/common/internal/GetServiceRequest;-><init>(I I I Ljava/lang/String; Landroid/os/IBinder; [Lcom/google/android/gms/common/api/Scope; Landroid/os/Bundle; Landroid/accounts/Account; [Lcom/google/android/gms/common/Feature; [Lcom/google/android/gms/common/Feature; Z I Z Ljava/lang/String;)V
+	44      (0000009c) iget-object          v4, v1, Lcom/google/android/gms/common/internal/BaseGmsClient;->zzl Landroid/content/Context;
+	45      (000000a0) invoke-virtual       v4, Landroid/content/Context;->getPackageName()Ljava/lang/String;
+	46      (000000a6) move-result-object   v4
+	47      (000000a8) iput-object          v4, v3, Lcom/google/android/gms/common/internal/GetServiceRequest;->zzf Ljava/lang/String;
+	48      (000000ac) iput-object          v2, v3, Lcom/google/android/gms/common/internal/GetServiceRequest;->zzi Landroid/os/Bundle;
+	49      (000000b0) if-eqz               v0, +00dh
+
+getRemoteService-BB@0xb4 : [ getRemoteService-BB@0xca ]
+	50      (000000b4) const/4              v2, 0
+	51      (000000b6) new-array            v2, v2, [Lcom/google/android/gms/common/api/Scope;
+	52      (000000ba) invoke-interface     v0, v2, Ljava/util/Collection;->toArray([Ljava/lang/Object;)[Ljava/lang/Object;
+	53      (000000c0) move-result-object   v0
+	54      (000000c2) check-cast           v0, [Lcom/google/android/gms/common/api/Scope;
+	55      (000000c6) iput-object          v0, v3, Lcom/google/android/gms/common/internal/GetServiceRequest;->zzh [Lcom/google/android/gms/common/api/Scope;
+
+getRemoteService-BB@0xca : [ getRemoteService-BB@0xd6 getRemoteService-BB@0x10a ]
+	56      (000000ca) invoke-virtual       v1, Lcom/google/android/gms/common/internal/BaseGmsClient;->requiresSignIn()Z
+	57      (000000d0) move-result          v0
+	58      (000000d2) if-eqz               v0, +01ch
+
+getRemoteService-BB@0xd6 : [ getRemoteService-BB@0xe2 getRemoteService-BB@0xf4 ]
+	59      (000000d6) invoke-virtual       v1, Lcom/google/android/gms/common/internal/BaseGmsClient;->getAccount()Landroid/accounts/Account;
+	60      (000000dc) move-result-object   v0
+	61      (000000de) if-nez               v0, +00bh
+
+getRemoteService-BB@0xe2 : [ getRemoteService-BB@0xf4 ]
+	62      (000000e2) new-instance         v0, Landroid/accounts/Account;
+	63      (000000e6) const-string         v2, "<<default account>>"
+	64      (000000ea) const-string         v4, "com.google"
+	65      (000000ee) invoke-direct        v0, v2, v4, Landroid/accounts/Account;-><init>(Ljava/lang/String; Ljava/lang/String;)V
+
+getRemoteService-BB@0xf4 : [ getRemoteService-BB@0xfc getRemoteService-BB@0x122 ]
+	66      (000000f4) iput-object          v0, v3, Lcom/google/android/gms/common/internal/GetServiceRequest;->zzj Landroid/accounts/Account;
+	67      (000000f8) if-eqz               v19, +015h
+
+getRemoteService-BB@0xfc : [ getRemoteService-BB@0x122 ]
+	68      (000000fc) invoke-interface/range v19, Landroid/os/IInterface;->asBinder()Landroid/os/IBinder;
+	69      (00000102) move-result-object   v0
+	70      (00000104) iput-object          v0, v3, Lcom/google/android/gms/common/internal/GetServiceRequest;->zzg Landroid/os/IBinder;
+	71      (00000108) goto                 +dh
+
+getRemoteService-BB@0x10a : [ getRemoteService-BB@0x116 getRemoteService-BB@0x122 ]
+	72      (0000010a) invoke-virtual       v1, Lcom/google/android/gms/common/internal/BaseGmsClient;->requiresAccount()Z
+	73      (00000110) move-result          v0
+	74      (00000112) if-eqz               v0, +008h
+
+getRemoteService-BB@0x116 : [ getRemoteService-BB@0x122 ]
+	75      (00000116) invoke-virtual       v1, Lcom/google/android/gms/common/internal/BaseGmsClient;->getAccount()Landroid/accounts/Account;
+	76      (0000011c) move-result-object   v0
+	77      (0000011e) iput-object          v0, v3, Lcom/google/android/gms/common/internal/GetServiceRequest;->zzj Landroid/accounts/Account;
+
+getRemoteService-BB@0x122 : [ getRemoteService-BB@0x142 getRemoteService-BB@0x148 ]
+	78      (00000122) sget-object          v0, Lcom/google/android/gms/common/internal/BaseGmsClient;->zze [Lcom/google/android/gms/common/Feature;
+	79      (00000126) iput-object          v0, v3, Lcom/google/android/gms/common/internal/GetServiceRequest;->zzk [Lcom/google/android/gms/common/Feature;
+	80      (0000012a) invoke-virtual       v1, Lcom/google/android/gms/common/internal/BaseGmsClient;->getApiFeatures()[Lcom/google/android/gms/common/Feature;
+	81      (00000130) move-result-object   v0
+	82      (00000132) iput-object          v0, v3, Lcom/google/android/gms/common/internal/GetServiceRequest;->zzl [Lcom/google/android/gms/common/Feature;
+	83      (00000136) invoke-virtual       v1, Lcom/google/android/gms/common/internal/BaseGmsClient;->usesClientTelemetry()Z
+	84      (0000013c) move-result          v0
+	85      (0000013e) if-eqz               v0, +005h
+
+getRemoteService-BB@0x142 : [ getRemoteService-BB@0x148 ]
+	86      (00000142) const/4              v0, 1
+	87      (00000144) iput-boolean         v0, v3, Lcom/google/android/gms/common/internal/GetServiceRequest;->zzo Z
+
+getRemoteService-BB@0x148 : [ getRemoteService-BB@0x14e ]
+	88      (00000148) iget-object          v2, v1, Lcom/google/android/gms/common/internal/BaseGmsClient;->zzq Ljava/lang/Object;
+	89      (0000014c) monitor-enter        v2
+	148:14d
+	(Landroid/os/DeadObjectException; -> 19a getRemoteService-BB@0x19a)
+	(Ljava/lang/SecurityException; -> 196 getRemoteService-BB@0x196)
+	(Landroid/os/RemoteException; -> 192 getRemoteService-BB@0x192)
+	(Ljava/lang/RuntimeException; -> 18e getRemoteService-BB@0x18e)
+
+getRemoteService-BB@0x14e : [ getRemoteService-BB@0x156 getRemoteService-BB@0x178 ]
+	90      (0000014e) iget-object          v0, v1, Lcom/google/android/gms/common/internal/BaseGmsClient;->zzr Lcom/google/android/gms/common/internal/IGmsServiceBroker;
+	91      (00000152) if-eqz               v0, +013h
+	14e:18b
+	(Ljava/lang/Throwable; -> 174 getRemoteService-BB@0x174)
+
+getRemoteService-BB@0x156 : [ getRemoteService-BB@0x186 ]
+	92      (00000156) new-instance         v4, Lcom/google/android/gms/common/internal/zzd;
+	93      (0000015a) iget-object          v5, v1, Lcom/google/android/gms/common/internal/BaseGmsClient;->zzd Ljava/util/concurrent/atomic/AtomicInteger;
+	94      (0000015e) invoke-virtual       v5, Ljava/util/concurrent/atomic/AtomicInteger;->get()I
+	95      (00000164) move-result          v5
+	96      (00000166) invoke-direct        v4, v1, v5, Lcom/google/android/gms/common/internal/zzd;-><init>(Lcom/google/android/gms/common/internal/BaseGmsClient; I)V
+	97      (0000016c) invoke-interface     v0, v4, v3, Lcom/google/android/gms/common/internal/IGmsServiceBroker;->getService(Lcom/google/android/gms/common/internal/IGmsCallbacks; Lcom/google/android/gms/common/internal/GetServiceRequest;)V
+	98      (00000172) goto                 +ah
+	14e:18b
+	(Ljava/lang/Throwable; -> 174 getRemoteService-BB@0x174)
+
+getRemoteService-BB@0x174 : [ getRemoteService-BB@0x18a ]
+	99      (00000174) move-exception       v0
+	100     (00000176) goto                 +ah
+	14e:18b
+	(Ljava/lang/Throwable; -> 174 getRemoteService-BB@0x174)
+
+getRemoteService-BB@0x178 : [ getRemoteService-BB@0x186 ]
+	101     (00000178) const-string         v0, "GmsClient"
+	102     (0000017c) const-string         v3, "mServiceBroker is null, client disconnected"
+	103     (00000180) invoke-static        v0, v3, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+	14e:18b
+	(Ljava/lang/Throwable; -> 174 getRemoteService-BB@0x174)
+
+getRemoteService-BB@0x186 : 
+	104     (00000186) monitor-exit         v2
+	105     (00000188) return-void          
+	14e:18b
+	(Ljava/lang/Throwable; -> 174 getRemoteService-BB@0x174)
+
+getRemoteService-BB@0x18a : [ getRemoteService-BB@0x18c ]
+	106     (0000018a) monitor-exit         v2
+	14e:18b
+	(Ljava/lang/Throwable; -> 174 getRemoteService-BB@0x174)
+
+getRemoteService-BB@0x18c : 
+	107     (0000018c) throw                v0
+	18c:18d
+	(Landroid/os/DeadObjectException; -> 19a getRemoteService-BB@0x19a)
+	(Ljava/lang/SecurityException; -> 196 getRemoteService-BB@0x196)
+	(Landroid/os/RemoteException; -> 192 getRemoteService-BB@0x192)
+	(Ljava/lang/RuntimeException; -> 18e getRemoteService-BB@0x18e)
+
+getRemoteService-BB@0x18e : [ getRemoteService-BB@0x19e ]
+	108     (0000018e) move-exception       v0
+	109     (00000190) goto                 +7h
+
+getRemoteService-BB@0x192 : [ getRemoteService-BB@0x19e ]
+	110     (00000192) move-exception       v0
+	111     (00000194) goto                 +5h
+
+getRemoteService-BB@0x196 : [ getRemoteService-BB@0x1c6 ]
+	112     (00000196) move-exception       v0
+	113     (00000198) goto                 +17h
+
+getRemoteService-BB@0x19a : [ getRemoteService-BB@0x1c8 ]
+	114     (0000019a) move-exception       v0
+	115     (0000019c) goto                 +16h
+
+getRemoteService-BB@0x19e : 
+	116     (0000019e) const-string         v2, "GmsClient"
+	117     (000001a2) const-string         v3, "IGmsServiceBroker.getService failed"
+	118     (000001a6) invoke-static        v2, v3, v0, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+	119     (000001ac) iget-object          v0, v1, Lcom/google/android/gms/common/internal/BaseGmsClient;->zzd Ljava/util/concurrent/atomic/AtomicInteger;
+	120     (000001b0) invoke-virtual       v0, Ljava/util/concurrent/atomic/AtomicInteger;->get()I
+	121     (000001b6) move-result          v0
+	122     (000001b8) const/16             v2, 8
+	123     (000001bc) const/4              v3, 0
+	124     (000001be) invoke-virtual       v1, v2, v3, v3, v0, Lcom/google/android/gms/common/internal/BaseGmsClient;->onPostInitHandler(I Landroid/os/IBinder; Landroid/os/Bundle; I)V
+	125     (000001c4) return-void          
+
+getRemoteService-BB@0x1c6 : 
+	126     (000001c6) throw                v0
+
+getRemoteService-BB@0x1c8 : 
+	127     (000001c8) const-string         v2, "GmsClient"
+	128     (000001cc) const-string         v3, "IGmsServiceBroker.getService failed"
+	129     (000001d0) invoke-static        v2, v3, v0, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+	130     (000001d6) const/4              v0, 3
+	131     (000001d8) invoke-virtual       v1, v0, Lcom/google/android/gms/common/internal/BaseGmsClient;->triggerConnectionSuspended(I)V
+	132     (000001de) return-void          
+

@@ -1,0 +1,53 @@
+# Lcom/google/android/gms/common/server/response/SafeParcelResponse;->zaG(Lcom/google/android/gms/common/server/response/FastJsonResponse$Field;)V [access_flags=private final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:com.google.android.gms.common.server.response.FastJsonResponse$Field
+#
+# - return:void
+
+zaG-BB@0x0 : [ zaG-BB@0xa zaG-BB@0x54 ]
+	0       (00000000) iget                 v3, v3, Lcom/google/android/gms/common/server/response/FastJsonResponse$Field;->zaf I
+	1       (00000004) const/4              v0, -1
+	2       (00000006) if-eq                v3, v0, +027h
+
+zaG-BB@0xa : [ zaG-BB@0x12 zaG-BB@0x44 ]
+	3       (0000000a) iget-object          v3, v2, Lcom/google/android/gms/common/server/response/SafeParcelResponse;->zab Landroid/os/Parcel;
+	4       (0000000e) if-eqz               v3, +01bh
+
+zaG-BB@0x12 : [ zaG-BB@0x1c zaG-BB@0x32 ]
+	5       (00000012) iget                 v0, v2, Lcom/google/android/gms/common/server/response/SafeParcelResponse;->zaf I
+	6       (00000016) const/4              v1, 1
+	7       (00000018) if-eqz               v0, +00dh
+
+zaG-BB@0x1c : [ zaG-BB@0x20 zaG-BB@0x22 ]
+	8       (0000001c) if-ne                v0, v1, +003h
+
+zaG-BB@0x20 : 
+	9       (00000020) return-void          
+
+zaG-BB@0x22 : 
+	10      (00000022) new-instance         v3, Ljava/lang/IllegalStateException;
+	11      (00000026) const-string         v0, "Attempted to parse JSON with a SafeParcelResponse object that is already filled with data."
+	12      (0000002a) invoke-direct        v3, v0, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	13      (00000030) throw                v3
+
+zaG-BB@0x32 : 
+	14      (00000032) invoke-static        v3, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelWriter;->beginObjectHeader(Landroid/os/Parcel;)I
+	15      (00000038) move-result          v3
+	16      (0000003a) iput                 v3, v2, Lcom/google/android/gms/common/server/response/SafeParcelResponse;->zag I
+	17      (0000003e) iput                 v1, v2, Lcom/google/android/gms/common/server/response/SafeParcelResponse;->zaf I
+	18      (00000042) return-void          
+
+zaG-BB@0x44 : 
+	19      (00000044) new-instance         v3, Ljava/lang/IllegalStateException;
+	20      (00000048) const-string         v0, "Internal Parcel object is null."
+	21      (0000004c) invoke-direct        v3, v0, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	22      (00000052) throw                v3
+
+zaG-BB@0x54 : 
+	23      (00000054) new-instance         v3, Ljava/lang/IllegalStateException;
+	24      (00000058) const-string         v0, "Field does not have a valid safe parcelable field id."
+	25      (0000005c) invoke-direct        v3, v0, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	26      (00000062) throw                v3
+

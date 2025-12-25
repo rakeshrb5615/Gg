@@ -1,0 +1,26 @@
+# Lcom/google/android/material/datepicker/a0;->c(Ljava/util/Calendar;)Ljava/util/Calendar; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:java.util.Calendar
+#
+# - return:java.util.Calendar
+
+c-BB@0x0 : [ c-BB@0x18 c-BB@0x20 ]
+	0       (00000000) const-string         v0, "UTC"
+	1       (00000004) invoke-static        v0, Ljava/util/TimeZone;->getTimeZone(Ljava/lang/String;)Ljava/util/TimeZone;
+	2       (0000000a) move-result-object   v0
+	3       (0000000c) invoke-static        v0, Ljava/util/Calendar;->getInstance(Ljava/util/TimeZone;)Ljava/util/Calendar;
+	4       (00000012) move-result-object   v0
+	5       (00000014) if-nez               v3, +006h
+
+c-BB@0x18 : 
+	6       (00000018) invoke-virtual       v0, Ljava/util/Calendar;->clear()V
+	7       (0000001e) return-object        v0
+
+c-BB@0x20 : 
+	8       (00000020) invoke-virtual       v3, Ljava/util/Calendar;->getTimeInMillis()J
+	9       (00000026) move-result-wide     v1
+	10      (00000028) invoke-virtual       v0, v1, v2, Ljava/util/Calendar;->setTimeInMillis(J)V
+	11      (0000002e) return-object        v0
+

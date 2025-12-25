@@ -1,0 +1,40 @@
+# Lcom/google/android/gms/internal/play_billing/zzec;->zza(I)B [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:int
+#
+# - return:byte
+
+zza-BB@0x0 : [ zza-BB@0x12 zza-BB@0x4a ]
+	0       (00000000) iget                 v0, v4, Lcom/google/android/gms/internal/play_billing/zzec;->zzc I
+	1       (00000004) add-int/lit8         v1, v5, 1
+	2       (00000008) sub-int              v1, v0, v1
+	3       (0000000c) or-int/2addr         v1, v5
+	4       (0000000e) if-gez               v1, +01eh
+
+zza-BB@0x12 : [ zza-BB@0x16 zza-BB@0x2e ]
+	5       (00000012) if-gez               v5, +00eh
+
+zza-BB@0x16 : 
+	6       (00000016) new-instance         v0, Ljava/lang/ArrayIndexOutOfBoundsException;
+	7       (0000001a) const-string         v1, "Index < 0: "
+	8       (0000001e) invoke-static        v5, v1, Lg2/g;->c(I Ljava/lang/String;)Ljava/lang/String;
+	9       (00000024) move-result-object   v5
+	10      (00000026) invoke-direct        v0, v5, Ljava/lang/ArrayIndexOutOfBoundsException;-><init>(Ljava/lang/String;)V
+	11      (0000002c) throw                v0
+
+zza-BB@0x2e : 
+	12      (0000002e) new-instance         v1, Ljava/lang/ArrayIndexOutOfBoundsException;
+	13      (00000032) const-string         v2, "Index > length: "
+	14      (00000036) const-string         v3, ", "
+	15      (0000003a) invoke-static        v2, v5, v0, v3, Lv1/a;->i(Ljava/lang/String; I I Ljava/lang/String;)Ljava/lang/String;
+	16      (00000040) move-result-object   v5
+	17      (00000042) invoke-direct        v1, v5, Ljava/lang/ArrayIndexOutOfBoundsException;-><init>(Ljava/lang/String;)V
+	18      (00000048) throw                v1
+
+zza-BB@0x4a : 
+	19      (0000004a) iget-object          v0, v4, Lcom/google/android/gms/internal/play_billing/zzeg;->zza [B
+	20      (0000004e) aget-byte            v5, v0, v5
+	21      (00000052) return               v5
+

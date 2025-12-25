@@ -1,0 +1,28 @@
+# Lcom/google/android/gms/common/GooglePlayServicesUtilLight;->getApkVersion(Landroid/content/Context;)I [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:android.content.Context
+#
+# - return:int
+
+getApkVersion-BB@0x0 : [ getApkVersion-BB@0x2 ]
+	0       (00000000) const/4              v0, 0
+
+getApkVersion-BB@0x2 : 
+	1       (00000002) invoke-virtual       v2, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
+	2       (00000008) move-result-object   v2
+	3       (0000000a) const-string         v1, "com.google.android.gms"
+	4       (0000000e) invoke-virtual       v2, v1, v0, Landroid/content/pm/PackageManager;->getPackageInfo(Ljava/lang/String; I)Landroid/content/pm/PackageInfo;
+	5       (00000014) move-result-object   v2
+	6       (00000016) iget                 v2, v2, Landroid/content/pm/PackageInfo;->versionCode I
+	7       (0000001a) return               v2
+	2:15
+	(Landroid/content/pm/PackageManager$NameNotFoundException; -> 1c getApkVersion-BB@0x1c)
+
+getApkVersion-BB@0x1c : 
+	8       (0000001c) const-string         v2, "GooglePlayServicesUtil"
+	9       (00000020) const-string         v1, "Google Play services is missing."
+	10      (00000024) invoke-static        v2, v1, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+	11      (0000002a) return               v0
+

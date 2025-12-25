@@ -1,0 +1,45 @@
+# Lcom/google/android/material/button/MaterialButton;->setBackgroundDrawable(Landroid/graphics/drawable/Drawable;)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:android.graphics.drawable.Drawable
+#
+# - return:void
+
+setBackgroundDrawable-BB@0x0 : [ setBackgroundDrawable-BB@0xc setBackgroundDrawable-BB@0x68 ]
+	0       (00000000) invoke-virtual       v3, Lcom/google/android/material/button/MaterialButton;->e()Z
+	1       (00000006) move-result          v0
+	2       (00000008) if-eqz               v0, +030h
+
+setBackgroundDrawable-BB@0xc : [ setBackgroundDrawable-BB@0x18 setBackgroundDrawable-BB@0x50 ]
+	3       (0000000c) invoke-virtual       v3, Landroid/view/View;->getBackground()Landroid/graphics/drawable/Drawable;
+	4       (00000012) move-result-object   v0
+	5       (00000014) if-eq                v4, v0, +01eh
+
+setBackgroundDrawable-BB@0x18 : 
+	6       (00000018) const-string         v0, "MaterialButton"
+	7       (0000001c) const-string         v1, "MaterialButton manages its own background to control elevation, shape, color and states. Consider using backgroundTint, shapeAppearance and other attributes where available. A custom background will ignore these attributes and you should consider handling interaction states such as pressed, focused and disabled"
+	8       (00000020) invoke-static        v0, v1, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+	9       (00000026) const/4              v0, 1
+	10      (00000028) iget-object          v1, v3, Lcom/google/android/material/button/MaterialButton;->d Li3/f;
+	11      (0000002c) iput-boolean         v0, v1, Li3/f;->r Z
+	12      (00000030) iget-object          v0, v1, Li3/f;->a Lcom/google/android/material/button/MaterialButton;
+	13      (00000034) iget-object          v2, v1, Li3/f;->m Landroid/content/res/ColorStateList;
+	14      (00000038) invoke-virtual       v0, v2, Lcom/google/android/material/button/MaterialButton;->setSupportBackgroundTintList(Landroid/content/res/ColorStateList;)V
+	15      (0000003e) iget-object          v1, v1, Li3/f;->l Landroid/graphics/PorterDuff$Mode;
+	16      (00000042) invoke-virtual       v0, v1, Lcom/google/android/material/button/MaterialButton;->setSupportBackgroundTintMode(Landroid/graphics/PorterDuff$Mode;)V
+	17      (00000048) invoke-super         v3, v4, Ln/q;->setBackgroundDrawable(Landroid/graphics/drawable/Drawable;)V
+	18      (0000004e) return-void          
+
+setBackgroundDrawable-BB@0x50 : 
+	19      (00000050) invoke-virtual       v3, Landroid/view/View;->getBackground()Landroid/graphics/drawable/Drawable;
+	20      (00000056) move-result-object   v0
+	21      (00000058) invoke-virtual       v4, Landroid/graphics/drawable/Drawable;->getState()[I
+	22      (0000005e) move-result-object   v4
+	23      (00000060) invoke-virtual       v0, v4, Landroid/graphics/drawable/Drawable;->setState([I)Z
+	24      (00000066) return-void          
+
+setBackgroundDrawable-BB@0x68 : 
+	25      (00000068) invoke-super         v3, v4, Ln/q;->setBackgroundDrawable(Landroid/graphics/drawable/Drawable;)V
+	26      (0000006e) return-void          
+

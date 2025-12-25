@@ -1,0 +1,81 @@
+# Lcom/google/android/gms/common/GooglePlayServicesUtilLight;->zza(Landroid/content/Context; Ljava/lang/String;)Z [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:android.content.Context
+# - v6:java.lang.String
+#
+# - return:boolean
+
+zza-BB@0x0 : [ zza-BB@0xe ]
+	0       (00000000) const-string         v0, "com.google.android.gms"
+	1       (00000004) invoke-virtual       v6, v0, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	2       (0000000a) move-result          v0
+	3       (0000000c) const/4              v1, 0
+
+zza-BB@0xe : [ zza-BB@0x2e ]
+	4       (0000000e) invoke-virtual       v5, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
+	5       (00000014) move-result-object   v2
+	6       (00000016) invoke-virtual       v2, Landroid/content/pm/PackageManager;->getPackageInstaller()Landroid/content/pm/PackageInstaller;
+	7       (0000001c) move-result-object   v2
+	8       (0000001e) invoke-virtual       v2, Landroid/content/pm/PackageInstaller;->getAllSessions()Ljava/util/List;
+	9       (00000024) move-result-object   v2
+	10      (00000026) invoke-interface     v2, Ljava/util/List;->iterator()Ljava/util/Iterator;
+	11      (0000002c) move-result-object   v2
+	e:25
+	(Ljava/lang/Exception; -> 92 zza-BB@0x92)
+
+zza-BB@0x2e : [ zza-BB@0x3c zza-BB@0x5e ]
+	12      (0000002e) invoke-interface     v2, Ljava/util/Iterator;->hasNext()Z
+	13      (00000034) move-result          v3
+	14      (00000036) const/4              v4, 1
+	15      (00000038) if-eqz               v3, +013h
+
+zza-BB@0x3c : [ zza-BB@0x5c zza-BB@0x2e ]
+	16      (0000003c) invoke-interface     v2, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	17      (00000042) move-result-object   v3
+	18      (00000044) check-cast           v3, Landroid/content/pm/PackageInstaller$SessionInfo;
+	19      (00000048) invoke-virtual       v3, Landroid/content/pm/PackageInstaller$SessionInfo;->getAppPackageName()Ljava/lang/String;
+	20      (0000004e) move-result-object   v3
+	21      (00000050) invoke-virtual       v6, v3, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	22      (00000056) move-result          v3
+	23      (00000058) if-eqz               v3, -015h
+
+zza-BB@0x5c : 
+	24      (0000005c) return               v4
+
+zza-BB@0x5e : [ zza-BB@0x6a ]
+	25      (0000005e) invoke-virtual       v5, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
+	26      (00000064) move-result-object   v2
+	27      (00000066) const/16             v3, 8192
+
+zza-BB@0x6a : [ zza-BB@0x76 zza-BB@0x7c ]
+	28      (0000006a) invoke-virtual       v2, v6, v3, Landroid/content/pm/PackageManager;->getApplicationInfo(Ljava/lang/String; I)Landroid/content/pm/ApplicationInfo;
+	29      (00000070) move-result-object   v6
+	30      (00000072) if-eqz               v0, +005h
+	6a:8b
+	(Landroid/content/pm/PackageManager$NameNotFoundException; -> 92 zza-BB@0x92)
+
+zza-BB@0x76 : 
+	31      (00000076) iget-boolean         v5, v6, Landroid/content/pm/ApplicationInfo;->enabled Z
+	32      (0000007a) return               v5
+	6a:8b
+	(Landroid/content/pm/PackageManager$NameNotFoundException; -> 92 zza-BB@0x92)
+
+zza-BB@0x7c : [ zza-BB@0x84 zza-BB@0x92 ]
+	33      (0000007c) iget-boolean         v6, v6, Landroid/content/pm/ApplicationInfo;->enabled Z
+	34      (00000080) if-eqz               v6, +009h
+	6a:8b
+	(Landroid/content/pm/PackageManager$NameNotFoundException; -> 92 zza-BB@0x92)
+
+zza-BB@0x84 : [ zza-BB@0x90 zza-BB@0x92 ]
+	35      (00000084) invoke-static        v5, Lcom/google/android/gms/common/GooglePlayServicesUtilLight;->isRestrictedUserProfile(Landroid/content/Context;)Z
+	36      (0000008a) move-result          v5
+	37      (0000008c) if-nez               v5, +003h
+
+zza-BB@0x90 : 
+	38      (00000090) return               v4
+
+zza-BB@0x92 : 
+	39      (00000092) return               v1
+

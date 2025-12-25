@@ -1,0 +1,45 @@
+# Lcom/google/android/gms/internal/firebase-auth-api/zzai;->zza(I I)I [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v0
+# - v1:int
+# - v2:int
+#
+# - return:int
+
+zza-BB@0x0 : [ zza-BB@0x4 zza-BB@0x34 ]
+	0       (00000000) if-ltz               v2, +01ah
+
+zza-BB@0x4 : [ zza-BB@0x8 zza-BB@0xa ]
+	1       (00000004) if-gt                v2, v1, +003h
+
+zza-BB@0x8 : 
+	2       (00000008) return               v1
+
+zza-BB@0xa : [ zza-BB@0x18 zza-BB@0x28 ]
+	3       (0000000a) shr-int/lit8         v0, v1, 1
+	4       (0000000e) add-int/2addr        v1, v0
+	5       (00000010) add-int/lit8         v1, v1, 1
+	6       (00000014) if-ge                v1, v2, +00ah
+
+zza-BB@0x18 : [ zza-BB@0x28 ]
+	7       (00000018) add-int/lit8         v2, v2, -1
+	8       (0000001c) invoke-static        v2, Ljava/lang/Integer;->highestOneBit(I)I
+	9       (00000022) move-result          v1
+	10      (00000024) shl-int/lit8         v1, v1, 1
+
+zza-BB@0x28 : [ zza-BB@0x2c zza-BB@0x32 ]
+	11      (00000028) if-gez               v1, +005h
+
+zza-BB@0x2c : [ zza-BB@0x32 ]
+	12      (0000002c) const                v1, 2147483647
+
+zza-BB@0x32 : 
+	13      (00000032) return               v1
+
+zza-BB@0x34 : 
+	14      (00000034) new-instance         v1, Ljava/lang/IllegalArgumentException;
+	15      (00000038) const-string         v2, "cannot store more than Integer.MAX_VALUE elements"
+	16      (0000003c) invoke-direct        v1, v2, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	17      (00000042) throw                v1
+

@@ -1,0 +1,45 @@
+# Lcom/google/android/gms/fido/u2f/api/common/RegisterRequest;->toJson()Lorg/json/JSONObject; [access_flags=public]
+#
+# Parameters:
+# local registers: v0...v4
+#
+# - return:org.json.JSONObject
+
+toJson-BB@0x0 : [ toJson-BB@0xa ]
+	0       (00000000) new-instance         v0, Lorg/json/JSONObject;
+	1       (00000004) invoke-direct        v0, Lorg/json/JSONObject;-><init>()V
+
+toJson-BB@0xa : [ toJson-BB@0x42 toJson-BB@0x52 ]
+	2       (0000000a) const-string         v1, "version"
+	3       (0000000e) iget-object          v2, v4, Lcom/google/android/gms/fido/u2f/api/common/RegisterRequest;->zzb Lcom/google/android/gms/fido/u2f/api/common/ProtocolVersion;
+	4       (00000012) invoke-virtual       v2, Lcom/google/android/gms/fido/u2f/api/common/ProtocolVersion;->toString()Ljava/lang/String;
+	5       (00000018) move-result-object   v2
+	6       (0000001a) invoke-virtual       v0, v1, v2, Lorg/json/JSONObject;->put(Ljava/lang/String; Ljava/lang/Object;)Lorg/json/JSONObject;
+	7       (00000020) const-string         v1, "challenge"
+	8       (00000024) iget-object          v2, v4, Lcom/google/android/gms/fido/u2f/api/common/RegisterRequest;->zzc [B
+	9       (00000028) const/16             v3, 11
+	10      (0000002c) invoke-static        v2, v3, Landroid/util/Base64;->encodeToString([B I)Ljava/lang/String;
+	11      (00000032) move-result-object   v2
+	12      (00000034) invoke-virtual       v0, v1, v2, Lorg/json/JSONObject;->put(Ljava/lang/String; Ljava/lang/Object;)Lorg/json/JSONObject;
+	13      (0000003a) iget-object          v1, v4, Lcom/google/android/gms/fido/u2f/api/common/RegisterRequest;->zzd Ljava/lang/String;
+	14      (0000003e) if-eqz               v1, +00ah
+	a:4b
+	(Lorg/json/JSONException; -> 4e toJson-BB@0x4e)
+
+toJson-BB@0x42 : 
+	15      (00000042) const-string         v2, "appId"
+	16      (00000046) invoke-virtual       v0, v2, v1, Lorg/json/JSONObject;->put(Ljava/lang/String; Ljava/lang/Object;)Lorg/json/JSONObject;
+	17      (0000004c) return-object        v0
+
+toJson-BB@0x4e : [ toJson-BB@0x54 ]
+	18      (0000004e) move-exception       v0
+	19      (00000050) goto                 +2h
+
+toJson-BB@0x52 : 
+	20      (00000052) return-object        v0
+
+toJson-BB@0x54 : 
+	21      (00000054) new-instance         v1, Ljava/lang/RuntimeException;
+	22      (00000058) invoke-direct        v1, v0, Ljava/lang/RuntimeException;-><init>(Ljava/lang/Throwable;)V
+	23      (0000005e) throw                v1
+

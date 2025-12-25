@@ -1,0 +1,54 @@
+# Lcom/google/android/gms/common/internal/safeparcel/SafeParcelReader;->zza(Landroid/os/Parcel; I I)V [access_flags=private static]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:android.os.Parcel
+# - v6:int
+# - v7:int
+#
+# - return:void
+
+zza-BB@0x0 : [ zza-BB@0xc zza-BB@0xe ]
+	0       (00000000) invoke-static        v5, v6, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelReader;->readSize(Landroid/os/Parcel; I)I
+	1       (00000006) move-result          v6
+	2       (00000008) if-ne                v6, v7, +003h
+
+zza-BB@0xc : 
+	3       (0000000c) return-void          
+
+zza-BB@0xe : 
+	4       (0000000e) new-instance         v0, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelReader$ParseException;
+	5       (00000012) invoke-static        v6, Ljava/lang/Integer;->toHexString(I)Ljava/lang/String;
+	6       (00000018) move-result-object   v1
+	7       (0000001a) invoke-static        v7, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
+	8       (00000020) move-result-object   v2
+	9       (00000022) invoke-virtual       v2, Ljava/lang/String;->length()I
+	10      (00000028) move-result          v2
+	11      (0000002a) invoke-static        v6, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
+	12      (00000030) move-result-object   v3
+	13      (00000032) add-int/lit8         v2, v2, 19
+	14      (00000036) invoke-virtual       v3, Ljava/lang/String;->length()I
+	15      (0000003c) move-result          v3
+	16      (0000003e) invoke-static        v1, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
+	17      (00000044) move-result-object   v4
+	18      (00000046) add-int/2addr        v2, v3
+	19      (00000048) add-int/lit8         v2, v2, 4
+	20      (0000004c) invoke-virtual       v4, Ljava/lang/String;->length()I
+	21      (00000052) move-result          v3
+	22      (00000054) add-int/2addr        v3, v2
+	23      (00000056) new-instance         v2, Ljava/lang/StringBuilder;
+	24      (0000005a) add-int/lit8         v3, v3, 1
+	25      (0000005e) invoke-direct        v2, v3, Ljava/lang/StringBuilder;-><init>(I)V
+	26      (00000064) const-string         v3, "Expected size "
+	27      (00000068) invoke-virtual       v2, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	28      (0000006e) invoke-virtual       v2, v7, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	29      (00000074) const-string         v7, " got "
+	30      (00000078) invoke-virtual       v2, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	31      (0000007e) invoke-virtual       v2, v6, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	32      (00000084) const-string         v6, " (0x"
+	33      (00000088) const-string         v7, ")"
+	34      (0000008c) invoke-static        v2, v6, v1, v7, Lv1/a;->o(Ljava/lang/StringBuilder; Ljava/lang/String; Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	35      (00000092) move-result-object   v6
+	36      (00000094) invoke-direct        v0, v6, v5, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelReader$ParseException;-><init>(Ljava/lang/String; Landroid/os/Parcel;)V
+	37      (0000009a) throw                v0
+

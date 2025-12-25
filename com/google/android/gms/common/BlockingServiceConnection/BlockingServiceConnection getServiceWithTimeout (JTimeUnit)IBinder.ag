@@ -1,0 +1,39 @@
+# Lcom/google/android/gms/common/BlockingServiceConnection;->getServiceWithTimeout(J Ljava/util/concurrent/TimeUnit;)Landroid/os/IBinder; [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:long
+# - v4:java.util.concurrent.TimeUnit
+#
+# - return:android.os.IBinder
+
+getServiceWithTimeout-BB@0x0 : [ getServiceWithTimeout-BB@0x12 getServiceWithTimeout-BB@0x3e ]
+	0       (00000000) const-string         v0, "BlockingServiceConnection.getServiceWithTimeout() called on main thread"
+	1       (00000004) invoke-static        v0, Lcom/google/android/gms/common/internal/Preconditions;->checkNotMainThread(Ljava/lang/String;)V
+	2       (0000000a) iget-boolean         v0, v1, Lcom/google/android/gms/common/BlockingServiceConnection;->zza Z
+	3       (0000000e) if-nez               v0, +018h
+
+getServiceWithTimeout-BB@0x12 : [ getServiceWithTimeout-BB@0x2c getServiceWithTimeout-BB@0x2e ]
+	4       (00000012) const/4              v0, 1
+	5       (00000014) iput-boolean         v0, v1, Lcom/google/android/gms/common/BlockingServiceConnection;->zza Z
+	6       (00000018) iget-object          v0, v1, Lcom/google/android/gms/common/BlockingServiceConnection;->zzb Ljava/util/concurrent/BlockingQueue;
+	7       (0000001c) invoke-interface     v0, v2, v3, v4, Ljava/util/concurrent/BlockingQueue;->poll(J Ljava/util/concurrent/TimeUnit;)Ljava/lang/Object;
+	8       (00000022) move-result-object   v2
+	9       (00000024) check-cast           v2, Landroid/os/IBinder;
+	10      (00000028) if-eqz               v2, +003h
+
+getServiceWithTimeout-BB@0x2c : 
+	11      (0000002c) return-object        v2
+
+getServiceWithTimeout-BB@0x2e : 
+	12      (0000002e) new-instance         v2, Ljava/util/concurrent/TimeoutException;
+	13      (00000032) const-string         v3, "Timed out waiting for the service connection"
+	14      (00000036) invoke-direct        v2, v3, Ljava/util/concurrent/TimeoutException;-><init>(Ljava/lang/String;)V
+	15      (0000003c) throw                v2
+
+getServiceWithTimeout-BB@0x3e : 
+	16      (0000003e) new-instance         v2, Ljava/lang/IllegalStateException;
+	17      (00000042) const-string         v3, "Cannot call get on this connection more than once"
+	18      (00000046) invoke-direct        v2, v3, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	19      (0000004c) throw                v2
+

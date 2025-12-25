@@ -1,0 +1,86 @@
+# Lcom/google/android/play/core/integrity/y;->a(Landroid/app/Activity; I)Lcom/google/android/gms/tasks/Task; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v8
+# - v9:android.app.Activity
+# - v10:int
+#
+# - return:com.google.android.gms.tasks.Task
+
+a-BB@0x0 : [ a-BB@0x6 ]
+	0       (00000000) iget-object          v0, v8, Lcom/google/android/play/core/integrity/y;->d Ljava/lang/Object;
+	1       (00000004) monitor-enter        v0
+
+a-BB@0x6 : [ a-BB@0x10 a-BB@0x28 ]
+	2       (00000006) iget-boolean         v1, v8, Lcom/google/android/play/core/integrity/y;->e Z
+	3       (0000000a) const/4              v2, 0
+	4       (0000000c) if-eqz               v1, +00eh
+	6:2f
+	(Ljava/lang/Throwable; -> 24 a-BB@0x24)
+
+a-BB@0x10 : 
+	5       (00000010) invoke-static        v2, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+	6       (00000016) move-result-object   v9
+	7       (00000018) invoke-static        v9, Lcom/google/android/gms/tasks/Tasks;->forResult(Ljava/lang/Object;)Lcom/google/android/gms/tasks/Task;
+	8       (0000001e) move-result-object   v9
+	9       (00000020) monitor-exit         v0
+	10      (00000022) return-object        v9
+	6:2f
+	(Ljava/lang/Throwable; -> 24 a-BB@0x24)
+
+a-BB@0x24 : [ a-BB@0xca ]
+	11      (00000024) move-exception       v9
+	12      (00000026) goto                 +52h
+	6:2f
+	(Ljava/lang/Throwable; -> 24 a-BB@0x24)
+
+a-BB@0x28 : [ a-BB@0x60 a-BB@0x72 ]
+	13      (00000028) const/4              v1, 1
+	14      (0000002a) iput-boolean         v1, v8, Lcom/google/android/play/core/integrity/y;->e Z
+	15      (0000002e) monitor-exit         v0
+	16      (00000030) iget-object          v0, v8, Lcom/google/android/play/core/integrity/y;->a Lk4/z;
+	17      (00000034) invoke-static        v10, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+	18      (0000003a) move-result-object   v3
+	19      (0000003c) filled-new-array     v3, [Ljava/lang/Object;
+	20      (00000042) move-result-object   v3
+	21      (00000044) const-string         v4, "checkAndShowDialog(%s)"
+	22      (00000048) invoke-virtual       v0, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	23      (0000004e) const-string         v5, "PlayCore"
+	24      (00000052) const/4              v6, 3
+	25      (00000054) invoke-static        v5, v6, Landroid/util/Log;->isLoggable(Ljava/lang/String; I)Z
+	26      (0000005a) move-result          v7
+	27      (0000005c) if-eqz               v7, +00bh
+
+a-BB@0x60 : [ a-BB@0x72 ]
+	28      (00000060) iget-object          v0, v0, Lk4/z;->a Ljava/lang/String;
+	29      (00000064) invoke-static        v0, v4, v3, Lk4/z;->c(Ljava/lang/String; Ljava/lang/String; [Ljava/lang/Object;)Ljava/lang/String;
+	30      (0000006a) move-result-object   v0
+	31      (0000006c) invoke-static        v5, v0, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String;)I
+
+a-BB@0x72 : 
+	32      (00000072) new-instance         v0, Landroid/os/Bundle;
+	33      (00000076) invoke-direct        v0, Landroid/os/Bundle;-><init>()V
+	34      (0000007c) const-string         v3, "dialog.intent.type"
+	35      (00000080) invoke-virtual       v0, v3, v10, Landroid/os/BaseBundle;->putInt(Ljava/lang/String; I)V
+	36      (00000086) iget-object          v10, v8, Lcom/google/android/play/core/integrity/y;->b Ljava/lang/String;
+	37      (0000008a) const-string         v3, "package.name"
+	38      (0000008e) invoke-virtual       v0, v3, v10, Landroid/os/BaseBundle;->putString(Ljava/lang/String; Ljava/lang/String;)V
+	39      (00000094) const-string         v10, "playcore.integrity.version.major"
+	40      (00000098) invoke-virtual       v0, v10, v1, Landroid/os/BaseBundle;->putInt(Ljava/lang/String; I)V
+	41      (0000009e) const-string         v10, "playcore.integrity.version.minor"
+	42      (000000a2) invoke-virtual       v0, v10, v6, Landroid/os/BaseBundle;->putInt(Ljava/lang/String; I)V
+	43      (000000a8) const-string         v10, "playcore.integrity.version.patch"
+	44      (000000ac) invoke-virtual       v0, v10, v2, Landroid/os/BaseBundle;->putInt(Ljava/lang/String; I)V
+	45      (000000b2) iget-wide            v1, v8, Lcom/google/android/play/core/integrity/y;->c J
+	46      (000000b6) const-string         v10, "request.token.sid"
+	47      (000000ba) invoke-virtual       v0, v10, v1, v2, Landroid/os/BaseBundle;->putLong(Ljava/lang/String; J)V
+	48      (000000c0) invoke-virtual       v8, v9, v0, Lcom/google/android/play/core/integrity/y;->b(Landroid/app/Activity; Landroid/os/Bundle;)Lcom/google/android/gms/tasks/Task;
+	49      (000000c6) move-result-object   v9
+	50      (000000c8) return-object        v9
+
+a-BB@0xca : 
+	51      (000000ca) monitor-exit         v0
+	52      (000000cc) throw                v9
+	ca:cb
+	(Ljava/lang/Throwable; -> 24 a-BB@0x24)
+

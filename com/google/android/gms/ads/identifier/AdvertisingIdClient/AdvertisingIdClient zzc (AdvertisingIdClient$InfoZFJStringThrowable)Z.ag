@@ -1,0 +1,80 @@
+# Lcom/google/android/gms/ads/identifier/AdvertisingIdClient;->zzc(Lcom/google/android/gms/ads/identifier/AdvertisingIdClient$Info; Z F J Ljava/lang/String; Ljava/lang/Throwable;)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:com.google.android.gms.ads.identifier.AdvertisingIdClient$Info
+# - v5:boolean
+# - v6:float
+# - v7:long
+# - v8:java.lang.String
+# - v9:java.lang.Throwable
+#
+# - return:boolean
+
+zzc-BB@0x0 : [ zzc-BB@0x14 zzc-BB@0xc2 ]
+	0       (00000000) invoke-static        Ljava/lang/Math;->random()D
+	1       (00000006) move-result-wide     v4
+	2       (00000008) const-wide/16        v0, 0
+	3       (0000000c) cmpl-double          v4, v4, v0
+	4       (00000010) if-gtz               v4, +059h
+
+zzc-BB@0x14 : [ zzc-BB@0x32 zzc-BB@0x72 ]
+	5       (00000014) new-instance         v4, Ljava/util/HashMap;
+	6       (00000018) invoke-direct        v4, Ljava/util/HashMap;-><init>()V
+	7       (0000001e) const-string         v5, "app_context"
+	8       (00000022) const-string         v8, "1"
+	9       (00000026) invoke-virtual       v4, v5, v8, Ljava/util/HashMap;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	10      (0000002c) const/4              v5, 1
+	11      (0000002e) if-eqz               v3, +022h
+
+zzc-BB@0x32 : [ zzc-BB@0x3e zzc-BB@0x42 ]
+	12      (00000032) invoke-virtual       v3, Lcom/google/android/gms/ads/identifier/AdvertisingIdClient$Info;->isLimitAdTrackingEnabled()Z
+	13      (00000038) move-result          v0
+	14      (0000003a) if-eq                v5, v0, +004h
+
+zzc-BB@0x3e : [ zzc-BB@0x42 ]
+	15      (0000003e) const-string         v8, "0"
+
+zzc-BB@0x42 : [ zzc-BB@0x58 zzc-BB@0x72 ]
+	16      (00000042) const-string         v0, "limit_ad_tracking"
+	17      (00000046) invoke-virtual       v4, v0, v8, Ljava/util/HashMap;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	18      (0000004c) invoke-virtual       v3, Lcom/google/android/gms/ads/identifier/AdvertisingIdClient$Info;->getId()Ljava/lang/String;
+	19      (00000052) move-result-object   v3
+	20      (00000054) if-eqz               v3, +00fh
+
+zzc-BB@0x58 : [ zzc-BB@0x72 ]
+	21      (00000058) invoke-virtual       v3, Ljava/lang/String;->length()I
+	22      (0000005e) move-result          v3
+	23      (00000060) invoke-static        v3, Ljava/lang/Integer;->toString(I)Ljava/lang/String;
+	24      (00000066) move-result-object   v3
+	25      (00000068) const-string         v8, "ad_id_size"
+	26      (0000006c) invoke-virtual       v4, v8, v3, Ljava/util/HashMap;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+
+zzc-BB@0x72 : [ zzc-BB@0x76 zzc-BB@0x90 ]
+	27      (00000072) if-eqz               v9, +00fh
+
+zzc-BB@0x76 : [ zzc-BB@0x90 ]
+	28      (00000076) invoke-virtual       v9, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	29      (0000007c) move-result-object   v3
+	30      (0000007e) invoke-virtual       v3, Ljava/lang/Class;->getName()Ljava/lang/String;
+	31      (00000084) move-result-object   v3
+	32      (00000086) const-string         v8, "error"
+	33      (0000008a) invoke-virtual       v4, v8, v3, Ljava/util/HashMap;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+
+zzc-BB@0x90 : 
+	34      (00000090) const-string         v3, "tag"
+	35      (00000094) const-string         v8, "AdvertisingIdClient"
+	36      (00000098) invoke-virtual       v4, v3, v8, Ljava/util/HashMap;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	37      (0000009e) const-string         v3, "time_spent"
+	38      (000000a2) invoke-static        v6, v7, Ljava/lang/Long;->toString(J)Ljava/lang/String;
+	39      (000000a8) move-result-object   v6
+	40      (000000aa) invoke-virtual       v4, v3, v6, Ljava/util/HashMap;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	41      (000000b0) new-instance         v3, Lcom/google/android/gms/ads/identifier/zza;
+	42      (000000b4) invoke-direct        v3, v2, v4, Lcom/google/android/gms/ads/identifier/zza;-><init>(Lcom/google/android/gms/ads/identifier/AdvertisingIdClient; Ljava/util/Map;)V
+	43      (000000ba) invoke-virtual       v3, Ljava/lang/Thread;->start()V
+	44      (000000c0) return               v5
+
+zzc-BB@0xc2 : 
+	45      (000000c2) const/4              v3, 0
+	46      (000000c4) return               v3
+

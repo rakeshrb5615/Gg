@@ -1,0 +1,33 @@
+# Lcom/google/android/gms/internal/firebase-auth-api/zzhp;->zza([B)[I [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v0
+# - v1:byte[]
+#
+# - return:int[]
+
+zza-BB@0x0 : [ zza-BB@0xa zza-BB@0x3a ]
+	0       (00000000) array-length         v0, v1
+	1       (00000002) rem-int/lit8         v0, v0, 4
+	2       (00000006) if-nez               v0, +01ah
+
+zza-BB@0xa : 
+	3       (0000000a) invoke-static        v1, Ljava/nio/ByteBuffer;->wrap([B)Ljava/nio/ByteBuffer;
+	4       (00000010) move-result-object   v1
+	5       (00000012) sget-object          v0, Ljava/nio/ByteOrder;->LITTLE_ENDIAN Ljava/nio/ByteOrder;
+	6       (00000016) invoke-virtual       v1, v0, Ljava/nio/ByteBuffer;->order(Ljava/nio/ByteOrder;)Ljava/nio/ByteBuffer;
+	7       (0000001c) move-result-object   v1
+	8       (0000001e) invoke-virtual       v1, Ljava/nio/ByteBuffer;->asIntBuffer()Ljava/nio/IntBuffer;
+	9       (00000024) move-result-object   v1
+	10      (00000026) invoke-virtual       v1, Ljava/nio/Buffer;->remaining()I
+	11      (0000002c) move-result          v0
+	12      (0000002e) new-array            v0, v0, [I
+	13      (00000032) invoke-virtual       v1, v0, Ljava/nio/IntBuffer;->get([I)Ljava/nio/IntBuffer;
+	14      (00000038) return-object        v0
+
+zza-BB@0x3a : 
+	15      (0000003a) new-instance         v1, Ljava/lang/IllegalArgumentException;
+	16      (0000003e) const-string         v0, "invalid input length"
+	17      (00000042) invoke-direct        v1, v0, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	18      (00000048) throw                v1
+

@@ -1,0 +1,107 @@
+# Lcom/google/android/gms/common/util/zzf;->zza(Ljava/lang/String;)Ljava/lang/String; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:java.lang.String
+#
+# - return:java.lang.String
+
+zza-BB@0x0 : [ zza-BB@0xc zza-BB@0xde ]
+	0       (00000000) invoke-static        v7, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+	1       (00000006) move-result          v0
+	2       (00000008) if-nez               v0, +06bh
+
+zza-BB@0xc : [ zza-BB@0x1c ]
+	3       (0000000c) sget-object          v0, Lcom/google/android/gms/common/util/zzf;->zza Ljava/util/regex/Pattern;
+	4       (00000010) invoke-virtual       v0, v7, Ljava/util/regex/Pattern;->matcher(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;
+	5       (00000016) move-result-object   v0
+	6       (00000018) const/4              v1, 0
+	7       (0000001a) const/4              v2, 0
+
+zza-BB@0x1c : [ zza-BB@0x28 zza-BB@0xb6 ]
+	8       (0000001c) invoke-virtual       v0, Ljava/util/regex/Matcher;->find()Z
+	9       (00000022) move-result          v3
+	10      (00000024) if-eqz               v3, +049h
+
+zza-BB@0x28 : [ zza-BB@0x2c zza-BB@0x36 ]
+	11      (00000028) if-nez               v1, +007h
+
+zza-BB@0x2c : [ zza-BB@0x36 ]
+	12      (0000002c) new-instance         v1, Ljava/lang/StringBuilder;
+	13      (00000030) invoke-direct        v1, Ljava/lang/StringBuilder;-><init>()V
+
+zza-BB@0x36 : [ zza-BB@0x40 ]
+	14      (00000036) invoke-virtual       v0, Ljava/util/regex/Matcher;->start()I
+	15      (0000003c) move-result          v3
+	16      (0000003e) move                 v4, v3
+
+zza-BB@0x40 : [ zza-BB@0x48 zza-BB@0x5a ]
+	17      (00000040) const/16             v5, 92
+	18      (00000044) if-ltz               v4, +00bh
+
+zza-BB@0x48 : [ zza-BB@0x54 zza-BB@0x5a ]
+	19      (00000048) invoke-virtual       v7, v4, Ljava/lang/String;->charAt(I)C
+	20      (0000004e) move-result          v6
+	21      (00000050) if-ne                v6, v5, +005h
+
+zza-BB@0x54 : [ zza-BB@0x40 ]
+	22      (00000054) add-int/lit8         v4, v4, -1
+	23      (00000058) goto                 -ch
+
+zza-BB@0x5a : [ zza-BB@0x64 zza-BB@0x1c ]
+	24      (0000005a) sub-int/2addr        v3, v4
+	25      (0000005c) const/4              v4, 2
+	26      (0000005e) rem-int/2addr        v3, v4
+	27      (00000060) if-eqz               v3, -022h
+
+zza-BB@0x64 : [ zza-BB@0x92 zza-BB@0x9e ]
+	28      (00000064) invoke-virtual       v0, Ljava/util/regex/Matcher;->group()Ljava/lang/String;
+	29      (0000006a) move-result-object   v3
+	30      (0000006c) invoke-virtual       v3, v4, Ljava/lang/String;->substring(I)Ljava/lang/String;
+	31      (00000072) move-result-object   v3
+	32      (00000074) const/16             v4, 16
+	33      (00000078) invoke-static        v3, v4, Ljava/lang/Integer;->parseInt(Ljava/lang/String; I)I
+	34      (0000007e) move-result          v3
+	35      (00000080) invoke-virtual       v0, Ljava/util/regex/Matcher;->start()I
+	36      (00000086) move-result          v4
+	37      (00000088) invoke-virtual       v1, v7, v2, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/CharSequence; I I)Ljava/lang/StringBuilder;
+	38      (0000008e) if-ne                v3, v5, +008h
+
+zza-BB@0x92 : [ zza-BB@0xac ]
+	39      (00000092) const-string         v2, "\\"
+	40      (00000096) invoke-virtual       v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	41      (0000009c) goto                 +8h
+
+zza-BB@0x9e : [ zza-BB@0xac ]
+	42      (0000009e) invoke-static        v3, Ljava/lang/Character;->toChars(I)[C
+	43      (000000a4) move-result-object   v2
+	44      (000000a6) invoke-virtual       v1, v2, Ljava/lang/StringBuilder;->append([C)Ljava/lang/StringBuilder;
+
+zza-BB@0xac : [ zza-BB@0x1c ]
+	45      (000000ac) invoke-virtual       v0, Ljava/util/regex/Matcher;->end()I
+	46      (000000b2) move-result          v2
+	47      (000000b4) goto                 -4ch
+
+zza-BB@0xb6 : [ zza-BB@0xba zza-BB@0xbc ]
+	48      (000000b6) if-nez               v1, +003h
+
+zza-BB@0xba : [ zza-BB@0xde ]
+	49      (000000ba) goto                 +12h
+
+zza-BB@0xbc : [ zza-BB@0xc8 zza-BB@0xd6 ]
+	50      (000000bc) invoke-virtual       v0, Ljava/util/regex/Matcher;->regionEnd()I
+	51      (000000c2) move-result          v3
+	52      (000000c4) if-ge                v2, v3, +009h
+
+zza-BB@0xc8 : [ zza-BB@0xd6 ]
+	53      (000000c8) invoke-virtual       v0, Ljava/util/regex/Matcher;->regionEnd()I
+	54      (000000ce) move-result          v0
+	55      (000000d0) invoke-virtual       v1, v7, v2, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/CharSequence; I I)Ljava/lang/StringBuilder;
+
+zza-BB@0xd6 : [ zza-BB@0xde ]
+	56      (000000d6) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	57      (000000dc) move-result-object   v7
+
+zza-BB@0xde : 
+	58      (000000de) return-object        v7
+

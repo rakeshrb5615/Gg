@@ -1,0 +1,51 @@
+# Lcom/google/android/play/core/integrity/b;->c()Lcom/google/android/play/core/integrity/br; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v3
+#
+# - return:com.google.android.play.core.integrity.br
+
+c-BB@0x0 : [ c-BB@0x8 c-BB@0x1e ]
+	0       (00000000) iget-object          v0, v3, Lcom/google/android/play/core/integrity/b;->a Ljava/lang/String;
+	1       (00000004) if-eqz               v0, +00dh
+
+c-BB@0x8 : [ c-BB@0x10 c-BB@0x12 ]
+	2       (00000008) iget-object          v1, v3, Lcom/google/android/play/core/integrity/b;->b Lcom/google/android/play/core/integrity/y;
+	3       (0000000c) if-nez               v1, +003h
+
+c-BB@0x10 : [ c-BB@0x1e ]
+	4       (00000010) goto                 +7h
+
+c-BB@0x12 : 
+	5       (00000012) new-instance         v2, Lcom/google/android/play/core/integrity/br;
+	6       (00000016) invoke-direct        v2, v0, v1, Lcom/google/android/play/core/integrity/br;-><init>(Ljava/lang/String; Lcom/google/android/play/core/integrity/y;)V
+	7       (0000001c) return-object        v2
+
+c-BB@0x1e : [ c-BB@0x30 c-BB@0x3a ]
+	8       (0000001e) new-instance         v0, Ljava/lang/StringBuilder;
+	9       (00000022) invoke-direct        v0, Ljava/lang/StringBuilder;-><init>()V
+	10      (00000028) iget-object          v1, v3, Lcom/google/android/play/core/integrity/b;->a Ljava/lang/String;
+	11      (0000002c) if-nez               v1, +007h
+
+c-BB@0x30 : [ c-BB@0x3a ]
+	12      (00000030) const-string         v1, " token"
+	13      (00000034) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+c-BB@0x3a : [ c-BB@0x42 c-BB@0x4c ]
+	14      (0000003a) iget-object          v1, v3, Lcom/google/android/play/core/integrity/b;->b Lcom/google/android/play/core/integrity/y;
+	15      (0000003e) if-nez               v1, +007h
+
+c-BB@0x42 : [ c-BB@0x4c ]
+	16      (00000042) const-string         v1, " integrityDialogWrapper"
+	17      (00000046) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+c-BB@0x4c : 
+	18      (0000004c) new-instance         v1, Ljava/lang/IllegalStateException;
+	19      (00000050) invoke-virtual       v0, Ljava/lang/Object;->toString()Ljava/lang/String;
+	20      (00000056) move-result-object   v0
+	21      (00000058) const-string         v2, "Missing required properties:"
+	22      (0000005c) invoke-virtual       v2, v0, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	23      (00000062) move-result-object   v0
+	24      (00000064) invoke-direct        v1, v0, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	25      (0000006a) throw                v1
+

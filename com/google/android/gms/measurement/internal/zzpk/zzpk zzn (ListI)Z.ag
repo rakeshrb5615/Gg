@@ -1,0 +1,38 @@
+# Lcom/google/android/gms/measurement/internal/zzpk;->zzn(Ljava/util/List; I)Z [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:java.util.List
+# - v5:int
+#
+# - return:boolean
+
+zzn-BB@0x0 : [ zzn-BB@0x10 zzn-BB@0x46 ]
+	0       (00000000) invoke-interface     v4, Ljava/util/List;->size()I
+	1       (00000006) move-result          v0
+	2       (00000008) mul-int/lit8         v0, v0, 64
+	3       (0000000c) if-ge                v5, v0, +01dh
+
+zzn-BB@0x10 : [ zzn-BB@0x42 zzn-BB@0x46 ]
+	4       (00000010) div-int/lit8         v0, v5, 64
+	5       (00000014) invoke-interface     v4, v0, Ljava/util/List;->get(I)Ljava/lang/Object;
+	6       (0000001a) move-result-object   v4
+	7       (0000001c) check-cast           v4, Ljava/lang/Long;
+	8       (00000020) invoke-virtual       v4, Ljava/lang/Long;->longValue()J
+	9       (00000026) move-result-wide     v0
+	10      (00000028) const-wide/16        v2, 1
+	11      (0000002c) rem-int/lit8         v5, v5, 64
+	12      (00000030) shl-long             v4, v2, v5
+	13      (00000034) and-long/2addr       v4, v0
+	14      (00000036) const-wide/16        v0, 0
+	15      (0000003a) cmp-long             v4, v4, v0
+	16      (0000003e) if-eqz               v4, +004h
+
+zzn-BB@0x42 : 
+	17      (00000042) const/4              v4, 1
+	18      (00000044) return               v4
+
+zzn-BB@0x46 : 
+	19      (00000046) const/4              v4, 0
+	20      (00000048) return               v4
+

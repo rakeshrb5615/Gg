@@ -1,0 +1,38 @@
+# Lcom/google/android/gms/common/moduleinstall/internal/ApiFeatureRequest;->zaa(Ljava/util/List; Z)Lcom/google/android/gms/common/moduleinstall/internal/ApiFeatureRequest; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:java.util.List
+# - v3:boolean
+#
+# - return:com.google.android.gms.common.moduleinstall.internal.ApiFeatureRequest
+
+zaa-BB@0x0 : [ zaa-BB@0x16 ]
+	0       (00000000) new-instance         v0, Ljava/util/TreeSet;
+	1       (00000004) sget-object          v1, Lcom/google/android/gms/common/moduleinstall/internal/ApiFeatureRequest;->zaa Ljava/util/Comparator;
+	2       (00000008) invoke-direct        v0, v1, Ljava/util/TreeSet;-><init>(Ljava/util/Comparator;)V
+	3       (0000000e) invoke-interface     v2, Ljava/util/List;->iterator()Ljava/util/Iterator;
+	4       (00000014) move-result-object   v2
+
+zaa-BB@0x16 : [ zaa-BB@0x22 zaa-BB@0x3e ]
+	5       (00000016) invoke-interface     v2, Ljava/util/Iterator;->hasNext()Z
+	6       (0000001c) move-result          v1
+	7       (0000001e) if-eqz               v1, +010h
+
+zaa-BB@0x22 : [ zaa-BB@0x16 ]
+	8       (00000022) invoke-interface     v2, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	9       (00000028) move-result-object   v1
+	10      (0000002a) check-cast           v1, Lcom/google/android/gms/common/api/OptionalModuleApi;
+	11      (0000002e) invoke-interface     v1, Lcom/google/android/gms/common/api/OptionalModuleApi;->getOptionalFeatures()[Lcom/google/android/gms/common/Feature;
+	12      (00000034) move-result-object   v1
+	13      (00000036) invoke-static        v0, v1, Ljava/util/Collections;->addAll(Ljava/util/Collection; [Ljava/lang/Object;)Z
+	14      (0000003c) goto                 -13h
+
+zaa-BB@0x3e : 
+	15      (0000003e) new-instance         v2, Lcom/google/android/gms/common/moduleinstall/internal/ApiFeatureRequest;
+	16      (00000042) new-instance         v1, Ljava/util/ArrayList;
+	17      (00000046) invoke-direct        v1, v0, Ljava/util/ArrayList;-><init>(Ljava/util/Collection;)V
+	18      (0000004c) const/4              v0, 0
+	19      (0000004e) invoke-direct        v2, v1, v3, v0, v0, Lcom/google/android/gms/common/moduleinstall/internal/ApiFeatureRequest;-><init>(Ljava/util/List; Z Ljava/lang/String; Ljava/lang/String;)V
+	20      (00000054) return-object        v2
+

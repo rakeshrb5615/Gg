@@ -1,0 +1,81 @@
+# Lcom/google/android/material/timepicker/ClockHandView;->c(F)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:float
+#
+# - return:void
+
+c-BB@0x0 : [ c-BB@0x98 ]
+	0       (00000000) const/high16         v0, 1135869952
+	1       (00000004) rem-float/2addr      v7, v0
+	2       (00000006) iput                 v7, v6, Lcom/google/android/material/timepicker/ClockHandView;->o F
+	3       (0000000a) const/high16         v0, 1119092736
+	4       (0000000e) sub-float            v0, v7, v0
+	5       (00000012) float-to-double      v0, v0
+	6       (00000014) invoke-static        v0, v1, Ljava/lang/Math;->toRadians(D)D
+	7       (0000001a) move-result-wide     v0
+	8       (0000001c) iput-wide            v0, v6, Lcom/google/android/material/timepicker/ClockHandView;->q D
+	9       (00000020) invoke-virtual       v6, Landroid/view/View;->getHeight()I
+	10      (00000026) move-result          v0
+	11      (00000028) div-int/lit8         v0, v0, 2
+	12      (0000002c) invoke-virtual       v6, Landroid/view/View;->getWidth()I
+	13      (00000032) move-result          v1
+	14      (00000034) div-int/lit8         v1, v1, 2
+	15      (00000038) iget                 v2, v6, Lcom/google/android/material/timepicker/ClockHandView;->s I
+	16      (0000003c) invoke-virtual       v6, v2, Lcom/google/android/material/timepicker/ClockHandView;->a(I)I
+	17      (00000042) move-result          v2
+	18      (00000044) int-to-float         v1, v1
+	19      (00000046) int-to-float         v2, v2
+	20      (00000048) iget-wide            v3, v6, Lcom/google/android/material/timepicker/ClockHandView;->q D
+	21      (0000004c) invoke-static        v3, v4, Ljava/lang/Math;->cos(D)D
+	22      (00000052) move-result-wide     v3
+	23      (00000054) double-to-float      v3, v3
+	24      (00000056) mul-float/2addr      v3, v2
+	25      (00000058) add-float/2addr      v3, v1
+	26      (0000005a) int-to-float         v0, v0
+	27      (0000005c) iget-wide            v4, v6, Lcom/google/android/material/timepicker/ClockHandView;->q D
+	28      (00000060) invoke-static        v4, v5, Ljava/lang/Math;->sin(D)D
+	29      (00000066) move-result-wide     v4
+	30      (00000068) double-to-float      v1, v4
+	31      (0000006a) mul-float/2addr      v2, v1
+	32      (0000006c) add-float/2addr      v2, v0
+	33      (0000006e) iget                 v0, v6, Lcom/google/android/material/timepicker/ClockHandView;->d I
+	34      (00000072) int-to-float         v0, v0
+	35      (00000074) sub-float            v1, v3, v0
+	36      (00000078) sub-float            v4, v2, v0
+	37      (0000007c) add-float/2addr      v3, v0
+	38      (0000007e) add-float/2addr      v2, v0
+	39      (00000080) iget-object          v0, v6, Lcom/google/android/material/timepicker/ClockHandView;->m Landroid/graphics/RectF;
+	40      (00000084) invoke-virtual       v0, v1, v4, v3, v2, Landroid/graphics/RectF;->set(F F F F)V
+	41      (0000008a) iget-object          v0, v6, Lcom/google/android/material/timepicker/ClockHandView;->c Ljava/util/ArrayList;
+	42      (0000008e) invoke-virtual       v0, Ljava/util/ArrayList;->size()I
+	43      (00000094) move-result          v1
+	44      (00000096) const/4              v2, 0
+
+c-BB@0x98 : [ c-BB@0x9c c-BB@0xd8 ]
+	45      (00000098) if-ge                v2, v1, +020h
+
+c-BB@0x9c : [ c-BB@0xcc c-BB@0x98 ]
+	46      (0000009c) invoke-virtual       v0, v2, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	47      (000000a2) move-result-object   v3
+	48      (000000a4) add-int/lit8         v2, v2, 1
+	49      (000000a8) check-cast           v3, Lcom/google/android/material/timepicker/f;
+	50      (000000ac) check-cast           v3, Lcom/google/android/material/timepicker/ClockFaceView;
+	51      (000000b0) iget                 v4, v3, Lcom/google/android/material/timepicker/ClockFaceView;->M F
+	52      (000000b4) sub-float/2addr      v4, v7
+	53      (000000b6) invoke-static        v4, Ljava/lang/Math;->abs(F)F
+	54      (000000bc) move-result          v4
+	55      (000000be) const                v5, 981668463
+	56      (000000c4) cmpl-float           v4, v4, v5
+	57      (000000c8) if-lez               v4, -018h
+
+c-BB@0xcc : [ c-BB@0x98 ]
+	58      (000000cc) iput                 v7, v3, Lcom/google/android/material/timepicker/ClockFaceView;->M F
+	59      (000000d0) invoke-virtual       v3, Lcom/google/android/material/timepicker/ClockFaceView;->n()V
+	60      (000000d6) goto                 -1fh
+
+c-BB@0xd8 : 
+	61      (000000d8) invoke-virtual       v6, Landroid/view/View;->invalidate()V
+	62      (000000de) return-void          
+

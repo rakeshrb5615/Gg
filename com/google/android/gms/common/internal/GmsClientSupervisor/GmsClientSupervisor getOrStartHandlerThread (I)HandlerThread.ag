@@ -1,0 +1,46 @@
+# Lcom/google/android/gms/common/internal/GmsClientSupervisor;->getOrStartHandlerThread(I)Landroid/os/HandlerThread; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:int
+#
+# - return:android.os.HandlerThread
+
+getOrStartHandlerThread-BB@0x0 : [ getOrStartHandlerThread-BB@0x6 ]
+	0       (00000000) sget-object          v0, Lcom/google/android/gms/common/internal/GmsClientSupervisor;->zzb Ljava/lang/Object;
+	1       (00000004) monitor-enter        v0
+
+getOrStartHandlerThread-BB@0x6 : [ getOrStartHandlerThread-BB@0xe getOrStartHandlerThread-BB@0x16 ]
+	2       (00000006) sget-object          v1, Lcom/google/android/gms/common/internal/GmsClientSupervisor;->zza Landroid/os/HandlerThread;
+	3       (0000000a) if-eqz               v1, +006h
+	6:37
+	(Ljava/lang/Throwable; -> 12 getOrStartHandlerThread-BB@0x12)
+
+getOrStartHandlerThread-BB@0xe : 
+	4       (0000000e) monitor-exit         v0
+	5       (00000010) return-object        v1
+	6:37
+	(Ljava/lang/Throwable; -> 12 getOrStartHandlerThread-BB@0x12)
+
+getOrStartHandlerThread-BB@0x12 : [ getOrStartHandlerThread-BB@0x36 ]
+	6       (00000012) move-exception       v3
+	7       (00000014) goto                 +11h
+	6:37
+	(Ljava/lang/Throwable; -> 12 getOrStartHandlerThread-BB@0x12)
+
+getOrStartHandlerThread-BB@0x16 : 
+	8       (00000016) new-instance         v1, Landroid/os/HandlerThread;
+	9       (0000001a) const-string         v2, "GoogleApiHandler"
+	10      (0000001e) invoke-direct        v1, v2, v3, Landroid/os/HandlerThread;-><init>(Ljava/lang/String; I)V
+	11      (00000024) sput-object          v1, Lcom/google/android/gms/common/internal/GmsClientSupervisor;->zza Landroid/os/HandlerThread;
+	12      (00000028) invoke-virtual       v1, Ljava/lang/Thread;->start()V
+	13      (0000002e) sget-object          v3, Lcom/google/android/gms/common/internal/GmsClientSupervisor;->zza Landroid/os/HandlerThread;
+	14      (00000032) monitor-exit         v0
+	15      (00000034) return-object        v3
+	6:37
+	(Ljava/lang/Throwable; -> 12 getOrStartHandlerThread-BB@0x12)
+
+getOrStartHandlerThread-BB@0x36 : 
+	16      (00000036) monitor-exit         v0
+	17      (00000038) throw                v3
+

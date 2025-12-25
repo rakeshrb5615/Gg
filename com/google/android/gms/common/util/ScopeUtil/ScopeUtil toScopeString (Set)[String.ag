@@ -1,0 +1,37 @@
+# Lcom/google/android/gms/common/util/ScopeUtil;->toScopeString(Ljava/util/Set;)[Ljava/lang/String; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:java.util.Set
+#
+# - return:java.lang.String[]
+
+toScopeString-BB@0x0 : [ toScopeString-BB@0x30 ]
+	0       (00000000) const-string         v0, "scopes can't be null."
+	1       (00000004) invoke-static        v3, v0, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	2       (0000000a) invoke-interface     v3, Ljava/util/Set;->size()I
+	3       (00000010) move-result          v1
+	4       (00000012) new-array            v1, v1, [Lcom/google/android/gms/common/api/Scope;
+	5       (00000016) invoke-interface     v3, v1, Ljava/util/Set;->toArray([Ljava/lang/Object;)[Ljava/lang/Object;
+	6       (0000001c) move-result-object   v3
+	7       (0000001e) check-cast           v3, [Lcom/google/android/gms/common/api/Scope;
+	8       (00000022) invoke-static        v3, v0, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	9       (00000028) array-length         v0, v3
+	10      (0000002a) new-array            v0, v0, [Ljava/lang/String;
+	11      (0000002e) const/4              v1, 0
+
+toScopeString-BB@0x30 : [ toScopeString-BB@0x36 toScopeString-BB@0x4c ]
+	12      (00000030) array-length         v2, v3
+	13      (00000032) if-ge                v1, v2, +00dh
+
+toScopeString-BB@0x36 : [ toScopeString-BB@0x30 ]
+	14      (00000036) aget-object          v2, v3, v1
+	15      (0000003a) invoke-virtual       v2, Lcom/google/android/gms/common/api/Scope;->getScopeUri()Ljava/lang/String;
+	16      (00000040) move-result-object   v2
+	17      (00000042) aput-object          v2, v0, v1
+	18      (00000046) add-int/lit8         v1, v1, 1
+	19      (0000004a) goto                 -dh
+
+toScopeString-BB@0x4c : 
+	20      (0000004c) return-object        v0
+

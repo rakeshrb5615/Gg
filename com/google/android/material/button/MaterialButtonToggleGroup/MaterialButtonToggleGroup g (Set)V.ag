@@ -1,0 +1,83 @@
+# Lcom/google/android/material/button/MaterialButtonToggleGroup;->g(Ljava/util/Set;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v7
+# - v8:java.util.Set
+#
+# - return:void
+
+g-BB@0x0 : [ g-BB@0x16 ]
+	0       (00000000) iget-object          v0, v7, Lcom/google/android/material/button/MaterialButtonToggleGroup;->v Ljava/util/HashSet;
+	1       (00000004) new-instance         v1, Ljava/util/HashSet;
+	2       (00000008) invoke-direct        v1, v8, Ljava/util/HashSet;-><init>(Ljava/util/Collection;)V
+	3       (0000000e) iput-object          v1, v7, Lcom/google/android/material/button/MaterialButtonToggleGroup;->v Ljava/util/HashSet;
+	4       (00000012) const/4              v1, 0
+	5       (00000014) move                 v2, v1
+
+g-BB@0x16 : [ g-BB@0x22 g-BB@0xd0 ]
+	6       (00000016) invoke-virtual       v7, Landroid/view/ViewGroup;->getChildCount()I
+	7       (0000001c) move-result          v3
+	8       (0000001e) if-ge                v2, v3, +059h
+
+g-BB@0x22 : [ g-BB@0x56 g-BB@0x6a ]
+	9       (00000022) invoke-virtual       v7, v2, Landroid/view/ViewGroup;->getChildAt(I)Landroid/view/View;
+	10      (00000028) move-result-object   v3
+	11      (0000002a) check-cast           v3, Lcom/google/android/material/button/MaterialButton;
+	12      (0000002e) invoke-virtual       v3, Landroid/view/View;->getId()I
+	13      (00000034) move-result          v3
+	14      (00000036) invoke-static        v3, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+	15      (0000003c) move-result-object   v4
+	16      (0000003e) invoke-interface     v8, v4, Ljava/util/Set;->contains(Ljava/lang/Object;)Z
+	17      (00000044) move-result          v4
+	18      (00000046) invoke-virtual       v7, v3, Landroid/view/View;->findViewById(I)Landroid/view/View;
+	19      (0000004c) move-result-object   v5
+	20      (0000004e) instance-of          v6, v5, Lcom/google/android/material/button/MaterialButton;
+	21      (00000052) if-eqz               v6, +00ch
+
+g-BB@0x56 : [ g-BB@0x6a ]
+	22      (00000056) const/4              v6, 1
+	23      (00000058) iput-boolean         v6, v7, Lcom/google/android/material/button/MaterialButtonToggleGroup;->r Z
+	24      (0000005c) check-cast           v5, Lcom/google/android/material/button/MaterialButton;
+	25      (00000060) invoke-virtual       v5, v4, Lcom/google/android/material/button/MaterialButton;->setChecked(Z)V
+	26      (00000066) iput-boolean         v1, v7, Lcom/google/android/material/button/MaterialButtonToggleGroup;->r Z
+
+g-BB@0x6a : [ g-BB@0x8e g-BB@0xca ]
+	27      (0000006a) invoke-static        v3, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+	28      (00000070) move-result-object   v4
+	29      (00000072) invoke-virtual       v0, v4, Ljava/util/HashSet;->contains(Ljava/lang/Object;)Z
+	30      (00000078) move-result          v4
+	31      (0000007a) invoke-static        v3, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+	32      (00000080) move-result-object   v5
+	33      (00000082) invoke-interface     v8, v5, Ljava/util/Set;->contains(Ljava/lang/Object;)Z
+	34      (00000088) move-result          v5
+	35      (0000008a) if-eq                v4, v5, +020h
+
+g-BB@0x8e : [ g-BB@0xaa ]
+	36      (0000008e) invoke-static        v3, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+	37      (00000094) move-result-object   v4
+	38      (00000096) invoke-interface     v8, v4, Ljava/util/Set;->contains(Ljava/lang/Object;)Z
+	39      (0000009c) move-result          v4
+	40      (0000009e) iget-object          v5, v7, Lcom/google/android/material/button/MaterialButtonToggleGroup;->q Ljava/util/LinkedHashSet;
+	41      (000000a2) invoke-virtual       v5, Ljava/util/AbstractCollection;->iterator()Ljava/util/Iterator;
+	42      (000000a8) move-result-object   v5
+
+g-BB@0xaa : [ g-BB@0xb6 g-BB@0xca ]
+	43      (000000aa) invoke-interface     v5, Ljava/util/Iterator;->hasNext()Z
+	44      (000000b0) move-result          v6
+	45      (000000b2) if-eqz               v6, +00ch
+
+g-BB@0xb6 : [ g-BB@0xaa ]
+	46      (000000b6) invoke-interface     v5, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	47      (000000bc) move-result-object   v6
+	48      (000000be) check-cast           v6, Li3/g;
+	49      (000000c2) invoke-interface     v6, v3, v4, Li3/g;->a(I Z)V
+	50      (000000c8) goto                 -fh
+
+g-BB@0xca : [ g-BB@0x16 ]
+	51      (000000ca) add-int/lit8         v2, v2, 1
+	52      (000000ce) goto                 -5ch
+
+g-BB@0xd0 : 
+	53      (000000d0) invoke-virtual       v7, Landroid/view/View;->invalidate()V
+	54      (000000d6) return-void          
+

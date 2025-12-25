@@ -1,0 +1,35 @@
+# Lcom/google/android/gms/tasks/Tasks;->whenAllSuccess(Ljava/util/concurrent/Executor; Ljava/util/Collection;)Lcom/google/android/gms/tasks/Task; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:java.util.concurrent.Executor
+# - v3:java.util.Collection
+#
+# - return:com.google.android.gms.tasks.Task
+
+whenAllSuccess-BB@0x0 : [ whenAllSuccess-BB@0x4 whenAllSuccess-BB@0x2e ]
+	0       (00000000) if-eqz               v3, +017h
+
+whenAllSuccess-BB@0x4 : [ whenAllSuccess-BB@0x10 whenAllSuccess-BB@0x12 ]
+	1       (00000004) invoke-interface     v3, Ljava/util/Collection;->isEmpty()Z
+	2       (0000000a) move-result          v0
+	3       (0000000c) if-eqz               v0, +003h
+
+whenAllSuccess-BB@0x10 : [ whenAllSuccess-BB@0x2e ]
+	4       (00000010) goto                 +fh
+
+whenAllSuccess-BB@0x12 : 
+	5       (00000012) invoke-static        v3, Lcom/google/android/gms/tasks/Tasks;->whenAll(Ljava/util/Collection;)Lcom/google/android/gms/tasks/Task;
+	6       (00000018) move-result-object   v0
+	7       (0000001a) new-instance         v1, Lcom/google/android/gms/tasks/zzaa;
+	8       (0000001e) invoke-direct        v1, v3, Lcom/google/android/gms/tasks/zzaa;-><init>(Ljava/util/Collection;)V
+	9       (00000024) invoke-virtual       v0, v2, v1, Lcom/google/android/gms/tasks/Task;->continueWith(Ljava/util/concurrent/Executor; Lcom/google/android/gms/tasks/Continuation;)Lcom/google/android/gms/tasks/Task;
+	10      (0000002a) move-result-object   v2
+	11      (0000002c) return-object        v2
+
+whenAllSuccess-BB@0x2e : 
+	12      (0000002e) sget-object          v2, Ljava/util/Collections;->EMPTY_LIST Ljava/util/List;
+	13      (00000032) invoke-static        v2, Lcom/google/android/gms/tasks/Tasks;->forResult(Ljava/lang/Object;)Lcom/google/android/gms/tasks/Task;
+	14      (00000038) move-result-object   v2
+	15      (0000003a) return-object        v2
+

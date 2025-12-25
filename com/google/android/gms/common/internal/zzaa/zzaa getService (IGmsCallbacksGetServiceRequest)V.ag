@@ -1,0 +1,74 @@
+# Lcom/google/android/gms/common/internal/zzaa;->getService(Lcom/google/android/gms/common/internal/IGmsCallbacks; Lcom/google/android/gms/common/internal/GetServiceRequest;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:com.google.android.gms.common.internal.IGmsCallbacks
+# - v5:com.google.android.gms.common.internal.GetServiceRequest
+#
+# - return:void
+
+getService-BB@0x0 : [ getService-BB@0x10 ]
+	0       (00000000) invoke-static        Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
+	1       (00000006) move-result-object   v0
+	2       (00000008) invoke-static        Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
+	3       (0000000e) move-result-object   v1
+
+getService-BB@0x10 : [ getService-BB@0x1e getService-BB@0x2c ]
+	4       (00000010) const-string         v2, "com.google.android.gms.common.internal.IGmsServiceBroker"
+	5       (00000014) invoke-virtual       v0, v2, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
+	6       (0000001a) if-eqz               v4, +009h
+	10:63
+	(Ljava/lang/Throwable; -> 28 getService-BB@0x28)
+
+getService-BB@0x1e : [ getService-BB@0x2e ]
+	7       (0000001e) invoke-interface     v4, Landroid/os/IInterface;->asBinder()Landroid/os/IBinder;
+	8       (00000024) move-result-object   v4
+	9       (00000026) goto                 +4h
+	10:63
+	(Ljava/lang/Throwable; -> 28 getService-BB@0x28)
+
+getService-BB@0x28 : [ getService-BB@0x72 ]
+	10      (00000028) move-exception       v4
+	11      (0000002a) goto                 +24h
+	10:63
+	(Ljava/lang/Throwable; -> 28 getService-BB@0x28)
+
+getService-BB@0x2c : [ getService-BB@0x2e ]
+	12      (0000002c) const/4              v4, 0
+	10:63
+	(Ljava/lang/Throwable; -> 28 getService-BB@0x28)
+
+getService-BB@0x2e : [ getService-BB@0x3a getService-BB@0x4a ]
+	13      (0000002e) invoke-virtual       v0, v4, Landroid/os/Parcel;->writeStrongBinder(Landroid/os/IBinder;)V
+	14      (00000034) const/4              v4, 0
+	15      (00000036) if-eqz               v5, +00ah
+	10:63
+	(Ljava/lang/Throwable; -> 28 getService-BB@0x28)
+
+getService-BB@0x3a : [ getService-BB@0x50 ]
+	16      (0000003a) const/4              v2, 1
+	17      (0000003c) invoke-virtual       v0, v2, Landroid/os/Parcel;->writeInt(I)V
+	18      (00000042) invoke-static        v5, v0, v4, Lcom/google/android/gms/common/internal/zzm;->zza(Lcom/google/android/gms/common/internal/GetServiceRequest; Landroid/os/Parcel; I)V
+	19      (00000048) goto                 +4h
+	10:63
+	(Ljava/lang/Throwable; -> 28 getService-BB@0x28)
+
+getService-BB@0x4a : [ getService-BB@0x50 ]
+	20      (0000004a) invoke-virtual       v0, v4, Landroid/os/Parcel;->writeInt(I)V
+	10:63
+	(Ljava/lang/Throwable; -> 28 getService-BB@0x28)
+
+getService-BB@0x50 : 
+	21      (00000050) iget-object          v5, v3, Lcom/google/android/gms/common/internal/zzaa;->zza Landroid/os/IBinder;
+	22      (00000054) const/16             v2, 46
+	23      (00000058) invoke-interface     v5, v2, v0, v1, v4, Landroid/os/IBinder;->transact(I Landroid/os/Parcel; Landroid/os/Parcel; I)Z
+	24      (0000005e) invoke-virtual       v1, Landroid/os/Parcel;->readException()V
+	25      (00000064) invoke-virtual       v1, Landroid/os/Parcel;->recycle()V
+	26      (0000006a) invoke-virtual       v0, Landroid/os/Parcel;->recycle()V
+	27      (00000070) return-void          
+
+getService-BB@0x72 : 
+	28      (00000072) invoke-virtual       v1, Landroid/os/Parcel;->recycle()V
+	29      (00000078) invoke-virtual       v0, Landroid/os/Parcel;->recycle()V
+	30      (0000007e) throw                v4
+

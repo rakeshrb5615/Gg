@@ -1,0 +1,38 @@
+# Lcom/google/android/gms/common/internal/safeparcel/SafeParcelWriter;->writeBigDecimal(Landroid/os/Parcel; I Ljava/math/BigDecimal; Z)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v-1
+# - v0:android.os.Parcel
+# - v1:int
+# - v2:java.math.BigDecimal
+# - v3:boolean
+#
+# - return:void
+
+writeBigDecimal-BB@0x0 : [ writeBigDecimal-BB@0x4 writeBigDecimal-BB@0x12 ]
+	0       (00000000) if-nez               v2, +009h
+
+writeBigDecimal-BB@0x4 : [ writeBigDecimal-BB@0x8 writeBigDecimal-BB@0x10 ]
+	1       (00000004) if-eqz               v3, +006h
+
+writeBigDecimal-BB@0x8 : [ writeBigDecimal-BB@0x10 ]
+	2       (00000008) const/4              v2, 0
+	3       (0000000a) invoke-static        v0, v1, v2, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelWriter;->zza(Landroid/os/Parcel; I I)V
+
+writeBigDecimal-BB@0x10 : 
+	4       (00000010) return-void          
+
+writeBigDecimal-BB@0x12 : 
+	5       (00000012) invoke-static        v0, v1, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelWriter;->zzb(Landroid/os/Parcel; I)I
+	6       (00000018) move-result          v1
+	7       (0000001a) invoke-virtual       v2, Ljava/math/BigDecimal;->unscaledValue()Ljava/math/BigInteger;
+	8       (00000020) move-result-object   v3
+	9       (00000022) invoke-virtual       v3, Ljava/math/BigInteger;->toByteArray()[B
+	10      (00000028) move-result-object   v3
+	11      (0000002a) invoke-virtual       v0, v3, Landroid/os/Parcel;->writeByteArray([B)V
+	12      (00000030) invoke-virtual       v2, Ljava/math/BigDecimal;->scale()I
+	13      (00000036) move-result          v2
+	14      (00000038) invoke-virtual       v0, v2, Landroid/os/Parcel;->writeInt(I)V
+	15      (0000003e) invoke-static        v0, v1, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelWriter;->zzc(Landroid/os/Parcel; I)V
+	16      (00000044) return-void          
+

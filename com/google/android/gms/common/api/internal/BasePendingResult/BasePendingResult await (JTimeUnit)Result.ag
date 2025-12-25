@@ -1,0 +1,63 @@
+# Lcom/google/android/gms/common/api/internal/BasePendingResult;->await(J Ljava/util/concurrent/TimeUnit;)Lcom/google/android/gms/common/api/Result; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:long
+# - v6:java.util.concurrent.TimeUnit
+#
+# - return:com.google.android.gms.common.api.Result
+
+await-BB@0x0 : [ await-BB@0xc await-BB@0x16 ]
+	0       (00000000) const-wide/16        v0, 0
+	1       (00000004) cmp-long             v0, v4, v0
+	2       (00000008) if-lez               v0, +007h
+
+await-BB@0xc : [ await-BB@0x16 ]
+	3       (0000000c) const-string         v0, "await must not be called on the UI thread when time is greater than zero."
+	4       (00000010) invoke-static        v0, Lcom/google/android/gms/common/internal/Preconditions;->checkNotMainThread(Ljava/lang/String;)V
+
+await-BB@0x16 : [ await-BB@0x30 await-BB@0x32 ]
+	5       (00000016) iget-boolean         v0, v3, Lcom/google/android/gms/common/api/internal/BasePendingResult;->zal Z
+	6       (0000001a) const/4              v1, 1
+	7       (0000001c) xor-int/2addr        v0, v1
+	8       (0000001e) const-string         v2, "Result has already been consumed."
+	9       (00000022) invoke-static        v0, v2, Lcom/google/android/gms/common/internal/Preconditions;->checkState(Z Ljava/lang/Object;)V
+	10      (00000028) iget-object          v0, v3, Lcom/google/android/gms/common/api/internal/BasePendingResult;->zap Lcom/google/android/gms/common/api/internal/zada;
+	11      (0000002c) if-nez               v0, +003h
+
+await-BB@0x30 : [ await-BB@0x34 ]
+	12      (00000030) goto                 +2h
+
+await-BB@0x32 : [ await-BB@0x34 ]
+	13      (00000032) const/4              v1, 0
+
+await-BB@0x34 : [ await-BB@0x3e ]
+	14      (00000034) const-string         v0, "Cannot await if then() has been called."
+	15      (00000038) invoke-static        v1, v0, Lcom/google/android/gms/common/internal/Preconditions;->checkState(Z Ljava/lang/Object;)V
+
+await-BB@0x3e : [ await-BB@0x4e await-BB@0x64 ]
+	16      (0000003e) iget-object          v0, v3, Lcom/google/android/gms/common/api/internal/BasePendingResult;->zaf Ljava/util/concurrent/CountDownLatch;
+	17      (00000042) invoke-virtual       v0, v4, v5, v6, Ljava/util/concurrent/CountDownLatch;->await(J Ljava/util/concurrent/TimeUnit;)Z
+	18      (00000048) move-result          v4
+	19      (0000004a) if-nez               v4, +00dh
+	3e:57
+	(Ljava/lang/InterruptedException; -> 5a await-BB@0x5a)
+
+await-BB@0x4e : [ await-BB@0x64 ]
+	20      (0000004e) sget-object          v4, Lcom/google/android/gms/common/api/Status;->RESULT_TIMEOUT Lcom/google/android/gms/common/api/Status;
+	21      (00000052) invoke-virtual       v3, v4, Lcom/google/android/gms/common/api/internal/BasePendingResult;->forceFailureUnlessReady(Lcom/google/android/gms/common/api/Status;)V
+	22      (00000058) goto                 +6h
+
+await-BB@0x5a : [ await-BB@0x64 ]
+	23      (0000005a) sget-object          v4, Lcom/google/android/gms/common/api/Status;->RESULT_INTERRUPTED Lcom/google/android/gms/common/api/Status;
+	24      (0000005e) invoke-virtual       v3, v4, Lcom/google/android/gms/common/api/internal/BasePendingResult;->forceFailureUnlessReady(Lcom/google/android/gms/common/api/Status;)V
+
+await-BB@0x64 : 
+	25      (00000064) invoke-virtual       v3, Lcom/google/android/gms/common/api/internal/BasePendingResult;->isReady()Z
+	26      (0000006a) move-result          v4
+	27      (0000006c) const-string         v5, "Result is not ready."
+	28      (00000070) invoke-static        v4, v5, Lcom/google/android/gms/common/internal/Preconditions;->checkState(Z Ljava/lang/Object;)V
+	29      (00000076) invoke-direct        v3, Lcom/google/android/gms/common/api/internal/BasePendingResult;->zaa()Lcom/google/android/gms/common/api/Result;
+	30      (0000007c) move-result-object   v4
+	31      (0000007e) return-object        v4
+

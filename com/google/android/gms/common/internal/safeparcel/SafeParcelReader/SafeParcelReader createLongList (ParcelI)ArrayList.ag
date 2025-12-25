@@ -1,0 +1,44 @@
+# Lcom/google/android/gms/common/internal/safeparcel/SafeParcelReader;->createLongList(Landroid/os/Parcel; I)Ljava/util/ArrayList; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:android.os.Parcel
+# - v7:int
+#
+# - return:java.util.ArrayList
+
+createLongList-BB@0x0 : [ createLongList-BB@0x14 createLongList-BB@0x18 ]
+	0       (00000000) invoke-static        v6, v7, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelReader;->readSize(Landroid/os/Parcel; I)I
+	1       (00000006) move-result          v7
+	2       (00000008) invoke-virtual       v6, Landroid/os/Parcel;->dataPosition()I
+	3       (0000000e) move-result          v0
+	4       (00000010) if-nez               v7, +004h
+
+createLongList-BB@0x14 : 
+	5       (00000014) const/4              v6, 0
+	6       (00000016) return-object        v6
+
+createLongList-BB@0x18 : [ createLongList-BB@0x2c ]
+	7       (00000018) new-instance         v1, Ljava/util/ArrayList;
+	8       (0000001c) invoke-direct        v1, Ljava/util/ArrayList;-><init>()V
+	9       (00000022) invoke-virtual       v6, Landroid/os/Parcel;->readInt()I
+	10      (00000028) move-result          v2
+	11      (0000002a) const/4              v3, 0
+
+createLongList-BB@0x2c : [ createLongList-BB@0x30 createLongList-BB@0x4c ]
+	12      (0000002c) if-ge                v3, v2, +010h
+
+createLongList-BB@0x30 : [ createLongList-BB@0x2c ]
+	13      (00000030) invoke-virtual       v6, Landroid/os/Parcel;->readLong()J
+	14      (00000036) move-result-wide     v4
+	15      (00000038) invoke-static        v4, v5, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+	16      (0000003e) move-result-object   v4
+	17      (00000040) invoke-virtual       v1, v4, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	18      (00000046) add-int/lit8         v3, v3, 1
+	19      (0000004a) goto                 -fh
+
+createLongList-BB@0x4c : 
+	20      (0000004c) add-int/2addr        v0, v7
+	21      (0000004e) invoke-virtual       v6, v0, Landroid/os/Parcel;->setDataPosition(I)V
+	22      (00000054) return-object        v1
+

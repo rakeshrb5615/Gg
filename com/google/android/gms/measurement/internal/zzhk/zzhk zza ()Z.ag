@@ -1,0 +1,62 @@
+# Lcom/google/android/gms/measurement/internal/zzhk;->zza()Z [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v4
+#
+# - return:boolean
+
+zza-BB@0x0 : [ zza-BB@0x2 ]
+	0       (00000000) const/4              v0, 0
+
+zza-BB@0x2 : [ zza-BB@0x1a zza-BB@0x3a ]
+	1       (00000002) iget-object          v1, v4, Lcom/google/android/gms/measurement/internal/zzhk;->zza Lcom/google/android/gms/measurement/internal/zzic;
+	2       (00000006) invoke-virtual       v1, Lcom/google/android/gms/measurement/internal/zzic;->zzaY()Landroid/content/Context;
+	3       (0000000c) move-result-object   v2
+	4       (0000000e) invoke-static        v2, Lcom/google/android/gms/common/wrappers/Wrappers;->packageManager(Landroid/content/Context;)Lcom/google/android/gms/common/wrappers/PackageManagerWrapper;
+	5       (00000014) move-result-object   v2
+	6       (00000016) if-nez               v2, +012h
+	2:4d
+	(Ljava/lang/Exception; -> 36 zza-BB@0x36)
+
+zza-BB@0x1a : 
+	7       (0000001a) invoke-virtual       v1, Lcom/google/android/gms/measurement/internal/zzic;->zzaV()Lcom/google/android/gms/measurement/internal/zzgu;
+	8       (00000020) move-result-object   v1
+	9       (00000022) invoke-virtual       v1, Lcom/google/android/gms/measurement/internal/zzgu;->zzk()Lcom/google/android/gms/measurement/internal/zzgs;
+	10      (00000028) move-result-object   v1
+	11      (0000002a) const-string         v2, "Failed to get PackageManager for Install Referrer Play Store compatibility check"
+	12      (0000002e) invoke-virtual       v1, v2, Lcom/google/android/gms/measurement/internal/zzgs;->zza(Ljava/lang/String;)V
+	13      (00000034) return               v0
+	2:4d
+	(Ljava/lang/Exception; -> 36 zza-BB@0x36)
+
+zza-BB@0x36 : [ zza-BB@0x5c ]
+	14      (00000036) move-exception       v1
+	15      (00000038) goto                 +12h
+	2:4d
+	(Ljava/lang/Exception; -> 36 zza-BB@0x36)
+
+zza-BB@0x3a : [ zza-BB@0x58 zza-BB@0x5a ]
+	16      (0000003a) const-string         v1, "com.android.vending"
+	17      (0000003e) const/16             v3, 128
+	18      (00000042) invoke-virtual       v2, v1, v3, Lcom/google/android/gms/common/wrappers/PackageManagerWrapper;->getPackageInfo(Ljava/lang/String; I)Landroid/content/pm/PackageInfo;
+	19      (00000048) move-result-object   v1
+	20      (0000004a) iget                 v1, v1, Landroid/content/pm/PackageInfo;->versionCode I
+	21      (0000004e) const                v2, 80837300
+	22      (00000054) if-lt                v1, v2, +003h
+
+zza-BB@0x58 : [ zza-BB@0x5a ]
+	23      (00000058) const/4              v0, 1
+
+zza-BB@0x5a : 
+	24      (0000005a) return               v0
+
+zza-BB@0x5c : 
+	25      (0000005c) iget-object          v2, v4, Lcom/google/android/gms/measurement/internal/zzhk;->zza Lcom/google/android/gms/measurement/internal/zzic;
+	26      (00000060) invoke-virtual       v2, Lcom/google/android/gms/measurement/internal/zzic;->zzaV()Lcom/google/android/gms/measurement/internal/zzgu;
+	27      (00000066) move-result-object   v2
+	28      (00000068) invoke-virtual       v2, Lcom/google/android/gms/measurement/internal/zzgu;->zzk()Lcom/google/android/gms/measurement/internal/zzgs;
+	29      (0000006e) move-result-object   v2
+	30      (00000070) const-string         v3, "Failed to retrieve Play Store version for Install Referrer"
+	31      (00000074) invoke-virtual       v2, v3, v1, Lcom/google/android/gms/measurement/internal/zzgs;->zzb(Ljava/lang/String; Ljava/lang/Object;)V
+	32      (0000007a) return               v0
+

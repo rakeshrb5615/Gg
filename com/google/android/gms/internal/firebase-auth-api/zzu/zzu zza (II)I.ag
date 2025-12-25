@@ -1,0 +1,62 @@
+# Lcom/google/android/gms/internal/firebase-auth-api/zzu;->zza(I I)I [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:int
+# - v3:int
+#
+# - return:int
+
+zza-BB@0x0 : [ zza-BB@0x4 zza-BB@0xc ]
+	0       (00000000) if-ltz               v2, +006h
+
+zza-BB@0x4 : [ zza-BB@0x8 zza-BB@0xa ]
+	1       (00000004) if-lt                v2, v3, +003h
+
+zza-BB@0x8 : [ zza-BB@0xc ]
+	2       (00000008) goto                 +2h
+
+zza-BB@0xa : 
+	3       (0000000a) return               v2
+
+zza-BB@0xc : [ zza-BB@0x18 zza-BB@0x5a ]
+	4       (0000000c) new-instance         v0, Ljava/lang/IndexOutOfBoundsException;
+	5       (00000010) const-string         v1, "index"
+	6       (00000014) if-ltz               v2, +023h
+
+zza-BB@0x18 : [ zza-BB@0x1c zza-BB@0x34 ]
+	7       (00000018) if-gez               v3, +00eh
+
+zza-BB@0x1c : 
+	8       (0000001c) new-instance         v2, Ljava/lang/IllegalArgumentException;
+	9       (00000020) const-string         v0, "negative size: "
+	10      (00000024) invoke-static        v3, v0, Lg2/g;->c(I Ljava/lang/String;)Ljava/lang/String;
+	11      (0000002a) move-result-object   v3
+	12      (0000002c) invoke-direct        v2, v3, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	13      (00000032) throw                v2
+
+zza-BB@0x34 : [ zza-BB@0x76 ]
+	14      (00000034) invoke-static        v2, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+	15      (0000003a) move-result-object   v2
+	16      (0000003c) invoke-static        v3, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+	17      (00000042) move-result-object   v3
+	18      (00000044) filled-new-array     v1, v2, v3, [Ljava/lang/Object;
+	19      (0000004a) move-result-object   v2
+	20      (0000004c) const-string         v3, "%s (%s) must be less than size (%s)"
+	21      (00000050) invoke-static        v3, v2, Lcom/google/android/gms/internal/firebase-auth-api/zzac;->zza(Ljava/lang/String; [Ljava/lang/Object;)Ljava/lang/String;
+	22      (00000056) move-result-object   v2
+	23      (00000058) goto                 +fh
+
+zza-BB@0x5a : [ zza-BB@0x76 ]
+	24      (0000005a) invoke-static        v2, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+	25      (00000060) move-result-object   v2
+	26      (00000062) filled-new-array     v1, v2, [Ljava/lang/Object;
+	27      (00000068) move-result-object   v2
+	28      (0000006a) const-string         v3, "%s (%s) must not be negative"
+	29      (0000006e) invoke-static        v3, v2, Lcom/google/android/gms/internal/firebase-auth-api/zzac;->zza(Ljava/lang/String; [Ljava/lang/Object;)Ljava/lang/String;
+	30      (00000074) move-result-object   v2
+
+zza-BB@0x76 : 
+	31      (00000076) invoke-direct        v0, v2, Ljava/lang/IndexOutOfBoundsException;-><init>(Ljava/lang/String;)V
+	32      (0000007c) throw                v0
+

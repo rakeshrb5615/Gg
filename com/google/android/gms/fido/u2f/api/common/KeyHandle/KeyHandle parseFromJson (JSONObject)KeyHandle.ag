@@ -1,0 +1,73 @@
+# Lcom/google/android/gms/fido/u2f/api/common/KeyHandle;->parseFromJson(Lorg/json/JSONObject;)Lcom/google/android/gms/fido/u2f/api/common/KeyHandle; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:org.json.JSONObject
+#
+# - return:com.google.android.gms.fido.u2f.api.common.KeyHandle
+
+parseFromJson-BB@0x0 : [ parseFromJson-BB@0x12 parseFromJson-BB@0x1c ]
+	0       (00000000) const-string         v0, "version"
+	1       (00000004) invoke-virtual       v5, v0, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
+	2       (0000000a) move-result          v1
+	3       (0000000c) const/4              v2, 0
+	4       (0000000e) if-eqz               v1, +007h
+
+parseFromJson-BB@0x12 : [ parseFromJson-BB@0x1e ]
+	5       (00000012) invoke-virtual       v5, v0, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
+	6       (00000018) move-result-object   v0
+	7       (0000001a) goto                 +2h
+
+parseFromJson-BB@0x1c : [ parseFromJson-BB@0x1e ]
+	8       (0000001c) move-object          v0, v2
+
+parseFromJson-BB@0x1e : [ parseFromJson-BB@0x36 ]
+	9       (0000001e) invoke-static        v0, Lcom/google/android/gms/fido/u2f/api/common/ProtocolVersion;->fromString(Ljava/lang/String;)Lcom/google/android/gms/fido/u2f/api/common/ProtocolVersion;
+	10      (00000024) move-result-object   v0
+	11      (00000026) const-string         v1, "keyHandle"
+	12      (0000002a) invoke-virtual       v5, v1, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
+	13      (00000030) move-result-object   v1
+	14      (00000032) const/16             v3, 8
+	1e:25
+	(Lcom/google/android/gms/fido/u2f/api/common/ProtocolVersion$UnsupportedProtocolException; -> 82 parseFromJson-BB@0x82)
+
+parseFromJson-BB@0x36 : [ parseFromJson-BB@0x4e parseFromJson-BB@0x50 ]
+	15      (00000036) invoke-static        v1, v3, Landroid/util/Base64;->decode(Ljava/lang/String; I)[B
+	16      (0000003c) move-result-object   v1
+	17      (0000003e) const-string         v3, "transports"
+	18      (00000042) invoke-virtual       v5, v3, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
+	19      (00000048) move-result          v4
+	20      (0000004a) if-nez               v4, +003h
+	36:3d
+	(Ljava/lang/IllegalArgumentException; -> 6c parseFromJson-BB@0x6c)
+
+parseFromJson-BB@0x4e : [ parseFromJson-BB@0x60 ]
+	21      (0000004e) goto                 +9h
+
+parseFromJson-BB@0x50 : [ parseFromJson-BB@0x60 ]
+	22      (00000050) invoke-virtual       v5, v3, Lorg/json/JSONObject;->getJSONArray(Ljava/lang/String;)Lorg/json/JSONArray;
+	23      (00000056) move-result-object   v5
+	24      (00000058) invoke-static        v5, Lcom/google/android/gms/fido/common/Transport;->parseTransports(Lorg/json/JSONArray;)Ljava/util/List;
+	25      (0000005e) move-result-object   v2
+
+parseFromJson-BB@0x60 : 
+	26      (00000060) new-instance         v5, Lcom/google/android/gms/fido/u2f/api/common/KeyHandle;
+	27      (00000064) invoke-direct        v5, v1, v0, v2, Lcom/google/android/gms/fido/u2f/api/common/KeyHandle;-><init>([B Lcom/google/android/gms/fido/u2f/api/common/ProtocolVersion; Ljava/util/List;)V
+	28      (0000006a) return-object        v5
+
+parseFromJson-BB@0x6c : 
+	29      (0000006c) move-exception       v5
+	30      (0000006e) new-instance         v0, Lorg/json/JSONException;
+	31      (00000072) invoke-virtual       v5, Ljava/lang/Object;->toString()Ljava/lang/String;
+	32      (00000078) move-result-object   v5
+	33      (0000007a) invoke-direct        v0, v5, Lorg/json/JSONException;-><init>(Ljava/lang/String;)V
+	34      (00000080) throw                v0
+
+parseFromJson-BB@0x82 : 
+	35      (00000082) move-exception       v5
+	36      (00000084) new-instance         v0, Lorg/json/JSONException;
+	37      (00000088) invoke-virtual       v5, Ljava/lang/Object;->toString()Ljava/lang/String;
+	38      (0000008e) move-result-object   v5
+	39      (00000090) invoke-direct        v0, v5, Lorg/json/JSONException;-><init>(Ljava/lang/String;)V
+	40      (00000096) throw                v0
+

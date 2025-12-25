@@ -1,0 +1,78 @@
+# Lcom/google/android/gms/internal/firebase-auth-api/zzhw;->zza(Ljava/nio/ByteBuffer; [B [B)[B [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:java.nio.ByteBuffer
+# - v6:byte[]
+# - v7:byte[]
+#
+# - return:byte[]
+
+zza-BB@0x0 : [ zza-BB@0x10 zza-BB@0xb0 ]
+	0       (00000000) invoke-virtual       v5, Ljava/nio/Buffer;->remaining()I
+	1       (00000006) move-result          v0
+	2       (00000008) const/16             v1, 16
+	3       (0000000c) if-lt                v0, v1, +052h
+
+zza-BB@0x10 : [ zza-BB@0x4c zza-BB@0x52 ]
+	4       (00000010) invoke-virtual       v5, Ljava/nio/Buffer;->position()I
+	5       (00000016) move-result          v0
+	6       (00000018) new-array            v2, v1, [B
+	7       (0000001c) invoke-virtual       v5, Ljava/nio/Buffer;->limit()I
+	8       (00000022) move-result          v3
+	9       (00000024) sub-int/2addr        v3, v1
+	10      (00000026) invoke-virtual       v5, v3, Ljava/nio/ByteBuffer;->position(I)Ljava/nio/Buffer;
+	11      (0000002c) invoke-virtual       v5, v2, Ljava/nio/ByteBuffer;->get([B)Ljava/nio/ByteBuffer;
+	12      (00000032) invoke-virtual       v5, v0, Ljava/nio/ByteBuffer;->position(I)Ljava/nio/Buffer;
+	13      (00000038) invoke-virtual       v5, Ljava/nio/Buffer;->limit()I
+	14      (0000003e) move-result          v3
+	15      (00000040) sub-int/2addr        v3, v1
+	16      (00000042) invoke-virtual       v5, v3, Ljava/nio/ByteBuffer;->limit(I)Ljava/nio/Buffer;
+	17      (00000048) if-nez               v7, +005h
+
+zza-BB@0x4c : [ zza-BB@0x52 ]
+	18      (0000004c) const/4              v7, 0
+	19      (0000004e) new-array            v7, v7, [B
+
+zza-BB@0x52 : [ zza-BB@0x76 zza-BB@0x8a ]
+	20      (00000052) invoke-direct        v4, v6, Lcom/google/android/gms/internal/firebase-auth-api/zzhw;->zza([B)[B
+	21      (00000058) move-result-object   v1
+	22      (0000005a) invoke-static        v7, v5, Lcom/google/android/gms/internal/firebase-auth-api/zzhw;->zza([B Ljava/nio/ByteBuffer;)[B
+	23      (00000060) move-result-object   v7
+	24      (00000062) invoke-static        v1, v7, Lcom/google/android/gms/internal/firebase-auth-api/zzic;->zza([B [B)[B
+	25      (00000068) move-result-object   v7
+	26      (0000006a) invoke-static        v7, v2, Ljava/security/MessageDigest;->isEqual([B [B)Z
+	27      (00000070) move-result          v7
+	28      (00000072) if-eqz               v7, +00ch
+	52:71
+	(Ljava/security/GeneralSecurityException; -> 9a zza-BB@0x9a)
+
+zza-BB@0x76 : 
+	29      (00000076) invoke-virtual       v5, v0, Ljava/nio/ByteBuffer;->position(I)Ljava/nio/Buffer;
+	30      (0000007c) iget-object          v7, v4, Lcom/google/android/gms/internal/firebase-auth-api/zzhw;->zzb Lcom/google/android/gms/internal/firebase-auth-api/zzhu;
+	31      (00000080) invoke-virtual       v7, v6, v5, Lcom/google/android/gms/internal/firebase-auth-api/zzhu;->zza([B Ljava/nio/ByteBuffer;)[B
+	32      (00000086) move-result-object   v5
+	33      (00000088) return-object        v5
+
+zza-BB@0x8a : 
+	34      (0000008a) new-instance         v5, Ljava/security/GeneralSecurityException;
+	35      (0000008e) const-string         v6, "invalid MAC"
+	36      (00000092) invoke-direct        v5, v6, Ljava/security/GeneralSecurityException;-><init>(Ljava/lang/String;)V
+	37      (00000098) throw                v5
+	8a:99
+	(Ljava/security/GeneralSecurityException; -> 9a zza-BB@0x9a)
+
+zza-BB@0x9a : 
+	38      (0000009a) move-exception       v5
+	39      (0000009c) new-instance         v6, Ljavax/crypto/AEADBadTagException;
+	40      (000000a0) invoke-virtual       v5, Ljava/lang/Object;->toString()Ljava/lang/String;
+	41      (000000a6) move-result-object   v5
+	42      (000000a8) invoke-direct        v6, v5, Ljavax/crypto/AEADBadTagException;-><init>(Ljava/lang/String;)V
+	43      (000000ae) throw                v6
+
+zza-BB@0xb0 : 
+	44      (000000b0) new-instance         v5, Ljava/security/GeneralSecurityException;
+	45      (000000b4) const-string         v6, "ciphertext too short"
+	46      (000000b8) invoke-direct        v5, v6, Ljava/security/GeneralSecurityException;-><init>(Ljava/lang/String;)V
+	47      (000000be) throw                v5
+

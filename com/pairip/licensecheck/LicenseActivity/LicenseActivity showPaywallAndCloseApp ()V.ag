@@ -1,0 +1,27 @@
+# Lcom/pairip/licensecheck/LicenseActivity;->showPaywallAndCloseApp()V [access_flags=private]
+#
+# Parameters:
+# local registers: v0...v2
+#
+# - return:void
+
+showPaywallAndCloseApp-BB@0x0 : [ showPaywallAndCloseApp-BB@0x1c showPaywallAndCloseApp-BB@0x28 ]
+	0       (00000000) invoke-virtual       v2, Lcom/pairip/licensecheck/LicenseActivity;->getIntent()Landroid/content/Intent;
+	1       (00000006) move-result-object   v0
+	2       (00000008) const-string         v1, "paywallintent"
+	3       (0000000c) invoke-virtual       v0, v1, Landroid/content/Intent;->getParcelableExtra(Ljava/lang/String;)Landroid/os/Parcelable;
+	4       (00000012) move-result-object   v0
+	5       (00000014) check-cast           v0, Landroid/app/PendingIntent;
+	6       (00000018) if-nez               v0, +008h
+
+showPaywallAndCloseApp-BB@0x1c : 
+	7       (0000001c) const-string         v0, "Paywall intent is not provided."
+	8       (00000020) invoke-direct        v2, v0, Lcom/pairip/licensecheck/LicenseActivity;->logAndShowErrorDialog(Ljava/lang/String;)V
+	9       (00000026) return-void          
+
+showPaywallAndCloseApp-BB@0x28 : 
+	10      (00000028) new-instance         v1, Lcom/pairip/licensecheck/LicenseActivity$$ExternalSyntheticLambda0;
+	11      (0000002c) invoke-direct        v1, v2, v0, Lcom/pairip/licensecheck/LicenseActivity$$ExternalSyntheticLambda0;-><init>(Lcom/pairip/licensecheck/LicenseActivity; Landroid/app/PendingIntent;)V
+	12      (00000032) invoke-virtual       v2, v1, Lcom/pairip/licensecheck/LicenseActivity;->runOnUiThread(Ljava/lang/Runnable;)V
+	13      (00000038) return-void          
+

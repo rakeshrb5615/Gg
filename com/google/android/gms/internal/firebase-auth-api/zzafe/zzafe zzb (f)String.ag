@@ -1,0 +1,80 @@
+# Lcom/google/android/gms/internal/firebase-auth-api/zzafe;->zzb(Lq4/f;)Ljava/lang/String; [access_flags=private static]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:q4.f
+#
+# - return:java.lang.String
+
+zzb-BB@0x0 : [ zzb-BB@0x1e zzb-BB@0xaa ]
+	0       (00000000) invoke-static        v4, Lcom/google/firebase/auth/FirebaseAuth;->getInstance(Lq4/f;)Lcom/google/firebase/auth/FirebaseAuth;
+	1       (00000006) move-result-object   v4
+	2       (00000008) iget-object          v4, v4, Lcom/google/firebase/auth/FirebaseAuth;->q Lc6/b;
+	3       (0000000c) invoke-interface     v4, Lc6/b;->get()Ljava/lang/Object;
+	4       (00000012) move-result-object   v4
+	5       (00000014) check-cast           v4, La6/f;
+	6       (00000018) const/4              v0, 0
+	7       (0000001a) if-eqz               v4, +048h
+
+zzb-BB@0x1e : [ zzb-BB@0x42 zzb-BB@0x50 ]
+	8       (0000001e) check-cast           v4, La6/d;
+	9       (00000022) iget-object          v1, v4, La6/d;->b Landroid/content/Context;
+	10      (00000026) const-class          v2, Landroid/os/UserManager;
+	11      (0000002a) invoke-virtual       v1, v2, Landroid/content/Context;->getSystemService(Ljava/lang/Class;)Ljava/lang/Object;
+	12      (00000030) move-result-object   v1
+	13      (00000032) check-cast           v1, Landroid/os/UserManager;
+	14      (00000036) invoke-virtual       v1, Landroid/os/UserManager;->isUserUnlocked()Z
+	15      (0000003c) move-result          v1
+	16      (0000003e) if-nez               v1, +009h
+	1e:73
+	(Ljava/util/concurrent/ExecutionException; -> 7a zzb-BB@0x7a)
+	(Ljava/lang/InterruptedException; -> 76 zzb-BB@0x76)
+
+zzb-BB@0x42 : [ zzb-BB@0x68 ]
+	17      (00000042) const-string         v4, ""
+	18      (00000046) invoke-static        v4, Lcom/google/android/gms/tasks/Tasks;->forResult(Ljava/lang/Object;)Lcom/google/android/gms/tasks/Task;
+	19      (0000004c) move-result-object   v4
+	20      (0000004e) goto                 +dh
+	1e:73
+	(Ljava/util/concurrent/ExecutionException; -> 7a zzb-BB@0x7a)
+	(Ljava/lang/InterruptedException; -> 76 zzb-BB@0x76)
+
+zzb-BB@0x50 : [ zzb-BB@0x68 ]
+	21      (00000050) iget-object          v1, v4, La6/d;->e Ljava/util/concurrent/Executor;
+	22      (00000054) new-instance         v2, La6/c;
+	23      (00000058) const/4              v3, 0
+	24      (0000005a) invoke-direct        v2, v4, v3, La6/c;-><init>(La6/d; I)V
+	25      (00000060) invoke-static        v1, v2, Lcom/google/android/gms/tasks/Tasks;->call(Ljava/util/concurrent/Executor; Ljava/util/concurrent/Callable;)Lcom/google/android/gms/tasks/Task;
+	26      (00000066) move-result-object   v4
+	1e:73
+	(Ljava/util/concurrent/ExecutionException; -> 7a zzb-BB@0x7a)
+	(Ljava/lang/InterruptedException; -> 76 zzb-BB@0x76)
+
+zzb-BB@0x68 : 
+	27      (00000068) invoke-static        v4, Lcom/google/android/gms/tasks/Tasks;->await(Lcom/google/android/gms/tasks/Task;)Ljava/lang/Object;
+	28      (0000006e) move-result-object   v4
+	29      (00000070) check-cast           v4, Ljava/lang/String;
+	30      (00000074) return-object        v4
+
+zzb-BB@0x76 : [ zzb-BB@0x7c ]
+	31      (00000076) move-exception       v4
+	32      (00000078) goto                 +2h
+
+zzb-BB@0x7a : [ zzb-BB@0x7c ]
+	33      (0000007a) move-exception       v4
+
+zzb-BB@0x7c : [ zzb-BB@0xaa ]
+	34      (0000007c) invoke-virtual       v4, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+	35      (00000082) move-result-object   v4
+	36      (00000084) new-instance         v1, Ljava/lang/StringBuilder;
+	37      (00000088) const-string         v2, "Unable to get heartbeats: "
+	38      (0000008c) invoke-direct        v1, v2, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	39      (00000092) invoke-virtual       v1, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	40      (00000098) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	41      (0000009e) move-result-object   v4
+	42      (000000a0) const-string         v1, "LocalRequestInterceptor"
+	43      (000000a4) invoke-static        v1, v4, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+
+zzb-BB@0xaa : 
+	44      (000000aa) return-object        v0
+

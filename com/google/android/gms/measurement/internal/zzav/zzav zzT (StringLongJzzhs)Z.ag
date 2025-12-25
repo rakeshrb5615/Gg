@@ -1,0 +1,92 @@
+# Lcom/google/android/gms/measurement/internal/zzav;->zzT(Ljava/lang/String; Ljava/lang/Long; J Lcom/google/android/gms/internal/measurement/zzhs;)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:java.lang.String
+# - v8:java.lang.Long
+# - v9:long
+# - v10:com.google.android.gms.internal.measurement.zzhs
+#
+# - return:boolean
+
+zzT-BB@0x0 : [ zzT-BB@0x9a ]
+	0       (00000000) invoke-virtual       v5, Lcom/google/android/gms/measurement/internal/zzje;->zzg()V
+	1       (00000006) invoke-virtual       v5, Lcom/google/android/gms/measurement/internal/zzos;->zzaw()V
+	2       (0000000c) invoke-static        v10, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;
+	3       (00000012) invoke-static        v6, Lcom/google/android/gms/common/internal/Preconditions;->checkNotEmpty(Ljava/lang/String;)Ljava/lang/String;
+	4       (00000018) invoke-static        v7, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;
+	5       (0000001e) iget-object          v0, v5, Lcom/google/android/gms/measurement/internal/zzje;->zzu Lcom/google/android/gms/measurement/internal/zzic;
+	6       (00000022) invoke-virtual       v10, Lcom/google/android/gms/internal/measurement/zzks;->zzcc()[B
+	7       (00000028) move-result-object   v10
+	8       (0000002a) invoke-virtual       v0, Lcom/google/android/gms/measurement/internal/zzic;->zzaV()Lcom/google/android/gms/measurement/internal/zzgu;
+	9       (00000030) move-result-object   v1
+	10      (00000032) invoke-virtual       v1, Lcom/google/android/gms/measurement/internal/zzgu;->zzk()Lcom/google/android/gms/measurement/internal/zzgs;
+	11      (00000038) move-result-object   v1
+	12      (0000003a) invoke-virtual       v0, Lcom/google/android/gms/measurement/internal/zzic;->zzl()Lcom/google/android/gms/measurement/internal/zzgn;
+	13      (00000040) move-result-object   v2
+	14      (00000042) invoke-virtual       v2, v6, Lcom/google/android/gms/measurement/internal/zzgn;->zza(Ljava/lang/String;)Ljava/lang/String;
+	15      (00000048) move-result-object   v2
+	16      (0000004a) array-length         v3, v10
+	17      (0000004c) invoke-static        v3, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+	18      (00000052) move-result-object   v3
+	19      (00000054) const-string         v4, "Saving complex main event, appId, data size"
+	20      (00000058) invoke-virtual       v1, v4, v2, v3, Lcom/google/android/gms/measurement/internal/zzgs;->zzc(Ljava/lang/String; Ljava/lang/Object; Ljava/lang/Object;)V
+	21      (0000005e) new-instance         v1, Landroid/content/ContentValues;
+	22      (00000062) invoke-direct        v1, Landroid/content/ContentValues;-><init>()V
+	23      (00000068) const-string         v2, "app_id"
+	24      (0000006c) invoke-virtual       v1, v2, v6, Landroid/content/ContentValues;->put(Ljava/lang/String; Ljava/lang/String;)V
+	25      (00000072) const-string         v2, "event_id"
+	26      (00000076) invoke-virtual       v1, v2, v7, Landroid/content/ContentValues;->put(Ljava/lang/String; Ljava/lang/Long;)V
+	27      (0000007c) const-string         v7, "children_to_process"
+	28      (00000080) invoke-static        v8, v9, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+	29      (00000086) move-result-object   v8
+	30      (00000088) invoke-virtual       v1, v7, v8, Landroid/content/ContentValues;->put(Ljava/lang/String; Ljava/lang/Long;)V
+	31      (0000008e) const-string         v7, "main_event"
+	32      (00000092) invoke-virtual       v1, v7, v10, Landroid/content/ContentValues;->put(Ljava/lang/String; [B)V
+	33      (00000098) const/4              v7, 0
+
+zzT-BB@0x9a : [ zzT-BB@0xbe zzT-BB@0xe6 ]
+	34      (0000009a) invoke-virtual       v5, Lcom/google/android/gms/measurement/internal/zzav;->zze()Landroid/database/sqlite/SQLiteDatabase;
+	35      (000000a0) move-result-object   v8
+	36      (000000a2) const-string         v9, "main_event_params"
+	37      (000000a6) const/4              v10, 0
+	38      (000000a8) const/4              v2, 5
+	39      (000000aa) invoke-virtual       v8, v9, v10, v1, v2, Landroid/database/sqlite/SQLiteDatabase;->insertWithOnConflict(Ljava/lang/String; Ljava/lang/String; Landroid/content/ContentValues; I)J
+	40      (000000b0) move-result-wide     v8
+	41      (000000b2) const-wide/16        v1, -1
+	42      (000000b6) cmp-long             v8, v8, v1
+	43      (000000ba) if-nez               v8, +016h
+	9a:df
+	(Landroid/database/sqlite/SQLiteException; -> e2 zzT-BB@0xe2)
+
+zzT-BB@0xbe : 
+	44      (000000be) invoke-virtual       v0, Lcom/google/android/gms/measurement/internal/zzic;->zzaV()Lcom/google/android/gms/measurement/internal/zzgu;
+	45      (000000c4) move-result-object   v8
+	46      (000000c6) invoke-virtual       v8, Lcom/google/android/gms/measurement/internal/zzgu;->zzb()Lcom/google/android/gms/measurement/internal/zzgs;
+	47      (000000cc) move-result-object   v8
+	48      (000000ce) const-string         v9, "Failed to insert complex main event (got -1). appId"
+	49      (000000d2) invoke-static        v6, Lcom/google/android/gms/measurement/internal/zzgu;->zzl(Ljava/lang/String;)Ljava/lang/Object;
+	50      (000000d8) move-result-object   v10
+	51      (000000da) invoke-virtual       v8, v9, v10, Lcom/google/android/gms/measurement/internal/zzgs;->zzb(Ljava/lang/String; Ljava/lang/Object;)V
+	52      (000000e0) return               v7
+
+zzT-BB@0xe2 : [ zzT-BB@0xea ]
+	53      (000000e2) move-exception       v8
+	54      (000000e4) goto                 +3h
+
+zzT-BB@0xe6 : 
+	55      (000000e6) const/4              v6, 1
+	56      (000000e8) return               v6
+
+zzT-BB@0xea : 
+	57      (000000ea) iget-object          v9, v5, Lcom/google/android/gms/measurement/internal/zzje;->zzu Lcom/google/android/gms/measurement/internal/zzic;
+	58      (000000ee) invoke-virtual       v9, Lcom/google/android/gms/measurement/internal/zzic;->zzaV()Lcom/google/android/gms/measurement/internal/zzgu;
+	59      (000000f4) move-result-object   v9
+	60      (000000f6) invoke-virtual       v9, Lcom/google/android/gms/measurement/internal/zzgu;->zzb()Lcom/google/android/gms/measurement/internal/zzgs;
+	61      (000000fc) move-result-object   v9
+	62      (000000fe) invoke-static        v6, Lcom/google/android/gms/measurement/internal/zzgu;->zzl(Ljava/lang/String;)Ljava/lang/Object;
+	63      (00000104) move-result-object   v6
+	64      (00000106) const-string         v10, "Error storing complex main event. appId"
+	65      (0000010a) invoke-virtual       v9, v10, v6, v8, Lcom/google/android/gms/measurement/internal/zzgs;->zzc(Ljava/lang/String; Ljava/lang/Object; Ljava/lang/Object;)V
+	66      (00000110) return               v7
+

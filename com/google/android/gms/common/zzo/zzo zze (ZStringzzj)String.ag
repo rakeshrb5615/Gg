@@ -1,0 +1,57 @@
+# Lcom/google/android/gms/common/zzo;->zze(Z Ljava/lang/String; Lcom/google/android/gms/common/zzj;)Ljava/lang/String; [access_flags=public static synthetic]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:boolean
+# - v3:java.lang.String
+# - v4:com.google.android.gms.common.zzj
+#
+# - return:java.lang.String
+
+zze-BB@0x0 : [ zze-BB@0x4 zze-BB@0x1e ]
+	0       (00000000) if-nez               v2, +00fh
+
+zze-BB@0x4 : [ zze-BB@0x18 zze-BB@0x1e ]
+	1       (00000004) const/4              v0, 1
+	2       (00000006) const/4              v1, 0
+	3       (00000008) invoke-static        v3, v4, v0, v1, Lcom/google/android/gms/common/zzo;->zzf(Ljava/lang/String; Lcom/google/android/gms/common/zzj; Z Z)Lcom/google/android/gms/common/zzy;
+	4       (0000000e) move-result-object   v0
+	5       (00000010) iget-boolean         v0, v0, Lcom/google/android/gms/common/zzy;->zza Z
+	6       (00000014) if-eqz               v0, +005h
+
+zze-BB@0x18 : [ zze-BB@0x22 ]
+	7       (00000018) const-string         v0, "debug cert rejected"
+	8       (0000001c) goto                 +3h
+
+zze-BB@0x1e : [ zze-BB@0x22 ]
+	9       (0000001e) const-string         v0, "not allowed"
+
+zze-BB@0x22 : 
+	10      (00000022) const-string         v1, "SHA-256"
+	11      (00000026) invoke-static        v1, Lcom/google/android/gms/common/util/AndroidUtilsLight;->zza(Ljava/lang/String;)Ljava/security/MessageDigest;
+	12      (0000002c) move-result-object   v1
+	13      (0000002e) invoke-static        v1, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;
+	14      (00000034) invoke-virtual       v4, Lcom/google/android/gms/common/zzj;->zzc()[B
+	15      (0000003a) move-result-object   v4
+	16      (0000003c) invoke-virtual       v1, v4, Ljava/security/MessageDigest;->digest([B)[B
+	17      (00000042) move-result-object   v4
+	18      (00000044) invoke-static        v4, Lcom/google/android/gms/common/util/Hex;->bytesToStringLowercase([B)Ljava/lang/String;
+	19      (0000004a) move-result-object   v4
+	20      (0000004c) new-instance         v1, Ljava/lang/StringBuilder;
+	21      (00000050) invoke-direct        v1, Ljava/lang/StringBuilder;-><init>()V
+	22      (00000056) invoke-virtual       v1, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	23      (0000005c) const-string         v0, ": pkg="
+	24      (00000060) invoke-virtual       v1, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	25      (00000066) invoke-virtual       v1, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	26      (0000006c) const-string         v3, ", sha256="
+	27      (00000070) invoke-virtual       v1, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	28      (00000076) invoke-virtual       v1, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	29      (0000007c) const-string         v3, ", atk="
+	30      (00000080) invoke-virtual       v1, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	31      (00000086) invoke-virtual       v1, v2, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+	32      (0000008c) const-string         v2, ", ver=12451000.false"
+	33      (00000090) invoke-virtual       v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	34      (00000096) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	35      (0000009c) move-result-object   v2
+	36      (0000009e) return-object        v2
+

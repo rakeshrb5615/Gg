@@ -1,0 +1,66 @@
+# Lcom/google/android/gms/common/internal/GmsClientSupervisor;->getInstance(Landroid/content/Context;)Lcom/google/android/gms/common/internal/GmsClientSupervisor; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:android.content.Context
+#
+# - return:com.google.android.gms.common.internal.GmsClientSupervisor
+
+getInstance-BB@0x0 : [ getInstance-BB@0x6 ]
+	0       (00000000) sget-object          v0, Lcom/google/android/gms/common/internal/GmsClientSupervisor;->zzb Ljava/lang/Object;
+	1       (00000004) monitor-enter        v0
+
+getInstance-BB@0x6 : [ getInstance-BB@0xe getInstance-BB@0x4e ]
+	2       (00000006) sget-object          v1, Lcom/google/android/gms/common/internal/GmsClientSupervisor;->zzd Lcom/google/android/gms/common/internal/zzq;
+	3       (0000000a) if-nez               v1, +022h
+	6:4f
+	(Ljava/lang/Throwable; -> 34 getInstance-BB@0x34)
+
+getInstance-BB@0xe : [ getInstance-BB@0x22 getInstance-BB@0x38 ]
+	4       (0000000e) new-instance         v1, Lcom/google/android/gms/common/internal/zzq;
+	5       (00000012) invoke-virtual       v4, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;
+	6       (00000018) move-result-object   v2
+	7       (0000001a) sget-boolean         v3, Lcom/google/android/gms/common/internal/GmsClientSupervisor;->zzf Z
+	8       (0000001e) if-eqz               v3, +00dh
+	6:4f
+	(Ljava/lang/Throwable; -> 34 getInstance-BB@0x34)
+
+getInstance-BB@0x22 : [ getInstance-BB@0x40 ]
+	9       (00000022) invoke-static        Lcom/google/android/gms/common/internal/GmsClientSupervisor;->getOrStartHandlerThread()Landroid/os/HandlerThread;
+	10      (00000028) move-result-object   v4
+	11      (0000002a) invoke-virtual       v4, Landroid/os/HandlerThread;->getLooper()Landroid/os/Looper;
+	12      (00000030) move-result-object   v4
+	13      (00000032) goto                 +7h
+	6:4f
+	(Ljava/lang/Throwable; -> 34 getInstance-BB@0x34)
+
+getInstance-BB@0x34 : [ getInstance-BB@0x56 ]
+	14      (00000034) move-exception       v4
+	15      (00000036) goto                 +10h
+	6:4f
+	(Ljava/lang/Throwable; -> 34 getInstance-BB@0x34)
+
+getInstance-BB@0x38 : [ getInstance-BB@0x40 ]
+	16      (00000038) invoke-virtual       v4, Landroid/content/Context;->getMainLooper()Landroid/os/Looper;
+	17      (0000003e) move-result-object   v4
+	6:4f
+	(Ljava/lang/Throwable; -> 34 getInstance-BB@0x34)
+
+getInstance-BB@0x40 : [ getInstance-BB@0x4e ]
+	18      (00000040) sget-object          v3, Lcom/google/android/gms/common/internal/GmsClientSupervisor;->zze Ljava/util/concurrent/Executor;
+	19      (00000044) invoke-direct        v1, v2, v4, v3, Lcom/google/android/gms/common/internal/zzq;-><init>(Landroid/content/Context; Landroid/os/Looper; Ljava/util/concurrent/Executor;)V
+	20      (0000004a) sput-object          v1, Lcom/google/android/gms/common/internal/GmsClientSupervisor;->zzd Lcom/google/android/gms/common/internal/zzq;
+	6:4f
+	(Ljava/lang/Throwable; -> 34 getInstance-BB@0x34)
+
+getInstance-BB@0x4e : 
+	21      (0000004e) monitor-exit         v0
+	22      (00000050) sget-object          v4, Lcom/google/android/gms/common/internal/GmsClientSupervisor;->zzd Lcom/google/android/gms/common/internal/zzq;
+	23      (00000054) return-object        v4
+
+getInstance-BB@0x56 : 
+	24      (00000056) monitor-exit         v0
+	25      (00000058) throw                v4
+	56:57
+	(Ljava/lang/Throwable; -> 34 getInstance-BB@0x34)
+

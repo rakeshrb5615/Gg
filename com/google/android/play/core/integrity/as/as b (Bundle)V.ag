@@ -1,0 +1,98 @@
+# Lcom/google/android/play/core/integrity/as;->b(Landroid/os/Bundle;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:android.os.Bundle
+#
+# - return:void
+
+b-BB@0x0 : [ b-BB@0x38 b-BB@0x44 ]
+	0       (00000000) iget-object          v0, v5, Lcom/google/android/play/core/integrity/as;->b Lk4/d;
+	1       (00000004) iget-object          v1, v5, Lcom/google/android/play/core/integrity/as;->a Lcom/google/android/gms/tasks/TaskCompletionSource;
+	2       (00000008) invoke-virtual       v0, v1, Lk4/d;->d(Lcom/google/android/gms/tasks/TaskCompletionSource;)V
+	3       (0000000e) iget-object          v0, v5, Lcom/google/android/play/core/integrity/as;->d Ljava/lang/String;
+	4       (00000012) filled-new-array     v0, [Ljava/lang/Object;
+	5       (00000018) move-result-object   v0
+	6       (0000001a) iget-object          v1, v5, Lcom/google/android/play/core/integrity/as;->c Lk4/z;
+	7       (0000001e) const-string         v2, "onRequestDialog(%s)"
+	8       (00000022) invoke-virtual       v1, v2, v0, Lk4/z;->b(Ljava/lang/String; [Ljava/lang/Object;)V
+	9       (00000028) iget-object          v0, v5, Lcom/google/android/play/core/integrity/as;->e Lcom/google/android/play/core/integrity/k;
+	10      (0000002c) invoke-interface     v0, v6, Lcom/google/android/play/core/integrity/k;->a(Landroid/os/Bundle;)Lcom/google/android/gms/common/api/ApiException;
+	11      (00000032) move-result-object   v0
+	12      (00000034) if-eqz               v0, +008h
+
+b-BB@0x38 : 
+	13      (00000038) iget-object          v6, v5, Lcom/google/android/play/core/integrity/as;->a Lcom/google/android/gms/tasks/TaskCompletionSource;
+	14      (0000003c) invoke-virtual       v6, v0, Lcom/google/android/gms/tasks/TaskCompletionSource;->trySetException(Ljava/lang/Exception;)Z
+	15      (00000042) return-void          
+
+b-BB@0x44 : [ b-BB@0x5e b-BB@0xac ]
+	16      (00000044) const-string         v0, "dialog.intent"
+	17      (00000048) invoke-virtual       v6, v0, Landroid/os/Bundle;->getParcelable(Ljava/lang/String;)Landroid/os/Parcelable;
+	18      (0000004e) move-result-object   v6
+	19      (00000050) check-cast           v6, Landroid/app/PendingIntent;
+	20      (00000054) const-string         v0, "PlayCore"
+	21      (00000058) const/4              v1, 0
+	22      (0000005a) if-nez               v6, +029h
+
+b-BB@0x5e : [ b-BB@0x82 b-BB@0x98 ]
+	23      (0000005e) iget-object          v6, v5, Lcom/google/android/play/core/integrity/as;->c Lk4/z;
+	24      (00000062) iget-object          v2, v5, Lcom/google/android/play/core/integrity/as;->d Ljava/lang/String;
+	25      (00000066) filled-new-array     v2, [Ljava/lang/Object;
+	26      (0000006c) move-result-object   v2
+	27      (0000006e) invoke-virtual       v6, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	28      (00000074) const/4              v3, 6
+	29      (00000076) invoke-static        v0, v3, Landroid/util/Log;->isLoggable(Ljava/lang/String; I)Z
+	30      (0000007c) move-result          v3
+	31      (0000007e) if-eqz               v3, +00dh
+
+b-BB@0x82 : [ b-BB@0x98 ]
+	32      (00000082) iget-object          v6, v6, Lk4/z;->a Ljava/lang/String;
+	33      (00000086) const-string         v3, "onRequestDialog(%s): got null dialog intent"
+	34      (0000008a) invoke-static        v6, v3, v2, Lk4/z;->c(Ljava/lang/String; Ljava/lang/String; [Ljava/lang/Object;)Ljava/lang/String;
+	35      (00000090) move-result-object   v6
+	36      (00000092) invoke-static        v0, v6, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String;)I
+
+b-BB@0x98 : 
+	37      (00000098) iget-object          v6, v5, Lcom/google/android/play/core/integrity/as;->a Lcom/google/android/gms/tasks/TaskCompletionSource;
+	38      (0000009c) invoke-static        v1, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+	39      (000000a2) move-result-object   v0
+	40      (000000a4) invoke-virtual       v6, v0, Lcom/google/android/gms/tasks/TaskCompletionSource;->trySetResult(Ljava/lang/Object;)Z
+	41      (000000aa) return-void          
+
+b-BB@0xac : [ b-BB@0x10e b-BB@0x124 ]
+	42      (000000ac) iget-object          v2, v5, Lcom/google/android/play/core/integrity/as;->f Landroid/app/Activity;
+	43      (000000b0) new-instance         v3, Landroid/content/Intent;
+	44      (000000b4) const-class          v4, Lcom/google/android/play/core/common/PlayCoreDialogWrapperActivity;
+	45      (000000b8) invoke-direct        v3, v2, v4, Landroid/content/Intent;-><init>(Landroid/content/Context; Ljava/lang/Class;)V
+	46      (000000be) const-string         v2, "confirmation_intent"
+	47      (000000c2) invoke-virtual       v3, v2, v6, Landroid/content/Intent;->putExtra(Ljava/lang/String; Landroid/os/Parcelable;)Landroid/content/Intent;
+	48      (000000c8) const/high16         v6, 536870912
+	49      (000000cc) invoke-virtual       v3, v6, Landroid/content/Intent;->setFlags(I)Landroid/content/Intent;
+	50      (000000d2) iget-object          v6, v5, Lcom/google/android/play/core/integrity/as;->b Lk4/d;
+	51      (000000d6) new-instance         v2, Lcom/google/android/play/core/integrity/ar;
+	52      (000000da) invoke-virtual       v6, Lk4/d;->a()Landroid/os/Handler;
+	53      (000000e0) move-result-object   v6
+	54      (000000e2) invoke-direct        v2, v5, v6, Lcom/google/android/play/core/integrity/ar;-><init>(Lcom/google/android/play/core/integrity/as; Landroid/os/Handler;)V
+	55      (000000e8) const-string         v6, "result_receiver"
+	56      (000000ec) invoke-virtual       v3, v6, v2, Landroid/content/Intent;->putExtra(Ljava/lang/String; Landroid/os/Parcelable;)Landroid/content/Intent;
+	57      (000000f2) iget-object          v6, v5, Lcom/google/android/play/core/integrity/as;->c Lk4/z;
+	58      (000000f6) new-array            v2, v1, [Ljava/lang/Object;
+	59      (000000fa) invoke-virtual       v6, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	60      (00000100) const/4              v4, 3
+	61      (00000102) invoke-static        v0, v4, Landroid/util/Log;->isLoggable(Ljava/lang/String; I)Z
+	62      (00000108) move-result          v4
+	63      (0000010a) if-eqz               v4, +00dh
+
+b-BB@0x10e : [ b-BB@0x124 ]
+	64      (0000010e) iget-object          v6, v6, Lk4/z;->a Ljava/lang/String;
+	65      (00000112) const-string         v4, "Starting dialog intent..."
+	66      (00000116) invoke-static        v6, v4, v2, Lk4/z;->c(Ljava/lang/String; Ljava/lang/String; [Ljava/lang/Object;)Ljava/lang/String;
+	67      (0000011c) move-result-object   v6
+	68      (0000011e) invoke-static        v0, v6, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String;)I
+
+b-BB@0x124 : 
+	69      (00000124) iget-object          v6, v5, Lcom/google/android/play/core/integrity/as;->f Landroid/app/Activity;
+	70      (00000128) invoke-virtual       v6, v3, v1, Landroid/app/Activity;->startActivityForResult(Landroid/content/Intent; I)V
+	71      (0000012e) return-void          
+

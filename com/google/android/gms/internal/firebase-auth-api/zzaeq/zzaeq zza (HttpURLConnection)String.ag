@@ -1,0 +1,57 @@
+# Lcom/google/android/gms/internal/firebase-auth-api/zzaeq;->zza(Ljava/net/HttpURLConnection;)Ljava/lang/String; [access_flags=private static]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:java.net.HttpURLConnection
+#
+# - return:java.lang.String
+
+zza-BB@0x0 : [ zza-BB@0x10 zza-BB@0x70 ]
+	0       (00000000) invoke-virtual       v2, Ljava/net/HttpURLConnection;->getResponseCode()I
+	1       (00000006) move-result          v0
+	2       (00000008) const/16             v1, 400
+	3       (0000000c) if-lt                v0, v1, +032h
+	0:47
+	(Ljava/io/IOException; -> 4a zza-BB@0x4a)
+
+zza-BB@0x10 : [ zza-BB@0x1c zza-BB@0x22 ]
+	4       (00000010) invoke-virtual       v2, Ljava/net/HttpURLConnection;->getErrorStream()Ljava/io/InputStream;
+	5       (00000016) move-result-object   v2
+	6       (00000018) if-nez               v2, +005h
+	0:47
+	(Ljava/io/IOException; -> 4a zza-BB@0x4a)
+
+zza-BB@0x1c : 
+	7       (0000001c) const-string         v2, "WEB_INTERNAL_ERROR:Could not retrieve the authDomain for this project but did not receive an error response from the network request. Please try again."
+	8       (00000020) return-object        v2
+	0:47
+	(Ljava/io/IOException; -> 4a zza-BB@0x4a)
+
+zza-BB@0x22 : 
+	9       (00000022) new-instance         v0, Ljava/lang/String;
+	10      (00000026) const/16             v1, 128
+	11      (0000002a) invoke-static        v2, v1, Lcom/google/android/gms/internal/firebase-auth-api/zzaeq;->zza(Ljava/io/InputStream; I)[B
+	12      (00000030) move-result-object   v2
+	13      (00000032) invoke-direct        v0, v2, Ljava/lang/String;-><init>([B)V
+	14      (00000038) const-class          v2, Ljava/lang/String;
+	15      (0000003c) invoke-static        v0, v2, Lcom/google/android/gms/internal/firebase-auth-api/zzaex;->zza(Ljava/lang/String; Ljava/lang/reflect/Type;)Ljava/lang/Object;
+	16      (00000042) move-result-object   v2
+	17      (00000044) check-cast           v2, Ljava/lang/String;
+	18      (00000048) return-object        v2
+
+zza-BB@0x4a : [ zza-BB@0x70 ]
+	19      (0000004a) move-exception       v2
+	20      (0000004c) sget-object          v0, Lcom/google/android/gms/internal/firebase-auth-api/zzaeq;->zza Lcom/google/android/gms/common/logging/Logger;
+	21      (00000050) invoke-static        v2, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
+	22      (00000056) move-result-object   v2
+	23      (00000058) const-string         v1, "Error parsing error message from response body in getErrorMessageFromBody. "
+	24      (0000005c) invoke-virtual       v1, v2, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	25      (00000062) move-result-object   v2
+	26      (00000064) const/4              v1, 0
+	27      (00000066) new-array            v1, v1, [Ljava/lang/Object;
+	28      (0000006a) invoke-virtual       v0, v2, v1, Lcom/google/android/gms/common/logging/Logger;->w(Ljava/lang/String; [Ljava/lang/Object;)V
+
+zza-BB@0x70 : 
+	29      (00000070) const/4              v2, 0
+	30      (00000072) return-object        v2
+

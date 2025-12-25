@@ -1,0 +1,54 @@
+# Lcom/google/android/gms/common/api/internal/BasePendingResult;->zam()Z [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v2
+#
+# - return:boolean
+
+zam-BB@0x0 : [ zam-BB@0x6 ]
+	0       (00000000) iget-object          v0, v2, Lcom/google/android/gms/common/api/internal/BasePendingResult;->zae Ljava/lang/Object;
+	1       (00000004) monitor-enter        v0
+
+zam-BB@0x6 : [ zam-BB@0x1a zam-BB@0x28 ]
+	2       (00000006) iget-object          v1, v2, Lcom/google/android/gms/common/api/internal/BasePendingResult;->zac Ljava/lang/ref/WeakReference;
+	3       (0000000a) invoke-virtual       v1, Ljava/lang/ref/Reference;->get()Ljava/lang/Object;
+	4       (00000010) move-result-object   v1
+	5       (00000012) check-cast           v1, Lcom/google/android/gms/common/api/GoogleApiClient;
+	6       (00000016) if-eqz               v1, +009h
+	6:3b
+	(Ljava/lang/Throwable; -> 24 zam-BB@0x24)
+
+zam-BB@0x1a : [ zam-BB@0x22 zam-BB@0x2e ]
+	7       (0000001a) iget-boolean         v1, v2, Lcom/google/android/gms/common/api/internal/BasePendingResult;->zaq Z
+	8       (0000001e) if-nez               v1, +008h
+	6:3b
+	(Ljava/lang/Throwable; -> 24 zam-BB@0x24)
+
+zam-BB@0x22 : [ zam-BB@0x28 ]
+	9       (00000022) goto                 +3h
+	6:3b
+	(Ljava/lang/Throwable; -> 24 zam-BB@0x24)
+
+zam-BB@0x24 : [ zam-BB@0x3a ]
+	10      (00000024) move-exception       v1
+	11      (00000026) goto                 +ah
+	6:3b
+	(Ljava/lang/Throwable; -> 24 zam-BB@0x24)
+
+zam-BB@0x28 : [ zam-BB@0x2e ]
+	12      (00000028) invoke-virtual       v2, Lcom/google/android/gms/common/api/internal/BasePendingResult;->cancel()V
+	6:3b
+	(Ljava/lang/Throwable; -> 24 zam-BB@0x24)
+
+zam-BB@0x2e : 
+	13      (0000002e) invoke-virtual       v2, Lcom/google/android/gms/common/api/internal/BasePendingResult;->isCanceled()Z
+	14      (00000034) move-result          v1
+	15      (00000036) monitor-exit         v0
+	16      (00000038) return               v1
+	6:3b
+	(Ljava/lang/Throwable; -> 24 zam-BB@0x24)
+
+zam-BB@0x3a : 
+	17      (0000003a) monitor-exit         v0
+	18      (0000003c) throw                v1
+

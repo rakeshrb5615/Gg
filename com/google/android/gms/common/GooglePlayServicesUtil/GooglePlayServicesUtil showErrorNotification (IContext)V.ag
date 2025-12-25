@@ -1,0 +1,32 @@
+# Lcom/google/android/gms/common/GooglePlayServicesUtil;->showErrorNotification(I Landroid/content/Context;)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:int
+# - v3:android.content.Context
+#
+# - return:void
+
+showErrorNotification-BB@0x0 : [ showErrorNotification-BB@0x14 showErrorNotification-BB@0x2a ]
+	0       (00000000) invoke-static        Lcom/google/android/gms/common/GoogleApiAvailability;->getInstance()Lcom/google/android/gms/common/GoogleApiAvailability;
+	1       (00000006) move-result-object   v0
+	2       (00000008) invoke-static        v3, v2, Lcom/google/android/gms/common/GooglePlayServicesUtilLight;->isPlayServicesPossiblyUpdating(Landroid/content/Context; I)Z
+	3       (0000000e) move-result          v1
+	4       (00000010) if-nez               v1, +00dh
+
+showErrorNotification-BB@0x14 : [ showErrorNotification-BB@0x20 showErrorNotification-BB@0x22 ]
+	5       (00000014) invoke-static        v3, v2, Lcom/google/android/gms/common/GooglePlayServicesUtilLight;->isPlayStorePossiblyUpdating(Landroid/content/Context; I)Z
+	6       (0000001a) move-result          v1
+	7       (0000001c) if-eqz               v1, +003h
+
+showErrorNotification-BB@0x20 : [ showErrorNotification-BB@0x2a ]
+	8       (00000020) goto                 +5h
+
+showErrorNotification-BB@0x22 : 
+	9       (00000022) invoke-virtual       v0, v3, v2, Lcom/google/android/gms/common/GoogleApiAvailability;->showErrorNotification(Landroid/content/Context; I)V
+	10      (00000028) return-void          
+
+showErrorNotification-BB@0x2a : 
+	11      (0000002a) invoke-virtual       v0, v3, Lcom/google/android/gms/common/GoogleApiAvailability;->zaf(Landroid/content/Context;)V
+	12      (00000030) return-void          
+

@@ -1,0 +1,31 @@
+# Lcom/google/android/gms/tasks/Tasks;->whenAllComplete([Lcom/google/android/gms/tasks/Task;)Lcom/google/android/gms/tasks/Task; [access_flags=public static varargs]
+#
+# Parameters:
+# - local registers: v0...v0
+# - v1:com.google.android.gms.tasks.Task[]
+#
+# - return:com.google.android.gms.tasks.Task
+
+whenAllComplete-BB@0x0 : [ whenAllComplete-BB@0x4 whenAllComplete-BB@0x1e ]
+	0       (00000000) if-eqz               v1, +00fh
+
+whenAllComplete-BB@0x4 : [ whenAllComplete-BB@0xa whenAllComplete-BB@0xc ]
+	1       (00000004) array-length         v0, v1
+	2       (00000006) if-nez               v0, +003h
+
+whenAllComplete-BB@0xa : [ whenAllComplete-BB@0x1e ]
+	3       (0000000a) goto                 +ah
+
+whenAllComplete-BB@0xc : 
+	4       (0000000c) invoke-static        v1, Ljava/util/Arrays;->asList([Ljava/lang/Object;)Ljava/util/List;
+	5       (00000012) move-result-object   v1
+	6       (00000014) invoke-static        v1, Lcom/google/android/gms/tasks/Tasks;->whenAllComplete(Ljava/util/Collection;)Lcom/google/android/gms/tasks/Task;
+	7       (0000001a) move-result-object   v1
+	8       (0000001c) return-object        v1
+
+whenAllComplete-BB@0x1e : 
+	9       (0000001e) sget-object          v1, Ljava/util/Collections;->EMPTY_LIST Ljava/util/List;
+	10      (00000022) invoke-static        v1, Lcom/google/android/gms/tasks/Tasks;->forResult(Ljava/lang/Object;)Lcom/google/android/gms/tasks/Task;
+	11      (00000028) move-result-object   v1
+	12      (0000002a) return-object        v1
+

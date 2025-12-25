@@ -1,0 +1,40 @@
+# Lcom/android/billingclient/api/Purchase$PendingPurchaseUpdate;->getProducts()Ljava/util/List; [access_flags=public]
+#
+# Parameters:
+# local registers: v0...v4
+#
+# - return:java.util.List
+
+getProducts-BB@0x0 : [ getProducts-BB@0x1e getProducts-BB@0x50 ]
+	0       (00000000) new-instance         v0, Ljava/util/ArrayList;
+	1       (00000004) invoke-direct        v0, Ljava/util/ArrayList;-><init>()V
+	2       (0000000a) iget-object          v1, v4, Lcom/android/billingclient/api/Purchase$PendingPurchaseUpdate;->mParsedJson Lorg/json/JSONObject;
+	3       (0000000e) const-string         v2, "productIds"
+	4       (00000012) invoke-virtual       v1, v2, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
+	5       (00000018) move-result          v1
+	6       (0000001a) if-eqz               v1, +01bh
+
+getProducts-BB@0x1e : [ getProducts-BB@0x2e getProducts-BB@0x50 ]
+	7       (0000001e) iget-object          v1, v4, Lcom/android/billingclient/api/Purchase$PendingPurchaseUpdate;->mParsedJson Lorg/json/JSONObject;
+	8       (00000022) invoke-virtual       v1, v2, Lorg/json/JSONObject;->optJSONArray(Ljava/lang/String;)Lorg/json/JSONArray;
+	9       (00000028) move-result-object   v1
+	10      (0000002a) if-eqz               v1, +013h
+
+getProducts-BB@0x2e : [ getProducts-BB@0x30 ]
+	11      (0000002e) const/4              v2, 0
+
+getProducts-BB@0x30 : [ getProducts-BB@0x3c getProducts-BB@0x50 ]
+	12      (00000030) invoke-virtual       v1, Lorg/json/JSONArray;->length()I
+	13      (00000036) move-result          v3
+	14      (00000038) if-ge                v2, v3, +00ch
+
+getProducts-BB@0x3c : [ getProducts-BB@0x30 ]
+	15      (0000003c) invoke-virtual       v1, v2, Lorg/json/JSONArray;->optString(I)Ljava/lang/String;
+	16      (00000042) move-result-object   v3
+	17      (00000044) invoke-virtual       v0, v3, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	18      (0000004a) add-int/lit8         v2, v2, 1
+	19      (0000004e) goto                 -fh
+
+getProducts-BB@0x50 : 
+	20      (00000050) return-object        v0
+

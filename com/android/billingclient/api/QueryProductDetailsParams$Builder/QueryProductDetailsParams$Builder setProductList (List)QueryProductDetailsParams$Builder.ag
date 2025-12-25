@@ -1,0 +1,68 @@
+# Lcom/android/billingclient/api/QueryProductDetailsParams$Builder;->setProductList(Ljava/util/List;)Lcom/android/billingclient/api/QueryProductDetailsParams$Builder; [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:java.util.List
+#
+# - return:com.android.billingclient.api.QueryProductDetailsParams$Builder
+
+setProductList-BB@0x0 : [ setProductList-BB@0x4 setProductList-BB@0x8e ]
+	0       (00000000) if-eqz               v6, +047h
+
+setProductList-BB@0x4 : [ setProductList-BB@0x10 setProductList-BB@0x8e ]
+	1       (00000004) invoke-interface     v6, Ljava/util/List;->isEmpty()Z
+	2       (0000000a) move-result          v0
+	3       (0000000c) if-nez               v0, +041h
+
+setProductList-BB@0x10 : [ setProductList-BB@0x22 ]
+	4       (00000010) new-instance         v0, Ljava/util/HashSet;
+	5       (00000014) invoke-direct        v0, Ljava/util/HashSet;-><init>()V
+	6       (0000001a) invoke-interface     v6, Ljava/util/List;->iterator()Ljava/util/Iterator;
+	7       (00000020) move-result-object   v1
+
+setProductList-BB@0x22 : [ setProductList-BB@0x2e setProductList-BB@0x62 ]
+	8       (00000022) invoke-interface     v1, Ljava/util/Iterator;->hasNext()Z
+	9       (00000028) move-result          v2
+	10      (0000002a) if-eqz               v2, +01ch
+
+setProductList-BB@0x2e : [ setProductList-BB@0x52 setProductList-BB@0x22 ]
+	11      (0000002e) invoke-interface     v1, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	12      (00000034) move-result-object   v2
+	13      (00000036) check-cast           v2, Lcom/android/billingclient/api/QueryProductDetailsParams$Product;
+	14      (0000003a) invoke-virtual       v2, Lcom/android/billingclient/api/QueryProductDetailsParams$Product;->zzb()Ljava/lang/String;
+	15      (00000040) move-result-object   v3
+	16      (00000042) const-string         v4, "play_pass_subs"
+	17      (00000046) invoke-virtual       v4, v3, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	18      (0000004c) move-result          v3
+	19      (0000004e) if-nez               v3, -016h
+
+setProductList-BB@0x52 : [ setProductList-BB@0x22 ]
+	20      (00000052) invoke-virtual       v2, Lcom/android/billingclient/api/QueryProductDetailsParams$Product;->zzb()Ljava/lang/String;
+	21      (00000058) move-result-object   v2
+	22      (0000005a) invoke-virtual       v0, v2, Ljava/util/HashSet;->add(Ljava/lang/Object;)Z
+	23      (00000060) goto                 -1fh
+
+setProductList-BB@0x62 : [ setProductList-BB@0x70 setProductList-BB@0x7e ]
+	24      (00000062) invoke-virtual       v0, Ljava/util/HashSet;->size()I
+	25      (00000068) move-result          v0
+	26      (0000006a) const/4              v1, 1
+	27      (0000006c) if-gt                v0, v1, +009h
+
+setProductList-BB@0x70 : 
+	28      (00000070) invoke-static        v6, Lcom/google/android/gms/internal/play_billing/zzbt;->zzj(Ljava/util/Collection;)Lcom/google/android/gms/internal/play_billing/zzbt;
+	29      (00000076) move-result-object   v6
+	30      (00000078) iput-object          v6, v5, Lcom/android/billingclient/api/QueryProductDetailsParams$Builder;->zza Lcom/google/android/gms/internal/play_billing/zzbt;
+	31      (0000007c) return-object        v5
+
+setProductList-BB@0x7e : 
+	32      (0000007e) new-instance         v6, Ljava/lang/IllegalArgumentException;
+	33      (00000082) const-string         v0, "All products should be of the same product type."
+	34      (00000086) invoke-direct        v6, v0, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	35      (0000008c) throw                v6
+
+setProductList-BB@0x8e : 
+	36      (0000008e) new-instance         v6, Ljava/lang/IllegalArgumentException;
+	37      (00000092) const-string         v0, "Product list cannot be empty."
+	38      (00000096) invoke-direct        v6, v0, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	39      (0000009c) throw                v6
+

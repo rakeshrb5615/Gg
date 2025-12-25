@@ -1,0 +1,62 @@
+# Lcom/google/android/gms/common/util/WorkSourceUtil;->hasWorkSourcePermission(Landroid/content/Context;)Z [access_flags=public static synchronized]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:android.content.Context
+#
+# - return:boolean
+
+hasWorkSourcePermission-BB@0x0 : [ hasWorkSourcePermission-BB@0x6 ]
+	0       (00000000) const-class          v0, Lcom/google/android/gms/common/util/WorkSourceUtil;
+	1       (00000004) monitor-enter        v0
+
+hasWorkSourcePermission-BB@0x6 : [ hasWorkSourcePermission-BB@0xe hasWorkSourcePermission-BB@0x1e ]
+	2       (00000006) sget-object          v1, Lcom/google/android/gms/common/util/WorkSourceUtil;->zzj Ljava/lang/Boolean;
+	3       (0000000a) if-eqz               v1, +00ah
+	6:15
+	(Ljava/lang/Throwable; -> 1a hasWorkSourcePermission-BB@0x1a)
+
+hasWorkSourcePermission-BB@0xe : 
+	4       (0000000e) invoke-virtual       v1, Ljava/lang/Boolean;->booleanValue()Z
+	5       (00000014) move-result          v3
+	6       (00000016) monitor-exit         v0
+	7       (00000018) return               v3
+
+hasWorkSourcePermission-BB@0x1a : [ hasWorkSourcePermission-BB@0x4a ]
+	8       (0000001a) move-exception       v3
+	9       (0000001c) goto                 +17h
+
+hasWorkSourcePermission-BB@0x1e : [ hasWorkSourcePermission-BB@0x24 hasWorkSourcePermission-BB@0x28 ]
+	10      (0000001e) const/4              v1, 0
+	11      (00000020) if-nez               v3, +004h
+
+hasWorkSourcePermission-BB@0x24 : 
+	12      (00000024) monitor-exit         v0
+	13      (00000026) return               v1
+
+hasWorkSourcePermission-BB@0x28 : [ hasWorkSourcePermission-BB@0x38 hasWorkSourcePermission-BB@0x3a ]
+	14      (00000028) const-string         v2, "android.permission.UPDATE_DEVICE_STATS"
+	15      (0000002c) invoke-static        v3, v2, Le0/c;->checkSelfPermission(Landroid/content/Context; Ljava/lang/String;)I
+	16      (00000032) move-result          v3
+	17      (00000034) if-nez               v3, +003h
+	28:45
+	(Ljava/lang/Throwable; -> 1a hasWorkSourcePermission-BB@0x1a)
+
+hasWorkSourcePermission-BB@0x38 : [ hasWorkSourcePermission-BB@0x3a ]
+	18      (00000038) const/4              v1, 1
+	28:45
+	(Ljava/lang/Throwable; -> 1a hasWorkSourcePermission-BB@0x1a)
+
+hasWorkSourcePermission-BB@0x3a : 
+	19      (0000003a) invoke-static        v1, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+	20      (00000040) move-result-object   v3
+	21      (00000042) sput-object          v3, Lcom/google/android/gms/common/util/WorkSourceUtil;->zzj Ljava/lang/Boolean;
+	22      (00000046) monitor-exit         v0
+	23      (00000048) return               v1
+
+hasWorkSourcePermission-BB@0x4a : 
+	24      (0000004a) monitor-exit         v0
+	25      (0000004c) throw                v3
+	4a:4b
+	(Ljava/lang/Throwable; -> 1a hasWorkSourcePermission-BB@0x1a)
+

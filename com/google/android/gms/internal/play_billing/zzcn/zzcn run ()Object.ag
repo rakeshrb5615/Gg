@@ -1,0 +1,45 @@
+# Lcom/google/android/gms/internal/play_billing/zzcn;->run()Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v6
+#
+# - return:java.lang.Object
+
+run-BB@0x0 : [ run-BB@0x14 ]
+	0       (00000000) sget                 v0, Lcom/google/android/gms/internal/play_billing/zzck$zzd;->zzg I
+	1       (00000004) const-class          v0, Lsun/misc/Unsafe;
+	2       (00000008) invoke-virtual       v0, Ljava/lang/Class;->getDeclaredFields()[Ljava/lang/reflect/Field;
+	3       (0000000e) move-result-object   v1
+	4       (00000010) array-length         v2, v1
+	5       (00000012) const/4              v3, 0
+
+run-BB@0x14 : [ run-BB@0x18 run-BB@0x4e ]
+	6       (00000014) if-ge                v3, v2, +01dh
+
+run-BB@0x18 : [ run-BB@0x3a run-BB@0x48 ]
+	7       (00000018) aget-object          v4, v1, v3
+	8       (0000001c) const/4              v5, 1
+	9       (0000001e) invoke-virtual       v4, v5, Ljava/lang/reflect/AccessibleObject;->setAccessible(Z)V
+	10      (00000024) const/4              v5, 0
+	11      (00000026) invoke-virtual       v4, v5, Ljava/lang/reflect/Field;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	12      (0000002c) move-result-object   v4
+	13      (0000002e) invoke-virtual       v0, v4, Ljava/lang/Class;->isInstance(Ljava/lang/Object;)Z
+	14      (00000034) move-result          v5
+	15      (00000036) if-eqz               v5, +009h
+
+run-BB@0x3a : 
+	16      (0000003a) invoke-virtual       v0, v4, Ljava/lang/Class;->cast(Ljava/lang/Object;)Ljava/lang/Object;
+	17      (00000040) move-result-object   v0
+	18      (00000042) check-cast           v0, Lsun/misc/Unsafe;
+	19      (00000046) return-object        v0
+
+run-BB@0x48 : [ run-BB@0x14 ]
+	20      (00000048) add-int/lit8         v3, v3, 1
+	21      (0000004c) goto                 -1ch
+
+run-BB@0x4e : 
+	22      (0000004e) new-instance         v0, Ljava/lang/NoSuchFieldError;
+	23      (00000052) const-string         v1, "the Unsafe"
+	24      (00000056) invoke-direct        v0, v1, Ljava/lang/NoSuchFieldError;-><init>(Ljava/lang/String;)V
+	25      (0000005c) throw                v0
+

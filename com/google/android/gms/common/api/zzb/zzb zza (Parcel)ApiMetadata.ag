@@ -1,0 +1,53 @@
+# Lcom/google/android/gms/common/api/zzb;->zza(Landroid/os/Parcel;)Lcom/google/android/gms/common/api/ApiMetadata; [access_flags=public static final]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:android.os.Parcel
+#
+# - return:com.google.android.gms.common.api.ApiMetadata
+
+zza-BB@0x0 : [ zza-BB@0xc ]
+	0       (00000000) invoke-static        v6, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelReader;->validateObjectHeader(Landroid/os/Parcel;)I
+	1       (00000006) move-result          v0
+	2       (00000008) const/4              v1, 0
+	3       (0000000a) const/4              v2, 0
+
+zza-BB@0xc : [ zza-BB@0x18 zza-BB@0x58 ]
+	4       (0000000c) invoke-virtual       v6, Landroid/os/Parcel;->dataPosition()I
+	5       (00000012) move-result          v3
+	6       (00000014) if-ge                v3, v0, +022h
+
+zza-BB@0x18 : [ zza-BB@0x2e zza-BB@0x46 ]
+	7       (00000018) invoke-static        v6, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelReader;->readHeader(Landroid/os/Parcel;)I
+	8       (0000001e) move-result          v3
+	9       (00000020) invoke-static        v3, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelReader;->getFieldId(I)I
+	10      (00000026) move-result          v4
+	11      (00000028) const/4              v5, 1
+	12      (0000002a) if-eq                v4, v5, +00eh
+
+zza-BB@0x2e : [ zza-BB@0x34 zza-BB@0x3c ]
+	13      (0000002e) const/4              v5, 2
+	14      (00000030) if-eq                v4, v5, +006h
+
+zza-BB@0x34 : [ zza-BB@0xc ]
+	15      (00000034) invoke-static        v6, v3, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelReader;->skipUnknownField(Landroid/os/Parcel; I)V
+	16      (0000003a) goto                 -17h
+
+zza-BB@0x3c : [ zza-BB@0xc ]
+	17      (0000003c) invoke-static        v6, v3, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelReader;->readBoolean(Landroid/os/Parcel; I)Z
+	18      (00000042) move-result          v1
+	19      (00000044) goto                 -1ch
+
+zza-BB@0x46 : [ zza-BB@0xc ]
+	20      (00000046) sget-object          v2, Lcom/google/android/gms/common/api/ComplianceOptions;->CREATOR Landroid/os/Parcelable$Creator;
+	21      (0000004a) invoke-static        v6, v3, v2, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelReader;->createParcelable(Landroid/os/Parcel; I Landroid/os/Parcelable$Creator;)Landroid/os/Parcelable;
+	22      (00000050) move-result-object   v2
+	23      (00000052) check-cast           v2, Lcom/google/android/gms/common/api/ComplianceOptions;
+	24      (00000056) goto                 -25h
+
+zza-BB@0x58 : 
+	25      (00000058) invoke-static        v6, v0, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelReader;->ensureAtEnd(Landroid/os/Parcel; I)V
+	26      (0000005e) new-instance         v6, Lcom/google/android/gms/common/api/ApiMetadata;
+	27      (00000062) invoke-direct        v6, v2, v1, Lcom/google/android/gms/common/api/ApiMetadata;-><init>(Lcom/google/android/gms/common/api/ComplianceOptions; Z)V
+	28      (00000068) return-object        v6
+

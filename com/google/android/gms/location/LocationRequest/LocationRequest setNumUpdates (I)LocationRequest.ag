@@ -1,0 +1,30 @@
+# Lcom/google/android/gms/location/LocationRequest;->setNumUpdates(I)Lcom/google/android/gms/location/LocationRequest; [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:int
+#
+# - return:com.google.android.gms.location.LocationRequest
+
+setNumUpdates-BB@0x0 : [ setNumUpdates-BB@0x4 setNumUpdates-BB@0xa ]
+	0       (00000000) if-lez               v4, +005h
+
+setNumUpdates-BB@0x4 : 
+	1       (00000004) iput                 v4, v3, Lcom/google/android/gms/location/LocationRequest;->zzf I
+	2       (00000008) return-object        v3
+
+setNumUpdates-BB@0xa : 
+	3       (0000000a) new-instance         v0, Ljava/lang/IllegalArgumentException;
+	4       (0000000e) invoke-static        v4, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
+	5       (00000014) move-result-object   v1
+	6       (00000016) invoke-virtual       v1, Ljava/lang/String;->length()I
+	7       (0000001c) move-result          v1
+	8       (0000001e) new-instance         v2, Ljava/lang/StringBuilder;
+	9       (00000022) add-int/lit8         v1, v1, 20
+	10      (00000026) invoke-direct        v2, v1, Ljava/lang/StringBuilder;-><init>(I)V
+	11      (0000002c) const-string         v1, "invalid numUpdates: "
+	12      (00000030) invoke-static        v2, v1, v4, Lv1/a;->m(Ljava/lang/StringBuilder; Ljava/lang/String; I)Ljava/lang/String;
+	13      (00000036) move-result-object   v4
+	14      (00000038) invoke-direct        v0, v4, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	15      (0000003e) throw                v0
+

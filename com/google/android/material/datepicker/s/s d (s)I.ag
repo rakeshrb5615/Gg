@@ -1,0 +1,30 @@
+# Lcom/google/android/material/datepicker/s;->d(Lcom/google/android/material/datepicker/s;)I [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:com.google.android.material.datepicker.s
+#
+# - return:int
+
+d-BB@0x0 : [ d-BB@0xc d-BB@0x28 ]
+	0       (00000000) iget-object          v0, v2, Lcom/google/android/material/datepicker/s;->a Ljava/util/Calendar;
+	1       (00000004) instance-of          v0, v0, Ljava/util/GregorianCalendar;
+	2       (00000008) if-eqz               v0, +010h
+
+d-BB@0xc : 
+	3       (0000000c) iget                 v0, v3, Lcom/google/android/material/datepicker/s;->c I
+	4       (00000010) iget                 v1, v2, Lcom/google/android/material/datepicker/s;->c I
+	5       (00000014) sub-int/2addr        v0, v1
+	6       (00000016) mul-int/lit8         v0, v0, 12
+	7       (0000001a) iget                 v3, v3, Lcom/google/android/material/datepicker/s;->b I
+	8       (0000001e) iget                 v1, v2, Lcom/google/android/material/datepicker/s;->b I
+	9       (00000022) sub-int/2addr        v3, v1
+	10      (00000024) add-int/2addr        v3, v0
+	11      (00000026) return               v3
+
+d-BB@0x28 : 
+	12      (00000028) new-instance         v3, Ljava/lang/IllegalArgumentException;
+	13      (0000002c) const-string         v0, "Only Gregorian calendars are supported."
+	14      (00000030) invoke-direct        v3, v0, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	15      (00000036) throw                v3
+

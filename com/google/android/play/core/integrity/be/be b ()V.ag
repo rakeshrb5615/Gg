@@ -1,0 +1,52 @@
+# Lcom/google/android/play/core/integrity/be;->b()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v4
+#
+# - return:void
+
+b-BB@0x0 : [ b-BB@0x14 ]
+	0       (00000000) iget-object          v0, v4, Lcom/google/android/play/core/integrity/be;->a Landroid/content/Context;
+	1       (00000004) iget-object          v1, v4, Lcom/google/android/play/core/integrity/be;->b Lcom/google/android/play/core/integrity/bn;
+	2       (00000008) invoke-static        v1, Lcom/google/android/play/core/integrity/bn;->f(Lcom/google/android/play/core/integrity/bn;)Lcom/google/android/gms/tasks/TaskCompletionSource;
+	3       (0000000e) move-result-object   v1
+	4       (00000010) sget-object          v2, Lk4/f;->a Lk4/z;
+
+b-BB@0x14 : [ b-BB@0x34 b-BB@0x54 ]
+	5       (00000014) invoke-virtual       v0, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
+	6       (0000001a) move-result-object   v0
+	7       (0000001c) const-string         v2, "com.android.vending"
+	8       (00000020) const/16             v3, 64
+	9       (00000024) invoke-virtual       v0, v2, v3, Landroid/content/pm/PackageManager;->getPackageInfo(Ljava/lang/String; I)Landroid/content/pm/PackageInfo;
+	10      (0000002a) move-result-object   v0
+	11      (0000002c) iget-object          v2, v0, Landroid/content/pm/PackageInfo;->applicationInfo Landroid/content/pm/ApplicationInfo;
+	12      (00000030) if-eqz               v2, +012h
+	14:2b
+	(Landroid/content/pm/PackageManager$NameNotFoundException; -> 54 b-BB@0x54)
+
+b-BB@0x34 : [ b-BB@0x3c b-BB@0x54 ]
+	13      (00000034) iget-boolean         v2, v2, Landroid/content/pm/ApplicationInfo;->enabled Z
+	14      (00000038) if-eqz               v2, +00eh
+
+b-BB@0x3c : [ b-BB@0x4c b-BB@0x4e ]
+	15      (0000003c) iget-object          v2, v0, Landroid/content/pm/PackageInfo;->signatures [Landroid/content/pm/Signature;
+	16      (00000040) invoke-static        v2, Lk4/f;->a([Landroid/content/pm/Signature;)Z
+	17      (00000046) move-result          v2
+	18      (00000048) if-nez               v2, +003h
+
+b-BB@0x4c : [ b-BB@0x54 ]
+	19      (0000004c) goto                 +4h
+
+b-BB@0x4e : [ b-BB@0x56 ]
+	20      (0000004e) iget                 v0, v0, Landroid/content/pm/PackageInfo;->versionCode I
+	21      (00000052) goto                 +2h
+
+b-BB@0x54 : [ b-BB@0x56 ]
+	22      (00000054) const/4              v0, 0
+
+b-BB@0x56 : 
+	23      (00000056) invoke-static        v0, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+	24      (0000005c) move-result-object   v0
+	25      (0000005e) invoke-virtual       v1, v0, Lcom/google/android/gms/tasks/TaskCompletionSource;->trySetResult(Ljava/lang/Object;)Z
+	26      (00000064) return-void          
+

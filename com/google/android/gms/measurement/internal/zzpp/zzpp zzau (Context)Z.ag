@@ -1,0 +1,45 @@
+# Lcom/google/android/gms/measurement/internal/zzpp;->zzau(Landroid/content/Context;)Z [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:android.content.Context
+#
+# - return:boolean
+
+zzau-BB@0x0 : [ zzau-BB@0x8 ]
+	0       (00000000) invoke-static        v4, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;
+	1       (00000006) const/4              v0, 0
+
+zzau-BB@0x8 : [ zzau-BB@0x14 zzau-BB@0x16 ]
+	2       (00000008) invoke-virtual       v4, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
+	3       (0000000e) move-result-object   v1
+	4       (00000010) if-nez               v1, +003h
+	8:33
+	(Landroid/content/pm/PackageManager$NameNotFoundException; -> 3c zzau-BB@0x3c)
+
+zzau-BB@0x14 : 
+	5       (00000014) return               v0
+	8:33
+	(Landroid/content/pm/PackageManager$NameNotFoundException; -> 3c zzau-BB@0x3c)
+
+zzau-BB@0x16 : [ zzau-BB@0x30 zzau-BB@0x3c ]
+	6       (00000016) new-instance         v2, Landroid/content/ComponentName;
+	7       (0000001a) const-string         v3, "com.google.android.gms.measurement.AppMeasurementReceiver"
+	8       (0000001e) invoke-direct        v2, v4, v3, Landroid/content/ComponentName;-><init>(Landroid/content/Context; Ljava/lang/String;)V
+	9       (00000024) invoke-virtual       v1, v2, v0, Landroid/content/pm/PackageManager;->getReceiverInfo(Landroid/content/ComponentName; I)Landroid/content/pm/ActivityInfo;
+	10      (0000002a) move-result-object   v4
+	11      (0000002c) if-eqz               v4, +008h
+	8:33
+	(Landroid/content/pm/PackageManager$NameNotFoundException; -> 3c zzau-BB@0x3c)
+
+zzau-BB@0x30 : [ zzau-BB@0x38 zzau-BB@0x3c ]
+	12      (00000030) iget-boolean         v4, v4, Landroid/content/pm/ActivityInfo;->enabled Z
+	13      (00000034) if-eqz               v4, +004h
+
+zzau-BB@0x38 : 
+	14      (00000038) const/4              v4, 1
+	15      (0000003a) return               v4
+
+zzau-BB@0x3c : 
+	16      (0000003c) return               v0
+

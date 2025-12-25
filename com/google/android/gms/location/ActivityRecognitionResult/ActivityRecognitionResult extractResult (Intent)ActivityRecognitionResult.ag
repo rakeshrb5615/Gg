@@ -1,0 +1,79 @@
+# Lcom/google/android/gms/location/ActivityRecognitionResult;->extractResult(Landroid/content/Intent;)Lcom/google/android/gms/location/ActivityRecognitionResult; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:android.content.Intent
+#
+# - return:com.google.android.gms.location.ActivityRecognitionResult
+
+extractResult-BB@0x0 : [ extractResult-BB@0xe extractResult-BB@0x12 ]
+	0       (00000000) invoke-static        v3, Lcom/google/android/gms/location/ActivityRecognitionResult;->hasResult(Landroid/content/Intent;)Z
+	1       (00000006) move-result          v0
+	2       (00000008) const/4              v1, 0
+	3       (0000000a) if-nez               v0, +004h
+
+extractResult-BB@0xe : [ extractResult-BB@0x56 ]
+	4       (0000000e) move-object          v0, v1
+	5       (00000010) goto                 +23h
+
+extractResult-BB@0x12 : [ extractResult-BB@0x1e extractResult-BB@0x20 ]
+	6       (00000012) invoke-virtual       v3, Landroid/content/Intent;->getExtras()Landroid/os/Bundle;
+	7       (00000018) move-result-object   v0
+	8       (0000001a) if-nez               v0, +003h
+
+extractResult-BB@0x1e : [ extractResult-BB@0xe ]
+	9       (0000001e) goto                 -8h
+
+extractResult-BB@0x20 : [ extractResult-BB@0x34 extractResult-BB@0x4a ]
+	10      (00000020) const-string         v2, "com.google.android.location.internal.EXTRA_ACTIVITY_RESULT"
+	11      (00000024) invoke-virtual       v0, v2, Landroid/os/BaseBundle;->get(Ljava/lang/String;)Ljava/lang/Object;
+	12      (0000002a) move-result-object   v0
+	13      (0000002c) instance-of          v2, v0, [B
+	14      (00000030) if-eqz               v2, +00dh
+
+extractResult-BB@0x34 : [ extractResult-BB@0x56 ]
+	15      (00000034) check-cast           v0, [B
+	16      (00000038) sget-object          v2, Lcom/google/android/gms/location/ActivityRecognitionResult;->CREATOR Landroid/os/Parcelable$Creator;
+	17      (0000003c) invoke-static        v0, v2, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelableSerializer;->deserializeFromBytes([B Landroid/os/Parcelable$Creator;)Lcom/google/android/gms/common/internal/safeparcel/SafeParcelable;
+	18      (00000042) move-result-object   v0
+	19      (00000044) check-cast           v0, Lcom/google/android/gms/location/ActivityRecognitionResult;
+	20      (00000048) goto                 +7h
+
+extractResult-BB@0x4a : [ extractResult-BB@0x52 extractResult-BB@0xe ]
+	21      (0000004a) instance-of          v2, v0, Lcom/google/android/gms/location/ActivityRecognitionResult;
+	22      (0000004e) if-eqz               v2, -020h
+
+extractResult-BB@0x52 : [ extractResult-BB@0x56 ]
+	23      (00000052) check-cast           v0, Lcom/google/android/gms/location/ActivityRecognitionResult;
+
+extractResult-BB@0x56 : [ extractResult-BB@0x5a extractResult-BB@0x5c ]
+	24      (00000056) if-eqz               v0, +003h
+
+extractResult-BB@0x5a : 
+	25      (0000005a) return-object        v0
+
+extractResult-BB@0x5c : [ extractResult-BB@0x68 extractResult-BB@0x90 ]
+	26      (0000005c) invoke-static        v3, Lcom/google/android/gms/location/ActivityRecognitionResult;->zza(Landroid/content/Intent;)Ljava/util/List;
+	27      (00000062) move-result-object   v3
+	28      (00000064) if-eqz               v3, +016h
+
+extractResult-BB@0x68 : [ extractResult-BB@0x74 extractResult-BB@0x76 ]
+	29      (00000068) invoke-interface     v3, Ljava/util/List;->isEmpty()Z
+	30      (0000006e) move-result          v0
+	31      (00000070) if-eqz               v0, +003h
+
+extractResult-BB@0x74 : [ extractResult-BB@0x90 ]
+	32      (00000074) goto                 +eh
+
+extractResult-BB@0x76 : 
+	33      (00000076) invoke-interface     v3, Ljava/util/List;->size()I
+	34      (0000007c) move-result          v0
+	35      (0000007e) add-int/lit8         v0, v0, -1
+	36      (00000082) invoke-interface     v3, v0, Ljava/util/List;->get(I)Ljava/lang/Object;
+	37      (00000088) move-result-object   v3
+	38      (0000008a) check-cast           v3, Lcom/google/android/gms/location/ActivityRecognitionResult;
+	39      (0000008e) return-object        v3
+
+extractResult-BB@0x90 : 
+	40      (00000090) return-object        v1
+

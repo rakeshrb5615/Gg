@@ -1,0 +1,89 @@
+# Lcom/google/android/material/appbar/AppBarLayout$BaseBehavior;->j(Landroidx/coordinatorlayout/widget/CoordinatorLayout; Landroid/view/View; Landroid/view/MotionEvent;)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:androidx.coordinatorlayout.widget.CoordinatorLayout
+# - v5:android.view.View
+# - v6:android.view.MotionEvent
+#
+# - return:boolean
+
+j-BB@0x0 : [ j-BB@0x8 j-BB@0x24 ]
+	0       (00000000) iget                 v5, v3, Lcom/google/android/material/appbar/AppBarLayout$BaseBehavior;->e I
+	1       (00000004) if-gez               v5, +010h
+
+j-BB@0x8 : [ j-BB@0x24 ]
+	2       (00000008) invoke-virtual       v4, Landroid/view/View;->getContext()Landroid/content/Context;
+	3       (0000000e) move-result-object   v4
+	4       (00000010) invoke-static        v4, Landroid/view/ViewConfiguration;->get(Landroid/content/Context;)Landroid/view/ViewConfiguration;
+	5       (00000016) move-result-object   v4
+	6       (00000018) invoke-virtual       v4, Landroid/view/ViewConfiguration;->getScaledTouchSlop()I
+	7       (0000001e) move-result          v4
+	8       (00000020) iput                 v4, v3, Lcom/google/android/material/appbar/AppBarLayout$BaseBehavior;->e I
+
+j-BB@0x24 : [ j-BB@0x36 j-BB@0x80 ]
+	9       (00000024) invoke-virtual       v6, Landroid/view/MotionEvent;->getActionMasked()I
+	10      (0000002a) move-result          v4
+	11      (0000002c) const/4              v5, 2
+	12      (0000002e) const/4              v0, -1
+	13      (00000030) const/4              v1, 0
+	14      (00000032) if-ne                v4, v5, +027h
+
+j-BB@0x36 : [ j-BB@0x3e j-BB@0x80 ]
+	15      (00000036) iget-boolean         v4, v3, Lcom/google/android/material/appbar/AppBarLayout$BaseBehavior;->b Z
+	16      (0000003a) if-eqz               v4, +023h
+
+j-BB@0x3e : [ j-BB@0x46 j-BB@0x48 ]
+	17      (0000003e) iget                 v4, v3, Lcom/google/android/material/appbar/AppBarLayout$BaseBehavior;->c I
+	18      (00000042) if-ne                v4, v0, +003h
+
+j-BB@0x46 : [ j-BB@0x9a ]
+	19      (00000046) goto                 +2ah
+
+j-BB@0x48 : [ j-BB@0x54 j-BB@0x56 ]
+	20      (00000048) invoke-virtual       v6, v4, Landroid/view/MotionEvent;->findPointerIndex(I)I
+	21      (0000004e) move-result          v4
+	22      (00000050) if-ne                v4, v0, +003h
+
+j-BB@0x54 : [ j-BB@0x9a ]
+	23      (00000054) goto                 +23h
+
+j-BB@0x56 : [ j-BB@0x78 j-BB@0x80 ]
+	24      (00000056) invoke-virtual       v6, v4, Landroid/view/MotionEvent;->getY(I)F
+	25      (0000005c) move-result          v4
+	26      (0000005e) float-to-int         v4, v4
+	27      (00000060) iget                 v5, v3, Lcom/google/android/material/appbar/AppBarLayout$BaseBehavior;->d I
+	28      (00000064) sub-int              v5, v4, v5
+	29      (00000068) invoke-static        v5, Ljava/lang/Math;->abs(I)I
+	30      (0000006e) move-result          v5
+	31      (00000070) iget                 v2, v3, Lcom/google/android/material/appbar/AppBarLayout$BaseBehavior;->e I
+	32      (00000074) if-le                v5, v2, +006h
+
+j-BB@0x78 : 
+	33      (00000078) iput                 v4, v3, Lcom/google/android/material/appbar/AppBarLayout$BaseBehavior;->d I
+	34      (0000007c) const/4              v4, 1
+	35      (0000007e) return               v4
+
+j-BB@0x80 : [ j-BB@0x8c j-BB@0x9c ]
+	36      (00000080) invoke-virtual       v6, Landroid/view/MotionEvent;->getActionMasked()I
+	37      (00000086) move-result          v4
+	38      (00000088) if-eqz               v4, +00ah
+
+j-BB@0x8c : [ j-BB@0x94 j-BB@0x9a ]
+	39      (0000008c) iget-object          v4, v3, Lcom/google/android/material/appbar/AppBarLayout$BaseBehavior;->f Landroid/view/VelocityTracker;
+	40      (00000090) if-eqz               v4, +005h
+
+j-BB@0x94 : [ j-BB@0x9a ]
+	41      (00000094) invoke-virtual       v4, v6, Landroid/view/VelocityTracker;->addMovement(Landroid/view/MotionEvent;)V
+
+j-BB@0x9a : 
+	42      (0000009a) return               v1
+
+j-BB@0x9c : 
+	43      (0000009c) iput                 v0, v3, Lcom/google/android/material/appbar/AppBarLayout$BaseBehavior;->c I
+	44      (000000a0) invoke-virtual       v6, Landroid/view/MotionEvent;->getX()F
+	45      (000000a6) invoke-virtual       v6, Landroid/view/MotionEvent;->getY()F
+	46      (000000ac) new-instance         v4, Ljava/lang/ClassCastException;
+	47      (000000b0) invoke-direct        v4, Ljava/lang/ClassCastException;-><init>()V
+	48      (000000b6) throw                v4
+

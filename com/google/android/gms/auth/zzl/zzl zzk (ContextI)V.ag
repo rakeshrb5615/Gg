@@ -1,0 +1,39 @@
+# Lcom/google/android/gms/auth/zzl;->zzk(Landroid/content/Context; I)V [access_flags=private static]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:android.content.Context
+# - v3:int
+#
+# - return:void
+
+zzk-BB@0x0 : 
+	0       (00000000) invoke-virtual       v2, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;
+	1       (00000006) move-result-object   v2
+	2       (00000008) invoke-static        v2, v3, Lcom/google/android/gms/common/GooglePlayServicesUtilLight;->ensurePlayServicesAvailable(Landroid/content/Context; I)V
+	3       (0000000e) return-void          
+	0:d
+	(Lcom/google/android/gms/common/GooglePlayServicesRepairableException; -> 26 zzk-BB@0x26)
+	(Lcom/google/android/gms/common/GooglePlayServicesNotAvailableException; -> 10 zzk-BB@0x10)
+	(Lcom/google/android/gms/common/GooglePlayServicesIncorrectManifestValueException; -> 10 zzk-BB@0x10)
+
+zzk-BB@0x10 : 
+	4       (00000010) move-exception       v2
+	5       (00000012) new-instance         v3, Lcom/google/android/gms/auth/GoogleAuthException;
+	6       (00000016) invoke-virtual       v2, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+	7       (0000001c) move-result-object   v0
+	8       (0000001e) invoke-direct        v3, v0, v2, Lcom/google/android/gms/auth/GoogleAuthException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	9       (00000024) throw                v3
+
+zzk-BB@0x26 : 
+	10      (00000026) move-exception       v2
+	11      (00000028) new-instance         v3, Lcom/google/android/gms/auth/GooglePlayServicesAvailabilityException;
+	12      (0000002c) invoke-virtual       v2, Lcom/google/android/gms/common/GooglePlayServicesRepairableException;->getConnectionStatusCode()I
+	13      (00000032) move-result          v0
+	14      (00000034) invoke-virtual       v2, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+	15      (0000003a) move-result-object   v1
+	16      (0000003c) invoke-virtual       v2, Lcom/google/android/gms/common/UserRecoverableException;->getIntent()Landroid/content/Intent;
+	17      (00000042) move-result-object   v2
+	18      (00000044) invoke-direct        v3, v0, v1, v2, Lcom/google/android/gms/auth/GooglePlayServicesAvailabilityException;-><init>(I Ljava/lang/String; Landroid/content/Intent;)V
+	19      (0000004a) throw                v3
+

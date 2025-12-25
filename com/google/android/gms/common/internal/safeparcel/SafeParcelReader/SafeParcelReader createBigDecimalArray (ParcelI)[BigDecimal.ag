@@ -1,0 +1,47 @@
+# Lcom/google/android/gms/common/internal/safeparcel/SafeParcelReader;->createBigDecimalArray(Landroid/os/Parcel; I)[Ljava/math/BigDecimal; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v7
+# - v8:android.os.Parcel
+# - v9:int
+#
+# - return:java.math.BigDecimal[]
+
+createBigDecimalArray-BB@0x0 : [ createBigDecimalArray-BB@0x14 createBigDecimalArray-BB@0x18 ]
+	0       (00000000) invoke-static        v8, v9, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelReader;->readSize(Landroid/os/Parcel; I)I
+	1       (00000006) move-result          v9
+	2       (00000008) invoke-virtual       v8, Landroid/os/Parcel;->dataPosition()I
+	3       (0000000e) move-result          v0
+	4       (00000010) if-nez               v9, +004h
+
+createBigDecimalArray-BB@0x14 : 
+	5       (00000014) const/4              v8, 0
+	6       (00000016) return-object        v8
+
+createBigDecimalArray-BB@0x18 : [ createBigDecimalArray-BB@0x26 ]
+	7       (00000018) invoke-virtual       v8, Landroid/os/Parcel;->readInt()I
+	8       (0000001e) move-result          v1
+	9       (00000020) new-array            v2, v1, [Ljava/math/BigDecimal;
+	10      (00000024) const/4              v3, 0
+
+createBigDecimalArray-BB@0x26 : [ createBigDecimalArray-BB@0x2a createBigDecimalArray-BB@0x58 ]
+	11      (00000026) if-ge                v3, v1, +019h
+
+createBigDecimalArray-BB@0x2a : [ createBigDecimalArray-BB@0x26 ]
+	12      (0000002a) invoke-virtual       v8, Landroid/os/Parcel;->createByteArray()[B
+	13      (00000030) move-result-object   v4
+	14      (00000032) invoke-virtual       v8, Landroid/os/Parcel;->readInt()I
+	15      (00000038) move-result          v5
+	16      (0000003a) new-instance         v6, Ljava/math/BigDecimal;
+	17      (0000003e) new-instance         v7, Ljava/math/BigInteger;
+	18      (00000042) invoke-direct        v7, v4, Ljava/math/BigInteger;-><init>([B)V
+	19      (00000048) invoke-direct        v6, v7, v5, Ljava/math/BigDecimal;-><init>(Ljava/math/BigInteger; I)V
+	20      (0000004e) aput-object          v6, v2, v3
+	21      (00000052) add-int/lit8         v3, v3, 1
+	22      (00000056) goto                 -18h
+
+createBigDecimalArray-BB@0x58 : 
+	23      (00000058) add-int/2addr        v0, v9
+	24      (0000005a) invoke-virtual       v8, v0, Landroid/os/Parcel;->setDataPosition(I)V
+	25      (00000060) return-object        v2
+

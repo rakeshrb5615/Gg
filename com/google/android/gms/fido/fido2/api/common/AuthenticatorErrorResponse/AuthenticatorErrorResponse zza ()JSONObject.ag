@@ -1,0 +1,38 @@
+# Lcom/google/android/gms/fido/fido2/api/common/AuthenticatorErrorResponse;->zza()Lorg/json/JSONObject; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v3
+#
+# - return:org.json.JSONObject
+
+zza-BB@0x0 : [ zza-BB@0x28 zza-BB@0x38 ]
+	0       (00000000) new-instance         v0, Lorg/json/JSONObject;
+	1       (00000004) invoke-direct        v0, Lorg/json/JSONObject;-><init>()V
+	2       (0000000a) const-string         v1, "code"
+	3       (0000000e) iget-object          v2, v3, Lcom/google/android/gms/fido/fido2/api/common/AuthenticatorErrorResponse;->zza Lcom/google/android/gms/fido/fido2/api/common/ErrorCode;
+	4       (00000012) invoke-virtual       v2, Lcom/google/android/gms/fido/fido2/api/common/ErrorCode;->getCode()I
+	5       (00000018) move-result          v2
+	6       (0000001a) invoke-virtual       v0, v1, v2, Lorg/json/JSONObject;->put(Ljava/lang/String; I)Lorg/json/JSONObject;
+	7       (00000020) iget-object          v1, v3, Lcom/google/android/gms/fido/fido2/api/common/AuthenticatorErrorResponse;->zzb Ljava/lang/String;
+	8       (00000024) if-eqz               v1, +00ah
+	0:31
+	(Lorg/json/JSONException; -> 34 zza-BB@0x34)
+
+zza-BB@0x28 : 
+	9       (00000028) const-string         v2, "message"
+	10      (0000002c) invoke-virtual       v0, v2, v1, Lorg/json/JSONObject;->put(Ljava/lang/String; Ljava/lang/Object;)Lorg/json/JSONObject;
+	11      (00000032) return-object        v0
+
+zza-BB@0x34 : [ zza-BB@0x3a ]
+	12      (00000034) move-exception       v0
+	13      (00000036) goto                 +2h
+
+zza-BB@0x38 : 
+	14      (00000038) return-object        v0
+
+zza-BB@0x3a : 
+	15      (0000003a) new-instance         v1, Ljava/lang/RuntimeException;
+	16      (0000003e) const-string         v2, "Error encoding AuthenticatorErrorResponse to JSON object"
+	17      (00000042) invoke-direct        v1, v2, v0, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	18      (00000048) throw                v1
+

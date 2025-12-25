@@ -1,0 +1,64 @@
+# Lcom/google/android/gms/common/internal/safeparcel/SafeParcelWriter;->writeParcelSparseArray(Landroid/os/Parcel; I Landroid/util/SparseArray; Z)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:android.os.Parcel
+# - v5:int
+# - v6:android.util.SparseArray
+# - v7:boolean
+#
+# - return:void
+
+writeParcelSparseArray-BB@0x0 : [ writeParcelSparseArray-BB@0x6 writeParcelSparseArray-BB@0x12 ]
+	0       (00000000) const/4              v0, 0
+	1       (00000002) if-nez               v6, +008h
+
+writeParcelSparseArray-BB@0x6 : [ writeParcelSparseArray-BB@0xa writeParcelSparseArray-BB@0x10 ]
+	2       (00000006) if-eqz               v7, +005h
+
+writeParcelSparseArray-BB@0xa : [ writeParcelSparseArray-BB@0x10 ]
+	3       (0000000a) invoke-static        v4, v5, v0, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelWriter;->zza(Landroid/os/Parcel; I I)V
+
+writeParcelSparseArray-BB@0x10 : 
+	4       (00000010) return-void          
+
+writeParcelSparseArray-BB@0x12 : [ writeParcelSparseArray-BB@0x2a ]
+	5       (00000012) invoke-static        v4, v5, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelWriter;->zzb(Landroid/os/Parcel; I)I
+	6       (00000018) move-result          v5
+	7       (0000001a) invoke-virtual       v6, Landroid/util/SparseArray;->size()I
+	8       (00000020) move-result          v7
+	9       (00000022) invoke-virtual       v4, v7, Landroid/os/Parcel;->writeInt(I)V
+	10      (00000028) move                 v1, v0
+
+writeParcelSparseArray-BB@0x2a : [ writeParcelSparseArray-BB@0x2e writeParcelSparseArray-BB@0x76 ]
+	11      (0000002a) if-ge                v1, v7, +026h
+
+writeParcelSparseArray-BB@0x2e : [ writeParcelSparseArray-BB@0x4c writeParcelSparseArray-BB@0x6a ]
+	12      (0000002e) invoke-virtual       v6, v1, Landroid/util/SparseArray;->keyAt(I)I
+	13      (00000034) move-result          v2
+	14      (00000036) invoke-virtual       v4, v2, Landroid/os/Parcel;->writeInt(I)V
+	15      (0000003c) invoke-virtual       v6, v1, Landroid/util/SparseArray;->valueAt(I)Ljava/lang/Object;
+	16      (00000042) move-result-object   v2
+	17      (00000044) check-cast           v2, Landroid/os/Parcel;
+	18      (00000048) if-eqz               v2, +011h
+
+writeParcelSparseArray-BB@0x4c : [ writeParcelSparseArray-BB@0x70 ]
+	19      (0000004c) invoke-virtual       v2, Landroid/os/Parcel;->dataSize()I
+	20      (00000052) move-result          v3
+	21      (00000054) invoke-virtual       v4, v3, Landroid/os/Parcel;->writeInt(I)V
+	22      (0000005a) invoke-virtual       v2, Landroid/os/Parcel;->dataSize()I
+	23      (00000060) move-result          v3
+	24      (00000062) invoke-virtual       v4, v2, v0, v3, Landroid/os/Parcel;->appendFrom(Landroid/os/Parcel; I I)V
+	25      (00000068) goto                 +4h
+
+writeParcelSparseArray-BB@0x6a : [ writeParcelSparseArray-BB@0x70 ]
+	26      (0000006a) invoke-virtual       v4, v0, Landroid/os/Parcel;->writeInt(I)V
+
+writeParcelSparseArray-BB@0x70 : [ writeParcelSparseArray-BB@0x2a ]
+	27      (00000070) add-int/lit8         v1, v1, 1
+	28      (00000074) goto                 -25h
+
+writeParcelSparseArray-BB@0x76 : 
+	29      (00000076) invoke-static        v4, v5, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelWriter;->zzc(Landroid/os/Parcel; I)V
+	30      (0000007c) return-void          
+

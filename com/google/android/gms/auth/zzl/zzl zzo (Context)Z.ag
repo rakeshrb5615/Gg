@@ -1,0 +1,51 @@
+# Lcom/google/android/gms/auth/zzl;->zzo(Landroid/content/Context;)Z [access_flags=private static]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:android.content.Context
+#
+# - return:boolean
+
+zzo-BB@0x0 : [ zzo-BB@0x1c zzo-BB@0x1e ]
+	0       (00000000) invoke-static        Lcom/google/android/gms/common/GoogleApiAvailability;->getInstance()Lcom/google/android/gms/common/GoogleApiAvailability;
+	1       (00000006) move-result-object   v0
+	2       (00000008) const                v1, 17895000
+	3       (0000000e) invoke-virtual       v0, v3, v1, Lcom/google/android/gms/common/GoogleApiAvailability;->isGooglePlayServicesAvailable(Landroid/content/Context; I)I
+	4       (00000014) move-result          v0
+	5       (00000016) const/4              v1, 0
+	6       (00000018) if-eqz               v0, +003h
+
+zzo-BB@0x1c : 
+	7       (0000001c) return               v1
+
+zzo-BB@0x1e : [ zzo-BB@0x42 ]
+	8       (0000001e) invoke-static        Lcom/google/android/gms/internal/auth/zzhs;->zzb()Lcom/google/android/gms/internal/auth/zzhr;
+	9       (00000024) move-result-object   v0
+	10      (00000026) invoke-virtual       v0, Lcom/google/android/gms/internal/auth/zzhr;->zzl()Ljava/util/List;
+	11      (0000002c) move-result-object   v0
+	12      (0000002e) invoke-virtual       v3, Landroid/content/Context;->getApplicationInfo()Landroid/content/pm/ApplicationInfo;
+	13      (00000034) move-result-object   v3
+	14      (00000036) iget-object          v3, v3, Landroid/content/pm/ApplicationInfo;->packageName Ljava/lang/String;
+	15      (0000003a) invoke-interface     v0, Ljava/util/List;->iterator()Ljava/util/Iterator;
+	16      (00000040) move-result-object   v0
+
+zzo-BB@0x42 : [ zzo-BB@0x4e zzo-BB@0x68 ]
+	17      (00000042) invoke-interface     v0, Ljava/util/Iterator;->hasNext()Z
+	18      (00000048) move-result          v2
+	19      (0000004a) if-eqz               v2, +00fh
+
+zzo-BB@0x4e : [ zzo-BB@0x66 zzo-BB@0x42 ]
+	20      (0000004e) invoke-interface     v0, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	21      (00000054) move-result-object   v2
+	22      (00000056) check-cast           v2, Ljava/lang/String;
+	23      (0000005a) invoke-virtual       v2, v3, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	24      (00000060) move-result          v2
+	25      (00000062) if-eqz               v2, -010h
+
+zzo-BB@0x66 : 
+	26      (00000066) return               v1
+
+zzo-BB@0x68 : 
+	27      (00000068) const/4              v3, 1
+	28      (0000006a) return               v3
+

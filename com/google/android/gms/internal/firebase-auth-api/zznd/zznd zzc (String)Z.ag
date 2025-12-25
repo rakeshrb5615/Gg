@@ -1,0 +1,70 @@
+# Lcom/google/android/gms/internal/firebase-auth-api/zznd;->zzc(Ljava/lang/String;)Z [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:java.lang.String
+#
+# - return:boolean
+
+zzc-BB@0x0 : [ zzc-BB@0x6 ]
+	0       (00000000) sget-object          v0, Lcom/google/android/gms/internal/firebase-auth-api/zznd;->zza Ljava/lang/Object;
+	1       (00000004) monitor-enter        v0
+
+zzc-BB@0x6 : [ zzc-BB@0x1e zzc-BB@0x8c ]
+	2       (00000006) const-string         v1, "android-keystore://"
+	3       (0000000a) invoke-static        v1, v3, Lcom/google/android/gms/internal/firebase-auth-api/zzaai;->zza(Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	4       (00000010) move-result-object   v3
+	5       (00000012) invoke-static        v3, Lcom/google/android/gms/internal/firebase-auth-api/zzmz;->zzb(Ljava/lang/String;)Z
+	6       (00000018) move-result          v1
+	7       (0000001a) if-nez               v1, +039h
+	6:93
+	(Ljava/lang/Throwable; -> 88 zzc-BB@0x88)
+
+zzc-BB@0x1e : 
+	8       (0000001e) new-instance         v1, Landroid/security/keystore/KeyGenParameterSpec$Builder;
+	9       (00000022) const/4              v2, 3
+	10      (00000024) invoke-direct        v1, v3, v2, Landroid/security/keystore/KeyGenParameterSpec$Builder;-><init>(Ljava/lang/String; I)V
+	11      (0000002a) const/16             v3, 256
+	12      (0000002e) invoke-virtual       v1, v3, Landroid/security/keystore/KeyGenParameterSpec$Builder;->setKeySize(I)Landroid/security/keystore/KeyGenParameterSpec$Builder;
+	13      (00000034) move-result-object   v3
+	14      (00000036) const-string         v1, "GCM"
+	15      (0000003a) filled-new-array     v1, [Ljava/lang/String;
+	16      (00000040) move-result-object   v1
+	17      (00000042) invoke-virtual       v3, v1, Landroid/security/keystore/KeyGenParameterSpec$Builder;->setBlockModes([Ljava/lang/String;)Landroid/security/keystore/KeyGenParameterSpec$Builder;
+	18      (00000048) move-result-object   v3
+	19      (0000004a) const-string         v1, "NoPadding"
+	20      (0000004e) filled-new-array     v1, [Ljava/lang/String;
+	21      (00000054) move-result-object   v1
+	22      (00000056) invoke-virtual       v3, v1, Landroid/security/keystore/KeyGenParameterSpec$Builder;->setEncryptionPaddings([Ljava/lang/String;)Landroid/security/keystore/KeyGenParameterSpec$Builder;
+	23      (0000005c) move-result-object   v3
+	24      (0000005e) invoke-virtual       v3, Landroid/security/keystore/KeyGenParameterSpec$Builder;->build()Landroid/security/keystore/KeyGenParameterSpec;
+	25      (00000064) move-result-object   v3
+	26      (00000066) const-string         v1, "AES"
+	27      (0000006a) const-string         v2, "AndroidKeyStore"
+	28      (0000006e) invoke-static        v1, v2, Ljavax/crypto/KeyGenerator;->getInstance(Ljava/lang/String; Ljava/lang/String;)Ljavax/crypto/KeyGenerator;
+	29      (00000074) move-result-object   v1
+	30      (00000076) invoke-virtual       v1, v3, Ljavax/crypto/KeyGenerator;->init(Ljava/security/spec/AlgorithmParameterSpec;)V
+	31      (0000007c) invoke-virtual       v1, Ljavax/crypto/KeyGenerator;->generateKey()Ljavax/crypto/SecretKey;
+	32      (00000082) const/4              v3, 1
+	33      (00000084) monitor-exit         v0
+	34      (00000086) return               v3
+	6:93
+	(Ljava/lang/Throwable; -> 88 zzc-BB@0x88)
+
+zzc-BB@0x88 : [ zzc-BB@0x92 ]
+	35      (00000088) move-exception       v3
+	36      (0000008a) goto                 +4h
+	6:93
+	(Ljava/lang/Throwable; -> 88 zzc-BB@0x88)
+
+zzc-BB@0x8c : 
+	37      (0000008c) const/4              v3, 0
+	38      (0000008e) monitor-exit         v0
+	39      (00000090) return               v3
+	6:93
+	(Ljava/lang/Throwable; -> 88 zzc-BB@0x88)
+
+zzc-BB@0x92 : 
+	40      (00000092) monitor-exit         v0
+	41      (00000094) throw                v3
+

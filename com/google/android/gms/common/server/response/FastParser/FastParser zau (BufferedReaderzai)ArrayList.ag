@@ -1,0 +1,72 @@
+# Lcom/google/android/gms/common/server/response/FastParser;->zau(Ljava/io/BufferedReader; Lcom/google/android/gms/common/server/response/zai;)Ljava/util/ArrayList; [access_flags=private final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:java.io.BufferedReader
+# - v6:com.google.android.gms.common.server.response.zai
+#
+# - return:java.util.ArrayList
+
+zau-BB@0x0 : [ zau-BB@0x10 zau-BB@0x1e ]
+	0       (00000000) invoke-direct        v4, v5, Lcom/google/android/gms/common/server/response/FastParser;->zai(Ljava/io/BufferedReader;)C
+	1       (00000006) move-result          v0
+	2       (00000008) const/16             v1, 110
+	3       (0000000c) if-ne                v0, v1, +009h
+
+zau-BB@0x10 : 
+	4       (00000010) sget-object          v6, Lcom/google/android/gms/common/server/response/FastParser;->zaa [C
+	5       (00000014) invoke-direct        v4, v5, v6, Lcom/google/android/gms/common/server/response/FastParser;->zax(Ljava/io/BufferedReader; [C)V
+	6       (0000001a) const/4              v5, 0
+	7       (0000001c) return-object        v5
+
+zau-BB@0x1e : [ zau-BB@0x26 zau-BB@0x98 ]
+	8       (0000001e) const/16             v1, 91
+	9       (00000022) if-ne                v0, v1, +03bh
+
+zau-BB@0x26 : [ zau-BB@0x44 ]
+	10      (00000026) iget-object          v0, v4, Lcom/google/android/gms/common/server/response/FastParser;->zat Ljava/util/Stack;
+	11      (0000002a) const/4              v1, 5
+	12      (0000002c) invoke-static        v1, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+	13      (00000032) move-result-object   v2
+	14      (00000034) invoke-virtual       v0, v2, Ljava/util/Stack;->push(Ljava/lang/Object;)Ljava/lang/Object;
+	15      (0000003a) new-instance         v0, Ljava/util/ArrayList;
+	16      (0000003e) invoke-direct        v0, Ljava/util/ArrayList;-><init>()V
+
+zau-BB@0x44 : [ zau-BB@0x5a zau-BB@0x88 ]
+	17      (00000044) const/16             v2, 1024
+	18      (00000048) invoke-virtual       v5, v2, Ljava/io/BufferedReader;->mark(I)V
+	19      (0000004e) invoke-direct        v4, v5, Lcom/google/android/gms/common/server/response/FastParser;->zai(Ljava/io/BufferedReader;)C
+	20      (00000054) move-result          v2
+	21      (00000056) if-eqz               v2, +019h
+
+zau-BB@0x5a : [ zau-BB@0x62 zau-BB@0x44 ]
+	22      (0000005a) const/16             v3, 44
+	23      (0000005e) if-eq                v2, v3, -00dh
+
+zau-BB@0x62 : [ zau-BB@0x6a zau-BB@0x80 ]
+	24      (00000062) const/16             v3, 93
+	25      (00000066) if-eq                v2, v3, +00dh
+
+zau-BB@0x6a : [ zau-BB@0x44 ]
+	26      (0000006a) invoke-virtual       v5, Ljava/io/BufferedReader;->reset()V
+	27      (00000070) invoke-interface     v6, v4, v5, Lcom/google/android/gms/common/server/response/zai;->zaa(Lcom/google/android/gms/common/server/response/FastParser; Ljava/io/BufferedReader;)Ljava/lang/Object;
+	28      (00000076) move-result-object   v2
+	29      (00000078) invoke-virtual       v0, v2, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	30      (0000007e) goto                 -1dh
+
+zau-BB@0x80 : 
+	31      (00000080) invoke-direct        v4, v1, Lcom/google/android/gms/common/server/response/FastParser;->zaw(I)V
+	32      (00000086) return-object        v0
+
+zau-BB@0x88 : 
+	33      (00000088) new-instance         v5, Lcom/google/android/gms/common/server/response/FastParser$ParseException;
+	34      (0000008c) const-string         v6, "Unexpected EOF"
+	35      (00000090) invoke-direct        v5, v6, Lcom/google/android/gms/common/server/response/FastParser$ParseException;-><init>(Ljava/lang/String;)V
+	36      (00000096) throw                v5
+
+zau-BB@0x98 : 
+	37      (00000098) new-instance         v5, Lcom/google/android/gms/common/server/response/FastParser$ParseException;
+	38      (0000009c) const-string         v6, "Expected start of array"
+	39      (000000a0) invoke-direct        v5, v6, Lcom/google/android/gms/common/server/response/FastParser$ParseException;-><init>(Ljava/lang/String;)V
+	40      (000000a6) throw                v5
+

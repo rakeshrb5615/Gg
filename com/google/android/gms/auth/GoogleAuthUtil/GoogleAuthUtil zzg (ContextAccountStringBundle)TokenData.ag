@@ -1,0 +1,49 @@
+# Lcom/google/android/gms/auth/GoogleAuthUtil;->zzg(Landroid/content/Context; Landroid/accounts/Account; Ljava/lang/String; Landroid/os/Bundle;)Lcom/google/android/gms/auth/TokenData; [access_flags=private static]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:android.content.Context
+# - v4:android.accounts.Account
+# - v5:java.lang.String
+# - v6:android.os.Bundle
+#
+# - return:com.google.android.gms.auth.TokenData
+
+zzg-BB@0x0 : [ zzg-BB@0xc ]
+	0       (00000000) const-string         v0, "User intervention required. Notification has been pushed."
+	1       (00000004) const-string         v1, "Error when getting token"
+	2       (00000008) const-string         v2, "GoogleAuthUtil"
+
+zzg-BB@0xc : 
+	3       (0000000c) invoke-static        v3, v4, v5, v6, Lcom/google/android/gms/auth/zzl;->zza(Landroid/content/Context; Landroid/accounts/Account; Ljava/lang/String; Landroid/os/Bundle;)Lcom/google/android/gms/auth/TokenData;
+	4       (00000012) move-result-object   v4
+	5       (00000014) invoke-static        v3, Lcom/google/android/gms/common/GooglePlayServicesUtilLight;->cancelAvailabilityErrorNotifications(Landroid/content/Context;)V
+	6       (0000001a) return-object        v4
+	c:19
+	(Lcom/google/android/gms/auth/GooglePlayServicesAvailabilityException; -> 20 zzg-BB@0x20)
+	(Lcom/google/android/gms/auth/UserRecoverableAuthException; -> 1c zzg-BB@0x1c)
+
+zzg-BB@0x1c : [ zzg-BB@0x24 ]
+	7       (0000001c) move-exception       v4
+	8       (0000001e) goto                 +3h
+
+zzg-BB@0x20 : [ zzg-BB@0x3c ]
+	9       (00000020) move-exception       v4
+	10      (00000022) goto                 +dh
+
+zzg-BB@0x24 : 
+	11      (00000024) invoke-static        v3, Lcom/google/android/gms/common/GooglePlayServicesUtilLight;->cancelAvailabilityErrorNotifications(Landroid/content/Context;)V
+	12      (0000002a) invoke-static        v2, v1, v4, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+	13      (00000030) new-instance         v3, Lcom/google/android/gms/auth/UserRecoverableNotifiedException;
+	14      (00000034) invoke-direct        v3, v0, v4, Lcom/google/android/gms/auth/UserRecoverableNotifiedException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	15      (0000003a) throw                v3
+
+zzg-BB@0x3c : 
+	16      (0000003c) invoke-virtual       v4, Lcom/google/android/gms/auth/GooglePlayServicesAvailabilityException;->getConnectionStatusCode()I
+	17      (00000042) move-result          v5
+	18      (00000044) invoke-static        v5, v3, Lcom/google/android/gms/common/GooglePlayServicesUtil;->showErrorNotification(I Landroid/content/Context;)V
+	19      (0000004a) invoke-static        v2, v1, v4, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+	20      (00000050) new-instance         v3, Lcom/google/android/gms/auth/UserRecoverableNotifiedException;
+	21      (00000054) invoke-direct        v3, v0, v4, Lcom/google/android/gms/auth/UserRecoverableNotifiedException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	22      (0000005a) throw                v3
+

@@ -1,0 +1,48 @@
+# Lcom/google/android/gms/auth/api/signin/internal/SignInHubActivity;->zbe(Ljava/lang/String;)V [access_flags=private final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:java.lang.String
+#
+# - return:void
+
+zbe-BB@0x0 : [ zbe-BB@0x1a zbe-BB@0x26 ]
+	0       (00000000) new-instance         v0, Landroid/content/Intent;
+	1       (00000004) invoke-direct        v0, v3, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
+	2       (0000000a) const-string         v1, "com.google.android.gms.auth.GOOGLE_SIGN_IN"
+	3       (0000000e) invoke-virtual       v3, v1, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	4       (00000014) move-result          v3
+	5       (00000016) if-eqz               v3, +008h
+
+zbe-BB@0x1a : [ zbe-BB@0x34 ]
+	6       (0000001a) const-string         v3, "com.google.android.gms"
+	7       (0000001e) invoke-virtual       v0, v3, Landroid/content/Intent;->setPackage(Ljava/lang/String;)Landroid/content/Intent;
+	8       (00000024) goto                 +8h
+
+zbe-BB@0x26 : [ zbe-BB@0x34 ]
+	9       (00000026) invoke-virtual       v2, Landroid/content/Context;->getPackageName()Ljava/lang/String;
+	10      (0000002c) move-result-object   v3
+	11      (0000002e) invoke-virtual       v0, v3, Landroid/content/Intent;->setPackage(Ljava/lang/String;)Landroid/content/Intent;
+
+zbe-BB@0x34 : [ zbe-BB@0x48 ]
+	12      (00000034) iget-object          v3, v2, Lcom/google/android/gms/auth/api/signin/internal/SignInHubActivity;->zbc Lcom/google/android/gms/auth/api/signin/internal/SignInConfiguration;
+	13      (00000038) const-string         v1, "config"
+	14      (0000003c) invoke-virtual       v0, v1, v3, Landroid/content/Intent;->putExtra(Ljava/lang/String; Landroid/os/Parcelable;)Landroid/content/Intent;
+	15      (00000042) const                v3, 40962
+
+zbe-BB@0x48 : 
+	16      (00000048) invoke-virtual       v2, v0, v3, Lc/n;->startActivityForResult(Landroid/content/Intent; I)V
+	17      (0000004e) return-void          
+	48:4d
+	(Landroid/content/ActivityNotFoundException; -> 50 zbe-BB@0x50)
+
+zbe-BB@0x50 : 
+	18      (00000050) const/4              v3, 1
+	19      (00000052) iput-boolean         v3, v2, Lcom/google/android/gms/auth/api/signin/internal/SignInHubActivity;->zbb Z
+	20      (00000056) const-string         v3, "AuthSignInClient"
+	21      (0000005a) const-string         v0, "Could not launch sign in Intent. Google Play Service is probably being updated..."
+	22      (0000005e) invoke-static        v3, v0, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+	23      (00000064) const/16             v3, 17
+	24      (00000068) invoke-direct        v2, v3, Lcom/google/android/gms/auth/api/signin/internal/SignInHubActivity;->zbd(I)V
+	25      (0000006e) return-void          
+

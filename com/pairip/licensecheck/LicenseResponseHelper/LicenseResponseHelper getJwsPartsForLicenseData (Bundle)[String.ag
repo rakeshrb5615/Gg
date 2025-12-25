@@ -1,0 +1,37 @@
+# Lcom/pairip/licensecheck/LicenseResponseHelper;->getJwsPartsForLicenseData(Landroid/os/Bundle;)[Ljava/lang/String; [access_flags=private static]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:android.os.Bundle
+#
+# - return:java.lang.String[]
+
+getJwsPartsForLicenseData-BB@0x0 : [ getJwsPartsForLicenseData-BB@0x14 getJwsPartsForLicenseData-BB@0x38 ]
+	0       (00000000) const-string         v0, "LICENSE_DATA"
+	1       (00000004) invoke-virtual       v3, v0, Landroid/os/Bundle;->getString(Ljava/lang/String;)Ljava/lang/String;
+	2       (0000000a) move-result-object   v3
+	3       (0000000c) const-string         v0, "Invalid response"
+	4       (00000010) if-eqz               v3, +014h
+
+getJwsPartsForLicenseData-BB@0x14 : [ getJwsPartsForLicenseData-BB@0x2a getJwsPartsForLicenseData-BB@0x2c ]
+	5       (00000014) const-string         v1, "\."
+	6       (00000018) const/4              v2, -1
+	7       (0000001a) invoke-virtual       v3, v1, v2, Ljava/lang/String;->split(Ljava/lang/String; I)[Ljava/lang/String;
+	8       (00000020) move-result-object   v3
+	9       (00000022) array-length         v1, v3
+	10      (00000024) const/4              v2, 3
+	11      (00000026) if-ne                v1, v2, +003h
+
+getJwsPartsForLicenseData-BB@0x2a : 
+	12      (0000002a) return-object        v3
+
+getJwsPartsForLicenseData-BB@0x2c : 
+	13      (0000002c) new-instance         v3, Lcom/pairip/licensecheck/LicenseCheckException;
+	14      (00000030) invoke-direct        v3, v0, Lcom/pairip/licensecheck/LicenseCheckException;-><init>(Ljava/lang/String;)V
+	15      (00000036) throw                v3
+
+getJwsPartsForLicenseData-BB@0x38 : 
+	16      (00000038) new-instance         v3, Lcom/pairip/licensecheck/LicenseCheckException;
+	17      (0000003c) invoke-direct        v3, v0, Lcom/pairip/licensecheck/LicenseCheckException;-><init>(Ljava/lang/String;)V
+	18      (00000042) throw                v3
+

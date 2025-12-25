@@ -1,0 +1,74 @@
+# Lcom/google/android/gms/common/api/internal/zabe;->enqueue(Lcom/google/android/gms/common/api/internal/BaseImplementation$ApiMethodImpl;)Lcom/google/android/gms/common/api/internal/BaseImplementation$ApiMethodImpl; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:com.google.android.gms.common.api.internal.BaseImplementation$ApiMethodImpl
+#
+# - return:com.google.android.gms.common.api.internal.BaseImplementation$ApiMethodImpl
+
+enqueue-BB@0x0 : [ enqueue-BB@0x20 enqueue-BB@0x2a ]
+	0       (00000000) invoke-virtual       v5, Lcom/google/android/gms/common/api/internal/BaseImplementation$ApiMethodImpl;->getApi()Lcom/google/android/gms/common/api/Api;
+	1       (00000006) move-result-object   v0
+	2       (00000008) iget-object          v1, v4, Lcom/google/android/gms/common/api/internal/zabe;->zac Ljava/util/Map;
+	3       (0000000c) invoke-virtual       v5, Lcom/google/android/gms/common/api/internal/BaseImplementation$ApiMethodImpl;->getClientKey()Lcom/google/android/gms/common/api/Api$AnyClientKey;
+	4       (00000012) move-result-object   v2
+	5       (00000014) invoke-interface     v1, v2, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z
+	6       (0000001a) move-result          v1
+	7       (0000001c) if-eqz               v0, +007h
+
+enqueue-BB@0x20 : [ enqueue-BB@0x2e ]
+	8       (00000020) invoke-virtual       v0, Lcom/google/android/gms/common/api/Api;->zad()Ljava/lang/String;
+	9       (00000026) move-result-object   v0
+	10      (00000028) goto                 +3h
+
+enqueue-BB@0x2a : [ enqueue-BB@0x2e ]
+	11      (0000002a) const-string         v0, "the API"
+
+enqueue-BB@0x2e : [ enqueue-BB@0x64 ]
+	12      (0000002e) new-instance         v2, Ljava/lang/StringBuilder;
+	13      (00000032) const-string         v3, "GoogleApiClient is not configured to use "
+	14      (00000036) invoke-direct        v2, v3, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	15      (0000003c) invoke-virtual       v2, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	16      (00000042) const-string         v0, " required for this call."
+	17      (00000046) invoke-virtual       v2, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	18      (0000004c) invoke-virtual       v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	19      (00000052) move-result-object   v0
+	20      (00000054) invoke-static        v1, v0, Lcom/google/android/gms/common/internal/Preconditions;->checkArgument(Z Ljava/lang/Object;)V
+	21      (0000005a) iget-object          v0, v4, Lcom/google/android/gms/common/api/internal/zabe;->zaj Ljava/util/concurrent/locks/Lock;
+	22      (0000005e) invoke-interface     v0, Ljava/util/concurrent/locks/Lock;->lock()V
+
+enqueue-BB@0x64 : [ enqueue-BB@0x6c enqueue-BB@0x7c ]
+	23      (00000064) iget-object          v0, v4, Lcom/google/android/gms/common/api/internal/zabe;->zal Lcom/google/android/gms/common/api/internal/zaca;
+	24      (00000068) if-nez               v0, +00ah
+	64:83
+	(Ljava/lang/Throwable; -> 78 enqueue-BB@0x78)
+
+enqueue-BB@0x6c : [ enqueue-BB@0x84 ]
+	25      (0000006c) iget-object          v0, v4, Lcom/google/android/gms/common/api/internal/zabe;->zaa Ljava/util/Queue;
+	26      (00000070) invoke-interface     v0, v5, Ljava/util/Queue;->add(Ljava/lang/Object;)Z
+	27      (00000076) goto                 +7h
+	64:83
+	(Ljava/lang/Throwable; -> 78 enqueue-BB@0x78)
+
+enqueue-BB@0x78 : [ enqueue-BB@0x90 ]
+	28      (00000078) move-exception       v5
+	29      (0000007a) goto                 +bh
+	64:83
+	(Ljava/lang/Throwable; -> 78 enqueue-BB@0x78)
+
+enqueue-BB@0x7c : [ enqueue-BB@0x84 ]
+	30      (0000007c) invoke-interface     v0, v5, Lcom/google/android/gms/common/api/internal/zaca;->zae(Lcom/google/android/gms/common/api/internal/BaseImplementation$ApiMethodImpl;)Lcom/google/android/gms/common/api/internal/BaseImplementation$ApiMethodImpl;
+	31      (00000082) move-result-object   v5
+	64:83
+	(Ljava/lang/Throwable; -> 78 enqueue-BB@0x78)
+
+enqueue-BB@0x84 : 
+	32      (00000084) iget-object          v0, v4, Lcom/google/android/gms/common/api/internal/zabe;->zaj Ljava/util/concurrent/locks/Lock;
+	33      (00000088) invoke-interface     v0, Ljava/util/concurrent/locks/Lock;->unlock()V
+	34      (0000008e) return-object        v5
+
+enqueue-BB@0x90 : 
+	35      (00000090) iget-object          v0, v4, Lcom/google/android/gms/common/api/internal/zabe;->zaj Ljava/util/concurrent/locks/Lock;
+	36      (00000094) invoke-interface     v0, Ljava/util/concurrent/locks/Lock;->unlock()V
+	37      (0000009a) throw                v5
+

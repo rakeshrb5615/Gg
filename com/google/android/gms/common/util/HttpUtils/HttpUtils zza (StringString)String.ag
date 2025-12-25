@@ -1,0 +1,28 @@
+# Lcom/google/android/gms/common/util/HttpUtils;->zza(Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String; [access_flags=private static]
+#
+# Parameters:
+# - local registers: v0...v-1
+# - v0:java.lang.String
+# - v1:java.lang.String
+#
+# - return:java.lang.String
+
+zza-BB@0x0 : [ zza-BB@0x4 zza-BB@0x8 ]
+	0       (00000000) if-nez               v1, +004h
+
+zza-BB@0x4 : [ zza-BB@0x8 ]
+	1       (00000004) const-string         v1, "ISO-8859-1"
+	4:f
+	(Ljava/io/UnsupportedEncodingException; -> 12 zza-BB@0x12)
+
+zza-BB@0x8 : 
+	2       (00000008) invoke-static        v0, v1, Ljava/net/URLDecoder;->decode(Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	3       (0000000e) move-result-object   v0
+	4       (00000010) return-object        v0
+
+zza-BB@0x12 : 
+	5       (00000012) move-exception       v0
+	6       (00000014) new-instance         v1, Ljava/lang/IllegalArgumentException;
+	7       (00000018) invoke-direct        v1, v0, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/Throwable;)V
+	8       (0000001e) throw                v1
+

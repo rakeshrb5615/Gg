@@ -1,0 +1,119 @@
+# Lcom/google/android/gms/common/util/JsonUtils;->escapeString(Ljava/lang/String;)Ljava/lang/String; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:java.lang.String
+#
+# - return:java.lang.String
+
+escapeString-BB@0x0 : [ escapeString-BB@0xc escapeString-BB@0xea ]
+	0       (00000000) invoke-static        v4, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+	1       (00000006) move-result          v0
+	2       (00000008) if-nez               v0, +071h
+
+escapeString-BB@0xc : [ escapeString-BB@0x1a ]
+	3       (0000000c) sget-object          v0, Lcom/google/android/gms/common/util/JsonUtils;->zzb Ljava/util/regex/Pattern;
+	4       (00000010) invoke-virtual       v0, v4, Ljava/util/regex/Pattern;->matcher(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;
+	5       (00000016) move-result-object   v0
+	6       (00000018) const/4              v1, 0
+
+escapeString-BB@0x1a : [ escapeString-BB@0x26 escapeString-BB@0xd6 ]
+	7       (0000001a) invoke-virtual       v0, Ljava/util/regex/Matcher;->find()Z
+	8       (00000020) move-result          v2
+	9       (00000022) if-eqz               v2, +05ah
+
+escapeString-BB@0x26 : [ escapeString-BB@0x2a escapeString-BB@0x34 ]
+	10      (00000026) if-nez               v1, +007h
+
+escapeString-BB@0x2a : [ escapeString-BB@0x34 ]
+	11      (0000002a) new-instance         v1, Ljava/lang/StringBuffer;
+	12      (0000002e) invoke-direct        v1, Ljava/lang/StringBuffer;-><init>()V
+
+escapeString-BB@0x34 : [ escapeString-BB@0x4e escapeString-BB@0xca ]
+	13      (00000034) invoke-virtual       v0, Ljava/util/regex/Matcher;->group()Ljava/lang/String;
+	14      (0000003a) move-result-object   v2
+	15      (0000003c) const/4              v3, 0
+	16      (0000003e) invoke-virtual       v2, v3, Ljava/lang/String;->charAt(I)C
+	17      (00000044) move-result          v2
+	18      (00000046) const/16             v3, 12
+	19      (0000004a) if-eq                v2, v3, +040h
+
+escapeString-BB@0x4e : [ escapeString-BB@0x56 escapeString-BB@0xbe ]
+	20      (0000004e) const/16             v3, 13
+	21      (00000052) if-eq                v2, v3, +036h
+
+escapeString-BB@0x56 : [ escapeString-BB@0x5e escapeString-BB@0xb2 ]
+	22      (00000056) const/16             v3, 34
+	23      (0000005a) if-eq                v2, v3, +02ch
+
+escapeString-BB@0x5e : [ escapeString-BB@0x66 escapeString-BB@0xa6 ]
+	24      (0000005e) const/16             v3, 47
+	25      (00000062) if-eq                v2, v3, +022h
+
+escapeString-BB@0x66 : [ escapeString-BB@0x6e escapeString-BB@0x9a ]
+	26      (00000066) const/16             v3, 92
+	27      (0000006a) if-eq                v2, v3, +018h
+
+escapeString-BB@0x6e : [ D:escapeString-BB@0x74 8:escapeString-BB@0x8e 9:escapeString-BB@0x82 10:escapeString-BB@0x76 ]
+	28      (0000006e) packed-switch        v2, +000003fh
+
+escapeString-BB@0x74 : [ escapeString-BB@0x1a ]
+	29      (00000074) goto                 -2dh
+
+escapeString-BB@0x76 : [ escapeString-BB@0x1a ]
+	30      (00000076) const-string         v2, "\\n"
+	31      (0000007a) invoke-virtual       v0, v1, v2, Ljava/util/regex/Matcher;->appendReplacement(Ljava/lang/StringBuffer; Ljava/lang/String;)Ljava/util/regex/Matcher;
+	32      (00000080) goto                 -33h
+
+escapeString-BB@0x82 : [ escapeString-BB@0x1a ]
+	33      (00000082) const-string         v2, "\\t"
+	34      (00000086) invoke-virtual       v0, v1, v2, Ljava/util/regex/Matcher;->appendReplacement(Ljava/lang/StringBuffer; Ljava/lang/String;)Ljava/util/regex/Matcher;
+	35      (0000008c) goto                 -39h
+
+escapeString-BB@0x8e : [ escapeString-BB@0x1a ]
+	36      (0000008e) const-string         v2, "\\b"
+	37      (00000092) invoke-virtual       v0, v1, v2, Ljava/util/regex/Matcher;->appendReplacement(Ljava/lang/StringBuffer; Ljava/lang/String;)Ljava/util/regex/Matcher;
+	38      (00000098) goto                 -3fh
+
+escapeString-BB@0x9a : [ escapeString-BB@0x1a ]
+	39      (0000009a) const-string         v2, "\\\\"
+	40      (0000009e) invoke-virtual       v0, v1, v2, Ljava/util/regex/Matcher;->appendReplacement(Ljava/lang/StringBuffer; Ljava/lang/String;)Ljava/util/regex/Matcher;
+	41      (000000a4) goto                 -45h
+
+escapeString-BB@0xa6 : [ escapeString-BB@0x1a ]
+	42      (000000a6) const-string         v2, "\\/"
+	43      (000000aa) invoke-virtual       v0, v1, v2, Ljava/util/regex/Matcher;->appendReplacement(Ljava/lang/StringBuffer; Ljava/lang/String;)Ljava/util/regex/Matcher;
+	44      (000000b0) goto                 -4bh
+
+escapeString-BB@0xb2 : [ escapeString-BB@0x1a ]
+	45      (000000b2) const-string         v2, "\\\""
+	46      (000000b6) invoke-virtual       v0, v1, v2, Ljava/util/regex/Matcher;->appendReplacement(Ljava/lang/StringBuffer; Ljava/lang/String;)Ljava/util/regex/Matcher;
+	47      (000000bc) goto                 -51h
+
+escapeString-BB@0xbe : [ escapeString-BB@0x1a ]
+	48      (000000be) const-string         v2, "\\r"
+	49      (000000c2) invoke-virtual       v0, v1, v2, Ljava/util/regex/Matcher;->appendReplacement(Ljava/lang/StringBuffer; Ljava/lang/String;)Ljava/util/regex/Matcher;
+	50      (000000c8) goto                 -57h
+
+escapeString-BB@0xca : [ escapeString-BB@0x1a ]
+	51      (000000ca) const-string         v2, "\\f"
+	52      (000000ce) invoke-virtual       v0, v1, v2, Ljava/util/regex/Matcher;->appendReplacement(Ljava/lang/StringBuffer; Ljava/lang/String;)Ljava/util/regex/Matcher;
+	53      (000000d4) goto                 -5dh
+
+escapeString-BB@0xd6 : [ escapeString-BB@0xda escapeString-BB@0xdc ]
+	54      (000000d6) if-nez               v1, +003h
+
+escapeString-BB@0xda : [ escapeString-BB@0xea ]
+	55      (000000da) goto                 +8h
+
+escapeString-BB@0xdc : [ escapeString-BB@0xea ]
+	56      (000000dc) invoke-virtual       v0, v1, Ljava/util/regex/Matcher;->appendTail(Ljava/lang/StringBuffer;)Ljava/lang/StringBuffer;
+	57      (000000e2) invoke-virtual       v1, Ljava/lang/StringBuffer;->toString()Ljava/lang/String;
+	58      (000000e8) move-result-object   v4
+
+escapeString-BB@0xea : 
+	59      (000000ea) return-object        v4
+
+escapeString-BB@0xec : 
+	60      (000000ec) packed-switch-payload 8 9 a
+

@@ -1,0 +1,56 @@
+# Lcom/google/firebase/auth/FirebaseAuth;->d(Lcom/google/firebase/auth/FirebaseAuth; Ly4/l;)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:com.google.firebase.auth.FirebaseAuth
+# - v5:y4.l
+#
+# - return:void
+
+d-BB@0x0 : [ d-BB@0x8 d-BB@0x44 ]
+	0       (00000000) const-string         v0, "FirebaseAuth"
+	1       (00000004) if-eqz               v5, +020h
+
+d-BB@0x8 : [ d-BB@0x4e ]
+	2       (00000008) move-object          v1, v5
+	3       (0000000a) check-cast           v1, Lz4/e;
+	4       (0000000e) iget-object          v1, v1, Lz4/e;->b Lz4/c;
+	5       (00000012) iget-object          v1, v1, Lz4/c;->a Ljava/lang/String;
+	6       (00000016) new-instance         v2, Ljava/lang/StringBuilder;
+	7       (0000001a) const-string         v3, "Notifying id token listeners about user ( "
+	8       (0000001e) invoke-direct        v2, v3, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	9       (00000024) invoke-virtual       v2, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	10      (0000002a) const-string         v1, " )."
+	11      (0000002e) invoke-virtual       v2, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	12      (00000034) invoke-virtual       v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	13      (0000003a) move-result-object   v1
+	14      (0000003c) invoke-static        v0, v1, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String;)I
+	15      (00000042) goto                 +6h
+
+d-BB@0x44 : [ d-BB@0x4e ]
+	16      (00000044) const-string         v1, "Notifying id token listeners about a sign-out event."
+	17      (00000048) invoke-static        v0, v1, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String;)I
+
+d-BB@0x4e : [ d-BB@0x52 d-BB@0x64 ]
+	18      (0000004e) if-eqz               v5, +00bh
+
+d-BB@0x52 : [ d-BB@0x66 ]
+	19      (00000052) check-cast           v5, Lz4/e;
+	20      (00000056) iget-object          v5, v5, Lz4/e;->a Lcom/google/android/gms/internal/firebase-auth-api/zzahv;
+	21      (0000005a) invoke-virtual       v5, Lcom/google/android/gms/internal/firebase-auth-api/zzahv;->zzc()Ljava/lang/String;
+	22      (00000060) move-result-object   v5
+	23      (00000062) goto                 +2h
+
+d-BB@0x64 : [ d-BB@0x66 ]
+	24      (00000064) const/4              v5, 0
+
+d-BB@0x66 : 
+	25      (00000066) new-instance         v0, Lh6/b;
+	26      (0000006a) invoke-direct        v0, Ljava/lang/Object;-><init>()V
+	27      (00000070) iput-object          v5, v0, Lh6/b;->a Ljava/lang/String;
+	28      (00000074) iget-object          v5, v4, Lcom/google/firebase/auth/FirebaseAuth;->t Ljava/util/concurrent/Executor;
+	29      (00000078) new-instance         v1, Ly4/i0;
+	30      (0000007c) invoke-direct        v1, v4, v0, Ly4/i0;-><init>(Lcom/google/firebase/auth/FirebaseAuth; Lh6/b;)V
+	31      (00000082) invoke-interface     v5, v1, Ljava/util/concurrent/Executor;->execute(Ljava/lang/Runnable;)V
+	32      (00000088) return-void          
+

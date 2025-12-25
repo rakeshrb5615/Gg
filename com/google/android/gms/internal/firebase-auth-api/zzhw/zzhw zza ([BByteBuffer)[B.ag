@@ -1,0 +1,60 @@
+# Lcom/google/android/gms/internal/firebase-auth-api/zzhw;->zza([B Ljava/nio/ByteBuffer;)[B [access_flags=private static]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:byte[]
+# - v6:java.nio.ByteBuffer
+#
+# - return:byte[]
+
+zza-BB@0x0 : [ zza-BB@0xa zza-BB@0xe ]
+	0       (00000000) array-length         v0, v5
+	1       (00000002) rem-int/lit8         v0, v0, 16
+	2       (00000006) if-nez               v0, +004h
+
+zza-BB@0xa : [ zza-BB@0x1c ]
+	3       (0000000a) array-length         v0, v5
+	4       (0000000c) goto                 +8h
+
+zza-BB@0xe : [ zza-BB@0x1c ]
+	5       (0000000e) array-length         v0, v5
+	6       (00000010) add-int/lit8         v0, v0, 16
+	7       (00000014) array-length         v1, v5
+	8       (00000016) rem-int/lit8         v1, v1, 16
+	9       (0000001a) sub-int/2addr        v0, v1
+
+zza-BB@0x1c : [ zza-BB@0x2c zza-BB@0x30 ]
+	10      (0000001c) invoke-virtual       v6, Ljava/nio/Buffer;->remaining()I
+	11      (00000022) move-result          v1
+	12      (00000024) rem-int/lit8         v2, v1, 16
+	13      (00000028) if-nez               v2, +004h
+
+zza-BB@0x2c : [ zza-BB@0x36 ]
+	14      (0000002c) move                 v3, v1
+	15      (0000002e) goto                 +4h
+
+zza-BB@0x30 : [ zza-BB@0x36 ]
+	16      (00000030) add-int/lit8         v3, v1, 16
+	17      (00000034) sub-int/2addr        v3, v2
+
+zza-BB@0x36 : 
+	18      (00000036) add-int/2addr        v3, v0
+	19      (00000038) add-int/lit8         v2, v3, 16
+	20      (0000003c) invoke-static        v2, Ljava/nio/ByteBuffer;->allocate(I)Ljava/nio/ByteBuffer;
+	21      (00000042) move-result-object   v2
+	22      (00000044) sget-object          v4, Ljava/nio/ByteOrder;->LITTLE_ENDIAN Ljava/nio/ByteOrder;
+	23      (00000048) invoke-virtual       v2, v4, Ljava/nio/ByteBuffer;->order(Ljava/nio/ByteOrder;)Ljava/nio/ByteBuffer;
+	24      (0000004e) move-result-object   v2
+	25      (00000050) invoke-virtual       v2, v5, Ljava/nio/ByteBuffer;->put([B)Ljava/nio/ByteBuffer;
+	26      (00000056) invoke-virtual       v2, v0, Ljava/nio/ByteBuffer;->position(I)Ljava/nio/Buffer;
+	27      (0000005c) invoke-virtual       v2, v6, Ljava/nio/ByteBuffer;->put(Ljava/nio/ByteBuffer;)Ljava/nio/ByteBuffer;
+	28      (00000062) invoke-virtual       v2, v3, Ljava/nio/ByteBuffer;->position(I)Ljava/nio/Buffer;
+	29      (00000068) array-length         v5, v5
+	30      (0000006a) int-to-long          v5, v5
+	31      (0000006c) invoke-virtual       v2, v5, v6, Ljava/nio/ByteBuffer;->putLong(J)Ljava/nio/ByteBuffer;
+	32      (00000072) int-to-long          v5, v1
+	33      (00000074) invoke-virtual       v2, v5, v6, Ljava/nio/ByteBuffer;->putLong(J)Ljava/nio/ByteBuffer;
+	34      (0000007a) invoke-virtual       v2, Ljava/nio/ByteBuffer;->array()[B
+	35      (00000080) move-result-object   v5
+	36      (00000082) return-object        v5
+

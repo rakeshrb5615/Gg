@@ -1,0 +1,65 @@
+# Lcom/google/android/gms/fido/fido2/api/common/zzn;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object; [access_flags=public final bridge synthetic]
+#
+# Parameters:
+# - local registers: v0...v7
+# - v8:android.os.Parcel
+#
+# - return:java.lang.Object
+
+createFromParcel-BB@0x0 : [ createFromParcel-BB@0xe ]
+	0       (00000000) invoke-static        v8, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelReader;->validateObjectHeader(Landroid/os/Parcel;)I
+	1       (00000006) move-result          v0
+	2       (00000008) const/4              v1, 0
+	3       (0000000a) move-object          v2, v1
+	4       (0000000c) move-object          v3, v2
+
+createFromParcel-BB@0xe : [ createFromParcel-BB@0x1a createFromParcel-BB@0x72 ]
+	5       (0000000e) invoke-virtual       v8, Landroid/os/Parcel;->dataPosition()I
+	6       (00000014) move-result          v4
+	7       (00000016) if-ge                v4, v0, +02eh
+
+createFromParcel-BB@0x1a : [ createFromParcel-BB@0x30 createFromParcel-BB@0x60 ]
+	8       (0000001a) invoke-static        v8, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelReader;->readHeader(Landroid/os/Parcel;)I
+	9       (00000020) move-result          v4
+	10      (00000022) invoke-static        v4, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelReader;->getFieldId(I)I
+	11      (00000028) move-result          v5
+	12      (0000002a) const/4              v6, 2
+	13      (0000002c) if-eq                v5, v6, +01ah
+
+createFromParcel-BB@0x30 : [ createFromParcel-BB@0x36 createFromParcel-BB@0x4e ]
+	14      (00000030) const/4              v6, 3
+	15      (00000032) if-eq                v5, v6, +00eh
+
+createFromParcel-BB@0x36 : [ createFromParcel-BB@0x3c createFromParcel-BB@0x44 ]
+	16      (00000036) const/4              v6, 4
+	17      (00000038) if-eq                v5, v6, +006h
+
+createFromParcel-BB@0x3c : [ createFromParcel-BB@0xe ]
+	18      (0000003c) invoke-static        v8, v4, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelReader;->skipUnknownField(Landroid/os/Parcel; I)V
+	19      (00000042) goto                 -1ah
+
+createFromParcel-BB@0x44 : [ createFromParcel-BB@0xe ]
+	20      (00000044) invoke-static        v8, v4, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelReader;->createByteArray(Landroid/os/Parcel; I)[B
+	21      (0000004a) move-result-object   v3
+	22      (0000004c) goto                 -1fh
+
+createFromParcel-BB@0x4e : [ createFromParcel-BB@0xe ]
+	23      (0000004e) sget-object          v2, Landroid/net/Uri;->CREATOR Landroid/os/Parcelable$Creator;
+	24      (00000052) invoke-static        v8, v4, v2, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelReader;->createParcelable(Landroid/os/Parcel; I Landroid/os/Parcelable$Creator;)Landroid/os/Parcelable;
+	25      (00000058) move-result-object   v2
+	26      (0000005a) check-cast           v2, Landroid/net/Uri;
+	27      (0000005e) goto                 -28h
+
+createFromParcel-BB@0x60 : [ createFromParcel-BB@0xe ]
+	28      (00000060) sget-object          v1, Lcom/google/android/gms/fido/fido2/api/common/PublicKeyCredentialCreationOptions;->CREATOR Landroid/os/Parcelable$Creator;
+	29      (00000064) invoke-static        v8, v4, v1, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelReader;->createParcelable(Landroid/os/Parcel; I Landroid/os/Parcelable$Creator;)Landroid/os/Parcelable;
+	30      (0000006a) move-result-object   v1
+	31      (0000006c) check-cast           v1, Lcom/google/android/gms/fido/fido2/api/common/PublicKeyCredentialCreationOptions;
+	32      (00000070) goto                 -31h
+
+createFromParcel-BB@0x72 : 
+	33      (00000072) invoke-static        v8, v0, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelReader;->ensureAtEnd(Landroid/os/Parcel; I)V
+	34      (00000078) new-instance         v8, Lcom/google/android/gms/fido/fido2/api/common/BrowserPublicKeyCredentialCreationOptions;
+	35      (0000007c) invoke-direct        v8, v1, v2, v3, Lcom/google/android/gms/fido/fido2/api/common/BrowserPublicKeyCredentialCreationOptions;-><init>(Lcom/google/android/gms/fido/fido2/api/common/PublicKeyCredentialCreationOptions; Landroid/net/Uri; [B)V
+	36      (00000082) return-object        v8
+

@@ -1,0 +1,33 @@
+# Lcom/google/android/gms/dynamite/zza;->run()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v1
+#
+# - return:void
+
+run-BB@0x0 : [ run-BB@0xc ]
+	0       (00000000) const/16             v0, 19
+	1       (00000004) invoke-static        v0, Landroid/os/Process;->setThreadPriority(I)V
+	2       (0000000a) monitor-enter        v1
+
+run-BB@0xc : [ run-BB@0xc ]
+	3       (0000000c) invoke-virtual       v1, Ljava/lang/Object;->wait()V
+	4       (00000012) goto                 -3h
+	c:11
+	(Ljava/lang/InterruptedException; -> 18 run-BB@0x18)
+	(Ljava/lang/Throwable; -> 14 run-BB@0x14)
+
+run-BB@0x14 : [ run-BB@0x1c ]
+	5       (00000014) move-exception       v0
+	6       (00000016) goto                 +3h
+
+run-BB@0x18 : 
+	7       (00000018) monitor-exit         v1
+	8       (0000001a) return-void          
+	18:1d
+	(Ljava/lang/Throwable; -> 14 run-BB@0x14)
+
+run-BB@0x1c : 
+	9       (0000001c) monitor-exit         v1
+	10      (0000001e) throw                v0
+

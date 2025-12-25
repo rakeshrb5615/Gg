@@ -1,0 +1,32 @@
+# Lcom/google/android/gms/auth/zzl;->zzm(Landroid/content/Context; Landroid/os/Bundle;)V [access_flags=private static]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:android.content.Context
+# - v3:android.os.Bundle
+#
+# - return:void
+
+zzm-BB@0x0 : [ zzm-BB@0x2e zzm-BB@0x34 ]
+	0       (00000000) invoke-virtual       v2, Landroid/content/Context;->getApplicationInfo()Landroid/content/pm/ApplicationInfo;
+	1       (00000006) move-result-object   v2
+	2       (00000008) iget-object          v2, v2, Landroid/content/pm/ApplicationInfo;->packageName Ljava/lang/String;
+	3       (0000000c) const-string         v0, "clientPackageName"
+	4       (00000010) invoke-virtual       v3, v0, v2, Landroid/os/BaseBundle;->putString(Ljava/lang/String; Ljava/lang/String;)V
+	5       (00000016) sget-object          v0, Lcom/google/android/gms/auth/zzl;->zzb Ljava/lang/String;
+	6       (0000001a) invoke-virtual       v3, v0, Landroid/os/BaseBundle;->getString(Ljava/lang/String;)Ljava/lang/String;
+	7       (00000020) move-result-object   v1
+	8       (00000022) invoke-static        v1, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+	9       (00000028) move-result          v1
+	10      (0000002a) if-eqz               v1, +005h
+
+zzm-BB@0x2e : [ zzm-BB@0x34 ]
+	11      (0000002e) invoke-virtual       v3, v0, v2, Landroid/os/BaseBundle;->putString(Ljava/lang/String; Ljava/lang/String;)V
+
+zzm-BB@0x34 : 
+	12      (00000034) const-string         v2, "service_connection_start_time_millis"
+	13      (00000038) invoke-static        Landroid/os/SystemClock;->elapsedRealtime()J
+	14      (0000003e) move-result-wide     v0
+	15      (00000040) invoke-virtual       v3, v2, v0, v1, Landroid/os/BaseBundle;->putLong(Ljava/lang/String; J)V
+	16      (00000046) return-void          
+

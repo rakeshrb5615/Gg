@@ -1,0 +1,46 @@
+# Lcom/google/android/gms/common/api/internal/BackgroundDetector;->readCurrentStateIfPossible(Z)Z [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:boolean
+#
+# - return:boolean
+
+readCurrentStateIfPossible-BB@0x0 : [ readCurrentStateIfPossible-BB@0x10 readCurrentStateIfPossible-BB@0x54 ]
+	0       (00000000) iget-object          v0, v2, Lcom/google/android/gms/common/api/internal/BackgroundDetector;->zzc Ljava/util/concurrent/atomic/AtomicBoolean;
+	1       (00000004) invoke-virtual       v0, Ljava/util/concurrent/atomic/AtomicBoolean;->get()Z
+	2       (0000000a) move-result          v1
+	3       (0000000c) if-nez               v1, +024h
+
+readCurrentStateIfPossible-BB@0x10 : [ readCurrentStateIfPossible-BB@0x1c readCurrentStateIfPossible-BB@0x52 ]
+	4       (00000010) invoke-static        Lcom/google/android/gms/common/util/ProcessUtils;->zza()Z
+	5       (00000016) move-result          v1
+	6       (00000018) if-nez               v1, +01dh
+
+readCurrentStateIfPossible-BB@0x1c : [ readCurrentStateIfPossible-BB@0x3a readCurrentStateIfPossible-BB@0x54 ]
+	7       (0000001c) new-instance         v3, Landroid/app/ActivityManager$RunningAppProcessInfo;
+	8       (00000020) invoke-direct        v3, Landroid/app/ActivityManager$RunningAppProcessInfo;-><init>()V
+	9       (00000026) invoke-static        v3, Landroid/app/ActivityManager;->getMyMemoryState(Landroid/app/ActivityManager$RunningAppProcessInfo;)V
+	10      (0000002c) const/4              v1, 1
+	11      (0000002e) invoke-virtual       v0, v1, Ljava/util/concurrent/atomic/AtomicBoolean;->getAndSet(Z)Z
+	12      (00000034) move-result          v0
+	13      (00000036) if-nez               v0, +00fh
+
+readCurrentStateIfPossible-BB@0x3a : [ readCurrentStateIfPossible-BB@0x46 readCurrentStateIfPossible-BB@0x54 ]
+	14      (0000003a) iget                 v3, v3, Landroid/app/ActivityManager$RunningAppProcessInfo;->importance I
+	15      (0000003e) const/16             v0, 100
+	16      (00000042) if-le                v3, v0, +009h
+
+readCurrentStateIfPossible-BB@0x46 : [ readCurrentStateIfPossible-BB@0x54 ]
+	17      (00000046) iget-object          v3, v2, Lcom/google/android/gms/common/api/internal/BackgroundDetector;->zzb Ljava/util/concurrent/atomic/AtomicBoolean;
+	18      (0000004a) invoke-virtual       v3, v1, Ljava/util/concurrent/atomic/AtomicBoolean;->set(Z)V
+	19      (00000050) goto                 +2h
+
+readCurrentStateIfPossible-BB@0x52 : 
+	20      (00000052) return               v3
+
+readCurrentStateIfPossible-BB@0x54 : 
+	21      (00000054) invoke-virtual       v2, Lcom/google/android/gms/common/api/internal/BackgroundDetector;->isInBackground()Z
+	22      (0000005a) move-result          v3
+	23      (0000005c) return               v3
+

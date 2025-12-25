@@ -1,0 +1,27 @@
+# Lcom/google/android/gms/location/GeofencingRequest$Builder;->addGeofences(Ljava/util/List;)Lcom/google/android/gms/location/GeofencingRequest$Builder; [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:java.util.List
+#
+# - return:com.google.android.gms.location.GeofencingRequest$Builder
+
+addGeofences-BB@0x0 : [ addGeofences-BB@0x8 ]
+	0       (00000000) invoke-interface     v2, Ljava/util/List;->iterator()Ljava/util/Iterator;
+	1       (00000006) move-result-object   v2
+
+addGeofences-BB@0x8 : [ addGeofences-BB@0x14 addGeofences-BB@0x28 ]
+	2       (00000008) invoke-interface     v2, Ljava/util/Iterator;->hasNext()Z
+	3       (0000000e) move-result          v0
+	4       (00000010) if-eqz               v0, +00ch
+
+addGeofences-BB@0x14 : [ addGeofences-BB@0x8 ]
+	5       (00000014) invoke-interface     v2, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	6       (0000001a) move-result-object   v0
+	7       (0000001c) check-cast           v0, Lcom/google/android/gms/location/Geofence;
+	8       (00000020) invoke-virtual       v1, v0, Lcom/google/android/gms/location/GeofencingRequest$Builder;->addGeofence(Lcom/google/android/gms/location/Geofence;)Lcom/google/android/gms/location/GeofencingRequest$Builder;
+	9       (00000026) goto                 -fh
+
+addGeofences-BB@0x28 : 
+	10      (00000028) return-object        v1
+

@@ -1,0 +1,258 @@
+# Lcom/google/android/gms/cloudmessaging/Rpc;->zzc(Lcom/google/android/gms/cloudmessaging/Rpc; Landroid/os/Message;)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:com.google.android.gms.cloudmessaging.Rpc
+# - v8:android.os.Message
+#
+# - return:void
+
+zzc-BB@0x0 : [ zzc-BB@0x4 zzc-BB@0x270 ]
+	0       (00000000) if-eqz               v8, +138h
+
+zzc-BB@0x4 : [ zzc-BB@0x10 zzc-BB@0x270 ]
+	1       (00000004) iget-object          v0, v8, Landroid/os/Message;->obj Ljava/lang/Object;
+	2       (00000008) instance-of          v1, v0, Landroid/content/Intent;
+	3       (0000000c) if-eqz               v1, +132h
+
+zzc-BB@0x10 : [ zzc-BB@0x34 zzc-BB@0x62 ]
+	4       (00000010) check-cast           v0, Landroid/content/Intent;
+	5       (00000014) new-instance         v1, Lcom/google/android/gms/cloudmessaging/zzc;
+	6       (00000018) invoke-direct        v1, Lcom/google/android/gms/cloudmessaging/zzc;-><init>()V
+	7       (0000001e) invoke-virtual       v0, v1, Landroid/content/Intent;->setExtrasClassLoader(Ljava/lang/ClassLoader;)V
+	8       (00000024) const-string         v1, "google.messenger"
+	9       (00000028) invoke-virtual       v0, v1, Landroid/content/Intent;->hasExtra(Ljava/lang/String;)Z
+	10      (0000002e) move-result          v1
+	11      (00000030) if-eqz               v1, +019h
+
+zzc-BB@0x34 : [ zzc-BB@0x48 zzc-BB@0x52 ]
+	12      (00000034) const-string         v1, "google.messenger"
+	13      (00000038) invoke-virtual       v0, v1, Landroid/content/Intent;->getParcelableExtra(Ljava/lang/String;)Landroid/os/Parcelable;
+	14      (0000003e) move-result-object   v0
+	15      (00000040) instance-of          v1, v0, Lcom/google/android/gms/cloudmessaging/zzd;
+	16      (00000044) if-eqz               v1, +007h
+
+zzc-BB@0x48 : [ zzc-BB@0x52 ]
+	17      (00000048) move-object          v1, v0
+	18      (0000004a) check-cast           v1, Lcom/google/android/gms/cloudmessaging/zzd;
+	19      (0000004e) iput-object          v1, v7, Lcom/google/android/gms/cloudmessaging/Rpc;->zzk Lcom/google/android/gms/cloudmessaging/zzd;
+
+zzc-BB@0x52 : [ zzc-BB@0x5a zzc-BB@0x62 ]
+	20      (00000052) instance-of          v1, v0, Landroid/os/Messenger;
+	21      (00000056) if-eqz               v1, +006h
+
+zzc-BB@0x5a : [ zzc-BB@0x62 ]
+	22      (0000005a) check-cast           v0, Landroid/os/Messenger;
+	23      (0000005e) iput-object          v0, v7, Lcom/google/android/gms/cloudmessaging/Rpc;->zzj Landroid/os/Messenger;
+
+zzc-BB@0x62 : [ zzc-BB@0x84 zzc-BB@0xb4 ]
+	24      (00000062) iget-object          v8, v8, Landroid/os/Message;->obj Ljava/lang/Object;
+	25      (00000066) check-cast           v8, Landroid/content/Intent;
+	26      (0000006a) invoke-virtual       v8, Landroid/content/Intent;->getAction()Ljava/lang/String;
+	27      (00000070) move-result-object   v0
+	28      (00000072) const-string         v1, "com.google.android.c2dm.intent.REGISTRATION"
+	29      (00000076) invoke-static        v0, v1, Ljava/util/Objects;->equals(Ljava/lang/Object; Ljava/lang/Object;)Z
+	30      (0000007c) move-result          v1
+	31      (0000007e) const/4              v2, 3
+	32      (00000080) if-nez               v1, +01ah
+
+zzc-BB@0x84 : [ zzc-BB@0x94 zzc-BB@0x26e ]
+	33      (00000084) const-string         v7, "Rpc"
+	34      (00000088) invoke-static        v7, v2, Landroid/util/Log;->isLoggable(Ljava/lang/String; I)Z
+	35      (0000008e) move-result          v7
+	36      (00000090) if-eqz               v7, +0efh
+
+zzc-BB@0x94 : 
+	37      (00000094) invoke-static        v0, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
+	38      (0000009a) move-result-object   v7
+	39      (0000009c) const-string         v8, "Unexpected response action: "
+	40      (000000a0) const-string         v0, "Rpc"
+	41      (000000a4) invoke-virtual       v8, v7, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	42      (000000aa) move-result-object   v7
+	43      (000000ac) invoke-static        v0, v7, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String;)I
+	44      (000000b2) return-void          
+
+zzc-BB@0xb4 : [ zzc-BB@0xc4 zzc-BB@0xd0 ]
+	45      (000000b4) const-string         v0, "registration_id"
+	46      (000000b8) invoke-virtual       v8, v0, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
+	47      (000000be) move-result-object   v0
+	48      (000000c0) if-nez               v0, +008h
+
+zzc-BB@0xc4 : [ zzc-BB@0xd0 ]
+	49      (000000c4) const-string         v0, "unregistered"
+	50      (000000c8) invoke-virtual       v8, v0, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
+	51      (000000ce) move-result-object   v0
+
+zzc-BB@0xd0 : [ zzc-BB@0xd8 zzc-BB@0x202 ]
+	52      (000000d0) const/4              v1, 2
+	53      (000000d2) const/4              v3, 1
+	54      (000000d4) if-nez               v0, +097h
+
+zzc-BB@0xd8 : [ zzc-BB@0xe8 zzc-BB@0x110 ]
+	55      (000000d8) const-string         v0, "error"
+	56      (000000dc) invoke-virtual       v8, v0, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
+	57      (000000e2) move-result-object   v0
+	58      (000000e4) if-nez               v0, +016h
+
+zzc-BB@0xe8 : 
+	59      (000000e8) invoke-virtual       v8, Landroid/content/Intent;->getExtras()Landroid/os/Bundle;
+	60      (000000ee) move-result-object   v7
+	61      (000000f0) invoke-static        v7, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
+	62      (000000f6) move-result-object   v7
+	63      (000000f8) const-string         v8, "Unexpected response, no error or registration id "
+	64      (000000fc) const-string         v0, "Rpc"
+	65      (00000100) invoke-virtual       v8, v7, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	66      (00000106) move-result-object   v7
+	67      (00000108) invoke-static        v0, v7, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+	68      (0000010e) return-void          
+
+zzc-BB@0x110 : [ zzc-BB@0x120 zzc-BB@0x136 ]
+	69      (00000110) const-string         v4, "Rpc"
+	70      (00000114) invoke-static        v4, v2, Landroid/util/Log;->isLoggable(Ljava/lang/String; I)Z
+	71      (0000011a) move-result          v4
+	72      (0000011c) if-eqz               v4, +00dh
+
+zzc-BB@0x120 : [ zzc-BB@0x136 ]
+	73      (00000120) const-string         v4, "Received InstanceID error "
+	74      (00000124) invoke-virtual       v4, v0, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	75      (0000012a) move-result-object   v4
+	76      (0000012c) const-string         v5, "Rpc"
+	77      (00000130) invoke-static        v5, v4, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String;)I
+
+zzc-BB@0x136 : [ zzc-BB@0x146 zzc-BB@0x1c2 ]
+	78      (00000136) const-string         v4, "|"
+	79      (0000013a) invoke-virtual       v0, v4, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
+	80      (00000140) move-result          v4
+	81      (00000142) if-eqz               v4, +040h
+
+zzc-BB@0x146 : [ zzc-BB@0x158 zzc-BB@0x1aa ]
+	82      (00000146) const-string         v4, "\|"
+	83      (0000014a) invoke-virtual       v0, v4, Ljava/lang/String;->split(Ljava/lang/String;)[Ljava/lang/String;
+	84      (00000150) move-result-object   v4
+	85      (00000152) array-length         v5, v4
+	86      (00000154) if-le                v5, v1, +02bh
+
+zzc-BB@0x158 : [ zzc-BB@0x16c zzc-BB@0x16e ]
+	87      (00000158) aget-object          v5, v4, v3
+	88      (0000015c) const-string         v6, "ID"
+	89      (00000160) invoke-static        v5, v6, Ljava/util/Objects;->equals(Ljava/lang/Object; Ljava/lang/Object;)Z
+	90      (00000166) move-result          v5
+	91      (00000168) if-nez               v5, +003h
+
+zzc-BB@0x16c : [ zzc-BB@0x1aa ]
+	92      (0000016c) goto                 +1fh
+
+zzc-BB@0x16e : [ zzc-BB@0x186 zzc-BB@0x18e ]
+	93      (0000016e) aget-object          v0, v4, v1
+	94      (00000172) aget-object          v1, v4, v2
+	95      (00000176) const-string         v2, ":"
+	96      (0000017a) invoke-virtual       v1, v2, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
+	97      (00000180) move-result          v2
+	98      (00000182) if-eqz               v2, +006h
+
+zzc-BB@0x186 : [ zzc-BB@0x18e ]
+	99      (00000186) invoke-virtual       v1, v3, Ljava/lang/String;->substring(I)Ljava/lang/String;
+	100     (0000018c) move-result-object   v1
+
+zzc-BB@0x18e : 
+	101     (0000018e) const-string         v2, "error"
+	102     (00000192) invoke-virtual       v8, v2, v1, Landroid/content/Intent;->putExtra(Ljava/lang/String; Ljava/lang/String;)Landroid/content/Intent;
+	103     (00000198) move-result-object   v8
+	104     (0000019a) invoke-virtual       v8, Landroid/content/Intent;->getExtras()Landroid/os/Bundle;
+	105     (000001a0) move-result-object   v8
+	106     (000001a2) invoke-direct        v7, v0, v8, Lcom/google/android/gms/cloudmessaging/Rpc;->zzh(Ljava/lang/String; Landroid/os/Bundle;)V
+	107     (000001a8) return-void          
+
+zzc-BB@0x1aa : 
+	108     (000001aa) const-string         v7, "Unexpected structured response "
+	109     (000001ae) invoke-virtual       v7, v0, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	110     (000001b4) move-result-object   v7
+	111     (000001b6) const-string         v8, "Rpc"
+	112     (000001ba) invoke-static        v8, v7, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+	113     (000001c0) return-void          
+
+zzc-BB@0x1c2 : [ zzc-BB@0x1ca ]
+	114     (000001c2) iget-object          v4, v7, Lcom/google/android/gms/cloudmessaging/Rpc;->zze Lr/j;
+	115     (000001c6) monitor-enter        v4
+	116     (000001c8) const/4              v0, 0
+
+zzc-BB@0x1ca : [ zzc-BB@0x1d6 zzc-BB@0x1fa ]
+	117     (000001ca) iget-object          v1, v7, Lcom/google/android/gms/cloudmessaging/Rpc;->zze Lr/j;
+	118     (000001ce) iget                 v2, v1, Lr/j;->c I
+	119     (000001d2) if-ge                v0, v2, +014h
+	1ca:1ff
+	(Ljava/lang/Throwable; -> 1f6 zzc-BB@0x1f6)
+
+zzc-BB@0x1d6 : [ zzc-BB@0x1ca ]
+	120     (000001d6) invoke-virtual       v1, v0, Lr/j;->g(I)Ljava/lang/Object;
+	121     (000001dc) move-result-object   v1
+	122     (000001de) check-cast           v1, Ljava/lang/String;
+	123     (000001e2) invoke-virtual       v8, Landroid/content/Intent;->getExtras()Landroid/os/Bundle;
+	124     (000001e8) move-result-object   v2
+	125     (000001ea) invoke-direct        v7, v1, v2, Lcom/google/android/gms/cloudmessaging/Rpc;->zzh(Ljava/lang/String; Landroid/os/Bundle;)V
+	126     (000001f0) add-int/lit8         v0, v0, 1
+	127     (000001f4) goto                 -15h
+	1ca:1ff
+	(Ljava/lang/Throwable; -> 1f6 zzc-BB@0x1f6)
+
+zzc-BB@0x1f6 : [ zzc-BB@0x1fe ]
+	128     (000001f6) move-exception       v7
+	129     (000001f8) goto                 +3h
+	1ca:1ff
+	(Ljava/lang/Throwable; -> 1f6 zzc-BB@0x1f6)
+
+zzc-BB@0x1fa : 
+	130     (000001fa) monitor-exit         v4
+	131     (000001fc) return-void          
+	1ca:1ff
+	(Ljava/lang/Throwable; -> 1f6 zzc-BB@0x1f6)
+
+zzc-BB@0x1fe : 
+	132     (000001fe) monitor-exit         v4
+	133     (00000200) throw                v7
+
+zzc-BB@0x202 : [ zzc-BB@0x21a zzc-BB@0x242 ]
+	134     (00000202) sget-object          v4, Lcom/google/android/gms/cloudmessaging/Rpc;->zzd Ljava/util/regex/Pattern;
+	135     (00000206) invoke-virtual       v4, v0, Ljava/util/regex/Pattern;->matcher(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;
+	136     (0000020c) move-result-object   v4
+	137     (0000020e) invoke-virtual       v4, Ljava/util/regex/Matcher;->matches()Z
+	138     (00000214) move-result          v5
+	139     (00000216) if-nez               v5, +016h
+
+zzc-BB@0x21a : [ zzc-BB@0x22a zzc-BB@0x26e ]
+	140     (0000021a) const-string         v7, "Rpc"
+	141     (0000021e) invoke-static        v7, v2, Landroid/util/Log;->isLoggable(Ljava/lang/String; I)Z
+	142     (00000224) move-result          v7
+	143     (00000226) if-eqz               v7, +024h
+
+zzc-BB@0x22a : 
+	144     (0000022a) const-string         v7, "Unexpected response string: "
+	145     (0000022e) invoke-virtual       v7, v0, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	146     (00000234) move-result-object   v7
+	147     (00000236) const-string         v8, "Rpc"
+	148     (0000023a) invoke-static        v8, v7, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String;)I
+	149     (00000240) return-void          
+
+zzc-BB@0x242 : [ zzc-BB@0x256 zzc-BB@0x26e ]
+	150     (00000242) invoke-virtual       v4, v3, Ljava/util/regex/Matcher;->group(I)Ljava/lang/String;
+	151     (00000248) move-result-object   v0
+	152     (0000024a) invoke-virtual       v4, v1, Ljava/util/regex/Matcher;->group(I)Ljava/lang/String;
+	153     (00000250) move-result-object   v1
+	154     (00000252) if-eqz               v0, +00eh
+
+zzc-BB@0x256 : [ zzc-BB@0x26e ]
+	155     (00000256) invoke-virtual       v8, Landroid/content/Intent;->getExtras()Landroid/os/Bundle;
+	156     (0000025c) move-result-object   v8
+	157     (0000025e) const-string         v2, "registration_id"
+	158     (00000262) invoke-virtual       v8, v2, v1, Landroid/os/BaseBundle;->putString(Ljava/lang/String; Ljava/lang/String;)V
+	159     (00000268) invoke-direct        v7, v0, v8, Lcom/google/android/gms/cloudmessaging/Rpc;->zzh(Ljava/lang/String; Landroid/os/Bundle;)V
+
+zzc-BB@0x26e : 
+	160     (0000026e) return-void          
+
+zzc-BB@0x270 : 
+	161     (00000270) const-string         v7, "Rpc"
+	162     (00000274) const-string         v8, "Dropping invalid message"
+	163     (00000278) invoke-static        v7, v8, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+	164     (0000027e) return-void          
+

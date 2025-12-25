@@ -1,0 +1,63 @@
+# Lcom/google/android/gms/auth/zzl;->getAccountChangeEvents(Landroid/content/Context; I Ljava/lang/String;)Ljava/util/List; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:android.content.Context
+# - v3:int
+# - v4:java.lang.String
+#
+# - return:java.util.List
+
+getAccountChangeEvents-BB@0x0 : [ getAccountChangeEvents-BB@0x48 getAccountChangeEvents-BB@0x8c ]
+	0       (00000000) const-string         v0, "accountName must be provided"
+	1       (00000004) invoke-static        v4, v0, Lcom/google/android/gms/common/internal/Preconditions;->checkNotEmpty(Ljava/lang/String; Ljava/lang/Object;)Ljava/lang/String;
+	2       (0000000a) const-string         v0, "Calling this from your main thread can lead to deadlock"
+	3       (0000000e) invoke-static        v0, Lcom/google/android/gms/common/internal/Preconditions;->checkNotMainThread(Ljava/lang/String;)V
+	4       (00000014) const                v0, 8400000
+	5       (0000001a) invoke-static        v2, v0, Lcom/google/android/gms/auth/zzl;->zzk(Landroid/content/Context; I)V
+	6       (00000020) new-instance         v0, Lcom/google/android/gms/auth/AccountChangeEventsRequest;
+	7       (00000024) invoke-direct        v0, Lcom/google/android/gms/auth/AccountChangeEventsRequest;-><init>()V
+	8       (0000002a) invoke-virtual       v0, v4, Lcom/google/android/gms/auth/AccountChangeEventsRequest;->setAccountName(Ljava/lang/String;)Lcom/google/android/gms/auth/AccountChangeEventsRequest;
+	9       (00000030) invoke-virtual       v0, v3, Lcom/google/android/gms/auth/AccountChangeEventsRequest;->setEventIndex(I)Lcom/google/android/gms/auth/AccountChangeEventsRequest;
+	10      (00000036) invoke-static        v2, Lcom/google/android/gms/internal/auth/zzdc;->zze(Landroid/content/Context;)V
+	11      (0000003c) invoke-static        Lcom/google/android/gms/internal/auth/zzhs;->zzd()Z
+	12      (00000042) move-result          v3
+	13      (00000044) if-eqz               v3, +024h
+
+getAccountChangeEvents-BB@0x48 : [ getAccountChangeEvents-BB@0x54 getAccountChangeEvents-BB@0x8c ]
+	14      (00000048) invoke-static        v2, Lcom/google/android/gms/auth/zzl;->zzo(Landroid/content/Context;)Z
+	15      (0000004e) move-result          v3
+	16      (00000050) if-eqz               v3, +01eh
+
+getAccountChangeEvents-BB@0x54 : [ getAccountChangeEvents-BB@0x68 ]
+	17      (00000054) invoke-static        v2, Lcom/google/android/gms/internal/auth/zzh;->zza(Landroid/content/Context;)Lcom/google/android/gms/internal/auth/zzg;
+	18      (0000005a) move-result-object   v3
+	19      (0000005c) invoke-interface     v3, v0, Lcom/google/android/gms/internal/auth/zzg;->zzb(Lcom/google/android/gms/auth/AccountChangeEventsRequest;)Lcom/google/android/gms/tasks/Task;
+	20      (00000062) move-result-object   v3
+	21      (00000064) const-string         v4, "account change events retrieval"
+
+getAccountChangeEvents-BB@0x68 : 
+	22      (00000068) invoke-static        v3, v4, Lcom/google/android/gms/auth/zzl;->zzi(Lcom/google/android/gms/tasks/Task; Ljava/lang/String;)Ljava/lang/Object;
+	23      (0000006e) move-result-object   v3
+	24      (00000070) check-cast           v3, Lcom/google/android/gms/auth/AccountChangeEventsResponse;
+	25      (00000074) invoke-static        v3, Lcom/google/android/gms/auth/zzl;->zzj(Ljava/lang/Object;)Ljava/lang/Object;
+	26      (0000007a) invoke-virtual       v3, Lcom/google/android/gms/auth/AccountChangeEventsResponse;->getEvents()Ljava/util/List;
+	27      (00000080) move-result-object   v2
+	28      (00000082) return-object        v2
+	68:81
+	(Lcom/google/android/gms/common/api/ApiException; -> 84 getAccountChangeEvents-BB@0x84)
+
+getAccountChangeEvents-BB@0x84 : [ getAccountChangeEvents-BB@0x8c ]
+	29      (00000084) move-exception       v3
+	30      (00000086) invoke-static        v3, v4, Lcom/google/android/gms/auth/zzl;->zzl(Lcom/google/android/gms/common/api/ApiException; Ljava/lang/String;)V
+
+getAccountChangeEvents-BB@0x8c : 
+	31      (0000008c) new-instance         v3, Lcom/google/android/gms/auth/zzi;
+	32      (00000090) invoke-direct        v3, v0, Lcom/google/android/gms/auth/zzi;-><init>(Lcom/google/android/gms/auth/AccountChangeEventsRequest;)V
+	33      (00000096) sget-object          v4, Lcom/google/android/gms/auth/zzl;->zzc Landroid/content/ComponentName;
+	34      (0000009a) const-wide/16        v0, 0
+	35      (0000009e) invoke-static        v2, v4, v3, v0, v1, Lcom/google/android/gms/auth/zzl;->zzh(Landroid/content/Context; Landroid/content/ComponentName; Lcom/google/android/gms/auth/zzk; J)Ljava/lang/Object;
+	36      (000000a4) move-result-object   v2
+	37      (000000a6) check-cast           v2, Ljava/util/List;
+	38      (000000aa) return-object        v2
+

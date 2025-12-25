@@ -1,0 +1,48 @@
+# Lcom/google/android/gms/signin/internal/SignInClientImpl;->createBundleFromClientSettings(Lcom/google/android/gms/common/internal/ClientSettings;)Landroid/os/Bundle; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:com.google.android.gms.common.internal.ClientSettings
+#
+# - return:android.os.Bundle
+
+createBundleFromClientSettings-BB@0x0 : [ createBundleFromClientSettings-BB@0x2e createBundleFromClientSettings-BB@0x40 ]
+	0       (00000000) invoke-virtual       v4, Lcom/google/android/gms/common/internal/ClientSettings;->zaa()Lcom/google/android/gms/signin/SignInOptions;
+	1       (00000006) invoke-virtual       v4, Lcom/google/android/gms/common/internal/ClientSettings;->zab()Ljava/lang/Integer;
+	2       (0000000c) move-result-object   v0
+	3       (0000000e) new-instance         v1, Landroid/os/Bundle;
+	4       (00000012) invoke-direct        v1, Landroid/os/Bundle;-><init>()V
+	5       (00000018) const-string         v2, "com.google.android.gms.signin.internal.clientRequestedAccount"
+	6       (0000001c) invoke-virtual       v4, Lcom/google/android/gms/common/internal/ClientSettings;->getAccount()Landroid/accounts/Account;
+	7       (00000022) move-result-object   v4
+	8       (00000024) invoke-virtual       v1, v2, v4, Landroid/os/Bundle;->putParcelable(Ljava/lang/String; Landroid/os/Parcelable;)V
+	9       (0000002a) if-eqz               v0, +00bh
+
+createBundleFromClientSettings-BB@0x2e : [ createBundleFromClientSettings-BB@0x40 ]
+	10      (0000002e) const-string         v4, "com.google.android.gms.common.internal.ClientSettings.sessionId"
+	11      (00000032) invoke-virtual       v0, Ljava/lang/Integer;->intValue()I
+	12      (00000038) move-result          v0
+	13      (0000003a) invoke-virtual       v1, v4, v0, Landroid/os/BaseBundle;->putInt(Ljava/lang/String; I)V
+
+createBundleFromClientSettings-BB@0x40 : 
+	14      (00000040) const-string         v4, "com.google.android.gms.signin.internal.offlineAccessRequested"
+	15      (00000044) const/4              v0, 0
+	16      (00000046) invoke-virtual       v1, v4, v0, Landroid/os/BaseBundle;->putBoolean(Ljava/lang/String; Z)V
+	17      (0000004c) const-string         v4, "com.google.android.gms.signin.internal.idTokenRequested"
+	18      (00000050) invoke-virtual       v1, v4, v0, Landroid/os/BaseBundle;->putBoolean(Ljava/lang/String; Z)V
+	19      (00000056) const-string         v4, "com.google.android.gms.signin.internal.serverClientId"
+	20      (0000005a) const/4              v2, 0
+	21      (0000005c) invoke-virtual       v1, v4, v2, Landroid/os/BaseBundle;->putString(Ljava/lang/String; Ljava/lang/String;)V
+	22      (00000062) const-string         v4, "com.google.android.gms.signin.internal.usePromptModeForAuthCode"
+	23      (00000066) const/4              v3, 1
+	24      (00000068) invoke-virtual       v1, v4, v3, Landroid/os/BaseBundle;->putBoolean(Ljava/lang/String; Z)V
+	25      (0000006e) const-string         v4, "com.google.android.gms.signin.internal.forceCodeForRefreshToken"
+	26      (00000072) invoke-virtual       v1, v4, v0, Landroid/os/BaseBundle;->putBoolean(Ljava/lang/String; Z)V
+	27      (00000078) const-string         v4, "com.google.android.gms.signin.internal.hostedDomain"
+	28      (0000007c) invoke-virtual       v1, v4, v2, Landroid/os/BaseBundle;->putString(Ljava/lang/String; Ljava/lang/String;)V
+	29      (00000082) const-string         v4, "com.google.android.gms.signin.internal.logSessionId"
+	30      (00000086) invoke-virtual       v1, v4, v2, Landroid/os/BaseBundle;->putString(Ljava/lang/String; Ljava/lang/String;)V
+	31      (0000008c) const-string         v4, "com.google.android.gms.signin.internal.waitForAccessTokenRefresh"
+	32      (00000090) invoke-virtual       v1, v4, v0, Landroid/os/BaseBundle;->putBoolean(Ljava/lang/String; Z)V
+	33      (00000096) return-object        v1
+

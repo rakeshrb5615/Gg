@@ -1,0 +1,87 @@
+# Lcom/google/android/gms/measurement/internal/zzgq;->zzb(I I J J I)V [access_flags=public final synchronized]
+#
+# Parameters:
+# - local registers: v0...v19
+# - v20:int
+# - v21:int
+# - v22:long
+# - v23:long
+# - v24:int
+#
+# - return:void
+
+zzb-BB@0x0 : [ zzb-BB@0x6 ]
+	0       (00000000) move-object/from16   v1, v17
+	1       (00000004) monitor-enter        v17
+
+zzb-BB@0x6 : [ zzb-BB@0x32 zzb-BB@0x34 ]
+	2       (00000006) iget-object          v0, v1, Lcom/google/android/gms/measurement/internal/zzgq;->zzb Lcom/google/android/gms/measurement/internal/zzic;
+	3       (0000000a) invoke-virtual       v0, Lcom/google/android/gms/measurement/internal/zzic;->zzaZ()Lcom/google/android/gms/common/util/Clock;
+	4       (00000010) move-result-object   v0
+	5       (00000012) invoke-interface     v0, Lcom/google/android/gms/common/util/Clock;->elapsedRealtime()J
+	6       (00000018) move-result-wide     v2
+	7       (0000001a) iget-object          v0, v1, Lcom/google/android/gms/measurement/internal/zzgq;->zzd Ljava/util/concurrent/atomic/AtomicLong;
+	8       (0000001e) invoke-virtual       v0, Ljava/util/concurrent/atomic/AtomicLong;->get()J
+	9       (00000024) move-result-wide     v4
+	10      (00000026) const-wide/16        v6, -1
+	11      (0000002a) cmp-long             v4, v4, v6
+	12      (0000002e) if-nez               v4, +003h
+	6:3b
+	(Ljava/lang/Throwable; -> b6 zzb-BB@0xb6)
+
+zzb-BB@0x32 : [ zzb-BB@0x52 ]
+	13      (00000032) goto                 +10h
+	6:3b
+	(Ljava/lang/Throwable; -> b6 zzb-BB@0xb6)
+
+zzb-BB@0x34 : [ zzb-BB@0x4e zzb-BB@0x52 ]
+	14      (00000034) invoke-virtual       v0, Ljava/util/concurrent/atomic/AtomicLong;->get()J
+	15      (0000003a) move-result-wide     v4
+	16      (0000003c) sub-long             v4, v2, v4
+	17      (00000040) const-wide/32        v6, 1800000
+	18      (00000046) cmp-long             v0, v4, v6
+	19      (0000004a) if-gtz               v0, +004h
+
+zzb-BB@0x4e : 
+	20      (0000004e) monitor-exit         v17
+	21      (00000050) return-void          
+
+zzb-BB@0x52 : 
+	22      (00000052) iget-object          v0, v1, Lcom/google/android/gms/measurement/internal/zzgq;->zzc Lcom/google/android/gms/common/internal/TelemetryLoggingClient;
+	23      (00000056) new-instance         v4, Lcom/google/android/gms/common/internal/TelemetryData;
+	24      (0000005a) new-instance         v5, Lcom/google/android/gms/common/internal/MethodInvocation;
+	25      (0000005e) const/4              v14, 0
+	26      (00000060) const/4              v15, 0
+	27      (00000062) const                v6, 36301
+	28      (00000068) const/4              v8, 0
+	29      (0000006a) const/4              v13, 0
+	30      (0000006c) move/from16          v7, v19
+	31      (00000070) move-wide/from16     v9, v20
+	32      (00000074) move-wide/from16     v11, v22
+	33      (00000078) move/from16          v16, v24
+	34      (0000007c) invoke-direct/range  v5 ... v16, Lcom/google/android/gms/common/internal/MethodInvocation;-><init>(I I I J J Ljava/lang/String; Ljava/lang/String; I I)V
+	35      (00000082) filled-new-array     v5, [Lcom/google/android/gms/common/internal/MethodInvocation;
+	36      (00000088) move-result-object   v5
+	37      (0000008a) invoke-static        v5, Ljava/util/Arrays;->asList([Ljava/lang/Object;)Ljava/util/List;
+	38      (00000090) move-result-object   v5
+	39      (00000092) const/4              v6, 0
+	40      (00000094) invoke-direct        v4, v6, v5, Lcom/google/android/gms/common/internal/TelemetryData;-><init>(I Ljava/util/List;)V
+	41      (0000009a) invoke-interface     v0, v4, Lcom/google/android/gms/common/internal/TelemetryLoggingClient;->log(Lcom/google/android/gms/common/internal/TelemetryData;)Lcom/google/android/gms/tasks/Task;
+	42      (000000a0) move-result-object   v0
+	43      (000000a2) new-instance         v4, Lcom/google/android/gms/measurement/internal/zzgp;
+	44      (000000a6) invoke-direct        v4, v1, v2, v3, Lcom/google/android/gms/measurement/internal/zzgp;-><init>(Lcom/google/android/gms/measurement/internal/zzgq; J)V
+	45      (000000ac) invoke-virtual       v0, v4, Lcom/google/android/gms/tasks/Task;->addOnFailureListener(Lcom/google/android/gms/tasks/OnFailureListener;)Lcom/google/android/gms/tasks/Task;
+	46      (000000b2) monitor-exit         v17
+	47      (000000b4) return-void          
+	52:b1
+	(Ljava/lang/Throwable; -> b6 zzb-BB@0xb6)
+
+zzb-BB@0xb6 : [ zzb-BB@0xb8 ]
+	48      (000000b6) move-exception       v0
+
+zzb-BB@0xb8 : 
+	49      (000000b8) monitor-exit         v17
+	50      (000000ba) throw                v0
+	b8:b9
+	(Ljava/lang/Throwable; -> b6 zzb-BB@0xb6)
+

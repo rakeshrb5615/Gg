@@ -1,0 +1,171 @@
+# Lcom/google/android/gms/common/internal/zzah;->zza(Landroid/content/Context; Lcom/google/android/gms/common/internal/zzn;)Landroid/content/Intent; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:android.content.Context
+# - v6:com.google.android.gms.common.internal.zzn
+#
+# - return:android.content.Intent
+
+zza-BB@0x0 : [ zza-BB@0x10 zza-BB@0x2c ]
+	0       (00000000) const-string         v0, "ServiceBindIntentUtils"
+	1       (00000004) invoke-virtual       v6, Lcom/google/android/gms/common/internal/zzn;->zza()Ljava/lang/String;
+	2       (0000000a) move-result-object   v1
+	3       (0000000c) if-nez               v1, +010h
+
+zza-BB@0x10 : 
+	4       (00000010) new-instance         v5, Landroid/content/Intent;
+	5       (00000014) invoke-direct        v5, Landroid/content/Intent;-><init>()V
+	6       (0000001a) invoke-virtual       v6, Lcom/google/android/gms/common/internal/zzn;->zzc()Landroid/content/ComponentName;
+	7       (00000020) move-result-object   v6
+	8       (00000022) invoke-virtual       v5, v6, Landroid/content/Intent;->setComponent(Landroid/content/ComponentName;)Landroid/content/Intent;
+	9       (00000028) move-result-object   v5
+	10      (0000002a) return-object        v5
+
+zza-BB@0x2c : [ zza-BB@0x3a zza-BB@0x15a ]
+	11      (0000002c) invoke-virtual       v6, Lcom/google/android/gms/common/internal/zzn;->zzd()Z
+	12      (00000032) move-result          v2
+	13      (00000034) const/4              v3, 0
+	14      (00000036) if-eqz               v2, +092h
+
+zza-BB@0x3a : [ zza-BB@0x4e ]
+	15      (0000003a) new-instance         v2, Landroid/os/Bundle;
+	16      (0000003e) invoke-direct        v2, Landroid/os/Bundle;-><init>()V
+	17      (00000044) const-string         v4, "serviceActionBundleKey"
+	18      (00000048) invoke-virtual       v2, v4, v1, Landroid/os/BaseBundle;->putString(Ljava/lang/String; Ljava/lang/String;)V
+
+zza-BB@0x4e : [ zza-BB@0x66 zza-BB@0x8c ]
+	19      (0000004e) invoke-virtual       v5, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
+	20      (00000054) move-result-object   v5
+	21      (00000056) sget-object          v4, Lcom/google/android/gms/common/internal/zzah;->zza Landroid/net/Uri;
+	22      (0000005a) invoke-virtual       v5, v4, Landroid/content/ContentResolver;->acquireUnstableContentProviderClient(Landroid/net/Uri;)Landroid/content/ContentProviderClient;
+	23      (00000060) move-result-object   v5
+	24      (00000062) if-eqz               v5, +015h
+	4e:61
+	(Landroid/os/RemoteException; -> 7e zza-BB@0x7e)
+	(Ljava/lang/IllegalArgumentException; -> 7a zza-BB@0x7a)
+
+zza-BB@0x66 : [ zza-BB@0x72 ]
+	25      (00000066) const-string         v4, "serviceIntentCall"
+	26      (0000006a) invoke-virtual       v5, v4, v3, v2, Landroid/content/ContentProviderClient;->call(Ljava/lang/String; Ljava/lang/String; Landroid/os/Bundle;)Landroid/os/Bundle;
+	27      (00000070) move-result-object   v2
+	66:71
+	(Ljava/lang/Throwable; -> 82 zza-BB@0x82)
+
+zza-BB@0x72 : [ zza-BB@0xb8 ]
+	28      (00000072) invoke-virtual       v5, Landroid/content/ContentProviderClient;->release()Z
+	29      (00000078) goto                 +20h
+	72:9b
+	(Landroid/os/RemoteException; -> 7e zza-BB@0x7e)
+	(Ljava/lang/IllegalArgumentException; -> 7a zza-BB@0x7a)
+
+zza-BB@0x7a : [ zza-BB@0x9c ]
+	30      (0000007a) move-exception       v5
+	31      (0000007c) goto                 +10h
+	72:9b
+	(Landroid/os/RemoteException; -> 7e zza-BB@0x7e)
+	(Ljava/lang/IllegalArgumentException; -> 7a zza-BB@0x7a)
+
+zza-BB@0x7e : [ zza-BB@0x9c ]
+	32      (0000007e) move-exception       v5
+	33      (00000080) goto                 +eh
+	72:9b
+	(Landroid/os/RemoteException; -> 7e zza-BB@0x7e)
+	(Ljava/lang/IllegalArgumentException; -> 7a zza-BB@0x7a)
+
+zza-BB@0x82 : 
+	34      (00000082) move-exception       v2
+	35      (00000084) invoke-virtual       v5, Landroid/content/ContentProviderClient;->release()Z
+	36      (0000008a) throw                v2
+	72:9b
+	(Landroid/os/RemoteException; -> 7e zza-BB@0x7e)
+	(Ljava/lang/IllegalArgumentException; -> 7a zza-BB@0x7a)
+
+zza-BB@0x8c : 
+	37      (0000008c) new-instance         v5, Landroid/os/RemoteException;
+	38      (00000090) const-string         v2, "Failed to acquire ContentProviderClient"
+	39      (00000094) invoke-direct        v5, v2, Landroid/os/RemoteException;-><init>(Ljava/lang/String;)V
+	40      (0000009a) throw                v5
+	72:9b
+	(Landroid/os/RemoteException; -> 7e zza-BB@0x7e)
+	(Ljava/lang/IllegalArgumentException; -> 7a zza-BB@0x7a)
+
+zza-BB@0x9c : [ zza-BB@0xb8 ]
+	41      (0000009c) const-string         v2, "Dynamic intent resolution failed: "
+	42      (000000a0) invoke-virtual       v5, Ljava/lang/Object;->toString()Ljava/lang/String;
+	43      (000000a6) move-result-object   v5
+	44      (000000a8) invoke-virtual       v2, v5, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	45      (000000ae) move-result-object   v5
+	46      (000000b0) invoke-static        v0, v5, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+	47      (000000b6) move-object          v2, v3
+
+zza-BB@0xb8 : [ zza-BB@0xbc zza-BB@0xbe ]
+	48      (000000b8) if-nez               v2, +003h
+
+zza-BB@0xbc : [ zza-BB@0xea ]
+	49      (000000bc) goto                 +17h
+
+zza-BB@0xbe : [ zza-BB@0xd2 zza-BB@0xd6 ]
+	50      (000000be) const-string         v5, "serviceResponseIntentKey"
+	51      (000000c2) invoke-virtual       v2, v5, Landroid/os/Bundle;->getParcelable(Ljava/lang/String;)Landroid/os/Parcelable;
+	52      (000000c8) move-result-object   v5
+	53      (000000ca) check-cast           v5, Landroid/content/Intent;
+	54      (000000ce) if-eqz               v5, +004h
+
+zza-BB@0xd2 : [ zza-BB@0xea ]
+	55      (000000d2) move-object          v3, v5
+	56      (000000d4) goto                 +bh
+
+zza-BB@0xd6 : [ zza-BB@0xea zza-BB@0x102 ]
+	57      (000000d6) const-string         v5, "serviceMissingResolutionIntentKey"
+	58      (000000da) invoke-virtual       v2, v5, Landroid/os/Bundle;->getParcelable(Ljava/lang/String;)Landroid/os/Parcelable;
+	59      (000000e0) move-result-object   v5
+	60      (000000e2) check-cast           v5, Landroid/app/PendingIntent;
+	61      (000000e6) if-nez               v5, +00eh
+
+zza-BB@0xea : [ zza-BB@0xee zza-BB@0x15a ]
+	62      (000000ea) if-nez               v3, +038h
+
+zza-BB@0xee : [ zza-BB@0x15a ]
+	63      (000000ee) const-string         v5, "Dynamic lookup for intent failed for action: "
+	64      (000000f2) invoke-virtual       v5, v1, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	65      (000000f8) move-result-object   v5
+	66      (000000fa) invoke-static        v0, v5, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+	67      (00000100) goto                 +2dh
+
+zza-BB@0x102 : 
+	68      (00000102) invoke-virtual       v1, Ljava/lang/String;->length()I
+	69      (00000108) move-result          v6
+	70      (0000010a) new-instance         v2, Ljava/lang/StringBuilder;
+	71      (0000010e) add-int/lit8         v6, v6, 72
+	72      (00000112) invoke-direct        v2, v6, Ljava/lang/StringBuilder;-><init>(I)V
+	73      (00000118) const-string         v6, "Dynamic lookup for intent failed for action "
+	74      (0000011c) invoke-virtual       v2, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	75      (00000122) invoke-virtual       v2, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	76      (00000128) const-string         v6, " but has possible resolution"
+	77      (0000012c) invoke-virtual       v2, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	78      (00000132) invoke-virtual       v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	79      (00000138) move-result-object   v6
+	80      (0000013a) invoke-static        v0, v6, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+	81      (00000140) new-instance         v6, Lcom/google/android/gms/common/internal/zzaf;
+	82      (00000144) new-instance         v0, Lcom/google/android/gms/common/ConnectionResult;
+	83      (00000148) const/16             v1, 25
+	84      (0000014c) invoke-direct        v0, v1, v5, Lcom/google/android/gms/common/ConnectionResult;-><init>(I Landroid/app/PendingIntent;)V
+	85      (00000152) invoke-direct        v6, v0, Lcom/google/android/gms/common/internal/zzaf;-><init>(Lcom/google/android/gms/common/ConnectionResult;)V
+	86      (00000158) throw                v6
+
+zza-BB@0x15a : [ zza-BB@0x15e zza-BB@0x17a ]
+	87      (0000015a) if-nez               v3, +010h
+
+zza-BB@0x15e : 
+	88      (0000015e) new-instance         v5, Landroid/content/Intent;
+	89      (00000162) invoke-direct        v5, v1, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
+	90      (00000168) invoke-virtual       v6, Lcom/google/android/gms/common/internal/zzn;->zzb()Ljava/lang/String;
+	91      (0000016e) move-result-object   v6
+	92      (00000170) invoke-virtual       v5, v6, Landroid/content/Intent;->setPackage(Ljava/lang/String;)Landroid/content/Intent;
+	93      (00000176) move-result-object   v5
+	94      (00000178) return-object        v5
+
+zza-BB@0x17a : 
+	95      (0000017a) return-object        v3
+

@@ -1,0 +1,36 @@
+# Lcom/google/android/recaptcha/internal/zzlg;->zzL(I)V [access_flags=private final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:int
+#
+# - return:void
+
+zzL-BB@0x0 : [ zzL-BB@0xc zzL-BB@0x42 ]
+	0       (00000000) invoke-direct        v2, v3, Lcom/google/android/recaptcha/internal/zzlg;->zzM(I)Z
+	1       (00000006) move-result          v0
+	2       (00000008) if-nez               v0, +01dh
+
+zzL-BB@0xc : [ zzL-BB@0x22 zzL-BB@0x32 ]
+	3       (0000000c) const                v0, 2147483647
+	4       (00000012) iget                 v1, v2, Lcom/google/android/recaptcha/internal/zzlg;->zzk I
+	5       (00000016) sub-int/2addr        v0, v1
+	6       (00000018) iget                 v1, v2, Lcom/google/android/recaptcha/internal/zzlg;->zzi I
+	7       (0000001c) sub-int/2addr        v0, v1
+	8       (0000001e) if-le                v3, v0, +00ah
+
+zzL-BB@0x22 : 
+	9       (00000022) new-instance         v3, Lcom/google/android/recaptcha/internal/zznn;
+	10      (00000026) const-string         v0, "Protocol message was too large.  May be malicious.  Use CodedInputStream.setSizeLimit() to increase the size limit."
+	11      (0000002a) invoke-direct        v3, v0, Lcom/google/android/recaptcha/internal/zznn;-><init>(Ljava/lang/String;)V
+	12      (00000030) throw                v3
+
+zzL-BB@0x32 : 
+	13      (00000032) new-instance         v3, Lcom/google/android/recaptcha/internal/zznn;
+	14      (00000036) const-string         v0, "While parsing a protocol message, the input ended unexpectedly in the middle of a field.  This could mean either that the input has been truncated or that an embedded message misreported its own length."
+	15      (0000003a) invoke-direct        v3, v0, Lcom/google/android/recaptcha/internal/zznn;-><init>(Ljava/lang/String;)V
+	16      (00000040) throw                v3
+
+zzL-BB@0x42 : 
+	17      (00000042) return-void          
+

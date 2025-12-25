@@ -1,0 +1,44 @@
+# Lcom/google/android/gms/auth/GoogleAuthUtil;->getTokenWithNotification(Landroid/content/Context; Landroid/accounts/Account; Ljava/lang/String; Landroid/os/Bundle; Ljava/lang/String; Landroid/os/Bundle;)Ljava/lang/String; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v0
+# - v1:android.content.Context
+# - v2:android.accounts.Account
+# - v3:java.lang.String
+# - v4:android.os.Bundle
+# - v5:java.lang.String
+# - v6:android.os.Bundle
+#
+# - return:java.lang.String
+
+getTokenWithNotification-BB@0x0 : [ getTokenWithNotification-BB@0xe getTokenWithNotification-BB@0x18 ]
+	0       (00000000) const-string         v0, "Authority cannot be empty or null."
+	1       (00000004) invoke-static        v5, v0, Lcom/google/android/gms/common/internal/Preconditions;->checkNotEmpty(Ljava/lang/String; Ljava/lang/Object;)Ljava/lang/String;
+	2       (0000000a) if-nez               v4, +007h
+
+getTokenWithNotification-BB@0xe : [ getTokenWithNotification-BB@0x18 ]
+	3       (0000000e) new-instance         v4, Landroid/os/Bundle;
+	4       (00000012) invoke-direct        v4, Landroid/os/Bundle;-><init>()V
+
+getTokenWithNotification-BB@0x18 : [ getTokenWithNotification-BB@0x1c getTokenWithNotification-BB@0x26 ]
+	5       (00000018) if-nez               v6, +007h
+
+getTokenWithNotification-BB@0x1c : [ getTokenWithNotification-BB@0x26 ]
+	6       (0000001c) new-instance         v6, Landroid/os/Bundle;
+	7       (00000020) invoke-direct        v6, Landroid/os/Bundle;-><init>()V
+
+getTokenWithNotification-BB@0x26 : 
+	8       (00000026) invoke-static        v6, Landroid/content/ContentResolver;->validateSyncExtrasBundle(Landroid/os/Bundle;)V
+	9       (0000002c) const-string         v0, "authority"
+	10      (00000030) invoke-virtual       v4, v0, v5, Landroid/os/BaseBundle;->putString(Ljava/lang/String; Ljava/lang/String;)V
+	11      (00000036) const-string         v5, "sync_extras"
+	12      (0000003a) invoke-virtual       v4, v5, v6, Landroid/os/Bundle;->putBundle(Ljava/lang/String; Landroid/os/Bundle;)V
+	13      (00000040) const-string         v5, "handle_notification"
+	14      (00000044) const/4              v6, 1
+	15      (00000046) invoke-virtual       v4, v5, v6, Landroid/os/BaseBundle;->putBoolean(Ljava/lang/String; Z)V
+	16      (0000004c) invoke-static        v1, v2, v3, v4, Lcom/google/android/gms/auth/GoogleAuthUtil;->zzg(Landroid/content/Context; Landroid/accounts/Account; Ljava/lang/String; Landroid/os/Bundle;)Lcom/google/android/gms/auth/TokenData;
+	17      (00000052) move-result-object   v1
+	18      (00000054) invoke-virtual       v1, Lcom/google/android/gms/auth/TokenData;->zza()Ljava/lang/String;
+	19      (0000005a) move-result-object   v1
+	20      (0000005c) return-object        v1
+

@@ -1,0 +1,81 @@
+# Lcom/google/android/gms/auth/api/signin/GoogleSignInClient;->zba()I [access_flags=private final synchronized]
+#
+# Parameters:
+# local registers: v0...v4
+#
+# - return:int
+
+zba-BB@0x0 : [ zba-BB@0x2 ]
+	0       (00000000) monitor-enter        v4
+
+zba-BB@0x2 : [ zba-BB@0xc zba-BB@0x66 ]
+	1       (00000002) sget                 v0, Lcom/google/android/gms/auth/api/signin/GoogleSignInClient;->zba I
+	2       (00000006) const/4              v1, 1
+	3       (00000008) if-ne                v0, v1, +02fh
+	2:65
+	(Ljava/lang/Throwable; -> 36 zba-BB@0x36)
+
+zba-BB@0xc : [ zba-BB@0x2e zba-BB@0x3a ]
+	4       (0000000c) invoke-virtual       v4, Lcom/google/android/gms/common/api/GoogleApi;->getApplicationContext()Landroid/content/Context;
+	5       (00000012) move-result-object   v0
+	6       (00000014) invoke-static        Lcom/google/android/gms/common/GoogleApiAvailability;->getInstance()Lcom/google/android/gms/common/GoogleApiAvailability;
+	7       (0000001a) move-result-object   v1
+	8       (0000001c) const                v2, 12451000
+	9       (00000022) invoke-virtual       v1, v0, v2, Lcom/google/android/gms/common/GoogleApiAvailability;->isGooglePlayServicesAvailable(Landroid/content/Context; I)I
+	10      (00000028) move-result          v2
+	11      (0000002a) if-nez               v2, +008h
+	2:65
+	(Ljava/lang/Throwable; -> 36 zba-BB@0x36)
+
+zba-BB@0x2e : [ zba-BB@0x66 ]
+	12      (0000002e) const/4              v0, 4
+	13      (00000030) sput                 v0, Lcom/google/android/gms/auth/api/signin/GoogleSignInClient;->zba I
+	14      (00000034) goto                 +19h
+	2:65
+	(Ljava/lang/Throwable; -> 36 zba-BB@0x36)
+
+zba-BB@0x36 : [ zba-BB@0x6a ]
+	15      (00000036) move-exception       v0
+	16      (00000038) goto                 +19h
+	2:65
+	(Ljava/lang/Throwable; -> 36 zba-BB@0x36)
+
+zba-BB@0x3a : [ zba-BB@0x48 zba-BB@0x60 ]
+	17      (0000003a) const/4              v3, 0
+	18      (0000003c) invoke-virtual       v1, v0, v2, v3, Lcom/google/android/gms/common/GoogleApiAvailability;->getErrorResolutionIntent(Landroid/content/Context; I Ljava/lang/String;)Landroid/content/Intent;
+	19      (00000042) move-result-object   v1
+	20      (00000044) if-nez               v1, +00eh
+	2:65
+	(Ljava/lang/Throwable; -> 36 zba-BB@0x36)
+
+zba-BB@0x48 : [ zba-BB@0x58 zba-BB@0x60 ]
+	21      (00000048) const-string         v1, "com.google.android.gms.auth.api.fallback"
+	22      (0000004c) invoke-static        v0, v1, Lcom/google/android/gms/dynamite/DynamiteModule;->getLocalVersion(Landroid/content/Context; Ljava/lang/String;)I
+	23      (00000052) move-result          v0
+	24      (00000054) if-eqz               v0, +006h
+	2:65
+	(Ljava/lang/Throwable; -> 36 zba-BB@0x36)
+
+zba-BB@0x58 : [ zba-BB@0x66 ]
+	25      (00000058) const/4              v0, 3
+	26      (0000005a) sput                 v0, Lcom/google/android/gms/auth/api/signin/GoogleSignInClient;->zba I
+	27      (0000005e) goto                 +4h
+	2:65
+	(Ljava/lang/Throwable; -> 36 zba-BB@0x36)
+
+zba-BB@0x60 : [ zba-BB@0x66 ]
+	28      (00000060) const/4              v0, 2
+	29      (00000062) sput                 v0, Lcom/google/android/gms/auth/api/signin/GoogleSignInClient;->zba I
+	2:65
+	(Ljava/lang/Throwable; -> 36 zba-BB@0x36)
+
+zba-BB@0x66 : 
+	30      (00000066) monitor-exit         v4
+	31      (00000068) return               v0
+
+zba-BB@0x6a : 
+	32      (0000006a) monitor-exit         v4
+	33      (0000006c) throw                v0
+	6a:6b
+	(Ljava/lang/Throwable; -> 36 zba-BB@0x36)
+

@@ -1,0 +1,35 @@
+# Lcom/google/android/gms/common/util/ArrayUtils;->contains([I I)Z [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:int[]
+# - v4:int
+#
+# - return:boolean
+
+contains-BB@0x0 : [ contains-BB@0x6 contains-BB@0x20 ]
+	0       (00000000) const/4              v0, 0
+	1       (00000002) if-eqz               v3, +00fh
+
+contains-BB@0x6 : [ contains-BB@0x8 ]
+	2       (00000006) move                 v1, v0
+
+contains-BB@0x8 : [ contains-BB@0xe contains-BB@0x20 ]
+	3       (00000008) array-length         v2, v3
+	4       (0000000a) if-ge                v1, v2, +00bh
+
+contains-BB@0xe : [ contains-BB@0x16 contains-BB@0x1a ]
+	5       (0000000e) aget                 v2, v3, v1
+	6       (00000012) if-ne                v2, v4, +004h
+
+contains-BB@0x16 : 
+	7       (00000016) const/4              v3, 1
+	8       (00000018) return               v3
+
+contains-BB@0x1a : [ contains-BB@0x8 ]
+	9       (0000001a) add-int/lit8         v1, v1, 1
+	10      (0000001e) goto                 -bh
+
+contains-BB@0x20 : 
+	11      (00000020) return               v0
+

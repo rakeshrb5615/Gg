@@ -1,0 +1,233 @@
+# Lcom/google/android/gms/location/zzak;->zza(Landroid/location/Location; Ljava/lang/StringBuilder;)Ljava/lang/StringBuilder; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:android.location.Location
+# - v7:java.lang.StringBuilder
+#
+# - return:java.lang.StringBuilder
+
+zza-BB@0x0 : [ zza-BB@0x10 zza-BB@0x18 ]
+	0       (00000000) const/16             v0, 100
+	1       (00000004) invoke-virtual       v7, v0, Ljava/lang/StringBuilder;->ensureCapacity(I)V
+	2       (0000000a) const/4              v0, 0
+	3       (0000000c) if-nez               v6, +006h
+
+zza-BB@0x10 : 
+	4       (00000010) invoke-virtual       v7, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	5       (00000016) return-object        v7
+
+zza-BB@0x18 : [ zza-BB@0x46 zza-BB@0x50 ]
+	6       (00000018) const-string         v1, "{"
+	7       (0000001c) invoke-virtual       v7, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	8       (00000022) invoke-virtual       v6, Landroid/location/Location;->getProvider()Ljava/lang/String;
+	9       (00000028) move-result-object   v1
+	10      (0000002a) invoke-virtual       v7, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	11      (00000030) const-string         v1, ", "
+	12      (00000034) invoke-virtual       v7, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	13      (0000003a) sget                 v1, Landroid/os/Build$VERSION;->SDK_INT I
+	14      (0000003e) const/16             v2, 31
+	15      (00000042) if-lt                v1, v2, +007h
+
+zza-BB@0x46 : [ zza-BB@0x58 ]
+	16      (00000046) invoke-static        v6, Lk0/a;->a(Landroid/location/Location;)Z
+	17      (0000004c) move-result          v1
+	18      (0000004e) goto                 +5h
+
+zza-BB@0x50 : [ zza-BB@0x58 ]
+	19      (00000050) invoke-virtual       v6, Landroid/location/Location;->isFromMockProvider()Z
+	20      (00000056) move-result          v1
+
+zza-BB@0x58 : [ zza-BB@0x5c zza-BB@0x66 ]
+	21      (00000058) if-eqz               v1, +007h
+
+zza-BB@0x5c : [ zza-BB@0x66 ]
+	22      (0000005c) const-string         v1, "mock, "
+	23      (00000060) invoke-virtual       v7, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+zza-BB@0x66 : [ zza-BB@0xb4 zza-BB@0xdc ]
+	24      (00000066) sget-object          v1, Lcom/google/android/gms/location/zzak;->zzb Ljava/text/DecimalFormat;
+	25      (0000006a) invoke-virtual       v6, Landroid/location/Location;->getLatitude()D
+	26      (00000070) move-result-wide     v2
+	27      (00000072) invoke-virtual       v1, v2, v3, Ljava/text/NumberFormat;->format(D)Ljava/lang/String;
+	28      (00000078) move-result-object   v2
+	29      (0000007a) invoke-virtual       v7, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	30      (00000080) const-string         v2, ","
+	31      (00000084) invoke-virtual       v7, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	32      (0000008a) invoke-virtual       v6, Landroid/location/Location;->getLongitude()D
+	33      (00000090) move-result-wide     v2
+	34      (00000092) invoke-virtual       v1, v2, v3, Ljava/text/NumberFormat;->format(D)Ljava/lang/String;
+	35      (00000098) move-result-object   v1
+	36      (0000009a) invoke-virtual       v7, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	37      (000000a0) invoke-virtual       v6, Landroid/location/Location;->hasAccuracy()Z
+	38      (000000a6) move-result          v1
+	39      (000000a8) const-string         v2, "m"
+	40      (000000ac) const-string         v3, "±"
+	41      (000000b0) if-eqz               v1, +016h
+
+zza-BB@0xb4 : [ zza-BB@0xdc ]
+	42      (000000b4) invoke-virtual       v7, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	43      (000000ba) sget-object          v1, Lcom/google/android/gms/location/zzak;->zzc Ljava/text/DecimalFormat;
+	44      (000000be) invoke-virtual       v6, Landroid/location/Location;->getAccuracy()F
+	45      (000000c4) move-result          v4
+	46      (000000c6) float-to-double      v4, v4
+	47      (000000c8) invoke-virtual       v1, v4, v5, Ljava/text/NumberFormat;->format(D)Ljava/lang/String;
+	48      (000000ce) move-result-object   v1
+	49      (000000d0) invoke-virtual       v7, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	50      (000000d6) invoke-virtual       v7, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+zza-BB@0xdc : [ zza-BB@0xe8 zza-BB@0x13c ]
+	51      (000000dc) invoke-virtual       v6, Landroid/location/Location;->hasAltitude()Z
+	52      (000000e2) move-result          v1
+	53      (000000e4) if-eqz               v1, +02ch
+
+zza-BB@0xe8 : [ zza-BB@0x118 zza-BB@0x136 ]
+	54      (000000e8) const-string         v1, ", alt="
+	55      (000000ec) invoke-virtual       v7, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	56      (000000f2) sget-object          v1, Lcom/google/android/gms/location/zzak;->zzc Ljava/text/DecimalFormat;
+	57      (000000f6) invoke-virtual       v6, Landroid/location/Location;->getAltitude()D
+	58      (000000fc) move-result-wide     v4
+	59      (000000fe) invoke-virtual       v1, v4, v5, Ljava/text/NumberFormat;->format(D)Ljava/lang/String;
+	60      (00000104) move-result-object   v4
+	61      (00000106) invoke-virtual       v7, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	62      (0000010c) invoke-virtual       v6, Landroid/location/Location;->hasVerticalAccuracy()Z
+	63      (00000112) move-result          v4
+	64      (00000114) if-eqz               v4, +011h
+
+zza-BB@0x118 : [ zza-BB@0x136 ]
+	65      (00000118) invoke-virtual       v7, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	66      (0000011e) invoke-virtual       v6, Landroid/location/Location;->getVerticalAccuracyMeters()F
+	67      (00000124) move-result          v4
+	68      (00000126) float-to-double      v4, v4
+	69      (00000128) invoke-virtual       v1, v4, v5, Ljava/text/NumberFormat;->format(D)Ljava/lang/String;
+	70      (0000012e) move-result-object   v1
+	71      (00000130) invoke-virtual       v7, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+zza-BB@0x136 : [ zza-BB@0x13c ]
+	72      (00000136) invoke-virtual       v7, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+zza-BB@0x13c : [ zza-BB@0x148 zza-BB@0x1a2 ]
+	73      (0000013c) invoke-virtual       v6, Landroid/location/Location;->hasSpeed()Z
+	74      (00000142) move-result          v1
+	75      (00000144) if-eqz               v1, +02fh
+
+zza-BB@0x148 : [ zza-BB@0x17a zza-BB@0x198 ]
+	76      (00000148) const-string         v1, ", spd="
+	77      (0000014c) invoke-virtual       v7, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	78      (00000152) sget-object          v1, Lcom/google/android/gms/location/zzak;->zzc Ljava/text/DecimalFormat;
+	79      (00000156) invoke-virtual       v6, Landroid/location/Location;->getSpeed()F
+	80      (0000015c) move-result          v2
+	81      (0000015e) float-to-double      v4, v2
+	82      (00000160) invoke-virtual       v1, v4, v5, Ljava/text/NumberFormat;->format(D)Ljava/lang/String;
+	83      (00000166) move-result-object   v2
+	84      (00000168) invoke-virtual       v7, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	85      (0000016e) invoke-virtual       v6, Landroid/location/Location;->hasSpeedAccuracy()Z
+	86      (00000174) move-result          v2
+	87      (00000176) if-eqz               v2, +011h
+
+zza-BB@0x17a : [ zza-BB@0x198 ]
+	88      (0000017a) invoke-virtual       v7, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	89      (00000180) invoke-virtual       v6, Landroid/location/Location;->getSpeedAccuracyMetersPerSecond()F
+	90      (00000186) move-result          v2
+	91      (00000188) float-to-double      v4, v2
+	92      (0000018a) invoke-virtual       v1, v4, v5, Ljava/text/NumberFormat;->format(D)Ljava/lang/String;
+	93      (00000190) move-result-object   v1
+	94      (00000192) invoke-virtual       v7, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+zza-BB@0x198 : [ zza-BB@0x1a2 ]
+	95      (00000198) const-string         v1, "m/s"
+	96      (0000019c) invoke-virtual       v7, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+zza-BB@0x1a2 : [ zza-BB@0x1ae zza-BB@0x208 ]
+	97      (000001a2) invoke-virtual       v6, Landroid/location/Location;->hasBearing()Z
+	98      (000001a8) move-result          v1
+	99      (000001aa) if-eqz               v1, +02fh
+
+zza-BB@0x1ae : [ zza-BB@0x1e0 zza-BB@0x1fe ]
+	100     (000001ae) const-string         v1, ", brg="
+	101     (000001b2) invoke-virtual       v7, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	102     (000001b8) sget-object          v1, Lcom/google/android/gms/location/zzak;->zzc Ljava/text/DecimalFormat;
+	103     (000001bc) invoke-virtual       v6, Landroid/location/Location;->getBearing()F
+	104     (000001c2) move-result          v2
+	105     (000001c4) float-to-double      v4, v2
+	106     (000001c6) invoke-virtual       v1, v4, v5, Ljava/text/NumberFormat;->format(D)Ljava/lang/String;
+	107     (000001cc) move-result-object   v2
+	108     (000001ce) invoke-virtual       v7, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	109     (000001d4) invoke-virtual       v6, Landroid/location/Location;->hasBearingAccuracy()Z
+	110     (000001da) move-result          v2
+	111     (000001dc) if-eqz               v2, +011h
+
+zza-BB@0x1e0 : [ zza-BB@0x1fe ]
+	112     (000001e0) invoke-virtual       v7, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	113     (000001e6) invoke-virtual       v6, Landroid/location/Location;->getBearingAccuracyDegrees()F
+	114     (000001ec) move-result          v2
+	115     (000001ee) float-to-double      v2, v2
+	116     (000001f0) invoke-virtual       v1, v2, v3, Ljava/text/NumberFormat;->format(D)Ljava/lang/String;
+	117     (000001f6) move-result-object   v1
+	118     (000001f8) invoke-virtual       v7, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+zza-BB@0x1fe : [ zza-BB@0x208 ]
+	119     (000001fe) const-string         v1, "°"
+	120     (00000202) invoke-virtual       v7, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+zza-BB@0x208 : [ zza-BB@0x214 zza-BB@0x222 ]
+	121     (00000208) invoke-virtual       v6, Landroid/location/Location;->getExtras()Landroid/os/Bundle;
+	122     (0000020e) move-result-object   v1
+	123     (00000210) if-eqz               v1, +009h
+
+zza-BB@0x214 : [ zza-BB@0x224 ]
+	124     (00000214) const-string         v2, "floorLabel"
+	125     (00000218) invoke-virtual       v1, v2, Landroid/os/BaseBundle;->getString(Ljava/lang/String;)Ljava/lang/String;
+	126     (0000021e) move-result-object   v1
+	127     (00000220) goto                 +2h
+
+zza-BB@0x222 : [ zza-BB@0x224 ]
+	128     (00000222) move-object          v1, v0
+
+zza-BB@0x224 : [ zza-BB@0x228 zza-BB@0x238 ]
+	129     (00000224) if-eqz               v1, +00ah
+
+zza-BB@0x228 : [ zza-BB@0x238 ]
+	130     (00000228) const-string         v2, ", fl="
+	131     (0000022c) invoke-virtual       v7, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	132     (00000232) invoke-virtual       v7, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+zza-BB@0x238 : [ zza-BB@0x244 zza-BB@0x250 ]
+	133     (00000238) invoke-virtual       v6, Landroid/location/Location;->getExtras()Landroid/os/Bundle;
+	134     (0000023e) move-result-object   v1
+	135     (00000240) if-eqz               v1, +008h
+
+zza-BB@0x244 : [ zza-BB@0x250 ]
+	136     (00000244) const-string         v0, "levelId"
+	137     (00000248) invoke-virtual       v1, v0, Landroid/os/BaseBundle;->getString(Ljava/lang/String;)Ljava/lang/String;
+	138     (0000024e) move-result-object   v0
+
+zza-BB@0x250 : [ zza-BB@0x254 zza-BB@0x264 ]
+	139     (00000250) if-eqz               v0, +00ah
+
+zza-BB@0x254 : [ zza-BB@0x264 ]
+	140     (00000254) const-string         v1, ", lv="
+	141     (00000258) invoke-virtual       v7, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	142     (0000025e) invoke-virtual       v7, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+zza-BB@0x264 : 
+	143     (00000264) invoke-static        Ljava/lang/System;->currentTimeMillis()J
+	144     (0000026a) move-result-wide     v0
+	145     (0000026c) invoke-static        Landroid/os/SystemClock;->elapsedRealtime()J
+	146     (00000272) move-result-wide     v2
+	147     (00000274) sub-long/2addr       v0, v2
+	148     (00000276) const-string         v2, ", ert="
+	149     (0000027a) invoke-virtual       v7, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	150     (00000280) sget-object          v2, Ljava/util/concurrent/TimeUnit;->NANOSECONDS Ljava/util/concurrent/TimeUnit;
+	151     (00000284) invoke-virtual       v6, Landroid/location/Location;->getElapsedRealtimeNanos()J
+	152     (0000028a) move-result-wide     v3
+	153     (0000028c) invoke-virtual       v2, v3, v4, Ljava/util/concurrent/TimeUnit;->toMillis(J)J
+	154     (00000292) move-result-wide     v2
+	155     (00000294) add-long/2addr       v2, v0
+	156     (00000296) invoke-static        v2, v3, Lcom/google/android/gms/internal/location/zzeo;->zza(J)Ljava/lang/String;
+	157     (0000029c) move-result-object   v6
+	158     (0000029e) invoke-virtual       v7, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	159     (000002a4) const/16             v6, 125
+	160     (000002a8) invoke-virtual       v7, v6, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+	161     (000002ae) return-object        v7
+

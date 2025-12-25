@@ -1,0 +1,41 @@
+# Lcom/google/android/gms/fido/u2f/api/messagebased/ResponseType;->getResponseTypeForRequestType(Lcom/google/android/gms/fido/u2f/api/messagebased/RequestType;)Lcom/google/android/gms/fido/u2f/api/messagebased/ResponseType; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:com.google.android.gms.fido.u2f.api.messagebased.RequestType
+#
+# - return:com.google.android.gms.fido.u2f.api.messagebased.ResponseType
+
+getResponseTypeForRequestType-BB@0x0 : [ getResponseTypeForRequestType-BB@0x4 getResponseTypeForRequestType-BB@0x36 ]
+	0       (00000000) if-eqz               v2, +01bh
+
+getResponseTypeForRequestType-BB@0x4 : [ getResponseTypeForRequestType-BB@0x10 getResponseTypeForRequestType-BB@0x30 ]
+	1       (00000004) invoke-virtual       v2, Ljava/lang/Enum;->ordinal()I
+	2       (0000000a) move-result          v0
+	3       (0000000c) if-eqz               v0, +012h
+
+getResponseTypeForRequestType-BB@0x10 : [ getResponseTypeForRequestType-BB@0x16 getResponseTypeForRequestType-BB@0x1c ]
+	4       (00000010) const/4              v1, 1
+	5       (00000012) if-ne                v0, v1, +005h
+
+getResponseTypeForRequestType-BB@0x16 : 
+	6       (00000016) sget-object          v2, Lcom/google/android/gms/fido/u2f/api/messagebased/ResponseType;->SIGN Lcom/google/android/gms/fido/u2f/api/messagebased/ResponseType;
+	7       (0000001a) return-object        v2
+
+getResponseTypeForRequestType-BB@0x1c : 
+	8       (0000001c) new-instance         v0, Lcom/google/android/gms/fido/u2f/api/messagebased/RequestType$UnsupportedRequestTypeException;
+	9       (00000020) invoke-virtual       v2, Lcom/google/android/gms/fido/u2f/api/messagebased/RequestType;->toString()Ljava/lang/String;
+	10      (00000026) move-result-object   v2
+	11      (00000028) invoke-direct        v0, v2, Lcom/google/android/gms/fido/u2f/api/messagebased/RequestType$UnsupportedRequestTypeException;-><init>(Ljava/lang/String;)V
+	12      (0000002e) throw                v0
+
+getResponseTypeForRequestType-BB@0x30 : 
+	13      (00000030) sget-object          v2, Lcom/google/android/gms/fido/u2f/api/messagebased/ResponseType;->REGISTER Lcom/google/android/gms/fido/u2f/api/messagebased/ResponseType;
+	14      (00000034) return-object        v2
+
+getResponseTypeForRequestType-BB@0x36 : 
+	15      (00000036) new-instance         v2, Lcom/google/android/gms/fido/u2f/api/messagebased/RequestType$UnsupportedRequestTypeException;
+	16      (0000003a) const/4              v0, 0
+	17      (0000003c) invoke-direct        v2, v0, Lcom/google/android/gms/fido/u2f/api/messagebased/RequestType$UnsupportedRequestTypeException;-><init>(Ljava/lang/String;)V
+	18      (00000042) throw                v2
+

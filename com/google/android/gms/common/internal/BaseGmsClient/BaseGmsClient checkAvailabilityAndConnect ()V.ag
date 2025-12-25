@@ -1,0 +1,31 @@
+# Lcom/google/android/gms/common/internal/BaseGmsClient;->checkAvailabilityAndConnect()V [access_flags=public]
+#
+# Parameters:
+# local registers: v0...v3
+#
+# - return:void
+
+checkAvailabilityAndConnect-BB@0x0 : [ checkAvailabilityAndConnect-BB@0x1c checkAvailabilityAndConnect-BB@0x38 ]
+	0       (00000000) iget-object          v0, v3, Lcom/google/android/gms/common/internal/BaseGmsClient;->zzo Lcom/google/android/gms/common/GoogleApiAvailabilityLight;
+	1       (00000004) iget-object          v1, v3, Lcom/google/android/gms/common/internal/BaseGmsClient;->zzl Landroid/content/Context;
+	2       (00000008) invoke-virtual       v3, Lcom/google/android/gms/common/internal/BaseGmsClient;->getMinApkVersion()I
+	3       (0000000e) move-result          v2
+	4       (00000010) invoke-virtual       v0, v1, v2, Lcom/google/android/gms/common/GoogleApiAvailabilityLight;->isGooglePlayServicesAvailable(Landroid/content/Context; I)I
+	5       (00000016) move-result          v0
+	6       (00000018) if-eqz               v0, +010h
+
+checkAvailabilityAndConnect-BB@0x1c : 
+	7       (0000001c) const/4              v1, 1
+	8       (0000001e) const/4              v2, 0
+	9       (00000020) invoke-direct        v3, v1, v2, Lcom/google/android/gms/common/internal/BaseGmsClient;->zzp(I Landroid/os/IInterface;)V
+	10      (00000026) new-instance         v1, Lcom/google/android/gms/common/internal/BaseGmsClient$LegacyClientCallbackAdapter;
+	11      (0000002a) invoke-direct        v1, v3, Lcom/google/android/gms/common/internal/BaseGmsClient$LegacyClientCallbackAdapter;-><init>(Lcom/google/android/gms/common/internal/BaseGmsClient;)V
+	12      (00000030) invoke-virtual       v3, v1, v0, v2, Lcom/google/android/gms/common/internal/BaseGmsClient;->triggerNotAvailable(Lcom/google/android/gms/common/internal/BaseGmsClient$ConnectionProgressReportCallbacks; I Landroid/app/PendingIntent;)V
+	13      (00000036) return-void          
+
+checkAvailabilityAndConnect-BB@0x38 : 
+	14      (00000038) new-instance         v0, Lcom/google/android/gms/common/internal/BaseGmsClient$LegacyClientCallbackAdapter;
+	15      (0000003c) invoke-direct        v0, v3, Lcom/google/android/gms/common/internal/BaseGmsClient$LegacyClientCallbackAdapter;-><init>(Lcom/google/android/gms/common/internal/BaseGmsClient;)V
+	16      (00000042) invoke-virtual       v3, v0, Lcom/google/android/gms/common/internal/BaseGmsClient;->connect(Lcom/google/android/gms/common/internal/BaseGmsClient$ConnectionProgressReportCallbacks;)V
+	17      (00000048) return-void          
+

@@ -1,0 +1,77 @@
+# Lcom/google/android/gms/common/api/GoogleApi;->createClientSettingsBuilder()Lcom/google/android/gms/common/internal/ClientSettings$Builder; [access_flags=public]
+#
+# Parameters:
+# local registers: v0...v3
+#
+# - return:com.google.android.gms.common.internal.ClientSettings$Builder
+
+createClientSettingsBuilder-BB@0x0 : [ createClientSettingsBuilder-BB@0x16 createClientSettingsBuilder-BB@0x30 ]
+	0       (00000000) new-instance         v0, Lcom/google/android/gms/common/internal/ClientSettings$Builder;
+	1       (00000004) invoke-direct        v0, Lcom/google/android/gms/common/internal/ClientSettings$Builder;-><init>()V
+	2       (0000000a) iget-object          v1, v3, Lcom/google/android/gms/common/api/GoogleApi;->zae Lcom/google/android/gms/common/api/Api$ApiOptions;
+	3       (0000000e) instance-of          v2, v1, Lcom/google/android/gms/common/api/Api$ApiOptions$HasGoogleSignInAccountOptions;
+	4       (00000012) if-eqz               v2, +00fh
+
+createClientSettingsBuilder-BB@0x16 : [ createClientSettingsBuilder-BB@0x26 createClientSettingsBuilder-BB@0x30 ]
+	5       (00000016) check-cast           v1, Lcom/google/android/gms/common/api/Api$ApiOptions$HasGoogleSignInAccountOptions;
+	6       (0000001a) invoke-interface     v1, Lcom/google/android/gms/common/api/Api$ApiOptions$HasGoogleSignInAccountOptions;->getGoogleSignInAccount()Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;
+	7       (00000020) move-result-object   v1
+	8       (00000022) if-eqz               v1, +007h
+
+createClientSettingsBuilder-BB@0x26 : [ createClientSettingsBuilder-BB@0x4c ]
+	9       (00000026) invoke-virtual       v1, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->getAccount()Landroid/accounts/Account;
+	10      (0000002c) move-result-object   v1
+	11      (0000002e) goto                 +fh
+
+createClientSettingsBuilder-BB@0x30 : [ createClientSettingsBuilder-BB@0x3c createClientSettingsBuilder-BB@0x4a ]
+	12      (00000030) iget-object          v1, v3, Lcom/google/android/gms/common/api/GoogleApi;->zae Lcom/google/android/gms/common/api/Api$ApiOptions;
+	13      (00000034) instance-of          v2, v1, Lcom/google/android/gms/common/api/Api$ApiOptions$HasAccountOptions;
+	14      (00000038) if-eqz               v2, +009h
+
+createClientSettingsBuilder-BB@0x3c : [ createClientSettingsBuilder-BB@0x4c ]
+	15      (0000003c) check-cast           v1, Lcom/google/android/gms/common/api/Api$ApiOptions$HasAccountOptions;
+	16      (00000040) invoke-interface     v1, Lcom/google/android/gms/common/api/Api$ApiOptions$HasAccountOptions;->getAccount()Landroid/accounts/Account;
+	17      (00000046) move-result-object   v1
+	18      (00000048) goto                 +2h
+
+createClientSettingsBuilder-BB@0x4a : [ createClientSettingsBuilder-BB@0x4c ]
+	19      (0000004a) const/4              v1, 0
+
+createClientSettingsBuilder-BB@0x4c : [ createClientSettingsBuilder-BB@0x5e createClientSettingsBuilder-BB@0x7e ]
+	20      (0000004c) invoke-virtual       v0, v1, Lcom/google/android/gms/common/internal/ClientSettings$Builder;->zab(Landroid/accounts/Account;)Lcom/google/android/gms/common/internal/ClientSettings$Builder;
+	21      (00000052) iget-object          v1, v3, Lcom/google/android/gms/common/api/GoogleApi;->zae Lcom/google/android/gms/common/api/Api$ApiOptions;
+	22      (00000056) instance-of          v2, v1, Lcom/google/android/gms/common/api/Api$ApiOptions$HasGoogleSignInAccountOptions;
+	23      (0000005a) if-eqz               v2, +012h
+
+createClientSettingsBuilder-BB@0x5e : [ createClientSettingsBuilder-BB@0x6e createClientSettingsBuilder-BB@0x74 ]
+	24      (0000005e) check-cast           v1, Lcom/google/android/gms/common/api/Api$ApiOptions$HasGoogleSignInAccountOptions;
+	25      (00000062) invoke-interface     v1, Lcom/google/android/gms/common/api/Api$ApiOptions$HasGoogleSignInAccountOptions;->getGoogleSignInAccount()Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;
+	26      (00000068) move-result-object   v1
+	27      (0000006a) if-nez               v1, +005h
+
+createClientSettingsBuilder-BB@0x6e : [ createClientSettingsBuilder-BB@0x82 ]
+	28      (0000006e) sget-object          v1, Ljava/util/Collections;->EMPTY_SET Ljava/util/Set;
+	29      (00000072) goto                 +8h
+
+createClientSettingsBuilder-BB@0x74 : [ createClientSettingsBuilder-BB@0x82 ]
+	30      (00000074) invoke-virtual       v1, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->getRequestedScopes()Ljava/util/Set;
+	31      (0000007a) move-result-object   v1
+	32      (0000007c) goto                 +3h
+
+createClientSettingsBuilder-BB@0x7e : [ createClientSettingsBuilder-BB@0x82 ]
+	33      (0000007e) sget-object          v1, Ljava/util/Collections;->EMPTY_SET Ljava/util/Set;
+
+createClientSettingsBuilder-BB@0x82 : 
+	34      (00000082) invoke-virtual       v0, v1, Lcom/google/android/gms/common/internal/ClientSettings$Builder;->zaa(Ljava/util/Collection;)Lcom/google/android/gms/common/internal/ClientSettings$Builder;
+	35      (00000088) iget-object          v1, v3, Lcom/google/android/gms/common/api/GoogleApi;->zab Landroid/content/Context;
+	36      (0000008c) invoke-virtual       v1, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	37      (00000092) move-result-object   v1
+	38      (00000094) invoke-virtual       v1, Ljava/lang/Class;->getName()Ljava/lang/String;
+	39      (0000009a) move-result-object   v1
+	40      (0000009c) invoke-virtual       v0, v1, Lcom/google/android/gms/common/internal/ClientSettings$Builder;->zac(Ljava/lang/String;)Lcom/google/android/gms/common/internal/ClientSettings$Builder;
+	41      (000000a2) iget-object          v1, v3, Lcom/google/android/gms/common/api/GoogleApi;->zab Landroid/content/Context;
+	42      (000000a6) invoke-virtual       v1, Landroid/content/Context;->getPackageName()Ljava/lang/String;
+	43      (000000ac) move-result-object   v1
+	44      (000000ae) invoke-virtual       v0, v1, Lcom/google/android/gms/common/internal/ClientSettings$Builder;->setRealClientPackageName(Ljava/lang/String;)Lcom/google/android/gms/common/internal/ClientSettings$Builder;
+	45      (000000b4) return-object        v0
+

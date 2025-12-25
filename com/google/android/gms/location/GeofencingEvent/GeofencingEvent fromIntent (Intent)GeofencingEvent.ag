@@ -1,0 +1,107 @@
+# Lcom/google/android/gms/location/GeofencingEvent;->fromIntent(Landroid/content/Intent;)Lcom/google/android/gms/location/GeofencingEvent; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v11
+# - v12:android.content.Intent
+#
+# - return:com.google.android.gms.location.GeofencingEvent
+
+fromIntent-BB@0x0 : [ fromIntent-BB@0x6 fromIntent-BB@0xa ]
+	0       (00000000) const/4              v0, 0
+	1       (00000002) if-nez               v12, +004h
+
+fromIntent-BB@0x6 : [ fromIntent-BB@0xd8 ]
+	2       (00000006) goto/16              +069h
+
+fromIntent-BB@0xa : [ fromIntent-BB@0x28 fromIntent-BB@0x2c ]
+	3       (0000000a) const-string         v1, "gms_error_code"
+	4       (0000000e) const/4              v2, -1
+	5       (00000010) invoke-virtual       v12, v1, v2, Landroid/content/Intent;->getIntExtra(Ljava/lang/String; I)I
+	6       (00000016) move-result          v1
+	7       (00000018) const-string         v3, "com.google.android.location.intent.extra.transition"
+	8       (0000001c) invoke-virtual       v12, v3, v2, Landroid/content/Intent;->getIntExtra(Ljava/lang/String; I)I
+	9       (00000022) move-result          v3
+	10      (00000024) if-ne                v3, v2, +004h
+
+fromIntent-BB@0x28 : [ fromIntent-BB@0x40 ]
+	11      (00000028) move                 v3, v2
+	12      (0000002a) goto                 +bh
+
+fromIntent-BB@0x2c : [ fromIntent-BB@0x32 fromIntent-BB@0x40 ]
+	13      (0000002c) const/4              v4, 1
+	14      (0000002e) if-eq                v3, v4, +009h
+
+fromIntent-BB@0x32 : [ fromIntent-BB@0x38 fromIntent-BB@0x40 ]
+	15      (00000032) const/4              v4, 2
+	16      (00000034) if-eq                v3, v4, +006h
+
+fromIntent-BB@0x38 : [ fromIntent-BB@0x3e fromIntent-BB@0x28 ]
+	17      (00000038) const/4              v4, 4
+	18      (0000003a) if-ne                v3, v4, -009h
+
+fromIntent-BB@0x3e : [ fromIntent-BB@0x40 ]
+	19      (0000003e) move                 v3, v4
+
+fromIntent-BB@0x40 : [ fromIntent-BB@0x54 fromIntent-BB@0x58 ]
+	20      (00000040) const-string         v4, "com.google.android.location.intent.extra.geofence_list"
+	21      (00000044) invoke-virtual       v12, v4, Landroid/content/Intent;->getSerializableExtra(Ljava/lang/String;)Ljava/io/Serializable;
+	22      (0000004a) move-result-object   v4
+	23      (0000004c) check-cast           v4, Ljava/util/ArrayList;
+	24      (00000050) if-nez               v4, +004h
+
+fromIntent-BB@0x54 : [ fromIntent-BB@0xbe ]
+	25      (00000054) move-object          v5, v0
+	26      (00000056) goto                 +34h
+
+fromIntent-BB@0x58 : [ fromIntent-BB@0x76 ]
+	27      (00000058) new-instance         v5, Ljava/util/ArrayList;
+	28      (0000005c) invoke-virtual       v4, Ljava/util/ArrayList;->size()I
+	29      (00000062) move-result          v6
+	30      (00000064) invoke-direct        v5, v6, Ljava/util/ArrayList;-><init>(I)V
+	31      (0000006a) invoke-interface     v4, Ljava/util/List;->size()I
+	32      (00000070) move-result          v6
+	33      (00000072) const/4              v7, 0
+	34      (00000074) move                 v8, v7
+
+fromIntent-BB@0x76 : [ fromIntent-BB@0x7a fromIntent-BB@0xbe ]
+	35      (00000076) if-ge                v8, v6, +024h
+
+fromIntent-BB@0x7a : [ fromIntent-BB@0x76 ]
+	36      (0000007a) invoke-interface     v4, v8, Ljava/util/List;->get(I)Ljava/lang/Object;
+	37      (00000080) move-result-object   v9
+	38      (00000082) check-cast           v9, [B
+	39      (00000086) invoke-static        Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
+	40      (0000008c) move-result-object   v10
+	41      (0000008e) array-length         v11, v9
+	42      (00000090) invoke-virtual       v10, v9, v7, v11, Landroid/os/Parcel;->unmarshall([B I I)V
+	43      (00000096) invoke-virtual       v10, v7, Landroid/os/Parcel;->setDataPosition(I)V
+	44      (0000009c) sget-object          v9, Lcom/google/android/gms/internal/location/zzek;->CREATOR Landroid/os/Parcelable$Creator;
+	45      (000000a0) invoke-interface     v9, v10, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
+	46      (000000a6) move-result-object   v9
+	47      (000000a8) check-cast           v9, Lcom/google/android/gms/internal/location/zzek;
+	48      (000000ac) invoke-virtual       v10, Landroid/os/Parcel;->recycle()V
+	49      (000000b2) invoke-virtual       v5, v9, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	50      (000000b8) add-int/lit8         v8, v8, 1
+	51      (000000bc) goto                 -23h
+
+fromIntent-BB@0xbe : [ fromIntent-BB@0xd2 fromIntent-BB@0xda ]
+	52      (000000be) const-string         v4, "com.google.android.location.intent.extra.triggering_location"
+	53      (000000c2) invoke-virtual       v12, v4, Landroid/content/Intent;->getParcelableExtra(Ljava/lang/String;)Landroid/os/Parcelable;
+	54      (000000c8) move-result-object   v12
+	55      (000000ca) check-cast           v12, Landroid/location/Location;
+	56      (000000ce) if-nez               v5, +006h
+
+fromIntent-BB@0xd2 : [ fromIntent-BB@0xd6 fromIntent-BB@0xd8 ]
+	57      (000000d2) if-eq                v1, v2, +003h
+
+fromIntent-BB@0xd6 : [ fromIntent-BB@0xda ]
+	58      (000000d6) goto                 +2h
+
+fromIntent-BB@0xd8 : 
+	59      (000000d8) return-object        v0
+
+fromIntent-BB@0xda : 
+	60      (000000da) new-instance         v0, Lcom/google/android/gms/location/GeofencingEvent;
+	61      (000000de) invoke-direct        v0, v1, v3, v5, v12, Lcom/google/android/gms/location/GeofencingEvent;-><init>(I I Ljava/util/List; Landroid/location/Location;)V
+	62      (000000e4) return-object        v0
+

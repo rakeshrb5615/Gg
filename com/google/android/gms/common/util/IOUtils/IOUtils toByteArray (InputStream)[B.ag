@@ -1,0 +1,32 @@
+# Lcom/google/android/gms/common/util/IOUtils;->toByteArray(Ljava/io/InputStream;)[B [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:java.io.InputStream
+#
+# - return:byte[]
+
+toByteArray-BB@0x0 : [ toByteArray-BB@0x1e ]
+	0       (00000000) new-instance         v0, Ljava/io/ByteArrayOutputStream;
+	1       (00000004) invoke-direct        v0, Ljava/io/ByteArrayOutputStream;-><init>()V
+	2       (0000000a) invoke-static        v4, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;
+	3       (00000010) invoke-static        v0, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;
+	4       (00000016) const/16             v1, 4096
+	5       (0000001a) new-array            v1, v1, [B
+
+toByteArray-BB@0x1e : [ toByteArray-BB@0x2c toByteArray-BB@0x36 ]
+	6       (0000001e) invoke-virtual       v4, v1, Ljava/io/InputStream;->read([B)I
+	7       (00000024) move-result          v2
+	8       (00000026) const/4              v3, -1
+	9       (00000028) if-ne                v2, v3, +007h
+
+toByteArray-BB@0x2c : 
+	10      (0000002c) invoke-virtual       v0, Ljava/io/ByteArrayOutputStream;->toByteArray()[B
+	11      (00000032) move-result-object   v4
+	12      (00000034) return-object        v4
+
+toByteArray-BB@0x36 : [ toByteArray-BB@0x1e ]
+	13      (00000036) const/4              v3, 0
+	14      (00000038) invoke-virtual       v0, v1, v3, v2, Ljava/io/OutputStream;->write([B I I)V
+	15      (0000003e) goto                 -10h
+

@@ -1,0 +1,67 @@
+# Lcom/google/android/gms/fido/fido2/api/common/AuthenticationExtensionsClientOutputs;->zza()Lorg/json/JSONObject; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v3
+#
+# - return:org.json.JSONObject
+
+zza-BB@0x0 : [ zza-BB@0x12 zza-BB@0x2a ]
+	0       (00000000) new-instance         v0, Lorg/json/JSONObject;
+	1       (00000004) invoke-direct        v0, Lorg/json/JSONObject;-><init>()V
+	2       (0000000a) iget-object          v1, v3, Lcom/google/android/gms/fido/fido2/api/common/AuthenticationExtensionsClientOutputs;->zzc Lcom/google/android/gms/fido/fido2/api/common/AuthenticationExtensionsCredPropsOutputs;
+	3       (0000000e) if-eqz               v1, +00eh
+	0:5d
+	(Lorg/json/JSONException; -> 26 zza-BB@0x26)
+
+zza-BB@0x12 : [ zza-BB@0x2a ]
+	4       (00000012) const-string         v2, "credProps"
+	5       (00000016) invoke-virtual       v1, Lcom/google/android/gms/fido/fido2/api/common/AuthenticationExtensionsCredPropsOutputs;->zza()Lorg/json/JSONObject;
+	6       (0000001c) move-result-object   v1
+	7       (0000001e) invoke-virtual       v0, v2, v1, Lorg/json/JSONObject;->put(Ljava/lang/String; Ljava/lang/Object;)Lorg/json/JSONObject;
+	8       (00000024) goto                 +3h
+	0:5d
+	(Lorg/json/JSONException; -> 26 zza-BB@0x26)
+
+zza-BB@0x26 : [ zza-BB@0x60 ]
+	9       (00000026) move-exception       v0
+	10      (00000028) goto                 +1ch
+	0:5d
+	(Lorg/json/JSONException; -> 26 zza-BB@0x26)
+
+zza-BB@0x2a : [ zza-BB@0x32 zza-BB@0x44 ]
+	11      (0000002a) iget-object          v1, v3, Lcom/google/android/gms/fido/fido2/api/common/AuthenticationExtensionsClientOutputs;->zza Lcom/google/android/gms/fido/fido2/api/common/UvmEntries;
+	12      (0000002e) if-eqz               v1, +00bh
+	0:5d
+	(Lorg/json/JSONException; -> 26 zza-BB@0x26)
+
+zza-BB@0x32 : [ zza-BB@0x44 ]
+	13      (00000032) const-string         v2, "uvm"
+	14      (00000036) invoke-virtual       v1, Lcom/google/android/gms/fido/fido2/api/common/UvmEntries;->zza()Lorg/json/JSONArray;
+	15      (0000003c) move-result-object   v1
+	16      (0000003e) invoke-virtual       v0, v2, v1, Lorg/json/JSONObject;->put(Ljava/lang/String; Ljava/lang/Object;)Lorg/json/JSONObject;
+	0:5d
+	(Lorg/json/JSONException; -> 26 zza-BB@0x26)
+
+zza-BB@0x44 : [ zza-BB@0x4c zza-BB@0x5e ]
+	17      (00000044) iget-object          v1, v3, Lcom/google/android/gms/fido/fido2/api/common/AuthenticationExtensionsClientOutputs;->zzd Lcom/google/android/gms/fido/fido2/api/common/zzh;
+	18      (00000048) if-eqz               v1, +00bh
+	0:5d
+	(Lorg/json/JSONException; -> 26 zza-BB@0x26)
+
+zza-BB@0x4c : [ zza-BB@0x5e ]
+	19      (0000004c) const-string         v2, "prf"
+	20      (00000050) invoke-virtual       v1, Lcom/google/android/gms/fido/fido2/api/common/zzh;->zza()Lorg/json/JSONObject;
+	21      (00000056) move-result-object   v1
+	22      (00000058) invoke-virtual       v0, v2, v1, Lorg/json/JSONObject;->put(Ljava/lang/String; Ljava/lang/Object;)Lorg/json/JSONObject;
+	0:5d
+	(Lorg/json/JSONException; -> 26 zza-BB@0x26)
+
+zza-BB@0x5e : 
+	23      (0000005e) return-object        v0
+
+zza-BB@0x60 : 
+	24      (00000060) new-instance         v1, Ljava/lang/RuntimeException;
+	25      (00000064) const-string         v2, "Error encoding AuthenticationExtensionsClientOutputs to JSON object"
+	26      (00000068) invoke-direct        v1, v2, v0, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	27      (0000006e) throw                v1
+

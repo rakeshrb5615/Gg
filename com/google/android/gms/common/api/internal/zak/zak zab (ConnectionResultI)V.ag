@@ -1,0 +1,40 @@
+# Lcom/google/android/gms/common/api/internal/zak;->zab(Lcom/google/android/gms/common/ConnectionResult; I)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:com.google.android.gms.common.ConnectionResult
+# - v4:int
+#
+# - return:void
+
+zab-BB@0x0 : [ zab-BB@0x12 zab-BB@0x28 ]
+	0       (00000000) const-string         v0, "Unresolved error while connecting client. Stopping auto-manage."
+	1       (00000004) const-string         v1, "AutoManageHelper"
+	2       (00000008) invoke-static        v1, v0, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+	3       (0000000e) if-gez               v4, +00dh
+
+zab-BB@0x12 : 
+	4       (00000012) new-instance         v3, Ljava/lang/Exception;
+	5       (00000016) invoke-direct        v3, Ljava/lang/Exception;-><init>()V
+	6       (0000001c) const-string         v4, "AutoManageLifecycleHelper received onErrorResolutionFailed callback but no failing client ID is set"
+	7       (00000020) invoke-static        v1, v4, v3, Landroid/util/Log;->wtf(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+	8       (00000026) return-void          
+
+zab-BB@0x28 : [ zab-BB@0x3c zab-BB@0x50 ]
+	9       (00000028) iget-object          v0, v2, Lcom/google/android/gms/common/api/internal/zak;->zad Landroid/util/SparseArray;
+	10      (0000002c) invoke-virtual       v0, v4, Landroid/util/SparseArray;->get(I)Ljava/lang/Object;
+	11      (00000032) move-result-object   v0
+	12      (00000034) check-cast           v0, Lcom/google/android/gms/common/api/internal/zaj;
+	13      (00000038) if-eqz               v0, +00ch
+
+zab-BB@0x3c : [ zab-BB@0x4a zab-BB@0x50 ]
+	14      (0000003c) invoke-virtual       v2, v4, Lcom/google/android/gms/common/api/internal/zak;->zae(I)V
+	15      (00000042) iget-object          v4, v0, Lcom/google/android/gms/common/api/internal/zaj;->zac Lcom/google/android/gms/common/api/GoogleApiClient$OnConnectionFailedListener;
+	16      (00000046) if-eqz               v4, +005h
+
+zab-BB@0x4a : [ zab-BB@0x50 ]
+	17      (0000004a) invoke-interface     v4, v3, Lcom/google/android/gms/common/api/internal/OnConnectionFailedListener;->onConnectionFailed(Lcom/google/android/gms/common/ConnectionResult;)V
+
+zab-BB@0x50 : 
+	18      (00000050) return-void          
+

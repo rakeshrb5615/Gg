@@ -1,0 +1,41 @@
+# Lcom/google/android/gms/common/util/concurrent/NumberedThreadFactory;->newThread(Ljava/lang/Runnable;)Ljava/lang/Thread; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:java.lang.Runnable
+#
+# - return:java.lang.Thread
+
+newThread-BB@0x0 : 
+	0       (00000000) new-instance         v0, Lcom/google/android/gms/common/util/concurrent/zza;
+	1       (00000004) const/4              v1, 0
+	2       (00000006) invoke-direct        v0, v6, v1, Lcom/google/android/gms/common/util/concurrent/zza;-><init>(Ljava/lang/Runnable; I)V
+	3       (0000000c) iget-object          v6, v5, Lcom/google/android/gms/common/util/concurrent/NumberedThreadFactory;->zzc Ljava/util/concurrent/ThreadFactory;
+	4       (00000010) invoke-interface     v6, v0, Ljava/util/concurrent/ThreadFactory;->newThread(Ljava/lang/Runnable;)Ljava/lang/Thread;
+	5       (00000016) move-result-object   v6
+	6       (00000018) iget-object          v0, v5, Lcom/google/android/gms/common/util/concurrent/NumberedThreadFactory;->zzb Ljava/util/concurrent/atomic/AtomicInteger;
+	7       (0000001c) invoke-virtual       v0, Ljava/util/concurrent/atomic/AtomicInteger;->getAndIncrement()I
+	8       (00000022) move-result          v0
+	9       (00000024) invoke-static        v0, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
+	10      (0000002a) move-result-object   v1
+	11      (0000002c) invoke-virtual       v1, Ljava/lang/String;->length()I
+	12      (00000032) move-result          v1
+	13      (00000034) new-instance         v2, Ljava/lang/StringBuilder;
+	14      (00000038) iget-object          v3, v5, Lcom/google/android/gms/common/util/concurrent/NumberedThreadFactory;->zza Ljava/lang/String;
+	15      (0000003c) invoke-virtual       v3, Ljava/lang/String;->length()I
+	16      (00000042) move-result          v4
+	17      (00000044) add-int/lit8         v4, v4, 1
+	18      (00000048) add-int/2addr        v4, v1
+	19      (0000004a) add-int/lit8         v4, v4, 1
+	20      (0000004e) invoke-direct        v2, v4, Ljava/lang/StringBuilder;-><init>(I)V
+	21      (00000054) invoke-virtual       v2, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	22      (0000005a) const-string         v1, "["
+	23      (0000005e) invoke-virtual       v2, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	24      (00000064) invoke-virtual       v2, v0, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	25      (0000006a) const-string         v0, "]"
+	26      (0000006e) invoke-virtual       v2, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	27      (00000074) invoke-virtual       v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	28      (0000007a) move-result-object   v0
+	29      (0000007c) invoke-virtual       v6, v0, Ljava/lang/Thread;->setName(Ljava/lang/String;)V
+	30      (00000082) return-object        v6
+

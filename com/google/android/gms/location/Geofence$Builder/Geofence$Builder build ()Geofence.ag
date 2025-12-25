@@ -1,0 +1,91 @@
+# Lcom/google/android/gms/location/Geofence$Builder;->build()Lcom/google/android/gms/location/Geofence; [access_flags=public]
+#
+# Parameters:
+# local registers: v0...v14
+#
+# - return:com.google.android.gms.location.Geofence
+
+build-BB@0x0 : [ build-BB@0x8 build-BB@0xc2 ]
+	0       (00000000) iget-object          v0, v14, Lcom/google/android/gms/location/Geofence$Builder;->zza Ljava/lang/String;
+	1       (00000004) if-eqz               v0, +05fh
+
+build-BB@0x8 : [ build-BB@0x10 build-BB@0xb2 ]
+	2       (00000008) iget                 v0, v14, Lcom/google/android/gms/location/Geofence$Builder;->zzb I
+	3       (0000000c) if-eqz               v0, +053h
+
+build-BB@0x10 : [ build-BB@0x18 build-BB@0x32 ]
+	4       (00000010) and-int/lit8         v0, v0, 4
+	5       (00000014) if-eqz               v0, +00fh
+
+build-BB@0x18 : [ build-BB@0x20 build-BB@0x22 ]
+	6       (00000018) iget                 v0, v14, Lcom/google/android/gms/location/Geofence$Builder;->zzi I
+	7       (0000001c) if-ltz               v0, +003h
+
+build-BB@0x20 : [ build-BB@0x32 ]
+	8       (00000020) goto                 +9h
+
+build-BB@0x22 : 
+	9       (00000022) new-instance         v0, Ljava/lang/IllegalArgumentException;
+	10      (00000026) const-string         v1, "Non-negative loitering delay needs to be set when transition types include GEOFENCE_TRANSITION_DWELL."
+	11      (0000002a) invoke-direct        v0, v1, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	12      (00000030) throw                v0
+
+build-BB@0x32 : [ build-BB@0x42 build-BB@0xa2 ]
+	13      (00000032) iget-wide            v0, v14, Lcom/google/android/gms/location/Geofence$Builder;->zzc J
+	14      (00000036) const-wide/high16    v2, -9223372036854775808
+	15      (0000003a) cmp-long             v0, v0, v2
+	16      (0000003e) if-eqz               v0, +032h
+
+build-BB@0x42 : [ build-BB@0x4c build-BB@0x92 ]
+	17      (00000042) iget-short           v0, v14, Lcom/google/android/gms/location/Geofence$Builder;->zzd S
+	18      (00000046) const/4              v1, -1
+	19      (00000048) if-eq                v0, v1, +025h
+
+build-BB@0x4c : [ build-BB@0x54 build-BB@0x82 ]
+	20      (0000004c) iget                 v0, v14, Lcom/google/android/gms/location/Geofence$Builder;->zzh I
+	21      (00000050) if-ltz               v0, +019h
+
+build-BB@0x54 : 
+	22      (00000054) new-instance         v1, Lcom/google/android/gms/internal/location/zzek;
+	23      (00000058) iget-object          v2, v14, Lcom/google/android/gms/location/Geofence$Builder;->zza Ljava/lang/String;
+	24      (0000005c) iget                 v3, v14, Lcom/google/android/gms/location/Geofence$Builder;->zzb I
+	25      (00000060) iget-wide            v5, v14, Lcom/google/android/gms/location/Geofence$Builder;->zze D
+	26      (00000064) iget-wide            v7, v14, Lcom/google/android/gms/location/Geofence$Builder;->zzf D
+	27      (00000068) iget                 v9, v14, Lcom/google/android/gms/location/Geofence$Builder;->zzg F
+	28      (0000006c) iget-wide            v10, v14, Lcom/google/android/gms/location/Geofence$Builder;->zzc J
+	29      (00000070) iget                 v12, v14, Lcom/google/android/gms/location/Geofence$Builder;->zzh I
+	30      (00000074) iget                 v13, v14, Lcom/google/android/gms/location/Geofence$Builder;->zzi I
+	31      (00000078) const/4              v4, 1
+	32      (0000007a) invoke-direct/range  v1 ... v13, Lcom/google/android/gms/internal/location/zzek;-><init>(Ljava/lang/String; I S D D F J I I)V
+	33      (00000080) return-object        v1
+
+build-BB@0x82 : 
+	34      (00000082) new-instance         v0, Ljava/lang/IllegalArgumentException;
+	35      (00000086) const-string         v1, "Notification responsiveness should be nonnegative."
+	36      (0000008a) invoke-direct        v0, v1, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	37      (00000090) throw                v0
+
+build-BB@0x92 : 
+	38      (00000092) new-instance         v0, Ljava/lang/IllegalArgumentException;
+	39      (00000096) const-string         v1, "Geofence region not set."
+	40      (0000009a) invoke-direct        v0, v1, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	41      (000000a0) throw                v0
+
+build-BB@0xa2 : 
+	42      (000000a2) new-instance         v0, Ljava/lang/IllegalArgumentException;
+	43      (000000a6) const-string         v1, "Expiration not set."
+	44      (000000aa) invoke-direct        v0, v1, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	45      (000000b0) throw                v0
+
+build-BB@0xb2 : 
+	46      (000000b2) new-instance         v0, Ljava/lang/IllegalArgumentException;
+	47      (000000b6) const-string         v1, "Transitions types not set."
+	48      (000000ba) invoke-direct        v0, v1, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	49      (000000c0) throw                v0
+
+build-BB@0xc2 : 
+	50      (000000c2) new-instance         v0, Ljava/lang/IllegalArgumentException;
+	51      (000000c6) const-string         v1, "Request ID not set."
+	52      (000000ca) invoke-direct        v0, v1, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	53      (000000d0) throw                v0
+

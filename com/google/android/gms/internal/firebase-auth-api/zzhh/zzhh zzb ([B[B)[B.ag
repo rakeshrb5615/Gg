@@ -1,0 +1,86 @@
+# Lcom/google/android/gms/internal/firebase-auth-api/zzhh;->zzb([B [B)[B [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v10
+# - v11:byte[]
+# - v12:byte[]
+#
+# - return:byte[]
+
+zzb-BB@0x0 : [ zzb-BB@0x4 zzb-BB@0xbe ]
+	0       (00000000) if-eqz               v11, +05fh
+
+zzb-BB@0x4 : [ zzb-BB@0x3c zzb-BB@0x48 ]
+	1       (00000004) const/16             v0, 12
+	2       (00000008) invoke-static        v0, Lcom/google/android/gms/internal/firebase-auth-api/zzqd;->zza(I)[B
+	3       (0000000e) move-result-object   v1
+	4       (00000010) new-instance         v2, Ljavax/crypto/spec/IvParameterSpec;
+	5       (00000014) invoke-direct        v2, v1, Ljavax/crypto/spec/IvParameterSpec;-><init>([B)V
+	6       (0000001a) sget-object          v3, Lcom/google/android/gms/internal/firebase-auth-api/zzhh;->zze Ljava/lang/ThreadLocal;
+	7       (0000001e) invoke-virtual       v3, Ljava/lang/ThreadLocal;->get()Ljava/lang/Object;
+	8       (00000024) move-result-object   v3
+	9       (00000026) move-object          v4, v3
+	10      (00000028) check-cast           v4, Ljavax/crypto/Cipher;
+	11      (0000002c) const/4              v3, 1
+	12      (0000002e) iget-object          v5, v10, Lcom/google/android/gms/internal/firebase-auth-api/zzhh;->zzf Ljavax/crypto/SecretKey;
+	13      (00000032) invoke-virtual       v4, v3, v5, v2, Ljavax/crypto/Cipher;->init(I Ljava/security/Key; Ljava/security/spec/AlgorithmParameterSpec;)V
+	14      (00000038) if-eqz               v12, +008h
+
+zzb-BB@0x3c : [ zzb-BB@0x42 zzb-BB@0x48 ]
+	15      (0000003c) array-length         v2, v12
+	16      (0000003e) if-eqz               v2, +005h
+
+zzb-BB@0x42 : [ zzb-BB@0x48 ]
+	17      (00000042) invoke-virtual       v4, v12, Ljavax/crypto/Cipher;->updateAAD([B)V
+
+zzb-BB@0x48 : [ zzb-BB@0x64 zzb-BB@0xae ]
+	18      (00000048) array-length         v12, v11
+	19      (0000004a) invoke-virtual       v4, v12, Ljavax/crypto/Cipher;->getOutputSize(I)I
+	20      (00000050) move-result          v12
+	21      (00000052) iget-object          v2, v10, Lcom/google/android/gms/internal/firebase-auth-api/zzhh;->zzg [B
+	22      (00000056) array-length         v3, v2
+	23      (00000058) const                v5, 2147483635
+	24      (0000005e) sub-int/2addr        v5, v3
+	25      (00000060) if-gt                v12, v5, +027h
+
+zzb-BB@0x64 : [ zzb-BB@0x9c zzb-BB@0x9e ]
+	26      (00000064) array-length         v3, v2
+	27      (00000066) add-int/2addr        v3, v0
+	28      (00000068) add-int/2addr        v3, v12
+	29      (0000006a) invoke-static        v2, v3, Ljava/util/Arrays;->copyOf([B I)[B
+	30      (00000070) move-result-object   v8
+	31      (00000072) iget-object          v2, v10, Lcom/google/android/gms/internal/firebase-auth-api/zzhh;->zzg [B
+	32      (00000076) array-length         v2, v2
+	33      (00000078) const/4              v3, 0
+	34      (0000007a) invoke-static        v1, v3, v8, v2, v0, Ljava/lang/System;->arraycopy(Ljava/lang/Object; I Ljava/lang/Object; I I)V
+	35      (00000080) array-length         v7, v11
+	36      (00000082) iget-object          v1, v10, Lcom/google/android/gms/internal/firebase-auth-api/zzhh;->zzg [B
+	37      (00000086) array-length         v1, v1
+	38      (00000088) add-int/lit8         v9, v1, 12
+	39      (0000008c) const/4              v6, 0
+	40      (0000008e) move-object          v5, v11
+	41      (00000090) invoke-virtual/range v4 ... v9, Ljavax/crypto/Cipher;->doFinal([B I I [B I)I
+	42      (00000096) move-result          v11
+	43      (00000098) if-ne                v11, v12, +003h
+
+zzb-BB@0x9c : 
+	44      (0000009c) return-object        v8
+
+zzb-BB@0x9e : 
+	45      (0000009e) new-instance         v11, Ljava/security/GeneralSecurityException;
+	46      (000000a2) const-string         v12, "not enough data written"
+	47      (000000a6) invoke-direct        v11, v12, Ljava/security/GeneralSecurityException;-><init>(Ljava/lang/String;)V
+	48      (000000ac) throw                v11
+
+zzb-BB@0xae : 
+	49      (000000ae) new-instance         v11, Ljava/security/GeneralSecurityException;
+	50      (000000b2) const-string         v12, "plaintext too long"
+	51      (000000b6) invoke-direct        v11, v12, Ljava/security/GeneralSecurityException;-><init>(Ljava/lang/String;)V
+	52      (000000bc) throw                v11
+
+zzb-BB@0xbe : 
+	53      (000000be) new-instance         v11, Ljava/lang/NullPointerException;
+	54      (000000c2) const-string         v12, "plaintext is null"
+	55      (000000c6) invoke-direct        v11, v12, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
+	56      (000000cc) throw                v11
+

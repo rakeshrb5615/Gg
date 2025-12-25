@@ -1,0 +1,31 @@
+# Lcom/google/android/gms/internal/common/zzc;->zzf(Landroid/os/Parcel;)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:android.os.Parcel
+#
+# - return:void
+
+zzf-BB@0x0 : [ zzf-BB@0xc zzf-BB@0xe ]
+	0       (00000000) invoke-virtual       v3, Landroid/os/Parcel;->dataAvail()I
+	1       (00000006) move-result          v3
+	2       (00000008) if-gtz               v3, +003h
+
+zzf-BB@0xc : 
+	3       (0000000c) return-void          
+
+zzf-BB@0xe : 
+	4       (0000000e) new-instance         v0, Landroid/os/BadParcelableException;
+	5       (00000012) invoke-static        v3, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
+	6       (00000018) move-result-object   v1
+	7       (0000001a) invoke-virtual       v1, Ljava/lang/String;->length()I
+	8       (00000020) move-result          v1
+	9       (00000022) new-instance         v2, Ljava/lang/StringBuilder;
+	10      (00000026) add-int/lit8         v1, v1, 45
+	11      (0000002a) invoke-direct        v2, v1, Ljava/lang/StringBuilder;-><init>(I)V
+	12      (00000030) const-string         v1, "Parcel data not fully consumed, unread size: "
+	13      (00000034) invoke-static        v2, v1, v3, Lv1/a;->m(Ljava/lang/StringBuilder; Ljava/lang/String; I)Ljava/lang/String;
+	14      (0000003a) move-result-object   v3
+	15      (0000003c) invoke-direct        v0, v3, Landroid/os/BadParcelableException;-><init>(Ljava/lang/String;)V
+	16      (00000042) throw                v0
+

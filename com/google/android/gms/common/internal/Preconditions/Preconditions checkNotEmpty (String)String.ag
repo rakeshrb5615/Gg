@@ -1,0 +1,22 @@
+# Lcom/google/android/gms/common/internal/Preconditions;->checkNotEmpty(Ljava/lang/String;)Ljava/lang/String; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v0
+# - v1:java.lang.String
+#
+# - return:java.lang.String
+
+checkNotEmpty-BB@0x0 : [ checkNotEmpty-BB@0xc checkNotEmpty-BB@0xe ]
+	0       (00000000) invoke-static        v1, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+	1       (00000006) move-result          v0
+	2       (00000008) if-nez               v0, +003h
+
+checkNotEmpty-BB@0xc : 
+	3       (0000000c) return-object        v1
+
+checkNotEmpty-BB@0xe : 
+	4       (0000000e) new-instance         v1, Ljava/lang/IllegalArgumentException;
+	5       (00000012) const-string         v0, "Given String is empty or null"
+	6       (00000016) invoke-direct        v1, v0, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	7       (0000001c) throw                v1
+

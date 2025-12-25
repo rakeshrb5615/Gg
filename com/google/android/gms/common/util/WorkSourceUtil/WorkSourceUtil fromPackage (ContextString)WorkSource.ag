@@ -1,0 +1,55 @@
+# Lcom/google/android/gms/common/util/WorkSourceUtil;->fromPackage(Landroid/content/Context; Ljava/lang/String;)Landroid/os/WorkSource; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:android.content.Context
+# - v4:java.lang.String
+#
+# - return:android.os.WorkSource
+
+fromPackage-BB@0x0 : [ fromPackage-BB@0xa fromPackage-BB@0x6c ]
+	0       (00000000) const-string         v0, "WorkSourceUtil"
+	1       (00000004) const/4              v1, 0
+	2       (00000006) if-eqz               v3, +033h
+
+fromPackage-BB@0xa : [ fromPackage-BB@0x16 fromPackage-BB@0x6c ]
+	3       (0000000a) invoke-virtual       v3, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
+	4       (00000010) move-result-object   v2
+	5       (00000012) if-eqz               v2, +02dh
+
+fromPackage-BB@0x16 : [ fromPackage-BB@0x1a fromPackage-BB@0x6c ]
+	6       (00000016) if-eqz               v4, +02bh
+
+fromPackage-BB@0x1a : [ fromPackage-BB@0x30 fromPackage-BB@0x44 ]
+	7       (0000001a) invoke-static        v3, Lcom/google/android/gms/common/wrappers/Wrappers;->packageManager(Landroid/content/Context;)Lcom/google/android/gms/common/wrappers/PackageManagerWrapper;
+	8       (00000020) move-result-object   v3
+	9       (00000022) const/4              v2, 0
+	10      (00000024) invoke-virtual       v3, v4, v2, Lcom/google/android/gms/common/wrappers/PackageManagerWrapper;->getApplicationInfo(Ljava/lang/String; I)Landroid/content/pm/ApplicationInfo;
+	11      (0000002a) move-result-object   v3
+	12      (0000002c) if-nez               v3, +00ch
+	1a:2b
+	(Landroid/content/pm/PackageManager$NameNotFoundException; -> 5a fromPackage-BB@0x5a)
+
+fromPackage-BB@0x30 : 
+	13      (00000030) const-string         v3, "Could not get applicationInfo from package: "
+	14      (00000034) invoke-virtual       v3, v4, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	15      (0000003a) move-result-object   v3
+	16      (0000003c) invoke-static        v0, v3, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String;)I
+	17      (00000042) return-object        v1
+
+fromPackage-BB@0x44 : 
+	18      (00000044) iget                 v3, v3, Landroid/content/pm/ApplicationInfo;->uid I
+	19      (00000048) new-instance         v0, Landroid/os/WorkSource;
+	20      (0000004c) invoke-direct        v0, Landroid/os/WorkSource;-><init>()V
+	21      (00000052) invoke-static        v0, v3, v4, Lcom/google/android/gms/common/util/WorkSourceUtil;->add(Landroid/os/WorkSource; I Ljava/lang/String;)V
+	22      (00000058) return-object        v0
+
+fromPackage-BB@0x5a : [ fromPackage-BB@0x6c ]
+	23      (0000005a) const-string         v3, "Could not find package: "
+	24      (0000005e) invoke-virtual       v3, v4, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	25      (00000064) move-result-object   v3
+	26      (00000066) invoke-static        v0, v3, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String;)I
+
+fromPackage-BB@0x6c : 
+	27      (0000006c) return-object        v1
+

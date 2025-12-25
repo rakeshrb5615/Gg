@@ -1,0 +1,41 @@
+# Lcom/chilllive/chillwallpaperproject/MainActivity;->setWallpaper(Landroid/view/View;)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:android.view.View
+#
+# - return:void
+
+setWallpaper-BB@0x0 : 
+	0       (00000000) new-instance         v4, Landroid/content/Intent;
+	1       (00000004) const-string         v0, "android.service.wallpaper.CHANGE_LIVE_WALLPAPER"
+	2       (00000008) invoke-direct        v4, v0, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
+	3       (0000000e) const-string         v0, "android.service.wallpaper.extra.LIVE_WALLPAPER_COMPONENT"
+	4       (00000012) new-instance         v1, Landroid/content/ComponentName;
+	5       (00000016) const-class          v2, Lcom/chilllive/chillwallpaperproject/MyWallpaperService;
+	6       (0000001a) invoke-direct        v1, v3, v2, Landroid/content/ComponentName;-><init>(Landroid/content/Context; Ljava/lang/Class;)V
+	7       (00000020) invoke-virtual       v4, v0, v1, Landroid/content/Intent;->putExtra(Ljava/lang/String; Landroid/os/Parcelable;)Landroid/content/Intent;
+	8       (00000026) invoke-virtual       v3, v4, Landroid/content/Context;->startActivity(Landroid/content/Intent;)V
+	9       (0000002c) return-void          
+	0:2b
+	(Landroid/content/ActivityNotFoundException; -> 2e setWallpaper-BB@0x2e)
+
+setWallpaper-BB@0x2e : [ setWallpaper-BB@0x5a ]
+	10      (0000002e) new-instance         v4, Landroid/content/Intent;
+	11      (00000032) const-string         v0, "android.service.wallpaper.LIVE_WALLPAPER_CHOOSER"
+	12      (00000036) invoke-direct        v4, v0, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
+	13      (0000003c) invoke-virtual       v3, v4, Landroid/content/Context;->startActivity(Landroid/content/Intent;)V
+	14      (00000042) goto                 +ch
+	2e:41
+	(Landroid/content/ActivityNotFoundException; -> 44 setWallpaper-BB@0x44)
+
+setWallpaper-BB@0x44 : [ setWallpaper-BB@0x5a ]
+	15      (00000044) const                v4, 2131951962
+	16      (0000004a) const/4              v0, 1
+	17      (0000004c) invoke-static        v3, v4, v0, Landroid/widget/Toast;->makeText(Landroid/content/Context; I I)Landroid/widget/Toast;
+	18      (00000052) move-result-object   v4
+	19      (00000054) invoke-virtual       v4, Landroid/widget/Toast;->show()V
+
+setWallpaper-BB@0x5a : 
+	20      (0000005a) return-void          
+

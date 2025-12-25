@@ -1,0 +1,29 @@
+# Lcom/google/android/gms/internal/auth-api/zbaw;->getStatusFromIntent(Landroid/content/Intent;)Lcom/google/android/gms/common/api/Status; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:android.content.Intent
+#
+# - return:com.google.android.gms.common.api.Status
+
+getStatusFromIntent-BB@0x0 : [ getStatusFromIntent-BB@0x4 getStatusFromIntent-BB@0xa ]
+	0       (00000000) if-nez               v3, +005h
+
+getStatusFromIntent-BB@0x4 : 
+	1       (00000004) sget-object          v3, Lcom/google/android/gms/common/api/Status;->RESULT_INTERNAL_ERROR Lcom/google/android/gms/common/api/Status;
+	2       (00000008) return-object        v3
+
+getStatusFromIntent-BB@0xa : [ getStatusFromIntent-BB@0x22 getStatusFromIntent-BB@0x26 ]
+	3       (0000000a) const-string         v0, "status"
+	4       (0000000e) sget-object          v1, Lcom/google/android/gms/common/api/Status;->CREATOR Landroid/os/Parcelable$Creator;
+	5       (00000012) invoke-static        v3, v0, v1, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelableSerializer;->deserializeFromIntentExtra(Landroid/content/Intent; Ljava/lang/String; Landroid/os/Parcelable$Creator;)Lcom/google/android/gms/common/internal/safeparcel/SafeParcelable;
+	6       (00000018) move-result-object   v3
+	7       (0000001a) check-cast           v3, Lcom/google/android/gms/common/api/Status;
+	8       (0000001e) if-nez               v3, +004h
+
+getStatusFromIntent-BB@0x22 : [ getStatusFromIntent-BB@0x26 ]
+	9       (00000022) sget-object          v3, Lcom/google/android/gms/common/api/Status;->RESULT_INTERNAL_ERROR Lcom/google/android/gms/common/api/Status;
+
+getStatusFromIntent-BB@0x26 : 
+	10      (00000026) return-object        v3
+

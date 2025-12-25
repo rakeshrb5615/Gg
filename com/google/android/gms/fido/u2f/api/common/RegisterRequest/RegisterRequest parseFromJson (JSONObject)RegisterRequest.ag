@@ -1,0 +1,78 @@
+# Lcom/google/android/gms/fido/u2f/api/common/RegisterRequest;->parseFromJson(Lorg/json/JSONObject;)Lcom/google/android/gms/fido/u2f/api/common/RegisterRequest; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:org.json.JSONObject
+#
+# - return:com.google.android.gms.fido.u2f.api.common.RegisterRequest
+
+parseFromJson-BB@0x0 : [ parseFromJson-BB@0x12 parseFromJson-BB@0x1c ]
+	0       (00000000) const-string         v0, "version"
+	1       (00000004) invoke-virtual       v5, v0, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
+	2       (0000000a) move-result          v1
+	3       (0000000c) const/4              v2, 0
+	4       (0000000e) if-eqz               v1, +007h
+
+parseFromJson-BB@0x12 : [ parseFromJson-BB@0x1e ]
+	5       (00000012) invoke-virtual       v5, v0, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
+	6       (00000018) move-result-object   v0
+	7       (0000001a) goto                 +2h
+
+parseFromJson-BB@0x1c : [ parseFromJson-BB@0x1e ]
+	8       (0000001c) move-object          v0, v2
+
+parseFromJson-BB@0x1e : [ parseFromJson-BB@0x36 ]
+	9       (0000001e) invoke-static        v0, Lcom/google/android/gms/fido/u2f/api/common/ProtocolVersion;->fromString(Ljava/lang/String;)Lcom/google/android/gms/fido/u2f/api/common/ProtocolVersion;
+	10      (00000024) move-result-object   v0
+	11      (00000026) const-string         v1, "challenge"
+	12      (0000002a) invoke-virtual       v5, v1, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
+	13      (00000030) move-result-object   v1
+	14      (00000032) const/16             v3, 8
+	1e:25
+	(Lcom/google/android/gms/fido/u2f/api/common/ProtocolVersion$UnsupportedProtocolException; -> 8e parseFromJson-BB@0x8e)
+
+parseFromJson-BB@0x36 : [ parseFromJson-BB@0x4e parseFromJson-BB@0x56 ]
+	15      (00000036) invoke-static        v1, v3, Landroid/util/Base64;->decode(Ljava/lang/String; I)[B
+	16      (0000003c) move-result-object   v1
+	17      (0000003e) const-string         v3, "appId"
+	18      (00000042) invoke-virtual       v5, v3, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
+	19      (00000048) move-result          v4
+	20      (0000004a) if-eqz               v4, +006h
+	36:3d
+	(Ljava/lang/IllegalArgumentException; -> 78 parseFromJson-BB@0x78)
+
+parseFromJson-BB@0x4e : [ parseFromJson-BB@0x56 ]
+	21      (0000004e) invoke-virtual       v5, v3, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
+	22      (00000054) move-result-object   v2
+
+parseFromJson-BB@0x56 : 
+	23      (00000056) new-instance         v5, Lcom/google/android/gms/fido/u2f/api/common/RegisterRequest;
+	24      (0000005a) invoke-direct        v5, v0, v1, v2, Lcom/google/android/gms/fido/u2f/api/common/RegisterRequest;-><init>(Lcom/google/android/gms/fido/u2f/api/common/ProtocolVersion; [B Ljava/lang/String;)V
+	25      (00000060) return-object        v5
+	56:5f
+	(Ljava/lang/IllegalArgumentException; -> 62 parseFromJson-BB@0x62)
+
+parseFromJson-BB@0x62 : 
+	26      (00000062) move-exception       v5
+	27      (00000064) new-instance         v0, Lorg/json/JSONException;
+	28      (00000068) invoke-virtual       v5, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+	29      (0000006e) move-result-object   v5
+	30      (00000070) invoke-direct        v0, v5, Lorg/json/JSONException;-><init>(Ljava/lang/String;)V
+	31      (00000076) throw                v0
+
+parseFromJson-BB@0x78 : 
+	32      (00000078) move-exception       v5
+	33      (0000007a) new-instance         v0, Lorg/json/JSONException;
+	34      (0000007e) invoke-virtual       v5, Ljava/lang/Object;->toString()Ljava/lang/String;
+	35      (00000084) move-result-object   v5
+	36      (00000086) invoke-direct        v0, v5, Lorg/json/JSONException;-><init>(Ljava/lang/String;)V
+	37      (0000008c) throw                v0
+
+parseFromJson-BB@0x8e : 
+	38      (0000008e) move-exception       v5
+	39      (00000090) new-instance         v0, Lorg/json/JSONException;
+	40      (00000094) invoke-virtual       v5, Ljava/lang/Object;->toString()Ljava/lang/String;
+	41      (0000009a) move-result-object   v5
+	42      (0000009c) invoke-direct        v0, v5, Lorg/json/JSONException;-><init>(Ljava/lang/String;)V
+	43      (000000a2) throw                v0
+

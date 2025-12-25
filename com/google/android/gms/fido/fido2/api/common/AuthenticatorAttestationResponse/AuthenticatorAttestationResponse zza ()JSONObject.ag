@@ -1,0 +1,575 @@
+# Lcom/google/android/gms/fido/fido2/api/common/AuthenticatorAttestationResponse;->zza()Lorg/json/JSONObject; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v19
+#
+# - return:org.json.JSONObject
+
+zza-BB@0x0 : [ zza-BB@0x4 ]
+	0       (00000000) move-object/from16   v1, v19
+
+zza-BB@0x4 : [ zza-BB@0x16 zza-BB@0x30 ]
+	1       (00000004) new-instance         v0, Lorg/json/JSONObject;
+	2       (00000008) invoke-direct        v0, Lorg/json/JSONObject;-><init>()V
+	3       (0000000e) iget-object          v2, v1, Lcom/google/android/gms/fido/fido2/api/common/AuthenticatorAttestationResponse;->zzb [B
+	4       (00000012) if-eqz               v2, +00fh
+	4:ab
+	(Lorg/json/JSONException; -> 2a zza-BB@0x2a)
+
+zza-BB@0x16 : [ zza-BB@0x30 ]
+	5       (00000016) const-string         v3, "clientDataJSON"
+	6       (0000001a) invoke-static        v2, Lcom/google/android/gms/common/util/Base64Utils;->encodeUrlSafeNoPadding([B)Ljava/lang/String;
+	7       (00000020) move-result-object   v2
+	8       (00000022) invoke-virtual       v0, v3, v2, Lorg/json/JSONObject;->put(Ljava/lang/String; Ljava/lang/Object;)Lorg/json/JSONObject;
+	9       (00000028) goto                 +4h
+	4:ab
+	(Lorg/json/JSONException; -> 2a zza-BB@0x2a)
+
+zza-BB@0x2a : [ zza-BB@0x48c ]
+	10      (0000002a) move-exception       v0
+	11      (0000002c) goto/16              +230h
+	4:ab
+	(Lorg/json/JSONException; -> 2a zza-BB@0x2a)
+
+zza-BB@0x30 : [ zza-BB@0x38 zza-BB@0x4a ]
+	12      (00000030) iget-object          v2, v1, Lcom/google/android/gms/fido/fido2/api/common/AuthenticatorAttestationResponse;->zzc [B
+	13      (00000034) if-eqz               v2, +00bh
+	4:ab
+	(Lorg/json/JSONException; -> 2a zza-BB@0x2a)
+
+zza-BB@0x38 : [ zza-BB@0x4a ]
+	14      (00000038) const-string         v3, "attestationObject"
+	15      (0000003c) invoke-static        v2, Lcom/google/android/gms/common/util/Base64Utils;->encodeUrlSafeNoPadding([B)Ljava/lang/String;
+	16      (00000042) move-result-object   v2
+	17      (00000044) invoke-virtual       v0, v3, v2, Lorg/json/JSONObject;->put(Ljava/lang/String; Ljava/lang/Object;)Lorg/json/JSONObject;
+	4:ab
+	(Lorg/json/JSONException; -> 2a zza-BB@0x2a)
+
+zza-BB@0x4a : [ zza-BB@0x58 ]
+	18      (0000004a) new-instance         v2, Lorg/json/JSONArray;
+	19      (0000004e) invoke-direct        v2, Lorg/json/JSONArray;-><init>()V
+	20      (00000054) const/4              v3, 0
+	21      (00000056) move                 v4, v3
+	4:ab
+	(Lorg/json/JSONException; -> 2a zza-BB@0x2a)
+
+zza-BB@0x58 : [ zza-BB@0x62 zza-BB@0x9e ]
+	22      (00000058) iget-object          v5, v1, Lcom/google/android/gms/fido/fido2/api/common/AuthenticatorAttestationResponse;->zzd [Ljava/lang/String;
+	23      (0000005c) array-length         v6, v5
+	24      (0000005e) if-ge                v4, v6, +020h
+	4:ab
+	(Lorg/json/JSONException; -> 2a zza-BB@0x2a)
+
+zza-BB@0x62 : [ zza-BB@0x7e zza-BB@0x8a ]
+	25      (00000062) aget-object          v5, v5, v4
+	26      (00000066) sget-object          v6, Lcom/google/android/gms/fido/common/Transport;->HYBRID Lcom/google/android/gms/fido/common/Transport;
+	27      (0000006a) invoke-virtual       v6, Lcom/google/android/gms/fido/common/Transport;->toString()Ljava/lang/String;
+	28      (00000070) move-result-object   v6
+	29      (00000072) invoke-virtual       v5, v6, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	30      (00000078) move-result          v5
+	31      (0000007a) if-eqz               v5, +008h
+	4:ab
+	(Lorg/json/JSONException; -> 2a zza-BB@0x2a)
+
+zza-BB@0x7e : [ zza-BB@0x98 ]
+	32      (0000007e) const-string         v5, "hybrid"
+	33      (00000082) invoke-virtual       v2, v4, v5, Lorg/json/JSONArray;->put(I Ljava/lang/Object;)Lorg/json/JSONArray;
+	34      (00000088) goto                 +8h
+	4:ab
+	(Lorg/json/JSONException; -> 2a zza-BB@0x2a)
+
+zza-BB@0x8a : [ zza-BB@0x98 ]
+	35      (0000008a) iget-object          v5, v1, Lcom/google/android/gms/fido/fido2/api/common/AuthenticatorAttestationResponse;->zzd [Ljava/lang/String;
+	36      (0000008e) aget-object          v5, v5, v4
+	37      (00000092) invoke-virtual       v2, v4, v5, Lorg/json/JSONArray;->put(I Ljava/lang/Object;)Lorg/json/JSONArray;
+	4:ab
+	(Lorg/json/JSONException; -> 2a zza-BB@0x2a)
+
+zza-BB@0x98 : [ zza-BB@0x58 ]
+	38      (00000098) add-int/lit8         v4, v4, 1
+	39      (0000009c) goto                 -22h
+	4:ab
+	(Lorg/json/JSONException; -> 2a zza-BB@0x2a)
+
+zza-BB@0x9e : [ zza-BB@0xac ]
+	40      (0000009e) const-string         v4, "transports"
+	41      (000000a2) invoke-virtual       v0, v4, v2, Lorg/json/JSONObject;->put(Ljava/lang/String; Ljava/lang/Object;)Lorg/json/JSONObject;
+	42      (000000a8) iget-object          v2, v1, Lcom/google/android/gms/fido/fido2/api/common/AuthenticatorAttestationResponse;->zzc [B
+	4:ab
+	(Lorg/json/JSONException; -> 2a zza-BB@0x2a)
+
+zza-BB@0xac : [ zza-BB@0xbc ]
+	43      (000000ac) invoke-static        v2, Lcom/google/android/gms/internal/fido/zzdr;->zzj([B)Lcom/google/android/gms/internal/fido/zzdr;
+	44      (000000b2) move-result-object   v2
+	45      (000000b4) invoke-virtual       v2, Lcom/google/android/gms/internal/fido/zzdr;->zzh()Lcom/google/android/gms/internal/fido/zzdo;
+	46      (000000ba) move-result-object   v2
+	ac:bb
+	(Lcom/google/android/gms/internal/fido/zzdq; -> 47a zza-BB@0x47a)
+	(Lcom/google/android/gms/internal/fido/zzdl; -> 476 zza-BB@0x476)
+	(Lorg/json/JSONException; -> 2a zza-BB@0x2a)
+
+zza-BB@0xbc : [ zza-BB@0xe0 zza-BB@0x456 ]
+	47      (000000bc) invoke-virtual       v2, Lcom/google/android/gms/internal/fido/zzdo;->zzc()Lcom/google/android/gms/internal/fido/zzbg;
+	48      (000000c2) move-result-object   v2
+	49      (000000c4) const-string         v4, "authData"
+	50      (000000c8) invoke-static        v4, Lcom/google/android/gms/internal/fido/zzdr;->zzi(Ljava/lang/String;)Lcom/google/android/gms/internal/fido/zzdp;
+	51      (000000ce) move-result-object   v4
+	52      (000000d0) invoke-virtual       v2, v4, Lcom/google/android/gms/internal/fido/zzbg;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	53      (000000d6) move-result-object   v2
+	54      (000000d8) check-cast           v2, Lcom/google/android/gms/internal/fido/zzdr;
+	55      (000000dc) if-eqz               v2, +1bdh
+	bc:ef
+	(Lcom/google/android/gms/internal/fido/zzdq; -> 452 zza-BB@0x452)
+	(Lorg/json/JSONException; -> 2a zza-BB@0x2a)
+
+zza-BB@0xe0 : [ zza-BB@0xf0 ]
+	56      (000000e0) invoke-virtual       v2, Lcom/google/android/gms/internal/fido/zzdr;->zze()Lcom/google/android/gms/internal/fido/zzdk;
+	57      (000000e6) move-result-object   v2
+	58      (000000e8) invoke-virtual       v2, Lcom/google/android/gms/internal/fido/zzdk;->zzc()Lcom/google/android/gms/internal/fido/zzcz;
+	59      (000000ee) move-result-object   v2
+	bc:ef
+	(Lcom/google/android/gms/internal/fido/zzdq; -> 452 zza-BB@0x452)
+	(Lorg/json/JSONException; -> 2a zza-BB@0x2a)
+
+zza-BB@0xf0 : [ zza-BB@0xf8 ]
+	60      (000000f0) invoke-virtual       v2, Lcom/google/android/gms/internal/fido/zzcz;->zzi()Ljava/nio/ByteBuffer;
+	61      (000000f6) move-result-object   v4
+	f0:f7
+	(Lorg/json/JSONException; -> 2a zza-BB@0x2a)
+
+zza-BB@0xf8 : [ zza-BB@0x11c zza-BB@0x432 ]
+	62      (000000f8) invoke-virtual       v4, Ljava/nio/Buffer;->position()I
+	63      (000000fe) move-result          v5
+	64      (00000100) const/16             v6, 32
+	65      (00000104) add-int/2addr        v5, v6
+	66      (00000106) invoke-virtual       v4, v5, Ljava/nio/ByteBuffer;->position(I)Ljava/nio/Buffer;
+	67      (0000010c) invoke-virtual       v4, Ljava/nio/ByteBuffer;->get()B
+	68      (00000112) move-result          v5
+	69      (00000114) and-int/lit8         v5, v5, 64
+	70      (00000118) if-eqz               v5, +18dh
+	f8:157
+	(Ljava/lang/IllegalArgumentException; -> 42e zza-BB@0x42e)
+	(Lorg/json/JSONException; -> 2a zza-BB@0x2a)
+
+zza-BB@0x11c : [ zza-BB@0x158 ]
+	71      (0000011c) invoke-virtual       v4, Ljava/nio/Buffer;->position()I
+	72      (00000122) move-result          v5
+	73      (00000124) add-int/lit8         v5, v5, 4
+	74      (00000128) invoke-virtual       v4, v5, Ljava/nio/ByteBuffer;->position(I)Ljava/nio/Buffer;
+	75      (0000012e) invoke-virtual       v4, Ljava/nio/Buffer;->position()I
+	76      (00000134) move-result          v5
+	77      (00000136) add-int/lit8         v5, v5, 16
+	78      (0000013a) invoke-virtual       v4, v5, Ljava/nio/ByteBuffer;->position(I)Ljava/nio/Buffer;
+	79      (00000140) invoke-virtual       v4, Ljava/nio/ByteBuffer;->getShort()S
+	80      (00000146) move-result          v5
+	81      (00000148) invoke-virtual       v4, Ljava/nio/Buffer;->position()I
+	82      (0000014e) move-result          v7
+	83      (00000150) add-int/2addr        v7, v5
+	84      (00000152) invoke-virtual       v4, v7, Ljava/nio/ByteBuffer;->position(I)Ljava/nio/Buffer;
+	f8:157
+	(Ljava/lang/IllegalArgumentException; -> 42e zza-BB@0x42e)
+	(Lorg/json/JSONException; -> 2a zza-BB@0x2a)
+
+zza-BB@0x158 : [ zza-BB@0x188 ]
+	85      (00000158) invoke-virtual       v4, Ljava/nio/Buffer;->position()I
+	86      (0000015e) move-result          v4
+	87      (00000160) invoke-virtual       v2, Lcom/google/android/gms/internal/fido/zzcz;->zzd()I
+	88      (00000166) move-result          v5
+	89      (00000168) invoke-virtual       v2, v4, v5, Lcom/google/android/gms/internal/fido/zzcz;->zzg(I I)Lcom/google/android/gms/internal/fido/zzcz;
+	90      (0000016e) move-result-object   v4
+	91      (00000170) invoke-virtual       v4, Lcom/google/android/gms/internal/fido/zzcz;->zzh()Ljava/io/InputStream;
+	92      (00000176) move-result-object   v4
+	93      (00000178) invoke-static        v4, Lcom/google/android/gms/internal/fido/zzdr;->zzk(Ljava/io/InputStream;)Lcom/google/android/gms/internal/fido/zzdr;
+	94      (0000017e) move-result-object   v4
+	95      (00000180) invoke-virtual       v4, Lcom/google/android/gms/internal/fido/zzdr;->zzh()Lcom/google/android/gms/internal/fido/zzdo;
+	96      (00000186) move-result-object   v4
+	158:187
+	(Lcom/google/android/gms/internal/fido/zzdq; -> 41c zza-BB@0x41c)
+	(Lcom/google/android/gms/internal/fido/zzdl; -> 418 zza-BB@0x418)
+	(Lorg/json/JSONException; -> 2a zza-BB@0x2a)
+
+zza-BB@0x188 : [ zza-BB@0x1d0 zza-BB@0x40c ]
+	97      (00000188) invoke-virtual       v4, Lcom/google/android/gms/internal/fido/zzdo;->zzc()Lcom/google/android/gms/internal/fido/zzbg;
+	98      (0000018e) move-result-object   v5
+	99      (00000190) const-wide/16        v7, 3
+	100     (00000194) invoke-static        v7, v8, Lcom/google/android/gms/internal/fido/zzdr;->zzg(J)Lcom/google/android/gms/internal/fido/zzdm;
+	101     (0000019a) move-result-object   v7
+	102     (0000019c) invoke-virtual       v5, v7, Lcom/google/android/gms/internal/fido/zzbg;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	103     (000001a2) move-result-object   v5
+	104     (000001a4) check-cast           v5, Lcom/google/android/gms/internal/fido/zzdr;
+	105     (000001a8) invoke-virtual       v4, Lcom/google/android/gms/internal/fido/zzdo;->zzc()Lcom/google/android/gms/internal/fido/zzbg;
+	106     (000001ae) move-result-object   v7
+	107     (000001b0) const-wide/16        v8, 1
+	108     (000001b4) invoke-static        v8, v9, Lcom/google/android/gms/internal/fido/zzdr;->zzg(J)Lcom/google/android/gms/internal/fido/zzdm;
+	109     (000001ba) move-result-object   v10
+	110     (000001bc) invoke-virtual       v7, v10, Lcom/google/android/gms/internal/fido/zzbg;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	111     (000001c2) move-result-object   v7
+	112     (000001c4) check-cast           v7, Lcom/google/android/gms/internal/fido/zzdr;
+	113     (000001c8) const-string         v10, "COSE key missing required fields"
+	114     (000001cc) if-eqz               v5, +120h
+	188:1c7
+	(Lorg/json/JSONException; -> 2a zza-BB@0x2a)
+
+zza-BB@0x1d0 : [ zza-BB@0x1d4 zza-BB@0x40c ]
+	115     (000001d0) if-eqz               v7, +11eh
+
+zza-BB@0x1d4 : [ zza-BB@0x200 zza-BB@0x212 ]
+	116     (000001d4) invoke-virtual       v5, Lcom/google/android/gms/internal/fido/zzdr;->zzf()Lcom/google/android/gms/internal/fido/zzdm;
+	117     (000001da) move-result-object   v5
+	118     (000001dc) invoke-virtual       v5, Lcom/google/android/gms/internal/fido/zzdm;->zzc()J
+	119     (000001e2) move-result-wide     v11
+	120     (000001e4) invoke-virtual       v7, Lcom/google/android/gms/internal/fido/zzdr;->zzf()Lcom/google/android/gms/internal/fido/zzdm;
+	121     (000001ea) move-result-object   v5
+	122     (000001ec) invoke-virtual       v5, Lcom/google/android/gms/internal/fido/zzdm;->zzc()J
+	123     (000001f2) move-result-wide     v13
+	124     (000001f4) cmp-long             v5, v13, v8
+	125     (000001f8) const-wide/16        v15, 2
+	126     (000001fc) if-eqz               v5, +00bh
+	1d4:245
+	(Lcom/google/android/gms/internal/fido/zzdq; -> 308 zza-BB@0x308)
+	(Lorg/json/JSONException; -> 2a zza-BB@0x2a)
+
+zza-BB@0x200 : [ zza-BB@0x208 zza-BB@0x20c ]
+	127     (00000200) cmp-long             v5, v13, v15
+	128     (00000204) if-nez               v5, +004h
+	1d4:245
+	(Lcom/google/android/gms/internal/fido/zzdq; -> 308 zza-BB@0x308)
+	(Lorg/json/JSONException; -> 2a zza-BB@0x2a)
+
+zza-BB@0x208 : [ zza-BB@0x212 ]
+	129     (00000208) move-wide            v13, v15
+	130     (0000020a) goto                 +4h
+	1d4:245
+	(Lcom/google/android/gms/internal/fido/zzdq; -> 308 zza-BB@0x308)
+	(Lorg/json/JSONException; -> 2a zza-BB@0x2a)
+
+zza-BB@0x20c : [ zza-BB@0x3b4 ]
+	131     (0000020c) const/4              v7, 0
+	132     (0000020e) goto/16              +0d3h
+	1d4:245
+	(Lcom/google/android/gms/internal/fido/zzdq; -> 308 zza-BB@0x308)
+	(Lorg/json/JSONException; -> 2a zza-BB@0x2a)
+
+zza-BB@0x212 : [ zza-BB@0x236 zza-BB@0x3f0 ]
+	133     (00000212) invoke-virtual       v4, Lcom/google/android/gms/internal/fido/zzdo;->zzc()Lcom/google/android/gms/internal/fido/zzbg;
+	134     (00000218) move-result-object   v5
+	135     (0000021a) const-wide/16        v17, -1
+	136     (0000021e) invoke-static/range  v17 ... v18, Lcom/google/android/gms/internal/fido/zzdr;->zzg(J)Lcom/google/android/gms/internal/fido/zzdm;
+	137     (00000224) move-result-object   v7
+	138     (00000226) invoke-virtual       v5, v7, Lcom/google/android/gms/internal/fido/zzbg;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	139     (0000022c) move-result-object   v5
+	140     (0000022e) check-cast           v5, Lcom/google/android/gms/internal/fido/zzdr;
+	141     (00000232) if-eqz               v5, +0dfh
+	1d4:245
+	(Lcom/google/android/gms/internal/fido/zzdq; -> 308 zza-BB@0x308)
+	(Lorg/json/JSONException; -> 2a zza-BB@0x2a)
+
+zza-BB@0x236 : [ zza-BB@0x256 zza-BB@0x326 ]
+	142     (00000236) invoke-virtual       v5, Lcom/google/android/gms/internal/fido/zzdr;->zzf()Lcom/google/android/gms/internal/fido/zzdm;
+	143     (0000023c) move-result-object   v5
+	144     (0000023e) invoke-virtual       v5, Lcom/google/android/gms/internal/fido/zzdm;->zzc()J
+	145     (00000244) move-result-wide     v17
+	146     (00000246) cmp-long             v5, v13, v15
+	147     (0000024a) const-string         v7, "COSE coordinates are the wrong size"
+	148     (0000024e) const-wide/16        v15, -2
+	149     (00000252) if-nez               v5, +06ah
+
+zza-BB@0x256 : [ zza-BB@0x25e zza-BB@0x326 ]
+	150     (00000256) cmp-long             v5, v17, v8
+	151     (0000025a) if-nez               v5, +066h
+
+zza-BB@0x25e : [ zza-BB@0x29e zza-BB@0x31a ]
+	152     (0000025e) invoke-virtual       v4, Lcom/google/android/gms/internal/fido/zzdo;->zzc()Lcom/google/android/gms/internal/fido/zzbg;
+	153     (00000264) move-result-object   v5
+	154     (00000266) invoke-static/range  v15 ... v16, Lcom/google/android/gms/internal/fido/zzdr;->zzg(J)Lcom/google/android/gms/internal/fido/zzdm;
+	155     (0000026c) move-result-object   v8
+	156     (0000026e) invoke-virtual       v5, v8, Lcom/google/android/gms/internal/fido/zzbg;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	157     (00000274) move-result-object   v5
+	158     (00000276) check-cast           v5, Lcom/google/android/gms/internal/fido/zzdr;
+	159     (0000027a) invoke-virtual       v4, Lcom/google/android/gms/internal/fido/zzdo;->zzc()Lcom/google/android/gms/internal/fido/zzbg;
+	160     (00000280) move-result-object   v4
+	161     (00000282) const-wide/16        v8, -3
+	162     (00000286) invoke-static        v8, v9, Lcom/google/android/gms/internal/fido/zzdr;->zzg(J)Lcom/google/android/gms/internal/fido/zzdm;
+	163     (0000028c) move-result-object   v8
+	164     (0000028e) invoke-virtual       v4, v8, Lcom/google/android/gms/internal/fido/zzbg;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	165     (00000294) move-result-object   v4
+	166     (00000296) check-cast           v4, Lcom/google/android/gms/internal/fido/zzdr;
+	167     (0000029a) if-eqz               v5, +040h
+	25e:3b3
+	(Lcom/google/android/gms/internal/fido/zzdq; -> 308 zza-BB@0x308)
+	(Lorg/json/JSONException; -> 2a zza-BB@0x2a)
+
+zza-BB@0x29e : [ zza-BB@0x2a2 zza-BB@0x31a ]
+	168     (0000029e) if-eqz               v4, +03eh
+	25e:3b3
+	(Lcom/google/android/gms/internal/fido/zzdq; -> 308 zza-BB@0x308)
+	(Lorg/json/JSONException; -> 2a zza-BB@0x2a)
+
+zza-BB@0x2a2 : [ zza-BB@0x2ce zza-BB@0x30e ]
+	169     (000002a2) invoke-virtual       v5, Lcom/google/android/gms/internal/fido/zzdr;->zze()Lcom/google/android/gms/internal/fido/zzdk;
+	170     (000002a8) move-result-object   v5
+	171     (000002aa) invoke-virtual       v5, Lcom/google/android/gms/internal/fido/zzdk;->zzc()Lcom/google/android/gms/internal/fido/zzcz;
+	172     (000002b0) move-result-object   v5
+	173     (000002b2) invoke-virtual       v4, Lcom/google/android/gms/internal/fido/zzdr;->zze()Lcom/google/android/gms/internal/fido/zzdk;
+	174     (000002b8) move-result-object   v4
+	175     (000002ba) invoke-virtual       v4, Lcom/google/android/gms/internal/fido/zzdk;->zzc()Lcom/google/android/gms/internal/fido/zzcz;
+	176     (000002c0) move-result-object   v4
+	177     (000002c2) invoke-virtual       v5, Lcom/google/android/gms/internal/fido/zzcz;->zzd()I
+	178     (000002c8) move-result          v8
+	179     (000002ca) if-ne                v8, v6, +022h
+	25e:3b3
+	(Lcom/google/android/gms/internal/fido/zzdq; -> 308 zza-BB@0x308)
+	(Lorg/json/JSONException; -> 2a zza-BB@0x2a)
+
+zza-BB@0x2ce : [ zza-BB@0x2da zza-BB@0x30e ]
+	180     (000002ce) invoke-virtual       v4, Lcom/google/android/gms/internal/fido/zzcz;->zzd()I
+	181     (000002d4) move-result          v8
+	182     (000002d6) if-ne                v8, v6, +01ch
+	25e:3b3
+	(Lcom/google/android/gms/internal/fido/zzdq; -> 308 zza-BB@0x308)
+	(Lorg/json/JSONException; -> 2a zza-BB@0x2a)
+
+zza-BB@0x2da : [ zza-BB@0x3b4 ]
+	183     (000002da) const-string         v6, "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE"
+	184     (000002de) invoke-static        v6, v3, Landroid/util/Base64;->decode(Ljava/lang/String; I)[B
+	185     (000002e4) move-result-object   v3
+	186     (000002e6) invoke-virtual       v5, Lcom/google/android/gms/internal/fido/zzcz;->zzm()[B
+	187     (000002ec) move-result-object   v5
+	188     (000002ee) invoke-virtual       v4, Lcom/google/android/gms/internal/fido/zzcz;->zzm()[B
+	189     (000002f4) move-result-object   v4
+	190     (000002f6) filled-new-array     v3, v5, v4, [[B
+	191     (000002fc) move-result-object   v3
+	192     (000002fe) invoke-static        v3, Lcom/google/android/gms/internal/fido/zzcl;->zza([[B)[B
+	193     (00000304) move-result-object   v7
+	194     (00000306) goto                 +57h
+	25e:3b3
+	(Lcom/google/android/gms/internal/fido/zzdq; -> 308 zza-BB@0x308)
+	(Lorg/json/JSONException; -> 2a zza-BB@0x2a)
+
+zza-BB@0x308 : [ zza-BB@0x3fc ]
+	195     (00000308) move-exception       v0
+	196     (0000030a) goto/16              +079h
+	25e:3b3
+	(Lcom/google/android/gms/internal/fido/zzdq; -> 308 zza-BB@0x308)
+	(Lorg/json/JSONException; -> 2a zza-BB@0x2a)
+
+zza-BB@0x30e : 
+	197     (0000030e) new-instance         v0, Ljava/lang/IllegalArgumentException;
+	198     (00000312) invoke-direct        v0, v7, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	199     (00000318) throw                v0
+	25e:3b3
+	(Lcom/google/android/gms/internal/fido/zzdq; -> 308 zza-BB@0x308)
+	(Lorg/json/JSONException; -> 2a zza-BB@0x2a)
+
+zza-BB@0x31a : 
+	200     (0000031a) new-instance         v0, Ljava/lang/IllegalArgumentException;
+	201     (0000031e) invoke-direct        v0, v10, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	202     (00000324) throw                v0
+	25e:3b3
+	(Lcom/google/android/gms/internal/fido/zzdq; -> 308 zza-BB@0x308)
+	(Lorg/json/JSONException; -> 2a zza-BB@0x2a)
+
+zza-BB@0x326 : [ zza-BB@0x32e zza-BB@0x20c ]
+	203     (00000326) cmp-long             v5, v13, v8
+	204     (0000032a) if-nez               v5, -08fh
+	25e:3b3
+	(Lcom/google/android/gms/internal/fido/zzdq; -> 308 zza-BB@0x308)
+	(Lorg/json/JSONException; -> 2a zza-BB@0x2a)
+
+zza-BB@0x32e : [ zza-BB@0x33a zza-BB@0x20c ]
+	205     (0000032e) const-wide/16        v8, 6
+	206     (00000332) cmp-long             v5, v17, v8
+	207     (00000336) if-nez               v5, -095h
+	25e:3b3
+	(Lcom/google/android/gms/internal/fido/zzdq; -> 308 zza-BB@0x308)
+	(Lorg/json/JSONException; -> 2a zza-BB@0x2a)
+
+zza-BB@0x33a : [ zza-BB@0x35a zza-BB@0x3a8 ]
+	208     (0000033a) invoke-virtual       v4, Lcom/google/android/gms/internal/fido/zzdo;->zzc()Lcom/google/android/gms/internal/fido/zzbg;
+	209     (00000340) move-result-object   v4
+	210     (00000342) invoke-static/range  v15 ... v16, Lcom/google/android/gms/internal/fido/zzdr;->zzg(J)Lcom/google/android/gms/internal/fido/zzdm;
+	211     (00000348) move-result-object   v5
+	212     (0000034a) invoke-virtual       v4, v5, Lcom/google/android/gms/internal/fido/zzbg;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	213     (00000350) move-result-object   v4
+	214     (00000352) check-cast           v4, Lcom/google/android/gms/internal/fido/zzdr;
+	215     (00000356) if-eqz               v4, +029h
+	25e:3b3
+	(Lcom/google/android/gms/internal/fido/zzdq; -> 308 zza-BB@0x308)
+	(Lorg/json/JSONException; -> 2a zza-BB@0x2a)
+
+zza-BB@0x35a : [ zza-BB@0x376 zza-BB@0x39c ]
+	216     (0000035a) invoke-virtual       v4, Lcom/google/android/gms/internal/fido/zzdr;->zze()Lcom/google/android/gms/internal/fido/zzdk;
+	217     (00000360) move-result-object   v4
+	218     (00000362) invoke-virtual       v4, Lcom/google/android/gms/internal/fido/zzdk;->zzc()Lcom/google/android/gms/internal/fido/zzcz;
+	219     (00000368) move-result-object   v4
+	220     (0000036a) invoke-virtual       v4, Lcom/google/android/gms/internal/fido/zzcz;->zzd()I
+	221     (00000370) move-result          v5
+	222     (00000372) if-ne                v5, v6, +015h
+	25e:3b3
+	(Lcom/google/android/gms/internal/fido/zzdq; -> 308 zza-BB@0x308)
+	(Lorg/json/JSONException; -> 2a zza-BB@0x2a)
+
+zza-BB@0x376 : [ zza-BB@0x3b4 ]
+	223     (00000376) const-string         v5, "MCowBQYDK2VwAyEA"
+	224     (0000037a) invoke-static        v5, v3, Landroid/util/Base64;->decode(Ljava/lang/String; I)[B
+	225     (00000380) move-result-object   v3
+	226     (00000382) invoke-virtual       v4, Lcom/google/android/gms/internal/fido/zzcz;->zzm()[B
+	227     (00000388) move-result-object   v4
+	228     (0000038a) filled-new-array     v3, v4, [[B
+	229     (00000390) move-result-object   v3
+	230     (00000392) invoke-static        v3, Lcom/google/android/gms/internal/fido/zzcl;->zza([[B)[B
+	231     (00000398) move-result-object   v7
+	232     (0000039a) goto                 +dh
+	25e:3b3
+	(Lcom/google/android/gms/internal/fido/zzdq; -> 308 zza-BB@0x308)
+	(Lorg/json/JSONException; -> 2a zza-BB@0x2a)
+
+zza-BB@0x39c : 
+	233     (0000039c) new-instance         v0, Ljava/lang/IllegalArgumentException;
+	234     (000003a0) invoke-direct        v0, v7, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	235     (000003a6) throw                v0
+	25e:3b3
+	(Lcom/google/android/gms/internal/fido/zzdq; -> 308 zza-BB@0x308)
+	(Lorg/json/JSONException; -> 2a zza-BB@0x2a)
+
+zza-BB@0x3a8 : 
+	236     (000003a8) new-instance         v0, Ljava/lang/IllegalArgumentException;
+	237     (000003ac) invoke-direct        v0, v10, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	238     (000003b2) throw                v0
+	25e:3b3
+	(Lcom/google/android/gms/internal/fido/zzdq; -> 308 zza-BB@0x308)
+	(Lorg/json/JSONException; -> 2a zza-BB@0x2a)
+
+zza-BB@0x3b4 : [ zza-BB@0x3dc zza-BB@0x3ee ]
+	239     (000003b4) const-string         v3, "authenticatorData"
+	240     (000003b8) invoke-virtual       v2, Lcom/google/android/gms/internal/fido/zzcz;->zzm()[B
+	241     (000003be) move-result-object   v2
+	242     (000003c0) invoke-static        v2, Lcom/google/android/gms/common/util/Base64Utils;->encodeUrlSafeNoPadding([B)Ljava/lang/String;
+	243     (000003c6) move-result-object   v2
+	244     (000003c8) invoke-virtual       v0, v3, v2, Lorg/json/JSONObject;->put(Ljava/lang/String; Ljava/lang/Object;)Lorg/json/JSONObject;
+	245     (000003ce) const-string         v2, "publicKeyAlgorithm"
+	246     (000003d2) invoke-virtual       v0, v2, v11, v12, Lorg/json/JSONObject;->put(Ljava/lang/String; J)Lorg/json/JSONObject;
+	247     (000003d8) if-eqz               v7, +00bh
+	3b4:3ed
+	(Lorg/json/JSONException; -> 2a zza-BB@0x2a)
+
+zza-BB@0x3dc : [ zza-BB@0x3ee ]
+	248     (000003dc) const-string         v2, "publicKey"
+	249     (000003e0) invoke-static        v7, Lcom/google/android/gms/common/util/Base64Utils;->encodeUrlSafeNoPadding([B)Ljava/lang/String;
+	250     (000003e6) move-result-object   v3
+	251     (000003e8) invoke-virtual       v0, v2, v3, Lorg/json/JSONObject;->put(Ljava/lang/String; Ljava/lang/Object;)Lorg/json/JSONObject;
+	3b4:3ed
+	(Lorg/json/JSONException; -> 2a zza-BB@0x2a)
+
+zza-BB@0x3ee : 
+	252     (000003ee) return-object        v0
+
+zza-BB@0x3f0 : 
+	253     (000003f0) new-instance         v0, Ljava/lang/IllegalArgumentException;
+	254     (000003f4) invoke-direct        v0, v10, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	255     (000003fa) throw                v0
+	3f0:3fb
+	(Lcom/google/android/gms/internal/fido/zzdq; -> 308 zza-BB@0x308)
+	(Lorg/json/JSONException; -> 2a zza-BB@0x2a)
+
+zza-BB@0x3fc : 
+	256     (000003fc) new-instance         v2, Ljava/lang/IllegalArgumentException;
+	257     (00000400) const-string         v3, "COSE key ill-formed"
+	258     (00000404) invoke-direct        v2, v3, v0, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	259     (0000040a) throw                v2
+	3fc:42d
+	(Lorg/json/JSONException; -> 2a zza-BB@0x2a)
+
+zza-BB@0x40c : 
+	260     (0000040c) new-instance         v0, Ljava/lang/IllegalArgumentException;
+	261     (00000410) invoke-direct        v0, v10, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	262     (00000416) throw                v0
+	3fc:42d
+	(Lorg/json/JSONException; -> 2a zza-BB@0x2a)
+
+zza-BB@0x418 : [ zza-BB@0x41e ]
+	263     (00000418) move-exception       v0
+	264     (0000041a) goto                 +2h
+	3fc:42d
+	(Lorg/json/JSONException; -> 2a zza-BB@0x2a)
+
+zza-BB@0x41c : [ zza-BB@0x41e ]
+	265     (0000041c) move-exception       v0
+	3fc:42d
+	(Lorg/json/JSONException; -> 2a zza-BB@0x2a)
+
+zza-BB@0x41e : 
+	266     (0000041e) new-instance         v2, Ljava/lang/IllegalArgumentException;
+	267     (00000422) const-string         v3, "failed to parse COSE key"
+	268     (00000426) invoke-direct        v2, v3, v0, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	269     (0000042c) throw                v2
+	3fc:42d
+	(Lorg/json/JSONException; -> 2a zza-BB@0x2a)
+
+zza-BB@0x42e : [ zza-BB@0x442 ]
+	270     (0000042e) move-exception       v0
+	271     (00000430) goto                 +9h
+
+zza-BB@0x432 : 
+	272     (00000432) new-instance         v0, Ljava/lang/IllegalArgumentException;
+	273     (00000436) const-string         v2, "authData does not include credential data"
+	274     (0000043a) invoke-direct        v0, v2, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	275     (00000440) throw                v0
+	432:441
+	(Ljava/lang/IllegalArgumentException; -> 42e zza-BB@0x42e)
+	(Lorg/json/JSONException; -> 2a zza-BB@0x2a)
+
+zza-BB@0x442 : 
+	276     (00000442) new-instance         v2, Ljava/lang/IllegalArgumentException;
+	277     (00000446) const-string         v3, "ill-formed authenticator data"
+	278     (0000044a) invoke-direct        v2, v3, v0, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	279     (00000450) throw                v2
+	442:451
+	(Lorg/json/JSONException; -> 2a zza-BB@0x2a)
+
+zza-BB@0x452 : [ zza-BB@0x466 ]
+	280     (00000452) move-exception       v0
+	281     (00000454) goto                 +9h
+
+zza-BB@0x456 : 
+	282     (00000456) new-instance         v0, Ljava/lang/IllegalArgumentException;
+	283     (0000045a) const-string         v2, "attestation object missing authData"
+	284     (0000045e) invoke-direct        v0, v2, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	285     (00000464) throw                v0
+	456:465
+	(Lcom/google/android/gms/internal/fido/zzdq; -> 452 zza-BB@0x452)
+	(Lorg/json/JSONException; -> 2a zza-BB@0x2a)
+
+zza-BB@0x466 : 
+	286     (00000466) new-instance         v2, Ljava/lang/IllegalArgumentException;
+	287     (0000046a) const-string         v3, "authData value has wrong type"
+	288     (0000046e) invoke-direct        v2, v3, v0, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	289     (00000474) throw                v2
+	466:48b
+	(Lorg/json/JSONException; -> 2a zza-BB@0x2a)
+
+zza-BB@0x476 : [ zza-BB@0x47c ]
+	290     (00000476) move-exception       v0
+	291     (00000478) goto                 +2h
+	466:48b
+	(Lorg/json/JSONException; -> 2a zza-BB@0x2a)
+
+zza-BB@0x47a : [ zza-BB@0x47c ]
+	292     (0000047a) move-exception       v0
+	466:48b
+	(Lorg/json/JSONException; -> 2a zza-BB@0x2a)
+
+zza-BB@0x47c : 
+	293     (0000047c) new-instance         v2, Ljava/lang/IllegalArgumentException;
+	294     (00000480) const-string         v3, "failed to parse attestation object"
+	295     (00000484) invoke-direct        v2, v3, v0, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	296     (0000048a) throw                v2
+	466:48b
+	(Lorg/json/JSONException; -> 2a zza-BB@0x2a)
+
+zza-BB@0x48c : 
+	297     (0000048c) new-instance         v2, Ljava/lang/RuntimeException;
+	298     (00000490) const-string         v3, "Error encoding AuthenticatorAttestationResponse to JSON object"
+	299     (00000494) invoke-direct        v2, v3, v0, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	300     (0000049a) throw                v2
+

@@ -1,0 +1,36 @@
+# Lcom/google/android/material/timepicker/ChipTextInputComboView;->a(Lcom/google/android/material/timepicker/ChipTextInputComboView; Ljava/lang/CharSequence;)Ljava/lang/String; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v0
+# - v1:com.google.android.material.timepicker.ChipTextInputComboView
+# - v2:java.lang.CharSequence
+#
+# - return:java.lang.String
+
+a-BB@0x0 : [ a-BB@0xc ]
+	0       (00000000) invoke-virtual       v1, Landroid/view/View;->getResources()Landroid/content/res/Resources;
+	1       (00000006) move-result-object   v1
+	2       (00000008) const-string         v0, "%02d"
+
+a-BB@0xc : 
+	3       (0000000c) invoke-virtual       v1, Landroid/content/res/Resources;->getConfiguration()Landroid/content/res/Configuration;
+	4       (00000012) move-result-object   v1
+	5       (00000014) iget-object          v1, v1, Landroid/content/res/Configuration;->locale Ljava/util/Locale;
+	6       (00000018) invoke-static        v2, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
+	7       (0000001e) move-result-object   v2
+	8       (00000020) invoke-static        v2, Ljava/lang/Integer;->parseInt(Ljava/lang/String;)I
+	9       (00000026) move-result          v2
+	10      (00000028) invoke-static        v2, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+	11      (0000002e) move-result-object   v2
+	12      (00000030) filled-new-array     v2, [Ljava/lang/Object;
+	13      (00000036) move-result-object   v2
+	14      (00000038) invoke-static        v1, v0, v2, Ljava/lang/String;->format(Ljava/util/Locale; Ljava/lang/String; [Ljava/lang/Object;)Ljava/lang/String;
+	15      (0000003e) move-result-object   v1
+	16      (00000040) return-object        v1
+	c:3f
+	(Ljava/lang/NumberFormatException; -> 42 a-BB@0x42)
+
+a-BB@0x42 : 
+	17      (00000042) const/4              v1, 0
+	18      (00000044) return-object        v1
+

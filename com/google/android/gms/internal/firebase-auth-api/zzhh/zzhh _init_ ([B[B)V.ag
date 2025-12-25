@@ -1,0 +1,52 @@
+# Lcom/google/android/gms/internal/firebase-auth-api/zzhh;-><init>([B [B)V [access_flags=private constructor]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:byte[]
+# - v4:byte[]
+#
+# - return:void
+
+<init>-BB@0x0 : [ <init>-BB@0x16 <init>-BB@0x64 ]
+	0       (00000000) invoke-direct        v2, Ljava/lang/Object;-><init>()V
+	1       (00000006) sget-object          v0, Lcom/google/android/gms/internal/firebase-auth-api/zzhh;->zza Lcom/google/android/gms/internal/firebase-auth-api/zziv$zza;
+	2       (0000000a) invoke-virtual       v0, Lcom/google/android/gms/internal/firebase-auth-api/zziv$zza;->zza()Z
+	3       (00000010) move-result          v0
+	4       (00000012) if-eqz               v0, +029h
+
+<init>-BB@0x16 : [ <init>-BB@0x22 <init>-BB@0x54 ]
+	5       (00000016) invoke-static        Lcom/google/android/gms/internal/firebase-auth-api/zzhh;->zzb()Z
+	6       (0000001c) move-result          v0
+	7       (0000001e) if-eqz               v0, +01bh
+
+<init>-BB@0x22 : [ <init>-BB@0x2c <init>-BB@0x44 ]
+	8       (00000022) array-length         v0, v3
+	9       (00000024) const/16             v1, 32
+	10      (00000028) if-ne                v0, v1, +00eh
+
+<init>-BB@0x2c : 
+	11      (0000002c) new-instance         v0, Ljavax/crypto/spec/SecretKeySpec;
+	12      (00000030) const-string         v1, "ChaCha20"
+	13      (00000034) invoke-direct        v0, v3, v1, Ljavax/crypto/spec/SecretKeySpec;-><init>([B Ljava/lang/String;)V
+	14      (0000003a) iput-object          v0, v2, Lcom/google/android/gms/internal/firebase-auth-api/zzhh;->zzf Ljavax/crypto/SecretKey;
+	15      (0000003e) iput-object          v4, v2, Lcom/google/android/gms/internal/firebase-auth-api/zzhh;->zzg [B
+	16      (00000042) return-void          
+
+<init>-BB@0x44 : 
+	17      (00000044) new-instance         v3, Ljava/security/InvalidKeyException;
+	18      (00000048) const-string         v4, "The key length in bytes must be 32."
+	19      (0000004c) invoke-direct        v3, v4, Ljava/security/InvalidKeyException;-><init>(Ljava/lang/String;)V
+	20      (00000052) throw                v3
+
+<init>-BB@0x54 : 
+	21      (00000054) new-instance         v3, Ljava/security/GeneralSecurityException;
+	22      (00000058) const-string         v4, "JCE does not support algorithm: ChaCha20-Poly1305"
+	23      (0000005c) invoke-direct        v3, v4, Ljava/security/GeneralSecurityException;-><init>(Ljava/lang/String;)V
+	24      (00000062) throw                v3
+
+<init>-BB@0x64 : 
+	25      (00000064) new-instance         v3, Ljava/security/GeneralSecurityException;
+	26      (00000068) const-string         v4, "Can not use ChaCha20Poly1305 in FIPS-mode."
+	27      (0000006c) invoke-direct        v3, v4, Ljava/security/GeneralSecurityException;-><init>(Ljava/lang/String;)V
+	28      (00000072) throw                v3
+

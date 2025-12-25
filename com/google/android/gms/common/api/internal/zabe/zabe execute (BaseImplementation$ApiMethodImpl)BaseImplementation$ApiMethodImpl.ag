@@ -1,0 +1,108 @@
+# Lcom/google/android/gms/common/api/internal/zabe;->execute(Lcom/google/android/gms/common/api/internal/BaseImplementation$ApiMethodImpl;)Lcom/google/android/gms/common/api/internal/BaseImplementation$ApiMethodImpl; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:com.google.android.gms.common.api.internal.BaseImplementation$ApiMethodImpl
+#
+# - return:com.google.android.gms.common.api.internal.BaseImplementation$ApiMethodImpl
+
+execute-BB@0x0 : [ execute-BB@0x20 execute-BB@0x2a ]
+	0       (00000000) iget-object          v0, v4, Lcom/google/android/gms/common/api/internal/zabe;->zac Ljava/util/Map;
+	1       (00000004) invoke-virtual       v5, Lcom/google/android/gms/common/api/internal/BaseImplementation$ApiMethodImpl;->getApi()Lcom/google/android/gms/common/api/Api;
+	2       (0000000a) move-result-object   v1
+	3       (0000000c) invoke-virtual       v5, Lcom/google/android/gms/common/api/internal/BaseImplementation$ApiMethodImpl;->getClientKey()Lcom/google/android/gms/common/api/Api$AnyClientKey;
+	4       (00000012) move-result-object   v2
+	5       (00000014) invoke-interface     v0, v2, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z
+	6       (0000001a) move-result          v0
+	7       (0000001c) if-eqz               v1, +007h
+
+execute-BB@0x20 : [ execute-BB@0x2e ]
+	8       (00000020) invoke-virtual       v1, Lcom/google/android/gms/common/api/Api;->zad()Ljava/lang/String;
+	9       (00000026) move-result-object   v1
+	10      (00000028) goto                 +3h
+
+execute-BB@0x2a : [ execute-BB@0x2e ]
+	11      (0000002a) const-string         v1, "the API"
+
+execute-BB@0x2e : [ execute-BB@0x64 ]
+	12      (0000002e) new-instance         v2, Ljava/lang/StringBuilder;
+	13      (00000032) const-string         v3, "GoogleApiClient is not configured to use "
+	14      (00000036) invoke-direct        v2, v3, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	15      (0000003c) invoke-virtual       v2, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	16      (00000042) const-string         v1, " required for this call."
+	17      (00000046) invoke-virtual       v2, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	18      (0000004c) invoke-virtual       v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	19      (00000052) move-result-object   v1
+	20      (00000054) invoke-static        v0, v1, Lcom/google/android/gms/common/internal/Preconditions;->checkArgument(Z Ljava/lang/Object;)V
+	21      (0000005a) iget-object          v0, v4, Lcom/google/android/gms/common/api/internal/zabe;->zaj Ljava/util/concurrent/locks/Lock;
+	22      (0000005e) invoke-interface     v0, Ljava/util/concurrent/locks/Lock;->lock()V
+
+execute-BB@0x64 : [ execute-BB@0x6c execute-BB@0xcc ]
+	23      (00000064) iget-object          v0, v4, Lcom/google/android/gms/common/api/internal/zabe;->zal Lcom/google/android/gms/common/api/internal/zaca;
+	24      (00000068) if-eqz               v0, +032h
+	64:bf
+	(Ljava/lang/Throwable; -> b4 execute-BB@0xb4)
+
+execute-BB@0x6c : [ execute-BB@0x74 execute-BB@0xb8 ]
+	25      (0000006c) iget-boolean         v1, v4, Lcom/google/android/gms/common/api/internal/zabe;->zap Z
+	26      (00000070) if-eqz               v1, +024h
+	64:bf
+	(Ljava/lang/Throwable; -> b4 execute-BB@0xb4)
+
+execute-BB@0x74 : [ execute-BB@0x7e ]
+	27      (00000074) iget-object          v0, v4, Lcom/google/android/gms/common/api/internal/zabe;->zaa Ljava/util/Queue;
+	28      (00000078) invoke-interface     v0, v5, Ljava/util/Queue;->add(Ljava/lang/Object;)Z
+	64:bf
+	(Ljava/lang/Throwable; -> b4 execute-BB@0xb4)
+
+execute-BB@0x7e : [ execute-BB@0x8e execute-BB@0xc0 ]
+	29      (0000007e) iget-object          v0, v4, Lcom/google/android/gms/common/api/internal/zabe;->zaa Ljava/util/Queue;
+	30      (00000082) invoke-interface     v0, Ljava/util/Collection;->isEmpty()Z
+	31      (00000088) move-result          v0
+	32      (0000008a) if-nez               v0, +01bh
+	64:bf
+	(Ljava/lang/Throwable; -> b4 execute-BB@0xb4)
+
+execute-BB@0x8e : [ execute-BB@0x7e ]
+	33      (0000008e) iget-object          v0, v4, Lcom/google/android/gms/common/api/internal/zabe;->zaa Ljava/util/Queue;
+	34      (00000092) invoke-interface     v0, Ljava/util/Queue;->remove()Ljava/lang/Object;
+	35      (00000098) move-result-object   v0
+	36      (0000009a) check-cast           v0, Lcom/google/android/gms/common/api/internal/BaseImplementation$ApiMethodImpl;
+	37      (0000009e) iget-object          v1, v4, Lcom/google/android/gms/common/api/internal/zabe;->zai Lcom/google/android/gms/common/api/internal/zadc;
+	38      (000000a2) invoke-virtual       v1, v0, Lcom/google/android/gms/common/api/internal/zadc;->zaa(Lcom/google/android/gms/common/api/internal/BasePendingResult;)V
+	39      (000000a8) sget-object          v1, Lcom/google/android/gms/common/api/Status;->RESULT_INTERNAL_ERROR Lcom/google/android/gms/common/api/Status;
+	40      (000000ac) invoke-virtual       v0, v1, Lcom/google/android/gms/common/api/internal/BaseImplementation$ApiMethodImpl;->setFailedResult(Lcom/google/android/gms/common/api/Status;)V
+	41      (000000b2) goto                 -1ah
+	64:bf
+	(Ljava/lang/Throwable; -> b4 execute-BB@0xb4)
+
+execute-BB@0xb4 : [ execute-BB@0xdc ]
+	42      (000000b4) move-exception       v5
+	43      (000000b6) goto                 +13h
+	64:bf
+	(Ljava/lang/Throwable; -> b4 execute-BB@0xb4)
+
+execute-BB@0xb8 : [ execute-BB@0xc0 ]
+	44      (000000b8) invoke-interface     v0, v5, Lcom/google/android/gms/common/api/internal/zaca;->zaf(Lcom/google/android/gms/common/api/internal/BaseImplementation$ApiMethodImpl;)Lcom/google/android/gms/common/api/internal/BaseImplementation$ApiMethodImpl;
+	45      (000000be) move-result-object   v5
+	64:bf
+	(Ljava/lang/Throwable; -> b4 execute-BB@0xb4)
+
+execute-BB@0xc0 : 
+	46      (000000c0) iget-object          v0, v4, Lcom/google/android/gms/common/api/internal/zabe;->zaj Ljava/util/concurrent/locks/Lock;
+	47      (000000c4) invoke-interface     v0, Ljava/util/concurrent/locks/Lock;->unlock()V
+	48      (000000ca) return-object        v5
+
+execute-BB@0xcc : 
+	49      (000000cc) new-instance         v5, Ljava/lang/IllegalStateException;
+	50      (000000d0) const-string         v0, "GoogleApiClient is not connected yet."
+	51      (000000d4) invoke-direct        v5, v0, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	52      (000000da) throw                v5
+	cc:db
+	(Ljava/lang/Throwable; -> b4 execute-BB@0xb4)
+
+execute-BB@0xdc : 
+	53      (000000dc) iget-object          v0, v4, Lcom/google/android/gms/common/api/internal/zabe;->zaj Ljava/util/concurrent/locks/Lock;
+	54      (000000e0) invoke-interface     v0, Ljava/util/concurrent/locks/Lock;->unlock()V
+	55      (000000e6) throw                v5
+

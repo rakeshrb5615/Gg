@@ -1,0 +1,140 @@
+# Lcom/google/android/gms/cloudmessaging/zzw;->zzb()I [access_flags=public final synchronized]
+#
+# Parameters:
+# local registers: v0...v5
+#
+# - return:int
+
+zzb-BB@0x0 : [ zzb-BB@0x2 ]
+	0       (00000000) monitor-enter        v5
+
+zzb-BB@0x2 : [ zzb-BB@0xa zzb-BB@0xe ]
+	1       (00000002) iget                 v0, v5, Lcom/google/android/gms/cloudmessaging/zzw;->zzc I
+	2       (00000006) if-eqz               v0, +004h
+	2:5
+	(Ljava/lang/Throwable; -> 4c zzb-BB@0x4c)
+
+zzb-BB@0xa : 
+	3       (0000000a) monitor-exit         v5
+	4       (0000000c) return               v0
+
+zzb-BB@0xe : [ zzb-BB@0x3a zzb-BB@0x50 ]
+	5       (0000000e) iget-object          v0, v5, Lcom/google/android/gms/cloudmessaging/zzw;->zza Landroid/content/Context;
+	6       (00000012) invoke-virtual       v0, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
+	7       (00000018) move-result-object   v1
+	8       (0000001a) invoke-static        v0, Lcom/google/android/gms/common/wrappers/Wrappers;->packageManager(Landroid/content/Context;)Lcom/google/android/gms/common/wrappers/PackageManagerWrapper;
+	9       (00000020) move-result-object   v0
+	10      (00000022) const-string         v2, "com.google.android.c2dm.permission.SEND"
+	11      (00000026) const-string         v3, "com.google.android.gms"
+	12      (0000002a) invoke-virtual       v0, v2, v3, Lcom/google/android/gms/common/wrappers/PackageManagerWrapper;->checkPermission(Ljava/lang/String; Ljava/lang/String;)I
+	13      (00000030) move-result          v0
+	14      (00000032) const/4              v2, -1
+	15      (00000034) const/4              v3, 0
+	16      (00000036) if-ne                v0, v2, +00dh
+	e:47
+	(Ljava/lang/Throwable; -> 4c zzb-BB@0x4c)
+
+zzb-BB@0x3a : 
+	17      (0000003a) const-string         v0, "Metadata"
+	18      (0000003e) const-string         v1, "Google Play services missing or without correct permission."
+	19      (00000042) invoke-static        v0, v1, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String;)I
+	20      (00000048) monitor-exit         v5
+	21      (0000004a) return               v3
+
+zzb-BB@0x4c : [ zzb-BB@0xf2 ]
+	22      (0000004c) move-exception       v0
+	23      (0000004e) goto                 +52h
+
+zzb-BB@0x50 : [ zzb-BB@0x5e zzb-BB@0x90 ]
+	24      (00000050) invoke-static        Lcom/google/android/gms/common/util/PlatformVersion;->isAtLeastO()Z
+	25      (00000056) move-result          v0
+	26      (00000058) const/4              v2, 1
+	27      (0000005a) if-nez               v0, +01bh
+	50:c7
+	(Ljava/lang/Throwable; -> 4c zzb-BB@0x4c)
+
+zzb-BB@0x5e : [ zzb-BB@0x82 zzb-BB@0x90 ]
+	28      (0000005e) new-instance         v0, Landroid/content/Intent;
+	29      (00000062) const-string         v4, "com.google.android.c2dm.intent.REGISTER"
+	30      (00000066) invoke-direct        v0, v4, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
+	31      (0000006c) const-string         v4, "com.google.android.gms"
+	32      (00000070) invoke-virtual       v0, v4, Landroid/content/Intent;->setPackage(Ljava/lang/String;)Landroid/content/Intent;
+	33      (00000076) invoke-virtual       v1, v0, v3, Landroid/content/pm/PackageManager;->queryIntentServices(Landroid/content/Intent; I)Ljava/util/List;
+	34      (0000007c) move-result-object   v0
+	35      (0000007e) if-eqz               v0, +009h
+	50:c7
+	(Ljava/lang/Throwable; -> 4c zzb-BB@0x4c)
+
+zzb-BB@0x82 : [ zzb-BB@0x8e zzb-BB@0x90 ]
+	36      (00000082) invoke-interface     v0, Ljava/util/List;->isEmpty()Z
+	37      (00000088) move-result          v0
+	38      (0000008a) if-nez               v0, +003h
+	50:c7
+	(Ljava/lang/Throwable; -> 4c zzb-BB@0x4c)
+
+zzb-BB@0x8e : [ zzb-BB@0xc4 ]
+	39      (0000008e) goto                 +1bh
+	50:c7
+	(Ljava/lang/Throwable; -> 4c zzb-BB@0x4c)
+
+zzb-BB@0x90 : [ zzb-BB@0xb6 zzb-BB@0xcc ]
+	40      (00000090) new-instance         v0, Landroid/content/Intent;
+	41      (00000094) const-string         v4, "com.google.iid.TOKEN_REQUEST"
+	42      (00000098) invoke-direct        v0, v4, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
+	43      (0000009e) const-string         v4, "com.google.android.gms"
+	44      (000000a2) invoke-virtual       v0, v4, Landroid/content/Intent;->setPackage(Ljava/lang/String;)Landroid/content/Intent;
+	45      (000000a8) invoke-virtual       v1, v0, v3, Landroid/content/pm/PackageManager;->queryBroadcastReceivers(Landroid/content/Intent; I)Ljava/util/List;
+	46      (000000ae) move-result-object   v0
+	47      (000000b0) const/4              v1, 2
+	48      (000000b2) if-eqz               v0, +00dh
+	50:c7
+	(Ljava/lang/Throwable; -> 4c zzb-BB@0x4c)
+
+zzb-BB@0xb6 : [ zzb-BB@0xc2 zzb-BB@0xcc ]
+	49      (000000b6) invoke-interface     v0, Ljava/util/List;->isEmpty()Z
+	50      (000000bc) move-result          v0
+	51      (000000be) if-nez               v0, +007h
+	50:c7
+	(Ljava/lang/Throwable; -> 4c zzb-BB@0x4c)
+
+zzb-BB@0xc2 : [ zzb-BB@0xc4 ]
+	52      (000000c2) move                 v2, v1
+	50:c7
+	(Ljava/lang/Throwable; -> 4c zzb-BB@0x4c)
+
+zzb-BB@0xc4 : 
+	53      (000000c4) iput                 v2, v5, Lcom/google/android/gms/cloudmessaging/zzw;->zzc I
+	54      (000000c8) monitor-exit         v5
+	55      (000000ca) return               v2
+
+zzb-BB@0xcc : [ zzb-BB@0xe6 zzb-BB@0xe8 ]
+	56      (000000cc) const-string         v0, "Metadata"
+	57      (000000d0) const-string         v3, "Failed to resolve IID implementation package, falling back"
+	58      (000000d4) invoke-static        v0, v3, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+	59      (000000da) invoke-static        Lcom/google/android/gms/common/util/PlatformVersion;->isAtLeastO()Z
+	60      (000000e0) move-result          v0
+	61      (000000e2) if-eq                v2, v0, +003h
+	cc:ed
+	(Ljava/lang/Throwable; -> 4c zzb-BB@0x4c)
+
+zzb-BB@0xe6 : [ zzb-BB@0xea ]
+	62      (000000e6) goto                 +2h
+	cc:ed
+	(Ljava/lang/Throwable; -> 4c zzb-BB@0x4c)
+
+zzb-BB@0xe8 : [ zzb-BB@0xea ]
+	63      (000000e8) move                 v2, v1
+	cc:ed
+	(Ljava/lang/Throwable; -> 4c zzb-BB@0x4c)
+
+zzb-BB@0xea : 
+	64      (000000ea) iput                 v2, v5, Lcom/google/android/gms/cloudmessaging/zzw;->zzc I
+	65      (000000ee) monitor-exit         v5
+	66      (000000f0) return               v2
+
+zzb-BB@0xf2 : 
+	67      (000000f2) monitor-exit         v5
+	68      (000000f4) throw                v0
+	f2:f3
+	(Ljava/lang/Throwable; -> 4c zzb-BB@0x4c)
+

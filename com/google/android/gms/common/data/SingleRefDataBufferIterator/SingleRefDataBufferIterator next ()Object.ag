@@ -1,0 +1,66 @@
+# Lcom/google/android/gms/common/data/SingleRefDataBufferIterator;->next()Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v4
+#
+# - return:java.lang.Object
+
+next-BB@0x0 : [ next-BB@0xc next-BB@0x8c ]
+	0       (00000000) invoke-virtual       v4, Lcom/google/android/gms/common/data/DataBufferIterator;->hasNext()Z
+	1       (00000006) move-result          v0
+	2       (00000008) if-eqz               v0, +042h
+
+next-BB@0xc : [ next-BB@0x1c next-BB@0x6c ]
+	3       (0000000c) iget                 v0, v4, Lcom/google/android/gms/common/data/DataBufferIterator;->zab I
+	4       (00000010) add-int/lit8         v0, v0, 1
+	5       (00000014) iput                 v0, v4, Lcom/google/android/gms/common/data/DataBufferIterator;->zab I
+	6       (00000018) if-nez               v0, +02ah
+
+next-BB@0x1c : [ next-BB@0x3e next-BB@0x40 ]
+	7       (0000001c) iget-object          v0, v4, Lcom/google/android/gms/common/data/DataBufferIterator;->zaa Lcom/google/android/gms/common/data/DataBuffer;
+	8       (00000020) const/4              v1, 0
+	9       (00000022) invoke-interface     v0, v1, Lcom/google/android/gms/common/data/DataBuffer;->get(I)Ljava/lang/Object;
+	10      (00000028) move-result-object   v0
+	11      (0000002a) invoke-static        v0, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;
+	12      (00000030) move-result-object   v0
+	13      (00000032) iput-object          v0, v4, Lcom/google/android/gms/common/data/SingleRefDataBufferIterator;->zac Ljava/lang/Object;
+	14      (00000036) instance-of          v1, v0, Lcom/google/android/gms/common/data/DataBufferRef;
+	15      (0000003a) if-eqz               v1, +003h
+
+next-BB@0x3e : [ next-BB@0x86 ]
+	16      (0000003e) goto                 +24h
+
+next-BB@0x40 : 
+	17      (00000040) new-instance         v1, Ljava/lang/IllegalStateException;
+	18      (00000044) invoke-virtual       v0, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	19      (0000004a) move-result-object   v0
+	20      (0000004c) invoke-static        v0, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
+	21      (00000052) move-result-object   v0
+	22      (00000054) const-string         v2, "DataBuffer reference of type "
+	23      (00000058) const-string         v3, " is not movable"
+	24      (0000005c) invoke-static        v2, v0, v3, Lv1/a;->l(Ljava/lang/String; Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	25      (00000062) move-result-object   v0
+	26      (00000064) invoke-direct        v1, v0, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	27      (0000006a) throw                v1
+
+next-BB@0x6c : [ next-BB@0x86 ]
+	28      (0000006c) iget-object          v0, v4, Lcom/google/android/gms/common/data/SingleRefDataBufferIterator;->zac Ljava/lang/Object;
+	29      (00000070) invoke-static        v0, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;
+	30      (00000076) move-result-object   v0
+	31      (00000078) check-cast           v0, Lcom/google/android/gms/common/data/DataBufferRef;
+	32      (0000007c) iget                 v1, v4, Lcom/google/android/gms/common/data/DataBufferIterator;->zab I
+	33      (00000080) invoke-virtual       v0, v1, Lcom/google/android/gms/common/data/DataBufferRef;->zaa(I)V
+
+next-BB@0x86 : 
+	34      (00000086) iget-object          v0, v4, Lcom/google/android/gms/common/data/SingleRefDataBufferIterator;->zac Ljava/lang/Object;
+	35      (0000008a) return-object        v0
+
+next-BB@0x8c : 
+	36      (0000008c) new-instance         v0, Ljava/util/NoSuchElementException;
+	37      (00000090) iget                 v1, v4, Lcom/google/android/gms/common/data/DataBufferIterator;->zab I
+	38      (00000094) const-string         v2, "Cannot advance the iterator beyond "
+	39      (00000098) invoke-static        v1, v2, Lg2/g;->c(I Ljava/lang/String;)Ljava/lang/String;
+	40      (0000009e) move-result-object   v1
+	41      (000000a0) invoke-direct        v0, v1, Ljava/util/NoSuchElementException;-><init>(Ljava/lang/String;)V
+	42      (000000a6) throw                v0
+

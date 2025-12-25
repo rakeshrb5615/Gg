@@ -1,0 +1,35 @@
+# Lcom/google/android/gms/location/LocationResult;->extractResult(Landroid/content/Intent;)Lcom/google/android/gms/location/LocationResult; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:android.content.Intent
+#
+# - return:com.google.android.gms.location.LocationResult
+
+extractResult-BB@0x0 : [ extractResult-BB@0xc extractResult-BB@0x10 ]
+	0       (00000000) invoke-static        v2, Lcom/google/android/gms/location/LocationResult;->hasResult(Landroid/content/Intent;)Z
+	1       (00000006) move-result          v0
+	2       (00000008) if-nez               v0, +004h
+
+extractResult-BB@0xc : 
+	3       (0000000c) const/4              v2, 0
+	4       (0000000e) return-object        v2
+
+extractResult-BB@0x10 : [ extractResult-BB@0x28 extractResult-BB@0x3a ]
+	5       (00000010) const-string         v0, "com.google.android.gms.location.EXTRA_LOCATION_RESULT_BYTES"
+	6       (00000014) sget-object          v1, Lcom/google/android/gms/location/LocationResult;->CREATOR Landroid/os/Parcelable$Creator;
+	7       (00000018) invoke-static        v2, v0, v1, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelableSerializer;->deserializeFromIntentExtra(Landroid/content/Intent; Ljava/lang/String; Landroid/os/Parcelable$Creator;)Lcom/google/android/gms/common/internal/safeparcel/SafeParcelable;
+	8       (0000001e) move-result-object   v0
+	9       (00000020) check-cast           v0, Lcom/google/android/gms/location/LocationResult;
+	10      (00000024) if-nez               v0, +00bh
+
+extractResult-BB@0x28 : 
+	11      (00000028) const-string         v0, "com.google.android.gms.location.EXTRA_LOCATION_RESULT"
+	12      (0000002c) invoke-virtual       v2, v0, Landroid/content/Intent;->getParcelableExtra(Ljava/lang/String;)Landroid/os/Parcelable;
+	13      (00000032) move-result-object   v2
+	14      (00000034) check-cast           v2, Lcom/google/android/gms/location/LocationResult;
+	15      (00000038) return-object        v2
+
+extractResult-BB@0x3a : 
+	16      (0000003a) return-object        v0
+

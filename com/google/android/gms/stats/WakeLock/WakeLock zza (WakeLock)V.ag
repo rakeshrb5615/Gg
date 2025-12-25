@@ -1,0 +1,67 @@
+# Lcom/google/android/gms/stats/WakeLock;->zza(Lcom/google/android/gms/stats/WakeLock;)V [access_flags=public static synthetic]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:com.google.android.gms.stats.WakeLock
+#
+# - return:void
+
+zza-BB@0x0 : [ zza-BB@0x6 ]
+	0       (00000000) iget-object          v0, v4, Lcom/google/android/gms/stats/WakeLock;->zzf Ljava/lang/Object;
+	1       (00000004) monitor-enter        v0
+
+zza-BB@0x6 : [ zza-BB@0x12 zza-BB@0x1a ]
+	2       (00000006) invoke-virtual       v4, Lcom/google/android/gms/stats/WakeLock;->isHeld()Z
+	3       (0000000c) move-result          v1
+	4       (0000000e) if-nez               v1, +006h
+	6:65
+	(Ljava/lang/Throwable; -> 16 zza-BB@0x16)
+
+zza-BB@0x12 : 
+	5       (00000012) monitor-exit         v0
+	6       (00000014) return-void          
+	6:65
+	(Ljava/lang/Throwable; -> 16 zza-BB@0x16)
+
+zza-BB@0x16 : [ zza-BB@0x64 ]
+	7       (00000016) move-exception       v4
+	8       (00000018) goto                 +26h
+	6:65
+	(Ljava/lang/Throwable; -> 16 zza-BB@0x16)
+
+zza-BB@0x1a : [ zza-BB@0x4e zza-BB@0x52 ]
+	9       (0000001a) const-string         v1, "WakeLock"
+	10      (0000001e) iget-object          v2, v4, Lcom/google/android/gms/stats/WakeLock;->zzp Ljava/lang/String;
+	11      (00000022) invoke-static        v2, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
+	12      (00000028) move-result-object   v2
+	13      (0000002a) const-string         v3, " ** IS FORCE-RELEASED ON TIMEOUT **"
+	14      (0000002e) invoke-virtual       v2, v3, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	15      (00000034) move-result-object   v2
+	16      (00000036) invoke-static        v1, v2, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String;)I
+	17      (0000003c) invoke-direct        v4, Lcom/google/android/gms/stats/WakeLock;->zzc()V
+	18      (00000042) invoke-virtual       v4, Lcom/google/android/gms/stats/WakeLock;->isHeld()Z
+	19      (00000048) move-result          v1
+	20      (0000004a) if-nez               v1, +004h
+	6:65
+	(Ljava/lang/Throwable; -> 16 zza-BB@0x16)
+
+zza-BB@0x4e : 
+	21      (0000004e) monitor-exit         v0
+	22      (00000050) return-void          
+	6:65
+	(Ljava/lang/Throwable; -> 16 zza-BB@0x16)
+
+zza-BB@0x52 : 
+	23      (00000052) const/4              v1, 1
+	24      (00000054) iput                 v1, v4, Lcom/google/android/gms/stats/WakeLock;->zzh I
+	25      (00000058) const/4              v1, 0
+	26      (0000005a) invoke-direct        v4, v1, Lcom/google/android/gms/stats/WakeLock;->zzd(I)V
+	27      (00000060) monitor-exit         v0
+	28      (00000062) return-void          
+	6:65
+	(Ljava/lang/Throwable; -> 16 zza-BB@0x16)
+
+zza-BB@0x64 : 
+	29      (00000064) monitor-exit         v0
+	30      (00000066) throw                v4
+

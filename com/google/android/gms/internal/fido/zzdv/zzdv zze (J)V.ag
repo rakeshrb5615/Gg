@@ -1,0 +1,47 @@
+# Lcom/google/android/gms/internal/fido/zzdv;->zze(J)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:long
+#
+# - return:void
+
+zze-BB@0x0 : [ zze-BB@0x10 zze-BB@0x64 ]
+	0       (00000000) invoke-direct        v4, Lcom/google/android/gms/internal/fido/zzdv;->zzh()J
+	1       (00000006) move-result-wide     v0
+	2       (00000008) cmp-long             v2, v0, v5
+	3       (0000000c) if-eqz               v2, +02ch
+
+zze-BB@0x10 : [ zze-BB@0x1c zze-BB@0x2c ]
+	4       (00000010) const-wide/16        v2, -1
+	5       (00000014) cmp-long             v2, v0, v2
+	6       (00000018) if-eqz               v2, +00ah
+
+zze-BB@0x1c : [ zze-BB@0x28 zze-BB@0x2a ]
+	7       (0000001c) const-wide/16        v2, -2
+	8       (00000020) cmp-long             v0, v0, v2
+	9       (00000024) if-eqz               v0, +003h
+
+zze-BB@0x28 : [ zze-BB@0x64 ]
+	10      (00000028) goto                 +1eh
+
+zze-BB@0x2a : [ zze-BB@0x2c ]
+	11      (0000002a) move-wide            v0, v2
+
+zze-BB@0x2c : 
+	12      (0000002c) new-instance         v2, Ljava/lang/StringBuilder;
+	13      (00000030) const-string         v3, "expected non-string scope or scope "
+	14      (00000034) invoke-direct        v2, v3, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	15      (0000003a) invoke-virtual       v2, v5, v6, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+	16      (00000040) const-string         v5, " but found "
+	17      (00000044) invoke-virtual       v2, v5, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	18      (0000004a) invoke-virtual       v2, v0, v1, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+	19      (00000050) invoke-virtual       v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	20      (00000056) move-result-object   v5
+	21      (00000058) new-instance         v6, Ljava/io/IOException;
+	22      (0000005c) invoke-direct        v6, v5, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+	23      (00000062) throw                v6
+
+zze-BB@0x64 : 
+	24      (00000064) return-void          
+

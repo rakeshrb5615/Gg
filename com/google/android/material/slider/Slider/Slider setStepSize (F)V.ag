@@ -1,0 +1,48 @@
+# Lcom/google/android/material/slider/Slider;->setStepSize(F)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:float
+#
+# - return:void
+
+setStepSize-BB@0x0 : [ setStepSize-BB@0xa setStepSize-BB@0x28 ]
+	0       (00000000) const/4              v0, 0
+	1       (00000002) cmpg-float           v0, v6, v0
+	2       (00000006) if-ltz               v0, +011h
+
+setStepSize-BB@0xa : [ setStepSize-BB@0x16 setStepSize-BB@0x26 ]
+	3       (0000000a) iget                 v0, v5, Lx3/e;->v0 F
+	4       (0000000e) cmpl-float           v0, v0, v6
+	5       (00000012) if-eqz               v0, +00ah
+
+setStepSize-BB@0x16 : [ setStepSize-BB@0x26 ]
+	6       (00000016) iput                 v6, v5, Lx3/e;->v0 F
+	7       (0000001a) const/4              v6, 1
+	8       (0000001c) iput-boolean         v6, v5, Lx3/e;->C0 Z
+	9       (00000020) invoke-virtual       v5, Landroid/view/View;->postInvalidate()V
+
+setStepSize-BB@0x26 : 
+	10      (00000026) return-void          
+
+setStepSize-BB@0x28 : 
+	11      (00000028) new-instance         v0, Ljava/lang/IllegalArgumentException;
+	12      (0000002c) iget                 v1, v5, Lx3/e;->q0 F
+	13      (00000030) iget                 v2, v5, Lx3/e;->r0 F
+	14      (00000034) new-instance         v3, Ljava/lang/StringBuilder;
+	15      (00000038) const-string         v4, "The stepSize("
+	16      (0000003c) invoke-direct        v3, v4, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	17      (00000042) invoke-virtual       v3, v6, Ljava/lang/StringBuilder;->append(F)Ljava/lang/StringBuilder;
+	18      (00000048) const-string         v6, ") must be 0, or a factor of the valueFrom("
+	19      (0000004c) invoke-virtual       v3, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	20      (00000052) invoke-virtual       v3, v1, Ljava/lang/StringBuilder;->append(F)Ljava/lang/StringBuilder;
+	21      (00000058) const-string         v6, ")-valueTo("
+	22      (0000005c) invoke-virtual       v3, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	23      (00000062) invoke-virtual       v3, v2, Ljava/lang/StringBuilder;->append(F)Ljava/lang/StringBuilder;
+	24      (00000068) const-string         v6, ") range"
+	25      (0000006c) invoke-virtual       v3, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	26      (00000072) invoke-virtual       v3, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	27      (00000078) move-result-object   v6
+	28      (0000007a) invoke-direct        v0, v6, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	29      (00000080) throw                v0
+

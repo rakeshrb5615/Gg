@@ -1,0 +1,177 @@
+# Lcom/google/firebase/auth/internal/RecaptchaActivity;->h(Landroid/net/Uri$Builder; Landroid/content/Intent; Ljava/lang/String; Ljava/lang/String;)Landroid/net/Uri$Builder; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v11
+# - v12:android.net.Uri$Builder
+# - v13:android.content.Intent
+# - v14:java.lang.String
+# - v15:java.lang.String
+#
+# - return:android.net.Uri$Builder
+
+h-BB@0x0 : [ h-BB@0x5e ]
+	0       (00000000) const-string         v0, "com.google.firebase.auth.KEY_API_KEY"
+	1       (00000004) invoke-virtual       v13, v0, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
+	2       (0000000a) move-result-object   v0
+	3       (0000000c) invoke-static        Ljava/util/UUID;->randomUUID()Ljava/util/UUID;
+	4       (00000012) move-result-object   v1
+	5       (00000014) invoke-virtual       v1, Ljava/util/UUID;->toString()Ljava/lang/String;
+	6       (0000001a) move-result-object   v1
+	7       (0000001c) const-string         v2, "com.google.firebase.auth.internal.CLIENT_VERSION"
+	8       (00000020) invoke-virtual       v13, v2, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
+	9       (00000026) move-result-object   v2
+	10      (00000028) const-string         v3, "com.google.firebase.auth.internal.FIREBASE_APP_NAME"
+	11      (0000002c) invoke-virtual       v13, v3, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
+	12      (00000032) move-result-object   v13
+	13      (00000034) invoke-static        v13, Lq4/f;->e(Ljava/lang/String;)Lq4/f;
+	14      (0000003a) move-result-object   v3
+	15      (0000003c) invoke-static        v3, Lcom/google/firebase/auth/FirebaseAuth;->getInstance(Lq4/f;)Lcom/google/firebase/auth/FirebaseAuth;
+	16      (00000042) move-result-object   v4
+	17      (00000044) sget-object          v5, Lz4/z;->a Lz4/z;
+	18      (00000048) invoke-virtual       v11, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;
+	19      (0000004e) move-result-object   v6
+	20      (00000050) const-string         v7, "com.google.firebase.auth.internal.ACTION_SHOW_RECAPTCHA"
+	21      (00000054) const-string         v8, "com.google.firebase.auth.internal.EVENT_ID."
+	22      (00000058) const-string         v9, "com.google.firebase.auth.internal.EVENT_ID."
+	23      (0000005c) monitor-enter        v5
+
+h-BB@0x5e : [ h-BB@0x106 h-BB@0x128 ]
+	24      (0000005e) invoke-static        v14, Lcom/google/android/gms/common/internal/Preconditions;->checkNotEmpty(Ljava/lang/String;)Ljava/lang/String;
+	25      (00000064) invoke-static        v1, Lcom/google/android/gms/common/internal/Preconditions;->checkNotEmpty(Ljava/lang/String;)Ljava/lang/String;
+	26      (0000006a) invoke-static        v6, v14, Lz4/z;->a(Landroid/content/Context; Ljava/lang/String;)Landroid/content/SharedPreferences;
+	27      (00000070) move-result-object   v6
+	28      (00000072) invoke-static        v6, Lz4/z;->b(Landroid/content/SharedPreferences;)V
+	29      (00000078) invoke-interface     v6, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
+	30      (0000007e) move-result-object   v6
+	31      (00000080) new-instance         v10, Ljava/lang/StringBuilder;
+	32      (00000084) invoke-direct        v10, v9, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	33      (0000008a) invoke-virtual       v10, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	34      (00000090) const-string         v9, ".OPERATION"
+	35      (00000094) invoke-virtual       v10, v9, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	36      (0000009a) invoke-virtual       v10, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	37      (000000a0) move-result-object   v9
+	38      (000000a2) invoke-interface     v6, v9, v7, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String; Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
+	39      (000000a8) new-instance         v7, Ljava/lang/StringBuilder;
+	40      (000000ac) invoke-direct        v7, v8, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	41      (000000b2) invoke-virtual       v7, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	42      (000000b8) const-string         v8, ".FIREBASE_APP_NAME"
+	43      (000000bc) invoke-virtual       v7, v8, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	44      (000000c2) invoke-virtual       v7, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	45      (000000c8) move-result-object   v7
+	46      (000000ca) invoke-interface     v6, v7, v13, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String; Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
+	47      (000000d0) invoke-interface     v6, Landroid/content/SharedPreferences$Editor;->apply()V
+	48      (000000d6) monitor-exit         v5
+	49      (000000d8) invoke-virtual       v11, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;
+	50      (000000de) move-result-object   v5
+	51      (000000e0) invoke-virtual       v3, Lq4/f;->f()Ljava/lang/String;
+	52      (000000e6) move-result-object   v3
+	53      (000000e8) invoke-static        v5, v3, Lz4/a0;->c(Landroid/content/Context; Ljava/lang/String;)Lz4/a0;
+	54      (000000ee) move-result-object   v3
+	55      (000000f0) invoke-virtual       v3, Lz4/a0;->a()Ljava/lang/String;
+	56      (000000f6) move-result-object   v3
+	57      (000000f8) invoke-static        v3, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+	58      (000000fe) move-result          v5
+	59      (00000100) const/4              v6, 0
+	60      (00000102) if-eqz               v5, +013h
+	5e:d5
+	(Ljava/lang/Throwable; -> 1f6 h-BB@0x1f6)
+
+h-BB@0x106 : 
+	61      (00000106) const-string         v12, "RecaptchaActivity"
+	62      (0000010a) const-string         v13, "Could not generate an encryption key for reCAPTCHA - cancelling flow."
+	63      (0000010e) invoke-static        v12, v13, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String;)I
+	64      (00000114) const-string         v12, "Failed to generate/retrieve public encryption key for reCAPTCHA flow."
+	65      (00000118) invoke-static        v12, Lw0/a;->k(Ljava/lang/String;)Lcom/google/android/gms/common/api/Status;
+	66      (0000011e) move-result-object   v12
+	67      (00000120) invoke-virtual       v11, v12, Lcom/google/firebase/auth/internal/RecaptchaActivity;->i(Lcom/google/android/gms/common/api/Status;)V
+	68      (00000126) return-object        v6
+
+h-BB@0x128 : [ h-BB@0x12e ]
+	69      (00000128) iget-object          v7, v4, Lcom/google/firebase/auth/FirebaseAuth;->g Ljava/lang/Object;
+	70      (0000012c) monitor-enter        v7
+
+h-BB@0x12e : [ h-BB@0x13c h-BB@0x14c ]
+	71      (0000012e) monitor-exit         v7
+	72      (00000130) invoke-static        v6, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+	73      (00000136) move-result          v5
+	74      (00000138) if-nez               v5, +00ah
+	12e:12f
+	(Ljava/lang/Throwable; -> 1f0 h-BB@0x1f0)
+
+h-BB@0x13c : [ h-BB@0x142 ]
+	75      (0000013c) iget-object          v4, v4, Lcom/google/firebase/auth/FirebaseAuth;->g Ljava/lang/Object;
+	76      (00000140) monitor-enter        v4
+
+h-BB@0x142 : [ h-BB@0x154 ]
+	77      (00000142) monitor-exit         v4
+	78      (00000144) goto                 +8h
+	142:149
+	(Ljava/lang/Throwable; -> 146 h-BB@0x146)
+
+h-BB@0x146 : 
+	79      (00000146) move-exception       v12
+	80      (00000148) monitor-exit         v4
+	81      (0000014a) throw                v12
+
+h-BB@0x14c : [ h-BB@0x154 ]
+	82      (0000014c) invoke-static        Lcom/google/android/gms/internal/firebase-auth-api/zzafd;->zza()Ljava/lang/String;
+	83      (00000152) move-result-object   v6
+
+h-BB@0x154 : 
+	84      (00000154) const-string         v4, "apiKey"
+	85      (00000158) invoke-virtual       v12, v4, v0, Landroid/net/Uri$Builder;->appendQueryParameter(Ljava/lang/String; Ljava/lang/String;)Landroid/net/Uri$Builder;
+	86      (0000015e) move-result-object   v0
+	87      (00000160) const-string         v4, "authType"
+	88      (00000164) const-string         v5, "verifyApp"
+	89      (00000168) invoke-virtual       v0, v4, v5, Landroid/net/Uri$Builder;->appendQueryParameter(Ljava/lang/String; Ljava/lang/String;)Landroid/net/Uri$Builder;
+	90      (0000016e) move-result-object   v0
+	91      (00000170) const-string         v4, "apn"
+	92      (00000174) invoke-virtual       v0, v4, v14, Landroid/net/Uri$Builder;->appendQueryParameter(Ljava/lang/String; Ljava/lang/String;)Landroid/net/Uri$Builder;
+	93      (0000017a) move-result-object   v14
+	94      (0000017c) const-string         v0, "hl"
+	95      (00000180) invoke-virtual       v14, v0, v6, Landroid/net/Uri$Builder;->appendQueryParameter(Ljava/lang/String; Ljava/lang/String;)Landroid/net/Uri$Builder;
+	96      (00000186) move-result-object   v14
+	97      (00000188) const-string         v0, "eventId"
+	98      (0000018c) invoke-virtual       v14, v0, v1, Landroid/net/Uri$Builder;->appendQueryParameter(Ljava/lang/String; Ljava/lang/String;)Landroid/net/Uri$Builder;
+	99      (00000192) move-result-object   v14
+	100     (00000194) const-string         v0, "v"
+	101     (00000198) new-instance         v1, Ljava/lang/StringBuilder;
+	102     (0000019c) const-string         v4, "X"
+	103     (000001a0) invoke-direct        v1, v4, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	104     (000001a6) invoke-virtual       v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	105     (000001ac) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	106     (000001b2) move-result-object   v1
+	107     (000001b4) invoke-virtual       v14, v0, v1, Landroid/net/Uri$Builder;->appendQueryParameter(Ljava/lang/String; Ljava/lang/String;)Landroid/net/Uri$Builder;
+	108     (000001ba) move-result-object   v14
+	109     (000001bc) const-string         v0, "eid"
+	110     (000001c0) const-string         v1, "p"
+	111     (000001c4) invoke-virtual       v14, v0, v1, Landroid/net/Uri$Builder;->appendQueryParameter(Ljava/lang/String; Ljava/lang/String;)Landroid/net/Uri$Builder;
+	112     (000001ca) move-result-object   v14
+	113     (000001cc) const-string         v0, "appName"
+	114     (000001d0) invoke-virtual       v14, v0, v13, Landroid/net/Uri$Builder;->appendQueryParameter(Ljava/lang/String; Ljava/lang/String;)Landroid/net/Uri$Builder;
+	115     (000001d6) move-result-object   v13
+	116     (000001d8) const-string         v14, "sha1Cert"
+	117     (000001dc) invoke-virtual       v13, v14, v15, Landroid/net/Uri$Builder;->appendQueryParameter(Ljava/lang/String; Ljava/lang/String;)Landroid/net/Uri$Builder;
+	118     (000001e2) move-result-object   v13
+	119     (000001e4) const-string         v14, "publicKey"
+	120     (000001e8) invoke-virtual       v13, v14, v3, Landroid/net/Uri$Builder;->appendQueryParameter(Ljava/lang/String; Ljava/lang/String;)Landroid/net/Uri$Builder;
+	121     (000001ee) return-object        v12
+
+h-BB@0x1f0 : [ h-BB@0x1f2 ]
+	122     (000001f0) move-exception       v12
+
+h-BB@0x1f2 : 
+	123     (000001f2) monitor-exit         v7
+	124     (000001f4) throw                v12
+	1f2:1f3
+	(Ljava/lang/Throwable; -> 1f0 h-BB@0x1f0)
+
+h-BB@0x1f6 : [ h-BB@0x1f8 ]
+	125     (000001f6) move-exception       v12
+
+h-BB@0x1f8 : 
+	126     (000001f8) monitor-exit         v5
+	127     (000001fa) throw                v12
+	1f8:1f9
+	(Ljava/lang/Throwable; -> 1f6 h-BB@0x1f6)
+

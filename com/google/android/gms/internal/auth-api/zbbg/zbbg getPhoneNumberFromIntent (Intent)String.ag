@@ -1,0 +1,56 @@
+# Lcom/google/android/gms/internal/auth-api/zbbg;->getPhoneNumberFromIntent(Landroid/content/Intent;)Ljava/lang/String; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:android.content.Intent
+#
+# - return:java.lang.String
+
+getPhoneNumberFromIntent-BB@0x0 : [ getPhoneNumberFromIntent-BB@0x4 getPhoneNumberFromIntent-BB@0x66 ]
+	0       (00000000) if-eqz               v3, +033h
+
+getPhoneNumberFromIntent-BB@0x4 : [ getPhoneNumberFromIntent-BB@0x1c getPhoneNumberFromIntent-BB@0x56 ]
+	1       (00000004) const-string         v0, "status"
+	2       (00000008) sget-object          v1, Lcom/google/android/gms/common/api/Status;->CREATOR Landroid/os/Parcelable$Creator;
+	3       (0000000c) invoke-static        v3, v0, v1, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelableSerializer;->deserializeFromIntentExtra(Landroid/content/Intent; Ljava/lang/String; Landroid/os/Parcelable$Creator;)Lcom/google/android/gms/common/internal/safeparcel/SafeParcelable;
+	4       (00000012) move-result-object   v0
+	5       (00000014) check-cast           v0, Lcom/google/android/gms/common/api/Status;
+	6       (00000018) if-eqz               v0, +01fh
+
+getPhoneNumberFromIntent-BB@0x1c : [ getPhoneNumberFromIntent-BB@0x28 getPhoneNumberFromIntent-BB@0x4a ]
+	7       (0000001c) invoke-virtual       v0, Lcom/google/android/gms/common/api/Status;->isSuccess()Z
+	8       (00000022) move-result          v1
+	9       (00000024) if-eqz               v1, +013h
+
+getPhoneNumberFromIntent-BB@0x28 : [ getPhoneNumberFromIntent-BB@0x38 getPhoneNumberFromIntent-BB@0x3a ]
+	10      (00000028) const-string         v0, "phone_number_hint_result"
+	11      (0000002c) invoke-virtual       v3, v0, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
+	12      (00000032) move-result-object   v3
+	13      (00000034) if-eqz               v3, +003h
+
+getPhoneNumberFromIntent-BB@0x38 : 
+	14      (00000038) return-object        v3
+
+getPhoneNumberFromIntent-BB@0x3a : 
+	15      (0000003a) new-instance         v3, Lcom/google/android/gms/common/api/ApiException;
+	16      (0000003e) sget-object          v0, Lcom/google/android/gms/common/api/Status;->RESULT_INTERNAL_ERROR Lcom/google/android/gms/common/api/Status;
+	17      (00000042) invoke-direct        v3, v0, Lcom/google/android/gms/common/api/ApiException;-><init>(Lcom/google/android/gms/common/api/Status;)V
+	18      (00000048) throw                v3
+
+getPhoneNumberFromIntent-BB@0x4a : 
+	19      (0000004a) new-instance         v3, Lcom/google/android/gms/common/api/ApiException;
+	20      (0000004e) invoke-direct        v3, v0, Lcom/google/android/gms/common/api/ApiException;-><init>(Lcom/google/android/gms/common/api/Status;)V
+	21      (00000054) throw                v3
+
+getPhoneNumberFromIntent-BB@0x56 : 
+	22      (00000056) new-instance         v3, Lcom/google/android/gms/common/api/ApiException;
+	23      (0000005a) sget-object          v0, Lcom/google/android/gms/common/api/Status;->RESULT_CANCELED Lcom/google/android/gms/common/api/Status;
+	24      (0000005e) invoke-direct        v3, v0, Lcom/google/android/gms/common/api/ApiException;-><init>(Lcom/google/android/gms/common/api/Status;)V
+	25      (00000064) throw                v3
+
+getPhoneNumberFromIntent-BB@0x66 : 
+	26      (00000066) new-instance         v3, Lcom/google/android/gms/common/api/ApiException;
+	27      (0000006a) sget-object          v0, Lcom/google/android/gms/common/api/Status;->RESULT_INTERNAL_ERROR Lcom/google/android/gms/common/api/Status;
+	28      (0000006e) invoke-direct        v3, v0, Lcom/google/android/gms/common/api/ApiException;-><init>(Lcom/google/android/gms/common/api/Status;)V
+	29      (00000074) throw                v3
+

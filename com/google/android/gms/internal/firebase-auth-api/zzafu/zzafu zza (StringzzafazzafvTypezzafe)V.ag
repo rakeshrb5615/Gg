@@ -1,0 +1,123 @@
+# Lcom/google/android/gms/internal/firebase-auth-api/zzafu;->zza(Ljava/lang/String; Lcom/google/android/gms/internal/firebase-auth-api/zzafa; Lcom/google/android/gms/internal/firebase-auth-api/zzafv; Ljava/lang/reflect/Type; Lcom/google/android/gms/internal/firebase-auth-api/zzafe;)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:java.lang.String
+# - v3:com.google.android.gms.internal.firebase-auth-api.zzafa
+# - v4:com.google.android.gms.internal.firebase-auth-api.zzafv
+# - v5:java.lang.reflect.Type
+# - v6:com.google.android.gms.internal.firebase-auth-api.zzafe
+#
+# - return:void
+
+zza-BB@0x0 : [ zza-BB@0x78 ]
+	0       (00000000) invoke-static        v3, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;
+	1       (00000006) new-instance         v0, Ljava/net/URL;
+	2       (0000000a) invoke-direct        v0, v2, Ljava/net/URL;-><init>(Ljava/lang/String;)V
+	3       (00000010) invoke-virtual       v0, Ljava/net/URL;->openConnection()Ljava/net/URLConnection;
+	4       (00000016) move-result-object   v2
+	5       (00000018) check-cast           v2, Ljava/net/HttpURLConnection;
+	6       (0000001c) const/4              v0, 1
+	7       (0000001e) invoke-virtual       v2, v0, Ljava/net/URLConnection;->setDoOutput(Z)V
+	8       (00000024) invoke-interface     v3, Lcom/google/android/gms/internal/firebase-auth-api/zzafa;->zza()Ljava/lang/String;
+	9       (0000002a) move-result-object   v3
+	10      (0000002c) invoke-static        Ljava/nio/charset/Charset;->defaultCharset()Ljava/nio/charset/Charset;
+	11      (00000032) move-result-object   v0
+	12      (00000034) invoke-virtual       v3, v0, Ljava/lang/String;->getBytes(Ljava/nio/charset/Charset;)[B
+	13      (0000003a) move-result-object   v3
+	14      (0000003c) array-length         v0, v3
+	15      (0000003e) invoke-virtual       v2, v0, Ljava/net/HttpURLConnection;->setFixedLengthStreamingMode(I)V
+	16      (00000044) const-string         v0, "Content-Type"
+	17      (00000048) const-string         v1, "application/json"
+	18      (0000004c) invoke-virtual       v2, v0, v1, Ljava/net/URLConnection;->setRequestProperty(Ljava/lang/String; Ljava/lang/String;)V
+	19      (00000052) const                v0, 60000
+	20      (00000058) invoke-virtual       v2, v0, Ljava/net/URLConnection;->setConnectTimeout(I)V
+	21      (0000005e) invoke-virtual       v6, v2, Lcom/google/android/gms/internal/firebase-auth-api/zzafe;->zza(Ljava/net/URLConnection;)V
+	22      (00000064) new-instance         v6, Ljava/io/BufferedOutputStream;
+	23      (00000068) invoke-virtual       v2, Ljava/net/URLConnection;->getOutputStream()Ljava/io/OutputStream;
+	24      (0000006e) move-result-object   v0
+	25      (00000070) array-length         v1, v3
+	26      (00000072) invoke-direct        v6, v0, v1, Ljava/io/BufferedOutputStream;-><init>(Ljava/io/OutputStream; I)V
+	0:77
+	(Ljava/net/SocketTimeoutException; -> cc zza-BB@0xcc)
+	(Ljava/net/UnknownHostException; -> c0 zza-BB@0xc0)
+	(Ljava/io/IOException; -> 98 zza-BB@0x98)
+	(Lorg/json/JSONException; -> 94 zza-BB@0x94)
+	(Ljava/lang/NullPointerException; -> 90 zza-BB@0x90)
+
+zza-BB@0x78 : [ zza-BB@0x82 ]
+	27      (00000078) array-length         v0, v3
+	28      (0000007a) const/4              v1, 0
+	29      (0000007c) invoke-virtual       v6, v3, v1, v0, Ljava/io/OutputStream;->write([B I I)V
+	78:81
+	(Ljava/lang/Throwable; -> 9c zza-BB@0x9c)
+
+zza-BB@0x82 : 
+	30      (00000082) invoke-virtual       v6, Ljava/io/OutputStream;->close()V
+	31      (00000088) invoke-static        v2, v4, v5, Lcom/google/android/gms/internal/firebase-auth-api/zzafu;->zza(Ljava/net/HttpURLConnection; Lcom/google/android/gms/internal/firebase-auth-api/zzafv; Ljava/lang/reflect/Type;)V
+	32      (0000008e) return-void          
+	82:8d
+	(Ljava/net/SocketTimeoutException; -> cc zza-BB@0xcc)
+	(Ljava/net/UnknownHostException; -> c0 zza-BB@0xc0)
+	(Ljava/io/IOException; -> 98 zza-BB@0x98)
+	(Lorg/json/JSONException; -> 94 zza-BB@0x94)
+	(Ljava/lang/NullPointerException; -> 90 zza-BB@0x90)
+
+zza-BB@0x90 : [ zza-BB@0xb0 ]
+	33      (00000090) move-exception       v2
+	34      (00000092) goto                 +fh
+
+zza-BB@0x94 : [ zza-BB@0xb0 ]
+	35      (00000094) move-exception       v2
+	36      (00000096) goto                 +dh
+
+zza-BB@0x98 : [ zza-BB@0xb0 ]
+	37      (00000098) move-exception       v2
+	38      (0000009a) goto                 +bh
+
+zza-BB@0x9c : [ zza-BB@0x9e ]
+	39      (0000009c) move-exception       v2
+
+zza-BB@0x9e : [ zza-BB@0xae ]
+	40      (0000009e) invoke-virtual       v6, Ljava/io/OutputStream;->close()V
+	41      (000000a4) goto                 +5h
+	9e:a3
+	(Ljava/lang/Throwable; -> a6 zza-BB@0xa6)
+
+zza-BB@0xa6 : [ zza-BB@0xa8 ]
+	42      (000000a6) move-exception       v3
+
+zza-BB@0xa8 : [ zza-BB@0xae ]
+	43      (000000a8) invoke-virtual       v2, v3, Ljava/lang/Throwable;->addSuppressed(Ljava/lang/Throwable;)V
+	a8:af
+	(Ljava/net/SocketTimeoutException; -> cc zza-BB@0xcc)
+	(Ljava/net/UnknownHostException; -> c0 zza-BB@0xc0)
+	(Ljava/io/IOException; -> 98 zza-BB@0x98)
+	(Lorg/json/JSONException; -> 94 zza-BB@0x94)
+	(Ljava/lang/NullPointerException; -> 90 zza-BB@0x90)
+
+zza-BB@0xae : 
+	44      (000000ae) throw                v2
+	a8:af
+	(Ljava/net/SocketTimeoutException; -> cc zza-BB@0xcc)
+	(Ljava/net/UnknownHostException; -> c0 zza-BB@0xc0)
+	(Ljava/io/IOException; -> 98 zza-BB@0x98)
+	(Lorg/json/JSONException; -> 94 zza-BB@0x94)
+	(Ljava/lang/NullPointerException; -> 90 zza-BB@0x90)
+
+zza-BB@0xb0 : 
+	45      (000000b0) invoke-virtual       v2, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+	46      (000000b6) move-result-object   v2
+	47      (000000b8) invoke-interface     v4, v2, Lcom/google/android/gms/internal/firebase-auth-api/zzafs;->zza(Ljava/lang/String;)V
+	48      (000000be) return-void          
+
+zza-BB@0xc0 : 
+	49      (000000c0) const-string         v2, "<<Network Error>>"
+	50      (000000c4) invoke-interface     v4, v2, Lcom/google/android/gms/internal/firebase-auth-api/zzafs;->zza(Ljava/lang/String;)V
+	51      (000000ca) return-void          
+
+zza-BB@0xcc : 
+	52      (000000cc) const-string         v2, "TIMEOUT"
+	53      (000000d0) invoke-interface     v4, v2, Lcom/google/android/gms/internal/firebase-auth-api/zzafs;->zza(Ljava/lang/String;)V
+	54      (000000d6) return-void          
+

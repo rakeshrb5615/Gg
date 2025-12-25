@@ -1,0 +1,132 @@
+# Lcom/google/android/gms/common/api/internal/zabe;->getConnectionResult(Lcom/google/android/gms/common/api/Api;)Lcom/google/android/gms/common/ConnectionResult; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:com.google.android.gms.common.api.Api
+#
+# - return:com.google.android.gms.common.ConnectionResult
+
+getConnectionResult-BB@0x0 : [ getConnectionResult-BB@0xe ]
+	0       (00000000) const-string         v0, "GoogleApiClientImpl"
+	1       (00000004) iget-object          v1, v3, Lcom/google/android/gms/common/api/internal/zabe;->zaj Ljava/util/concurrent/locks/Lock;
+	2       (00000008) invoke-interface     v1, Ljava/util/concurrent/locks/Lock;->lock()V
+
+getConnectionResult-BB@0xe : [ getConnectionResult-BB@0x1a getConnectionResult-BB@0x38 ]
+	3       (0000000e) invoke-virtual       v3, Lcom/google/android/gms/common/api/internal/zabe;->isConnected()Z
+	4       (00000014) move-result          v1
+	5       (00000016) if-nez               v1, +011h
+	e:d1
+	(Ljava/lang/Throwable; -> 34 getConnectionResult-BB@0x34)
+
+getConnectionResult-BB@0x1a : [ getConnectionResult-BB@0x22 getConnectionResult-BB@0x24 ]
+	6       (0000001a) iget-boolean         v1, v3, Lcom/google/android/gms/common/api/internal/zabe;->zap Z
+	7       (0000001e) if-eqz               v1, +003h
+	e:d1
+	(Ljava/lang/Throwable; -> 34 getConnectionResult-BB@0x34)
+
+getConnectionResult-BB@0x22 : [ getConnectionResult-BB@0x38 ]
+	8       (00000022) goto                 +bh
+	e:d1
+	(Ljava/lang/Throwable; -> 34 getConnectionResult-BB@0x34)
+
+getConnectionResult-BB@0x24 : 
+	9       (00000024) new-instance         v4, Ljava/lang/IllegalStateException;
+	10      (00000028) const-string         v0, "Cannot invoke getConnectionResult unless GoogleApiClient is connected"
+	11      (0000002c) invoke-direct        v4, v0, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	12      (00000032) throw                v4
+	e:d1
+	(Ljava/lang/Throwable; -> 34 getConnectionResult-BB@0x34)
+
+getConnectionResult-BB@0x34 : [ getConnectionResult-BB@0x120 ]
+	13      (00000034) move-exception       v4
+	14      (00000036) goto                 +75h
+	e:d1
+	(Ljava/lang/Throwable; -> 34 getConnectionResult-BB@0x34)
+
+getConnectionResult-BB@0x38 : [ getConnectionResult-BB@0x50 getConnectionResult-BB@0xea ]
+	15      (00000038) iget-object          v1, v3, Lcom/google/android/gms/common/api/internal/zabe;->zac Ljava/util/Map;
+	16      (0000003c) invoke-virtual       v4, Lcom/google/android/gms/common/api/Api;->zab()Lcom/google/android/gms/common/api/Api$AnyClientKey;
+	17      (00000042) move-result-object   v2
+	18      (00000044) invoke-interface     v1, v2, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z
+	19      (0000004a) move-result          v1
+	20      (0000004c) if-eqz               v1, +04fh
+	e:d1
+	(Ljava/lang/Throwable; -> 34 getConnectionResult-BB@0x34)
+
+getConnectionResult-BB@0x50 : [ getConnectionResult-BB@0x6c getConnectionResult-BB@0xde ]
+	21      (00000050) iget-object          v1, v3, Lcom/google/android/gms/common/api/internal/zabe;->zal Lcom/google/android/gms/common/api/internal/zaca;
+	22      (00000054) invoke-static        v1, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;
+	23      (0000005a) move-result-object   v1
+	24      (0000005c) check-cast           v1, Lcom/google/android/gms/common/api/internal/zaca;
+	25      (00000060) invoke-interface     v1, v4, Lcom/google/android/gms/common/api/internal/zaca;->zad(Lcom/google/android/gms/common/api/Api;)Lcom/google/android/gms/common/ConnectionResult;
+	26      (00000066) move-result-object   v1
+	27      (00000068) if-nez               v1, +03bh
+	e:d1
+	(Ljava/lang/Throwable; -> 34 getConnectionResult-BB@0x34)
+
+getConnectionResult-BB@0x6c : [ getConnectionResult-BB@0x74 getConnectionResult-BB@0x7a ]
+	28      (0000006c) iget-boolean         v1, v3, Lcom/google/android/gms/common/api/internal/zabe;->zap Z
+	29      (00000070) if-eqz               v1, +005h
+	e:d1
+	(Ljava/lang/Throwable; -> 34 getConnectionResult-BB@0x34)
+
+getConnectionResult-BB@0x74 : [ getConnectionResult-BB@0xd2 ]
+	30      (00000074) sget-object          v4, Lcom/google/android/gms/common/ConnectionResult;->RESULT_SUCCESS Lcom/google/android/gms/common/ConnectionResult;
+	31      (00000078) goto                 +2dh
+	e:d1
+	(Ljava/lang/Throwable; -> 34 getConnectionResult-BB@0x34)
+
+getConnectionResult-BB@0x7a : [ getConnectionResult-BB@0xd2 ]
+	32      (0000007a) invoke-virtual       v3, Lcom/google/android/gms/common/api/internal/zabe;->zaf()Ljava/lang/String;
+	33      (00000080) move-result-object   v1
+	34      (00000082) invoke-static        v0, v1, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+	35      (00000088) invoke-virtual       v4, Lcom/google/android/gms/common/api/Api;->zad()Ljava/lang/String;
+	36      (0000008e) move-result-object   v4
+	37      (00000090) new-instance         v1, Ljava/lang/StringBuilder;
+	38      (00000094) invoke-direct        v1, Ljava/lang/StringBuilder;-><init>()V
+	39      (0000009a) invoke-virtual       v1, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	40      (000000a0) const-string         v4, " requested in getConnectionResult is not connected but is not present in the failed  connections map"
+	41      (000000a4) invoke-virtual       v1, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	42      (000000aa) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	43      (000000b0) move-result-object   v4
+	44      (000000b2) new-instance         v1, Ljava/lang/Exception;
+	45      (000000b6) invoke-direct        v1, Ljava/lang/Exception;-><init>()V
+	46      (000000bc) invoke-static        v0, v4, v1, Landroid/util/Log;->wtf(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+	47      (000000c2) new-instance         v4, Lcom/google/android/gms/common/ConnectionResult;
+	48      (000000c6) const/16             v0, 8
+	49      (000000ca) const/4              v1, 0
+	50      (000000cc) invoke-direct        v4, v0, v1, Lcom/google/android/gms/common/ConnectionResult;-><init>(I Landroid/app/PendingIntent;)V
+	e:d1
+	(Ljava/lang/Throwable; -> 34 getConnectionResult-BB@0x34)
+
+getConnectionResult-BB@0xd2 : 
+	51      (000000d2) iget-object          v0, v3, Lcom/google/android/gms/common/api/internal/zabe;->zaj Ljava/util/concurrent/locks/Lock;
+	52      (000000d6) invoke-interface     v0, Ljava/util/concurrent/locks/Lock;->unlock()V
+	53      (000000dc) return-object        v4
+
+getConnectionResult-BB@0xde : 
+	54      (000000de) iget-object          v4, v3, Lcom/google/android/gms/common/api/internal/zabe;->zaj Ljava/util/concurrent/locks/Lock;
+	55      (000000e2) invoke-interface     v4, Ljava/util/concurrent/locks/Lock;->unlock()V
+	56      (000000e8) return-object        v1
+
+getConnectionResult-BB@0xea : 
+	57      (000000ea) new-instance         v0, Ljava/lang/IllegalArgumentException;
+	58      (000000ee) invoke-virtual       v4, Lcom/google/android/gms/common/api/Api;->zad()Ljava/lang/String;
+	59      (000000f4) move-result-object   v4
+	60      (000000f6) new-instance         v1, Ljava/lang/StringBuilder;
+	61      (000000fa) invoke-direct        v1, Ljava/lang/StringBuilder;-><init>()V
+	62      (00000100) invoke-virtual       v1, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	63      (00000106) const-string         v4, " was never registered with GoogleApiClient"
+	64      (0000010a) invoke-virtual       v1, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	65      (00000110) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	66      (00000116) move-result-object   v4
+	67      (00000118) invoke-direct        v0, v4, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	68      (0000011e) throw                v0
+	ea:11f
+	(Ljava/lang/Throwable; -> 34 getConnectionResult-BB@0x34)
+
+getConnectionResult-BB@0x120 : 
+	69      (00000120) iget-object          v0, v3, Lcom/google/android/gms/common/api/internal/zabe;->zaj Ljava/util/concurrent/locks/Lock;
+	70      (00000124) invoke-interface     v0, Ljava/util/concurrent/locks/Lock;->unlock()V
+	71      (0000012a) throw                v4
+

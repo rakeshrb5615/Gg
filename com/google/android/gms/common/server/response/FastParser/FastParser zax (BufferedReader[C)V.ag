@@ -1,0 +1,61 @@
+# Lcom/google/android/gms/common/server/response/FastParser;->zax(Ljava/io/BufferedReader; [C)V [access_flags=private final]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:java.io.BufferedReader
+# - v8:char[]
+#
+# - return:void
+
+zax-BB@0x0 : [ zax-BB@0x4 ]
+	0       (00000000) const/4              v0, 0
+	1       (00000002) move                 v1, v0
+
+zax-BB@0x4 : [ zax-BB@0xa zax-BB@0x62 ]
+	2       (00000004) array-length         v2, v8
+	3       (00000006) if-ge                v1, v2, +02eh
+
+zax-BB@0xa : [ zax-BB@0x1e zax-BB@0x52 ]
+	4       (0000000a) iget-object          v3, v6, Lcom/google/android/gms/common/server/response/FastParser;->zap [C
+	5       (0000000e) sub-int/2addr        v2, v1
+	6       (00000010) invoke-virtual       v7, v3, v0, v2, Ljava/io/BufferedReader;->read([C I I)I
+	7       (00000016) move-result          v2
+	8       (00000018) const/4              v3, -1
+	9       (0000001a) if-eq                v2, v3, +01ch
+
+zax-BB@0x1e : [ zax-BB@0x20 ]
+	10      (0000001e) move                 v3, v0
+
+zax-BB@0x20 : [ zax-BB@0x24 zax-BB@0x4e ]
+	11      (00000020) if-ge                v3, v2, +017h
+
+zax-BB@0x24 : [ zax-BB@0x38 zax-BB@0x3e ]
+	12      (00000024) add-int              v4, v3, v1
+	13      (00000028) aget-char            v4, v8, v4
+	14      (0000002c) iget-object          v5, v6, Lcom/google/android/gms/common/server/response/FastParser;->zap [C
+	15      (00000030) aget-char            v5, v5, v3
+	16      (00000034) if-ne                v4, v5, +005h
+
+zax-BB@0x38 : [ zax-BB@0x20 ]
+	17      (00000038) add-int/lit8         v3, v3, 1
+	18      (0000003c) goto                 -eh
+
+zax-BB@0x3e : 
+	19      (0000003e) new-instance         v7, Lcom/google/android/gms/common/server/response/FastParser$ParseException;
+	20      (00000042) const-string         v8, "Unexpected character"
+	21      (00000046) invoke-direct        v7, v8, Lcom/google/android/gms/common/server/response/FastParser$ParseException;-><init>(Ljava/lang/String;)V
+	22      (0000004c) throw                v7
+
+zax-BB@0x4e : [ zax-BB@0x4 ]
+	23      (0000004e) add-int/2addr        v1, v2
+	24      (00000050) goto                 -26h
+
+zax-BB@0x52 : 
+	25      (00000052) new-instance         v7, Lcom/google/android/gms/common/server/response/FastParser$ParseException;
+	26      (00000056) const-string         v8, "Unexpected EOF"
+	27      (0000005a) invoke-direct        v7, v8, Lcom/google/android/gms/common/server/response/FastParser$ParseException;-><init>(Ljava/lang/String;)V
+	28      (00000060) throw                v7
+
+zax-BB@0x62 : 
+	29      (00000062) return-void          
+

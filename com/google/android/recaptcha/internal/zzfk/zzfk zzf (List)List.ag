@@ -1,0 +1,40 @@
+# Lcom/google/android/recaptcha/internal/zzfk;->zzf(Ljava/util/List;)Ljava/util/List; [access_flags=private static final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:java.util.List
+#
+# - return:java.util.List
+
+zzf-BB@0x0 : [ zzf-BB@0x1e ]
+	0       (00000000) new-instance         v0, Ljava/util/ArrayList;
+	1       (00000004) const/16             v1, 10
+	2       (00000008) invoke-static        v4, v1, Li7/j;->X(Ljava/lang/Iterable; I)I
+	3       (0000000e) move-result          v1
+	4       (00000010) invoke-direct        v0, v1, Ljava/util/ArrayList;-><init>(I)V
+	5       (00000016) invoke-interface     v4, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
+	6       (0000001c) move-result-object   v4
+
+zzf-BB@0x1e : [ zzf-BB@0x2a zzf-BB@0x64 ]
+	7       (0000001e) invoke-interface     v4, Ljava/util/Iterator;->hasNext()Z
+	8       (00000024) move-result          v1
+	9       (00000026) if-eqz               v1, +01fh
+
+zzf-BB@0x2a : [ zzf-BB@0x1e ]
+	10      (0000002a) invoke-interface     v4, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	11      (00000030) move-result-object   v1
+	12      (00000032) check-cast           v1, Ljava/lang/String;
+	13      (00000036) new-instance         v2, Ljava/lang/StringBuilder;
+	14      (0000003a) const-string         v3, "https://"
+	15      (0000003e) invoke-direct        v2, v3, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	16      (00000044) invoke-virtual       v2, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	17      (0000004a) const-string         v1, "/"
+	18      (0000004e) invoke-virtual       v2, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	19      (00000054) invoke-virtual       v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	20      (0000005a) move-result-object   v1
+	21      (0000005c) invoke-interface     v0, v1, Ljava/util/Collection;->add(Ljava/lang/Object;)Z
+	22      (00000062) goto                 -22h
+
+zzf-BB@0x64 : 
+	23      (00000064) return-object        v0
+

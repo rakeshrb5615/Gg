@@ -1,0 +1,412 @@
+# Lcom/google/firebase/remoteconfig/internal/ConfigFetchHttpClient;->fetch(Ljava/net/HttpURLConnection; Ljava/lang/String; Ljava/lang/String; Ljava/util/Map; Ljava/lang/String; Ljava/util/Map; Ljava/lang/Long; Ljava/util/Date; Ljava/util/Map;)Ln6/h; [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v13
+# - v14:java.net.HttpURLConnection
+# - v15:java.lang.String
+# - v16:java.lang.String
+# - v17:java.util.Map
+# - v18:java.lang.String
+# - v19:java.util.Map
+# - v20:java.lang.Long
+# - v21:java.util.Date
+# - v22:java.util.Map
+#
+# - return:n6.h
+
+fetch-BB@0x0 : [ fetch-BB@0x72 ]
+	0       (00000000) const/4              v8, 1
+	1       (00000002) invoke-virtual       v14, v8, Ljava/net/URLConnection;->setDoOutput(Z)V
+	2       (00000008) sget-object          v0, Ljava/util/concurrent/TimeUnit;->SECONDS Ljava/util/concurrent/TimeUnit;
+	3       (0000000c) iget-wide            v2, v13, Lcom/google/firebase/remoteconfig/internal/ConfigFetchHttpClient;->f J
+	4       (00000010) invoke-virtual       v0, v2, v3, Ljava/util/concurrent/TimeUnit;->toMillis(J)J
+	5       (00000016) move-result-wide     v2
+	6       (00000018) long-to-int          v2, v2
+	7       (0000001a) invoke-virtual       v14, v2, Ljava/net/URLConnection;->setConnectTimeout(I)V
+	8       (00000020) iget-wide            v2, v13, Lcom/google/firebase/remoteconfig/internal/ConfigFetchHttpClient;->g J
+	9       (00000024) invoke-virtual       v0, v2, v3, Ljava/util/concurrent/TimeUnit;->toMillis(J)J
+	10      (0000002a) move-result-wide     v2
+	11      (0000002c) long-to-int          v0, v2
+	12      (0000002e) invoke-virtual       v14, v0, Ljava/net/URLConnection;->setReadTimeout(I)V
+	13      (00000034) const-string         v0, "If-None-Match"
+	14      (00000038) move-object/from16   v2, v18
+	15      (0000003c) invoke-virtual       v14, v0, v2, Ljava/net/URLConnection;->setRequestProperty(Ljava/lang/String; Ljava/lang/String;)V
+	16      (00000042) const-string         v0, "X-Goog-Api-Key"
+	17      (00000046) iget-object          v2, v13, Lcom/google/firebase/remoteconfig/internal/ConfigFetchHttpClient;->c Ljava/lang/String;
+	18      (0000004a) invoke-virtual       v14, v0, v2, Ljava/net/URLConnection;->setRequestProperty(Ljava/lang/String; Ljava/lang/String;)V
+	19      (00000050) iget-object          v2, v13, Lcom/google/firebase/remoteconfig/internal/ConfigFetchHttpClient;->a Landroid/content/Context;
+	20      (00000054) invoke-virtual       v2, Landroid/content/Context;->getPackageName()Ljava/lang/String;
+	21      (0000005a) move-result-object   v0
+	22      (0000005c) const-string         v3, "X-Android-Package"
+	23      (00000060) invoke-virtual       v14, v3, v0, Ljava/net/URLConnection;->setRequestProperty(Ljava/lang/String; Ljava/lang/String;)V
+	24      (00000066) const-string         v3, "FirebaseRemoteConfig"
+	25      (0000006a) const-string         v0, "Could not get fingerprint hash for package: "
+	26      (0000006e) const/4              v9, 0
+	27      (00000070) const/4              v10, 0
+
+fetch-BB@0x72 : [ fetch-BB@0x86 fetch-BB@0xb4 ]
+	28      (00000072) invoke-virtual       v2, Landroid/content/Context;->getPackageName()Ljava/lang/String;
+	29      (00000078) move-result-object   v4
+	30      (0000007a) invoke-static        v2, v4, Lcom/google/android/gms/common/util/AndroidUtilsLight;->getPackageCertificateHashBytes(Landroid/content/Context; Ljava/lang/String;)[B
+	31      (00000080) move-result-object   v4
+	32      (00000082) if-nez               v4, +019h
+	72:bb
+	(Landroid/content/pm/PackageManager$NameNotFoundException; -> b0 fetch-BB@0xb0)
+
+fetch-BB@0x86 : [ fetch-BB@0xac ]
+	33      (00000086) new-instance         v4, Ljava/lang/StringBuilder;
+	34      (0000008a) invoke-direct        v4, v0, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	35      (00000090) invoke-virtual       v2, Landroid/content/Context;->getPackageName()Ljava/lang/String;
+	36      (00000096) move-result-object   v0
+	37      (00000098) invoke-virtual       v4, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	38      (0000009e) invoke-virtual       v4, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	39      (000000a4) move-result-object   v0
+	40      (000000a6) invoke-static        v3, v0, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String;)I
+	72:bb
+	(Landroid/content/pm/PackageManager$NameNotFoundException; -> b0 fetch-BB@0xb0)
+
+fetch-BB@0xac : [ fetch-BB@0xea ]
+	41      (000000ac) move-object          v0, v10
+	42      (000000ae) goto                 +1eh
+	72:bb
+	(Landroid/content/pm/PackageManager$NameNotFoundException; -> b0 fetch-BB@0xb0)
+
+fetch-BB@0xb0 : [ fetch-BB@0xbe ]
+	43      (000000b0) move-exception       v0
+	44      (000000b2) goto                 +6h
+	72:bb
+	(Landroid/content/pm/PackageManager$NameNotFoundException; -> b0 fetch-BB@0xb0)
+
+fetch-BB@0xb4 : [ fetch-BB@0xea ]
+	45      (000000b4) invoke-static        v4, v9, Lcom/google/android/gms/common/util/Hex;->bytesToStringUppercase([B Z)Ljava/lang/String;
+	46      (000000ba) move-result-object   v0
+	47      (000000bc) goto                 +17h
+
+fetch-BB@0xbe : [ fetch-BB@0xac ]
+	48      (000000be) new-instance         v4, Ljava/lang/StringBuilder;
+	49      (000000c2) const-string         v5, "No such package: "
+	50      (000000c6) invoke-direct        v4, v5, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	51      (000000cc) invoke-virtual       v2, Landroid/content/Context;->getPackageName()Ljava/lang/String;
+	52      (000000d2) move-result-object   v2
+	53      (000000d4) invoke-virtual       v4, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	54      (000000da) invoke-virtual       v4, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	55      (000000e0) move-result-object   v2
+	56      (000000e2) invoke-static        v3, v2, v0, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+	57      (000000e8) goto                 -1eh
+
+fetch-BB@0xea : [ fetch-BB@0x138 ]
+	58      (000000ea) const-string         v2, "X-Android-Cert"
+	59      (000000ee) invoke-virtual       v14, v2, v0, Ljava/net/URLConnection;->setRequestProperty(Ljava/lang/String; Ljava/lang/String;)V
+	60      (000000f4) const-string         v0, "X-Google-GFE-Can-Retry"
+	61      (000000f8) const-string         v2, "yes"
+	62      (000000fc) invoke-virtual       v14, v0, v2, Ljava/net/URLConnection;->setRequestProperty(Ljava/lang/String; Ljava/lang/String;)V
+	63      (00000102) const-string         v0, "X-Goog-Firebase-Installations-Auth"
+	64      (00000106) move-object/from16   v3, v16
+	65      (0000010a) invoke-virtual       v14, v0, v3, Ljava/net/URLConnection;->setRequestProperty(Ljava/lang/String; Ljava/lang/String;)V
+	66      (00000110) const-string         v0, "Content-Type"
+	67      (00000114) const-string         v2, "application/json"
+	68      (00000118) invoke-virtual       v14, v0, v2, Ljava/net/URLConnection;->setRequestProperty(Ljava/lang/String; Ljava/lang/String;)V
+	69      (0000011e) const-string         v0, "Accept"
+	70      (00000122) invoke-virtual       v14, v0, v2, Ljava/net/URLConnection;->setRequestProperty(Ljava/lang/String; Ljava/lang/String;)V
+	71      (00000128) invoke-interface/range v19, Ljava/util/Map;->entrySet()Ljava/util/Set;
+	72      (0000012e) move-result-object   v0
+	73      (00000130) invoke-interface     v0, Ljava/util/Set;->iterator()Ljava/util/Iterator;
+	74      (00000136) move-result-object   v0
+
+fetch-BB@0x138 : [ fetch-BB@0x144 fetch-BB@0x170 ]
+	75      (00000138) invoke-interface     v0, Ljava/util/Iterator;->hasNext()Z
+	76      (0000013e) move-result          v2
+	77      (00000140) if-eqz               v2, +018h
+
+fetch-BB@0x144 : [ fetch-BB@0x138 ]
+	78      (00000144) invoke-interface     v0, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	79      (0000014a) move-result-object   v2
+	80      (0000014c) check-cast           v2, Ljava/util/Map$Entry;
+	81      (00000150) invoke-interface     v2, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
+	82      (00000156) move-result-object   v4
+	83      (00000158) check-cast           v4, Ljava/lang/String;
+	84      (0000015c) invoke-interface     v2, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
+	85      (00000162) move-result-object   v2
+	86      (00000164) check-cast           v2, Ljava/lang/String;
+	87      (00000168) invoke-virtual       v14, v4, v2, Ljava/net/URLConnection;->setRequestProperty(Ljava/lang/String; Ljava/lang/String;)V
+	88      (0000016e) goto                 -1bh
+
+fetch-BB@0x170 : [ fetch-BB@0x180 ]
+	89      (00000170) move-object          v1, v13
+	90      (00000172) move-object          v2, v15
+	91      (00000174) move-object/from16   v4, v17
+	92      (00000178) move-object/from16   v5, v20
+	93      (0000017c) move-object/from16   v6, v22
+
+fetch-BB@0x180 : [ fetch-BB@0x1b8 fetch-BB@0x35a ]
+	94      (00000180) invoke-virtual/range v1 ... v6, Lcom/google/firebase/remoteconfig/internal/ConfigFetchHttpClient;->a(Ljava/lang/String; Ljava/lang/String; Ljava/util/Map; Ljava/lang/Long; Ljava/util/Map;)Lorg/json/JSONObject;
+	95      (00000186) move-result-object   v0
+	96      (00000188) invoke-virtual       v0, Lorg/json/JSONObject;->toString()Ljava/lang/String;
+	97      (0000018e) move-result-object   v0
+	98      (00000190) const-string         v1, "utf-8"
+	99      (00000194) invoke-virtual       v0, v1, Ljava/lang/String;->getBytes(Ljava/lang/String;)[B
+	100     (0000019a) move-result-object   v0
+	101     (0000019c) invoke-static        v14, v0, Lcom/google/firebase/remoteconfig/internal/ConfigFetchHttpClient;->d(Ljava/net/HttpURLConnection; [B)V
+	102     (000001a2) invoke-virtual       v14, Ljava/net/URLConnection;->connect()V
+	103     (000001a8) invoke-virtual       v14, Ljava/net/HttpURLConnection;->getResponseCode()I
+	104     (000001ae) move-result          v0
+	105     (000001b0) const/16             v1, 200
+	106     (000001b4) if-ne                v0, v1, +0d3h
+	180:1cb
+	(Ljava/io/IOException; -> 356 fetch-BB@0x356)
+	(Lorg/json/JSONException; -> 352 fetch-BB@0x352)
+	(Ljava/lang/Throwable; -> 34e fetch-BB@0x34e)
+
+fetch-BB@0x1b8 : [ fetch-BB@0x1d2 ]
+	107     (000001b8) const-string         v0, "ETag"
+	108     (000001bc) invoke-virtual       v14, v0, Ljava/net/URLConnection;->getHeaderField(Ljava/lang/String;)Ljava/lang/String;
+	109     (000001c2) move-result-object   v0
+	110     (000001c4) invoke-static        v14, Lcom/google/firebase/remoteconfig/internal/ConfigFetchHttpClient;->c(Ljava/net/HttpURLConnection;)Lorg/json/JSONObject;
+	111     (000001ca) move-result-object   v1
+	112     (000001cc) invoke-virtual       v14, Ljava/net/HttpURLConnection;->disconnect()V
+
+fetch-BB@0x1d2 : [ fetch-BB@0x1e0 ]
+	113     (000001d2) invoke-virtual       v14, Ljava/net/URLConnection;->getInputStream()Ljava/io/InputStream;
+	114     (000001d8) move-result-object   v2
+	115     (000001da) invoke-virtual       v2, Ljava/io/InputStream;->close()V
+	1d2:1df
+	(Ljava/io/IOException; -> 1e0 fetch-BB@0x1e0)
+
+fetch-BB@0x1e0 : [ fetch-BB@0x1e4 ]
+	116     (000001e0) const-string         v2, "templateVersion"
+
+fetch-BB@0x1e4 : [ fetch-BB@0x1f4 ]
+	117     (000001e4) invoke-static        Ln6/f;->c()Ln6/e;
+	118     (000001ea) move-result-object   v3
+	119     (000001ec) move-object/from16   v4, v21
+	120     (000001f0) iput-object          v4, v3, Ln6/e;->b Ljava/util/Date;
+	1e4:1f3
+	(Lorg/json/JSONException; -> 288 fetch-BB@0x288)
+
+fetch-BB@0x1f4 : [ fetch-BB@0x204 ]
+	121     (000001f4) const-string         v4, "entries"
+	122     (000001f8) invoke-virtual       v1, v4, Lorg/json/JSONObject;->getJSONObject(Ljava/lang/String;)Lorg/json/JSONObject;
+	123     (000001fe) move-result-object   v4
+	124     (00000200) goto                 +2h
+	1f4:1ff
+	(Lorg/json/JSONException; -> 202 fetch-BB@0x202)
+
+fetch-BB@0x202 : [ fetch-BB@0x204 ]
+	125     (00000202) move-object          v4, v10
+
+fetch-BB@0x204 : [ fetch-BB@0x208 fetch-BB@0x21e ]
+	126     (00000204) if-eqz               v4, +00dh
+
+fetch-BB@0x208 : [ fetch-BB@0x21e ]
+	127     (00000208) new-instance         v5, Lorg/json/JSONObject;
+	128     (0000020c) invoke-virtual       v4, Lorg/json/JSONObject;->toString()Ljava/lang/String;
+	129     (00000212) move-result-object   v4
+	130     (00000214) invoke-direct        v5, v4, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+	131     (0000021a) iput-object          v5, v3, Ln6/e;->a Lorg/json/JSONObject;
+	208:21d
+	(Lorg/json/JSONException; -> 21e fetch-BB@0x21e)
+
+fetch-BB@0x21e : [ fetch-BB@0x22e ]
+	132     (0000021e) const-string         v4, "experimentDescriptions"
+	133     (00000222) invoke-virtual       v1, v4, Lorg/json/JSONObject;->getJSONArray(Ljava/lang/String;)Lorg/json/JSONArray;
+	134     (00000228) move-result-object   v4
+	135     (0000022a) goto                 +2h
+	21e:229
+	(Lorg/json/JSONException; -> 22c fetch-BB@0x22c)
+
+fetch-BB@0x22c : [ fetch-BB@0x22e ]
+	136     (0000022c) move-object          v4, v10
+
+fetch-BB@0x22e : [ fetch-BB@0x232 fetch-BB@0x248 ]
+	137     (0000022e) if-eqz               v4, +00dh
+
+fetch-BB@0x232 : [ fetch-BB@0x248 ]
+	138     (00000232) new-instance         v5, Lorg/json/JSONArray;
+	139     (00000236) invoke-virtual       v4, Lorg/json/JSONArray;->toString()Ljava/lang/String;
+	140     (0000023c) move-result-object   v4
+	141     (0000023e) invoke-direct        v5, v4, Lorg/json/JSONArray;-><init>(Ljava/lang/String;)V
+	142     (00000244) iput-object          v5, v3, Ln6/e;->c Lorg/json/JSONArray;
+	232:247
+	(Lorg/json/JSONException; -> 248 fetch-BB@0x248)
+
+fetch-BB@0x248 : [ fetch-BB@0x258 ]
+	143     (00000248) const-string         v4, "personalizationMetadata"
+	144     (0000024c) invoke-virtual       v1, v4, Lorg/json/JSONObject;->getJSONObject(Ljava/lang/String;)Lorg/json/JSONObject;
+	145     (00000252) move-result-object   v4
+	146     (00000254) goto                 +2h
+	248:253
+	(Lorg/json/JSONException; -> 256 fetch-BB@0x256)
+
+fetch-BB@0x256 : [ fetch-BB@0x258 ]
+	147     (00000256) move-object          v4, v10
+
+fetch-BB@0x258 : [ fetch-BB@0x25c fetch-BB@0x272 ]
+	148     (00000258) if-eqz               v4, +00dh
+
+fetch-BB@0x25c : [ fetch-BB@0x272 ]
+	149     (0000025c) new-instance         v5, Lorg/json/JSONObject;
+	150     (00000260) invoke-virtual       v4, Lorg/json/JSONObject;->toString()Ljava/lang/String;
+	151     (00000266) move-result-object   v4
+	152     (00000268) invoke-direct        v5, v4, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+	153     (0000026e) iput-object          v5, v3, Ln6/e;->d Lorg/json/JSONObject;
+	25c:271
+	(Lorg/json/JSONException; -> 272 fetch-BB@0x272)
+
+fetch-BB@0x272 : [ fetch-BB@0x27e fetch-BB@0x28c ]
+	154     (00000272) invoke-virtual       v1, v2, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
+	155     (00000278) move-result          v4
+	156     (0000027a) if-eqz               v4, +009h
+	272:29d
+	(Lorg/json/JSONException; -> 288 fetch-BB@0x288)
+
+fetch-BB@0x27e : [ fetch-BB@0x28e ]
+	157     (0000027e) invoke-virtual       v1, v2, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
+	158     (00000284) move-result-object   v2
+	159     (00000286) goto                 +4h
+	272:29d
+	(Lorg/json/JSONException; -> 288 fetch-BB@0x288)
+
+fetch-BB@0x288 : [ fetch-BB@0x33e ]
+	160     (00000288) move-exception       v0
+	161     (0000028a) goto                 +5ah
+	272:29d
+	(Lorg/json/JSONException; -> 288 fetch-BB@0x288)
+
+fetch-BB@0x28c : [ fetch-BB@0x28e ]
+	162     (0000028c) move-object          v2, v10
+	272:29d
+	(Lorg/json/JSONException; -> 288 fetch-BB@0x288)
+
+fetch-BB@0x28e : [ fetch-BB@0x292 fetch-BB@0x29e ]
+	163     (0000028e) if-eqz               v2, +008h
+	272:29d
+	(Lorg/json/JSONException; -> 288 fetch-BB@0x288)
+
+fetch-BB@0x292 : [ fetch-BB@0x29e ]
+	164     (00000292) invoke-static        v2, Ljava/lang/Long;->parseLong(Ljava/lang/String;)J
+	165     (00000298) move-result-wide     v4
+	166     (0000029a) iput-wide            v4, v3, Ln6/e;->e J
+	272:29d
+	(Lorg/json/JSONException; -> 288 fetch-BB@0x288)
+
+fetch-BB@0x29e : [ fetch-BB@0x2ae ]
+	167     (0000029e) const-string         v2, "rolloutMetadata"
+	168     (000002a2) invoke-virtual       v1, v2, Lorg/json/JSONObject;->getJSONArray(Ljava/lang/String;)Lorg/json/JSONArray;
+	169     (000002a8) move-result-object   v2
+	170     (000002aa) goto                 +2h
+	29e:2a9
+	(Lorg/json/JSONException; -> 2ac fetch-BB@0x2ac)
+
+fetch-BB@0x2ac : [ fetch-BB@0x2ae ]
+	171     (000002ac) move-object          v2, v10
+
+fetch-BB@0x2ae : [ fetch-BB@0x2b2 fetch-BB@0x2c8 ]
+	172     (000002ae) if-eqz               v2, +00dh
+
+fetch-BB@0x2b2 : [ fetch-BB@0x2c8 ]
+	173     (000002b2) new-instance         v4, Lorg/json/JSONArray;
+	174     (000002b6) invoke-virtual       v2, Lorg/json/JSONArray;->toString()Ljava/lang/String;
+	175     (000002bc) move-result-object   v2
+	176     (000002be) invoke-direct        v4, v2, Lorg/json/JSONArray;-><init>(Ljava/lang/String;)V
+	177     (000002c4) iput-object          v4, v3, Ln6/e;->f Lorg/json/JSONArray;
+	2b2:2c7
+	(Lorg/json/JSONException; -> 2c8 fetch-BB@0x2c8)
+
+fetch-BB@0x2c8 : [ fetch-BB@0x304 ]
+	178     (000002c8) new-instance         v2, Ln6/f;
+	179     (000002cc) iget-object          v4, v3, Ln6/e;->a Lorg/json/JSONObject;
+	180     (000002d0) iget-object          v5, v3, Ln6/e;->b Ljava/util/Date;
+	181     (000002d4) iget-object          v6, v3, Ln6/e;->c Lorg/json/JSONArray;
+	182     (000002d8) iget-object          v7, v3, Ln6/e;->d Lorg/json/JSONObject;
+	183     (000002dc) iget-wide            v11, v3, Ln6/e;->e J
+	184     (000002e0) iget-object          v3, v3, Ln6/e;->f Lorg/json/JSONArray;
+	185     (000002e4) move-object          v14, v2
+	186     (000002e6) move-object/from16   v21, v3
+	187     (000002ea) move-object          v15, v4
+	188     (000002ec) move-object/from16   v16, v5
+	189     (000002f0) move-object/from16   v17, v6
+	190     (000002f4) move-object/from16   v18, v7
+	191     (000002f8) move-wide/from16     v19, v11
+	192     (000002fc) invoke-direct/range  v14 ... v21, Ln6/f;-><init>(Lorg/json/JSONObject; Ljava/util/Date; Lorg/json/JSONArray; Lorg/json/JSONObject; J Lorg/json/JSONArray;)V
+	193     (00000302) move-object          v2, v14
+	2c8:301
+	(Lorg/json/JSONException; -> 288 fetch-BB@0x288)
+
+fetch-BB@0x304 : [ fetch-BB@0x322 ]
+	194     (00000304) const-string         v3, "state"
+	195     (00000308) invoke-virtual       v1, v3, Lorg/json/JSONObject;->get(Ljava/lang/String;)Ljava/lang/Object;
+	196     (0000030e) move-result-object   v1
+	197     (00000310) const-string         v3, "NO_CHANGE"
+	198     (00000314) invoke-virtual       v1, v3, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+	199     (0000031a) move-result          v1
+	200     (0000031c) xor-int/2addr        v1, v8
+	201     (0000031e) goto                 +2h
+	304:31b
+	(Lorg/json/JSONException; -> 320 fetch-BB@0x320)
+
+fetch-BB@0x320 : [ fetch-BB@0x322 ]
+	202     (00000320) move                 v1, v8
+
+fetch-BB@0x322 : [ fetch-BB@0x326 fetch-BB@0x332 ]
+	203     (00000322) if-nez               v1, +008h
+
+fetch-BB@0x326 : 
+	204     (00000326) new-instance         v0, Ln6/h;
+	205     (0000032a) invoke-direct        v0, v8, v2, v10, Ln6/h;-><init>(I Ln6/f; Ljava/lang/String;)V
+	206     (00000330) return-object        v0
+
+fetch-BB@0x332 : 
+	207     (00000332) new-instance         v1, Ln6/h;
+	208     (00000336) invoke-direct        v1, v9, v2, v0, Ln6/h;-><init>(I Ln6/f; Ljava/lang/String;)V
+	209     (0000033c) return-object        v1
+
+fetch-BB@0x33e : 
+	210     (0000033e) new-instance         v1, Lm6/c;
+	211     (00000342) const-string         v2, "Fetch failed: fetch response could not be parsed."
+	212     (00000346) invoke-direct        v1, v2, v0, Lq4/h;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	213     (0000034c) throw                v1
+
+fetch-BB@0x34e : [ fetch-BB@0x37e ]
+	214     (0000034e) move-exception       v0
+	215     (00000350) goto                 +17h
+
+fetch-BB@0x352 : [ fetch-BB@0x36e ]
+	216     (00000352) move-exception       v0
+	217     (00000354) goto                 +dh
+
+fetch-BB@0x356 : [ fetch-BB@0x36e ]
+	218     (00000356) move-exception       v0
+	219     (00000358) goto                 +bh
+
+fetch-BB@0x35a : 
+	220     (0000035a) new-instance         v1, Lm6/f;
+	221     (0000035e) invoke-virtual       v14, Ljava/net/HttpURLConnection;->getResponseMessage()Ljava/lang/String;
+	222     (00000364) move-result-object   v2
+	223     (00000366) invoke-direct        v1, v0, v2, Lm6/f;-><init>(I Ljava/lang/String;)V
+	224     (0000036c) throw                v1
+	35a:36d
+	(Ljava/io/IOException; -> 356 fetch-BB@0x356)
+	(Lorg/json/JSONException; -> 352 fetch-BB@0x352)
+	(Ljava/lang/Throwable; -> 34e fetch-BB@0x34e)
+
+fetch-BB@0x36e : 
+	225     (0000036e) new-instance         v1, Lm6/c;
+	226     (00000372) const-string         v2, "The client had an error while calling the backend!"
+	227     (00000376) invoke-direct        v1, v2, v0, Lq4/h;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	228     (0000037c) throw                v1
+	36e:37d
+	(Ljava/lang/Throwable; -> 34e fetch-BB@0x34e)
+
+fetch-BB@0x37e : [ fetch-BB@0x384 ]
+	229     (0000037e) invoke-virtual       v14, Ljava/net/HttpURLConnection;->disconnect()V
+
+fetch-BB@0x384 : [ fetch-BB@0x392 ]
+	230     (00000384) invoke-virtual       v14, Ljava/net/URLConnection;->getInputStream()Ljava/io/InputStream;
+	231     (0000038a) move-result-object   v1
+	232     (0000038c) invoke-virtual       v1, Ljava/io/InputStream;->close()V
+	384:391
+	(Ljava/io/IOException; -> 392 fetch-BB@0x392)
+
+fetch-BB@0x392 : 
+	233     (00000392) throw                v0
+

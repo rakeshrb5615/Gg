@@ -1,0 +1,43 @@
+# Lcom/google/android/gms/common/api/internal/BackgroundDetector;->initialize(Landroid/app/Application;)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:android.app.Application
+#
+# - return:void
+
+initialize-BB@0x0 : [ initialize-BB@0x6 ]
+	0       (00000000) sget-object          v0, Lcom/google/android/gms/common/api/internal/BackgroundDetector;->zza Lcom/google/android/gms/common/api/internal/BackgroundDetector;
+	1       (00000004) monitor-enter        v0
+
+initialize-BB@0x6 : [ initialize-BB@0xe initialize-BB@0x26 ]
+	2       (00000006) iget-boolean         v1, v0, Lcom/google/android/gms/common/api/internal/BackgroundDetector;->zze Z
+	3       (0000000a) if-nez               v1, +00eh
+	6:2b
+	(Ljava/lang/Throwable; -> 22 initialize-BB@0x22)
+
+initialize-BB@0xe : [ initialize-BB@0x26 ]
+	4       (0000000e) invoke-virtual       v2, v0, Landroid/app/Application;->registerActivityLifecycleCallbacks(Landroid/app/Application$ActivityLifecycleCallbacks;)V
+	5       (00000014) invoke-virtual       v2, v0, Landroid/app/Application;->registerComponentCallbacks(Landroid/content/ComponentCallbacks;)V
+	6       (0000001a) const/4              v2, 1
+	7       (0000001c) iput-boolean         v2, v0, Lcom/google/android/gms/common/api/internal/BackgroundDetector;->zze Z
+	8       (00000020) goto                 +3h
+	6:2b
+	(Ljava/lang/Throwable; -> 22 initialize-BB@0x22)
+
+initialize-BB@0x22 : [ initialize-BB@0x2a ]
+	9       (00000022) move-exception       v2
+	10      (00000024) goto                 +3h
+	6:2b
+	(Ljava/lang/Throwable; -> 22 initialize-BB@0x22)
+
+initialize-BB@0x26 : 
+	11      (00000026) monitor-exit         v0
+	12      (00000028) return-void          
+	6:2b
+	(Ljava/lang/Throwable; -> 22 initialize-BB@0x22)
+
+initialize-BB@0x2a : 
+	13      (0000002a) monitor-exit         v0
+	14      (0000002c) throw                v2
+

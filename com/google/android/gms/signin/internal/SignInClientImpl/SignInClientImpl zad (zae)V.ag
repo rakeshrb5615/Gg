@@ -1,0 +1,86 @@
+# Lcom/google/android/gms/signin/internal/SignInClientImpl;->zad(Lcom/google/android/gms/signin/internal/zae;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v7
+# - v8:com.google.android.gms.signin.internal.zae
+#
+# - return:void
+
+zad-BB@0x0 : [ zad-BB@0xe ]
+	0       (00000000) const-string         v0, "Expecting a valid ISignInCallbacks"
+	1       (00000004) invoke-static        v8, v0, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	2       (0000000a) const/4              v0, 1
+	3       (0000000c) const/4              v1, 0
+
+zad-BB@0xe : [ zad-BB@0x2e zad-BB@0x4c ]
+	4       (0000000e) iget-object          v2, v7, Lcom/google/android/gms/signin/internal/SignInClientImpl;->zac Lcom/google/android/gms/common/internal/ClientSettings;
+	5       (00000012) invoke-virtual       v2, Lcom/google/android/gms/common/internal/ClientSettings;->getAccountOrDefault()Landroid/accounts/Account;
+	6       (00000018) move-result-object   v2
+	7       (0000001a) const-string         v3, "<<default account>>"
+	8       (0000001e) iget-object          v4, v2, Landroid/accounts/Account;->name Ljava/lang/String;
+	9       (00000022) invoke-virtual       v3, v4, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	10      (00000028) move-result          v3
+	11      (0000002a) if-eqz               v3, +011h
+	e:8b
+	(Landroid/os/RemoteException; -> 48 zad-BB@0x48)
+
+zad-BB@0x2e : [ zad-BB@0x4e ]
+	12      (0000002e) invoke-virtual       v7, Lcom/google/android/gms/common/internal/BaseGmsClient;->getContext()Landroid/content/Context;
+	13      (00000034) move-result-object   v3
+	14      (00000036) invoke-static        v3, Lcom/google/android/gms/auth/api/signin/internal/Storage;->getInstance(Landroid/content/Context;)Lcom/google/android/gms/auth/api/signin/internal/Storage;
+	15      (0000003c) move-result-object   v3
+	16      (0000003e) invoke-virtual       v3, Lcom/google/android/gms/auth/api/signin/internal/Storage;->getSavedDefaultGoogleSignInAccount()Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;
+	17      (00000044) move-result-object   v3
+	18      (00000046) goto                 +4h
+	e:8b
+	(Landroid/os/RemoteException; -> 48 zad-BB@0x48)
+
+zad-BB@0x48 : [ zad-BB@0x8e ]
+	19      (00000048) move-exception       v2
+	20      (0000004a) goto                 +22h
+	e:8b
+	(Landroid/os/RemoteException; -> 48 zad-BB@0x48)
+
+zad-BB@0x4c : [ zad-BB@0x4e ]
+	21      (0000004c) move-object          v3, v1
+	e:8b
+	(Landroid/os/RemoteException; -> 48 zad-BB@0x48)
+
+zad-BB@0x4e : 
+	22      (0000004e) new-instance         v4, Lcom/google/android/gms/common/internal/zat;
+	23      (00000052) iget-object          v5, v7, Lcom/google/android/gms/signin/internal/SignInClientImpl;->zae Ljava/lang/Integer;
+	24      (00000056) invoke-static        v5, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;
+	25      (0000005c) move-result-object   v5
+	26      (0000005e) check-cast           v5, Ljava/lang/Integer;
+	27      (00000062) invoke-virtual       v5, Ljava/lang/Integer;->intValue()I
+	28      (00000068) move-result          v5
+	29      (0000006a) invoke-direct        v4, v2, v5, v3, Lcom/google/android/gms/common/internal/zat;-><init>(Landroid/accounts/Account; I Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;)V
+	30      (00000070) invoke-virtual       v7, Lcom/google/android/gms/common/internal/BaseGmsClient;->getService()Landroid/os/IInterface;
+	31      (00000076) move-result-object   v2
+	32      (00000078) check-cast           v2, Lcom/google/android/gms/signin/internal/zaf;
+	33      (0000007c) new-instance         v3, Lcom/google/android/gms/signin/internal/zai;
+	34      (00000080) invoke-direct        v3, v0, v4, Lcom/google/android/gms/signin/internal/zai;-><init>(I Lcom/google/android/gms/common/internal/zat;)V
+	35      (00000086) invoke-virtual       v2, v3, v8, Lcom/google/android/gms/signin/internal/zaf;->zag(Lcom/google/android/gms/signin/internal/zai; Lcom/google/android/gms/signin/internal/zae;)V
+	36      (0000008c) return-void          
+
+zad-BB@0x8e : [ zad-BB@0x9c ]
+	37      (0000008e) const-string         v3, "Remote service probably died when signIn is called"
+	38      (00000092) const-string         v4, "SignInClientImpl"
+	39      (00000096) invoke-static        v4, v3, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+
+zad-BB@0x9c : 
+	40      (0000009c) new-instance         v3, Lcom/google/android/gms/signin/internal/zak;
+	41      (000000a0) new-instance         v5, Lcom/google/android/gms/common/ConnectionResult;
+	42      (000000a4) const/16             v6, 8
+	43      (000000a8) invoke-direct        v5, v6, v1, Lcom/google/android/gms/common/ConnectionResult;-><init>(I Landroid/app/PendingIntent;)V
+	44      (000000ae) invoke-direct        v3, v0, v5, v1, Lcom/google/android/gms/signin/internal/zak;-><init>(I Lcom/google/android/gms/common/ConnectionResult; Lcom/google/android/gms/common/internal/zav;)V
+	45      (000000b4) invoke-interface     v8, v3, Lcom/google/android/gms/signin/internal/zae;->zab(Lcom/google/android/gms/signin/internal/zak;)V
+	46      (000000ba) return-void          
+	9c:b9
+	(Landroid/os/RemoteException; -> bc zad-BB@0xbc)
+
+zad-BB@0xbc : 
+	47      (000000bc) const-string         v8, "ISignInCallbacks#onSignInComplete should be executed from the same process, unexpected RemoteException."
+	48      (000000c0) invoke-static        v4, v8, v2, Landroid/util/Log;->wtf(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+	49      (000000c6) return-void          
+

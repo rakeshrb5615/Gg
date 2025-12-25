@@ -1,0 +1,36 @@
+# Lcom/google/android/gms/common/stats/ConnectionTracker;->zze(Landroid/content/Context; Landroid/content/Intent; Landroid/content/ServiceConnection; I Ljava/util/concurrent/Executor;)Z [access_flags=private static final]
+#
+# Parameters:
+# - local registers: v0...v0
+# - v1:android.content.Context
+# - v2:android.content.Intent
+# - v3:android.content.ServiceConnection
+# - v4:int
+# - v5:java.util.concurrent.Executor
+#
+# - return:boolean
+
+zze-BB@0x0 : [ zze-BB@0x4 zze-BB@0x6 ]
+	0       (00000000) if-nez               v5, +003h
+
+zze-BB@0x4 : [ zze-BB@0x6 ]
+	1       (00000004) const/4              v5, 0
+
+zze-BB@0x6 : [ zze-BB@0x12 zze-BB@0x20 ]
+	2       (00000006) invoke-static        Lcom/google/android/gms/common/util/PlatformVersion;->isAtLeastQ()Z
+	3       (0000000c) move-result          v0
+	4       (0000000e) if-eqz               v0, +009h
+
+zze-BB@0x12 : [ zze-BB@0x16 zze-BB@0x20 ]
+	5       (00000012) if-eqz               v5, +007h
+
+zze-BB@0x16 : 
+	6       (00000016) invoke-virtual       v1, v2, v4, v5, v3, Landroid/content/Context;->bindService(Landroid/content/Intent; I Ljava/util/concurrent/Executor; Landroid/content/ServiceConnection;)Z
+	7       (0000001c) move-result          v1
+	8       (0000001e) return               v1
+
+zze-BB@0x20 : 
+	9       (00000020) invoke-virtual       v1, v2, v3, v4, Landroid/content/Context;->bindService(Landroid/content/Intent; Landroid/content/ServiceConnection; I)Z
+	10      (00000026) move-result          v1
+	11      (00000028) return               v1
+

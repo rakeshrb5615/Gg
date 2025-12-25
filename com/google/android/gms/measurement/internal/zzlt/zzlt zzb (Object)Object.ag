@@ -1,0 +1,104 @@
+# Lcom/google/android/gms/measurement/internal/zzlt;->zzb(Ljava/lang/Object;)Ljava/lang/Object; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:java.lang.Object
+#
+# - return:java.lang.Object
+
+zzb-BB@0x0 : [ zzb-BB@0x6 zzb-BB@0x82 ]
+	0       (00000000) const/4              v0, 0
+	1       (00000002) if-eqz               v4, +040h
+
+zzb-BB@0x6 : [ zzb-BB@0x1a ]
+	2       (00000006) new-instance         v1, Ljava/io/ByteArrayOutputStream;
+	3       (0000000a) invoke-direct        v1, Ljava/io/ByteArrayOutputStream;-><init>()V
+	4       (00000010) new-instance         v2, Ljava/io/ObjectOutputStream;
+	5       (00000014) invoke-direct        v2, v1, Ljava/io/ObjectOutputStream;-><init>(Ljava/io/OutputStream;)V
+	6:19
+	(Ljava/lang/Throwable; -> 64 zzb-BB@0x64)
+
+zzb-BB@0x1a : [ zzb-BB@0x42 ]
+	6       (0000001a) invoke-virtual       v2, v4, Ljava/io/ObjectOutputStream;->writeObject(Ljava/lang/Object;)V
+	7       (00000020) invoke-virtual       v2, Ljava/io/ObjectOutputStream;->flush()V
+	8       (00000026) new-instance         v4, Ljava/io/ObjectInputStream;
+	9       (0000002a) new-instance         v3, Ljava/io/ByteArrayInputStream;
+	10      (0000002e) invoke-virtual       v1, Ljava/io/ByteArrayOutputStream;->toByteArray()[B
+	11      (00000034) move-result-object   v1
+	12      (00000036) invoke-direct        v3, v1, Ljava/io/ByteArrayInputStream;-><init>([B)V
+	13      (0000003c) invoke-direct        v4, v3, Ljava/io/ObjectInputStream;-><init>(Ljava/io/InputStream;)V
+	1a:41
+	(Ljava/lang/Throwable; -> 5c zzb-BB@0x5c)
+
+zzb-BB@0x42 : [ zzb-BB@0x4a ]
+	14      (00000042) invoke-virtual       v4, Ljava/io/ObjectInputStream;->readObject()Ljava/lang/Object;
+	15      (00000048) move-result-object   v1
+	42:49
+	(Ljava/lang/Throwable; -> 58 zzb-BB@0x58)
+
+zzb-BB@0x4a : 
+	16      (0000004a) invoke-virtual       v2, Ljava/io/ObjectOutputStream;->close()V
+	17      (00000050) invoke-virtual       v4, Ljava/io/ObjectInputStream;->close()V
+	18      (00000056) return-object        v1
+	4a:81
+	(Ljava/io/IOException; -> 82 zzb-BB@0x82)
+	(Ljava/lang/ClassNotFoundException; -> 82 zzb-BB@0x82)
+
+zzb-BB@0x58 : [ zzb-BB@0x6c ]
+	19      (00000058) move-exception       v1
+	20      (0000005a) goto                 +9h
+	4a:81
+	(Ljava/io/IOException; -> 82 zzb-BB@0x82)
+	(Ljava/lang/ClassNotFoundException; -> 82 zzb-BB@0x82)
+
+zzb-BB@0x5c : [ zzb-BB@0x6c ]
+	21      (0000005c) move-exception       v4
+	22      (0000005e) move-object          v1, v4
+	23      (00000060) move-object          v4, v0
+	24      (00000062) goto                 +5h
+	4a:81
+	(Ljava/io/IOException; -> 82 zzb-BB@0x82)
+	(Ljava/lang/ClassNotFoundException; -> 82 zzb-BB@0x82)
+
+zzb-BB@0x64 : [ zzb-BB@0x6c ]
+	25      (00000064) move-exception       v4
+	26      (00000066) move-object          v1, v4
+	27      (00000068) move-object          v4, v0
+	28      (0000006a) move-object          v2, v4
+	4a:81
+	(Ljava/io/IOException; -> 82 zzb-BB@0x82)
+	(Ljava/lang/ClassNotFoundException; -> 82 zzb-BB@0x82)
+
+zzb-BB@0x6c : [ zzb-BB@0x70 zzb-BB@0x76 ]
+	29      (0000006c) if-eqz               v2, +005h
+	4a:81
+	(Ljava/io/IOException; -> 82 zzb-BB@0x82)
+	(Ljava/lang/ClassNotFoundException; -> 82 zzb-BB@0x82)
+
+zzb-BB@0x70 : [ zzb-BB@0x76 ]
+	30      (00000070) invoke-virtual       v2, Ljava/io/ObjectOutputStream;->close()V
+	4a:81
+	(Ljava/io/IOException; -> 82 zzb-BB@0x82)
+	(Ljava/lang/ClassNotFoundException; -> 82 zzb-BB@0x82)
+
+zzb-BB@0x76 : [ zzb-BB@0x7a zzb-BB@0x80 ]
+	31      (00000076) if-eqz               v4, +005h
+	4a:81
+	(Ljava/io/IOException; -> 82 zzb-BB@0x82)
+	(Ljava/lang/ClassNotFoundException; -> 82 zzb-BB@0x82)
+
+zzb-BB@0x7a : [ zzb-BB@0x80 ]
+	32      (0000007a) invoke-virtual       v4, Ljava/io/ObjectInputStream;->close()V
+	4a:81
+	(Ljava/io/IOException; -> 82 zzb-BB@0x82)
+	(Ljava/lang/ClassNotFoundException; -> 82 zzb-BB@0x82)
+
+zzb-BB@0x80 : 
+	33      (00000080) throw                v1
+	4a:81
+	(Ljava/io/IOException; -> 82 zzb-BB@0x82)
+	(Ljava/lang/ClassNotFoundException; -> 82 zzb-BB@0x82)
+
+zzb-BB@0x82 : 
+	34      (00000082) return-object        v0
+

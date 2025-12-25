@@ -1,0 +1,46 @@
+# Lcom/google/android/gms/common/api/internal/zaad;->zae(I Ljava/lang/String;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:int
+# - v5:java.lang.String
+#
+# - return:void
+
+zae-BB@0x0 : [ zae-BB@0x14 zae-BB@0x20 ]
+	0       (00000000) new-instance         v0, Ljava/lang/StringBuilder;
+	1       (00000004) const-string         v1, "The connection to Google Play services was lost"
+	2       (00000008) invoke-direct        v0, v1, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	3       (0000000e) const/4              v1, 1
+	4       (00000010) if-ne                v4, v1, +008h
+
+zae-BB@0x14 : [ zae-BB@0x30 ]
+	5       (00000014) const-string         v4, " due to service disconnection."
+	6       (00000018) invoke-virtual       v0, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	7       (0000001e) goto                 +9h
+
+zae-BB@0x20 : [ zae-BB@0x26 zae-BB@0x30 ]
+	8       (00000020) const/4              v2, 3
+	9       (00000022) if-ne                v4, v2, +007h
+
+zae-BB@0x26 : [ zae-BB@0x30 ]
+	10      (00000026) const-string         v4, " due to dead object exception."
+	11      (0000002a) invoke-virtual       v0, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+zae-BB@0x30 : [ zae-BB@0x34 zae-BB@0x44 ]
+	12      (00000030) if-eqz               v5, +00ah
+
+zae-BB@0x34 : [ zae-BB@0x44 ]
+	13      (00000034) const-string         v4, " Last reason for disconnect: "
+	14      (00000038) invoke-virtual       v0, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	15      (0000003e) invoke-virtual       v0, v5, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+zae-BB@0x44 : 
+	16      (00000044) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	17      (0000004a) move-result-object   v4
+	18      (0000004c) new-instance         v5, Lcom/google/android/gms/common/api/Status;
+	19      (00000050) const/16             v0, 20
+	20      (00000054) invoke-direct        v5, v0, v4, Lcom/google/android/gms/common/api/Status;-><init>(I Ljava/lang/String;)V
+	21      (0000005a) invoke-direct        v3, v1, v5, Lcom/google/android/gms/common/api/internal/zaad;->zah(Z Lcom/google/android/gms/common/api/Status;)V
+	22      (00000060) return-void          
+

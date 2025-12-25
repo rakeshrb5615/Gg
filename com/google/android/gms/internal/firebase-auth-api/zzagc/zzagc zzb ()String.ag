@@ -1,0 +1,78 @@
+# Lcom/google/android/gms/internal/firebase-auth-api/zzagc;->zzb()Ljava/lang/String; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v4
+#
+# - return:java.lang.String
+
+zzb-BB@0x0 : [ zzb-BB@0x2 ]
+	0       (00000000) const/4              v0, 0
+
+zzb-BB@0x2 : [ zzb-BB@0x1a zzb-BB@0x38 ]
+	1       (00000002) iget-object          v1, v4, Lcom/google/android/gms/internal/firebase-auth-api/zzagc;->zzb Landroid/content/Context;
+	2       (00000006) invoke-virtual       v1, Landroid/content/Context;->getPackageName()Ljava/lang/String;
+	3       (0000000c) move-result-object   v1
+	4       (0000000e) sget                 v2, Landroid/os/Build$VERSION;->SDK_INT I
+	5       (00000012) const/16             v3, 28
+	6       (00000016) if-ge                v2, v3, +011h
+	2:8b
+	(Landroid/content/pm/PackageManager$NameNotFoundException; -> 8e zzb-BB@0x8e)
+
+zzb-BB@0x1a : [ zzb-BB@0x60 ]
+	7       (0000001a) iget-object          v2, v4, Lcom/google/android/gms/internal/firebase-auth-api/zzagc;->zzb Landroid/content/Context;
+	8       (0000001e) invoke-static        v2, Lcom/google/android/gms/common/wrappers/Wrappers;->packageManager(Landroid/content/Context;)Lcom/google/android/gms/common/wrappers/PackageManagerWrapper;
+	9       (00000024) move-result-object   v2
+	10      (00000026) const/16             v3, 64
+	11      (0000002a) invoke-virtual       v2, v1, v3, Lcom/google/android/gms/common/wrappers/PackageManagerWrapper;->getPackageInfo(Ljava/lang/String; I)Landroid/content/pm/PackageInfo;
+	12      (00000030) move-result-object   v2
+	13      (00000032) iget-object          v2, v2, Landroid/content/pm/PackageInfo;->signatures [Landroid/content/pm/Signature;
+	14      (00000036) goto                 +15h
+	2:8b
+	(Landroid/content/pm/PackageManager$NameNotFoundException; -> 8e zzb-BB@0x8e)
+
+zzb-BB@0x38 : [ zzb-BB@0x60 ]
+	15      (00000038) iget-object          v2, v4, Lcom/google/android/gms/internal/firebase-auth-api/zzagc;->zzb Landroid/content/Context;
+	16      (0000003c) invoke-static        v2, Lcom/google/android/gms/common/wrappers/Wrappers;->packageManager(Landroid/content/Context;)Lcom/google/android/gms/common/wrappers/PackageManagerWrapper;
+	17      (00000042) move-result-object   v2
+	18      (00000044) const/high16         v3, 134217728
+	19      (00000048) invoke-virtual       v2, v1, v3, Lcom/google/android/gms/common/wrappers/PackageManagerWrapper;->getPackageInfo(Ljava/lang/String; I)Landroid/content/pm/PackageInfo;
+	20      (0000004e) move-result-object   v2
+	21      (00000050) invoke-static        v2, La5/t;->c(Landroid/content/pm/PackageInfo;)Landroid/content/pm/SigningInfo;
+	22      (00000056) move-result-object   v2
+	23      (00000058) invoke-virtual       v2, Landroid/content/pm/SigningInfo;->getApkContentsSigners()[Landroid/content/pm/Signature;
+	24      (0000005e) move-result-object   v2
+	2:8b
+	(Landroid/content/pm/PackageManager$NameNotFoundException; -> 8e zzb-BB@0x8e)
+
+zzb-BB@0x60 : [ zzb-BB@0x78 zzb-BB@0x7a ]
+	25      (00000060) aget-object          v2, v2, v0
+	26      (00000064) invoke-virtual       v2, Landroid/content/pm/Signature;->toCharsString()Ljava/lang/String;
+	27      (0000006a) move-result-object   v2
+	28      (0000006c) invoke-static        v1, v2, Lcom/google/android/gms/internal/firebase-auth-api/zzagc;->zza(Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	29      (00000072) move-result-object   v1
+	30      (00000074) if-eqz               v1, +003h
+	2:8b
+	(Landroid/content/pm/PackageManager$NameNotFoundException; -> 8e zzb-BB@0x8e)
+
+zzb-BB@0x78 : 
+	31      (00000078) return-object        v1
+	2:8b
+	(Landroid/content/pm/PackageManager$NameNotFoundException; -> 8e zzb-BB@0x8e)
+
+zzb-BB@0x7a : [ zzb-BB@0xa0 ]
+	32      (0000007a) sget-object          v1, Lcom/google/android/gms/internal/firebase-auth-api/zzagc;->zza Lcom/google/android/gms/common/logging/Logger;
+	33      (0000007e) const-string         v2, "Hash generation failed."
+	34      (00000082) new-array            v3, v0, [Ljava/lang/Object;
+	35      (00000086) invoke-virtual       v1, v2, v3, Lcom/google/android/gms/common/logging/Logger;->e(Ljava/lang/String; [Ljava/lang/Object;)V
+	36      (0000008c) goto                 +ah
+
+zzb-BB@0x8e : [ zzb-BB@0xa0 ]
+	37      (0000008e) sget-object          v1, Lcom/google/android/gms/internal/firebase-auth-api/zzagc;->zza Lcom/google/android/gms/common/logging/Logger;
+	38      (00000092) const-string         v2, "Unable to find package to obtain hash."
+	39      (00000096) new-array            v0, v0, [Ljava/lang/Object;
+	40      (0000009a) invoke-virtual       v1, v2, v0, Lcom/google/android/gms/common/logging/Logger;->e(Ljava/lang/String; [Ljava/lang/Object;)V
+
+zzb-BB@0xa0 : 
+	41      (000000a0) const/4              v0, 0
+	42      (000000a2) return-object        v0
+

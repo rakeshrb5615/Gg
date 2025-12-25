@@ -1,0 +1,164 @@
+# Lcom/android/billingclient/api/BillingClientImpl;->zzaX(J)Z [access_flags=private final]
+#
+# Parameters:
+# - local registers: v0...v17
+# - v18:long
+#
+# - return:boolean
+
+zzaX-BB@0x0 : [ zzaX-BB@0x1a ]
+	0       (00000000) move-object/from16   v1, v16
+	1       (00000004) iget-object          v0, v1, Lcom/android/billingclient/api/BillingClientImpl;->zzJ Lcom/google/android/gms/internal/play_billing/zzbl;
+	2       (00000008) invoke-static        v0, Lcom/google/android/gms/internal/play_billing/zzbi;->zzb(Lcom/google/android/gms/internal/play_billing/zzbl;)Lcom/google/android/gms/internal/play_billing/zzbi;
+	3       (0000000e) move-result-object   v2
+	4       (00000010) const/4              v0, 1
+	5       (00000012) const-wide/16        v3, 30000
+	6       (00000016) move                 v5, v0
+	7       (00000018) move-wide            v6, v3
+
+zzaX-BB@0x1a : [ zzaX-BB@0x24 zzaX-BB@0x18a ]
+	8       (0000001a) const/4              v8, 3
+	9       (0000001c) const-string         v9, "BillingClient"
+	10      (00000020) if-gt                v5, v8, +0b5h
+
+zzaX-BB@0x24 : [ zzaX-BB@0x28 ]
+	11      (00000024) const-wide/16        v10, 0
+
+zzaX-BB@0x28 : [ zzaX-BB@0x38 zzaX-BB@0x50 ]
+	12      (00000028) invoke-static        v10, v11, v6, v7, Ljava/lang/Math;->max(J J)J
+	13      (0000002e) move-result-wide     v6
+	14      (00000030) cmp-long             v0, v6, v10
+	15      (00000034) if-gtz               v0, +00eh
+	28:dd
+	(Ljava/lang/Exception; -> 4c zzaX-BB@0x4c)
+
+zzaX-BB@0x38 : 
+	16      (00000038) const-string         v0, "No time remaining for reconnection attempt."
+	17      (0000003c) invoke-static        v9, v0, Lcom/google/android/gms/internal/play_billing/zzc;->zzn(Ljava/lang/String; Ljava/lang/String;)V
+	18      (00000042) invoke-direct        v1, Lcom/android/billingclient/api/BillingClientImpl;->zzaY()Z
+	19      (00000048) move-result          v0
+	20      (0000004a) return               v0
+	28:dd
+	(Ljava/lang/Exception; -> 4c zzaX-BB@0x4c)
+
+zzaX-BB@0x4c : [ zzaX-BB@0xe0 ]
+	21      (0000004c) move-exception       v0
+	22      (0000004e) goto                 +49h
+	28:dd
+	(Ljava/lang/Exception; -> 4c zzaX-BB@0x4c)
+
+zzaX-BB@0x50 : [ zzaX-BB@0x74 zzaX-BB@0xae ]
+	23      (00000050) invoke-direct        v1, v5, Lcom/android/billingclient/api/BillingClientImpl;->zzar(I)Lcom/google/android/gms/internal/play_billing/zzcz;
+	24      (00000056) move-result-object   v0
+	25      (00000058) sget-object          v12, Ljava/util/concurrent/TimeUnit;->MILLISECONDS Ljava/util/concurrent/TimeUnit;
+	26      (0000005c) invoke-interface     v0, v6, v7, v12, Ljava/util/concurrent/Future;->get(J Ljava/util/concurrent/TimeUnit;)Ljava/lang/Object;
+	27      (00000062) move-result-object   v0
+	28      (00000064) check-cast           v0, Lcom/android/billingclient/api/BillingResult;
+	29      (00000068) invoke-virtual       v0, Lcom/android/billingclient/api/BillingResult;->getResponseCode()I
+	30      (0000006e) move-result          v6
+	31      (00000070) if-nez               v6, +01fh
+	28:dd
+	(Ljava/lang/Exception; -> 4c zzaX-BB@0x4c)
+
+zzaX-BB@0x74 : 
+	32      (00000074) invoke-virtual       v0, Lcom/android/billingclient/api/BillingResult;->getResponseCode()I
+	33      (0000007a) move-result          v0
+	34      (0000007c) new-instance         v6, Ljava/lang/StringBuilder;
+	35      (00000080) invoke-direct        v6, Ljava/lang/StringBuilder;-><init>()V
+	36      (00000086) const-string         v7, "Reconnection succeeded with result: "
+	37      (0000008a) invoke-virtual       v6, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	38      (00000090) invoke-virtual       v6, v0, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	39      (00000096) invoke-virtual       v6, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	40      (0000009c) move-result-object   v0
+	41      (0000009e) invoke-static        v9, v0, Lcom/google/android/gms/internal/play_billing/zzc;->zzm(Ljava/lang/String; Ljava/lang/String;)V
+	42      (000000a4) invoke-direct        v1, Lcom/android/billingclient/api/BillingClientImpl;->zzaY()Z
+	43      (000000aa) move-result          v0
+	44      (000000ac) return               v0
+	28:dd
+	(Ljava/lang/Exception; -> 4c zzaX-BB@0x4c)
+
+zzaX-BB@0xae : [ zzaX-BB@0x100 ]
+	45      (000000ae) invoke-virtual       v0, Lcom/android/billingclient/api/BillingResult;->getResponseCode()I
+	46      (000000b4) move-result          v0
+	47      (000000b6) new-instance         v6, Ljava/lang/StringBuilder;
+	48      (000000ba) invoke-direct        v6, Ljava/lang/StringBuilder;-><init>()V
+	49      (000000c0) const-string         v7, "Reconnection failed with result: "
+	50      (000000c4) invoke-virtual       v6, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	51      (000000ca) invoke-virtual       v6, v0, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	52      (000000d0) invoke-virtual       v6, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	53      (000000d6) move-result-object   v0
+	54      (000000d8) invoke-static        v9, v0, Lcom/google/android/gms/internal/play_billing/zzc;->zzn(Ljava/lang/String; Ljava/lang/String;)V
+	55      (000000de) goto                 +11h
+
+zzaX-BB@0xe0 : [ zzaX-BB@0xe8 zzaX-BB@0xf6 ]
+	56      (000000e0) instance-of          v6, v0, Ljava/lang/InterruptedException;
+	57      (000000e4) if-eqz               v6, +009h
+
+zzaX-BB@0xe8 : [ zzaX-BB@0xf6 ]
+	58      (000000e8) invoke-static        Ljava/lang/Thread;->currentThread()Ljava/lang/Thread;
+	59      (000000ee) move-result-object   v6
+	60      (000000f0) invoke-virtual       v6, Ljava/lang/Thread;->interrupt()V
+
+zzaX-BB@0xf6 : [ zzaX-BB@0x100 ]
+	61      (000000f6) const-string         v6, "Error during reconnection attempt: "
+	62      (000000fa) invoke-static        v9, v6, v0, Lcom/google/android/gms/internal/play_billing/zzc;->zzo(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)V
+
+zzaX-BB@0x100 : [ zzaX-BB@0x132 zzaX-BB@0x146 ]
+	63      (00000100) sget-object          v0, Ljava/util/concurrent/TimeUnit;->MILLISECONDS Ljava/util/concurrent/TimeUnit;
+	64      (00000104) invoke-virtual       v2, v0, Lcom/google/android/gms/internal/play_billing/zzbi;->zza(Ljava/util/concurrent/TimeUnit;)J
+	65      (0000010a) move-result-wide     v6
+	66      (0000010c) sub-long             v6, v3, v6
+	67      (00000110) add-int/lit8         v12, v5, -1
+	68      (00000114) int-to-double        v12, v12
+	69      (00000116) const-wide/high16    v14, 4611686018427387904
+	70      (0000011a) invoke-static        v14, v15, v12, v13, Ljava/lang/Math;->pow(D D)D
+	71      (00000120) move-result-wide     v12
+	72      (00000122) double-to-long       v12, v12
+	73      (00000124) const-wide/16        v14, 1000
+	74      (00000128) mul-long/2addr       v12, v14
+	75      (0000012a) cmp-long             v14, v6, v12
+	76      (0000012e) if-gez               v14, +00ch
+
+zzaX-BB@0x132 : 
+	77      (00000132) const-string         v0, "Reconnection failed due to timeout limit reached."
+	78      (00000136) invoke-static        v9, v0, Lcom/google/android/gms/internal/play_billing/zzc;->zzn(Ljava/lang/String; Ljava/lang/String;)V
+	79      (0000013c) invoke-direct        v1, Lcom/android/billingclient/api/BillingClientImpl;->zzaY()Z
+	80      (00000142) move-result          v0
+	81      (00000144) return               v0
+
+zzaX-BB@0x146 : [ zzaX-BB@0x14a zzaX-BB@0x182 ]
+	82      (00000146) if-ge                v5, v8, +01eh
+
+zzaX-BB@0x14a : [ zzaX-BB@0x152 zzaX-BB@0x182 ]
+	83      (0000014a) cmp-long             v8, v12, v10
+	84      (0000014e) if-lez               v8, +01ah
+
+zzaX-BB@0x152 : [ zzaX-BB@0x182 ]
+	85      (00000152) invoke-static        v12, v13, Ljava/lang/Thread;->sleep(J)V
+	86      (00000158) invoke-virtual       v2, v0, Lcom/google/android/gms/internal/play_billing/zzbi;->zza(Ljava/util/concurrent/TimeUnit;)J
+	87      (0000015e) move-result-wide     v6
+	88      (00000160) sub-long             v6, v3, v6
+	89      (00000164) goto                 +fh
+	152:15f
+	(Ljava/lang/InterruptedException; -> 166 zzaX-BB@0x166)
+
+zzaX-BB@0x166 : [ zzaX-BB@0x18a ]
+	90      (00000166) move-exception       v0
+	91      (00000168) invoke-static        Ljava/lang/Thread;->currentThread()Ljava/lang/Thread;
+	92      (0000016e) move-result-object   v2
+	93      (00000170) invoke-virtual       v2, Ljava/lang/Thread;->interrupt()V
+	94      (00000176) const-string         v2, "Error sleeping during reconnection attempt: "
+	95      (0000017a) invoke-static        v9, v2, v0, Lcom/google/android/gms/internal/play_billing/zzc;->zzo(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)V
+	96      (00000180) goto                 +5h
+
+zzaX-BB@0x182 : [ zzaX-BB@0x1a ]
+	97      (00000182) add-int/lit8         v5, v5, 1
+	98      (00000186) goto/16              -0b6h
+
+zzaX-BB@0x18a : 
+	99      (0000018a) const-string         v0, "Max retries reached."
+	100     (0000018e) invoke-static        v9, v0, Lcom/google/android/gms/internal/play_billing/zzc;->zzn(Ljava/lang/String; Ljava/lang/String;)V
+	101     (00000194) invoke-direct        v1, Lcom/android/billingclient/api/BillingClientImpl;->zzaY()Z
+	102     (0000019a) move-result          v0
+	103     (0000019c) return               v0
+

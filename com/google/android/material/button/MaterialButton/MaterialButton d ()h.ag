@@ -1,0 +1,118 @@
+# Lcom/google/android/material/button/MaterialButton;->d()Lf1/h; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v8
+#
+# - return:f1.h
+
+d-BB@0x0 : [ d-BB@0x20 d-BB@0x32 ]
+	0       (00000000) invoke-virtual       v8, Landroid/view/View;->getContext()Landroid/content/Context;
+	1       (00000006) move-result-object   v0
+	2       (00000008) const                v1, 2130969561
+	3       (0000000e) invoke-static        v0, v1, Lc4/b;->T(Landroid/content/Context; I)Landroid/util/TypedValue;
+	4       (00000014) move-result-object   v1
+	5       (00000016) const/4              v2, 0
+	6       (00000018) sget-object          v3, Lc3/a;->s [I
+	7       (0000001c) if-nez               v1, +00bh
+
+d-BB@0x20 : [ d-BB@0x3e ]
+	8       (00000020) const/4              v1, 0
+	9       (00000022) const                v4, 2132017476
+	10      (00000028) invoke-virtual       v0, v1, v3, v2, v4, Landroid/content/Context;->obtainStyledAttributes(Landroid/util/AttributeSet; [I I I)Landroid/content/res/TypedArray;
+	11      (0000002e) move-result-object   v0
+	12      (00000030) goto                 +7h
+
+d-BB@0x32 : [ d-BB@0x3e ]
+	13      (00000032) iget                 v1, v1, Landroid/util/TypedValue;->resourceId I
+	14      (00000036) invoke-virtual       v0, v1, v3, Landroid/content/Context;->obtainStyledAttributes(I [I)Landroid/content/res/TypedArray;
+	15      (0000003c) move-result-object   v0
+
+d-BB@0x3e : [ d-BB@0x4c ]
+	16      (0000003e) new-instance         v1, Lf1/h;
+	17      (00000042) invoke-direct        v1, Lf1/h;-><init>()V
+	18      (00000048) const/4              v3, 1
+	19      (0000004a) const/4              v4, 1
+
+d-BB@0x4c : [ d-BB@0x5c d-BB@0xd6 ]
+	20      (0000004c) invoke-virtual       v0, v4, v3, Landroid/content/res/TypedArray;->getFloat(I F)F
+	21      (00000052) move-result          v4
+	22      (00000054) cmpl-float           v5, v4, v3
+	23      (00000058) if-eqz               v5, +03fh
+	4c:99
+	(Ljava/lang/Throwable; -> d2 d-BB@0xd2)
+
+d-BB@0x5c : [ d-BB@0x6c d-BB@0xc2 ]
+	24      (0000005c) invoke-virtual       v0, v2, v3, Landroid/content/res/TypedArray;->getFloat(I F)F
+	25      (00000062) move-result          v5
+	26      (00000064) cmpl-float           v3, v5, v3
+	27      (00000068) if-eqz               v3, +02dh
+	4c:99
+	(Ljava/lang/Throwable; -> d2 d-BB@0xd2)
+
+d-BB@0x6c : [ d-BB@0x76 d-BB@0xb2 ]
+	28      (0000006c) const/4              v3, 0
+	29      (0000006e) cmpg-float           v6, v4, v3
+	30      (00000072) if-lez               v6, +020h
+	4c:99
+	(Ljava/lang/Throwable; -> d2 d-BB@0xd2)
+
+d-BB@0x76 : [ d-BB@0x90 d-BB@0xa2 ]
+	31      (00000076) float-to-double      v6, v4
+	32      (00000078) invoke-static        v6, v7, Ljava/lang/Math;->sqrt(D)D
+	33      (0000007e) move-result-wide     v6
+	34      (00000080) iput-wide            v6, v1, Lf1/h;->a D
+	35      (00000084) iput-boolean         v2, v1, Lf1/h;->c Z
+	36      (00000088) cmpg-float           v3, v5, v3
+	37      (0000008c) if-ltz               v3, +00bh
+	4c:99
+	(Ljava/lang/Throwable; -> d2 d-BB@0xd2)
+
+d-BB@0x90 : 
+	38      (00000090) float-to-double      v3, v5
+	39      (00000092) iput-wide            v3, v1, Lf1/h;->b D
+	40      (00000096) iput-boolean         v2, v1, Lf1/h;->c Z
+	41      (0000009a) invoke-virtual       v0, Landroid/content/res/TypedArray;->recycle()V
+	42      (000000a0) return-object        v1
+
+d-BB@0xa2 : 
+	43      (000000a2) new-instance         v1, Ljava/lang/IllegalArgumentException;
+	44      (000000a6) const-string         v2, "Damping ratio must be non-negative"
+	45      (000000aa) invoke-direct        v1, v2, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	46      (000000b0) throw                v1
+	a2:e5
+	(Ljava/lang/Throwable; -> d2 d-BB@0xd2)
+
+d-BB@0xb2 : 
+	47      (000000b2) new-instance         v1, Ljava/lang/IllegalArgumentException;
+	48      (000000b6) const-string         v2, "Spring stiffness constant must be positive."
+	49      (000000ba) invoke-direct        v1, v2, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	50      (000000c0) throw                v1
+	a2:e5
+	(Ljava/lang/Throwable; -> d2 d-BB@0xd2)
+
+d-BB@0xc2 : 
+	51      (000000c2) new-instance         v1, Ljava/lang/IllegalArgumentException;
+	52      (000000c6) const-string         v2, "A MaterialSpring style must have a damping value."
+	53      (000000ca) invoke-direct        v1, v2, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	54      (000000d0) throw                v1
+	a2:e5
+	(Ljava/lang/Throwable; -> d2 d-BB@0xd2)
+
+d-BB@0xd2 : [ d-BB@0xe6 ]
+	55      (000000d2) move-exception       v1
+	56      (000000d4) goto                 +9h
+	a2:e5
+	(Ljava/lang/Throwable; -> d2 d-BB@0xd2)
+
+d-BB@0xd6 : 
+	57      (000000d6) new-instance         v1, Ljava/lang/IllegalArgumentException;
+	58      (000000da) const-string         v2, "A MaterialSpring style must have stiffness value."
+	59      (000000de) invoke-direct        v1, v2, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	60      (000000e4) throw                v1
+	a2:e5
+	(Ljava/lang/Throwable; -> d2 d-BB@0xd2)
+
+d-BB@0xe6 : 
+	61      (000000e6) invoke-virtual       v0, Landroid/content/res/TypedArray;->recycle()V
+	62      (000000ec) throw                v1
+

@@ -1,0 +1,66 @@
+# Lcom/google/android/gms/common/api/internal/zabe;->clearDefaultAccountAndReconnect()Lcom/google/android/gms/common/api/PendingResult; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v6
+#
+# - return:com.google.android.gms.common.api.PendingResult
+
+clearDefaultAccountAndReconnect-BB@0x0 : [ clearDefaultAccountAndReconnect-BB@0x1e clearDefaultAccountAndReconnect-BB@0x30 ]
+	0       (00000000) invoke-virtual       v6, Lcom/google/android/gms/common/api/internal/zabe;->isConnected()Z
+	1       (00000006) move-result          v0
+	2       (00000008) const-string         v1, "GoogleApiClient is not connected yet."
+	3       (0000000c) invoke-static        v0, v1, Lcom/google/android/gms/common/internal/Preconditions;->checkState(Z Ljava/lang/Object;)V
+	4       (00000012) iget-object          v0, v6, Lcom/google/android/gms/common/api/internal/zabe;->zaw Ljava/lang/Integer;
+	5       (00000016) const/4              v1, 0
+	6       (00000018) const/4              v2, 1
+	7       (0000001a) if-eqz               v0, +00bh
+
+clearDefaultAccountAndReconnect-BB@0x1e : [ clearDefaultAccountAndReconnect-BB@0x2c clearDefaultAccountAndReconnect-BB@0x2e ]
+	8       (0000001e) invoke-virtual       v0, Ljava/lang/Integer;->intValue()I
+	9       (00000024) move-result          v0
+	10      (00000026) const/4              v3, 2
+	11      (00000028) if-eq                v0, v3, +003h
+
+clearDefaultAccountAndReconnect-BB@0x2c : [ clearDefaultAccountAndReconnect-BB@0x30 ]
+	12      (0000002c) goto                 +2h
+
+clearDefaultAccountAndReconnect-BB@0x2e : [ clearDefaultAccountAndReconnect-BB@0x30 ]
+	13      (0000002e) move                 v2, v1
+
+clearDefaultAccountAndReconnect-BB@0x30 : [ clearDefaultAccountAndReconnect-BB@0x58 clearDefaultAccountAndReconnect-BB@0x60 ]
+	14      (00000030) const-string         v0, "Cannot use clearDefaultAccountAndReconnect with GOOGLE_SIGN_IN_API"
+	15      (00000034) invoke-static        v2, v0, Lcom/google/android/gms/common/internal/Preconditions;->checkState(Z Ljava/lang/Object;)V
+	16      (0000003a) new-instance         v0, Lcom/google/android/gms/common/api/internal/StatusPendingResult;
+	17      (0000003e) invoke-direct        v0, v6, Lcom/google/android/gms/common/api/internal/StatusPendingResult;-><init>(Lcom/google/android/gms/common/api/GoogleApiClient;)V
+	18      (00000044) iget-object          v2, v6, Lcom/google/android/gms/common/api/internal/zabe;->zac Ljava/util/Map;
+	19      (00000048) sget-object          v3, Lcom/google/android/gms/common/internal/service/Common;->CLIENT_KEY Lcom/google/android/gms/common/api/Api$ClientKey;
+	20      (0000004c) invoke-interface     v2, v3, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z
+	21      (00000052) move-result          v2
+	22      (00000054) if-eqz               v2, +006h
+
+clearDefaultAccountAndReconnect-BB@0x58 : 
+	23      (00000058) invoke-direct        v6, v6, v0, v1, Lcom/google/android/gms/common/api/internal/zabe;->zam(Lcom/google/android/gms/common/api/GoogleApiClient; Lcom/google/android/gms/common/api/internal/StatusPendingResult; Z)V
+	24      (0000005e) return-object        v0
+
+clearDefaultAccountAndReconnect-BB@0x60 : 
+	25      (00000060) new-instance         v1, Ljava/util/concurrent/atomic/AtomicReference;
+	26      (00000064) invoke-direct        v1, Ljava/util/concurrent/atomic/AtomicReference;-><init>()V
+	27      (0000006a) new-instance         v2, Lcom/google/android/gms/common/api/internal/zaaz;
+	28      (0000006e) invoke-direct        v2, v6, v1, v0, Lcom/google/android/gms/common/api/internal/zaaz;-><init>(Lcom/google/android/gms/common/api/internal/zabe; Ljava/util/concurrent/atomic/AtomicReference; Lcom/google/android/gms/common/api/internal/StatusPendingResult;)V
+	29      (00000074) new-instance         v3, Lcom/google/android/gms/common/api/internal/zaba;
+	30      (00000078) invoke-direct        v3, v6, v0, Lcom/google/android/gms/common/api/internal/zaba;-><init>(Lcom/google/android/gms/common/api/internal/zabe; Lcom/google/android/gms/common/api/internal/StatusPendingResult;)V
+	31      (0000007e) iget-object          v4, v6, Lcom/google/android/gms/common/api/internal/zabe;->zan Landroid/content/Context;
+	32      (00000082) new-instance         v5, Lcom/google/android/gms/common/api/GoogleApiClient$Builder;
+	33      (00000086) invoke-direct        v5, v4, Lcom/google/android/gms/common/api/GoogleApiClient$Builder;-><init>(Landroid/content/Context;)V
+	34      (0000008c) sget-object          v4, Lcom/google/android/gms/common/internal/service/Common;->API Lcom/google/android/gms/common/api/Api;
+	35      (00000090) invoke-virtual       v5, v4, Lcom/google/android/gms/common/api/GoogleApiClient$Builder;->addApi(Lcom/google/android/gms/common/api/Api;)Lcom/google/android/gms/common/api/GoogleApiClient$Builder;
+	36      (00000096) invoke-virtual       v5, v2, Lcom/google/android/gms/common/api/GoogleApiClient$Builder;->addConnectionCallbacks(Lcom/google/android/gms/common/api/GoogleApiClient$ConnectionCallbacks;)Lcom/google/android/gms/common/api/GoogleApiClient$Builder;
+	37      (0000009c) invoke-virtual       v5, v3, Lcom/google/android/gms/common/api/GoogleApiClient$Builder;->addOnConnectionFailedListener(Lcom/google/android/gms/common/api/GoogleApiClient$OnConnectionFailedListener;)Lcom/google/android/gms/common/api/GoogleApiClient$Builder;
+	38      (000000a2) iget-object          v2, v6, Lcom/google/android/gms/common/api/internal/zabe;->zas Lcom/google/android/gms/common/api/internal/zabc;
+	39      (000000a6) invoke-virtual       v5, v2, Lcom/google/android/gms/common/api/GoogleApiClient$Builder;->setHandler(Landroid/os/Handler;)Lcom/google/android/gms/common/api/GoogleApiClient$Builder;
+	40      (000000ac) invoke-virtual       v5, Lcom/google/android/gms/common/api/GoogleApiClient$Builder;->build()Lcom/google/android/gms/common/api/GoogleApiClient;
+	41      (000000b2) move-result-object   v2
+	42      (000000b4) invoke-virtual       v1, v2, Ljava/util/concurrent/atomic/AtomicReference;->set(Ljava/lang/Object;)V
+	43      (000000ba) invoke-virtual       v2, Lcom/google/android/gms/common/api/GoogleApiClient;->connect()V
+	44      (000000c0) return-object        v0
+

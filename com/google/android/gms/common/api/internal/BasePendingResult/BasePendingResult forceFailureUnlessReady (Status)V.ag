@@ -1,0 +1,45 @@
+# Lcom/google/android/gms/common/api/internal/BasePendingResult;->forceFailureUnlessReady(Lcom/google/android/gms/common/api/Status;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:com.google.android.gms.common.api.Status
+#
+# - return:void
+
+forceFailureUnlessReady-BB@0x0 : [ forceFailureUnlessReady-BB@0x6 ]
+	0       (00000000) iget-object          v0, v2, Lcom/google/android/gms/common/api/internal/BasePendingResult;->zae Ljava/lang/Object;
+	1       (00000004) monitor-enter        v0
+
+forceFailureUnlessReady-BB@0x6 : [ forceFailureUnlessReady-BB@0x12 forceFailureUnlessReady-BB@0x2c ]
+	2       (00000006) invoke-virtual       v2, Lcom/google/android/gms/common/api/internal/BasePendingResult;->isReady()Z
+	3       (0000000c) move-result          v1
+	4       (0000000e) if-nez               v1, +00fh
+	6:31
+	(Ljava/lang/Throwable; -> 28 forceFailureUnlessReady-BB@0x28)
+
+forceFailureUnlessReady-BB@0x12 : [ forceFailureUnlessReady-BB@0x2c ]
+	5       (00000012) invoke-virtual       v2, v3, Lcom/google/android/gms/common/api/internal/BasePendingResult;->createFailedResult(Lcom/google/android/gms/common/api/Status;)Lcom/google/android/gms/common/api/Result;
+	6       (00000018) move-result-object   v3
+	7       (0000001a) invoke-virtual       v2, v3, Lcom/google/android/gms/common/api/internal/BasePendingResult;->setResult(Lcom/google/android/gms/common/api/Result;)V
+	8       (00000020) const/4              v3, 1
+	9       (00000022) iput-boolean         v3, v2, Lcom/google/android/gms/common/api/internal/BasePendingResult;->zan Z
+	10      (00000026) goto                 +3h
+	6:31
+	(Ljava/lang/Throwable; -> 28 forceFailureUnlessReady-BB@0x28)
+
+forceFailureUnlessReady-BB@0x28 : [ forceFailureUnlessReady-BB@0x30 ]
+	11      (00000028) move-exception       v3
+	12      (0000002a) goto                 +3h
+	6:31
+	(Ljava/lang/Throwable; -> 28 forceFailureUnlessReady-BB@0x28)
+
+forceFailureUnlessReady-BB@0x2c : 
+	13      (0000002c) monitor-exit         v0
+	14      (0000002e) return-void          
+	6:31
+	(Ljava/lang/Throwable; -> 28 forceFailureUnlessReady-BB@0x28)
+
+forceFailureUnlessReady-BB@0x30 : 
+	15      (00000030) monitor-exit         v0
+	16      (00000032) throw                v3
+

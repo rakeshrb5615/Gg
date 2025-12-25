@@ -1,0 +1,72 @@
+# Lcom/pairip/licensecheck/LicenseClient;->retryOrThrow(Lcom/pairip/licensecheck/LicenseCheckException; Z)V [access_flags=private]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:com.pairip.licensecheck.LicenseCheckException
+# - v8:boolean
+#
+# - return:void
+
+retryOrThrow-BB@0x0 : [ retryOrThrow-BB@0xe retryOrThrow-BB@0x80 ]
+	0       (00000000) iget                 v0, v6, Lcom/pairip/licensecheck/LicenseClient;->retryNum I
+	1       (00000004) const-string         v1, "LicenseClient"
+	2       (00000008) const/4              v2, 3
+	3       (0000000a) if-ge                v0, v2, +03bh
+
+retryOrThrow-BB@0xe : [ retryOrThrow-BB@0x3e retryOrThrow-BB@0x44 ]
+	4       (0000000e) const/4              v8, 1
+	5       (00000010) add-int/2addr        v0, v8
+	6       (00000012) iput                 v0, v6, Lcom/pairip/licensecheck/LicenseClient;->retryNum I
+	7       (00000016) iget-object          v0, v6, Lcom/pairip/licensecheck/LicenseClient;->delayedTaskExecutor Lcom/pairip/licensecheck/LicenseClient$DelayedTaskExecutor;
+	8       (0000001a) new-instance         v3, Lcom/pairip/licensecheck/LicenseClient$$ExternalSyntheticLambda0;
+	9       (0000001e) invoke-direct        v3, v6, Lcom/pairip/licensecheck/LicenseClient$$ExternalSyntheticLambda0;-><init>(Lcom/pairip/licensecheck/LicenseClient;)V
+	10      (00000024) const-wide/16        v4, 1000
+	11      (00000028) invoke-interface     v0, v3, v4, v5, Lcom/pairip/licensecheck/LicenseClient$DelayedTaskExecutor;->schedule(Ljava/lang/Runnable; J)V
+	12      (0000002e) iget                 v0, v6, Lcom/pairip/licensecheck/LicenseClient;->retryNum I
+	13      (00000032) invoke-static        v0, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+	14      (00000038) move-result-object   v0
+	15      (0000003a) if-nez               v7, +005h
+
+retryOrThrow-BB@0x3e : [ retryOrThrow-BB@0x4c ]
+	16      (0000003e) const-string         v7, "null"
+	17      (00000042) goto                 +5h
+
+retryOrThrow-BB@0x44 : [ retryOrThrow-BB@0x4c ]
+	18      (00000044) invoke-virtual       v7, Lcom/pairip/licensecheck/LicenseCheckException;->getMessage()Ljava/lang/String;
+	19      (0000004a) move-result-object   v7
+
+retryOrThrow-BB@0x4c : 
+	20      (0000004c) const-wide/16        v3, 1
+	21      (00000050) invoke-static        v3, v4, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+	22      (00000056) move-result-object   v3
+	23      (00000058) new-array            v2, v2, [Ljava/lang/Object;
+	24      (0000005c) const/4              v4, 0
+	25      (0000005e) aput-object          v0, v2, v4
+	26      (00000062) aput-object          v7, v2, v8
+	27      (00000066) const/4              v7, 2
+	28      (00000068) aput-object          v3, v2, v7
+	29      (0000006c) const-string         v7, "Retry #%d. License check failed with error '%s'. Next try in %ds..."
+	30      (00000070) invoke-static        v7, v2, Ljava/lang/String;->format(Ljava/lang/String; [Ljava/lang/Object;)Ljava/lang/String;
+	31      (00000076) move-result-object   v7
+	32      (00000078) invoke-static        v1, v7, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String;)I
+	33      (0000007e) return-void          
+
+retryOrThrow-BB@0x80 : [ retryOrThrow-BB@0x84 retryOrThrow-BB@0xb0 ]
+	34      (00000080) if-eqz               v8, +018h
+
+retryOrThrow-BB@0x84 : 
+	35      (00000084) invoke-static        v7, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
+	36      (0000008a) move-result-object   v7
+	37      (0000008c) new-instance         v8, Ljava/lang/StringBuilder;
+	38      (00000090) const-string         v0, "Retry limit reached for: "
+	39      (00000094) invoke-direct        v8, v0, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	40      (0000009a) invoke-virtual       v8, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	41      (000000a0) invoke-virtual       v8, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	42      (000000a6) move-result-object   v7
+	43      (000000a8) invoke-static        v1, v7, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String;)I
+	44      (000000ae) return-void          
+
+retryOrThrow-BB@0xb0 : 
+	45      (000000b0) invoke-direct        v6, v7, Lcom/pairip/licensecheck/LicenseClient;->handleError(Lcom/pairip/licensecheck/LicenseCheckException;)V
+	46      (000000b6) return-void          
+

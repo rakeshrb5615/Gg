@@ -1,0 +1,56 @@
+# Lcom/google/android/gms/auth/zzl;->zze(Landroid/content/Context; Ljava/lang/String; J)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:android.content.Context
+# - v4:java.lang.String
+# - v5:long
+#
+# - return:void
+
+zze-BB@0x0 : [ zze-BB@0x38 zze-BB@0x78 ]
+	0       (00000000) const-string         v4, "Calling this from your main thread can lead to deadlock"
+	1       (00000004) invoke-static        v4, Lcom/google/android/gms/common/internal/Preconditions;->checkNotMainThread(Ljava/lang/String;)V
+	2       (0000000a) const                v4, 8400000
+	3       (00000010) invoke-static        v2, v4, Lcom/google/android/gms/auth/zzl;->zzk(Landroid/content/Context; I)V
+	4       (00000016) new-instance         v4, Landroid/os/Bundle;
+	5       (0000001a) invoke-direct        v4, Landroid/os/Bundle;-><init>()V
+	6       (00000020) invoke-static        v2, v4, Lcom/google/android/gms/auth/zzl;->zzm(Landroid/content/Context; Landroid/os/Bundle;)V
+	7       (00000026) invoke-static        v2, Lcom/google/android/gms/internal/auth/zzdc;->zze(Landroid/content/Context;)V
+	8       (0000002c) invoke-static        Lcom/google/android/gms/internal/auth/zzhs;->zze()Z
+	9       (00000032) move-result          v5
+	10      (00000034) if-eqz               v5, +022h
+
+zze-BB@0x38 : [ zze-BB@0x44 zze-BB@0x78 ]
+	11      (00000038) invoke-static        v2, Lcom/google/android/gms/auth/zzl;->zzo(Landroid/content/Context;)Z
+	12      (0000003e) move-result          v5
+	13      (00000040) if-eqz               v5, +01ch
+
+zze-BB@0x44 : [ zze-BB@0x68 ]
+	14      (00000044) invoke-static        v2, Lcom/google/android/gms/internal/auth/zzh;->zza(Landroid/content/Context;)Lcom/google/android/gms/internal/auth/zzg;
+	15      (0000004a) move-result-object   v5
+	16      (0000004c) new-instance         v0, Lcom/google/android/gms/internal/auth/zzbw;
+	17      (00000050) invoke-direct        v0, Lcom/google/android/gms/internal/auth/zzbw;-><init>()V
+	18      (00000056) invoke-virtual       v0, v3, Lcom/google/android/gms/internal/auth/zzbw;->zza(Ljava/lang/String;)Lcom/google/android/gms/internal/auth/zzbw;
+	19      (0000005c) invoke-interface     v5, v0, Lcom/google/android/gms/internal/auth/zzg;->zza(Lcom/google/android/gms/internal/auth/zzbw;)Lcom/google/android/gms/tasks/Task;
+	20      (00000062) move-result-object   v5
+	21      (00000064) const-string         v0, "clear token"
+
+zze-BB@0x68 : 
+	22      (00000068) invoke-static        v5, v0, Lcom/google/android/gms/auth/zzl;->zzi(Lcom/google/android/gms/tasks/Task; Ljava/lang/String;)Ljava/lang/Object;
+	23      (0000006e) return-void          
+	68:6d
+	(Lcom/google/android/gms/common/api/ApiException; -> 70 zze-BB@0x70)
+
+zze-BB@0x70 : [ zze-BB@0x78 ]
+	24      (00000070) move-exception       v5
+	25      (00000072) invoke-static        v5, v0, Lcom/google/android/gms/auth/zzl;->zzl(Lcom/google/android/gms/common/api/ApiException; Ljava/lang/String;)V
+
+zze-BB@0x78 : 
+	26      (00000078) new-instance         v5, Lcom/google/android/gms/auth/zzh;
+	27      (0000007c) invoke-direct        v5, v3, v4, Lcom/google/android/gms/auth/zzh;-><init>(Ljava/lang/String; Landroid/os/Bundle;)V
+	28      (00000082) sget-object          v3, Lcom/google/android/gms/auth/zzl;->zzc Landroid/content/ComponentName;
+	29      (00000086) const-wide/16        v0, 0
+	30      (0000008a) invoke-static        v2, v3, v5, v0, v1, Lcom/google/android/gms/auth/zzl;->zzh(Landroid/content/Context; Landroid/content/ComponentName; Lcom/google/android/gms/auth/zzk; J)Ljava/lang/Object;
+	31      (00000090) return-void          
+

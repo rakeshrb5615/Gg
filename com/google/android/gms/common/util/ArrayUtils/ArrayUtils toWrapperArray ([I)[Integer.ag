@@ -1,0 +1,34 @@
+# Lcom/google/android/gms/common/util/ArrayUtils;->toWrapperArray([I)[Ljava/lang/Integer; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:int[]
+#
+# - return:java.lang.Integer[]
+
+toWrapperArray-BB@0x0 : [ toWrapperArray-BB@0x4 toWrapperArray-BB@0x8 ]
+	0       (00000000) if-nez               v4, +004h
+
+toWrapperArray-BB@0x4 : 
+	1       (00000004) const/4              v4, 0
+	2       (00000006) return-object        v4
+
+toWrapperArray-BB@0x8 : [ toWrapperArray-BB@0x10 ]
+	3       (00000008) array-length         v0, v4
+	4       (0000000a) new-array            v1, v0, [Ljava/lang/Integer;
+	5       (0000000e) const/4              v2, 0
+
+toWrapperArray-BB@0x10 : [ toWrapperArray-BB@0x14 toWrapperArray-BB@0x2a ]
+	6       (00000010) if-ge                v2, v0, +00dh
+
+toWrapperArray-BB@0x14 : [ toWrapperArray-BB@0x10 ]
+	7       (00000014) aget                 v3, v4, v2
+	8       (00000018) invoke-static        v3, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+	9       (0000001e) move-result-object   v3
+	10      (00000020) aput-object          v3, v1, v2
+	11      (00000024) add-int/lit8         v2, v2, 1
+	12      (00000028) goto                 -ch
+
+toWrapperArray-BB@0x2a : 
+	13      (0000002a) return-object        v1
+

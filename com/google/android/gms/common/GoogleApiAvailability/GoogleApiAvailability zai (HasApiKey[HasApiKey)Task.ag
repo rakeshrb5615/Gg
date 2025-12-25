@@ -1,0 +1,39 @@
+# Lcom/google/android/gms/common/GoogleApiAvailability;->zai(Lcom/google/android/gms/common/api/HasApiKey; [Lcom/google/android/gms/common/api/HasApiKey;)Lcom/google/android/gms/tasks/Task; [access_flags=public static final varargs]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:com.google.android.gms.common.api.HasApiKey
+# - v5:com.google.android.gms.common.api.HasApiKey[]
+#
+# - return:com.google.android.gms.tasks.Task
+
+zai-BB@0x0 : [ zai-BB@0xe ]
+	0       (00000000) const-string         v0, "Requested API must not be null."
+	1       (00000004) invoke-static        v4, v0, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	2       (0000000a) array-length         v1, v5
+	3       (0000000c) const/4              v2, 0
+
+zai-BB@0xe : [ zai-BB@0x12 zai-BB@0x22 ]
+	4       (0000000e) if-ge                v2, v1, +00ah
+
+zai-BB@0x12 : [ zai-BB@0xe ]
+	5       (00000012) aget-object          v3, v5, v2
+	6       (00000016) invoke-static        v3, v0, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	7       (0000001c) add-int/lit8         v2, v2, 1
+	8       (00000020) goto                 -9h
+
+zai-BB@0x22 : 
+	9       (00000022) new-instance         v0, Ljava/util/ArrayList;
+	10      (00000026) array-length         v1, v5
+	11      (00000028) add-int/lit8         v1, v1, 1
+	12      (0000002c) invoke-direct        v0, v1, Ljava/util/ArrayList;-><init>(I)V
+	13      (00000032) invoke-virtual       v0, v4, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	14      (00000038) invoke-static        v5, Ljava/util/Arrays;->asList([Ljava/lang/Object;)Ljava/util/List;
+	15      (0000003e) move-result-object   v4
+	16      (00000040) invoke-virtual       v0, v4, Ljava/util/ArrayList;->addAll(Ljava/util/Collection;)Z
+	17      (00000046) invoke-static        Lcom/google/android/gms/common/api/internal/GoogleApiManager;->zaj()Lcom/google/android/gms/common/api/internal/GoogleApiManager;
+	18      (0000004c) move-result-object   v4
+	19      (0000004e) invoke-virtual       v4, v0, Lcom/google/android/gms/common/api/internal/GoogleApiManager;->zam(Ljava/lang/Iterable;)Lcom/google/android/gms/tasks/Task;
+	20      (00000054) move-result-object   v4
+	21      (00000056) return-object        v4
+

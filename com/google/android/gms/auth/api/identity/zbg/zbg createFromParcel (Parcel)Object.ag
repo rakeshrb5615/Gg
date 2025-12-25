@@ -1,0 +1,43 @@
+# Lcom/google/android/gms/auth/api/identity/zbg;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object; [access_flags=public final bridge synthetic]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:android.os.Parcel
+#
+# - return:java.lang.Object
+
+createFromParcel-BB@0x0 : [ createFromParcel-BB@0xa ]
+	0       (00000000) invoke-static        v6, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelReader;->validateObjectHeader(Landroid/os/Parcel;)I
+	1       (00000006) move-result          v0
+	2       (00000008) const/4              v1, 0
+
+createFromParcel-BB@0xa : [ createFromParcel-BB@0x16 createFromParcel-BB@0x46 ]
+	3       (0000000a) invoke-virtual       v6, Landroid/os/Parcel;->dataPosition()I
+	4       (00000010) move-result          v2
+	5       (00000012) if-ge                v2, v0, +01ah
+
+createFromParcel-BB@0x16 : [ createFromParcel-BB@0x2c createFromParcel-BB@0x34 ]
+	6       (00000016) invoke-static        v6, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelReader;->readHeader(Landroid/os/Parcel;)I
+	7       (0000001c) move-result          v2
+	8       (0000001e) invoke-static        v2, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelReader;->getFieldId(I)I
+	9       (00000024) move-result          v3
+	10      (00000026) const/4              v4, 1
+	11      (00000028) if-eq                v3, v4, +006h
+
+createFromParcel-BB@0x2c : [ createFromParcel-BB@0xa ]
+	12      (0000002c) invoke-static        v6, v2, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelReader;->skipUnknownField(Landroid/os/Parcel; I)V
+	13      (00000032) goto                 -14h
+
+createFromParcel-BB@0x34 : [ createFromParcel-BB@0xa ]
+	14      (00000034) sget-object          v1, Landroid/app/PendingIntent;->CREATOR Landroid/os/Parcelable$Creator;
+	15      (00000038) invoke-static        v6, v2, v1, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelReader;->createParcelable(Landroid/os/Parcel; I Landroid/os/Parcelable$Creator;)Landroid/os/Parcelable;
+	16      (0000003e) move-result-object   v1
+	17      (00000040) check-cast           v1, Landroid/app/PendingIntent;
+	18      (00000044) goto                 -1dh
+
+createFromParcel-BB@0x46 : 
+	19      (00000046) invoke-static        v6, v0, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelReader;->ensureAtEnd(Landroid/os/Parcel; I)V
+	20      (0000004c) new-instance         v6, Lcom/google/android/gms/auth/api/identity/BeginSignInResult;
+	21      (00000050) invoke-direct        v6, v1, Lcom/google/android/gms/auth/api/identity/BeginSignInResult;-><init>(Landroid/app/PendingIntent;)V
+	22      (00000056) return-object        v6
+

@@ -1,0 +1,111 @@
+# Lcom/google/android/gms/auth/api/signin/GoogleSignInOptions;->zaf()Ljava/lang/String; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v6
+#
+# - return:java.lang.String
+
+zaf-BB@0x0 : [ zaf-BB@0xa ]
+	0       (00000000) new-instance         v0, Lorg/json/JSONObject;
+	1       (00000004) invoke-direct        v0, Lorg/json/JSONObject;-><init>()V
+
+zaf-BB@0xa : [ zaf-BB@0x30 ]
+	2       (0000000a) new-instance         v1, Lorg/json/JSONArray;
+	3       (0000000e) invoke-direct        v1, Lorg/json/JSONArray;-><init>()V
+	4       (00000014) iget-object          v2, v6, Lcom/google/android/gms/auth/api/signin/GoogleSignInOptions;->zah Ljava/util/ArrayList;
+	5       (00000018) sget-object          v3, Lcom/google/android/gms/auth/api/signin/GoogleSignInOptions;->zag Ljava/util/Comparator;
+	6       (0000001c) invoke-static        v2, v3, Ljava/util/Collections;->sort(Ljava/util/List; Ljava/util/Comparator;)V
+	7       (00000022) iget-object          v2, v6, Lcom/google/android/gms/auth/api/signin/GoogleSignInOptions;->zah Ljava/util/ArrayList;
+	8       (00000026) invoke-virtual       v2, Ljava/util/ArrayList;->size()I
+	9       (0000002c) move-result          v3
+	10      (0000002e) const/4              v4, 0
+	a:dd
+	(Lorg/json/JSONException; -> 54 zaf-BB@0x54)
+
+zaf-BB@0x30 : [ zaf-BB@0x34 zaf-BB@0x58 ]
+	11      (00000030) if-ge                v4, v3, +014h
+	a:dd
+	(Lorg/json/JSONException; -> 54 zaf-BB@0x54)
+
+zaf-BB@0x34 : [ zaf-BB@0x30 ]
+	12      (00000034) invoke-virtual       v2, v4, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	13      (0000003a) move-result-object   v5
+	14      (0000003c) add-int/lit8         v4, v4, 1
+	15      (00000040) check-cast           v5, Lcom/google/android/gms/common/api/Scope;
+	16      (00000044) invoke-virtual       v5, Lcom/google/android/gms/common/api/Scope;->getScopeUri()Ljava/lang/String;
+	17      (0000004a) move-result-object   v5
+	18      (0000004c) invoke-virtual       v1, v5, Lorg/json/JSONArray;->put(Ljava/lang/Object;)Lorg/json/JSONArray;
+	19      (00000052) goto                 -11h
+	a:dd
+	(Lorg/json/JSONException; -> 54 zaf-BB@0x54)
+
+zaf-BB@0x54 : [ zaf-BB@0xe8 ]
+	20      (00000054) move-exception       v0
+	21      (00000056) goto                 +49h
+	a:dd
+	(Lorg/json/JSONException; -> 54 zaf-BB@0x54)
+
+zaf-BB@0x58 : [ zaf-BB@0x6a zaf-BB@0x78 ]
+	22      (00000058) const-string         v2, "scopes"
+	23      (0000005c) invoke-virtual       v0, v2, v1, Lorg/json/JSONObject;->put(Ljava/lang/String; Ljava/lang/Object;)Lorg/json/JSONObject;
+	24      (00000062) iget-object          v1, v6, Lcom/google/android/gms/auth/api/signin/GoogleSignInOptions;->zai Landroid/accounts/Account;
+	25      (00000066) if-eqz               v1, +009h
+	a:dd
+	(Lorg/json/JSONException; -> 54 zaf-BB@0x54)
+
+zaf-BB@0x6a : [ zaf-BB@0x78 ]
+	26      (0000006a) const-string         v2, "accountName"
+	27      (0000006e) iget-object          v1, v1, Landroid/accounts/Account;->name Ljava/lang/String;
+	28      (00000072) invoke-virtual       v0, v2, v1, Lorg/json/JSONObject;->put(Ljava/lang/String; Ljava/lang/Object;)Lorg/json/JSONObject;
+	a:dd
+	(Lorg/json/JSONException; -> 54 zaf-BB@0x54)
+
+zaf-BB@0x78 : [ zaf-BB@0xb2 zaf-BB@0xc0 ]
+	29      (00000078) const-string         v1, "idTokenRequested"
+	30      (0000007c) iget-boolean         v2, v6, Lcom/google/android/gms/auth/api/signin/GoogleSignInOptions;->zaj Z
+	31      (00000080) invoke-virtual       v0, v1, v2, Lorg/json/JSONObject;->put(Ljava/lang/String; Z)Lorg/json/JSONObject;
+	32      (00000086) const-string         v1, "forceCodeForRefreshToken"
+	33      (0000008a) iget-boolean         v2, v6, Lcom/google/android/gms/auth/api/signin/GoogleSignInOptions;->zal Z
+	34      (0000008e) invoke-virtual       v0, v1, v2, Lorg/json/JSONObject;->put(Ljava/lang/String; Z)Lorg/json/JSONObject;
+	35      (00000094) const-string         v1, "serverAuthRequested"
+	36      (00000098) iget-boolean         v2, v6, Lcom/google/android/gms/auth/api/signin/GoogleSignInOptions;->zak Z
+	37      (0000009c) invoke-virtual       v0, v1, v2, Lorg/json/JSONObject;->put(Ljava/lang/String; Z)Lorg/json/JSONObject;
+	38      (000000a2) iget-object          v1, v6, Lcom/google/android/gms/auth/api/signin/GoogleSignInOptions;->zam Ljava/lang/String;
+	39      (000000a6) invoke-static        v1, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+	40      (000000ac) move-result          v1
+	41      (000000ae) if-nez               v1, +009h
+	a:dd
+	(Lorg/json/JSONException; -> 54 zaf-BB@0x54)
+
+zaf-BB@0xb2 : [ zaf-BB@0xc0 ]
+	42      (000000b2) const-string         v1, "serverClientId"
+	43      (000000b6) iget-object          v2, v6, Lcom/google/android/gms/auth/api/signin/GoogleSignInOptions;->zam Ljava/lang/String;
+	44      (000000ba) invoke-virtual       v0, v1, v2, Lorg/json/JSONObject;->put(Ljava/lang/String; Ljava/lang/Object;)Lorg/json/JSONObject;
+	a:dd
+	(Lorg/json/JSONException; -> 54 zaf-BB@0x54)
+
+zaf-BB@0xc0 : [ zaf-BB@0xd0 zaf-BB@0xde ]
+	45      (000000c0) iget-object          v1, v6, Lcom/google/android/gms/auth/api/signin/GoogleSignInOptions;->zan Ljava/lang/String;
+	46      (000000c4) invoke-static        v1, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+	47      (000000ca) move-result          v1
+	48      (000000cc) if-nez               v1, +009h
+	a:dd
+	(Lorg/json/JSONException; -> 54 zaf-BB@0x54)
+
+zaf-BB@0xd0 : [ zaf-BB@0xde ]
+	49      (000000d0) const-string         v1, "hostedDomain"
+	50      (000000d4) iget-object          v2, v6, Lcom/google/android/gms/auth/api/signin/GoogleSignInOptions;->zan Ljava/lang/String;
+	51      (000000d8) invoke-virtual       v0, v1, v2, Lorg/json/JSONObject;->put(Ljava/lang/String; Ljava/lang/Object;)Lorg/json/JSONObject;
+	a:dd
+	(Lorg/json/JSONException; -> 54 zaf-BB@0x54)
+
+zaf-BB@0xde : 
+	52      (000000de) invoke-virtual       v0, Lorg/json/JSONObject;->toString()Ljava/lang/String;
+	53      (000000e4) move-result-object   v0
+	54      (000000e6) return-object        v0
+
+zaf-BB@0xe8 : 
+	55      (000000e8) new-instance         v1, Ljava/lang/RuntimeException;
+	56      (000000ec) invoke-direct        v1, v0, Ljava/lang/RuntimeException;-><init>(Ljava/lang/Throwable;)V
+	57      (000000f2) throw                v1
+

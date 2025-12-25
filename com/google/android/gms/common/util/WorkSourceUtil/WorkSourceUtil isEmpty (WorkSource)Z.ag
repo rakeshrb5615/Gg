@@ -1,0 +1,45 @@
+# Lcom/google/android/gms/common/util/WorkSourceUtil;->isEmpty(Landroid/os/WorkSource;)Z [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:android.os.WorkSource
+#
+# - return:boolean
+
+isEmpty-BB@0x0 : [ isEmpty-BB@0x8 isEmpty-BB@0x36 ]
+	0       (00000000) sget-object          v0, Lcom/google/android/gms/common/util/WorkSourceUtil;->zzi Ljava/lang/reflect/Method;
+	1       (00000004) if-eqz               v0, +019h
+
+isEmpty-BB@0x8 : [ isEmpty-BB@0xa ]
+	2       (00000008) const/4              v1, 0
+
+isEmpty-BB@0xa : 
+	3       (0000000a) invoke-virtual       v0, v3, v1, Ljava/lang/reflect/Method;->invoke(Ljava/lang/Object; [Ljava/lang/Object;)Ljava/lang/Object;
+	4       (00000010) move-result-object   v0
+	5       (00000012) invoke-static        v0, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;
+	6       (00000018) check-cast           v0, Ljava/lang/Boolean;
+	7       (0000001c) invoke-virtual       v0, Ljava/lang/Boolean;->booleanValue()Z
+	8       (00000022) move-result          v3
+	9       (00000024) return               v3
+	a:23
+	(Ljava/lang/Exception; -> 26 isEmpty-BB@0x26)
+
+isEmpty-BB@0x26 : [ isEmpty-BB@0x36 ]
+	10      (00000026) move-exception       v0
+	11      (00000028) const-string         v1, "WorkSourceUtil"
+	12      (0000002c) const-string         v2, "Unable to check WorkSource emptiness"
+	13      (00000030) invoke-static        v1, v2, v0, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+
+isEmpty-BB@0x36 : [ isEmpty-BB@0x42 isEmpty-BB@0x46 ]
+	14      (00000036) invoke-static        v3, Lcom/google/android/gms/common/util/WorkSourceUtil;->size(Landroid/os/WorkSource;)I
+	15      (0000003c) move-result          v3
+	16      (0000003e) if-nez               v3, +004h
+
+isEmpty-BB@0x42 : 
+	17      (00000042) const/4              v3, 1
+	18      (00000044) return               v3
+
+isEmpty-BB@0x46 : 
+	19      (00000046) const/4              v3, 0
+	20      (00000048) return               v3
+

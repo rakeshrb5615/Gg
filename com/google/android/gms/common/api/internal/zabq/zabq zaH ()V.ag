@@ -1,0 +1,65 @@
+# Lcom/google/android/gms/common/api/internal/zabq;->zaH()V [access_flags=private final]
+#
+# Parameters:
+# local registers: v0...v4
+#
+# - return:void
+
+zaH-BB@0x0 : [ zaH-BB@0x2a ]
+	0       (00000000) invoke-virtual       v4, Lcom/google/android/gms/common/api/internal/zabq;->zan()V
+	1       (00000006) sget-object          v0, Lcom/google/android/gms/common/ConnectionResult;->RESULT_SUCCESS Lcom/google/android/gms/common/ConnectionResult;
+	2       (0000000a) invoke-direct        v4, v0, Lcom/google/android/gms/common/api/internal/zabq;->zaD(Lcom/google/android/gms/common/ConnectionResult;)V
+	3       (00000010) invoke-direct        v4, Lcom/google/android/gms/common/api/internal/zabq;->zaL()V
+	4       (00000016) iget-object          v0, v4, Lcom/google/android/gms/common/api/internal/zabq;->zag Ljava/util/Map;
+	5       (0000001a) invoke-interface     v0, Ljava/util/Map;->values()Ljava/util/Collection;
+	6       (00000020) move-result-object   v0
+	7       (00000022) invoke-interface     v0, Ljava/util/Collection;->iterator()Ljava/util/Iterator;
+	8       (00000028) move-result-object   v0
+
+zaH-BB@0x2a : [ zaH-BB@0x36 zaH-BB@0x9a ]
+	9       (0000002a) invoke-interface     v0, Ljava/util/Iterator;->hasNext()Z
+	10      (00000030) move-result          v1
+	11      (00000032) if-eqz               v1, +034h
+
+zaH-BB@0x36 : [ zaH-BB@0x5a zaH-BB@0x62 ]
+	12      (00000036) invoke-interface     v0, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	13      (0000003c) move-result-object   v1
+	14      (0000003e) check-cast           v1, Lcom/google/android/gms/common/api/internal/zaci;
+	15      (00000042) iget-object          v2, v1, Lcom/google/android/gms/common/api/internal/zaci;->zaa Lcom/google/android/gms/common/api/internal/RegisterListenerMethod;
+	16      (00000046) invoke-virtual       v2, Lcom/google/android/gms/common/api/internal/RegisterListenerMethod;->getRequiredFeatures()[Lcom/google/android/gms/common/Feature;
+	17      (0000004c) move-result-object   v2
+	18      (0000004e) invoke-direct        v4, v2, Lcom/google/android/gms/common/api/internal/zabq;->zaC([Lcom/google/android/gms/common/Feature;)Lcom/google/android/gms/common/Feature;
+	19      (00000054) move-result-object   v2
+	20      (00000056) if-eqz               v2, +006h
+
+zaH-BB@0x5a : [ zaH-BB@0x2a ]
+	21      (0000005a) invoke-interface     v0, Ljava/util/Iterator;->remove()V
+	22      (00000060) goto                 -1bh
+
+zaH-BB@0x62 : [ zaH-BB@0x2a ]
+	23      (00000062) iget-object          v1, v1, Lcom/google/android/gms/common/api/internal/zaci;->zaa Lcom/google/android/gms/common/api/internal/RegisterListenerMethod;
+	24      (00000066) iget-object          v2, v4, Lcom/google/android/gms/common/api/internal/zabq;->zac Lcom/google/android/gms/common/api/Api$Client;
+	25      (0000006a) new-instance         v3, Lcom/google/android/gms/tasks/TaskCompletionSource;
+	26      (0000006e) invoke-direct        v3, Lcom/google/android/gms/tasks/TaskCompletionSource;-><init>()V
+	27      (00000074) invoke-virtual       v1, v2, v3, Lcom/google/android/gms/common/api/internal/RegisterListenerMethod;->registerListener(Lcom/google/android/gms/common/api/Api$AnyClient; Lcom/google/android/gms/tasks/TaskCompletionSource;)V
+	28      (0000007a) goto                 -28h
+	62:79
+	(Landroid/os/DeadObjectException; -> 84 zaH-BB@0x84)
+	(Landroid/os/RemoteException; -> 7c zaH-BB@0x7c)
+
+zaH-BB@0x7c : [ zaH-BB@0x2a ]
+	29      (0000007c) invoke-interface     v0, Ljava/util/Iterator;->remove()V
+	30      (00000082) goto                 -2ch
+
+zaH-BB@0x84 : [ zaH-BB@0x9a ]
+	31      (00000084) const/4              v0, 3
+	32      (00000086) invoke-virtual       v4, v0, Lcom/google/android/gms/common/api/internal/zabq;->onConnectionSuspended(I)V
+	33      (0000008c) iget-object          v0, v4, Lcom/google/android/gms/common/api/internal/zabq;->zac Lcom/google/android/gms/common/api/Api$Client;
+	34      (00000090) const-string         v1, "DeadObjectException thrown while calling register listener method."
+	35      (00000094) invoke-interface     v0, v1, Lcom/google/android/gms/common/api/Api$Client;->disconnect(Ljava/lang/String;)V
+
+zaH-BB@0x9a : 
+	36      (0000009a) invoke-direct        v4, Lcom/google/android/gms/common/api/internal/zabq;->zaG()V
+	37      (000000a0) invoke-direct        v4, Lcom/google/android/gms/common/api/internal/zabq;->zaJ()V
+	38      (000000a6) return-void          
+

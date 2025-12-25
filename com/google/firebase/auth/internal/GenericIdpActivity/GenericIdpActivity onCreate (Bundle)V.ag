@@ -1,0 +1,78 @@
+# Lcom/google/firebase/auth/internal/GenericIdpActivity;->onCreate(Landroid/os/Bundle;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v7
+# - v8:android.os.Bundle
+#
+# - return:void
+
+onCreate-BB@0x0 : [ onCreate-BB@0x2a onCreate-BB@0x84 ]
+	0       (00000000) invoke-super         v7, v8, Landroidx/fragment/app/j0;->onCreate(Landroid/os/Bundle;)V
+	1       (00000006) invoke-virtual       v7, Landroid/app/Activity;->getIntent()Landroid/content/Intent;
+	2       (0000000c) move-result-object   v0
+	3       (0000000e) invoke-virtual       v0, Landroid/content/Intent;->getAction()Ljava/lang/String;
+	4       (00000014) move-result-object   v0
+	5       (00000016) const-string         v1, "com.google.firebase.auth.internal.NONGMSCORE_SIGN_IN"
+	6       (0000001a) invoke-virtual       v1, v0, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	7       (00000020) move-result          v1
+	8       (00000022) const-string         v2, "GenericIdpActivity"
+	9       (00000026) if-nez               v1, +02fh
+
+onCreate-BB@0x2a : [ onCreate-BB@0x3a onCreate-BB@0x84 ]
+	10      (0000002a) const-string         v1, "com.google.firebase.auth.internal.NONGMSCORE_LINK"
+	11      (0000002e) invoke-virtual       v1, v0, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	12      (00000034) move-result          v1
+	13      (00000036) if-nez               v1, +027h
+
+onCreate-BB@0x3a : [ onCreate-BB@0x4a onCreate-BB@0x84 ]
+	14      (0000003a) const-string         v1, "com.google.firebase.auth.internal.NONGMSCORE_REAUTHENTICATE"
+	15      (0000003e) invoke-virtual       v1, v0, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	16      (00000044) move-result          v1
+	17      (00000046) if-nez               v1, +01fh
+
+onCreate-BB@0x4a : [ onCreate-BB@0x5a onCreate-BB@0x84 ]
+	18      (0000004a) const-string         v1, "android.intent.action.VIEW"
+	19      (0000004e) invoke-virtual       v1, v0, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	20      (00000054) move-result          v1
+	21      (00000056) if-nez               v1, +017h
+
+onCreate-BB@0x5a : 
+	22      (0000005a) new-instance         v8, Ljava/lang/StringBuilder;
+	23      (0000005e) const-string         v1, "Could not do operation - unknown action: "
+	24      (00000062) invoke-direct        v8, v1, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	25      (00000068) invoke-virtual       v8, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	26      (0000006e) invoke-virtual       v8, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	27      (00000074) move-result-object   v8
+	28      (00000076) invoke-static        v2, v8, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String;)I
+	29      (0000007c) invoke-virtual       v7, Lcom/google/firebase/auth/internal/GenericIdpActivity;->j()V
+	30      (00000082) return-void          
+
+onCreate-BB@0x84 : [ onCreate-BB@0xa8 onCreate-BB@0xb4 ]
+	31      (00000084) invoke-static        Lcom/google/android/gms/common/util/DefaultClock;->getInstance()Lcom/google/android/gms/common/util/Clock;
+	32      (0000008a) move-result-object   v0
+	33      (0000008c) invoke-interface     v0, Lcom/google/android/gms/common/util/Clock;->currentTimeMillis()J
+	34      (00000092) move-result-wide     v0
+	35      (00000094) sget-wide            v3, Lcom/google/firebase/auth/internal/GenericIdpActivity;->b J
+	36      (00000098) sub-long             v3, v0, v3
+	37      (0000009c) const-wide/16        v5, 30000
+	38      (000000a0) cmp-long             v3, v3, v5
+	39      (000000a4) if-gez               v3, +008h
+
+onCreate-BB@0xa8 : 
+	40      (000000a8) const-string         v8, "Could not start operation - already in progress"
+	41      (000000ac) invoke-static        v2, v8, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String;)I
+	42      (000000b2) return-void          
+
+onCreate-BB@0xb4 : [ onCreate-BB@0xbc onCreate-BB@0xcc ]
+	43      (000000b4) sput-wide            v0, Lcom/google/firebase/auth/internal/GenericIdpActivity;->b J
+	44      (000000b8) if-eqz               v8, +00ah
+
+onCreate-BB@0xbc : [ onCreate-BB@0xcc ]
+	45      (000000bc) const-string         v0, "com.google.firebase.auth.internal.KEY_STARTED_SIGN_IN"
+	46      (000000c0) invoke-virtual       v8, v0, Landroid/os/BaseBundle;->getBoolean(Ljava/lang/String;)Z
+	47      (000000c6) move-result          v8
+	48      (000000c8) iput-boolean         v8, v7, Lcom/google/firebase/auth/internal/GenericIdpActivity;->a Z
+
+onCreate-BB@0xcc : 
+	49      (000000cc) return-void          
+

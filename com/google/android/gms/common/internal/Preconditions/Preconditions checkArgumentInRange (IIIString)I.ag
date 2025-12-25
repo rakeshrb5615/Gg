@@ -1,0 +1,48 @@
+# Lcom/google/android/gms/common/internal/Preconditions;->checkArgumentInRange(I I I Ljava/lang/String;)I [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v-1
+# - v0:int
+# - v1:int
+# - v2:int
+# - v3:java.lang.String
+#
+# - return:int
+
+checkArgumentInRange-BB@0x0 : [ checkArgumentInRange-BB@0x4 checkArgumentInRange-BB@0x3a ]
+	0       (00000000) if-lt                v0, v1, +01dh
+
+checkArgumentInRange-BB@0x4 : [ checkArgumentInRange-BB@0x8 checkArgumentInRange-BB@0xa ]
+	1       (00000004) if-gt                v0, v2, +003h
+
+checkArgumentInRange-BB@0x8 : 
+	2       (00000008) return               v0
+
+checkArgumentInRange-BB@0xa : 
+	3       (0000000a) new-instance         v0, Ljava/lang/IllegalArgumentException;
+	4       (0000000e) invoke-static        v1, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+	5       (00000014) move-result-object   v1
+	6       (00000016) invoke-static        v2, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+	7       (0000001c) move-result-object   v2
+	8       (0000001e) filled-new-array     v3, v1, v2, [Ljava/lang/Object;
+	9       (00000024) move-result-object   v1
+	10      (00000026) const-string         v2, "%s is out of range of [%d, %d] (too high)"
+	11      (0000002a) invoke-static        v2, v1, Lcom/google/android/gms/common/internal/Preconditions;->zza(Ljava/lang/String; [Ljava/lang/Object;)Ljava/lang/String;
+	12      (00000030) move-result-object   v1
+	13      (00000032) invoke-direct        v0, v1, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	14      (00000038) throw                v0
+
+checkArgumentInRange-BB@0x3a : 
+	15      (0000003a) new-instance         v0, Ljava/lang/IllegalArgumentException;
+	16      (0000003e) invoke-static        v1, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+	17      (00000044) move-result-object   v1
+	18      (00000046) invoke-static        v2, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+	19      (0000004c) move-result-object   v2
+	20      (0000004e) filled-new-array     v3, v1, v2, [Ljava/lang/Object;
+	21      (00000054) move-result-object   v1
+	22      (00000056) const-string         v2, "%s is out of range of [%d, %d] (too low)"
+	23      (0000005a) invoke-static        v2, v1, Lcom/google/android/gms/common/internal/Preconditions;->zza(Ljava/lang/String; [Ljava/lang/Object;)Ljava/lang/String;
+	24      (00000060) move-result-object   v1
+	25      (00000062) invoke-direct        v0, v1, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	26      (00000068) throw                v0
+

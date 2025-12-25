@@ -1,0 +1,23 @@
+# Lcom/google/android/gms/common/internal/ApiExceptionUtil;->fromStatus(Lcom/google/android/gms/common/api/Status;)Lcom/google/android/gms/common/api/ApiException; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v0
+# - v1:com.google.android.gms.common.api.Status
+#
+# - return:com.google.android.gms.common.api.ApiException
+
+fromStatus-BB@0x0 : [ fromStatus-BB@0xc fromStatus-BB@0x18 ]
+	0       (00000000) invoke-virtual       v1, Lcom/google/android/gms/common/api/Status;->hasResolution()Z
+	1       (00000006) move-result          v0
+	2       (00000008) if-eqz               v0, +008h
+
+fromStatus-BB@0xc : 
+	3       (0000000c) new-instance         v0, Lcom/google/android/gms/common/api/ResolvableApiException;
+	4       (00000010) invoke-direct        v0, v1, Lcom/google/android/gms/common/api/ResolvableApiException;-><init>(Lcom/google/android/gms/common/api/Status;)V
+	5       (00000016) return-object        v0
+
+fromStatus-BB@0x18 : 
+	6       (00000018) new-instance         v0, Lcom/google/android/gms/common/api/ApiException;
+	7       (0000001c) invoke-direct        v0, v1, Lcom/google/android/gms/common/api/ApiException;-><init>(Lcom/google/android/gms/common/api/Status;)V
+	8       (00000022) return-object        v0
+

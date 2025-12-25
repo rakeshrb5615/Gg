@@ -1,0 +1,36 @@
+# Lcom/google/android/material/chip/Chip;->setEllipsize(Landroid/text/TextUtils$TruncateAt;)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:android.text.TextUtils$TruncateAt
+#
+# - return:void
+
+setEllipsize-BB@0x0 : [ setEllipsize-BB@0x8 setEllipsize-BB@0xa ]
+	0       (00000000) iget-object          v0, v1, Lcom/google/android/material/chip/Chip;->e Ll3/f;
+	1       (00000004) if-nez               v0, +003h
+
+setEllipsize-BB@0x8 : [ setEllipsize-BB@0x24 ]
+	2       (00000008) goto                 +eh
+
+setEllipsize-BB@0xa : [ setEllipsize-BB@0x12 setEllipsize-BB@0x26 ]
+	3       (0000000a) sget-object          v0, Landroid/text/TextUtils$TruncateAt;->MARQUEE Landroid/text/TextUtils$TruncateAt;
+	4       (0000000e) if-eq                v2, v0, +00ch
+
+setEllipsize-BB@0x12 : [ setEllipsize-BB@0x20 setEllipsize-BB@0x24 ]
+	5       (00000012) invoke-super         v1, v2, Landroid/widget/TextView;->setEllipsize(Landroid/text/TextUtils$TruncateAt;)V
+	6       (00000018) iget-object          v0, v1, Lcom/google/android/material/chip/Chip;->e Ll3/f;
+	7       (0000001c) if-eqz               v0, +004h
+
+setEllipsize-BB@0x20 : [ setEllipsize-BB@0x24 ]
+	8       (00000020) iput-object          v2, v0, Ll3/f;->Q0 Landroid/text/TextUtils$TruncateAt;
+
+setEllipsize-BB@0x24 : 
+	9       (00000024) return-void          
+
+setEllipsize-BB@0x26 : 
+	10      (00000026) new-instance         v2, Ljava/lang/UnsupportedOperationException;
+	11      (0000002a) const-string         v0, "Text within a chip are not allowed to scroll."
+	12      (0000002e) invoke-direct        v2, v0, Ljava/lang/UnsupportedOperationException;-><init>(Ljava/lang/String;)V
+	13      (00000034) throw                v2
+

@@ -1,0 +1,29 @@
+# Lcom/google/android/gms/common/api/internal/zacx;->then(Lcom/google/android/gms/tasks/Task;)Ljava/lang/Object; [access_flags=public final bridge synthetic]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:com.google.android.gms.tasks.Task
+#
+# - return:java.lang.Object
+
+then-BB@0x0 : [ then-BB@0x18 then-BB@0x1c ]
+	0       (00000000) invoke-virtual       v4, Lcom/google/android/gms/tasks/Task;->getResult()Ljava/lang/Object;
+	1       (00000006) move-result-object   v4
+	2       (00000008) check-cast           v4, Ljava/lang/Boolean;
+	3       (0000000c) invoke-virtual       v4, Ljava/lang/Boolean;->booleanValue()Z
+	4       (00000012) move-result          v4
+	5       (00000014) if-eqz               v4, +004h
+
+then-BB@0x18 : 
+	6       (00000018) const/4              v4, 0
+	7       (0000001a) return-object        v4
+
+then-BB@0x1c : 
+	8       (0000001c) new-instance         v4, Lcom/google/android/gms/common/api/ApiException;
+	9       (00000020) new-instance         v0, Lcom/google/android/gms/common/api/Status;
+	10      (00000024) const/16             v1, 13
+	11      (00000028) const-string         v2, "listener already unregistered"
+	12      (0000002c) invoke-direct        v0, v1, v2, Lcom/google/android/gms/common/api/Status;-><init>(I Ljava/lang/String;)V
+	13      (00000032) invoke-direct        v4, v0, Lcom/google/android/gms/common/api/ApiException;-><init>(Lcom/google/android/gms/common/api/Status;)V
+	14      (00000038) throw                v4
+

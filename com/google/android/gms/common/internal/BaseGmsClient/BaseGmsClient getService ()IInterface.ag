@@ -1,0 +1,46 @@
+# Lcom/google/android/gms/common/internal/BaseGmsClient;->getService()Landroid/os/IInterface; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v3
+#
+# - return:android.os.IInterface
+
+getService-BB@0x0 : [ getService-BB@0x6 ]
+	0       (00000000) iget-object          v0, v3, Lcom/google/android/gms/common/internal/BaseGmsClient;->zzp Ljava/lang/Object;
+	1       (00000004) monitor-enter        v0
+
+getService-BB@0x6 : [ getService-BB@0x10 getService-BB@0x30 ]
+	2       (00000006) iget                 v1, v3, Lcom/google/android/gms/common/internal/BaseGmsClient;->zzv I
+	3       (0000000a) const/4              v2, 5
+	4       (0000000c) if-eq                v1, v2, +012h
+	6:3d
+	(Ljava/lang/Throwable; -> 2c getService-BB@0x2c)
+
+getService-BB@0x10 : 
+	5       (00000010) invoke-virtual       v3, Lcom/google/android/gms/common/internal/BaseGmsClient;->checkConnected()V
+	6       (00000016) iget-object          v1, v3, Lcom/google/android/gms/common/internal/BaseGmsClient;->zzs Landroid/os/IInterface;
+	7       (0000001a) const-string         v2, "Client is connected but service is null"
+	8       (0000001e) invoke-static        v1, v2, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	9       (00000024) check-cast           v1, Landroid/os/IInterface;
+	10      (00000028) monitor-exit         v0
+	11      (0000002a) return-object        v1
+	6:3d
+	(Ljava/lang/Throwable; -> 2c getService-BB@0x2c)
+
+getService-BB@0x2c : [ getService-BB@0x3c ]
+	12      (0000002c) move-exception       v1
+	13      (0000002e) goto                 +7h
+	6:3d
+	(Ljava/lang/Throwable; -> 2c getService-BB@0x2c)
+
+getService-BB@0x30 : 
+	14      (00000030) new-instance         v1, Landroid/os/DeadObjectException;
+	15      (00000034) invoke-direct        v1, Landroid/os/DeadObjectException;-><init>()V
+	16      (0000003a) throw                v1
+	6:3d
+	(Ljava/lang/Throwable; -> 2c getService-BB@0x2c)
+
+getService-BB@0x3c : 
+	17      (0000003c) monitor-exit         v0
+	18      (0000003e) throw                v1
+

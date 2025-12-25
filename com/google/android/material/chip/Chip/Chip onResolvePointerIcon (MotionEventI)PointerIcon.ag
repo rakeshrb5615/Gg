@@ -1,0 +1,38 @@
+# Lcom/google/android/material/chip/Chip;->onResolvePointerIcon(Landroid/view/MotionEvent; I)Landroid/view/PointerIcon; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:android.view.MotionEvent
+# - v5:int
+#
+# - return:android.view.PointerIcon
+
+onResolvePointerIcon-BB@0x0 : [ onResolvePointerIcon-BB@0x24 onResolvePointerIcon-BB@0x46 ]
+	0       (00000000) invoke-direct        v3, Lcom/google/android/material/chip/Chip;->getCloseIconTouchBounds()Landroid/graphics/RectF;
+	1       (00000006) move-result-object   v0
+	2       (00000008) invoke-virtual       v4, Landroid/view/MotionEvent;->getX()F
+	3       (0000000e) move-result          v1
+	4       (00000010) invoke-virtual       v4, Landroid/view/MotionEvent;->getY()F
+	5       (00000016) move-result          v2
+	6       (00000018) invoke-virtual       v0, v1, v2, Landroid/graphics/RectF;->contains(F F)Z
+	7       (0000001e) move-result          v0
+	8       (00000020) if-eqz               v0, +013h
+
+onResolvePointerIcon-BB@0x24 : [ onResolvePointerIcon-BB@0x30 onResolvePointerIcon-BB@0x46 ]
+	9       (00000024) invoke-virtual       v3, Landroid/view/View;->isEnabled()Z
+	10      (0000002a) move-result          v0
+	11      (0000002c) if-eqz               v0, +00dh
+
+onResolvePointerIcon-BB@0x30 : 
+	12      (00000030) invoke-virtual       v3, Landroid/view/View;->getContext()Landroid/content/Context;
+	13      (00000036) move-result-object   v4
+	14      (00000038) const/16             v5, 1002
+	15      (0000003c) invoke-static        v4, v5, Landroid/view/PointerIcon;->getSystemIcon(Landroid/content/Context; I)Landroid/view/PointerIcon;
+	16      (00000042) move-result-object   v4
+	17      (00000044) return-object        v4
+
+onResolvePointerIcon-BB@0x46 : 
+	18      (00000046) invoke-super         v3, v4, v5, Landroid/view/View;->onResolvePointerIcon(Landroid/view/MotionEvent; I)Landroid/view/PointerIcon;
+	19      (0000004c) move-result-object   v4
+	20      (0000004e) return-object        v4
+

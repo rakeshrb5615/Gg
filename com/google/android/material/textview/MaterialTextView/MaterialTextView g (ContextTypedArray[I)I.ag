@@ -1,0 +1,64 @@
+# Lcom/google/android/material/textview/MaterialTextView;->g(Landroid/content/Context; Landroid/content/res/TypedArray; [I)I [access_flags=public static varargs]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:android.content.Context
+# - v8:android.content.res.TypedArray
+# - v9:int[]
+#
+# - return:int
+
+g-BB@0x0 : [ g-BB@0x8 ]
+	0       (00000000) const/4              v0, -1
+	1       (00000002) const/4              v1, 0
+	2       (00000004) move                 v3, v0
+	3       (00000006) move                 v2, v1
+
+g-BB@0x8 : [ g-BB@0xe g-BB@0x74 ]
+	4       (00000008) array-length         v4, v9
+	5       (0000000a) if-ge                v2, v4, +035h
+
+g-BB@0xe : [ g-BB@0x12 g-BB@0x74 ]
+	6       (0000000e) if-gez               v3, +033h
+
+g-BB@0x12 : [ g-BB@0x2c g-BB@0x66 ]
+	7       (00000012) aget                 v3, v9, v2
+	8       (00000016) new-instance         v4, Landroid/util/TypedValue;
+	9       (0000001a) invoke-direct        v4, Landroid/util/TypedValue;-><init>()V
+	10      (00000020) invoke-virtual       v8, v3, v4, Landroid/content/res/TypedArray;->getValue(I Landroid/util/TypedValue;)Z
+	11      (00000026) move-result          v5
+	12      (00000028) if-eqz               v5, +01fh
+
+g-BB@0x2c : [ g-BB@0x36 g-BB@0x38 ]
+	13      (0000002c) iget                 v5, v4, Landroid/util/TypedValue;->type I
+	14      (00000030) const/4              v6, 2
+	15      (00000032) if-eq                v5, v6, +003h
+
+g-BB@0x36 : [ g-BB@0x66 ]
+	16      (00000036) goto                 +18h
+
+g-BB@0x38 : [ g-BB@0x6e ]
+	17      (00000038) invoke-virtual       v7, Landroid/content/Context;->getTheme()Landroid/content/res/Resources$Theme;
+	18      (0000003e) move-result-object   v3
+	19      (00000040) iget                 v4, v4, Landroid/util/TypedValue;->data I
+	20      (00000044) filled-new-array     v4, [I
+	21      (0000004a) move-result-object   v4
+	22      (0000004c) invoke-virtual       v3, v4, Landroid/content/res/Resources$Theme;->obtainStyledAttributes([I)Landroid/content/res/TypedArray;
+	23      (00000052) move-result-object   v3
+	24      (00000054) invoke-virtual       v3, v1, v0, Landroid/content/res/TypedArray;->getDimensionPixelSize(I I)I
+	25      (0000005a) move-result          v4
+	26      (0000005c) invoke-virtual       v3, Landroid/content/res/TypedArray;->recycle()V
+	27      (00000062) move                 v3, v4
+	28      (00000064) goto                 +5h
+
+g-BB@0x66 : [ g-BB@0x6e ]
+	29      (00000066) invoke-virtual       v8, v3, v0, Landroid/content/res/TypedArray;->getDimensionPixelSize(I I)I
+	30      (0000006c) move-result          v3
+
+g-BB@0x6e : [ g-BB@0x8 ]
+	31      (0000006e) add-int/lit8         v2, v2, 1
+	32      (00000072) goto                 -35h
+
+g-BB@0x74 : 
+	33      (00000074) return               v3
+

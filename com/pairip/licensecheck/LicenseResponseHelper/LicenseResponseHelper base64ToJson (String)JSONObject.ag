@@ -1,0 +1,31 @@
+# Lcom/pairip/licensecheck/LicenseResponseHelper;->base64ToJson(Ljava/lang/String;)Lorg/json/JSONObject; [access_flags=private static]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:java.lang.String
+#
+# - return:org.json.JSONObject
+
+base64ToJson-BB@0x0 : [ base64ToJson-BB@0x4 ]
+	0       (00000000) const/16             v0, 8
+
+base64ToJson-BB@0x4 : 
+	1       (00000004) invoke-static        v2, v0, Landroid/util/Base64;->decode(Ljava/lang/String; I)[B
+	2       (0000000a) move-result-object   v2
+	3       (0000000c) new-instance         v0, Ljava/lang/String;
+	4       (00000010) sget-object          v1, Lcom/pairip/licensecheck/LicenseResponseHelper;->UTF_8 Ljava/nio/charset/Charset;
+	5       (00000014) invoke-direct        v0, v2, v1, Ljava/lang/String;-><init>([B Ljava/nio/charset/Charset;)V
+	6       (0000001a) new-instance         v2, Lorg/json/JSONObject;
+	7       (0000001e) invoke-direct        v2, v0, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+	8       (00000024) return-object        v2
+	4:23
+	(Ljava/lang/IllegalArgumentException; -> 26 base64ToJson-BB@0x26)
+	(Lorg/json/JSONException; -> 26 base64ToJson-BB@0x26)
+
+base64ToJson-BB@0x26 : 
+	9       (00000026) move-exception       v2
+	10      (00000028) new-instance         v0, Lcom/pairip/licensecheck/LicenseCheckException;
+	11      (0000002c) const-string         v1, "Invalid response"
+	12      (00000030) invoke-direct        v0, v1, v2, Lcom/pairip/licensecheck/LicenseCheckException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	13      (00000036) throw                v0
+

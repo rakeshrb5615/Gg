@@ -1,0 +1,154 @@
+# Lcom/google/android/gms/measurement/internal/zzgl;->zzo()Z [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v10
+#
+# - return:boolean
+
+zzo-BB@0x0 : [ zzo-BB@0x14 zzo-BB@0x18 ]
+	0       (00000000) const-string         v0, "Error deleting app launch break from local database"
+	1       (00000004) invoke-virtual       v10, Lcom/google/android/gms/measurement/internal/zzf;->zzg()V
+	2       (0000000a) iget-boolean         v1, v10, Lcom/google/android/gms/measurement/internal/zzgl;->zzc Z
+	3       (0000000e) const/4              v2, 0
+	4       (00000010) if-eqz               v1, +004h
+
+zzo-BB@0x14 : [ zzo-BB@0x11c ]
+	5       (00000014) goto/16              +084h
+
+zzo-BB@0x18 : [ zzo-BB@0x24 zzo-BB@0x11c ]
+	6       (00000018) invoke-virtual       v10, Lcom/google/android/gms/measurement/internal/zzgl;->zzq()Z
+	7       (0000001e) move-result          v1
+	8       (00000020) if-eqz               v1, +07eh
+
+zzo-BB@0x24 : [ zzo-BB@0x2a ]
+	9       (00000024) const/4              v1, 5
+	10      (00000026) move                 v4, v1
+	11      (00000028) move                 v3, v2
+
+zzo-BB@0x2a : [ zzo-BB@0x2e zzo-BB@0x10e ]
+	12      (0000002a) if-ge                v3, v1, +072h
+
+zzo-BB@0x2e : [ zzo-BB@0x32 ]
+	13      (0000002e) const/4              v5, 0
+	14      (00000030) const/4              v6, 1
+
+zzo-BB@0x32 : [ zzo-BB@0x3e zzo-BB@0x44 ]
+	15      (00000032) invoke-virtual       v10, Lcom/google/android/gms/measurement/internal/zzgl;->zzp()Landroid/database/sqlite/SQLiteDatabase;
+	16      (00000038) move-result-object   v5
+	17      (0000003a) if-nez               v5, +005h
+	32:75
+	(Landroid/database/sqlite/SQLiteFullException; -> d6 zzo-BB@0xd6)
+	(Landroid/database/sqlite/SQLiteDatabaseLockedException; -> be zzo-BB@0xbe)
+	(Landroid/database/sqlite/SQLiteException; -> 82 zzo-BB@0x82)
+	(Ljava/lang/Throwable; -> 7e zzo-BB@0x7e)
+
+zzo-BB@0x3e : [ zzo-BB@0x11c ]
+	18      (0000003e) iput-boolean         v6, v10, Lcom/google/android/gms/measurement/internal/zzgl;->zzc Z
+	19      (00000042) goto                 +6dh
+	32:75
+	(Landroid/database/sqlite/SQLiteFullException; -> d6 zzo-BB@0xd6)
+	(Landroid/database/sqlite/SQLiteDatabaseLockedException; -> be zzo-BB@0xbe)
+	(Landroid/database/sqlite/SQLiteException; -> 82 zzo-BB@0x82)
+	(Ljava/lang/Throwable; -> 7e zzo-BB@0x7e)
+
+zzo-BB@0x44 : 
+	20      (00000044) invoke-virtual       v5, Landroid/database/sqlite/SQLiteDatabase;->beginTransaction()V
+	21      (0000004a) const-string         v7, "messages"
+	22      (0000004e) const-string         v8, "type == ?"
+	23      (00000052) const/4              v9, 3
+	24      (00000054) invoke-static        v9, Ljava/lang/Integer;->toString(I)Ljava/lang/String;
+	25      (0000005a) move-result-object   v9
+	26      (0000005c) filled-new-array     v9, [Ljava/lang/String;
+	27      (00000062) move-result-object   v9
+	28      (00000064) invoke-virtual       v5, v7, v8, v9, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String; Ljava/lang/String; [Ljava/lang/String;)I
+	29      (0000006a) invoke-virtual       v5, Landroid/database/sqlite/SQLiteDatabase;->setTransactionSuccessful()V
+	30      (00000070) invoke-virtual       v5, Landroid/database/sqlite/SQLiteDatabase;->endTransaction()V
+	31      (00000076) invoke-virtual       v5, Landroid/database/sqlite/SQLiteClosable;->close()V
+	32      (0000007c) return               v6
+
+zzo-BB@0x7e : [ zzo-BB@0x102 ]
+	33      (0000007e) move-exception       v0
+	34      (00000080) goto                 +41h
+
+zzo-BB@0x82 : [ zzo-BB@0x88 zzo-BB@0x9a ]
+	35      (00000082) move-exception       v7
+	36      (00000084) if-eqz               v5, +00bh
+
+zzo-BB@0x88 : [ zzo-BB@0x94 zzo-BB@0x9a ]
+	37      (00000088) invoke-virtual       v5, Landroid/database/sqlite/SQLiteDatabase;->inTransaction()Z
+	38      (0000008e) move-result          v8
+	39      (00000090) if-eqz               v8, +005h
+	88:c5
+	(Ljava/lang/Throwable; -> 7e zzo-BB@0x7e)
+
+zzo-BB@0x94 : [ zzo-BB@0x9a ]
+	40      (00000094) invoke-virtual       v5, Landroid/database/sqlite/SQLiteDatabase;->endTransaction()V
+	88:c5
+	(Ljava/lang/Throwable; -> 7e zzo-BB@0x7e)
+
+zzo-BB@0x9a : [ zzo-BB@0xbc zzo-BB@0xfc ]
+	41      (0000009a) iget-object          v8, v10, Lcom/google/android/gms/measurement/internal/zzje;->zzu Lcom/google/android/gms/measurement/internal/zzic;
+	42      (0000009e) invoke-virtual       v8, Lcom/google/android/gms/measurement/internal/zzic;->zzaV()Lcom/google/android/gms/measurement/internal/zzgu;
+	43      (000000a4) move-result-object   v8
+	44      (000000a6) invoke-virtual       v8, Lcom/google/android/gms/measurement/internal/zzgu;->zzb()Lcom/google/android/gms/measurement/internal/zzgs;
+	45      (000000ac) move-result-object   v8
+	46      (000000ae) invoke-virtual       v8, v0, v7, Lcom/google/android/gms/measurement/internal/zzgs;->zzb(Ljava/lang/String; Ljava/lang/Object;)V
+	47      (000000b4) iput-boolean         v6, v10, Lcom/google/android/gms/measurement/internal/zzgl;->zzc Z
+	48      (000000b8) if-eqz               v5, +022h
+	88:c5
+	(Ljava/lang/Throwable; -> 7e zzo-BB@0x7e)
+
+zzo-BB@0xbc : [ zzo-BB@0xce ]
+	49      (000000bc) goto                 +9h
+	88:c5
+	(Ljava/lang/Throwable; -> 7e zzo-BB@0x7e)
+
+zzo-BB@0xbe : [ zzo-BB@0xce zzo-BB@0xfc ]
+	50      (000000be) int-to-long          v6, v4
+	51      (000000c0) invoke-static        v6, v7, Landroid/os/SystemClock;->sleep(J)V
+	52      (000000c6) add-int/lit8         v4, v4, 20
+	53      (000000ca) if-eqz               v5, +019h
+
+zzo-BB@0xce : [ zzo-BB@0xfc ]
+	54      (000000ce) invoke-virtual       v5, Landroid/database/sqlite/SQLiteClosable;->close()V
+	55      (000000d4) goto                 +14h
+
+zzo-BB@0xd6 : [ zzo-BB@0xd8 ]
+	56      (000000d6) move-exception       v7
+
+zzo-BB@0xd8 : [ zzo-BB@0xfa zzo-BB@0xfc ]
+	57      (000000d8) iget-object          v8, v10, Lcom/google/android/gms/measurement/internal/zzje;->zzu Lcom/google/android/gms/measurement/internal/zzic;
+	58      (000000dc) invoke-virtual       v8, Lcom/google/android/gms/measurement/internal/zzic;->zzaV()Lcom/google/android/gms/measurement/internal/zzgu;
+	59      (000000e2) move-result-object   v8
+	60      (000000e4) invoke-virtual       v8, Lcom/google/android/gms/measurement/internal/zzgu;->zzb()Lcom/google/android/gms/measurement/internal/zzgs;
+	61      (000000ea) move-result-object   v8
+	62      (000000ec) invoke-virtual       v8, v0, v7, Lcom/google/android/gms/measurement/internal/zzgs;->zzb(Ljava/lang/String; Ljava/lang/Object;)V
+	63      (000000f2) iput-boolean         v6, v10, Lcom/google/android/gms/measurement/internal/zzgl;->zzc Z
+	64      (000000f6) if-eqz               v5, +003h
+	d8:f5
+	(Ljava/lang/Throwable; -> 7e zzo-BB@0x7e)
+
+zzo-BB@0xfa : [ zzo-BB@0xce ]
+	65      (000000fa) goto                 -16h
+
+zzo-BB@0xfc : [ zzo-BB@0x2a ]
+	66      (000000fc) add-int/lit8         v3, v3, 1
+	67      (00000100) goto                 -6bh
+
+zzo-BB@0x102 : [ zzo-BB@0x106 zzo-BB@0x10c ]
+	68      (00000102) if-eqz               v5, +005h
+
+zzo-BB@0x106 : [ zzo-BB@0x10c ]
+	69      (00000106) invoke-virtual       v5, Landroid/database/sqlite/SQLiteClosable;->close()V
+
+zzo-BB@0x10c : 
+	70      (0000010c) throw                v0
+
+zzo-BB@0x10e : [ zzo-BB@0x11c ]
+	71      (0000010e) iget-object          v0, v10, Lcom/google/android/gms/measurement/internal/zzje;->zzu Lcom/google/android/gms/measurement/internal/zzic;
+	72      (00000112) const-string         v1, "Error deleting app launch break from local database in reasonable time"
+	73      (00000116) invoke-static        v0, v1, Lv1/a;->v(Lcom/google/android/gms/measurement/internal/zzic; Ljava/lang/String;)V
+
+zzo-BB@0x11c : 
+	74      (0000011c) return               v2
+

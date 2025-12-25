@@ -1,0 +1,48 @@
+# Lcom/google/android/gms/auth/api/signin/GoogleSignIn;->zba(Landroid/app/Activity; Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount; [Lcom/google/android/gms/common/api/Scope;)Landroid/content/Intent; [access_flags=private static varargs]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:android.app.Activity
+# - v3:com.google.android.gms.auth.api.signin.GoogleSignInAccount
+# - v4:com.google.android.gms.common.api.Scope[]
+#
+# - return:android.content.Intent
+
+zba-BB@0x0 : [ zba-BB@0x10 zba-BB@0x1c ]
+	0       (00000000) new-instance         v0, Lcom/google/android/gms/auth/api/signin/GoogleSignInOptions$Builder;
+	1       (00000004) invoke-direct        v0, Lcom/google/android/gms/auth/api/signin/GoogleSignInOptions$Builder;-><init>()V
+	2       (0000000a) array-length         v1, v4
+	3       (0000000c) if-lez               v1, +008h
+
+zba-BB@0x10 : [ zba-BB@0x1c ]
+	4       (00000010) const/4              v1, 0
+	5       (00000012) aget-object          v1, v4, v1
+	6       (00000016) invoke-virtual       v0, v1, v4, Lcom/google/android/gms/auth/api/signin/GoogleSignInOptions$Builder;->requestScopes(Lcom/google/android/gms/common/api/Scope; [Lcom/google/android/gms/common/api/Scope;)Lcom/google/android/gms/auth/api/signin/GoogleSignInOptions$Builder;
+
+zba-BB@0x1c : [ zba-BB@0x20 zba-BB@0x4e ]
+	7       (0000001c) if-eqz               v3, +019h
+
+zba-BB@0x20 : [ zba-BB@0x34 zba-BB@0x4e ]
+	8       (00000020) invoke-virtual       v3, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->getEmail()Ljava/lang/String;
+	9       (00000026) move-result-object   v4
+	10      (00000028) invoke-static        v4, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+	11      (0000002e) move-result          v4
+	12      (00000030) if-nez               v4, +00fh
+
+zba-BB@0x34 : [ zba-BB@0x4e ]
+	13      (00000034) invoke-virtual       v3, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->getEmail()Ljava/lang/String;
+	14      (0000003a) move-result-object   v3
+	15      (0000003c) invoke-static        v3, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;
+	16      (00000042) move-result-object   v3
+	17      (00000044) check-cast           v3, Ljava/lang/String;
+	18      (00000048) invoke-virtual       v0, v3, Lcom/google/android/gms/auth/api/signin/GoogleSignInOptions$Builder;->setAccountName(Ljava/lang/String;)Lcom/google/android/gms/auth/api/signin/GoogleSignInOptions$Builder;
+
+zba-BB@0x4e : 
+	19      (0000004e) new-instance         v3, Lcom/google/android/gms/auth/api/signin/GoogleSignInClient;
+	20      (00000052) invoke-virtual       v0, Lcom/google/android/gms/auth/api/signin/GoogleSignInOptions$Builder;->build()Lcom/google/android/gms/auth/api/signin/GoogleSignInOptions;
+	21      (00000058) move-result-object   v4
+	22      (0000005a) invoke-direct        v3, v2, v4, Lcom/google/android/gms/auth/api/signin/GoogleSignInClient;-><init>(Landroid/app/Activity; Lcom/google/android/gms/auth/api/signin/GoogleSignInOptions;)V
+	23      (00000060) invoke-virtual       v3, Lcom/google/android/gms/auth/api/signin/GoogleSignInClient;->getSignInIntent()Landroid/content/Intent;
+	24      (00000066) move-result-object   v2
+	25      (00000068) return-object        v2
+

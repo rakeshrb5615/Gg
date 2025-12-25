@@ -1,0 +1,77 @@
+# Lcom/google/android/gms/location/ActivityTransitionResult;-><init>(Ljava/util/List;)V [access_flags=public constructor]
+#
+# Parameters:
+# - local registers: v0...v7
+# - v8:java.util.List
+#
+# - return:void
+
+<init>-BB@0x0 : [ <init>-BB@0x22 <init>-BB@0xbc ]
+	0       (00000000) invoke-direct        v7, Lcom/google/android/gms/common/internal/safeparcel/AbstractSafeParcelable;-><init>()V
+	1       (00000006) const/4              v0, 0
+	2       (00000008) iput-object          v0, v7, Lcom/google/android/gms/location/ActivityTransitionResult;->zzb Landroid/os/Bundle;
+	3       (0000000c) const-string         v0, "transitionEvents list can't be null."
+	4       (00000010) invoke-static        v8, v0, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	5       (00000016) invoke-interface     v8, Ljava/util/List;->isEmpty()Z
+	6       (0000001c) move-result          v0
+	7       (0000001e) if-nez               v0, +04fh
+
+<init>-BB@0x22 : [ <init>-BB@0x26 ]
+	8       (00000022) const/4              v0, 1
+	9       (00000024) move                 v1, v0
+
+<init>-BB@0x26 : [ <init>-BB@0x32 <init>-BB@0xbc ]
+	10      (00000026) invoke-interface     v8, Ljava/util/List;->size()I
+	11      (0000002c) move-result          v2
+	12      (0000002e) if-ge                v1, v2, +047h
+
+<init>-BB@0x32 : [ <init>-BB@0x66 <init>-BB@0x6a ]
+	13      (00000032) invoke-interface     v8, v1, Ljava/util/List;->get(I)Ljava/lang/Object;
+	14      (00000038) move-result-object   v2
+	15      (0000003a) check-cast           v2, Lcom/google/android/gms/location/ActivityTransitionEvent;
+	16      (0000003e) invoke-virtual       v2, Lcom/google/android/gms/location/ActivityTransitionEvent;->getElapsedRealTimeNanos()J
+	17      (00000044) move-result-wide     v2
+	18      (00000046) add-int/lit8         v4, v1, -1
+	19      (0000004a) invoke-interface     v8, v4, Ljava/util/List;->get(I)Ljava/lang/Object;
+	20      (00000050) move-result-object   v5
+	21      (00000052) check-cast           v5, Lcom/google/android/gms/location/ActivityTransitionEvent;
+	22      (00000056) invoke-virtual       v5, Lcom/google/android/gms/location/ActivityTransitionEvent;->getElapsedRealTimeNanos()J
+	23      (0000005c) move-result-wide     v5
+	24      (0000005e) cmp-long             v2, v2, v5
+	25      (00000062) if-ltz               v2, +004h
+
+<init>-BB@0x66 : [ <init>-BB@0x6c ]
+	26      (00000066) move                 v2, v0
+	27      (00000068) goto                 +2h
+
+<init>-BB@0x6a : [ <init>-BB@0x6c ]
+	28      (0000006a) const/4              v2, 0
+
+<init>-BB@0x6c : [ <init>-BB@0x26 ]
+	29      (0000006c) invoke-interface     v8, v1, Ljava/util/List;->get(I)Ljava/lang/Object;
+	30      (00000072) move-result-object   v3
+	31      (00000074) check-cast           v3, Lcom/google/android/gms/location/ActivityTransitionEvent;
+	32      (00000078) invoke-virtual       v3, Lcom/google/android/gms/location/ActivityTransitionEvent;->getElapsedRealTimeNanos()J
+	33      (0000007e) move-result-wide     v5
+	34      (00000080) invoke-static        v5, v6, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+	35      (00000086) move-result-object   v3
+	36      (00000088) invoke-interface     v8, v4, Ljava/util/List;->get(I)Ljava/lang/Object;
+	37      (0000008e) move-result-object   v4
+	38      (00000090) check-cast           v4, Lcom/google/android/gms/location/ActivityTransitionEvent;
+	39      (00000094) invoke-virtual       v4, Lcom/google/android/gms/location/ActivityTransitionEvent;->getElapsedRealTimeNanos()J
+	40      (0000009a) move-result-wide     v4
+	41      (0000009c) invoke-static        v4, v5, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+	42      (000000a2) move-result-object   v4
+	43      (000000a4) filled-new-array     v3, v4, [Ljava/lang/Object;
+	44      (000000aa) move-result-object   v3
+	45      (000000ac) const-string         v4, "Transition out of order: ts1=%d, ts2=%d"
+	46      (000000b0) invoke-static        v2, v4, v3, Lcom/google/android/gms/common/internal/Preconditions;->checkArgument(Z Ljava/lang/String; [Ljava/lang/Object;)V
+	47      (000000b6) add-int/lit8         v1, v1, 1
+	48      (000000ba) goto                 -4ah
+
+<init>-BB@0xbc : 
+	49      (000000bc) invoke-static        v8, Ljava/util/Collections;->unmodifiableList(Ljava/util/List;)Ljava/util/List;
+	50      (000000c2) move-result-object   v8
+	51      (000000c4) iput-object          v8, v7, Lcom/google/android/gms/location/ActivityTransitionResult;->zza Ljava/util/List;
+	52      (000000c8) return-void          
+

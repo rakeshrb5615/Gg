@@ -1,0 +1,27 @@
+# Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->isExpired()Z [access_flags=public]
+#
+# Parameters:
+# local registers: v0...v6
+#
+# - return:boolean
+
+isExpired-BB@0x0 : [ isExpired-BB@0x24 isExpired-BB@0x28 ]
+	0       (00000000) sget-object          v0, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->zaa Lcom/google/android/gms/common/util/Clock;
+	1       (00000004) invoke-interface     v0, Lcom/google/android/gms/common/util/Clock;->currentTimeMillis()J
+	2       (0000000a) move-result-wide     v0
+	3       (0000000c) const-wide/16        v2, 1000
+	4       (00000010) div-long/2addr       v0, v2
+	5       (00000012) iget-wide            v2, v6, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->zaj J
+	6       (00000016) const-wide/16        v4, -300
+	7       (0000001a) add-long/2addr       v2, v4
+	8       (0000001c) cmp-long             v0, v0, v2
+	9       (00000020) if-ltz               v0, +004h
+
+isExpired-BB@0x24 : 
+	10      (00000024) const/4              v0, 1
+	11      (00000026) return               v0
+
+isExpired-BB@0x28 : 
+	12      (00000028) const/4              v0, 0
+	13      (0000002a) return               v0
+

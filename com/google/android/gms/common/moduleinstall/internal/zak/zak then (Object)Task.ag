@@ -1,0 +1,32 @@
+# Lcom/google/android/gms/common/moduleinstall/internal/zak;->then(Ljava/lang/Object;)Lcom/google/android/gms/tasks/Task; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:java.lang.Object
+#
+# - return:com.google.android.gms.tasks.Task
+
+then-BB@0x0 : [ then-BB@0x18 then-BB@0x2e ]
+	0       (00000000) check-cast           v2, Ljava/lang/Void;
+	1       (00000004) sget                 v2, Lcom/google/android/gms/common/moduleinstall/internal/zay;->zab I
+	2       (00000008) iget-object          v2, v1, Lcom/google/android/gms/common/moduleinstall/internal/zak;->zaa Ljava/util/concurrent/atomic/AtomicReference;
+	3       (0000000c) invoke-virtual       v2, Ljava/util/concurrent/atomic/AtomicReference;->get()Ljava/lang/Object;
+	4       (00000012) move-result-object   v0
+	5       (00000014) if-eqz               v0, +00dh
+
+then-BB@0x18 : 
+	6       (00000018) invoke-virtual       v2, Ljava/util/concurrent/atomic/AtomicReference;->get()Ljava/lang/Object;
+	7       (0000001e) move-result-object   v2
+	8       (00000020) check-cast           v2, Lcom/google/android/gms/common/moduleinstall/ModuleInstallResponse;
+	9       (00000024) invoke-static        v2, Lcom/google/android/gms/tasks/Tasks;->forResult(Ljava/lang/Object;)Lcom/google/android/gms/tasks/Task;
+	10      (0000002a) move-result-object   v2
+	11      (0000002c) return-object        v2
+
+then-BB@0x2e : 
+	12      (0000002e) new-instance         v2, Lcom/google/android/gms/common/api/ApiException;
+	13      (00000032) sget-object          v0, Lcom/google/android/gms/common/api/Status;->RESULT_INTERNAL_ERROR Lcom/google/android/gms/common/api/Status;
+	14      (00000036) invoke-direct        v2, v0, Lcom/google/android/gms/common/api/ApiException;-><init>(Lcom/google/android/gms/common/api/Status;)V
+	15      (0000003c) invoke-static        v2, Lcom/google/android/gms/tasks/Tasks;->forException(Ljava/lang/Exception;)Lcom/google/android/gms/tasks/Task;
+	16      (00000042) move-result-object   v2
+	17      (00000044) return-object        v2
+

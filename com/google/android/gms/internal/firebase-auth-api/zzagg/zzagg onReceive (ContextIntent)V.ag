@@ -1,0 +1,87 @@
+# Lcom/google/android/gms/internal/firebase-auth-api/zzagg;->onReceive(Landroid/content/Context; Landroid/content/Intent;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:android.content.Context
+# - v4:android.content.Intent
+#
+# - return:void
+
+onReceive-BB@0x0 : [ onReceive-BB@0x18 onReceive-BB@0xdc ]
+	0       (00000000) const-string         v0, "com.google.android.gms.auth.api.phone.SMS_RETRIEVED"
+	1       (00000004) invoke-virtual       v4, Landroid/content/Intent;->getAction()Ljava/lang/String;
+	2       (0000000a) move-result-object   v1
+	3       (0000000c) invoke-virtual       v0, v1, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	4       (00000012) move-result          v0
+	5       (00000014) if-eqz               v0, +064h
+
+onReceive-BB@0x18 : [ onReceive-BB@0x3c onReceive-BB@0x3e ]
+	6       (00000018) invoke-virtual       v4, Landroid/content/Intent;->getExtras()Landroid/os/Bundle;
+	7       (0000001e) move-result-object   v4
+	8       (00000020) const-string         v0, "com.google.android.gms.auth.api.phone.EXTRA_STATUS"
+	9       (00000024) invoke-virtual       v4, v0, Landroid/os/BaseBundle;->get(Ljava/lang/String;)Ljava/lang/Object;
+	10      (0000002a) move-result-object   v0
+	11      (0000002c) check-cast           v0, Lcom/google/android/gms/common/api/Status;
+	12      (00000030) invoke-virtual       v0, Lcom/google/android/gms/common/api/Status;->getStatusCode()I
+	13      (00000036) move-result          v0
+	14      (00000038) if-eqz               v0, +003h
+
+onReceive-BB@0x3c : [ onReceive-BB@0xce ]
+	15      (0000003c) goto                 +49h
+
+onReceive-BB@0x3e : [ onReceive-BB@0x70 onReceive-BB@0x88 ]
+	16      (0000003e) const-string         v0, "com.google.android.gms.auth.api.phone.EXTRA_SMS_MESSAGE"
+	17      (00000042) invoke-virtual       v4, v0, Landroid/os/BaseBundle;->get(Ljava/lang/String;)Ljava/lang/Object;
+	18      (00000048) move-result-object   v4
+	19      (0000004a) check-cast           v4, Ljava/lang/String;
+	20      (0000004e) iget-object          v0, v2, Lcom/google/android/gms/internal/firebase-auth-api/zzagg;->zzb Lcom/google/android/gms/internal/firebase-auth-api/zzagc;
+	21      (00000052) invoke-static        v0, Lcom/google/android/gms/internal/firebase-auth-api/zzagc;->zza(Lcom/google/android/gms/internal/firebase-auth-api/zzagc;)Ljava/util/HashMap;
+	22      (00000058) move-result-object   v0
+	23      (0000005a) iget-object          v1, v2, Lcom/google/android/gms/internal/firebase-auth-api/zzagg;->zza Ljava/lang/String;
+	24      (0000005e) invoke-virtual       v0, v1, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	25      (00000064) move-result-object   v0
+	26      (00000066) check-cast           v0, Lcom/google/android/gms/internal/firebase-auth-api/zzagj;
+	27      (0000006a) const/4              v1, 0
+	28      (0000006c) if-nez               v0, +00eh
+
+onReceive-BB@0x70 : [ onReceive-BB@0xce ]
+	29      (00000070) invoke-static        Lcom/google/android/gms/internal/firebase-auth-api/zzagc;->zza()Lcom/google/android/gms/common/logging/Logger;
+	30      (00000076) move-result-object   v4
+	31      (00000078) const-string         v0, "Verification code received with no active retrieval session."
+	32      (0000007c) new-array            v1, v1, [Ljava/lang/Object;
+	33      (00000080) invoke-virtual       v4, v0, v1, Lcom/google/android/gms/common/logging/Logger;->e(Ljava/lang/String; [Ljava/lang/Object;)V
+	34      (00000086) goto                 +24h
+
+onReceive-BB@0x88 : [ onReceive-BB@0x98 onReceive-BB@0xb0 ]
+	35      (00000088) invoke-static        v4, Lcom/google/android/gms/internal/firebase-auth-api/zzagc;->zza(Ljava/lang/String;)Ljava/lang/String;
+	36      (0000008e) move-result-object   v4
+	37      (00000090) iput-object          v4, v0, Lcom/google/android/gms/internal/firebase-auth-api/zzagj;->zze Ljava/lang/String;
+	38      (00000094) if-nez               v4, +00eh
+
+onReceive-BB@0x98 : [ onReceive-BB@0xce ]
+	39      (00000098) invoke-static        Lcom/google/android/gms/internal/firebase-auth-api/zzagc;->zza()Lcom/google/android/gms/common/logging/Logger;
+	40      (0000009e) move-result-object   v4
+	41      (000000a0) const-string         v0, "Unable to extract verification code."
+	42      (000000a4) new-array            v1, v1, [Ljava/lang/Object;
+	43      (000000a8) invoke-virtual       v4, v0, v1, Lcom/google/android/gms/common/logging/Logger;->e(Ljava/lang/String; [Ljava/lang/Object;)V
+	44      (000000ae) goto                 +10h
+
+onReceive-BB@0xb0 : [ onReceive-BB@0xc0 onReceive-BB@0xce ]
+	45      (000000b0) iget-object          v4, v0, Lcom/google/android/gms/internal/firebase-auth-api/zzagj;->zzd Ljava/lang/String;
+	46      (000000b4) invoke-static        v4, Lcom/google/android/gms/internal/firebase-auth-api/zzac;->zzc(Ljava/lang/String;)Z
+	47      (000000ba) move-result          v4
+	48      (000000bc) if-nez               v4, +009h
+
+onReceive-BB@0xc0 : [ onReceive-BB@0xce ]
+	49      (000000c0) iget-object          v4, v2, Lcom/google/android/gms/internal/firebase-auth-api/zzagg;->zzb Lcom/google/android/gms/internal/firebase-auth-api/zzagc;
+	50      (000000c4) iget-object          v0, v2, Lcom/google/android/gms/internal/firebase-auth-api/zzagg;->zza Ljava/lang/String;
+	51      (000000c8) invoke-static        v4, v0, Lcom/google/android/gms/internal/firebase-auth-api/zzagc;->zzb(Lcom/google/android/gms/internal/firebase-auth-api/zzagc; Ljava/lang/String;)V
+
+onReceive-BB@0xce : [ onReceive-BB@0xdc ]
+	52      (000000ce) invoke-virtual       v3, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;
+	53      (000000d4) move-result-object   v3
+	54      (000000d6) invoke-virtual       v3, v2, Landroid/content/Context;->unregisterReceiver(Landroid/content/BroadcastReceiver;)V
+
+onReceive-BB@0xdc : 
+	55      (000000dc) return-void          
+

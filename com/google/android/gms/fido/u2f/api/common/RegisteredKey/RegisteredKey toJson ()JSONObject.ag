@@ -1,0 +1,77 @@
+# Lcom/google/android/gms/fido/u2f/api/common/RegisteredKey;->toJson()Lorg/json/JSONObject; [access_flags=public]
+#
+# Parameters:
+# local registers: v0...v5
+#
+# - return:org.json.JSONObject
+
+toJson-BB@0x0 : [ toJson-BB@0xa ]
+	0       (00000000) new-instance         v0, Lorg/json/JSONObject;
+	1       (00000004) invoke-direct        v0, Lorg/json/JSONObject;-><init>()V
+
+toJson-BB@0xa : [ toJson-BB@0x12 toJson-BB@0x22 ]
+	2       (0000000a) iget-object          v1, v5, Lcom/google/android/gms/fido/u2f/api/common/RegisteredKey;->zza Ljava/lang/String;
+	3       (0000000e) if-eqz               v1, +00ah
+	a:6f
+	(Lorg/json/JSONException; -> 1e toJson-BB@0x1e)
+
+toJson-BB@0x12 : [ toJson-BB@0x22 ]
+	4       (00000012) const-string         v2, "challenge"
+	5       (00000016) invoke-virtual       v0, v2, v1, Lorg/json/JSONObject;->put(Ljava/lang/String; Ljava/lang/Object;)Lorg/json/JSONObject;
+	6       (0000001c) goto                 +3h
+	a:6f
+	(Lorg/json/JSONException; -> 1e toJson-BB@0x1e)
+
+toJson-BB@0x1e : [ toJson-BB@0x72 ]
+	7       (0000001e) move-exception       v0
+	8       (00000020) goto                 +29h
+	a:6f
+	(Lorg/json/JSONException; -> 1e toJson-BB@0x1e)
+
+toJson-BB@0x22 : [ toJson-BB@0x36 ]
+	9       (00000022) iget-object          v1, v5, Lcom/google/android/gms/fido/u2f/api/common/RegisteredKey;->zzb Lcom/google/android/gms/fido/u2f/api/common/KeyHandle;
+	10      (00000026) invoke-virtual       v1, Lcom/google/android/gms/fido/u2f/api/common/KeyHandle;->zza()Lorg/json/JSONObject;
+	11      (0000002c) move-result-object   v1
+	12      (0000002e) invoke-virtual       v1, Lorg/json/JSONObject;->keys()Ljava/util/Iterator;
+	13      (00000034) move-result-object   v2
+	a:6f
+	(Lorg/json/JSONException; -> 1e toJson-BB@0x1e)
+
+toJson-BB@0x36 : [ toJson-BB@0x42 toJson-BB@0x5e ]
+	14      (00000036) invoke-interface     v2, Ljava/util/Iterator;->hasNext()Z
+	15      (0000003c) move-result          v3
+	16      (0000003e) if-eqz               v3, +010h
+	a:6f
+	(Lorg/json/JSONException; -> 1e toJson-BB@0x1e)
+
+toJson-BB@0x42 : [ toJson-BB@0x36 ]
+	17      (00000042) invoke-interface     v2, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	18      (00000048) move-result-object   v3
+	19      (0000004a) check-cast           v3, Ljava/lang/String;
+	20      (0000004e) invoke-virtual       v1, v3, Lorg/json/JSONObject;->get(Ljava/lang/String;)Ljava/lang/Object;
+	21      (00000054) move-result-object   v4
+	22      (00000056) invoke-virtual       v0, v3, v4, Lorg/json/JSONObject;->put(Ljava/lang/String; Ljava/lang/Object;)Lorg/json/JSONObject;
+	23      (0000005c) goto                 -13h
+	a:6f
+	(Lorg/json/JSONException; -> 1e toJson-BB@0x1e)
+
+toJson-BB@0x5e : [ toJson-BB@0x66 toJson-BB@0x70 ]
+	24      (0000005e) iget-object          v1, v5, Lcom/google/android/gms/fido/u2f/api/common/RegisteredKey;->zzc Ljava/lang/String;
+	25      (00000062) if-eqz               v1, +007h
+	a:6f
+	(Lorg/json/JSONException; -> 1e toJson-BB@0x1e)
+
+toJson-BB@0x66 : [ toJson-BB@0x70 ]
+	26      (00000066) const-string         v2, "appId"
+	27      (0000006a) invoke-virtual       v0, v2, v1, Lorg/json/JSONObject;->put(Ljava/lang/String; Ljava/lang/Object;)Lorg/json/JSONObject;
+	a:6f
+	(Lorg/json/JSONException; -> 1e toJson-BB@0x1e)
+
+toJson-BB@0x70 : 
+	28      (00000070) return-object        v0
+
+toJson-BB@0x72 : 
+	29      (00000072) new-instance         v1, Ljava/lang/RuntimeException;
+	30      (00000076) invoke-direct        v1, v0, Ljava/lang/RuntimeException;-><init>(Ljava/lang/Throwable;)V
+	31      (0000007c) throw                v1
+

@@ -1,0 +1,93 @@
+# Lcom/google/android/gms/internal/location/zzeg;-><init>(Lcom/google/android/gms/location/LocationRequest; Ljava/util/List; Z Z Z Z Ljava/lang/String; J)V [access_flags=public constructor]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:com.google.android.gms.location.LocationRequest
+# - v5:java.util.List
+# - v6:boolean
+# - v7:boolean
+# - v8:boolean
+# - v9:boolean
+# - v10:java.lang.String
+# - v11:long
+#
+# - return:void
+
+<init>-BB@0x0 : [ <init>-BB@0x14 <init>-BB@0x64 ]
+	0       (00000000) invoke-direct        v2, Lcom/google/android/gms/common/internal/safeparcel/AbstractSafeParcelable;-><init>()V
+	1       (00000006) new-instance         v9, Lcom/google/android/gms/location/LocationRequest$Builder;
+	2       (0000000a) invoke-direct        v9, v3, Lcom/google/android/gms/location/LocationRequest$Builder;-><init>(Lcom/google/android/gms/location/LocationRequest;)V
+	3       (00000010) if-eqz               v4, +02ah
+
+<init>-BB@0x14 : [ <init>-BB@0x20 <init>-BB@0x24 ]
+	4       (00000014) invoke-interface     v4, Ljava/util/List;->isEmpty()Z
+	5       (0000001a) move-result          v3
+	6       (0000001c) if-eqz               v3, +004h
+
+<init>-BB@0x20 : [ <init>-BB@0x5e ]
+	7       (00000020) const/4              v3, 0
+	8       (00000022) goto                 +1eh
+
+<init>-BB@0x24 : [ <init>-BB@0x36 ]
+	9       (00000024) new-instance         v3, Landroid/os/WorkSource;
+	10      (00000028) invoke-direct        v3, Landroid/os/WorkSource;-><init>()V
+	11      (0000002e) invoke-interface     v4, Ljava/util/List;->iterator()Ljava/util/Iterator;
+	12      (00000034) move-result-object   v4
+
+<init>-BB@0x36 : [ <init>-BB@0x42 <init>-BB@0x5e ]
+	13      (00000036) invoke-interface     v4, Ljava/util/Iterator;->hasNext()Z
+	14      (0000003c) move-result          v0
+	15      (0000003e) if-eqz               v0, +010h
+
+<init>-BB@0x42 : [ <init>-BB@0x36 ]
+	16      (00000042) invoke-interface     v4, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	17      (00000048) move-result-object   v0
+	18      (0000004a) check-cast           v0, Lcom/google/android/gms/common/internal/ClientIdentity;
+	19      (0000004e) iget                 v1, v0, Lcom/google/android/gms/common/internal/ClientIdentity;->uid I
+	20      (00000052) iget-object          v0, v0, Lcom/google/android/gms/common/internal/ClientIdentity;->packageName Ljava/lang/String;
+	21      (00000056) invoke-static        v3, v1, v0, Lcom/google/android/gms/common/util/WorkSourceUtil;->add(Landroid/os/WorkSource; I Ljava/lang/String;)V
+	22      (0000005c) goto                 -13h
+
+<init>-BB@0x5e : [ <init>-BB@0x64 ]
+	23      (0000005e) invoke-virtual       v9, v3, Lcom/google/android/gms/location/LocationRequest$Builder;->zzc(Landroid/os/WorkSource;)Lcom/google/android/gms/location/LocationRequest$Builder;
+
+<init>-BB@0x64 : [ <init>-BB@0x6a <init>-BB@0x70 ]
+	24      (00000064) const/4              v3, 1
+	25      (00000066) if-eqz               v5, +005h
+
+<init>-BB@0x6a : [ <init>-BB@0x70 ]
+	26      (0000006a) invoke-virtual       v9, v3, Lcom/google/android/gms/location/LocationRequest$Builder;->setGranularity(I)Lcom/google/android/gms/location/LocationRequest$Builder;
+
+<init>-BB@0x70 : [ <init>-BB@0x74 <init>-BB@0x7c ]
+	27      (00000070) if-eqz               v6, +006h
+
+<init>-BB@0x74 : [ <init>-BB@0x7c ]
+	28      (00000074) const/4              v4, 2
+	29      (00000076) invoke-virtual       v9, v4, Lcom/google/android/gms/location/LocationRequest$Builder;->zza(I)Lcom/google/android/gms/location/LocationRequest$Builder;
+
+<init>-BB@0x7c : [ <init>-BB@0x80 <init>-BB@0x86 ]
+	30      (0000007c) if-eqz               v7, +005h
+
+<init>-BB@0x80 : [ <init>-BB@0x86 ]
+	31      (00000080) invoke-virtual       v9, v3, Lcom/google/android/gms/location/LocationRequest$Builder;->zzb(Z)Lcom/google/android/gms/location/LocationRequest$Builder;
+
+<init>-BB@0x86 : [ <init>-BB@0x8a <init>-BB@0x90 ]
+	32      (00000086) if-eqz               v8, +005h
+
+<init>-BB@0x8a : [ <init>-BB@0x90 ]
+	33      (0000008a) invoke-virtual       v9, v3, Lcom/google/android/gms/location/LocationRequest$Builder;->setWaitForAccurateLocation(Z)Lcom/google/android/gms/location/LocationRequest$Builder;
+
+<init>-BB@0x90 : [ <init>-BB@0xa2 <init>-BB@0xa8 ]
+	34      (00000090) const-wide           v3, 9223372036854775807
+	35      (0000009a) cmp-long             v3, v10, v3
+	36      (0000009e) if-eqz               v3, +005h
+
+<init>-BB@0xa2 : [ <init>-BB@0xa8 ]
+	37      (000000a2) invoke-virtual       v9, v10, v11, Lcom/google/android/gms/location/LocationRequest$Builder;->setMaxUpdateAgeMillis(J)Lcom/google/android/gms/location/LocationRequest$Builder;
+
+<init>-BB@0xa8 : 
+	38      (000000a8) invoke-virtual       v9, Lcom/google/android/gms/location/LocationRequest$Builder;->build()Lcom/google/android/gms/location/LocationRequest;
+	39      (000000ae) move-result-object   v3
+	40      (000000b0) iput-object          v3, v2, Lcom/google/android/gms/internal/location/zzeg;->zza Lcom/google/android/gms/location/LocationRequest;
+	41      (000000b4) return-void          
+

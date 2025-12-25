@@ -1,0 +1,62 @@
+# Lcom/google/android/gms/internal/location/zzbb;->getLastLocation(Lcom/google/android/gms/common/api/GoogleApiClient;)Landroid/location/Location; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:com.google.android.gms.common.api.GoogleApiClient
+#
+# - return:android.location.Location
+
+getLastLocation-BB@0x0 : [ getLastLocation-BB@0x6 getLastLocation-BB@0xa ]
+	0       (00000000) const/4              v0, 1
+	1       (00000002) if-eqz               v6, +004h
+
+getLastLocation-BB@0x6 : [ getLastLocation-BB@0xc ]
+	2       (00000006) move                 v1, v0
+	3       (00000008) goto                 +2h
+
+getLastLocation-BB@0xa : [ getLastLocation-BB@0xc ]
+	4       (0000000a) const/4              v1, 0
+
+getLastLocation-BB@0xc : [ getLastLocation-BB@0x44 ]
+	5       (0000000c) const-string         v2, "GoogleApiClient parameter is required."
+	6       (00000010) invoke-static        v1, v2, Lcom/google/android/gms/common/internal/Preconditions;->checkArgument(Z Ljava/lang/Object;)V
+	7       (00000016) sget-object          v1, Lcom/google/android/gms/internal/location/zzbi;->zza Lcom/google/android/gms/common/api/Api$ClientKey;
+	8       (0000001a) invoke-virtual       v6, v1, Lcom/google/android/gms/common/api/GoogleApiClient;->getClient(Lcom/google/android/gms/common/api/Api$AnyClientKey;)Lcom/google/android/gms/common/api/Api$Client;
+	9       (00000020) move-result-object   v6
+	10      (00000022) check-cast           v6, Lcom/google/android/gms/internal/location/zzdz;
+	11      (00000026) new-instance         v1, Ljava/util/concurrent/atomic/AtomicReference;
+	12      (0000002a) invoke-direct        v1, Ljava/util/concurrent/atomic/AtomicReference;-><init>()V
+	13      (00000030) new-instance         v2, Ljava/util/concurrent/CountDownLatch;
+	14      (00000034) invoke-direct        v2, v0, Ljava/util/concurrent/CountDownLatch;-><init>(I)V
+	15      (0000003a) new-instance         v0, Lcom/google/android/gms/tasks/TaskCompletionSource;
+	16      (0000003e) invoke-direct        v0, Lcom/google/android/gms/tasks/TaskCompletionSource;-><init>()V
+
+getLastLocation-BB@0x44 : [ getLastLocation-BB@0x88 getLastLocation-BB@0x96 ]
+	17      (00000044) new-instance         v3, Lcom/google/android/gms/location/LastLocationRequest$Builder;
+	18      (00000048) invoke-direct        v3, Lcom/google/android/gms/location/LastLocationRequest$Builder;-><init>()V
+	19      (0000004e) invoke-virtual       v3, Lcom/google/android/gms/location/LastLocationRequest$Builder;->build()Lcom/google/android/gms/location/LastLocationRequest;
+	20      (00000054) move-result-object   v3
+	21      (00000056) invoke-virtual       v6, v3, v0, Lcom/google/android/gms/internal/location/zzdz;->zzq(Lcom/google/android/gms/location/LastLocationRequest; Lcom/google/android/gms/tasks/TaskCompletionSource;)V
+	22      (0000005c) invoke-virtual       v0, Lcom/google/android/gms/tasks/TaskCompletionSource;->getTask()Lcom/google/android/gms/tasks/Task;
+	23      (00000062) move-result-object   v6
+	24      (00000064) new-instance         v0, Lcom/google/android/gms/internal/location/zzbe;
+	25      (00000068) invoke-direct        v0, v1, v2, Lcom/google/android/gms/internal/location/zzbe;-><init>(Ljava/util/concurrent/atomic/AtomicReference; Ljava/util/concurrent/CountDownLatch;)V
+	26      (0000006e) invoke-virtual       v6, v0, Lcom/google/android/gms/tasks/Task;->addOnCompleteListener(Lcom/google/android/gms/tasks/OnCompleteListener;)Lcom/google/android/gms/tasks/Task;
+	27      (00000074) const-wide/16        v3, 30
+	28      (00000078) sget-object          v6, Ljava/util/concurrent/TimeUnit;->SECONDS Ljava/util/concurrent/TimeUnit;
+	29      (0000007c) invoke-static        v2, v3, v4, v6, Lcom/google/android/gms/internal/location/zzfd;->zza(Ljava/util/concurrent/CountDownLatch; J Ljava/util/concurrent/TimeUnit;)Z
+	30      (00000082) move-result          v6
+	31      (00000084) if-eqz               v6, +009h
+	44:5b
+	(Ljava/lang/Exception; -> 96 getLastLocation-BB@0x96)
+
+getLastLocation-BB@0x88 : 
+	32      (00000088) invoke-virtual       v1, Ljava/util/concurrent/atomic/AtomicReference;->get()Ljava/lang/Object;
+	33      (0000008e) move-result-object   v6
+	34      (00000090) check-cast           v6, Landroid/location/Location;
+	35      (00000094) return-object        v6
+
+getLastLocation-BB@0x96 : 
+	36      (00000096) const/4              v6, 0
+	37      (00000098) return-object        v6
+

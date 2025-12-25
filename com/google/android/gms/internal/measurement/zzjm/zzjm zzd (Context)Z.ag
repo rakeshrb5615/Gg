@@ -1,0 +1,136 @@
+# Lcom/google/android/gms/internal/measurement/zzjm;->zzd(Landroid/content/Context;)Z [access_flags=private static]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:android.content.Context
+#
+# - return:boolean
+
+zzd-BB@0x0 : [ zzd-BB@0xa zzd-BB@0xc ]
+	0       (00000000) sget-boolean         v0, Lcom/google/android/gms/internal/measurement/zzjm;->zzb Z
+	1       (00000004) const/4              v1, 1
+	2       (00000006) if-eqz               v0, +003h
+
+zzd-BB@0xa : 
+	3       (0000000a) return               v1
+
+zzd-BB@0xc : [ zzd-BB@0x12 ]
+	4       (0000000c) const-class          v0, Lcom/google/android/gms/internal/measurement/zzjm;
+	5       (00000010) monitor-enter        v0
+
+zzd-BB@0x12 : [ zzd-BB@0x1a zzd-BB@0x22 ]
+	6       (00000012) sget-boolean         v2, Lcom/google/android/gms/internal/measurement/zzjm;->zzb Z
+	7       (00000016) if-eqz               v2, +006h
+	12:4d
+	(Ljava/lang/Throwable; -> 1e zzd-BB@0x1e)
+
+zzd-BB@0x1a : 
+	8       (0000001a) monitor-exit         v0
+	9       (0000001c) return               v1
+	12:4d
+	(Ljava/lang/Throwable; -> 1e zzd-BB@0x1e)
+
+zzd-BB@0x1e : [ zzd-BB@0xa8 ]
+	10      (0000001e) move-exception       v7
+	11      (00000020) goto                 +44h
+	12:4d
+	(Ljava/lang/Throwable; -> 1e zzd-BB@0x1e)
+
+zzd-BB@0x22 : [ zzd-BB@0x24 ]
+	12      (00000022) move                 v2, v1
+	12:4d
+	(Ljava/lang/Throwable; -> 1e zzd-BB@0x1e)
+
+zzd-BB@0x24 : [ zzd-BB@0x2e zzd-BB@0x94 ]
+	13      (00000024) const/4              v3, 2
+	14      (00000026) const/4              v4, 0
+	15      (00000028) const/4              v5, 0
+	16      (0000002a) if-gt                v2, v3, +035h
+	12:4d
+	(Ljava/lang/Throwable; -> 1e zzd-BB@0x1e)
+
+zzd-BB@0x2e : [ zzd-BB@0x36 zzd-BB@0x4a ]
+	17      (0000002e) sget-object          v3, Lcom/google/android/gms/internal/measurement/zzjm;->zza Landroid/os/UserManager;
+	18      (00000032) if-nez               v3, +00ch
+	12:4d
+	(Ljava/lang/Throwable; -> 1e zzd-BB@0x1e)
+
+zzd-BB@0x36 : [ zzd-BB@0x4a ]
+	19      (00000036) const-class          v3, Landroid/os/UserManager;
+	20      (0000003a) invoke-virtual       v7, v3, Landroid/content/Context;->getSystemService(Ljava/lang/Class;)Ljava/lang/Object;
+	21      (00000040) move-result-object   v3
+	22      (00000042) check-cast           v3, Landroid/os/UserManager;
+	23      (00000046) sput-object          v3, Lcom/google/android/gms/internal/measurement/zzjm;->zza Landroid/os/UserManager;
+	12:4d
+	(Ljava/lang/Throwable; -> 1e zzd-BB@0x1e)
+
+zzd-BB@0x4a : [ zzd-BB@0x52 zzd-BB@0x56 ]
+	24      (0000004a) sget-object          v3, Lcom/google/android/gms/internal/measurement/zzjm;->zza Landroid/os/UserManager;
+	25      (0000004e) if-nez               v3, +004h
+
+zzd-BB@0x52 : [ zzd-BB@0x9c ]
+	26      (00000052) move                 v5, v1
+	27      (00000054) goto                 +24h
+
+zzd-BB@0x56 : [ zzd-BB@0x62 zzd-BB@0x76 ]
+	28      (00000056) invoke-virtual       v3, Landroid/os/UserManager;->isUserUnlocked()Z
+	29      (0000005c) move-result          v6
+	30      (0000005e) if-nez               v6, +00ch
+	56:71
+	(Ljava/lang/NullPointerException; -> 7a zzd-BB@0x7a)
+	(Ljava/lang/Throwable; -> 1e zzd-BB@0x1e)
+
+zzd-BB@0x62 : [ zzd-BB@0x76 zzd-BB@0x94 ]
+	31      (00000062) invoke-static        Landroid/os/Process;->myUserHandle()Landroid/os/UserHandle;
+	32      (00000068) move-result-object   v6
+	33      (0000006a) invoke-virtual       v3, v6, Landroid/os/UserManager;->isUserRunning(Landroid/os/UserHandle;)Z
+	34      (00000070) move-result          v7
+	35      (00000072) if-nez               v7, +011h
+
+zzd-BB@0x76 : [ zzd-BB@0x94 ]
+	36      (00000076) move                 v5, v1
+	37      (00000078) goto                 +eh
+
+zzd-BB@0x7a : [ zzd-BB@0x7c ]
+	38      (0000007a) move-exception       v3
+
+zzd-BB@0x7c : [ zzd-BB@0x24 ]
+	39      (0000007c) const-string         v5, "DirectBootUtils"
+	40      (00000080) const-string         v6, "Failed to check if user is unlocked."
+	41      (00000084) invoke-static        v5, v6, v3, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+	42      (0000008a) sput-object          v4, Lcom/google/android/gms/internal/measurement/zzjm;->zza Landroid/os/UserManager;
+	43      (0000008e) add-int/lit8         v2, v2, 1
+	44      (00000092) goto                 -37h
+	7c:a9
+	(Ljava/lang/Throwable; -> 1e zzd-BB@0x1e)
+
+zzd-BB@0x94 : [ zzd-BB@0x98 zzd-BB@0x9c ]
+	45      (00000094) if-eqz               v5, +004h
+	7c:a9
+	(Ljava/lang/Throwable; -> 1e zzd-BB@0x1e)
+
+zzd-BB@0x98 : [ zzd-BB@0x9c ]
+	46      (00000098) sput-object          v4, Lcom/google/android/gms/internal/measurement/zzjm;->zza Landroid/os/UserManager;
+	7c:a9
+	(Ljava/lang/Throwable; -> 1e zzd-BB@0x1e)
+
+zzd-BB@0x9c : [ zzd-BB@0xa0 zzd-BB@0xa4 ]
+	47      (0000009c) if-eqz               v5, +004h
+	7c:a9
+	(Ljava/lang/Throwable; -> 1e zzd-BB@0x1e)
+
+zzd-BB@0xa0 : [ zzd-BB@0xa4 ]
+	48      (000000a0) sput-boolean         v1, Lcom/google/android/gms/internal/measurement/zzjm;->zzb Z
+	7c:a9
+	(Ljava/lang/Throwable; -> 1e zzd-BB@0x1e)
+
+zzd-BB@0xa4 : 
+	49      (000000a4) monitor-exit         v0
+	50      (000000a6) return               v5
+	7c:a9
+	(Ljava/lang/Throwable; -> 1e zzd-BB@0x1e)
+
+zzd-BB@0xa8 : 
+	51      (000000a8) monitor-exit         v0
+	52      (000000aa) throw                v7
+

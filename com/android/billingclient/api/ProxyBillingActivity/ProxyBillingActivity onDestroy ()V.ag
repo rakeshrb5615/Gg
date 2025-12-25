@@ -1,0 +1,59 @@
+# Lcom/android/billingclient/api/ProxyBillingActivity;->onDestroy()V [access_flags=public]
+#
+# Parameters:
+# local registers: v0...v4
+#
+# - return:void
+
+onDestroy-BB@0x0 : [ onDestroy-BB@0x12 onDestroy-BB@0x14 ]
+	0       (00000000) invoke-super         v4, Landroid/app/Activity;->onDestroy()V
+	1       (00000006) invoke-virtual       v4, Landroid/app/Activity;->isFinishing()Z
+	2       (0000000c) move-result          v0
+	3       (0000000e) if-nez               v0, +003h
+
+onDestroy-BB@0x12 : [ onDestroy-BB@0x86 ]
+	4       (00000012) goto                 +3ah
+
+onDestroy-BB@0x14 : [ onDestroy-BB@0x1c onDestroy-BB@0x86 ]
+	5       (00000014) iget-boolean         v0, v4, Lcom/android/billingclient/api/ProxyBillingActivity;->sendCancelledBroadcastIfFinished Z
+	6       (00000018) if-eqz               v0, +037h
+
+onDestroy-BB@0x1c : [ onDestroy-BB@0x46 onDestroy-BB@0x50 ]
+	7       (0000001c) invoke-direct        v4, Lcom/android/billingclient/api/ProxyBillingActivity;->makePurchasesUpdatedIntent()Landroid/content/Intent;
+	8       (00000022) move-result-object   v0
+	9       (00000024) const-string         v1, "RESPONSE_CODE"
+	10      (00000028) const/4              v2, 1
+	11      (0000002a) invoke-virtual       v0, v1, v2, Landroid/content/Intent;->putExtra(Ljava/lang/String; I)Landroid/content/Intent;
+	12      (00000030) const-string         v1, "DEBUG_MESSAGE"
+	13      (00000034) const-string         v3, "Billing dialog closed."
+	14      (00000038) invoke-virtual       v0, v1, v3, Landroid/content/Intent;->putExtra(Ljava/lang/String; Ljava/lang/String;)Landroid/content/Intent;
+	15      (0000003e) iget-boolean         v1, v4, Lcom/android/billingclient/api/ProxyBillingActivity;->isFlowFromFirstPartyClient Z
+	16      (00000042) if-eqz               v1, +007h
+
+onDestroy-BB@0x46 : [ onDestroy-BB@0x50 ]
+	17      (00000046) const-string         v1, "IS_FIRST_PARTY_PURCHASE"
+	18      (0000004a) invoke-virtual       v0, v1, v2, Landroid/content/Intent;->putExtra(Ljava/lang/String; Z)Landroid/content/Intent;
+
+onDestroy-BB@0x50 : [ onDestroy-BB@0x5c onDestroy-BB@0x64 ]
+	19      (00000050) iget                 v1, v4, Lcom/android/billingclient/api/ProxyBillingActivity;->activityCode I
+	20      (00000054) const/16             v2, 110
+	21      (00000058) if-eq                v1, v2, +006h
+
+onDestroy-BB@0x5c : [ onDestroy-BB@0x64 onDestroy-BB@0x80 ]
+	22      (0000005c) const/16             v2, 100
+	23      (00000060) if-ne                v1, v2, +010h
+
+onDestroy-BB@0x64 : [ onDestroy-BB@0x80 ]
+	24      (00000064) const-string         v1, "INTENT_SOURCE"
+	25      (00000068) const-string         v2, "LAUNCH_BILLING_FLOW"
+	26      (0000006c) invoke-virtual       v0, v1, v2, Landroid/content/Intent;->putExtra(Ljava/lang/String; Ljava/lang/String;)Landroid/content/Intent;
+	27      (00000072) iget-wide            v1, v4, Lcom/android/billingclient/api/ProxyBillingActivity;->billingClientTransactionId J
+	28      (00000076) const-string         v3, "billingClientTransactionId"
+	29      (0000007a) invoke-virtual       v0, v3, v1, v2, Landroid/content/Intent;->putExtra(Ljava/lang/String; J)Landroid/content/Intent;
+
+onDestroy-BB@0x80 : [ onDestroy-BB@0x86 ]
+	30      (00000080) invoke-virtual       v4, v0, Landroid/content/Context;->sendBroadcast(Landroid/content/Intent;)V
+
+onDestroy-BB@0x86 : 
+	31      (00000086) return-void          
+

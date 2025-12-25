@@ -1,0 +1,181 @@
+# Lcom/google/android/gms/common/api/internal/zaaa;->zag(Landroid/content/Context; Lcom/google/android/gms/common/api/internal/zabe; Ljava/util/concurrent/locks/Lock; Landroid/os/Looper; Lcom/google/android/gms/common/GoogleApiAvailabilityLight; Ljava/util/Map; Lcom/google/android/gms/common/internal/ClientSettings; Ljava/util/Map; Lcom/google/android/gms/common/api/Api$AbstractClientBuilder; Ljava/util/ArrayList;)Lcom/google/android/gms/common/api/internal/zaaa; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v14
+# - v15:android.content.Context
+# - v16:com.google.android.gms.common.api.internal.zabe
+# - v17:java.util.concurrent.locks.Lock
+# - v18:android.os.Looper
+# - v19:com.google.android.gms.common.GoogleApiAvailabilityLight
+# - v20:java.util.Map
+# - v21:com.google.android.gms.common.internal.ClientSettings
+# - v22:java.util.Map
+# - v23:com.google.android.gms.common.api.Api$AbstractClientBuilder
+# - v24:java.util.ArrayList
+#
+# - return:com.google.android.gms.common.api.internal.zaaa
+
+zag-BB@0x0 : [ zag-BB@0x2e ]
+	0       (00000000) move-object/from16   v0, v22
+	1       (00000004) new-instance         v6, Lr/e;
+	2       (00000008) const/4              v1, 0
+	3       (0000000a) invoke-direct        v6, v1, Lr/j;-><init>(I)V
+	4       (00000010) new-instance         v7, Lr/e;
+	5       (00000014) invoke-direct        v7, v1, Lr/j;-><init>(I)V
+	6       (0000001a) invoke-interface/range v20, Ljava/util/Map;->entrySet()Ljava/util/Set;
+	7       (00000020) move-result-object   v2
+	8       (00000022) invoke-interface     v2, Ljava/util/Set;->iterator()Ljava/util/Iterator;
+	9       (00000028) move-result-object   v2
+	10      (0000002a) const/4              v3, 0
+	11      (0000002c) move-object          v10, v3
+
+zag-BB@0x2e : [ zag-BB@0x3c zag-BB@0x96 ]
+	12      (0000002e) invoke-interface     v2, Ljava/util/Iterator;->hasNext()Z
+	13      (00000034) move-result          v3
+	14      (00000036) const/4              v4, 1
+	15      (00000038) if-eqz               v3, +02fh
+
+zag-BB@0x3c : [ zag-BB@0x60 zag-BB@0x62 ]
+	16      (0000003c) invoke-interface     v2, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	17      (00000042) move-result-object   v3
+	18      (00000044) check-cast           v3, Ljava/util/Map$Entry;
+	19      (00000048) invoke-interface     v3, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
+	20      (0000004e) move-result-object   v5
+	21      (00000050) check-cast           v5, Lcom/google/android/gms/common/api/Api$Client;
+	22      (00000054) invoke-interface     v5, Lcom/google/android/gms/common/api/Api$Client;->providesSignIn()Z
+	23      (0000005a) move-result          v8
+	24      (0000005c) if-ne                v4, v8, +003h
+
+zag-BB@0x60 : [ zag-BB@0x62 ]
+	25      (00000060) move-object          v10, v5
+
+zag-BB@0x62 : [ zag-BB@0x6e zag-BB@0x82 ]
+	26      (00000062) invoke-interface     v5, Lcom/google/android/gms/common/api/Api$Client;->requiresSignIn()Z
+	27      (00000068) move-result          v4
+	28      (0000006a) if-eqz               v4, +00ch
+
+zag-BB@0x6e : [ zag-BB@0x2e ]
+	29      (0000006e) invoke-interface     v3, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
+	30      (00000074) move-result-object   v3
+	31      (00000076) check-cast           v3, Lcom/google/android/gms/common/api/Api$AnyClientKey;
+	32      (0000007a) invoke-virtual       v6, v3, v5, Lr/j;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	33      (00000080) goto                 -29h
+
+zag-BB@0x82 : [ zag-BB@0x2e ]
+	34      (00000082) invoke-interface     v3, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
+	35      (00000088) move-result-object   v3
+	36      (0000008a) check-cast           v3, Lcom/google/android/gms/common/api/Api$AnyClientKey;
+	37      (0000008e) invoke-virtual       v7, v3, v5, Lr/j;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	38      (00000094) goto                 -33h
+
+zag-BB@0x96 : [ zag-BB@0xce ]
+	39      (00000096) invoke-virtual       v6, Lr/j;->isEmpty()Z
+	40      (0000009c) move-result          v2
+	41      (0000009e) xor-int/2addr        v2, v4
+	42      (000000a0) const-string         v3, "CompositeGoogleApiClient should not be used without any APIs that require sign-in."
+	43      (000000a4) invoke-static        v2, v3, Lcom/google/android/gms/common/internal/Preconditions;->checkState(Z Ljava/lang/Object;)V
+	44      (000000aa) new-instance         v13, Lr/e;
+	45      (000000ae) invoke-direct        v13, v1, Lr/j;-><init>(I)V
+	46      (000000b4) new-instance         v14, Lr/e;
+	47      (000000b8) invoke-direct        v14, v1, Lr/j;-><init>(I)V
+	48      (000000be) invoke-interface     v0, Ljava/util/Map;->keySet()Ljava/util/Set;
+	49      (000000c4) move-result-object   v2
+	50      (000000c6) invoke-interface     v2, Ljava/util/Set;->iterator()Ljava/util/Iterator;
+	51      (000000cc) move-result-object   v2
+
+zag-BB@0xce : [ zag-BB@0xda zag-BB@0x13e ]
+	52      (000000ce) invoke-interface     v2, Ljava/util/Iterator;->hasNext()Z
+	53      (000000d4) move-result          v3
+	54      (000000d6) if-eqz               v3, +034h
+
+zag-BB@0xda : [ zag-BB@0xfa zag-BB@0x10e ]
+	55      (000000da) invoke-interface     v2, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	56      (000000e0) move-result-object   v3
+	57      (000000e2) check-cast           v3, Lcom/google/android/gms/common/api/Api;
+	58      (000000e6) invoke-virtual       v3, Lcom/google/android/gms/common/api/Api;->zab()Lcom/google/android/gms/common/api/Api$AnyClientKey;
+	59      (000000ec) move-result-object   v4
+	60      (000000ee) invoke-virtual       v6, v4, Lr/j;->containsKey(Ljava/lang/Object;)Z
+	61      (000000f4) move-result          v5
+	62      (000000f6) if-eqz               v5, +00ch
+
+zag-BB@0xfa : [ zag-BB@0xce ]
+	63      (000000fa) invoke-interface     v0, v3, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	64      (00000100) move-result-object   v4
+	65      (00000102) check-cast           v4, Ljava/lang/Boolean;
+	66      (00000106) invoke-virtual       v13, v3, v4, Lr/j;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	67      (0000010c) goto                 -1fh
+
+zag-BB@0x10e : [ zag-BB@0x11a zag-BB@0x12e ]
+	68      (0000010e) invoke-virtual       v7, v4, Lr/j;->containsKey(Ljava/lang/Object;)Z
+	69      (00000114) move-result          v4
+	70      (00000116) if-eqz               v4, +00ch
+
+zag-BB@0x11a : [ zag-BB@0xce ]
+	71      (0000011a) invoke-interface     v0, v3, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	72      (00000120) move-result-object   v4
+	73      (00000122) check-cast           v4, Ljava/lang/Boolean;
+	74      (00000126) invoke-virtual       v14, v3, v4, Lr/j;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	75      (0000012c) goto                 -2fh
+
+zag-BB@0x12e : 
+	76      (0000012e) new-instance         v15, Ljava/lang/IllegalStateException;
+	77      (00000132) const-string         v0, "Each API in the isOptionalMap must have a corresponding client in the clients map."
+	78      (00000136) invoke-direct        v15, v0, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	79      (0000013c) throw                v15
+
+zag-BB@0x13e : [ zag-BB@0x15a ]
+	80      (0000013e) new-instance         v11, Ljava/util/ArrayList;
+	81      (00000142) invoke-direct        v11, Ljava/util/ArrayList;-><init>()V
+	82      (00000148) new-instance         v12, Ljava/util/ArrayList;
+	83      (0000014c) invoke-direct        v12, Ljava/util/ArrayList;-><init>()V
+	84      (00000152) invoke-interface/range v24, Ljava/util/List;->size()I
+	85      (00000158) move-result          v0
+
+zag-BB@0x15a : [ zag-BB@0x15e zag-BB@0x1b2 ]
+	86      (0000015a) if-ge                v1, v0, +02ch
+
+zag-BB@0x15e : [ zag-BB@0x17e zag-BB@0x186 ]
+	87      (0000015e) move-object/from16   v2, v24
+	88      (00000162) invoke-interface     v2, v1, Ljava/util/List;->get(I)Ljava/lang/Object;
+	89      (00000168) move-result-object   v3
+	90      (0000016a) check-cast           v3, Lcom/google/android/gms/common/api/internal/zat;
+	91      (0000016e) iget-object          v4, v3, Lcom/google/android/gms/common/api/internal/zat;->zaa Lcom/google/android/gms/common/api/Api;
+	92      (00000172) invoke-virtual       v13, v4, Lr/j;->containsKey(Ljava/lang/Object;)Z
+	93      (00000178) move-result          v4
+	94      (0000017a) if-eqz               v4, +006h
+
+zag-BB@0x17e : [ zag-BB@0x19c ]
+	95      (0000017e) invoke-virtual       v11, v3, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	96      (00000184) goto                 +ch
+
+zag-BB@0x186 : [ zag-BB@0x196 zag-BB@0x1a2 ]
+	97      (00000186) iget-object          v4, v3, Lcom/google/android/gms/common/api/internal/zat;->zaa Lcom/google/android/gms/common/api/Api;
+	98      (0000018a) invoke-virtual       v14, v4, Lr/j;->containsKey(Ljava/lang/Object;)Z
+	99      (00000190) move-result          v4
+	100     (00000192) if-eqz               v4, +008h
+
+zag-BB@0x196 : [ zag-BB@0x19c ]
+	101     (00000196) invoke-virtual       v12, v3, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+zag-BB@0x19c : [ zag-BB@0x15a ]
+	102     (0000019c) add-int/lit8         v1, v1, 1
+	103     (000001a0) goto                 -23h
+
+zag-BB@0x1a2 : 
+	104     (000001a2) new-instance         v15, Ljava/lang/IllegalStateException;
+	105     (000001a6) const-string         v0, "Each ClientCallbacks must have a corresponding API in the isOptionalMap"
+	106     (000001aa) invoke-direct        v15, v0, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	107     (000001b0) throw                v15
+
+zag-BB@0x1b2 : 
+	108     (000001b2) new-instance         v0, Lcom/google/android/gms/common/api/internal/zaaa;
+	109     (000001b6) move-object          v1, v15
+	110     (000001b8) move-object/from16   v2, v16
+	111     (000001bc) move-object/from16   v3, v17
+	112     (000001c0) move-object/from16   v4, v18
+	113     (000001c4) move-object/from16   v5, v19
+	114     (000001c8) move-object/from16   v8, v21
+	115     (000001cc) move-object/from16   v9, v23
+	116     (000001d0) invoke-direct/range  v0 ... v14, Lcom/google/android/gms/common/api/internal/zaaa;-><init>(Landroid/content/Context; Lcom/google/android/gms/common/api/internal/zabe; Ljava/util/concurrent/locks/Lock; Landroid/os/Looper; Lcom/google/android/gms/common/GoogleApiAvailabilityLight; Ljava/util/Map; Ljava/util/Map; Lcom/google/android/gms/common/internal/ClientSettings; Lcom/google/android/gms/common/api/Api$AbstractClientBuilder; Lcom/google/android/gms/common/api/Api$Client; Ljava/util/ArrayList; Ljava/util/ArrayList; Ljava/util/Map; Ljava/util/Map;)V
+	117     (000001d6) return-object        v0
+

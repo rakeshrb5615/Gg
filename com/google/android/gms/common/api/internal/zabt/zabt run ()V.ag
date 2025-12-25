@@ -1,0 +1,79 @@
+# Lcom/google/android/gms/common/api/internal/zabt;->run()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v5
+#
+# - return:void
+
+run-BB@0x0 : [ run-BB@0x28 run-BB@0x2a ]
+	0       (00000000) iget-object          v0, v5, Lcom/google/android/gms/common/api/internal/zabt;->zab Lcom/google/android/gms/common/api/internal/zabu;
+	1       (00000004) iget-object          v1, v0, Lcom/google/android/gms/common/api/internal/zabu;->zaa Lcom/google/android/gms/common/api/internal/GoogleApiManager;
+	2       (00000008) invoke-static        v1, Lcom/google/android/gms/common/api/internal/GoogleApiManager;->zar(Lcom/google/android/gms/common/api/internal/GoogleApiManager;)Ljava/util/Map;
+	3       (0000000e) move-result-object   v1
+	4       (00000010) invoke-static        v0, Lcom/google/android/gms/common/api/internal/zabu;->zab(Lcom/google/android/gms/common/api/internal/zabu;)Lcom/google/android/gms/common/api/internal/ApiKey;
+	5       (00000016) move-result-object   v0
+	6       (00000018) invoke-interface     v1, v0, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	7       (0000001e) move-result-object   v0
+	8       (00000020) check-cast           v0, Lcom/google/android/gms/common/api/internal/zabq;
+	9       (00000024) if-nez               v0, +003h
+
+run-BB@0x28 : 
+	10      (00000028) return-void          
+
+run-BB@0x2a : [ run-BB@0x3c run-BB@0xcc ]
+	11      (0000002a) iget-object          v1, v5, Lcom/google/android/gms/common/api/internal/zabt;->zaa Lcom/google/android/gms/common/ConnectionResult;
+	12      (0000002e) invoke-virtual       v1, Lcom/google/android/gms/common/ConnectionResult;->isSuccess()Z
+	13      (00000034) move-result          v1
+	14      (00000036) const/4              v2, 0
+	15      (00000038) if-eqz               v1, +04ah
+
+run-BB@0x3c : [ run-BB@0x60 run-BB@0x6c ]
+	16      (0000003c) iget-object          v1, v5, Lcom/google/android/gms/common/api/internal/zabt;->zab Lcom/google/android/gms/common/api/internal/zabu;
+	17      (00000040) const/4              v3, 1
+	18      (00000042) invoke-static        v1, v3, Lcom/google/android/gms/common/api/internal/zabu;->zac(Lcom/google/android/gms/common/api/internal/zabu; Z)V
+	19      (00000048) iget-object          v1, v5, Lcom/google/android/gms/common/api/internal/zabt;->zab Lcom/google/android/gms/common/api/internal/zabu;
+	20      (0000004c) invoke-static        v1, Lcom/google/android/gms/common/api/internal/zabu;->zaa(Lcom/google/android/gms/common/api/internal/zabu;)Lcom/google/android/gms/common/api/Api$Client;
+	21      (00000052) move-result-object   v1
+	22      (00000054) invoke-interface     v1, Lcom/google/android/gms/common/api/Api$Client;->requiresSignIn()Z
+	23      (0000005a) move-result          v1
+	24      (0000005c) if-eqz               v1, +008h
+
+run-BB@0x60 : 
+	25      (00000060) iget-object          v0, v5, Lcom/google/android/gms/common/api/internal/zabt;->zab Lcom/google/android/gms/common/api/internal/zabu;
+	26      (00000064) invoke-static        v0, Lcom/google/android/gms/common/api/internal/zabu;->zad(Lcom/google/android/gms/common/api/internal/zabu;)V
+	27      (0000006a) return-void          
+
+run-BB@0x6c : 
+	28      (0000006c) iget-object          v1, v5, Lcom/google/android/gms/common/api/internal/zabt;->zab Lcom/google/android/gms/common/api/internal/zabu;
+	29      (00000070) invoke-static        v1, Lcom/google/android/gms/common/api/internal/zabu;->zaa(Lcom/google/android/gms/common/api/internal/zabu;)Lcom/google/android/gms/common/api/Api$Client;
+	30      (00000076) move-result-object   v3
+	31      (00000078) invoke-static        v1, Lcom/google/android/gms/common/api/internal/zabu;->zaa(Lcom/google/android/gms/common/api/internal/zabu;)Lcom/google/android/gms/common/api/Api$Client;
+	32      (0000007e) move-result-object   v1
+	33      (00000080) invoke-interface     v1, Lcom/google/android/gms/common/api/Api$Client;->getScopesForConnectionlessNonSignIn()Ljava/util/Set;
+	34      (00000086) move-result-object   v1
+	35      (00000088) invoke-interface     v3, v2, v1, Lcom/google/android/gms/common/api/Api$Client;->getRemoteService(Lcom/google/android/gms/common/internal/IAccountAccessor; Ljava/util/Set;)V
+	36      (0000008e) return-void          
+	6c:8d
+	(Ljava/lang/SecurityException; -> 90 run-BB@0x90)
+
+run-BB@0x90 : 
+	37      (00000090) move-exception       v1
+	38      (00000092) const-string         v3, "GoogleApiManager"
+	39      (00000096) const-string         v4, "Failed to get service from broker. "
+	40      (0000009a) invoke-static        v3, v4, v1, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+	41      (000000a0) iget-object          v1, v5, Lcom/google/android/gms/common/api/internal/zabt;->zab Lcom/google/android/gms/common/api/internal/zabu;
+	42      (000000a4) invoke-static        v1, Lcom/google/android/gms/common/api/internal/zabu;->zaa(Lcom/google/android/gms/common/api/internal/zabu;)Lcom/google/android/gms/common/api/Api$Client;
+	43      (000000aa) move-result-object   v1
+	44      (000000ac) const-string         v3, "Failed to get service from broker."
+	45      (000000b0) invoke-interface     v1, v3, Lcom/google/android/gms/common/api/Api$Client;->disconnect(Ljava/lang/String;)V
+	46      (000000b6) new-instance         v1, Lcom/google/android/gms/common/ConnectionResult;
+	47      (000000ba) const/16             v3, 10
+	48      (000000be) invoke-direct        v1, v3, Lcom/google/android/gms/common/ConnectionResult;-><init>(I)V
+	49      (000000c4) invoke-virtual       v0, v1, v2, Lcom/google/android/gms/common/api/internal/zabq;->zar(Lcom/google/android/gms/common/ConnectionResult; Ljava/lang/Exception;)V
+	50      (000000ca) return-void          
+
+run-BB@0xcc : 
+	51      (000000cc) iget-object          v1, v5, Lcom/google/android/gms/common/api/internal/zabt;->zaa Lcom/google/android/gms/common/ConnectionResult;
+	52      (000000d0) invoke-virtual       v0, v1, v2, Lcom/google/android/gms/common/api/internal/zabq;->zar(Lcom/google/android/gms/common/ConnectionResult; Ljava/lang/Exception;)V
+	53      (000000d6) return-void          
+

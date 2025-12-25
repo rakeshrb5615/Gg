@@ -1,0 +1,37 @@
+# Lcom/google/android/play/core/integrity/bl;->e(Landroid/os/Bundle;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:android.os.Bundle
+#
+# - return:void
+
+e-BB@0x0 : [ e-BB@0x32 e-BB@0x3e ]
+	0       (00000000) invoke-super         v3, v4, Lcom/google/android/play/core/integrity/bi;->e(Landroid/os/Bundle;)V
+	1       (00000006) iget-object          v0, v3, Lcom/google/android/play/core/integrity/bl;->d Lk4/z;
+	2       (0000000a) const/4              v1, 0
+	3       (0000000c) new-array            v1, v1, [Ljava/lang/Object;
+	4       (00000010) const-string         v2, "onWarmUpExpressIntegrityToken"
+	5       (00000014) invoke-virtual       v0, v2, v1, Lk4/z;->b(Ljava/lang/String; [Ljava/lang/Object;)V
+	6       (0000001a) iget-object          v0, v3, Lcom/google/android/play/core/integrity/bl;->c Lcom/google/android/play/core/integrity/bn;
+	7       (0000001e) invoke-static        v0, Lcom/google/android/play/core/integrity/bn;->g(Lcom/google/android/play/core/integrity/bn;)Lcom/google/android/play/core/integrity/k;
+	8       (00000024) move-result-object   v0
+	9       (00000026) invoke-interface     v0, v4, Lcom/google/android/play/core/integrity/k;->a(Landroid/os/Bundle;)Lcom/google/android/gms/common/api/ApiException;
+	10      (0000002c) move-result-object   v0
+	11      (0000002e) if-eqz               v0, +008h
+
+e-BB@0x32 : 
+	12      (00000032) iget-object          v4, v3, Lcom/google/android/play/core/integrity/bi;->a Lcom/google/android/gms/tasks/TaskCompletionSource;
+	13      (00000036) invoke-virtual       v4, v0, Lcom/google/android/gms/tasks/TaskCompletionSource;->trySetException(Ljava/lang/Exception;)Z
+	14      (0000003c) return-void          
+
+e-BB@0x3e : 
+	15      (0000003e) iget-object          v0, v3, Lcom/google/android/play/core/integrity/bi;->a Lcom/google/android/gms/tasks/TaskCompletionSource;
+	16      (00000042) const-string         v1, "warm.up.sid"
+	17      (00000046) invoke-virtual       v4, v1, Landroid/os/BaseBundle;->getLong(Ljava/lang/String;)J
+	18      (0000004c) move-result-wide     v1
+	19      (0000004e) invoke-static        v1, v2, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+	20      (00000054) move-result-object   v4
+	21      (00000056) invoke-virtual       v0, v4, Lcom/google/android/gms/tasks/TaskCompletionSource;->trySetResult(Ljava/lang/Object;)Z
+	22      (0000005c) return-void          
+

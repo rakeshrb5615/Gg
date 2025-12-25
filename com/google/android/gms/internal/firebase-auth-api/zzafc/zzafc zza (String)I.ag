@@ -1,0 +1,87 @@
+# Lcom/google/android/gms/internal/firebase-auth-api/zzafc;->zza(Ljava/lang/String;)I [access_flags=private static]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:java.lang.String
+#
+# - return:int
+
+zza-BB@0x0 : [ zza-BB@0x2 ]
+	0       (00000000) const/4              v0, 3
+
+zza-BB@0x2 : [ zza-BB@0x24 zza-BB@0x32 ]
+	1       (00000002) const-string         v1, "[.-]"
+	2       (00000006) invoke-static        v1, Lcom/google/android/gms/internal/firebase-auth-api/zzt;->zza(Ljava/lang/String;)Lcom/google/android/gms/internal/firebase-auth-api/zzt;
+	3       (0000000c) move-result-object   v1
+	4       (0000000e) invoke-virtual       v1, v5, Lcom/google/android/gms/internal/firebase-auth-api/zzt;->zza(Ljava/lang/CharSequence;)Ljava/util/List;
+	5       (00000014) move-result-object   v1
+	6       (00000016) invoke-interface     v1, Ljava/util/List;->size()I
+	7       (0000001c) move-result          v2
+	8       (0000001e) const/4              v3, 1
+	9       (00000020) if-ne                v2, v3, +009h
+	2:8b
+	(Ljava/lang/IllegalArgumentException; -> 2e zza-BB@0x2e)
+
+zza-BB@0x24 : 
+	10      (00000024) invoke-static        v5, Ljava/lang/Integer;->parseInt(Ljava/lang/String;)I
+	11      (0000002a) move-result          v5
+	12      (0000002c) return               v5
+	2:8b
+	(Ljava/lang/IllegalArgumentException; -> 2e zza-BB@0x2e)
+
+zza-BB@0x2e : [ zza-BB@0x90 ]
+	13      (0000002e) move-exception       v1
+	14      (00000030) goto                 +30h
+	2:8b
+	(Ljava/lang/IllegalArgumentException; -> 2e zza-BB@0x2e)
+
+zza-BB@0x32 : [ zza-BB@0x3e zza-BB@0xba ]
+	15      (00000032) invoke-interface     v1, Ljava/util/List;->size()I
+	16      (00000038) move-result          v2
+	17      (0000003a) if-lt                v2, v0, +040h
+	2:8b
+	(Ljava/lang/IllegalArgumentException; -> 2e zza-BB@0x2e)
+
+zza-BB@0x3e : 
+	18      (0000003e) const/4              v2, 0
+	19      (00000040) invoke-interface     v1, v2, Ljava/util/List;->get(I)Ljava/lang/Object;
+	20      (00000046) move-result-object   v2
+	21      (00000048) check-cast           v2, Ljava/lang/String;
+	22      (0000004c) invoke-static        v2, Ljava/lang/Integer;->parseInt(Ljava/lang/String;)I
+	23      (00000052) move-result          v2
+	24      (00000054) const                v4, 1000000
+	25      (0000005a) mul-int/2addr        v2, v4
+	26      (0000005c) invoke-interface     v1, v3, Ljava/util/List;->get(I)Ljava/lang/Object;
+	27      (00000062) move-result-object   v3
+	28      (00000064) check-cast           v3, Ljava/lang/String;
+	29      (00000068) invoke-static        v3, Ljava/lang/Integer;->parseInt(Ljava/lang/String;)I
+	30      (0000006e) move-result          v3
+	31      (00000070) mul-int/lit16        v3, v3, 1000
+	32      (00000074) add-int/2addr        v3, v2
+	33      (00000076) const/4              v2, 2
+	34      (00000078) invoke-interface     v1, v2, Ljava/util/List;->get(I)Ljava/lang/Object;
+	35      (0000007e) move-result-object   v1
+	36      (00000080) check-cast           v1, Ljava/lang/String;
+	37      (00000084) invoke-static        v1, Ljava/lang/Integer;->parseInt(Ljava/lang/String;)I
+	38      (0000008a) move-result          v5
+	39      (0000008c) add-int/2addr        v3, v5
+	40      (0000008e) return               v3
+
+zza-BB@0x90 : [ zza-BB@0xa0 zza-BB@0xba ]
+	41      (00000090) const-string         v2, "LibraryVersionContainer"
+	42      (00000094) invoke-static        v2, v0, Landroid/util/Log;->isLoggable(Ljava/lang/String; I)Z
+	43      (0000009a) move-result          v0
+	44      (0000009c) if-eqz               v0, +00fh
+
+zza-BB@0xa0 : [ zza-BB@0xba ]
+	45      (000000a0) const-string         v0, "Version code parsing failed for: %s with exception %s."
+	46      (000000a4) filled-new-array     v5, v1, [Ljava/lang/Object;
+	47      (000000aa) move-result-object   v5
+	48      (000000ac) invoke-static        v0, v5, Ljava/lang/String;->format(Ljava/lang/String; [Ljava/lang/Object;)Ljava/lang/String;
+	49      (000000b2) move-result-object   v5
+	50      (000000b4) invoke-static        v2, v5, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String;)I
+
+zza-BB@0xba : 
+	51      (000000ba) const/4              v5, -1
+	52      (000000bc) return               v5
+

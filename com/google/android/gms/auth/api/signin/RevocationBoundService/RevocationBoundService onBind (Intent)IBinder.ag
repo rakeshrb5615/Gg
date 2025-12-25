@@ -1,0 +1,61 @@
+# Lcom/google/android/gms/auth/api/signin/RevocationBoundService;->onBind(Landroid/content/Intent;)Landroid/os/IBinder; [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:android.content.Intent
+#
+# - return:android.os.IBinder
+
+onBind-BB@0x0 : [ onBind-BB@0x1c onBind-BB@0x5c ]
+	0       (00000000) const-string         v0, "com.google.android.gms.auth.api.signin.RevocationBoundService.disconnect"
+	1       (00000004) invoke-virtual       v4, Landroid/content/Intent;->getAction()Ljava/lang/String;
+	2       (0000000a) move-result-object   v1
+	3       (0000000c) invoke-virtual       v0, v1, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	4       (00000012) move-result          v0
+	5       (00000014) const-string         v1, "RevocationService"
+	6       (00000018) if-nez               v0, +022h
+
+onBind-BB@0x1c : [ onBind-BB@0x34 onBind-BB@0x36 ]
+	7       (0000001c) invoke-virtual       v4, Landroid/content/Intent;->getAction()Ljava/lang/String;
+	8       (00000022) move-result-object   v0
+	9       (00000024) const-string         v2, "com.google.android.gms.auth.api.signin.RevocationBoundService.clearClientState"
+	10      (00000028) invoke-virtual       v2, v0, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	11      (0000002e) move-result          v0
+	12      (00000030) if-eqz               v0, +003h
+
+onBind-BB@0x34 : [ onBind-BB@0x5c ]
+	13      (00000034) goto                 +14h
+
+onBind-BB@0x36 : 
+	14      (00000036) invoke-virtual       v4, Landroid/content/Intent;->getAction()Ljava/lang/String;
+	15      (0000003c) move-result-object   v4
+	16      (0000003e) invoke-static        v4, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
+	17      (00000044) move-result-object   v4
+	18      (00000046) const-string         v0, "Unknown action sent to RevocationBoundService: "
+	19      (0000004a) invoke-virtual       v0, v4, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	20      (00000050) move-result-object   v4
+	21      (00000052) invoke-static        v1, v4, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+	22      (00000058) const/4              v4, 0
+	23      (0000005a) return-object        v4
+
+onBind-BB@0x5c : [ onBind-BB@0x6a onBind-BB@0x8c ]
+	24      (0000005c) const/4              v0, 2
+	25      (0000005e) invoke-static        v1, v0, Landroid/util/Log;->isLoggable(Ljava/lang/String; I)Z
+	26      (00000064) move-result          v0
+	27      (00000066) if-eqz               v0, +013h
+
+onBind-BB@0x6a : [ onBind-BB@0x8c ]
+	28      (0000006a) invoke-virtual       v4, Landroid/content/Intent;->getAction()Ljava/lang/String;
+	29      (00000070) move-result-object   v4
+	30      (00000072) invoke-static        v4, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
+	31      (00000078) move-result-object   v4
+	32      (0000007a) const-string         v0, "RevocationBoundService handling "
+	33      (0000007e) invoke-virtual       v0, v4, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	34      (00000084) move-result-object   v4
+	35      (00000086) invoke-static        v1, v4, Landroid/util/Log;->v(Ljava/lang/String; Ljava/lang/String;)I
+
+onBind-BB@0x8c : 
+	36      (0000008c) new-instance         v4, Lcom/google/android/gms/auth/api/signin/internal/zbt;
+	37      (00000090) invoke-direct        v4, v3, Lcom/google/android/gms/auth/api/signin/internal/zbt;-><init>(Landroid/content/Context;)V
+	38      (00000096) return-object        v4
+

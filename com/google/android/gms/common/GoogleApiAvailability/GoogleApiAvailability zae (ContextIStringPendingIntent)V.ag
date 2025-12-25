@@ -1,0 +1,216 @@
+# Lcom/google/android/gms/common/GoogleApiAvailability;->zae(Landroid/content/Context; I Ljava/lang/String; Landroid/app/PendingIntent;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v8
+# - v9:android.content.Context
+# - v10:int
+# - v11:java.lang.String
+# - v12:android.app.PendingIntent
+#
+# - return:void
+
+zae-BB@0x0 : [ zae-BB@0x2c zae-BB@0x34 ]
+	0       (00000000) const-string         v11, "GMS core API Availability. ConnectionResult="
+	1       (00000004) const-string         v0, ", tag=null"
+	2       (00000008) invoke-static        v11, v10, v0, Lv1/a;->j(Ljava/lang/String; I Ljava/lang/String;)Ljava/lang/String;
+	3       (0000000e) move-result-object   v11
+	4       (00000010) new-instance         v0, Ljava/lang/IllegalArgumentException;
+	5       (00000014) invoke-direct        v0, Ljava/lang/IllegalArgumentException;-><init>()V
+	6       (0000001a) const-string         v1, "GoogleApiAvailability"
+	7       (0000001e) invoke-static        v1, v11, v0, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+	8       (00000024) const/16             v11, 18
+	9       (00000028) if-ne                v10, v11, +006h
+
+zae-BB@0x2c : 
+	10      (0000002c) invoke-virtual       v8, v9, Lcom/google/android/gms/common/GoogleApiAvailability;->zaf(Landroid/content/Context;)V
+	11      (00000032) return-void          
+
+zae-BB@0x34 : [ zae-BB@0x38 zae-BB@0x4e ]
+	12      (00000034) if-nez               v12, +00dh
+
+zae-BB@0x38 : [ zae-BB@0x3e zae-BB@0x4c ]
+	13      (00000038) const/4              v9, 6
+	14      (0000003a) if-ne                v10, v9, +009h
+
+zae-BB@0x3e : [ zae-BB@0x4c ]
+	15      (0000003e) const-string         v9, "GoogleApiAvailability"
+	16      (00000042) const-string         v10, "Missing resolution for ConnectionResult.RESOLUTION_REQUIRED. Call GoogleApiAvailability#showErrorNotification(Context, ConnectionResult) instead."
+	17      (00000046) invoke-static        v9, v10, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+
+zae-BB@0x4c : 
+	18      (0000004c) return-void          
+
+zae-BB@0x4e : [ zae-BB@0xd6 zae-BB@0x134 ]
+	19      (0000004e) invoke-static        v9, v10, Lcom/google/android/gms/common/internal/zac;->zae(Landroid/content/Context; I)Ljava/lang/String;
+	20      (00000054) move-result-object   v11
+	21      (00000056) invoke-static        v9, v10, Lcom/google/android/gms/common/internal/zac;->zad(Landroid/content/Context; I)Ljava/lang/String;
+	22      (0000005c) move-result-object   v0
+	23      (0000005e) invoke-virtual       v9, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+	24      (00000064) move-result-object   v1
+	25      (00000066) const-string         v2, "notification"
+	26      (0000006a) invoke-virtual       v9, v2, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+	27      (00000070) move-result-object   v2
+	28      (00000072) invoke-static        v2, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;
+	29      (00000078) move-result-object   v2
+	30      (0000007a) check-cast           v2, Landroid/app/NotificationManager;
+	31      (0000007e) new-instance         v3, Ld0/p;
+	32      (00000082) const/4              v4, 0
+	33      (00000084) invoke-direct        v3, v9, v4, Ld0/p;-><init>(Landroid/content/Context; Ljava/lang/String;)V
+	34      (0000008a) const/4              v4, 1
+	35      (0000008c) iput-boolean         v4, v3, Ld0/p;->m Z
+	36      (00000090) iget-object          v5, v3, Ld0/p;->s Landroid/app/Notification;
+	37      (00000094) iget                 v6, v5, Landroid/app/Notification;->flags I
+	38      (00000098) or-int/lit8          v6, v6, 16
+	39      (0000009c) iput                 v6, v5, Landroid/app/Notification;->flags I
+	40      (000000a0) invoke-static        v11, Ld0/p;->b(Ljava/lang/CharSequence;)Ljava/lang/CharSequence;
+	41      (000000a6) move-result-object   v11
+	42      (000000a8) iput-object          v11, v3, Ld0/p;->e Ljava/lang/CharSequence;
+	43      (000000ac) new-instance         v11, Ld0/n;
+	44      (000000b0) invoke-direct        v11, Ljava/lang/Object;-><init>()V
+	45      (000000b6) invoke-static        v0, Ld0/p;->b(Ljava/lang/CharSequence;)Ljava/lang/CharSequence;
+	46      (000000bc) move-result-object   v5
+	47      (000000be) iput-object          v5, v11, Ld0/n;->b Ljava/lang/CharSequence;
+	48      (000000c2) invoke-virtual       v3, v11, Ld0/p;->d(Ld0/q;)V
+	49      (000000c8) invoke-static        v9, Lcom/google/android/gms/common/util/DeviceProperties;->isWearable(Landroid/content/Context;)Z
+	50      (000000ce) move-result          v11
+	51      (000000d0) const/4              v5, 2
+	52      (000000d2) if-eqz               v11, +031h
+
+zae-BB@0xd6 : [ zae-BB@0x108 zae-BB@0x12e ]
+	53      (000000d6) invoke-static        Lcom/google/android/gms/common/util/PlatformVersion;->isAtLeastKitKatWatch()Z
+	54      (000000dc) move-result          v11
+	55      (000000de) invoke-static        v11, Lcom/google/android/gms/common/internal/Preconditions;->checkState(Z)V
+	56      (000000e4) invoke-virtual       v9, Landroid/content/Context;->getApplicationInfo()Landroid/content/pm/ApplicationInfo;
+	57      (000000ea) move-result-object   v11
+	58      (000000ec) iget                 v11, v11, Landroid/content/pm/ApplicationInfo;->icon I
+	59      (000000f0) iget-object          v0, v3, Ld0/p;->s Landroid/app/Notification;
+	60      (000000f4) iput                 v11, v0, Landroid/app/Notification;->icon I
+	61      (000000f8) iput                 v5, v3, Ld0/p;->j I
+	62      (000000fc) invoke-static        v9, Lcom/google/android/gms/common/util/DeviceProperties;->isWearableWithoutPlayStore(Landroid/content/Context;)Z
+	63      (00000102) move-result          v11
+	64      (00000104) if-eqz               v11, +015h
+
+zae-BB@0x108 : [ zae-BB@0x17e ]
+	65      (00000108) sget                 v11, Lcom/google/android/gms/base/R$drawable;->common_full_open_on_phone I
+	66      (0000010c) sget                 v0, Lcom/google/android/gms/base/R$string;->common_open_on_phone I
+	67      (00000110) invoke-virtual       v1, v0, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
+	68      (00000116) move-result-object   v0
+	69      (00000118) iget-object          v1, v3, Ld0/p;->b Ljava/util/ArrayList;
+	70      (0000011c) new-instance         v6, Ld0/j;
+	71      (00000120) invoke-direct        v6, v11, v0, v12, Ld0/j;-><init>(I Ljava/lang/String; Landroid/app/PendingIntent;)V
+	72      (00000126) invoke-virtual       v1, v6, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	73      (0000012c) goto                 +29h
+
+zae-BB@0x12e : [ zae-BB@0x17e ]
+	74      (0000012e) iput-object          v12, v3, Ld0/p;->g Landroid/app/PendingIntent;
+	75      (00000132) goto                 +26h
+
+zae-BB@0x134 : [ zae-BB@0x17e ]
+	76      (00000134) const                v11, 17301642
+	77      (0000013a) iget-object          v6, v3, Ld0/p;->s Landroid/app/Notification;
+	78      (0000013e) iput                 v11, v6, Landroid/app/Notification;->icon I
+	79      (00000142) sget                 v11, Lcom/google/android/gms/base/R$string;->common_google_play_services_notification_ticker I
+	80      (00000146) invoke-virtual       v1, v11, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
+	81      (0000014c) move-result-object   v11
+	82      (0000014e) iget-object          v1, v3, Ld0/p;->s Landroid/app/Notification;
+	83      (00000152) invoke-static        v11, Ld0/p;->b(Ljava/lang/CharSequence;)Ljava/lang/CharSequence;
+	84      (00000158) move-result-object   v11
+	85      (0000015a) iput-object          v11, v1, Landroid/app/Notification;->tickerText Ljava/lang/CharSequence;
+	86      (0000015e) invoke-static        Ljava/lang/System;->currentTimeMillis()J
+	87      (00000164) move-result-wide     v6
+	88      (00000166) iget-object          v11, v3, Ld0/p;->s Landroid/app/Notification;
+	89      (0000016a) iput-wide            v6, v11, Landroid/app/Notification;->when J
+	90      (0000016e) iput-object          v12, v3, Ld0/p;->g Landroid/app/PendingIntent;
+	91      (00000172) invoke-static        v0, Ld0/p;->b(Ljava/lang/CharSequence;)Ljava/lang/CharSequence;
+	92      (00000178) move-result-object   v11
+	93      (0000017a) iput-object          v11, v3, Ld0/p;->f Ljava/lang/CharSequence;
+
+zae-BB@0x17e : [ zae-BB@0x18a zae-BB@0x18c ]
+	94      (0000017e) invoke-static        Lcom/google/android/gms/common/util/PlatformVersion;->isAtLeastO()Z
+	95      (00000184) move-result          v11
+	96      (00000186) if-nez               v11, +003h
+
+zae-BB@0x18a : [ zae-BB@0x206 ]
+	97      (0000018a) goto                 +3eh
+
+zae-BB@0x18c : [ zae-BB@0x1a0 ]
+	98      (0000018c) invoke-static        Lcom/google/android/gms/common/util/PlatformVersion;->isAtLeastO()Z
+	99      (00000192) move-result          v11
+	100     (00000194) invoke-static        v11, Lcom/google/android/gms/common/internal/Preconditions;->checkState(Z)V
+	101     (0000019a) sget-object          v11, Lcom/google/android/gms/common/GoogleApiAvailability;->zaa Ljava/lang/Object;
+	102     (0000019e) monitor-enter        v11
+
+zae-BB@0x1a0 : [ zae-BB@0x1aa zae-BB@0x202 ]
+	103     (000001a0) iget-object          v12, v8, Lcom/google/android/gms/common/GoogleApiAvailability;->zac Ljava/lang/String;
+	104     (000001a4) monitor-exit         v11
+	105     (000001a6) if-nez               v12, +02eh
+	1a0:1a5
+	(Ljava/lang/Throwable; -> 23c zae-BB@0x23c)
+
+zae-BB@0x1aa : [ zae-BB@0x1ce zae-BB@0x1e2 ]
+	106     (000001aa) const-string         v12, "com.google.android.gms.availability"
+	107     (000001ae) invoke-virtual       v2, v12, Landroid/app/NotificationManager;->getNotificationChannel(Ljava/lang/String;)Landroid/app/NotificationChannel;
+	108     (000001b4) move-result-object   v11
+	109     (000001b6) invoke-virtual       v9, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+	110     (000001bc) move-result-object   v9
+	111     (000001be) sget                 v0, Lcom/google/android/gms/base/R$string;->common_google_play_services_notification_channel_name I
+	112     (000001c2) invoke-virtual       v9, v0, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
+	113     (000001c8) move-result-object   v9
+	114     (000001ca) if-nez               v11, +00ch
+
+zae-BB@0x1ce : [ zae-BB@0x202 ]
+	115     (000001ce) new-instance         v11, Landroid/app/NotificationChannel;
+	116     (000001d2) const/4              v0, 4
+	117     (000001d4) invoke-direct        v11, v12, v9, v0, Landroid/app/NotificationChannel;-><init>(Ljava/lang/String; Ljava/lang/CharSequence; I)V
+	118     (000001da) invoke-virtual       v2, v11, Landroid/app/NotificationManager;->createNotificationChannel(Landroid/app/NotificationChannel;)V
+	119     (000001e0) goto                 +11h
+
+zae-BB@0x1e2 : [ zae-BB@0x1f6 zae-BB@0x202 ]
+	120     (000001e2) invoke-virtual       v11, Landroid/app/NotificationChannel;->getName()Ljava/lang/CharSequence;
+	121     (000001e8) move-result-object   v0
+	122     (000001ea) invoke-virtual       v9, v0, Ljava/lang/String;->contentEquals(Ljava/lang/CharSequence;)Z
+	123     (000001f0) move-result          v0
+	124     (000001f2) if-nez               v0, +008h
+
+zae-BB@0x1f6 : [ zae-BB@0x202 ]
+	125     (000001f6) invoke-virtual       v11, v9, Landroid/app/NotificationChannel;->setName(Ljava/lang/CharSequence;)V
+	126     (000001fc) invoke-virtual       v2, v11, Landroid/app/NotificationManager;->createNotificationChannel(Landroid/app/NotificationChannel;)V
+
+zae-BB@0x202 : [ zae-BB@0x206 ]
+	127     (00000202) iput-object          v12, v3, Ld0/p;->q Ljava/lang/String;
+
+zae-BB@0x206 : [ zae-BB@0x212 zae-BB@0x224 ]
+	128     (00000206) invoke-virtual       v3, Ld0/p;->a()Landroid/app/Notification;
+	129     (0000020c) move-result-object   v9
+	130     (0000020e) if-eq                v10, v4, +00bh
+
+zae-BB@0x212 : [ zae-BB@0x216 zae-BB@0x224 ]
+	131     (00000212) if-eq                v10, v5, +009h
+
+zae-BB@0x216 : [ zae-BB@0x21c zae-BB@0x224 ]
+	132     (00000216) const/4              v11, 3
+	133     (00000218) if-eq                v10, v11, +006h
+
+zae-BB@0x21c : [ zae-BB@0x234 ]
+	134     (0000021c) const                v10, 39789
+	135     (00000222) goto                 +9h
+
+zae-BB@0x224 : [ zae-BB@0x234 ]
+	136     (00000224) sget-object          v10, Lcom/google/android/gms/common/GooglePlayServicesUtilLight;->sCanceledAvailabilityNotification Ljava/util/concurrent/atomic/AtomicBoolean;
+	137     (00000228) const/4              v11, 0
+	138     (0000022a) invoke-virtual       v10, v11, Ljava/util/concurrent/atomic/AtomicBoolean;->set(Z)V
+	139     (00000230) const/16             v10, 10436
+
+zae-BB@0x234 : 
+	140     (00000234) invoke-virtual       v2, v10, v9, Landroid/app/NotificationManager;->notify(I Landroid/app/Notification;)V
+	141     (0000023a) return-void          
+
+zae-BB@0x23c : [ zae-BB@0x23e ]
+	142     (0000023c) move-exception       v9
+
+zae-BB@0x23e : 
+	143     (0000023e) monitor-exit         v11
+	144     (00000240) throw                v9
+	23e:23f
+	(Ljava/lang/Throwable; -> 23c zae-BB@0x23c)
+

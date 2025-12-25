@@ -1,0 +1,39 @@
+# Lcom/google/android/play/core/integrity/IntegrityServiceException;-><init>(I Ljava/lang/Throwable;)V [access_flags=public constructor]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:int
+# - v6:java.lang.Throwable
+#
+# - return:void
+
+<init>-BB@0x0 : [ <init>-BB@0x56 <init>-BB@0x5c ]
+	0       (00000000) new-instance         v0, Lcom/google/android/gms/common/api/Status;
+	1       (00000004) sget-object          v1, Ljava/util/Locale;->ROOT Ljava/util/Locale;
+	2       (00000008) invoke-static        v5, Lcom/google/android/play/core/integrity/model/a;->a(I)Ljava/lang/String;
+	3       (0000000e) move-result-object   v1
+	4       (00000010) new-instance         v2, Ljava/lang/StringBuilder;
+	5       (00000014) const-string         v3, "Integrity API error ("
+	6       (00000018) invoke-direct        v2, v3, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	7       (0000001e) invoke-virtual       v2, v5, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	8       (00000024) const-string         v3, "): "
+	9       (00000028) invoke-virtual       v2, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	10      (0000002e) invoke-virtual       v2, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	11      (00000034) const-string         v1, "."
+	12      (00000038) invoke-virtual       v2, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	13      (0000003e) invoke-virtual       v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	14      (00000044) move-result-object   v1
+	15      (00000046) invoke-direct        v0, v5, v1, Lcom/google/android/gms/common/api/Status;-><init>(I Ljava/lang/String;)V
+	16      (0000004c) invoke-direct        v4, v0, Lcom/google/android/gms/common/api/ApiException;-><init>(Lcom/google/android/gms/common/api/Status;)V
+	17      (00000052) if-eqz               v5, +005h
+
+<init>-BB@0x56 : 
+	18      (00000056) iput-object          v6, v4, Lcom/google/android/play/core/integrity/IntegrityServiceException;->a Ljava/lang/Throwable;
+	19      (0000005a) return-void          
+
+<init>-BB@0x5c : 
+	20      (0000005c) new-instance         v5, Ljava/lang/IllegalArgumentException;
+	21      (00000060) const-string         v6, "ErrorCode should not be 0."
+	22      (00000064) invoke-direct        v5, v6, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	23      (0000006a) throw                v5
+

@@ -1,0 +1,58 @@
+# Lcom/google/android/gms/auth/zzj;->zza(Landroid/os/IBinder;)Ljava/lang/Object; [access_flags=public final bridge synthetic]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:android.os.IBinder
+#
+# - return:java.lang.Object
+
+zza-BB@0x0 : [ zza-BB@0x4e zza-BB@0x54 ]
+	0       (00000000) invoke-static        v5, Lcom/google/android/gms/internal/auth/zze;->zzb(Landroid/os/IBinder;)Lcom/google/android/gms/internal/auth/zzf;
+	1       (00000006) move-result-object   v5
+	2       (00000008) iget-object          v0, v4, Lcom/google/android/gms/auth/zzj;->zza Ljava/lang/String;
+	3       (0000000c) invoke-interface     v5, v0, Lcom/google/android/gms/internal/auth/zzf;->zzg(Ljava/lang/String;)Landroid/os/Bundle;
+	4       (00000012) move-result-object   v5
+	5       (00000014) invoke-static        v5, Lcom/google/android/gms/auth/zzl;->zzd(Ljava/lang/Object;)Ljava/lang/Object;
+	6       (0000001a) const-string         v0, "Error"
+	7       (0000001e) invoke-virtual       v5, v0, Landroid/os/BaseBundle;->getString(Ljava/lang/String;)Ljava/lang/String;
+	8       (00000024) move-result-object   v0
+	9       (00000026) const-string         v1, "userRecoveryIntent"
+	10      (0000002a) invoke-virtual       v5, v1, Landroid/os/Bundle;->getParcelable(Ljava/lang/String;)Landroid/os/Parcelable;
+	11      (00000030) move-result-object   v5
+	12      (00000032) check-cast           v5, Landroid/content/Intent;
+	13      (00000036) invoke-static        v0, Lcom/google/android/gms/internal/auth/zzby;->zza(Ljava/lang/String;)Lcom/google/android/gms/internal/auth/zzby;
+	14      (0000003c) move-result-object   v1
+	15      (0000003e) sget-object          v2, Lcom/google/android/gms/internal/auth/zzby;->zzc Lcom/google/android/gms/internal/auth/zzby;
+	16      (00000042) invoke-virtual       v2, v1, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+	17      (00000048) move-result          v2
+	18      (0000004a) if-eqz               v2, +005h
+
+zza-BB@0x4e : 
+	19      (0000004e) sget-object          v5, Ljava/lang/Boolean;->TRUE Ljava/lang/Boolean;
+	20      (00000052) return-object        v5
+
+zza-BB@0x54 : [ zza-BB@0x60 zza-BB@0x94 ]
+	21      (00000054) invoke-static        v1, Lcom/google/android/gms/internal/auth/zzby;->zzb(Lcom/google/android/gms/internal/auth/zzby;)Z
+	22      (0000005a) move-result          v2
+	23      (0000005c) if-eqz               v2, +01ch
+
+zza-BB@0x60 : 
+	24      (00000060) invoke-static        Lcom/google/android/gms/auth/zzl;->zzc()Lcom/google/android/gms/common/logging/Logger;
+	25      (00000066) move-result-object   v2
+	26      (00000068) const-string         v3, "isUserRecoverableError status: "
+	27      (0000006c) invoke-static        v1, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
+	28      (00000072) move-result-object   v1
+	29      (00000074) invoke-virtual       v3, v1, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	30      (0000007a) move-result-object   v1
+	31      (0000007c) const/4              v3, 0
+	32      (0000007e) new-array            v3, v3, [Ljava/lang/Object;
+	33      (00000082) invoke-virtual       v2, v1, v3, Lcom/google/android/gms/common/logging/Logger;->w(Ljava/lang/String; [Ljava/lang/Object;)V
+	34      (00000088) new-instance         v1, Lcom/google/android/gms/auth/UserRecoverableAuthException;
+	35      (0000008c) invoke-direct        v1, v0, v5, Lcom/google/android/gms/auth/UserRecoverableAuthException;-><init>(Ljava/lang/String; Landroid/content/Intent;)V
+	36      (00000092) throw                v1
+
+zza-BB@0x94 : 
+	37      (00000094) new-instance         v5, Lcom/google/android/gms/auth/GoogleAuthException;
+	38      (00000098) invoke-direct        v5, v0, Lcom/google/android/gms/auth/GoogleAuthException;-><init>(Ljava/lang/String;)V
+	39      (0000009e) throw                v5
+

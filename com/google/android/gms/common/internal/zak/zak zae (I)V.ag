@@ -1,0 +1,94 @@
+# Lcom/google/android/gms/common/internal/zak;->zae(I)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v8
+# - v9:int
+#
+# - return:void
+
+zae-BB@0x0 : [ zae-BB@0x20 ]
+	0       (00000000) iget-object          v0, v8, Lcom/google/android/gms/common/internal/zak;->zah Landroid/os/Handler;
+	1       (00000004) const-string         v1, "onUnintentionalDisconnection must only be called on the Handler thread"
+	2       (00000008) invoke-static        v0, v1, Lcom/google/android/gms/common/internal/Preconditions;->checkHandlerThread(Landroid/os/Handler; Ljava/lang/String;)V
+	3       (0000000e) iget-object          v0, v8, Lcom/google/android/gms/common/internal/zak;->zah Landroid/os/Handler;
+	4       (00000012) const/4              v1, 1
+	5       (00000014) invoke-virtual       v0, v1, Landroid/os/Handler;->removeMessages(I)V
+	6       (0000001a) iget-object          v0, v8, Lcom/google/android/gms/common/internal/zak;->zai Ljava/lang/Object;
+	7       (0000001e) monitor-enter        v0
+
+zae-BB@0x20 : [ zae-BB@0x4a ]
+	8       (00000020) iput-boolean         v1, v8, Lcom/google/android/gms/common/internal/zak;->zag Z
+	9       (00000024) new-instance         v1, Ljava/util/ArrayList;
+	10      (00000028) iget-object          v2, v8, Lcom/google/android/gms/common/internal/zak;->zac Ljava/util/ArrayList;
+	11      (0000002c) invoke-direct        v1, v2, Ljava/util/ArrayList;-><init>(Ljava/util/Collection;)V
+	12      (00000032) iget-object          v2, v8, Lcom/google/android/gms/common/internal/zak;->zaf Ljava/util/concurrent/atomic/AtomicInteger;
+	13      (00000036) invoke-virtual       v2, Ljava/util/concurrent/atomic/AtomicInteger;->get()I
+	14      (0000003c) move-result          v2
+	15      (0000003e) invoke-virtual       v1, Ljava/util/ArrayList;->size()I
+	16      (00000044) move-result          v3
+	17      (00000046) const/4              v4, 0
+	18      (00000048) move                 v5, v4
+	20:a7
+	(Ljava/lang/Throwable; -> 90 zae-BB@0x90)
+
+zae-BB@0x4a : [ zae-BB@0x4e zae-BB@0x94 ]
+	19      (0000004a) if-ge                v5, v3, +025h
+	20:a7
+	(Ljava/lang/Throwable; -> 90 zae-BB@0x90)
+
+zae-BB@0x4e : [ zae-BB@0x66 zae-BB@0x94 ]
+	20      (0000004e) invoke-virtual       v1, v5, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	21      (00000054) move-result-object   v6
+	22      (00000056) add-int/lit8         v5, v5, 1
+	23      (0000005a) check-cast           v6, Lcom/google/android/gms/common/api/GoogleApiClient$ConnectionCallbacks;
+	24      (0000005e) iget-boolean         v7, v8, Lcom/google/android/gms/common/internal/zak;->zae Z
+	25      (00000062) if-eqz               v7, +019h
+	20:a7
+	(Ljava/lang/Throwable; -> 90 zae-BB@0x90)
+
+zae-BB@0x66 : [ zae-BB@0x76 zae-BB@0x78 ]
+	26      (00000066) iget-object          v7, v8, Lcom/google/android/gms/common/internal/zak;->zaf Ljava/util/concurrent/atomic/AtomicInteger;
+	27      (0000006a) invoke-virtual       v7, Ljava/util/concurrent/atomic/AtomicInteger;->get()I
+	28      (00000070) move-result          v7
+	29      (00000072) if-eq                v7, v2, +003h
+	20:a7
+	(Ljava/lang/Throwable; -> 90 zae-BB@0x90)
+
+zae-BB@0x76 : [ zae-BB@0x94 ]
+	30      (00000076) goto                 +fh
+	20:a7
+	(Ljava/lang/Throwable; -> 90 zae-BB@0x90)
+
+zae-BB@0x78 : [ zae-BB@0x88 zae-BB@0x4a ]
+	31      (00000078) iget-object          v7, v8, Lcom/google/android/gms/common/internal/zak;->zac Ljava/util/ArrayList;
+	32      (0000007c) invoke-virtual       v7, v6, Ljava/util/ArrayList;->contains(Ljava/lang/Object;)Z
+	33      (00000082) move-result          v7
+	34      (00000084) if-eqz               v7, -01dh
+	20:a7
+	(Ljava/lang/Throwable; -> 90 zae-BB@0x90)
+
+zae-BB@0x88 : [ zae-BB@0x4a ]
+	35      (00000088) invoke-interface     v6, v9, Lcom/google/android/gms/common/api/internal/ConnectionCallbacks;->onConnectionSuspended(I)V
+	36      (0000008e) goto                 -22h
+	20:a7
+	(Ljava/lang/Throwable; -> 90 zae-BB@0x90)
+
+zae-BB@0x90 : [ zae-BB@0xa6 ]
+	37      (00000090) move-exception       v9
+	38      (00000092) goto                 +ah
+	20:a7
+	(Ljava/lang/Throwable; -> 90 zae-BB@0x90)
+
+zae-BB@0x94 : 
+	39      (00000094) iget-object          v9, v8, Lcom/google/android/gms/common/internal/zak;->zaa Ljava/util/ArrayList;
+	40      (00000098) invoke-virtual       v9, Ljava/util/ArrayList;->clear()V
+	41      (0000009e) iput-boolean         v4, v8, Lcom/google/android/gms/common/internal/zak;->zag Z
+	42      (000000a2) monitor-exit         v0
+	43      (000000a4) return-void          
+	20:a7
+	(Ljava/lang/Throwable; -> 90 zae-BB@0x90)
+
+zae-BB@0xa6 : 
+	44      (000000a6) monitor-exit         v0
+	45      (000000a8) throw                v9
+

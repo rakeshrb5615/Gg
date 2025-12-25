@@ -1,0 +1,162 @@
+# Lcom/google/android/gms/internal/firebase-auth-api/zzzf;->zza(Ljava/security/spec/EllipticCurve; Lcom/google/android/gms/internal/firebase-auth-api/zzzh; [B)Ljava/security/spec/ECPoint; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:java.security.spec.EllipticCurve
+# - v7:com.google.android.gms.internal.firebase-auth-api.zzzh
+# - v8:byte[]
+#
+# - return:java.security.spec.ECPoint
+
+zza-BB@0x0 : [ zza-BB@0x1c zza-BB@0x128 ]
+	0       (00000000) invoke-static        v6, Lcom/google/android/gms/internal/firebase-auth-api/zzzf;->zza(Ljava/security/spec/EllipticCurve;)I
+	1       (00000006) move-result          v0
+	2       (00000008) invoke-virtual       v7, Ljava/lang/Enum;->ordinal()I
+	3       (0000000e) move-result          v1
+	4       (00000010) const-string         v2, "invalid point size"
+	5       (00000014) const/4              v3, 0
+	6       (00000016) const/4              v4, 1
+	7       (00000018) if-eqz               v1, +088h
+
+zza-BB@0x1c : [ zza-BB@0x22 zza-BB@0x94 ]
+	8       (0000001c) const/4              v5, 2
+	9       (0000001e) if-eq                v1, v4, +03bh
+
+zza-BB@0x22 : [ zza-BB@0x26 zza-BB@0x74 ]
+	10      (00000022) if-ne                v1, v5, +029h
+
+zza-BB@0x26 : [ zza-BB@0x30 zza-BB@0x68 ]
+	11      (00000026) array-length         v7, v8
+	12      (00000028) mul-int/lit8         v1, v0, 2
+	13      (0000002c) if-ne                v7, v1, +01eh
+
+zza-BB@0x30 : 
+	14      (00000030) new-instance         v7, Ljava/math/BigInteger;
+	15      (00000034) invoke-static        v8, v0, Ljava/util/Arrays;->copyOf([B I)[B
+	16      (0000003a) move-result-object   v1
+	17      (0000003c) invoke-direct        v7, v4, v1, Ljava/math/BigInteger;-><init>(I [B)V
+	18      (00000042) new-instance         v1, Ljava/math/BigInteger;
+	19      (00000046) array-length         v2, v8
+	20      (00000048) invoke-static        v8, v0, v2, Ljava/util/Arrays;->copyOfRange([B I I)[B
+	21      (0000004e) move-result-object   v8
+	22      (00000050) invoke-direct        v1, v4, v8, Ljava/math/BigInteger;-><init>(I [B)V
+	23      (00000056) new-instance         v8, Ljava/security/spec/ECPoint;
+	24      (0000005a) invoke-direct        v8, v7, v1, Ljava/security/spec/ECPoint;-><init>(Ljava/math/BigInteger; Ljava/math/BigInteger;)V
+	25      (00000060) invoke-static        v8, v6, Lcom/google/android/gms/internal/firebase-auth-api/zznj;->zza(Ljava/security/spec/ECPoint; Ljava/security/spec/EllipticCurve;)V
+	26      (00000066) return-object        v8
+
+zza-BB@0x68 : 
+	27      (00000068) new-instance         v6, Ljava/security/GeneralSecurityException;
+	28      (0000006c) invoke-direct        v6, v2, Ljava/security/GeneralSecurityException;-><init>(Ljava/lang/String;)V
+	29      (00000072) throw                v6
+
+zza-BB@0x74 : 
+	30      (00000074) new-instance         v6, Ljava/security/GeneralSecurityException;
+	31      (00000078) invoke-static        v7, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
+	32      (0000007e) move-result-object   v7
+	33      (00000080) const-string         v8, "invalid format:"
+	34      (00000084) invoke-virtual       v8, v7, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	35      (0000008a) move-result-object   v7
+	36      (0000008c) invoke-direct        v6, v7, Ljava/security/GeneralSecurityException;-><init>(Ljava/lang/String;)V
+	37      (00000092) throw                v6
+
+zza-BB@0x94 : [ zza-BB@0xa4 zza-BB@0x118 ]
+	38      (00000094) invoke-static        v6, Lcom/google/android/gms/internal/firebase-auth-api/zznj;->zza(Ljava/security/spec/EllipticCurve;)Ljava/math/BigInteger;
+	39      (0000009a) move-result-object   v7
+	40      (0000009c) array-length         v1, v8
+	41      (0000009e) add-int/2addr        v0, v4
+	42      (000000a0) if-ne                v1, v0, +03ch
+
+zza-BB@0xa4 : [ zza-BB@0xac zza-BB@0xae ]
+	43      (000000a4) aget-byte            v0, v8, v3
+	44      (000000a8) if-ne                v0, v5, +003h
+
+zza-BB@0xac : [ zza-BB@0xb6 ]
+	45      (000000ac) goto                 +5h
+
+zza-BB@0xae : [ zza-BB@0xb4 zza-BB@0x108 ]
+	46      (000000ae) const/4              v1, 3
+	47      (000000b0) if-ne                v0, v1, +02ch
+
+zza-BB@0xb4 : [ zza-BB@0xb6 ]
+	48      (000000b4) move                 v3, v4
+
+zza-BB@0xb6 : [ zza-BB@0xd8 zza-BB@0xf8 ]
+	49      (000000b6) new-instance         v0, Ljava/math/BigInteger;
+	50      (000000ba) array-length         v1, v8
+	51      (000000bc) invoke-static        v8, v4, v1, Ljava/util/Arrays;->copyOfRange([B I I)[B
+	52      (000000c2) move-result-object   v8
+	53      (000000c4) invoke-direct        v0, v4, v8, Ljava/math/BigInteger;-><init>(I [B)V
+	54      (000000ca) invoke-virtual       v0, Ljava/math/BigInteger;->signum()I
+	55      (000000d0) move-result          v8
+	56      (000000d2) const/4              v1, -1
+	57      (000000d4) if-eq                v8, v1, +012h
+
+zza-BB@0xd8 : [ zza-BB@0xe4 zza-BB@0xf8 ]
+	58      (000000d8) invoke-virtual       v0, v7, Ljava/math/BigInteger;->compareTo(Ljava/math/BigInteger;)I
+	59      (000000de) move-result          v7
+	60      (000000e0) if-gez               v7, +00ch
+
+zza-BB@0xe4 : 
+	61      (000000e4) invoke-static        v0, v3, v6, Lcom/google/android/gms/internal/firebase-auth-api/zzzf;->zza(Ljava/math/BigInteger; Z Ljava/security/spec/EllipticCurve;)Ljava/math/BigInteger;
+	62      (000000ea) move-result-object   v6
+	63      (000000ec) new-instance         v7, Ljava/security/spec/ECPoint;
+	64      (000000f0) invoke-direct        v7, v0, v6, Ljava/security/spec/ECPoint;-><init>(Ljava/math/BigInteger; Ljava/math/BigInteger;)V
+	65      (000000f6) return-object        v7
+
+zza-BB@0xf8 : 
+	66      (000000f8) new-instance         v6, Ljava/security/GeneralSecurityException;
+	67      (000000fc) const-string         v7, "x is out of range"
+	68      (00000100) invoke-direct        v6, v7, Ljava/security/GeneralSecurityException;-><init>(Ljava/lang/String;)V
+	69      (00000106) throw                v6
+
+zza-BB@0x108 : 
+	70      (00000108) new-instance         v6, Ljava/security/GeneralSecurityException;
+	71      (0000010c) const-string         v7, "invalid format"
+	72      (00000110) invoke-direct        v6, v7, Ljava/security/GeneralSecurityException;-><init>(Ljava/lang/String;)V
+	73      (00000116) throw                v6
+
+zza-BB@0x118 : 
+	74      (00000118) new-instance         v6, Ljava/security/GeneralSecurityException;
+	75      (0000011c) const-string         v7, "compressed point has wrong length"
+	76      (00000120) invoke-direct        v6, v7, Ljava/security/GeneralSecurityException;-><init>(Ljava/lang/String;)V
+	77      (00000126) throw                v6
+
+zza-BB@0x128 : [ zza-BB@0x134 zza-BB@0x188 ]
+	78      (00000128) array-length         v7, v8
+	79      (0000012a) mul-int/lit8         v1, v0, 2
+	80      (0000012e) add-int/2addr        v1, v4
+	81      (00000130) if-ne                v7, v1, +02ch
+
+zza-BB@0x134 : [ zza-BB@0x13e zza-BB@0x178 ]
+	82      (00000134) aget-byte            v7, v8, v3
+	83      (00000138) const/4              v1, 4
+	84      (0000013a) if-ne                v7, v1, +01fh
+
+zza-BB@0x13e : 
+	85      (0000013e) new-instance         v7, Ljava/math/BigInteger;
+	86      (00000142) add-int/2addr        v0, v4
+	87      (00000144) invoke-static        v8, v4, v0, Ljava/util/Arrays;->copyOfRange([B I I)[B
+	88      (0000014a) move-result-object   v1
+	89      (0000014c) invoke-direct        v7, v4, v1, Ljava/math/BigInteger;-><init>(I [B)V
+	90      (00000152) new-instance         v1, Ljava/math/BigInteger;
+	91      (00000156) array-length         v2, v8
+	92      (00000158) invoke-static        v8, v0, v2, Ljava/util/Arrays;->copyOfRange([B I I)[B
+	93      (0000015e) move-result-object   v8
+	94      (00000160) invoke-direct        v1, v4, v8, Ljava/math/BigInteger;-><init>(I [B)V
+	95      (00000166) new-instance         v8, Ljava/security/spec/ECPoint;
+	96      (0000016a) invoke-direct        v8, v7, v1, Ljava/security/spec/ECPoint;-><init>(Ljava/math/BigInteger; Ljava/math/BigInteger;)V
+	97      (00000170) invoke-static        v8, v6, Lcom/google/android/gms/internal/firebase-auth-api/zznj;->zza(Ljava/security/spec/ECPoint; Ljava/security/spec/EllipticCurve;)V
+	98      (00000176) return-object        v8
+
+zza-BB@0x178 : 
+	99      (00000178) new-instance         v6, Ljava/security/GeneralSecurityException;
+	100     (0000017c) const-string         v7, "invalid point format"
+	101     (00000180) invoke-direct        v6, v7, Ljava/security/GeneralSecurityException;-><init>(Ljava/lang/String;)V
+	102     (00000186) throw                v6
+
+zza-BB@0x188 : 
+	103     (00000188) new-instance         v6, Ljava/security/GeneralSecurityException;
+	104     (0000018c) invoke-direct        v6, v2, Ljava/security/GeneralSecurityException;-><init>(Ljava/lang/String;)V
+	105     (00000192) throw                v6
+

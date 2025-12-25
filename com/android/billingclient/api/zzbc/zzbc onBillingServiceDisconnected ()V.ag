@@ -1,0 +1,39 @@
+# Lcom/android/billingclient/api/zzbc;->onBillingServiceDisconnected()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v3
+#
+# - return:void
+
+onBillingServiceDisconnected-BB@0x0 : [ onBillingServiceDisconnected-BB@0xe ]
+	0       (00000000) const-string         v0, "Reconnection attempt failed."
+	1       (00000004) const-string         v1, "BillingClient"
+	2       (00000008) invoke-static        v1, v0, Lcom/google/android/gms/internal/play_billing/zzc;->zzm(Ljava/lang/String; Ljava/lang/String;)V
+
+onBillingServiceDisconnected-BB@0xe : [ onBillingServiceDisconnected-BB@0x2a ]
+	3       (0000000e) iget-object          v0, v3, Lcom/android/billingclient/api/zzbc;->zza Lcom/google/android/gms/internal/play_billing/zzp;
+	4       (00000012) sget-object          v2, Lcom/android/billingclient/api/zzcj;->zzj Lcom/android/billingclient/api/BillingResult;
+	5       (00000016) invoke-virtual       v0, v2, Lcom/google/android/gms/internal/play_billing/zzp;->zzb(Ljava/lang/Object;)Z
+	6       (0000001c) goto                 +7h
+	e:1b
+	(Ljava/lang/Throwable; -> 1e onBillingServiceDisconnected-BB@0x1e)
+
+onBillingServiceDisconnected-BB@0x1e : [ onBillingServiceDisconnected-BB@0x2a ]
+	7       (0000001e) move-exception       v0
+	8       (00000020) const-string         v2, "Exception setting completer."
+	9       (00000024) invoke-static        v1, v2, v0, Lcom/google/android/gms/internal/play_billing/zzc;->zzo(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)V
+
+onBillingServiceDisconnected-BB@0x2a : [ onBillingServiceDisconnected-BB@0x3a onBillingServiceDisconnected-BB@0x4a ]
+	10      (0000002a) iget-object          v0, v3, Lcom/android/billingclient/api/zzbc;->zzb Lcom/android/billingclient/api/BillingClientImpl;
+	11      (0000002e) invoke-static        v0, Lcom/android/billingclient/api/BillingClientImpl;->zzh(Lcom/android/billingclient/api/BillingClientImpl;)Lcom/android/billingclient/api/BillingClientStateListener;
+	12      (00000034) move-result-object   v1
+	13      (00000036) if-eqz               v1, +00ah
+
+onBillingServiceDisconnected-BB@0x3a : [ onBillingServiceDisconnected-BB@0x4a ]
+	14      (0000003a) new-instance         v1, Lcom/android/billingclient/api/zzba;
+	15      (0000003e) invoke-direct        v1, v3, Lcom/android/billingclient/api/zzba;-><init>(Lcom/android/billingclient/api/zzbc;)V
+	16      (00000044) invoke-virtual       v0, v1, Lcom/android/billingclient/api/BillingClientImpl;->zzag(Ljava/lang/Runnable;)V
+
+onBillingServiceDisconnected-BB@0x4a : 
+	17      (0000004a) return-void          
+
