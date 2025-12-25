@@ -1,0 +1,72 @@
+# Lz/t;->onAttachedToWindow()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v6
+#
+# - return:void
+
+onAttachedToWindow-BB@0x0 : [ onAttachedToWindow-BB@0xe onAttachedToWindow-BB@0x16 ]
+	0       (00000000) invoke-super         v6, Lz/c;->onAttachedToWindow()V
+	1       (00000006) iget-boolean         v0, v6, Lz/t;->n Z
+	2       (0000000a) if-nez               v0, +006h
+
+onAttachedToWindow-BB@0xe : [ onAttachedToWindow-BB@0x16 onAttachedToWindow-BB@0x96 ]
+	3       (0000000e) iget-boolean         v0, v6, Lz/t;->o Z
+	4       (00000012) if-eqz               v0, +042h
+
+onAttachedToWindow-BB@0x16 : [ onAttachedToWindow-BB@0x26 onAttachedToWindow-BB@0x96 ]
+	5       (00000016) invoke-virtual       v6, Landroid/view/View;->getParent()Landroid/view/ViewParent;
+	6       (0000001c) move-result-object   v0
+	7       (0000001e) instance-of          v1, v0, Landroidx/constraintlayout/widget/ConstraintLayout;
+	8       (00000022) if-eqz               v1, +03ah
+
+onAttachedToWindow-BB@0x26 : [ onAttachedToWindow-BB@0x3c ]
+	9       (00000026) check-cast           v0, Landroidx/constraintlayout/widget/ConstraintLayout;
+	10      (0000002a) invoke-virtual       v6, Landroid/view/View;->getVisibility()I
+	11      (00000030) move-result          v1
+	12      (00000032) invoke-virtual       v6, Landroid/view/View;->getElevation()F
+	13      (00000038) move-result          v2
+	14      (0000003a) const/4              v3, 0
+
+onAttachedToWindow-BB@0x3c : [ onAttachedToWindow-BB@0x44 onAttachedToWindow-BB@0x96 ]
+	15      (0000003c) iget                 v4, v6, Lz/c;->b I
+	16      (00000040) if-ge                v3, v4, +02bh
+
+onAttachedToWindow-BB@0x44 : [ onAttachedToWindow-BB@0x60 onAttachedToWindow-BB@0x90 ]
+	17      (00000044) iget-object          v4, v6, Lz/c;->a [I
+	18      (00000048) aget                 v4, v4, v3
+	19      (0000004c) iget-object          v5, v0, Landroidx/constraintlayout/widget/ConstraintLayout;->a Landroid/util/SparseArray;
+	20      (00000050) invoke-virtual       v5, v4, Landroid/util/SparseArray;->get(I)Ljava/lang/Object;
+	21      (00000056) move-result-object   v4
+	22      (00000058) check-cast           v4, Landroid/view/View;
+	23      (0000005c) if-eqz               v4, +01ah
+
+onAttachedToWindow-BB@0x60 : [ onAttachedToWindow-BB@0x68 onAttachedToWindow-BB@0x6e ]
+	24      (00000060) iget-boolean         v5, v6, Lz/t;->n Z
+	25      (00000064) if-eqz               v5, +005h
+
+onAttachedToWindow-BB@0x68 : [ onAttachedToWindow-BB@0x6e ]
+	26      (00000068) invoke-virtual       v4, v1, Landroid/view/View;->setVisibility(I)V
+
+onAttachedToWindow-BB@0x6e : [ onAttachedToWindow-BB@0x76 onAttachedToWindow-BB@0x90 ]
+	27      (0000006e) iget-boolean         v5, v6, Lz/t;->o Z
+	28      (00000072) if-eqz               v5, +00fh
+
+onAttachedToWindow-BB@0x76 : [ onAttachedToWindow-BB@0x80 onAttachedToWindow-BB@0x90 ]
+	29      (00000076) const/4              v5, 0
+	30      (00000078) cmpl-float           v5, v2, v5
+	31      (0000007c) if-lez               v5, +00ah
+
+onAttachedToWindow-BB@0x80 : [ onAttachedToWindow-BB@0x90 ]
+	32      (00000080) invoke-virtual       v4, Landroid/view/View;->getTranslationZ()F
+	33      (00000086) move-result          v5
+	34      (00000088) add-float/2addr      v5, v2
+	35      (0000008a) invoke-virtual       v4, v5, Landroid/view/View;->setTranslationZ(F)V
+
+onAttachedToWindow-BB@0x90 : [ onAttachedToWindow-BB@0x3c ]
+	36      (00000090) add-int/lit8         v3, v3, 1
+	37      (00000094) goto                 -2ch
+
+onAttachedToWindow-BB@0x96 : 
+	38      (00000096) return-void          
+

@@ -1,0 +1,61 @@
+# Lx8/u;->close()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v2
+#
+# - return:void
+
+close-BB@0x0 : [ close-BB@0xa ]
+	0       (00000000) iget-object          v0, v2, Lx8/u;->c Ljava/util/concurrent/locks/ReentrantLock;
+	1       (00000004) invoke-virtual       v0, Ljava/util/concurrent/locks/ReentrantLock;->lock()V
+
+close-BB@0xa : [ close-BB@0x12 close-BB@0x1a ]
+	2       (0000000a) iget-boolean         v1, v2, Lx8/u;->a Z
+	3       (0000000e) if-eqz               v1, +006h
+	a:d
+	(Ljava/lang/Throwable; -> 4c close-BB@0x4c)
+
+close-BB@0x12 : 
+	4       (00000012) invoke-virtual       v0, Ljava/util/concurrent/locks/ReentrantLock;->unlock()V
+	5       (00000018) return-void          
+
+close-BB@0x1a : [ close-BB@0x1c ]
+	6       (0000001a) const/4              v1, 1
+
+close-BB@0x1c : [ close-BB@0x28 close-BB@0x30 ]
+	7       (0000001c) iput-boolean         v1, v2, Lx8/u;->a Z
+	8       (00000020) iget                 v1, v2, Lx8/u;->b I
+	9       (00000024) if-eqz               v1, +006h
+	1c:23
+	(Ljava/lang/Throwable; -> 4c close-BB@0x4c)
+
+close-BB@0x28 : 
+	10      (00000028) invoke-virtual       v0, Ljava/util/concurrent/locks/ReentrantLock;->unlock()V
+	11      (0000002e) return-void          
+
+close-BB@0x30 : [ close-BB@0x38 ]
+	12      (00000030) invoke-virtual       v0, Ljava/util/concurrent/locks/ReentrantLock;->unlock()V
+	13      (00000036) monitor-enter        v2
+
+close-BB@0x38 : 
+	14      (00000038) iget-object          v0, v2, Lx8/u;->d Ljava/io/RandomAccessFile;
+	15      (0000003c) invoke-virtual       v0, Ljava/io/RandomAccessFile;->close()V
+	16      (00000042) monitor-exit         v2
+	17      (00000044) return-void          
+	38:41
+	(Ljava/lang/Throwable; -> 46 close-BB@0x46)
+
+close-BB@0x46 : [ close-BB@0x48 ]
+	18      (00000046) move-exception       v0
+
+close-BB@0x48 : 
+	19      (00000048) monitor-exit         v2
+	20      (0000004a) throw                v0
+	48:49
+	(Ljava/lang/Throwable; -> 46 close-BB@0x46)
+
+close-BB@0x4c : 
+	21      (0000004c) move-exception       v1
+	22      (0000004e) invoke-virtual       v0, Ljava/util/concurrent/locks/ReentrantLock;->unlock()V
+	23      (00000054) throw                v1
+

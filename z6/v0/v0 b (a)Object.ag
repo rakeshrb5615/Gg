@@ -1,0 +1,58 @@
+# Lz6/v0;->b(Le7/a;)Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:e7.a
+#
+# - return:java.lang.Object
+
+b-BB@0x0 : [ b-BB@0x10 b-BB@0x1a ]
+	0       (00000000) invoke-virtual       v5, Le7/a;->O()I
+	1       (00000006) move-result          v0
+	2       (00000008) const/16             v1, 9
+	3       (0000000c) if-ne                v0, v1, +007h
+
+b-BB@0x10 : 
+	4       (00000010) invoke-virtual       v5, Le7/a;->K()V
+	5       (00000016) const/4              v5, 0
+	6       (00000018) return-object        v5
+
+b-BB@0x1a : [ b-BB@0x2a b-BB@0x3e ]
+	7       (0000001a) invoke-virtual       v5, Le7/a;->G()I
+	8       (00000020) move-result          v0
+	9       (00000022) const/16             v1, 255
+	10      (00000026) if-gt                v0, v1, +00ch
+	1a:21
+	(Ljava/lang/NumberFormatException; -> 72 b-BB@0x72)
+
+b-BB@0x2a : [ b-BB@0x32 b-BB@0x3e ]
+	11      (0000002a) const/16             v1, -128
+	12      (0000002e) if-lt                v0, v1, +008h
+
+b-BB@0x32 : 
+	13      (00000032) int-to-byte          v5, v0
+	14      (00000034) invoke-static        v5, Ljava/lang/Byte;->valueOf(B)Ljava/lang/Byte;
+	15      (0000003a) move-result-object   v5
+	16      (0000003c) return-object        v5
+
+b-BB@0x3e : 
+	17      (0000003e) new-instance         v1, Lw6/p;
+	18      (00000042) const-string         v2, "Lossy conversion from "
+	19      (00000046) const-string         v3, " to byte; at path "
+	20      (0000004a) invoke-static        v2, v0, v3, Lv1/a;->p(Ljava/lang/String; I Ljava/lang/String;)Ljava/lang/StringBuilder;
+	21      (00000050) move-result-object   v0
+	22      (00000052) const/4              v2, 1
+	23      (00000054) invoke-virtual       v5, v2, Le7/a;->A(Z)Ljava/lang/String;
+	24      (0000005a) move-result-object   v5
+	25      (0000005c) invoke-virtual       v0, v5, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	26      (00000062) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	27      (00000068) move-result-object   v5
+	28      (0000006a) invoke-direct        v1, v5, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
+	29      (00000070) throw                v1
+
+b-BB@0x72 : 
+	30      (00000072) move-exception       v5
+	31      (00000074) new-instance         v0, Lw6/p;
+	32      (00000078) invoke-direct        v0, v5, Ljava/lang/RuntimeException;-><init>(Ljava/lang/Throwable;)V
+	33      (0000007e) throw                v0
+

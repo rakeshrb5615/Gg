@@ -1,0 +1,92 @@
+# Lz8/o0;->b(Ljava/lang/String; Ljava/lang/String; Z)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:java.lang.String
+# - v6:java.lang.String
+# - v7:boolean
+#
+# - return:void
+
+b-BB@0x0 : [ b-BB@0xe b-BB@0xb8 ]
+	0       (00000000) iget-object          v0, v4, Lz8/o0;->n Ljava/lang/String;
+	1       (00000004) const/4              v1, 0
+	2       (00000006) iget-object          v2, v4, Lz8/o0;->b Ljava/lang/reflect/Method;
+	3       (0000000a) if-nez               v0, +057h
+
+b-BB@0xe : [ b-BB@0x22 b-BB@0x24 ]
+	4       (0000000e) iput-object          v5, v4, Lz8/o0;->n Ljava/lang/String;
+	5       (00000012) iput-boolean         v7, v4, Lz8/o0;->o Z
+	6       (00000016) invoke-virtual       v6, Ljava/lang/String;->isEmpty()Z
+	7       (0000001c) move-result          v5
+	8       (0000001e) if-eqz               v5, +003h
+
+b-BB@0x22 : 
+	9       (00000022) return-void          
+
+b-BB@0x24 : [ b-BB@0x3c b-BB@0x80 ]
+	10      (00000024) const/16             v5, 63
+	11      (00000028) invoke-virtual       v6, v5, Ljava/lang/String;->indexOf(I)I
+	12      (0000002e) move-result          v5
+	13      (00000030) const/4              v7, -1
+	14      (00000032) sget-object          v0, Lz8/o0;->x Ljava/util/regex/Pattern;
+	15      (00000036) const/4              v3, 1
+	16      (00000038) if-eq                v5, v7, +024h
+
+b-BB@0x3c : [ b-BB@0x4a b-BB@0x80 ]
+	17      (0000003c) invoke-virtual       v6, Ljava/lang/String;->length()I
+	18      (00000042) move-result          v7
+	19      (00000044) sub-int/2addr        v7, v3
+	20      (00000046) if-ge                v5, v7, +01dh
+
+b-BB@0x4a : [ b-BB@0x68 b-BB@0x6a ]
+	21      (0000004a) add-int/2addr        v5, v3
+	22      (0000004c) invoke-virtual       v6, v5, Ljava/lang/String;->substring(I)Ljava/lang/String;
+	23      (00000052) move-result-object   v5
+	24      (00000054) invoke-virtual       v0, v5, Ljava/util/regex/Pattern;->matcher(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;
+	25      (0000005a) move-result-object   v7
+	26      (0000005c) invoke-virtual       v7, Ljava/util/regex/Matcher;->find()Z
+	27      (00000062) move-result          v7
+	28      (00000064) if-nez               v7, +003h
+
+b-BB@0x68 : [ b-BB@0x80 ]
+	29      (00000068) goto                 +ch
+
+b-BB@0x6a : 
+	30      (0000006a) const-string         v6, "URL query string "%s" must not have replace block. For dynamic query parameters use @Query."
+	31      (0000006e) filled-new-array     v5, [Ljava/lang/Object;
+	32      (00000074) move-result-object   v5
+	33      (00000076) invoke-static        v2, v1, v6, v5, Lz8/z0;->m(Ljava/lang/reflect/Method; Ljava/lang/Exception; Ljava/lang/String; [Ljava/lang/Object;)Ljava/lang/IllegalArgumentException;
+	34      (0000007c) move-result-object   v5
+	35      (0000007e) throw                v5
+
+b-BB@0x80 : [ b-BB@0x96 ]
+	36      (00000080) iput-object          v6, v4, Lz8/o0;->r Ljava/lang/String;
+	37      (00000084) invoke-virtual       v0, v6, Ljava/util/regex/Pattern;->matcher(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;
+	38      (0000008a) move-result-object   v5
+	39      (0000008c) new-instance         v6, Ljava/util/LinkedHashSet;
+	40      (00000090) invoke-direct        v6, Ljava/util/LinkedHashSet;-><init>()V
+
+b-BB@0x96 : [ b-BB@0xa2 b-BB@0xb2 ]
+	41      (00000096) invoke-virtual       v5, Ljava/util/regex/Matcher;->find()Z
+	42      (0000009c) move-result          v7
+	43      (0000009e) if-eqz               v7, +00ah
+
+b-BB@0xa2 : [ b-BB@0x96 ]
+	44      (000000a2) invoke-virtual       v5, v3, Ljava/util/regex/Matcher;->group(I)Ljava/lang/String;
+	45      (000000a8) move-result-object   v7
+	46      (000000aa) invoke-interface     v6, v7, Ljava/util/Set;->add(Ljava/lang/Object;)Z
+	47      (000000b0) goto                 -dh
+
+b-BB@0xb2 : 
+	48      (000000b2) iput-object          v6, v4, Lz8/o0;->u Ljava/util/LinkedHashSet;
+	49      (000000b6) return-void          
+
+b-BB@0xb8 : 
+	50      (000000b8) const-string         v6, "Only one HTTP method is allowed. Found: %s and %s."
+	51      (000000bc) filled-new-array     v0, v5, [Ljava/lang/Object;
+	52      (000000c2) move-result-object   v5
+	53      (000000c4) invoke-static        v2, v1, v6, v5, Lz8/z0;->m(Ljava/lang/reflect/Method; Ljava/lang/Exception; Ljava/lang/String; [Ljava/lang/Object;)Ljava/lang/IllegalArgumentException;
+	54      (000000ca) move-result-object   v5
+	55      (000000cc) throw                v5
+

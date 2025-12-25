@@ -1,0 +1,51 @@
+# Lz4/c;->x(Ljava/lang/String;)Lz4/c; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v9
+# - v10:java.lang.String
+#
+# - return:z4.c
+
+x-BB@0x0 : 
+	0       (00000000) new-instance         v0, Lorg/json/JSONObject;
+	1       (00000004) invoke-direct        v0, v10, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+	2       (0000000a) const-string         v10, "userId"
+	3       (0000000e) invoke-virtual       v0, v10, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+	4       (00000014) move-result-object   v2
+	5       (00000016) const-string         v10, "providerId"
+	6       (0000001a) invoke-virtual       v0, v10, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+	7       (00000020) move-result-object   v3
+	8       (00000022) const-string         v10, "email"
+	9       (00000026) invoke-virtual       v0, v10, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+	10      (0000002c) move-result-object   v4
+	11      (0000002e) const-string         v10, "phoneNumber"
+	12      (00000032) invoke-virtual       v0, v10, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+	13      (00000038) move-result-object   v5
+	14      (0000003a) const-string         v10, "displayName"
+	15      (0000003e) invoke-virtual       v0, v10, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+	16      (00000044) move-result-object   v6
+	17      (00000046) const-string         v10, "photoUrl"
+	18      (0000004a) invoke-virtual       v0, v10, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+	19      (00000050) move-result-object   v7
+	20      (00000052) const-string         v10, "isEmailVerified"
+	21      (00000056) invoke-virtual       v0, v10, Lorg/json/JSONObject;->optBoolean(Ljava/lang/String;)Z
+	22      (0000005c) move-result          v8
+	23      (0000005e) const-string         v10, "rawUserInfo"
+	24      (00000062) invoke-virtual       v0, v10, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+	25      (00000068) move-result-object   v9
+	26      (0000006a) new-instance         v1, Lz4/c;
+	27      (0000006e) invoke-direct/range  v1 ... v9, Lz4/c;-><init>(Ljava/lang/String; Ljava/lang/String; Ljava/lang/String; Ljava/lang/String; Ljava/lang/String; Ljava/lang/String; Z Ljava/lang/String;)V
+	28      (00000074) return-object        v1
+	0:73
+	(Lorg/json/JSONException; -> 76 x-BB@0x76)
+
+x-BB@0x76 : 
+	29      (00000076) move-exception       v0
+	30      (00000078) move-object          v10, v0
+	31      (0000007a) const-string         v0, "DefaultAuthUserInfo"
+	32      (0000007e) const-string         v1, "Failed to unpack UserInfo from JSON"
+	33      (00000082) invoke-static        v0, v1, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String;)I
+	34      (00000088) new-instance         v0, Lcom/google/android/gms/internal/firebase-auth-api/zzaao;
+	35      (0000008c) invoke-direct        v0, v10, Lcom/google/android/gms/internal/firebase-auth-api/zzaao;-><init>(Ljava/lang/Throwable;)V
+	36      (00000092) throw                v0
+

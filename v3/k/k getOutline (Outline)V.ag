@@ -1,0 +1,88 @@
+# Lv3/k;->getOutline(Landroid/graphics/Outline;)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:android.graphics.Outline
+#
+# - return:void
+
+getOutline-BB@0x0 : [ getOutline-BB@0xe getOutline-BB@0x10 ]
+	0       (00000000) iget-object          v0, v3, Lv3/k;->b Lv3/i;
+	1       (00000004) iget                 v0, v0, Lv3/i;->o I
+	2       (00000008) const/4              v1, 2
+	3       (0000000a) if-ne                v0, v1, +003h
+
+getOutline-BB@0xe : [ getOutline-BB@0xac ]
+	4       (0000000e) goto                 +4fh
+
+getOutline-BB@0x10 : [ getOutline-BB@0x24 getOutline-BB@0x26 ]
+	5       (00000010) invoke-virtual       v3, Lv3/k;->h()Landroid/graphics/RectF;
+	6       (00000016) move-result-object   v0
+	7       (00000018) invoke-virtual       v0, Landroid/graphics/RectF;->isEmpty()Z
+	8       (0000001e) move-result          v1
+	9       (00000020) if-eqz               v1, +003h
+
+getOutline-BB@0x24 : [ getOutline-BB@0xac ]
+	10      (00000024) goto                 +44h
+
+getOutline-BB@0x26 : [ getOutline-BB@0x44 getOutline-BB@0x5e ]
+	11      (00000026) iget-object          v1, v3, Lv3/k;->b Lv3/i;
+	12      (0000002a) iget-object          v1, v1, Lv3/i;->a Lv3/p;
+	13      (0000002e) iget-object          v2, v3, Lv3/k;->H [F
+	14      (00000032) invoke-static        v0, v1, v2, Lv3/k;->c(Landroid/graphics/RectF; Lv3/p; [F)F
+	15      (00000038) move-result          v1
+	16      (0000003a) const/4              v2, 0
+	17      (0000003c) cmpl-float           v2, v1, v2
+	18      (00000040) if-ltz               v2, +00fh
+
+getOutline-BB@0x44 : 
+	19      (00000044) invoke-virtual       v3, Landroid/graphics/drawable/Drawable;->getBounds()Landroid/graphics/Rect;
+	20      (0000004a) move-result-object   v0
+	21      (0000004c) iget-object          v2, v3, Lv3/k;->b Lv3/i;
+	22      (00000050) iget                 v2, v2, Lv3/i;->j F
+	23      (00000054) mul-float/2addr      v1, v2
+	24      (00000056) invoke-virtual       v4, v0, v1, Landroid/graphics/Outline;->setRoundRect(Landroid/graphics/Rect; F)V
+	25      (0000005c) return-void          
+
+getOutline-BB@0x5e : [ getOutline-BB@0x6a getOutline-BB@0x76 ]
+	26      (0000005e) iget-boolean         v1, v3, Lv3/k;->f Z
+	27      (00000062) iget-object          v2, v3, Lv3/k;->o Landroid/graphics/Path;
+	28      (00000066) if-eqz               v1, +008h
+
+getOutline-BB@0x6a : [ getOutline-BB@0x76 ]
+	29      (0000006a) invoke-virtual       v3, v0, v2, Lv3/k;->b(Landroid/graphics/RectF; Landroid/graphics/Path;)V
+	30      (00000070) const/4              v0, 0
+	31      (00000072) iput-boolean         v0, v3, Lv3/k;->f Z
+
+getOutline-BB@0x76 : [ getOutline-BB@0x82 getOutline-BB@0x8a ]
+	32      (00000076) sget                 v0, Landroid/os/Build$VERSION;->SDK_INT I
+	33      (0000007a) const/16             v1, 30
+	34      (0000007e) if-lt                v0, v1, +006h
+
+getOutline-BB@0x82 : 
+	35      (00000082) invoke-static        v4, v2, Lo3/b;->a(Landroid/graphics/Outline; Landroid/graphics/Path;)V
+	36      (00000088) return-void          
+
+getOutline-BB@0x8a : [ getOutline-BB@0x92 getOutline-BB@0x9a ]
+	37      (0000008a) const/16             v1, 29
+	38      (0000008e) if-lt                v0, v1, +006h
+
+getOutline-BB@0x92 : [ getOutline-BB@0x98 ]
+	39      (00000092) invoke-static        v4, v2, Lo3/a;->a(Landroid/graphics/Outline; Landroid/graphics/Path;)V
+	92:97
+	(Ljava/lang/IllegalArgumentException; -> 98 getOutline-BB@0x98)
+
+getOutline-BB@0x98 : 
+	40      (00000098) return-void          
+
+getOutline-BB@0x9a : [ getOutline-BB@0xa6 getOutline-BB@0xac ]
+	41      (0000009a) invoke-virtual       v2, Landroid/graphics/Path;->isConvex()Z
+	42      (000000a0) move-result          v0
+	43      (000000a2) if-eqz               v0, +005h
+
+getOutline-BB@0xa6 : [ getOutline-BB@0xac ]
+	44      (000000a6) invoke-static        v4, v2, Lo3/a;->a(Landroid/graphics/Outline; Landroid/graphics/Path;)V
+
+getOutline-BB@0xac : 
+	45      (000000ac) return-void          
+

@@ -1,0 +1,59 @@
+# Lz4/e;->A(Ljava/util/ArrayList;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:java.util.ArrayList
+#
+# - return:void
+
+A-BB@0x0 : [ A-BB@0xc A-BB@0x10 ]
+	0       (00000000) invoke-interface     v7, Ljava/util/List;->isEmpty()Z
+	1       (00000006) move-result          v0
+	2       (00000008) if-eqz               v0, +004h
+
+A-BB@0xc : [ A-BB@0x74 ]
+	3       (0000000c) const/4              v7, 0
+	4       (0000000e) goto                 +33h
+
+A-BB@0x10 : [ A-BB@0x2e ]
+	5       (00000010) new-instance         v0, Ljava/util/ArrayList;
+	6       (00000014) invoke-direct        v0, Ljava/util/ArrayList;-><init>()V
+	7       (0000001a) new-instance         v1, Ljava/util/ArrayList;
+	8       (0000001e) invoke-direct        v1, Ljava/util/ArrayList;-><init>()V
+	9       (00000024) invoke-virtual       v7, Ljava/util/ArrayList;->size()I
+	10      (0000002a) move-result          v2
+	11      (0000002c) const/4              v3, 0
+
+A-BB@0x2e : [ A-BB@0x32 A-BB@0x6a ]
+	12      (0000002e) if-ge                v3, v2, +01eh
+
+A-BB@0x32 : [ A-BB@0x4a A-BB@0x56 ]
+	13      (00000032) invoke-virtual       v7, v3, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	14      (00000038) move-result-object   v4
+	15      (0000003a) add-int/lit8         v3, v3, 1
+	16      (0000003e) check-cast           v4, Ly4/p;
+	17      (00000042) instance-of          v5, v4, Ly4/w;
+	18      (00000046) if-eqz               v5, +008h
+
+A-BB@0x4a : [ A-BB@0x2e ]
+	19      (0000004a) check-cast           v4, Ly4/w;
+	20      (0000004e) invoke-virtual       v0, v4, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	21      (00000054) goto                 -13h
+
+A-BB@0x56 : [ A-BB@0x5e A-BB@0x2e ]
+	22      (00000056) instance-of          v5, v4, Ly4/z;
+	23      (0000005a) if-eqz               v5, -016h
+
+A-BB@0x5e : [ A-BB@0x2e ]
+	24      (0000005e) check-cast           v4, Ly4/z;
+	25      (00000062) invoke-virtual       v1, v4, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	26      (00000068) goto                 -1dh
+
+A-BB@0x6a : [ A-BB@0x74 ]
+	27      (0000006a) new-instance         v7, Lz4/o;
+	28      (0000006e) invoke-direct        v7, v0, v1, Lz4/o;-><init>(Ljava/util/ArrayList; Ljava/util/ArrayList;)V
+
+A-BB@0x74 : 
+	29      (00000074) iput-object          v7, v6, Lz4/e;->r Lz4/o;
+	30      (00000078) return-void          
+

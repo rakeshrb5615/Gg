@@ -1,0 +1,137 @@
+# Lw6/m;->b(Ld7/a;)Lw6/z; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v8
+# - v9:d7.a
+#
+# - return:w6.z
+
+b-BB@0x0 : [ b-BB@0x14 b-BB@0x16 ]
+	0       (00000000) iget-object          v0, v8, Lw6/m;->b Ljava/util/concurrent/ConcurrentHashMap;
+	1       (00000004) invoke-virtual       v0, v9, Ljava/util/concurrent/ConcurrentHashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	2       (0000000a) move-result-object   v1
+	3       (0000000c) check-cast           v1, Lw6/z;
+	4       (00000010) if-eqz               v1, +003h
+
+b-BB@0x14 : 
+	5       (00000014) return-object        v1
+
+b-BB@0x16 : [ b-BB@0x2a b-BB@0x3e ]
+	6       (00000016) iget-object          v1, v8, Lw6/m;->a Ljava/lang/ThreadLocal;
+	7       (0000001a) invoke-virtual       v1, Ljava/lang/ThreadLocal;->get()Ljava/lang/Object;
+	8       (00000020) move-result-object   v2
+	9       (00000022) check-cast           v2, Ljava/util/Map;
+	10      (00000026) if-nez               v2, +00ch
+
+b-BB@0x2a : [ b-BB@0x52 ]
+	11      (0000002a) new-instance         v2, Ljava/util/HashMap;
+	12      (0000002e) invoke-direct        v2, Ljava/util/HashMap;-><init>()V
+	13      (00000034) invoke-virtual       v1, v2, Ljava/lang/ThreadLocal;->set(Ljava/lang/Object;)V
+	14      (0000003a) const/4              v3, 1
+	15      (0000003c) goto                 +bh
+
+b-BB@0x3e : [ b-BB@0x4e b-BB@0x50 ]
+	16      (0000003e) invoke-interface     v2, v9, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	17      (00000044) move-result-object   v3
+	18      (00000046) check-cast           v3, Lw6/z;
+	19      (0000004a) if-eqz               v3, +003h
+
+b-BB@0x4e : 
+	20      (0000004e) return-object        v3
+
+b-BB@0x50 : [ b-BB@0x52 ]
+	21      (00000050) const/4              v3, 0
+
+b-BB@0x52 : [ b-BB@0x70 ]
+	22      (00000052) new-instance         v4, Lw6/l;
+	23      (00000056) invoke-direct        v4, Lw6/l;-><init>()V
+	24      (0000005c) invoke-interface     v2, v9, v4, Ljava/util/Map;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	25      (00000062) iget-object          v5, v8, Lw6/m;->e Ljava/util/List;
+	26      (00000066) invoke-interface     v5, Ljava/util/List;->iterator()Ljava/util/Iterator;
+	27      (0000006c) move-result-object   v5
+	28      (0000006e) const/4              v6, 0
+	52:bb
+	(Ljava/lang/Throwable; -> a8 b-BB@0xa8)
+
+b-BB@0x70 : [ b-BB@0x7c b-BB@0xbc ]
+	29      (00000070) invoke-interface     v5, Ljava/util/Iterator;->hasNext()Z
+	30      (00000076) move-result          v7
+	31      (00000078) if-eqz               v7, +022h
+	52:bb
+	(Ljava/lang/Throwable; -> a8 b-BB@0xa8)
+
+b-BB@0x7c : [ b-BB@0x94 b-BB@0x70 ]
+	32      (0000007c) invoke-interface     v5, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	33      (00000082) move-result-object   v6
+	34      (00000084) check-cast           v6, Lw6/a0;
+	35      (00000088) invoke-interface     v6, v8, v9, Lw6/a0;->a(Lw6/m; Ld7/a;)Lw6/z;
+	36      (0000008e) move-result-object   v6
+	37      (00000090) if-eqz               v6, -010h
+	52:bb
+	(Ljava/lang/Throwable; -> a8 b-BB@0xa8)
+
+b-BB@0x94 : [ b-BB@0x9c b-BB@0xac ]
+	38      (00000094) iget-object          v5, v4, Lw6/l;->a Lw6/z;
+	39      (00000098) if-nez               v5, +00ah
+	52:bb
+	(Ljava/lang/Throwable; -> a8 b-BB@0xa8)
+
+b-BB@0x9c : [ b-BB@0xbc ]
+	40      (0000009c) iput-object          v6, v4, Lw6/l;->a Lw6/z;
+	41      (000000a0) invoke-interface     v2, v9, v6, Ljava/util/Map;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	42      (000000a6) goto                 +bh
+	52:bb
+	(Ljava/lang/Throwable; -> a8 b-BB@0xa8)
+
+b-BB@0xa8 : [ b-BB@0xfe ]
+	43      (000000a8) move-exception       v9
+	44      (000000aa) goto                 +2ah
+	52:bb
+	(Ljava/lang/Throwable; -> a8 b-BB@0xa8)
+
+b-BB@0xac : 
+	45      (000000ac) new-instance         v9, Ljava/lang/AssertionError;
+	46      (000000b0) const-string         v0, "Delegate is already set"
+	47      (000000b4) invoke-direct        v9, v0, Ljava/lang/AssertionError;-><init>(Ljava/lang/Object;)V
+	48      (000000ba) throw                v9
+	52:bb
+	(Ljava/lang/Throwable; -> a8 b-BB@0xa8)
+
+b-BB@0xbc : [ b-BB@0xc0 b-BB@0xc6 ]
+	49      (000000bc) if-eqz               v3, +005h
+
+b-BB@0xc0 : [ b-BB@0xc6 ]
+	50      (000000c0) invoke-virtual       v1, Ljava/lang/ThreadLocal;->remove()V
+
+b-BB@0xc6 : [ b-BB@0xca b-BB@0xd6 ]
+	51      (000000c6) if-eqz               v6, +008h
+
+b-BB@0xca : [ b-BB@0xce b-BB@0xd4 ]
+	52      (000000ca) if-eqz               v3, +005h
+
+b-BB@0xce : [ b-BB@0xd4 ]
+	53      (000000ce) invoke-virtual       v0, v2, Ljava/util/concurrent/ConcurrentHashMap;->putAll(Ljava/util/Map;)V
+
+b-BB@0xd4 : 
+	54      (000000d4) return-object        v6
+
+b-BB@0xd6 : 
+	55      (000000d6) new-instance         v0, Ljava/lang/IllegalArgumentException;
+	56      (000000da) new-instance         v1, Ljava/lang/StringBuilder;
+	57      (000000de) const-string         v2, "GSON (2.13.2) cannot handle "
+	58      (000000e2) invoke-direct        v1, v2, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	59      (000000e8) invoke-virtual       v1, v9, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	60      (000000ee) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	61      (000000f4) move-result-object   v9
+	62      (000000f6) invoke-direct        v0, v9, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	63      (000000fc) throw                v0
+
+b-BB@0xfe : [ b-BB@0x102 b-BB@0x108 ]
+	64      (000000fe) if-eqz               v3, +005h
+
+b-BB@0x102 : [ b-BB@0x108 ]
+	65      (00000102) invoke-virtual       v1, Ljava/lang/ThreadLocal;->remove()V
+
+b-BB@0x108 : 
+	66      (00000108) throw                v9
+

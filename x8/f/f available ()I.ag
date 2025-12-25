@@ -1,0 +1,48 @@
+# Lx8/f;->available()I [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v4
+#
+# - return:int
+
+available-BB@0x0 : [ D:available-BB@0xa 0:available-BB@0x46 ]
+	0       (00000000) iget                 v0, v4, Lx8/f;->a I
+	1       (00000004) packed-switch        v0, +0000030h
+
+available-BB@0xa : [ available-BB@0x1a available-BB@0x36 ]
+	2       (0000000a) iget-object          v0, v4, Lx8/f;->b Lx8/i;
+	3       (0000000e) check-cast           v0, Lx8/b0;
+	4       (00000012) iget-boolean         v1, v0, Lx8/b0;->c Z
+	5       (00000016) if-nez               v1, +010h
+
+available-BB@0x1a : [ available-BB@0x32 ]
+	6       (0000001a) iget-object          v0, v0, Lx8/b0;->b Lx8/g;
+	7       (0000001e) iget-wide            v0, v0, Lx8/g;->b J
+	8       (00000022) const                v2, 2147483647
+	9       (00000028) int-to-long          v2, v2
+	10      (0000002a) invoke-static        v0, v1, v2, v3, Ljava/lang/Math;->min(J J)J
+	11      (00000030) move-result-wide     v0
+
+available-BB@0x32 : 
+	12      (00000032) long-to-int          v0, v0
+	13      (00000034) return               v0
+
+available-BB@0x36 : 
+	14      (00000036) new-instance         v0, Ljava/io/IOException;
+	15      (0000003a) const-string         v1, "closed"
+	16      (0000003e) invoke-direct        v0, v1, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+	17      (00000044) throw                v0
+
+available-BB@0x46 : [ available-BB@0x32 ]
+	18      (00000046) iget-object          v0, v4, Lx8/f;->b Lx8/i;
+	19      (0000004a) check-cast           v0, Lx8/g;
+	20      (0000004e) iget-wide            v0, v0, Lx8/g;->b J
+	21      (00000052) const                v2, 2147483647
+	22      (00000058) int-to-long          v2, v2
+	23      (0000005a) invoke-static        v0, v1, v2, v3, Ljava/lang/Math;->min(J J)J
+	24      (00000060) move-result-wide     v0
+	25      (00000062) goto                 -18h
+
+available-BB@0x64 : 
+	26      (00000064) packed-switch-payload 0
+

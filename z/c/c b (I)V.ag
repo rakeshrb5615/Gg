@@ -1,0 +1,38 @@
+# Lz/c;->b(I)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:int
+#
+# - return:void
+
+b-BB@0x0 : [ b-BB@0xc b-BB@0xe ]
+	0       (00000000) invoke-virtual       v3, Landroid/view/View;->getId()I
+	1       (00000006) move-result          v0
+	2       (00000008) if-ne                v4, v0, +003h
+
+b-BB@0xc : 
+	3       (0000000c) return-void          
+
+b-BB@0xe : [ b-BB@0x20 b-BB@0x32 ]
+	4       (0000000e) iget                 v0, v3, Lz/c;->b I
+	5       (00000012) add-int/lit8         v0, v0, 1
+	6       (00000016) iget-object          v1, v3, Lz/c;->a [I
+	7       (0000001a) array-length         v2, v1
+	8       (0000001c) if-le                v0, v2, +00bh
+
+b-BB@0x20 : [ b-BB@0x32 ]
+	9       (00000020) array-length         v0, v1
+	10      (00000022) mul-int/lit8         v0, v0, 2
+	11      (00000026) invoke-static        v1, v0, Ljava/util/Arrays;->copyOf([I I)[I
+	12      (0000002c) move-result-object   v0
+	13      (0000002e) iput-object          v0, v3, Lz/c;->a [I
+
+b-BB@0x32 : 
+	14      (00000032) iget-object          v0, v3, Lz/c;->a [I
+	15      (00000036) iget                 v1, v3, Lz/c;->b I
+	16      (0000003a) aput                 v4, v0, v1
+	17      (0000003e) add-int/lit8         v1, v1, 1
+	18      (00000042) iput                 v1, v3, Lz/c;->b I
+	19      (00000046) return-void          
+

@@ -1,0 +1,39 @@
+# Lv3/k;->onStateChange([I)Z [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:int[]
+#
+# - return:boolean
+
+onStateChange-BB@0x0 : [ onStateChange-BB@0xe onStateChange-BB@0x14 ]
+	0       (00000000) iget-object          v0, v2, Lv3/k;->b Lv3/i;
+	1       (00000004) iget-object          v0, v0, Lv3/i;->b Lv3/d0;
+	2       (00000008) const/4              v1, 0
+	3       (0000000a) if-eqz               v0, +005h
+
+onStateChange-BB@0xe : [ onStateChange-BB@0x14 ]
+	4       (0000000e) invoke-virtual       v2, v3, v1, Lv3/k;->t([I Z)V
+
+onStateChange-BB@0x14 : [ onStateChange-BB@0x28 onStateChange-BB@0x2c ]
+	5       (00000014) invoke-virtual       v2, v3, Lv3/k;->s([I)Z
+	6       (0000001a) move-result          v3
+	7       (0000001c) invoke-virtual       v2, Lv3/k;->u()Z
+	8       (00000022) move-result          v0
+	9       (00000024) if-nez               v3, +004h
+
+onStateChange-BB@0x28 : [ onStateChange-BB@0x2c onStateChange-BB@0x2e ]
+	10      (00000028) if-eqz               v0, +003h
+
+onStateChange-BB@0x2c : [ onStateChange-BB@0x2e ]
+	11      (0000002c) const/4              v1, 1
+
+onStateChange-BB@0x2e : [ onStateChange-BB@0x32 onStateChange-BB@0x38 ]
+	12      (0000002e) if-eqz               v1, +005h
+
+onStateChange-BB@0x32 : [ onStateChange-BB@0x38 ]
+	13      (00000032) invoke-virtual       v2, Lv3/k;->invalidateSelf()V
+
+onStateChange-BB@0x38 : 
+	14      (00000038) return               v1
+

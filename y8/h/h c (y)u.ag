@@ -1,0 +1,75 @@
+# Ly8/h;->c(Lx8/y;)Lx8/u; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:x8.y
+#
+# - return:x8.u
+
+c-BB@0x0 : [ c-BB@0x10 c-BB@0xae ]
+	0       (00000000) invoke-static        v6, Lc5/c;->k(Lx8/y;)Z
+	1       (00000006) move-result          v0
+	2       (00000008) const-string         v1, "file not found: "
+	3       (0000000c) if-eqz               v0, +051h
+
+c-BB@0x10 : [ c-BB@0x50 ]
+	4       (00000010) sget-object          v0, Ly8/h;->f Lx8/y;
+	5       (00000014) invoke-virtual       v0, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	6       (0000001a) const/4              v2, 1
+	7       (0000001c) invoke-static        v0, v6, v2, Ly8/c;->b(Lx8/y; Lx8/y; Z)Lx8/y;
+	8       (00000022) move-result-object   v2
+	9       (00000024) invoke-virtual       v2, v0, Lx8/y;->b(Lx8/y;)Lx8/y;
+	10      (0000002a) move-result-object   v0
+	11      (0000002c) iget-object          v0, v0, Lx8/y;->a Lx8/j;
+	12      (00000030) invoke-virtual       v0, Lx8/j;->r()Ljava/lang/String;
+	13      (00000036) move-result-object   v0
+	14      (00000038) iget-object          v2, v5, Ly8/h;->e Lh7/j;
+	15      (0000003c) invoke-virtual       v2, Lh7/j;->getValue()Ljava/lang/Object;
+	16      (00000042) move-result-object   v2
+	17      (00000044) check-cast           v2, Ljava/util/List;
+	18      (00000048) invoke-interface     v2, Ljava/util/List;->iterator()Ljava/util/Iterator;
+	19      (0000004e) move-result-object   v2
+
+c-BB@0x50 : [ c-BB@0x5c c-BB@0x8a ]
+	20      (00000050) invoke-interface     v2, Ljava/util/Iterator;->hasNext()Z
+	21      (00000056) move-result          v3
+	22      (00000058) if-eqz               v3, +019h
+
+c-BB@0x5c : [ c-BB@0x78 ]
+	23      (0000005c) invoke-interface     v2, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	24      (00000062) move-result-object   v3
+	25      (00000064) check-cast           v3, Lh7/f;
+	26      (00000068) iget-object          v4, v3, Lh7/f;->a Ljava/lang/Object;
+	27      (0000006c) check-cast           v4, Lx8/m;
+	28      (00000070) iget-object          v3, v3, Lh7/f;->b Ljava/lang/Object;
+	29      (00000074) check-cast           v3, Lx8/y;
+
+c-BB@0x78 : 
+	30      (00000078) invoke-virtual       v3, v0, Lx8/y;->c(Ljava/lang/String;)Lx8/y;
+	31      (0000007e) move-result-object   v3
+	32      (00000080) invoke-virtual       v4, v3, Lx8/m;->c(Lx8/y;)Lx8/u;
+	33      (00000086) move-result-object   v6
+	34      (00000088) return-object        v6
+	78:87
+	(Ljava/io/FileNotFoundException; -> 50 c-BB@0x50)
+
+c-BB@0x8a : 
+	35      (0000008a) new-instance         v0, Ljava/io/FileNotFoundException;
+	36      (0000008e) new-instance         v2, Ljava/lang/StringBuilder;
+	37      (00000092) invoke-direct        v2, v1, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	38      (00000098) invoke-virtual       v2, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	39      (0000009e) invoke-virtual       v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	40      (000000a4) move-result-object   v6
+	41      (000000a6) invoke-direct        v0, v6, Ljava/io/FileNotFoundException;-><init>(Ljava/lang/String;)V
+	42      (000000ac) throw                v0
+
+c-BB@0xae : 
+	43      (000000ae) new-instance         v0, Ljava/io/FileNotFoundException;
+	44      (000000b2) new-instance         v2, Ljava/lang/StringBuilder;
+	45      (000000b6) invoke-direct        v2, v1, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	46      (000000bc) invoke-virtual       v2, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	47      (000000c2) invoke-virtual       v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	48      (000000c8) move-result-object   v6
+	49      (000000ca) invoke-direct        v0, v6, Ljava/io/FileNotFoundException;-><init>(Ljava/lang/String;)V
+	50      (000000d0) throw                v0
+

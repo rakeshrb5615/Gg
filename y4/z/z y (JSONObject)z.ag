@@ -1,0 +1,47 @@
+# Ly4/z;->y(Lorg/json/JSONObject;)Ly4/z; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v7
+# - v8:org.json.JSONObject
+#
+# - return:y4.z
+
+y-BB@0x0 : [ y-BB@0x10 y-BB@0x66 ]
+	0       (00000000) const-string         v0, "enrollmentTimestamp"
+	1       (00000004) invoke-virtual       v8, v0, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
+	2       (0000000a) move-result          v1
+	3       (0000000c) if-eqz               v1, +02dh
+
+y-BB@0x10 : [ y-BB@0x28 y-BB@0x56 ]
+	4       (00000010) invoke-virtual       v8, v0, Lorg/json/JSONObject;->optLong(Ljava/lang/String;)J
+	5       (00000016) move-result-wide     v5
+	6       (00000018) const-string         v0, "totpInfo"
+	7       (0000001c) invoke-virtual       v8, v0, Lorg/json/JSONObject;->opt(Ljava/lang/String;)Ljava/lang/Object;
+	8       (00000022) move-result-object   v0
+	9       (00000024) if-eqz               v0, +019h
+
+y-BB@0x28 : 
+	10      (00000028) new-instance         v7, Lcom/google/android/gms/internal/firebase-auth-api/zzaiz;
+	11      (0000002c) invoke-direct        v7, Lcom/google/android/gms/internal/firebase-auth-api/zzaiz;-><init>()V
+	12      (00000032) const-string         v0, "uid"
+	13      (00000036) invoke-virtual       v8, v0, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+	14      (0000003c) move-result-object   v3
+	15      (0000003e) const-string         v0, "displayName"
+	16      (00000042) invoke-virtual       v8, v0, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+	17      (00000048) move-result-object   v4
+	18      (0000004a) new-instance         v2, Ly4/z;
+	19      (0000004e) invoke-direct/range  v2 ... v7, Ly4/z;-><init>(Ljava/lang/String; Ljava/lang/String; J Lcom/google/android/gms/internal/firebase-auth-api/zzaiz;)V
+	20      (00000054) return-object        v2
+
+y-BB@0x56 : 
+	21      (00000056) new-instance         v8, Ljava/lang/IllegalArgumentException;
+	22      (0000005a) const-string         v0, "A totpInfo is required to build a TotpMultiFactorInfo instance."
+	23      (0000005e) invoke-direct        v8, v0, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	24      (00000064) throw                v8
+
+y-BB@0x66 : 
+	25      (00000066) new-instance         v8, Ljava/lang/IllegalArgumentException;
+	26      (0000006a) const-string         v0, "An enrollment timestamp in seconds of UTC time since Unix epoch is required to build a TotpMultiFactorInfo instance."
+	27      (0000006e) invoke-direct        v8, v0, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	28      (00000074) throw                v8
+

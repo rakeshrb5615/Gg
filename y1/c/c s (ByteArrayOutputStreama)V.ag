@@ -1,0 +1,53 @@
+# Ly1/c;->s(Ljava/io/ByteArrayOutputStream; Ly1/a;)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:java.io.ByteArrayOutputStream
+# - v5:y1.a
+#
+# - return:void
+
+s-BB@0x0 : [ s-BB@0x18 ]
+	0       (00000000) iget-object          v5, v5, Ly1/a;->i Ljava/util/TreeMap;
+	1       (00000004) invoke-virtual       v5, Ljava/util/TreeMap;->entrySet()Ljava/util/Set;
+	2       (0000000a) move-result-object   v5
+	3       (0000000c) invoke-interface     v5, Ljava/util/Set;->iterator()Ljava/util/Iterator;
+	4       (00000012) move-result-object   v5
+	5       (00000014) const/4              v0, 0
+	6       (00000016) move                 v1, v0
+
+s-BB@0x18 : [ s-BB@0x24 s-BB@0x76 ]
+	7       (00000018) invoke-interface     v5, Ljava/util/Iterator;->hasNext()Z
+	8       (0000001e) move-result          v2
+	9       (00000020) if-eqz               v2, +02bh
+
+s-BB@0x24 : [ s-BB@0x60 s-BB@0x62 ]
+	10      (00000024) invoke-interface     v5, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	11      (0000002a) move-result-object   v2
+	12      (0000002c) check-cast           v2, Ljava/util/Map$Entry;
+	13      (00000030) invoke-interface     v2, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
+	14      (00000036) move-result-object   v3
+	15      (00000038) check-cast           v3, Ljava/lang/Integer;
+	16      (0000003c) invoke-virtual       v3, Ljava/lang/Integer;->intValue()I
+	17      (00000042) move-result          v3
+	18      (00000044) invoke-interface     v2, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
+	19      (0000004a) move-result-object   v2
+	20      (0000004c) check-cast           v2, Ljava/lang/Integer;
+	21      (00000050) invoke-virtual       v2, Ljava/lang/Integer;->intValue()I
+	22      (00000056) move-result          v2
+	23      (00000058) and-int/lit8         v2, v2, 1
+	24      (0000005c) if-nez               v2, +003h
+
+s-BB@0x60 : [ s-BB@0x18 ]
+	25      (00000060) goto                 -24h
+
+s-BB@0x62 : [ s-BB@0x18 ]
+	26      (00000062) sub-int              v1, v3, v1
+	27      (00000066) invoke-static        v4, v1, Ly1/c;->v(Ljava/io/ByteArrayOutputStream; I)V
+	28      (0000006c) invoke-static        v4, v0, Ly1/c;->v(Ljava/io/ByteArrayOutputStream; I)V
+	29      (00000072) move                 v1, v3
+	30      (00000074) goto                 -2eh
+
+s-BB@0x76 : 
+	31      (00000076) return-void          
+

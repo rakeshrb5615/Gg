@@ -1,0 +1,43 @@
+# Lx8/j;->m(I [B I I)Z [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:int
+# - v4:byte[]
+# - v5:int
+# - v6:int
+#
+# - return:boolean
+
+m-BB@0x0 : [ m-BB@0xe m-BB@0x36 ]
+	0       (00000000) const-string         v0, "other"
+	1       (00000004) invoke-static        v4, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) if-ltz               v3, +016h
+
+m-BB@0xe : [ m-BB@0x1a m-BB@0x36 ]
+	3       (0000000e) iget-object          v0, v2, Lx8/j;->a [B
+	4       (00000012) array-length         v1, v0
+	5       (00000014) sub-int/2addr        v1, v6
+	6       (00000016) if-gt                v3, v1, +010h
+
+m-BB@0x1a : [ m-BB@0x1e m-BB@0x36 ]
+	7       (0000001a) if-ltz               v5, +00eh
+
+m-BB@0x1e : [ m-BB@0x26 m-BB@0x36 ]
+	8       (0000001e) array-length         v1, v4
+	9       (00000020) sub-int/2addr        v1, v6
+	10      (00000022) if-gt                v5, v1, +00ah
+
+m-BB@0x26 : [ m-BB@0x32 m-BB@0x36 ]
+	11      (00000026) invoke-static        v0, v3, v4, v5, v6, Lx8/b;->a([B I [B I I)Z
+	12      (0000002c) move-result          v3
+	13      (0000002e) if-eqz               v3, +004h
+
+m-BB@0x32 : 
+	14      (00000032) const/4              v3, 1
+	15      (00000034) return               v3
+
+m-BB@0x36 : 
+	16      (00000036) const/4              v3, 0
+	17      (00000038) return               v3
+

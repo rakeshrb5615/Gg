@@ -1,0 +1,121 @@
+# Lx8/b0;->l(J)Ljava/lang/String; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v19
+# - v20:long
+#
+# - return:java.lang.String
+
+l-BB@0x0 : [ l-BB@0x10 l-BB@0x138 ]
+	0       (00000000) move-wide/from16     v6, v19
+	1       (00000004) const-wide/16        v0, 0
+	2       (00000008) cmp-long             v0, v6, v0
+	3       (0000000c) if-ltz               v0, +096h
+
+l-BB@0x10 : [ l-BB@0x26 l-BB@0x2a ]
+	4       (00000010) const-wide           v8, 9223372036854775807
+	5       (0000001a) cmp-long             v0, v6, v8
+	6       (0000001e) const-wide/16        v10, 1
+	7       (00000022) if-nez               v0, +004h
+
+l-BB@0x26 : [ l-BB@0x30 ]
+	8       (00000026) move-wide            v4, v8
+	9       (00000028) goto                 +4h
+
+l-BB@0x2a : [ l-BB@0x30 ]
+	10      (0000002a) add-long             v0, v6, v10
+	11      (0000002e) move-wide            v4, v0
+
+l-BB@0x30 : [ l-BB@0x54 l-BB@0x5e ]
+	12      (00000030) const/16             v1, 10
+	13      (00000034) const-wide/16        v2, 0
+	14      (00000038) move-object/from16   v0, v18
+	15      (0000003c) invoke-virtual/range v0 ... v5, Lx8/b0;->c(B J J)J
+	16      (00000042) move-result-wide     v1
+	17      (00000044) const-wide/16        v12, -1
+	18      (00000048) cmp-long             v3, v1, v12
+	19      (0000004c) iget-object          v12, v0, Lx8/b0;->b Lx8/g;
+	20      (00000050) if-eqz               v3, +007h
+
+l-BB@0x54 : 
+	21      (00000054) invoke-static        v12, v1, v2, Ly8/a;->b(Lx8/g; J)Ljava/lang/String;
+	22      (0000005a) move-result-object   v1
+	23      (0000005c) return-object        v1
+
+l-BB@0x5e : [ l-BB@0x66 l-BB@0xb0 ]
+	24      (0000005e) cmp-long             v1, v4, v8
+	25      (00000062) if-gez               v1, +027h
+
+l-BB@0x66 : [ l-BB@0x72 l-BB@0xb0 ]
+	26      (00000066) invoke-virtual       v0, v4, v5, Lx8/b0;->request(J)Z
+	27      (0000006c) move-result          v1
+	28      (0000006e) if-eqz               v1, +021h
+
+l-BB@0x72 : [ l-BB@0x86 l-BB@0xb0 ]
+	29      (00000072) sub-long             v1, v4, v10
+	30      (00000076) invoke-virtual       v12, v1, v2, Lx8/g;->A(J)B
+	31      (0000007c) move-result          v1
+	32      (0000007e) const/16             v2, 13
+	33      (00000082) if-ne                v1, v2, +017h
+
+l-BB@0x86 : [ l-BB@0x96 l-BB@0xb0 ]
+	34      (00000086) add-long             v1, v4, v10
+	35      (0000008a) invoke-virtual       v0, v1, v2, Lx8/b0;->request(J)Z
+	36      (00000090) move-result          v1
+	37      (00000092) if-eqz               v1, +00fh
+
+l-BB@0x96 : [ l-BB@0xa6 l-BB@0xb0 ]
+	38      (00000096) invoke-virtual       v12, v4, v5, Lx8/g;->A(J)B
+	39      (0000009c) move-result          v1
+	40      (0000009e) const/16             v2, 10
+	41      (000000a2) if-ne                v1, v2, +007h
+
+l-BB@0xa6 : 
+	42      (000000a6) invoke-static        v12, v4, v5, Ly8/a;->b(Lx8/g; J)Ljava/lang/String;
+	43      (000000ac) move-result-object   v1
+	44      (000000ae) return-object        v1
+
+l-BB@0xb0 : 
+	45      (000000b0) new-instance         v13, Lx8/g;
+	46      (000000b4) invoke-direct        v13, Ljava/lang/Object;-><init>()V
+	47      (000000ba) iget-wide            v1, v12, Lx8/g;->b J
+	48      (000000be) const/16             v3, 32
+	49      (000000c2) int-to-long          v3, v3
+	50      (000000c4) invoke-static        v3, v4, v1, v2, Ljava/lang/Math;->min(J J)J
+	51      (000000ca) move-result-wide     v16
+	52      (000000cc) const-wide/16        v14, 0
+	53      (000000d0) invoke-virtual/range v12 ... v17, Lx8/g;->z(Lx8/g; J J)V
+	54      (000000d6) new-instance         v1, Ljava/io/EOFException;
+	55      (000000da) new-instance         v2, Ljava/lang/StringBuilder;
+	56      (000000de) const-string         v3, "\n not found: limit="
+	57      (000000e2) invoke-direct        v2, v3, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	58      (000000e8) iget-wide            v3, v12, Lx8/g;->b J
+	59      (000000ec) invoke-static        v3, v4, v6, v7, Ljava/lang/Math;->min(J J)J
+	60      (000000f2) move-result-wide     v3
+	61      (000000f4) invoke-virtual       v2, v3, v4, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+	62      (000000fa) const-string         v3, " content="
+	63      (000000fe) invoke-virtual       v2, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	64      (00000104) iget-wide            v3, v13, Lx8/g;->b J
+	65      (00000108) invoke-virtual       v13, v3, v4, Lx8/g;->e(J)Lx8/j;
+	66      (0000010e) move-result-object   v3
+	67      (00000110) invoke-virtual       v3, Lx8/j;->e()Ljava/lang/String;
+	68      (00000116) move-result-object   v3
+	69      (00000118) invoke-virtual       v2, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	70      (0000011e) const/16             v3, 8230
+	71      (00000122) invoke-virtual       v2, v3, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+	72      (00000128) invoke-virtual       v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	73      (0000012e) move-result-object   v2
+	74      (00000130) invoke-direct        v1, v2, Ljava/io/EOFException;-><init>(Ljava/lang/String;)V
+	75      (00000136) throw                v1
+
+l-BB@0x138 : 
+	76      (00000138) move-object/from16   v0, v18
+	77      (0000013c) const-string         v1, "limit < 0: "
+	78      (00000140) invoke-static        v6, v7, v1, Lv1/a;->g(J Ljava/lang/String;)Ljava/lang/String;
+	79      (00000146) move-result-object   v1
+	80      (00000148) new-instance         v2, Ljava/lang/IllegalArgumentException;
+	81      (0000014c) invoke-virtual       v1, Ljava/lang/Object;->toString()Ljava/lang/String;
+	82      (00000152) move-result-object   v1
+	83      (00000154) invoke-direct        v2, v1, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	84      (0000015a) throw                v2
+

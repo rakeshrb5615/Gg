@@ -1,0 +1,96 @@
+# Ly8/g;->t(Lx8/g; J)J [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v10
+# - v11:x8.g
+# - v12:long
+#
+# - return:long
+
+t-BB@0x0 : [ t-BB@0x22 t-BB@0x26 ]
+	0       (00000000) const-string         v0, "sink"
+	1       (00000004) invoke-static        v10, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) iget-wide            v0, v9, Ly8/g;->d J
+	3       (0000000e) iget-wide            v2, v9, Ly8/g;->b J
+	4       (00000012) cmp-long             v4, v0, v2
+	5       (00000016) const-wide/16        v5, -1
+	6       (0000001a) const-wide/16        v7, 0
+	7       (0000001e) if-lez               v4, +004h
+
+t-BB@0x22 : [ t-BB@0x44 ]
+	8       (00000022) move-wide            v11, v7
+	9       (00000024) goto                 +10h
+
+t-BB@0x26 : [ t-BB@0x2e t-BB@0x44 ]
+	10      (00000026) iget-boolean         v4, v9, Ly8/g;->c Z
+	11      (0000002a) if-eqz               v4, +00dh
+
+t-BB@0x2e : [ t-BB@0x3a t-BB@0x3c ]
+	12      (0000002e) sub-long             v0, v2, v0
+	13      (00000032) cmp-long             v4, v0, v7
+	14      (00000036) if-nez               v4, +003h
+
+t-BB@0x3a : 
+	15      (0000003a) return-wide          v5
+
+t-BB@0x3c : [ t-BB@0x44 ]
+	16      (0000003c) invoke-static        v11, v12, v0, v1, Ljava/lang/Math;->min(J J)J
+	17      (00000042) move-result-wide     v11
+
+t-BB@0x44 : [ t-BB@0x54 t-BB@0x5e ]
+	18      (00000044) invoke-super         v9, v10, v11, v12, Lx8/o;->t(Lx8/g; J)J
+	19      (0000004a) move-result-wide     v11
+	20      (0000004c) cmp-long             v0, v11, v5
+	21      (00000050) if-eqz               v0, +007h
+
+t-BB@0x54 : [ t-BB@0x5e ]
+	22      (00000054) iget-wide            v4, v9, Ly8/g;->d J
+	23      (00000058) add-long/2addr       v4, v11
+	24      (0000005a) iput-wide            v4, v9, Ly8/g;->d J
+
+t-BB@0x5e : [ t-BB@0x6a t-BB@0x6e ]
+	25      (0000005e) iget-wide            v4, v9, Ly8/g;->d J
+	26      (00000062) cmp-long             v1, v4, v2
+	27      (00000066) if-gez               v1, +004h
+
+t-BB@0x6a : [ t-BB@0x6e t-BB@0x72 ]
+	28      (0000006a) if-eqz               v0, +004h
+
+t-BB@0x6e : [ t-BB@0x72 t-BB@0xde ]
+	29      (0000006e) if-lez               v1, +038h
+
+t-BB@0x72 : [ t-BB@0x7a t-BB@0xa2 ]
+	30      (00000072) cmp-long             v11, v11, v7
+	31      (00000076) if-lez               v11, +016h
+
+t-BB@0x7a : [ t-BB@0x7e t-BB@0xa2 ]
+	32      (0000007a) if-lez               v1, +014h
+
+t-BB@0x7e : [ t-BB@0xa2 ]
+	33      (0000007e) iget-wide            v11, v10, Lx8/g;->b J
+	34      (00000082) sub-long/2addr       v4, v2
+	35      (00000084) sub-long/2addr       v11, v4
+	36      (00000086) new-instance         v0, Lx8/g;
+	37      (0000008a) invoke-direct        v0, Ljava/lang/Object;-><init>()V
+	38      (00000090) invoke-virtual       v0, v10, Lx8/g;->L(Lx8/h0;)J
+	39      (00000096) invoke-virtual       v10, v0, v11, v12, Lx8/g;->k(Lx8/g; J)V
+	40      (0000009c) invoke-virtual       v0, Lx8/g;->s()V
+
+t-BB@0xa2 : 
+	41      (000000a2) new-instance         v10, Ljava/io/IOException;
+	42      (000000a6) new-instance         v11, Ljava/lang/StringBuilder;
+	43      (000000aa) const-string         v12, "expected "
+	44      (000000ae) invoke-direct        v11, v12, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	45      (000000b4) invoke-virtual       v11, v2, v3, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+	46      (000000ba) const-string         v12, " bytes but got "
+	47      (000000be) invoke-virtual       v11, v12, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	48      (000000c4) iget-wide            v0, v9, Ly8/g;->d J
+	49      (000000c8) invoke-virtual       v11, v0, v1, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+	50      (000000ce) invoke-virtual       v11, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	51      (000000d4) move-result-object   v11
+	52      (000000d6) invoke-direct        v10, v11, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+	53      (000000dc) throw                v10
+
+t-BB@0xde : 
+	54      (000000de) return-wide          v11
+

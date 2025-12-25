@@ -1,0 +1,33 @@
+# Lu/f;->d(Lu/c; F)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:u.c
+# - v5:float
+#
+# - return:void
+
+d-BB@0x0 : [ d-BB@0x18 ]
+	0       (00000000) iput                 v5, v3, Lu/f;->e F
+	1       (00000004) const/4              v5, 1
+	2       (00000006) iput-boolean         v5, v3, Lu/f;->f Z
+	3       (0000000a) iget                 v5, v3, Lu/f;->p I
+	4       (0000000e) const/4              v0, -1
+	5       (00000010) iput                 v0, v3, Lu/f;->c I
+	6       (00000014) const/4              v0, 0
+	7       (00000016) move                 v1, v0
+
+d-BB@0x18 : [ d-BB@0x1c d-BB@0x30 ]
+	8       (00000018) if-ge                v1, v5, +00ch
+
+d-BB@0x1c : [ d-BB@0x18 ]
+	9       (0000001c) iget-object          v2, v3, Lu/f;->o [Lu/b;
+	10      (00000020) aget-object          v2, v2, v1
+	11      (00000024) invoke-virtual       v2, v4, v3, v0, Lu/b;->h(Lu/c; Lu/f; Z)V
+	12      (0000002a) add-int/lit8         v1, v1, 1
+	13      (0000002e) goto                 -bh
+
+d-BB@0x30 : 
+	14      (00000030) iput                 v0, v3, Lu/f;->p I
+	15      (00000034) return-void          
+

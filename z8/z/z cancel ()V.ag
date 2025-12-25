@@ -1,0 +1,34 @@
+# Lz8/z;->cancel()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v1
+#
+# - return:void
+
+cancel-BB@0x0 : [ cancel-BB@0x8 ]
+	0       (00000000) const/4              v0, 1
+	1       (00000002) iput-boolean         v0, v1, Lz8/z;->f Z
+	2       (00000006) monitor-enter        v1
+
+cancel-BB@0x8 : [ cancel-BB@0x12 cancel-BB@0x18 ]
+	3       (00000008) iget-object          v0, v1, Lz8/z;->m Lokhttp3/Call;
+	4       (0000000c) monitor-exit         v1
+	5       (0000000e) if-eqz               v0, +005h
+	8:d
+	(Ljava/lang/Throwable; -> 1a cancel-BB@0x1a)
+
+cancel-BB@0x12 : [ cancel-BB@0x18 ]
+	6       (00000012) invoke-interface     v0, Lokhttp3/Call;->cancel()V
+
+cancel-BB@0x18 : 
+	7       (00000018) return-void          
+
+cancel-BB@0x1a : [ cancel-BB@0x1c ]
+	8       (0000001a) move-exception       v0
+
+cancel-BB@0x1c : 
+	9       (0000001c) monitor-exit         v1
+	10      (0000001e) throw                v0
+	1c:1d
+	(Ljava/lang/Throwable; -> 1a cancel-BB@0x1a)
+

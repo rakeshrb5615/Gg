@@ -1,0 +1,35 @@
+# Lx8/g;->toString()Ljava/lang/String; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v4
+#
+# - return:java.lang.String
+
+toString-BB@0x0 : [ toString-BB@0x12 toString-BB@0x26 ]
+	0       (00000000) iget-wide            v0, v4, Lx8/g;->b J
+	1       (00000004) const-wide/32        v2, 2147483647
+	2       (0000000a) cmp-long             v2, v0, v2
+	3       (0000000e) if-gtz               v2, +00ch
+
+toString-BB@0x12 : 
+	4       (00000012) long-to-int          v0, v0
+	5       (00000014) invoke-virtual       v4, v0, Lx8/g;->I(I)Lx8/j;
+	6       (0000001a) move-result-object   v0
+	7       (0000001c) invoke-virtual       v0, Lx8/j;->toString()Ljava/lang/String;
+	8       (00000022) move-result-object   v0
+	9       (00000024) return-object        v0
+
+toString-BB@0x26 : 
+	10      (00000026) new-instance         v0, Ljava/lang/StringBuilder;
+	11      (0000002a) const-string         v1, "size > Int.MAX_VALUE: "
+	12      (0000002e) invoke-direct        v0, v1, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	13      (00000034) iget-wide            v1, v4, Lx8/g;->b J
+	14      (00000038) invoke-virtual       v0, v1, v2, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+	15      (0000003e) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	16      (00000044) move-result-object   v0
+	17      (00000046) new-instance         v1, Ljava/lang/IllegalStateException;
+	18      (0000004a) invoke-virtual       v0, Ljava/lang/Object;->toString()Ljava/lang/String;
+	19      (00000050) move-result-object   v0
+	20      (00000052) invoke-direct        v1, v0, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	21      (00000058) throw                v1
+

@@ -1,0 +1,45 @@
+# Lx8/b0;->p(Lx8/g;)J [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v10
+# - v11:x8.g
+#
+# - return:long
+
+p-BB@0x0 : [ p-BB@0x6 ]
+	0       (00000000) const-wide/16        v0, 0
+	1       (00000004) move-wide            v2, v0
+
+p-BB@0x6 : [ p-BB@0x26 p-BB@0x40 ]
+	2       (00000006) iget-object          v4, v10, Lx8/b0;->a Lx8/h0;
+	3       (0000000a) const-wide/16        v5, 8192
+	4       (0000000e) iget-object          v7, v10, Lx8/b0;->b Lx8/g;
+	5       (00000012) invoke-interface     v4, v7, v5, v6, Lx8/h0;->t(Lx8/g; J)J
+	6       (00000018) move-result-wide     v4
+	7       (0000001a) const-wide/16        v8, -1
+	8       (0000001e) cmp-long             v4, v4, v8
+	9       (00000022) if-eqz               v4, +00fh
+
+p-BB@0x26 : [ p-BB@0x36 p-BB@0x6 ]
+	10      (00000026) invoke-virtual       v7, Lx8/g;->y()J
+	11      (0000002c) move-result-wide     v4
+	12      (0000002e) cmp-long             v6, v4, v0
+	13      (00000032) if-lez               v6, -016h
+
+p-BB@0x36 : [ p-BB@0x6 ]
+	14      (00000036) add-long/2addr       v2, v4
+	15      (00000038) invoke-virtual       v11, v7, v4, v5, Lx8/g;->k(Lx8/g; J)V
+	16      (0000003e) goto                 -1ch
+
+p-BB@0x40 : [ p-BB@0x4c p-BB@0x54 ]
+	17      (00000040) iget-wide            v4, v7, Lx8/g;->b J
+	18      (00000044) cmp-long             v0, v4, v0
+	19      (00000048) if-lez               v0, +006h
+
+p-BB@0x4c : [ p-BB@0x54 ]
+	20      (0000004c) add-long/2addr       v2, v4
+	21      (0000004e) invoke-virtual       v11, v7, v4, v5, Lx8/g;->k(Lx8/g; J)V
+
+p-BB@0x54 : 
+	22      (00000054) return-wide          v2
+

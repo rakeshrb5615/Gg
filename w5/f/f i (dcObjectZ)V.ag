@@ -1,0 +1,79 @@
+# Lw5/f;->i(Lt5/d; Lt5/c; Ljava/lang/Object; Z)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:t5.d
+# - v7:t5.c
+# - v8:java.lang.Object
+# - v9:boolean
+#
+# - return:void
+
+i-BB@0x0 : [ i-BB@0x12 ]
+	0       (00000000) new-instance         v0, Lw5/b;
+	1       (00000004) invoke-direct        v0, Ljava/io/OutputStream;-><init>()V
+	2       (0000000a) const-wide/16        v1, 0
+	3       (0000000e) iput-wide            v1, v0, Lw5/b;->a J
+
+i-BB@0x12 : [ i-BB@0x1a ]
+	4       (00000012) iget-object          v3, v5, Lw5/f;->a Ljava/io/OutputStream;
+	5       (00000016) iput-object          v0, v5, Lw5/f;->a Ljava/io/OutputStream;
+	12:19
+	(Ljava/lang/Throwable; -> 60 i-BB@0x60)
+
+i-BB@0x1a : [ i-BB@0x20 ]
+	6       (0000001a) invoke-interface     v6, v8, v5, Lt5/a;->a(Ljava/lang/Object; Ljava/lang/Object;)V
+	1a:1f
+	(Ljava/lang/Throwable; -> 64 i-BB@0x64)
+
+i-BB@0x20 : [ i-BB@0x32 i-BB@0x3c ]
+	7       (00000020) iput-object          v3, v5, Lw5/f;->a Ljava/io/OutputStream;
+	8       (00000024) iget-wide            v3, v0, Lw5/b;->a J
+	9       (00000028) invoke-virtual       v0, Ljava/io/OutputStream;->close()V
+	10      (0000002e) if-eqz               v9, +007h
+	20:27
+	(Ljava/lang/Throwable; -> 60 i-BB@0x60)
+
+i-BB@0x32 : [ i-BB@0x3a i-BB@0x3c ]
+	11      (00000032) cmp-long             v9, v3, v1
+	12      (00000036) if-nez               v9, +003h
+
+i-BB@0x3a : 
+	13      (0000003a) return-void          
+
+i-BB@0x3c : 
+	14      (0000003c) invoke-static        v7, Lw5/f;->j(Lt5/c;)I
+	15      (00000042) move-result          v7
+	16      (00000044) shl-int/lit8         v7, v7, 3
+	17      (00000048) or-int/lit8          v7, v7, 2
+	18      (0000004c) invoke-virtual       v5, v7, Lw5/f;->k(I)V
+	19      (00000052) invoke-virtual       v5, v3, v4, Lw5/f;->l(J)V
+	20      (00000058) invoke-interface     v6, v8, v5, Lt5/a;->a(Ljava/lang/Object; Ljava/lang/Object;)V
+	21      (0000005e) return-void          
+
+i-BB@0x60 : [ i-BB@0x6c ]
+	22      (00000060) move-exception       v6
+	23      (00000062) goto                 +5h
+
+i-BB@0x64 : [ i-BB@0x66 ]
+	24      (00000064) move-exception       v6
+
+i-BB@0x66 : 
+	25      (00000066) iput-object          v3, v5, Lw5/f;->a Ljava/io/OutputStream;
+	26      (0000006a) throw                v6
+	66:6b
+	(Ljava/lang/Throwable; -> 60 i-BB@0x60)
+
+i-BB@0x6c : [ i-BB@0x7c ]
+	27      (0000006c) invoke-virtual       v0, Ljava/io/OutputStream;->close()V
+	28      (00000072) goto                 +5h
+	6c:71
+	(Ljava/lang/Throwable; -> 74 i-BB@0x74)
+
+i-BB@0x74 : [ i-BB@0x7c ]
+	29      (00000074) move-exception       v7
+	30      (00000076) invoke-virtual       v6, v7, Ljava/lang/Throwable;->addSuppressed(Ljava/lang/Throwable;)V
+
+i-BB@0x7c : 
+	31      (0000007c) throw                v6
+

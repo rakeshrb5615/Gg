@@ -1,0 +1,45 @@
+# Lz6/v;->b(Ljava/lang/Class; Ljava/lang/String; Ljava/lang/reflect/Field; Ljava/lang/reflect/Field;)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:java.lang.Class
+# - v4:java.lang.String
+# - v5:java.lang.reflect.Field
+# - v6:java.lang.reflect.Field
+#
+# - return:void
+
+b-BB@0x0 : 
+	0       (00000000) new-instance         v0, Ljava/lang/IllegalArgumentException;
+	1       (00000004) new-instance         v1, Ljava/lang/StringBuilder;
+	2       (00000008) const-string         v2, "Class "
+	3       (0000000c) invoke-direct        v1, v2, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	4       (00000012) invoke-virtual       v3, Ljava/lang/Class;->getName()Ljava/lang/String;
+	5       (00000018) move-result-object   v3
+	6       (0000001a) invoke-virtual       v1, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	7       (00000020) const-string         v3, " declares multiple JSON fields named '"
+	8       (00000024) invoke-virtual       v1, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	9       (0000002a) invoke-virtual       v1, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	10      (00000030) const-string         v3, "'; conflict is caused by fields "
+	11      (00000034) invoke-virtual       v1, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	12      (0000003a) invoke-static        v5, Lb7/c;->c(Ljava/lang/reflect/Field;)Ljava/lang/String;
+	13      (00000040) move-result-object   v3
+	14      (00000042) invoke-virtual       v1, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	15      (00000048) const-string         v3, " and "
+	16      (0000004c) invoke-virtual       v1, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	17      (00000052) invoke-static        v6, Lb7/c;->c(Ljava/lang/reflect/Field;)Ljava/lang/String;
+	18      (00000058) move-result-object   v3
+	19      (0000005a) invoke-virtual       v1, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	20      (00000060) const-string         v3, "
+See "
+	21      (00000064) invoke-virtual       v1, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	22      (0000006a) const-string         v3, "duplicate-fields"
+	23      (0000006e) const-string         v4, "https://github.com/google/gson/blob/main/Troubleshooting.md#"
+	24      (00000072) invoke-virtual       v4, v3, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	25      (00000078) move-result-object   v3
+	26      (0000007a) invoke-virtual       v1, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	27      (00000080) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	28      (00000086) move-result-object   v3
+	29      (00000088) invoke-direct        v0, v3, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	30      (0000008e) throw                v0
+

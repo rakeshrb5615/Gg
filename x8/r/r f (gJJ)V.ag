@@ -1,0 +1,59 @@
+# Lx8/r;->f(Lx8/g; J J)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:x8.g
+# - v8:long
+# - v9:long
+#
+# - return:void
+
+f-BB@0x0 : [ f-BB@0xa ]
+	0       (00000000) iget-object          v5, v5, Lx8/g;->a Lx8/c0;
+	1       (00000004) invoke-static        v5, Lkotlin/jvm/internal/j;->b(Ljava/lang/Object;)V
+
+f-BB@0xa : [ f-BB@0x20 f-BB@0x32 ]
+	2       (0000000a) iget                 v0, v5, Lx8/c0;->c I
+	3       (0000000e) iget                 v1, v5, Lx8/c0;->b I
+	4       (00000012) sub-int              v2, v0, v1
+	5       (00000016) int-to-long          v2, v2
+	6       (00000018) cmp-long             v2, v6, v2
+	7       (0000001c) if-ltz               v2, +00bh
+
+f-BB@0x20 : [ f-BB@0xa ]
+	8       (00000020) sub-int/2addr        v0, v1
+	9       (00000022) int-to-long          v0, v0
+	10      (00000024) sub-long/2addr       v6, v0
+	11      (00000026) iget-object          v5, v5, Lx8/c0;->f Lx8/c0;
+	12      (0000002a) invoke-static        v5, Lkotlin/jvm/internal/j;->b(Ljava/lang/Object;)V
+	13      (00000030) goto                 -13h
+
+f-BB@0x32 : [ f-BB@0x3e f-BB@0x7a ]
+	14      (00000032) const-wide/16        v0, 0
+	15      (00000036) cmp-long             v2, v8, v0
+	16      (0000003a) if-lez               v2, +020h
+
+f-BB@0x3e : [ f-BB@0x32 ]
+	17      (0000003e) iget                 v2, v5, Lx8/c0;->b I
+	18      (00000042) int-to-long          v2, v2
+	19      (00000044) add-long/2addr       v2, v6
+	20      (00000046) long-to-int          v6, v2
+	21      (00000048) iget                 v7, v5, Lx8/c0;->c I
+	22      (0000004c) sub-int/2addr        v7, v6
+	23      (0000004e) int-to-long          v2, v7
+	24      (00000050) invoke-static        v2, v3, v8, v9, Ljava/lang/Math;->min(J J)J
+	25      (00000056) move-result-wide     v2
+	26      (00000058) long-to-int          v7, v2
+	27      (0000005a) iget-object          v2, v4, Lx8/r;->e Ljava/util/zip/CRC32;
+	28      (0000005e) iget-object          v3, v5, Lx8/c0;->a [B
+	29      (00000062) invoke-virtual       v2, v3, v6, v7, Ljava/util/zip/CRC32;->update([B I I)V
+	30      (00000068) int-to-long          v6, v7
+	31      (0000006a) sub-long/2addr       v8, v6
+	32      (0000006c) iget-object          v5, v5, Lx8/c0;->f Lx8/c0;
+	33      (00000070) invoke-static        v5, Lkotlin/jvm/internal/j;->b(Ljava/lang/Object;)V
+	34      (00000076) move-wide            v6, v0
+	35      (00000078) goto                 -23h
+
+f-BB@0x7a : 
+	36      (0000007a) return-void          
+

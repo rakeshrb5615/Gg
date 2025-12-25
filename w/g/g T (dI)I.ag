@@ -1,0 +1,87 @@
+# Lw/g;->T(Lw/d; I)I [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v10
+# - v11:w.d
+# - v12:int
+#
+# - return:int
+
+T-BB@0x0 : [ T-BB@0x6 T-BB@0x8 ]
+	0       (00000000) const/4              v0, 0
+	1       (00000002) if-nez               v11, +003h
+
+T-BB@0x6 : [ T-BB@0x20 ]
+	2       (00000006) goto                 +dh
+
+T-BB@0x8 : [ T-BB@0x18 T-BB@0x8a ]
+	3       (00000008) iget-object          v1, v11, Lw/d;->p0 [I
+	4       (0000000c) const/4              v2, 1
+	5       (0000000e) aget                 v3, v1, v2
+	6       (00000012) const/4              v4, 3
+	7       (00000014) if-ne                v3, v4, +03bh
+
+T-BB@0x18 : [ T-BB@0x20 T-BB@0x22 ]
+	8       (00000018) iget                 v3, v11, Lw/d;->s I
+	9       (0000001c) if-nez               v3, +003h
+
+T-BB@0x20 : 
+	10      (00000020) return               v0
+
+T-BB@0x22 : [ T-BB@0x28 T-BB@0x5c ]
+	11      (00000022) const/4              v5, 2
+	12      (00000024) if-ne                v3, v5, +01ch
+
+T-BB@0x28 : [ T-BB@0x3e T-BB@0x5a ]
+	13      (00000028) iget                 v3, v11, Lw/d;->z F
+	14      (0000002c) int-to-float         v12, v12
+	15      (0000002e) mul-float/2addr      v3, v12
+	16      (00000030) float-to-int         v8, v3
+	17      (00000032) invoke-virtual       v11, Lw/d;->k()I
+	18      (00000038) move-result          v12
+	19      (0000003a) if-eq                v8, v12, +010h
+
+T-BB@0x3e : [ T-BB@0x5a ]
+	20      (0000003e) iput-boolean         v2, v11, Lw/d;->g Z
+	21      (00000042) aget                 v5, v1, v0
+	22      (00000046) invoke-virtual       v11, Lw/d;->q()I
+	23      (0000004c) move-result          v6
+	24      (0000004e) const/4              v7, 1
+	25      (00000050) move-object          v4, v10
+	26      (00000052) move-object          v9, v11
+	27      (00000054) invoke-virtual/range v4 ... v9, Lw/g;->V(I I I I Lw/d;)V
+
+T-BB@0x5a : 
+	28      (0000005a) return               v8
+
+T-BB@0x5c : [ T-BB@0x62 T-BB@0x6c ]
+	29      (0000005c) move-object          v9, v11
+	30      (0000005e) if-ne                v3, v2, +007h
+
+T-BB@0x62 : 
+	31      (00000062) invoke-virtual       v9, Lw/d;->k()I
+	32      (00000068) move-result          v11
+	33      (0000006a) return               v11
+
+T-BB@0x6c : [ T-BB@0x70 T-BB@0x8c ]
+	34      (0000006c) if-ne                v3, v4, +010h
+
+T-BB@0x70 : 
+	35      (00000070) invoke-virtual       v9, Lw/d;->q()I
+	36      (00000076) move-result          v11
+	37      (00000078) int-to-float         v11, v11
+	38      (0000007a) iget                 v12, v9, Lw/d;->W F
+	39      (0000007e) mul-float/2addr      v11, v12
+	40      (00000080) const/high16         v12, 1056964608
+	41      (00000084) add-float/2addr      v11, v12
+	42      (00000086) float-to-int         v11, v11
+	43      (00000088) return               v11
+
+T-BB@0x8a : [ T-BB@0x8c ]
+	44      (0000008a) move-object          v9, v11
+
+T-BB@0x8c : 
+	45      (0000008c) invoke-virtual       v9, Lw/d;->k()I
+	46      (00000092) move-result          v11
+	47      (00000094) return               v11
+

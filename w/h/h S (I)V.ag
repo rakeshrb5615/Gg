@@ -1,0 +1,51 @@
+# Lw/h;->S(I)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:int
+#
+# - return:void
+
+S-BB@0x0 : [ S-BB@0x8 S-BB@0xa ]
+	0       (00000000) iget                 v0, v3, Lw/h;->u0 I
+	1       (00000004) if-ne                v0, v4, +003h
+
+S-BB@0x8 : [ S-BB@0x58 ]
+	2       (00000008) goto                 +28h
+
+S-BB@0xa : [ S-BB@0x22 S-BB@0x2c ]
+	3       (0000000a) iput                 v4, v3, Lw/h;->u0 I
+	4       (0000000e) iget-object          v4, v3, Lw/d;->R Ljava/util/ArrayList;
+	5       (00000012) invoke-virtual       v4, Ljava/util/ArrayList;->clear()V
+	6       (00000018) iget                 v0, v3, Lw/h;->u0 I
+	7       (0000001c) const/4              v1, 1
+	8       (0000001e) if-ne                v0, v1, +007h
+
+S-BB@0x22 : [ S-BB@0x34 ]
+	9       (00000022) iget-object          v0, v3, Lw/d;->I Lw/c;
+	10      (00000026) iput-object          v0, v3, Lw/h;->t0 Lw/c;
+	11      (0000002a) goto                 +5h
+
+S-BB@0x2c : [ S-BB@0x34 ]
+	12      (0000002c) iget-object          v0, v3, Lw/d;->J Lw/c;
+	13      (00000030) iput-object          v0, v3, Lw/h;->t0 Lw/c;
+
+S-BB@0x34 : [ S-BB@0x46 ]
+	14      (00000034) iget-object          v0, v3, Lw/h;->t0 Lw/c;
+	15      (00000038) invoke-virtual       v4, v0, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	16      (0000003e) iget-object          v4, v3, Lw/d;->Q [Lw/c;
+	17      (00000042) array-length         v0, v4
+	18      (00000044) const/4              v1, 0
+
+S-BB@0x46 : [ S-BB@0x4a S-BB@0x58 ]
+	19      (00000046) if-ge                v1, v0, +009h
+
+S-BB@0x4a : [ S-BB@0x46 ]
+	20      (0000004a) iget-object          v2, v3, Lw/h;->t0 Lw/c;
+	21      (0000004e) aput-object          v2, v4, v1
+	22      (00000052) add-int/lit8         v1, v1, 1
+	23      (00000056) goto                 -8h
+
+S-BB@0x58 : 
+	24      (00000058) return-void          
+

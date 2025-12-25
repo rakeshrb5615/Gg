@@ -1,0 +1,80 @@
+# Lx3/e;->l(F)Ljava/lang/String; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:float
+#
+# - return:java.lang.String
+
+l-BB@0x0 : [ l-BB@0x8 l-BB@0xa4 ]
+	0       (00000000) iget-object          v0, v3, Lx3/e;->o0 Lx3/f;
+	1       (00000004) if-eqz               v0, +050h
+
+l-BB@0x8 : [ l-BB@0x2e l-BB@0x5c ]
+	2       (00000008) check-cast           v0, Ll2/f;
+	3       (0000000c) iget-object          v0, v0, Ll2/f;->a Ll2/a0;
+	4       (00000010) invoke-virtual       v0, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	5       (00000016) invoke-static        v4, Ljava/lang/Math;->round(F)I
+	6       (0000001c) move-result          v4
+	7       (0000001e) iget-object          v1, v0, Ll2/a0;->J2 [I
+	8       (00000022) aget                 v4, v1, v4
+	9       (00000026) const/16             v1, 60
+	10      (0000002a) if-ge                v4, v1, +019h
+
+l-BB@0x2e : 
+	11      (0000002e) new-instance         v1, Ljava/lang/StringBuilder;
+	12      (00000032) invoke-direct        v1, Ljava/lang/StringBuilder;-><init>()V
+	13      (00000038) invoke-virtual       v1, v4, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	14      (0000003e) const                v4, 2131952082
+	15      (00000044) invoke-virtual       v0, v4, Landroidx/fragment/app/e0;->getString(I)Ljava/lang/String;
+	16      (0000004a) move-result-object   v4
+	17      (0000004c) invoke-virtual       v1, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	18      (00000052) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	19      (00000058) move-result-object   v4
+	20      (0000005a) return-object        v4
+
+l-BB@0x5c : [ l-BB@0x64 l-BB@0x94 ]
+	21      (0000005c) const/16             v2, 1440
+	22      (00000060) if-ge                v4, v2, +01ah
+
+l-BB@0x64 : 
+	23      (00000064) new-instance         v2, Ljava/lang/StringBuilder;
+	24      (00000068) invoke-direct        v2, Ljava/lang/StringBuilder;-><init>()V
+	25      (0000006e) div-int/2addr        v4, v1
+	26      (00000070) invoke-virtual       v2, v4, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	27      (00000076) const                v4, 2131951886
+	28      (0000007c) invoke-virtual       v0, v4, Landroidx/fragment/app/e0;->getString(I)Ljava/lang/String;
+	29      (00000082) move-result-object   v4
+	30      (00000084) invoke-virtual       v2, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	31      (0000008a) invoke-virtual       v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	32      (00000090) move-result-object   v4
+	33      (00000092) return-object        v4
+
+l-BB@0x94 : 
+	34      (00000094) const                v4, 2131951807
+	35      (0000009a) invoke-virtual       v0, v4, Landroidx/fragment/app/e0;->getString(I)Ljava/lang/String;
+	36      (000000a0) move-result-object   v4
+	37      (000000a2) return-object        v4
+
+l-BB@0xa4 : [ l-BB@0xb0 l-BB@0xb6 ]
+	38      (000000a4) float-to-int         v0, v4
+	39      (000000a6) int-to-float         v0, v0
+	40      (000000a8) cmpl-float           v0, v0, v4
+	41      (000000ac) if-nez               v0, +005h
+
+l-BB@0xb0 : [ l-BB@0xba ]
+	42      (000000b0) const-string         v0, "%.0f"
+	43      (000000b4) goto                 +3h
+
+l-BB@0xb6 : [ l-BB@0xba ]
+	44      (000000b6) const-string         v0, "%.2f"
+
+l-BB@0xba : 
+	45      (000000ba) invoke-static        v4, Ljava/lang/Float;->valueOf(F)Ljava/lang/Float;
+	46      (000000c0) move-result-object   v4
+	47      (000000c2) filled-new-array     v4, [Ljava/lang/Object;
+	48      (000000c8) move-result-object   v4
+	49      (000000ca) invoke-static        v0, v4, Ljava/lang/String;->format(Ljava/lang/String; [Ljava/lang/Object;)Ljava/lang/String;
+	50      (000000d0) move-result-object   v4
+	51      (000000d2) return-object        v4
+

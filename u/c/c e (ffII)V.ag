@@ -1,0 +1,76 @@
+# Lu/c;->e(Lu/f; Lu/f; I I)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:u.f
+# - v6:u.f
+# - v7:int
+# - v8:int
+#
+# - return:void
+
+e-BB@0x0 : [ e-BB@0x8 e-BB@0x2a ]
+	0       (00000000) const/16             v0, 8
+	1       (00000004) if-ne                v8, v0, +013h
+
+e-BB@0x8 : [ e-BB@0x10 e-BB@0x2a ]
+	2       (00000008) iget-boolean         v1, v6, Lu/f;->f Z
+	3       (0000000c) if-eqz               v1, +00fh
+
+e-BB@0x10 : [ e-BB@0x1a e-BB@0x2a ]
+	4       (00000010) iget                 v1, v5, Lu/f;->c I
+	5       (00000014) const/4              v2, -1
+	6       (00000016) if-ne                v1, v2, +00ah
+
+e-BB@0x1a : 
+	7       (0000001a) iget                 v6, v6, Lu/f;->e F
+	8       (0000001e) int-to-float         v7, v7
+	9       (00000020) add-float/2addr      v6, v7
+	10      (00000022) invoke-virtual       v5, v4, v6, Lu/f;->d(Lu/c; F)V
+	11      (00000028) return-void          
+
+e-BB@0x2a : [ e-BB@0x38 e-BB@0x48 ]
+	12      (0000002a) invoke-virtual       v4, Lu/c;->l()Lu/b;
+	13      (00000030) move-result-object   v1
+	14      (00000032) const/4              v2, 0
+	15      (00000034) if-eqz               v7, +00ah
+
+e-BB@0x38 : [ e-BB@0x3c e-BB@0x42 ]
+	16      (00000038) if-gez               v7, +005h
+
+e-BB@0x3c : [ e-BB@0x42 ]
+	17      (0000003c) mul-int/lit8         v7, v7, -1
+	18      (00000040) const/4              v2, 1
+
+e-BB@0x42 : [ e-BB@0x48 ]
+	19      (00000042) int-to-float         v7, v7
+	20      (00000044) iput                 v7, v1, Lu/b;->b F
+
+e-BB@0x48 : [ e-BB@0x54 e-BB@0x6a ]
+	21      (00000048) const/high16         v7, 1065353216
+	22      (0000004c) const/high16         v3, -1082130432
+	23      (00000050) if-nez               v2, +00dh
+
+e-BB@0x54 : [ e-BB@0x7e ]
+	24      (00000054) iget-object          v2, v1, Lu/b;->d Lu/a;
+	25      (00000058) invoke-virtual       v2, v5, v3, Lu/a;->g(Lu/f; F)V
+	26      (0000005e) iget-object          v5, v1, Lu/b;->d Lu/a;
+	27      (00000062) invoke-virtual       v5, v6, v7, Lu/a;->g(Lu/f; F)V
+	28      (00000068) goto                 +bh
+
+e-BB@0x6a : [ e-BB@0x7e ]
+	29      (0000006a) iget-object          v2, v1, Lu/b;->d Lu/a;
+	30      (0000006e) invoke-virtual       v2, v5, v7, Lu/a;->g(Lu/f; F)V
+	31      (00000074) iget-object          v5, v1, Lu/b;->d Lu/a;
+	32      (00000078) invoke-virtual       v5, v6, v3, Lu/a;->g(Lu/f; F)V
+
+e-BB@0x7e : [ e-BB@0x82 e-BB@0x88 ]
+	33      (0000007e) if-eq                v8, v0, +005h
+
+e-BB@0x82 : [ e-BB@0x88 ]
+	34      (00000082) invoke-virtual       v1, v4, v8, Lu/b;->a(Lu/c; I)V
+
+e-BB@0x88 : 
+	35      (00000088) invoke-virtual       v4, v1, Lu/c;->c(Lu/b;)V
+	36      (0000008e) return-void          
+

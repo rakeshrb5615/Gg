@@ -1,0 +1,27 @@
+# Lz/c;->setReferencedIds([I)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:int[]
+#
+# - return:void
+
+setReferencedIds-BB@0x0 : [ setReferencedIds-BB@0xc ]
+	0       (00000000) const/4              v0, 0
+	1       (00000002) iput-object          v0, v2, Lz/c;->e Ljava/lang/String;
+	2       (00000006) const/4              v0, 0
+	3       (00000008) iput                 v0, v2, Lz/c;->b I
+
+setReferencedIds-BB@0xc : [ setReferencedIds-BB@0x12 setReferencedIds-BB@0x22 ]
+	4       (0000000c) array-length         v1, v3
+	5       (0000000e) if-ge                v0, v1, +00ah
+
+setReferencedIds-BB@0x12 : [ setReferencedIds-BB@0xc ]
+	6       (00000012) aget                 v1, v3, v0
+	7       (00000016) invoke-virtual       v2, v1, Lz/c;->b(I)V
+	8       (0000001c) add-int/lit8         v0, v0, 1
+	9       (00000020) goto                 -ah
+
+setReferencedIds-BB@0x22 : 
+	10      (00000022) return-void          
+

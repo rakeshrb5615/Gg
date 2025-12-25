@@ -1,0 +1,104 @@
+# Lz4/e;->z(Ljava/util/List;)Lz4/e; [access_flags=public final synchronized]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:java.util.List
+#
+# - return:z4.e
+
+z-BB@0x0 : [ z-BB@0x2 ]
+	0       (00000000) monitor-enter        v5
+
+z-BB@0x2 : [ z-BB@0x38 ]
+	1       (00000002) invoke-static        v6, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;
+	2       (00000008) new-instance         v0, Ljava/util/ArrayList;
+	3       (0000000c) invoke-interface     v6, Ljava/util/List;->size()I
+	4       (00000012) move-result          v1
+	5       (00000014) invoke-direct        v0, v1, Ljava/util/ArrayList;-><init>(I)V
+	6       (0000001a) iput-object          v0, v5, Lz4/e;->e Ljava/util/ArrayList;
+	7       (0000001e) new-instance         v0, Ljava/util/ArrayList;
+	8       (00000022) invoke-interface     v6, Ljava/util/List;->size()I
+	9       (00000028) move-result          v1
+	10      (0000002a) invoke-direct        v0, v1, Ljava/util/ArrayList;-><init>(I)V
+	11      (00000030) iput-object          v0, v5, Lz4/e;->f Ljava/util/ArrayList;
+	12      (00000034) const/4              v0, 0
+	13      (00000036) move                 v1, v0
+	2:b9
+	(Ljava/lang/Throwable; -> 74 z-BB@0x74)
+
+z-BB@0x38 : [ z-BB@0x44 z-BB@0x9e ]
+	14      (00000038) invoke-interface     v6, Ljava/util/List;->size()I
+	15      (0000003e) move-result          v2
+	16      (00000040) if-ge                v1, v2, +02fh
+	2:b9
+	(Ljava/lang/Throwable; -> 74 z-BB@0x74)
+
+z-BB@0x44 : [ z-BB@0x68 z-BB@0x78 ]
+	17      (00000044) invoke-interface     v6, v1, Ljava/util/List;->get(I)Ljava/lang/Object;
+	18      (0000004a) move-result-object   v2
+	19      (0000004c) check-cast           v2, Ly4/b0;
+	20      (00000050) invoke-interface     v2, Ly4/b0;->s()Ljava/lang/String;
+	21      (00000056) move-result-object   v3
+	22      (00000058) const-string         v4, "firebase"
+	23      (0000005c) invoke-virtual       v3, v4, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	24      (00000062) move-result          v3
+	25      (00000064) if-eqz               v3, +00ah
+	2:b9
+	(Ljava/lang/Throwable; -> 74 z-BB@0x74)
+
+z-BB@0x68 : [ z-BB@0x8a ]
+	26      (00000068) move-object          v3, v2
+	27      (0000006a) check-cast           v3, Lz4/c;
+	28      (0000006e) iput-object          v3, v5, Lz4/e;->b Lz4/c;
+	29      (00000072) goto                 +ch
+	2:b9
+	(Ljava/lang/Throwable; -> 74 z-BB@0x74)
+
+z-BB@0x74 : [ z-BB@0xbe ]
+	30      (00000074) move-exception       v6
+	31      (00000076) goto                 +24h
+	2:b9
+	(Ljava/lang/Throwable; -> 74 z-BB@0x74)
+
+z-BB@0x78 : [ z-BB@0x8a ]
+	32      (00000078) iget-object          v3, v5, Lz4/e;->f Ljava/util/ArrayList;
+	33      (0000007c) invoke-interface     v2, Ly4/b0;->s()Ljava/lang/String;
+	34      (00000082) move-result-object   v4
+	35      (00000084) invoke-interface     v3, v4, Ljava/util/List;->add(Ljava/lang/Object;)Z
+	2:b9
+	(Ljava/lang/Throwable; -> 74 z-BB@0x74)
+
+z-BB@0x8a : [ z-BB@0x38 ]
+	36      (0000008a) iget-object          v3, v5, Lz4/e;->e Ljava/util/ArrayList;
+	37      (0000008e) check-cast           v2, Lz4/c;
+	38      (00000092) invoke-interface     v3, v2, Ljava/util/List;->add(Ljava/lang/Object;)Z
+	39      (00000098) add-int/lit8         v1, v1, 1
+	40      (0000009c) goto                 -32h
+	2:b9
+	(Ljava/lang/Throwable; -> 74 z-BB@0x74)
+
+z-BB@0x9e : [ z-BB@0xa6 z-BB@0xba ]
+	41      (0000009e) iget-object          v6, v5, Lz4/e;->b Lz4/c;
+	42      (000000a2) if-nez               v6, +00ch
+	2:b9
+	(Ljava/lang/Throwable; -> 74 z-BB@0x74)
+
+z-BB@0xa6 : [ z-BB@0xba ]
+	43      (000000a6) iget-object          v6, v5, Lz4/e;->e Ljava/util/ArrayList;
+	44      (000000aa) invoke-interface     v6, v0, Ljava/util/List;->get(I)Ljava/lang/Object;
+	45      (000000b0) move-result-object   v6
+	46      (000000b2) check-cast           v6, Lz4/c;
+	47      (000000b6) iput-object          v6, v5, Lz4/e;->b Lz4/c;
+	2:b9
+	(Ljava/lang/Throwable; -> 74 z-BB@0x74)
+
+z-BB@0xba : 
+	48      (000000ba) monitor-exit         v5
+	49      (000000bc) return-object        v5
+
+z-BB@0xbe : 
+	50      (000000be) monitor-exit         v5
+	51      (000000c0) throw                v6
+	be:bf
+	(Ljava/lang/Throwable; -> 74 z-BB@0x74)
+

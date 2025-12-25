@@ -1,0 +1,303 @@
+# Lx3/e;->N()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v10
+#
+# - return:void
+
+N-BB@0x0 : [ N-BB@0x8 N-BB@0x3ca ]
+	0       (00000000) iget-boolean         v0, v10, Lx3/e;->C0 Z
+	1       (00000004) if-eqz               v0, +1e3h
+
+N-BB@0x8 : [ N-BB@0x1c N-BB@0x384 ]
+	2       (00000008) iget                 v0, v10, Lx3/e;->q0 F
+	3       (0000000c) iget                 v1, v10, Lx3/e;->r0 F
+	4       (00000010) cmpl-float           v0, v0, v1
+	5       (00000014) const-string         v1, ")"
+	6       (00000018) if-gez               v0, +1b6h
+
+N-BB@0x1c : [ N-BB@0x2c ]
+	7       (0000001c) iget-object          v0, v10, Lx3/e;->s0 Ljava/util/ArrayList;
+	8       (00000020) invoke-virtual       v0, Ljava/util/ArrayList;->size()I
+	9       (00000026) move-result          v2
+	10      (00000028) const/4              v3, 0
+	11      (0000002a) move                 v4, v3
+
+N-BB@0x2c : [ N-BB@0x36 N-BB@0x148 ]
+	12      (0000002c) const-string         v5, ") when using stepSize("
+	13      (00000030) const/4              v6, 0
+	14      (00000032) if-ge                v4, v2, +08bh
+
+N-BB@0x36 : [ N-BB@0x5a N-BB@0xf2 ]
+	15      (00000036) invoke-virtual       v0, v4, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	16      (0000003c) move-result-object   v7
+	17      (0000003e) add-int/lit8         v4, v4, 1
+	18      (00000042) check-cast           v7, Ljava/lang/Float;
+	19      (00000046) invoke-virtual       v7, Ljava/lang/Float;->floatValue()F
+	20      (0000004c) move-result          v8
+	21      (0000004e) iget                 v9, v10, Lx3/e;->q0 F
+	22      (00000052) cmpg-float           v8, v8, v9
+	23      (00000056) if-ltz               v8, +04eh
+
+N-BB@0x5a : [ N-BB@0x6e N-BB@0xf2 ]
+	24      (0000005a) invoke-virtual       v7, Ljava/lang/Float;->floatValue()F
+	25      (00000060) move-result          v8
+	26      (00000062) iget                 v9, v10, Lx3/e;->r0 F
+	27      (00000066) cmpl-float           v8, v8, v9
+	28      (0000006a) if-gtz               v8, +044h
+
+N-BB@0x6e : [ N-BB@0x7a N-BB@0x2c ]
+	29      (0000006e) iget                 v8, v10, Lx3/e;->v0 F
+	30      (00000072) cmpl-float           v6, v8, v6
+	31      (00000076) if-lez               v6, -025h
+
+N-BB@0x7a : [ N-BB@0x8e N-BB@0x90 ]
+	32      (0000007a) invoke-virtual       v7, Ljava/lang/Float;->floatValue()F
+	33      (00000080) move-result          v6
+	34      (00000082) invoke-virtual       v10, v6, Lx3/e;->O(F)Z
+	35      (00000088) move-result          v6
+	36      (0000008a) if-eqz               v6, +003h
+
+N-BB@0x8e : [ N-BB@0x2c ]
+	37      (0000008e) goto                 -31h
+
+N-BB@0x90 : 
+	38      (00000090) new-instance         v0, Ljava/lang/IllegalStateException;
+	39      (00000094) iget                 v2, v10, Lx3/e;->q0 F
+	40      (00000098) iget                 v3, v10, Lx3/e;->v0 F
+	41      (0000009c) new-instance         v4, Ljava/lang/StringBuilder;
+	42      (000000a0) const-string         v6, "Value("
+	43      (000000a4) invoke-direct        v4, v6, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	44      (000000aa) invoke-virtual       v4, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	45      (000000b0) const-string         v6, ") must be equal to valueFrom("
+	46      (000000b4) invoke-virtual       v4, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	47      (000000ba) invoke-virtual       v4, v2, Ljava/lang/StringBuilder;->append(F)Ljava/lang/StringBuilder;
+	48      (000000c0) const-string         v2, ") plus a multiple of stepSize("
+	49      (000000c4) invoke-virtual       v4, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	50      (000000ca) invoke-virtual       v4, v3, Ljava/lang/StringBuilder;->append(F)Ljava/lang/StringBuilder;
+	51      (000000d0) invoke-virtual       v4, v5, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	52      (000000d6) invoke-virtual       v4, v3, Ljava/lang/StringBuilder;->append(F)Ljava/lang/StringBuilder;
+	53      (000000dc) invoke-virtual       v4, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	54      (000000e2) invoke-virtual       v4, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	55      (000000e8) move-result-object   v1
+	56      (000000ea) invoke-direct        v0, v1, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	57      (000000f0) throw                v0
+
+N-BB@0xf2 : 
+	58      (000000f2) new-instance         v0, Ljava/lang/IllegalStateException;
+	59      (000000f6) iget                 v2, v10, Lx3/e;->q0 F
+	60      (000000fa) iget                 v3, v10, Lx3/e;->r0 F
+	61      (000000fe) new-instance         v4, Ljava/lang/StringBuilder;
+	62      (00000102) const-string         v5, "Slider value("
+	63      (00000106) invoke-direct        v4, v5, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	64      (0000010c) invoke-virtual       v4, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	65      (00000112) const-string         v5, ") must be greater or equal to valueFrom("
+	66      (00000116) invoke-virtual       v4, v5, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	67      (0000011c) invoke-virtual       v4, v2, Ljava/lang/StringBuilder;->append(F)Ljava/lang/StringBuilder;
+	68      (00000122) const-string         v2, "), and lower or equal to valueTo("
+	69      (00000126) invoke-virtual       v4, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	70      (0000012c) invoke-virtual       v4, v3, Ljava/lang/StringBuilder;->append(F)Ljava/lang/StringBuilder;
+	71      (00000132) invoke-virtual       v4, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	72      (00000138) invoke-virtual       v4, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	73      (0000013e) move-result-object   v1
+	74      (00000140) invoke-direct        v0, v1, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	75      (00000146) throw                v0
+
+N-BB@0x148 : [ N-BB@0x154 N-BB@0x1c4 ]
+	76      (00000148) iget                 v0, v10, Lx3/e;->v0 F
+	77      (0000014c) cmpl-float           v0, v0, v6
+	78      (00000150) if-lez               v0, +03ah
+
+N-BB@0x154 : [ N-BB@0x164 N-BB@0x166 ]
+	79      (00000154) iget                 v0, v10, Lx3/e;->r0 F
+	80      (00000158) invoke-virtual       v10, v0, Lx3/e;->O(F)Z
+	81      (0000015e) move-result          v0
+	82      (00000160) if-eqz               v0, +003h
+
+N-BB@0x164 : [ N-BB@0x1c4 ]
+	83      (00000164) goto                 +30h
+
+N-BB@0x166 : 
+	84      (00000166) new-instance         v0, Ljava/lang/IllegalStateException;
+	85      (0000016a) iget                 v1, v10, Lx3/e;->v0 F
+	86      (0000016e) iget                 v2, v10, Lx3/e;->q0 F
+	87      (00000172) iget                 v3, v10, Lx3/e;->r0 F
+	88      (00000176) new-instance         v4, Ljava/lang/StringBuilder;
+	89      (0000017a) const-string         v5, "The stepSize("
+	90      (0000017e) invoke-direct        v4, v5, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	91      (00000184) invoke-virtual       v4, v1, Ljava/lang/StringBuilder;->append(F)Ljava/lang/StringBuilder;
+	92      (0000018a) const-string         v1, ") must be 0, or a factor of the valueFrom("
+	93      (0000018e) invoke-virtual       v4, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	94      (00000194) invoke-virtual       v4, v2, Ljava/lang/StringBuilder;->append(F)Ljava/lang/StringBuilder;
+	95      (0000019a) const-string         v1, ")-valueTo("
+	96      (0000019e) invoke-virtual       v4, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	97      (000001a4) invoke-virtual       v4, v3, Ljava/lang/StringBuilder;->append(F)Ljava/lang/StringBuilder;
+	98      (000001aa) const-string         v1, ") range"
+	99      (000001ae) invoke-virtual       v4, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	100     (000001b4) invoke-virtual       v4, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	101     (000001ba) move-result-object   v1
+	102     (000001bc) invoke-direct        v0, v1, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	103     (000001c2) throw                v0
+
+N-BB@0x1c4 : [ N-BB@0x1d8 N-BB@0x356 ]
+	104     (000001c4) invoke-virtual       v10, Lx3/e;->getMinSeparation()F
+	105     (000001ca) move-result          v0
+	106     (000001cc) cmpg-float           v2, v0, v6
+	107     (000001d0) const-string         v4, "minSeparation("
+	108     (000001d4) if-ltz               v2, +0c1h
+
+N-BB@0x1d8 : [ N-BB@0x1e4 N-BB@0x296 ]
+	109     (000001d8) iget                 v2, v10, Lx3/e;->v0 F
+	110     (000001dc) cmpl-float           v7, v2, v6
+	111     (000001e0) if-lez               v7, +05bh
+
+N-BB@0x1e4 : [ N-BB@0x1ec N-BB@0x296 ]
+	112     (000001e4) cmpl-float           v7, v0, v6
+	113     (000001e8) if-lez               v7, +057h
+
+N-BB@0x1ec : [ N-BB@0x1f6 N-BB@0x258 ]
+	114     (000001ec) iget                 v7, v10, Lx3/e;->V0 I
+	115     (000001f0) const/4              v8, 1
+	116     (000001f2) if-ne                v7, v8, +033h
+
+N-BB@0x1f6 : [ N-BB@0x1fe N-BB@0x20e ]
+	117     (000001f6) cmpg-float           v2, v0, v2
+	118     (000001fa) if-ltz               v2, +00ah
+
+N-BB@0x1fe : [ N-BB@0x20c N-BB@0x20e ]
+	119     (000001fe) float-to-double      v7, v0
+	120     (00000200) invoke-virtual       v10, v7, v8, Lx3/e;->o(D)Z
+	121     (00000206) move-result          v2
+	122     (00000208) if-eqz               v2, +003h
+
+N-BB@0x20c : [ N-BB@0x296 ]
+	123     (0000020c) goto                 +45h
+
+N-BB@0x20e : 
+	124     (0000020e) new-instance         v2, Ljava/lang/IllegalStateException;
+	125     (00000212) iget                 v3, v10, Lx3/e;->v0 F
+	126     (00000216) new-instance         v6, Ljava/lang/StringBuilder;
+	127     (0000021a) invoke-direct        v6, v4, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	128     (00000220) invoke-virtual       v6, v0, Ljava/lang/StringBuilder;->append(F)Ljava/lang/StringBuilder;
+	129     (00000226) const-string         v0, ") must be greater or equal and a multiple of stepSize("
+	130     (0000022a) invoke-virtual       v6, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	131     (00000230) invoke-virtual       v6, v3, Ljava/lang/StringBuilder;->append(F)Ljava/lang/StringBuilder;
+	132     (00000236) invoke-virtual       v6, v5, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	133     (0000023c) invoke-virtual       v6, v3, Ljava/lang/StringBuilder;->append(F)Ljava/lang/StringBuilder;
+	134     (00000242) invoke-virtual       v6, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	135     (00000248) invoke-virtual       v6, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	136     (0000024e) move-result-object   v0
+	137     (00000250) invoke-direct        v2, v0, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	138     (00000256) throw                v2
+
+N-BB@0x258 : 
+	139     (00000258) new-instance         v2, Ljava/lang/IllegalStateException;
+	140     (0000025c) iget                 v3, v10, Lx3/e;->v0 F
+	141     (00000260) new-instance         v5, Ljava/lang/StringBuilder;
+	142     (00000264) invoke-direct        v5, v4, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	143     (0000026a) invoke-virtual       v5, v0, Ljava/lang/StringBuilder;->append(F)Ljava/lang/StringBuilder;
+	144     (00000270) const-string         v0, ") cannot be set as a dimension when using stepSize("
+	145     (00000274) invoke-virtual       v5, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	146     (0000027a) invoke-virtual       v5, v3, Ljava/lang/StringBuilder;->append(F)Ljava/lang/StringBuilder;
+	147     (00000280) invoke-virtual       v5, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	148     (00000286) invoke-virtual       v5, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	149     (0000028c) move-result-object   v0
+	150     (0000028e) invoke-direct        v2, v0, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	151     (00000294) throw                v2
+
+N-BB@0x296 : [ N-BB@0x2a2 N-BB@0x2a4 ]
+	152     (00000296) iget                 v0, v10, Lx3/e;->v0 F
+	153     (0000029a) cmpl-float           v1, v0, v6
+	154     (0000029e) if-nez               v1, +003h
+
+N-BB@0x2a2 : [ N-BB@0x350 ]
+	155     (000002a2) goto                 +57h
+
+N-BB@0x2a4 : [ N-BB@0x2b8 N-BB@0x2e0 ]
+	156     (000002a4) float-to-int         v1, v0
+	157     (000002a6) int-to-float         v1, v1
+	158     (000002a8) cmpl-float           v1, v1, v0
+	159     (000002ac) const-string         v2, "). Using floats can have rounding errors which may result in incorrect values. Instead, consider using integers with a custom LabelFormatter to display the value correctly."
+	160     (000002b0) const-string         v4, "e"
+	161     (000002b4) if-eqz               v1, +016h
+
+N-BB@0x2b8 : [ N-BB@0x2e0 ]
+	162     (000002b8) new-instance         v1, Ljava/lang/StringBuilder;
+	163     (000002bc) const-string         v5, "Floating point value used for stepSize("
+	164     (000002c0) invoke-direct        v1, v5, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	165     (000002c6) invoke-virtual       v1, v0, Ljava/lang/StringBuilder;->append(F)Ljava/lang/StringBuilder;
+	166     (000002cc) invoke-virtual       v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	167     (000002d2) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	168     (000002d8) move-result-object   v0
+	169     (000002da) invoke-static        v4, v0, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+
+N-BB@0x2e0 : [ N-BB@0x2f0 N-BB@0x318 ]
+	170     (000002e0) iget                 v0, v10, Lx3/e;->q0 F
+	171     (000002e4) float-to-int         v1, v0
+	172     (000002e6) int-to-float         v1, v1
+	173     (000002e8) cmpl-float           v1, v1, v0
+	174     (000002ec) if-eqz               v1, +016h
+
+N-BB@0x2f0 : [ N-BB@0x318 ]
+	175     (000002f0) new-instance         v1, Ljava/lang/StringBuilder;
+	176     (000002f4) const-string         v5, "Floating point value used for valueFrom("
+	177     (000002f8) invoke-direct        v1, v5, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	178     (000002fe) invoke-virtual       v1, v0, Ljava/lang/StringBuilder;->append(F)Ljava/lang/StringBuilder;
+	179     (00000304) invoke-virtual       v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	180     (0000030a) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	181     (00000310) move-result-object   v0
+	182     (00000312) invoke-static        v4, v0, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+
+N-BB@0x318 : [ N-BB@0x328 N-BB@0x350 ]
+	183     (00000318) iget                 v0, v10, Lx3/e;->r0 F
+	184     (0000031c) float-to-int         v1, v0
+	185     (0000031e) int-to-float         v1, v1
+	186     (00000320) cmpl-float           v1, v1, v0
+	187     (00000324) if-eqz               v1, +016h
+
+N-BB@0x328 : [ N-BB@0x350 ]
+	188     (00000328) new-instance         v1, Ljava/lang/StringBuilder;
+	189     (0000032c) const-string         v5, "Floating point value used for valueTo("
+	190     (00000330) invoke-direct        v1, v5, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	191     (00000336) invoke-virtual       v1, v0, Ljava/lang/StringBuilder;->append(F)Ljava/lang/StringBuilder;
+	192     (0000033c) invoke-virtual       v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	193     (00000342) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	194     (00000348) move-result-object   v0
+	195     (0000034a) invoke-static        v4, v0, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+
+N-BB@0x350 : 
+	196     (00000350) iput-boolean         v3, v10, Lx3/e;->C0 Z
+	197     (00000354) return-void          
+
+N-BB@0x356 : 
+	198     (00000356) new-instance         v1, Ljava/lang/IllegalStateException;
+	199     (0000035a) new-instance         v2, Ljava/lang/StringBuilder;
+	200     (0000035e) invoke-direct        v2, v4, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	201     (00000364) invoke-virtual       v2, v0, Ljava/lang/StringBuilder;->append(F)Ljava/lang/StringBuilder;
+	202     (0000036a) const-string         v0, ") must be greater or equal to 0"
+	203     (0000036e) invoke-virtual       v2, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	204     (00000374) invoke-virtual       v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	205     (0000037a) move-result-object   v0
+	206     (0000037c) invoke-direct        v1, v0, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	207     (00000382) throw                v1
+
+N-BB@0x384 : 
+	208     (00000384) new-instance         v0, Ljava/lang/IllegalStateException;
+	209     (00000388) iget                 v2, v10, Lx3/e;->q0 F
+	210     (0000038c) iget                 v3, v10, Lx3/e;->r0 F
+	211     (00000390) new-instance         v4, Ljava/lang/StringBuilder;
+	212     (00000394) const-string         v5, "valueFrom("
+	213     (00000398) invoke-direct        v4, v5, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	214     (0000039e) invoke-virtual       v4, v2, Ljava/lang/StringBuilder;->append(F)Ljava/lang/StringBuilder;
+	215     (000003a4) const-string         v2, ") must be smaller than valueTo("
+	216     (000003a8) invoke-virtual       v4, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	217     (000003ae) invoke-virtual       v4, v3, Ljava/lang/StringBuilder;->append(F)Ljava/lang/StringBuilder;
+	218     (000003b4) invoke-virtual       v4, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	219     (000003ba) invoke-virtual       v4, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	220     (000003c0) move-result-object   v1
+	221     (000003c2) invoke-direct        v0, v1, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	222     (000003c8) throw                v0
+
+N-BB@0x3ca : 
+	223     (000003ca) return-void          
+

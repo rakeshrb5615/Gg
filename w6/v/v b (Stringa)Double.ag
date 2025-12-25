@@ -1,0 +1,81 @@
+# Lw6/v;->b(Ljava/lang/String; Le7/a;)Ljava/lang/Double; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:java.lang.String
+# - v7:e7.a
+#
+# - return:java.lang.Double
+
+b-BB@0x0 : [ b-BB@0xa ]
+	0       (00000000) const-string         v0, "; at path "
+	1       (00000004) const-string         v1, "JSON forbids NaN and infinities: "
+	2       (00000008) const/4              v2, 1
+
+b-BB@0xa : [ b-BB@0x1e b-BB@0x30 ]
+	3       (0000000a) invoke-static        v6, Ljava/lang/Double;->valueOf(Ljava/lang/String;)Ljava/lang/Double;
+	4       (00000010) move-result-object   v3
+	5       (00000012) invoke-virtual       v3, Ljava/lang/Double;->isInfinite()Z
+	6       (00000018) move-result          v4
+	7       (0000001a) if-nez               v4, +00bh
+	a:71
+	(Ljava/lang/NumberFormatException; -> 2c b-BB@0x2c)
+
+b-BB@0x1e : [ b-BB@0x2a b-BB@0x38 ]
+	8       (0000001e) invoke-virtual       v3, Ljava/lang/Double;->isNaN()Z
+	9       (00000024) move-result          v4
+	10      (00000026) if-eqz               v4, +009h
+	a:71
+	(Ljava/lang/NumberFormatException; -> 2c b-BB@0x2c)
+
+b-BB@0x2a : [ b-BB@0x30 ]
+	11      (0000002a) goto                 +3h
+	a:71
+	(Ljava/lang/NumberFormatException; -> 2c b-BB@0x2c)
+
+b-BB@0x2c : [ b-BB@0x72 ]
+	12      (0000002c) move-exception       v1
+	13      (0000002e) goto                 +22h
+	a:71
+	(Ljava/lang/NumberFormatException; -> 2c b-BB@0x2c)
+
+b-BB@0x30 : [ b-BB@0x38 b-BB@0x3a ]
+	14      (00000030) iget                 v4, v7, Le7/a;->u I
+	15      (00000034) if-ne                v4, v2, +003h
+	a:71
+	(Ljava/lang/NumberFormatException; -> 2c b-BB@0x2c)
+
+b-BB@0x38 : 
+	16      (00000038) return-object        v3
+	a:71
+	(Ljava/lang/NumberFormatException; -> 2c b-BB@0x2c)
+
+b-BB@0x3a : 
+	17      (0000003a) new-instance         v4, Landroidx/datastore/preferences/protobuf/k;
+	18      (0000003e) new-instance         v5, Ljava/lang/StringBuilder;
+	19      (00000042) invoke-direct        v5, v1, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	20      (00000048) invoke-virtual       v5, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	21      (0000004e) invoke-virtual       v5, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	22      (00000054) invoke-virtual       v7, v2, Le7/a;->A(Z)Ljava/lang/String;
+	23      (0000005a) move-result-object   v1
+	24      (0000005c) invoke-virtual       v5, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	25      (00000062) invoke-virtual       v5, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	26      (00000068) move-result-object   v1
+	27      (0000006a) invoke-direct        v4, v1, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+	28      (00000070) throw                v4
+	a:71
+	(Ljava/lang/NumberFormatException; -> 2c b-BB@0x2c)
+
+b-BB@0x72 : 
+	29      (00000072) new-instance         v3, La5/o;
+	30      (00000076) const-string         v4, "Cannot parse "
+	31      (0000007a) invoke-static        v4, v6, v0, Lv1/a;->q(Ljava/lang/String; Ljava/lang/String; Ljava/lang/String;)Ljava/lang/StringBuilder;
+	32      (00000080) move-result-object   v6
+	33      (00000082) invoke-virtual       v7, v2, Le7/a;->A(Z)Ljava/lang/String;
+	34      (00000088) move-result-object   v7
+	35      (0000008a) invoke-virtual       v6, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	36      (00000090) invoke-virtual       v6, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	37      (00000096) move-result-object   v6
+	38      (00000098) invoke-direct        v3, v6, v1, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	39      (0000009e) throw                v3
+

@@ -1,0 +1,95 @@
+# Lv3/f;->get()Ljava/lang/Object; [access_flags=public]
+#
+# Parameters:
+# local registers: v0...v15
+#
+# - return:java.lang.Object
+
+get-BB@0x0 : [ get-BB@0x20 get-BB@0x116 ]
+	0       (00000000) new-instance         v0, Lc5/c;
+	1       (00000004) invoke-direct        v0, Ljava/lang/Object;-><init>()V
+	2       (0000000a) new-instance         v1, Ljava/util/HashMap;
+	3       (0000000e) invoke-direct        v1, Ljava/util/HashMap;-><init>()V
+	4       (00000014) sget-object          v7, Ljava/util/Collections;->EMPTY_SET Ljava/util/Set;
+	5       (00000018) const-string         v8, "Null flags"
+	6       (0000001c) if-eqz               v7, +07dh
+
+get-BB@0x20 : [ get-BB@0x42 get-BB@0x10a ]
+	7       (00000020) new-instance         v2, Lx2/c;
+	8       (00000024) const-wide/16        v3, 30000
+	9       (00000028) const-wide/32        v5, 86400000
+	10      (0000002e) invoke-direct/range  v2 ... v7, Lx2/c;-><init>(J J Ljava/util/Set;)V
+	11      (00000034) sget-object          v3, Lo2/d;->a Lo2/d;
+	12      (00000038) invoke-virtual       v1, v3, v2, Ljava/util/HashMap;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	13      (0000003e) if-eqz               v7, +066h
+
+get-BB@0x42 : [ get-BB@0x64 get-BB@0xfe ]
+	14      (00000042) new-instance         v2, Lx2/c;
+	15      (00000046) const-wide/16        v3, 1000
+	16      (0000004a) const-wide/32        v5, 86400000
+	17      (00000050) invoke-direct/range  v2 ... v7, Lx2/c;-><init>(J J Ljava/util/Set;)V
+	18      (00000056) sget-object          v3, Lo2/d;->c Lo2/d;
+	19      (0000005a) invoke-virtual       v1, v3, v2, Ljava/util/HashMap;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	20      (00000060) if-eqz               v7, +04fh
+
+get-BB@0x64 : [ get-BB@0x8e get-BB@0xf2 ]
+	21      (00000064) sget-object          v2, Lx2/d;->b Lx2/d;
+	22      (00000068) filled-new-array     v2, [Lx2/d;
+	23      (0000006e) move-result-object   v2
+	24      (00000070) new-instance         v3, Ljava/util/HashSet;
+	25      (00000074) invoke-static        v2, Ljava/util/Arrays;->asList([Ljava/lang/Object;)Ljava/util/List;
+	26      (0000007a) move-result-object   v2
+	27      (0000007c) invoke-direct        v3, v2, Ljava/util/HashSet;-><init>(Ljava/util/Collection;)V
+	28      (00000082) invoke-static        v3, Ljava/util/Collections;->unmodifiableSet(Ljava/util/Set;)Ljava/util/Set;
+	29      (00000088) move-result-object   v14
+	30      (0000008a) if-eqz               v14, +034h
+
+get-BB@0x8e : [ get-BB@0xcc get-BB@0xe2 ]
+	31      (0000008e) new-instance         v9, Lx2/c;
+	32      (00000092) const-wide/32        v10, 86400000
+	33      (00000098) const-wide/32        v12, 86400000
+	34      (0000009e) invoke-direct/range  v9 ... v14, Lx2/c;-><init>(J J Ljava/util/Set;)V
+	35      (000000a4) sget-object          v2, Lo2/d;->b Lo2/d;
+	36      (000000a8) invoke-virtual       v1, v2, v9, Ljava/util/HashMap;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	37      (000000ae) invoke-virtual       v1, Ljava/util/HashMap;->keySet()Ljava/util/Set;
+	38      (000000b4) move-result-object   v2
+	39      (000000b6) invoke-interface     v2, Ljava/util/Set;->size()I
+	40      (000000bc) move-result          v2
+	41      (000000be) invoke-static        Lo2/d;->values()[Lo2/d;
+	42      (000000c4) move-result-object   v3
+	43      (000000c6) array-length         v3, v3
+	44      (000000c8) if-lt                v2, v3, +00dh
+
+get-BB@0xcc : 
+	45      (000000cc) new-instance         v2, Ljava/util/HashMap;
+	46      (000000d0) invoke-direct        v2, Ljava/util/HashMap;-><init>()V
+	47      (000000d6) new-instance         v2, Lx2/b;
+	48      (000000da) invoke-direct        v2, v0, v1, Lx2/b;-><init>(La3/a; Ljava/util/HashMap;)V
+	49      (000000e0) return-object        v2
+
+get-BB@0xe2 : 
+	50      (000000e2) new-instance         v0, Ljava/lang/IllegalStateException;
+	51      (000000e6) const-string         v1, "Not all priorities have been configured"
+	52      (000000ea) invoke-direct        v0, v1, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	53      (000000f0) throw                v0
+
+get-BB@0xf2 : 
+	54      (000000f2) new-instance         v0, Ljava/lang/NullPointerException;
+	55      (000000f6) invoke-direct        v0, v8, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
+	56      (000000fc) throw                v0
+
+get-BB@0xfe : 
+	57      (000000fe) new-instance         v0, Ljava/lang/NullPointerException;
+	58      (00000102) invoke-direct        v0, v8, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
+	59      (00000108) throw                v0
+
+get-BB@0x10a : 
+	60      (0000010a) new-instance         v0, Ljava/lang/NullPointerException;
+	61      (0000010e) invoke-direct        v0, v8, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
+	62      (00000114) throw                v0
+
+get-BB@0x116 : 
+	63      (00000116) new-instance         v0, Ljava/lang/NullPointerException;
+	64      (0000011a) invoke-direct        v0, v8, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
+	65      (00000120) throw                v0
+

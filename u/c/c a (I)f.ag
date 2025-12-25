@@ -1,0 +1,60 @@
+# Lu/c;->a(I)Lu/f; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:int
+#
+# - return:u.f
+
+a-BB@0x0 : [ a-BB@0x16 a-BB@0x2c ]
+	0       (00000000) iget-object          v0, v5, Lu/c;->m Lb8/g;
+	1       (00000004) iget-object          v0, v0, Lb8/g;->c Ljava/lang/Object;
+	2       (00000008) check-cast           v0, Lp0/c;
+	3       (0000000c) iget                 v1, v0, Lp0/c;->b I
+	4       (00000010) const/4              v2, 0
+	5       (00000012) if-lez               v1, +00dh
+
+a-BB@0x16 : [ a-BB@0x2c ]
+	6       (00000016) add-int/lit8         v1, v1, -1
+	7       (0000001a) iget-object          v3, v0, Lp0/c;->a [Ljava/lang/Object;
+	8       (0000001e) aget-object          v4, v3, v1
+	9       (00000022) aput-object          v2, v3, v1
+	10      (00000026) iput                 v1, v0, Lp0/c;->b I
+	11      (0000002a) move-object          v2, v4
+
+a-BB@0x2c : [ a-BB@0x34 a-BB@0x44 ]
+	12      (0000002c) check-cast           v2, Lu/f;
+	13      (00000030) if-nez               v2, +00ah
+
+a-BB@0x34 : [ a-BB@0x4e ]
+	14      (00000034) new-instance         v2, Lu/f;
+	15      (00000038) invoke-direct        v2, v6, Lu/f;-><init>(I)V
+	16      (0000003e) iput                 v6, v2, Lu/f;->r I
+	17      (00000042) goto                 +6h
+
+a-BB@0x44 : [ a-BB@0x4e ]
+	18      (00000044) invoke-virtual       v2, Lu/f;->c()V
+	19      (0000004a) iput                 v6, v2, Lu/f;->r I
+
+a-BB@0x4e : [ a-BB@0x5a a-BB@0x76 ]
+	20      (0000004e) iget                 v6, v5, Lu/c;->o I
+	21      (00000052) iget                 v0, v5, Lu/c;->a I
+	22      (00000056) if-lt                v6, v0, +010h
+
+a-BB@0x5a : [ a-BB@0x76 ]
+	23      (0000005a) mul-int/lit8         v0, v0, 2
+	24      (0000005e) iput                 v0, v5, Lu/c;->a I
+	25      (00000062) iget-object          v6, v5, Lu/c;->n [Lu/f;
+	26      (00000066) invoke-static        v6, v0, Ljava/util/Arrays;->copyOf([Ljava/lang/Object; I)[Ljava/lang/Object;
+	27      (0000006c) move-result-object   v6
+	28      (0000006e) check-cast           v6, [Lu/f;
+	29      (00000072) iput-object          v6, v5, Lu/c;->n [Lu/f;
+
+a-BB@0x76 : 
+	30      (00000076) iget-object          v6, v5, Lu/c;->n [Lu/f;
+	31      (0000007a) iget                 v0, v5, Lu/c;->o I
+	32      (0000007e) add-int/lit8         v1, v0, 1
+	33      (00000082) iput                 v1, v5, Lu/c;->o I
+	34      (00000086) aput-object          v2, v6, v0
+	35      (0000008a) return-object        v2
+

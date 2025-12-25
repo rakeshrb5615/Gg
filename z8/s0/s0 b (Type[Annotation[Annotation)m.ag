@@ -1,0 +1,78 @@
+# Lz8/s0;->b(Ljava/lang/reflect/Type; [Ljava/lang/annotation/Annotation; [Ljava/lang/annotation/Annotation;)Lz8/m; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:java.lang.reflect.Type
+# - v5:java.lang.annotation.Annotation[]
+# - v6:java.lang.annotation.Annotation[]
+#
+# - return:z8.m
+
+b-BB@0x0 : [ b-BB@0x30 ]
+	0       (00000000) const-string         v5, "type == null"
+	1       (00000004) invoke-static        v4, v5, Ljava/util/Objects;->requireNonNull(Ljava/lang/Object; Ljava/lang/String;)Ljava/lang/Object;
+	2       (0000000a) const-string         v5, "methodAnnotations == null"
+	3       (0000000e) invoke-static        v6, v5, Ljava/util/Objects;->requireNonNull(Ljava/lang/Object; Ljava/lang/String;)Ljava/lang/Object;
+	4       (00000014) iget-object          v5, v3, Lz8/s0;->d Ljava/util/List;
+	5       (00000018) const/4              v6, 0
+	6       (0000001a) invoke-interface     v5, v6, Ljava/util/List;->indexOf(Ljava/lang/Object;)I
+	7       (00000020) move-result          v6
+	8       (00000022) add-int/lit8         v6, v6, 1
+	9       (00000026) invoke-interface     v5, Ljava/util/List;->size()I
+	10      (0000002c) move-result          v0
+	11      (0000002e) move                 v1, v6
+
+b-BB@0x30 : [ b-BB@0x34 b-BB@0x54 ]
+	12      (00000030) if-ge                v1, v0, +012h
+
+b-BB@0x34 : [ b-BB@0x4c b-BB@0x4e ]
+	13      (00000034) invoke-interface     v5, v1, Ljava/util/List;->get(I)Ljava/lang/Object;
+	14      (0000003a) move-result-object   v2
+	15      (0000003c) check-cast           v2, Lz8/l;
+	16      (00000040) invoke-virtual       v2, v4, Lz8/l;->a(Ljava/lang/reflect/Type;)Lz8/m;
+	17      (00000046) move-result-object   v2
+	18      (00000048) if-eqz               v2, +003h
+
+b-BB@0x4c : 
+	19      (0000004c) return-object        v2
+
+b-BB@0x4e : [ b-BB@0x30 ]
+	20      (0000004e) add-int/lit8         v1, v1, 1
+	21      (00000052) goto                 -11h
+
+b-BB@0x54 : [ b-BB@0x7a ]
+	22      (00000054) new-instance         v0, Ljava/lang/StringBuilder;
+	23      (00000058) const-string         v1, "Could not locate RequestBody converter for "
+	24      (0000005c) invoke-direct        v0, v1, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	25      (00000062) invoke-virtual       v0, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	26      (00000068) const-string         v4, ".
+  Tried:"
+	27      (0000006c) invoke-virtual       v0, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	28      (00000072) invoke-interface     v5, Ljava/util/List;->size()I
+	29      (00000078) move-result          v4
+
+b-BB@0x7a : [ b-BB@0x7e b-BB@0xb0 ]
+	30      (0000007a) if-ge                v6, v4, +01bh
+
+b-BB@0x7e : [ b-BB@0x7a ]
+	31      (0000007e) const-string         v1, "
+   * "
+	32      (00000082) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	33      (00000088) invoke-interface     v5, v6, Ljava/util/List;->get(I)Ljava/lang/Object;
+	34      (0000008e) move-result-object   v1
+	35      (00000090) check-cast           v1, Lz8/l;
+	36      (00000094) invoke-virtual       v1, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	37      (0000009a) move-result-object   v1
+	38      (0000009c) invoke-virtual       v1, Ljava/lang/Class;->getName()Ljava/lang/String;
+	39      (000000a2) move-result-object   v1
+	40      (000000a4) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	41      (000000aa) add-int/lit8         v6, v6, 1
+	42      (000000ae) goto                 -1ah
+
+b-BB@0xb0 : 
+	43      (000000b0) new-instance         v4, Ljava/lang/IllegalArgumentException;
+	44      (000000b4) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	45      (000000ba) move-result-object   v5
+	46      (000000bc) invoke-direct        v4, v5, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	47      (000000c2) throw                v4
+

@@ -1,0 +1,84 @@
+# Lu/d;->j(Lu/f;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:u.f
+#
+# - return:void
+
+j-BB@0x0 : [ j-BB@0x12 j-BB@0x3e ]
+	0       (00000000) iget                 v0, v6, Lu/d;->h I
+	1       (00000004) const/4              v1, 1
+	2       (00000006) add-int/2addr        v0, v1
+	3       (00000008) iget-object          v2, v6, Lu/d;->f [Lu/f;
+	4       (0000000c) array-length         v3, v2
+	5       (0000000e) if-le                v0, v3, +018h
+
+j-BB@0x12 : [ j-BB@0x3e ]
+	6       (00000012) array-length         v0, v2
+	7       (00000014) mul-int/lit8         v0, v0, 2
+	8       (00000018) invoke-static        v2, v0, Ljava/util/Arrays;->copyOf([Ljava/lang/Object; I)[Ljava/lang/Object;
+	9       (0000001e) move-result-object   v0
+	10      (00000020) check-cast           v0, [Lu/f;
+	11      (00000024) iput-object          v0, v6, Lu/d;->f [Lu/f;
+	12      (00000028) array-length         v2, v0
+	13      (0000002a) mul-int/lit8         v2, v2, 2
+	14      (0000002e) invoke-static        v0, v2, Ljava/util/Arrays;->copyOf([Ljava/lang/Object; I)[Ljava/lang/Object;
+	15      (00000034) move-result-object   v0
+	16      (00000036) check-cast           v0, [Lu/f;
+	17      (0000003a) iput-object          v0, v6, Lu/d;->g [Lu/f;
+
+j-BB@0x3e : [ j-BB@0x56 j-BB@0xbc ]
+	18      (0000003e) iget-object          v0, v6, Lu/d;->f [Lu/f;
+	19      (00000042) iget                 v2, v6, Lu/d;->h I
+	20      (00000046) aput-object          v7, v0, v2
+	21      (0000004a) add-int/lit8         v3, v2, 1
+	22      (0000004e) iput                 v3, v6, Lu/d;->h I
+	23      (00000052) if-le                v3, v1, +035h
+
+j-BB@0x56 : [ j-BB@0x66 j-BB@0xbc ]
+	24      (00000056) aget-object          v0, v0, v2
+	25      (0000005a) iget                 v0, v0, Lu/f;->b I
+	26      (0000005e) iget                 v2, v7, Lu/f;->b I
+	27      (00000062) if-le                v0, v2, +02dh
+
+j-BB@0x66 : [ j-BB@0x6a ]
+	28      (00000066) const/4              v0, 0
+	29      (00000068) move                 v2, v0
+
+j-BB@0x6a : [ j-BB@0x72 j-BB@0x88 ]
+	30      (0000006a) iget                 v3, v6, Lu/d;->h I
+	31      (0000006e) if-ge                v2, v3, +00dh
+
+j-BB@0x72 : [ j-BB@0x6a ]
+	32      (00000072) iget-object          v3, v6, Lu/d;->g [Lu/f;
+	33      (00000076) iget-object          v4, v6, Lu/d;->f [Lu/f;
+	34      (0000007a) aget-object          v4, v4, v2
+	35      (0000007e) aput-object          v4, v3, v2
+	36      (00000082) add-int/lit8         v2, v2, 1
+	37      (00000086) goto                 -eh
+
+j-BB@0x88 : [ j-BB@0x9e ]
+	38      (00000088) iget-object          v2, v6, Lu/d;->g [Lu/f;
+	39      (0000008c) new-instance         v4, La2/q;
+	40      (00000090) const/4              v5, 3
+	41      (00000092) invoke-direct        v4, v5, La2/q;-><init>(I)V
+	42      (00000098) invoke-static        v2, v0, v3, v4, Ljava/util/Arrays;->sort([Ljava/lang/Object; I I Ljava/util/Comparator;)V
+
+j-BB@0x9e : [ j-BB@0xa6 j-BB@0xbc ]
+	43      (0000009e) iget                 v2, v6, Lu/d;->h I
+	44      (000000a2) if-ge                v0, v2, +00dh
+
+j-BB@0xa6 : [ j-BB@0x9e ]
+	45      (000000a6) iget-object          v2, v6, Lu/d;->f [Lu/f;
+	46      (000000aa) iget-object          v3, v6, Lu/d;->g [Lu/f;
+	47      (000000ae) aget-object          v3, v3, v0
+	48      (000000b2) aput-object          v3, v2, v0
+	49      (000000b6) add-int/lit8         v0, v0, 1
+	50      (000000ba) goto                 -eh
+
+j-BB@0xbc : 
+	51      (000000bc) iput-boolean         v1, v7, Lu/f;->a Z
+	52      (000000c0) invoke-virtual       v7, v6, Lu/f;->a(Lu/b;)V
+	53      (000000c6) return-void          
+

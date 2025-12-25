@@ -1,0 +1,55 @@
+# Lw/d;->p(Ljava/lang/StringBuilder; Ljava/lang/String; Lw/c;)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:java.lang.StringBuilder
+# - v3:java.lang.String
+# - v4:w.c
+#
+# - return:void
+
+p-BB@0x0 : [ p-BB@0x8 p-BB@0xa ]
+	0       (00000000) iget-object          v0, v4, Lw/c;->f Lw/c;
+	1       (00000004) if-nez               v0, +003h
+
+p-BB@0x8 : 
+	2       (00000008) return-void          
+
+p-BB@0xa : [ p-BB@0x44 p-BB@0x4c ]
+	3       (0000000a) const-string         v0, "    "
+	4       (0000000e) invoke-virtual       v2, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	5       (00000014) invoke-virtual       v2, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	6       (0000001a) const-string         v3, " : [ '"
+	7       (0000001e) invoke-virtual       v2, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	8       (00000024) iget-object          v3, v4, Lw/c;->f Lw/c;
+	9       (00000028) invoke-virtual       v2, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	10      (0000002e) const-string         v3, "'"
+	11      (00000032) invoke-virtual       v2, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	12      (00000038) iget                 v3, v4, Lw/c;->h I
+	13      (0000003c) const/high16         v0, -2147483648
+	14      (00000040) if-ne                v3, v0, +006h
+
+p-BB@0x44 : [ p-BB@0x4c p-BB@0x7e ]
+	15      (00000044) iget                 v3, v4, Lw/c;->g I
+	16      (00000048) if-eqz               v3, +01bh
+
+p-BB@0x4c : [ p-BB@0x68 p-BB@0x7e ]
+	17      (0000004c) const-string         v3, ","
+	18      (00000050) invoke-virtual       v2, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	19      (00000056) iget                 v1, v4, Lw/c;->g I
+	20      (0000005a) invoke-virtual       v2, v1, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	21      (00000060) iget                 v1, v4, Lw/c;->h I
+	22      (00000064) if-eq                v1, v0, +00dh
+
+p-BB@0x68 : [ p-BB@0x7e ]
+	23      (00000068) invoke-virtual       v2, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	24      (0000006e) iget                 v4, v4, Lw/c;->h I
+	25      (00000072) invoke-virtual       v2, v4, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	26      (00000078) invoke-virtual       v2, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+p-BB@0x7e : 
+	27      (0000007e) const-string         v3, " ] ,
+"
+	28      (00000082) invoke-virtual       v2, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	29      (00000088) return-void          
+

@@ -1,0 +1,98 @@
+# Lu/c;->d(Lu/f; I)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:u.f
+# - v6:int
+#
+# - return:void
+
+d-BB@0x0 : [ d-BB@0xc d-BB@0x38 ]
+	0       (00000000) iget                 v0, v5, Lu/f;->c I
+	1       (00000004) const/4              v1, 1
+	2       (00000006) const/4              v2, -1
+	3       (00000008) if-ne                v0, v2, +018h
+
+d-BB@0xc : [ d-BB@0x16 ]
+	4       (0000000c) int-to-float         v6, v6
+	5       (0000000e) invoke-virtual       v5, v4, v6, Lu/f;->d(Lu/c; F)V
+	6       (00000014) const/4              v5, 0
+
+d-BB@0x16 : [ d-BB@0x20 d-BB@0x36 ]
+	7       (00000016) iget                 v6, v4, Lu/c;->c I
+	8       (0000001a) add-int/2addr        v6, v1
+	9       (0000001c) if-ge                v5, v6, +00dh
+
+d-BB@0x20 : [ d-BB@0x16 ]
+	10      (00000020) iget-object          v6, v4, Lu/c;->m Lb8/g;
+	11      (00000024) iget-object          v6, v6, Lb8/g;->d Ljava/lang/Object;
+	12      (00000028) check-cast           v6, [Lu/f;
+	13      (0000002c) aget-object          v6, v6, v5
+	14      (00000030) add-int/lit8         v5, v5, 1
+	15      (00000034) goto                 -fh
+
+d-BB@0x36 : 
+	16      (00000036) return-void          
+
+d-BB@0x38 : [ d-BB@0x3c d-BB@0xb0 ]
+	17      (00000038) if-eq                v0, v2, +03ch
+
+d-BB@0x3c : [ d-BB@0x4c d-BB@0x54 ]
+	18      (0000003c) iget-object          v3, v4, Lu/c;->g [Lu/b;
+	19      (00000040) aget-object          v0, v3, v0
+	20      (00000044) iget-boolean         v3, v0, Lu/b;->e Z
+	21      (00000048) if-eqz               v3, +006h
+
+d-BB@0x4c : 
+	22      (0000004c) int-to-float         v5, v6
+	23      (0000004e) iput                 v5, v0, Lu/b;->b F
+	24      (00000052) return-void          
+
+d-BB@0x54 : [ d-BB@0x64 d-BB@0x70 ]
+	25      (00000054) iget-object          v3, v0, Lu/b;->d Lu/a;
+	26      (00000058) invoke-virtual       v3, Lu/a;->d()I
+	27      (0000005e) move-result          v3
+	28      (00000060) if-nez               v3, +008h
+
+d-BB@0x64 : 
+	29      (00000064) iput-boolean         v1, v0, Lu/b;->e Z
+	30      (00000068) int-to-float         v5, v6
+	31      (0000006a) iput                 v5, v0, Lu/b;->b F
+	32      (0000006e) return-void          
+
+d-BB@0x70 : [ d-BB@0x7c d-BB@0x94 ]
+	33      (00000070) invoke-virtual       v4, Lu/c;->l()Lu/b;
+	34      (00000076) move-result-object   v0
+	35      (00000078) if-gez               v6, +00eh
+
+d-BB@0x7c : [ d-BB@0xa8 ]
+	36      (0000007c) mul-int/2addr        v6, v2
+	37      (0000007e) int-to-float         v6, v6
+	38      (00000080) iput                 v6, v0, Lu/b;->b F
+	39      (00000084) iget-object          v6, v0, Lu/b;->d Lu/a;
+	40      (00000088) const/high16         v1, 1065353216
+	41      (0000008c) invoke-virtual       v6, v5, v1, Lu/a;->g(Lu/f; F)V
+	42      (00000092) goto                 +bh
+
+d-BB@0x94 : [ d-BB@0xa8 ]
+	43      (00000094) int-to-float         v6, v6
+	44      (00000096) iput                 v6, v0, Lu/b;->b F
+	45      (0000009a) iget-object          v6, v0, Lu/b;->d Lu/a;
+	46      (0000009e) const/high16         v1, -1082130432
+	47      (000000a2) invoke-virtual       v6, v5, v1, Lu/a;->g(Lu/f; F)V
+
+d-BB@0xa8 : 
+	48      (000000a8) invoke-virtual       v4, v0, Lu/c;->c(Lu/b;)V
+	49      (000000ae) return-void          
+
+d-BB@0xb0 : 
+	50      (000000b0) invoke-virtual       v4, Lu/c;->l()Lu/b;
+	51      (000000b6) move-result-object   v0
+	52      (000000b8) iput-object          v5, v0, Lu/b;->a Lu/f;
+	53      (000000bc) int-to-float         v6, v6
+	54      (000000be) iput                 v6, v5, Lu/f;->e F
+	55      (000000c2) iput                 v6, v0, Lu/b;->b F
+	56      (000000c6) iput-boolean         v1, v0, Lu/b;->e Z
+	57      (000000ca) invoke-virtual       v4, v0, Lu/c;->c(Lu/b;)V
+	58      (000000d0) return-void          
+

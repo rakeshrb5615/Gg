@@ -1,0 +1,76 @@
+# Lx3/e;->m()[F [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v6
+#
+# - return:float[]
+
+m-BB@0x0 : [ m-BB@0x4e m-BB@0x52 ]
+	0       (00000000) iget-object          v0, v6, Lx3/e;->s0 Ljava/util/ArrayList;
+	1       (00000004) const/4              v1, 0
+	2       (00000006) invoke-virtual       v0, v1, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	3       (0000000c) move-result-object   v0
+	4       (0000000e) check-cast           v0, Ljava/lang/Float;
+	5       (00000012) invoke-virtual       v0, Ljava/lang/Float;->floatValue()F
+	6       (00000018) move-result          v0
+	7       (0000001a) iget-object          v2, v6, Lx3/e;->s0 Ljava/util/ArrayList;
+	8       (0000001e) invoke-virtual       v2, Ljava/util/ArrayList;->size()I
+	9       (00000024) move-result          v3
+	10      (00000026) const/4              v4, 1
+	11      (00000028) sub-int/2addr        v3, v4
+	12      (0000002a) invoke-virtual       v2, v3, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	13      (00000030) move-result-object   v2
+	14      (00000032) check-cast           v2, Ljava/lang/Float;
+	15      (00000036) invoke-virtual       v2, Ljava/lang/Float;->floatValue()F
+	16      (0000003c) move-result          v2
+	17      (0000003e) iget-object          v3, v6, Lx3/e;->s0 Ljava/util/ArrayList;
+	18      (00000042) invoke-virtual       v3, Ljava/util/ArrayList;->size()I
+	19      (00000048) move-result          v3
+	20      (0000004a) if-ne                v3, v4, +004h
+
+m-BB@0x4e : [ m-BB@0x52 ]
+	21      (0000004e) iget                 v0, v6, Lx3/e;->q0 F
+
+m-BB@0x52 : [ m-BB@0x6a m-BB@0x80 ]
+	22      (00000052) invoke-virtual       v6, v0, Lx3/e;->v(F)F
+	23      (00000058) move-result          v0
+	24      (0000005a) invoke-virtual       v6, v2, Lx3/e;->v(F)F
+	25      (00000060) move-result          v2
+	26      (00000062) iget-boolean         v3, v6, Lx3/e;->U Z
+	27      (00000066) if-eqz               v3, +00dh
+
+m-BB@0x6a : [ m-BB@0x80 ]
+	28      (0000006a) const/high16         v0, 1056964608
+	29      (0000006e) invoke-static        v0, v2, Ljava/lang/Math;->min(F F)F
+	30      (00000074) move-result          v3
+	31      (00000076) invoke-static        v0, v2, Ljava/lang/Math;->max(F F)F
+	32      (0000007c) move-result          v2
+	33      (0000007e) move                 v0, v3
+
+m-BB@0x80 : [ m-BB@0x8a m-BB@0xb0 ]
+	34      (00000080) iget-boolean         v3, v6, Lx3/e;->U Z
+	35      (00000084) const/4              v5, 2
+	36      (00000086) if-nez               v3, +015h
+
+m-BB@0x8a : [ m-BB@0x96 m-BB@0xa2 ]
+	37      (0000008a) invoke-virtual       v6, Lx3/e;->r()Z
+	38      (00000090) move-result          v3
+	39      (00000092) if-nez               v3, +008h
+
+m-BB@0x96 : [ m-BB@0xa2 m-BB@0xb0 ]
+	40      (00000096) invoke-virtual       v6, Lx3/e;->s()Z
+	41      (0000009c) move-result          v3
+	42      (0000009e) if-eqz               v3, +009h
+
+m-BB@0xa2 : 
+	43      (000000a2) new-array            v3, v5, [F
+	44      (000000a6) aput                 v2, v3, v1
+	45      (000000aa) aput                 v0, v3, v4
+	46      (000000ae) return-object        v3
+
+m-BB@0xb0 : 
+	47      (000000b0) new-array            v3, v5, [F
+	48      (000000b4) aput                 v0, v3, v1
+	49      (000000b8) aput                 v2, v3, v4
+	50      (000000bc) return-object        v3
+

@@ -1,0 +1,32 @@
+# Ly0/e;->i(I)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:int
+#
+# - return:boolean
+
+i-BB@0x0 : [ i-BB@0x10 i-BB@0x12 ]
+	0       (00000000) iget                 v0, v3, Ly0/e;->k I
+	1       (00000004) const/4              v1, 1
+	2       (00000006) shl-int              v2, v1, v4
+	3       (0000000a) and-int/2addr        v0, v2
+	4       (0000000c) if-eqz               v0, +003h
+
+i-BB@0x10 : 
+	5       (00000010) return               v1
+
+i-BB@0x12 : 
+	6       (00000012) new-instance         v0, Ljava/lang/StringBuilder;
+	7       (00000016) const-string         v1, "Ignoring pointerId="
+	8       (0000001a) invoke-direct        v0, v1, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	9       (00000020) invoke-virtual       v0, v4, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	10      (00000026) const-string         v4, " because ACTION_DOWN was not received for this pointer before ACTION_MOVE. It likely happened because  ViewDragHelper did not receive all the events in the event stream."
+	11      (0000002a) invoke-virtual       v0, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	12      (00000030) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	13      (00000036) move-result-object   v4
+	14      (00000038) const-string         v0, "ViewDragHelper"
+	15      (0000003c) invoke-static        v0, v4, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String;)I
+	16      (00000042) const/4              v4, 0
+	17      (00000044) return               v4
+

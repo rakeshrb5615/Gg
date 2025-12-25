@@ -1,0 +1,35 @@
+# Lz8/z0;->r(Ljava/lang/Throwable;)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v0
+# - v1:java.lang.Throwable
+#
+# - return:void
+
+r-BB@0x0 : [ r-BB@0x8 r-BB@0x26 ]
+	0       (00000000) instance-of          v0, v1, Ljava/lang/VirtualMachineError;
+	1       (00000004) if-nez               v0, +011h
+
+r-BB@0x8 : [ r-BB@0x10 r-BB@0x20 ]
+	2       (00000008) instance-of          v0, v1, Ljava/lang/ThreadDeath;
+	3       (0000000c) if-nez               v0, +00ah
+
+r-BB@0x10 : [ r-BB@0x18 r-BB@0x1a ]
+	4       (00000010) instance-of          v0, v1, Ljava/lang/LinkageError;
+	5       (00000014) if-nez               v0, +003h
+
+r-BB@0x18 : 
+	6       (00000018) return-void          
+
+r-BB@0x1a : 
+	7       (0000001a) check-cast           v1, Ljava/lang/LinkageError;
+	8       (0000001e) throw                v1
+
+r-BB@0x20 : 
+	9       (00000020) check-cast           v1, Ljava/lang/ThreadDeath;
+	10      (00000024) throw                v1
+
+r-BB@0x26 : 
+	11      (00000026) check-cast           v1, Ljava/lang/VirtualMachineError;
+	12      (0000002a) throw                v1
+

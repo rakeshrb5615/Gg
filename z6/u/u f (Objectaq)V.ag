@@ -1,0 +1,72 @@
+# Lz6/u;->f(Ljava/lang/Object; Le7/a; Lz6/q;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:java.lang.Object
+# - v5:e7.a
+# - v6:z6.q
+#
+# - return:void
+
+f-BB@0x0 : [ f-BB@0x1c f-BB@0x78 ]
+	0       (00000000) check-cast           v4, [Ljava/lang/Object;
+	1       (00000004) iget-object          v0, v6, Lz6/q;->c Ljava/lang/String;
+	2       (00000008) iget-object          v1, v3, Lz6/u;->d Ljava/util/HashMap;
+	3       (0000000c) invoke-virtual       v1, v0, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	4       (00000012) move-result-object   v1
+	5       (00000014) check-cast           v1, Ljava/lang/Integer;
+	6       (00000018) if-eqz               v1, +030h
+
+f-BB@0x1c : [ f-BB@0x34 f-BB@0x72 ]
+	7       (0000001c) invoke-virtual       v1, Ljava/lang/Integer;->intValue()I
+	8       (00000022) move-result          v1
+	9       (00000024) iget-object          v2, v6, Lz6/q;->f Lw6/z;
+	10      (00000028) invoke-virtual       v2, v5, Lw6/z;->b(Le7/a;)Ljava/lang/Object;
+	11      (0000002e) move-result-object   v2
+	12      (00000030) if-nez               v2, +021h
+
+f-BB@0x34 : [ f-BB@0x3c f-BB@0x3e ]
+	13      (00000034) iget-boolean         v6, v6, Lz6/q;->g Z
+	14      (00000038) if-nez               v6, +003h
+
+f-BB@0x3c : [ f-BB@0x72 ]
+	15      (0000003c) goto                 +1bh
+
+f-BB@0x3e : 
+	16      (0000003e) new-instance         v4, La5/o;
+	17      (00000042) const-string         v6, "null is not allowed as value for record component '"
+	18      (00000046) const-string         v1, "' of primitive type; at path "
+	19      (0000004a) invoke-static        v6, v0, v1, Lv1/a;->q(Ljava/lang/String; Ljava/lang/String; Ljava/lang/String;)Ljava/lang/StringBuilder;
+	20      (00000050) move-result-object   v6
+	21      (00000052) const/4              v0, 0
+	22      (00000054) invoke-virtual       v5, v0, Le7/a;->A(Z)Ljava/lang/String;
+	23      (0000005a) move-result-object   v5
+	24      (0000005c) invoke-virtual       v6, v5, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	25      (00000062) invoke-virtual       v6, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	26      (00000068) move-result-object   v5
+	27      (0000006a) invoke-direct        v4, v5, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
+	28      (00000070) throw                v4
+
+f-BB@0x72 : 
+	29      (00000072) aput-object          v2, v4, v1
+	30      (00000076) return-void          
+
+f-BB@0x78 : 
+	31      (00000078) new-instance         v4, Ljava/lang/IllegalStateException;
+	32      (0000007c) new-instance         v5, Ljava/lang/StringBuilder;
+	33      (00000080) const-string         v6, "Could not find the index in the constructor '"
+	34      (00000084) invoke-direct        v5, v6, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	35      (0000008a) iget-object          v6, v3, Lz6/u;->b Ljava/lang/reflect/Constructor;
+	36      (0000008e) invoke-static        v6, Lb7/c;->b(Ljava/lang/reflect/Constructor;)Ljava/lang/String;
+	37      (00000094) move-result-object   v6
+	38      (00000096) invoke-virtual       v5, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	39      (0000009c) const-string         v6, "' for field with name '"
+	40      (000000a0) invoke-virtual       v5, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	41      (000000a6) invoke-virtual       v5, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	42      (000000ac) const-string         v6, "', unable to determine which argument in the constructor the field corresponds to. This is unexpected behavior, as we expect the RecordComponents to have the same names as the fields in the Java class, and that the order of the RecordComponents is the same as the order of the canonical constructor parameters."
+	43      (000000b0) invoke-virtual       v5, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	44      (000000b6) invoke-virtual       v5, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	45      (000000bc) move-result-object   v5
+	46      (000000be) invoke-direct        v4, v5, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	47      (000000c4) throw                v4
+

@@ -1,0 +1,39 @@
+# Lz/h;->c(I Ljava/lang/String;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:int
+# - v5:java.lang.String
+#
+# - return:void
+
+c-BB@0x0 : [ c-BB@0xe c-BB@0x3a ]
+	0       (00000000) iget                 v0, v3, Lz/h;->i I
+	1       (00000004) iget-object          v1, v3, Lz/h;->g [I
+	2       (00000008) array-length         v2, v1
+	3       (0000000a) if-lt                v0, v2, +018h
+
+c-BB@0xe : [ c-BB@0x3a ]
+	4       (0000000e) array-length         v0, v1
+	5       (00000010) mul-int/lit8         v0, v0, 2
+	6       (00000014) invoke-static        v1, v0, Ljava/util/Arrays;->copyOf([I I)[I
+	7       (0000001a) move-result-object   v0
+	8       (0000001c) iput-object          v0, v3, Lz/h;->g [I
+	9       (00000020) iget-object          v0, v3, Lz/h;->h [Ljava/lang/String;
+	10      (00000024) array-length         v1, v0
+	11      (00000026) mul-int/lit8         v1, v1, 2
+	12      (0000002a) invoke-static        v0, v1, Ljava/util/Arrays;->copyOf([Ljava/lang/Object; I)[Ljava/lang/Object;
+	13      (00000030) move-result-object   v0
+	14      (00000032) check-cast           v0, [Ljava/lang/String;
+	15      (00000036) iput-object          v0, v3, Lz/h;->h [Ljava/lang/String;
+
+c-BB@0x3a : 
+	16      (0000003a) iget-object          v0, v3, Lz/h;->g [I
+	17      (0000003e) iget                 v1, v3, Lz/h;->i I
+	18      (00000042) aput                 v4, v0, v1
+	19      (00000046) iget-object          v4, v3, Lz/h;->h [Ljava/lang/String;
+	20      (0000004a) add-int/lit8         v0, v1, 1
+	21      (0000004e) iput                 v0, v3, Lz/h;->i I
+	22      (00000052) aput-object          v5, v4, v1
+	23      (00000056) return-void          
+

@@ -1,0 +1,28 @@
+# Lx8/a0;->write([B)Lx8/h; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:byte[]
+#
+# - return:x8.h
+
+write-BB@0x0 : [ write-BB@0x12 write-BB@0x28 ]
+	0       (00000000) const-string         v0, "source"
+	1       (00000004) invoke-static        v4, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) iget-boolean         v0, v3, Lx8/a0;->c Z
+	3       (0000000e) if-nez               v0, +00dh
+
+write-BB@0x12 : 
+	4       (00000012) const/4              v0, 0
+	5       (00000014) array-length         v1, v4
+	6       (00000016) iget-object          v2, v3, Lx8/a0;->b Lx8/g;
+	7       (0000001a) invoke-virtual       v2, v4, v0, v1, Lx8/g;->write([B I I)V
+	8       (00000020) invoke-virtual       v3, Lx8/a0;->c()Lx8/h;
+	9       (00000026) return-object        v3
+
+write-BB@0x28 : 
+	10      (00000028) new-instance         v4, Ljava/lang/IllegalStateException;
+	11      (0000002c) const-string         v0, "closed"
+	12      (00000030) invoke-direct        v4, v0, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	13      (00000036) throw                v4
+

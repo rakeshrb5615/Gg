@@ -1,0 +1,20 @@
+# Lw6/l;->d()Lw6/z; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v2
+#
+# - return:w6.z
+
+d-BB@0x0 : [ d-BB@0x8 d-BB@0xa ]
+	0       (00000000) iget-object          v0, v2, Lw6/l;->a Lw6/z;
+	1       (00000004) if-eqz               v0, +003h
+
+d-BB@0x8 : 
+	2       (00000008) return-object        v0
+
+d-BB@0xa : 
+	3       (0000000a) new-instance         v0, Ljava/lang/IllegalStateException;
+	4       (0000000e) const-string         v1, "Adapter for type with cyclic dependency has been used before dependency has been resolved"
+	5       (00000012) invoke-direct        v0, v1, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	6       (00000018) throw                v0
+

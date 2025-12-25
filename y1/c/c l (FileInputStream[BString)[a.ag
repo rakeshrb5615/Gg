@@ -1,0 +1,74 @@
+# Ly1/c;->l(Ljava/io/FileInputStream; [B Ljava/lang/String;)[Ly1/a; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:java.io.FileInputStream
+# - v6:byte[]
+# - v7:java.lang.String
+#
+# - return:y1.a[]
+
+l-BB@0x0 : [ l-BB@0x10 l-BB@0x84 ]
+	0       (00000000) sget-object          v0, Ly1/c;->e [B
+	1       (00000004) invoke-static        v6, v0, Ljava/util/Arrays;->equals([B [B)Z
+	2       (0000000a) move-result          v6
+	3       (0000000c) if-eqz               v6, +03ch
+
+l-BB@0x10 : [ l-BB@0x46 l-BB@0x74 ]
+	4       (00000010) const/4              v6, 1
+	5       (00000012) invoke-static        v5, v6, Ly1/c;->m(Ljava/io/InputStream; I)J
+	6       (00000018) move-result-wide     v0
+	7       (0000001a) long-to-int          v6, v0
+	8       (0000001c) const/4              v0, 4
+	9       (0000001e) invoke-static        v5, v0, Ly1/c;->m(Ljava/io/InputStream; I)J
+	10      (00000024) move-result-wide     v1
+	11      (00000026) invoke-static        v5, v0, Ly1/c;->m(Ljava/io/InputStream; I)J
+	12      (0000002c) move-result-wide     v3
+	13      (0000002e) long-to-int          v0, v3
+	14      (00000030) long-to-int          v1, v1
+	15      (00000032) invoke-static        v5, v0, v1, Ly1/c;->h(Ljava/io/FileInputStream; I I)[B
+	16      (00000038) move-result-object   v0
+	17      (0000003a) invoke-virtual       v5, Ljava/io/InputStream;->read()I
+	18      (00000040) move-result          v5
+	19      (00000042) if-gtz               v5, +019h
+
+l-BB@0x46 : [ l-BB@0x50 ]
+	20      (00000046) new-instance         v5, Ljava/io/ByteArrayInputStream;
+	21      (0000004a) invoke-direct        v5, v0, Ljava/io/ByteArrayInputStream;-><init>([B)V
+
+l-BB@0x50 : 
+	22      (00000050) invoke-static        v5, v7, v6, Ly1/c;->n(Ljava/io/ByteArrayInputStream; Ljava/lang/String; I)[Ly1/a;
+	23      (00000056) move-result-object   v6
+	24      (00000058) invoke-virtual       v5, Ljava/io/InputStream;->close()V
+	25      (0000005e) return-object        v6
+	50:57
+	(Ljava/lang/Throwable; -> 60 l-BB@0x60)
+
+l-BB@0x60 : [ l-BB@0x62 ]
+	26      (00000060) move-exception       v6
+
+l-BB@0x62 : [ l-BB@0x72 ]
+	27      (00000062) invoke-virtual       v5, Ljava/io/InputStream;->close()V
+	28      (00000068) goto                 +5h
+	62:67
+	(Ljava/lang/Throwable; -> 6a l-BB@0x6a)
+
+l-BB@0x6a : [ l-BB@0x72 ]
+	29      (0000006a) move-exception       v5
+	30      (0000006c) invoke-virtual       v6, v5, Ljava/lang/Throwable;->addSuppressed(Ljava/lang/Throwable;)V
+
+l-BB@0x72 : 
+	31      (00000072) throw                v6
+
+l-BB@0x74 : 
+	32      (00000074) new-instance         v5, Ljava/lang/IllegalStateException;
+	33      (00000078) const-string         v6, "Content found after the end of file"
+	34      (0000007c) invoke-direct        v5, v6, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	35      (00000082) throw                v5
+
+l-BB@0x84 : 
+	36      (00000084) new-instance         v5, Ljava/lang/IllegalStateException;
+	37      (00000088) const-string         v6, "Unsupported version"
+	38      (0000008c) invoke-direct        v5, v6, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	39      (00000092) throw                v5
+

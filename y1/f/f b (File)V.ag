@@ -1,0 +1,45 @@
+# Ly1/f;->b(Ljava/io/File;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:java.io.File
+#
+# - return:void
+
+b-BB@0x0 : [ b-BB@0x1a ]
+	0       (00000000) invoke-virtual       v4, Ljava/io/File;->delete()Z
+	1       (00000006) new-instance         v0, Ljava/io/DataOutputStream;
+	2       (0000000a) new-instance         v1, Ljava/io/FileOutputStream;
+	3       (0000000e) invoke-direct        v1, v4, Ljava/io/FileOutputStream;-><init>(Ljava/io/File;)V
+	4       (00000014) invoke-direct        v0, v1, Ljava/io/DataOutputStream;-><init>(Ljava/io/OutputStream;)V
+
+b-BB@0x1a : 
+	5       (0000001a) iget                 v4, v3, Ly1/f;->a I
+	6       (0000001e) invoke-virtual       v0, v4, Ljava/io/DataOutputStream;->writeInt(I)V
+	7       (00000024) iget                 v4, v3, Ly1/f;->b I
+	8       (00000028) invoke-virtual       v0, v4, Ljava/io/DataOutputStream;->writeInt(I)V
+	9       (0000002e) iget-wide            v1, v3, Ly1/f;->c J
+	10      (00000032) invoke-virtual       v0, v1, v2, Ljava/io/DataOutputStream;->writeLong(J)V
+	11      (00000038) iget-wide            v1, v3, Ly1/f;->d J
+	12      (0000003c) invoke-virtual       v0, v1, v2, Ljava/io/DataOutputStream;->writeLong(J)V
+	13      (00000042) invoke-virtual       v0, Ljava/io/OutputStream;->close()V
+	14      (00000048) return-void          
+	1a:41
+	(Ljava/lang/Throwable; -> 4a b-BB@0x4a)
+
+b-BB@0x4a : [ b-BB@0x4c ]
+	15      (0000004a) move-exception       v4
+
+b-BB@0x4c : [ b-BB@0x5c ]
+	16      (0000004c) invoke-virtual       v0, Ljava/io/OutputStream;->close()V
+	17      (00000052) goto                 +5h
+	4c:51
+	(Ljava/lang/Throwable; -> 54 b-BB@0x54)
+
+b-BB@0x54 : [ b-BB@0x5c ]
+	18      (00000054) move-exception       v0
+	19      (00000056) invoke-virtual       v4, v0, Ljava/lang/Throwable;->addSuppressed(Ljava/lang/Throwable;)V
+
+b-BB@0x5c : 
+	20      (0000005c) throw                v4
+

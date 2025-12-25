@@ -1,0 +1,53 @@
+# Ly3/j;->g()I [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v5
+#
+# - return:int
+
+g-BB@0x0 : [ g-BB@0xa g-BB@0xc ]
+	0       (00000000) iget                 v0, v5, Ly3/h;->k I
+	1       (00000004) const/4              v1, -2
+	2       (00000006) if-ne                v0, v1, +003h
+
+g-BB@0xa : [ g-BB@0x4c ]
+	3       (0000000a) goto                 +21h
+
+g-BB@0xc : [ g-BB@0x1c g-BB@0x38 ]
+	4       (0000000c) sget                 v2, Landroid/os/Build$VERSION;->SDK_INT I
+	5       (00000010) const/16             v3, 29
+	6       (00000014) iget-object          v4, v5, Ly3/j;->A Landroid/view/accessibility/AccessibilityManager;
+	7       (00000018) if-lt                v2, v3, +010h
+
+g-BB@0x1c : [ g-BB@0x24 g-BB@0x28 ]
+	8       (0000001c) iget-boolean         v1, v5, Ly3/j;->B Z
+	9       (00000020) if-eqz               v1, +004h
+
+g-BB@0x24 : [ g-BB@0x2a ]
+	10      (00000024) const/4              v1, 4
+	11      (00000026) goto                 +2h
+
+g-BB@0x28 : [ g-BB@0x2a ]
+	12      (00000028) const/4              v1, 0
+
+g-BB@0x2a : 
+	13      (0000002a) or-int/lit8          v1, v1, 3
+	14      (0000002e) invoke-virtual       v4, v0, v1, Landroid/view/accessibility/AccessibilityManager;->getRecommendedTimeoutMillis(I I)I
+	15      (00000034) move-result          v0
+	16      (00000036) return               v0
+
+g-BB@0x38 : [ g-BB@0x40 g-BB@0x4e ]
+	17      (00000038) iget-boolean         v2, v5, Ly3/j;->B Z
+	18      (0000003c) if-eqz               v2, +009h
+
+g-BB@0x40 : [ g-BB@0x4c g-BB@0x4e ]
+	19      (00000040) invoke-virtual       v4, Landroid/view/accessibility/AccessibilityManager;->isTouchExplorationEnabled()Z
+	20      (00000046) move-result          v2
+	21      (00000048) if-eqz               v2, +003h
+
+g-BB@0x4c : 
+	22      (0000004c) return               v1
+
+g-BB@0x4e : 
+	23      (0000004e) return               v0
+

@@ -1,0 +1,82 @@
+# Lx3/e;->F()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v6
+#
+# - return:void
+
+F-BB@0x0 : [ F-BB@0x16 F-BB@0x1e ]
+	0       (00000000) invoke-virtual       v6, Lx3/e;->N()V
+	1       (00000006) iget                 v0, v6, Lx3/e;->v0 F
+	2       (0000000a) const/4              v1, 0
+	3       (0000000c) cmpg-float           v1, v0, v1
+	4       (00000010) const/4              v2, 0
+	5       (00000012) if-gtz               v1, +006h
+
+F-BB@0x16 : 
+	6       (00000016) invoke-virtual       v6, v2, Lx3/e;->G(I)V
+	7       (0000001c) return-void          
+
+F-BB@0x1e : [ F-BB@0x2c F-BB@0x88 ]
+	8       (0000001e) iget                 v1, v6, Lx3/e;->x0 I
+	9       (00000022) const/high16         v3, 1065353216
+	10      (00000026) const/4              v4, 1
+	11      (00000028) if-eqz               v1, +030h
+
+F-BB@0x2c : [ F-BB@0x30 F-BB@0x64 ]
+	12      (0000002c) if-eq                v1, v4, +01ch
+
+F-BB@0x30 : [ F-BB@0x36 F-BB@0x38 ]
+	13      (00000030) const/4              v0, 2
+	14      (00000032) if-ne                v1, v0, +003h
+
+F-BB@0x36 : [ F-BB@0xac ]
+	15      (00000036) goto                 +3bh
+
+F-BB@0x38 : 
+	16      (00000038) new-instance         v0, Ljava/lang/IllegalStateException;
+	17      (0000003c) new-instance         v1, Ljava/lang/StringBuilder;
+	18      (00000040) const-string         v2, "Unexpected tickVisibilityMode: "
+	19      (00000044) invoke-direct        v1, v2, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	20      (0000004a) iget                 v2, v6, Lx3/e;->x0 I
+	21      (0000004e) invoke-virtual       v1, v2, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	22      (00000054) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	23      (0000005a) move-result-object   v1
+	24      (0000005c) invoke-direct        v0, v1, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	25      (00000062) throw                v0
+
+F-BB@0x64 : [ F-BB@0x84 F-BB@0xac ]
+	26      (00000064) iget                 v1, v6, Lx3/e;->r0 F
+	27      (00000068) iget                 v5, v6, Lx3/e;->q0 F
+	28      (0000006c) sub-float/2addr      v1, v5
+	29      (0000006e) div-float/2addr      v1, v0
+	30      (00000070) add-float/2addr      v1, v3
+	31      (00000072) float-to-int         v0, v1
+	32      (00000074) iget                 v1, v6, Lx3/e;->A0 I
+	33      (00000078) iget                 v3, v6, Lx3/e;->D I
+	34      (0000007c) div-int/2addr        v1, v3
+	35      (0000007e) add-int/2addr        v1, v4
+	36      (00000080) if-gt                v0, v1, +016h
+
+F-BB@0x84 : [ F-BB@0xac ]
+	37      (00000084) move                 v2, v0
+	38      (00000086) goto                 +13h
+
+F-BB@0x88 : [ F-BB@0xac ]
+	39      (00000088) iget                 v1, v6, Lx3/e;->r0 F
+	40      (0000008c) iget                 v2, v6, Lx3/e;->q0 F
+	41      (00000090) sub-float/2addr      v1, v2
+	42      (00000092) div-float/2addr      v1, v0
+	43      (00000094) add-float/2addr      v1, v3
+	44      (00000096) float-to-int         v0, v1
+	45      (00000098) iget                 v1, v6, Lx3/e;->A0 I
+	46      (0000009c) iget                 v2, v6, Lx3/e;->D I
+	47      (000000a0) div-int/2addr        v1, v2
+	48      (000000a2) add-int/2addr        v1, v4
+	49      (000000a4) invoke-static        v0, v1, Ljava/lang/Math;->min(I I)I
+	50      (000000aa) move-result          v2
+
+F-BB@0xac : 
+	51      (000000ac) invoke-virtual       v6, v2, Lx3/e;->G(I)V
+	52      (000000b2) return-void          
+

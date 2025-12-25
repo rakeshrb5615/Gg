@@ -1,0 +1,35 @@
+# Ly0/b;->p(I)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:int
+#
+# - return:void
+
+p-BB@0x0 : [ p-BB@0x8 p-BB@0x42 ]
+	0       (00000000) const/high16         v0, -2147483648
+	1       (00000004) if-eq                v4, v0, +01fh
+
+p-BB@0x8 : [ p-BB@0x18 p-BB@0x42 ]
+	2       (00000008) iget-object          v0, v3, Ly0/b;->h Landroid/view/accessibility/AccessibilityManager;
+	3       (0000000c) invoke-virtual       v0, Landroid/view/accessibility/AccessibilityManager;->isEnabled()Z
+	4       (00000012) move-result          v0
+	5       (00000014) if-eqz               v0, +017h
+
+p-BB@0x18 : [ p-BB@0x28 p-BB@0x42 ]
+	6       (00000018) iget-object          v0, v3, Ly0/b;->i Landroid/view/View;
+	7       (0000001c) invoke-virtual       v0, Landroid/view/View;->getParent()Landroid/view/ViewParent;
+	8       (00000022) move-result-object   v1
+	9       (00000024) if-eqz               v1, +00fh
+
+p-BB@0x28 : [ p-BB@0x42 ]
+	10      (00000028) const/16             v2, 2048
+	11      (0000002c) invoke-virtual       v3, v4, v2, Ly0/b;->k(I I)Landroid/view/accessibility/AccessibilityEvent;
+	12      (00000032) move-result-object   v4
+	13      (00000034) const/4              v2, 0
+	14      (00000036) invoke-virtual       v4, v2, Landroid/view/accessibility/AccessibilityEvent;->setContentChangeTypes(I)V
+	15      (0000003c) invoke-interface     v1, v0, v4, Landroid/view/ViewParent;->requestSendAccessibilityEvent(Landroid/view/View; Landroid/view/accessibility/AccessibilityEvent;)Z
+
+p-BB@0x42 : 
+	16      (00000042) return-void          
+

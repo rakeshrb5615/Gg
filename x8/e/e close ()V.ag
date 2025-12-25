@@ -1,0 +1,22 @@
+# Lx8/e;->close()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v2
+#
+# - return:void
+
+close-BB@0x0 : [ close-BB@0x8 close-BB@0x10 ]
+	0       (00000000) iget-object          v0, v2, Lx8/e;->a Lx8/g;
+	1       (00000004) if-eqz               v0, +006h
+
+close-BB@0x8 : 
+	2       (00000008) const/4              v0, 0
+	3       (0000000a) iput-object          v0, v2, Lx8/e;->a Lx8/g;
+	4       (0000000e) return-void          
+
+close-BB@0x10 : 
+	5       (00000010) new-instance         v0, Ljava/lang/IllegalStateException;
+	6       (00000014) const-string         v1, "not attached to a buffer"
+	7       (00000018) invoke-direct        v0, v1, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	8       (0000001e) throw                v0
+

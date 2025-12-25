@@ -1,0 +1,53 @@
+# Lx8/b0;->m(Lx8/x;)I [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:x8.x
+#
+# - return:int
+
+m-BB@0x0 : [ m-BB@0x12 m-BB@0x64 ]
+	0       (00000000) const-string         v0, "options"
+	1       (00000004) invoke-static        v7, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) iget-boolean         v0, v6, Lx8/b0;->c Z
+	3       (0000000e) if-nez               v0, +02bh
+
+m-BB@0x12 : [ m-BB@0x28 m-BB@0x46 ]
+	4       (00000012) const/4              v0, 1
+	5       (00000014) iget-object          v1, v6, Lx8/b0;->b Lx8/g;
+	6       (00000018) invoke-static        v1, v7, v0, Ly8/a;->c(Lx8/g; Lx8/x; Z)I
+	7       (0000001e) move-result          v0
+	8       (00000020) const/4              v2, -2
+	9       (00000022) const/4              v3, -1
+	10      (00000024) if-eq                v0, v2, +011h
+
+m-BB@0x28 : [ m-BB@0x2c m-BB@0x62 ]
+	11      (00000028) if-eq                v0, v3, +01dh
+
+m-BB@0x2c : 
+	12      (0000002c) iget-object          v7, v7, Lx8/x;->a [Lx8/j;
+	13      (00000030) aget-object          v7, v7, v0
+	14      (00000034) invoke-virtual       v7, Lx8/j;->d()I
+	15      (0000003a) move-result          v7
+	16      (0000003c) int-to-long          v2, v7
+	17      (0000003e) invoke-virtual       v1, v2, v3, Lx8/g;->skip(J)V
+	18      (00000044) return               v0
+
+m-BB@0x46 : [ m-BB@0x62 m-BB@0x12 ]
+	19      (00000046) iget-object          v0, v6, Lx8/b0;->a Lx8/h0;
+	20      (0000004a) const-wide/16        v4, 8192
+	21      (0000004e) invoke-interface     v0, v1, v4, v5, Lx8/h0;->t(Lx8/g; J)J
+	22      (00000054) move-result-wide     v0
+	23      (00000056) const-wide/16        v4, -1
+	24      (0000005a) cmp-long             v0, v0, v4
+	25      (0000005e) if-nez               v0, -026h
+
+m-BB@0x62 : 
+	26      (00000062) return               v3
+
+m-BB@0x64 : 
+	27      (00000064) new-instance         v7, Ljava/lang/IllegalStateException;
+	28      (00000068) const-string         v0, "closed"
+	29      (0000006c) invoke-direct        v7, v0, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	30      (00000072) throw                v7
+

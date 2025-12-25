@@ -1,0 +1,48 @@
+# Lu/f;->a(Lu/b;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:u.b
+#
+# - return:void
+
+a-BB@0x0 : [ a-BB@0x2 ]
+	0       (00000000) const/4              v0, 0
+
+a-BB@0x2 : [ a-BB@0xa a-BB@0x1e ]
+	1       (00000002) iget                 v1, v3, Lu/f;->p I
+	2       (00000006) if-ge                v0, v1, +00ch
+
+a-BB@0xa : [ a-BB@0x16 a-BB@0x18 ]
+	3       (0000000a) iget-object          v1, v3, Lu/f;->o [Lu/b;
+	4       (0000000e) aget-object          v1, v1, v0
+	5       (00000012) if-ne                v1, v4, +003h
+
+a-BB@0x16 : 
+	6       (00000016) return-void          
+
+a-BB@0x18 : [ a-BB@0x2 ]
+	7       (00000018) add-int/lit8         v0, v0, 1
+	8       (0000001c) goto                 -dh
+
+a-BB@0x1e : [ a-BB@0x28 a-BB@0x3e ]
+	9       (0000001e) iget-object          v0, v3, Lu/f;->o [Lu/b;
+	10      (00000022) array-length         v2, v0
+	11      (00000024) if-lt                v1, v2, +00dh
+
+a-BB@0x28 : [ a-BB@0x3e ]
+	12      (00000028) array-length         v1, v0
+	13      (0000002a) mul-int/lit8         v1, v1, 2
+	14      (0000002e) invoke-static        v0, v1, Ljava/util/Arrays;->copyOf([Ljava/lang/Object; I)[Ljava/lang/Object;
+	15      (00000034) move-result-object   v0
+	16      (00000036) check-cast           v0, [Lu/b;
+	17      (0000003a) iput-object          v0, v3, Lu/f;->o [Lu/b;
+
+a-BB@0x3e : 
+	18      (0000003e) iget-object          v0, v3, Lu/f;->o [Lu/b;
+	19      (00000042) iget                 v1, v3, Lu/f;->p I
+	20      (00000046) aput-object          v4, v0, v1
+	21      (0000004a) add-int/lit8         v1, v1, 1
+	22      (0000004e) iput                 v1, v3, Lu/f;->p I
+	23      (00000052) return-void          
+

@@ -1,0 +1,83 @@
+# Lx8/g;->I(I)Lx8/j; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v8
+# - v9:int
+#
+# - return:x8.j
+
+I-BB@0x0 : [ I-BB@0x4 I-BB@0xa ]
+	0       (00000000) if-nez               v9, +005h
+
+I-BB@0x4 : 
+	1       (00000004) sget-object          v9, Lx8/j;->d Lx8/j;
+	2       (00000008) return-object        v9
+
+I-BB@0xa : [ I-BB@0x24 ]
+	3       (0000000a) iget-wide            v0, v8, Lx8/g;->b J
+	4       (0000000e) const-wide/16        v2, 0
+	5       (00000012) int-to-long          v4, v9
+	6       (00000014) invoke-static/range  v0 ... v5, Lx8/b;->e(J J J)V
+	7       (0000001a) iget-object          v0, v8, Lx8/g;->a Lx8/c0;
+	8       (0000001e) const/4              v1, 0
+	9       (00000020) move                 v2, v1
+	10      (00000022) move                 v3, v2
+
+I-BB@0x24 : [ I-BB@0x28 I-BB@0x58 ]
+	11      (00000024) if-ge                v2, v9, +01ah
+
+I-BB@0x28 : [ I-BB@0x3a I-BB@0x48 ]
+	12      (00000028) invoke-static        v0, Lkotlin/jvm/internal/j;->b(Ljava/lang/Object;)V
+	13      (0000002e) iget                 v4, v0, Lx8/c0;->c I
+	14      (00000032) iget                 v5, v0, Lx8/c0;->b I
+	15      (00000036) if-eq                v4, v5, +009h
+
+I-BB@0x3a : [ I-BB@0x24 ]
+	16      (0000003a) sub-int/2addr        v4, v5
+	17      (0000003c) add-int/2addr        v2, v4
+	18      (0000003e) add-int/lit8         v3, v3, 1
+	19      (00000042) iget-object          v0, v0, Lx8/c0;->f Lx8/c0;
+	20      (00000046) goto                 -11h
+
+I-BB@0x48 : 
+	21      (00000048) new-instance         v9, Ljava/lang/AssertionError;
+	22      (0000004c) const-string         v0, "s.limit == s.pos"
+	23      (00000050) invoke-direct        v9, v0, Ljava/lang/AssertionError;-><init>(Ljava/lang/Object;)V
+	24      (00000056) throw                v9
+
+I-BB@0x58 : [ I-BB@0x6c ]
+	25      (00000058) new-array            v0, v3, [[B
+	26      (0000005c) mul-int/lit8         v2, v3, 2
+	27      (00000060) new-array            v2, v2, [I
+	28      (00000064) iget-object          v4, v8, Lx8/g;->a Lx8/c0;
+	29      (00000068) move-object          v5, v4
+	30      (0000006a) move                 v4, v1
+
+I-BB@0x6c : [ I-BB@0x70 I-BB@0xb0 ]
+	31      (0000006c) if-ge                v1, v9, +022h
+
+I-BB@0x70 : [ I-BB@0x6c ]
+	32      (00000070) invoke-static        v5, Lkotlin/jvm/internal/j;->b(Ljava/lang/Object;)V
+	33      (00000076) iget-object          v6, v5, Lx8/c0;->a [B
+	34      (0000007a) aput-object          v6, v0, v4
+	35      (0000007e) iget                 v6, v5, Lx8/c0;->c I
+	36      (00000082) iget                 v7, v5, Lx8/c0;->b I
+	37      (00000086) sub-int/2addr        v6, v7
+	38      (00000088) add-int/2addr        v1, v6
+	39      (0000008a) invoke-static        v1, v9, Ljava/lang/Math;->min(I I)I
+	40      (00000090) move-result          v6
+	41      (00000092) aput                 v6, v2, v4
+	42      (00000096) add-int              v6, v4, v3
+	43      (0000009a) iget                 v7, v5, Lx8/c0;->b I
+	44      (0000009e) aput                 v7, v2, v6
+	45      (000000a2) const/4              v6, 1
+	46      (000000a4) iput-boolean         v6, v5, Lx8/c0;->d Z
+	47      (000000a8) add-int/2addr        v4, v6
+	48      (000000aa) iget-object          v5, v5, Lx8/c0;->f Lx8/c0;
+	49      (000000ae) goto                 -21h
+
+I-BB@0xb0 : 
+	50      (000000b0) new-instance         v9, Lx8/e0;
+	51      (000000b4) invoke-direct        v9, v0, v2, Lx8/e0;-><init>([[B [I)V
+	52      (000000ba) return-object        v9
+

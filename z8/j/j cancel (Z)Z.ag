@@ -1,0 +1,20 @@
+# Lz8/j;->cancel(Z)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:boolean
+#
+# - return:boolean
+
+cancel-BB@0x0 : [ cancel-BB@0x4 cancel-BB@0xe ]
+	0       (00000000) if-eqz               v2, +007h
+
+cancel-BB@0x4 : [ cancel-BB@0xe ]
+	1       (00000004) iget-object          v0, v1, Lz8/j;->a Lz8/z;
+	2       (00000008) invoke-virtual       v0, Lz8/z;->cancel()V
+
+cancel-BB@0xe : 
+	3       (0000000e) invoke-super         v1, v2, Ljava/util/concurrent/CompletableFuture;->cancel(Z)Z
+	4       (00000014) move-result          v2
+	5       (00000016) return               v2
+

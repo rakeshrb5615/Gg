@@ -1,0 +1,77 @@
+# Lz8/s0;->c(Ljava/lang/reflect/Type; [Ljava/lang/annotation/Annotation;)Lz8/m; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:java.lang.reflect.Type
+# - v7:java.lang.annotation.Annotation[]
+#
+# - return:z8.m
+
+c-BB@0x0 : [ c-BB@0x30 ]
+	0       (00000000) const-string         v0, "type == null"
+	1       (00000004) invoke-static        v6, v0, Ljava/util/Objects;->requireNonNull(Ljava/lang/Object; Ljava/lang/String;)Ljava/lang/Object;
+	2       (0000000a) const-string         v0, "annotations == null"
+	3       (0000000e) invoke-static        v7, v0, Ljava/util/Objects;->requireNonNull(Ljava/lang/Object; Ljava/lang/String;)Ljava/lang/Object;
+	4       (00000014) iget-object          v0, v5, Lz8/s0;->d Ljava/util/List;
+	5       (00000018) const/4              v1, 0
+	6       (0000001a) invoke-interface     v0, v1, Ljava/util/List;->indexOf(Ljava/lang/Object;)I
+	7       (00000020) move-result          v1
+	8       (00000022) add-int/lit8         v1, v1, 1
+	9       (00000026) invoke-interface     v0, Ljava/util/List;->size()I
+	10      (0000002c) move-result          v2
+	11      (0000002e) move                 v3, v1
+
+c-BB@0x30 : [ c-BB@0x34 c-BB@0x54 ]
+	12      (00000030) if-ge                v3, v2, +012h
+
+c-BB@0x34 : [ c-BB@0x4c c-BB@0x4e ]
+	13      (00000034) invoke-interface     v0, v3, Ljava/util/List;->get(I)Ljava/lang/Object;
+	14      (0000003a) move-result-object   v4
+	15      (0000003c) check-cast           v4, Lz8/l;
+	16      (00000040) invoke-virtual       v4, v6, v7, v5, Lz8/l;->b(Ljava/lang/reflect/Type; [Ljava/lang/annotation/Annotation; Lz8/s0;)Lz8/m;
+	17      (00000046) move-result-object   v4
+	18      (00000048) if-eqz               v4, +003h
+
+c-BB@0x4c : 
+	19      (0000004c) return-object        v4
+
+c-BB@0x4e : [ c-BB@0x30 ]
+	20      (0000004e) add-int/lit8         v3, v3, 1
+	21      (00000052) goto                 -11h
+
+c-BB@0x54 : [ c-BB@0x7a ]
+	22      (00000054) new-instance         v7, Ljava/lang/StringBuilder;
+	23      (00000058) const-string         v2, "Could not locate ResponseBody converter for "
+	24      (0000005c) invoke-direct        v7, v2, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	25      (00000062) invoke-virtual       v7, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	26      (00000068) const-string         v6, ".
+  Tried:"
+	27      (0000006c) invoke-virtual       v7, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	28      (00000072) invoke-interface     v0, Ljava/util/List;->size()I
+	29      (00000078) move-result          v6
+
+c-BB@0x7a : [ c-BB@0x7e c-BB@0xb0 ]
+	30      (0000007a) if-ge                v1, v6, +01bh
+
+c-BB@0x7e : [ c-BB@0x7a ]
+	31      (0000007e) const-string         v2, "
+   * "
+	32      (00000082) invoke-virtual       v7, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	33      (00000088) invoke-interface     v0, v1, Ljava/util/List;->get(I)Ljava/lang/Object;
+	34      (0000008e) move-result-object   v2
+	35      (00000090) check-cast           v2, Lz8/l;
+	36      (00000094) invoke-virtual       v2, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	37      (0000009a) move-result-object   v2
+	38      (0000009c) invoke-virtual       v2, Ljava/lang/Class;->getName()Ljava/lang/String;
+	39      (000000a2) move-result-object   v2
+	40      (000000a4) invoke-virtual       v7, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	41      (000000aa) add-int/lit8         v1, v1, 1
+	42      (000000ae) goto                 -1ah
+
+c-BB@0xb0 : 
+	43      (000000b0) new-instance         v6, Ljava/lang/IllegalArgumentException;
+	44      (000000b4) invoke-virtual       v7, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	45      (000000ba) move-result-object   v7
+	46      (000000bc) invoke-direct        v6, v7, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	47      (000000c2) throw                v6
+

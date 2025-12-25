@@ -1,0 +1,91 @@
+# Ly1/c;->p(Ljava/io/ByteArrayOutputStream; Ly1/a;)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v7
+# - v8:java.io.ByteArrayOutputStream
+# - v9:y1.a
+#
+# - return:void
+
+p-BB@0x0 : [ p-BB@0x14 ]
+	0       (00000000) invoke-static        v8, v9, Ly1/c;->s(Ljava/io/ByteArrayOutputStream; Ly1/a;)V
+	1       (00000006) iget                 v0, v9, Ly1/a;->g I
+	2       (0000000a) iget-object          v1, v9, Ly1/a;->h [I
+	3       (0000000e) array-length         v2, v1
+	4       (00000010) const/4              v3, 0
+	5       (00000012) move                 v4, v3
+
+p-BB@0x14 : [ p-BB@0x18 p-BB@0x2e ]
+	6       (00000014) if-ge                v3, v2, +00dh
+
+p-BB@0x18 : [ p-BB@0x14 ]
+	7       (00000018) aget                 v5, v1, v3
+	8       (0000001c) sub-int              v4, v5, v4
+	9       (00000020) invoke-static        v8, v4, Ly1/c;->v(Ljava/io/ByteArrayOutputStream; I)V
+	10      (00000026) add-int/lit8         v3, v3, 1
+	11      (0000002a) move                 v4, v5
+	12      (0000002c) goto                 -ch
+
+p-BB@0x2e : [ p-BB@0x56 ]
+	13      (0000002e) mul-int/lit8         v1, v0, 2
+	14      (00000032) add-int/lit8         v1, v1, 7
+	15      (00000036) and-int/lit8         v1, v1, -8
+	16      (0000003a) div-int/lit8         v1, v1, 8
+	17      (0000003e) new-array            v1, v1, [B
+	18      (00000042) iget-object          v9, v9, Ly1/a;->i Ljava/util/TreeMap;
+	19      (00000046) invoke-virtual       v9, Ljava/util/TreeMap;->entrySet()Ljava/util/Set;
+	20      (0000004c) move-result-object   v9
+	21      (0000004e) invoke-interface     v9, Ljava/util/Set;->iterator()Ljava/util/Iterator;
+	22      (00000054) move-result-object   v9
+
+p-BB@0x56 : [ p-BB@0x62 p-BB@0xdc ]
+	23      (00000056) invoke-interface     v9, Ljava/util/Iterator;->hasNext()Z
+	24      (0000005c) move-result          v2
+	25      (0000005e) if-eqz               v2, +03fh
+
+p-BB@0x62 : [ p-BB@0xa0 p-BB@0xb8 ]
+	26      (00000062) invoke-interface     v9, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	27      (00000068) move-result-object   v2
+	28      (0000006a) check-cast           v2, Ljava/util/Map$Entry;
+	29      (0000006e) invoke-interface     v2, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
+	30      (00000074) move-result-object   v3
+	31      (00000076) check-cast           v3, Ljava/lang/Integer;
+	32      (0000007a) invoke-virtual       v3, Ljava/lang/Integer;->intValue()I
+	33      (00000080) move-result          v3
+	34      (00000082) invoke-interface     v2, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
+	35      (00000088) move-result-object   v2
+	36      (0000008a) check-cast           v2, Ljava/lang/Integer;
+	37      (0000008e) invoke-virtual       v2, Ljava/lang/Integer;->intValue()I
+	38      (00000094) move-result          v2
+	39      (00000096) and-int/lit8         v4, v2, 2
+	40      (0000009a) const/4              v5, 1
+	41      (0000009c) if-eqz               v4, +00eh
+
+p-BB@0xa0 : [ p-BB@0xb8 ]
+	42      (000000a0) div-int/lit8         v4, v3, 8
+	43      (000000a4) aget-byte            v6, v1, v4
+	44      (000000a8) rem-int/lit8         v7, v3, 8
+	45      (000000ac) shl-int              v7, v5, v7
+	46      (000000b0) or-int/2addr         v6, v7
+	47      (000000b2) int-to-byte          v6, v6
+	48      (000000b4) aput-byte            v6, v1, v4
+
+p-BB@0xb8 : [ p-BB@0xc0 p-BB@0x56 ]
+	49      (000000b8) and-int/lit8         v2, v2, 4
+	50      (000000bc) if-eqz               v2, -033h
+
+p-BB@0xc0 : [ p-BB@0x56 ]
+	51      (000000c0) add-int/2addr        v3, v0
+	52      (000000c2) div-int/lit8         v2, v3, 8
+	53      (000000c6) aget-byte            v4, v1, v2
+	54      (000000ca) rem-int/lit8         v3, v3, 8
+	55      (000000ce) shl-int              v3, v5, v3
+	56      (000000d2) or-int/2addr         v3, v4
+	57      (000000d4) int-to-byte          v3, v3
+	58      (000000d6) aput-byte            v3, v1, v2
+	59      (000000da) goto                 -42h
+
+p-BB@0xdc : 
+	60      (000000dc) invoke-virtual       v8, v1, Ljava/io/OutputStream;->write([B)V
+	61      (000000e2) return-void          
+

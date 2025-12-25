@@ -1,0 +1,35 @@
+# Lu/c;->s()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v3
+#
+# - return:void
+
+s-BB@0x0 : [ s-BB@0x2 ]
+	0       (00000000) const/4              v0, 0
+
+s-BB@0x2 : [ s-BB@0xa s-BB@0x38 ]
+	1       (00000002) iget                 v1, v3, Lu/c;->k I
+	2       (00000006) if-ge                v0, v1, +019h
+
+s-BB@0xa : [ s-BB@0x16 s-BB@0x28 ]
+	3       (0000000a) iget-object          v1, v3, Lu/c;->g [Lu/b;
+	4       (0000000e) aget-object          v1, v1, v0
+	5       (00000012) if-eqz               v1, +00bh
+
+s-BB@0x16 : [ s-BB@0x28 ]
+	6       (00000016) iget-object          v2, v3, Lu/c;->m Lb8/g;
+	7       (0000001a) iget-object          v2, v2, Lb8/g;->b Ljava/lang/Object;
+	8       (0000001e) check-cast           v2, Lp0/c;
+	9       (00000022) invoke-virtual       v2, v1, Lp0/c;->b(Lu/b;)V
+
+s-BB@0x28 : [ s-BB@0x2 ]
+	10      (00000028) iget-object          v1, v3, Lu/c;->g [Lu/b;
+	11      (0000002c) const/4              v2, 0
+	12      (0000002e) aput-object          v2, v1, v0
+	13      (00000032) add-int/lit8         v0, v0, 1
+	14      (00000036) goto                 -1ah
+
+s-BB@0x38 : 
+	15      (00000038) return-void          
+

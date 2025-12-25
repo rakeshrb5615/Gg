@@ -1,0 +1,46 @@
+# Ly3/h;->e()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v3
+#
+# - return:void
+
+e-BB@0x0 : [ e-BB@0xc e-BB@0xe ]
+	0       (00000000) iget-object          v0, v3, Ly3/h;->i Ly3/g;
+	1       (00000004) iget-object          v1, v3, Ly3/h;->s Landroid/view/accessibility/AccessibilityManager;
+	2       (00000008) if-nez               v1, +003h
+
+e-BB@0xc : [ e-BB@0x28 ]
+	3       (0000000c) goto                 +eh
+
+e-BB@0xe : [ e-BB@0x1c e-BB@0x3c ]
+	4       (0000000e) const/4              v2, 1
+	5       (00000010) invoke-virtual       v1, v2, Landroid/view/accessibility/AccessibilityManager;->getEnabledAccessibilityServiceList(I)Ljava/util/List;
+	6       (00000016) move-result-object   v1
+	7       (00000018) if-eqz               v1, +012h
+
+e-BB@0x1c : [ e-BB@0x28 e-BB@0x3c ]
+	8       (0000001c) invoke-interface     v1, Ljava/util/List;->isEmpty()Z
+	9       (00000022) move-result          v1
+	10      (00000024) if-eqz               v1, +00ch
+
+e-BB@0x28 : 
+	11      (00000028) new-instance         v1, Ly3/d;
+	12      (0000002c) const/4              v2, 2
+	13      (0000002e) invoke-direct        v1, v3, v2, Ly3/d;-><init>(Ly3/h; I)V
+	14      (00000034) invoke-virtual       v0, v1, Landroid/view/View;->post(Ljava/lang/Runnable;)Z
+	15      (0000003a) return-void          
+
+e-BB@0x3c : [ e-BB@0x48 e-BB@0x50 ]
+	16      (0000003c) invoke-virtual       v0, Landroid/view/View;->getParent()Landroid/view/ViewParent;
+	17      (00000042) move-result-object   v1
+	18      (00000044) if-eqz               v1, +006h
+
+e-BB@0x48 : [ e-BB@0x50 ]
+	19      (00000048) const/4              v1, 0
+	20      (0000004a) invoke-virtual       v0, v1, Landroid/view/View;->setVisibility(I)V
+
+e-BB@0x50 : 
+	21      (00000050) invoke-virtual       v3, Ly3/h;->d()V
+	22      (00000056) return-void          
+

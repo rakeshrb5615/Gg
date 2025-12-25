@@ -1,0 +1,30 @@
+# Lv3/b;-><init>(F Lv3/d;)V [access_flags=public constructor]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:float
+# - v3:v3.d
+#
+# - return:void
+
+<init>-BB@0x0 : [ <init>-BB@0x6 ]
+	0       (00000000) invoke-direct        v1, Ljava/lang/Object;-><init>()V
+
+<init>-BB@0x6 : [ <init>-BB@0xe <init>-BB@0x24 ]
+	1       (00000006) instance-of          v0, v3, Lv3/b;
+	2       (0000000a) if-eqz               v0, +00dh
+
+<init>-BB@0xe : [ <init>-BB@0x6 ]
+	3       (0000000e) check-cast           v3, Lv3/b;
+	4       (00000012) iget-object          v3, v3, Lv3/b;->a Lv3/d;
+	5       (00000016) move-object          v0, v3
+	6       (00000018) check-cast           v0, Lv3/b;
+	7       (0000001c) iget                 v0, v0, Lv3/b;->b F
+	8       (00000020) add-float/2addr      v2, v0
+	9       (00000022) goto                 -eh
+
+<init>-BB@0x24 : 
+	10      (00000024) iput-object          v3, v1, Lv3/b;->a Lv3/d;
+	11      (00000028) iput                 v2, v1, Lv3/b;->b F
+	12      (0000002c) return-void          
+

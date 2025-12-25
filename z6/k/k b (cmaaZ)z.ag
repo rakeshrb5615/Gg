@@ -1,0 +1,90 @@
+# Lz6/k;->b(Ly6/c; Lw6/m; Ld7/a; Lx6/a; Z)Lw6/z; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:y6.c
+# - v4:w6.m
+# - v5:d7.a
+# - v6:x6.a
+# - v7:boolean
+#
+# - return:w6.z
+
+b-BB@0x0 : [ b-BB@0x34 b-BB@0x3a ]
+	0       (00000000) invoke-interface     v6, Lx6/a;->value()Ljava/lang/Class;
+	1       (00000006) move-result-object   v0
+	2       (00000008) new-instance         v1, Ld7/a;
+	3       (0000000c) invoke-direct        v1, v0, Ld7/a;-><init>(Ljava/lang/reflect/Type;)V
+	4       (00000012) const/4              v0, 1
+	5       (00000014) invoke-virtual       v3, v1, v0, Ly6/c;->b(Ld7/a; Z)Ly6/p;
+	6       (0000001a) move-result-object   v3
+	7       (0000001c) invoke-interface     v3, Ly6/p;->c()Ljava/lang/Object;
+	8       (00000022) move-result-object   v3
+	9       (00000024) invoke-interface     v6, Lx6/a;->nullSafe()Z
+	10      (0000002a) move-result          v6
+	11      (0000002c) instance-of          v0, v3, Lw6/z;
+	12      (00000030) if-eqz               v0, +005h
+
+b-BB@0x34 : [ b-BB@0x6c ]
+	13      (00000034) check-cast           v3, Lw6/z;
+	14      (00000038) goto                 +1ah
+
+b-BB@0x3a : [ b-BB@0x42 b-BB@0x7e ]
+	15      (0000003a) instance-of          v0, v3, Lw6/a0;
+	16      (0000003e) if-eqz               v0, +020h
+
+b-BB@0x42 : [ b-BB@0x4a b-BB@0x64 ]
+	17      (00000042) check-cast           v3, Lw6/a0;
+	18      (00000046) if-eqz               v7, +00fh
+
+b-BB@0x4a : [ b-BB@0x62 b-BB@0x64 ]
+	19      (0000004a) iget-object          v7, v5, Ld7/a;->a Ljava/lang/Class;
+	20      (0000004e) iget-object          v0, v2, Lz6/k;->b Ljava/util/concurrent/ConcurrentHashMap;
+	21      (00000052) invoke-virtual       v0, v7, v3, Ljava/util/concurrent/ConcurrentHashMap;->putIfAbsent(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	22      (00000058) move-result-object   v7
+	23      (0000005a) check-cast           v7, Lw6/a0;
+	24      (0000005e) if-eqz               v7, +003h
+
+b-BB@0x62 : [ b-BB@0x64 ]
+	25      (00000062) move-object          v3, v7
+
+b-BB@0x64 : [ b-BB@0x6c ]
+	26      (00000064) invoke-interface     v3, v4, v5, Lw6/a0;->a(Lw6/m; Ld7/a;)Lw6/z;
+	27      (0000006a) move-result-object   v3
+
+b-BB@0x6c : [ b-BB@0x70 b-BB@0x7c ]
+	28      (0000006c) if-eqz               v3, +008h
+
+b-BB@0x70 : [ b-BB@0x74 b-BB@0x7c ]
+	29      (00000070) if-eqz               v6, +006h
+
+b-BB@0x74 : [ b-BB@0x7c ]
+	30      (00000074) invoke-virtual       v3, Lw6/z;->a()Lw6/y;
+	31      (0000007a) move-result-object   v3
+
+b-BB@0x7c : 
+	32      (0000007c) return-object        v3
+
+b-BB@0x7e : 
+	33      (0000007e) new-instance         v4, Ljava/lang/IllegalArgumentException;
+	34      (00000082) new-instance         v6, Ljava/lang/StringBuilder;
+	35      (00000086) const-string         v7, "Invalid attempt to bind an instance of "
+	36      (0000008a) invoke-direct        v6, v7, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	37      (00000090) invoke-virtual       v3, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	38      (00000096) move-result-object   v3
+	39      (00000098) invoke-virtual       v3, Ljava/lang/Class;->getName()Ljava/lang/String;
+	40      (0000009e) move-result-object   v3
+	41      (000000a0) invoke-virtual       v6, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	42      (000000a6) const-string         v3, " as a @JsonAdapter for "
+	43      (000000aa) invoke-virtual       v6, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	44      (000000b0) iget-object          v3, v5, Ld7/a;->b Ljava/lang/reflect/Type;
+	45      (000000b4) invoke-static        v3, Ly6/i;->k(Ljava/lang/reflect/Type;)Ljava/lang/String;
+	46      (000000ba) move-result-object   v3
+	47      (000000bc) invoke-virtual       v6, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	48      (000000c2) const-string         v3, ". @JsonAdapter value must be a TypeAdapter, TypeAdapterFactory, JsonSerializer or JsonDeserializer."
+	49      (000000c6) invoke-virtual       v6, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	50      (000000cc) invoke-virtual       v6, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	51      (000000d2) move-result-object   v3
+	52      (000000d4) invoke-direct        v4, v3, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	53      (000000da) throw                v4
+

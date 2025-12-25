@@ -1,0 +1,28 @@
+# Lu/f;->e(Lu/c; Lu/b;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:u.c
+# - v6:u.b
+#
+# - return:void
+
+e-BB@0x0 : [ e-BB@0x8 ]
+	0       (00000000) iget                 v0, v4, Lu/f;->p I
+	1       (00000004) const/4              v1, 0
+	2       (00000006) move                 v2, v1
+
+e-BB@0x8 : [ e-BB@0xc e-BB@0x20 ]
+	3       (00000008) if-ge                v2, v0, +00ch
+
+e-BB@0xc : [ e-BB@0x8 ]
+	4       (0000000c) iget-object          v3, v4, Lu/f;->o [Lu/b;
+	5       (00000010) aget-object          v3, v3, v2
+	6       (00000014) invoke-virtual       v3, v5, v6, v1, Lu/b;->i(Lu/c; Lu/b; Z)V
+	7       (0000001a) add-int/lit8         v2, v2, 1
+	8       (0000001e) goto                 -bh
+
+e-BB@0x20 : 
+	9       (00000020) iput                 v1, v4, Lu/f;->p I
+	10      (00000024) return-void          
+

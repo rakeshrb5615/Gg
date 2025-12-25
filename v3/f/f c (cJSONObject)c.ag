@@ -1,0 +1,101 @@
+# Lv3/f;->c(Lc5/c; Lorg/json/JSONObject;)Lo5/c; [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v16
+# - v17:c5.c
+# - v18:org.json.JSONObject
+#
+# - return:o5.c
+
+c-BB@0x0 : [ c-BB@0x6e c-BB@0x8c ]
+	0       (00000000) move-object/from16   v0, v18
+	1       (00000004) const-string         v1, "settings_version"
+	2       (00000008) const/4              v2, 0
+	3       (0000000a) invoke-virtual       v0, v1, v2, Lorg/json/JSONObject;->optInt(Ljava/lang/String; I)I
+	4       (00000010) const-string         v1, "cache_duration"
+	5       (00000014) const/16             v3, 3600
+	6       (00000018) invoke-virtual       v0, v1, v3, Lorg/json/JSONObject;->optInt(Ljava/lang/String; I)I
+	7       (0000001e) move-result          v1
+	8       (00000020) const-string         v3, "on_demand_upload_rate_per_minute"
+	9       (00000024) const-wide/high16    v4, 4621819117588971520
+	10      (00000028) invoke-virtual       v0, v3, v4, v5, Lorg/json/JSONObject;->optDouble(Ljava/lang/String; D)D
+	11      (0000002e) move-result-wide     v11
+	12      (00000030) const-string         v3, "on_demand_backoff_base"
+	13      (00000034) const-wide           v4, 4608083138725491507
+	14      (0000003e) invoke-virtual       v0, v3, v4, v5, Lorg/json/JSONObject;->optDouble(Ljava/lang/String; D)D
+	15      (00000044) move-result-wide     v13
+	16      (00000046) const-string         v3, "on_demand_backoff_step_duration_seconds"
+	17      (0000004a) const/16             v4, 60
+	18      (0000004e) invoke-virtual       v0, v3, v4, Lorg/json/JSONObject;->optInt(Ljava/lang/String; I)I
+	19      (00000054) move-result          v15
+	20      (00000056) const-string         v3, "session"
+	21      (0000005a) invoke-virtual       v0, v3, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
+	22      (00000060) move-result          v4
+	23      (00000062) const/16             v5, 8
+	24      (00000066) const-string         v6, "max_custom_exception_events"
+	25      (0000006a) if-eqz               v4, +011h
+
+c-BB@0x6e : [ c-BB@0x88 ]
+	26      (0000006e) invoke-virtual       v0, v3, Lorg/json/JSONObject;->getJSONObject(Ljava/lang/String;)Lorg/json/JSONObject;
+	27      (00000074) move-result-object   v3
+	28      (00000076) invoke-virtual       v3, v6, v5, Lorg/json/JSONObject;->optInt(Ljava/lang/String; I)I
+	29      (0000007c) move-result          v3
+	30      (0000007e) new-instance         v4, Lo5/b;
+	31      (00000082) invoke-direct        v4, v3, Lo5/b;-><init>(I)V
+
+c-BB@0x88 : [ c-BB@0xaa ]
+	32      (00000088) move-object          v9, v4
+	33      (0000008a) goto                 +10h
+
+c-BB@0x8c : [ c-BB@0x88 ]
+	34      (0000008c) new-instance         v3, Lorg/json/JSONObject;
+	35      (00000090) invoke-direct        v3, Lorg/json/JSONObject;-><init>()V
+	36      (00000096) invoke-virtual       v3, v6, v5, Lorg/json/JSONObject;->optInt(Ljava/lang/String; I)I
+	37      (0000009c) move-result          v3
+	38      (0000009e) new-instance         v4, Lo5/b;
+	39      (000000a2) invoke-direct        v4, v3, Lo5/b;-><init>(I)V
+	40      (000000a8) goto                 -10h
+
+c-BB@0xaa : [ c-BB@0xf8 c-BB@0x104 ]
+	41      (000000aa) const-string         v3, "features"
+	42      (000000ae) invoke-virtual       v0, v3, Lorg/json/JSONObject;->getJSONObject(Ljava/lang/String;)Lorg/json/JSONObject;
+	43      (000000b4) move-result-object   v3
+	44      (000000b6) const-string         v4, "collect_reports"
+	45      (000000ba) const/4              v5, 1
+	46      (000000bc) invoke-virtual       v3, v4, v5, Lorg/json/JSONObject;->optBoolean(Ljava/lang/String; Z)Z
+	47      (000000c2) move-result          v4
+	48      (000000c4) const-string         v5, "collect_anrs"
+	49      (000000c8) invoke-virtual       v3, v5, v2, Lorg/json/JSONObject;->optBoolean(Ljava/lang/String; Z)Z
+	50      (000000ce) move-result          v5
+	51      (000000d0) const-string         v6, "collect_build_ids"
+	52      (000000d4) invoke-virtual       v3, v6, v2, Lorg/json/JSONObject;->optBoolean(Ljava/lang/String; Z)Z
+	53      (000000da) move-result          v2
+	54      (000000dc) new-instance         v10, Lo5/a;
+	55      (000000e0) invoke-direct        v10, v4, v5, v2, Lo5/a;-><init>(Z Z Z)V
+	56      (000000e6) int-to-long          v1, v1
+	57      (000000e8) const-string         v3, "expires_at"
+	58      (000000ec) invoke-virtual       v0, v3, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
+	59      (000000f2) move-result          v4
+	60      (000000f4) if-eqz               v4, +008h
+
+c-BB@0xf8 : [ c-BB@0x100 ]
+	61      (000000f8) invoke-virtual       v0, v3, Lorg/json/JSONObject;->optLong(Ljava/lang/String;)J
+	62      (000000fe) move-result-wide     v0
+
+c-BB@0x100 : [ c-BB@0x118 ]
+	63      (00000100) move-wide            v7, v0
+	64      (00000102) goto                 +bh
+
+c-BB@0x104 : [ c-BB@0x100 ]
+	65      (00000104) invoke-static        Ljava/lang/System;->currentTimeMillis()J
+	66      (0000010a) move-result-wide     v3
+	67      (0000010c) const-wide/16        v5, 1000
+	68      (00000110) mul-long/2addr       v1, v5
+	69      (00000112) add-long             v0, v1, v3
+	70      (00000116) goto                 -bh
+
+c-BB@0x118 : 
+	71      (00000118) new-instance         v6, Lo5/c;
+	72      (0000011c) invoke-direct/range  v6 ... v15, Lo5/c;-><init>(J Lo5/b; Lo5/a; D D I)V
+	73      (00000122) return-object        v6
+

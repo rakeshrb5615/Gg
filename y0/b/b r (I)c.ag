@@ -1,0 +1,68 @@
+# Ly0/b;->r(I)Lr0/c; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:int
+#
+# - return:r0.c
+
+r-BB@0x0 : [ r-BB@0x6 r-BB@0x94 ]
+	0       (00000000) const/4              v0, -1
+	1       (00000002) if-ne                v7, v0, +049h
+
+r-BB@0x6 : [ r-BB@0x42 r-BB@0x60 ]
+	2       (00000006) iget-object          v7, v6, Ly0/b;->i Landroid/view/View;
+	3       (0000000a) invoke-static        v7, Landroid/view/accessibility/AccessibilityNodeInfo;->obtain(Landroid/view/View;)Landroid/view/accessibility/AccessibilityNodeInfo;
+	4       (00000010) move-result-object   v0
+	5       (00000012) new-instance         v1, Lr0/c;
+	6       (00000016) invoke-direct        v1, v0, Lr0/c;-><init>(Landroid/view/accessibility/AccessibilityNodeInfo;)V
+	7       (0000001c) sget-object          v2, Lq0/q0;->a Ljava/util/WeakHashMap;
+	8       (00000020) invoke-virtual       v7, v0, Landroid/view/View;->onInitializeAccessibilityNodeInfo(Landroid/view/accessibility/AccessibilityNodeInfo;)V
+	9       (00000026) new-instance         v2, Ljava/util/ArrayList;
+	10      (0000002a) invoke-direct        v2, Ljava/util/ArrayList;-><init>()V
+	11      (00000030) invoke-virtual       v6, v2, Ly0/b;->o(Ljava/util/ArrayList;)V
+	12      (00000036) invoke-virtual       v0, Landroid/view/accessibility/AccessibilityNodeInfo;->getChildCount()I
+	13      (0000003c) move-result          v0
+	14      (0000003e) if-lez               v0, +011h
+
+r-BB@0x42 : [ r-BB@0x4e r-BB@0x50 ]
+	15      (00000042) invoke-virtual       v2, Ljava/util/ArrayList;->size()I
+	16      (00000048) move-result          v0
+	17      (0000004a) if-gtz               v0, +003h
+
+r-BB@0x4e : [ r-BB@0x60 ]
+	18      (0000004e) goto                 +9h
+
+r-BB@0x50 : 
+	19      (00000050) new-instance         v7, Ljava/lang/RuntimeException;
+	20      (00000054) const-string         v0, "Views cannot have both real and virtual children"
+	21      (00000058) invoke-direct        v7, v0, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
+	22      (0000005e) throw                v7
+
+r-BB@0x60 : [ r-BB@0x6a ]
+	23      (00000060) invoke-virtual       v2, Ljava/util/ArrayList;->size()I
+	24      (00000066) move-result          v0
+	25      (00000068) const/4              v3, 0
+
+r-BB@0x6a : [ r-BB@0x6e r-BB@0x92 ]
+	26      (0000006a) if-ge                v3, v0, +014h
+
+r-BB@0x6e : [ r-BB@0x6a ]
+	27      (0000006e) invoke-virtual       v2, v3, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	28      (00000074) move-result-object   v4
+	29      (00000076) check-cast           v4, Ljava/lang/Integer;
+	30      (0000007a) invoke-virtual       v4, Ljava/lang/Integer;->intValue()I
+	31      (00000080) move-result          v4
+	32      (00000082) iget-object          v5, v1, Lr0/c;->a Landroid/view/accessibility/AccessibilityNodeInfo;
+	33      (00000086) invoke-virtual       v5, v7, v4, Landroid/view/accessibility/AccessibilityNodeInfo;->addChild(Landroid/view/View; I)V
+	34      (0000008c) add-int/lit8         v3, v3, 1
+	35      (00000090) goto                 -13h
+
+r-BB@0x92 : 
+	36      (00000092) return-object        v1
+
+r-BB@0x94 : 
+	37      (00000094) invoke-virtual       v6, v7, Ly0/b;->l(I)Lr0/c;
+	38      (0000009a) move-result-object   v7
+	39      (0000009c) return-object        v7
+

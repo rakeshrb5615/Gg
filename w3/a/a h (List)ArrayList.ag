@@ -1,0 +1,50 @@
+# Lw3/a;->h(Ljava/util/List;)Ljava/util/ArrayList; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:java.util.List
+#
+# - return:java.util.ArrayList
+
+h-BB@0x0 : [ h-BB@0x4 h-BB@0x52 ]
+	0       (00000000) if-eqz               v2, +029h
+
+h-BB@0x4 : [ h-BB@0x10 h-BB@0x12 ]
+	1       (00000004) invoke-interface     v2, Ljava/util/List;->isEmpty()Z
+	2       (0000000a) move-result          v0
+	3       (0000000c) if-eqz               v0, +003h
+
+h-BB@0x10 : [ h-BB@0x52 ]
+	4       (00000010) goto                 +21h
+
+h-BB@0x12 : [ h-BB@0x24 ]
+	5       (00000012) new-instance         v0, Ljava/util/ArrayList;
+	6       (00000016) invoke-direct        v0, Ljava/util/ArrayList;-><init>()V
+	7       (0000001c) invoke-interface     v2, Ljava/util/List;->iterator()Ljava/util/Iterator;
+	8       (00000022) move-result-object   v2
+
+h-BB@0x24 : [ h-BB@0x30 h-BB@0x50 ]
+	9       (00000024) invoke-interface     v2, Ljava/util/Iterator;->hasNext()Z
+	10      (0000002a) move-result          v1
+	11      (0000002c) if-eqz               v1, +012h
+
+h-BB@0x30 : [ h-BB@0x48 h-BB@0x24 ]
+	12      (00000030) invoke-interface     v2, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	13      (00000036) move-result-object   v1
+	14      (00000038) check-cast           v1, Lcom/google/android/gms/internal/firebase-auth-api/zzahy;
+	15      (0000003c) invoke-static        v1, Lw3/a;->i(Lcom/google/android/gms/internal/firebase-auth-api/zzahy;)Ly4/p;
+	16      (00000042) move-result-object   v1
+	17      (00000044) if-eqz               v1, -010h
+
+h-BB@0x48 : [ h-BB@0x24 ]
+	18      (00000048) invoke-virtual       v0, v1, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	19      (0000004e) goto                 -15h
+
+h-BB@0x50 : 
+	20      (00000050) return-object        v0
+
+h-BB@0x52 : 
+	21      (00000052) new-instance         v2, Ljava/util/ArrayList;
+	22      (00000056) invoke-direct        v2, Ljava/util/ArrayList;-><init>()V
+	23      (0000005c) return-object        v2
+

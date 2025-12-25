@@ -1,0 +1,194 @@
+# Ly3/d;->run()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v8
+#
+# - return:void
+
+run-BB@0x0 : [ D:run-BB@0x12 0:run-BB@0x160 1:run-BB@0x158 ]
+	0       (00000000) iget                 v0, v8, Ly3/d;->a I
+	1       (00000004) iget-object          v1, v8, Ly3/d;->b Ly3/h;
+	2       (00000008) const/4              v2, 2
+	3       (0000000a) const/4              v3, 1
+	4       (0000000c) packed-switch        v0, +000011ah
+
+run-BB@0x12 : [ run-BB@0x1a run-BB@0x1e ]
+	5       (00000012) iget-object          v0, v1, Ly3/h;->i Ly3/g;
+	6       (00000016) if-nez               v0, +004h
+
+run-BB@0x1a : [ run-BB@0x156 ]
+	7       (0000001a) goto/16              +09eh
+
+run-BB@0x1e : [ run-BB@0x2c run-BB@0x32 ]
+	8       (0000001e) invoke-virtual       v0, Landroid/view/View;->getParent()Landroid/view/ViewParent;
+	9       (00000024) move-result-object   v4
+	10      (00000026) const/4              v5, 0
+	11      (00000028) if-eqz               v4, +005h
+
+run-BB@0x2c : [ run-BB@0x32 ]
+	12      (0000002c) invoke-virtual       v0, v5, Landroid/view/View;->setVisibility(I)V
+
+run-BB@0x32 : [ run-BB@0x3e run-BB@0xd8 ]
+	13      (00000032) invoke-virtual       v0, Ly3/g;->getAnimationMode()I
+	14      (00000038) move-result          v4
+	15      (0000003a) if-ne                v4, v3, +04fh
+
+run-BB@0x3e : [ run-BB@0x156 ]
+	16      (0000003e) new-array            v0, v2, [F
+	17      (00000042) fill-array-data      v0, +0000107h
+	18      (00000048) invoke-static        v0, Landroid/animation/ValueAnimator;->ofFloat([F)Landroid/animation/ValueAnimator;
+	19      (0000004e) move-result-object   v0
+	20      (00000050) iget-object          v4, v1, Ly3/h;->d Landroid/animation/TimeInterpolator;
+	21      (00000054) invoke-virtual       v0, v4, Landroid/animation/ValueAnimator;->setInterpolator(Landroid/animation/TimeInterpolator;)V
+	22      (0000005a) new-instance         v4, Ly3/b;
+	23      (0000005e) invoke-direct        v4, v1, v5, Ly3/b;-><init>(Ly3/h; I)V
+	24      (00000064) invoke-virtual       v0, v4, Landroid/animation/ValueAnimator;->addUpdateListener(Landroid/animation/ValueAnimator$AnimatorUpdateListener;)V
+	25      (0000006a) new-array            v4, v2, [F
+	26      (0000006e) fill-array-data      v4, +00000f9h
+	27      (00000074) invoke-static        v4, Landroid/animation/ValueAnimator;->ofFloat([F)Landroid/animation/ValueAnimator;
+	28      (0000007a) move-result-object   v4
+	29      (0000007c) iget-object          v6, v1, Ly3/h;->f Landroid/animation/TimeInterpolator;
+	30      (00000080) invoke-virtual       v4, v6, Landroid/animation/ValueAnimator;->setInterpolator(Landroid/animation/TimeInterpolator;)V
+	31      (00000086) new-instance         v6, Ly3/b;
+	32      (0000008a) invoke-direct        v6, v1, v3, Ly3/b;-><init>(Ly3/h; I)V
+	33      (00000090) invoke-virtual       v4, v6, Landroid/animation/ValueAnimator;->addUpdateListener(Landroid/animation/ValueAnimator$AnimatorUpdateListener;)V
+	34      (00000096) new-instance         v6, Landroid/animation/AnimatorSet;
+	35      (0000009a) invoke-direct        v6, Landroid/animation/AnimatorSet;-><init>()V
+	36      (000000a0) new-array            v2, v2, [Landroid/animation/Animator;
+	37      (000000a4) aput-object          v0, v2, v5
+	38      (000000a8) aput-object          v4, v2, v3
+	39      (000000ac) invoke-virtual       v6, v2, Landroid/animation/AnimatorSet;->playTogether([Landroid/animation/Animator;)V
+	40      (000000b2) iget                 v0, v1, Ly3/h;->a I
+	41      (000000b6) int-to-long          v2, v0
+	42      (000000b8) invoke-virtual       v6, v2, v3, Landroid/animation/AnimatorSet;->setDuration(J)Landroid/animation/AnimatorSet;
+	43      (000000be) new-instance         v0, Ly3/a;
+	44      (000000c2) const/4              v2, 3
+	45      (000000c4) invoke-direct        v0, v1, v2, Ly3/a;-><init>(Ly3/h; I)V
+	46      (000000ca) invoke-virtual       v6, v0, Landroid/animation/Animator;->addListener(Landroid/animation/Animator$AnimatorListener;)V
+	47      (000000d0) invoke-virtual       v6, Landroid/animation/AnimatorSet;->start()V
+	48      (000000d6) goto                 +40h
+
+run-BB@0xd8 : [ run-BB@0xf0 run-BB@0xfa ]
+	49      (000000d8) invoke-virtual       v0, Landroid/view/View;->getHeight()I
+	50      (000000de) move-result          v4
+	51      (000000e0) invoke-virtual       v0, Landroid/view/View;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
+	52      (000000e6) move-result-object   v6
+	53      (000000e8) instance-of          v7, v6, Landroid/view/ViewGroup$MarginLayoutParams;
+	54      (000000ec) if-eqz               v7, +007h
+
+run-BB@0xf0 : [ run-BB@0xfa ]
+	55      (000000f0) check-cast           v6, Landroid/view/ViewGroup$MarginLayoutParams;
+	56      (000000f4) iget                 v6, v6, Landroid/view/ViewGroup$MarginLayoutParams;->bottomMargin I
+	57      (000000f8) add-int/2addr        v4, v6
+
+run-BB@0xfa : [ run-BB@0x156 ]
+	58      (000000fa) int-to-float         v6, v4
+	59      (000000fc) invoke-virtual       v0, v6, Landroid/view/View;->setTranslationY(F)V
+	60      (00000102) new-instance         v0, Landroid/animation/ValueAnimator;
+	61      (00000106) invoke-direct        v0, Landroid/animation/ValueAnimator;-><init>()V
+	62      (0000010c) filled-new-array     v4, v5, [I
+	63      (00000112) move-result-object   v4
+	64      (00000114) invoke-virtual       v0, v4, Landroid/animation/ValueAnimator;->setIntValues([I)V
+	65      (0000011a) iget-object          v4, v1, Ly3/h;->e Landroid/animation/TimeInterpolator;
+	66      (0000011e) invoke-virtual       v0, v4, Landroid/animation/ValueAnimator;->setInterpolator(Landroid/animation/TimeInterpolator;)V
+	67      (00000124) iget                 v4, v1, Ly3/h;->c I
+	68      (00000128) int-to-long          v4, v4
+	69      (0000012a) invoke-virtual       v0, v4, v5, Landroid/animation/ValueAnimator;->setDuration(J)Landroid/animation/ValueAnimator;
+	70      (00000130) new-instance         v4, Ly3/a;
+	71      (00000134) invoke-direct        v4, v1, v3, Ly3/a;-><init>(Ly3/h; I)V
+	72      (0000013a) invoke-virtual       v0, v4, Landroid/animation/Animator;->addListener(Landroid/animation/Animator$AnimatorListener;)V
+	73      (00000140) new-instance         v3, Ly3/b;
+	74      (00000144) invoke-direct        v3, v1, v2, Ly3/b;-><init>(Ly3/h; I)V
+	75      (0000014a) invoke-virtual       v0, v3, Landroid/animation/ValueAnimator;->addUpdateListener(Landroid/animation/ValueAnimator$AnimatorUpdateListener;)V
+	76      (00000150) invoke-virtual       v0, Landroid/animation/ValueAnimator;->start()V
+
+run-BB@0x156 : 
+	77      (00000156) return-void          
+
+run-BB@0x158 : 
+	78      (00000158) invoke-virtual       v1, Ly3/h;->c()V
+	79      (0000015e) return-void          
+
+run-BB@0x160 : [ run-BB@0x168 run-BB@0x23e ]
+	80      (00000160) iget-object          v0, v1, Ly3/h;->i Ly3/g;
+	81      (00000164) if-eqz               v0, +06dh
+
+run-BB@0x168 : [ run-BB@0x188 run-BB@0x192 ]
+	82      (00000168) iget-object          v4, v1, Ly3/h;->h Landroid/content/Context;
+	83      (0000016c) const-string         v5, "window"
+	84      (00000170) invoke-virtual       v4, v5, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+	85      (00000176) move-result-object   v4
+	86      (00000178) check-cast           v4, Landroid/view/WindowManager;
+	87      (0000017c) sget                 v5, Landroid/os/Build$VERSION;->SDK_INT I
+	88      (00000180) const/16             v6, 30
+	89      (00000184) if-lt                v5, v6, +007h
+
+run-BB@0x188 : [ run-BB@0x1c4 ]
+	90      (00000188) invoke-static        v4, Lq3/n;->a(Landroid/view/WindowManager;)Landroid/graphics/Rect;
+	91      (0000018e) move-result-object   v4
+	92      (00000190) goto                 +1ah
+
+run-BB@0x192 : [ run-BB@0x1c4 ]
+	93      (00000192) invoke-interface     v4, Landroid/view/WindowManager;->getDefaultDisplay()Landroid/view/Display;
+	94      (00000198) move-result-object   v4
+	95      (0000019a) new-instance         v5, Landroid/graphics/Point;
+	96      (0000019e) invoke-direct        v5, Landroid/graphics/Point;-><init>()V
+	97      (000001a4) invoke-virtual       v4, v5, Landroid/view/Display;->getRealSize(Landroid/graphics/Point;)V
+	98      (000001aa) new-instance         v4, Landroid/graphics/Rect;
+	99      (000001ae) invoke-direct        v4, Landroid/graphics/Rect;-><init>()V
+	100     (000001b4) iget                 v6, v5, Landroid/graphics/Point;->x I
+	101     (000001b8) iput                 v6, v4, Landroid/graphics/Rect;->right I
+	102     (000001bc) iget                 v5, v5, Landroid/graphics/Point;->y I
+	103     (000001c0) iput                 v5, v4, Landroid/graphics/Rect;->bottom I
+
+run-BB@0x1c4 : [ run-BB@0x1fa run-BB@0x200 ]
+	104     (000001c4) invoke-virtual       v4, Landroid/graphics/Rect;->height()I
+	105     (000001ca) move-result          v4
+	106     (000001cc) new-array            v2, v2, [I
+	107     (000001d0) invoke-virtual       v0, v2, Landroid/view/View;->getLocationInWindow([I)V
+	108     (000001d6) aget                 v2, v2, v3
+	109     (000001da) invoke-virtual       v0, Landroid/view/View;->getHeight()I
+	110     (000001e0) move-result          v3
+	111     (000001e2) add-int/2addr        v3, v2
+	112     (000001e4) sub-int/2addr        v4, v3
+	113     (000001e6) invoke-virtual       v0, Landroid/view/View;->getTranslationY()F
+	114     (000001ec) move-result          v2
+	115     (000001ee) float-to-int         v2, v2
+	116     (000001f0) add-int/2addr        v4, v2
+	117     (000001f2) iget                 v2, v1, Ly3/h;->p I
+	118     (000001f6) if-lt                v4, v2, +005h
+
+run-BB@0x1fa : [ run-BB@0x23e ]
+	119     (000001fa) iput                 v2, v1, Ly3/h;->q I
+	120     (000001fe) goto                 +20h
+
+run-BB@0x200 : [ run-BB@0x210 run-BB@0x220 ]
+	121     (00000200) invoke-virtual       v0, Landroid/view/View;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
+	122     (00000206) move-result-object   v2
+	123     (00000208) instance-of          v3, v2, Landroid/view/ViewGroup$MarginLayoutParams;
+	124     (0000020c) if-nez               v3, +00ah
+
+run-BB@0x210 : [ run-BB@0x23e ]
+	125     (00000210) sget-object          v0, Ly3/h;->z Ljava/lang/String;
+	126     (00000214) const-string         v1, "Unable to apply gesture inset because layout params are not MarginLayoutParams"
+	127     (00000218) invoke-static        v0, v1, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+	128     (0000021e) goto                 +10h
+
+run-BB@0x220 : [ run-BB@0x23e ]
+	129     (00000220) iget                 v3, v1, Ly3/h;->p I
+	130     (00000224) iput                 v3, v1, Ly3/h;->q I
+	131     (00000228) check-cast           v2, Landroid/view/ViewGroup$MarginLayoutParams;
+	132     (0000022c) iget                 v1, v2, Landroid/view/ViewGroup$MarginLayoutParams;->bottomMargin I
+	133     (00000230) sub-int/2addr        v3, v4
+	134     (00000232) add-int/2addr        v3, v1
+	135     (00000234) iput                 v3, v2, Landroid/view/ViewGroup$MarginLayoutParams;->bottomMargin I
+	136     (00000238) invoke-virtual       v0, Landroid/view/View;->requestLayout()V
+
+run-BB@0x23e : 
+	137     (0000023e) return-void          
+
+run-BB@0x240 : 
+	138     (00000240) packed-switch-payload 0 1
+	139     (00000250) fill-array-data-payload b'\x00\x00\x00\x00\x00\x00\x80?' | \x00\x00\x00\x00\x00\x00\x80\x3f
+	140     (00000260) fill-array-data-payload b'\xcd\xccL?\x00\x00\x80?' | \xcd\xcc\x4c\x3f\x00\x00\x80\x3f
+

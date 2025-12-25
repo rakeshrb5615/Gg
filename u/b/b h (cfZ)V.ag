@@ -1,0 +1,47 @@
+# Lu/b;->h(Lu/c; Lu/f; Z)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:u.c
+# - v5:u.f
+# - v6:boolean
+#
+# - return:void
+
+h-BB@0x0 : [ h-BB@0x8 h-BB@0xa ]
+	0       (00000000) iget-boolean         v0, v5, Lu/f;->f Z
+	1       (00000004) if-nez               v0, +003h
+
+h-BB@0x8 : [ h-BB@0x54 ]
+	2       (00000008) goto                 +26h
+
+h-BB@0xa : [ h-BB@0x34 h-BB@0x3a ]
+	3       (0000000a) iget-object          v0, v3, Lu/b;->d Lu/a;
+	4       (0000000e) invoke-virtual       v0, v5, Lu/a;->c(Lu/f;)F
+	5       (00000014) move-result          v0
+	6       (00000016) iget                 v1, v3, Lu/b;->b F
+	7       (0000001a) iget                 v2, v5, Lu/f;->e F
+	8       (0000001e) mul-float/2addr      v2, v0
+	9       (00000020) add-float/2addr      v2, v1
+	10      (00000022) iput                 v2, v3, Lu/b;->b F
+	11      (00000026) iget-object          v0, v3, Lu/b;->d Lu/a;
+	12      (0000002a) invoke-virtual       v0, v5, v6, Lu/a;->h(Lu/f; Z)F
+	13      (00000030) if-eqz               v6, +005h
+
+h-BB@0x34 : [ h-BB@0x3a ]
+	14      (00000034) invoke-virtual       v5, v3, Lu/f;->b(Lu/b;)V
+
+h-BB@0x3a : [ h-BB@0x4a h-BB@0x54 ]
+	15      (0000003a) iget-object          v5, v3, Lu/b;->d Lu/a;
+	16      (0000003e) invoke-virtual       v5, Lu/a;->d()I
+	17      (00000044) move-result          v5
+	18      (00000046) if-nez               v5, +007h
+
+h-BB@0x4a : [ h-BB@0x54 ]
+	19      (0000004a) const/4              v5, 1
+	20      (0000004c) iput-boolean         v5, v3, Lu/b;->e Z
+	21      (00000050) iput-boolean         v5, v4, Lu/c;->b Z
+
+h-BB@0x54 : 
+	22      (00000054) return-void          
+

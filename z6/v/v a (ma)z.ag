@@ -1,0 +1,71 @@
+# Lz6/v;->a(Lw6/m; Ld7/a;)Lw6/z; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:w6.m
+# - v6:d7.a
+#
+# - return:w6.z
+
+a-BB@0x0 : [ a-BB@0x14 a-BB@0x18 ]
+	0       (00000000) iget-object          v0, v6, Ld7/a;->a Ljava/lang/Class;
+	1       (00000004) const-class          v1, Ljava/lang/Object;
+	2       (00000008) invoke-virtual       v1, v0, Ljava/lang/Class;->isAssignableFrom(Ljava/lang/Class;)Z
+	3       (0000000e) move-result          v1
+	4       (00000010) if-nez               v1, +004h
+
+a-BB@0x14 : 
+	5       (00000014) const/4              v5, 0
+	6       (00000016) return-object        v5
+
+a-BB@0x18 : [ a-BB@0x30 a-BB@0x56 ]
+	7       (00000018) sget-object          v1, Lb7/c;->a Lq4/b;
+	8       (0000001c) invoke-virtual       v0, Ljava/lang/Class;->getModifiers()I
+	9       (00000022) move-result          v1
+	10      (00000024) invoke-static        v1, Ljava/lang/reflect/Modifier;->isStatic(I)Z
+	11      (0000002a) move-result          v1
+	12      (0000002c) if-nez               v1, +015h
+
+a-BB@0x30 : [ a-BB@0x3c a-BB@0x48 ]
+	13      (00000030) invoke-virtual       v0, Ljava/lang/Class;->isAnonymousClass()Z
+	14      (00000036) move-result          v1
+	15      (00000038) if-nez               v1, +008h
+
+a-BB@0x3c : [ a-BB@0x48 a-BB@0x56 ]
+	16      (0000003c) invoke-virtual       v0, Ljava/lang/Class;->isLocalClass()Z
+	17      (00000042) move-result          v1
+	18      (00000044) if-eqz               v1, +009h
+
+a-BB@0x48 : 
+	19      (00000048) new-instance         v5, Lw6/j;
+	20      (0000004c) const/4              v6, 2
+	21      (0000004e) invoke-direct        v5, v6, Lw6/j;-><init>(I)V
+	22      (00000054) return-object        v5
+
+a-BB@0x56 : [ a-BB@0x72 a-BB@0x86 ]
+	23      (00000056) sget-object          v1, Ljava/util/Collections;->EMPTY_LIST Ljava/util/List;
+	24      (0000005a) invoke-static        Ly6/i;->e()V
+	25      (00000060) sget-object          v1, Lb7/c;->a Lq4/b;
+	26      (00000064) invoke-virtual       v1, v0, Lq4/b;->E(Ljava/lang/Class;)Z
+	27      (0000006a) move-result          v1
+	28      (0000006c) const/4              v2, 1
+	29      (0000006e) if-eqz               v1, +00ch
+
+a-BB@0x72 : 
+	30      (00000072) new-instance         v1, Lz6/u;
+	31      (00000076) invoke-virtual       v4, v5, v6, v0, v2, Lz6/v;->c(Lw6/m; Ld7/a; Ljava/lang/Class; Z)Lz6/t;
+	32      (0000007c) move-result-object   v5
+	33      (0000007e) invoke-direct        v1, v0, v5, Lz6/u;-><init>(Ljava/lang/Class; Lz6/t;)V
+	34      (00000084) return-object        v1
+
+a-BB@0x86 : 
+	35      (00000086) iget-object          v1, v4, Lz6/v;->a Ly6/c;
+	36      (0000008a) invoke-virtual       v1, v6, v2, Ly6/c;->b(Ld7/a; Z)Ly6/p;
+	37      (00000090) move-result-object   v1
+	38      (00000092) new-instance         v2, Lz6/s;
+	39      (00000096) const/4              v3, 0
+	40      (00000098) invoke-virtual       v4, v5, v6, v0, v3, Lz6/v;->c(Lw6/m; Ld7/a; Ljava/lang/Class; Z)Lz6/t;
+	41      (0000009e) move-result-object   v5
+	42      (000000a0) invoke-direct        v2, v1, v5, Lz6/s;-><init>(Ly6/p; Lz6/t;)V
+	43      (000000a6) return-object        v2
+

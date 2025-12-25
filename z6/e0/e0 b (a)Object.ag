@@ -1,0 +1,47 @@
+# Lz6/e0;->b(Le7/a;)Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:e7.a
+#
+# - return:java.lang.Object
+
+b-BB@0x0 : [ b-BB@0x10 b-BB@0x1a ]
+	0       (00000000) invoke-virtual       v6, Le7/a;->O()I
+	1       (00000006) move-result          v0
+	2       (00000008) const/16             v1, 9
+	3       (0000000c) if-ne                v0, v1, +007h
+
+b-BB@0x10 : 
+	4       (00000010) invoke-virtual       v6, Le7/a;->K()V
+	5       (00000016) const/4              v6, 0
+	6       (00000018) return-object        v6
+
+b-BB@0x1a : [ b-BB@0x22 ]
+	7       (0000001a) invoke-virtual       v6, Le7/a;->M()Ljava/lang/String;
+	8       (00000020) move-result-object   v0
+
+b-BB@0x22 : 
+	9       (00000022) invoke-static        v0, Ly6/i;->c(Ljava/lang/String;)V
+	10      (00000028) new-instance         v1, Ljava/math/BigInteger;
+	11      (0000002c) invoke-direct        v1, v0, Ljava/math/BigInteger;-><init>(Ljava/lang/String;)V
+	12      (00000032) return-object        v1
+	22:31
+	(Ljava/lang/NumberFormatException; -> 34 b-BB@0x34)
+
+b-BB@0x34 : 
+	13      (00000034) move-exception       v1
+	14      (00000036) new-instance         v2, Lw6/p;
+	15      (0000003a) const-string         v3, "Failed parsing '"
+	16      (0000003e) const-string         v4, "' as BigInteger; at path "
+	17      (00000042) invoke-static        v3, v0, v4, Lv1/a;->q(Ljava/lang/String; Ljava/lang/String; Ljava/lang/String;)Ljava/lang/StringBuilder;
+	18      (00000048) move-result-object   v0
+	19      (0000004a) const/4              v3, 1
+	20      (0000004c) invoke-virtual       v6, v3, Le7/a;->A(Z)Ljava/lang/String;
+	21      (00000052) move-result-object   v6
+	22      (00000054) invoke-virtual       v0, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	23      (0000005a) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	24      (00000060) move-result-object   v6
+	25      (00000062) invoke-direct        v2, v6, v1, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	26      (00000068) throw                v2
+

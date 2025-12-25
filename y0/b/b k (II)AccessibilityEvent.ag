@@ -1,0 +1,78 @@
+# Ly0/b;->k(I I)Landroid/view/accessibility/AccessibilityEvent; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:int
+# - v6:int
+#
+# - return:android.view.accessibility.AccessibilityEvent
+
+k-BB@0x0 : [ k-BB@0xa k-BB@0xd8 ]
+	0       (00000000) const/4              v0, -1
+	1       (00000002) iget-object          v1, v4, Ly0/b;->i Landroid/view/View;
+	2       (00000006) if-eq                v5, v0, +069h
+
+k-BB@0xa : [ k-BB@0x8e k-BB@0xac ]
+	3       (0000000a) invoke-static        v6, Landroid/view/accessibility/AccessibilityEvent;->obtain(I)Landroid/view/accessibility/AccessibilityEvent;
+	4       (00000010) move-result-object   v6
+	5       (00000012) invoke-virtual       v4, v5, Ly0/b;->r(I)Lr0/c;
+	6       (00000018) move-result-object   v0
+	7       (0000001a) invoke-virtual       v6, Landroid/view/accessibility/AccessibilityRecord;->getText()Ljava/util/List;
+	8       (00000020) move-result-object   v2
+	9       (00000022) invoke-virtual       v0, Lr0/c;->g()Ljava/lang/CharSequence;
+	10      (00000028) move-result-object   v3
+	11      (0000002a) invoke-interface     v2, v3, Ljava/util/List;->add(Ljava/lang/Object;)Z
+	12      (00000030) iget-object          v0, v0, Lr0/c;->a Landroid/view/accessibility/AccessibilityNodeInfo;
+	13      (00000034) invoke-virtual       v0, Landroid/view/accessibility/AccessibilityNodeInfo;->getContentDescription()Ljava/lang/CharSequence;
+	14      (0000003a) move-result-object   v2
+	15      (0000003c) invoke-virtual       v6, v2, Landroid/view/accessibility/AccessibilityRecord;->setContentDescription(Ljava/lang/CharSequence;)V
+	16      (00000042) invoke-virtual       v0, Landroid/view/accessibility/AccessibilityNodeInfo;->isScrollable()Z
+	17      (00000048) move-result          v2
+	18      (0000004a) invoke-virtual       v6, v2, Landroid/view/accessibility/AccessibilityRecord;->setScrollable(Z)V
+	19      (00000050) invoke-virtual       v0, Landroid/view/accessibility/AccessibilityNodeInfo;->isPassword()Z
+	20      (00000056) move-result          v2
+	21      (00000058) invoke-virtual       v6, v2, Landroid/view/accessibility/AccessibilityRecord;->setPassword(Z)V
+	22      (0000005e) invoke-virtual       v0, Landroid/view/accessibility/AccessibilityNodeInfo;->isEnabled()Z
+	23      (00000064) move-result          v2
+	24      (00000066) invoke-virtual       v6, v2, Landroid/view/accessibility/AccessibilityRecord;->setEnabled(Z)V
+	25      (0000006c) invoke-virtual       v0, Landroid/view/accessibility/AccessibilityNodeInfo;->isChecked()Z
+	26      (00000072) move-result          v2
+	27      (00000074) invoke-virtual       v6, v2, Landroid/view/accessibility/AccessibilityRecord;->setChecked(Z)V
+	28      (0000007a) invoke-virtual       v6, Landroid/view/accessibility/AccessibilityRecord;->getText()Ljava/util/List;
+	29      (00000080) move-result-object   v2
+	30      (00000082) invoke-interface     v2, Ljava/util/List;->isEmpty()Z
+	31      (00000088) move-result          v2
+	32      (0000008a) if-eqz               v2, +011h
+
+k-BB@0x8e : [ k-BB@0x9a k-BB@0x9c ]
+	33      (0000008e) invoke-virtual       v6, Landroid/view/accessibility/AccessibilityRecord;->getContentDescription()Ljava/lang/CharSequence;
+	34      (00000094) move-result-object   v2
+	35      (00000096) if-eqz               v2, +003h
+
+k-BB@0x9a : [ k-BB@0xac ]
+	36      (0000009a) goto                 +9h
+
+k-BB@0x9c : 
+	37      (0000009c) new-instance         v5, Ljava/lang/RuntimeException;
+	38      (000000a0) const-string         v6, "Callbacks must add text or a content description in populateEventForVirtualViewId()"
+	39      (000000a4) invoke-direct        v5, v6, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
+	40      (000000aa) throw                v5
+
+k-BB@0xac : 
+	41      (000000ac) invoke-virtual       v0, Landroid/view/accessibility/AccessibilityNodeInfo;->getClassName()Ljava/lang/CharSequence;
+	42      (000000b2) move-result-object   v0
+	43      (000000b4) invoke-virtual       v6, v0, Landroid/view/accessibility/AccessibilityRecord;->setClassName(Ljava/lang/CharSequence;)V
+	44      (000000ba) invoke-virtual       v6, v1, v5, Landroid/view/accessibility/AccessibilityRecord;->setSource(Landroid/view/View; I)V
+	45      (000000c0) invoke-virtual       v1, Landroid/view/View;->getContext()Landroid/content/Context;
+	46      (000000c6) move-result-object   v5
+	47      (000000c8) invoke-virtual       v5, Landroid/content/Context;->getPackageName()Ljava/lang/String;
+	48      (000000ce) move-result-object   v5
+	49      (000000d0) invoke-virtual       v6, v5, Landroid/view/accessibility/AccessibilityEvent;->setPackageName(Ljava/lang/CharSequence;)V
+	50      (000000d6) return-object        v6
+
+k-BB@0xd8 : 
+	51      (000000d8) invoke-static        v6, Landroid/view/accessibility/AccessibilityEvent;->obtain(I)Landroid/view/accessibility/AccessibilityEvent;
+	52      (000000de) move-result-object   v5
+	53      (000000e0) invoke-virtual       v1, v5, Landroid/view/View;->onInitializeAccessibilityEvent(Landroid/view/accessibility/AccessibilityEvent;)V
+	54      (000000e6) return-object        v5
+

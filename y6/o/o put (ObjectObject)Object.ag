@@ -1,0 +1,42 @@
+# Ly6/o;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:java.lang.Object
+# - v3:java.lang.Object
+#
+# - return:java.lang.Object
+
+put-BB@0x0 : [ put-BB@0x4 put-BB@0x36 ]
+	0       (00000000) if-eqz               v2, +01bh
+
+put-BB@0x4 : [ put-BB@0x8 put-BB@0x22 ]
+	1       (00000004) if-nez               v3, +00fh
+
+put-BB@0x8 : [ put-BB@0x10 put-BB@0x12 ]
+	2       (00000008) iget-boolean         v0, v1, Ly6/o;->b Z
+	3       (0000000c) if-eqz               v0, +003h
+
+put-BB@0x10 : [ put-BB@0x22 ]
+	4       (00000010) goto                 +9h
+
+put-BB@0x12 : 
+	5       (00000012) new-instance         v2, Ljava/lang/NullPointerException;
+	6       (00000016) const-string         v3, "value == null"
+	7       (0000001a) invoke-direct        v2, v3, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
+	8       (00000020) throw                v2
+
+put-BB@0x22 : 
+	9       (00000022) const/4              v0, 1
+	10      (00000024) invoke-virtual       v1, v2, v0, Ly6/o;->b(Ljava/lang/Object; Z)Ly6/n;
+	11      (0000002a) move-result-object   v2
+	12      (0000002c) iget-object          v0, v2, Ly6/n;->n Ljava/lang/Object;
+	13      (00000030) iput-object          v3, v2, Ly6/n;->n Ljava/lang/Object;
+	14      (00000034) return-object        v0
+
+put-BB@0x36 : 
+	15      (00000036) new-instance         v2, Ljava/lang/NullPointerException;
+	16      (0000003a) const-string         v3, "key == null"
+	17      (0000003e) invoke-direct        v2, v3, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
+	18      (00000044) throw                v2
+

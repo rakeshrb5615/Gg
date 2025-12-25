@@ -1,0 +1,69 @@
+# Lx8/l;->close()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v3
+#
+# - return:void
+
+close-BB@0x0 : [ close-BB@0xc close-BB@0xe ]
+	0       (00000000) iget-object          v0, v3, Lx8/l;->a Lx8/u;
+	1       (00000004) iget-boolean         v1, v3, Lx8/l;->c Z
+	2       (00000008) if-eqz               v1, +003h
+
+close-BB@0xc : 
+	3       (0000000c) return-void          
+
+close-BB@0xe : [ close-BB@0x1e ]
+	4       (0000000e) const/4              v1, 1
+	5       (00000010) iput-boolean         v1, v3, Lx8/l;->c Z
+	6       (00000014) iget-object          v1, v0, Lx8/u;->c Ljava/util/concurrent/locks/ReentrantLock;
+	7       (00000018) invoke-virtual       v1, Ljava/util/concurrent/locks/ReentrantLock;->lock()V
+
+close-BB@0x1e : [ close-BB@0x2e close-BB@0x58 ]
+	8       (0000001e) iget                 v2, v0, Lx8/u;->b I
+	9       (00000022) add-int/lit8         v2, v2, -1
+	10      (00000026) iput                 v2, v0, Lx8/u;->b I
+	11      (0000002a) if-nez               v2, +017h
+	1e:31
+	(Ljava/lang/Throwable; -> 54 close-BB@0x54)
+
+close-BB@0x2e : [ close-BB@0x36 close-BB@0x38 ]
+	12      (0000002e) iget-boolean         v2, v0, Lx8/u;->a Z
+	13      (00000032) if-nez               v2, +003h
+
+close-BB@0x36 : [ close-BB@0x58 ]
+	14      (00000036) goto                 +11h
+
+close-BB@0x38 : [ close-BB@0x40 ]
+	15      (00000038) invoke-virtual       v1, Ljava/util/concurrent/locks/ReentrantLock;->unlock()V
+	16      (0000003e) monitor-enter        v0
+
+close-BB@0x40 : 
+	17      (00000040) iget-object          v1, v0, Lx8/u;->d Ljava/io/RandomAccessFile;
+	18      (00000044) invoke-virtual       v1, Ljava/io/RandomAccessFile;->close()V
+	19      (0000004a) monitor-exit         v0
+	20      (0000004c) return-void          
+	40:49
+	(Ljava/lang/Throwable; -> 4e close-BB@0x4e)
+
+close-BB@0x4e : [ close-BB@0x50 ]
+	21      (0000004e) move-exception       v1
+
+close-BB@0x50 : 
+	22      (00000050) monitor-exit         v0
+	23      (00000052) throw                v1
+	50:51
+	(Ljava/lang/Throwable; -> 4e close-BB@0x4e)
+
+close-BB@0x54 : [ close-BB@0x60 ]
+	24      (00000054) move-exception       v0
+	25      (00000056) goto                 +5h
+
+close-BB@0x58 : 
+	26      (00000058) invoke-virtual       v1, Ljava/util/concurrent/locks/ReentrantLock;->unlock()V
+	27      (0000005e) return-void          
+
+close-BB@0x60 : 
+	28      (00000060) invoke-virtual       v1, Ljava/util/concurrent/locks/ReentrantLock;->unlock()V
+	29      (00000066) throw                v0
+

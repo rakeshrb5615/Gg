@@ -1,0 +1,41 @@
+# Lx8/b;->a([B I [B I I)Z [access_flags=public static final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:byte[]
+# - v5:int
+# - v6:byte[]
+# - v7:int
+# - v8:int
+#
+# - return:boolean
+
+a-BB@0x0 : [ a-BB@0x18 ]
+	0       (00000000) const-string         v0, "a"
+	1       (00000004) invoke-static        v4, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) const-string         v0, "b"
+	3       (0000000e) invoke-static        v6, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	4       (00000014) const/4              v0, 0
+	5       (00000016) move                 v1, v0
+
+a-BB@0x18 : [ a-BB@0x1c a-BB@0x38 ]
+	6       (00000018) if-ge                v1, v8, +010h
+
+a-BB@0x1c : [ a-BB@0x30 a-BB@0x32 ]
+	7       (0000001c) add-int              v2, v1, v5
+	8       (00000020) aget-byte            v2, v4, v2
+	9       (00000024) add-int              v3, v1, v7
+	10      (00000028) aget-byte            v3, v6, v3
+	11      (0000002c) if-eq                v2, v3, +003h
+
+a-BB@0x30 : 
+	12      (00000030) return               v0
+
+a-BB@0x32 : [ a-BB@0x18 ]
+	13      (00000032) add-int/lit8         v1, v1, 1
+	14      (00000036) goto                 -fh
+
+a-BB@0x38 : 
+	15      (00000038) const/4              v4, 1
+	16      (0000003a) return               v4
+

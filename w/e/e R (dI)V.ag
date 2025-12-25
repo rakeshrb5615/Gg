@@ -1,0 +1,71 @@
+# Lw/e;->R(Lw/d; I)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:w.d
+# - v7:int
+#
+# - return:void
+
+R-BB@0x0 : [ R-BB@0x6 R-BB@0x50 ]
+	0       (00000000) const/4              v0, 1
+	1       (00000002) if-nez               v7, +027h
+
+R-BB@0x6 : [ R-BB@0x16 R-BB@0x2c ]
+	2       (00000006) iget                 v7, v5, Lw/e;->z0 I
+	3       (0000000a) add-int/2addr        v7, v0
+	4       (0000000c) iget-object          v1, v5, Lw/e;->C0 [Lw/b;
+	5       (00000010) array-length         v2, v1
+	6       (00000012) if-lt                v7, v2, +00dh
+
+R-BB@0x16 : [ R-BB@0x2c ]
+	7       (00000016) array-length         v7, v1
+	8       (00000018) mul-int/lit8         v7, v7, 2
+	9       (0000001c) invoke-static        v1, v7, Ljava/util/Arrays;->copyOf([Ljava/lang/Object; I)[Ljava/lang/Object;
+	10      (00000022) move-result-object   v7
+	11      (00000024) check-cast           v7, [Lw/b;
+	12      (00000028) iput-object          v7, v5, Lw/e;->C0 [Lw/b;
+
+R-BB@0x2c : 
+	13      (0000002c) iget-object          v7, v5, Lw/e;->C0 [Lw/b;
+	14      (00000030) iget                 v1, v5, Lw/e;->z0 I
+	15      (00000034) new-instance         v2, Lw/b;
+	16      (00000038) const/4              v3, 0
+	17      (0000003a) iget-boolean         v4, v5, Lw/e;->v0 Z
+	18      (0000003e) invoke-direct        v2, v6, v3, v4, Lw/b;-><init>(Lw/d; I Z)V
+	19      (00000044) aput-object          v2, v7, v1
+	20      (00000048) add-int/2addr        v1, v0
+	21      (0000004a) iput                 v1, v5, Lw/e;->z0 I
+	22      (0000004e) return-void          
+
+R-BB@0x50 : [ R-BB@0x54 R-BB@0x9a ]
+	23      (00000050) if-ne                v7, v0, +025h
+
+R-BB@0x54 : [ R-BB@0x64 R-BB@0x7a ]
+	24      (00000054) iget                 v7, v5, Lw/e;->A0 I
+	25      (00000058) add-int/2addr        v7, v0
+	26      (0000005a) iget-object          v1, v5, Lw/e;->B0 [Lw/b;
+	27      (0000005e) array-length         v2, v1
+	28      (00000060) if-lt                v7, v2, +00dh
+
+R-BB@0x64 : [ R-BB@0x7a ]
+	29      (00000064) array-length         v7, v1
+	30      (00000066) mul-int/lit8         v7, v7, 2
+	31      (0000006a) invoke-static        v1, v7, Ljava/util/Arrays;->copyOf([Ljava/lang/Object; I)[Ljava/lang/Object;
+	32      (00000070) move-result-object   v7
+	33      (00000072) check-cast           v7, [Lw/b;
+	34      (00000076) iput-object          v7, v5, Lw/e;->B0 [Lw/b;
+
+R-BB@0x7a : [ R-BB@0x9a ]
+	35      (0000007a) iget-object          v7, v5, Lw/e;->B0 [Lw/b;
+	36      (0000007e) iget                 v1, v5, Lw/e;->A0 I
+	37      (00000082) new-instance         v2, Lw/b;
+	38      (00000086) iget-boolean         v3, v5, Lw/e;->v0 Z
+	39      (0000008a) invoke-direct        v2, v6, v0, v3, Lw/b;-><init>(Lw/d; I Z)V
+	40      (00000090) aput-object          v2, v7, v1
+	41      (00000094) add-int/2addr        v1, v0
+	42      (00000096) iput                 v1, v5, Lw/e;->A0 I
+
+R-BB@0x9a : 
+	43      (0000009a) return-void          
+

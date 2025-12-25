@@ -1,0 +1,110 @@
+# Ly8/d;->k(Lx8/g; J)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v7
+# - v8:x8.g
+# - v9:long
+#
+# - return:void
+
+k-BB@0x0 : [ k-BB@0x10 ]
+	0       (00000000) iget-wide            v0, v7, Lx8/g;->b J
+	1       (00000004) const-wide/16        v2, 0
+	2       (00000008) move-wide            v4, v8
+	3       (0000000a) invoke-static/range  v0 ... v5, Lx8/b;->e(J J J)V
+
+k-BB@0x10 : [ k-BB@0x1c k-BB@0xd4 ]
+	4       (00000010) const-wide/16        v0, 0
+	5       (00000014) cmp-long             v0, v8, v0
+	6       (00000018) if-lez               v0, +05eh
+
+k-BB@0x1c : [ k-BB@0x4c ]
+	7       (0000001c) iget-object          v1, v6, Ly8/d;->b Ly8/i;
+	8       (00000020) invoke-virtual       v1, Lx8/j0;->f()V
+	9       (00000026) iget-object          v0, v7, Lx8/g;->a Lx8/c0;
+	10      (0000002a) invoke-static        v0, Lkotlin/jvm/internal/j;->b(Ljava/lang/Object;)V
+	11      (00000030) iget                 v2, v0, Lx8/c0;->c I
+	12      (00000034) iget                 v3, v0, Lx8/c0;->b I
+	13      (00000038) sub-int/2addr        v2, v3
+	14      (0000003a) int-to-long          v2, v2
+	15      (0000003c) invoke-static        v8, v9, v2, v3, Ljava/lang/Math;->min(J J)J
+	16      (00000042) move-result-wide     v2
+	17      (00000044) long-to-int          v2, v2
+	18      (00000046) invoke-virtual       v1, Lx8/d;->h()V
+
+k-BB@0x4c : [ k-BB@0x6a k-BB@0x9e ]
+	19      (0000004c) iget-object          v3, v6, Ly8/d;->a Ljava/io/OutputStream;
+	20      (00000050) iget-object          v4, v0, Lx8/c0;->a [B
+	21      (00000054) iget                 v5, v0, Lx8/c0;->b I
+	22      (00000058) invoke-virtual       v3, v4, v5, v2, Ljava/io/OutputStream;->write([B I I)V
+	23      (0000005e) invoke-virtual       v1, Lx8/d;->i()Z
+	24      (00000064) move-result          v3
+	25      (00000066) if-nez               v3, +01ch
+	4c:5d
+	(Ljava/io/IOException; -> b0 k-BB@0xb0)
+	(Ljava/lang/Throwable; -> aa k-BB@0xaa)
+
+k-BB@0x6a : [ k-BB@0x8a k-BB@0x10 ]
+	26      (0000006a) iget                 v1, v0, Lx8/c0;->b I
+	27      (0000006e) add-int/2addr        v1, v2
+	28      (00000070) iput                 v1, v0, Lx8/c0;->b I
+	29      (00000074) int-to-long          v2, v2
+	30      (00000076) sub-long/2addr       v8, v2
+	31      (00000078) iget-wide            v4, v7, Lx8/g;->b J
+	32      (0000007c) sub-long/2addr       v4, v2
+	33      (0000007e) iput-wide            v4, v7, Lx8/g;->b J
+	34      (00000082) iget                 v2, v0, Lx8/c0;->c I
+	35      (00000086) if-ne                v1, v2, -03bh
+
+k-BB@0x8a : [ k-BB@0x10 ]
+	36      (0000008a) invoke-virtual       v0, Lx8/c0;->a()Lx8/c0;
+	37      (00000090) move-result-object   v1
+	38      (00000092) iput-object          v1, v7, Lx8/g;->a Lx8/c0;
+	39      (00000096) invoke-static        v0, Lx8/d0;->a(Lx8/c0;)V
+	40      (0000009c) goto                 -46h
+
+k-BB@0x9e : 
+	41      (0000009e) const/4              v7, 0
+	42      (000000a0) invoke-virtual       v1, v7, Ly8/i;->j(Ljava/io/IOException;)Ljava/io/IOException;
+	43      (000000a6) move-result-object   v7
+	44      (000000a8) throw                v7
+
+k-BB@0xaa : [ k-BB@0xcc ]
+	45      (000000aa) move-exception       v0
+	46      (000000ac) move-object          v7, v0
+	47      (000000ae) goto                 +fh
+
+k-BB@0xb0 : [ k-BB@0xb4 ]
+	48      (000000b0) move-exception       v0
+	49      (000000b2) move-object          v7, v0
+
+k-BB@0xb4 : [ k-BB@0xc0 k-BB@0xc2 ]
+	50      (000000b4) invoke-virtual       v1, Lx8/d;->i()Z
+	51      (000000ba) move-result          v8
+	52      (000000bc) if-nez               v8, +003h
+	b4:cb
+	(Ljava/lang/Throwable; -> aa k-BB@0xaa)
+
+k-BB@0xc0 : [ k-BB@0xca ]
+	53      (000000c0) goto                 +5h
+	b4:cb
+	(Ljava/lang/Throwable; -> aa k-BB@0xaa)
+
+k-BB@0xc2 : [ k-BB@0xca ]
+	54      (000000c2) invoke-virtual       v1, v7, Ly8/i;->j(Ljava/io/IOException;)Ljava/io/IOException;
+	55      (000000c8) move-result-object   v7
+	b4:cb
+	(Ljava/lang/Throwable; -> aa k-BB@0xaa)
+
+k-BB@0xca : 
+	56      (000000ca) throw                v7
+	b4:cb
+	(Ljava/lang/Throwable; -> aa k-BB@0xaa)
+
+k-BB@0xcc : 
+	57      (000000cc) invoke-virtual       v1, Lx8/d;->i()Z
+	58      (000000d2) throw                v7
+
+k-BB@0xd4 : 
+	59      (000000d4) return-void          
+

@@ -1,0 +1,46 @@
+# Lz8/n0;->c(Lokhttp3/Headers; Lokhttp3/RequestBody;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:okhttp3.Headers
+# - v4:okhttp3.RequestBody
+#
+# - return:void
+
+c-BB@0x0 : [ c-BB@0x2e c-BB@0x64 ]
+	0       (00000000) iget-object          v0, v2, Lz8/n0;->i Lokhttp3/MultipartBody$Builder;
+	1       (00000004) invoke-virtual       v0, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	2       (0000000a) const-string         v1, "body"
+	3       (0000000e) invoke-static        v4, v1, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	4       (00000014) sget-object          v1, Lokhttp3/MultipartBody$Part;->c Lokhttp3/MultipartBody$Part$Companion;
+	5       (00000018) invoke-virtual       v1, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	6       (0000001e) const-string         v1, "Content-Type"
+	7       (00000022) invoke-virtual       v3, v1, Lokhttp3/Headers;->b(Ljava/lang/String;)Ljava/lang/String;
+	8       (00000028) move-result-object   v1
+	9       (0000002a) if-nez               v1, +01dh
+
+c-BB@0x2e : [ c-BB@0x3e c-BB@0x54 ]
+	10      (0000002e) const-string         v1, "Content-Length"
+	11      (00000032) invoke-virtual       v3, v1, Lokhttp3/Headers;->b(Ljava/lang/String;)Ljava/lang/String;
+	12      (00000038) move-result-object   v1
+	13      (0000003a) if-nez               v1, +00dh
+
+c-BB@0x3e : 
+	14      (0000003e) new-instance         v1, Lokhttp3/MultipartBody$Part;
+	15      (00000042) invoke-direct        v1, v3, v4, Lokhttp3/MultipartBody$Part;-><init>(Lokhttp3/Headers; Lokhttp3/RequestBody;)V
+	16      (00000048) iget-object          v3, v0, Lokhttp3/MultipartBody$Builder;->c Ljava/util/ArrayList;
+	17      (0000004c) invoke-virtual       v3, v1, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	18      (00000052) return-void          
+
+c-BB@0x54 : 
+	19      (00000054) new-instance         v3, Ljava/lang/IllegalArgumentException;
+	20      (00000058) const-string         v4, "Unexpected header: Content-Length"
+	21      (0000005c) invoke-direct        v3, v4, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	22      (00000062) throw                v3
+
+c-BB@0x64 : 
+	23      (00000064) new-instance         v3, Ljava/lang/IllegalArgumentException;
+	24      (00000068) const-string         v4, "Unexpected header: Content-Type"
+	25      (0000006c) invoke-direct        v3, v4, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	26      (00000072) throw                v3
+

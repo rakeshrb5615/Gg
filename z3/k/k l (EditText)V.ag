@@ -1,0 +1,58 @@
+# Lz3/k;->l(Landroid/widget/EditText;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:android.widget.EditText
+#
+# - return:void
+
+l-BB@0x0 : [ l-BB@0x8 l-BB@0x82 ]
+	0       (00000000) instance-of          v0, v3, Landroid/widget/AutoCompleteTextView;
+	1       (00000004) if-eqz               v0, +03fh
+
+l-BB@0x8 : [ l-BB@0x5a l-BB@0x5c ]
+	2       (00000008) move-object          v0, v3
+	3       (0000000a) check-cast           v0, Landroid/widget/AutoCompleteTextView;
+	4       (0000000e) iput-object          v0, v2, Lz3/k;->h Landroid/widget/AutoCompleteTextView;
+	5       (00000012) new-instance         v1, Lz3/h;
+	6       (00000016) invoke-direct        v1, v2, Lz3/h;-><init>(Lz3/k;)V
+	7       (0000001c) invoke-virtual       v0, v1, Landroid/view/View;->setOnTouchListener(Landroid/view/View$OnTouchListener;)V
+	8       (00000022) iget-object          v0, v2, Lz3/k;->h Landroid/widget/AutoCompleteTextView;
+	9       (00000026) new-instance         v1, Lz3/i;
+	10      (0000002a) invoke-direct        v1, v2, Lz3/i;-><init>(Lz3/k;)V
+	11      (00000030) invoke-virtual       v0, v1, Landroid/widget/AutoCompleteTextView;->setOnDismissListener(Landroid/widget/AutoCompleteTextView$OnDismissListener;)V
+	12      (00000036) iget-object          v0, v2, Lz3/k;->h Landroid/widget/AutoCompleteTextView;
+	13      (0000003a) const/4              v1, 0
+	14      (0000003c) invoke-virtual       v0, v1, Landroid/widget/AutoCompleteTextView;->setThreshold(I)V
+	15      (00000042) const/4              v0, 0
+	16      (00000044) iget-object          v1, v2, Lz3/p;->a Lcom/google/android/material/textfield/TextInputLayout;
+	17      (00000048) invoke-virtual       v1, v0, Lcom/google/android/material/textfield/TextInputLayout;->setErrorIconDrawable(Landroid/graphics/drawable/Drawable;)V
+	18      (0000004e) invoke-virtual       v3, Landroid/widget/TextView;->getInputType()I
+	19      (00000054) move-result          v3
+	20      (00000056) if-eqz               v3, +003h
+
+l-BB@0x5a : [ l-BB@0x78 ]
+	21      (0000005a) goto                 +fh
+
+l-BB@0x5c : [ l-BB@0x6c l-BB@0x78 ]
+	22      (0000005c) iget-object          v3, v2, Lz3/k;->p Landroid/view/accessibility/AccessibilityManager;
+	23      (00000060) invoke-virtual       v3, Landroid/view/accessibility/AccessibilityManager;->isTouchExplorationEnabled()Z
+	24      (00000066) move-result          v3
+	25      (00000068) if-eqz               v3, +008h
+
+l-BB@0x6c : [ l-BB@0x78 ]
+	26      (0000006c) iget-object          v3, v2, Lz3/p;->d Lcom/google/android/material/internal/CheckableImageButton;
+	27      (00000070) const/4              v0, 2
+	28      (00000072) invoke-virtual       v3, v0, Landroid/view/View;->setImportantForAccessibility(I)V
+
+l-BB@0x78 : 
+	29      (00000078) const/4              v3, 1
+	30      (0000007a) invoke-virtual       v1, v3, Lcom/google/android/material/textfield/TextInputLayout;->setEndIconVisible(Z)V
+	31      (00000080) return-void          
+
+l-BB@0x82 : 
+	32      (00000082) new-instance         v3, Ljava/lang/RuntimeException;
+	33      (00000086) const-string         v0, "EditText needs to be an AutoCompleteTextView if an Exposed Dropdown Menu is being used."
+	34      (0000008a) invoke-direct        v3, v0, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
+	35      (00000090) throw                v3
+

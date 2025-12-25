@@ -1,0 +1,65 @@
+# Ly1/c;->a([B)[B [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:byte[]
+#
+# - return:byte[]
+
+a-BB@0x0 : [ a-BB@0x16 ]
+	0       (00000000) new-instance         v0, Ljava/util/zip/Deflater;
+	1       (00000004) const/4              v1, 1
+	2       (00000006) invoke-direct        v0, v1, Ljava/util/zip/Deflater;-><init>(I)V
+	3       (0000000c) new-instance         v1, Ljava/io/ByteArrayOutputStream;
+	4       (00000010) invoke-direct        v1, Ljava/io/ByteArrayOutputStream;-><init>()V
+
+a-BB@0x16 : [ a-BB@0x20 ]
+	5       (00000016) new-instance         v2, Ljava/util/zip/DeflaterOutputStream;
+	6       (0000001a) invoke-direct        v2, v1, v0, Ljava/util/zip/DeflaterOutputStream;-><init>(Ljava/io/OutputStream; Ljava/util/zip/Deflater;)V
+	16:1f
+	(Ljava/lang/Throwable; -> 3c a-BB@0x3c)
+
+a-BB@0x20 : [ a-BB@0x26 ]
+	7       (00000020) invoke-virtual       v2, v3, Ljava/io/OutputStream;->write([B)V
+	20:25
+	(Ljava/lang/Throwable; -> 40 a-BB@0x40)
+
+a-BB@0x26 : 
+	8       (00000026) invoke-virtual       v2, Ljava/util/zip/DeflaterOutputStream;->close()V
+	9       (0000002c) invoke-virtual       v0, Ljava/util/zip/Deflater;->end()V
+	10      (00000032) invoke-virtual       v1, Ljava/io/ByteArrayOutputStream;->toByteArray()[B
+	11      (00000038) move-result-object   v3
+	12      (0000003a) return-object        v3
+	26:2b
+	(Ljava/lang/Throwable; -> 3c a-BB@0x3c)
+
+a-BB@0x3c : [ a-BB@0x54 ]
+	13      (0000003c) move-exception       v3
+	14      (0000003e) goto                 +bh
+
+a-BB@0x40 : [ a-BB@0x42 ]
+	15      (00000040) move-exception       v3
+
+a-BB@0x42 : [ a-BB@0x52 ]
+	16      (00000042) invoke-virtual       v2, Ljava/util/zip/DeflaterOutputStream;->close()V
+	17      (00000048) goto                 +5h
+	42:47
+	(Ljava/lang/Throwable; -> 4a a-BB@0x4a)
+
+a-BB@0x4a : [ a-BB@0x4c ]
+	18      (0000004a) move-exception       v1
+
+a-BB@0x4c : [ a-BB@0x52 ]
+	19      (0000004c) invoke-virtual       v3, v1, Ljava/lang/Throwable;->addSuppressed(Ljava/lang/Throwable;)V
+	4c:53
+	(Ljava/lang/Throwable; -> 3c a-BB@0x3c)
+
+a-BB@0x52 : 
+	20      (00000052) throw                v3
+	4c:53
+	(Ljava/lang/Throwable; -> 3c a-BB@0x3c)
+
+a-BB@0x54 : 
+	21      (00000054) invoke-virtual       v0, Ljava/util/zip/Deflater;->end()V
+	22      (0000005a) throw                v3
+

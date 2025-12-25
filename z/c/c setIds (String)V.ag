@@ -1,0 +1,39 @@
+# Lz/c;->setIds(Ljava/lang/String;)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:java.lang.String
+#
+# - return:void
+
+setIds-BB@0x0 : [ setIds-BB@0x8 setIds-BB@0xa ]
+	0       (00000000) iput-object          v4, v3, Lz/c;->e Ljava/lang/String;
+	1       (00000004) if-nez               v4, +003h
+
+setIds-BB@0x8 : 
+	2       (00000008) return-void          
+
+setIds-BB@0xa : [ setIds-BB@0x10 ]
+	3       (0000000a) const/4              v0, 0
+	4       (0000000c) iput                 v0, v3, Lz/c;->b I
+
+setIds-BB@0x10 : [ setIds-BB@0x22 setIds-BB@0x32 ]
+	5       (00000010) const/16             v1, 44
+	6       (00000014) invoke-virtual       v4, v1, v0, Ljava/lang/String;->indexOf(I I)I
+	7       (0000001a) move-result          v1
+	8       (0000001c) const/4              v2, -1
+	9       (0000001e) if-ne                v1, v2, +00ah
+
+setIds-BB@0x22 : 
+	10      (00000022) invoke-virtual       v4, v0, Ljava/lang/String;->substring(I)Ljava/lang/String;
+	11      (00000028) move-result-object   v4
+	12      (0000002a) invoke-virtual       v3, v4, Lz/c;->a(Ljava/lang/String;)V
+	13      (00000030) return-void          
+
+setIds-BB@0x32 : [ setIds-BB@0x10 ]
+	14      (00000032) invoke-virtual       v4, v0, v1, Ljava/lang/String;->substring(I I)Ljava/lang/String;
+	15      (00000038) move-result-object   v0
+	16      (0000003a) invoke-virtual       v3, v0, Lz/c;->a(Ljava/lang/String;)V
+	17      (00000040) add-int/lit8         v0, v1, 1
+	18      (00000044) goto                 -1ah
+

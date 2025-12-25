@@ -1,0 +1,40 @@
+# Lz6/h;->a(Lw6/m; Ld7/a;)Lw6/z; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:w6.m
+# - v3:d7.a
+#
+# - return:w6.z
+
+a-BB@0x0 : [ a-BB@0x14 a-BB@0x3a ]
+	0       (00000000) iget-object          v2, v3, Ld7/a;->a Ljava/lang/Class;
+	1       (00000004) const-class          v3, Ljava/lang/Enum;
+	2       (00000008) invoke-virtual       v3, v2, Ljava/lang/Class;->isAssignableFrom(Ljava/lang/Class;)Z
+	3       (0000000e) move-result          v0
+	4       (00000010) if-eqz               v0, +015h
+
+a-BB@0x14 : [ a-BB@0x18 a-BB@0x1a ]
+	5       (00000014) if-ne                v2, v3, +003h
+
+a-BB@0x18 : [ a-BB@0x3a ]
+	6       (00000018) goto                 +11h
+
+a-BB@0x1a : [ a-BB@0x26 a-BB@0x2e ]
+	7       (0000001a) invoke-virtual       v2, Ljava/lang/Class;->isEnum()Z
+	8       (00000020) move-result          v3
+	9       (00000022) if-nez               v3, +006h
+
+a-BB@0x26 : [ a-BB@0x2e ]
+	10      (00000026) invoke-virtual       v2, Ljava/lang/Class;->getSuperclass()Ljava/lang/Class;
+	11      (0000002c) move-result-object   v2
+
+a-BB@0x2e : 
+	12      (0000002e) new-instance         v3, Lz6/i;
+	13      (00000032) invoke-direct        v3, v2, Lz6/i;-><init>(Ljava/lang/Class;)V
+	14      (00000038) return-object        v3
+
+a-BB@0x3a : 
+	15      (0000003a) const/4              v2, 0
+	16      (0000003c) return-object        v2
+

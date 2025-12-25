@@ -1,0 +1,37 @@
+# Ly1/c;->f(Ljava/io/InputStream; I)[B [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:java.io.InputStream
+# - v4:int
+#
+# - return:byte[]
+
+f-BB@0x0 : [ f-BB@0x6 ]
+	0       (00000000) new-array            v0, v4, [B
+	1       (00000004) const/4              v1, 0
+
+f-BB@0x6 : [ f-BB@0xa f-BB@0x36 ]
+	2       (00000006) if-ge                v1, v4, +018h
+
+f-BB@0xa : [ f-BB@0x1a f-BB@0x1e ]
+	3       (0000000a) sub-int              v2, v4, v1
+	4       (0000000e) invoke-virtual       v3, v0, v1, v2, Ljava/io/InputStream;->read([B I I)I
+	5       (00000014) move-result          v2
+	6       (00000016) if-ltz               v2, +004h
+
+f-BB@0x1a : [ f-BB@0x6 ]
+	7       (0000001a) add-int/2addr        v1, v2
+	8       (0000001c) goto                 -bh
+
+f-BB@0x1e : 
+	9       (0000001e) const-string         v3, "Not enough bytes to read: "
+	10      (00000022) invoke-static        v4, v3, Lg2/g;->c(I Ljava/lang/String;)Ljava/lang/String;
+	11      (00000028) move-result-object   v3
+	12      (0000002a) new-instance         v4, Ljava/lang/IllegalStateException;
+	13      (0000002e) invoke-direct        v4, v3, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	14      (00000034) throw                v4
+
+f-BB@0x36 : 
+	15      (00000036) return-object        v0
+

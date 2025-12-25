@@ -1,0 +1,29 @@
+# Lw5/f;->k(I)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:int
+#
+# - return:void
+
+k-BB@0x0 : [ k-BB@0x12 k-BB@0x2a ]
+	0       (00000000) and-int/lit8         v0, v5, -128
+	1       (00000004) int-to-long          v0, v0
+	2       (00000006) const-wide/16        v2, 0
+	3       (0000000a) cmp-long             v0, v0, v2
+	4       (0000000e) if-eqz               v0, +00eh
+
+k-BB@0x12 : [ k-BB@0x0 ]
+	5       (00000012) iget-object          v0, v4, Lw5/f;->a Ljava/io/OutputStream;
+	6       (00000016) and-int/lit8         v1, v5, 127
+	7       (0000001a) or-int/lit16         v1, v1, 128
+	8       (0000001e) invoke-virtual       v0, v1, Ljava/io/OutputStream;->write(I)V
+	9       (00000024) ushr-int/lit8        v5, v5, 7
+	10      (00000028) goto                 -14h
+
+k-BB@0x2a : 
+	11      (0000002a) iget-object          v0, v4, Lw5/f;->a Ljava/io/OutputStream;
+	12      (0000002e) and-int/lit8         v5, v5, 127
+	13      (00000032) invoke-virtual       v0, v5, Ljava/io/OutputStream;->write(I)V
+	14      (00000038) return-void          
+

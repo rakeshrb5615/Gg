@@ -1,0 +1,23 @@
+# Lw6/l;->b(Le7/a;)Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:e7.a
+#
+# - return:java.lang.Object
+
+b-BB@0x0 : [ b-BB@0x8 b-BB@0x12 ]
+	0       (00000000) iget-object          v0, v1, Lw6/l;->a Lw6/z;
+	1       (00000004) if-eqz               v0, +007h
+
+b-BB@0x8 : 
+	2       (00000008) invoke-virtual       v0, v2, Lw6/z;->b(Le7/a;)Ljava/lang/Object;
+	3       (0000000e) move-result-object   v2
+	4       (00000010) return-object        v2
+
+b-BB@0x12 : 
+	5       (00000012) new-instance         v2, Ljava/lang/IllegalStateException;
+	6       (00000016) const-string         v0, "Adapter for type with cyclic dependency has been used before dependency has been resolved"
+	7       (0000001a) invoke-direct        v2, v0, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	8       (00000020) throw                v2
+

@@ -1,0 +1,85 @@
+# Ly6/g;-><init>(Ljava/lang/reflect/Type; Ljava/lang/Class; [Ljava/lang/reflect/Type;)V [access_flags=public varargs constructor]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:java.lang.reflect.Type
+# - v3:java.lang.Class
+# - v4:java.lang.reflect.Type[]
+#
+# - return:void
+
+<init>-BB@0x0 : [ <init>-BB@0x10 <init>-BB@0x5a ]
+	0       (00000000) invoke-direct        v1, Ljava/lang/Object;-><init>()V
+	1       (00000006) invoke-static        v3, Ljava/util/Objects;->requireNonNull(Ljava/lang/Object;)Ljava/lang/Object;
+	2       (0000000c) if-nez               v2, +027h
+
+<init>-BB@0x10 : [ <init>-BB@0x24 <init>-BB@0x5a ]
+	3       (00000010) invoke-virtual       v3, Ljava/lang/Class;->getModifiers()I
+	4       (00000016) move-result          v0
+	5       (00000018) invoke-static        v0, Ljava/lang/reflect/Modifier;->isStatic(I)Z
+	6       (0000001e) move-result          v0
+	7       (00000020) if-nez               v0, +01dh
+
+<init>-BB@0x24 : [ <init>-BB@0x30 <init>-BB@0x32 ]
+	8       (00000024) invoke-virtual       v3, Ljava/lang/Class;->getDeclaringClass()Ljava/lang/Class;
+	9       (0000002a) move-result-object   v0
+	10      (0000002c) if-nez               v0, +003h
+
+<init>-BB@0x30 : [ <init>-BB@0x5a ]
+	11      (00000030) goto                 +15h
+
+<init>-BB@0x32 : 
+	12      (00000032) new-instance         v2, Ljava/lang/IllegalArgumentException;
+	13      (00000036) new-instance         v4, Ljava/lang/StringBuilder;
+	14      (0000003a) const-string         v0, "Must specify owner type for "
+	15      (0000003e) invoke-direct        v4, v0, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	16      (00000044) invoke-virtual       v4, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	17      (0000004a) invoke-virtual       v4, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	18      (00000050) move-result-object   v3
+	19      (00000052) invoke-direct        v2, v3, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	20      (00000058) throw                v2
+
+<init>-BB@0x5a : [ <init>-BB@0x5e <init>-BB@0x62 ]
+	21      (0000005a) if-nez               v2, +004h
+
+<init>-BB@0x5e : [ <init>-BB@0x6a ]
+	22      (0000005e) const/4              v2, 0
+	23      (00000060) goto                 +5h
+
+<init>-BB@0x62 : [ <init>-BB@0x6a ]
+	24      (00000062) invoke-static        v2, Ly6/i;->a(Ljava/lang/reflect/Type;)Ljava/lang/reflect/Type;
+	25      (00000068) move-result-object   v2
+
+<init>-BB@0x6a : [ <init>-BB@0x8e ]
+	26      (0000006a) iput-object          v2, v1, Ly6/g;->a Ljava/lang/reflect/Type;
+	27      (0000006e) invoke-static        v3, Ly6/i;->a(Ljava/lang/reflect/Type;)Ljava/lang/reflect/Type;
+	28      (00000074) move-result-object   v2
+	29      (00000076) iput-object          v2, v1, Ly6/g;->b Ljava/lang/reflect/Type;
+	30      (0000007a) invoke-virtual       v4, [Ljava/lang/reflect/Type;->clone()Ljava/lang/Object;
+	31      (00000080) move-result-object   v2
+	32      (00000082) check-cast           v2, [Ljava/lang/reflect/Type;
+	33      (00000086) iput-object          v2, v1, Ly6/g;->c [Ljava/lang/reflect/Type;
+	34      (0000008a) array-length         v2, v2
+	35      (0000008c) const/4              v3, 0
+
+<init>-BB@0x8e : [ <init>-BB@0x92 <init>-BB@0xc8 ]
+	36      (0000008e) if-ge                v3, v2, +01dh
+
+<init>-BB@0x92 : [ <init>-BB@0x8e ]
+	37      (00000092) iget-object          v4, v1, Ly6/g;->c [Ljava/lang/reflect/Type;
+	38      (00000096) aget-object          v4, v4, v3
+	39      (0000009a) invoke-static        v4, Ljava/util/Objects;->requireNonNull(Ljava/lang/Object;)Ljava/lang/Object;
+	40      (000000a0) iget-object          v4, v1, Ly6/g;->c [Ljava/lang/reflect/Type;
+	41      (000000a4) aget-object          v4, v4, v3
+	42      (000000a8) invoke-static        v4, Ly6/i;->b(Ljava/lang/reflect/Type;)V
+	43      (000000ae) iget-object          v4, v1, Ly6/g;->c [Ljava/lang/reflect/Type;
+	44      (000000b2) aget-object          v0, v4, v3
+	45      (000000b6) invoke-static        v0, Ly6/i;->a(Ljava/lang/reflect/Type;)Ljava/lang/reflect/Type;
+	46      (000000bc) move-result-object   v0
+	47      (000000be) aput-object          v0, v4, v3
+	48      (000000c2) add-int/lit8         v3, v3, 1
+	49      (000000c6) goto                 -1ch
+
+<init>-BB@0xc8 : 
+	50      (000000c8) return-void          
+

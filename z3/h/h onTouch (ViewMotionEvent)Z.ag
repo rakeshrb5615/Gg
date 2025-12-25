@@ -1,0 +1,44 @@
+# Lz3/h;->onTouch(Landroid/view/View; Landroid/view/MotionEvent;)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:android.view.View
+# - v7:android.view.MotionEvent
+#
+# - return:boolean
+
+onTouch-BB@0x0 : [ onTouch-BB@0x10 onTouch-BB@0x54 ]
+	0       (00000000) invoke-virtual       v7, Landroid/view/MotionEvent;->getAction()I
+	1       (00000006) move-result          v6
+	2       (00000008) const/4              v7, 0
+	3       (0000000a) const/4              v0, 1
+	4       (0000000c) if-ne                v6, v0, +024h
+
+onTouch-BB@0x10 : [ onTouch-BB@0x2e onTouch-BB@0x3a ]
+	5       (00000010) invoke-static        Landroid/os/SystemClock;->uptimeMillis()J
+	6       (00000016) move-result-wide     v1
+	7       (00000018) iget-object          v6, v5, Lz3/h;->a Lz3/k;
+	8       (0000001c) iget-wide            v3, v6, Lz3/k;->o J
+	9       (00000020) sub-long/2addr       v1, v3
+	10      (00000022) const-wide/16        v3, 0
+	11      (00000026) cmp-long             v3, v1, v3
+	12      (0000002a) if-ltz               v3, +008h
+
+onTouch-BB@0x2e : [ onTouch-BB@0x3a onTouch-BB@0x3e ]
+	13      (0000002e) const-wide/16        v3, 300
+	14      (00000032) cmp-long             v1, v1, v3
+	15      (00000036) if-lez               v1, +004h
+
+onTouch-BB@0x3a : [ onTouch-BB@0x3e ]
+	16      (0000003a) iput-boolean         v7, v6, Lz3/k;->m Z
+
+onTouch-BB@0x3e : [ onTouch-BB@0x54 ]
+	17      (0000003e) invoke-virtual       v6, Lz3/k;->t()V
+	18      (00000044) iput-boolean         v0, v6, Lz3/k;->m Z
+	19      (00000048) invoke-static        Landroid/os/SystemClock;->uptimeMillis()J
+	20      (0000004e) move-result-wide     v0
+	21      (00000050) iput-wide            v0, v6, Lz3/k;->o J
+
+onTouch-BB@0x54 : 
+	22      (00000054) return               v7
+

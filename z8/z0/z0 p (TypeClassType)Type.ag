@@ -1,0 +1,247 @@
+# Lz8/z0;->p(Ljava/lang/reflect/Type; Ljava/lang/Class; Ljava/lang/reflect/Type;)Ljava/lang/reflect/Type; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v7
+# - v8:java.lang.reflect.Type
+# - v9:java.lang.Class
+# - v10:java.lang.reflect.Type
+#
+# - return:java.lang.reflect.Type
+
+p-BB@0x0 : [ p-BB@0xa p-BB@0x8a ]
+	0       (00000000) instance-of          v0, v10, Ljava/lang/reflect/TypeVariable;
+	1       (00000004) const/4              v1, 0
+	2       (00000006) if-eqz               v0, +042h
+
+p-BB@0xa : [ p-BB@0x1e p-BB@0x24 ]
+	3       (0000000a) check-cast           v10, Ljava/lang/reflect/TypeVariable;
+	4       (0000000e) invoke-interface     v10, Ljava/lang/reflect/TypeVariable;->getGenericDeclaration()Ljava/lang/reflect/GenericDeclaration;
+	5       (00000014) move-result-object   v0
+	6       (00000016) instance-of          v2, v0, Ljava/lang/Class;
+	7       (0000001a) if-eqz               v2, +005h
+
+p-BB@0x1e : [ p-BB@0x26 ]
+	8       (0000001e) check-cast           v0, Ljava/lang/Class;
+	9       (00000022) goto                 +2h
+
+p-BB@0x24 : [ p-BB@0x26 ]
+	10      (00000024) const/4              v0, 0
+
+p-BB@0x26 : [ p-BB@0x2a p-BB@0x2c ]
+	11      (00000026) if-nez               v0, +003h
+
+p-BB@0x2a : [ p-BB@0x7e ]
+	12      (0000002a) goto                 +2ah
+
+p-BB@0x2c : [ p-BB@0x3c p-BB@0x7e ]
+	13      (0000002c) invoke-static        v8, v9, v0, Lz8/z0;->f(Ljava/lang/reflect/Type; Ljava/lang/Class; Ljava/lang/Class;)Ljava/lang/reflect/Type;
+	14      (00000032) move-result-object   v2
+	15      (00000034) instance-of          v3, v2, Ljava/lang/reflect/ParameterizedType;
+	16      (00000038) if-eqz               v3, +023h
+
+p-BB@0x3c : [ p-BB@0x44 ]
+	17      (0000003c) invoke-virtual       v0, Ljava/lang/Class;->getTypeParameters()[Ljava/lang/reflect/TypeVariable;
+	18      (00000042) move-result-object   v0
+
+p-BB@0x44 : [ p-BB@0x4a p-BB@0x72 ]
+	19      (00000044) array-length         v3, v0
+	20      (00000046) if-ge                v1, v3, +016h
+
+p-BB@0x4a : [ p-BB@0x5a p-BB@0x6c ]
+	21      (0000004a) aget-object          v3, v0, v1
+	22      (0000004e) invoke-virtual       v10, v3, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+	23      (00000054) move-result          v3
+	24      (00000056) if-eqz               v3, +00bh
+
+p-BB@0x5a : [ p-BB@0x80 ]
+	25      (0000005a) check-cast           v2, Ljava/lang/reflect/ParameterizedType;
+	26      (0000005e) invoke-interface     v2, Ljava/lang/reflect/ParameterizedType;->getActualTypeArguments()[Ljava/lang/reflect/Type;
+	27      (00000064) move-result-object   v0
+	28      (00000066) aget-object          v0, v0, v1
+	29      (0000006a) goto                 +bh
+
+p-BB@0x6c : [ p-BB@0x44 ]
+	30      (0000006c) add-int/lit8         v1, v1, 1
+	31      (00000070) goto                 -16h
+
+p-BB@0x72 : 
+	32      (00000072) new-instance         v8, Ljava/util/NoSuchElementException;
+	33      (00000076) invoke-direct        v8, Ljava/util/NoSuchElementException;-><init>()V
+	34      (0000007c) throw                v8
+
+p-BB@0x7e : [ p-BB@0x80 ]
+	35      (0000007e) move-object          v0, v10
+
+p-BB@0x80 : [ p-BB@0x84 p-BB@0x86 ]
+	36      (00000080) if-ne                v0, v10, +003h
+
+p-BB@0x84 : 
+	37      (00000084) return-object        v0
+
+p-BB@0x86 : [ p-BB@0x0 ]
+	38      (00000086) move-object          v10, v0
+	39      (00000088) goto                 -44h
+
+p-BB@0x8a : [ p-BB@0x92 p-BB@0xc6 ]
+	40      (0000008a) instance-of          v0, v10, Ljava/lang/Class;
+	41      (0000008e) if-eqz               v0, +01ch
+
+p-BB@0x92 : [ p-BB@0xa4 p-BB@0xc6 ]
+	42      (00000092) move-object          v0, v10
+	43      (00000094) check-cast           v0, Ljava/lang/Class;
+	44      (00000098) invoke-virtual       v0, Ljava/lang/Class;->isArray()Z
+	45      (0000009e) move-result          v2
+	46      (000000a0) if-eqz               v2, +013h
+
+p-BB@0xa4 : [ p-BB@0xb8 p-BB@0xba ]
+	47      (000000a4) invoke-virtual       v0, Ljava/lang/Class;->getComponentType()Ljava/lang/Class;
+	48      (000000aa) move-result-object   v10
+	49      (000000ac) invoke-static        v8, v9, v10, Lz8/z0;->p(Ljava/lang/reflect/Type; Ljava/lang/Class; Ljava/lang/reflect/Type;)Ljava/lang/reflect/Type;
+	50      (000000b2) move-result-object   v8
+	51      (000000b4) if-ne                v10, v8, +003h
+
+p-BB@0xb8 : 
+	52      (000000b8) return-object        v0
+
+p-BB@0xba : 
+	53      (000000ba) new-instance         v9, Lz8/w0;
+	54      (000000be) invoke-direct        v9, v8, Lz8/w0;-><init>(Ljava/lang/reflect/Type;)V
+	55      (000000c4) return-object        v9
+
+p-BB@0xc6 : [ p-BB@0xce p-BB@0xf4 ]
+	56      (000000c6) instance-of          v0, v10, Ljava/lang/reflect/GenericArrayType;
+	57      (000000ca) if-eqz               v0, +015h
+
+p-BB@0xce : [ p-BB@0xe6 p-BB@0xe8 ]
+	58      (000000ce) check-cast           v10, Ljava/lang/reflect/GenericArrayType;
+	59      (000000d2) invoke-interface     v10, Ljava/lang/reflect/GenericArrayType;->getGenericComponentType()Ljava/lang/reflect/Type;
+	60      (000000d8) move-result-object   v0
+	61      (000000da) invoke-static        v8, v9, v0, Lz8/z0;->p(Ljava/lang/reflect/Type; Ljava/lang/Class; Ljava/lang/reflect/Type;)Ljava/lang/reflect/Type;
+	62      (000000e0) move-result-object   v8
+	63      (000000e2) if-ne                v0, v8, +003h
+
+p-BB@0xe6 : 
+	64      (000000e6) return-object        v10
+
+p-BB@0xe8 : 
+	65      (000000e8) new-instance         v9, Lz8/w0;
+	66      (000000ec) invoke-direct        v9, v8, Lz8/w0;-><init>(Ljava/lang/reflect/Type;)V
+	67      (000000f2) return-object        v9
+
+p-BB@0xf4 : [ p-BB@0xfe p-BB@0x176 ]
+	68      (000000f4) instance-of          v0, v10, Ljava/lang/reflect/ParameterizedType;
+	69      (000000f8) const/4              v2, 1
+	70      (000000fa) if-eqz               v0, +03eh
+
+p-BB@0xfe : [ p-BB@0x116 p-BB@0x11a ]
+	71      (000000fe) check-cast           v10, Ljava/lang/reflect/ParameterizedType;
+	72      (00000102) invoke-interface     v10, Ljava/lang/reflect/ParameterizedType;->getOwnerType()Ljava/lang/reflect/Type;
+	73      (00000108) move-result-object   v0
+	74      (0000010a) invoke-static        v8, v9, v0, Lz8/z0;->p(Ljava/lang/reflect/Type; Ljava/lang/Class; Ljava/lang/reflect/Type;)Ljava/lang/reflect/Type;
+	75      (00000110) move-result-object   v3
+	76      (00000112) if-eq                v3, v0, +004h
+
+p-BB@0x116 : [ p-BB@0x11c ]
+	77      (00000116) move                 v0, v2
+	78      (00000118) goto                 +2h
+
+p-BB@0x11a : [ p-BB@0x11c ]
+	79      (0000011a) move                 v0, v1
+
+p-BB@0x11c : [ p-BB@0x126 ]
+	80      (0000011c) invoke-interface     v10, Ljava/lang/reflect/ParameterizedType;->getActualTypeArguments()[Ljava/lang/reflect/Type;
+	81      (00000122) move-result-object   v4
+	82      (00000124) array-length         v5, v4
+
+p-BB@0x126 : [ p-BB@0x12a p-BB@0x15c ]
+	83      (00000126) if-ge                v1, v5, +01bh
+
+p-BB@0x12a : [ p-BB@0x13e p-BB@0x156 ]
+	84      (0000012a) aget-object          v6, v4, v1
+	85      (0000012e) invoke-static        v8, v9, v6, Lz8/z0;->p(Ljava/lang/reflect/Type; Ljava/lang/Class; Ljava/lang/reflect/Type;)Ljava/lang/reflect/Type;
+	86      (00000134) move-result-object   v6
+	87      (00000136) aget-object          v7, v4, v1
+	88      (0000013a) if-eq                v6, v7, +00eh
+
+p-BB@0x13e : [ p-BB@0x142 p-BB@0x152 ]
+	89      (0000013e) if-nez               v0, +00ah
+
+p-BB@0x142 : [ p-BB@0x152 ]
+	90      (00000142) invoke-virtual       v4, [Ljava/lang/reflect/Type;->clone()Ljava/lang/Object;
+	91      (00000148) move-result-object   v0
+	92      (0000014a) move-object          v4, v0
+	93      (0000014c) check-cast           v4, [Ljava/lang/reflect/Type;
+	94      (00000150) move                 v0, v2
+
+p-BB@0x152 : [ p-BB@0x156 ]
+	95      (00000152) aput-object          v6, v4, v1
+
+p-BB@0x156 : [ p-BB@0x126 ]
+	96      (00000156) add-int/lit8         v1, v1, 1
+	97      (0000015a) goto                 -1ah
+
+p-BB@0x15c : [ p-BB@0x160 p-BB@0x174 ]
+	98      (0000015c) if-eqz               v0, +00ch
+
+p-BB@0x160 : 
+	99      (00000160) new-instance         v8, Lz8/x0;
+	100     (00000164) invoke-interface     v10, Ljava/lang/reflect/ParameterizedType;->getRawType()Ljava/lang/reflect/Type;
+	101     (0000016a) move-result-object   v9
+	102     (0000016c) invoke-direct        v8, v3, v9, v4, Lz8/x0;-><init>(Ljava/lang/reflect/Type; Ljava/lang/reflect/Type; [Ljava/lang/reflect/Type;)V
+	103     (00000172) return-object        v8
+
+p-BB@0x174 : 
+	104     (00000174) return-object        v10
+
+p-BB@0x176 : [ p-BB@0x17e p-BB@0x1fe ]
+	105     (00000176) instance-of          v0, v10, Ljava/lang/reflect/WildcardType;
+	106     (0000017a) if-eqz               v0, +042h
+
+p-BB@0x17e : [ p-BB@0x198 p-BB@0x1cc ]
+	107     (0000017e) check-cast           v10, Ljava/lang/reflect/WildcardType;
+	108     (00000182) invoke-interface     v10, Ljava/lang/reflect/WildcardType;->getLowerBounds()[Ljava/lang/reflect/Type;
+	109     (00000188) move-result-object   v0
+	110     (0000018a) invoke-interface     v10, Ljava/lang/reflect/WildcardType;->getUpperBounds()[Ljava/lang/reflect/Type;
+	111     (00000190) move-result-object   v3
+	112     (00000192) array-length         v4, v0
+	113     (00000194) if-ne                v4, v2, +01ch
+
+p-BB@0x198 : [ p-BB@0x1ac p-BB@0x1fe ]
+	114     (00000198) aget-object          v3, v0, v1
+	115     (0000019c) invoke-static        v8, v9, v3, Lz8/z0;->p(Ljava/lang/reflect/Type; Ljava/lang/Class; Ljava/lang/reflect/Type;)Ljava/lang/reflect/Type;
+	116     (000001a2) move-result-object   v8
+	117     (000001a4) aget-object          v9, v0, v1
+	118     (000001a8) if-eq                v8, v9, +02bh
+
+p-BB@0x1ac : 
+	119     (000001ac) new-instance         v9, Lz8/y0;
+	120     (000001b0) new-array            v10, v2, [Ljava/lang/reflect/Type;
+	121     (000001b4) const-class          v0, Ljava/lang/Object;
+	122     (000001b8) aput-object          v0, v10, v1
+	123     (000001bc) new-array            v0, v2, [Ljava/lang/reflect/Type;
+	124     (000001c0) aput-object          v8, v0, v1
+	125     (000001c4) invoke-direct        v9, v10, v0, Lz8/y0;-><init>([Ljava/lang/reflect/Type; [Ljava/lang/reflect/Type;)V
+	126     (000001ca) return-object        v9
+
+p-BB@0x1cc : [ p-BB@0x1d2 p-BB@0x1fe ]
+	127     (000001cc) array-length         v0, v3
+	128     (000001ce) if-ne                v0, v2, +018h
+
+p-BB@0x1d2 : [ p-BB@0x1e6 p-BB@0x1fe ]
+	129     (000001d2) aget-object          v0, v3, v1
+	130     (000001d6) invoke-static        v8, v9, v0, Lz8/z0;->p(Ljava/lang/reflect/Type; Ljava/lang/Class; Ljava/lang/reflect/Type;)Ljava/lang/reflect/Type;
+	131     (000001dc) move-result-object   v8
+	132     (000001de) aget-object          v9, v3, v1
+	133     (000001e2) if-eq                v8, v9, +00eh
+
+p-BB@0x1e6 : 
+	134     (000001e6) new-instance         v9, Lz8/y0;
+	135     (000001ea) new-array            v10, v2, [Ljava/lang/reflect/Type;
+	136     (000001ee) aput-object          v8, v10, v1
+	137     (000001f2) sget-object          v8, Lz8/z0;->a [Ljava/lang/reflect/Type;
+	138     (000001f6) invoke-direct        v9, v10, v8, Lz8/y0;-><init>([Ljava/lang/reflect/Type; [Ljava/lang/reflect/Type;)V
+	139     (000001fc) return-object        v9
+
+p-BB@0x1fe : 
+	140     (000001fe) return-object        v10
+

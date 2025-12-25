@@ -1,0 +1,32 @@
+# Ly1/c;->u(Ljava/io/ByteArrayOutputStream; J I)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:java.io.ByteArrayOutputStream
+# - v8:long
+# - v9:int
+#
+# - return:void
+
+u-BB@0x0 : [ u-BB@0x6 ]
+	0       (00000000) new-array            v0, v9, [B
+	1       (00000004) const/4              v1, 0
+
+u-BB@0x6 : [ u-BB@0xa u-BB@0x26 ]
+	2       (00000006) if-ge                v1, v9, +010h
+
+u-BB@0xa : [ u-BB@0x6 ]
+	3       (0000000a) mul-int/lit8         v2, v1, 8
+	4       (0000000e) shr-long             v2, v7, v2
+	5       (00000012) const-wide/16        v4, 255
+	6       (00000016) and-long/2addr       v2, v4
+	7       (00000018) long-to-int          v2, v2
+	8       (0000001a) int-to-byte          v2, v2
+	9       (0000001c) aput-byte            v2, v0, v1
+	10      (00000020) add-int/lit8         v1, v1, 1
+	11      (00000024) goto                 -fh
+
+u-BB@0x26 : 
+	12      (00000026) invoke-virtual       v6, v0, Ljava/io/OutputStream;->write([B)V
+	13      (0000002c) return-void          
+

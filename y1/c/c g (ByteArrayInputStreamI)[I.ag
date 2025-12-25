@@ -1,0 +1,30 @@
+# Ly1/c;->g(Ljava/io/ByteArrayInputStream; I)[I [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:java.io.ByteArrayInputStream
+# - v6:int
+#
+# - return:int[]
+
+g-BB@0x0 : [ g-BB@0x8 ]
+	0       (00000000) new-array            v0, v6, [I
+	1       (00000004) const/4              v1, 0
+	2       (00000006) move                 v2, v1
+
+g-BB@0x8 : [ g-BB@0xc g-BB@0x24 ]
+	3       (00000008) if-ge                v1, v6, +00eh
+
+g-BB@0xc : [ g-BB@0x8 ]
+	4       (0000000c) const/4              v3, 2
+	5       (0000000e) invoke-static        v5, v3, Ly1/c;->m(Ljava/io/InputStream; I)J
+	6       (00000014) move-result-wide     v3
+	7       (00000016) long-to-int          v3, v3
+	8       (00000018) add-int/2addr        v2, v3
+	9       (0000001a) aput                 v2, v0, v1
+	10      (0000001e) add-int/lit8         v1, v1, 1
+	11      (00000022) goto                 -dh
+
+g-BB@0x24 : 
+	12      (00000024) return-object        v0
+

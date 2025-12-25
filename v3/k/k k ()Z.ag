@@ -1,0 +1,33 @@
+# Lv3/k;->k()Z [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v2
+#
+# - return:boolean
+
+k-BB@0x0 : [ k-BB@0x10 k-BB@0x18 ]
+	0       (00000000) iget-object          v0, v2, Lv3/k;->b Lv3/i;
+	1       (00000004) iget-object          v0, v0, Lv3/i;->r Landroid/graphics/Paint$Style;
+	2       (00000008) sget-object          v1, Landroid/graphics/Paint$Style;->FILL_AND_STROKE Landroid/graphics/Paint$Style;
+	3       (0000000c) if-eq                v0, v1, +006h
+
+k-BB@0x10 : [ k-BB@0x18 k-BB@0x32 ]
+	4       (00000010) sget-object          v1, Landroid/graphics/Paint$Style;->STROKE Landroid/graphics/Paint$Style;
+	5       (00000014) if-ne                v0, v1, +00fh
+
+k-BB@0x18 : [ k-BB@0x2e k-BB@0x32 ]
+	6       (00000018) iget-object          v0, v2, Lv3/k;->v Landroid/graphics/Paint;
+	7       (0000001c) invoke-virtual       v0, Landroid/graphics/Paint;->getStrokeWidth()F
+	8       (00000022) move-result          v0
+	9       (00000024) const/4              v1, 0
+	10      (00000026) cmpl-float           v0, v0, v1
+	11      (0000002a) if-lez               v0, +004h
+
+k-BB@0x2e : 
+	12      (0000002e) const/4              v0, 1
+	13      (00000030) return               v0
+
+k-BB@0x32 : 
+	14      (00000032) const/4              v0, 0
+	15      (00000034) return               v0
+

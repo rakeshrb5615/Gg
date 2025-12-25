@@ -1,0 +1,64 @@
+# Ly3/h;->c()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v3
+#
+# - return:void
+
+c-BB@0x0 : [ c-BB@0x12 ]
+	0       (00000000) invoke-static        Lj6/s;->h()Lj6/s;
+	1       (00000006) move-result-object   v0
+	2       (00000008) iget-object          v1, v3, Ly3/h;->t Ly3/f;
+	3       (0000000c) iget-object          v2, v0, Lj6/s;->b Ljava/lang/Object;
+	4       (00000010) monitor-enter        v2
+
+c-BB@0x12 : [ c-BB@0x1e c-BB@0x3c ]
+	5       (00000012) invoke-virtual       v0, v1, Lj6/s;->l(Ly3/f;)Z
+	6       (00000018) move-result          v1
+	7       (0000001a) if-eqz               v1, +011h
+	12:3d
+	(Ljava/lang/Throwable; -> 38 c-BB@0x38)
+
+c-BB@0x1e : [ c-BB@0x30 c-BB@0x3c ]
+	8       (0000001e) const/4              v1, 0
+	9       (00000020) iput-object          v1, v0, Lj6/s;->d Ljava/lang/Object;
+	10      (00000024) iget-object          v1, v0, Lj6/s;->e Ljava/lang/Object;
+	11      (00000028) check-cast           v1, Ly3/l;
+	12      (0000002c) if-eqz               v1, +008h
+	12:3d
+	(Ljava/lang/Throwable; -> 38 c-BB@0x38)
+
+c-BB@0x30 : [ c-BB@0x3c ]
+	13      (00000030) invoke-virtual       v0, Lj6/s;->s()V
+	14      (00000036) goto                 +3h
+	12:3d
+	(Ljava/lang/Throwable; -> 38 c-BB@0x38)
+
+c-BB@0x38 : [ c-BB@0x62 ]
+	15      (00000038) move-exception       v0
+	16      (0000003a) goto                 +14h
+	12:3d
+	(Ljava/lang/Throwable; -> 38 c-BB@0x38)
+
+c-BB@0x3c : [ c-BB@0x52 c-BB@0x60 ]
+	17      (0000003c) monitor-exit         v2
+	18      (0000003e) iget-object          v0, v3, Ly3/h;->i Ly3/g;
+	19      (00000042) invoke-virtual       v0, Landroid/view/View;->getParent()Landroid/view/ViewParent;
+	20      (00000048) move-result-object   v0
+	21      (0000004a) instance-of          v1, v0, Landroid/view/ViewGroup;
+	22      (0000004e) if-eqz               v1, +009h
+
+c-BB@0x52 : [ c-BB@0x60 ]
+	23      (00000052) check-cast           v0, Landroid/view/ViewGroup;
+	24      (00000056) iget-object          v1, v3, Ly3/h;->i Ly3/g;
+	25      (0000005a) invoke-virtual       v0, v1, Landroid/view/ViewGroup;->removeView(Landroid/view/View;)V
+
+c-BB@0x60 : 
+	26      (00000060) return-void          
+
+c-BB@0x62 : 
+	27      (00000062) monitor-exit         v2
+	28      (00000064) throw                v0
+	62:63
+	(Ljava/lang/Throwable; -> 38 c-BB@0x38)
+

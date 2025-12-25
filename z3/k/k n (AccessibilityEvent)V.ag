@@ -1,0 +1,71 @@
+# Lz3/k;->n(Landroid/view/accessibility/AccessibilityEvent;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:android.view.accessibility.AccessibilityEvent
+#
+# - return:void
+
+n-BB@0x0 : [ n-BB@0x10 n-BB@0x8a ]
+	0       (00000000) iget-object          v0, v3, Lz3/k;->p Landroid/view/accessibility/AccessibilityManager;
+	1       (00000004) invoke-virtual       v0, Landroid/view/accessibility/AccessibilityManager;->isEnabled()Z
+	2       (0000000a) move-result          v0
+	3       (0000000c) if-eqz               v0, +03fh
+
+n-BB@0x10 : [ n-BB@0x20 n-BB@0x22 ]
+	4       (00000010) iget-object          v0, v3, Lz3/k;->h Landroid/widget/AutoCompleteTextView;
+	5       (00000014) invoke-virtual       v0, Landroid/widget/TextView;->getInputType()I
+	6       (0000001a) move-result          v0
+	7       (0000001c) if-eqz               v0, +003h
+
+n-BB@0x20 : 
+	8       (00000020) return-void          
+
+n-BB@0x22 : [ n-BB@0x36 n-BB@0x46 ]
+	9       (00000022) invoke-virtual       v4, Landroid/view/accessibility/AccessibilityEvent;->getEventType()I
+	10      (00000028) move-result          v0
+	11      (0000002a) const                v1, 32768
+	12      (00000030) const/4              v2, 1
+	13      (00000032) if-eq                v0, v1, +00ah
+
+n-BB@0x36 : [ n-BB@0x46 n-BB@0x62 ]
+	14      (00000036) invoke-virtual       v4, Landroid/view/accessibility/AccessibilityEvent;->getEventType()I
+	15      (0000003c) move-result          v0
+	16      (0000003e) const/16             v1, 8
+	17      (00000042) if-ne                v0, v1, +010h
+
+n-BB@0x46 : [ n-BB@0x4e n-BB@0x62 ]
+	18      (00000046) iget-boolean         v0, v3, Lz3/k;->n Z
+	19      (0000004a) if-eqz               v0, +00ch
+
+n-BB@0x4e : [ n-BB@0x5e n-BB@0x62 ]
+	20      (0000004e) iget-object          v0, v3, Lz3/k;->h Landroid/widget/AutoCompleteTextView;
+	21      (00000052) invoke-virtual       v0, Landroid/widget/AutoCompleteTextView;->isPopupShowing()Z
+	22      (00000058) move-result          v0
+	23      (0000005a) if-nez               v0, +004h
+
+n-BB@0x5e : [ n-BB@0x64 ]
+	24      (0000005e) move                 v0, v2
+	25      (00000060) goto                 +2h
+
+n-BB@0x62 : [ n-BB@0x64 ]
+	26      (00000062) const/4              v0, 0
+
+n-BB@0x64 : [ n-BB@0x70 n-BB@0x74 ]
+	27      (00000064) invoke-virtual       v4, Landroid/view/accessibility/AccessibilityEvent;->getEventType()I
+	28      (0000006a) move-result          v4
+	29      (0000006c) if-eq                v4, v2, +004h
+
+n-BB@0x70 : [ n-BB@0x74 n-BB@0x8a ]
+	30      (00000070) if-eqz               v0, +00dh
+
+n-BB@0x74 : [ n-BB@0x8a ]
+	31      (00000074) invoke-virtual       v3, Lz3/k;->t()V
+	32      (0000007a) iput-boolean         v2, v3, Lz3/k;->m Z
+	33      (0000007e) invoke-static        Landroid/os/SystemClock;->uptimeMillis()J
+	34      (00000084) move-result-wide     v0
+	35      (00000086) iput-wide            v0, v3, Lz3/k;->o J
+
+n-BB@0x8a : 
+	36      (0000008a) return-void          
+

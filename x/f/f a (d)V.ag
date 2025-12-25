@@ -1,0 +1,113 @@
+# Lx/f;->a(Lx/d;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v7
+# - v8:x.d
+#
+# - return:void
+
+a-BB@0x0 : [ a-BB@0x10 ]
+	0       (00000000) iget-object          v8, v7, Lx/f;->l Ljava/util/ArrayList;
+	1       (00000004) invoke-virtual       v8, Ljava/util/ArrayList;->size()I
+	2       (0000000a) move-result          v0
+	3       (0000000c) const/4              v1, 0
+	4       (0000000e) move                 v2, v1
+
+a-BB@0x10 : [ a-BB@0x14 a-BB@0x2e ]
+	5       (00000010) if-ge                v2, v0, +00fh
+
+a-BB@0x14 : [ a-BB@0x2c a-BB@0x10 ]
+	6       (00000014) invoke-virtual       v8, v2, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	7       (0000001a) move-result-object   v3
+	8       (0000001c) add-int/lit8         v2, v2, 1
+	9       (00000020) check-cast           v3, Lx/f;
+	10      (00000024) iget-boolean         v3, v3, Lx/f;->j Z
+	11      (00000028) if-nez               v3, -00ch
+
+a-BB@0x2c : [ a-BB@0xd6 ]
+	12      (0000002c) goto                 +55h
+
+a-BB@0x2e : [ a-BB@0x3c a-BB@0x42 ]
+	13      (0000002e) const/4              v0, 1
+	14      (00000030) iput-boolean         v0, v7, Lx/f;->c Z
+	15      (00000034) iget-object          v2, v7, Lx/f;->a Lx/o;
+	16      (00000038) if-eqz               v2, +005h
+
+a-BB@0x3c : [ a-BB@0x42 ]
+	17      (0000003c) invoke-interface     v2, v7, Lx/d;->a(Lx/d;)V
+
+a-BB@0x42 : [ a-BB@0x4a a-BB@0x56 ]
+	18      (00000042) iget-boolean         v2, v7, Lx/f;->b Z
+	19      (00000046) if-eqz               v2, +008h
+
+a-BB@0x4a : 
+	20      (0000004a) iget-object          v8, v7, Lx/f;->d Lx/o;
+	21      (0000004e) invoke-interface     v8, v7, Lx/d;->a(Lx/d;)V
+	22      (00000054) return-void          
+
+a-BB@0x56 : [ a-BB@0x64 ]
+	23      (00000056) invoke-virtual       v8, Ljava/util/ArrayList;->size()I
+	24      (0000005c) move-result          v2
+	25      (0000005e) const/4              v3, 0
+	26      (00000060) move-object          v4, v3
+	27      (00000062) move                 v3, v1
+
+a-BB@0x64 : [ a-BB@0x68 a-BB@0x8a ]
+	28      (00000064) if-ge                v3, v2, +013h
+
+a-BB@0x68 : [ a-BB@0x80 a-BB@0x82 ]
+	29      (00000068) invoke-virtual       v8, v3, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	30      (0000006e) move-result-object   v5
+	31      (00000070) add-int/lit8         v3, v3, 1
+	32      (00000074) check-cast           v5, Lx/f;
+	33      (00000078) instance-of          v6, v5, Lx/g;
+	34      (0000007c) if-eqz               v6, +003h
+
+a-BB@0x80 : [ a-BB@0x64 ]
+	35      (00000080) goto                 -eh
+
+a-BB@0x82 : [ a-BB@0x64 ]
+	36      (00000082) add-int/lit8         v1, v1, 1
+	37      (00000086) move-object          v4, v5
+	38      (00000088) goto                 -12h
+
+a-BB@0x8a : [ a-BB@0x8e a-BB@0xc8 ]
+	39      (0000008a) if-eqz               v4, +01fh
+
+a-BB@0x8e : [ a-BB@0x92 a-BB@0xc8 ]
+	40      (0000008e) if-ne                v1, v0, +01dh
+
+a-BB@0x92 : [ a-BB@0x9a a-BB@0xc8 ]
+	41      (00000092) iget-boolean         v8, v4, Lx/f;->j Z
+	42      (00000096) if-eqz               v8, +019h
+
+a-BB@0x9a : [ a-BB@0xa2 a-BB@0xb8 ]
+	43      (0000009a) iget-object          v8, v7, Lx/f;->i Lx/g;
+	44      (0000009e) if-eqz               v8, +00dh
+
+a-BB@0xa2 : [ a-BB@0xaa a-BB@0xd6 ]
+	45      (000000a2) iget-boolean         v0, v8, Lx/f;->j Z
+	46      (000000a6) if-eqz               v0, +018h
+
+a-BB@0xaa : [ a-BB@0xb8 ]
+	47      (000000aa) iget                 v0, v7, Lx/f;->h I
+	48      (000000ae) iget                 v8, v8, Lx/f;->g I
+	49      (000000b2) mul-int/2addr        v0, v8
+	50      (000000b4) iput                 v0, v7, Lx/f;->f I
+
+a-BB@0xb8 : [ a-BB@0xc8 ]
+	51      (000000b8) iget                 v8, v4, Lx/f;->g I
+	52      (000000bc) iget                 v0, v7, Lx/f;->f I
+	53      (000000c0) add-int/2addr        v8, v0
+	54      (000000c2) invoke-virtual       v7, v8, Lx/f;->d(I)V
+
+a-BB@0xc8 : [ a-BB@0xd0 a-BB@0xd6 ]
+	55      (000000c8) iget-object          v8, v7, Lx/f;->a Lx/o;
+	56      (000000cc) if-eqz               v8, +005h
+
+a-BB@0xd0 : [ a-BB@0xd6 ]
+	57      (000000d0) invoke-interface     v8, v7, Lx/d;->a(Lx/d;)V
+
+a-BB@0xd6 : 
+	58      (000000d6) return-void          
+

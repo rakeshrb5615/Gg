@@ -1,0 +1,66 @@
+# Ly0/d;->c(I Landroid/graphics/Rect; Landroid/graphics/Rect;)Z [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v0
+# - v1:int
+# - v2:android.graphics.Rect
+# - v3:android.graphics.Rect
+#
+# - return:boolean
+
+c-BB@0x0 : [ c-BB@0x8 c-BB@0x4c ]
+	0       (00000000) const/16             v0, 17
+	1       (00000004) if-eq                v1, v0, +024h
+
+c-BB@0x8 : [ c-BB@0x10 c-BB@0x32 ]
+	2       (00000008) const/16             v0, 33
+	3       (0000000c) if-eq                v1, v0, +013h
+
+c-BB@0x10 : [ c-BB@0x18 c-BB@0x4c ]
+	4       (00000010) const/16             v0, 66
+	5       (00000014) if-eq                v1, v0, +01ch
+
+c-BB@0x18 : [ c-BB@0x20 c-BB@0x22 ]
+	6       (00000018) const/16             v0, 130
+	7       (0000001c) if-ne                v1, v0, +003h
+
+c-BB@0x20 : [ c-BB@0x32 ]
+	8       (00000020) goto                 +9h
+
+c-BB@0x22 : 
+	9       (00000022) new-instance         v1, Ljava/lang/IllegalArgumentException;
+	10      (00000026) const-string         v2, "direction must be one of {FOCUS_UP, FOCUS_DOWN, FOCUS_LEFT, FOCUS_RIGHT}."
+	11      (0000002a) invoke-direct        v1, v2, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	12      (00000030) throw                v1
+
+c-BB@0x32 : [ c-BB@0x3e c-BB@0x68 ]
+	13      (00000032) iget                 v1, v3, Landroid/graphics/Rect;->right I
+	14      (00000036) iget                 v0, v2, Landroid/graphics/Rect;->left I
+	15      (0000003a) if-lt                v1, v0, +017h
+
+c-BB@0x3e : [ c-BB@0x4a c-BB@0x68 ]
+	16      (0000003e) iget                 v1, v3, Landroid/graphics/Rect;->left I
+	17      (00000042) iget                 v2, v2, Landroid/graphics/Rect;->right I
+	18      (00000046) if-gt                v1, v2, +011h
+
+c-BB@0x4a : [ c-BB@0x64 ]
+	19      (0000004a) goto                 +dh
+
+c-BB@0x4c : [ c-BB@0x58 c-BB@0x68 ]
+	20      (0000004c) iget                 v1, v3, Landroid/graphics/Rect;->bottom I
+	21      (00000050) iget                 v0, v2, Landroid/graphics/Rect;->top I
+	22      (00000054) if-lt                v1, v0, +00ah
+
+c-BB@0x58 : [ c-BB@0x64 c-BB@0x68 ]
+	23      (00000058) iget                 v1, v3, Landroid/graphics/Rect;->top I
+	24      (0000005c) iget                 v2, v2, Landroid/graphics/Rect;->bottom I
+	25      (00000060) if-gt                v1, v2, +004h
+
+c-BB@0x64 : 
+	26      (00000064) const/4              v1, 1
+	27      (00000066) return               v1
+
+c-BB@0x68 : 
+	28      (00000068) const/4              v1, 0
+	29      (0000006a) return               v1
+

@@ -1,0 +1,31 @@
+# Lz4/f;->a(Lorg/json/JSONObject;)Lz4/f; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:org.json.JSONObject
+#
+# - return:z4.f
+
+a-BB@0x0 : [ a-BB@0x6 a-BB@0x8 ]
+	0       (00000000) const/4              v0, 0
+	1       (00000002) if-nez               v5, +003h
+
+a-BB@0x6 : 
+	2       (00000006) return-object        v0
+
+a-BB@0x8 : 
+	3       (00000008) const-string         v1, "lastSignInTimestamp"
+	4       (0000000c) invoke-virtual       v5, v1, Lorg/json/JSONObject;->getLong(Ljava/lang/String;)J
+	5       (00000012) move-result-wide     v1
+	6       (00000014) const-string         v3, "creationTimestamp"
+	7       (00000018) invoke-virtual       v5, v3, Lorg/json/JSONObject;->getLong(Ljava/lang/String;)J
+	8       (0000001e) move-result-wide     v3
+	9       (00000020) new-instance         v5, Lz4/f;
+	10      (00000024) invoke-direct        v5, v1, v2, v3, v4, Lz4/f;-><init>(J J)V
+	11      (0000002a) return-object        v5
+	8:29
+	(Lorg/json/JSONException; -> 2c a-BB@0x2c)
+
+a-BB@0x2c : 
+	12      (0000002c) return-object        v0
+

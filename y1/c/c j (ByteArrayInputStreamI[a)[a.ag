@@ -1,0 +1,85 @@
+# Ly1/c;->j(Ljava/io/ByteArrayInputStream; I [Ly1/a;)[Ly1/a; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v7
+# - v8:java.io.ByteArrayInputStream
+# - v9:int
+# - v10:y1.a[]
+#
+# - return:y1.a[]
+
+j-BB@0x0 : [ j-BB@0xe j-BB@0x14 ]
+	0       (00000000) invoke-virtual       v8, Ljava/io/InputStream;->available()I
+	1       (00000006) move-result          v0
+	2       (00000008) const/4              v1, 0
+	3       (0000000a) if-nez               v0, +005h
+
+j-BB@0xe : 
+	4       (0000000e) new-array            v8, v1, [Ly1/a;
+	5       (00000012) return-object        v8
+
+j-BB@0x14 : [ j-BB@0x1a j-BB@0xaa ]
+	6       (00000014) array-length         v0, v10
+	7       (00000016) if-ne                v9, v0, +04ah
+
+j-BB@0x1a : [ j-BB@0x24 ]
+	8       (0000001a) new-array            v0, v9, [Ljava/lang/String;
+	9       (0000001e) new-array            v2, v9, [I
+	10      (00000022) move                 v3, v1
+
+j-BB@0x24 : [ j-BB@0x28 j-BB@0x62 ]
+	11      (00000024) if-ge                v3, v9, +01fh
+
+j-BB@0x28 : [ j-BB@0x24 ]
+	12      (00000028) const/4              v4, 2
+	13      (0000002a) invoke-static        v8, v4, Ly1/c;->m(Ljava/io/InputStream; I)J
+	14      (00000030) move-result-wide     v5
+	15      (00000032) long-to-int          v5, v5
+	16      (00000034) invoke-static        v8, v4, Ly1/c;->m(Ljava/io/InputStream; I)J
+	17      (0000003a) move-result-wide     v6
+	18      (0000003c) long-to-int          v4, v6
+	19      (0000003e) aput                 v4, v2, v3
+	20      (00000042) new-instance         v4, Ljava/lang/String;
+	21      (00000046) invoke-static        v8, v5, Ly1/c;->f(Ljava/io/InputStream; I)[B
+	22      (0000004c) move-result-object   v5
+	23      (0000004e) sget-object          v6, Ljava/nio/charset/StandardCharsets;->UTF_8 Ljava/nio/charset/Charset;
+	24      (00000052) invoke-direct        v4, v5, v6, Ljava/lang/String;-><init>([B Ljava/nio/charset/Charset;)V
+	25      (00000058) aput-object          v4, v0, v3
+	26      (0000005c) add-int/lit8         v3, v3, 1
+	27      (00000060) goto                 -1eh
+
+j-BB@0x62 : [ j-BB@0x66 j-BB@0xa8 ]
+	28      (00000062) if-ge                v1, v9, +023h
+
+j-BB@0x66 : [ j-BB@0x7e j-BB@0x98 ]
+	29      (00000066) aget-object          v3, v10, v1
+	30      (0000006a) iget-object          v4, v3, Ly1/a;->b Ljava/lang/String;
+	31      (0000006e) aget-object          v5, v0, v1
+	32      (00000072) invoke-virtual       v4, v5, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	33      (00000078) move-result          v4
+	34      (0000007a) if-eqz               v4, +00fh
+
+j-BB@0x7e : [ j-BB@0x62 ]
+	35      (0000007e) aget                 v4, v2, v1
+	36      (00000082) iput                 v4, v3, Ly1/a;->e I
+	37      (00000086) invoke-static        v8, v4, Ly1/c;->g(Ljava/io/ByteArrayInputStream; I)[I
+	38      (0000008c) move-result-object   v4
+	39      (0000008e) iput-object          v4, v3, Ly1/a;->h [I
+	40      (00000092) add-int/lit8         v1, v1, 1
+	41      (00000096) goto                 -1ah
+
+j-BB@0x98 : 
+	42      (00000098) new-instance         v8, Ljava/lang/IllegalStateException;
+	43      (0000009c) const-string         v9, "Order of dexfiles in metadata did not match baseline"
+	44      (000000a0) invoke-direct        v8, v9, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	45      (000000a6) throw                v8
+
+j-BB@0xa8 : 
+	46      (000000a8) return-object        v10
+
+j-BB@0xaa : 
+	47      (000000aa) new-instance         v8, Ljava/lang/IllegalStateException;
+	48      (000000ae) const-string         v9, "Mismatched number of dex files found in metadata"
+	49      (000000b2) invoke-direct        v8, v9, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	50      (000000b8) throw                v8
+

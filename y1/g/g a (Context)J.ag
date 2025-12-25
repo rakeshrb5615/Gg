@@ -1,0 +1,32 @@
+# Ly1/g;->a(Landroid/content/Context;)J [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:android.content.Context
+#
+# - return:long
+
+a-BB@0x0 : [ a-BB@0x1c a-BB@0x2a ]
+	0       (00000000) invoke-virtual       v3, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;
+	1       (00000006) move-result-object   v0
+	2       (00000008) invoke-virtual       v0, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
+	3       (0000000e) move-result-object   v0
+	4       (00000010) sget                 v1, Landroid/os/Build$VERSION;->SDK_INT I
+	5       (00000014) const/16             v2, 33
+	6       (00000018) if-lt                v1, v2, +009h
+
+a-BB@0x1c : 
+	7       (0000001c) invoke-static        v0, v3, Ly1/e;->a(Landroid/content/pm/PackageManager; Landroid/content/Context;)Landroid/content/pm/PackageInfo;
+	8       (00000022) move-result-object   v3
+	9       (00000024) iget-wide            v0, v3, Landroid/content/pm/PackageInfo;->lastUpdateTime J
+	10      (00000028) return-wide          v0
+
+a-BB@0x2a : 
+	11      (0000002a) invoke-virtual       v3, Landroid/content/Context;->getPackageName()Ljava/lang/String;
+	12      (00000030) move-result-object   v3
+	13      (00000032) const/4              v1, 0
+	14      (00000034) invoke-virtual       v0, v3, v1, Landroid/content/pm/PackageManager;->getPackageInfo(Ljava/lang/String; I)Landroid/content/pm/PackageInfo;
+	15      (0000003a) move-result-object   v3
+	16      (0000003c) iget-wide            v0, v3, Landroid/content/pm/PackageInfo;->lastUpdateTime J
+	17      (00000040) return-wide          v0
+

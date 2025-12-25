@@ -1,0 +1,34 @@
+# Lx3/e;->v(F)F [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:float
+#
+# - return:float
+
+v-BB@0x0 : [ v-BB@0x1a v-BB@0x2a ]
+	0       (00000000) iget                 v0, v2, Lx3/e;->q0 F
+	1       (00000004) sub-float/2addr      v3, v0
+	2       (00000006) iget                 v1, v2, Lx3/e;->r0 F
+	3       (0000000a) sub-float/2addr      v1, v0
+	4       (0000000c) div-float/2addr      v3, v1
+	5       (0000000e) invoke-virtual       v2, Lx3/e;->r()Z
+	6       (00000014) move-result          v0
+	7       (00000016) if-nez               v0, +00ah
+
+v-BB@0x1a : [ v-BB@0x26 v-BB@0x28 ]
+	8       (0000001a) invoke-virtual       v2, Lx3/e;->s()Z
+	9       (00000020) move-result          v0
+	10      (00000022) if-eqz               v0, +003h
+
+v-BB@0x26 : [ v-BB@0x2a ]
+	11      (00000026) goto                 +2h
+
+v-BB@0x28 : 
+	12      (00000028) return               v3
+
+v-BB@0x2a : 
+	13      (0000002a) const/high16         v0, 1065353216
+	14      (0000002e) sub-float/2addr      v0, v3
+	15      (00000030) return               v0
+

@@ -1,0 +1,84 @@
+# Ly3/h;->a(I)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:int
+#
+# - return:void
+
+a-BB@0x0 : [ a-BB@0x12 ]
+	0       (00000000) invoke-static        Lj6/s;->h()Lj6/s;
+	1       (00000006) move-result-object   v0
+	2       (00000008) iget-object          v1, v4, Ly3/h;->t Ly3/f;
+	3       (0000000c) iget-object          v2, v0, Lj6/s;->b Ljava/lang/Object;
+	4       (00000010) monitor-enter        v2
+
+a-BB@0x12 : [ a-BB@0x1e a-BB@0x32 ]
+	5       (00000012) invoke-virtual       v0, v1, Lj6/s;->l(Ly3/f;)Z
+	6       (00000018) move-result          v3
+	7       (0000001a) if-eqz               v3, +00ch
+	12:6b
+	(Ljava/lang/Throwable; -> 2e a-BB@0x2e)
+
+a-BB@0x1e : [ a-BB@0x66 ]
+	8       (0000001e) iget-object          v1, v0, Lj6/s;->d Ljava/lang/Object;
+	9       (00000022) check-cast           v1, Ly3/l;
+	10      (00000026) invoke-virtual       v0, v1, v5, Lj6/s;->c(Ly3/l; I)Z
+	11      (0000002c) goto                 +1dh
+	12:6b
+	(Ljava/lang/Throwable; -> 2e a-BB@0x2e)
+
+a-BB@0x2e : [ a-BB@0x6a ]
+	12      (0000002e) move-exception       v5
+	13      (00000030) goto                 +1dh
+	12:6b
+	(Ljava/lang/Throwable; -> 2e a-BB@0x2e)
+
+a-BB@0x32 : [ a-BB@0x3e a-BB@0x52 ]
+	14      (00000032) iget-object          v3, v0, Lj6/s;->e Ljava/lang/Object;
+	15      (00000036) check-cast           v3, Ly3/l;
+	16      (0000003a) if-eqz               v3, +00ch
+	12:6b
+	(Ljava/lang/Throwable; -> 2e a-BB@0x2e)
+
+a-BB@0x3e : [ a-BB@0x4e a-BB@0x52 ]
+	17      (0000003e) iget-object          v3, v3, Ly3/l;->a Ljava/lang/ref/WeakReference;
+	18      (00000042) invoke-virtual       v3, Ljava/lang/ref/Reference;->get()Ljava/lang/Object;
+	19      (00000048) move-result-object   v3
+	20      (0000004a) if-ne                v3, v1, +004h
+	12:6b
+	(Ljava/lang/Throwable; -> 2e a-BB@0x2e)
+
+a-BB@0x4e : [ a-BB@0x54 ]
+	21      (0000004e) const/4              v1, 1
+	22      (00000050) goto                 +2h
+	12:6b
+	(Ljava/lang/Throwable; -> 2e a-BB@0x2e)
+
+a-BB@0x52 : [ a-BB@0x54 ]
+	23      (00000052) const/4              v1, 0
+	12:6b
+	(Ljava/lang/Throwable; -> 2e a-BB@0x2e)
+
+a-BB@0x54 : [ a-BB@0x58 a-BB@0x66 ]
+	24      (00000054) if-eqz               v1, +009h
+	12:6b
+	(Ljava/lang/Throwable; -> 2e a-BB@0x2e)
+
+a-BB@0x58 : [ a-BB@0x66 ]
+	25      (00000058) iget-object          v1, v0, Lj6/s;->e Ljava/lang/Object;
+	26      (0000005c) check-cast           v1, Ly3/l;
+	27      (00000060) invoke-virtual       v0, v1, v5, Lj6/s;->c(Ly3/l; I)Z
+	12:6b
+	(Ljava/lang/Throwable; -> 2e a-BB@0x2e)
+
+a-BB@0x66 : 
+	28      (00000066) monitor-exit         v2
+	29      (00000068) return-void          
+	12:6b
+	(Ljava/lang/Throwable; -> 2e a-BB@0x2e)
+
+a-BB@0x6a : 
+	30      (0000006a) monitor-exit         v2
+	31      (0000006c) throw                v5
+

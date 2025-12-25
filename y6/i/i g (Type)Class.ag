@@ -1,0 +1,92 @@
+# Ly6/i;->g(Ljava/lang/reflect/Type;)Ljava/lang/Class; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:java.lang.reflect.Type
+#
+# - return:java.lang.Class
+
+g-BB@0x0 : [ g-BB@0x8 g-BB@0xe ]
+	0       (00000000) instance-of          v0, v4, Ljava/lang/Class;
+	1       (00000004) if-eqz               v0, +005h
+
+g-BB@0x8 : 
+	2       (00000008) check-cast           v4, Ljava/lang/Class;
+	3       (0000000c) return-object        v4
+
+g-BB@0xe : [ g-BB@0x16 g-BB@0x28 ]
+	4       (0000000e) instance-of          v0, v4, Ljava/lang/reflect/ParameterizedType;
+	5       (00000012) if-eqz               v0, +00bh
+
+g-BB@0x16 : 
+	6       (00000016) check-cast           v4, Ljava/lang/reflect/ParameterizedType;
+	7       (0000001a) invoke-interface     v4, Ljava/lang/reflect/ParameterizedType;->getRawType()Ljava/lang/reflect/Type;
+	8       (00000020) move-result-object   v4
+	9       (00000022) check-cast           v4, Ljava/lang/Class;
+	10      (00000026) return-object        v4
+
+g-BB@0x28 : [ g-BB@0x32 g-BB@0x58 ]
+	11      (00000028) instance-of          v0, v4, Ljava/lang/reflect/GenericArrayType;
+	12      (0000002c) const/4              v1, 0
+	13      (0000002e) if-eqz               v0, +015h
+
+g-BB@0x32 : 
+	14      (00000032) check-cast           v4, Ljava/lang/reflect/GenericArrayType;
+	15      (00000036) invoke-interface     v4, Ljava/lang/reflect/GenericArrayType;->getGenericComponentType()Ljava/lang/reflect/Type;
+	16      (0000003c) move-result-object   v4
+	17      (0000003e) invoke-static        v4, Ly6/i;->g(Ljava/lang/reflect/Type;)Ljava/lang/Class;
+	18      (00000044) move-result-object   v4
+	19      (00000046) invoke-static        v4, v1, Ljava/lang/reflect/Array;->newInstance(Ljava/lang/Class; I)Ljava/lang/Object;
+	20      (0000004c) move-result-object   v4
+	21      (0000004e) invoke-virtual       v4, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	22      (00000054) move-result-object   v4
+	23      (00000056) return-object        v4
+
+g-BB@0x58 : [ g-BB@0x60 g-BB@0x66 ]
+	24      (00000058) instance-of          v0, v4, Ljava/lang/reflect/TypeVariable;
+	25      (0000005c) if-eqz               v0, +005h
+
+g-BB@0x60 : 
+	26      (00000060) const-class          v4, Ljava/lang/Object;
+	27      (00000064) return-object        v4
+
+g-BB@0x66 : [ g-BB@0x6e g-BB@0x88 ]
+	28      (00000066) instance-of          v0, v4, Ljava/lang/reflect/WildcardType;
+	29      (0000006a) if-eqz               v0, +00fh
+
+g-BB@0x6e : 
+	30      (0000006e) check-cast           v4, Ljava/lang/reflect/WildcardType;
+	31      (00000072) invoke-interface     v4, Ljava/lang/reflect/WildcardType;->getUpperBounds()[Ljava/lang/reflect/Type;
+	32      (00000078) move-result-object   v4
+	33      (0000007a) aget-object          v4, v4, v1
+	34      (0000007e) invoke-static        v4, Ly6/i;->g(Ljava/lang/reflect/Type;)Ljava/lang/Class;
+	35      (00000084) move-result-object   v4
+	36      (00000086) return-object        v4
+
+g-BB@0x88 : [ g-BB@0x8c g-BB@0x92 ]
+	37      (00000088) if-nez               v4, +005h
+
+g-BB@0x8c : [ g-BB@0xa2 ]
+	38      (0000008c) const-string         v0, "null"
+	39      (00000090) goto                 +9h
+
+g-BB@0x92 : [ g-BB@0xa2 ]
+	40      (00000092) invoke-virtual       v4, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	41      (00000098) move-result-object   v0
+	42      (0000009a) invoke-virtual       v0, Ljava/lang/Class;->getName()Ljava/lang/String;
+	43      (000000a0) move-result-object   v0
+
+g-BB@0xa2 : 
+	44      (000000a2) new-instance         v1, Ljava/lang/IllegalArgumentException;
+	45      (000000a6) new-instance         v2, Ljava/lang/StringBuilder;
+	46      (000000aa) const-string         v3, "Expected a Class, ParameterizedType, or GenericArrayType, but <"
+	47      (000000ae) invoke-direct        v2, v3, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	48      (000000b4) invoke-virtual       v2, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	49      (000000ba) const-string         v4, "> is of type "
+	50      (000000be) invoke-virtual       v2, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	51      (000000c4) invoke-virtual       v2, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	52      (000000ca) invoke-virtual       v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	53      (000000d0) move-result-object   v4
+	54      (000000d2) invoke-direct        v1, v4, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	55      (000000d8) throw                v1
+

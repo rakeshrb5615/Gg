@@ -1,0 +1,48 @@
+# Lx8/g;->read(Ljava/nio/ByteBuffer;)I [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:java.nio.ByteBuffer
+#
+# - return:int
+
+read-BB@0x0 : [ read-BB@0x12 read-BB@0x16 ]
+	0       (00000000) const-string         v0, "sink"
+	1       (00000004) invoke-static        v7, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) iget-object          v0, v6, Lx8/g;->a Lx8/c0;
+	3       (0000000e) if-nez               v0, +004h
+
+read-BB@0x12 : 
+	4       (00000012) const/4              v7, -1
+	5       (00000014) return               v7
+
+read-BB@0x16 : [ read-BB@0x5c read-BB@0x6e ]
+	6       (00000016) invoke-virtual       v7, Ljava/nio/Buffer;->remaining()I
+	7       (0000001c) move-result          v1
+	8       (0000001e) iget                 v2, v0, Lx8/c0;->c I
+	9       (00000022) iget                 v3, v0, Lx8/c0;->b I
+	10      (00000026) sub-int/2addr        v2, v3
+	11      (00000028) invoke-static        v1, v2, Ljava/lang/Math;->min(I I)I
+	12      (0000002e) move-result          v1
+	13      (00000030) iget-object          v2, v0, Lx8/c0;->a [B
+	14      (00000034) iget                 v3, v0, Lx8/c0;->b I
+	15      (00000038) invoke-virtual       v7, v2, v3, v1, Ljava/nio/ByteBuffer;->put([B I I)Ljava/nio/ByteBuffer;
+	16      (0000003e) iget                 v7, v0, Lx8/c0;->b I
+	17      (00000042) add-int/2addr        v7, v1
+	18      (00000044) iput                 v7, v0, Lx8/c0;->b I
+	19      (00000048) iget-wide            v2, v6, Lx8/g;->b J
+	20      (0000004c) int-to-long          v4, v1
+	21      (0000004e) sub-long/2addr       v2, v4
+	22      (00000050) iput-wide            v2, v6, Lx8/g;->b J
+	23      (00000054) iget                 v2, v0, Lx8/c0;->c I
+	24      (00000058) if-ne                v7, v2, +00bh
+
+read-BB@0x5c : [ read-BB@0x6e ]
+	25      (0000005c) invoke-virtual       v0, Lx8/c0;->a()Lx8/c0;
+	26      (00000062) move-result-object   v7
+	27      (00000064) iput-object          v7, v6, Lx8/g;->a Lx8/c0;
+	28      (00000068) invoke-static        v0, Lx8/d0;->a(Lx8/c0;)V
+
+read-BB@0x6e : 
+	29      (0000006e) return               v1
+

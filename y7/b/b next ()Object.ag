@@ -1,0 +1,52 @@
+# Ly7/b;->next()Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v2
+#
+# - return:java.lang.Object
+
+next-BB@0x0 : [ D:next-BB@0xa 0:next-BB@0x1c ]
+	0       (00000000) iget                 v0, v2, Ly7/b;->a I
+	1       (00000004) packed-switch        v0, +000002ch
+
+next-BB@0xa : 
+	2       (0000000a) invoke-virtual       v2, Ly7/b;->nextInt()I
+	3       (00000010) move-result          v0
+	4       (00000012) invoke-static        v0, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+	5       (00000018) move-result-object   v0
+	6       (0000001a) return-object        v0
+
+next-BB@0x1c : [ next-BB@0x28 next-BB@0x44 ]
+	7       (0000001c) iget                 v0, v2, Ly7/b;->e I
+	8       (00000020) iget                 v1, v2, Ly7/b;->c I
+	9       (00000024) if-ne                v0, v1, +010h
+
+next-BB@0x28 : [ next-BB@0x30 next-BB@0x38 ]
+	10      (00000028) iget-boolean         v1, v2, Ly7/b;->d Z
+	11      (0000002c) if-eqz               v1, +006h
+
+next-BB@0x30 : [ next-BB@0x4e ]
+	12      (00000030) const/4              v1, 0
+	13      (00000032) iput-boolean         v1, v2, Ly7/b;->d Z
+	14      (00000036) goto                 +ch
+
+next-BB@0x38 : 
+	15      (00000038) new-instance         v0, Ljava/util/NoSuchElementException;
+	16      (0000003c) invoke-direct        v0, Ljava/util/NoSuchElementException;-><init>()V
+	17      (00000042) throw                v0
+
+next-BB@0x44 : [ next-BB@0x4e ]
+	18      (00000044) iget                 v1, v2, Ly7/b;->b I
+	19      (00000048) add-int/2addr        v1, v0
+	20      (0000004a) iput                 v1, v2, Ly7/b;->e I
+
+next-BB@0x4e : 
+	21      (0000004e) int-to-char          v0, v0
+	22      (00000050) invoke-static        v0, Ljava/lang/Character;->valueOf(C)Ljava/lang/Character;
+	23      (00000056) move-result-object   v0
+	24      (00000058) return-object        v0
+
+next-BB@0x5a : 
+	25      (0000005a) nop                  
+	26      (0000005c) packed-switch-payload 0
+

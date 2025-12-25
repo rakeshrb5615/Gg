@@ -1,0 +1,88 @@
+# Lx8/e0;->m(I [B I I)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v7
+# - v8:int
+# - v9:byte[]
+# - v10:int
+# - v11:int
+#
+# - return:boolean
+
+m-BB@0x0 : [ m-BB@0x10 m-BB@0x92 ]
+	0       (00000000) const-string         v0, "other"
+	1       (00000004) invoke-static        v9, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) const/4              v0, 0
+	3       (0000000c) if-ltz               v8, +043h
+
+m-BB@0x10 : [ m-BB@0x1e m-BB@0x92 ]
+	4       (00000010) invoke-virtual       v7, Lx8/e0;->d()I
+	5       (00000016) move-result          v1
+	6       (00000018) sub-int/2addr        v1, v11
+	7       (0000001a) if-gt                v8, v1, +03ch
+
+m-BB@0x1e : [ m-BB@0x22 m-BB@0x92 ]
+	8       (0000001e) if-ltz               v10, +03ah
+
+m-BB@0x22 : [ m-BB@0x2a m-BB@0x2c ]
+	9       (00000022) array-length         v1, v9
+	10      (00000024) sub-int/2addr        v1, v11
+	11      (00000026) if-le                v10, v1, +003h
+
+m-BB@0x2a : [ m-BB@0x92 ]
+	12      (0000002a) goto                 +34h
+
+m-BB@0x2c : [ m-BB@0x36 ]
+	13      (0000002c) add-int/2addr        v11, v8
+	14      (0000002e) invoke-static        v7, v8, Ly8/b;->g(Lx8/e0; I)I
+	15      (00000034) move-result          v1
+
+m-BB@0x36 : [ m-BB@0x3a m-BB@0x8e ]
+	16      (00000036) if-ge                v8, v11, +02ch
+
+m-BB@0x3a : [ m-BB@0x42 m-BB@0x46 ]
+	17      (0000003a) iget-object          v2, v7, Lx8/e0;->f [I
+	18      (0000003e) if-nez               v1, +004h
+
+m-BB@0x42 : [ m-BB@0x4e ]
+	19      (00000042) move                 v3, v0
+	20      (00000044) goto                 +5h
+
+m-BB@0x46 : [ m-BB@0x4e ]
+	21      (00000046) add-int/lit8         v3, v1, -1
+	22      (0000004a) aget                 v3, v2, v3
+
+m-BB@0x4e : [ m-BB@0x82 m-BB@0x84 ]
+	23      (0000004e) aget                 v4, v2, v1
+	24      (00000052) sub-int/2addr        v4, v3
+	25      (00000054) iget-object          v5, v7, Lx8/e0;->e [[B
+	26      (00000058) array-length         v6, v5
+	27      (0000005a) add-int/2addr        v6, v1
+	28      (0000005c) aget                 v2, v2, v6
+	29      (00000060) add-int/2addr        v4, v3
+	30      (00000062) invoke-static        v11, v4, Ljava/lang/Math;->min(I I)I
+	31      (00000068) move-result          v4
+	32      (0000006a) sub-int/2addr        v4, v8
+	33      (0000006c) sub-int              v3, v8, v3
+	34      (00000070) add-int/2addr        v3, v2
+	35      (00000072) aget-object          v2, v5, v1
+	36      (00000076) invoke-static        v2, v3, v9, v10, v4, Lx8/b;->a([B I [B I I)Z
+	37      (0000007c) move-result          v2
+	38      (0000007e) if-nez               v2, +003h
+
+m-BB@0x82 : 
+	39      (00000082) return               v0
+
+m-BB@0x84 : [ m-BB@0x36 ]
+	40      (00000084) add-int/2addr        v10, v4
+	41      (00000086) add-int/2addr        v8, v4
+	42      (00000088) add-int/lit8         v1, v1, 1
+	43      (0000008c) goto                 -2bh
+
+m-BB@0x8e : 
+	44      (0000008e) const/4              v8, 1
+	45      (00000090) return               v8
+
+m-BB@0x92 : 
+	46      (00000092) return               v0
+

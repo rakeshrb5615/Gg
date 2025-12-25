@@ -1,0 +1,94 @@
+# Lz8/z0;->h(Ljava/lang/reflect/Type;)Ljava/lang/Class; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:java.lang.reflect.Type
+#
+# - return:java.lang.Class
+
+h-BB@0x0 : [ h-BB@0x12 h-BB@0x18 ]
+	0       (00000000) const-string         v0, "type == null"
+	1       (00000004) invoke-static        v3, v0, Ljava/util/Objects;->requireNonNull(Ljava/lang/Object; Ljava/lang/String;)Ljava/lang/Object;
+	2       (0000000a) instance-of          v0, v3, Ljava/lang/Class;
+	3       (0000000e) if-eqz               v0, +005h
+
+h-BB@0x12 : 
+	4       (00000012) check-cast           v3, Ljava/lang/Class;
+	5       (00000016) return-object        v3
+
+h-BB@0x18 : [ h-BB@0x20 h-BB@0x46 ]
+	6       (00000018) instance-of          v0, v3, Ljava/lang/reflect/ParameterizedType;
+	7       (0000001c) if-eqz               v0, +015h
+
+h-BB@0x20 : [ h-BB@0x34 h-BB@0x3a ]
+	8       (00000020) check-cast           v3, Ljava/lang/reflect/ParameterizedType;
+	9       (00000024) invoke-interface     v3, Ljava/lang/reflect/ParameterizedType;->getRawType()Ljava/lang/reflect/Type;
+	10      (0000002a) move-result-object   v3
+	11      (0000002c) instance-of          v0, v3, Ljava/lang/Class;
+	12      (00000030) if-eqz               v0, +005h
+
+h-BB@0x34 : 
+	13      (00000034) check-cast           v3, Ljava/lang/Class;
+	14      (00000038) return-object        v3
+
+h-BB@0x3a : 
+	15      (0000003a) new-instance         v3, Ljava/lang/IllegalArgumentException;
+	16      (0000003e) invoke-direct        v3, Ljava/lang/IllegalArgumentException;-><init>()V
+	17      (00000044) throw                v3
+
+h-BB@0x46 : [ h-BB@0x50 h-BB@0x76 ]
+	18      (00000046) instance-of          v0, v3, Ljava/lang/reflect/GenericArrayType;
+	19      (0000004a) const/4              v1, 0
+	20      (0000004c) if-eqz               v0, +015h
+
+h-BB@0x50 : 
+	21      (00000050) check-cast           v3, Ljava/lang/reflect/GenericArrayType;
+	22      (00000054) invoke-interface     v3, Ljava/lang/reflect/GenericArrayType;->getGenericComponentType()Ljava/lang/reflect/Type;
+	23      (0000005a) move-result-object   v3
+	24      (0000005c) invoke-static        v3, Lz8/z0;->h(Ljava/lang/reflect/Type;)Ljava/lang/Class;
+	25      (00000062) move-result-object   v3
+	26      (00000064) invoke-static        v3, v1, Ljava/lang/reflect/Array;->newInstance(Ljava/lang/Class; I)Ljava/lang/Object;
+	27      (0000006a) move-result-object   v3
+	28      (0000006c) invoke-virtual       v3, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	29      (00000072) move-result-object   v3
+	30      (00000074) return-object        v3
+
+h-BB@0x76 : [ h-BB@0x7e h-BB@0x84 ]
+	31      (00000076) instance-of          v0, v3, Ljava/lang/reflect/TypeVariable;
+	32      (0000007a) if-eqz               v0, +005h
+
+h-BB@0x7e : 
+	33      (0000007e) const-class          v3, Ljava/lang/Object;
+	34      (00000082) return-object        v3
+
+h-BB@0x84 : [ h-BB@0x8c h-BB@0xa6 ]
+	35      (00000084) instance-of          v0, v3, Ljava/lang/reflect/WildcardType;
+	36      (00000088) if-eqz               v0, +00fh
+
+h-BB@0x8c : 
+	37      (0000008c) check-cast           v3, Ljava/lang/reflect/WildcardType;
+	38      (00000090) invoke-interface     v3, Ljava/lang/reflect/WildcardType;->getUpperBounds()[Ljava/lang/reflect/Type;
+	39      (00000096) move-result-object   v3
+	40      (00000098) aget-object          v3, v3, v1
+	41      (0000009c) invoke-static        v3, Lz8/z0;->h(Ljava/lang/reflect/Type;)Ljava/lang/Class;
+	42      (000000a2) move-result-object   v3
+	43      (000000a4) return-object        v3
+
+h-BB@0xa6 : 
+	44      (000000a6) new-instance         v0, Ljava/lang/IllegalArgumentException;
+	45      (000000aa) new-instance         v1, Ljava/lang/StringBuilder;
+	46      (000000ae) const-string         v2, "Expected a Class, ParameterizedType, or GenericArrayType, but <"
+	47      (000000b2) invoke-direct        v1, v2, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	48      (000000b8) invoke-virtual       v1, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	49      (000000be) const-string         v2, "> is of type "
+	50      (000000c2) invoke-virtual       v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	51      (000000c8) invoke-virtual       v3, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	52      (000000ce) move-result-object   v3
+	53      (000000d0) invoke-virtual       v3, Ljava/lang/Class;->getName()Ljava/lang/String;
+	54      (000000d6) move-result-object   v3
+	55      (000000d8) invoke-virtual       v1, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	56      (000000de) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	57      (000000e4) move-result-object   v3
+	58      (000000e6) invoke-direct        v0, v3, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	59      (000000ec) throw                v0
+

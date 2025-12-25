@@ -1,0 +1,56 @@
+# Ly2/h;->y(Lz2/b;)Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v9
+# - v10:z2.b
+#
+# - return:java.lang.Object
+
+y-BB@0x0 : [ y-BB@0x14 ]
+	0       (00000000) invoke-virtual       v9, Ly2/h;->c()Landroid/database/sqlite/SQLiteDatabase;
+	1       (00000006) move-result-object   v0
+	2       (00000008) iget-object          v1, v9, Ly2/h;->c La3/a;
+	3       (0000000c) invoke-interface     v1, La3/a;->b()J
+	4       (00000012) move-result-wide     v2
+
+y-BB@0x14 : [ y-BB@0x1a ]
+	5       (00000014) invoke-virtual       v0, Landroid/database/sqlite/SQLiteDatabase;->beginTransaction()V
+	14:19
+	(Landroid/database/sqlite/SQLiteDatabaseLockedException; -> 3a y-BB@0x3a)
+
+y-BB@0x1a : 
+	6       (0000001a) invoke-interface     v10, Lz2/b;->b()Ljava/lang/Object;
+	7       (00000020) move-result-object   v10
+	8       (00000022) invoke-virtual       v0, Landroid/database/sqlite/SQLiteDatabase;->setTransactionSuccessful()V
+	9       (00000028) invoke-virtual       v0, Landroid/database/sqlite/SQLiteDatabase;->endTransaction()V
+	10      (0000002e) return-object        v10
+	1a:27
+	(Ljava/lang/Throwable; -> 30 y-BB@0x30)
+
+y-BB@0x30 : 
+	11      (00000030) move-exception       v10
+	12      (00000032) invoke-virtual       v0, Landroid/database/sqlite/SQLiteDatabase;->endTransaction()V
+	13      (00000038) throw                v10
+
+y-BB@0x3a : [ y-BB@0x58 y-BB@0x64 ]
+	14      (0000003a) move-exception       v4
+	15      (0000003c) invoke-interface     v1, La3/a;->b()J
+	16      (00000042) move-result-wide     v5
+	17      (00000044) iget-object          v7, v9, Ly2/h;->d Ly2/a;
+	18      (00000048) iget                 v7, v7, Ly2/a;->c I
+	19      (0000004c) int-to-long          v7, v7
+	20      (0000004e) add-long/2addr       v7, v2
+	21      (00000050) cmp-long             v5, v5, v7
+	22      (00000054) if-gez               v5, +008h
+
+y-BB@0x58 : [ y-BB@0x14 ]
+	23      (00000058) const-wide/16        v4, 50
+	24      (0000005c) invoke-static        v4, v5, Landroid/os/SystemClock;->sleep(J)V
+	25      (00000062) goto                 -27h
+
+y-BB@0x64 : 
+	26      (00000064) new-instance         v10, Lz2/a;
+	27      (00000068) const-string         v0, "Timed out while trying to acquire the lock."
+	28      (0000006c) invoke-direct        v10, v0, v4, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	29      (00000072) throw                v10
+

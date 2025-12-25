@@ -1,0 +1,51 @@
+# Lx8/g;->skip(J)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v7
+# - v8:long
+#
+# - return:void
+
+skip-BB@0x0 : [ skip-BB@0xc skip-BB@0x6a ]
+	0       (00000000) const-wide/16        v0, 0
+	1       (00000004) cmp-long             v0, v7, v0
+	2       (00000008) if-lez               v0, +031h
+
+skip-BB@0xc : [ skip-BB@0x14 skip-BB@0x5e ]
+	3       (0000000c) iget-object          v0, v6, Lx8/g;->a Lx8/c0;
+	4       (00000010) if-eqz               v0, +027h
+
+skip-BB@0x14 : [ skip-BB@0x4a skip-BB@0x0 ]
+	5       (00000014) iget                 v1, v0, Lx8/c0;->c I
+	6       (00000018) iget                 v2, v0, Lx8/c0;->b I
+	7       (0000001c) sub-int/2addr        v1, v2
+	8       (0000001e) int-to-long          v1, v1
+	9       (00000020) invoke-static        v7, v8, v1, v2, Ljava/lang/Math;->min(J J)J
+	10      (00000026) move-result-wide     v1
+	11      (00000028) long-to-int          v1, v1
+	12      (0000002a) iget-wide            v2, v6, Lx8/g;->b J
+	13      (0000002e) int-to-long          v4, v1
+	14      (00000030) sub-long/2addr       v2, v4
+	15      (00000032) iput-wide            v2, v6, Lx8/g;->b J
+	16      (00000036) sub-long/2addr       v7, v4
+	17      (00000038) iget                 v2, v0, Lx8/c0;->b I
+	18      (0000003c) add-int/2addr        v2, v1
+	19      (0000003e) iput                 v2, v0, Lx8/c0;->b I
+	20      (00000042) iget                 v1, v0, Lx8/c0;->c I
+	21      (00000046) if-ne                v2, v1, -023h
+
+skip-BB@0x4a : [ skip-BB@0x0 ]
+	22      (0000004a) invoke-virtual       v0, Lx8/c0;->a()Lx8/c0;
+	23      (00000050) move-result-object   v1
+	24      (00000052) iput-object          v1, v6, Lx8/g;->a Lx8/c0;
+	25      (00000056) invoke-static        v0, Lx8/d0;->a(Lx8/c0;)V
+	26      (0000005c) goto                 -2eh
+
+skip-BB@0x5e : 
+	27      (0000005e) new-instance         v7, Ljava/io/EOFException;
+	28      (00000062) invoke-direct        v7, Ljava/io/EOFException;-><init>()V
+	29      (00000068) throw                v7
+
+skip-BB@0x6a : 
+	30      (0000006a) return-void          
+

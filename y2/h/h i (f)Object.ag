@@ -1,0 +1,27 @@
+# Ly2/h;->i(Ly2/f;)Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:y2.f
+#
+# - return:java.lang.Object
+
+i-BB@0x0 : [ i-BB@0xe ]
+	0       (00000000) invoke-virtual       v1, Ly2/h;->c()Landroid/database/sqlite/SQLiteDatabase;
+	1       (00000006) move-result-object   v0
+	2       (00000008) invoke-virtual       v0, Landroid/database/sqlite/SQLiteDatabase;->beginTransaction()V
+
+i-BB@0xe : 
+	3       (0000000e) invoke-interface     v2, v0, Ly2/f;->apply(Ljava/lang/Object;)Ljava/lang/Object;
+	4       (00000014) move-result-object   v2
+	5       (00000016) invoke-virtual       v0, Landroid/database/sqlite/SQLiteDatabase;->setTransactionSuccessful()V
+	6       (0000001c) invoke-virtual       v0, Landroid/database/sqlite/SQLiteDatabase;->endTransaction()V
+	7       (00000022) return-object        v2
+	e:1b
+	(Ljava/lang/Throwable; -> 24 i-BB@0x24)
+
+i-BB@0x24 : 
+	8       (00000024) move-exception       v2
+	9       (00000026) invoke-virtual       v0, Landroid/database/sqlite/SQLiteDatabase;->endTransaction()V
+	10      (0000002c) throw                v2
+

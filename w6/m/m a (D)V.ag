@@ -1,0 +1,33 @@
+# Lw6/m;->a(D)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:double
+#
+# - return:void
+
+a-BB@0x0 : [ a-BB@0xc a-BB@0x1a ]
+	0       (00000000) invoke-static        v2, v3, Ljava/lang/Double;->isNaN(D)Z
+	1       (00000006) move-result          v0
+	2       (00000008) if-nez               v0, +009h
+
+a-BB@0xc : [ a-BB@0x18 a-BB@0x1a ]
+	3       (0000000c) invoke-static        v2, v3, Ljava/lang/Double;->isInfinite(D)Z
+	4       (00000012) move-result          v0
+	5       (00000014) if-nez               v0, +003h
+
+a-BB@0x18 : 
+	6       (00000018) return-void          
+
+a-BB@0x1a : 
+	7       (0000001a) new-instance         v0, Ljava/lang/IllegalArgumentException;
+	8       (0000001e) new-instance         v1, Ljava/lang/StringBuilder;
+	9       (00000022) invoke-direct        v1, Ljava/lang/StringBuilder;-><init>()V
+	10      (00000028) invoke-virtual       v1, v2, v3, Ljava/lang/StringBuilder;->append(D)Ljava/lang/StringBuilder;
+	11      (0000002e) const-string         v2, " is not a valid double value as per JSON specification. To override this behavior, use GsonBuilder.serializeSpecialFloatingPointValues() method."
+	12      (00000032) invoke-virtual       v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	13      (00000038) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	14      (0000003e) move-result-object   v2
+	15      (00000040) invoke-direct        v0, v2, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	16      (00000046) throw                v0
+

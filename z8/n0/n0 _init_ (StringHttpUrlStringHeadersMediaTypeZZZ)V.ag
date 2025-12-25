@@ -1,0 +1,83 @@
+# Lz8/n0;-><init>(Ljava/lang/String; Lokhttp3/HttpUrl; Ljava/lang/String; Lokhttp3/Headers; Lokhttp3/MediaType; Z Z Z)V [access_flags=public constructor]
+#
+# Parameters:
+# - local registers: v0...v0
+# - v1:java.lang.String
+# - v2:okhttp3.HttpUrl
+# - v3:java.lang.String
+# - v4:okhttp3.Headers
+# - v5:okhttp3.MediaType
+# - v6:boolean
+# - v7:boolean
+# - v8:boolean
+#
+# - return:void
+
+<init>-BB@0x0 : [ <init>-BB@0x2c <init>-BB@0x3a ]
+	0       (00000000) invoke-direct        v0, Ljava/lang/Object;-><init>()V
+	1       (00000006) iput-object          v1, v0, Lz8/n0;->a Ljava/lang/String;
+	2       (0000000a) iput-object          v2, v0, Lz8/n0;->b Lokhttp3/HttpUrl;
+	3       (0000000e) iput-object          v3, v0, Lz8/n0;->c Ljava/lang/String;
+	4       (00000012) new-instance         v1, Lokhttp3/Request$Builder;
+	5       (00000016) invoke-direct        v1, Lokhttp3/Request$Builder;-><init>()V
+	6       (0000001c) iput-object          v1, v0, Lz8/n0;->e Lokhttp3/Request$Builder;
+	7       (00000020) iput-object          v5, v0, Lz8/n0;->g Lokhttp3/MediaType;
+	8       (00000024) iput-boolean         v6, v0, Lz8/n0;->h Z
+	9       (00000028) if-eqz               v4, +009h
+
+<init>-BB@0x2c : [ <init>-BB@0x48 ]
+	10      (0000002c) invoke-virtual       v4, Lokhttp3/Headers;->d()Lokhttp3/Headers$Builder;
+	11      (00000032) move-result-object   v1
+	12      (00000034) iput-object          v1, v0, Lz8/n0;->f Lokhttp3/Headers$Builder;
+	13      (00000038) goto                 +8h
+
+<init>-BB@0x3a : [ <init>-BB@0x48 ]
+	14      (0000003a) new-instance         v1, Lokhttp3/Headers$Builder;
+	15      (0000003e) invoke-direct        v1, Lokhttp3/Headers$Builder;-><init>()V
+	16      (00000044) iput-object          v1, v0, Lz8/n0;->f Lokhttp3/Headers$Builder;
+
+<init>-BB@0x48 : [ <init>-BB@0x4c <init>-BB@0x5c ]
+	17      (00000048) if-eqz               v7, +00ah
+
+<init>-BB@0x4c : 
+	18      (0000004c) new-instance         v1, Lokhttp3/FormBody$Builder;
+	19      (00000050) invoke-direct        v1, Lokhttp3/FormBody$Builder;-><init>()V
+	20      (00000056) iput-object          v1, v0, Lz8/n0;->j Lokhttp3/FormBody$Builder;
+	21      (0000005a) return-void          
+
+<init>-BB@0x5c : [ <init>-BB@0x60 <init>-BB@0xc6 ]
+	22      (0000005c) if-eqz               v8, +035h
+
+<init>-BB@0x60 : [ <init>-BB@0x90 <init>-BB@0x96 ]
+	23      (00000060) new-instance         v1, Lokhttp3/MultipartBody$Builder;
+	24      (00000064) invoke-direct        v1, Lokhttp3/MultipartBody$Builder;-><init>()V
+	25      (0000006a) iput-object          v1, v0, Lz8/n0;->i Lokhttp3/MultipartBody$Builder;
+	26      (0000006e) sget-object          v2, Lokhttp3/MultipartBody;->g Lokhttp3/MediaType;
+	27      (00000072) const-string         v3, "type"
+	28      (00000076) invoke-static        v2, v3, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	29      (0000007c) iget-object          v3, v2, Lokhttp3/MediaType;->b Ljava/lang/String;
+	30      (00000080) const-string         v4, "multipart"
+	31      (00000084) invoke-virtual       v3, v4, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+	32      (0000008a) move-result          v3
+	33      (0000008c) if-eqz               v3, +005h
+
+<init>-BB@0x90 : 
+	34      (00000090) iput-object          v2, v1, Lokhttp3/MultipartBody$Builder;->b Lokhttp3/MediaType;
+	35      (00000094) return-void          
+
+<init>-BB@0x96 : 
+	36      (00000096) new-instance         v1, Ljava/lang/StringBuilder;
+	37      (0000009a) const-string         v3, "multipart != "
+	38      (0000009e) invoke-direct        v1, v3, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	39      (000000a4) invoke-virtual       v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	40      (000000aa) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	41      (000000b0) move-result-object   v1
+	42      (000000b2) new-instance         v2, Ljava/lang/IllegalArgumentException;
+	43      (000000b6) invoke-virtual       v1, Ljava/lang/Object;->toString()Ljava/lang/String;
+	44      (000000bc) move-result-object   v1
+	45      (000000be) invoke-direct        v2, v1, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	46      (000000c4) throw                v2
+
+<init>-BB@0xc6 : 
+	47      (000000c6) return-void          
+

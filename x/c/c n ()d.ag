@@ -1,0 +1,36 @@
+# Lx/c;->n()Lw/d; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v5
+#
+# - return:w.d
+
+n-BB@0x0 : [ n-BB@0x10 ]
+	0       (00000000) iget-object          v0, v5, Lx/c;->k Ljava/util/ArrayList;
+	1       (00000004) invoke-virtual       v0, Ljava/util/ArrayList;->size()I
+	2       (0000000a) move-result          v1
+	3       (0000000c) add-int/lit8         v1, v1, -1
+
+n-BB@0x10 : [ n-BB@0x14 n-BB@0x38 ]
+	4       (00000010) if-ltz               v1, +014h
+
+n-BB@0x14 : [ n-BB@0x30 n-BB@0x32 ]
+	5       (00000014) invoke-virtual       v0, v1, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	6       (0000001a) move-result-object   v2
+	7       (0000001c) check-cast           v2, Lx/o;
+	8       (00000020) iget-object          v2, v2, Lx/o;->b Lw/d;
+	9       (00000024) iget                 v3, v2, Lw/d;->g0 I
+	10      (00000028) const/16             v4, 8
+	11      (0000002c) if-eq                v3, v4, +003h
+
+n-BB@0x30 : 
+	12      (00000030) return-object        v2
+
+n-BB@0x32 : [ n-BB@0x10 ]
+	13      (00000032) add-int/lit8         v1, v1, -1
+	14      (00000036) goto                 -13h
+
+n-BB@0x38 : 
+	15      (00000038) const/4              v0, 0
+	16      (0000003a) return-object        v0
+

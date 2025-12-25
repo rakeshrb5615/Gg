@@ -1,0 +1,43 @@
+# Lx8/u;->c(J)Lx8/l; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:long
+#
+# - return:x8.l
+
+c-BB@0x0 : [ c-BB@0xa ]
+	0       (00000000) iget-object          v0, v2, Lx8/u;->c Ljava/util/concurrent/locks/ReentrantLock;
+	1       (00000004) invoke-virtual       v0, Ljava/util/concurrent/locks/ReentrantLock;->lock()V
+
+c-BB@0xa : [ c-BB@0x12 c-BB@0x34 ]
+	2       (0000000a) iget-boolean         v1, v2, Lx8/u;->a Z
+	3       (0000000e) if-nez               v1, +013h
+	a:1d
+	(Ljava/lang/Throwable; -> 30 c-BB@0x30)
+
+c-BB@0x12 : 
+	4       (00000012) iget                 v1, v2, Lx8/u;->b I
+	5       (00000016) add-int/lit8         v1, v1, 1
+	6       (0000001a) iput                 v1, v2, Lx8/u;->b I
+	7       (0000001e) invoke-virtual       v0, Ljava/util/concurrent/locks/ReentrantLock;->unlock()V
+	8       (00000024) new-instance         v0, Lx8/l;
+	9       (00000028) invoke-direct        v0, v2, v3, v4, Lx8/l;-><init>(Lx8/u; J)V
+	10      (0000002e) return-object        v0
+
+c-BB@0x30 : [ c-BB@0x44 ]
+	11      (00000030) move-exception       v3
+	12      (00000032) goto                 +9h
+
+c-BB@0x34 : 
+	13      (00000034) const-string         v3, "closed"
+	14      (00000038) new-instance         v4, Ljava/lang/IllegalStateException;
+	15      (0000003c) invoke-direct        v4, v3, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	16      (00000042) throw                v4
+	34:43
+	(Ljava/lang/Throwable; -> 30 c-BB@0x30)
+
+c-BB@0x44 : 
+	17      (00000044) invoke-virtual       v0, Ljava/util/concurrent/locks/ReentrantLock;->unlock()V
+	18      (0000004a) throw                v3
+

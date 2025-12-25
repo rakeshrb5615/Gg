@@ -1,0 +1,82 @@
+# Lx8/b0;->c(B J J)J [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v11
+# - v12:byte
+# - v13:long
+# - v14:long
+#
+# - return:long
+
+c-BB@0x0 : [ c-BB@0x8 c-BB@0x94 ]
+	0       (00000000) iget-boolean         v11, v9, Lx8/b0;->c Z
+	1       (00000004) if-nez               v11, +048h
+
+c-BB@0x8 : [ c-BB@0x14 c-BB@0x72 ]
+	2       (00000008) const-wide/16        v11, 0
+	3       (0000000c) cmp-long             v0, v11, v13
+	4       (00000010) if-gtz               v0, +031h
+
+c-BB@0x14 : [ c-BB@0x16 ]
+	5       (00000014) move-wide            v3, v11
+
+c-BB@0x16 : [ c-BB@0x22 c-BB@0x70 ]
+	6       (00000016) cmp-long             v11, v3, v13
+	7       (0000001a) const-wide/16        v7, -1
+	8       (0000001e) if-gez               v11, +029h
+
+c-BB@0x22 : [ c-BB@0x3a c-BB@0x3c ]
+	9       (00000022) iget-object          v1, v9, Lx8/b0;->b Lx8/g;
+	10      (00000026) move                 v2, v10
+	11      (00000028) move-wide            v5, v13
+	12      (0000002a) invoke-virtual/range v1 ... v6, Lx8/g;->B(B J J)J
+	13      (00000030) move-result-wide     v10
+	14      (00000032) cmp-long             v12, v10, v7
+	15      (00000036) if-eqz               v12, +003h
+
+c-BB@0x3a : 
+	16      (0000003a) return-wide          v10
+
+c-BB@0x3c : [ c-BB@0x48 c-BB@0x70 ]
+	17      (0000003c) iget-wide            v10, v1, Lx8/g;->b J
+	18      (00000040) cmp-long             v12, v10, v5
+	19      (00000044) if-gez               v12, +016h
+
+c-BB@0x48 : [ c-BB@0x60 c-BB@0x62 ]
+	20      (00000048) iget-object          v12, v9, Lx8/b0;->a Lx8/h0;
+	21      (0000004c) const-wide/16        v13, 8192
+	22      (00000050) invoke-interface     v12, v1, v13, v14, Lx8/h0;->t(Lx8/g; J)J
+	23      (00000056) move-result-wide     v12
+	24      (00000058) cmp-long             v12, v12, v7
+	25      (0000005c) if-nez               v12, +003h
+
+c-BB@0x60 : [ c-BB@0x70 ]
+	26      (00000060) goto                 +8h
+
+c-BB@0x62 : [ c-BB@0x16 ]
+	27      (00000062) invoke-static        v3, v4, v10, v11, Ljava/lang/Math;->max(J J)J
+	28      (00000068) move-result-wide     v3
+	29      (0000006a) move                 v10, v2
+	30      (0000006c) move-wide            v13, v5
+	31      (0000006e) goto                 -2ch
+
+c-BB@0x70 : 
+	32      (00000070) return-wide          v7
+
+c-BB@0x72 : 
+	33      (00000072) move-wide            v5, v13
+	34      (00000074) const-string         v10, "fromIndex=0 toIndex="
+	35      (00000078) invoke-static        v5, v6, v10, Lv1/a;->g(J Ljava/lang/String;)Ljava/lang/String;
+	36      (0000007e) move-result-object   v10
+	37      (00000080) new-instance         v11, Ljava/lang/IllegalArgumentException;
+	38      (00000084) invoke-virtual       v10, Ljava/lang/Object;->toString()Ljava/lang/String;
+	39      (0000008a) move-result-object   v10
+	40      (0000008c) invoke-direct        v11, v10, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	41      (00000092) throw                v11
+
+c-BB@0x94 : 
+	42      (00000094) new-instance         v10, Ljava/lang/IllegalStateException;
+	43      (00000098) const-string         v11, "closed"
+	44      (0000009c) invoke-direct        v10, v11, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	45      (000000a2) throw                v10
+

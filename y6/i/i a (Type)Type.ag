@@ -1,0 +1,76 @@
+# Ly6/i;->a(Ljava/lang/reflect/Type;)Ljava/lang/reflect/Type; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:java.lang.reflect.Type
+#
+# - return:java.lang.reflect.Type
+
+a-BB@0x0 : [ a-BB@0x8 a-BB@0x36 ]
+	0       (00000000) instance-of          v0, v3, Ljava/lang/Class;
+	1       (00000004) if-eqz               v0, +019h
+
+a-BB@0x8 : [ a-BB@0x18 a-BB@0x34 ]
+	2       (00000008) check-cast           v3, Ljava/lang/Class;
+	3       (0000000c) invoke-virtual       v3, Ljava/lang/Class;->isArray()Z
+	4       (00000012) move-result          v0
+	5       (00000014) if-eqz               v0, +010h
+
+a-BB@0x18 : 
+	6       (00000018) new-instance         v0, Ly6/f;
+	7       (0000001c) invoke-virtual       v3, Ljava/lang/Class;->getComponentType()Ljava/lang/Class;
+	8       (00000022) move-result-object   v3
+	9       (00000024) invoke-static        v3, Ly6/i;->a(Ljava/lang/reflect/Type;)Ljava/lang/reflect/Type;
+	10      (0000002a) move-result-object   v3
+	11      (0000002c) invoke-direct        v0, v3, Ly6/f;-><init>(Ljava/lang/reflect/Type;)V
+	12      (00000032) return-object        v0
+
+a-BB@0x34 : 
+	13      (00000034) return-object        v3
+
+a-BB@0x36 : [ a-BB@0x3e a-BB@0x6a ]
+	14      (00000036) instance-of          v0, v3, Ljava/lang/reflect/ParameterizedType;
+	15      (0000003a) if-eqz               v0, +018h
+
+a-BB@0x3e : 
+	16      (0000003e) check-cast           v3, Ljava/lang/reflect/ParameterizedType;
+	17      (00000042) new-instance         v0, Ly6/g;
+	18      (00000046) invoke-interface     v3, Ljava/lang/reflect/ParameterizedType;->getOwnerType()Ljava/lang/reflect/Type;
+	19      (0000004c) move-result-object   v1
+	20      (0000004e) invoke-interface     v3, Ljava/lang/reflect/ParameterizedType;->getRawType()Ljava/lang/reflect/Type;
+	21      (00000054) move-result-object   v2
+	22      (00000056) check-cast           v2, Ljava/lang/Class;
+	23      (0000005a) invoke-interface     v3, Ljava/lang/reflect/ParameterizedType;->getActualTypeArguments()[Ljava/lang/reflect/Type;
+	24      (00000060) move-result-object   v3
+	25      (00000062) invoke-direct        v0, v1, v2, v3, Ly6/g;-><init>(Ljava/lang/reflect/Type; Ljava/lang/Class; [Ljava/lang/reflect/Type;)V
+	26      (00000068) return-object        v0
+
+a-BB@0x6a : [ a-BB@0x72 a-BB@0x8a ]
+	27      (0000006a) instance-of          v0, v3, Ljava/lang/reflect/GenericArrayType;
+	28      (0000006e) if-eqz               v0, +00eh
+
+a-BB@0x72 : 
+	29      (00000072) check-cast           v3, Ljava/lang/reflect/GenericArrayType;
+	30      (00000076) new-instance         v0, Ly6/f;
+	31      (0000007a) invoke-interface     v3, Ljava/lang/reflect/GenericArrayType;->getGenericComponentType()Ljava/lang/reflect/Type;
+	32      (00000080) move-result-object   v3
+	33      (00000082) invoke-direct        v0, v3, Ly6/f;-><init>(Ljava/lang/reflect/Type;)V
+	34      (00000088) return-object        v0
+
+a-BB@0x8a : [ a-BB@0x92 a-BB@0xb2 ]
+	35      (0000008a) instance-of          v0, v3, Ljava/lang/reflect/WildcardType;
+	36      (0000008e) if-eqz               v0, +012h
+
+a-BB@0x92 : 
+	37      (00000092) check-cast           v3, Ljava/lang/reflect/WildcardType;
+	38      (00000096) new-instance         v0, Ly6/h;
+	39      (0000009a) invoke-interface     v3, Ljava/lang/reflect/WildcardType;->getUpperBounds()[Ljava/lang/reflect/Type;
+	40      (000000a0) move-result-object   v1
+	41      (000000a2) invoke-interface     v3, Ljava/lang/reflect/WildcardType;->getLowerBounds()[Ljava/lang/reflect/Type;
+	42      (000000a8) move-result-object   v3
+	43      (000000aa) invoke-direct        v0, v1, v3, Ly6/h;-><init>([Ljava/lang/reflect/Type; [Ljava/lang/reflect/Type;)V
+	44      (000000b0) return-object        v0
+
+a-BB@0xb2 : 
+	45      (000000b2) return-object        v3
+

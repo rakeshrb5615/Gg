@@ -1,0 +1,40 @@
+# Lz8/z;->c()Lokhttp3/Request; [access_flags=public final synchronized]
+#
+# Parameters:
+# local registers: v0...v3
+#
+# - return:okhttp3.Request
+
+c-BB@0x0 : [ c-BB@0x2 ]
+	0       (00000000) monitor-enter        v3
+
+c-BB@0x2 : 
+	1       (00000002) invoke-virtual       v3, Lz8/z;->b()Lokhttp3/Call;
+	2       (00000008) move-result-object   v0
+	3       (0000000a) invoke-interface     v0, Lokhttp3/Call;->c()Lokhttp3/Request;
+	4       (00000010) move-result-object   v0
+	5       (00000012) monitor-exit         v3
+	6       (00000014) return-object        v0
+	2:11
+	(Ljava/io/IOException; -> 1a c-BB@0x1a)
+	(Ljava/lang/Throwable; -> 16 c-BB@0x16)
+
+c-BB@0x16 : [ c-BB@0x2c ]
+	7       (00000016) move-exception       v0
+	8       (00000018) goto                 +ah
+
+c-BB@0x1a : [ c-BB@0x1c ]
+	9       (0000001a) move-exception       v0
+
+c-BB@0x1c : 
+	10      (0000001c) new-instance         v1, Ljava/lang/RuntimeException;
+	11      (00000020) const-string         v2, "Unable to create request."
+	12      (00000024) invoke-direct        v1, v2, v0, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	13      (0000002a) throw                v1
+	1c:2d
+	(Ljava/lang/Throwable; -> 16 c-BB@0x16)
+
+c-BB@0x2c : 
+	14      (0000002c) monitor-exit         v3
+	15      (0000002e) throw                v0
+

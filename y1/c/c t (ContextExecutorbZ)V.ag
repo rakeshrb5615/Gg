@@ -1,0 +1,920 @@
+# Ly1/c;->t(Landroid/content/Context; Ljava/util/concurrent/Executor; Ly1/b; Z)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v17
+# - v18:android.content.Context
+# - v19:java.util.concurrent.Executor
+# - v20:y1.b
+# - v21:boolean
+#
+# - return:void
+
+t-BB@0x0 : [ t-BB@0x4a ]
+	0       (00000000) move-object/from16   v1, v18
+	1       (00000004) move-object/from16   v5, v20
+	2       (00000008) invoke-virtual       v1, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;
+	3       (0000000e) move-result-object   v0
+	4       (00000010) invoke-virtual       v0, Landroid/content/Context;->getPackageName()Ljava/lang/String;
+	5       (00000016) move-result-object   v2
+	6       (00000018) invoke-virtual       v0, Landroid/content/Context;->getApplicationInfo()Landroid/content/pm/ApplicationInfo;
+	7       (0000001e) move-result-object   v3
+	8       (00000020) invoke-virtual       v0, Landroid/content/Context;->getAssets()Landroid/content/res/AssetManager;
+	9       (00000026) move-result-object   v4
+	10      (00000028) new-instance         v0, Ljava/io/File;
+	11      (0000002c) iget-object          v3, v3, Landroid/content/pm/ApplicationInfo;->sourceDir Ljava/lang/String;
+	12      (00000030) invoke-direct        v0, v3, Ljava/io/File;-><init>(Ljava/lang/String;)V
+	13      (00000036) invoke-virtual       v0, Ljava/io/File;->getName()Ljava/lang/String;
+	14      (0000003c) move-result-object   v6
+	15      (0000003e) invoke-virtual       v1, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
+	16      (00000044) move-result-object   v0
+	17      (00000046) const/4              v8, 7
+	18      (00000048) const/4              v9, 0
+
+t-BB@0x4a : [ t-BB@0x64 t-BB@0x118 ]
+	19      (0000004a) invoke-virtual       v0, v2, v9, Landroid/content/pm/PackageManager;->getPackageInfo(Ljava/lang/String; I)Landroid/content/pm/PackageInfo;
+	20      (00000050) move-result-object   v10
+	21      (00000052) invoke-virtual       v1, Landroid/content/Context;->getFilesDir()Ljava/io/File;
+	22      (00000058) move-result-object   v11
+	23      (0000005a) const-string         v3, "ProfileInstaller"
+	24      (0000005e) const/4              v12, 0
+	25      (00000060) if-nez               v21, +05ch
+	4a:51
+	(Landroid/content/pm/PackageManager$NameNotFoundException; -> 5ca t-BB@0x5ca)
+
+t-BB@0x64 : [ t-BB@0x7e t-BB@0x82 ]
+	26      (00000064) new-instance         v0, Ljava/io/File;
+	27      (00000068) const-string         v7, "profileinstaller_profileWrittenFor_lastUpdateTime.dat"
+	28      (0000006c) invoke-direct        v0, v11, v7, Ljava/io/File;-><init>(Ljava/io/File; Ljava/lang/String;)V
+	29      (00000072) invoke-virtual       v0, Ljava/io/File;->exists()Z
+	30      (00000078) move-result          v7
+	31      (0000007a) if-nez               v7, +004h
+
+t-BB@0x7e : [ t-BB@0xde ]
+	32      (0000007e) move                 v0, v9
+	33      (00000080) goto                 +2fh
+
+t-BB@0x82 : [ t-BB@0x96 ]
+	34      (00000082) new-instance         v7, Ljava/io/DataInputStream;
+	35      (00000086) new-instance         v14, Ljava/io/FileInputStream;
+	36      (0000008a) invoke-direct        v14, v0, Ljava/io/FileInputStream;-><init>(Ljava/io/File;)V
+	37      (00000090) invoke-direct        v7, v14, Ljava/io/DataInputStream;-><init>(Ljava/io/InputStream;)V
+	82:95
+	(Ljava/io/IOException; -> 7e t-BB@0x7e)
+
+t-BB@0x96 : [ t-BB@0x9e ]
+	38      (00000096) invoke-virtual       v7, Ljava/io/DataInputStream;->readLong()J
+	39      (0000009c) move-result-wide     v14
+	96:9d
+	(Ljava/lang/Throwable; -> c8 t-BB@0xc8)
+
+t-BB@0x9e : [ t-BB@0xb4 t-BB@0xb8 ]
+	40      (0000009e) invoke-virtual       v7, Ljava/io/InputStream;->close()V
+	41      (000000a4) move-wide/from16     v16, v14
+	42      (000000a8) iget-wide            v13, v10, Landroid/content/pm/PackageInfo;->lastUpdateTime J
+	43      (000000ac) cmp-long             v0, v16, v13
+	44      (000000b0) if-nez               v0, +004h
+	9e:a3
+	(Ljava/io/IOException; -> 7e t-BB@0x7e)
+
+t-BB@0xb4 : [ t-BB@0xba ]
+	45      (000000b4) const/4              v0, 1
+	46      (000000b6) goto                 +2h
+
+t-BB@0xb8 : [ t-BB@0xba ]
+	47      (000000b8) move                 v0, v9
+
+t-BB@0xba : [ t-BB@0xbe t-BB@0xde ]
+	48      (000000ba) if-eqz               v0, +012h
+
+t-BB@0xbe : [ t-BB@0xde ]
+	49      (000000be) const/4              v7, 2
+	50      (000000c0) invoke-interface     v5, v7, v12, Ly1/b;->j(I Ljava/lang/Object;)V
+	51      (000000c6) goto                 +ch
+
+t-BB@0xc8 : [ t-BB@0xcc ]
+	52      (000000c8) move-exception       v0
+	53      (000000ca) move-object          v13, v0
+
+t-BB@0xcc : [ t-BB@0xdc ]
+	54      (000000cc) invoke-virtual       v7, Ljava/io/InputStream;->close()V
+	55      (000000d2) goto                 +5h
+	cc:d1
+	(Ljava/lang/Throwable; -> d4 t-BB@0xd4)
+
+t-BB@0xd4 : [ t-BB@0xd6 ]
+	56      (000000d4) move-exception       v0
+
+t-BB@0xd6 : [ t-BB@0xdc ]
+	57      (000000d6) invoke-virtual       v13, v0, Ljava/lang/Throwable;->addSuppressed(Ljava/lang/Throwable;)V
+	d6:dd
+	(Ljava/io/IOException; -> 7e t-BB@0x7e)
+
+t-BB@0xdc : 
+	58      (000000dc) throw                v13
+	d6:dd
+	(Ljava/io/IOException; -> 7e t-BB@0x7e)
+
+t-BB@0xde : [ t-BB@0xe2 t-BB@0xe4 ]
+	59      (000000de) if-nez               v0, +003h
+
+t-BB@0xe2 : [ t-BB@0x118 ]
+	60      (000000e2) goto                 +1bh
+
+t-BB@0xe4 : [ t-BB@0x5c8 ]
+	61      (000000e4) new-instance         v0, Ljava/lang/StringBuilder;
+	62      (000000e8) const-string         v2, "Skipping profile installation for "
+	63      (000000ec) invoke-direct        v0, v2, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	64      (000000f2) invoke-virtual       v1, Landroid/content/Context;->getPackageName()Ljava/lang/String;
+	65      (000000f8) move-result-object   v2
+	66      (000000fa) invoke-virtual       v0, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	67      (00000100) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	68      (00000106) move-result-object   v0
+	69      (00000108) invoke-static        v3, v0, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String;)I
+	70      (0000010e) invoke-static        v1, v9, Ly1/g;->c(Landroid/content/Context; Z)V
+	71      (00000114) goto/16              +25ah
+
+t-BB@0x118 : [ t-BB@0x17e t-BB@0x198 ]
+	72      (00000118) new-instance         v0, Ljava/lang/StringBuilder;
+	73      (0000011c) const-string         v7, "Installing profile for "
+	74      (00000120) invoke-direct        v0, v7, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	75      (00000126) invoke-virtual       v1, Landroid/content/Context;->getPackageName()Ljava/lang/String;
+	76      (0000012c) move-result-object   v7
+	77      (0000012e) invoke-virtual       v0, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	78      (00000134) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	79      (0000013a) move-result-object   v0
+	80      (0000013c) invoke-static        v3, v0, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String;)I
+	81      (00000142) new-instance         v7, Ljava/io/File;
+	82      (00000146) new-instance         v0, Ljava/io/File;
+	83      (0000014a) const-string         v3, "/data/misc/profiles/cur/0"
+	84      (0000014e) invoke-direct        v0, v3, v2, Ljava/io/File;-><init>(Ljava/lang/String; Ljava/lang/String;)V
+	85      (00000154) const-string         v2, "primary.prof"
+	86      (00000158) invoke-direct        v7, v0, v2, Ljava/io/File;-><init>(Ljava/io/File; Ljava/lang/String;)V
+	87      (0000015e) new-instance         v2, Lu8/i;
+	88      (00000162) const-string         v0, "dexopt/baseline.prof"
+	89      (00000166) move-object          v3, v4
+	90      (00000168) move-object/from16   v4, v19
+	91      (0000016c) invoke-direct/range  v2 ... v7, Lu8/i;-><init>(Landroid/content/res/AssetManager; Ljava/util/concurrent/Executor; Ly1/b; Ljava/lang/String; Ljava/io/File;)V
+	92      (00000172) iget-object          v4, v2, Lu8/i;->e Ljava/io/Serializable;
+	93      (00000176) check-cast           v4, [B
+	94      (0000017a) if-nez               v4, +00fh
+
+t-BB@0x17e : [ t-BB@0x192 ]
+	95      (0000017e) sget                 v0, Landroid/os/Build$VERSION;->SDK_INT I
+	96      (00000182) invoke-static        v0, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+	97      (00000188) move-result-object   v0
+	98      (0000018a) const/4              v3, 3
+	99      (0000018c) invoke-virtual       v2, v3, v0, Lu8/i;->n(I Ljava/io/Serializable;)V
+
+t-BB@0x192 : [ t-BB@0x5b2 ]
+	100     (00000192) const/4              v7, 1
+	101     (00000194) goto/16              +20fh
+
+t-BB@0x198 : [ t-BB@0x1a6 t-BB@0x1be ]
+	102     (00000198) invoke-virtual       v7, Ljava/io/File;->exists()Z
+	103     (0000019e) move-result          v6
+	104     (000001a0) const/4              v13, 4
+	105     (000001a2) if-eqz               v6, +00eh
+
+t-BB@0x1a6 : [ t-BB@0x1b2 t-BB@0x1ba ]
+	106     (000001a6) invoke-virtual       v7, Ljava/io/File;->canWrite()Z
+	107     (000001ac) move-result          v6
+	108     (000001ae) if-nez               v6, +006h
+
+t-BB@0x1b2 : [ t-BB@0x192 ]
+	109     (000001b2) invoke-virtual       v2, v13, v12, Lu8/i;->n(I Ljava/io/Serializable;)V
+	110     (000001b8) goto                 -13h
+
+t-BB@0x1ba : [ t-BB@0x1d8 ]
+	111     (000001ba) const/4              v6, 1
+	112     (000001bc) goto                 +eh
+
+t-BB@0x1be : [ t-BB@0x1ca t-BB@0x1ba ]
+	113     (000001be) invoke-virtual       v7, Ljava/io/File;->createNewFile()Z
+	114     (000001c4) move-result          v6
+	115     (000001c6) if-nez               v6, -006h
+	1be:1cf
+	(Ljava/io/IOException; -> 1d2 t-BB@0x1d2)
+
+t-BB@0x1ca : [ t-BB@0x192 ]
+	116     (000001ca) invoke-virtual       v2, v13, v12, Lu8/i;->n(I Ljava/io/Serializable;)V
+	117     (000001d0) goto                 -1fh
+
+t-BB@0x1d2 : [ t-BB@0x5ac ]
+	118     (000001d2) const/4              v7, 1
+	119     (000001d4) goto/16              +1ech
+
+t-BB@0x1d8 : [ t-BB@0x1de ]
+	120     (000001d8) iput-boolean         v6, v2, Lu8/i;->b Z
+	121     (000001dc) const/4              v6, 6
+
+t-BB@0x1de : [ t-BB@0x1fe ]
+	122     (000001de) invoke-virtual       v2, v3, v0, Lu8/i;->m(Landroid/content/res/AssetManager; Ljava/lang/String;)Ljava/io/FileInputStream;
+	123     (000001e4) move-result-object   v0
+	124     (000001e6) move-object          v7, v0
+	125     (000001e8) goto                 +bh
+	1de:1e5
+	(Ljava/io/FileNotFoundException; -> 1f4 t-BB@0x1f4)
+	(Ljava/io/IOException; -> 1ea t-BB@0x1ea)
+
+t-BB@0x1ea : [ t-BB@0x1fc ]
+	126     (000001ea) move-exception       v0
+	127     (000001ec) invoke-interface     v5, v8, v0, Ly1/b;->j(I Ljava/lang/Object;)V
+	128     (000001f2) goto                 +5h
+
+t-BB@0x1f4 : [ t-BB@0x1fc ]
+	129     (000001f4) move-exception       v0
+	130     (000001f6) invoke-interface     v5, v6, v0, Ly1/b;->j(I Ljava/lang/Object;)V
+
+t-BB@0x1fc : [ t-BB@0x1fe ]
+	131     (000001fc) move-object          v7, v12
+
+t-BB@0x1fe : [ t-BB@0x20e t-BB@0x29c ]
+	132     (000001fe) const-string         v14, "Invalid magic"
+	133     (00000202) sget-object          v15, Ly1/c;->b [B
+	134     (00000206) const/16             v6, 8
+	135     (0000020a) if-eqz               v7, +049h
+
+t-BB@0x20e : [ t-BB@0x222 t-BB@0x256 ]
+	136     (0000020e) invoke-static        v7, v13, Ly1/c;->f(Ljava/io/InputStream; I)[B
+	137     (00000214) move-result-object   v0
+	138     (00000216) invoke-static        v15, v0, Ljava/util/Arrays;->equals([B [B)Z
+	139     (0000021c) move-result          v0
+	140     (0000021e) if-eqz               v0, +01ch
+	20e:235
+	(Ljava/io/IOException; -> 252 t-BB@0x252)
+	(Ljava/lang/IllegalStateException; -> 24e t-BB@0x24e)
+	(Ljava/lang/Throwable; -> 248 t-BB@0x248)
+
+t-BB@0x222 : [ t-BB@0x236 ]
+	141     (00000222) invoke-static        v7, v13, Ly1/c;->f(Ljava/io/InputStream; I)[B
+	142     (00000228) move-result-object   v0
+	143     (0000022a) iget-object          v9, v2, Lu8/i;->a Ljava/lang/String;
+	144     (0000022e) invoke-static        v7, v0, v9, Ly1/c;->l(Ljava/io/FileInputStream; [B Ljava/lang/String;)[Ly1/a;
+	145     (00000234) move-result-object   v9
+	20e:235
+	(Ljava/io/IOException; -> 252 t-BB@0x252)
+	(Ljava/lang/IllegalStateException; -> 24e t-BB@0x24e)
+	(Ljava/lang/Throwable; -> 248 t-BB@0x248)
+
+t-BB@0x236 : [ t-BB@0x284 ]
+	146     (00000236) invoke-virtual       v7, Ljava/io/InputStream;->close()V
+	147     (0000023c) goto                 +24h
+	236:23b
+	(Ljava/io/IOException; -> 23e t-BB@0x23e)
+
+t-BB@0x23e : [ t-BB@0x284 ]
+	148     (0000023e) move-exception       v0
+	149     (00000240) invoke-interface     v5, v8, v0, Ly1/b;->j(I Ljava/lang/Object;)V
+	150     (00000246) goto                 +1fh
+
+t-BB@0x248 : [ t-BB@0x28a ]
+	151     (00000248) move-exception       v0
+	152     (0000024a) move-object          v1, v0
+	153     (0000024c) goto                 +1fh
+
+t-BB@0x24e : [ t-BB@0x262 ]
+	154     (0000024e) move-exception       v0
+	155     (00000250) goto                 +9h
+
+t-BB@0x252 : [ t-BB@0x27a ]
+	156     (00000252) move-exception       v0
+	157     (00000254) goto                 +13h
+
+t-BB@0x256 : 
+	158     (00000256) new-instance         v0, Ljava/lang/IllegalStateException;
+	159     (0000025a) invoke-direct        v0, v14, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	160     (00000260) throw                v0
+	256:261
+	(Ljava/io/IOException; -> 252 t-BB@0x252)
+	(Ljava/lang/IllegalStateException; -> 24e t-BB@0x24e)
+	(Ljava/lang/Throwable; -> 248 t-BB@0x248)
+
+t-BB@0x262 : [ t-BB@0x268 ]
+	161     (00000262) invoke-interface     v5, v6, v0, Ly1/b;->j(I Ljava/lang/Object;)V
+	262:267
+	(Ljava/lang/Throwable; -> 248 t-BB@0x248)
+
+t-BB@0x268 : [ t-BB@0x282 ]
+	162     (00000268) invoke-virtual       v7, Ljava/io/InputStream;->close()V
+	163     (0000026e) goto                 +ah
+	268:26d
+	(Ljava/io/IOException; -> 270 t-BB@0x270)
+
+t-BB@0x270 : [ t-BB@0x282 ]
+	164     (00000270) move-exception       v0
+	165     (00000272) invoke-interface     v5, v8, v0, Ly1/b;->j(I Ljava/lang/Object;)V
+	166     (00000278) goto                 +5h
+
+t-BB@0x27a : [ t-BB@0x268 ]
+	167     (0000027a) invoke-interface     v5, v8, v0, Ly1/b;->j(I Ljava/lang/Object;)V
+	168     (00000280) goto                 -ch
+	27a:27f
+	(Ljava/lang/Throwable; -> 248 t-BB@0x248)
+
+t-BB@0x282 : [ t-BB@0x284 ]
+	169     (00000282) move-object          v9, v12
+
+t-BB@0x284 : [ t-BB@0x29c ]
+	170     (00000284) iput-object          v9, v2, Lu8/i;->g Ljava/lang/Object;
+	171     (00000288) goto                 +ah
+
+t-BB@0x28a : [ t-BB@0x29a ]
+	172     (0000028a) invoke-virtual       v7, Ljava/io/InputStream;->close()V
+	173     (00000290) goto                 +5h
+	28a:28f
+	(Ljava/io/IOException; -> 292 t-BB@0x292)
+
+t-BB@0x292 : [ t-BB@0x29a ]
+	174     (00000292) move-exception       v0
+	175     (00000294) invoke-interface     v5, v8, v0, Ly1/b;->j(I Ljava/lang/Object;)V
+
+t-BB@0x29a : 
+	176     (0000029a) throw                v1
+
+t-BB@0x29c : [ t-BB@0x2a8 t-BB@0x35c ]
+	177     (0000029c) iget-object          v0, v2, Lu8/i;->g Ljava/lang/Object;
+	178     (000002a0) check-cast           v0, [Ly1/a;
+	179     (000002a4) if-eqz               v0, +05ch
+
+t-BB@0x2a8 : [ t-BB@0x2b4 t-BB@0x35c ]
+	180     (000002a8) sget                 v7, Landroid/os/Build$VERSION;->SDK_INT I
+	181     (000002ac) const/16             v9, 31
+	182     (000002b0) if-lt                v7, v9, +056h
+
+t-BB@0x2b4 : [ t-BB@0x2c4 t-BB@0x32a ]
+	183     (000002b4) const-string         v7, "dexopt/baseline.profm"
+	184     (000002b8) invoke-virtual       v2, v3, v7, Lu8/i;->m(Landroid/content/res/AssetManager; Ljava/lang/String;)Ljava/io/FileInputStream;
+	185     (000002be) move-result-object   v3
+	186     (000002c0) if-eqz               v3, +035h
+	2b4:2bf
+	(Ljava/io/FileNotFoundException; -> 302 t-BB@0x302)
+	(Ljava/io/IOException; -> 2fe t-BB@0x2fe)
+	(Ljava/lang/IllegalStateException; -> 2fa t-BB@0x2fa)
+
+t-BB@0x2c4 : [ t-BB@0x2dc t-BB@0x30c ]
+	187     (000002c4) sget-object          v7, Ly1/c;->c [B
+	188     (000002c8) invoke-static        v3, v13, Ly1/c;->f(Ljava/io/InputStream; I)[B
+	189     (000002ce) move-result-object   v9
+	190     (000002d0) invoke-static        v7, v9, Ljava/util/Arrays;->equals([B [B)Z
+	191     (000002d6) move-result          v7
+	192     (000002d8) if-eqz               v7, +01ah
+	2c4:2ef
+	(Ljava/lang/Throwable; -> 306 t-BB@0x306)
+
+t-BB@0x2dc : [ t-BB@0x2f0 ]
+	193     (000002dc) invoke-static        v3, v13, Ly1/c;->f(Ljava/io/InputStream; I)[B
+	194     (000002e2) move-result-object   v7
+	195     (000002e4) invoke-static        v3, v7, v4, v0, Ly1/c;->i(Ljava/io/FileInputStream; [B [B [Ly1/a;)[Ly1/a;
+	196     (000002ea) move-result-object   v0
+	197     (000002ec) iput-object          v0, v2, Lu8/i;->g Ljava/lang/Object;
+	2c4:2ef
+	(Ljava/lang/Throwable; -> 306 t-BB@0x306)
+
+t-BB@0x2f0 : [ t-BB@0x356 ]
+	198     (000002f0) invoke-virtual       v3, Ljava/io/InputStream;->close()V
+	199     (000002f6) move-object          v0, v2
+	200     (000002f8) goto                 +2fh
+	2f0:2f5
+	(Ljava/io/FileNotFoundException; -> 302 t-BB@0x302)
+	(Ljava/io/IOException; -> 2fe t-BB@0x2fe)
+	(Ljava/lang/IllegalStateException; -> 2fa t-BB@0x2fa)
+
+t-BB@0x2fa : [ t-BB@0x336 ]
+	201     (000002fa) move-exception       v0
+	202     (000002fc) goto                 +1dh
+
+t-BB@0x2fe : [ t-BB@0x342 ]
+	203     (000002fe) move-exception       v0
+	204     (00000300) goto                 +21h
+
+t-BB@0x302 : [ t-BB@0x34a ]
+	205     (00000302) move-exception       v0
+	206     (00000304) goto                 +23h
+
+t-BB@0x306 : [ t-BB@0x318 ]
+	207     (00000306) move-exception       v0
+	208     (00000308) move-object          v4, v0
+	209     (0000030a) goto                 +7h
+
+t-BB@0x30c : 
+	210     (0000030c) new-instance         v0, Ljava/lang/IllegalStateException;
+	211     (00000310) invoke-direct        v0, v14, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	212     (00000316) throw                v0
+	30c:317
+	(Ljava/lang/Throwable; -> 306 t-BB@0x306)
+
+t-BB@0x318 : [ t-BB@0x328 ]
+	213     (00000318) invoke-virtual       v3, Ljava/io/InputStream;->close()V
+	214     (0000031e) goto                 +5h
+	318:31d
+	(Ljava/lang/Throwable; -> 320 t-BB@0x320)
+
+t-BB@0x320 : [ t-BB@0x322 ]
+	215     (00000320) move-exception       v0
+
+t-BB@0x322 : [ t-BB@0x328 ]
+	216     (00000322) invoke-virtual       v4, v0, Ljava/lang/Throwable;->addSuppressed(Ljava/lang/Throwable;)V
+	322:333
+	(Ljava/io/FileNotFoundException; -> 302 t-BB@0x302)
+	(Ljava/io/IOException; -> 2fe t-BB@0x2fe)
+	(Ljava/lang/IllegalStateException; -> 2fa t-BB@0x2fa)
+
+t-BB@0x328 : 
+	217     (00000328) throw                v4
+	322:333
+	(Ljava/io/FileNotFoundException; -> 302 t-BB@0x302)
+	(Ljava/io/IOException; -> 2fe t-BB@0x2fe)
+	(Ljava/lang/IllegalStateException; -> 2fa t-BB@0x2fa)
+
+t-BB@0x32a : [ t-BB@0x32e t-BB@0x354 ]
+	218     (0000032a) if-eqz               v3, +015h
+	322:333
+	(Ljava/io/FileNotFoundException; -> 302 t-BB@0x302)
+	(Ljava/io/IOException; -> 2fe t-BB@0x2fe)
+	(Ljava/lang/IllegalStateException; -> 2fa t-BB@0x2fa)
+
+t-BB@0x32e : [ t-BB@0x354 ]
+	219     (0000032e) invoke-virtual       v3, Ljava/io/InputStream;->close()V
+	220     (00000334) goto                 +10h
+
+t-BB@0x336 : [ t-BB@0x354 ]
+	221     (00000336) iput-object          v12, v2, Lu8/i;->g Ljava/lang/Object;
+	222     (0000033a) invoke-interface     v5, v6, v0, Ly1/b;->j(I Ljava/lang/Object;)V
+	223     (00000340) goto                 +ah
+
+t-BB@0x342 : [ t-BB@0x354 ]
+	224     (00000342) invoke-interface     v5, v8, v0, Ly1/b;->j(I Ljava/lang/Object;)V
+	225     (00000348) goto                 +6h
+
+t-BB@0x34a : [ t-BB@0x354 ]
+	226     (0000034a) const/16             v3, 9
+	227     (0000034e) invoke-interface     v5, v3, v0, Ly1/b;->j(I Ljava/lang/Object;)V
+
+t-BB@0x354 : [ t-BB@0x356 ]
+	228     (00000354) move-object          v0, v12
+
+t-BB@0x356 : [ t-BB@0x35a t-BB@0x35c ]
+	229     (00000356) if-eqz               v0, +003h
+
+t-BB@0x35a : [ t-BB@0x35c ]
+	230     (0000035a) move-object          v2, v0
+
+t-BB@0x35c : [ t-BB@0x37e t-BB@0x416 ]
+	231     (0000035c) iget-object          v0, v2, Lu8/i;->d Ljava/lang/Object;
+	232     (00000360) move-object          v3, v0
+	233     (00000362) check-cast           v3, Ly1/b;
+	234     (00000366) iget-object          v0, v2, Lu8/i;->g Ljava/lang/Object;
+	235     (0000036a) check-cast           v0, [Ly1/a;
+	236     (0000036e) iget-object          v4, v2, Lu8/i;->e Ljava/io/Serializable;
+	237     (00000372) check-cast           v4, [B
+	238     (00000376) const-string         v5, "This device doesn't support aot. Did you call deviceSupportsAotProfile()?"
+	239     (0000037a) if-eqz               v0, +04eh
+
+t-BB@0x37e : [ t-BB@0x382 t-BB@0x384 ]
+	240     (0000037e) if-nez               v4, +003h
+
+t-BB@0x382 : [ t-BB@0x416 ]
+	241     (00000382) goto                 +4ah
+
+t-BB@0x384 : [ t-BB@0x38c t-BB@0x40a ]
+	242     (00000384) iget-boolean         v7, v2, Lu8/i;->b Z
+	243     (00000388) if-eqz               v7, +041h
+
+t-BB@0x38c : [ t-BB@0x396 ]
+	244     (0000038c) new-instance         v7, Ljava/io/ByteArrayOutputStream;
+	245     (00000390) invoke-direct        v7, Ljava/io/ByteArrayOutputStream;-><init>()V
+	38c:395
+	(Ljava/io/IOException; -> 3c6 t-BB@0x3c6)
+	(Ljava/lang/IllegalStateException; -> 3c2 t-BB@0x3c2)
+
+t-BB@0x396 : [ t-BB@0x3ae t-BB@0x3d0 ]
+	246     (00000396) invoke-virtual       v7, v15, Ljava/io/OutputStream;->write([B)V
+	247     (0000039c) invoke-virtual       v7, v4, Ljava/io/OutputStream;->write([B)V
+	248     (000003a2) invoke-static        v7, v4, v0, Ly1/c;->o(Ljava/io/ByteArrayOutputStream; [B [Ly1/a;)Z
+	249     (000003a8) move-result          v0
+	250     (000003aa) if-nez               v0, +013h
+	396:3b9
+	(Ljava/lang/Throwable; -> 3ca t-BB@0x3ca)
+
+t-BB@0x3ae : [ t-BB@0x3ba ]
+	251     (000003ae) const/4              v0, 5
+	252     (000003b0) invoke-interface     v3, v0, v12, Ly1/b;->j(I Ljava/lang/Object;)V
+	253     (000003b6) iput-object          v12, v2, Lu8/i;->g Ljava/lang/Object;
+	396:3b9
+	(Ljava/lang/Throwable; -> 3ca t-BB@0x3ca)
+
+t-BB@0x3ba : [ t-BB@0x416 ]
+	254     (000003ba) invoke-virtual       v7, Ljava/io/ByteArrayOutputStream;->close()V
+	255     (000003c0) goto                 +2bh
+	3ba:3bf
+	(Ljava/io/IOException; -> 3c6 t-BB@0x3c6)
+	(Ljava/lang/IllegalStateException; -> 3c2 t-BB@0x3c2)
+
+t-BB@0x3c2 : [ t-BB@0x3f6 ]
+	256     (000003c2) move-exception       v0
+	257     (000003c4) goto                 +19h
+
+t-BB@0x3c6 : [ t-BB@0x3fe ]
+	258     (000003c6) move-exception       v0
+	259     (000003c8) goto                 +1bh
+
+t-BB@0x3ca : [ t-BB@0x3e4 ]
+	260     (000003ca) move-exception       v0
+	261     (000003cc) move-object          v4, v0
+	262     (000003ce) goto                 +bh
+
+t-BB@0x3d0 : [ t-BB@0x3dc ]
+	263     (000003d0) invoke-virtual       v7, Ljava/io/ByteArrayOutputStream;->toByteArray()[B
+	264     (000003d6) move-result-object   v0
+	265     (000003d8) iput-object          v0, v2, Lu8/i;->h Ljava/io/Serializable;
+	3d0:3db
+	(Ljava/lang/Throwable; -> 3ca t-BB@0x3ca)
+
+t-BB@0x3dc : [ t-BB@0x404 ]
+	266     (000003dc) invoke-virtual       v7, Ljava/io/ByteArrayOutputStream;->close()V
+	267     (000003e2) goto                 +11h
+	3dc:3e1
+	(Ljava/io/IOException; -> 3c6 t-BB@0x3c6)
+	(Ljava/lang/IllegalStateException; -> 3c2 t-BB@0x3c2)
+
+t-BB@0x3e4 : [ t-BB@0x3f4 ]
+	268     (000003e4) invoke-virtual       v7, Ljava/io/ByteArrayOutputStream;->close()V
+	269     (000003ea) goto                 +5h
+	3e4:3e9
+	(Ljava/lang/Throwable; -> 3ec t-BB@0x3ec)
+
+t-BB@0x3ec : [ t-BB@0x3ee ]
+	270     (000003ec) move-exception       v0
+
+t-BB@0x3ee : [ t-BB@0x3f4 ]
+	271     (000003ee) invoke-virtual       v4, v0, Ljava/lang/Throwable;->addSuppressed(Ljava/lang/Throwable;)V
+	3ee:3f5
+	(Ljava/io/IOException; -> 3c6 t-BB@0x3c6)
+	(Ljava/lang/IllegalStateException; -> 3c2 t-BB@0x3c2)
+
+t-BB@0x3f4 : 
+	272     (000003f4) throw                v4
+	3ee:3f5
+	(Ljava/io/IOException; -> 3c6 t-BB@0x3c6)
+	(Ljava/lang/IllegalStateException; -> 3c2 t-BB@0x3c2)
+
+t-BB@0x3f6 : [ t-BB@0x404 ]
+	273     (000003f6) invoke-interface     v3, v6, v0, Ly1/b;->j(I Ljava/lang/Object;)V
+	274     (000003fc) goto                 +4h
+
+t-BB@0x3fe : [ t-BB@0x404 ]
+	275     (000003fe) invoke-interface     v3, v8, v0, Ly1/b;->j(I Ljava/lang/Object;)V
+
+t-BB@0x404 : [ t-BB@0x416 ]
+	276     (00000404) iput-object          v12, v2, Lu8/i;->g Ljava/lang/Object;
+	277     (00000408) goto                 +7h
+
+t-BB@0x40a : 
+	278     (0000040a) new-instance         v0, Ljava/lang/IllegalStateException;
+	279     (0000040e) invoke-direct        v0, v5, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	280     (00000414) throw                v0
+
+t-BB@0x416 : [ t-BB@0x422 t-BB@0x42a ]
+	281     (00000416) iget-object          v0, v2, Lu8/i;->h Ljava/io/Serializable;
+	282     (0000041a) check-cast           v0, [B
+	283     (0000041e) if-nez               v0, +006h
+
+t-BB@0x422 : [ t-BB@0x588 ]
+	284     (00000422) const/4              v6, 0
+	285     (00000424) const/4              v7, 1
+	286     (00000426) goto/16              +0b1h
+
+t-BB@0x42a : [ t-BB@0x432 t-BB@0x5a0 ]
+	287     (0000042a) iget-boolean         v3, v2, Lu8/i;->b Z
+	288     (0000042e) if-eqz               v3, +0b9h
+
+t-BB@0x432 : [ t-BB@0x43c ]
+	289     (00000432) new-instance         v3, Ljava/io/ByteArrayInputStream;
+	290     (00000436) invoke-direct        v3, v0, Ljava/io/ByteArrayInputStream;-><init>([B)V
+	432:43b
+	(Ljava/io/FileNotFoundException; -> 568 t-BB@0x568)
+	(Ljava/io/IOException; -> 562 t-BB@0x562)
+	(Ljava/lang/Throwable; -> 4ba t-BB@0x4ba)
+
+t-BB@0x43c : [ t-BB@0x44e ]
+	291     (0000043c) new-instance         v4, Ljava/io/FileOutputStream;
+	292     (00000440) iget-object          v0, v2, Lu8/i;->f Ljava/io/Serializable;
+	293     (00000444) check-cast           v0, Ljava/io/File;
+	294     (00000448) invoke-direct        v4, v0, Ljava/io/FileOutputStream;-><init>(Ljava/io/File;)V
+	43c:44d
+	(Ljava/lang/Throwable; -> 54a t-BB@0x54a)
+
+t-BB@0x44e : [ t-BB@0x456 ]
+	295     (0000044e) invoke-virtual       v4, Ljava/io/FileOutputStream;->getChannel()Ljava/nio/channels/FileChannel;
+	296     (00000454) move-result-object   v5
+	44e:455
+	(Ljava/lang/Throwable; -> 532 t-BB@0x532)
+
+t-BB@0x456 : [ t-BB@0x462 t-BB@0x4e6 ]
+	297     (00000456) invoke-virtual       v5, Ljava/nio/channels/FileChannel;->tryLock()Ljava/nio/channels/FileLock;
+	298     (0000045c) move-result-object   v6
+	299     (0000045e) if-eqz               v6, +044h
+	456:45d
+	(Ljava/lang/Throwable; -> 516 t-BB@0x516)
+
+t-BB@0x462 : [ t-BB@0x46e t-BB@0x4e6 ]
+	300     (00000462) invoke-virtual       v6, Ljava/nio/channels/FileLock;->isValid()Z
+	301     (00000468) move-result          v0
+	302     (0000046a) if-eqz               v0, +03eh
+	462:489
+	(Ljava/lang/Throwable; -> 4ea t-BB@0x4ea)
+
+t-BB@0x46e : [ t-BB@0x476 ]
+	303     (0000046e) const/16             v0, 512
+	304     (00000472) new-array            v0, v0, [B
+	462:489
+	(Ljava/lang/Throwable; -> 4ea t-BB@0x4ea)
+
+t-BB@0x476 : [ t-BB@0x482 t-BB@0x48c ]
+	305     (00000476) invoke-virtual       v3, v0, Ljava/io/InputStream;->read([B)I
+	306     (0000047c) move-result          v7
+	307     (0000047e) if-lez               v7, +007h
+	462:489
+	(Ljava/lang/Throwable; -> 4ea t-BB@0x4ea)
+
+t-BB@0x482 : [ t-BB@0x476 ]
+	308     (00000482) const/4              v9, 0
+	309     (00000484) invoke-virtual       v4, v0, v9, v7, Ljava/io/OutputStream;->write([B I I)V
+	310     (0000048a) goto                 -ah
+
+t-BB@0x48c : [ t-BB@0x48e ]
+	311     (0000048c) const/4              v7, 1
+
+t-BB@0x48e : [ t-BB@0x494 ]
+	312     (0000048e) invoke-virtual       v2, v7, v12, Lu8/i;->n(I Ljava/io/Serializable;)V
+	48e:493
+	(Ljava/lang/Throwable; -> 4e0 t-BB@0x4e0)
+
+t-BB@0x494 : [ t-BB@0x49a ]
+	313     (00000494) invoke-virtual       v6, Ljava/nio/channels/FileLock;->close()V
+	494:499
+	(Ljava/lang/Throwable; -> 4da t-BB@0x4da)
+
+t-BB@0x49a : [ t-BB@0x4a0 ]
+	314     (0000049a) invoke-virtual       v5, Ljava/nio/channels/spi/AbstractInterruptibleChannel;->close()V
+	49a:49f
+	(Ljava/lang/Throwable; -> 4d4 t-BB@0x4d4)
+
+t-BB@0x4a0 : [ t-BB@0x4a6 ]
+	315     (000004a0) invoke-virtual       v4, Ljava/io/FileOutputStream;->close()V
+	4a0:4a5
+	(Ljava/lang/Throwable; -> 4ce t-BB@0x4ce)
+
+t-BB@0x4a6 : [ t-BB@0x588 ]
+	316     (000004a6) invoke-virtual       v3, Ljava/io/InputStream;->close()V
+	317     (000004ac) iput-object          v12, v2, Lu8/i;->h Ljava/io/Serializable;
+	318     (000004b0) iput-object          v12, v2, Lu8/i;->g Ljava/lang/Object;
+	319     (000004b4) move                 v6, v7
+	320     (000004b6) goto/16              +069h
+	4a6:4ab
+	(Ljava/io/FileNotFoundException; -> 4c6 t-BB@0x4c6)
+	(Ljava/io/IOException; -> 4c0 t-BB@0x4c0)
+	(Ljava/lang/Throwable; -> 4ba t-BB@0x4ba)
+
+t-BB@0x4ba : [ t-BB@0x596 ]
+	321     (000004ba) move-exception       v0
+	322     (000004bc) goto/16              +06dh
+
+t-BB@0x4c0 : [ t-BB@0x56e ]
+	323     (000004c0) move-exception       v0
+	324     (000004c2) goto/16              +056h
+
+t-BB@0x4c6 : [ t-BB@0x4c8 ]
+	325     (000004c6) move-exception       v0
+
+t-BB@0x4c8 : [ t-BB@0x57e ]
+	326     (000004c8) const/4              v3, 6
+	327     (000004ca) goto/16              +05ah
+
+t-BB@0x4ce : [ t-BB@0x4d0 ]
+	328     (000004ce) move-exception       v0
+
+t-BB@0x4d0 : [ t-BB@0x550 ]
+	329     (000004d0) move-object          v4, v0
+	330     (000004d2) goto                 +3fh
+
+t-BB@0x4d4 : [ t-BB@0x4d6 ]
+	331     (000004d4) move-exception       v0
+
+t-BB@0x4d6 : [ t-BB@0x538 ]
+	332     (000004d6) move-object          v5, v0
+	333     (000004d8) goto                 +30h
+
+t-BB@0x4da : [ t-BB@0x4dc ]
+	334     (000004da) move-exception       v0
+
+t-BB@0x4dc : [ t-BB@0x51c ]
+	335     (000004dc) move-object          v6, v0
+	336     (000004de) goto                 +1fh
+
+t-BB@0x4e0 : [ t-BB@0x4e2 ]
+	337     (000004e0) move-exception       v0
+
+t-BB@0x4e2 : [ t-BB@0x500 ]
+	338     (000004e2) move-object          v9, v0
+	339     (000004e4) goto                 +eh
+
+t-BB@0x4e6 : [ t-BB@0x4f0 ]
+	340     (000004e6) const/4              v7, 1
+	341     (000004e8) goto                 +4h
+
+t-BB@0x4ea : [ t-BB@0x4e2 ]
+	342     (000004ea) move-exception       v0
+	343     (000004ec) const/4              v7, 1
+	344     (000004ee) goto                 -6h
+
+t-BB@0x4f0 : 
+	345     (000004f0) new-instance         v0, Ljava/io/IOException;
+	346     (000004f4) const-string         v9, "Unable to acquire a lock on the underlying file channel."
+	347     (000004f8) invoke-direct        v0, v9, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+	348     (000004fe) throw                v0
+	4f0:4ff
+	(Ljava/lang/Throwable; -> 4e0 t-BB@0x4e0)
+
+t-BB@0x500 : [ t-BB@0x504 t-BB@0x514 ]
+	349     (00000500) if-eqz               v6, +00ah
+
+t-BB@0x504 : [ t-BB@0x514 ]
+	350     (00000504) invoke-virtual       v6, Ljava/nio/channels/FileLock;->close()V
+	351     (0000050a) goto                 +5h
+	504:509
+	(Ljava/lang/Throwable; -> 50c t-BB@0x50c)
+
+t-BB@0x50c : [ t-BB@0x50e ]
+	352     (0000050c) move-exception       v0
+
+t-BB@0x50e : [ t-BB@0x514 ]
+	353     (0000050e) invoke-virtual       v9, v0, Ljava/lang/Throwable;->addSuppressed(Ljava/lang/Throwable;)V
+	50e:515
+	(Ljava/lang/Throwable; -> 4da t-BB@0x4da)
+
+t-BB@0x514 : 
+	354     (00000514) throw                v9
+	50e:515
+	(Ljava/lang/Throwable; -> 4da t-BB@0x4da)
+
+t-BB@0x516 : [ t-BB@0x4dc ]
+	355     (00000516) move-exception       v0
+	356     (00000518) const/4              v7, 1
+	357     (0000051a) goto                 -1fh
+
+t-BB@0x51c : [ t-BB@0x520 t-BB@0x530 ]
+	358     (0000051c) if-eqz               v5, +00ah
+
+t-BB@0x520 : [ t-BB@0x530 ]
+	359     (00000520) invoke-virtual       v5, Ljava/nio/channels/spi/AbstractInterruptibleChannel;->close()V
+	360     (00000526) goto                 +5h
+	520:525
+	(Ljava/lang/Throwable; -> 528 t-BB@0x528)
+
+t-BB@0x528 : [ t-BB@0x52a ]
+	361     (00000528) move-exception       v0
+
+t-BB@0x52a : [ t-BB@0x530 ]
+	362     (0000052a) invoke-virtual       v6, v0, Ljava/lang/Throwable;->addSuppressed(Ljava/lang/Throwable;)V
+	52a:531
+	(Ljava/lang/Throwable; -> 4d4 t-BB@0x4d4)
+
+t-BB@0x530 : 
+	363     (00000530) throw                v6
+	52a:531
+	(Ljava/lang/Throwable; -> 4d4 t-BB@0x4d4)
+
+t-BB@0x532 : [ t-BB@0x4d6 ]
+	364     (00000532) move-exception       v0
+	365     (00000534) const/4              v7, 1
+	366     (00000536) goto                 -30h
+
+t-BB@0x538 : [ t-BB@0x548 ]
+	367     (00000538) invoke-virtual       v4, Ljava/io/FileOutputStream;->close()V
+	368     (0000053e) goto                 +5h
+	538:53d
+	(Ljava/lang/Throwable; -> 540 t-BB@0x540)
+
+t-BB@0x540 : [ t-BB@0x542 ]
+	369     (00000540) move-exception       v0
+
+t-BB@0x542 : [ t-BB@0x548 ]
+	370     (00000542) invoke-virtual       v5, v0, Ljava/lang/Throwable;->addSuppressed(Ljava/lang/Throwable;)V
+	542:549
+	(Ljava/lang/Throwable; -> 4ce t-BB@0x4ce)
+
+t-BB@0x548 : 
+	371     (00000548) throw                v5
+	542:549
+	(Ljava/lang/Throwable; -> 4ce t-BB@0x4ce)
+
+t-BB@0x54a : [ t-BB@0x4d0 ]
+	372     (0000054a) move-exception       v0
+	373     (0000054c) const/4              v7, 1
+	374     (0000054e) goto                 -3fh
+
+t-BB@0x550 : [ t-BB@0x560 ]
+	375     (00000550) invoke-virtual       v3, Ljava/io/InputStream;->close()V
+	376     (00000556) goto                 +5h
+	550:555
+	(Ljava/lang/Throwable; -> 558 t-BB@0x558)
+
+t-BB@0x558 : [ t-BB@0x55a ]
+	377     (00000558) move-exception       v0
+
+t-BB@0x55a : [ t-BB@0x560 ]
+	378     (0000055a) invoke-virtual       v4, v0, Ljava/lang/Throwable;->addSuppressed(Ljava/lang/Throwable;)V
+	55a:561
+	(Ljava/io/FileNotFoundException; -> 4c6 t-BB@0x4c6)
+	(Ljava/io/IOException; -> 4c0 t-BB@0x4c0)
+	(Ljava/lang/Throwable; -> 4ba t-BB@0x4ba)
+
+t-BB@0x560 : 
+	379     (00000560) throw                v4
+	55a:561
+	(Ljava/io/FileNotFoundException; -> 4c6 t-BB@0x4c6)
+	(Ljava/io/IOException; -> 4c0 t-BB@0x4c0)
+	(Ljava/lang/Throwable; -> 4ba t-BB@0x4ba)
+
+t-BB@0x562 : [ t-BB@0x56e ]
+	380     (00000562) move-exception       v0
+	381     (00000564) const/4              v7, 1
+	382     (00000566) goto                 +4h
+
+t-BB@0x568 : [ t-BB@0x4c8 ]
+	383     (00000568) move-exception       v0
+	384     (0000056a) const/4              v7, 1
+	385     (0000056c) goto                 -52h
+
+t-BB@0x56e : [ t-BB@0x574 ]
+	386     (0000056e) invoke-virtual       v2, v8, v0, Lu8/i;->n(I Ljava/io/Serializable;)V
+	56e:573
+	(Ljava/lang/Throwable; -> 4ba t-BB@0x4ba)
+
+t-BB@0x574 : [ t-BB@0x586 ]
+	387     (00000574) iput-object          v12, v2, Lu8/i;->h Ljava/io/Serializable;
+	388     (00000578) iput-object          v12, v2, Lu8/i;->g Ljava/lang/Object;
+	389     (0000057c) goto                 +5h
+
+t-BB@0x57e : [ t-BB@0x574 ]
+	390     (0000057e) invoke-virtual       v2, v3, v0, Lu8/i;->n(I Ljava/io/Serializable;)V
+	391     (00000584) goto                 -8h
+	57e:583
+	(Ljava/lang/Throwable; -> 4ba t-BB@0x4ba)
+
+t-BB@0x586 : [ t-BB@0x588 ]
+	392     (00000586) const/4              v6, 0
+
+t-BB@0x588 : [ t-BB@0x58c t-BB@0x592 ]
+	393     (00000588) if-eqz               v6, +005h
+
+t-BB@0x58c : [ t-BB@0x592 ]
+	394     (0000058c) invoke-static        v10, v11, Ly1/c;->e(Landroid/content/pm/PackageInfo; Ljava/io/File;)V
+
+t-BB@0x592 : [ t-BB@0x5b4 ]
+	395     (00000592) move                 v9, v6
+	396     (00000594) goto                 +10h
+
+t-BB@0x596 : 
+	397     (00000596) iput-object          v12, v2, Lu8/i;->h Ljava/io/Serializable;
+	398     (0000059a) iput-object          v12, v2, Lu8/i;->g Ljava/lang/Object;
+	399     (0000059e) throw                v0
+
+t-BB@0x5a0 : 
+	400     (000005a0) new-instance         v0, Ljava/lang/IllegalStateException;
+	401     (000005a4) invoke-direct        v0, v5, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	402     (000005aa) throw                v0
+
+t-BB@0x5ac : [ t-BB@0x5b2 ]
+	403     (000005ac) invoke-virtual       v2, v13, v12, Lu8/i;->n(I Ljava/io/Serializable;)V
+
+t-BB@0x5b2 : [ t-BB@0x5b4 ]
+	404     (000005b2) const/4              v9, 0
+
+t-BB@0x5b4 : [ t-BB@0x5b8 t-BB@0x5c0 ]
+	405     (000005b4) if-eqz               v9, +006h
+
+t-BB@0x5b8 : [ t-BB@0x5bc t-BB@0x5c0 ]
+	406     (000005b8) if-eqz               v21, +004h
+
+t-BB@0x5bc : [ t-BB@0x5c2 ]
+	407     (000005bc) move                 v9, v7
+	408     (000005be) goto                 +2h
+
+t-BB@0x5c0 : [ t-BB@0x5c2 ]
+	409     (000005c0) const/4              v9, 0
+
+t-BB@0x5c2 : [ t-BB@0x5c8 ]
+	410     (000005c2) invoke-static        v1, v9, Ly1/g;->c(Landroid/content/Context; Z)V
+
+t-BB@0x5c8 : 
+	411     (000005c8) return-void          
+
+t-BB@0x5ca : 
+	412     (000005ca) move-exception       v0
+	413     (000005cc) invoke-interface     v5, v8, v0, Ly1/b;->j(I Ljava/lang/Object;)V
+	414     (000005d2) const/4              v9, 0
+	415     (000005d4) invoke-static        v1, v9, Ly1/g;->c(Landroid/content/Context; Z)V
+	416     (000005da) return-void          
+

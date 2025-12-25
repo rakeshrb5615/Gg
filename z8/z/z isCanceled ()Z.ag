@@ -1,0 +1,57 @@
+# Lz8/z;->isCanceled()Z [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v2
+#
+# - return:boolean
+
+isCanceled-BB@0x0 : [ isCanceled-BB@0xa isCanceled-BB@0xc ]
+	0       (00000000) iget-boolean         v0, v2, Lz8/z;->f Z
+	1       (00000004) const/4              v1, 1
+	2       (00000006) if-eqz               v0, +003h
+
+isCanceled-BB@0xa : 
+	3       (0000000a) return               v1
+
+isCanceled-BB@0xc : [ isCanceled-BB@0xe ]
+	4       (0000000c) monitor-enter        v2
+
+isCanceled-BB@0xe : [ isCanceled-BB@0x16 isCanceled-BB@0x28 ]
+	5       (0000000e) iget-object          v0, v2, Lz8/z;->m Lokhttp3/Call;
+	6       (00000012) if-eqz               v0, +00bh
+	e:2f
+	(Ljava/lang/Throwable; -> 24 isCanceled-BB@0x24)
+
+isCanceled-BB@0x16 : [ isCanceled-BB@0x22 isCanceled-BB@0x28 ]
+	7       (00000016) invoke-interface     v0, Lokhttp3/Call;->isCanceled()Z
+	8       (0000001c) move-result          v0
+	9       (0000001e) if-eqz               v0, +005h
+	e:2f
+	(Ljava/lang/Throwable; -> 24 isCanceled-BB@0x24)
+
+isCanceled-BB@0x22 : [ isCanceled-BB@0x2a ]
+	10      (00000022) goto                 +4h
+	e:2f
+	(Ljava/lang/Throwable; -> 24 isCanceled-BB@0x24)
+
+isCanceled-BB@0x24 : [ isCanceled-BB@0x2e ]
+	11      (00000024) move-exception       v0
+	12      (00000026) goto                 +4h
+	e:2f
+	(Ljava/lang/Throwable; -> 24 isCanceled-BB@0x24)
+
+isCanceled-BB@0x28 : [ isCanceled-BB@0x2a ]
+	13      (00000028) const/4              v1, 0
+	e:2f
+	(Ljava/lang/Throwable; -> 24 isCanceled-BB@0x24)
+
+isCanceled-BB@0x2a : 
+	14      (0000002a) monitor-exit         v2
+	15      (0000002c) return               v1
+	e:2f
+	(Ljava/lang/Throwable; -> 24 isCanceled-BB@0x24)
+
+isCanceled-BB@0x2e : 
+	16      (0000002e) monitor-exit         v2
+	17      (00000030) throw                v0
+

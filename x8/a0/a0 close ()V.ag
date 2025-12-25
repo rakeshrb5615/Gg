@@ -1,0 +1,59 @@
+# Lx8/a0;->close()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v6
+#
+# - return:void
+
+close-BB@0x0 : [ close-BB@0xc close-BB@0x4c ]
+	0       (00000000) iget-object          v0, v6, Lx8/a0;->a Lx8/f0;
+	1       (00000004) iget-boolean         v1, v6, Lx8/a0;->c Z
+	2       (00000008) if-nez               v1, +022h
+
+close-BB@0xc : [ close-BB@0x20 close-BB@0x2c ]
+	3       (0000000c) iget-object          v1, v6, Lx8/a0;->b Lx8/g;
+	4       (00000010) iget-wide            v2, v1, Lx8/g;->b J
+	5       (00000014) const-wide/16        v4, 0
+	6       (00000018) cmp-long             v4, v2, v4
+	7       (0000001c) if-lez               v4, +008h
+	c:25
+	(Ljava/lang/Throwable; -> 28 close-BB@0x28)
+
+close-BB@0x20 : [ close-BB@0x2c ]
+	8       (00000020) invoke-interface     v0, v1, v2, v3, Lx8/f0;->k(Lx8/g; J)V
+	9       (00000026) goto                 +3h
+
+close-BB@0x28 : [ close-BB@0x2e ]
+	10      (00000028) move-exception       v1
+	11      (0000002a) goto                 +2h
+
+close-BB@0x2c : [ close-BB@0x2e ]
+	12      (0000002c) const/4              v1, 0
+
+close-BB@0x2e : [ close-BB@0x3e ]
+	13      (0000002e) invoke-interface     v0, Lx8/f0;->close()V
+	14      (00000034) goto                 +5h
+	2e:33
+	(Ljava/lang/Throwable; -> 36 close-BB@0x36)
+
+close-BB@0x36 : [ close-BB@0x3c close-BB@0x3e ]
+	15      (00000036) move-exception       v0
+	16      (00000038) if-nez               v1, +003h
+
+close-BB@0x3c : [ close-BB@0x3e ]
+	17      (0000003c) move-object          v1, v0
+
+close-BB@0x3e : [ close-BB@0x48 close-BB@0x4a ]
+	18      (0000003e) const/4              v0, 1
+	19      (00000040) iput-boolean         v0, v6, Lx8/a0;->c Z
+	20      (00000044) if-nez               v1, +003h
+
+close-BB@0x48 : [ close-BB@0x4c ]
+	21      (00000048) goto                 +2h
+
+close-BB@0x4a : 
+	22      (0000004a) throw                v1
+
+close-BB@0x4c : 
+	23      (0000004c) return-void          
+

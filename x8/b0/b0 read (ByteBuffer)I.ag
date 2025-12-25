@@ -1,0 +1,35 @@
+# Lx8/b0;->read(Ljava/nio/ByteBuffer;)I [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:java.nio.ByteBuffer
+#
+# - return:int
+
+read-BB@0x0 : [ read-BB@0x1e read-BB@0x3e ]
+	0       (00000000) const-string         v0, "sink"
+	1       (00000004) invoke-static        v6, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) iget-object          v0, v5, Lx8/b0;->b Lx8/g;
+	3       (0000000e) iget-wide            v1, v0, Lx8/g;->b J
+	4       (00000012) const-wide/16        v3, 0
+	5       (00000016) cmp-long             v1, v1, v3
+	6       (0000001a) if-nez               v1, +012h
+
+read-BB@0x1e : [ read-BB@0x3a read-BB@0x3e ]
+	7       (0000001e) iget-object          v1, v5, Lx8/b0;->a Lx8/h0;
+	8       (00000022) const-wide/16        v2, 8192
+	9       (00000026) invoke-interface     v1, v0, v2, v3, Lx8/h0;->t(Lx8/g; J)J
+	10      (0000002c) move-result-wide     v1
+	11      (0000002e) const-wide/16        v3, -1
+	12      (00000032) cmp-long             v1, v1, v3
+	13      (00000036) if-nez               v1, +004h
+
+read-BB@0x3a : 
+	14      (0000003a) const/4              v6, -1
+	15      (0000003c) return               v6
+
+read-BB@0x3e : 
+	16      (0000003e) invoke-virtual       v0, v6, Lx8/g;->read(Ljava/nio/ByteBuffer;)I
+	17      (00000044) move-result          v6
+	18      (00000046) return               v6
+

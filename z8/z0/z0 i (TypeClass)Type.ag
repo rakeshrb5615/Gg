@@ -1,0 +1,27 @@
+# Lz8/z0;->i(Ljava/lang/reflect/Type; Ljava/lang/Class;)Ljava/lang/reflect/Type; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:java.lang.reflect.Type
+# - v3:java.lang.Class
+#
+# - return:java.lang.reflect.Type
+
+i-BB@0x0 : [ i-BB@0x10 i-BB@0x22 ]
+	0       (00000000) const-class          v0, Ljava/util/Map;
+	1       (00000004) invoke-virtual       v0, v3, Ljava/lang/Class;->isAssignableFrom(Ljava/lang/Class;)Z
+	2       (0000000a) move-result          v1
+	3       (0000000c) if-eqz               v1, +00bh
+
+i-BB@0x10 : 
+	4       (00000010) invoke-static        v2, v3, v0, Lz8/z0;->f(Ljava/lang/reflect/Type; Ljava/lang/Class; Ljava/lang/Class;)Ljava/lang/reflect/Type;
+	5       (00000016) move-result-object   v0
+	6       (00000018) invoke-static        v2, v3, v0, Lz8/z0;->p(Ljava/lang/reflect/Type; Ljava/lang/Class; Ljava/lang/reflect/Type;)Ljava/lang/reflect/Type;
+	7       (0000001e) move-result-object   v2
+	8       (00000020) return-object        v2
+
+i-BB@0x22 : 
+	9       (00000022) new-instance         v2, Ljava/lang/IllegalArgumentException;
+	10      (00000026) invoke-direct        v2, Ljava/lang/IllegalArgumentException;-><init>()V
+	11      (0000002c) throw                v2
+

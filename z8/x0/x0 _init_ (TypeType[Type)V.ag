@@ -1,0 +1,74 @@
+# Lz8/x0;-><init>(Ljava/lang/reflect/Type; Ljava/lang/reflect/Type; [Ljava/lang/reflect/Type;)V [access_flags=public varargs constructor]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:java.lang.reflect.Type
+# - v6:java.lang.reflect.Type
+# - v7:java.lang.reflect.Type[]
+#
+# - return:void
+
+<init>-BB@0x0 : [ <init>-BB@0x10 <init>-BB@0x44 ]
+	0       (00000000) invoke-direct        v4, Ljava/lang/Object;-><init>()V
+	1       (00000006) instance-of          v0, v6, Ljava/lang/Class;
+	2       (0000000a) const/4              v1, 0
+	3       (0000000c) if-eqz               v0, +01ch
+
+<init>-BB@0x10 : [ <init>-BB@0x16 <init>-BB@0x1a ]
+	4       (00000010) const/4              v0, 1
+	5       (00000012) if-nez               v5, +004h
+
+<init>-BB@0x16 : [ <init>-BB@0x1c ]
+	6       (00000016) move                 v2, v0
+	7       (00000018) goto                 +2h
+
+<init>-BB@0x1a : [ <init>-BB@0x1c ]
+	8       (0000001a) move                 v2, v1
+
+<init>-BB@0x1c : [ <init>-BB@0x2e <init>-BB@0x30 ]
+	9       (0000001c) move-object          v3, v6
+	10      (0000001e) check-cast           v3, Ljava/lang/Class;
+	11      (00000022) invoke-virtual       v3, Ljava/lang/Class;->getEnclosingClass()Ljava/lang/Class;
+	12      (00000028) move-result-object   v3
+	13      (0000002a) if-nez               v3, +003h
+
+<init>-BB@0x2e : [ <init>-BB@0x32 ]
+	14      (0000002e) goto                 +2h
+
+<init>-BB@0x30 : [ <init>-BB@0x32 ]
+	15      (00000030) move                 v0, v1
+
+<init>-BB@0x32 : [ <init>-BB@0x36 <init>-BB@0x38 ]
+	16      (00000032) if-ne                v2, v0, +003h
+
+<init>-BB@0x36 : [ <init>-BB@0x44 ]
+	17      (00000036) goto                 +7h
+
+<init>-BB@0x38 : 
+	18      (00000038) new-instance         v5, Ljava/lang/IllegalArgumentException;
+	19      (0000003c) invoke-direct        v5, Ljava/lang/IllegalArgumentException;-><init>()V
+	20      (00000042) throw                v5
+
+<init>-BB@0x44 : [ <init>-BB@0x46 ]
+	21      (00000044) array-length         v0, v7
+
+<init>-BB@0x46 : [ <init>-BB@0x4a <init>-BB@0x64 ]
+	22      (00000046) if-ge                v1, v0, +00fh
+
+<init>-BB@0x4a : [ <init>-BB@0x46 ]
+	23      (0000004a) aget-object          v2, v7, v1
+	24      (0000004e) const-string         v3, "typeArgument == null"
+	25      (00000052) invoke-static        v2, v3, Ljava/util/Objects;->requireNonNull(Ljava/lang/Object; Ljava/lang/String;)Ljava/lang/Object;
+	26      (00000058) invoke-static        v2, Lz8/z0;->d(Ljava/lang/reflect/Type;)V
+	27      (0000005e) add-int/lit8         v1, v1, 1
+	28      (00000062) goto                 -eh
+
+<init>-BB@0x64 : 
+	29      (00000064) iput-object          v5, v4, Lz8/x0;->a Ljava/lang/reflect/Type;
+	30      (00000068) iput-object          v6, v4, Lz8/x0;->b Ljava/lang/reflect/Type;
+	31      (0000006c) invoke-virtual       v7, [Ljava/lang/reflect/Type;->clone()Ljava/lang/Object;
+	32      (00000072) move-result-object   v5
+	33      (00000074) check-cast           v5, [Ljava/lang/reflect/Type;
+	34      (00000078) iput-object          v5, v4, Lz8/x0;->c [Ljava/lang/reflect/Type;
+	35      (0000007c) return-void          
+

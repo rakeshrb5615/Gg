@@ -1,0 +1,32 @@
+# Lw6/s;->b()Ljava/lang/Number; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v2
+#
+# - return:java.lang.Number
+
+b-BB@0x0 : [ b-BB@0xc b-BB@0x12 ]
+	0       (00000000) iget-object          v0, v2, Lw6/s;->a Ljava/io/Serializable;
+	1       (00000004) instance-of          v1, v0, Ljava/lang/Number;
+	2       (00000008) if-eqz               v1, +005h
+
+b-BB@0xc : 
+	3       (0000000c) check-cast           v0, Ljava/lang/Number;
+	4       (00000010) return-object        v0
+
+b-BB@0x12 : [ b-BB@0x1a b-BB@0x2a ]
+	5       (00000012) instance-of          v1, v0, Ljava/lang/String;
+	6       (00000016) if-eqz               v1, +00ah
+
+b-BB@0x1a : 
+	7       (0000001a) new-instance         v1, Ly6/k;
+	8       (0000001e) check-cast           v0, Ljava/lang/String;
+	9       (00000022) invoke-direct        v1, v0, Ly6/k;-><init>(Ljava/lang/String;)V
+	10      (00000028) return-object        v1
+
+b-BB@0x2a : 
+	11      (0000002a) new-instance         v0, Ljava/lang/UnsupportedOperationException;
+	12      (0000002e) const-string         v1, "Primitive is neither a number nor a string"
+	13      (00000032) invoke-direct        v0, v1, Ljava/lang/UnsupportedOperationException;-><init>(Ljava/lang/String;)V
+	14      (00000038) throw                v0
+

@@ -1,0 +1,42 @@
+# Lz4/m;->d(Ljava/lang/String;)Lr/e; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:java.lang.String
+#
+# - return:r.e
+
+d-BB@0x0 : [ d-BB@0xc d-BB@0xe ]
+	0       (00000000) invoke-static        v2, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+	1       (00000006) move-result          v0
+	2       (00000008) if-eqz               v0, +003h
+
+d-BB@0xc : [ d-BB@0x2a ]
+	3       (0000000c) goto                 +fh
+
+d-BB@0xe : [ d-BB@0x20 d-BB@0x2a ]
+	4       (0000000e) new-instance         v0, Lorg/json/JSONObject;
+	5       (00000012) invoke-direct        v0, v2, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+	6       (00000018) sget-object          v2, Lorg/json/JSONObject;->NULL Ljava/lang/Object;
+	7       (0000001c) if-eq                v0, v2, +007h
+	e:27
+	(Ljava/lang/Exception; -> 2e d-BB@0x2e)
+
+d-BB@0x20 : 
+	8       (00000020) invoke-static        v0, Lz4/m;->c(Lorg/json/JSONObject;)Lr/e;
+	9       (00000026) move-result-object   v2
+	10      (00000028) return-object        v2
+
+d-BB@0x2a : 
+	11      (0000002a) const/4              v2, 0
+	12      (0000002c) return-object        v2
+
+d-BB@0x2e : 
+	13      (0000002e) move-exception       v2
+	14      (00000030) const-string         v0, "JSONParser"
+	15      (00000034) const-string         v1, "Failed to parse JSONObject into Map."
+	16      (00000038) invoke-static        v0, v1, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String;)I
+	17      (0000003e) new-instance         v0, Lcom/google/android/gms/internal/firebase-auth-api/zzaao;
+	18      (00000042) invoke-direct        v0, v2, Lcom/google/android/gms/internal/firebase-auth-api/zzaao;-><init>(Ljava/lang/Throwable;)V
+	19      (00000048) throw                v0
+

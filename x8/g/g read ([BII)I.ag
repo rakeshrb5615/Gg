@@ -1,0 +1,54 @@
+# Lx8/g;->read([B I I)I [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v7
+# - v8:byte[]
+# - v9:int
+# - v10:int
+#
+# - return:int
+
+read-BB@0x0 : [ read-BB@0x20 read-BB@0x24 ]
+	0       (00000000) const-string         v0, "sink"
+	1       (00000004) invoke-static        v8, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) array-length         v0, v8
+	3       (0000000c) int-to-long          v1, v0
+	4       (0000000e) int-to-long          v3, v9
+	5       (00000010) int-to-long          v5, v10
+	6       (00000012) invoke-static/range  v1 ... v6, Lx8/b;->e(J J J)V
+	7       (00000018) iget-object          v0, v7, Lx8/g;->a Lx8/c0;
+	8       (0000001c) if-nez               v0, +004h
+
+read-BB@0x20 : 
+	9       (00000020) const/4              v8, -1
+	10      (00000022) return               v8
+
+read-BB@0x24 : [ read-BB@0x66 read-BB@0x78 ]
+	11      (00000024) iget                 v1, v0, Lx8/c0;->c I
+	12      (00000028) iget                 v2, v0, Lx8/c0;->b I
+	13      (0000002c) sub-int/2addr        v1, v2
+	14      (0000002e) invoke-static        v10, v1, Ljava/lang/Math;->min(I I)I
+	15      (00000034) move-result          v10
+	16      (00000036) iget-object          v1, v0, Lx8/c0;->a [B
+	17      (0000003a) iget                 v2, v0, Lx8/c0;->b I
+	18      (0000003e) add-int              v3, v2, v10
+	19      (00000042) invoke-static        v1, v9, v8, v2, v3, Li7/h;->Y([B I [B I I)V
+	20      (00000048) iget                 v8, v0, Lx8/c0;->b I
+	21      (0000004c) add-int/2addr        v8, v10
+	22      (0000004e) iput                 v8, v0, Lx8/c0;->b I
+	23      (00000052) iget-wide            v1, v7, Lx8/g;->b J
+	24      (00000056) int-to-long          v3, v10
+	25      (00000058) sub-long/2addr       v1, v3
+	26      (0000005a) iput-wide            v1, v7, Lx8/g;->b J
+	27      (0000005e) iget                 v9, v0, Lx8/c0;->c I
+	28      (00000062) if-ne                v8, v9, +00bh
+
+read-BB@0x66 : [ read-BB@0x78 ]
+	29      (00000066) invoke-virtual       v0, Lx8/c0;->a()Lx8/c0;
+	30      (0000006c) move-result-object   v8
+	31      (0000006e) iput-object          v8, v7, Lx8/g;->a Lx8/c0;
+	32      (00000072) invoke-static        v0, Lx8/d0;->a(Lx8/c0;)V
+
+read-BB@0x78 : 
+	33      (00000078) return               v10
+

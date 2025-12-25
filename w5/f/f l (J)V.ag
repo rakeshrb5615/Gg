@@ -1,0 +1,32 @@
+# Lw5/f;->l(J)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:long
+#
+# - return:void
+
+l-BB@0x0 : [ l-BB@0x12 l-BB@0x2c ]
+	0       (00000000) const-wide/16        v0, -128
+	1       (00000004) and-long/2addr       v0, v5
+	2       (00000006) const-wide/16        v2, 0
+	3       (0000000a) cmp-long             v0, v0, v2
+	4       (0000000e) if-eqz               v0, +00fh
+
+l-BB@0x12 : [ l-BB@0x0 ]
+	5       (00000012) iget-object          v0, v4, Lw5/f;->a Ljava/io/OutputStream;
+	6       (00000016) long-to-int          v1, v5
+	7       (00000018) and-int/lit8         v1, v1, 127
+	8       (0000001c) or-int/lit16         v1, v1, 128
+	9       (00000020) invoke-virtual       v0, v1, Ljava/io/OutputStream;->write(I)V
+	10      (00000026) const/4              v0, 7
+	11      (00000028) ushr-long/2addr      v5, v0
+	12      (0000002a) goto                 -15h
+
+l-BB@0x2c : 
+	13      (0000002c) iget-object          v0, v4, Lw5/f;->a Ljava/io/OutputStream;
+	14      (00000030) long-to-int          v5, v5
+	15      (00000032) and-int/lit8         v5, v5, 127
+	16      (00000036) invoke-virtual       v0, v5, Ljava/io/OutputStream;->write(I)V
+	17      (0000003c) return-void          
+

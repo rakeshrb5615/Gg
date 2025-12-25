@@ -1,0 +1,46 @@
+# Lx8/g;->t(Lx8/g; J)J [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:x8.g
+# - v7:long
+#
+# - return:long
+
+t-BB@0x0 : [ t-BB@0x16 t-BB@0x3a ]
+	0       (00000000) const-string         v0, "sink"
+	1       (00000004) invoke-static        v5, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) const-wide/16        v0, 0
+	3       (0000000e) cmp-long             v2, v6, v0
+	4       (00000012) if-ltz               v2, +014h
+
+t-BB@0x16 : [ t-BB@0x22 t-BB@0x28 ]
+	5       (00000016) iget-wide            v2, v4, Lx8/g;->b J
+	6       (0000001a) cmp-long             v0, v2, v0
+	7       (0000001e) if-nez               v0, +005h
+
+t-BB@0x22 : 
+	8       (00000022) const-wide/16        v5, -1
+	9       (00000026) return-wide          v5
+
+t-BB@0x28 : [ t-BB@0x30 t-BB@0x32 ]
+	10      (00000028) cmp-long             v0, v6, v2
+	11      (0000002c) if-lez               v0, +003h
+
+t-BB@0x30 : [ t-BB@0x32 ]
+	12      (00000030) move-wide            v6, v2
+
+t-BB@0x32 : 
+	13      (00000032) invoke-virtual       v5, v4, v6, v7, Lx8/g;->k(Lx8/g; J)V
+	14      (00000038) return-wide          v6
+
+t-BB@0x3a : 
+	15      (0000003a) const-string         v5, "byteCount < 0: "
+	16      (0000003e) invoke-static        v6, v7, v5, Lv1/a;->g(J Ljava/lang/String;)Ljava/lang/String;
+	17      (00000044) move-result-object   v5
+	18      (00000046) new-instance         v6, Ljava/lang/IllegalArgumentException;
+	19      (0000004a) invoke-virtual       v5, Ljava/lang/Object;->toString()Ljava/lang/String;
+	20      (00000050) move-result-object   v5
+	21      (00000052) invoke-direct        v6, v5, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	22      (00000058) throw                v6
+

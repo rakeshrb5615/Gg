@@ -1,0 +1,29 @@
+# Ly6/n;->setValue(Ljava/lang/Object;)Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:java.lang.Object
+#
+# - return:java.lang.Object
+
+setValue-BB@0x0 : [ setValue-BB@0x4 setValue-BB@0x1e ]
+	0       (00000000) if-nez               v2, +00fh
+
+setValue-BB@0x4 : [ setValue-BB@0xc setValue-BB@0xe ]
+	1       (00000004) iget-boolean         v0, v1, Ly6/n;->m Z
+	2       (00000008) if-eqz               v0, +003h
+
+setValue-BB@0xc : [ setValue-BB@0x1e ]
+	3       (0000000c) goto                 +9h
+
+setValue-BB@0xe : 
+	4       (0000000e) new-instance         v2, Ljava/lang/NullPointerException;
+	5       (00000012) const-string         v0, "value == null"
+	6       (00000016) invoke-direct        v2, v0, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
+	7       (0000001c) throw                v2
+
+setValue-BB@0x1e : 
+	8       (0000001e) iget-object          v0, v1, Ly6/n;->n Ljava/lang/Object;
+	9       (00000022) iput-object          v2, v1, Ly6/n;->n Ljava/lang/Object;
+	10      (00000026) return-object        v0
+

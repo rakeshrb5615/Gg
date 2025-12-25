@@ -1,0 +1,45 @@
+# Lx3/e;->onMeasure(I I)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:int
+# - v5:int
+#
+# - return:void
+
+onMeasure-BB@0x0 : [ onMeasure-BB@0xc onMeasure-BB@0x12 ]
+	0       (00000000) iget                 v0, v3, Lx3/e;->I I
+	1       (00000004) const/4              v1, 1
+	2       (00000006) const/4              v2, 0
+	3       (00000008) if-eq                v0, v1, +005h
+
+onMeasure-BB@0xc : [ onMeasure-BB@0x12 onMeasure-BB@0x2a ]
+	4       (0000000c) const/4              v1, 3
+	5       (0000000e) if-ne                v0, v1, +00eh
+
+onMeasure-BB@0x12 : [ onMeasure-BB@0x2a ]
+	6       (00000012) iget-object          v0, v3, Lx3/e;->r Ljava/util/ArrayList;
+	7       (00000016) invoke-virtual       v0, v2, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	8       (0000001c) move-result-object   v0
+	9       (0000001e) check-cast           v0, Lb4/b;
+	10      (00000022) invoke-virtual       v0, Lb4/b;->getIntrinsicHeight()I
+	11      (00000028) move-result          v2
+
+onMeasure-BB@0x2a : [ onMeasure-BB@0x48 onMeasure-BB@0x50 ]
+	12      (0000002a) iget                 v0, v3, Lx3/e;->H I
+	13      (0000002e) add-int/2addr        v0, v2
+	14      (00000030) const/high16         v1, 1073741824
+	15      (00000034) invoke-static        v0, v1, Landroid/view/View$MeasureSpec;->makeMeasureSpec(I I)I
+	16      (0000003a) move-result          v0
+	17      (0000003c) invoke-virtual       v3, Lx3/e;->s()Z
+	18      (00000042) move-result          v1
+	19      (00000044) if-eqz               v1, +006h
+
+onMeasure-BB@0x48 : 
+	20      (00000048) invoke-super         v3, v0, v5, Landroid/view/View;->onMeasure(I I)V
+	21      (0000004e) return-void          
+
+onMeasure-BB@0x50 : 
+	22      (00000050) invoke-super         v3, v4, v0, Landroid/view/View;->onMeasure(I I)V
+	23      (00000056) return-void          
+

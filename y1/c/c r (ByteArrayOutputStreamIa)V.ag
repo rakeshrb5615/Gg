@@ -1,0 +1,90 @@
+# Ly1/c;->r(Ljava/io/ByteArrayOutputStream; I Ly1/a;)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v9
+# - v10:java.io.ByteArrayOutputStream
+# - v11:int
+# - v12:y1.a
+#
+# - return:void
+
+r-BB@0x0 : [ r-BB@0x36 ]
+	0       (00000000) iget                 v0, v12, Ly1/a;->g I
+	1       (00000004) and-int/lit8         v1, v11, -2
+	2       (00000008) invoke-static        v1, Ljava/lang/Integer;->bitCount(I)I
+	3       (0000000e) move-result          v1
+	4       (00000010) mul-int/2addr        v1, v0
+	5       (00000012) add-int/lit8         v1, v1, 7
+	6       (00000016) and-int/lit8         v1, v1, -8
+	7       (0000001a) div-int/lit8         v1, v1, 8
+	8       (0000001e) new-array            v1, v1, [B
+	9       (00000022) iget-object          v12, v12, Ly1/a;->i Ljava/util/TreeMap;
+	10      (00000026) invoke-virtual       v12, Ljava/util/TreeMap;->entrySet()Ljava/util/Set;
+	11      (0000002c) move-result-object   v12
+	12      (0000002e) invoke-interface     v12, Ljava/util/Set;->iterator()Ljava/util/Iterator;
+	13      (00000034) move-result-object   v12
+
+r-BB@0x36 : [ r-BB@0x42 r-BB@0xc2 ]
+	14      (00000036) invoke-interface     v12, Ljava/util/Iterator;->hasNext()Z
+	15      (0000003c) move-result          v2
+	16      (0000003e) if-eqz               v2, +042h
+
+r-BB@0x42 : [ r-BB@0x7c ]
+	17      (00000042) invoke-interface     v12, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	18      (00000048) move-result-object   v2
+	19      (0000004a) check-cast           v2, Ljava/util/Map$Entry;
+	20      (0000004e) invoke-interface     v2, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
+	21      (00000054) move-result-object   v3
+	22      (00000056) check-cast           v3, Ljava/lang/Integer;
+	23      (0000005a) invoke-virtual       v3, Ljava/lang/Integer;->intValue()I
+	24      (00000060) move-result          v3
+	25      (00000062) invoke-interface     v2, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
+	26      (00000068) move-result-object   v2
+	27      (0000006a) check-cast           v2, Ljava/lang/Integer;
+	28      (0000006e) invoke-virtual       v2, Ljava/lang/Integer;->intValue()I
+	29      (00000074) move-result          v2
+	30      (00000076) const/4              v4, 1
+	31      (00000078) const/4              v5, 0
+	32      (0000007a) move                 v6, v4
+
+r-BB@0x7c : [ r-BB@0x82 r-BB@0x36 ]
+	33      (0000007c) const/4              v7, 4
+	34      (0000007e) if-gt                v6, v7, -024h
+
+r-BB@0x82 : [ r-BB@0x86 r-BB@0x8c ]
+	35      (00000082) if-ne                v6, v4, +005h
+
+r-BB@0x86 : [ r-BB@0x7c ]
+	36      (00000086) shl-int/lit8         v6, v6, 1
+	37      (0000008a) goto                 -7h
+
+r-BB@0x8c : [ r-BB@0x94 r-BB@0x96 ]
+	38      (0000008c) and-int              v7, v6, v11
+	39      (00000090) if-nez               v7, +003h
+
+r-BB@0x94 : [ r-BB@0x86 ]
+	40      (00000094) goto                 -7h
+
+r-BB@0x96 : [ r-BB@0x9e r-BB@0xbc ]
+	41      (00000096) and-int              v7, v6, v2
+	42      (0000009a) if-ne                v7, v6, +011h
+
+r-BB@0x9e : [ r-BB@0xbc ]
+	43      (0000009e) mul-int              v7, v5, v0
+	44      (000000a2) add-int/2addr        v7, v3
+	45      (000000a4) div-int/lit8         v8, v7, 8
+	46      (000000a8) aget-byte            v9, v1, v8
+	47      (000000ac) rem-int/lit8         v7, v7, 8
+	48      (000000b0) shl-int              v7, v4, v7
+	49      (000000b4) or-int/2addr         v7, v9
+	50      (000000b6) int-to-byte          v7, v7
+	51      (000000b8) aput-byte            v7, v1, v8
+
+r-BB@0xbc : [ r-BB@0x86 ]
+	52      (000000bc) add-int/lit8         v5, v5, 1
+	53      (000000c0) goto                 -1dh
+
+r-BB@0xc2 : 
+	54      (000000c2) invoke-virtual       v10, v1, Ljava/io/OutputStream;->write([B)V
+	55      (000000c8) return-void          
+

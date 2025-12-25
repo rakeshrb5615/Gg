@@ -1,0 +1,39 @@
+# Lx8/e0;->c(Ljava/lang/String;)Lx8/j; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v7
+# - v8:java.lang.String
+#
+# - return:x8.j
+
+c-BB@0x0 : [ c-BB@0x12 ]
+	0       (00000000) invoke-static        v8, Ljava/security/MessageDigest;->getInstance(Ljava/lang/String;)Ljava/security/MessageDigest;
+	1       (00000006) move-result-object   v8
+	2       (00000008) iget-object          v0, v7, Lx8/e0;->e [[B
+	3       (0000000c) array-length         v1, v0
+	4       (0000000e) const/4              v2, 0
+	5       (00000010) move                 v3, v2
+
+c-BB@0x12 : [ c-BB@0x16 c-BB@0x3c ]
+	6       (00000012) if-ge                v2, v1, +015h
+
+c-BB@0x16 : [ c-BB@0x12 ]
+	7       (00000016) add-int              v4, v1, v2
+	8       (0000001a) iget-object          v5, v7, Lx8/e0;->f [I
+	9       (0000001e) aget                 v4, v5, v4
+	10      (00000022) aget                 v5, v5, v2
+	11      (00000026) aget-object          v6, v0, v2
+	12      (0000002a) sub-int              v3, v5, v3
+	13      (0000002e) invoke-virtual       v8, v6, v4, v3, Ljava/security/MessageDigest;->update([B I I)V
+	14      (00000034) add-int/lit8         v2, v2, 1
+	15      (00000038) move                 v3, v5
+	16      (0000003a) goto                 -14h
+
+c-BB@0x3c : 
+	17      (0000003c) invoke-virtual       v8, Ljava/security/MessageDigest;->digest()[B
+	18      (00000042) move-result-object   v8
+	19      (00000044) new-instance         v0, Lx8/j;
+	20      (00000048) invoke-static        v8, Lkotlin/jvm/internal/j;->b(Ljava/lang/Object;)V
+	21      (0000004e) invoke-direct        v0, v8, Lx8/j;-><init>([B)V
+	22      (00000054) return-object        v0
+

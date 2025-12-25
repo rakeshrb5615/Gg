@@ -1,0 +1,32 @@
+# Lx8/a0;->flush()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v5
+#
+# - return:void
+
+flush-BB@0x0 : [ flush-BB@0x8 flush-BB@0x2e ]
+	0       (00000000) iget-boolean         v0, v5, Lx8/a0;->c Z
+	1       (00000004) if-nez               v0, +015h
+
+flush-BB@0x8 : [ flush-BB@0x20 flush-BB@0x26 ]
+	2       (00000008) iget-object          v0, v5, Lx8/a0;->b Lx8/g;
+	3       (0000000c) iget-wide            v1, v0, Lx8/g;->b J
+	4       (00000010) const-wide/16        v3, 0
+	5       (00000014) cmp-long             v3, v1, v3
+	6       (00000018) iget-object          v4, v5, Lx8/a0;->a Lx8/f0;
+	7       (0000001c) if-lez               v3, +005h
+
+flush-BB@0x20 : [ flush-BB@0x26 ]
+	8       (00000020) invoke-interface     v4, v0, v1, v2, Lx8/f0;->k(Lx8/g; J)V
+
+flush-BB@0x26 : 
+	9       (00000026) invoke-interface     v4, Lx8/f0;->flush()V
+	10      (0000002c) return-void          
+
+flush-BB@0x2e : 
+	11      (0000002e) new-instance         v0, Ljava/lang/IllegalStateException;
+	12      (00000032) const-string         v1, "closed"
+	13      (00000036) invoke-direct        v0, v1, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	14      (0000003c) throw                v0
+

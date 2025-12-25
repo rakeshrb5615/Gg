@@ -1,0 +1,124 @@
+# Ly1/c;->b([Ly1/a; [B)[B [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v7
+# - v8:y1.a[]
+# - v9:byte[]
+#
+# - return:byte[]
+
+b-BB@0x0 : [ b-BB@0x8 ]
+	0       (00000000) array-length         v0, v8
+	1       (00000002) const/4              v1, 0
+	2       (00000004) move                 v2, v1
+	3       (00000006) move                 v3, v2
+
+b-BB@0x8 : [ b-BB@0xc b-BB@0x60 ]
+	4       (00000008) if-ge                v2, v0, +02ch
+
+b-BB@0xc : [ b-BB@0x8 ]
+	5       (0000000c) aget-object          v4, v8, v2
+	6       (00000010) iget-object          v5, v4, Ly1/a;->a Ljava/lang/String;
+	7       (00000014) iget-object          v6, v4, Ly1/a;->b Ljava/lang/String;
+	8       (00000018) invoke-static        v9, v5, v6, Ly1/c;->d([B Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	9       (0000001e) move-result-object   v5
+	10      (00000020) sget-object          v6, Ljava/nio/charset/StandardCharsets;->UTF_8 Ljava/nio/charset/Charset;
+	11      (00000024) invoke-virtual       v5, v6, Ljava/lang/String;->getBytes(Ljava/nio/charset/Charset;)[B
+	12      (0000002a) move-result-object   v5
+	13      (0000002c) array-length         v5, v5
+	14      (0000002e) add-int/lit8         v5, v5, 16
+	15      (00000032) iget                 v6, v4, Ly1/a;->e I
+	16      (00000036) mul-int/lit8         v6, v6, 2
+	17      (0000003a) add-int/2addr        v6, v5
+	18      (0000003c) iget                 v5, v4, Ly1/a;->f I
+	19      (00000040) add-int/2addr        v6, v5
+	20      (00000042) iget                 v4, v4, Ly1/a;->g I
+	21      (00000046) mul-int/lit8         v4, v4, 2
+	22      (0000004a) add-int/lit8         v4, v4, 7
+	23      (0000004e) and-int/lit8         v4, v4, -8
+	24      (00000052) div-int/lit8         v4, v4, 8
+	25      (00000056) add-int/2addr        v4, v6
+	26      (00000058) add-int/2addr        v3, v4
+	27      (0000005a) add-int/lit8         v2, v2, 1
+	28      (0000005e) goto                 -2bh
+
+b-BB@0x60 : [ b-BB@0x7a b-BB@0xa6 ]
+	29      (00000060) new-instance         v0, Ljava/io/ByteArrayOutputStream;
+	30      (00000064) invoke-direct        v0, v3, Ljava/io/ByteArrayOutputStream;-><init>(I)V
+	31      (0000006a) sget-object          v2, Ly1/c;->f [B
+	32      (0000006e) invoke-static        v9, v2, Ljava/util/Arrays;->equals([B [B)Z
+	33      (00000074) move-result          v2
+	34      (00000076) if-eqz               v2, +018h
+
+b-BB@0x7a : [ b-BB@0x7c ]
+	35      (0000007a) array-length         v2, v8
+
+b-BB@0x7c : [ b-BB@0x80 b-BB@0xe4 ]
+	36      (0000007c) if-ge                v1, v2, +034h
+
+b-BB@0x80 : [ b-BB@0x7c ]
+	37      (00000080) aget-object          v4, v8, v1
+	38      (00000084) iget-object          v5, v4, Ly1/a;->a Ljava/lang/String;
+	39      (00000088) iget-object          v6, v4, Ly1/a;->b Ljava/lang/String;
+	40      (0000008c) invoke-static        v9, v5, v6, Ly1/c;->d([B Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	41      (00000092) move-result-object   v5
+	42      (00000094) invoke-static        v0, v4, v5, Ly1/c;->q(Ljava/io/ByteArrayOutputStream; Ly1/a; Ljava/lang/String;)V
+	43      (0000009a) invoke-static        v0, v4, Ly1/c;->p(Ljava/io/ByteArrayOutputStream; Ly1/a;)V
+	44      (000000a0) add-int/lit8         v1, v1, 1
+	45      (000000a4) goto                 -14h
+
+b-BB@0xa6 : [ b-BB@0xaa ]
+	46      (000000a6) array-length         v2, v8
+	47      (000000a8) move                 v4, v1
+
+b-BB@0xaa : [ b-BB@0xae b-BB@0xce ]
+	48      (000000aa) if-ge                v4, v2, +012h
+
+b-BB@0xae : [ b-BB@0xaa ]
+	49      (000000ae) aget-object          v5, v8, v4
+	50      (000000b2) iget-object          v6, v5, Ly1/a;->a Ljava/lang/String;
+	51      (000000b6) iget-object          v7, v5, Ly1/a;->b Ljava/lang/String;
+	52      (000000ba) invoke-static        v9, v6, v7, Ly1/c;->d([B Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	53      (000000c0) move-result-object   v6
+	54      (000000c2) invoke-static        v0, v5, v6, Ly1/c;->q(Ljava/io/ByteArrayOutputStream; Ly1/a; Ljava/lang/String;)V
+	55      (000000c8) add-int/lit8         v4, v4, 1
+	56      (000000cc) goto                 -11h
+
+b-BB@0xce : [ b-BB@0xd0 ]
+	57      (000000ce) array-length         v9, v8
+
+b-BB@0xd0 : [ b-BB@0xd4 b-BB@0xe4 ]
+	58      (000000d0) if-ge                v1, v9, +00ah
+
+b-BB@0xd4 : [ b-BB@0xd0 ]
+	59      (000000d4) aget-object          v2, v8, v1
+	60      (000000d8) invoke-static        v0, v2, Ly1/c;->p(Ljava/io/ByteArrayOutputStream; Ly1/a;)V
+	61      (000000de) add-int/lit8         v1, v1, 1
+	62      (000000e2) goto                 -9h
+
+b-BB@0xe4 : [ b-BB@0xf0 b-BB@0xfa ]
+	63      (000000e4) invoke-virtual       v0, Ljava/io/ByteArrayOutputStream;->size()I
+	64      (000000ea) move-result          v8
+	65      (000000ec) if-ne                v8, v3, +007h
+
+b-BB@0xf0 : 
+	66      (000000f0) invoke-virtual       v0, Ljava/io/ByteArrayOutputStream;->toByteArray()[B
+	67      (000000f6) move-result-object   v8
+	68      (000000f8) return-object        v8
+
+b-BB@0xfa : 
+	69      (000000fa) new-instance         v8, Ljava/lang/StringBuilder;
+	70      (000000fe) const-string         v9, "The bytes saved do not match expectation. actual="
+	71      (00000102) invoke-direct        v8, v9, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	72      (00000108) invoke-virtual       v0, Ljava/io/ByteArrayOutputStream;->size()I
+	73      (0000010e) move-result          v9
+	74      (00000110) invoke-virtual       v8, v9, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	75      (00000116) const-string         v9, " expected="
+	76      (0000011a) invoke-virtual       v8, v9, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	77      (00000120) invoke-virtual       v8, v3, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	78      (00000126) invoke-virtual       v8, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	79      (0000012c) move-result-object   v8
+	80      (0000012e) new-instance         v9, Ljava/lang/IllegalStateException;
+	81      (00000132) invoke-direct        v9, v8, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	82      (00000138) throw                v9
+

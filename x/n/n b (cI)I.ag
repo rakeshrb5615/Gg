@@ -1,0 +1,164 @@
+# Lx/n;->b(Lu/c; I)I [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v8
+# - v9:u.c
+# - v10:int
+#
+# - return:int
+
+b-BB@0x0 : [ b-BB@0x12 b-BB@0x14 ]
+	0       (00000000) iget-object          v0, v8, Lx/n;->a Ljava/util/ArrayList;
+	1       (00000004) invoke-virtual       v0, Ljava/util/ArrayList;->size()I
+	2       (0000000a) move-result          v1
+	3       (0000000c) const/4              v2, 0
+	4       (0000000e) if-nez               v1, +003h
+
+b-BB@0x12 : 
+	5       (00000012) return               v2
+
+b-BB@0x14 : [ b-BB@0x36 ]
+	6       (00000014) invoke-virtual       v0, v2, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	7       (0000001a) move-result-object   v1
+	8       (0000001c) check-cast           v1, Lw/d;
+	9       (00000020) iget-object          v1, v1, Lw/d;->T Lw/d;
+	10      (00000024) check-cast           v1, Lw/e;
+	11      (00000028) invoke-virtual       v9, Lu/c;->t()V
+	12      (0000002e) invoke-virtual       v1, v9, v2, Lw/d;->b(Lu/c; Z)V
+	13      (00000034) move                 v3, v2
+
+b-BB@0x36 : [ b-BB@0x42 b-BB@0x5a ]
+	14      (00000036) invoke-virtual       v0, Ljava/util/ArrayList;->size()I
+	15      (0000003c) move-result          v4
+	16      (0000003e) if-ge                v3, v4, +00eh
+
+b-BB@0x42 : [ b-BB@0x36 ]
+	17      (00000042) invoke-virtual       v0, v3, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	18      (00000048) move-result-object   v4
+	19      (0000004a) check-cast           v4, Lw/d;
+	20      (0000004e) invoke-virtual       v4, v9, v2, Lw/d;->b(Lu/c; Z)V
+	21      (00000054) add-int/lit8         v3, v3, 1
+	22      (00000058) goto                 -11h
+
+b-BB@0x5a : [ b-BB@0x5e b-BB@0x6c ]
+	23      (0000005a) if-nez               v10, +009h
+
+b-BB@0x5e : [ b-BB@0x66 b-BB@0x6c ]
+	24      (0000005e) iget                 v3, v1, Lw/e;->z0 I
+	25      (00000062) if-lez               v3, +005h
+
+b-BB@0x66 : [ b-BB@0x6c ]
+	26      (00000066) invoke-static        v1, v9, v0, v2, Lw/j;->a(Lw/e; Lu/c; Ljava/util/ArrayList; I)V
+
+b-BB@0x6c : [ b-BB@0x72 b-BB@0x80 ]
+	27      (0000006c) const/4              v3, 1
+	28      (0000006e) if-ne                v10, v3, +009h
+
+b-BB@0x72 : [ b-BB@0x7a b-BB@0x80 ]
+	29      (00000072) iget                 v4, v1, Lw/e;->A0 I
+	30      (00000076) if-lez               v4, +005h
+
+b-BB@0x7a : [ b-BB@0x80 ]
+	31      (0000007a) invoke-static        v1, v9, v0, v3, Lw/j;->a(Lw/e; Lu/c; Ljava/util/ArrayList; I)V
+
+b-BB@0x80 : [ b-BB@0x104 ]
+	32      (00000080) invoke-virtual       v9, Lu/c;->p()V
+	33      (00000086) goto                 +3fh
+	80:85
+	(Ljava/lang/Exception; -> 88 b-BB@0x88)
+
+b-BB@0x88 : [ b-BB@0x104 ]
+	34      (00000088) move-exception       v3
+	35      (0000008a) sget-object          v4, Ljava/lang/System;->err Ljava/io/PrintStream;
+	36      (0000008e) new-instance         v5, Ljava/lang/StringBuilder;
+	37      (00000092) invoke-direct        v5, Ljava/lang/StringBuilder;-><init>()V
+	38      (00000098) invoke-virtual       v3, Ljava/lang/Object;->toString()Ljava/lang/String;
+	39      (0000009e) move-result-object   v6
+	40      (000000a0) invoke-virtual       v5, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	41      (000000a6) const-string         v6, "
+"
+	42      (000000aa) invoke-virtual       v5, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	43      (000000b0) invoke-virtual       v3, Ljava/lang/Throwable;->getStackTrace()[Ljava/lang/StackTraceElement;
+	44      (000000b6) move-result-object   v3
+	45      (000000b8) invoke-static        v3, Ljava/util/Arrays;->toString([Ljava/lang/Object;)Ljava/lang/String;
+	46      (000000be) move-result-object   v3
+	47      (000000c0) const-string         v6, "["
+	48      (000000c4) const-string         v7, "   at "
+	49      (000000c8) invoke-virtual       v3, v6, v7, Ljava/lang/String;->replace(Ljava/lang/CharSequence; Ljava/lang/CharSequence;)Ljava/lang/String;
+	50      (000000ce) move-result-object   v3
+	51      (000000d0) const-string         v6, ","
+	52      (000000d4) const-string         v7, "
+   at"
+	53      (000000d8) invoke-virtual       v3, v6, v7, Ljava/lang/String;->replace(Ljava/lang/CharSequence; Ljava/lang/CharSequence;)Ljava/lang/String;
+	54      (000000de) move-result-object   v3
+	55      (000000e0) const-string         v6, "]"
+	56      (000000e4) const-string         v7, ""
+	57      (000000e8) invoke-virtual       v3, v6, v7, Ljava/lang/String;->replace(Ljava/lang/CharSequence; Ljava/lang/CharSequence;)Ljava/lang/String;
+	58      (000000ee) move-result-object   v3
+	59      (000000f0) invoke-virtual       v5, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	60      (000000f6) invoke-virtual       v5, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	61      (000000fc) move-result-object   v3
+	62      (000000fe) invoke-virtual       v4, v3, Ljava/io/PrintStream;->println(Ljava/lang/String;)V
+
+b-BB@0x104 : [ b-BB@0x112 ]
+	63      (00000104) new-instance         v3, Ljava/util/ArrayList;
+	64      (00000108) invoke-direct        v3, Ljava/util/ArrayList;-><init>()V
+	65      (0000010e) iput-object          v3, v8, Lx/n;->d Ljava/util/ArrayList;
+
+b-BB@0x112 : [ b-BB@0x11e b-BB@0x180 ]
+	66      (00000112) invoke-virtual       v0, Ljava/util/ArrayList;->size()I
+	67      (00000118) move-result          v3
+	68      (0000011a) if-ge                v2, v3, +033h
+
+b-BB@0x11e : [ b-BB@0x112 ]
+	69      (0000011e) invoke-virtual       v0, v2, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	70      (00000124) move-result-object   v3
+	71      (00000126) check-cast           v3, Lw/d;
+	72      (0000012a) new-instance         v4, La6/e;
+	73      (0000012e) invoke-direct        v4, Ljava/lang/Object;-><init>()V
+	74      (00000134) new-instance         v5, Ljava/lang/ref/WeakReference;
+	75      (00000138) invoke-direct        v5, v3, Ljava/lang/ref/WeakReference;-><init>(Ljava/lang/Object;)V
+	76      (0000013e) iget-object          v5, v3, Lw/d;->I Lw/c;
+	77      (00000142) invoke-static        v5, Lu/c;->n(Ljava/lang/Object;)I
+	78      (00000148) iget-object          v5, v3, Lw/d;->J Lw/c;
+	79      (0000014c) invoke-static        v5, Lu/c;->n(Ljava/lang/Object;)I
+	80      (00000152) iget-object          v5, v3, Lw/d;->K Lw/c;
+	81      (00000156) invoke-static        v5, Lu/c;->n(Ljava/lang/Object;)I
+	82      (0000015c) iget-object          v5, v3, Lw/d;->L Lw/c;
+	83      (00000160) invoke-static        v5, Lu/c;->n(Ljava/lang/Object;)I
+	84      (00000166) iget-object          v3, v3, Lw/d;->M Lw/c;
+	85      (0000016a) invoke-static        v3, Lu/c;->n(Ljava/lang/Object;)I
+	86      (00000170) iget-object          v3, v8, Lx/n;->d Ljava/util/ArrayList;
+	87      (00000174) invoke-virtual       v3, v4, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	88      (0000017a) add-int/lit8         v2, v2, 1
+	89      (0000017e) goto                 -36h
+
+b-BB@0x180 : [ b-BB@0x184 b-BB@0x1a6 ]
+	90      (00000180) if-nez               v10, +013h
+
+b-BB@0x184 : [ b-BB@0x1a2 ]
+	91      (00000184) iget-object          v10, v1, Lw/d;->I Lw/c;
+	92      (00000188) invoke-static        v10, Lu/c;->n(Ljava/lang/Object;)I
+	93      (0000018e) move-result          v10
+	94      (00000190) iget-object          v0, v1, Lw/d;->K Lw/c;
+	95      (00000194) invoke-static        v0, Lu/c;->n(Ljava/lang/Object;)I
+	96      (0000019a) move-result          v0
+	97      (0000019c) invoke-virtual       v9, Lu/c;->t()V
+
+b-BB@0x1a2 : [ b-BB@0x1c6 ]
+	98      (000001a2) sub-int/2addr        v0, v10
+	99      (000001a4) goto                 +11h
+
+b-BB@0x1a6 : [ b-BB@0x1a2 ]
+	100     (000001a6) iget-object          v10, v1, Lw/d;->J Lw/c;
+	101     (000001aa) invoke-static        v10, Lu/c;->n(Ljava/lang/Object;)I
+	102     (000001b0) move-result          v10
+	103     (000001b2) iget-object          v0, v1, Lw/d;->L Lw/c;
+	104     (000001b6) invoke-static        v0, Lu/c;->n(Ljava/lang/Object;)I
+	105     (000001bc) move-result          v0
+	106     (000001be) invoke-virtual       v9, Lu/c;->t()V
+	107     (000001c4) goto                 -11h
+
+b-BB@0x1c6 : 
+	108     (000001c6) return               v0
+

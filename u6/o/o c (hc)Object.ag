@@ -1,0 +1,88 @@
+# Lu6/o;->c(Lu6/h; Ln7/c;)Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:u6.h
+# - v7:n7.c
+#
+# - return:java.lang.Object
+
+c-BB@0x0 : [ c-BB@0x8 c-BB@0x26 ]
+	0       (00000000) instance-of          v0, v7, Lu6/n;
+	1       (00000004) if-eqz               v0, +011h
+
+c-BB@0x8 : [ c-BB@0x1e c-BB@0x26 ]
+	2       (00000008) move-object          v0, v7
+	3       (0000000a) check-cast           v0, Lu6/n;
+	4       (0000000e) iget                 v1, v0, Lu6/n;->c I
+	5       (00000012) const/high16         v2, -2147483648
+	6       (00000016) and-int              v3, v1, v2
+	7       (0000001a) if-eqz               v3, +006h
+
+c-BB@0x1e : [ c-BB@0x30 ]
+	8       (0000001e) sub-int/2addr        v1, v2
+	9       (00000020) iput                 v1, v0, Lu6/n;->c I
+	10      (00000024) goto                 +6h
+
+c-BB@0x26 : [ c-BB@0x30 ]
+	11      (00000026) new-instance         v0, Lu6/n;
+	12      (0000002a) invoke-direct        v0, v5, v7, Lu6/n;-><init>(Lu6/o; Ln7/c;)V
+
+c-BB@0x30 : [ c-BB@0x42 c-BB@0x62 ]
+	13      (00000030) iget-object          v7, v0, Lu6/n;->a Ljava/lang/Object;
+	14      (00000034) sget-object          v1, Lm7/a;->a Lm7/a;
+	15      (00000038) iget                 v2, v0, Lu6/n;->c I
+	16      (0000003c) const/4              v3, 1
+	17      (0000003e) if-eqz               v2, +012h
+
+c-BB@0x42 : [ c-BB@0x46 c-BB@0x52 ]
+	18      (00000042) if-ne                v2, v3, +008h
+
+c-BB@0x46 : [ c-BB@0xb0 ]
+	19      (00000046) invoke-static        v7, Lc4/b;->e0(Ljava/lang/Object;)V
+	20      (0000004c) goto                 +32h
+	46:4b
+	(Ljava/io/IOException; -> 4e c-BB@0x4e)
+
+c-BB@0x4e : [ c-BB@0x8a ]
+	21      (0000004e) move-exception       v6
+	22      (00000050) goto                 +1dh
+
+c-BB@0x52 : 
+	23      (00000052) new-instance         v6, Ljava/lang/IllegalStateException;
+	24      (00000056) const-string         v7, "call to 'resume' before 'invoke' with coroutine"
+	25      (0000005a) invoke-direct        v6, v7, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	26      (00000060) throw                v6
+
+c-BB@0x62 : [ c-BB@0x68 ]
+	27      (00000062) invoke-static        v7, Lc4/b;->e0(Ljava/lang/Object;)V
+
+c-BB@0x68 : [ c-BB@0x88 c-BB@0xb0 ]
+	28      (00000068) iget-object          v7, v5, Lu6/o;->b La1/h;
+	29      (0000006c) new-instance         v2, La1/o;
+	30      (00000070) const/4              v4, 0
+	31      (00000072) invoke-direct        v2, v6, v4, La1/o;-><init>(Lu6/h; Ll7/c;)V
+	32      (00000078) iput                 v3, v0, Lu6/n;->c I
+	33      (0000007c) invoke-interface     v7, v2, v0, La1/h;->a(Lu7/p; Ln7/c;)Ljava/lang/Object;
+	34      (00000082) move-result-object   v6
+	35      (00000084) if-ne                v6, v1, +016h
+	68:83
+	(Ljava/io/IOException; -> 4e c-BB@0x4e)
+
+c-BB@0x88 : 
+	36      (00000088) return-object        v1
+
+c-BB@0x8a : [ c-BB@0xb0 ]
+	37      (0000008a) new-instance         v7, Ljava/lang/StringBuilder;
+	38      (0000008e) const-string         v0, "Failed to update config values: "
+	39      (00000092) invoke-direct        v7, v0, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	40      (00000098) invoke-virtual       v7, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	41      (0000009e) invoke-virtual       v7, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	42      (000000a4) move-result-object   v6
+	43      (000000a6) const-string         v7, "FirebaseSessions"
+	44      (000000aa) invoke-static        v7, v6, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+
+c-BB@0xb0 : 
+	45      (000000b0) sget-object          v6, Lh7/l;->a Lh7/l;
+	46      (000000b4) return-object        v6
+

@@ -1,0 +1,106 @@
+# Lx8/f;->transferTo(Ljava/io/OutputStream;)J [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v14
+# - v15:java.io.OutputStream
+#
+# - return:long
+
+transferTo-BB@0x0 : [ D:transferTo-BB@0xc 1:transferTo-BB@0x16 ]
+	0       (00000000) move-object          v0, v15
+	1       (00000002) iget                 v1, v14, Lx8/f;->a I
+	2       (00000006) packed-switch        v1, +0000079h
+
+transferTo-BB@0xc : 
+	3       (0000000c) invoke-super/range   v14 ... v15, Ljava/io/InputStream;->transferTo(Ljava/io/OutputStream;)J
+	4       (00000012) move-result-wide     v0
+	5       (00000014) return-wide          v0
+
+transferTo-BB@0x16 : [ transferTo-BB@0x34 transferTo-BB@0xe8 ]
+	6       (00000016) const-string         v1, "out"
+	7       (0000001a) invoke-static        v15, v1, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	8       (00000020) iget-object          v1, v14, Lx8/f;->b Lx8/i;
+	9       (00000024) check-cast           v1, Lx8/b0;
+	10      (00000028) iget-object          v2, v1, Lx8/b0;->b Lx8/g;
+	11      (0000002c) iget-boolean         v3, v1, Lx8/b0;->c Z
+	12      (00000030) if-nez               v3, +05ch
+
+transferTo-BB@0x34 : [ transferTo-BB@0x3a ]
+	13      (00000034) const-wide/16        v3, 0
+	14      (00000038) move-wide            v5, v3
+
+transferTo-BB@0x3a : [ transferTo-BB@0x46 transferTo-BB@0x66 ]
+	15      (0000003a) iget-wide            v7, v2, Lx8/g;->b J
+	16      (0000003e) cmp-long             v7, v7, v3
+	17      (00000042) if-nez               v7, +012h
+
+transferTo-BB@0x46 : [ transferTo-BB@0x62 transferTo-BB@0x64 ]
+	18      (00000046) iget-object          v7, v1, Lx8/b0;->a Lx8/h0;
+	19      (0000004a) const-wide/16        v8, 8192
+	20      (0000004e) invoke-interface     v7, v2, v8, v9, Lx8/h0;->t(Lx8/g; J)J
+	21      (00000054) move-result-wide     v7
+	22      (00000056) const-wide/16        v9, -1
+	23      (0000005a) cmp-long             v7, v7, v9
+	24      (0000005e) if-eqz               v7, +003h
+
+transferTo-BB@0x62 : [ transferTo-BB@0x66 ]
+	25      (00000062) goto                 +2h
+
+transferTo-BB@0x64 : 
+	26      (00000064) return-wide          v5
+
+transferTo-BB@0x66 : [ transferTo-BB@0x7c ]
+	27      (00000066) iget-wide            v8, v2, Lx8/g;->b J
+	28      (0000006a) add-long/2addr       v5, v8
+	29      (0000006c) const-wide/16        v10, 0
+	30      (00000070) move-wide            v12, v8
+	31      (00000072) invoke-static/range  v8 ... v13, Lx8/b;->e(J J J)V
+	32      (00000078) iget-object          v7, v2, Lx8/g;->a Lx8/c0;
+
+transferTo-BB@0x7c : [ transferTo-BB@0x84 transferTo-BB@0x3a ]
+	33      (0000007c) cmp-long             v10, v8, v3
+	34      (00000080) if-lez               v10, -023h
+
+transferTo-BB@0x84 : [ transferTo-BB@0xce transferTo-BB@0xe2 ]
+	35      (00000084) invoke-static        v7, Lkotlin/jvm/internal/j;->b(Ljava/lang/Object;)V
+	36      (0000008a) iget                 v10, v7, Lx8/c0;->c I
+	37      (0000008e) iget                 v11, v7, Lx8/c0;->b I
+	38      (00000092) sub-int/2addr        v10, v11
+	39      (00000094) int-to-long          v10, v10
+	40      (00000096) invoke-static        v8, v9, v10, v11, Ljava/lang/Math;->min(J J)J
+	41      (0000009c) move-result-wide     v10
+	42      (0000009e) long-to-int          v10, v10
+	43      (000000a0) iget-object          v11, v7, Lx8/c0;->a [B
+	44      (000000a4) iget                 v12, v7, Lx8/c0;->b I
+	45      (000000a8) invoke-virtual       v15, v11, v12, v10, Ljava/io/OutputStream;->write([B I I)V
+	46      (000000ae) iget                 v11, v7, Lx8/c0;->b I
+	47      (000000b2) add-int/2addr        v11, v10
+	48      (000000b4) iput                 v11, v7, Lx8/c0;->b I
+	49      (000000b8) iget-wide            v12, v2, Lx8/g;->b J
+	50      (000000bc) int-to-long          v3, v10
+	51      (000000be) sub-long/2addr       v12, v3
+	52      (000000c0) iput-wide            v12, v2, Lx8/g;->b J
+	53      (000000c4) sub-long/2addr       v8, v3
+	54      (000000c6) iget                 v3, v7, Lx8/c0;->c I
+	55      (000000ca) if-ne                v11, v3, +00ch
+
+transferTo-BB@0xce : [ transferTo-BB@0xe2 ]
+	56      (000000ce) invoke-virtual       v7, Lx8/c0;->a()Lx8/c0;
+	57      (000000d4) move-result-object   v3
+	58      (000000d6) iput-object          v3, v2, Lx8/g;->a Lx8/c0;
+	59      (000000da) invoke-static        v7, Lx8/d0;->a(Lx8/c0;)V
+	60      (000000e0) move-object          v7, v3
+
+transferTo-BB@0xe2 : [ transferTo-BB@0x7c ]
+	61      (000000e2) const-wide/16        v3, 0
+	62      (000000e6) goto                 -35h
+
+transferTo-BB@0xe8 : 
+	63      (000000e8) new-instance         v0, Ljava/io/IOException;
+	64      (000000ec) const-string         v1, "closed"
+	65      (000000f0) invoke-direct        v0, v1, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+	66      (000000f6) throw                v0
+
+transferTo-BB@0xf8 : 
+	67      (000000f8) packed-switch-payload 1
+

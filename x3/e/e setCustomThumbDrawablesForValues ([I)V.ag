@@ -1,0 +1,31 @@
+# Lx3/e;->setCustomThumbDrawablesForValues([I)V [access_flags=public varargs]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:int[]
+#
+# - return:void
+
+setCustomThumbDrawablesForValues-BB@0x0 : [ setCustomThumbDrawablesForValues-BB@0x8 ]
+	0       (00000000) array-length         v0, v5
+	1       (00000002) new-array            v0, v0, [Landroid/graphics/drawable/Drawable;
+	2       (00000006) const/4              v1, 0
+
+setCustomThumbDrawablesForValues-BB@0x8 : [ setCustomThumbDrawablesForValues-BB@0xe setCustomThumbDrawablesForValues-BB@0x2c ]
+	3       (00000008) array-length         v2, v5
+	4       (0000000a) if-ge                v1, v2, +011h
+
+setCustomThumbDrawablesForValues-BB@0xe : [ setCustomThumbDrawablesForValues-BB@0x8 ]
+	5       (0000000e) invoke-virtual       v4, Landroid/view/View;->getResources()Landroid/content/res/Resources;
+	6       (00000014) move-result-object   v2
+	7       (00000016) aget                 v3, v5, v1
+	8       (0000001a) invoke-virtual       v2, v3, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
+	9       (00000020) move-result-object   v2
+	10      (00000022) aput-object          v2, v0, v1
+	11      (00000026) add-int/lit8         v1, v1, 1
+	12      (0000002a) goto                 -11h
+
+setCustomThumbDrawablesForValues-BB@0x2c : 
+	13      (0000002c) invoke-virtual       v4, v0, Lx3/e;->setCustomThumbDrawablesForValues([Landroid/graphics/drawable/Drawable;)V
+	14      (00000032) return-void          
+

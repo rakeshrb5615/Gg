@@ -1,0 +1,103 @@
+# Lx8/g;->N(J)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v13
+# - v14:long
+#
+# - return:void
+
+N-BB@0x0 : [ N-BB@0xc N-BB@0x18 ]
+	0       (00000000) const-wide/16        v0, 0
+	1       (00000004) cmp-long             v2, v13, v0
+	2       (00000008) if-nez               v2, +008h
+
+N-BB@0xc : 
+	3       (0000000c) const/16             v13, 48
+	4       (00000010) invoke-virtual       v12, v13, Lx8/g;->M(I)V
+	5       (00000016) return-void          
+
+N-BB@0x18 : [ N-BB@0x20 N-BB@0x3a ]
+	6       (00000018) const/4              v3, 0
+	7       (0000001a) const/4              v4, 1
+	8       (0000001c) if-gez               v2, +00fh
+
+N-BB@0x20 : [ N-BB@0x2a N-BB@0x36 ]
+	9       (00000020) neg-long             v13, v13
+	10      (00000022) cmp-long             v2, v13, v0
+	11      (00000026) if-gez               v2, +008h
+
+N-BB@0x2a : 
+	12      (0000002a) const-string         v13, "-9223372036854775808"
+	13      (0000002e) invoke-virtual       v12, v13, Lx8/g;->S(Ljava/lang/String;)V
+	14      (00000034) return-void          
+
+N-BB@0x36 : [ N-BB@0x3c ]
+	15      (00000036) move                 v2, v4
+	16      (00000038) goto                 +2h
+
+N-BB@0x3a : [ N-BB@0x3c ]
+	17      (0000003a) move                 v2, v3
+
+N-BB@0x3c : [ N-BB@0x66 N-BB@0x68 ]
+	18      (0000003c) sget-object          v5, Ly8/a;->a [B
+	19      (00000040) invoke-static        v13, v14, Ljava/lang/Long;->numberOfLeadingZeros(J)I
+	20      (00000046) move-result          v5
+	21      (00000048) rsub-int/lit8        v5, v5, 64
+	22      (0000004c) const/16             v6, 10
+	23      (00000050) mul-int/2addr        v5, v6
+	24      (00000052) ushr-int/lit8        v5, v5, 5
+	25      (00000056) sget-object          v7, Ly8/a;->b [J
+	26      (0000005a) aget-wide            v8, v7, v5
+	27      (0000005e) cmp-long             v7, v13, v8
+	28      (00000062) if-lez               v7, +003h
+
+N-BB@0x66 : [ N-BB@0x68 ]
+	29      (00000066) move                 v3, v4
+
+N-BB@0x68 : [ N-BB@0x6e N-BB@0x72 ]
+	30      (00000068) add-int/2addr        v5, v3
+	31      (0000006a) if-eqz               v2, +004h
+
+N-BB@0x6e : [ N-BB@0x72 ]
+	32      (0000006e) add-int/lit8         v5, v5, 1
+
+N-BB@0x72 : [ N-BB@0x84 ]
+	33      (00000072) invoke-virtual       v12, v5, Lx8/g;->J(I)Lx8/c0;
+	34      (00000078) move-result-object   v3
+	35      (0000007a) iget-object          v4, v3, Lx8/c0;->a [B
+	36      (0000007e) iget                 v7, v3, Lx8/c0;->c I
+	37      (00000082) add-int/2addr        v7, v5
+
+N-BB@0x84 : [ N-BB@0x8c N-BB@0xa8 ]
+	38      (00000084) cmp-long             v8, v13, v0
+	39      (00000088) if-eqz               v8, +010h
+
+N-BB@0x8c : [ N-BB@0x84 ]
+	40      (0000008c) int-to-long          v8, v6
+	41      (0000008e) rem-long             v10, v13, v8
+	42      (00000092) long-to-int          v10, v10
+	43      (00000094) add-int/lit8         v7, v7, -1
+	44      (00000098) sget-object          v11, Ly8/a;->a [B
+	45      (0000009c) aget-byte            v10, v11, v10
+	46      (000000a0) aput-byte            v10, v4, v7
+	47      (000000a4) div-long/2addr       v13, v8
+	48      (000000a6) goto                 -11h
+
+N-BB@0xa8 : [ N-BB@0xac N-BB@0xb8 ]
+	49      (000000a8) if-eqz               v2, +008h
+
+N-BB@0xac : [ N-BB@0xb8 ]
+	50      (000000ac) add-int/lit8         v7, v7, -1
+	51      (000000b0) const/16             v13, 45
+	52      (000000b4) aput-byte            v13, v4, v7
+
+N-BB@0xb8 : 
+	53      (000000b8) iget                 v13, v3, Lx8/c0;->c I
+	54      (000000bc) add-int/2addr        v13, v5
+	55      (000000be) iput                 v13, v3, Lx8/c0;->c I
+	56      (000000c2) iget-wide            v13, v12, Lx8/g;->b J
+	57      (000000c6) int-to-long          v0, v5
+	58      (000000c8) add-long/2addr       v13, v0
+	59      (000000ca) iput-wide            v13, v12, Lx8/g;->b J
+	60      (000000ce) return-void          
+

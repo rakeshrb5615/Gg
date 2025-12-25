@@ -1,0 +1,106 @@
+# Ly6/b;->c()Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v4
+#
+# - return:java.lang.Object
+
+c-BB@0x0 : [ D:c-BB@0xa 0:c-BB@0x9e ]
+	0       (00000000) iget                 v0, v4, Ly6/b;->a I
+	1       (00000004) packed-switch        v0, +0000096h
+
+c-BB@0xa : [ c-BB@0x1a c-BB@0x72 ]
+	2       (0000000a) iget-object          v0, v4, Ly6/b;->b Ljava/lang/reflect/Type;
+	3       (0000000e) instance-of          v1, v0, Ljava/lang/reflect/ParameterizedType;
+	4       (00000012) const-string         v2, "Invalid EnumMap type: "
+	5       (00000016) if-eqz               v1, +02eh
+
+c-BB@0x1a : [ c-BB@0x36 c-BB@0x46 ]
+	6       (0000001a) move-object          v1, v0
+	7       (0000001c) check-cast           v1, Ljava/lang/reflect/ParameterizedType;
+	8       (00000020) invoke-interface     v1, Ljava/lang/reflect/ParameterizedType;->getActualTypeArguments()[Ljava/lang/reflect/Type;
+	9       (00000026) move-result-object   v1
+	10      (00000028) const/4              v3, 0
+	11      (0000002a) aget-object          v1, v1, v3
+	12      (0000002e) instance-of          v3, v1, Ljava/lang/Class;
+	13      (00000032) if-eqz               v3, +00ah
+
+c-BB@0x36 : 
+	14      (00000036) new-instance         v0, Ljava/util/EnumMap;
+	15      (0000003a) check-cast           v1, Ljava/lang/Class;
+	16      (0000003e) invoke-direct        v0, v1, Ljava/util/EnumMap;-><init>(Ljava/lang/Class;)V
+	17      (00000044) return-object        v0
+
+c-BB@0x46 : 
+	18      (00000046) new-instance         v1, Lw6/p;
+	19      (0000004a) new-instance         v3, Ljava/lang/StringBuilder;
+	20      (0000004e) invoke-direct        v3, v2, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	21      (00000054) invoke-virtual       v0, Ljava/lang/Object;->toString()Ljava/lang/String;
+	22      (0000005a) move-result-object   v0
+	23      (0000005c) invoke-virtual       v3, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	24      (00000062) invoke-virtual       v3, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	25      (00000068) move-result-object   v0
+	26      (0000006a) invoke-direct        v1, v0, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
+	27      (00000070) throw                v1
+
+c-BB@0x72 : 
+	28      (00000072) new-instance         v1, Lw6/p;
+	29      (00000076) new-instance         v3, Ljava/lang/StringBuilder;
+	30      (0000007a) invoke-direct        v3, v2, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	31      (00000080) invoke-virtual       v0, Ljava/lang/Object;->toString()Ljava/lang/String;
+	32      (00000086) move-result-object   v0
+	33      (00000088) invoke-virtual       v3, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	34      (0000008e) invoke-virtual       v3, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	35      (00000094) move-result-object   v0
+	36      (00000096) invoke-direct        v1, v0, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
+	37      (0000009c) throw                v1
+
+c-BB@0x9e : [ c-BB@0xae c-BB@0x104 ]
+	38      (0000009e) iget-object          v0, v4, Ly6/b;->b Ljava/lang/reflect/Type;
+	39      (000000a2) instance-of          v1, v0, Ljava/lang/reflect/ParameterizedType;
+	40      (000000a6) const-string         v2, "Invalid EnumSet type: "
+	41      (000000aa) if-eqz               v1, +02dh
+
+c-BB@0xae : [ c-BB@0xca c-BB@0xd8 ]
+	42      (000000ae) move-object          v1, v0
+	43      (000000b0) check-cast           v1, Ljava/lang/reflect/ParameterizedType;
+	44      (000000b4) invoke-interface     v1, Ljava/lang/reflect/ParameterizedType;->getActualTypeArguments()[Ljava/lang/reflect/Type;
+	45      (000000ba) move-result-object   v1
+	46      (000000bc) const/4              v3, 0
+	47      (000000be) aget-object          v1, v1, v3
+	48      (000000c2) instance-of          v3, v1, Ljava/lang/Class;
+	49      (000000c6) if-eqz               v3, +009h
+
+c-BB@0xca : 
+	50      (000000ca) check-cast           v1, Ljava/lang/Class;
+	51      (000000ce) invoke-static        v1, Ljava/util/EnumSet;->noneOf(Ljava/lang/Class;)Ljava/util/EnumSet;
+	52      (000000d4) move-result-object   v0
+	53      (000000d6) return-object        v0
+
+c-BB@0xd8 : 
+	54      (000000d8) new-instance         v1, Lw6/p;
+	55      (000000dc) new-instance         v3, Ljava/lang/StringBuilder;
+	56      (000000e0) invoke-direct        v3, v2, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	57      (000000e6) invoke-virtual       v0, Ljava/lang/Object;->toString()Ljava/lang/String;
+	58      (000000ec) move-result-object   v0
+	59      (000000ee) invoke-virtual       v3, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	60      (000000f4) invoke-virtual       v3, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	61      (000000fa) move-result-object   v0
+	62      (000000fc) invoke-direct        v1, v0, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
+	63      (00000102) throw                v1
+
+c-BB@0x104 : 
+	64      (00000104) new-instance         v1, Lw6/p;
+	65      (00000108) new-instance         v3, Ljava/lang/StringBuilder;
+	66      (0000010c) invoke-direct        v3, v2, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	67      (00000112) invoke-virtual       v0, Ljava/lang/Object;->toString()Ljava/lang/String;
+	68      (00000118) move-result-object   v0
+	69      (0000011a) invoke-virtual       v3, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	70      (00000120) invoke-virtual       v3, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	71      (00000126) move-result-object   v0
+	72      (00000128) invoke-direct        v1, v0, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
+	73      (0000012e) throw                v1
+
+c-BB@0x130 : 
+	74      (00000130) packed-switch-payload 0
+

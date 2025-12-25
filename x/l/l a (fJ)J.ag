@@ -1,0 +1,78 @@
+# Lx/l;->a(Lx/f; J)J [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v9
+# - v10:x.f
+# - v11:long
+#
+# - return:long
+
+a-BB@0x0 : [ a-BB@0x10 a-BB@0x12 ]
+	0       (00000000) iget-object          v0, v9, Lx/f;->d Lx/o;
+	1       (00000004) iget-object          v1, v9, Lx/f;->k Ljava/util/ArrayList;
+	2       (00000008) instance-of          v2, v0, Lx/j;
+	3       (0000000c) if-eqz               v2, +003h
+
+a-BB@0x10 : 
+	4       (00000010) return-wide          v10
+
+a-BB@0x12 : [ a-BB@0x1e ]
+	5       (00000012) invoke-virtual       v1, Ljava/util/ArrayList;->size()I
+	6       (00000018) move-result          v2
+	7       (0000001a) const/4              v3, 0
+	8       (0000001c) move-wide            v4, v10
+
+a-BB@0x1e : [ a-BB@0x22 a-BB@0x62 ]
+	9       (0000001e) if-ge                v3, v2, +022h
+
+a-BB@0x22 : [ a-BB@0x36 a-BB@0x5c ]
+	10      (00000022) invoke-virtual       v1, v3, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	11      (00000028) move-result-object   v6
+	12      (0000002a) check-cast           v6, Lx/d;
+	13      (0000002e) instance-of          v7, v6, Lx/f;
+	14      (00000032) if-eqz               v7, +015h
+
+a-BB@0x36 : [ a-BB@0x42 a-BB@0x44 ]
+	15      (00000036) check-cast           v6, Lx/f;
+	16      (0000003a) iget-object          v7, v6, Lx/f;->d Lx/o;
+	17      (0000003e) if-ne                v7, v0, +003h
+
+a-BB@0x42 : [ a-BB@0x5c ]
+	18      (00000042) goto                 +dh
+
+a-BB@0x44 : [ a-BB@0x5c ]
+	19      (00000044) iget                 v7, v6, Lx/f;->f I
+	20      (00000048) int-to-long          v7, v7
+	21      (0000004a) add-long/2addr       v7, v10
+	22      (0000004c) invoke-static        v6, v7, v8, Lx/l;->a(Lx/f; J)J
+	23      (00000052) move-result-wide     v6
+	24      (00000054) invoke-static        v4, v5, v6, v7, Ljava/lang/Math;->min(J J)J
+	25      (0000005a) move-result-wide     v4
+
+a-BB@0x5c : [ a-BB@0x1e ]
+	26      (0000005c) add-int/lit8         v3, v3, 1
+	27      (00000060) goto                 -21h
+
+a-BB@0x62 : [ a-BB@0x6e a-BB@0x9a ]
+	28      (00000062) iget-object          v1, v0, Lx/o;->i Lx/f;
+	29      (00000066) iget-object          v2, v0, Lx/o;->h Lx/f;
+	30      (0000006a) if-ne                v9, v1, +018h
+
+a-BB@0x6e : 
+	31      (0000006e) invoke-virtual       v0, Lx/o;->j()J
+	32      (00000074) move-result-wide     v0
+	33      (00000076) sub-long/2addr       v10, v0
+	34      (00000078) invoke-static        v2, v10, v11, Lx/l;->a(Lx/f; J)J
+	35      (0000007e) move-result-wide     v0
+	36      (00000080) invoke-static        v4, v5, v0, v1, Ljava/lang/Math;->min(J J)J
+	37      (00000086) move-result-wide     v0
+	38      (00000088) iget                 v9, v2, Lx/f;->f I
+	39      (0000008c) int-to-long          v2, v9
+	40      (0000008e) sub-long/2addr       v10, v2
+	41      (00000090) invoke-static        v0, v1, v10, v11, Ljava/lang/Math;->min(J J)J
+	42      (00000096) move-result-wide     v9
+	43      (00000098) return-wide          v9
+
+a-BB@0x9a : 
+	44      (0000009a) return-wide          v4
+

@@ -1,0 +1,74 @@
+# Ly8/h;->f(Lx8/y;)Lx8/h0; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:x8.y
+#
+# - return:x8.h0
+
+f-BB@0x0 : [ f-BB@0x1a f-BB@0xba ]
+	0       (00000000) const-string         v0, "file"
+	1       (00000004) invoke-static        v5, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) invoke-static        v5, Lc5/c;->k(Lx8/y;)Z
+	3       (00000010) move-result          v0
+	4       (00000012) const-string         v1, "file not found: "
+	5       (00000016) if-eqz               v0, +052h
+
+f-BB@0x1a : [ f-BB@0x52 f-BB@0x96 ]
+	6       (0000001a) sget-object          v0, Ly8/h;->f Lx8/y;
+	7       (0000001e) invoke-virtual       v0, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	8       (00000024) const/4              v2, 0
+	9       (00000026) invoke-static        v0, v5, v2, Ly8/c;->b(Lx8/y; Lx8/y; Z)Lx8/y;
+	10      (0000002c) move-result-object   v3
+	11      (0000002e) invoke-virtual       v3, v0, Lx8/y;->b(Lx8/y;)Lx8/y;
+	12      (00000034) move-result-object   v0
+	13      (00000036) iget-object          v0, v0, Lx8/y;->a Lx8/j;
+	14      (0000003a) invoke-virtual       v0, Lx8/j;->r()Ljava/lang/String;
+	15      (00000040) move-result-object   v0
+	16      (00000042) iget-object          v3, v4, Ly8/h;->c Ljava/lang/ClassLoader;
+	17      (00000046) invoke-virtual       v3, v0, Ljava/lang/ClassLoader;->getResource(Ljava/lang/String;)Ljava/net/URL;
+	18      (0000004c) move-result-object   v0
+	19      (0000004e) if-eqz               v0, +024h
+
+f-BB@0x52 : [ f-BB@0x62 f-BB@0x6e ]
+	20      (00000052) invoke-virtual       v0, Ljava/net/URL;->openConnection()Ljava/net/URLConnection;
+	21      (00000058) move-result-object   v5
+	22      (0000005a) instance-of          v0, v5, Ljava/net/JarURLConnection;
+	23      (0000005e) if-eqz               v0, +008h
+
+f-BB@0x62 : [ f-BB@0x6e ]
+	24      (00000062) move-object          v0, v5
+	25      (00000064) check-cast           v0, Ljava/net/JarURLConnection;
+	26      (00000068) invoke-virtual       v0, v2, Ljava/net/URLConnection;->setUseCaches(Z)V
+
+f-BB@0x6e : 
+	27      (0000006e) invoke-virtual       v5, Ljava/net/URLConnection;->getInputStream()Ljava/io/InputStream;
+	28      (00000074) move-result-object   v5
+	29      (00000076) const-string         v0, "getInputStream(...)"
+	30      (0000007a) invoke-static        v5, v0, Lkotlin/jvm/internal/j;->d(Ljava/lang/Object; Ljava/lang/String;)V
+	31      (00000080) new-instance         v0, Lx8/t;
+	32      (00000084) new-instance         v1, Lx8/j0;
+	33      (00000088) invoke-direct        v1, Ljava/lang/Object;-><init>()V
+	34      (0000008e) invoke-direct        v0, v5, v1, Lx8/t;-><init>(Ljava/io/InputStream; Lx8/j0;)V
+	35      (00000094) return-object        v0
+
+f-BB@0x96 : 
+	36      (00000096) new-instance         v0, Ljava/io/FileNotFoundException;
+	37      (0000009a) new-instance         v2, Ljava/lang/StringBuilder;
+	38      (0000009e) invoke-direct        v2, v1, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	39      (000000a4) invoke-virtual       v2, v5, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	40      (000000aa) invoke-virtual       v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	41      (000000b0) move-result-object   v5
+	42      (000000b2) invoke-direct        v0, v5, Ljava/io/FileNotFoundException;-><init>(Ljava/lang/String;)V
+	43      (000000b8) throw                v0
+
+f-BB@0xba : 
+	44      (000000ba) new-instance         v0, Ljava/io/FileNotFoundException;
+	45      (000000be) new-instance         v2, Ljava/lang/StringBuilder;
+	46      (000000c2) invoke-direct        v2, v1, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	47      (000000c8) invoke-virtual       v2, v5, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	48      (000000ce) invoke-virtual       v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	49      (000000d4) move-result-object   v5
+	50      (000000d6) invoke-direct        v0, v5, Ljava/io/FileNotFoundException;-><init>(Ljava/lang/String;)V
+	51      (000000dc) throw                v0
+

@@ -1,0 +1,41 @@
+# Lx/i;->a(Lx/d;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:x.d
+#
+# - return:void
+
+a-BB@0x0 : [ a-BB@0xc a-BB@0xe ]
+	0       (00000000) iget-object          v3, v2, Lx/o;->h Lx/f;
+	1       (00000004) iget-boolean         v0, v3, Lx/f;->c Z
+	2       (00000008) if-nez               v0, +003h
+
+a-BB@0xc : [ a-BB@0x16 ]
+	3       (0000000c) goto                 +5h
+
+a-BB@0xe : [ a-BB@0x16 a-BB@0x18 ]
+	4       (0000000e) iget-boolean         v0, v3, Lx/f;->j Z
+	5       (00000012) if-eqz               v0, +003h
+
+a-BB@0x16 : 
+	6       (00000016) return-void          
+
+a-BB@0x18 : 
+	7       (00000018) iget-object          v0, v3, Lx/f;->l Ljava/util/ArrayList;
+	8       (0000001c) const/4              v1, 0
+	9       (0000001e) invoke-virtual       v0, v1, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	10      (00000024) move-result-object   v0
+	11      (00000026) check-cast           v0, Lx/f;
+	12      (0000002a) iget-object          v1, v2, Lx/o;->b Lw/d;
+	13      (0000002e) check-cast           v1, Lw/h;
+	14      (00000032) iget                 v0, v0, Lx/f;->g I
+	15      (00000036) int-to-float         v0, v0
+	16      (00000038) iget                 v1, v1, Lw/h;->q0 F
+	17      (0000003c) mul-float/2addr      v0, v1
+	18      (0000003e) const/high16         v1, 1056964608
+	19      (00000042) add-float/2addr      v0, v1
+	20      (00000044) float-to-int         v0, v0
+	21      (00000046) invoke-virtual       v3, v0, Lx/f;->d(I)V
+	22      (0000004c) return-void          
+

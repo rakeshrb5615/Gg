@@ -1,0 +1,48 @@
+# Ly7/d;->equals(Ljava/lang/Object;)Z [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:java.lang.Object
+#
+# - return:boolean
+
+equals-BB@0x0 : [ equals-BB@0x8 equals-BB@0x52 ]
+	0       (00000000) instance-of          v0, v3, Ly7/d;
+	1       (00000004) if-eqz               v0, +027h
+
+equals-BB@0x8 : [ equals-BB@0x14 equals-BB@0x26 ]
+	2       (00000008) invoke-virtual       v2, Ly7/d;->isEmpty()Z
+	3       (0000000e) move-result          v0
+	4       (00000010) if-eqz               v0, +00bh
+
+equals-BB@0x14 : [ equals-BB@0x26 equals-BB@0x4e ]
+	5       (00000014) move-object          v0, v3
+	6       (00000016) check-cast           v0, Ly7/d;
+	7       (0000001a) invoke-virtual       v0, Ly7/d;->isEmpty()Z
+	8       (00000020) move-result          v0
+	9       (00000022) if-nez               v0, +016h
+
+equals-BB@0x26 : [ equals-BB@0x36 equals-BB@0x52 ]
+	10      (00000026) check-cast           v3, Ly7/d;
+	11      (0000002a) iget                 v0, v3, Ly7/d;->a I
+	12      (0000002e) iget                 v1, v2, Ly7/d;->a I
+	13      (00000032) if-ne                v1, v0, +010h
+
+equals-BB@0x36 : [ equals-BB@0x42 equals-BB@0x52 ]
+	14      (00000036) iget                 v0, v2, Ly7/d;->b I
+	15      (0000003a) iget                 v1, v3, Ly7/d;->b I
+	16      (0000003e) if-ne                v0, v1, +00ah
+
+equals-BB@0x42 : [ equals-BB@0x4e equals-BB@0x52 ]
+	17      (00000042) iget                 v0, v2, Ly7/d;->c I
+	18      (00000046) iget                 v3, v3, Ly7/d;->c I
+	19      (0000004a) if-ne                v0, v3, +004h
+
+equals-BB@0x4e : 
+	20      (0000004e) const/4              v3, 1
+	21      (00000050) return               v3
+
+equals-BB@0x52 : 
+	22      (00000052) const/4              v3, 0
+	23      (00000054) return               v3
+

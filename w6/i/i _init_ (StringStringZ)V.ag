@@ -1,0 +1,42 @@
+# Lw6/i;-><init>(Ljava/lang/String; Ljava/lang/String; Z)V [access_flags=public constructor]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:java.lang.String
+# - v3:java.lang.String
+# - v4:boolean
+#
+# - return:void
+
+<init>-BB@0x0 : [ <init>-BB@0x16 <init>-BB@0x44 ]
+	0       (00000000) invoke-direct        v1, Ljava/lang/Object;-><init>()V
+	1       (00000006) const-string         v0, "[
+]*"
+	2       (0000000a) invoke-virtual       v2, v0, Ljava/lang/String;->matches(Ljava/lang/String;)Z
+	3       (00000010) move-result          v0
+	4       (00000012) if-eqz               v0, +019h
+
+<init>-BB@0x16 : [ <init>-BB@0x26 <init>-BB@0x34 ]
+	5       (00000016) const-string         v0, "[ 	]*"
+	6       (0000001a) invoke-virtual       v3, v0, Ljava/lang/String;->matches(Ljava/lang/String;)Z
+	7       (00000020) move-result          v0
+	8       (00000022) if-eqz               v0, +009h
+
+<init>-BB@0x26 : 
+	9       (00000026) iput-object          v2, v1, Lw6/i;->a Ljava/lang/String;
+	10      (0000002a) iput-object          v3, v1, Lw6/i;->b Ljava/lang/String;
+	11      (0000002e) iput-boolean         v4, v1, Lw6/i;->c Z
+	12      (00000032) return-void          
+
+<init>-BB@0x34 : 
+	13      (00000034) new-instance         v2, Ljava/lang/IllegalArgumentException;
+	14      (00000038) const-string         v3, "Only combinations of spaces and tabs are allowed in indent."
+	15      (0000003c) invoke-direct        v2, v3, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	16      (00000042) throw                v2
+
+<init>-BB@0x44 : 
+	17      (00000044) new-instance         v2, Ljava/lang/IllegalArgumentException;
+	18      (00000048) const-string         v3, "Only combinations of \n and \r are allowed in newline."
+	19      (0000004c) invoke-direct        v2, v3, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	20      (00000052) throw                v2
+

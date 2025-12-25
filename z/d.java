@@ -1,0 +1,70 @@
+package z;
+public abstract class d {
+    public static final android.util.SparseIntArray a;
+
+    static d()
+    {
+        android.util.SparseIntArray v0_1 = new android.util.SparseIntArray();
+        z.d.a = v0_1;
+        v0_1.append(98, 64);
+        v0_1.append(75, 65);
+        v0_1.append(84, 8);
+        v0_1.append(85, 9);
+        v0_1.append(87, 10);
+        v0_1.append(88, 11);
+        v0_1.append(94, 12);
+        v0_1.append(93, 13);
+        v0_1.append(65, 14);
+        v0_1.append(64, 15);
+        v0_1.append(60, 16);
+        v0_1.append(62, 52);
+        v0_1.append(61, 53);
+        v0_1.append(66, 2);
+        v0_1.append(68, 3);
+        v0_1.append(67, 4);
+        v0_1.append(103, 49);
+        v0_1.append(104, 50);
+        v0_1.append(72, 5);
+        v0_1.append(73, 6);
+        v0_1.append(74, 7);
+        v0_1.append(55, 67);
+        v0_1.append(0, 1);
+        v0_1.append(89, 17);
+        v0_1.append(90, 18);
+        v0_1.append(71, 19);
+        v0_1.append(70, 20);
+        v0_1.append(108, 21);
+        v0_1.append(111, 22);
+        v0_1.append(109, 23);
+        v0_1.append(106, 24);
+        v0_1.append(110, 25);
+        v0_1.append(107, 26);
+        v0_1.append(105, 55);
+        v0_1.append(112, 54);
+        v0_1.append(80, 29);
+        v0_1.append(95, 30);
+        v0_1.append(69, 44);
+        v0_1.append(82, 45);
+        v0_1.append(97, 46);
+        v0_1.append(81, 47);
+        v0_1.append(96, 48);
+        v0_1.append(58, 27);
+        v0_1.append(57, 28);
+        v0_1.append(99, 31);
+        v0_1.append(76, 32);
+        v0_1.append(101, 33);
+        v0_1.append(100, 34);
+        v0_1.append(102, 35);
+        v0_1.append(78, 36);
+        v0_1.append(77, 37);
+        v0_1.append(79, 38);
+        v0_1.append(83, 39);
+        v0_1.append(92, 40);
+        v0_1.append(86, 41);
+        v0_1.append(63, 42);
+        v0_1.append(59, 43);
+        v0_1.append(91, 51);
+        v0_1.append(114, 66);
+        return;
+    }
+}

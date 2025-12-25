@@ -1,0 +1,48 @@
+# Lz3/u;->onAttachedToWindow()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v3
+#
+# - return:void
+
+onAttachedToWindow-BB@0x0 : [ onAttachedToWindow-BB@0x12 onAttachedToWindow-BB@0x58 ]
+	0       (00000000) invoke-super         v3, Landroid/view/View;->onAttachedToWindow()V
+	1       (00000006) invoke-virtual       v3, Lz3/u;->b()Lcom/google/android/material/textfield/TextInputLayout;
+	2       (0000000c) move-result-object   v0
+	3       (0000000e) if-eqz               v0, +025h
+
+onAttachedToWindow-BB@0x12 : [ onAttachedToWindow-BB@0x1a onAttachedToWindow-BB@0x58 ]
+	4       (00000012) iget-boolean         v0, v0, Lcom/google/android/material/textfield/TextInputLayout;->L Z
+	5       (00000016) if-eqz               v0, +021h
+
+onAttachedToWindow-BB@0x1a : [ onAttachedToWindow-BB@0x26 onAttachedToWindow-BB@0x58 ]
+	6       (0000001a) invoke-super         v3, Landroid/widget/TextView;->getHint()Ljava/lang/CharSequence;
+	7       (00000020) move-result-object   v0
+	8       (00000022) if-nez               v0, +01bh
+
+onAttachedToWindow-BB@0x26 : [ onAttachedToWindow-BB@0x32 onAttachedToWindow-BB@0x40 ]
+	9       (00000026) sget-object          v0, Landroid/os/Build;->MANUFACTURER Ljava/lang/String;
+	10      (0000002a) const-string         v1, ""
+	11      (0000002e) if-eqz               v0, +009h
+
+onAttachedToWindow-BB@0x32 : [ onAttachedToWindow-BB@0x42 ]
+	12      (00000032) sget-object          v2, Ljava/util/Locale;->ENGLISH Ljava/util/Locale;
+	13      (00000036) invoke-virtual       v0, v2, Ljava/lang/String;->toLowerCase(Ljava/util/Locale;)Ljava/lang/String;
+	14      (0000003c) move-result-object   v0
+	15      (0000003e) goto                 +2h
+
+onAttachedToWindow-BB@0x40 : [ onAttachedToWindow-BB@0x42 ]
+	16      (00000040) move-object          v0, v1
+
+onAttachedToWindow-BB@0x42 : [ onAttachedToWindow-BB@0x52 onAttachedToWindow-BB@0x58 ]
+	17      (00000042) const-string         v2, "meizu"
+	18      (00000046) invoke-virtual       v0, v2, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	19      (0000004c) move-result          v0
+	20      (0000004e) if-eqz               v0, +005h
+
+onAttachedToWindow-BB@0x52 : [ onAttachedToWindow-BB@0x58 ]
+	21      (00000052) invoke-virtual       v3, v1, Landroid/widget/TextView;->setHint(Ljava/lang/CharSequence;)V
+
+onAttachedToWindow-BB@0x58 : 
+	22      (00000058) return-void          
+

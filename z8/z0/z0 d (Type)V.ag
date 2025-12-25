@@ -1,0 +1,29 @@
+# Lz8/z0;->d(Ljava/lang/reflect/Type;)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v0
+# - v1:java.lang.reflect.Type
+#
+# - return:void
+
+d-BB@0x0 : [ d-BB@0x8 d-BB@0x26 ]
+	0       (00000000) instance-of          v0, v1, Ljava/lang/Class;
+	1       (00000004) if-eqz               v0, +011h
+
+d-BB@0x8 : [ d-BB@0x18 d-BB@0x1a ]
+	2       (00000008) check-cast           v1, Ljava/lang/Class;
+	3       (0000000c) invoke-virtual       v1, Ljava/lang/Class;->isPrimitive()Z
+	4       (00000012) move-result          v1
+	5       (00000014) if-nez               v1, +003h
+
+d-BB@0x18 : [ d-BB@0x26 ]
+	6       (00000018) goto                 +7h
+
+d-BB@0x1a : 
+	7       (0000001a) new-instance         v1, Ljava/lang/IllegalArgumentException;
+	8       (0000001e) invoke-direct        v1, Ljava/lang/IllegalArgumentException;-><init>()V
+	9       (00000024) throw                v1
+
+d-BB@0x26 : 
+	10      (00000026) return-void          
+

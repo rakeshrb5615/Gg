@@ -1,0 +1,72 @@
+# Lz6/b;->b(Le7/a;)Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:e7.a
+#
+# - return:java.lang.Object
+
+b-BB@0x0 : [ b-BB@0x10 b-BB@0x1a ]
+	0       (00000000) invoke-virtual       v5, Le7/a;->O()I
+	1       (00000006) move-result          v0
+	2       (00000008) const/16             v1, 9
+	3       (0000000c) if-ne                v0, v1, +007h
+
+b-BB@0x10 : 
+	4       (00000010) invoke-virtual       v5, Le7/a;->K()V
+	5       (00000016) const/4              v5, 0
+	6       (00000018) return-object        v5
+
+b-BB@0x1a : [ b-BB@0x2a ]
+	7       (0000001a) new-instance         v0, Ljava/util/ArrayList;
+	8       (0000001e) invoke-direct        v0, Ljava/util/ArrayList;-><init>()V
+	9       (00000024) invoke-virtual       v5, Le7/a;->c()V
+
+b-BB@0x2a : [ b-BB@0x36 b-BB@0x4e ]
+	10      (0000002a) invoke-virtual       v5, Le7/a;->B()Z
+	11      (00000030) move-result          v1
+	12      (00000032) if-eqz               v1, +00eh
+
+b-BB@0x36 : [ b-BB@0x2a ]
+	13      (00000036) iget-object          v1, v4, Lz6/b;->b Lz6/m;
+	14      (0000003a) iget-object          v1, v1, Lz6/m;->c Lw6/z;
+	15      (0000003e) invoke-virtual       v1, v5, Lw6/z;->b(Le7/a;)Ljava/lang/Object;
+	16      (00000044) move-result-object   v1
+	17      (00000046) invoke-virtual       v0, v1, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	18      (0000004c) goto                 -11h
+
+b-BB@0x4e : [ b-BB@0x6c b-BB@0x90 ]
+	19      (0000004e) invoke-virtual       v5, Le7/a;->x()V
+	20      (00000054) invoke-virtual       v0, Ljava/util/ArrayList;->size()I
+	21      (0000005a) move-result          v5
+	22      (0000005c) iget-object          v1, v4, Lz6/b;->a Ljava/lang/Class;
+	23      (00000060) invoke-virtual       v1, Ljava/lang/Class;->isPrimitive()Z
+	24      (00000066) move-result          v2
+	25      (00000068) if-eqz               v2, +014h
+
+b-BB@0x6c : [ b-BB@0x76 ]
+	26      (0000006c) invoke-static        v1, v5, Ljava/lang/reflect/Array;->newInstance(Ljava/lang/Class; I)Ljava/lang/Object;
+	27      (00000072) move-result-object   v1
+	28      (00000074) const/4              v2, 0
+
+b-BB@0x76 : [ b-BB@0x7a b-BB@0x8e ]
+	29      (00000076) if-ge                v2, v5, +00ch
+
+b-BB@0x7a : [ b-BB@0x76 ]
+	30      (0000007a) invoke-virtual       v0, v2, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	31      (00000080) move-result-object   v3
+	32      (00000082) invoke-static        v1, v2, v3, Ljava/lang/reflect/Array;->set(Ljava/lang/Object; I Ljava/lang/Object;)V
+	33      (00000088) add-int/lit8         v2, v2, 1
+	34      (0000008c) goto                 -bh
+
+b-BB@0x8e : 
+	35      (0000008e) return-object        v1
+
+b-BB@0x90 : 
+	36      (00000090) invoke-static        v1, v5, Ljava/lang/reflect/Array;->newInstance(Ljava/lang/Class; I)Ljava/lang/Object;
+	37      (00000096) move-result-object   v5
+	38      (00000098) check-cast           v5, [Ljava/lang/Object;
+	39      (0000009c) invoke-virtual       v0, v5, Ljava/util/ArrayList;->toArray([Ljava/lang/Object;)[Ljava/lang/Object;
+	40      (000000a2) move-result-object   v5
+	41      (000000a4) return-object        v5
+

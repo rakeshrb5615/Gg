@@ -1,0 +1,157 @@
+# Lv3/d0;->b(Landroid/content/Context; Landroid/content/res/TypedArray; I)Lv3/d0; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:android.content.Context
+# - v6:android.content.res.TypedArray
+# - v7:int
+#
+# - return:v3.d0
+
+b-BB@0x0 : [ b-BB@0x10 b-BB@0x12 ]
+	0       (00000000) const/4              v0, 0
+	1       (00000002) invoke-virtual       v6, v7, v0, Landroid/content/res/TypedArray;->getResourceId(I I)I
+	2       (00000008) move-result          v6
+	3       (0000000a) const/4              v7, 0
+	4       (0000000c) if-nez               v6, +003h
+
+b-BB@0x10 : [ b-BB@0x32 ]
+	5       (00000010) goto                 +11h
+
+b-BB@0x12 : [ b-BB@0x32 b-BB@0x34 ]
+	6       (00000012) invoke-virtual       v5, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+	7       (00000018) move-result-object   v0
+	8       (0000001a) invoke-virtual       v0, v6, Landroid/content/res/Resources;->getResourceTypeName(I)Ljava/lang/String;
+	9       (00000020) move-result-object   v0
+	10      (00000022) const-string         v1, "xml"
+	11      (00000026) invoke-static        v0, v1, Ljava/util/Objects;->equals(Ljava/lang/Object; Ljava/lang/Object;)Z
+	12      (0000002c) move-result          v0
+	13      (0000002e) if-nez               v0, +003h
+
+b-BB@0x32 : 
+	14      (00000032) return-object        v7
+
+b-BB@0x34 : [ b-BB@0x44 ]
+	15      (00000034) new-instance         v0, Lv3/c0;
+	16      (00000038) invoke-direct        v0, Ljava/lang/Object;-><init>()V
+	17      (0000003e) invoke-virtual       v0, Lv3/c0;->b()V
+
+b-BB@0x44 : [ b-BB@0x54 ]
+	18      (00000044) invoke-virtual       v5, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+	19      (0000004a) move-result-object   v1
+	20      (0000004c) invoke-virtual       v1, v6, Landroid/content/res/Resources;->getXml(I)Landroid/content/res/XmlResourceParser;
+	21      (00000052) move-result-object   v6
+	44:53
+	(Lorg/xmlpull/v1/XmlPullParserException; -> d0 b-BB@0xd0)
+	(Ljava/io/IOException; -> d0 b-BB@0xd0)
+	(Landroid/content/res/Resources$NotFoundException; -> d0 b-BB@0xd0)
+
+b-BB@0x54 : [ b-BB@0x5c ]
+	22      (00000054) invoke-static        v6, Landroid/util/Xml;->asAttributeSet(Lorg/xmlpull/v1/XmlPullParser;)Landroid/util/AttributeSet;
+	23      (0000005a) move-result-object   v1
+	54:9b
+	(Ljava/lang/Throwable; -> 9e b-BB@0x9e)
+
+b-BB@0x5c : [ b-BB@0x6a b-BB@0x72 ]
+	24      (0000005c) invoke-interface     v6, Lorg/xmlpull/v1/XmlPullParser;->next()I
+	25      (00000062) move-result          v2
+	26      (00000064) const/4              v3, 2
+	27      (00000066) if-eq                v2, v3, +006h
+	54:9b
+	(Ljava/lang/Throwable; -> 9e b-BB@0x9e)
+
+b-BB@0x6a : [ b-BB@0x70 b-BB@0x72 ]
+	28      (0000006a) const/4              v4, 1
+	29      (0000006c) if-eq                v2, v4, +003h
+	54:9b
+	(Ljava/lang/Throwable; -> 9e b-BB@0x9e)
+
+b-BB@0x70 : [ b-BB@0x5c ]
+	30      (00000070) goto                 -ah
+	54:9b
+	(Ljava/lang/Throwable; -> 9e b-BB@0x9e)
+
+b-BB@0x72 : [ b-BB@0x76 b-BB@0xaa ]
+	31      (00000072) if-ne                v2, v3, +01ch
+	54:9b
+	(Ljava/lang/Throwable; -> 9e b-BB@0x9e)
+
+b-BB@0x76 : [ b-BB@0x8e b-BB@0xa2 ]
+	32      (00000076) invoke-interface     v6, Lorg/xmlpull/v1/XmlPullParser;->getName()Ljava/lang/String;
+	33      (0000007c) move-result-object   v2
+	34      (0000007e) const-string         v3, "selector"
+	35      (00000082) invoke-virtual       v2, v3, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	36      (00000088) move-result          v2
+	37      (0000008a) if-eqz               v2, +00ch
+	54:9b
+	(Ljava/lang/Throwable; -> 9e b-BB@0x9e)
+
+b-BB@0x8e : [ b-BB@0xa2 ]
+	38      (0000008e) invoke-virtual       v5, Landroid/content/Context;->getTheme()Landroid/content/res/Resources$Theme;
+	39      (00000094) move-result-object   v2
+	40      (00000096) invoke-static        v0, v5, v6, v1, v2, Lv3/d0;->a(Lv3/c0; Landroid/content/Context; Landroid/content/res/XmlResourceParser; Landroid/util/AttributeSet; Landroid/content/res/Resources$Theme;)V
+	41      (0000009c) goto                 +3h
+
+b-BB@0x9e : [ b-BB@0xba ]
+	42      (0000009e) move-exception       v5
+	43      (000000a0) goto                 +dh
+
+b-BB@0xa2 : [ b-BB@0xd6 ]
+	44      (000000a2) invoke-interface     v6, Landroid/content/res/XmlResourceParser;->close()V
+	45      (000000a8) goto                 +17h
+	a2:a7
+	(Lorg/xmlpull/v1/XmlPullParserException; -> d0 b-BB@0xd0)
+	(Ljava/io/IOException; -> d0 b-BB@0xd0)
+	(Landroid/content/res/Resources$NotFoundException; -> d0 b-BB@0xd0)
+
+b-BB@0xaa : 
+	46      (000000aa) new-instance         v5, Lorg/xmlpull/v1/XmlPullParserException;
+	47      (000000ae) const-string         v1, "No start tag found"
+	48      (000000b2) invoke-direct        v5, v1, Lorg/xmlpull/v1/XmlPullParserException;-><init>(Ljava/lang/String;)V
+	49      (000000b8) throw                v5
+	aa:b9
+	(Ljava/lang/Throwable; -> 9e b-BB@0x9e)
+
+b-BB@0xba : [ b-BB@0xbe b-BB@0xce ]
+	50      (000000ba) if-eqz               v6, +00ah
+
+b-BB@0xbe : [ b-BB@0xce ]
+	51      (000000be) invoke-interface     v6, Landroid/content/res/XmlResourceParser;->close()V
+	52      (000000c4) goto                 +5h
+	be:c3
+	(Ljava/lang/Throwable; -> c6 b-BB@0xc6)
+
+b-BB@0xc6 : [ b-BB@0xc8 ]
+	53      (000000c6) move-exception       v6
+
+b-BB@0xc8 : [ b-BB@0xce ]
+	54      (000000c8) invoke-virtual       v5, v6, Ljava/lang/Throwable;->addSuppressed(Ljava/lang/Throwable;)V
+	c8:cf
+	(Lorg/xmlpull/v1/XmlPullParserException; -> d0 b-BB@0xd0)
+	(Ljava/io/IOException; -> d0 b-BB@0xd0)
+	(Landroid/content/res/Resources$NotFoundException; -> d0 b-BB@0xd0)
+
+b-BB@0xce : 
+	55      (000000ce) throw                v5
+	c8:cf
+	(Lorg/xmlpull/v1/XmlPullParserException; -> d0 b-BB@0xd0)
+	(Ljava/io/IOException; -> d0 b-BB@0xd0)
+	(Landroid/content/res/Resources$NotFoundException; -> d0 b-BB@0xd0)
+
+b-BB@0xd0 : [ b-BB@0xd6 ]
+	56      (000000d0) invoke-virtual       v0, Lv3/c0;->b()V
+
+b-BB@0xd6 : [ b-BB@0xde b-BB@0xe0 ]
+	57      (000000d6) iget                 v5, v0, Lv3/c0;->a I
+	58      (000000da) if-nez               v5, +003h
+
+b-BB@0xde : [ b-BB@0xea ]
+	59      (000000de) goto                 +6h
+
+b-BB@0xe0 : [ b-BB@0xea ]
+	60      (000000e0) new-instance         v7, Lv3/d0;
+	61      (000000e4) invoke-direct        v7, v0, Lv3/d0;-><init>(Lv3/c0;)V
+
+b-BB@0xea : 
+	62      (000000ea) return-object        v7
+

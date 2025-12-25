@@ -1,0 +1,41 @@
+# Lx3/e;->o(D)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:double
+#
+# - return:boolean
+
+o-BB@0x0 : [ o-BB@0x62 o-BB@0x66 ]
+	0       (00000000) new-instance         v0, Ljava/math/BigDecimal;
+	1       (00000004) invoke-static        v3, v4, Ljava/lang/Double;->toString(D)Ljava/lang/String;
+	2       (0000000a) move-result-object   v3
+	3       (0000000c) invoke-direct        v0, v3, Ljava/math/BigDecimal;-><init>(Ljava/lang/String;)V
+	4       (00000012) new-instance         v3, Ljava/math/BigDecimal;
+	5       (00000016) iget                 v4, v2, Lx3/e;->v0 F
+	6       (0000001a) invoke-static        v4, Ljava/lang/Float;->toString(F)Ljava/lang/String;
+	7       (00000020) move-result-object   v4
+	8       (00000022) invoke-direct        v3, v4, Ljava/math/BigDecimal;-><init>(Ljava/lang/String;)V
+	9       (00000028) sget-object          v4, Ljava/math/MathContext;->DECIMAL64 Ljava/math/MathContext;
+	10      (0000002c) invoke-virtual       v0, v3, v4, Ljava/math/BigDecimal;->divide(Ljava/math/BigDecimal; Ljava/math/MathContext;)Ljava/math/BigDecimal;
+	11      (00000032) move-result-object   v3
+	12      (00000034) invoke-virtual       v3, Ljava/math/BigDecimal;->doubleValue()D
+	13      (0000003a) move-result-wide     v3
+	14      (0000003c) invoke-static        v3, v4, Ljava/lang/Math;->round(D)J
+	15      (00000042) move-result-wide     v0
+	16      (00000044) long-to-double       v0, v0
+	17      (00000046) sub-double/2addr     v0, v3
+	18      (00000048) invoke-static        v0, v1, Ljava/lang/Math;->abs(D)D
+	19      (0000004e) move-result-wide     v3
+	20      (00000050) const-wide           v0, 4547007122018943789
+	21      (0000005a) cmpg-double          v3, v3, v0
+	22      (0000005e) if-gez               v3, +004h
+
+o-BB@0x62 : 
+	23      (00000062) const/4              v3, 1
+	24      (00000064) return               v3
+
+o-BB@0x66 : 
+	25      (00000066) const/4              v3, 0
+	26      (00000068) return               v3
+

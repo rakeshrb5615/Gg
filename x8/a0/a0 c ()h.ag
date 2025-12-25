@@ -1,0 +1,32 @@
+# Lx8/a0;->c()Lx8/h; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v5
+#
+# - return:x8.h
+
+c-BB@0x0 : [ c-BB@0x8 c-BB@0x2c ]
+	0       (00000000) iget-boolean         v0, v5, Lx8/a0;->c Z
+	1       (00000004) if-nez               v0, +014h
+
+c-BB@0x8 : [ c-BB@0x20 c-BB@0x2a ]
+	2       (00000008) iget-object          v0, v5, Lx8/a0;->b Lx8/g;
+	3       (0000000c) invoke-virtual       v0, Lx8/g;->y()J
+	4       (00000012) move-result-wide     v1
+	5       (00000014) const-wide/16        v3, 0
+	6       (00000018) cmp-long             v3, v1, v3
+	7       (0000001c) if-lez               v3, +007h
+
+c-BB@0x20 : [ c-BB@0x2a ]
+	8       (00000020) iget-object          v3, v5, Lx8/a0;->a Lx8/f0;
+	9       (00000024) invoke-interface     v3, v0, v1, v2, Lx8/f0;->k(Lx8/g; J)V
+
+c-BB@0x2a : 
+	10      (0000002a) return-object        v5
+
+c-BB@0x2c : 
+	11      (0000002c) new-instance         v0, Ljava/lang/IllegalStateException;
+	12      (00000030) const-string         v1, "closed"
+	13      (00000034) invoke-direct        v0, v1, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	14      (0000003a) throw                v0
+

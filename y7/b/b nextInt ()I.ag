@@ -1,0 +1,32 @@
+# Ly7/b;->nextInt()I [access_flags=public]
+#
+# Parameters:
+# local registers: v0...v2
+#
+# - return:int
+
+nextInt-BB@0x0 : [ nextInt-BB@0xc nextInt-BB@0x28 ]
+	0       (00000000) iget                 v0, v2, Ly7/b;->e I
+	1       (00000004) iget                 v1, v2, Ly7/b;->c I
+	2       (00000008) if-ne                v0, v1, +010h
+
+nextInt-BB@0xc : [ nextInt-BB@0x14 nextInt-BB@0x1c ]
+	3       (0000000c) iget-boolean         v1, v2, Ly7/b;->d Z
+	4       (00000010) if-eqz               v1, +006h
+
+nextInt-BB@0x14 : 
+	5       (00000014) const/4              v1, 0
+	6       (00000016) iput-boolean         v1, v2, Ly7/b;->d Z
+	7       (0000001a) return               v0
+
+nextInt-BB@0x1c : 
+	8       (0000001c) new-instance         v0, Ljava/util/NoSuchElementException;
+	9       (00000020) invoke-direct        v0, Ljava/util/NoSuchElementException;-><init>()V
+	10      (00000026) throw                v0
+
+nextInt-BB@0x28 : 
+	11      (00000028) iget                 v1, v2, Ly7/b;->b I
+	12      (0000002c) add-int/2addr        v1, v0
+	13      (0000002e) iput                 v1, v2, Ly7/b;->e I
+	14      (00000032) return               v0
+

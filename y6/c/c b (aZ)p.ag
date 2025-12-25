@@ -1,0 +1,312 @@
+# Ly6/c;->b(Ld7/a; Z)Ly6/p; [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v8
+# - v9:d7.a
+# - v10:boolean
+#
+# - return:y6.p
+
+b-BB@0x0 : [ b-BB@0x18 b-BB@0x2f6 ]
+	0       (00000000) iget-object          v0, v9, Ld7/a;->b Ljava/lang/reflect/Type;
+	1       (00000004) iget-object          v9, v9, Ld7/a;->a Ljava/lang/Class;
+	2       (00000008) sget-object          v1, Ljava/util/Collections;->EMPTY_MAP Ljava/util/Map;
+	3       (0000000c) invoke-interface     v1, v0, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	4       (00000012) move-result-object   v2
+	5       (00000014) if-nez               v2, +171h
+
+b-BB@0x18 : [ b-BB@0x24 b-BB@0x2ea ]
+	6       (00000018) invoke-interface     v1, v9, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	7       (0000001e) move-result-object   v1
+	8       (00000020) if-nez               v1, +165h
+
+b-BB@0x24 : [ b-BB@0x3a b-BB@0x46 ]
+	9       (00000024) const-class          v1, Ljava/util/EnumSet;
+	10      (00000028) invoke-virtual       v1, v9, Ljava/lang/Class;->isAssignableFrom(Ljava/lang/Class;)Z
+	11      (0000002e) move-result          v1
+	12      (00000030) const/4              v2, 1
+	13      (00000032) const/4              v3, 0
+	14      (00000034) const/4              v4, 0
+	15      (00000036) if-eqz               v1, +008h
+
+b-BB@0x3a : [ b-BB@0x5c ]
+	16      (0000003a) new-instance         v1, Ly6/b;
+	17      (0000003e) invoke-direct        v1, v3, v0, Ly6/b;-><init>(I Ljava/lang/reflect/Type;)V
+	18      (00000044) goto                 +ch
+
+b-BB@0x46 : [ b-BB@0x4e b-BB@0x5a ]
+	19      (00000046) const-class          v1, Ljava/util/EnumMap;
+	20      (0000004a) if-ne                v9, v1, +008h
+
+b-BB@0x4e : [ b-BB@0x5c ]
+	21      (0000004e) new-instance         v1, Ly6/b;
+	22      (00000052) invoke-direct        v1, v2, v0, Ly6/b;-><init>(I Ljava/lang/reflect/Type;)V
+	23      (00000058) goto                 +2h
+
+b-BB@0x5a : [ b-BB@0x5c ]
+	24      (0000005a) move-object          v1, v4
+
+b-BB@0x5c : [ b-BB@0x60 b-BB@0x62 ]
+	25      (0000005c) if-eqz               v1, +003h
+
+b-BB@0x60 : 
+	26      (00000060) return-object        v1
+
+b-BB@0x62 : [ b-BB@0x80 b-BB@0x84 ]
+	27      (00000062) sget-object          v1, Ljava/util/Collections;->EMPTY_LIST Ljava/util/List;
+	28      (00000066) invoke-static        Ly6/i;->e()V
+	29      (0000006c) invoke-virtual       v9, Ljava/lang/Class;->getModifiers()I
+	30      (00000072) move-result          v1
+	31      (00000074) invoke-static        v1, Ljava/lang/reflect/Modifier;->isAbstract(I)Z
+	32      (0000007a) move-result          v1
+	33      (0000007c) if-eqz               v1, +004h
+
+b-BB@0x80 : [ b-BB@0x106 ]
+	34      (00000080) move-object          v1, v4
+	35      (00000082) goto                 +42h
+
+b-BB@0x84 : [ b-BB@0x90 ]
+	36      (00000084) invoke-virtual       v9, v4, Ljava/lang/Class;->getDeclaredConstructor([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
+	37      (0000008a) move-result-object   v1
+	38      (0000008c) sget-object          v5, Lb7/c;->a Lq4/b;
+	84:8b
+	(Ljava/lang/NoSuchMethodException; -> 80 b-BB@0x80)
+
+b-BB@0x90 : [ b-BB@0xe6 ]
+	39      (00000090) invoke-virtual       v1, v2, Ljava/lang/reflect/AccessibleObject;->setAccessible(Z)V
+	40      (00000096) move-object          v5, v4
+	41      (00000098) goto                 +27h
+	90:95
+	(Ljava/lang/Exception; -> 9a b-BB@0x9a)
+
+b-BB@0x9a : [ b-BB@0xe6 ]
+	42      (0000009a) move-exception       v5
+	43      (0000009c) new-instance         v6, Ljava/lang/StringBuilder;
+	44      (000000a0) const-string         v7, "Failed making constructor '"
+	45      (000000a4) invoke-direct        v6, v7, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	46      (000000aa) invoke-static        v1, Lb7/c;->b(Ljava/lang/reflect/Constructor;)Ljava/lang/String;
+	47      (000000b0) move-result-object   v7
+	48      (000000b2) invoke-virtual       v6, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	49      (000000b8) const-string         v7, "' accessible; either increase its visibility or write a custom InstanceCreator or TypeAdapter for its declaring type: "
+	50      (000000bc) invoke-virtual       v6, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	51      (000000c2) invoke-virtual       v5, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+	52      (000000c8) move-result-object   v7
+	53      (000000ca) invoke-virtual       v6, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	54      (000000d0) invoke-static        v5, Lb7/c;->e(Ljava/lang/Exception;)Ljava/lang/String;
+	55      (000000d6) move-result-object   v5
+	56      (000000d8) invoke-virtual       v6, v5, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	57      (000000de) invoke-virtual       v6, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	58      (000000e4) move-result-object   v5
+
+b-BB@0xe6 : [ b-BB@0xea b-BB@0xf6 ]
+	59      (000000e6) if-eqz               v5, +008h
+
+b-BB@0xea : [ b-BB@0x106 ]
+	60      (000000ea) new-instance         v1, Ly6/a;
+	61      (000000ee) invoke-direct        v1, v5, v2, Ly6/a;-><init>(Ljava/lang/String; I)V
+	62      (000000f4) goto                 +9h
+
+b-BB@0xf6 : [ b-BB@0x106 ]
+	63      (000000f6) new-instance         v2, La5/a;
+	64      (000000fa) const/16             v5, 26
+	65      (000000fe) invoke-direct        v2, v1, v5, La5/a;-><init>(Ljava/lang/Object; I)V
+	66      (00000104) move-object          v1, v2
+
+b-BB@0x106 : [ b-BB@0x10a b-BB@0x10c ]
+	67      (00000106) if-eqz               v1, +003h
+
+b-BB@0x10a : 
+	68      (0000010a) return-object        v1
+
+b-BB@0x10c : [ b-BB@0x11c b-BB@0x1a4 ]
+	69      (0000010c) const-class          v1, Ljava/util/Collection;
+	70      (00000110) invoke-virtual       v1, v9, Ljava/lang/Class;->isAssignableFrom(Ljava/lang/Class;)Z
+	71      (00000116) move-result          v1
+	72      (00000118) if-eqz               v1, +046h
+
+b-BB@0x11c : [ b-BB@0x12c b-BB@0x13e ]
+	73      (0000011c) const-class          v0, Ljava/util/ArrayList;
+	74      (00000120) invoke-virtual       v9, v0, Ljava/lang/Class;->isAssignableFrom(Ljava/lang/Class;)Z
+	75      (00000126) move-result          v0
+	76      (00000128) if-eqz               v0, +00bh
+
+b-BB@0x12c : [ b-BB@0x284 ]
+	77      (0000012c) new-instance         v4, Lr2/q;
+	78      (00000130) const/16             v0, 19
+	79      (00000134) invoke-direct        v4, v0, Lr2/q;-><init>(I)V
+	80      (0000013a) goto/16              +0a5h
+
+b-BB@0x13e : [ b-BB@0x14e b-BB@0x160 ]
+	81      (0000013e) const-class          v0, Ljava/util/LinkedHashSet;
+	82      (00000142) invoke-virtual       v9, v0, Ljava/lang/Class;->isAssignableFrom(Ljava/lang/Class;)Z
+	83      (00000148) move-result          v0
+	84      (0000014a) if-eqz               v0, +00bh
+
+b-BB@0x14e : [ b-BB@0x284 ]
+	85      (0000014e) new-instance         v4, Lr2/q;
+	86      (00000152) const/16             v0, 20
+	87      (00000156) invoke-direct        v4, v0, Lr2/q;-><init>(I)V
+	88      (0000015c) goto/16              +094h
+
+b-BB@0x160 : [ b-BB@0x170 b-BB@0x182 ]
+	89      (00000160) const-class          v0, Ljava/util/TreeSet;
+	90      (00000164) invoke-virtual       v9, v0, Ljava/lang/Class;->isAssignableFrom(Ljava/lang/Class;)Z
+	91      (0000016a) move-result          v0
+	92      (0000016c) if-eqz               v0, +00bh
+
+b-BB@0x170 : [ b-BB@0x284 ]
+	93      (00000170) new-instance         v4, Lr2/q;
+	94      (00000174) const/16             v0, 21
+	95      (00000178) invoke-direct        v4, v0, Lr2/q;-><init>(I)V
+	96      (0000017e) goto/16              +083h
+
+b-BB@0x182 : [ b-BB@0x192 b-BB@0x284 ]
+	97      (00000182) const-class          v0, Ljava/util/ArrayDeque;
+	98      (00000186) invoke-virtual       v9, v0, Ljava/lang/Class;->isAssignableFrom(Ljava/lang/Class;)Z
+	99      (0000018c) move-result          v0
+	100     (0000018e) if-eqz               v0, +07bh
+
+b-BB@0x192 : [ b-BB@0x284 ]
+	101     (00000192) new-instance         v4, Lr2/q;
+	102     (00000196) const/16             v0, 22
+	103     (0000019a) invoke-direct        v4, v0, Lr2/q;-><init>(I)V
+	104     (000001a0) goto/16              +072h
+
+b-BB@0x1a4 : [ b-BB@0x1b4 b-BB@0x284 ]
+	105     (000001a4) const-class          v1, Ljava/util/Map;
+	106     (000001a8) invoke-virtual       v1, v9, Ljava/lang/Class;->isAssignableFrom(Ljava/lang/Class;)Z
+	107     (000001ae) move-result          v1
+	108     (000001b0) if-eqz               v1, +06ah
+
+b-BB@0x1b4 : [ b-BB@0x1c4 b-BB@0x206 ]
+	109     (000001b4) const-class          v1, Ly6/o;
+	110     (000001b8) invoke-virtual       v9, v1, Ljava/lang/Class;->isAssignableFrom(Ljava/lang/Class;)Z
+	111     (000001be) move-result          v1
+	112     (000001c0) if-eqz               v1, +023h
+
+b-BB@0x1c4 : [ b-BB@0x1cc b-BB@0x1ce ]
+	113     (000001c4) instance-of          v1, v0, Ljava/lang/reflect/ParameterizedType;
+	114     (000001c8) if-nez               v1, +003h
+
+b-BB@0x1cc : [ b-BB@0x1f6 ]
+	115     (000001cc) goto                 +15h
+
+b-BB@0x1ce : [ b-BB@0x1e0 b-BB@0x1e2 ]
+	116     (000001ce) check-cast           v0, Ljava/lang/reflect/ParameterizedType;
+	117     (000001d2) invoke-interface     v0, Ljava/lang/reflect/ParameterizedType;->getActualTypeArguments()[Ljava/lang/reflect/Type;
+	118     (000001d8) move-result-object   v0
+	119     (000001da) array-length         v1, v0
+	120     (000001dc) if-nez               v1, +003h
+
+b-BB@0x1e0 : [ b-BB@0x206 ]
+	121     (000001e0) goto                 +13h
+
+b-BB@0x1e2 : [ b-BB@0x1f6 b-BB@0x206 ]
+	122     (000001e2) aget-object          v0, v0, v3
+	123     (000001e6) invoke-static        v0, Ly6/i;->g(Ljava/lang/reflect/Type;)Ljava/lang/Class;
+	124     (000001ec) move-result-object   v0
+	125     (000001ee) const-class          v1, Ljava/lang/String;
+	126     (000001f2) if-ne                v0, v1, +00ah
+
+b-BB@0x1f6 : [ b-BB@0x284 ]
+	127     (000001f6) new-instance         v4, Lr2/q;
+	128     (000001fa) const/16             v0, 23
+	129     (000001fe) invoke-direct        v4, v0, Lr2/q;-><init>(I)V
+	130     (00000204) goto                 +40h
+
+b-BB@0x206 : [ b-BB@0x216 b-BB@0x226 ]
+	131     (00000206) const-class          v0, Ljava/util/LinkedHashMap;
+	132     (0000020a) invoke-virtual       v9, v0, Ljava/lang/Class;->isAssignableFrom(Ljava/lang/Class;)Z
+	133     (00000210) move-result          v0
+	134     (00000212) if-eqz               v0, +00ah
+
+b-BB@0x216 : [ b-BB@0x284 ]
+	135     (00000216) new-instance         v4, Lr2/q;
+	136     (0000021a) const/16             v0, 15
+	137     (0000021e) invoke-direct        v4, v0, Lr2/q;-><init>(I)V
+	138     (00000224) goto                 +30h
+
+b-BB@0x226 : [ b-BB@0x236 b-BB@0x246 ]
+	139     (00000226) const-class          v0, Ljava/util/TreeMap;
+	140     (0000022a) invoke-virtual       v9, v0, Ljava/lang/Class;->isAssignableFrom(Ljava/lang/Class;)Z
+	141     (00000230) move-result          v0
+	142     (00000232) if-eqz               v0, +00ah
+
+b-BB@0x236 : [ b-BB@0x284 ]
+	143     (00000236) new-instance         v4, Lr2/q;
+	144     (0000023a) const/16             v0, 16
+	145     (0000023e) invoke-direct        v4, v0, Lr2/q;-><init>(I)V
+	146     (00000244) goto                 +20h
+
+b-BB@0x246 : [ b-BB@0x256 b-BB@0x266 ]
+	147     (00000246) const-class          v0, Ljava/util/concurrent/ConcurrentHashMap;
+	148     (0000024a) invoke-virtual       v9, v0, Ljava/lang/Class;->isAssignableFrom(Ljava/lang/Class;)Z
+	149     (00000250) move-result          v0
+	150     (00000252) if-eqz               v0, +00ah
+
+b-BB@0x256 : [ b-BB@0x284 ]
+	151     (00000256) new-instance         v4, Lr2/q;
+	152     (0000025a) const/16             v0, 17
+	153     (0000025e) invoke-direct        v4, v0, Lr2/q;-><init>(I)V
+	154     (00000264) goto                 +10h
+
+b-BB@0x266 : [ b-BB@0x276 b-BB@0x284 ]
+	155     (00000266) const-class          v0, Ljava/util/concurrent/ConcurrentSkipListMap;
+	156     (0000026a) invoke-virtual       v9, v0, Ljava/lang/Class;->isAssignableFrom(Ljava/lang/Class;)Z
+	157     (00000270) move-result          v0
+	158     (00000272) if-eqz               v0, +009h
+
+b-BB@0x276 : [ b-BB@0x284 ]
+	159     (00000276) new-instance         v4, Lr2/q;
+	160     (0000027a) const/16             v0, 18
+	161     (0000027e) invoke-direct        v4, v0, Lr2/q;-><init>(I)V
+
+b-BB@0x284 : [ b-BB@0x288 b-BB@0x28a ]
+	162     (00000284) if-eqz               v4, +003h
+
+b-BB@0x288 : 
+	163     (00000288) return-object        v4
+
+b-BB@0x28a : [ b-BB@0x296 b-BB@0x2a2 ]
+	164     (0000028a) invoke-static        v9, Ly6/c;->a(Ljava/lang/Class;)Ljava/lang/String;
+	165     (00000290) move-result-object   v0
+	166     (00000292) if-eqz               v0, +008h
+
+b-BB@0x296 : 
+	167     (00000296) new-instance         v9, Ly6/a;
+	168     (0000029a) invoke-direct        v9, v0, v3, Ly6/a;-><init>(Ljava/lang/String; I)V
+	169     (000002a0) return-object        v9
+
+b-BB@0x2a2 : [ b-BB@0x2a6 b-BB@0x2da ]
+	170     (000002a2) if-nez               v10, +01ch
+
+b-BB@0x2a6 : 
+	171     (000002a6) new-instance         v10, Ljava/lang/StringBuilder;
+	172     (000002aa) const-string         v0, "Unable to create instance of "
+	173     (000002ae) invoke-direct        v10, v0, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	174     (000002b4) invoke-virtual       v10, v9, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	175     (000002ba) const-string         v9, "; Register an InstanceCreator or a TypeAdapter for this type."
+	176     (000002be) invoke-virtual       v10, v9, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	177     (000002c4) invoke-virtual       v10, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	178     (000002ca) move-result-object   v9
+	179     (000002cc) new-instance         v10, Ly6/a;
+	180     (000002d0) const/4              v0, 2
+	181     (000002d2) invoke-direct        v10, v9, v0, Ly6/a;-><init>(Ljava/lang/String; I)V
+	182     (000002d8) return-object        v10
+
+b-BB@0x2da : 
+	183     (000002da) new-instance         v10, La5/a;
+	184     (000002de) const/16             v0, 27
+	185     (000002e2) invoke-direct        v10, v9, v0, La5/a;-><init>(Ljava/lang/Object; I)V
+	186     (000002e8) return-object        v10
+
+b-BB@0x2ea : 
+	187     (000002ea) new-instance         v9, Ljava/lang/ClassCastException;
+	188     (000002ee) invoke-direct        v9, Ljava/lang/ClassCastException;-><init>()V
+	189     (000002f4) throw                v9
+
+b-BB@0x2f6 : 
+	190     (000002f6) new-instance         v9, Ljava/lang/ClassCastException;
+	191     (000002fa) invoke-direct        v9, Ljava/lang/ClassCastException;-><init>()V
+	192     (00000300) throw                v9
+

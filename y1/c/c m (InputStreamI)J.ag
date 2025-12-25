@@ -1,0 +1,31 @@
+# Ly1/c;->m(Ljava/io/InputStream; I)J [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:java.io.InputStream
+# - v7:int
+#
+# - return:long
+
+m-BB@0x0 : [ m-BB@0xe ]
+	0       (00000000) invoke-static        v6, v7, Ly1/c;->f(Ljava/io/InputStream; I)[B
+	1       (00000006) move-result-object   v6
+	2       (00000008) const-wide/16        v0, 0
+	3       (0000000c) const/4              v2, 0
+
+m-BB@0xe : [ m-BB@0x12 m-BB@0x2a ]
+	4       (0000000e) if-ge                v2, v7, +00eh
+
+m-BB@0x12 : [ m-BB@0xe ]
+	5       (00000012) aget-byte            v3, v6, v2
+	6       (00000016) and-int/lit16        v3, v3, 255
+	7       (0000001a) int-to-long          v3, v3
+	8       (0000001c) mul-int/lit8         v5, v2, 8
+	9       (00000020) shl-long/2addr       v3, v5
+	10      (00000022) add-long/2addr       v0, v3
+	11      (00000024) add-int/lit8         v2, v2, 1
+	12      (00000028) goto                 -dh
+
+m-BB@0x2a : 
+	13      (0000002a) return-wide          v0
+

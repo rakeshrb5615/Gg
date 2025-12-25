@@ -1,0 +1,52 @@
+# Lu/a;->toString()Ljava/lang/String; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v5
+#
+# - return:java.lang.String
+
+toString-BB@0x0 : [ toString-BB@0xa ]
+	0       (00000000) iget                 v0, v5, Lu/a;->h I
+	1       (00000004) const-string         v1, ""
+	2       (00000008) const/4              v2, 0
+
+toString-BB@0xa : [ toString-BB@0x10 toString-BB@0x88 ]
+	3       (0000000a) const/4              v3, -1
+	4       (0000000c) if-eq                v0, v3, +03eh
+
+toString-BB@0x10 : [ toString-BB@0x18 toString-BB@0x88 ]
+	5       (00000010) iget                 v3, v5, Lu/a;->a I
+	6       (00000014) if-ge                v2, v3, +03ah
+
+toString-BB@0x18 : [ toString-BB@0xa ]
+	7       (00000018) const-string         v3, " -> "
+	8       (0000001c) invoke-static        v1, v3, Lg2/g;->d(Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	9       (00000022) move-result-object   v1
+	10      (00000024) invoke-static        v1, Lu/e;->b(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	11      (0000002a) move-result-object   v1
+	12      (0000002c) iget-object          v3, v5, Lu/a;->g [F
+	13      (00000030) aget                 v3, v3, v0
+	14      (00000034) invoke-virtual       v1, v3, Ljava/lang/StringBuilder;->append(F)Ljava/lang/StringBuilder;
+	15      (0000003a) const-string         v3, " : "
+	16      (0000003e) invoke-virtual       v1, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	17      (00000044) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	18      (0000004a) move-result-object   v1
+	19      (0000004c) invoke-static        v1, Lu/e;->b(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	20      (00000052) move-result-object   v1
+	21      (00000054) iget-object          v3, v5, Lu/a;->c Lb8/g;
+	22      (00000058) iget-object          v3, v3, Lb8/g;->d Ljava/lang/Object;
+	23      (0000005c) check-cast           v3, [Lu/f;
+	24      (00000060) iget-object          v4, v5, Lu/a;->e [I
+	25      (00000064) aget                 v4, v4, v0
+	26      (00000068) aget-object          v3, v3, v4
+	27      (0000006c) invoke-virtual       v1, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	28      (00000072) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	29      (00000078) move-result-object   v1
+	30      (0000007a) iget-object          v3, v5, Lu/a;->f [I
+	31      (0000007e) aget                 v0, v3, v0
+	32      (00000082) add-int/lit8         v2, v2, 1
+	33      (00000086) goto                 -3eh
+
+toString-BB@0x88 : 
+	34      (00000088) return-object        v1
+

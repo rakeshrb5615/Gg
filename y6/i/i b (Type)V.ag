@@ -1,0 +1,30 @@
+# Ly6/i;->b(Ljava/lang/reflect/Type;)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v0
+# - v1:java.lang.reflect.Type
+#
+# - return:void
+
+b-BB@0x0 : [ b-BB@0x8 b-BB@0x2a ]
+	0       (00000000) instance-of          v0, v1, Ljava/lang/Class;
+	1       (00000004) if-eqz               v0, +013h
+
+b-BB@0x8 : [ b-BB@0x18 b-BB@0x1a ]
+	2       (00000008) check-cast           v1, Ljava/lang/Class;
+	3       (0000000c) invoke-virtual       v1, Ljava/lang/Class;->isPrimitive()Z
+	4       (00000012) move-result          v1
+	5       (00000014) if-nez               v1, +003h
+
+b-BB@0x18 : [ b-BB@0x2a ]
+	6       (00000018) goto                 +9h
+
+b-BB@0x1a : 
+	7       (0000001a) new-instance         v1, Ljava/lang/IllegalArgumentException;
+	8       (0000001e) const-string         v0, "Primitive type is not allowed"
+	9       (00000022) invoke-direct        v1, v0, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	10      (00000028) throw                v1
+
+b-BB@0x2a : 
+	11      (0000002a) return-void          
+

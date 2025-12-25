@@ -1,0 +1,57 @@
+# Lz/c;->g(Landroid/util/AttributeSet;)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:android.util.AttributeSet
+#
+# - return:void
+
+g-BB@0x0 : [ g-BB@0x4 g-BB@0x70 ]
+	0       (00000000) if-eqz               v5, +038h
+
+g-BB@0x4 : [ g-BB@0x22 ]
+	1       (00000004) invoke-virtual       v4, Landroid/view/View;->getContext()Landroid/content/Context;
+	2       (0000000a) move-result-object   v0
+	3       (0000000c) sget-object          v1, Lz/r;->b [I
+	4       (00000010) invoke-virtual       v0, v5, v1, Landroid/content/Context;->obtainStyledAttributes(Landroid/util/AttributeSet; [I)Landroid/content/res/TypedArray;
+	5       (00000016) move-result-object   v5
+	6       (00000018) invoke-virtual       v5, Landroid/content/res/TypedArray;->getIndexCount()I
+	7       (0000001e) move-result          v0
+	8       (00000020) const/4              v1, 0
+
+g-BB@0x22 : [ g-BB@0x26 g-BB@0x6a ]
+	9       (00000022) if-ge                v1, v0, +024h
+
+g-BB@0x26 : [ g-BB@0x36 g-BB@0x4a ]
+	10      (00000026) invoke-virtual       v5, v1, Landroid/content/res/TypedArray;->getIndex(I)I
+	11      (0000002c) move-result          v2
+	12      (0000002e) const/16             v3, 35
+	13      (00000032) if-ne                v2, v3, +00ch
+
+g-BB@0x36 : [ g-BB@0x64 ]
+	14      (00000036) invoke-virtual       v5, v2, Landroid/content/res/TypedArray;->getString(I)Ljava/lang/String;
+	15      (0000003c) move-result-object   v2
+	16      (0000003e) iput-object          v2, v4, Lz/c;->e Ljava/lang/String;
+	17      (00000042) invoke-virtual       v4, v2, Lz/c;->setIds(Ljava/lang/String;)V
+	18      (00000048) goto                 +eh
+
+g-BB@0x4a : [ g-BB@0x52 g-BB@0x64 ]
+	19      (0000004a) const/16             v3, 36
+	20      (0000004e) if-ne                v2, v3, +00bh
+
+g-BB@0x52 : [ g-BB@0x64 ]
+	21      (00000052) invoke-virtual       v5, v2, Landroid/content/res/TypedArray;->getString(I)Ljava/lang/String;
+	22      (00000058) move-result-object   v2
+	23      (0000005a) iput-object          v2, v4, Lz/c;->f Ljava/lang/String;
+	24      (0000005e) invoke-virtual       v4, v2, Lz/c;->setReferenceTags(Ljava/lang/String;)V
+
+g-BB@0x64 : [ g-BB@0x22 ]
+	25      (00000064) add-int/lit8         v1, v1, 1
+	26      (00000068) goto                 -23h
+
+g-BB@0x6a : [ g-BB@0x70 ]
+	27      (0000006a) invoke-virtual       v5, Landroid/content/res/TypedArray;->recycle()V
+
+g-BB@0x70 : 
+	28      (00000070) return-void          
+

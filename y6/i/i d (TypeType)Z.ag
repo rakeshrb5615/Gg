@@ -1,0 +1,168 @@
+# Ly6/i;->d(Ljava/lang/reflect/Type; Ljava/lang/reflect/Type;)Z [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:java.lang.reflect.Type
+# - v5:java.lang.reflect.Type
+#
+# - return:boolean
+
+d-BB@0x0 : [ d-BB@0x6 d-BB@0x8 ]
+	0       (00000000) const/4              v0, 1
+	1       (00000002) if-ne                v4, v5, +003h
+
+d-BB@0x6 : 
+	2       (00000006) return               v0
+
+d-BB@0x8 : [ d-BB@0x10 d-BB@0x1a ]
+	3       (00000008) instance-of          v1, v4, Ljava/lang/Class;
+	4       (0000000c) if-eqz               v1, +007h
+
+d-BB@0x10 : 
+	5       (00000010) invoke-virtual       v4, v5, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+	6       (00000016) move-result          v4
+	7       (00000018) return               v4
+
+d-BB@0x1a : [ d-BB@0x24 d-BB@0x8e ]
+	8       (0000001a) instance-of          v1, v4, Ljava/lang/reflect/ParameterizedType;
+	9       (0000001e) const/4              v2, 0
+	10      (00000020) if-eqz               v1, +037h
+
+d-BB@0x24 : [ d-BB@0x2c d-BB@0x2e ]
+	11      (00000024) instance-of          v1, v5, Ljava/lang/reflect/ParameterizedType;
+	12      (00000028) if-nez               v1, +003h
+
+d-BB@0x2c : 
+	13      (0000002c) return               v2
+
+d-BB@0x2e : [ d-BB@0x52 d-BB@0x8c ]
+	14      (0000002e) check-cast           v4, Ljava/lang/reflect/ParameterizedType;
+	15      (00000032) check-cast           v5, Ljava/lang/reflect/ParameterizedType;
+	16      (00000036) invoke-interface     v4, Ljava/lang/reflect/ParameterizedType;->getOwnerType()Ljava/lang/reflect/Type;
+	17      (0000003c) move-result-object   v1
+	18      (0000003e) invoke-interface     v5, Ljava/lang/reflect/ParameterizedType;->getOwnerType()Ljava/lang/reflect/Type;
+	19      (00000044) move-result-object   v3
+	20      (00000046) invoke-static        v1, v3, Ljava/util/Objects;->equals(Ljava/lang/Object; Ljava/lang/Object;)Z
+	21      (0000004c) move-result          v1
+	22      (0000004e) if-eqz               v1, +01fh
+
+d-BB@0x52 : [ d-BB@0x6e d-BB@0x8c ]
+	23      (00000052) invoke-interface     v4, Ljava/lang/reflect/ParameterizedType;->getRawType()Ljava/lang/reflect/Type;
+	24      (00000058) move-result-object   v1
+	25      (0000005a) invoke-interface     v5, Ljava/lang/reflect/ParameterizedType;->getRawType()Ljava/lang/reflect/Type;
+	26      (00000060) move-result-object   v3
+	27      (00000062) invoke-virtual       v1, v3, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+	28      (00000068) move-result          v1
+	29      (0000006a) if-eqz               v1, +011h
+
+d-BB@0x6e : [ d-BB@0x8a d-BB@0x8c ]
+	30      (0000006e) invoke-interface     v4, Ljava/lang/reflect/ParameterizedType;->getActualTypeArguments()[Ljava/lang/reflect/Type;
+	31      (00000074) move-result-object   v4
+	32      (00000076) invoke-interface     v5, Ljava/lang/reflect/ParameterizedType;->getActualTypeArguments()[Ljava/lang/reflect/Type;
+	33      (0000007c) move-result-object   v5
+	34      (0000007e) invoke-static        v4, v5, Ljava/util/Arrays;->equals([Ljava/lang/Object; [Ljava/lang/Object;)Z
+	35      (00000084) move-result          v4
+	36      (00000086) if-eqz               v4, +003h
+
+d-BB@0x8a : 
+	37      (0000008a) return               v0
+
+d-BB@0x8c : 
+	38      (0000008c) return               v2
+
+d-BB@0x8e : [ d-BB@0x96 d-BB@0xc2 ]
+	39      (0000008e) instance-of          v1, v4, Ljava/lang/reflect/GenericArrayType;
+	40      (00000092) if-eqz               v1, +018h
+
+d-BB@0x96 : [ d-BB@0x9e d-BB@0xa0 ]
+	41      (00000096) instance-of          v0, v5, Ljava/lang/reflect/GenericArrayType;
+	42      (0000009a) if-nez               v0, +003h
+
+d-BB@0x9e : 
+	43      (0000009e) return               v2
+
+d-BB@0xa0 : 
+	44      (000000a0) check-cast           v4, Ljava/lang/reflect/GenericArrayType;
+	45      (000000a4) check-cast           v5, Ljava/lang/reflect/GenericArrayType;
+	46      (000000a8) invoke-interface     v4, Ljava/lang/reflect/GenericArrayType;->getGenericComponentType()Ljava/lang/reflect/Type;
+	47      (000000ae) move-result-object   v4
+	48      (000000b0) invoke-interface     v5, Ljava/lang/reflect/GenericArrayType;->getGenericComponentType()Ljava/lang/reflect/Type;
+	49      (000000b6) move-result-object   v5
+	50      (000000b8) invoke-static        v4, v5, Ly6/i;->d(Ljava/lang/reflect/Type; Ljava/lang/reflect/Type;)Z
+	51      (000000be) move-result          v4
+	52      (000000c0) return               v4
+
+d-BB@0xc2 : [ d-BB@0xca d-BB@0x118 ]
+	53      (000000c2) instance-of          v1, v4, Ljava/lang/reflect/WildcardType;
+	54      (000000c6) if-eqz               v1, +029h
+
+d-BB@0xca : [ d-BB@0xd2 d-BB@0xd4 ]
+	55      (000000ca) instance-of          v1, v5, Ljava/lang/reflect/WildcardType;
+	56      (000000ce) if-nez               v1, +003h
+
+d-BB@0xd2 : 
+	57      (000000d2) return               v2
+
+d-BB@0xd4 : [ d-BB@0xf8 d-BB@0x116 ]
+	58      (000000d4) check-cast           v4, Ljava/lang/reflect/WildcardType;
+	59      (000000d8) check-cast           v5, Ljava/lang/reflect/WildcardType;
+	60      (000000dc) invoke-interface     v4, Ljava/lang/reflect/WildcardType;->getUpperBounds()[Ljava/lang/reflect/Type;
+	61      (000000e2) move-result-object   v1
+	62      (000000e4) invoke-interface     v5, Ljava/lang/reflect/WildcardType;->getUpperBounds()[Ljava/lang/reflect/Type;
+	63      (000000ea) move-result-object   v3
+	64      (000000ec) invoke-static        v1, v3, Ljava/util/Arrays;->equals([Ljava/lang/Object; [Ljava/lang/Object;)Z
+	65      (000000f2) move-result          v1
+	66      (000000f4) if-eqz               v1, +011h
+
+d-BB@0xf8 : [ d-BB@0x114 d-BB@0x116 ]
+	67      (000000f8) invoke-interface     v4, Ljava/lang/reflect/WildcardType;->getLowerBounds()[Ljava/lang/reflect/Type;
+	68      (000000fe) move-result-object   v4
+	69      (00000100) invoke-interface     v5, Ljava/lang/reflect/WildcardType;->getLowerBounds()[Ljava/lang/reflect/Type;
+	70      (00000106) move-result-object   v5
+	71      (00000108) invoke-static        v4, v5, Ljava/util/Arrays;->equals([Ljava/lang/Object; [Ljava/lang/Object;)Z
+	72      (0000010e) move-result          v4
+	73      (00000110) if-eqz               v4, +003h
+
+d-BB@0x114 : 
+	74      (00000114) return               v0
+
+d-BB@0x116 : 
+	75      (00000116) return               v2
+
+d-BB@0x118 : [ d-BB@0x120 d-BB@0x16c ]
+	76      (00000118) instance-of          v1, v4, Ljava/lang/reflect/TypeVariable;
+	77      (0000011c) if-eqz               v1, +028h
+
+d-BB@0x120 : [ d-BB@0x128 d-BB@0x12a ]
+	78      (00000120) instance-of          v1, v5, Ljava/lang/reflect/TypeVariable;
+	79      (00000124) if-nez               v1, +003h
+
+d-BB@0x128 : 
+	80      (00000128) return               v2
+
+d-BB@0x12a : [ d-BB@0x14e d-BB@0x16c ]
+	81      (0000012a) check-cast           v4, Ljava/lang/reflect/TypeVariable;
+	82      (0000012e) check-cast           v5, Ljava/lang/reflect/TypeVariable;
+	83      (00000132) invoke-interface     v4, Ljava/lang/reflect/TypeVariable;->getGenericDeclaration()Ljava/lang/reflect/GenericDeclaration;
+	84      (00000138) move-result-object   v1
+	85      (0000013a) invoke-interface     v5, Ljava/lang/reflect/TypeVariable;->getGenericDeclaration()Ljava/lang/reflect/GenericDeclaration;
+	86      (00000140) move-result-object   v3
+	87      (00000142) invoke-static        v1, v3, Ljava/util/Objects;->equals(Ljava/lang/Object; Ljava/lang/Object;)Z
+	88      (00000148) move-result          v1
+	89      (0000014a) if-eqz               v1, +011h
+
+d-BB@0x14e : [ d-BB@0x16a d-BB@0x16c ]
+	90      (0000014e) invoke-interface     v4, Ljava/lang/reflect/TypeVariable;->getName()Ljava/lang/String;
+	91      (00000154) move-result-object   v4
+	92      (00000156) invoke-interface     v5, Ljava/lang/reflect/TypeVariable;->getName()Ljava/lang/String;
+	93      (0000015c) move-result-object   v5
+	94      (0000015e) invoke-virtual       v4, v5, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	95      (00000164) move-result          v4
+	96      (00000166) if-eqz               v4, +003h
+
+d-BB@0x16a : 
+	97      (0000016a) return               v0
+
+d-BB@0x16c : 
+	98      (0000016c) return               v2
+

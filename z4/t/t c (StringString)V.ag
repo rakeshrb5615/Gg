@@ -1,0 +1,97 @@
+# Lz4/t;->c(Ljava/lang/String; Ljava/lang/String;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:java.lang.String
+# - v7:java.lang.String
+#
+# - return:void
+
+c-BB@0x0 : [ c-BB@0x26 c-BB@0x36 ]
+	0       (00000000) iget-object          v0, v5, Lz4/t;->a Landroid/content/Context;
+	1       (00000004) iget-object          v1, v5, Lz4/t;->b Ljava/lang/String;
+	2       (00000008) invoke-static        v0, v1, Lz4/r;->a(Landroid/content/Context; Ljava/lang/String;)Lz4/r;
+	3       (0000000e) move-result-object   v0
+	4       (00000010) invoke-virtual       v0, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	5       (00000016) invoke-static        v7, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;
+	6       (0000001c) iget-object          v1, v0, Lz4/r;->b Lcom/google/android/gms/internal/firebase-auth-api/zzmy;
+	7       (00000020) const/4              v2, 0
+	8       (00000022) if-nez               v1, +00ah
+
+c-BB@0x26 : [ c-BB@0xb6 ]
+	9       (00000026) const-string         v7, "FirebearStorageCryptoHelper"
+	10      (0000002a) const-string         v0, "KeysetManager failed to initialize - unable to encrypt data"
+	11      (0000002e) invoke-static        v7, v0, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String;)I
+	12      (00000034) goto                 +41h
+
+c-BB@0x36 : [ c-BB@0x38 ]
+	13      (00000036) monitor-enter        v1
+	36:37
+	(Ljava/security/GeneralSecurityException; -> 86 c-BB@0x86)
+
+c-BB@0x38 : [ c-BB@0xb6 ]
+	14      (00000038) iget-object          v0, v0, Lz4/r;->b Lcom/google/android/gms/internal/firebase-auth-api/zzmy;
+	15      (0000003c) invoke-virtual       v0, Lcom/google/android/gms/internal/firebase-auth-api/zzmy;->zza()Lcom/google/android/gms/internal/firebase-auth-api/zzbm;
+	16      (00000042) move-result-object   v0
+	17      (00000044) invoke-static        Lcom/google/android/gms/internal/firebase-auth-api/zzco;->zza()Lcom/google/android/gms/internal/firebase-auth-api/zzbb;
+	18      (0000004a) move-result-object   v3
+	19      (0000004c) const-class          v4, Lcom/google/android/gms/internal/firebase-auth-api/zzba;
+	20      (00000050) invoke-virtual       v0, v3, v4, Lcom/google/android/gms/internal/firebase-auth-api/zzbm;->zza(Lcom/google/android/gms/internal/firebase-auth-api/zzbb; Ljava/lang/Class;)Ljava/lang/Object;
+	21      (00000056) move-result-object   v0
+	22      (00000058) check-cast           v0, Lcom/google/android/gms/internal/firebase-auth-api/zzba;
+	23      (0000005c) sget-object          v3, Ljava/nio/charset/StandardCharsets;->UTF_8 Ljava/nio/charset/Charset;
+	24      (00000060) invoke-virtual       v7, v3, Ljava/lang/String;->getBytes(Ljava/nio/charset/Charset;)[B
+	25      (00000066) move-result-object   v7
+	26      (00000068) invoke-interface     v0, v7, v2, Lcom/google/android/gms/internal/firebase-auth-api/zzba;->zzb([B [B)[B
+	27      (0000006e) move-result-object   v7
+	28      (00000070) const/4              v0, 2
+	29      (00000072) invoke-static        v7, v0, Landroid/util/Base64;->encodeToString([B I)Ljava/lang/String;
+	30      (00000078) move-result-object   v7
+	31      (0000007a) monitor-exit         v1
+	32      (0000007c) move-object          v2, v7
+	33      (0000007e) goto                 +1ch
+	38:83
+	(Ljava/lang/Throwable; -> 80 c-BB@0x80)
+
+c-BB@0x80 : [ c-BB@0x84 ]
+	34      (00000080) move-exception       v7
+	35      (00000082) monitor-exit         v1
+	38:83
+	(Ljava/lang/Throwable; -> 80 c-BB@0x80)
+
+c-BB@0x84 : 
+	36      (00000084) throw                v7
+	84:85
+	(Ljava/security/GeneralSecurityException; -> 86 c-BB@0x86)
+
+c-BB@0x86 : [ c-BB@0xb6 ]
+	37      (00000086) move-exception       v7
+	38      (00000088) const-string         v0, "FirebearStorageCryptoHelper"
+	39      (0000008c) invoke-virtual       v7, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+	40      (00000092) move-result-object   v7
+	41      (00000094) new-instance         v1, Ljava/lang/StringBuilder;
+	42      (00000098) const-string         v3, "Exception encountered while encrypting bytes:
+"
+	43      (0000009c) invoke-direct        v1, v3, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	44      (000000a2) invoke-virtual       v1, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	45      (000000a8) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	46      (000000ae) move-result-object   v7
+	47      (000000b0) invoke-static        v0, v7, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String;)I
+
+c-BB@0xb6 : [ c-BB@0xba c-BB@0xe0 ]
+	48      (000000b6) if-eqz               v2, +015h
+
+c-BB@0xba : [ c-BB@0xe0 ]
+	49      (000000ba) const-string         v7, "ENCRYPTED:"
+	50      (000000be) invoke-virtual       v7, v2, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	51      (000000c4) move-result-object   v7
+	52      (000000c6) iget-object          v0, v5, Lz4/t;->c Landroid/content/SharedPreferences;
+	53      (000000ca) invoke-interface     v0, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
+	54      (000000d0) move-result-object   v0
+	55      (000000d2) invoke-interface     v0, v6, v7, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String; Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
+	56      (000000d8) move-result-object   v6
+	57      (000000da) invoke-interface     v6, Landroid/content/SharedPreferences$Editor;->apply()V
+
+c-BB@0xe0 : 
+	58      (000000e0) return-void          
+

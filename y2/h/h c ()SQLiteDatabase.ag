@@ -1,0 +1,43 @@
+# Ly2/h;->c()Landroid/database/sqlite/SQLiteDatabase; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v9
+#
+# - return:android.database.sqlite.SQLiteDatabase
+
+c-BB@0x0 : [ c-BB@0x16 ]
+	0       (00000000) iget-object          v0, v9, Ly2/h;->a Ly2/j;
+	1       (00000004) invoke-static        v0, Ljava/util/Objects;->requireNonNull(Ljava/lang/Object;)Ljava/lang/Object;
+	2       (0000000a) iget-object          v1, v9, Ly2/h;->c La3/a;
+	3       (0000000e) invoke-interface     v1, La3/a;->b()J
+	4       (00000014) move-result-wide     v2
+
+c-BB@0x16 : 
+	5       (00000016) invoke-virtual       v0, Landroid/database/sqlite/SQLiteOpenHelper;->getWritableDatabase()Landroid/database/sqlite/SQLiteDatabase;
+	6       (0000001c) move-result-object   v0
+	7       (0000001e) return-object        v0
+	16:1d
+	(Landroid/database/sqlite/SQLiteDatabaseLockedException; -> 20 c-BB@0x20)
+
+c-BB@0x20 : [ c-BB@0x3e c-BB@0x4a ]
+	8       (00000020) move-exception       v4
+	9       (00000022) invoke-interface     v1, La3/a;->b()J
+	10      (00000028) move-result-wide     v5
+	11      (0000002a) iget-object          v7, v9, Ly2/h;->d Ly2/a;
+	12      (0000002e) iget                 v7, v7, Ly2/a;->c I
+	13      (00000032) int-to-long          v7, v7
+	14      (00000034) add-long/2addr       v7, v2
+	15      (00000036) cmp-long             v5, v5, v7
+	16      (0000003a) if-gez               v5, +008h
+
+c-BB@0x3e : [ c-BB@0x16 ]
+	17      (0000003e) const-wide/16        v4, 50
+	18      (00000042) invoke-static        v4, v5, Landroid/os/SystemClock;->sleep(J)V
+	19      (00000048) goto                 -19h
+
+c-BB@0x4a : 
+	20      (0000004a) new-instance         v0, Lz2/a;
+	21      (0000004e) const-string         v1, "Timed out while trying to open db."
+	22      (00000052) invoke-direct        v0, v1, v4, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	23      (00000058) throw                v0
+

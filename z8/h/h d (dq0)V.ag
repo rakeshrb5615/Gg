@@ -1,0 +1,40 @@
+# Lz8/h;->d(Lz8/d; Lz8/q0;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:z8.d
+# - v3:z8.q0
+#
+# - return:void
+
+d-BB@0x0 : [ D:d-BB@0xa 0:d-BB@0x16 ]
+	0       (00000000) iget                 v2, v1, Lz8/h;->a I
+	1       (00000004) packed-switch        v2, +0000020h
+
+d-BB@0xa : 
+	2       (0000000a) iget-object          v2, v1, Lz8/h;->b Lz8/j;
+	3       (0000000e) invoke-virtual       v2, v3, Ljava/util/concurrent/CompletableFuture;->complete(Ljava/lang/Object;)Z
+	4       (00000014) return-void          
+
+d-BB@0x16 : [ d-BB@0x26 d-BB@0x32 ]
+	5       (00000016) iget-object          v2, v3, Lz8/q0;->a Lokhttp3/Response;
+	6       (0000001a) iget-boolean         v2, v2, Lokhttp3/Response;->v Z
+	7       (0000001e) iget-object          v0, v1, Lz8/h;->b Lz8/j;
+	8       (00000022) if-eqz               v2, +008h
+
+d-BB@0x26 : [ d-BB@0x42 ]
+	9       (00000026) iget-object          v2, v3, Lz8/q0;->b Ljava/lang/Object;
+	10      (0000002a) invoke-virtual       v0, v2, Ljava/util/concurrent/CompletableFuture;->complete(Ljava/lang/Object;)Z
+	11      (00000030) goto                 +9h
+
+d-BB@0x32 : [ d-BB@0x42 ]
+	12      (00000032) new-instance         v2, La5/o;
+	13      (00000036) invoke-direct        v2, v3, La5/o;-><init>(Lz8/q0;)V
+	14      (0000003c) invoke-virtual       v0, v2, Ljava/util/concurrent/CompletableFuture;->completeExceptionally(Ljava/lang/Throwable;)Z
+
+d-BB@0x42 : 
+	15      (00000042) return-void          
+
+d-BB@0x44 : 
+	16      (00000044) packed-switch-payload 0
+

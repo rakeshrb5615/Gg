@@ -1,0 +1,31 @@
+# Ly6/t;->a(Ljava/lang/Class;)Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:java.lang.Class
+#
+# - return:java.lang.Object
+
+a-BB@0x0 : [ a-BB@0xc a-BB@0x28 ]
+	0       (00000000) invoke-static        v3, Ly6/c;->a(Ljava/lang/Class;)Ljava/lang/String;
+	1       (00000006) move-result-object   v0
+	2       (00000008) if-nez               v0, +010h
+
+a-BB@0xc : 
+	3       (0000000c) const-class          v0, Ljava/lang/Object;
+	4       (00000010) filled-new-array     v3, v0, [Ljava/lang/Object;
+	5       (00000016) move-result-object   v3
+	6       (00000018) iget-object          v0, v2, Ly6/t;->b Ljava/lang/reflect/Method;
+	7       (0000001c) const/4              v1, 0
+	8       (0000001e) invoke-virtual       v0, v1, v3, Ljava/lang/reflect/Method;->invoke(Ljava/lang/Object; [Ljava/lang/Object;)Ljava/lang/Object;
+	9       (00000024) move-result-object   v3
+	10      (00000026) return-object        v3
+
+a-BB@0x28 : 
+	11      (00000028) new-instance         v3, Ljava/lang/AssertionError;
+	12      (0000002c) const-string         v1, "UnsafeAllocator is used for non-instantiable type: "
+	13      (00000030) invoke-virtual       v1, v0, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	14      (00000036) move-result-object   v0
+	15      (00000038) invoke-direct        v3, v0, Ljava/lang/AssertionError;-><init>(Ljava/lang/Object;)V
+	16      (0000003e) throw                v3
+

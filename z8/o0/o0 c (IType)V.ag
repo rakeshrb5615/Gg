@@ -1,0 +1,26 @@
+# Lz8/o0;->c(I Ljava/lang/reflect/Type;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:int
+# - v4:java.lang.reflect.Type
+#
+# - return:void
+
+c-BB@0x0 : [ c-BB@0xc c-BB@0xe ]
+	0       (00000000) invoke-static        v4, Lz8/z0;->j(Ljava/lang/reflect/Type;)Z
+	1       (00000006) move-result          v0
+	2       (00000008) if-nez               v0, +003h
+
+c-BB@0xc : 
+	3       (0000000c) return-void          
+
+c-BB@0xe : 
+	4       (0000000e) const-string         v0, "Parameter type must not include a type variable or wildcard: %s"
+	5       (00000012) filled-new-array     v4, [Ljava/lang/Object;
+	6       (00000018) move-result-object   v4
+	7       (0000001a) iget-object          v1, v2, Lz8/o0;->b Ljava/lang/reflect/Method;
+	8       (0000001e) invoke-static        v1, v3, v0, v4, Lz8/z0;->n(Ljava/lang/reflect/Method; I Ljava/lang/String; [Ljava/lang/Object;)Ljava/lang/IllegalArgumentException;
+	9       (00000024) move-result-object   v3
+	10      (00000026) throw                v3
+

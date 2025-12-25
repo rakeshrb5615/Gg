@@ -1,0 +1,49 @@
+# Lz8/z0;->g(I Ljava/lang/reflect/ParameterizedType;)Ljava/lang/reflect/Type; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:int
+# - v5:java.lang.reflect.ParameterizedType
+#
+# - return:java.lang.reflect.Type
+
+g-BB@0x0 : [ g-BB@0xc g-BB@0x32 ]
+	0       (00000000) invoke-interface     v5, Ljava/lang/reflect/ParameterizedType;->getActualTypeArguments()[Ljava/lang/reflect/Type;
+	1       (00000006) move-result-object   v0
+	2       (00000008) if-ltz               v4, +015h
+
+g-BB@0xc : [ g-BB@0x12 g-BB@0x32 ]
+	3       (0000000c) array-length         v1, v0
+	4       (0000000e) if-ge                v4, v1, +012h
+
+g-BB@0x12 : [ g-BB@0x1e g-BB@0x30 ]
+	5       (00000012) aget-object          v4, v0, v4
+	6       (00000016) instance-of          v5, v4, Ljava/lang/reflect/WildcardType;
+	7       (0000001a) if-eqz               v5, +00bh
+
+g-BB@0x1e : [ g-BB@0x30 ]
+	8       (0000001e) check-cast           v4, Ljava/lang/reflect/WildcardType;
+	9       (00000022) invoke-interface     v4, Ljava/lang/reflect/WildcardType;->getUpperBounds()[Ljava/lang/reflect/Type;
+	10      (00000028) move-result-object   v4
+	11      (0000002a) const/4              v5, 0
+	12      (0000002c) aget-object          v4, v4, v5
+
+g-BB@0x30 : 
+	13      (00000030) return-object        v4
+
+g-BB@0x32 : 
+	14      (00000032) new-instance         v1, Ljava/lang/IllegalArgumentException;
+	15      (00000036) const-string         v2, "Index "
+	16      (0000003a) const-string         v3, " not in range [0,"
+	17      (0000003e) invoke-static        v2, v4, v3, Lv1/a;->p(Ljava/lang/String; I Ljava/lang/String;)Ljava/lang/StringBuilder;
+	18      (00000044) move-result-object   v4
+	19      (00000046) array-length         v0, v0
+	20      (00000048) invoke-virtual       v4, v0, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	21      (0000004e) const-string         v0, ") for "
+	22      (00000052) invoke-virtual       v4, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	23      (00000058) invoke-virtual       v4, v5, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	24      (0000005e) invoke-virtual       v4, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	25      (00000064) move-result-object   v4
+	26      (00000066) invoke-direct        v1, v4, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	27      (0000006c) throw                v1
+

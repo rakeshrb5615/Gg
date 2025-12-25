@@ -1,0 +1,75 @@
+# Lx8/f;->read()I [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v6
+#
+# - return:int
+
+read-BB@0x0 : [ D:read-BB@0xa 0:read-BB@0x6c ]
+	0       (00000000) iget                 v0, v6, Lx8/f;->a I
+	1       (00000004) packed-switch        v0, +000004ah
+
+read-BB@0xa : [ read-BB@0x1e read-BB@0x5c ]
+	2       (0000000a) iget-object          v0, v6, Lx8/f;->b Lx8/i;
+	3       (0000000e) check-cast           v0, Lx8/b0;
+	4       (00000012) iget-object          v1, v0, Lx8/b0;->b Lx8/g;
+	5       (00000016) iget-boolean         v2, v0, Lx8/b0;->c Z
+	6       (0000001a) if-nez               v2, +021h
+
+read-BB@0x1e : [ read-BB@0x2e read-BB@0x4e ]
+	7       (0000001e) iget-wide            v2, v1, Lx8/g;->b J
+	8       (00000022) const-wide/16        v4, 0
+	9       (00000026) cmp-long             v2, v2, v4
+	10      (0000002a) if-nez               v2, +012h
+
+read-BB@0x2e : [ read-BB@0x4a read-BB@0x4e ]
+	11      (0000002e) iget-object          v0, v0, Lx8/b0;->a Lx8/h0;
+	12      (00000032) const-wide/16        v2, 8192
+	13      (00000036) invoke-interface     v0, v1, v2, v3, Lx8/h0;->t(Lx8/g; J)J
+	14      (0000003c) move-result-wide     v2
+	15      (0000003e) const-wide/16        v4, -1
+	16      (00000042) cmp-long             v0, v2, v4
+	17      (00000046) if-nez               v0, +004h
+
+read-BB@0x4a : [ read-BB@0x5a ]
+	18      (0000004a) const/4              v0, -1
+	19      (0000004c) goto                 +7h
+
+read-BB@0x4e : [ read-BB@0x5a ]
+	20      (0000004e) invoke-virtual       v1, Lx8/g;->readByte()B
+	21      (00000054) move-result          v0
+	22      (00000056) and-int/lit16        v0, v0, 255
+
+read-BB@0x5a : 
+	23      (0000005a) return               v0
+
+read-BB@0x5c : 
+	24      (0000005c) new-instance         v0, Ljava/io/IOException;
+	25      (00000060) const-string         v1, "closed"
+	26      (00000064) invoke-direct        v0, v1, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+	27      (0000006a) throw                v0
+
+read-BB@0x6c : [ read-BB@0x84 read-BB@0x92 ]
+	28      (0000006c) iget-object          v0, v6, Lx8/f;->b Lx8/i;
+	29      (00000070) check-cast           v0, Lx8/g;
+	30      (00000074) iget-wide            v1, v0, Lx8/g;->b J
+	31      (00000078) const-wide/16        v3, 0
+	32      (0000007c) cmp-long             v1, v1, v3
+	33      (00000080) if-lez               v1, +009h
+
+read-BB@0x84 : [ read-BB@0x94 ]
+	34      (00000084) invoke-virtual       v0, Lx8/g;->readByte()B
+	35      (0000008a) move-result          v0
+	36      (0000008c) and-int/lit16        v0, v0, 255
+	37      (00000090) goto                 +2h
+
+read-BB@0x92 : [ read-BB@0x94 ]
+	38      (00000092) const/4              v0, -1
+
+read-BB@0x94 : 
+	39      (00000094) return               v0
+
+read-BB@0x96 : 
+	40      (00000096) nop                  
+	41      (00000098) packed-switch-payload 0
+

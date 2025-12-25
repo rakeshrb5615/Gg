@@ -1,0 +1,68 @@
+# Lx8/b0;->t(Lx8/g; J)J [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v7
+# - v8:x8.g
+# - v9:long
+#
+# - return:long
+
+t-BB@0x0 : [ t-BB@0x16 t-BB@0x78 ]
+	0       (00000000) const-string         v0, "sink"
+	1       (00000004) invoke-static        v7, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) const-wide/16        v0, 0
+	3       (0000000e) cmp-long             v2, v8, v0
+	4       (00000012) if-ltz               v2, +033h
+
+t-BB@0x16 : [ t-BB@0x1e t-BB@0x68 ]
+	5       (00000016) iget-boolean         v3, v6, Lx8/b0;->c Z
+	6       (0000001a) if-nez               v3, +027h
+
+t-BB@0x1e : [ t-BB@0x2e t-BB@0x52 ]
+	7       (0000001e) iget-object          v3, v6, Lx8/b0;->b Lx8/g;
+	8       (00000022) iget-wide            v4, v3, Lx8/g;->b J
+	9       (00000026) cmp-long             v4, v4, v0
+	10      (0000002a) if-nez               v4, +014h
+
+t-BB@0x2e : [ t-BB@0x32 t-BB@0x34 ]
+	11      (0000002e) if-nez               v2, +003h
+
+t-BB@0x32 : 
+	12      (00000032) return-wide          v0
+
+t-BB@0x34 : [ t-BB@0x50 t-BB@0x52 ]
+	13      (00000034) iget-object          v0, v6, Lx8/b0;->a Lx8/h0;
+	14      (00000038) const-wide/16        v1, 8192
+	15      (0000003c) invoke-interface     v0, v3, v1, v2, Lx8/h0;->t(Lx8/g; J)J
+	16      (00000042) move-result-wide     v0
+	17      (00000044) const-wide/16        v4, -1
+	18      (00000048) cmp-long             v0, v0, v4
+	19      (0000004c) if-nez               v0, +003h
+
+t-BB@0x50 : 
+	20      (00000050) return-wide          v4
+
+t-BB@0x52 : 
+	21      (00000052) iget-wide            v0, v3, Lx8/g;->b J
+	22      (00000056) invoke-static        v8, v9, v0, v1, Ljava/lang/Math;->min(J J)J
+	23      (0000005c) move-result-wide     v8
+	24      (0000005e) invoke-virtual       v3, v7, v8, v9, Lx8/g;->t(Lx8/g; J)J
+	25      (00000064) move-result-wide     v7
+	26      (00000066) return-wide          v7
+
+t-BB@0x68 : 
+	27      (00000068) new-instance         v7, Ljava/lang/IllegalStateException;
+	28      (0000006c) const-string         v8, "closed"
+	29      (00000070) invoke-direct        v7, v8, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	30      (00000076) throw                v7
+
+t-BB@0x78 : 
+	31      (00000078) const-string         v7, "byteCount < 0: "
+	32      (0000007c) invoke-static        v8, v9, v7, Lv1/a;->g(J Ljava/lang/String;)Ljava/lang/String;
+	33      (00000082) move-result-object   v7
+	34      (00000084) new-instance         v8, Ljava/lang/IllegalArgumentException;
+	35      (00000088) invoke-virtual       v7, Ljava/lang/Object;->toString()Ljava/lang/String;
+	36      (0000008e) move-result-object   v7
+	37      (00000090) invoke-direct        v8, v7, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	38      (00000096) throw                v8
+

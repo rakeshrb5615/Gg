@@ -1,0 +1,57 @@
+# Lx8/g;->e(J)Lx8/j; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:long
+#
+# - return:x8.j
+
+e-BB@0x0 : [ e-BB@0xc e-BB@0x64 ]
+	0       (00000000) const-wide/16        v0, 0
+	1       (00000004) cmp-long             v0, v3, v0
+	2       (00000008) if-ltz               v0, +02eh
+
+e-BB@0xc : [ e-BB@0x1a e-BB@0x64 ]
+	3       (0000000c) const-wide/32        v0, 2147483647
+	4       (00000012) cmp-long             v0, v3, v0
+	5       (00000016) if-gtz               v0, +027h
+
+e-BB@0x1a : [ e-BB@0x26 e-BB@0x58 ]
+	6       (0000001a) iget-wide            v0, v2, Lx8/g;->b J
+	7       (0000001e) cmp-long             v0, v0, v3
+	8       (00000022) if-ltz               v0, +01bh
+
+e-BB@0x26 : [ e-BB@0x32 e-BB@0x44 ]
+	9       (00000026) const-wide/16        v0, 4096
+	10      (0000002a) cmp-long             v0, v3, v0
+	11      (0000002e) if-ltz               v0, +00bh
+
+e-BB@0x32 : 
+	12      (00000032) long-to-int          v0, v3
+	13      (00000034) invoke-virtual       v2, v0, Lx8/g;->I(I)Lx8/j;
+	14      (0000003a) move-result-object   v0
+	15      (0000003c) invoke-virtual       v2, v3, v4, Lx8/g;->skip(J)V
+	16      (00000042) return-object        v0
+
+e-BB@0x44 : 
+	17      (00000044) new-instance         v0, Lx8/j;
+	18      (00000048) invoke-virtual       v2, v3, v4, Lx8/g;->D(J)[B
+	19      (0000004e) move-result-object   v3
+	20      (00000050) invoke-direct        v0, v3, Lx8/j;-><init>([B)V
+	21      (00000056) return-object        v0
+
+e-BB@0x58 : 
+	22      (00000058) new-instance         v3, Ljava/io/EOFException;
+	23      (0000005c) invoke-direct        v3, Ljava/io/EOFException;-><init>()V
+	24      (00000062) throw                v3
+
+e-BB@0x64 : 
+	25      (00000064) const-string         v0, "byteCount: "
+	26      (00000068) invoke-static        v3, v4, v0, Lv1/a;->g(J Ljava/lang/String;)Ljava/lang/String;
+	27      (0000006e) move-result-object   v3
+	28      (00000070) new-instance         v4, Ljava/lang/IllegalArgumentException;
+	29      (00000074) invoke-virtual       v3, Ljava/lang/Object;->toString()Ljava/lang/String;
+	30      (0000007a) move-result-object   v3
+	31      (0000007c) invoke-direct        v4, v3, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	32      (00000082) throw                v4
+

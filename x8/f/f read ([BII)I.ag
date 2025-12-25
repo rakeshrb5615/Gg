@@ -1,0 +1,72 @@
+# Lx8/f;->read([B I I)I [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v9
+# - v10:byte[]
+# - v11:int
+# - v12:int
+#
+# - return:int
+
+read-BB@0x0 : [ D:read-BB@0xa 0:read-BB@0x80 ]
+	0       (00000000) iget                 v0, v9, Lx8/f;->a I
+	1       (00000004) packed-switch        v0, +000004ch
+
+read-BB@0xa : [ read-BB@0x28 read-BB@0x70 ]
+	2       (0000000a) const-string         v0, "data"
+	3       (0000000e) invoke-static        v10, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	4       (00000014) iget-object          v0, v9, Lx8/f;->b Lx8/i;
+	5       (00000018) check-cast           v0, Lx8/b0;
+	6       (0000001c) iget-object          v1, v0, Lx8/b0;->b Lx8/g;
+	7       (00000020) iget-boolean         v2, v0, Lx8/b0;->c Z
+	8       (00000024) if-nez               v2, +026h
+
+read-BB@0x28 : [ read-BB@0x46 read-BB@0x66 ]
+	9       (00000028) array-length         v2, v10
+	10      (0000002a) int-to-long          v3, v2
+	11      (0000002c) int-to-long          v5, v11
+	12      (0000002e) int-to-long          v7, v12
+	13      (00000030) invoke-static/range  v3 ... v8, Lx8/b;->e(J J J)V
+	14      (00000036) iget-wide            v2, v1, Lx8/g;->b J
+	15      (0000003a) const-wide/16        v4, 0
+	16      (0000003e) cmp-long             v2, v2, v4
+	17      (00000042) if-nez               v2, +012h
+
+read-BB@0x46 : [ read-BB@0x62 read-BB@0x66 ]
+	18      (00000046) iget-object          v0, v0, Lx8/b0;->a Lx8/h0;
+	19      (0000004a) const-wide/16        v2, 8192
+	20      (0000004e) invoke-interface     v0, v1, v2, v3, Lx8/h0;->t(Lx8/g; J)J
+	21      (00000054) move-result-wide     v2
+	22      (00000056) const-wide/16        v4, -1
+	23      (0000005a) cmp-long             v0, v2, v4
+	24      (0000005e) if-nez               v0, +004h
+
+read-BB@0x62 : [ read-BB@0x6e ]
+	25      (00000062) const/4              v10, -1
+	26      (00000064) goto                 +5h
+
+read-BB@0x66 : [ read-BB@0x6e ]
+	27      (00000066) invoke-virtual       v1, v10, v11, v12, Lx8/g;->read([B I I)I
+	28      (0000006c) move-result          v10
+
+read-BB@0x6e : 
+	29      (0000006e) return               v10
+
+read-BB@0x70 : 
+	30      (00000070) new-instance         v10, Ljava/io/IOException;
+	31      (00000074) const-string         v11, "closed"
+	32      (00000078) invoke-direct        v10, v11, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+	33      (0000007e) throw                v10
+
+read-BB@0x80 : 
+	34      (00000080) const-string         v0, "sink"
+	35      (00000084) invoke-static        v10, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	36      (0000008a) iget-object          v0, v9, Lx8/f;->b Lx8/i;
+	37      (0000008e) check-cast           v0, Lx8/g;
+	38      (00000092) invoke-virtual       v0, v10, v11, v12, Lx8/g;->read([B I I)I
+	39      (00000098) move-result          v10
+	40      (0000009a) return               v10
+
+read-BB@0x9c : 
+	41      (0000009c) packed-switch-payload 0
+

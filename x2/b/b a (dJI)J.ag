@@ -1,0 +1,60 @@
+# Lx2/b;->a(Lo2/d; J I)J [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v9
+# - v10:o2.d
+# - v11:long
+# - v12:int
+#
+# - return:long
+
+a-BB@0x0 : [ a-BB@0x32 a-BB@0x36 ]
+	0       (00000000) iget-object          v0, v8, Lx2/b;->a La3/a;
+	1       (00000004) invoke-interface     v0, La3/a;->b()J
+	2       (0000000a) move-result-wide     v0
+	3       (0000000c) sub-long/2addr       v10, v0
+	4       (0000000e) iget-object          v0, v8, Lx2/b;->b Ljava/util/HashMap;
+	5       (00000012) invoke-virtual       v0, v9, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	6       (00000018) move-result-object   v9
+	7       (0000001a) check-cast           v9, Lx2/c;
+	8       (0000001e) iget-wide            v0, v9, Lx2/c;->a J
+	9       (00000022) add-int/lit8         v12, v12, -1
+	10      (00000026) const-wide/16        v2, 1
+	11      (0000002a) cmp-long             v2, v0, v2
+	12      (0000002e) if-lez               v2, +004h
+
+a-BB@0x32 : [ a-BB@0x3a ]
+	13      (00000032) move-wide            v2, v0
+	14      (00000034) goto                 +3h
+
+a-BB@0x36 : [ a-BB@0x3a ]
+	15      (00000036) const-wide/16        v2, 2
+
+a-BB@0x3a : 
+	16      (0000003a) const-wide           v4, 4666723172467343360
+	17      (00000044) invoke-static        v4, v5, Ljava/lang/Math;->log(D)D
+	18      (0000004a) move-result-wide     v4
+	19      (0000004c) int-to-long          v6, v12
+	20      (0000004e) mul-long/2addr       v2, v6
+	21      (00000050) long-to-double       v2, v2
+	22      (00000052) invoke-static        v2, v3, Ljava/lang/Math;->log(D)D
+	23      (00000058) move-result-wide     v2
+	24      (0000005a) div-double/2addr     v4, v2
+	25      (0000005c) const-wide/high16    v2, 4607182418800017408
+	26      (00000060) invoke-static        v2, v3, v4, v5, Ljava/lang/Math;->max(D D)D
+	27      (00000066) move-result-wide     v2
+	28      (00000068) const-wide/high16    v4, 4613937818241073152
+	29      (0000006c) int-to-double        v6, v12
+	30      (0000006e) invoke-static        v4, v5, v6, v7, Ljava/lang/Math;->pow(D D)D
+	31      (00000074) move-result-wide     v4
+	32      (00000076) long-to-double       v0, v0
+	33      (00000078) mul-double/2addr     v4, v0
+	34      (0000007a) mul-double/2addr     v4, v2
+	35      (0000007c) double-to-long       v0, v4
+	36      (0000007e) invoke-static        v0, v1, v10, v11, Ljava/lang/Math;->max(J J)J
+	37      (00000084) move-result-wide     v10
+	38      (00000086) iget-wide            v0, v9, Lx2/c;->b J
+	39      (0000008a) invoke-static        v10, v11, v0, v1, Ljava/lang/Math;->min(J J)J
+	40      (00000090) move-result-wide     v9
+	41      (00000092) return-wide          v9
+

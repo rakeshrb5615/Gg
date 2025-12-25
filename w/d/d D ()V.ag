@@ -1,0 +1,39 @@
+# Lw/d;->D()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v4
+#
+# - return:void
+
+D-BB@0x0 : [ D-BB@0x8 D-BB@0x1a ]
+	0       (00000000) iget-object          v0, v4, Lw/d;->T Lw/d;
+	1       (00000004) if-eqz               v0, +00bh
+
+D-BB@0x8 : [ D-BB@0x10 D-BB@0x1a ]
+	2       (00000008) instance-of          v1, v0, Lw/e;
+	3       (0000000c) if-eqz               v1, +007h
+
+D-BB@0x10 : [ D-BB@0x1a ]
+	4       (00000010) check-cast           v0, Lw/e;
+	5       (00000014) invoke-virtual       v0, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+D-BB@0x1a : [ D-BB@0x28 ]
+	6       (0000001a) iget-object          v0, v4, Lw/d;->R Ljava/util/ArrayList;
+	7       (0000001e) invoke-virtual       v0, Ljava/util/ArrayList;->size()I
+	8       (00000024) move-result          v1
+	9       (00000026) const/4              v2, 0
+
+D-BB@0x28 : [ D-BB@0x2c D-BB@0x44 ]
+	10      (00000028) if-ge                v2, v1, +00eh
+
+D-BB@0x2c : [ D-BB@0x28 ]
+	11      (0000002c) invoke-virtual       v0, v2, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	12      (00000032) move-result-object   v3
+	13      (00000034) check-cast           v3, Lw/c;
+	14      (00000038) invoke-virtual       v3, Lw/c;->j()V
+	15      (0000003e) add-int/lit8         v2, v2, 1
+	16      (00000042) goto                 -dh
+
+D-BB@0x44 : 
+	17      (00000044) return-void          
+

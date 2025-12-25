@@ -1,0 +1,34 @@
+# Lw/c;->c(I Ljava/util/ArrayList; Lx/n;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:int
+# - v4:java.util.ArrayList
+# - v5:x.n
+#
+# - return:void
+
+c-BB@0x0 : [ c-BB@0x8 c-BB@0x34 ]
+	0       (00000000) iget-object          v0, v2, Lw/c;->a Ljava/util/HashSet;
+	1       (00000004) if-eqz               v0, +018h
+
+c-BB@0x8 : [ c-BB@0x10 ]
+	2       (00000008) invoke-virtual       v0, Ljava/util/HashSet;->iterator()Ljava/util/Iterator;
+	3       (0000000e) move-result-object   v0
+
+c-BB@0x10 : [ c-BB@0x1c c-BB@0x34 ]
+	4       (00000010) invoke-interface     v0, Ljava/util/Iterator;->hasNext()Z
+	5       (00000016) move-result          v1
+	6       (00000018) if-eqz               v1, +00eh
+
+c-BB@0x1c : [ c-BB@0x10 ]
+	7       (0000001c) invoke-interface     v0, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	8       (00000022) move-result-object   v1
+	9       (00000024) check-cast           v1, Lw/c;
+	10      (00000028) iget-object          v1, v1, Lw/c;->d Lw/d;
+	11      (0000002c) invoke-static        v1, v3, v4, v5, Lx/h;->b(Lw/d; I Ljava/util/ArrayList; Lx/n;)Lx/n;
+	12      (00000032) goto                 -11h
+
+c-BB@0x34 : 
+	13      (00000034) return-void          
+

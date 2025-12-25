@@ -1,0 +1,40 @@
+# Lw5/b;->write([B I I)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:byte[]
+# - v4:int
+# - v5:int
+#
+# - return:void
+
+write-BB@0x0 : [ write-BB@0x4 write-BB@0x28 ]
+	0       (00000000) if-ltz               v4, +014h
+
+write-BB@0x4 : [ write-BB@0xa write-BB@0x28 ]
+	1       (00000004) array-length         v0, v3
+	2       (00000006) if-gt                v4, v0, +011h
+
+write-BB@0xa : [ write-BB@0xe write-BB@0x28 ]
+	3       (0000000a) if-ltz               v5, +00fh
+
+write-BB@0xe : [ write-BB@0x16 write-BB@0x28 ]
+	4       (0000000e) add-int/2addr        v4, v5
+	5       (00000010) array-length         v3, v3
+	6       (00000012) if-gt                v4, v3, +00bh
+
+write-BB@0x16 : [ write-BB@0x1a write-BB@0x28 ]
+	7       (00000016) if-ltz               v4, +009h
+
+write-BB@0x1a : 
+	8       (0000001a) iget-wide            v3, v2, Lw5/b;->a J
+	9       (0000001e) int-to-long          v0, v5
+	10      (00000020) add-long/2addr       v3, v0
+	11      (00000022) iput-wide            v3, v2, Lw5/b;->a J
+	12      (00000026) return-void          
+
+write-BB@0x28 : 
+	13      (00000028) new-instance         v3, Ljava/lang/IndexOutOfBoundsException;
+	14      (0000002c) invoke-direct        v3, Ljava/lang/IndexOutOfBoundsException;-><init>()V
+	15      (00000032) throw                v3
+

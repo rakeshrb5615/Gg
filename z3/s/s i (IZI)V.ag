@@ -1,0 +1,133 @@
+# Lz3/s;->i(I Z I)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v16
+# - v17:int
+# - v18:boolean
+# - v19:int
+#
+# - return:void
+
+i-BB@0x0 : [ i-BB@0x14 i-BB@0x16 ]
+	0       (00000000) move-object/from16   v0, v16
+	1       (00000004) move/from16          v5, v17
+	2       (00000008) move/from16          v7, v18
+	3       (0000000c) move/from16          v6, v19
+	4       (00000010) if-ne                v5, v6, +003h
+
+i-BB@0x14 : 
+	5       (00000014) return-void          
+
+i-BB@0x16 : [ i-BB@0x1c i-BB@0xf4 ]
+	6       (00000016) const/4              v8, 0
+	7       (00000018) if-eqz               v7, +06eh
+
+i-BB@0x1c : [ i-BB@0x6a ]
+	8       (0000001c) new-instance         v9, Landroid/animation/AnimatorSet;
+	9       (00000020) invoke-direct        v9, Landroid/animation/AnimatorSet;-><init>()V
+	10      (00000026) iput-object          v9, v0, Lz3/s;->l Landroid/animation/AnimatorSet;
+	11      (0000002a) new-instance         v1, Ljava/util/ArrayList;
+	12      (0000002e) invoke-direct        v1, Ljava/util/ArrayList;-><init>()V
+	13      (00000034) iget-boolean         v2, v0, Lz3/s;->x Z
+	14      (00000038) iget-object          v3, v0, Lz3/s;->y Ln/b1;
+	15      (0000003c) const/4              v4, 2
+	16      (0000003e) invoke-virtual/range v0 ... v6, Lz3/s;->d(Ljava/util/ArrayList; Z Ln/b1; I I I)V
+	17      (00000044) iget-boolean         v2, v0, Lz3/s;->q Z
+	18      (00000048) iget-object          v3, v0, Lz3/s;->r Ln/b1;
+	19      (0000004c) const/4              v4, 1
+	20      (0000004e) move/from16          v5, v17
+	21      (00000052) move/from16          v6, v19
+	22      (00000056) invoke-virtual/range v0 ... v6, Lz3/s;->d(Ljava/util/ArrayList; Z Ln/b1; I I I)V
+	23      (0000005c) invoke-virtual       v1, Ljava/util/ArrayList;->size()I
+	24      (00000062) move-result          v2
+	25      (00000064) const-wide/16        v3, 0
+	26      (00000068) move                 v5, v8
+
+i-BB@0x6a : [ i-BB@0x6e i-BB@0x9a ]
+	27      (0000006a) if-ge                v5, v2, +018h
+
+i-BB@0x6e : [ i-BB@0x6a ]
+	28      (0000006e) invoke-virtual       v1, v5, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	29      (00000074) move-result-object   v10
+	30      (00000076) check-cast           v10, Landroid/animation/Animator;
+	31      (0000007a) invoke-virtual       v10, Landroid/animation/Animator;->getStartDelay()J
+	32      (00000080) move-result-wide     v11
+	33      (00000082) invoke-virtual       v10, Landroid/animation/Animator;->getDuration()J
+	34      (00000088) move-result-wide     v13
+	35      (0000008a) add-long/2addr       v13, v11
+	36      (0000008c) invoke-static        v3, v4, v13, v14, Ljava/lang/Math;->max(J J)J
+	37      (00000092) move-result-wide     v3
+	38      (00000094) add-int/lit8         v5, v5, 1
+	39      (00000098) goto                 -17h
+
+i-BB@0x9a : [ i-BB@0x144 ]
+	40      (0000009a) filled-new-array     v8, v8, [I
+	41      (000000a0) move-result-object   v2
+	42      (000000a2) invoke-static        v2, Landroid/animation/ValueAnimator;->ofInt([I)Landroid/animation/ValueAnimator;
+	43      (000000a8) move-result-object   v2
+	44      (000000aa) invoke-virtual       v2, v3, v4, Landroid/animation/Animator;->setDuration(J)Landroid/animation/Animator;
+	45      (000000b0) invoke-virtual       v1, v8, v2, Ljava/util/ArrayList;->add(I Ljava/lang/Object;)V
+	46      (000000b6) invoke-virtual       v9, v1, Landroid/animation/AnimatorSet;->playTogether(Ljava/util/Collection;)V
+	47      (000000bc) invoke-virtual/range v16 ... v17, Lz3/s;->e(I)Landroid/widget/TextView;
+	48      (000000c2) move-result-object   v3
+	49      (000000c4) invoke-virtual       v0, v6, Lz3/s;->e(I)Landroid/widget/TextView;
+	50      (000000ca) move-result-object   v5
+	51      (000000cc) new-instance         v0, Lz3/q;
+	52      (000000d0) move-object/from16   v1, v16
+	53      (000000d4) move/from16          v4, v17
+	54      (000000d8) move                 v2, v6
+	55      (000000da) invoke-direct/range  v0 ... v5, Lz3/q;-><init>(Lz3/s; I Landroid/widget/TextView; I Landroid/widget/TextView;)V
+	56      (000000e0) move-object          v15, v1
+	57      (000000e2) move-object          v1, v0
+	58      (000000e4) move-object          v0, v15
+	59      (000000e6) invoke-virtual       v9, v1, Landroid/animation/Animator;->addListener(Landroid/animation/Animator$AnimatorListener;)V
+	60      (000000ec) invoke-virtual       v9, Landroid/animation/AnimatorSet;->start()V
+	61      (000000f2) goto                 +29h
+
+i-BB@0xf4 : [ i-BB@0xf8 i-BB@0xfa ]
+	62      (000000f4) if-ne                v5, v6, +003h
+
+i-BB@0xf8 : [ i-BB@0x144 ]
+	63      (000000f8) goto                 +26h
+
+i-BB@0xfa : [ i-BB@0xfe i-BB@0x11a ]
+	64      (000000fa) if-eqz               v6, +010h
+
+i-BB@0xfe : [ i-BB@0x10a i-BB@0x11a ]
+	65      (000000fe) invoke-virtual       v0, v6, Lz3/s;->e(I)Landroid/widget/TextView;
+	66      (00000104) move-result-object   v1
+	67      (00000106) if-eqz               v1, +00ah
+
+i-BB@0x10a : [ i-BB@0x11a ]
+	68      (0000010a) invoke-virtual       v1, v8, Landroid/view/View;->setVisibility(I)V
+	69      (00000110) const/high16         v2, 1065353216
+	70      (00000114) invoke-virtual       v1, v2, Landroid/view/View;->setAlpha(F)V
+
+i-BB@0x11a : [ i-BB@0x11e i-BB@0x140 ]
+	71      (0000011a) if-eqz               v5, +013h
+
+i-BB@0x11e : [ i-BB@0x12a i-BB@0x140 ]
+	72      (0000011e) invoke-virtual/range v16 ... v17, Lz3/s;->e(I)Landroid/widget/TextView;
+	73      (00000124) move-result-object   v1
+	74      (00000126) if-eqz               v1, +00dh
+
+i-BB@0x12a : [ i-BB@0x138 i-BB@0x140 ]
+	75      (0000012a) const/4              v2, 4
+	76      (0000012c) invoke-virtual       v1, v2, Landroid/view/View;->setVisibility(I)V
+	77      (00000132) const/4              v2, 1
+	78      (00000134) if-ne                v5, v2, +006h
+
+i-BB@0x138 : [ i-BB@0x140 ]
+	79      (00000138) const/4              v2, 0
+	80      (0000013a) invoke-virtual       v1, v2, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
+i-BB@0x140 : [ i-BB@0x144 ]
+	81      (00000140) iput                 v6, v0, Lz3/s;->n I
+
+i-BB@0x144 : 
+	82      (00000144) iget-object          v1, v0, Lz3/s;->h Lcom/google/android/material/textfield/TextInputLayout;
+	83      (00000148) invoke-virtual       v1, Lcom/google/android/material/textfield/TextInputLayout;->t()V
+	84      (0000014e) invoke-virtual       v1, v7, v8, Lcom/google/android/material/textfield/TextInputLayout;->w(Z Z)V
+	85      (00000154) invoke-virtual       v1, Lcom/google/android/material/textfield/TextInputLayout;->z()V
+	86      (0000015a) return-void          
+

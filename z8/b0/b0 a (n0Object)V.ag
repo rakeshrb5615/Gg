@@ -1,0 +1,47 @@
+# Lz8/b0;->a(Lz8/n0; Ljava/lang/Object;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:z8.n0
+# - v7:java.lang.Object
+#
+# - return:void
+
+a-BB@0x0 : [ a-BB@0xe a-BB@0x5a ]
+	0       (00000000) const/4              v0, 0
+	1       (00000002) iget                 v1, v5, Lz8/b0;->e I
+	2       (00000006) iget-object          v2, v5, Lz8/b0;->d Ljava/lang/reflect/Method;
+	3       (0000000a) if-eqz               v7, +028h
+
+a-BB@0xe : 
+	4       (0000000e) iget-object          v3, v5, Lz8/b0;->f Lz8/m;
+	5       (00000012) invoke-interface     v3, v7, Lz8/m;->e(Ljava/lang/Object;)Ljava/lang/Object;
+	6       (00000018) move-result-object   v3
+	7       (0000001a) check-cast           v3, Lokhttp3/RequestBody;
+	8       (0000001e) iput-object          v3, v6, Lz8/n0;->k Lokhttp3/RequestBody;
+	9       (00000022) return-void          
+	e:1d
+	(Ljava/io/IOException; -> 24 a-BB@0x24)
+
+a-BB@0x24 : 
+	10      (00000024) move-exception       v6
+	11      (00000026) new-instance         v3, Ljava/lang/StringBuilder;
+	12      (0000002a) const-string         v4, "Unable to convert "
+	13      (0000002e) invoke-direct        v3, v4, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	14      (00000034) invoke-virtual       v3, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	15      (0000003a) const-string         v7, " to RequestBody"
+	16      (0000003e) invoke-virtual       v3, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	17      (00000044) invoke-virtual       v3, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	18      (0000004a) move-result-object   v7
+	19      (0000004c) new-array            v0, v0, [Ljava/lang/Object;
+	20      (00000050) invoke-static        v2, v6, v1, v7, v0, Lz8/z0;->o(Ljava/lang/reflect/Method; Ljava/lang/Exception; I Ljava/lang/String; [Ljava/lang/Object;)Ljava/lang/IllegalArgumentException;
+	21      (00000056) move-result-object   v6
+	22      (00000058) throw                v6
+
+a-BB@0x5a : 
+	23      (0000005a) const-string         v6, "Body parameter value must not be null."
+	24      (0000005e) new-array            v7, v0, [Ljava/lang/Object;
+	25      (00000062) invoke-static        v2, v1, v6, v7, Lz8/z0;->n(Ljava/lang/reflect/Method; I Ljava/lang/String; [Ljava/lang/Object;)Ljava/lang/IllegalArgumentException;
+	26      (00000068) move-result-object   v6
+	27      (0000006a) throw                v6
+

@@ -1,0 +1,30 @@
+package z6;
+public class i0 extends w6.z {
+
+    public i0()
+    {
+        return;
+    }
+
+    public final Object b(e7.a p3)
+    {
+        if (p3.O() != 9) {
+            return new StringBuffer(p3.M());
+        } else {
+            p3.K();
+            return 0;
+        }
+    }
+
+    public final void c(e7.b p1, Object p2)
+    {
+        String v2_2;
+        if (((StringBuffer) p2) != null) {
+            v2_2 = ((StringBuffer) p2).toString();
+        } else {
+            v2_2 = 0;
+        }
+        p1.I(v2_2);
+        return;
+    }
+}

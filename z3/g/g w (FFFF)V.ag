@@ -1,0 +1,44 @@
+# Lz3/g;->w(F F F F)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:float
+# - v4:float
+# - v5:float
+# - v6:float
+#
+# - return:void
+
+w-BB@0x0 : [ w-BB@0x14 w-BB@0x3c ]
+	0       (00000000) iget-object          v0, v2, Lz3/g;->M Lz3/f;
+	1       (00000004) iget-object          v0, v0, Lz3/f;->s Landroid/graphics/RectF;
+	2       (00000008) iget                 v1, v0, Landroid/graphics/RectF;->left F
+	3       (0000000c) cmpl-float           v1, v3, v1
+	4       (00000010) if-nez               v1, +016h
+
+w-BB@0x14 : [ w-BB@0x20 w-BB@0x3c ]
+	5       (00000014) iget                 v1, v0, Landroid/graphics/RectF;->top F
+	6       (00000018) cmpl-float           v1, v4, v1
+	7       (0000001c) if-nez               v1, +010h
+
+w-BB@0x20 : [ w-BB@0x2c w-BB@0x3c ]
+	8       (00000020) iget                 v1, v0, Landroid/graphics/RectF;->right F
+	9       (00000024) cmpl-float           v1, v5, v1
+	10      (00000028) if-nez               v1, +00ah
+
+w-BB@0x2c : [ w-BB@0x38 w-BB@0x3a ]
+	11      (0000002c) iget                 v1, v0, Landroid/graphics/RectF;->bottom F
+	12      (00000030) cmpl-float           v1, v6, v1
+	13      (00000034) if-eqz               v1, +003h
+
+w-BB@0x38 : [ w-BB@0x3c ]
+	14      (00000038) goto                 +2h
+
+w-BB@0x3a : 
+	15      (0000003a) return-void          
+
+w-BB@0x3c : 
+	16      (0000003c) invoke-virtual       v0, v3, v4, v5, v6, Landroid/graphics/RectF;->set(F F F F)V
+	17      (00000042) invoke-virtual       v2, Lv3/k;->invalidateSelf()V
+	18      (00000048) return-void          
+

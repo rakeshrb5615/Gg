@@ -1,0 +1,108 @@
+# Lz4/r;->a(Landroid/content/Context; Ljava/lang/String;)Lz4/r; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:android.content.Context
+# - v6:java.lang.String
+#
+# - return:z4.r
+
+a-BB@0x0 : [ a-BB@0x8 a-BB@0x18 ]
+	0       (00000000) sget-object          v0, Lz4/r;->c Lz4/r;
+	1       (00000004) if-eqz               v0, +00ah
+
+a-BB@0x8 : [ a-BB@0x18 a-BB@0xee ]
+	2       (00000008) iget-object          v0, v0, Lz4/r;->a Ljava/lang/String;
+	3       (0000000c) invoke-static        v0, v6, Ljava/util/Objects;->equals(Ljava/lang/Object; Ljava/lang/Object;)Z
+	4       (00000012) move-result          v0
+	5       (00000014) if-nez               v0, +06dh
+
+a-BB@0x18 : [ a-BB@0x1c ]
+	6       (00000018) new-instance         v0, Lz4/r;
+
+a-BB@0x1c : [ a-BB@0xe4 ]
+	7       (0000001c) invoke-static        Lcom/google/android/gms/internal/firebase-auth-api/zzcl;->zza()V
+	8       (00000022) invoke-static        v5, v6, Lz4/r;->b(Landroid/content/Context; Ljava/lang/String;)Lcom/google/android/gms/internal/firebase-auth-api/zzmy;
+	9       (00000028) move-result-object   v5
+	10      (0000002a) goto                 +5dh
+	1c:29
+	(Ljava/security/GeneralSecurityException; -> 30 a-BB@0x30)
+	(Ljava/io/IOException; -> 2c a-BB@0x2c)
+
+a-BB@0x2c : [ a-BB@0x32 ]
+	11      (0000002c) move-exception       v1
+	12      (0000002e) goto                 +2h
+
+a-BB@0x30 : [ a-BB@0x32 ]
+	13      (00000030) move-exception       v1
+
+a-BB@0x32 : [ a-BB@0x68 a-BB@0xe2 ]
+	14      (00000032) invoke-virtual       v1, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+	15      (00000038) move-result-object   v2
+	16      (0000003a) new-instance         v3, Ljava/lang/StringBuilder;
+	17      (0000003e) const-string         v4, "Exception encountered during crypto setup:
+"
+	18      (00000042) invoke-direct        v3, v4, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	19      (00000048) invoke-virtual       v3, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	20      (0000004e) invoke-virtual       v3, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	21      (00000054) move-result-object   v2
+	22      (00000056) const-string         v3, "FirebearStorageCryptoHelper"
+	23      (0000005a) invoke-static        v3, v2, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String;)I
+	24      (00000060) instance-of          v1, v1, Ljava/security/GeneralSecurityException;
+	25      (00000064) if-eqz               v1, +03fh
+
+a-BB@0x68 : [ a-BB@0xa8 ]
+	26      (00000068) new-instance         v1, Ljava/lang/StringBuilder;
+	27      (0000006c) const-string         v2, "com.google.firebase.auth.api.crypto."
+	28      (00000070) invoke-direct        v1, v2, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	29      (00000076) invoke-virtual       v1, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	30      (0000007c) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	31      (00000082) move-result-object   v1
+	32      (00000084) const/4              v2, 0
+	33      (00000086) invoke-virtual       v5, v1, v2, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String; I)Landroid/content/SharedPreferences;
+	34      (0000008c) move-result-object   v1
+	35      (0000008e) invoke-interface     v1, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
+	36      (00000094) move-result-object   v1
+	37      (00000096) const-string         v2, "StorageCryptoKeyset"
+	38      (0000009a) invoke-interface     v1, v2, Landroid/content/SharedPreferences$Editor;->remove(Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
+	39      (000000a0) move-result-object   v1
+	40      (000000a2) invoke-interface     v1, Landroid/content/SharedPreferences$Editor;->apply()V
+
+a-BB@0xa8 : [ a-BB@0xe4 ]
+	41      (000000a8) invoke-static        v5, v6, Lz4/r;->b(Landroid/content/Context; Ljava/lang/String;)Lcom/google/android/gms/internal/firebase-auth-api/zzmy;
+	42      (000000ae) move-result-object   v5
+	43      (000000b0) goto                 +1ah
+	a8:af
+	(Ljava/security/GeneralSecurityException; -> b6 a-BB@0xb6)
+	(Ljava/io/IOException; -> b2 a-BB@0xb2)
+
+a-BB@0xb2 : [ a-BB@0xb8 ]
+	44      (000000b2) move-exception       v5
+	45      (000000b4) goto                 +2h
+
+a-BB@0xb6 : [ a-BB@0xb8 ]
+	46      (000000b6) move-exception       v5
+
+a-BB@0xb8 : [ a-BB@0xe2 ]
+	47      (000000b8) invoke-virtual       v5, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+	48      (000000be) move-result-object   v5
+	49      (000000c0) new-instance         v1, Ljava/lang/StringBuilder;
+	50      (000000c4) const-string         v2, "Exception encountered during second attempt to crypto setup:
+"
+	51      (000000c8) invoke-direct        v1, v2, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	52      (000000ce) invoke-virtual       v1, v5, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	53      (000000d4) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	54      (000000da) move-result-object   v5
+	55      (000000dc) invoke-static        v3, v5, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String;)I
+
+a-BB@0xe2 : [ a-BB@0xe4 ]
+	56      (000000e2) const/4              v5, 0
+
+a-BB@0xe4 : [ a-BB@0xee ]
+	57      (000000e4) invoke-direct        v0, v6, v5, Lz4/r;-><init>(Ljava/lang/String; Lcom/google/android/gms/internal/firebase-auth-api/zzmy;)V
+	58      (000000ea) sput-object          v0, Lz4/r;->c Lz4/r;
+
+a-BB@0xee : 
+	59      (000000ee) sget-object          v5, Lz4/r;->c Lz4/r;
+	60      (000000f2) return-object        v5
+

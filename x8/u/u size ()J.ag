@@ -1,0 +1,52 @@
+# Lx8/u;->size()J [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v3
+#
+# - return:long
+
+size-BB@0x0 : [ size-BB@0xa ]
+	0       (00000000) iget-object          v0, v3, Lx8/u;->c Ljava/util/concurrent/locks/ReentrantLock;
+	1       (00000004) invoke-virtual       v0, Ljava/util/concurrent/locks/ReentrantLock;->lock()V
+
+size-BB@0xa : [ size-BB@0x12 size-BB@0x30 ]
+	2       (0000000a) iget-boolean         v1, v3, Lx8/u;->a Z
+	3       (0000000e) if-nez               v1, +011h
+	a:d
+	(Ljava/lang/Throwable; -> 40 size-BB@0x40)
+
+size-BB@0x12 : [ size-BB@0x1a ]
+	4       (00000012) invoke-virtual       v0, Ljava/util/concurrent/locks/ReentrantLock;->unlock()V
+	5       (00000018) monitor-enter        v3
+
+size-BB@0x1a : 
+	6       (0000001a) iget-object          v0, v3, Lx8/u;->d Ljava/io/RandomAccessFile;
+	7       (0000001e) invoke-virtual       v0, Ljava/io/RandomAccessFile;->length()J
+	8       (00000024) move-result-wide     v0
+	9       (00000026) monitor-exit         v3
+	10      (00000028) return-wide          v0
+	1a:25
+	(Ljava/lang/Throwable; -> 2a size-BB@0x2a)
+
+size-BB@0x2a : [ size-BB@0x2c ]
+	11      (0000002a) move-exception       v0
+
+size-BB@0x2c : 
+	12      (0000002c) monitor-exit         v3
+	13      (0000002e) throw                v0
+	2c:2d
+	(Ljava/lang/Throwable; -> 2a size-BB@0x2a)
+
+size-BB@0x30 : 
+	14      (00000030) const-string         v1, "closed"
+	15      (00000034) new-instance         v2, Ljava/lang/IllegalStateException;
+	16      (00000038) invoke-direct        v2, v1, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	17      (0000003e) throw                v2
+	30:3f
+	(Ljava/lang/Throwable; -> 40 size-BB@0x40)
+
+size-BB@0x40 : 
+	18      (00000040) move-exception       v1
+	19      (00000042) invoke-virtual       v0, Ljava/util/concurrent/locks/ReentrantLock;->unlock()V
+	20      (00000048) throw                v1
+

@@ -1,0 +1,81 @@
+# Lz4/a0;->b(Ljava/lang/String;)Ljava/lang/String; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:java.lang.String
+#
+# - return:java.lang.String
+
+b-BB@0x0 : [ b-BB@0xa b-BB@0x1a ]
+	0       (00000000) iget-object          v0, v5, Lz4/a0;->b Lcom/google/android/gms/internal/firebase-auth-api/zzmy;
+	1       (00000004) const/4              v1, 0
+	2       (00000006) if-nez               v0, +00ah
+
+b-BB@0xa : 
+	3       (0000000a) const-string         v6, "FirebearCryptoHelper"
+	4       (0000000e) const-string         v0, "KeysetManager failed to initialize - unable to decrypt payload"
+	5       (00000012) invoke-static        v6, v0, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String;)I
+	6       (00000018) return-object        v1
+
+b-BB@0x1a : [ b-BB@0x1c ]
+	7       (0000001a) monitor-enter        v0
+	1a:1b
+	(Ljava/security/GeneralSecurityException; -> 70 b-BB@0x70)
+	(Ljava/io/UnsupportedEncodingException; -> 6c b-BB@0x6c)
+
+b-BB@0x1c : 
+	8       (0000001c) iget-object          v2, v5, Lz4/a0;->b Lcom/google/android/gms/internal/firebase-auth-api/zzmy;
+	9       (00000020) invoke-virtual       v2, Lcom/google/android/gms/internal/firebase-auth-api/zzmy;->zza()Lcom/google/android/gms/internal/firebase-auth-api/zzbm;
+	10      (00000026) move-result-object   v2
+	11      (00000028) invoke-static        Lcom/google/android/gms/internal/firebase-auth-api/zzks;->zza()Lcom/google/android/gms/internal/firebase-auth-api/zzbb;
+	12      (0000002e) move-result-object   v3
+	13      (00000030) const-class          v4, Lcom/google/android/gms/internal/firebase-auth-api/zzbd;
+	14      (00000034) invoke-virtual       v2, v3, v4, Lcom/google/android/gms/internal/firebase-auth-api/zzbm;->zza(Lcom/google/android/gms/internal/firebase-auth-api/zzbb; Ljava/lang/Class;)Ljava/lang/Object;
+	15      (0000003a) move-result-object   v2
+	16      (0000003c) check-cast           v2, Lcom/google/android/gms/internal/firebase-auth-api/zzbd;
+	17      (00000040) new-instance         v3, Ljava/lang/String;
+	18      (00000044) const/16             v4, 8
+	19      (00000048) invoke-static        v6, v4, Landroid/util/Base64;->decode(Ljava/lang/String; I)[B
+	20      (0000004e) move-result-object   v6
+	21      (00000050) invoke-interface     v2, v6, v1, Lcom/google/android/gms/internal/firebase-auth-api/zzbd;->zza([B [B)[B
+	22      (00000056) move-result-object   v6
+	23      (00000058) const-string         v2, "UTF-8"
+	24      (0000005c) invoke-direct        v3, v6, v2, Ljava/lang/String;-><init>([B Ljava/lang/String;)V
+	25      (00000062) monitor-exit         v0
+	26      (00000064) return-object        v3
+	1c:69
+	(Ljava/lang/Throwable; -> 66 b-BB@0x66)
+
+b-BB@0x66 : [ b-BB@0x6a ]
+	27      (00000066) move-exception       v6
+	28      (00000068) monitor-exit         v0
+	1c:69
+	(Ljava/lang/Throwable; -> 66 b-BB@0x66)
+
+b-BB@0x6a : 
+	29      (0000006a) throw                v6
+	6a:6b
+	(Ljava/security/GeneralSecurityException; -> 70 b-BB@0x70)
+	(Ljava/io/UnsupportedEncodingException; -> 6c b-BB@0x6c)
+
+b-BB@0x6c : [ b-BB@0x72 ]
+	30      (0000006c) move-exception       v6
+	31      (0000006e) goto                 +2h
+
+b-BB@0x70 : [ b-BB@0x72 ]
+	32      (00000070) move-exception       v6
+
+b-BB@0x72 : 
+	33      (00000072) const-string         v0, "FirebearCryptoHelper"
+	34      (00000076) invoke-virtual       v6, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+	35      (0000007c) move-result-object   v6
+	36      (0000007e) new-instance         v2, Ljava/lang/StringBuilder;
+	37      (00000082) const-string         v3, "Exception encountered while decrypting bytes:
+"
+	38      (00000086) invoke-direct        v2, v3, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	39      (0000008c) invoke-virtual       v2, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	40      (00000092) invoke-virtual       v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	41      (00000098) move-result-object   v6
+	42      (0000009a) invoke-static        v0, v6, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String;)I
+	43      (000000a0) return-object        v1
+

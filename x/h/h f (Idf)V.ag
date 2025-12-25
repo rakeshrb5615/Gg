@@ -1,0 +1,80 @@
+# Lx/h;->f(I Lw/d; Lz/f;)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:int
+# - v7:w.d
+# - v8:z.f
+#
+# - return:void
+
+f-BB@0x0 : [ f-BB@0x42 f-BB@0x46 ]
+	0       (00000000) iget                 v0, v7, Lw/d;->e0 F
+	1       (00000004) iget-object          v1, v7, Lw/d;->J Lw/c;
+	2       (00000008) iget-object          v2, v1, Lw/c;->f Lw/c;
+	3       (0000000c) invoke-virtual       v2, Lw/c;->d()I
+	4       (00000012) move-result          v2
+	5       (00000014) iget-object          v3, v7, Lw/d;->L Lw/c;
+	6       (00000018) iget-object          v4, v3, Lw/c;->f Lw/c;
+	7       (0000001c) invoke-virtual       v4, Lw/c;->d()I
+	8       (00000022) move-result          v4
+	9       (00000024) invoke-virtual       v1, Lw/c;->e()I
+	10      (0000002a) move-result          v1
+	11      (0000002c) add-int/2addr        v1, v2
+	12      (0000002e) invoke-virtual       v3, Lw/c;->e()I
+	13      (00000034) move-result          v3
+	14      (00000036) sub-int              v3, v4, v3
+	15      (0000003a) const/high16         v5, 1056964608
+	16      (0000003e) if-ne                v2, v4, +004h
+
+f-BB@0x42 : [ f-BB@0x4a ]
+	17      (00000042) move                 v0, v5
+	18      (00000044) goto                 +3h
+
+f-BB@0x46 : [ f-BB@0x4a ]
+	19      (00000046) move                 v2, v1
+	20      (00000048) move                 v4, v3
+
+f-BB@0x4a : [ f-BB@0x5c f-BB@0x62 ]
+	21      (0000004a) invoke-virtual       v7, Lw/d;->k()I
+	22      (00000050) move-result          v1
+	23      (00000052) sub-int              v3, v4, v2
+	24      (00000056) sub-int/2addr        v3, v1
+	25      (00000058) if-le                v2, v4, +005h
+
+f-BB@0x5c : [ f-BB@0x62 ]
+	26      (0000005c) sub-int              v3, v2, v4
+	27      (00000060) sub-int/2addr        v3, v1
+
+f-BB@0x62 : [ f-BB@0x66 f-BB@0x70 ]
+	28      (00000062) if-lez               v3, +007h
+
+f-BB@0x66 : [ f-BB@0x6c ]
+	29      (00000066) int-to-float         v3, v3
+	30      (00000068) mul-float/2addr      v0, v3
+	31      (0000006a) add-float/2addr      v0, v5
+
+f-BB@0x6c : [ f-BB@0x76 ]
+	32      (0000006c) float-to-int         v0, v0
+	33      (0000006e) goto                 +4h
+
+f-BB@0x70 : [ f-BB@0x6c ]
+	34      (00000070) int-to-float         v3, v3
+	35      (00000072) mul-float/2addr      v0, v3
+	36      (00000074) goto                 -4h
+
+f-BB@0x76 : [ f-BB@0x82 f-BB@0x8a ]
+	37      (00000076) add-int              v3, v2, v0
+	38      (0000007a) add-int              v5, v3, v1
+	39      (0000007e) if-le                v2, v4, +006h
+
+f-BB@0x82 : [ f-BB@0x8a ]
+	40      (00000082) sub-int              v3, v2, v0
+	41      (00000086) sub-int              v5, v3, v1
+
+f-BB@0x8a : 
+	42      (0000008a) invoke-virtual       v7, v3, v5, Lw/d;->K(I I)V
+	43      (00000090) add-int/lit8         v6, v6, 1
+	44      (00000094) invoke-static        v6, v7, v8, Lx/h;->i(I Lw/d; Lz/f;)V
+	45      (0000009a) return-void          
+

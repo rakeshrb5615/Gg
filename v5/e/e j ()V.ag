@@ -1,0 +1,20 @@
+# Lv5/e;->j()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v2
+#
+# - return:void
+
+j-BB@0x0 : [ j-BB@0x8 j-BB@0xa ]
+	0       (00000000) iget-boolean         v0, v2, Lv5/e;->a Z
+	1       (00000004) if-eqz               v0, +003h
+
+j-BB@0x8 : 
+	2       (00000008) return-void          
+
+j-BB@0xa : 
+	3       (0000000a) new-instance         v0, Ljava/lang/IllegalStateException;
+	4       (0000000e) const-string         v1, "Parent context used since this context was created. Cannot use this context anymore."
+	5       (00000012) invoke-direct        v0, v1, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	6       (00000018) throw                v0
+

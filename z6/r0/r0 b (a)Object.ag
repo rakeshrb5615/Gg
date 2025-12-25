@@ -1,0 +1,104 @@
+# Lz6/r0;->b(Le7/a;)Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:e7.a
+#
+# - return:java.lang.Object
+
+b-BB@0x0 : [ b-BB@0x1c ]
+	0       (00000000) new-instance         v0, Ljava/util/BitSet;
+	1       (00000004) invoke-direct        v0, Ljava/util/BitSet;-><init>()V
+	2       (0000000a) invoke-virtual       v7, Le7/a;->c()V
+	3       (00000010) invoke-virtual       v7, Le7/a;->O()I
+	4       (00000016) move-result          v1
+	5       (00000018) const/4              v2, 0
+	6       (0000001a) move                 v3, v2
+
+b-BB@0x1c : [ b-BB@0x22 b-BB@0xf0 ]
+	7       (0000001c) const/4              v4, 2
+	8       (0000001e) if-eq                v1, v4, +069h
+
+b-BB@0x22 : [ b-BB@0x30 b-BB@0x8e ]
+	9       (00000022) invoke-static        v1, Lu/e;->c(I)I
+	10      (00000028) move-result          v4
+	11      (0000002a) const/4              v5, 5
+	12      (0000002c) if-eq                v4, v5, +031h
+
+b-BB@0x30 : [ b-BB@0x36 b-BB@0x8e ]
+	13      (00000030) const/4              v5, 6
+	14      (00000032) if-eq                v4, v5, +02eh
+
+b-BB@0x36 : [ b-BB@0x3c b-BB@0x46 ]
+	15      (00000036) const/4              v5, 7
+	16      (00000038) if-ne                v4, v5, +007h
+
+b-BB@0x3c : [ b-BB@0xa6 ]
+	17      (0000003c) invoke-virtual       v7, Le7/a;->E()Z
+	18      (00000042) move-result          v1
+	19      (00000044) goto                 +31h
+
+b-BB@0x46 : 
+	20      (00000046) new-instance         v0, Lw6/p;
+	21      (0000004a) new-instance         v3, Ljava/lang/StringBuilder;
+	22      (0000004e) const-string         v4, "Invalid bitset value type: "
+	23      (00000052) invoke-direct        v3, v4, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	24      (00000058) invoke-static        v1, Lv1/a;->z(I)Ljava/lang/String;
+	25      (0000005e) move-result-object   v1
+	26      (00000060) invoke-virtual       v3, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	27      (00000066) const-string         v1, "; at path "
+	28      (0000006a) invoke-virtual       v3, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	29      (00000070) invoke-virtual       v7, v2, Le7/a;->A(Z)Ljava/lang/String;
+	30      (00000076) move-result-object   v7
+	31      (00000078) invoke-virtual       v3, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	32      (0000007e) invoke-virtual       v3, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	33      (00000084) move-result-object   v7
+	34      (00000086) invoke-direct        v0, v7, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
+	35      (0000008c) throw                v0
+
+b-BB@0x8e : [ b-BB@0x9a b-BB@0x9e ]
+	36      (0000008e) invoke-virtual       v7, Le7/a;->G()I
+	37      (00000094) move-result          v1
+	38      (00000096) if-nez               v1, +004h
+
+b-BB@0x9a : [ b-BB@0xa6 ]
+	39      (0000009a) move                 v1, v2
+	40      (0000009c) goto                 +5h
+
+b-BB@0x9e : [ b-BB@0xa4 b-BB@0xbe ]
+	41      (0000009e) const/4              v4, 1
+	42      (000000a0) if-ne                v1, v4, +00fh
+
+b-BB@0xa4 : [ b-BB@0xa6 ]
+	43      (000000a4) move                 v1, v4
+
+b-BB@0xa6 : [ b-BB@0xaa b-BB@0xb0 ]
+	44      (000000a6) if-eqz               v1, +005h
+
+b-BB@0xaa : [ b-BB@0xb0 ]
+	45      (000000aa) invoke-virtual       v0, v3, Ljava/util/BitSet;->set(I)V
+
+b-BB@0xb0 : [ b-BB@0x1c ]
+	46      (000000b0) add-int/lit8         v3, v3, 1
+	47      (000000b4) invoke-virtual       v7, Le7/a;->O()I
+	48      (000000ba) move-result          v1
+	49      (000000bc) goto                 -50h
+
+b-BB@0xbe : 
+	50      (000000be) new-instance         v0, Lw6/p;
+	51      (000000c2) const-string         v2, "Invalid bitset value "
+	52      (000000c6) const-string         v3, ", expected 0 or 1; at path "
+	53      (000000ca) invoke-static        v2, v1, v3, Lv1/a;->p(Ljava/lang/String; I Ljava/lang/String;)Ljava/lang/StringBuilder;
+	54      (000000d0) move-result-object   v1
+	55      (000000d2) invoke-virtual       v7, v4, Le7/a;->A(Z)Ljava/lang/String;
+	56      (000000d8) move-result-object   v7
+	57      (000000da) invoke-virtual       v1, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	58      (000000e0) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	59      (000000e6) move-result-object   v7
+	60      (000000e8) invoke-direct        v0, v7, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
+	61      (000000ee) throw                v0
+
+b-BB@0xf0 : 
+	62      (000000f0) invoke-virtual       v7, Le7/a;->x()V
+	63      (000000f6) return-object        v0
+

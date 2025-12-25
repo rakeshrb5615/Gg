@@ -1,0 +1,24 @@
+# Lx8/a0;->writeShort(I)Lx8/h; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:int
+#
+# - return:x8.h
+
+writeShort-BB@0x0 : [ writeShort-BB@0x8 writeShort-BB@0x1a ]
+	0       (00000000) iget-boolean         v0, v1, Lx8/a0;->c Z
+	1       (00000004) if-nez               v0, +00bh
+
+writeShort-BB@0x8 : 
+	2       (00000008) iget-object          v0, v1, Lx8/a0;->b Lx8/g;
+	3       (0000000c) invoke-virtual       v0, v2, Lx8/g;->Q(I)V
+	4       (00000012) invoke-virtual       v1, Lx8/a0;->c()Lx8/h;
+	5       (00000018) return-object        v1
+
+writeShort-BB@0x1a : 
+	6       (0000001a) new-instance         v2, Ljava/lang/IllegalStateException;
+	7       (0000001e) const-string         v0, "closed"
+	8       (00000022) invoke-direct        v2, v0, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	9       (00000028) throw                v2
+

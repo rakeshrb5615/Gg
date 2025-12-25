@@ -1,0 +1,47 @@
+# Ly1/f;->a(Ljava/io/File;)Ly1/f; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v8
+# - v9:java.io.File
+#
+# - return:y1.f
+
+a-BB@0x0 : [ a-BB@0x14 ]
+	0       (00000000) new-instance         v1, Ljava/io/DataInputStream;
+	1       (00000004) new-instance         v0, Ljava/io/FileInputStream;
+	2       (00000008) invoke-direct        v0, v9, Ljava/io/FileInputStream;-><init>(Ljava/io/File;)V
+	3       (0000000e) invoke-direct        v1, v0, Ljava/io/DataInputStream;-><init>(Ljava/io/InputStream;)V
+
+a-BB@0x14 : 
+	4       (00000014) new-instance         v2, Ly1/f;
+	5       (00000018) invoke-virtual       v1, Ljava/io/DataInputStream;->readInt()I
+	6       (0000001e) move-result          v3
+	7       (00000020) invoke-virtual       v1, Ljava/io/DataInputStream;->readInt()I
+	8       (00000026) move-result          v4
+	9       (00000028) invoke-virtual       v1, Ljava/io/DataInputStream;->readLong()J
+	10      (0000002e) move-result-wide     v5
+	11      (00000030) invoke-virtual       v1, Ljava/io/DataInputStream;->readLong()J
+	12      (00000036) move-result-wide     v7
+	13      (00000038) invoke-direct/range  v2 ... v8, Ly1/f;-><init>(I I J J)V
+	14      (0000003e) invoke-virtual       v1, Ljava/io/InputStream;->close()V
+	15      (00000044) return-object        v2
+	14:3d
+	(Ljava/lang/Throwable; -> 46 a-BB@0x46)
+
+a-BB@0x46 : [ a-BB@0x4a ]
+	16      (00000046) move-exception       v0
+	17      (00000048) move-object          v9, v0
+
+a-BB@0x4a : [ a-BB@0x5a ]
+	18      (0000004a) invoke-virtual       v1, Ljava/io/InputStream;->close()V
+	19      (00000050) goto                 +5h
+	4a:4f
+	(Ljava/lang/Throwable; -> 52 a-BB@0x52)
+
+a-BB@0x52 : [ a-BB@0x5a ]
+	20      (00000052) move-exception       v0
+	21      (00000054) invoke-virtual       v9, v0, Ljava/lang/Throwable;->addSuppressed(Ljava/lang/Throwable;)V
+
+a-BB@0x5a : 
+	22      (0000005a) throw                v9
+

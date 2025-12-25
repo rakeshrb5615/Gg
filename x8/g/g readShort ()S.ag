@@ -1,0 +1,68 @@
+# Lx8/g;->readShort()S [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v9
+#
+# - return:short
+
+readShort-BB@0x0 : [ readShort-BB@0x10 readShort-BB@0x98 ]
+	0       (00000000) iget-wide            v0, v9, Lx8/g;->b J
+	1       (00000004) const-wide/16        v2, 2
+	2       (00000008) cmp-long             v0, v0, v2
+	3       (0000000c) if-ltz               v0, +046h
+
+readShort-BB@0x10 : [ readShort-BB@0x2c readShort-BB@0x4e ]
+	4       (00000010) iget-object          v0, v9, Lx8/g;->a Lx8/c0;
+	5       (00000014) invoke-static        v0, Lkotlin/jvm/internal/j;->b(Ljava/lang/Object;)V
+	6       (0000001a) iget                 v1, v0, Lx8/c0;->b I
+	7       (0000001e) iget                 v4, v0, Lx8/c0;->c I
+	8       (00000022) sub-int              v5, v4, v1
+	9       (00000026) const/4              v6, 2
+	10      (00000028) if-ge                v5, v6, +013h
+
+readShort-BB@0x2c : 
+	11      (0000002c) invoke-virtual       v9, Lx8/g;->readByte()B
+	12      (00000032) move-result          v0
+	13      (00000034) and-int/lit16        v0, v0, 255
+	14      (00000038) shl-int/lit8         v0, v0, 8
+	15      (0000003c) invoke-virtual       v9, Lx8/g;->readByte()B
+	16      (00000042) move-result          v1
+	17      (00000044) and-int/lit16        v1, v1, 255
+	18      (00000048) or-int/2addr         v0, v1
+	19      (0000004a) int-to-short         v0, v0
+	20      (0000004c) return               v0
+
+readShort-BB@0x4e : [ readShort-BB@0x7c readShort-BB@0x90 ]
+	21      (0000004e) iget-object          v5, v0, Lx8/c0;->a [B
+	22      (00000052) add-int/lit8         v7, v1, 1
+	23      (00000056) aget-byte            v8, v5, v1
+	24      (0000005a) and-int/lit16        v8, v8, 255
+	25      (0000005e) shl-int/lit8         v8, v8, 8
+	26      (00000062) add-int/2addr        v1, v6
+	27      (00000064) aget-byte            v5, v5, v7
+	28      (00000068) and-int/lit16        v5, v5, 255
+	29      (0000006c) or-int/2addr         v5, v8
+	30      (0000006e) iget-wide            v6, v9, Lx8/g;->b J
+	31      (00000072) sub-long/2addr       v6, v2
+	32      (00000074) iput-wide            v6, v9, Lx8/g;->b J
+	33      (00000078) if-ne                v1, v4, +00ch
+
+readShort-BB@0x7c : [ readShort-BB@0x94 ]
+	34      (0000007c) invoke-virtual       v0, Lx8/c0;->a()Lx8/c0;
+	35      (00000082) move-result-object   v1
+	36      (00000084) iput-object          v1, v9, Lx8/g;->a Lx8/c0;
+	37      (00000088) invoke-static        v0, Lx8/d0;->a(Lx8/c0;)V
+	38      (0000008e) goto                 +3h
+
+readShort-BB@0x90 : [ readShort-BB@0x94 ]
+	39      (00000090) iput                 v1, v0, Lx8/c0;->b I
+
+readShort-BB@0x94 : 
+	40      (00000094) int-to-short         v0, v5
+	41      (00000096) return               v0
+
+readShort-BB@0x98 : 
+	42      (00000098) new-instance         v0, Ljava/io/EOFException;
+	43      (0000009c) invoke-direct        v0, Ljava/io/EOFException;-><init>()V
+	44      (000000a2) throw                v0
+

@@ -1,0 +1,53 @@
+# Ly0/e;->g(I I)Landroid/view/View; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:int
+# - v6:int
+#
+# - return:android.view.View
+
+g-BB@0x0 : [ g-BB@0x10 ]
+	0       (00000000) iget-object          v0, v4, Ly0/e;->t Landroidx/coordinatorlayout/widget/CoordinatorLayout;
+	1       (00000004) invoke-virtual       v0, Landroid/view/ViewGroup;->getChildCount()I
+	2       (0000000a) move-result          v1
+	3       (0000000c) add-int/lit8         v1, v1, -1
+
+g-BB@0x10 : [ g-BB@0x14 g-BB@0x5e ]
+	4       (00000010) if-ltz               v1, +027h
+
+g-BB@0x14 : [ g-BB@0x32 g-BB@0x58 ]
+	5       (00000014) iget-object          v2, v4, Ly0/e;->q Lw0/a;
+	6       (00000018) invoke-virtual       v2, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	7       (0000001e) invoke-virtual       v0, v1, Landroid/view/ViewGroup;->getChildAt(I)Landroid/view/View;
+	8       (00000024) move-result-object   v2
+	9       (00000026) invoke-virtual       v2, Landroid/view/View;->getLeft()I
+	10      (0000002c) move-result          v3
+	11      (0000002e) if-lt                v5, v3, +015h
+
+g-BB@0x32 : [ g-BB@0x3e g-BB@0x58 ]
+	12      (00000032) invoke-virtual       v2, Landroid/view/View;->getRight()I
+	13      (00000038) move-result          v3
+	14      (0000003a) if-ge                v5, v3, +00fh
+
+g-BB@0x3e : [ g-BB@0x4a g-BB@0x58 ]
+	15      (0000003e) invoke-virtual       v2, Landroid/view/View;->getTop()I
+	16      (00000044) move-result          v3
+	17      (00000046) if-lt                v6, v3, +009h
+
+g-BB@0x4a : [ g-BB@0x56 g-BB@0x58 ]
+	18      (0000004a) invoke-virtual       v2, Landroid/view/View;->getBottom()I
+	19      (00000050) move-result          v3
+	20      (00000052) if-ge                v6, v3, +003h
+
+g-BB@0x56 : 
+	21      (00000056) return-object        v2
+
+g-BB@0x58 : [ g-BB@0x10 ]
+	22      (00000058) add-int/lit8         v1, v1, -1
+	23      (0000005c) goto                 -26h
+
+g-BB@0x5e : 
+	24      (0000005e) const/4              v5, 0
+	25      (00000060) return-object        v5
+

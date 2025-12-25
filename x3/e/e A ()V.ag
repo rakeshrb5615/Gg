@@ -1,0 +1,59 @@
+# Lx3/e;->A()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v6
+#
+# - return:void
+
+A-BB@0x0 : [ A-BB@0x12 A-BB@0x34 ]
+	0       (00000000) iget                 v0, v6, Lx3/e;->U0 F
+	1       (00000004) iget                 v1, v6, Lx3/e;->v0 F
+	2       (00000008) const/4              v2, 0
+	3       (0000000a) cmpl-float           v2, v1, v2
+	4       (0000000e) if-lez               v2, +013h
+
+A-BB@0x12 : [ A-BB@0x36 ]
+	5       (00000012) iget                 v2, v6, Lx3/e;->r0 F
+	6       (00000016) iget                 v3, v6, Lx3/e;->q0 F
+	7       (0000001a) sub-float/2addr      v2, v3
+	8       (0000001c) div-float/2addr      v2, v1
+	9       (0000001e) float-to-int         v1, v2
+	10      (00000020) int-to-float         v2, v1
+	11      (00000022) mul-float/2addr      v0, v2
+	12      (00000024) invoke-static        v0, Ljava/lang/Math;->round(F)I
+	13      (0000002a) move-result          v0
+	14      (0000002c) int-to-double        v2, v0
+	15      (0000002e) int-to-double        v0, v1
+	16      (00000030) div-double/2addr     v2, v0
+	17      (00000032) goto                 +2h
+
+A-BB@0x34 : [ A-BB@0x36 ]
+	18      (00000034) float-to-double      v2, v0
+
+A-BB@0x36 : [ A-BB@0x42 A-BB@0x4e ]
+	19      (00000036) invoke-virtual       v6, Lx3/e;->r()Z
+	20      (0000003c) move-result          v0
+	21      (0000003e) if-nez               v0, +008h
+
+A-BB@0x42 : [ A-BB@0x4e A-BB@0x56 ]
+	22      (00000042) invoke-virtual       v6, Lx3/e;->s()Z
+	23      (00000048) move-result          v0
+	24      (0000004a) if-eqz               v0, +006h
+
+A-BB@0x4e : [ A-BB@0x56 ]
+	25      (0000004e) const-wide/high16    v0, 4607182418800017408
+	26      (00000052) sub-double           v2, v0, v2
+
+A-BB@0x56 : 
+	27      (00000056) iget                 v0, v6, Lx3/e;->r0 F
+	28      (0000005a) iget                 v1, v6, Lx3/e;->q0 F
+	29      (0000005e) sub-float/2addr      v0, v1
+	30      (00000060) float-to-double      v4, v0
+	31      (00000062) mul-double/2addr     v2, v4
+	32      (00000064) float-to-double      v0, v1
+	33      (00000066) add-double/2addr     v2, v0
+	34      (00000068) double-to-float      v0, v2
+	35      (0000006a) iget                 v1, v6, Lx3/e;->t0 I
+	36      (0000006e) invoke-virtual       v6, v1, v0, Lx3/e;->z(I F)Z
+	37      (00000074) return-void          
+

@@ -1,0 +1,41 @@
+# Lw5/f;->e(Lt5/c; D Z)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:t5.c
+# - v5:double
+# - v6:boolean
+#
+# - return:void
+
+e-BB@0x0 : [ e-BB@0x4 e-BB@0x12 ]
+	0       (00000000) if-eqz               v6, +009h
+
+e-BB@0x4 : [ e-BB@0x10 e-BB@0x12 ]
+	1       (00000004) const-wide/16        v0, 0
+	2       (00000008) cmpl-double          v6, v4, v0
+	3       (0000000c) if-nez               v6, +003h
+
+e-BB@0x10 : 
+	4       (00000010) return-void          
+
+e-BB@0x12 : 
+	5       (00000012) invoke-static        v3, Lw5/f;->j(Lt5/c;)I
+	6       (00000018) move-result          v3
+	7       (0000001a) shl-int/lit8         v3, v3, 3
+	8       (0000001e) or-int/lit8          v3, v3, 1
+	9       (00000022) invoke-virtual       v2, v3, Lw5/f;->k(I)V
+	10      (00000028) iget-object          v3, v2, Lw5/f;->a Ljava/io/OutputStream;
+	11      (0000002c) const/16             v6, 8
+	12      (00000030) invoke-static        v6, Ljava/nio/ByteBuffer;->allocate(I)Ljava/nio/ByteBuffer;
+	13      (00000036) move-result-object   v6
+	14      (00000038) sget-object          v0, Ljava/nio/ByteOrder;->LITTLE_ENDIAN Ljava/nio/ByteOrder;
+	15      (0000003c) invoke-virtual       v6, v0, Ljava/nio/ByteBuffer;->order(Ljava/nio/ByteOrder;)Ljava/nio/ByteBuffer;
+	16      (00000042) move-result-object   v6
+	17      (00000044) invoke-virtual       v6, v4, v5, Ljava/nio/ByteBuffer;->putDouble(D)Ljava/nio/ByteBuffer;
+	18      (0000004a) move-result-object   v4
+	19      (0000004c) invoke-virtual       v4, Ljava/nio/ByteBuffer;->array()[B
+	20      (00000052) move-result-object   v4
+	21      (00000054) invoke-virtual       v3, v4, Ljava/io/OutputStream;->write([B)V
+	22      (0000005a) return-void          
+

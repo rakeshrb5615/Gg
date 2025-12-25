@@ -1,0 +1,52 @@
+# Ly8/i;->k()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v6
+#
+# - return:void
+
+k-BB@0x0 : [ k-BB@0x8 ]
+	0       (00000000) const-string         v0, "Failed to close timed out socket "
+	1       (00000004) iget-object          v1, v6, Ly8/i;->n Ljava/net/Socket;
+
+k-BB@0x8 : 
+	2       (00000008) invoke-virtual       v1, Ljava/net/Socket;->close()V
+	3       (0000000e) return-void          
+	8:d
+	(Ljava/lang/Exception; -> 48 k-BB@0x48)
+	(Ljava/lang/AssertionError; -> 10 k-BB@0x10)
+
+k-BB@0x10 : [ k-BB@0x1e k-BB@0x46 ]
+	4       (00000010) move-exception       v2
+	5       (00000012) invoke-static        v2, Ly8/m;->a(Ljava/lang/AssertionError;)Z
+	6       (00000018) move-result          v3
+	7       (0000001a) if-eqz               v3, +016h
+
+k-BB@0x1e : [ k-BB@0x70 ]
+	8       (0000001e) sget-object          v3, Ly8/m;->a Ljava/util/logging/Logger;
+	9       (00000022) sget-object          v4, Ljava/util/logging/Level;->WARNING Ljava/util/logging/Level;
+	10      (00000026) new-instance         v5, Ljava/lang/StringBuilder;
+	11      (0000002a) invoke-direct        v5, v0, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	12      (00000030) invoke-virtual       v5, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	13      (00000036) invoke-virtual       v5, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	14      (0000003c) move-result-object   v0
+	15      (0000003e) invoke-virtual       v3, v4, v0, v2, Ljava/util/logging/Logger;->log(Ljava/util/logging/Level; Ljava/lang/String; Ljava/lang/Throwable;)V
+	16      (00000044) goto                 +16h
+
+k-BB@0x46 : 
+	17      (00000046) throw                v2
+
+k-BB@0x48 : [ k-BB@0x70 ]
+	18      (00000048) move-exception       v2
+	19      (0000004a) sget-object          v3, Ly8/m;->a Ljava/util/logging/Logger;
+	20      (0000004e) sget-object          v4, Ljava/util/logging/Level;->WARNING Ljava/util/logging/Level;
+	21      (00000052) new-instance         v5, Ljava/lang/StringBuilder;
+	22      (00000056) invoke-direct        v5, v0, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	23      (0000005c) invoke-virtual       v5, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	24      (00000062) invoke-virtual       v5, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	25      (00000068) move-result-object   v0
+	26      (0000006a) invoke-virtual       v3, v4, v0, v2, Ljava/util/logging/Logger;->log(Ljava/util/logging/Level; Ljava/lang/String; Ljava/lang/Throwable;)V
+
+k-BB@0x70 : 
+	27      (00000070) return-void          
+

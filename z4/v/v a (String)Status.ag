@@ -1,0 +1,92 @@
+# Lz4/v;->a(Ljava/lang/String;)Lcom/google/android/gms/common/api/Status; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:java.lang.String
+#
+# - return:com.google.android.gms.common.api.Status
+
+a-BB@0x0 : [ a-BB@0x4 ]
+	0       (00000000) const-string         v0, "WEB_INTERNAL_ERROR:"
+
+a-BB@0x4 : [ a-BB@0x32 a-BB@0x90 ]
+	1       (00000004) new-instance         v1, Lorg/json/JSONObject;
+	2       (00000008) invoke-direct        v1, v5, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+	3       (0000000e) const-string         v2, "code"
+	4       (00000012) invoke-virtual       v1, v2, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
+	5       (00000018) move-result-object   v2
+	6       (0000001a) const-string         v3, "message"
+	7       (0000001e) invoke-virtual       v1, v3, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
+	8       (00000024) move-result-object   v1
+	9       (00000026) invoke-static        v2, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+	10      (0000002c) move-result          v3
+	11      (0000002e) if-nez               v3, +031h
+	4:af
+	(Lorg/json/JSONException; -> 8c a-BB@0x8c)
+
+a-BB@0x32 : [ a-BB@0x3e a-BB@0x90 ]
+	12      (00000032) invoke-static        v1, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+	13      (00000038) move-result          v3
+	14      (0000003a) if-nez               v3, +02bh
+	4:af
+	(Lorg/json/JSONException; -> 8c a-BB@0x8c)
+
+a-BB@0x3e : [ a-BB@0x4e a-BB@0x90 ]
+	15      (0000003e) sget-object          v3, Lz4/v;->a Ljava/util/HashMap;
+	16      (00000042) invoke-virtual       v3, v2, Ljava/util/HashMap;->containsKey(Ljava/lang/Object;)Z
+	17      (00000048) move-result          v4
+	18      (0000004a) if-eqz               v4, +023h
+	4:af
+	(Lorg/json/JSONException; -> 8c a-BB@0x8c)
+
+a-BB@0x4e : 
+	19      (0000004e) invoke-virtual       v3, v2, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	20      (00000054) move-result-object   v2
+	21      (00000056) check-cast           v2, Ljava/lang/String;
+	22      (0000005a) new-instance         v3, Ljava/lang/StringBuilder;
+	23      (0000005e) invoke-direct        v3, Ljava/lang/StringBuilder;-><init>()V
+	24      (00000064) invoke-virtual       v3, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	25      (0000006a) const-string         v2, ":"
+	26      (0000006e) invoke-virtual       v3, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	27      (00000074) invoke-virtual       v3, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	28      (0000007a) invoke-virtual       v3, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	29      (00000080) move-result-object   v1
+	30      (00000082) invoke-static        v1, Lw0/a;->k(Ljava/lang/String;)Lcom/google/android/gms/common/api/Status;
+	31      (00000088) move-result-object   v5
+	32      (0000008a) return-object        v5
+	4:af
+	(Lorg/json/JSONException; -> 8c a-BB@0x8c)
+
+a-BB@0x8c : [ a-BB@0xb2 ]
+	33      (0000008c) move-exception       v1
+	34      (0000008e) goto                 +12h
+	4:af
+	(Lorg/json/JSONException; -> 8c a-BB@0x8c)
+
+a-BB@0x90 : 
+	35      (00000090) new-instance         v1, Ljava/lang/StringBuilder;
+	36      (00000094) invoke-direct        v1, v0, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	37      (0000009a) invoke-virtual       v1, v5, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	38      (000000a0) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	39      (000000a6) move-result-object   v1
+	40      (000000a8) invoke-static        v1, Lw0/a;->k(Ljava/lang/String;)Lcom/google/android/gms/common/api/Status;
+	41      (000000ae) move-result-object   v5
+	42      (000000b0) return-object        v5
+
+a-BB@0xb2 : 
+	43      (000000b2) invoke-virtual       v1, Ljava/lang/Throwable;->getLocalizedMessage()Ljava/lang/String;
+	44      (000000b8) move-result-object   v1
+	45      (000000ba) new-instance         v2, Ljava/lang/StringBuilder;
+	46      (000000be) invoke-direct        v2, v0, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	47      (000000c4) invoke-virtual       v2, v5, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	48      (000000ca) const-string         v5, "[ "
+	49      (000000ce) invoke-virtual       v2, v5, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	50      (000000d4) invoke-virtual       v2, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	51      (000000da) const-string         v5, " ]"
+	52      (000000de) invoke-virtual       v2, v5, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	53      (000000e4) invoke-virtual       v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	54      (000000ea) move-result-object   v5
+	55      (000000ec) invoke-static        v5, Lw0/a;->k(Ljava/lang/String;)Lcom/google/android/gms/common/api/Status;
+	56      (000000f2) move-result-object   v5
+	57      (000000f4) return-object        v5
+

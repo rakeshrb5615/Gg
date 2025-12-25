@@ -1,0 +1,108 @@
+# Lx8/b;->i(I)Ljava/lang/String; [access_flags=public static final]
+#
+# Parameters:
+# - local registers: v0...v9
+# - v10:int
+#
+# - return:java.lang.String
+
+i-BB@0x0 : [ i-BB@0x4 i-BB@0xa ]
+	0       (00000000) if-nez               v10, +005h
+
+i-BB@0x4 : 
+	1       (00000004) const-string         v10, "0"
+	2       (00000008) return-object        v10
+
+i-BB@0xa : [ i-BB@0xa2 ]
+	3       (0000000a) sget-object          v0, Ly8/b;->a [C
+	4       (0000000e) shr-int/lit8         v1, v10, 28
+	5       (00000012) and-int/lit8         v1, v1, 15
+	6       (00000016) aget-char            v1, v0, v1
+	7       (0000001a) shr-int/lit8         v2, v10, 24
+	8       (0000001e) and-int/lit8         v2, v2, 15
+	9       (00000022) aget-char            v2, v0, v2
+	10      (00000026) shr-int/lit8         v3, v10, 20
+	11      (0000002a) and-int/lit8         v3, v3, 15
+	12      (0000002e) aget-char            v3, v0, v3
+	13      (00000032) shr-int/lit8         v4, v10, 16
+	14      (00000036) and-int/lit8         v4, v4, 15
+	15      (0000003a) aget-char            v4, v0, v4
+	16      (0000003e) shr-int/lit8         v5, v10, 12
+	17      (00000042) and-int/lit8         v5, v5, 15
+	18      (00000046) aget-char            v5, v0, v5
+	19      (0000004a) shr-int/lit8         v6, v10, 8
+	20      (0000004e) and-int/lit8         v6, v6, 15
+	21      (00000052) aget-char            v6, v0, v6
+	22      (00000056) shr-int/lit8         v7, v10, 4
+	23      (0000005a) and-int/lit8         v7, v7, 15
+	24      (0000005e) aget-char            v7, v0, v7
+	25      (00000062) and-int/lit8         v10, v10, 15
+	26      (00000066) aget-char            v10, v0, v10
+	27      (0000006a) const/16             v0, 8
+	28      (0000006e) new-array            v8, v0, [C
+	29      (00000072) const/4              v9, 0
+	30      (00000074) aput-char            v1, v8, v9
+	31      (00000078) const/4              v1, 1
+	32      (0000007a) aput-char            v2, v8, v1
+	33      (0000007e) const/4              v1, 2
+	34      (00000080) aput-char            v3, v8, v1
+	35      (00000084) const/4              v1, 3
+	36      (00000086) aput-char            v4, v8, v1
+	37      (0000008a) const/4              v1, 4
+	38      (0000008c) aput-char            v5, v8, v1
+	39      (00000090) const/4              v1, 5
+	40      (00000092) aput-char            v6, v8, v1
+	41      (00000096) const/4              v1, 6
+	42      (00000098) aput-char            v7, v8, v1
+	43      (0000009c) const/4              v1, 7
+	44      (0000009e) aput-char            v10, v8, v1
+
+i-BB@0xa2 : [ i-BB@0xa6 i-BB@0xb8 ]
+	45      (000000a2) if-ge                v9, v0, +00bh
+
+i-BB@0xa6 : [ i-BB@0xb2 i-BB@0xb8 ]
+	46      (000000a6) aget-char            v10, v8, v9
+	47      (000000aa) const/16             v1, 48
+	48      (000000ae) if-ne                v10, v1, +005h
+
+i-BB@0xb2 : [ i-BB@0xa2 ]
+	49      (000000b2) add-int/lit8         v9, v9, 1
+	50      (000000b6) goto                 -ah
+
+i-BB@0xb8 : [ i-BB@0xc0 i-BB@0xec ]
+	51      (000000b8) const-string         v10, "startIndex: "
+	52      (000000bc) if-ltz               v9, +018h
+
+i-BB@0xc0 : [ i-BB@0xc4 i-BB@0xd4 ]
+	53      (000000c0) if-gt                v9, v0, +00ah
+
+i-BB@0xc4 : 
+	54      (000000c4) new-instance         v10, Ljava/lang/String;
+	55      (000000c8) rsub-int/lit8        v0, v9, 8
+	56      (000000cc) invoke-direct        v10, v8, v9, v0, Ljava/lang/String;-><init>([C I I)V
+	57      (000000d2) return-object        v10
+
+i-BB@0xd4 : 
+	58      (000000d4) new-instance         v1, Ljava/lang/IllegalArgumentException;
+	59      (000000d8) const-string         v2, " > endIndex: "
+	60      (000000dc) invoke-static        v10, v9, v0, v2, Lv1/a;->i(Ljava/lang/String; I I Ljava/lang/String;)Ljava/lang/String;
+	61      (000000e2) move-result-object   v10
+	62      (000000e4) invoke-direct        v1, v10, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	63      (000000ea) throw                v1
+
+i-BB@0xec : 
+	64      (000000ec) new-instance         v1, Ljava/lang/IndexOutOfBoundsException;
+	65      (000000f0) new-instance         v2, Ljava/lang/StringBuilder;
+	66      (000000f4) invoke-direct        v2, v10, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	67      (000000fa) invoke-virtual       v2, v9, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	68      (00000100) const-string         v10, ", endIndex: "
+	69      (00000104) invoke-virtual       v2, v10, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	70      (0000010a) invoke-virtual       v2, v0, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	71      (00000110) const-string         v10, ", size: "
+	72      (00000114) invoke-virtual       v2, v10, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	73      (0000011a) invoke-virtual       v2, v0, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	74      (00000120) invoke-virtual       v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	75      (00000126) move-result-object   v10
+	76      (00000128) invoke-direct        v1, v10, Ljava/lang/IndexOutOfBoundsException;-><init>(Ljava/lang/String;)V
+	77      (0000012e) throw                v1
+

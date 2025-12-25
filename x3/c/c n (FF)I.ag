@@ -1,0 +1,40 @@
+# Lx3/c;->n(F F)I [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:float
+# - v6:float
+#
+# - return:int
+
+n-BB@0x0 : [ n-BB@0x2 ]
+	0       (00000000) const/4              v0, 0
+
+n-BB@0x2 : [ n-BB@0x1a n-BB@0x3c ]
+	1       (00000002) iget-object          v1, v4, Lx3/c;->q Lcom/google/android/material/slider/Slider;
+	2       (00000006) invoke-virtual       v1, Lx3/e;->getValues()Ljava/util/List;
+	3       (0000000c) move-result-object   v2
+	4       (0000000e) invoke-interface     v2, Ljava/util/List;->size()I
+	5       (00000014) move-result          v2
+	6       (00000016) if-ge                v0, v2, +013h
+
+n-BB@0x1a : [ n-BB@0x34 n-BB@0x36 ]
+	7       (0000001a) iget-object          v2, v4, Lx3/c;->r Landroid/graphics/Rect;
+	8       (0000001e) invoke-virtual       v1, v0, v2, Lx3/e;->B(I Landroid/graphics/Rect;)V
+	9       (00000024) float-to-int         v1, v5
+	10      (00000026) float-to-int         v3, v6
+	11      (00000028) invoke-virtual       v2, v1, v3, Landroid/graphics/Rect;->contains(I I)Z
+	12      (0000002e) move-result          v1
+	13      (00000030) if-eqz               v1, +003h
+
+n-BB@0x34 : 
+	14      (00000034) return               v0
+
+n-BB@0x36 : [ n-BB@0x2 ]
+	15      (00000036) add-int/lit8         v0, v0, 1
+	16      (0000003a) goto                 -1ch
+
+n-BB@0x3c : 
+	17      (0000003c) const/4              v5, -1
+	18      (0000003e) return               v5
+

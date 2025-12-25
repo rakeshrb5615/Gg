@@ -1,0 +1,69 @@
+# Lz3/u;->c()Z [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v3
+#
+# - return:boolean
+
+c-BB@0x0 : [ c-BB@0x8 c-BB@0x16 ]
+	0       (00000000) iget-object          v0, v3, Lz3/u;->f Landroid/view/accessibility/AccessibilityManager;
+	1       (00000004) if-eqz               v0, +009h
+
+c-BB@0x8 : [ c-BB@0x14 c-BB@0x16 ]
+	2       (00000008) invoke-virtual       v0, Landroid/view/accessibility/AccessibilityManager;->isTouchExplorationEnabled()Z
+	3       (0000000e) move-result          v1
+	4       (00000010) if-eqz               v1, +003h
+
+c-BB@0x14 : [ c-BB@0x7c ]
+	5       (00000014) goto                 +34h
+
+c-BB@0x16 : [ c-BB@0x1a c-BB@0x80 ]
+	6       (00000016) if-eqz               v0, +035h
+
+c-BB@0x1a : [ c-BB@0x26 c-BB@0x28 ]
+	7       (0000001a) invoke-virtual       v0, Landroid/view/accessibility/AccessibilityManager;->isEnabled()Z
+	8       (00000020) move-result          v1
+	9       (00000022) if-nez               v1, +003h
+
+c-BB@0x26 : [ c-BB@0x80 ]
+	10      (00000026) goto                 +2dh
+
+c-BB@0x28 : [ c-BB@0x38 c-BB@0x80 ]
+	11      (00000028) const/16             v1, 16
+	12      (0000002c) invoke-virtual       v0, v1, Landroid/view/accessibility/AccessibilityManager;->getEnabledAccessibilityServiceList(I)Ljava/util/List;
+	13      (00000032) move-result-object   v0
+	14      (00000034) if-eqz               v0, +026h
+
+c-BB@0x38 : [ c-BB@0x40 ]
+	15      (00000038) invoke-interface     v0, Ljava/util/List;->iterator()Ljava/util/Iterator;
+	16      (0000003e) move-result-object   v0
+
+c-BB@0x40 : [ c-BB@0x4c c-BB@0x80 ]
+	17      (00000040) invoke-interface     v0, Ljava/util/Iterator;->hasNext()Z
+	18      (00000046) move-result          v1
+	19      (00000048) if-eqz               v1, +01ch
+
+c-BB@0x4c : [ c-BB@0x64 c-BB@0x40 ]
+	20      (0000004c) invoke-interface     v0, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	21      (00000052) move-result-object   v1
+	22      (00000054) check-cast           v1, Landroid/accessibilityservice/AccessibilityServiceInfo;
+	23      (00000058) invoke-virtual       v1, Landroid/accessibilityservice/AccessibilityServiceInfo;->getSettingsActivityName()Ljava/lang/String;
+	24      (0000005e) move-result-object   v2
+	25      (00000060) if-eqz               v2, -010h
+
+c-BB@0x64 : [ c-BB@0x7c c-BB@0x40 ]
+	26      (00000064) invoke-virtual       v1, Landroid/accessibilityservice/AccessibilityServiceInfo;->getSettingsActivityName()Ljava/lang/String;
+	27      (0000006a) move-result-object   v1
+	28      (0000006c) const-string         v2, "SwitchAccess"
+	29      (00000070) invoke-virtual       v1, v2, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+	30      (00000076) move-result          v1
+	31      (00000078) if-eqz               v1, -01ch
+
+c-BB@0x7c : 
+	32      (0000007c) const/4              v0, 1
+	33      (0000007e) return               v0
+
+c-BB@0x80 : 
+	34      (00000080) const/4              v0, 0
+	35      (00000082) return               v0
+

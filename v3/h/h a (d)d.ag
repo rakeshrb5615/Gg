@@ -1,0 +1,24 @@
+# Lv3/h;->a(Lv3/d;)Lv3/d; [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:v3.d
+#
+# - return:v3.d
+
+a-BB@0x0 : [ a-BB@0x8 a-BB@0xa ]
+	0       (00000000) instance-of          v0, v3, Lv3/m;
+	1       (00000004) if-eqz               v0, +003h
+
+a-BB@0x8 : 
+	2       (00000008) return-object        v3
+
+a-BB@0xa : 
+	3       (0000000a) new-instance         v0, Lv3/b;
+	4       (0000000e) iget-object          v1, v2, Lv3/h;->a Lv3/k;
+	5       (00000012) invoke-virtual       v1, Lv3/k;->j()F
+	6       (00000018) move-result          v1
+	7       (0000001a) neg-float            v1, v1
+	8       (0000001c) invoke-direct        v0, v1, v3, Lv3/b;-><init>(F Lv3/d;)V
+	9       (00000022) return-object        v0
+

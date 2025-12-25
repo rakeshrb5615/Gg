@@ -1,0 +1,90 @@
+# Lv3/k;->d(I)I [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:int
+#
+# - return:int
+
+d-BB@0x0 : [ d-BB@0x1a d-BB@0xc4 ]
+	0       (00000000) iget-object          v0, v6, Lv3/k;->b Lv3/i;
+	1       (00000004) iget                 v1, v0, Lv3/i;->n F
+	2       (00000008) const/4              v2, 0
+	3       (0000000a) add-float/2addr      v1, v2
+	4       (0000000c) iget                 v3, v0, Lv3/i;->m F
+	5       (00000010) add-float/2addr      v1, v3
+	6       (00000012) iget-object          v0, v0, Lv3/i;->c Lp3/a;
+	7       (00000016) if-eqz               v0, +057h
+
+d-BB@0x1a : [ d-BB@0x22 d-BB@0xc4 ]
+	8       (0000001a) iget-boolean         v3, v0, Lp3/a;->a Z
+	9       (0000001e) if-eqz               v3, +053h
+
+d-BB@0x22 : [ d-BB@0x36 d-BB@0xc4 ]
+	10      (00000022) const/16             v3, 255
+	11      (00000026) invoke-static        v7, v3, Lh0/a;->h(I I)I
+	12      (0000002c) move-result          v4
+	13      (0000002e) iget                 v5, v0, Lp3/a;->d I
+	14      (00000032) if-ne                v4, v5, +049h
+
+d-BB@0x36 : [ d-BB@0x42 d-BB@0x7a ]
+	15      (00000036) iget                 v4, v0, Lp3/a;->e F
+	16      (0000003a) cmpg-float           v5, v4, v2
+	17      (0000003e) if-lez               v5, +01eh
+
+d-BB@0x42 : [ d-BB@0x4a d-BB@0x4c ]
+	18      (00000042) cmpg-float           v5, v1, v2
+	19      (00000046) if-gtz               v5, +003h
+
+d-BB@0x4a : [ d-BB@0x7a ]
+	20      (0000004a) goto                 +18h
+
+d-BB@0x4c : [ d-BB@0x7c ]
+	21      (0000004c) div-float/2addr      v1, v4
+	22      (0000004e) float-to-double      v4, v1
+	23      (00000050) invoke-static        v4, v5, Ljava/lang/Math;->log1p(D)D
+	24      (00000056) move-result-wide     v4
+	25      (00000058) double-to-float      v1, v4
+	26      (0000005a) const/high16         v4, 1083179008
+	27      (0000005e) mul-float/2addr      v1, v4
+	28      (00000060) const/high16         v4, 1073741824
+	29      (00000064) add-float/2addr      v1, v4
+	30      (00000066) const/high16         v4, 1120403456
+	31      (0000006a) div-float/2addr      v1, v4
+	32      (0000006c) const/high16         v4, 1065353216
+	33      (00000070) invoke-static        v1, v4, Ljava/lang/Math;->min(F F)F
+	34      (00000076) move-result          v1
+	35      (00000078) goto                 +2h
+
+d-BB@0x7a : [ d-BB@0x7c ]
+	36      (0000007a) move                 v1, v2
+
+d-BB@0x7c : [ d-BB@0xa0 d-BB@0xbc ]
+	37      (0000007c) invoke-static        v7, Landroid/graphics/Color;->alpha(I)I
+	38      (00000082) move-result          v4
+	39      (00000084) invoke-static        v7, v3, Lh0/a;->h(I I)I
+	40      (0000008a) move-result          v7
+	41      (0000008c) iget                 v3, v0, Lp3/a;->b I
+	42      (00000090) invoke-static        v7, v3, v1, Lj5/t1;->L(I I F)I
+	43      (00000096) move-result          v7
+	44      (00000098) cmpl-float           v1, v1, v2
+	45      (0000009c) if-lez               v1, +010h
+
+d-BB@0xa0 : [ d-BB@0xa8 d-BB@0xbc ]
+	46      (000000a0) iget                 v0, v0, Lp3/a;->c I
+	47      (000000a4) if-eqz               v0, +00ch
+
+d-BB@0xa8 : [ d-BB@0xbc ]
+	48      (000000a8) sget                 v1, Lp3/a;->f I
+	49      (000000ac) invoke-static        v0, v1, Lh0/a;->h(I I)I
+	50      (000000b2) move-result          v0
+	51      (000000b4) invoke-static        v0, v7, Lh0/a;->e(I I)I
+	52      (000000ba) move-result          v7
+
+d-BB@0xbc : [ d-BB@0xc4 ]
+	53      (000000bc) invoke-static        v7, v4, Lh0/a;->h(I I)I
+	54      (000000c2) move-result          v7
+
+d-BB@0xc4 : 
+	55      (000000c4) return               v7
+

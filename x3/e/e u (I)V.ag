@@ -1,0 +1,33 @@
+# Lx3/e;->u(I)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:int
+#
+# - return:void
+
+u-BB@0x0 : [ u-BB@0xc u-BB@0x18 ]
+	0       (00000000) invoke-virtual       v1, Lx3/e;->r()Z
+	1       (00000006) move-result          v0
+	2       (00000008) if-nez               v0, +008h
+
+u-BB@0xc : [ u-BB@0x18 u-BB@0x2a ]
+	3       (0000000c) invoke-virtual       v1, Lx3/e;->s()Z
+	4       (00000012) move-result          v0
+	5       (00000014) if-eqz               v0, +00bh
+
+u-BB@0x18 : [ u-BB@0x20 u-BB@0x28 ]
+	6       (00000018) const/high16         v0, -2147483648
+	7       (0000001c) if-ne                v2, v0, +006h
+
+u-BB@0x20 : [ u-BB@0x2a ]
+	8       (00000020) const                v2, 2147483647
+	9       (00000026) goto                 +2h
+
+u-BB@0x28 : [ u-BB@0x2a ]
+	10      (00000028) neg-int              v2, v2
+
+u-BB@0x2a : 
+	11      (0000002a) invoke-virtual       v1, v2, Lx3/e;->t(I)Z
+	12      (00000030) return-void          
+

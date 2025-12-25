@@ -1,0 +1,369 @@
+# Lx3/e;->y(Ljava/util/ArrayList;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v10
+# - v11:java.util.ArrayList
+#
+# - return:void
+
+y-BB@0x0 : [ y-BB@0xc y-BB@0x3fe ]
+	0       (00000000) invoke-virtual       v11, Ljava/util/ArrayList;->isEmpty()Z
+	1       (00000006) move-result          v0
+	2       (00000008) if-nez               v0, +1fbh
+
+y-BB@0xc : [ y-BB@0x2a y-BB@0x3c ]
+	3       (0000000c) invoke-static        v11, Ljava/util/Collections;->sort(Ljava/util/List;)V
+	4       (00000012) iget-object          v0, v10, Lx3/e;->s0 Ljava/util/ArrayList;
+	5       (00000016) invoke-virtual       v0, Ljava/util/ArrayList;->size()I
+	6       (0000001c) move-result          v0
+	7       (0000001e) invoke-virtual       v11, Ljava/util/ArrayList;->size()I
+	8       (00000024) move-result          v1
+	9       (00000026) if-ne                v0, v1, +00bh
+
+y-BB@0x2a : [ y-BB@0x3a y-BB@0x3c ]
+	10      (0000002a) iget-object          v0, v10, Lx3/e;->s0 Ljava/util/ArrayList;
+	11      (0000002e) invoke-virtual       v0, v11, Ljava/util/ArrayList;->equals(Ljava/lang/Object;)Z
+	12      (00000034) move-result          v0
+	13      (00000036) if-eqz               v0, +003h
+
+y-BB@0x3a : 
+	14      (0000003a) return-void          
+
+y-BB@0x3c : [ y-BB@0x6e y-BB@0xe4 ]
+	15      (0000003c) iput-object          v11, v10, Lx3/e;->s0 Ljava/util/ArrayList;
+	16      (00000040) const/4              v11, 1
+	17      (00000042) iput-boolean         v11, v10, Lx3/e;->C0 Z
+	18      (00000046) const/4              v0, 0
+	19      (00000048) iput                 v0, v10, Lx3/e;->u0 I
+	20      (0000004c) invoke-virtual       v10, Lx3/e;->C()V
+	21      (00000052) iget-object          v1, v10, Lx3/e;->r Ljava/util/ArrayList;
+	22      (00000056) invoke-virtual       v1, Ljava/util/ArrayList;->size()I
+	23      (0000005c) move-result          v2
+	24      (0000005e) iget-object          v3, v10, Lx3/e;->s0 Ljava/util/ArrayList;
+	25      (00000062) invoke-virtual       v3, Ljava/util/ArrayList;->size()I
+	26      (00000068) move-result          v3
+	27      (0000006a) if-le                v2, v3, +03dh
+
+y-BB@0x6e : [ y-BB@0x92 ]
+	28      (0000006e) iget-object          v2, v10, Lx3/e;->s0 Ljava/util/ArrayList;
+	29      (00000072) invoke-virtual       v2, Ljava/util/ArrayList;->size()I
+	30      (00000078) move-result          v2
+	31      (0000007a) invoke-virtual       v1, Ljava/util/ArrayList;->size()I
+	32      (00000080) move-result          v3
+	33      (00000082) invoke-virtual       v1, v2, v3, Ljava/util/ArrayList;->subList(I I)Ljava/util/List;
+	34      (00000088) move-result-object   v2
+	35      (0000008a) invoke-interface     v2, Ljava/util/List;->iterator()Ljava/util/Iterator;
+	36      (00000090) move-result-object   v3
+
+y-BB@0x92 : [ y-BB@0x9e y-BB@0xde ]
+	37      (00000092) invoke-interface     v3, Ljava/util/Iterator;->hasNext()Z
+	38      (00000098) move-result          v4
+	39      (0000009a) if-eqz               v4, +022h
+
+y-BB@0x9e : [ y-BB@0xb6 y-BB@0x92 ]
+	40      (0000009e) invoke-interface     v3, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	41      (000000a4) move-result-object   v4
+	42      (000000a6) check-cast           v4, Lb4/b;
+	43      (000000aa) invoke-virtual       v10, Landroid/view/View;->isAttachedToWindow()Z
+	44      (000000b0) move-result          v5
+	45      (000000b2) if-eqz               v5, -010h
+
+y-BB@0xb6 : [ y-BB@0xc2 y-BB@0xc4 ]
+	46      (000000b6) invoke-static        v10, Lq3/k;->d(Lx3/e;)Landroid/view/ViewGroup;
+	47      (000000bc) move-result-object   v5
+	48      (000000be) if-nez               v5, +003h
+
+y-BB@0xc2 : [ y-BB@0x92 ]
+	49      (000000c2) goto                 -18h
+
+y-BB@0xc4 : [ y-BB@0x92 ]
+	50      (000000c4) invoke-virtual       v5, Landroid/view/View;->getOverlay()Landroid/view/ViewOverlay;
+	51      (000000ca) move-result-object   v6
+	52      (000000cc) invoke-virtual       v6, v4, Landroid/view/ViewOverlay;->remove(Landroid/graphics/drawable/Drawable;)V
+	53      (000000d2) iget-object          v4, v4, Lb4/b;->Q Lb4/a;
+	54      (000000d6) invoke-virtual       v5, v4, Landroid/view/View;->removeOnLayoutChangeListener(Landroid/view/View$OnLayoutChangeListener;)V
+	55      (000000dc) goto                 -25h
+
+y-BB@0xde : [ y-BB@0xe4 ]
+	56      (000000de) invoke-interface     v2, Ljava/util/List;->clear()V
+
+y-BB@0xe4 : [ y-BB@0xfc y-BB@0x358 ]
+	57      (000000e4) invoke-virtual       v1, Ljava/util/ArrayList;->size()I
+	58      (000000ea) move-result          v2
+	59      (000000ec) iget-object          v3, v10, Lx3/e;->s0 Ljava/util/ArrayList;
+	60      (000000f0) invoke-virtual       v3, Ljava/util/ArrayList;->size()I
+	61      (000000f6) move-result          v3
+	62      (000000f8) if-ge                v2, v3, +130h
+
+y-BB@0xfc : [ y-BB@0x15c y-BB@0x188 ]
+	63      (000000fc) invoke-virtual       v10, Landroid/view/View;->getContext()Landroid/content/Context;
+	64      (00000102) move-result-object   v2
+	65      (00000104) new-instance         v3, Lb4/b;
+	66      (00000108) iget                 v8, v10, Lx3/e;->q I
+	67      (0000010c) invoke-direct        v3, v2, v8, Lb4/b;-><init>(Landroid/content/Context; I)V
+	68      (00000112) sget-object          v6, Lc3/a;->H [I
+	69      (00000116) new-array            v9, v0, [I
+	70      (0000011a) iget-object          v4, v3, Lb4/b;->N Landroid/content/Context;
+	71      (0000011e) const/4              v5, 0
+	72      (00000120) const/4              v7, 0
+	73      (00000122) invoke-static/range  v4 ... v9, Lq3/k;->f(Landroid/content/Context; Landroid/util/AttributeSet; [I I I [I)Landroid/content/res/TypedArray;
+	74      (00000128) move-result-object   v2
+	75      (0000012a) iget-object          v4, v3, Lb4/b;->N Landroid/content/Context;
+	76      (0000012e) invoke-virtual       v4, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+	77      (00000134) move-result-object   v5
+	78      (00000136) const                v6, 2131166208
+	79      (0000013c) invoke-virtual       v5, v6, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+	80      (00000142) move-result          v5
+	81      (00000144) iput                 v5, v3, Lb4/b;->X I
+	82      (00000148) const/16             v5, 8
+	83      (0000014c) invoke-virtual       v2, v5, v11, Landroid/content/res/TypedArray;->getBoolean(I Z)Z
+	84      (00000152) move-result          v5
+	85      (00000154) iput-boolean         v5, v3, Lb4/b;->W Z
+	86      (00000158) if-eqz               v5, +018h
+
+y-BB@0x15c : [ y-BB@0x18c ]
+	87      (0000015c) iget-object          v5, v3, Lv3/k;->b Lv3/i;
+	88      (00000160) iget-object          v5, v5, Lv3/i;->a Lv3/p;
+	89      (00000164) invoke-virtual       v5, Lv3/p;->f()Lv3/o;
+	90      (0000016a) move-result-object   v5
+	91      (0000016c) invoke-virtual       v3, Lb4/b;->x()Lv3/l;
+	92      (00000172) move-result-object   v6
+	93      (00000174) iput-object          v6, v5, Lv3/o;->k Lv3/f;
+	94      (00000178) invoke-virtual       v5, Lv3/o;->a()Lv3/p;
+	95      (0000017e) move-result-object   v5
+	96      (00000180) invoke-virtual       v3, v5, Lv3/k;->setShapeAppearanceModel(Lv3/p;)V
+	97      (00000186) goto                 +3h
+
+y-BB@0x188 : [ y-BB@0x18c ]
+	98      (00000188) iput                 v0, v3, Lb4/b;->X I
+
+y-BB@0x18c : [ y-BB@0x1aa y-BB@0x1b8 ]
+	99      (0000018c) const/4              v5, 6
+	100     (0000018e) invoke-virtual       v2, v5, Landroid/content/res/TypedArray;->getText(I)Ljava/lang/CharSequence;
+	101     (00000194) move-result-object   v5
+	102     (00000196) iget-object          v6, v3, Lb4/b;->M Ljava/lang/CharSequence;
+	103     (0000019a) invoke-static        v6, v5, Landroid/text/TextUtils;->equals(Ljava/lang/CharSequence; Ljava/lang/CharSequence;)Z
+	104     (000001a0) move-result          v6
+	105     (000001a2) iget-object          v7, v3, Lb4/b;->P Lq3/i;
+	106     (000001a6) if-nez               v6, +009h
+
+y-BB@0x1aa : [ y-BB@0x1b8 ]
+	107     (000001aa) iput-object          v5, v3, Lb4/b;->M Ljava/lang/CharSequence;
+	108     (000001ae) iput-boolean         v11, v7, Lq3/i;->d Z
+	109     (000001b2) invoke-virtual       v3, Lv3/k;->invalidateSelf()V
+
+y-BB@0x1b8 : [ y-BB@0x1c4 y-BB@0x1dc ]
+	110     (000001b8) invoke-virtual       v2, v0, Landroid/content/res/TypedArray;->hasValue(I)Z
+	111     (000001be) move-result          v5
+	112     (000001c0) if-eqz               v5, +00eh
+
+y-BB@0x1c4 : [ y-BB@0x1d0 y-BB@0x1dc ]
+	113     (000001c4) invoke-virtual       v2, v0, v0, Landroid/content/res/TypedArray;->getResourceId(I I)I
+	114     (000001ca) move-result          v5
+	115     (000001cc) if-eqz               v5, +008h
+
+y-BB@0x1d0 : [ y-BB@0x1de ]
+	116     (000001d0) new-instance         v6, Ls3/d;
+	117     (000001d4) invoke-direct        v6, v4, v5, Ls3/d;-><init>(Landroid/content/Context; I)V
+	118     (000001da) goto                 +2h
+
+y-BB@0x1dc : [ y-BB@0x1de ]
+	119     (000001dc) const/4              v6, 0
+
+y-BB@0x1de : [ y-BB@0x1e2 y-BB@0x1fa ]
+	120     (000001de) if-eqz               v6, +00eh
+
+y-BB@0x1e2 : [ y-BB@0x1ee y-BB@0x1fa ]
+	121     (000001e2) invoke-virtual       v2, v11, Landroid/content/res/TypedArray;->hasValue(I)Z
+	122     (000001e8) move-result          v5
+	123     (000001ea) if-eqz               v5, +008h
+
+y-BB@0x1ee : [ y-BB@0x1fa ]
+	124     (000001ee) invoke-static        v4, v2, v11, Lj5/t1;->v(Landroid/content/Context; Landroid/content/res/TypedArray; I)Landroid/content/res/ColorStateList;
+	125     (000001f4) move-result-object   v5
+	126     (000001f6) iput-object          v5, v6, Ls3/d;->k Landroid/content/res/ColorStateList;
+
+y-BB@0x1fa : [ y-BB@0x222 y-BB@0x22c ]
+	127     (000001fa) invoke-virtual       v7, v6, v4, Lq3/i;->b(Ls3/d; Landroid/content/Context;)V
+	128     (00000200) const                v5, 2130968852
+	129     (00000206) const-class          v6, Lb4/b;
+	130     (0000020a) invoke-virtual       v6, Ljava/lang/Class;->getCanonicalName()Ljava/lang/String;
+	131     (00000210) move-result-object   v7
+	132     (00000212) invoke-static        v4, v5, v7, Lc4/b;->W(Landroid/content/Context; I Ljava/lang/String;)Landroid/util/TypedValue;
+	133     (00000218) move-result-object   v5
+	134     (0000021a) iget                 v7, v5, Landroid/util/TypedValue;->resourceId I
+	135     (0000021e) if-eqz               v7, +007h
+
+y-BB@0x222 : [ y-BB@0x230 ]
+	136     (00000222) invoke-static        v4, v7, Le0/c;->getColor(Landroid/content/Context; I)I
+	137     (00000228) move-result          v5
+	138     (0000022a) goto                 +3h
+
+y-BB@0x22c : [ y-BB@0x230 ]
+	139     (0000022c) iget                 v5, v5, Landroid/util/TypedValue;->data I
+
+y-BB@0x230 : [ y-BB@0x24e y-BB@0x258 ]
+	140     (00000230) const                v7, 16842801
+	141     (00000236) invoke-virtual       v6, Ljava/lang/Class;->getCanonicalName()Ljava/lang/String;
+	142     (0000023c) move-result-object   v8
+	143     (0000023e) invoke-static        v4, v7, v8, Lc4/b;->W(Landroid/content/Context; I Ljava/lang/String;)Landroid/util/TypedValue;
+	144     (00000244) move-result-object   v7
+	145     (00000246) iget                 v8, v7, Landroid/util/TypedValue;->resourceId I
+	146     (0000024a) if-eqz               v8, +007h
+
+y-BB@0x24e : [ y-BB@0x25c ]
+	147     (0000024e) invoke-static        v4, v8, Le0/c;->getColor(Landroid/content/Context; I)I
+	148     (00000254) move-result          v7
+	149     (00000256) goto                 +3h
+
+y-BB@0x258 : [ y-BB@0x25c ]
+	150     (00000258) iget                 v7, v7, Landroid/util/TypedValue;->data I
+
+y-BB@0x25c : [ y-BB@0x2b2 y-BB@0x2bc ]
+	151     (0000025c) const/16             v8, 229
+	152     (00000260) invoke-static        v7, v8, Lh0/a;->h(I I)I
+	153     (00000266) move-result          v7
+	154     (00000268) const/16             v8, 153
+	155     (0000026c) invoke-static        v5, v8, Lh0/a;->h(I I)I
+	156     (00000272) move-result          v5
+	157     (00000274) invoke-static        v5, v7, Lh0/a;->e(I I)I
+	158     (0000027a) move-result          v5
+	159     (0000027c) const/4              v7, 7
+	160     (0000027e) invoke-virtual       v2, v7, v5, Landroid/content/res/TypedArray;->getColor(I I)I
+	161     (00000284) move-result          v5
+	162     (00000286) invoke-static        v5, Landroid/content/res/ColorStateList;->valueOf(I)Landroid/content/res/ColorStateList;
+	163     (0000028c) move-result-object   v5
+	164     (0000028e) invoke-virtual       v3, v5, Lv3/k;->o(Landroid/content/res/ColorStateList;)V
+	165     (00000294) const                v5, 2130968890
+	166     (0000029a) invoke-virtual       v6, Ljava/lang/Class;->getCanonicalName()Ljava/lang/String;
+	167     (000002a0) move-result-object   v6
+	168     (000002a2) invoke-static        v4, v5, v6, Lc4/b;->W(Landroid/content/Context; I Ljava/lang/String;)Landroid/util/TypedValue;
+	169     (000002a8) move-result-object   v5
+	170     (000002aa) iget                 v6, v5, Landroid/util/TypedValue;->resourceId I
+	171     (000002ae) if-eqz               v6, +007h
+
+y-BB@0x2b2 : [ y-BB@0x2c0 ]
+	172     (000002b2) invoke-static        v4, v6, Le0/c;->getColor(Landroid/content/Context; I)I
+	173     (000002b8) move-result          v4
+	174     (000002ba) goto                 +3h
+
+y-BB@0x2bc : [ y-BB@0x2c0 ]
+	175     (000002bc) iget                 v4, v5, Landroid/util/TypedValue;->data I
+
+y-BB@0x2c0 : [ y-BB@0x31e y-BB@0xe4 ]
+	176     (000002c0) invoke-static        v4, Landroid/content/res/ColorStateList;->valueOf(I)Landroid/content/res/ColorStateList;
+	177     (000002c6) move-result-object   v4
+	178     (000002c8) invoke-virtual       v3, v4, Lv3/k;->r(Landroid/content/res/ColorStateList;)V
+	179     (000002ce) const/4              v4, 2
+	180     (000002d0) invoke-virtual       v2, v4, v0, Landroid/content/res/TypedArray;->getDimensionPixelSize(I I)I
+	181     (000002d6) move-result          v5
+	182     (000002d8) iput                 v5, v3, Lb4/b;->S I
+	183     (000002dc) const/4              v5, 4
+	184     (000002de) invoke-virtual       v2, v5, v0, Landroid/content/res/TypedArray;->getDimensionPixelSize(I I)I
+	185     (000002e4) move-result          v5
+	186     (000002e6) iput                 v5, v3, Lb4/b;->T I
+	187     (000002ea) const/4              v5, 5
+	188     (000002ec) invoke-virtual       v2, v5, v0, Landroid/content/res/TypedArray;->getDimensionPixelSize(I I)I
+	189     (000002f2) move-result          v5
+	190     (000002f4) iput                 v5, v3, Lb4/b;->U I
+	191     (000002f8) const/4              v5, 3
+	192     (000002fa) invoke-virtual       v2, v5, v0, Landroid/content/res/TypedArray;->getDimensionPixelSize(I I)I
+	193     (00000300) move-result          v5
+	194     (00000302) iput                 v5, v3, Lb4/b;->V I
+	195     (00000306) invoke-virtual       v2, Landroid/content/res/TypedArray;->recycle()V
+	196     (0000030c) invoke-virtual       v1, v3, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	197     (00000312) invoke-virtual       v10, Landroid/view/View;->isAttachedToWindow()Z
+	198     (00000318) move-result          v2
+	199     (0000031a) if-eqz               v2, -11bh
+
+y-BB@0x31e : [ y-BB@0x32a y-BB@0x32e ]
+	200     (0000031e) invoke-static        v10, Lq3/k;->d(Lx3/e;)Landroid/view/ViewGroup;
+	201     (00000324) move-result-object   v2
+	202     (00000326) if-nez               v2, +004h
+
+y-BB@0x32a : [ y-BB@0xe4 ]
+	203     (0000032a) goto/16              -123h
+
+y-BB@0x32e : [ y-BB@0xe4 ]
+	204     (0000032e) new-array            v4, v4, [I
+	205     (00000332) invoke-virtual       v2, v4, Landroid/view/View;->getLocationOnScreen([I)V
+	206     (00000338) aget                 v4, v4, v0
+	207     (0000033c) iput                 v4, v3, Lb4/b;->Y I
+	208     (00000340) iget-object          v4, v3, Lb4/b;->R Landroid/graphics/Rect;
+	209     (00000344) invoke-virtual       v2, v4, Landroid/view/View;->getWindowVisibleDisplayFrame(Landroid/graphics/Rect;)V
+	210     (0000034a) iget-object          v3, v3, Lb4/b;->Q Lb4/a;
+	211     (0000034e) invoke-virtual       v2, v3, Landroid/view/View;->addOnLayoutChangeListener(Landroid/view/View$OnLayoutChangeListener;)V
+	212     (00000354) goto/16              -138h
+
+y-BB@0x358 : [ y-BB@0x364 y-BB@0x366 ]
+	213     (00000358) invoke-virtual       v1, Ljava/util/ArrayList;->size()I
+	214     (0000035e) move-result          v2
+	215     (00000360) if-ne                v2, v11, +003h
+
+y-BB@0x364 : [ y-BB@0x366 ]
+	216     (00000364) move                 v11, v0
+
+y-BB@0x366 : [ y-BB@0x370 ]
+	217     (00000366) invoke-virtual       v1, Ljava/util/ArrayList;->size()I
+	218     (0000036c) move-result          v2
+	219     (0000036e) move                 v3, v0
+
+y-BB@0x370 : [ y-BB@0x374 y-BB@0x396 ]
+	220     (00000370) if-ge                v3, v2, +013h
+
+y-BB@0x374 : [ y-BB@0x370 ]
+	221     (00000374) invoke-virtual       v1, v3, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	222     (0000037a) move-result-object   v4
+	223     (0000037c) add-int/lit8         v3, v3, 1
+	224     (00000380) check-cast           v4, Lb4/b;
+	225     (00000384) int-to-float         v5, v11
+	226     (00000386) iget-object          v6, v4, Lv3/k;->b Lv3/i;
+	227     (0000038a) iput                 v5, v6, Lv3/i;->k F
+	228     (0000038e) invoke-virtual       v4, Lv3/k;->invalidateSelf()V
+	229     (00000394) goto                 -12h
+
+y-BB@0x396 : [ y-BB@0x3a4 ]
+	230     (00000396) iget-object          v11, v10, Lx3/e;->s Ljava/util/ArrayList;
+	231     (0000039a) invoke-virtual       v11, Ljava/util/ArrayList;->size()I
+	232     (000003a0) move-result          v1
+	233     (000003a2) move                 v2, v0
+
+y-BB@0x3a4 : [ y-BB@0x3a8 y-BB@0x3f6 ]
+	234     (000003a4) if-ge                v2, v1, +029h
+
+y-BB@0x3a8 : [ y-BB@0x3c6 ]
+	235     (000003a8) invoke-virtual       v11, v2, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	236     (000003ae) move-result-object   v3
+	237     (000003b0) add-int/lit8         v2, v2, 1
+	238     (000003b4) check-cast           v3, Lx3/g;
+	239     (000003b8) iget-object          v4, v10, Lx3/e;->s0 Ljava/util/ArrayList;
+	240     (000003bc) invoke-virtual       v4, Ljava/util/ArrayList;->size()I
+	241     (000003c2) move-result          v5
+	242     (000003c4) move                 v6, v0
+
+y-BB@0x3c6 : [ y-BB@0x3ca y-BB@0x3a4 ]
+	243     (000003c6) if-ge                v6, v5, -011h
+
+y-BB@0x3ca : [ y-BB@0x3c6 ]
+	244     (000003ca) invoke-virtual       v4, v6, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	245     (000003d0) move-result-object   v7
+	246     (000003d2) add-int/lit8         v6, v6, 1
+	247     (000003d6) check-cast           v7, Ljava/lang/Float;
+	248     (000003da) invoke-virtual       v7, Ljava/lang/Float;->floatValue()F
+	249     (000003e0) move-result          v7
+	250     (000003e2) invoke-virtual       v3, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	251     (000003e8) move-object          v8, v10
+	252     (000003ea) check-cast           v8, Lcom/google/android/material/slider/Slider;
+	253     (000003ee) invoke-interface     v3, v7, Lx3/g;->a(F)V
+	254     (000003f4) goto                 -17h
+
+y-BB@0x3f6 : 
+	255     (000003f6) invoke-virtual       v10, Landroid/view/View;->postInvalidate()V
+	256     (000003fc) return-void          
+
+y-BB@0x3fe : 
+	257     (000003fe) new-instance         v11, Ljava/lang/IllegalArgumentException;
+	258     (00000402) const-string         v0, "At least one value must be set"
+	259     (00000406) invoke-direct        v11, v0, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	260     (0000040c) throw                v11
+

@@ -1,0 +1,89 @@
+# Lx8/g;->F(J Ljava/nio/charset/Charset;)Ljava/lang/String; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v7
+# - v8:long
+# - v9:java.nio.charset.Charset
+#
+# - return:java.lang.String
+
+F-BB@0x0 : [ F-BB@0x16 F-BB@0xba ]
+	0       (00000000) const-string         v0, "charset"
+	1       (00000004) invoke-static        v9, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) const-wide/16        v0, 0
+	3       (0000000e) cmp-long             v0, v7, v0
+	4       (00000012) if-ltz               v0, +054h
+
+F-BB@0x16 : [ F-BB@0x24 F-BB@0xba ]
+	5       (00000016) const-wide/32        v1, 2147483647
+	6       (0000001c) cmp-long             v1, v7, v1
+	7       (00000020) if-gtz               v1, +04dh
+
+F-BB@0x24 : [ F-BB@0x30 F-BB@0xae ]
+	8       (00000024) iget-wide            v1, v6, Lx8/g;->b J
+	9       (00000028) cmp-long             v1, v1, v7
+	10      (0000002c) if-ltz               v1, +041h
+
+F-BB@0x30 : [ F-BB@0x34 F-BB@0x3a ]
+	11      (00000030) if-nez               v0, +005h
+
+F-BB@0x34 : 
+	12      (00000034) const-string         v7, ""
+	13      (00000038) return-object        v7
+
+F-BB@0x3a : [ F-BB@0x5a F-BB@0x6e ]
+	14      (0000003a) iget-object          v0, v6, Lx8/g;->a Lx8/c0;
+	15      (0000003e) invoke-static        v0, Lkotlin/jvm/internal/j;->b(Ljava/lang/Object;)V
+	16      (00000044) iget                 v1, v0, Lx8/c0;->b I
+	17      (00000048) int-to-long          v2, v1
+	18      (0000004a) add-long/2addr       v2, v7
+	19      (0000004c) iget                 v4, v0, Lx8/c0;->c I
+	20      (00000050) int-to-long          v4, v4
+	21      (00000052) cmp-long             v2, v2, v4
+	22      (00000056) if-lez               v2, +00ch
+
+F-BB@0x5a : 
+	23      (0000005a) new-instance         v0, Ljava/lang/String;
+	24      (0000005e) invoke-virtual       v6, v7, v8, Lx8/g;->D(J)[B
+	25      (00000064) move-result-object   v7
+	26      (00000066) invoke-direct        v0, v7, v9, Ljava/lang/String;-><init>([B Ljava/nio/charset/Charset;)V
+	27      (0000006c) return-object        v0
+
+F-BB@0x6e : [ F-BB@0x9a F-BB@0xac ]
+	28      (0000006e) new-instance         v2, Ljava/lang/String;
+	29      (00000072) iget-object          v3, v0, Lx8/c0;->a [B
+	30      (00000076) long-to-int          v4, v7
+	31      (00000078) invoke-direct        v2, v3, v1, v4, v9, Ljava/lang/String;-><init>([B I I Ljava/nio/charset/Charset;)V
+	32      (0000007e) iget                 v9, v0, Lx8/c0;->b I
+	33      (00000082) add-int/2addr        v9, v4
+	34      (00000084) iput                 v9, v0, Lx8/c0;->b I
+	35      (00000088) iget-wide            v3, v6, Lx8/g;->b J
+	36      (0000008c) sub-long/2addr       v3, v7
+	37      (0000008e) iput-wide            v3, v6, Lx8/g;->b J
+	38      (00000092) iget                 v7, v0, Lx8/c0;->c I
+	39      (00000096) if-ne                v9, v7, +00bh
+
+F-BB@0x9a : [ F-BB@0xac ]
+	40      (0000009a) invoke-virtual       v0, Lx8/c0;->a()Lx8/c0;
+	41      (000000a0) move-result-object   v7
+	42      (000000a2) iput-object          v7, v6, Lx8/g;->a Lx8/c0;
+	43      (000000a6) invoke-static        v0, Lx8/d0;->a(Lx8/c0;)V
+
+F-BB@0xac : 
+	44      (000000ac) return-object        v2
+
+F-BB@0xae : 
+	45      (000000ae) new-instance         v7, Ljava/io/EOFException;
+	46      (000000b2) invoke-direct        v7, Ljava/io/EOFException;-><init>()V
+	47      (000000b8) throw                v7
+
+F-BB@0xba : 
+	48      (000000ba) const-string         v9, "byteCount: "
+	49      (000000be) invoke-static        v7, v8, v9, Lv1/a;->g(J Ljava/lang/String;)Ljava/lang/String;
+	50      (000000c4) move-result-object   v7
+	51      (000000c6) new-instance         v8, Ljava/lang/IllegalArgumentException;
+	52      (000000ca) invoke-virtual       v7, Ljava/lang/Object;->toString()Ljava/lang/String;
+	53      (000000d0) move-result-object   v7
+	54      (000000d2) invoke-direct        v8, v7, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	55      (000000d8) throw                v8
+

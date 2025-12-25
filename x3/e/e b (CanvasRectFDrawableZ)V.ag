@@ -1,0 +1,103 @@
+# Lx3/e;->b(Landroid/graphics/Canvas; Landroid/graphics/RectF; Landroid/graphics/drawable/Drawable; Z)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:android.graphics.Canvas
+# - v6:android.graphics.RectF
+# - v7:android.graphics.drawable.Drawable
+# - v8:boolean
+#
+# - return:void
+
+b-BB@0x0 : [ b-BB@0x4 b-BB@0xc8 ]
+	0       (00000000) if-eqz               v7, +064h
+
+b-BB@0x4 : [ b-BB@0x2a b-BB@0x8a ]
+	1       (00000004) iget                 v0, v4, Lx3/e;->i0 I
+	2       (00000008) iget                 v1, v6, Landroid/graphics/RectF;->right F
+	3       (0000000c) iget                 v2, v6, Landroid/graphics/RectF;->left F
+	4       (00000010) sub-float/2addr      v1, v2
+	5       (00000012) iget                 v2, v4, Lx3/e;->j0 I
+	6       (00000016) mul-int/lit8         v3, v2, 2
+	7       (0000001a) add-int/2addr        v3, v0
+	8       (0000001c) int-to-float         v3, v3
+	9       (0000001e) cmpl-float           v1, v1, v3
+	10      (00000022) iget-object          v3, v4, Lx3/e;->O0 Landroid/graphics/RectF;
+	11      (00000026) if-ltz               v1, +032h
+
+b-BB@0x2a : [ b-BB@0x36 b-BB@0x48 ]
+	12      (0000002a) invoke-virtual       v4, Lx3/e;->r()Z
+	13      (00000030) move-result          v1
+	14      (00000032) if-nez               v1, +00bh
+
+b-BB@0x36 : [ b-BB@0x42 b-BB@0x44 ]
+	15      (00000036) invoke-virtual       v4, Lx3/e;->s()Z
+	16      (0000003c) move-result          v1
+	17      (0000003e) if-eqz               v1, +003h
+
+b-BB@0x42 : [ b-BB@0x48 ]
+	18      (00000042) goto                 +3h
+
+b-BB@0x44 : [ b-BB@0x4a ]
+	19      (00000044) const/4              v1, 0
+	20      (00000046) goto                 +2h
+
+b-BB@0x48 : [ b-BB@0x4a ]
+	21      (00000048) const/4              v1, 1
+
+b-BB@0x4a : [ b-BB@0x50 b-BB@0x5a ]
+	22      (0000004a) xor-int/2addr        v8, v1
+	23      (0000004c) if-eqz               v8, +007h
+
+b-BB@0x50 : [ b-BB@0x66 ]
+	24      (00000050) iget                 v6, v6, Landroid/graphics/RectF;->left F
+	25      (00000054) int-to-float         v8, v2
+	26      (00000056) add-float/2addr      v6, v8
+	27      (00000058) goto                 +7h
+
+b-BB@0x5a : [ b-BB@0x66 ]
+	28      (0000005a) iget                 v6, v6, Landroid/graphics/RectF;->right F
+	29      (0000005e) int-to-float         v8, v2
+	30      (00000060) sub-float/2addr      v6, v8
+	31      (00000062) int-to-float         v8, v0
+	32      (00000064) sub-float/2addr      v6, v8
+
+b-BB@0x66 : [ b-BB@0x90 ]
+	33      (00000066) invoke-virtual       v4, Lx3/e;->c()I
+	34      (0000006c) move-result          v8
+	35      (0000006e) int-to-float         v8, v8
+	36      (00000070) int-to-float         v0, v0
+	37      (00000072) const/high16         v1, 1073741824
+	38      (00000076) div-float            v1, v0, v1
+	39      (0000007a) sub-float/2addr      v8, v1
+	40      (0000007c) add-float            v1, v6, v0
+	41      (00000080) add-float/2addr      v0, v8
+	42      (00000082) invoke-virtual       v3, v6, v8, v1, v0, Landroid/graphics/RectF;->set(F F F F)V
+	43      (00000088) goto                 +4h
+
+b-BB@0x8a : [ b-BB@0x90 ]
+	44      (0000008a) invoke-virtual       v3, Landroid/graphics/RectF;->setEmpty()V
+
+b-BB@0x90 : [ b-BB@0x9c b-BB@0xc8 ]
+	45      (00000090) invoke-virtual       v3, Landroid/graphics/RectF;->isEmpty()Z
+	46      (00000096) move-result          v6
+	47      (00000098) if-nez               v6, +018h
+
+b-BB@0x9c : [ b-BB@0xa8 b-BB@0xb2 ]
+	48      (0000009c) invoke-virtual       v4, Lx3/e;->s()Z
+	49      (000000a2) move-result          v6
+	50      (000000a4) if-eqz               v6, +007h
+
+b-BB@0xa8 : [ b-BB@0xb2 ]
+	51      (000000a8) iget-object          v6, v4, Lx3/e;->Q0 Landroid/graphics/Matrix;
+	52      (000000ac) invoke-virtual       v6, v3, Landroid/graphics/Matrix;->mapRect(Landroid/graphics/RectF;)Z
+
+b-BB@0xb2 : [ b-BB@0xc8 ]
+	53      (000000b2) iget-object          v6, v4, Lx3/e;->P0 Landroid/graphics/Rect;
+	54      (000000b6) invoke-virtual       v3, v6, Landroid/graphics/RectF;->round(Landroid/graphics/Rect;)V
+	55      (000000bc) invoke-virtual       v7, v6, Landroid/graphics/drawable/Drawable;->setBounds(Landroid/graphics/Rect;)V
+	56      (000000c2) invoke-virtual       v7, v5, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V
+
+b-BB@0xc8 : 
+	57      (000000c8) return-void          
+
