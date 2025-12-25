@@ -1,0 +1,50 @@
+# Lh7/j;->getValue()Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v3
+#
+# - return:java.lang.Object
+
+getValue-BB@0x0 : [ getValue-BB@0xc getValue-BB@0xe ]
+	0       (00000000) iget-object          v0, v3, Lh7/j;->b Ljava/lang/Object;
+	1       (00000004) sget-object          v1, Lh7/k;->a Lh7/k;
+	2       (00000008) if-eq                v0, v1, +003h
+
+getValue-BB@0xc : 
+	3       (0000000c) return-object        v0
+
+getValue-BB@0xe : [ getValue-BB@0x14 ]
+	4       (0000000e) iget-object          v0, v3, Lh7/j;->c Ljava/lang/Object;
+	5       (00000012) monitor-enter        v0
+
+getValue-BB@0x14 : [ getValue-BB@0x1c getValue-BB@0x1e ]
+	6       (00000014) iget-object          v2, v3, Lh7/j;->b Ljava/lang/Object;
+	7       (00000018) if-eq                v2, v1, +003h
+	14:39
+	(Ljava/lang/Throwable; -> 3e getValue-BB@0x3e)
+
+getValue-BB@0x1c : [ getValue-BB@0x3a ]
+	8       (0000001c) goto                 +fh
+	14:39
+	(Ljava/lang/Throwable; -> 3e getValue-BB@0x3e)
+
+getValue-BB@0x1e : [ getValue-BB@0x3a ]
+	9       (0000001e) iget-object          v1, v3, Lh7/j;->a Lu7/a;
+	10      (00000022) invoke-static        v1, Lkotlin/jvm/internal/j;->b(Ljava/lang/Object;)V
+	11      (00000028) invoke-interface     v1, Lu7/a;->invoke()Ljava/lang/Object;
+	12      (0000002e) move-result-object   v2
+	13      (00000030) iput-object          v2, v3, Lh7/j;->b Ljava/lang/Object;
+	14      (00000034) const/4              v1, 0
+	15      (00000036) iput-object          v1, v3, Lh7/j;->a Lu7/a;
+	14:39
+	(Ljava/lang/Throwable; -> 3e getValue-BB@0x3e)
+
+getValue-BB@0x3a : 
+	16      (0000003a) monitor-exit         v0
+	17      (0000003c) return-object        v2
+
+getValue-BB@0x3e : 
+	18      (0000003e) move-exception       v1
+	19      (00000040) monitor-exit         v0
+	20      (00000042) throw                v1
+

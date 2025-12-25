@@ -1,0 +1,136 @@
+# Lj6/n;->c()Landroid/graphics/Bitmap; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v6
+#
+# - return:android.graphics.Bitmap
+
+c-BB@0x0 : [ c-BB@0x16 c-BB@0x38 ]
+	0       (00000000) const/4              v0, 4
+	1       (00000002) const-string         v1, "FirebaseMessaging"
+	2       (00000006) invoke-static        v1, v0, Landroid/util/Log;->isLoggable(Ljava/lang/String; I)Z
+	3       (0000000c) move-result          v0
+	4       (0000000e) iget-object          v2, v6, Lj6/n;->a Ljava/net/URL;
+	5       (00000012) if-eqz               v0, +013h
+
+c-BB@0x16 : [ c-BB@0x38 ]
+	6       (00000016) new-instance         v0, Ljava/lang/StringBuilder;
+	7       (0000001a) const-string         v3, "Starting download of: "
+	8       (0000001e) invoke-direct        v0, v3, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	9       (00000024) invoke-virtual       v0, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	10      (0000002a) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	11      (00000030) move-result-object   v0
+	12      (00000032) invoke-static        v1, v0, Landroid/util/Log;->i(Ljava/lang/String; Ljava/lang/String;)I
+
+c-BB@0x38 : [ c-BB@0x50 c-BB@0x14e ]
+	13      (00000038) invoke-virtual       v2, Ljava/net/URL;->openConnection()Ljava/net/URLConnection;
+	14      (0000003e) move-result-object   v0
+	15      (00000040) invoke-virtual       v0, Ljava/net/URLConnection;->getContentLength()I
+	16      (00000046) move-result          v3
+	17      (00000048) const/high16         v4, 1048576
+	18      (0000004c) if-gt                v3, v4, +081h
+
+c-BB@0x50 : [ c-BB@0x58 ]
+	19      (00000050) invoke-virtual       v0, Ljava/net/URLConnection;->getInputStream()Ljava/io/InputStream;
+	20      (00000056) move-result-object   v0
+
+c-BB@0x58 : [ c-BB@0x6e c-BB@0x74 ]
+	21      (00000058) new-instance         v3, Lj6/d;
+	22      (0000005c) invoke-direct        v3, v0, Lj6/d;-><init>(Ljava/io/InputStream;)V
+	23      (00000062) invoke-static        v3, Lq4/b;->T(Lj6/d;)[B
+	24      (00000068) move-result-object   v3
+	25      (0000006a) if-eqz               v0, +005h
+	58:69
+	(Ljava/lang/Throwable; -> 136 c-BB@0x136)
+
+c-BB@0x6e : [ c-BB@0x74 ]
+	26      (0000006e) invoke-virtual       v0, Ljava/io/InputStream;->close()V
+
+c-BB@0x74 : [ c-BB@0x82 c-BB@0xb6 ]
+	27      (00000074) const/4              v0, 2
+	28      (00000076) invoke-static        v1, v0, Landroid/util/Log;->isLoggable(Ljava/lang/String; I)Z
+	29      (0000007c) move-result          v0
+	30      (0000007e) if-eqz               v0, +01ch
+
+c-BB@0x82 : [ c-BB@0xb6 ]
+	31      (00000082) new-instance         v0, Ljava/lang/StringBuilder;
+	32      (00000086) const-string         v5, "Downloaded "
+	33      (0000008a) invoke-direct        v0, v5, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	34      (00000090) array-length         v5, v3
+	35      (00000092) invoke-virtual       v0, v5, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	36      (00000098) const-string         v5, " bytes from "
+	37      (0000009c) invoke-virtual       v0, v5, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	38      (000000a2) invoke-virtual       v0, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	39      (000000a8) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	40      (000000ae) move-result-object   v0
+	41      (000000b0) invoke-static        v1, v0, Landroid/util/Log;->v(Ljava/lang/String; Ljava/lang/String;)I
+
+c-BB@0xb6 : [ c-BB@0xbc c-BB@0x126 ]
+	42      (000000b6) array-length         v0, v3
+	43      (000000b8) if-gt                v0, v4, +037h
+
+c-BB@0xbc : [ c-BB@0xcc c-BB@0xfe ]
+	44      (000000bc) const/4              v0, 0
+	45      (000000be) array-length         v4, v3
+	46      (000000c0) invoke-static        v3, v0, v4, Landroid/graphics/BitmapFactory;->decodeByteArray([B I I)Landroid/graphics/Bitmap;
+	47      (000000c6) move-result-object   v0
+	48      (000000c8) if-eqz               v0, +01bh
+
+c-BB@0xcc : [ c-BB@0xda c-BB@0xfc ]
+	49      (000000cc) const/4              v3, 3
+	50      (000000ce) invoke-static        v1, v3, Landroid/util/Log;->isLoggable(Ljava/lang/String; I)Z
+	51      (000000d4) move-result          v3
+	52      (000000d6) if-eqz               v3, +013h
+
+c-BB@0xda : [ c-BB@0xfc ]
+	53      (000000da) new-instance         v3, Ljava/lang/StringBuilder;
+	54      (000000de) const-string         v4, "Successfully downloaded image: "
+	55      (000000e2) invoke-direct        v3, v4, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	56      (000000e8) invoke-virtual       v3, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	57      (000000ee) invoke-virtual       v3, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	58      (000000f4) move-result-object   v2
+	59      (000000f6) invoke-static        v1, v2, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String;)I
+
+c-BB@0xfc : 
+	60      (000000fc) return-object        v0
+
+c-BB@0xfe : 
+	61      (000000fe) new-instance         v0, Ljava/io/IOException;
+	62      (00000102) new-instance         v1, Ljava/lang/StringBuilder;
+	63      (00000106) const-string         v3, "Failed to decode image: "
+	64      (0000010a) invoke-direct        v1, v3, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	65      (00000110) invoke-virtual       v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	66      (00000116) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	67      (0000011c) move-result-object   v1
+	68      (0000011e) invoke-direct        v0, v1, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+	69      (00000124) throw                v0
+
+c-BB@0x126 : 
+	70      (00000126) new-instance         v0, Ljava/io/IOException;
+	71      (0000012a) const-string         v1, "Image exceeds max size of 1048576"
+	72      (0000012e) invoke-direct        v0, v1, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+	73      (00000134) throw                v0
+
+c-BB@0x136 : [ c-BB@0x13c c-BB@0x14c ]
+	74      (00000136) move-exception       v1
+	75      (00000138) if-eqz               v0, +00ah
+
+c-BB@0x13c : [ c-BB@0x14c ]
+	76      (0000013c) invoke-virtual       v0, Ljava/io/InputStream;->close()V
+	77      (00000142) goto                 +5h
+	13c:141
+	(Ljava/lang/Throwable; -> 144 c-BB@0x144)
+
+c-BB@0x144 : [ c-BB@0x14c ]
+	78      (00000144) move-exception       v0
+	79      (00000146) invoke-virtual       v1, v0, Ljava/lang/Throwable;->addSuppressed(Ljava/lang/Throwable;)V
+
+c-BB@0x14c : 
+	80      (0000014c) throw                v1
+
+c-BB@0x14e : 
+	81      (0000014e) new-instance         v0, Ljava/io/IOException;
+	82      (00000152) const-string         v1, "Content-Length exceeds max size of 1048576"
+	83      (00000156) invoke-direct        v0, v1, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+	84      (0000015c) throw                v0
+

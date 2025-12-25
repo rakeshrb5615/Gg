@@ -1,0 +1,32 @@
+# Lg2/f;->start()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v2
+#
+# - return:void
+
+start-BB@0x0 : [ start-BB@0x8 start-BB@0x14 ]
+	0       (00000000) iget-object          v0, v2, Lg2/h;->a Landroid/graphics/drawable/Drawable;
+	1       (00000004) if-eqz               v0, +008h
+
+start-BB@0x8 : 
+	2       (00000008) check-cast           v0, Landroid/graphics/drawable/AnimatedVectorDrawable;
+	3       (0000000c) invoke-virtual       v0, Landroid/graphics/drawable/AnimatedVectorDrawable;->start()V
+	4       (00000012) return-void          
+
+start-BB@0x14 : [ start-BB@0x28 start-BB@0x2a ]
+	5       (00000014) iget-object          v0, v2, Lg2/f;->b Lg2/d;
+	6       (00000018) iget-object          v1, v0, Lg2/d;->b Landroid/animation/AnimatorSet;
+	7       (0000001c) invoke-virtual       v1, Landroid/animation/AnimatorSet;->isStarted()Z
+	8       (00000022) move-result          v1
+	9       (00000024) if-eqz               v1, +003h
+
+start-BB@0x28 : 
+	10      (00000028) return-void          
+
+start-BB@0x2a : 
+	11      (0000002a) iget-object          v0, v0, Lg2/d;->b Landroid/animation/AnimatorSet;
+	12      (0000002e) invoke-virtual       v0, Landroid/animation/AnimatorSet;->start()V
+	13      (00000034) invoke-virtual       v2, Landroid/graphics/drawable/Drawable;->invalidateSelf()V
+	14      (0000003a) return-void          
+

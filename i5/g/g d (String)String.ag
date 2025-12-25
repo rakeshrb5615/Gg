@@ -1,0 +1,140 @@
+# Li5/g;->d(Ljava/lang/String;)Ljava/lang/String; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v11
+# - v12:java.lang.String
+#
+# - return:java.lang.String
+
+d-BB@0x0 : [ d-BB@0x2c d-BB@0xf0 ]
+	0       (00000000) const-string         v0, "Failed to close user metadata file."
+	1       (00000004) const-string         v1, "Loaded userId "
+	2       (00000008) iget-object          v2, v11, Li5/g;->a Lm5/c;
+	3       (0000000c) const-string         v3, "user-data"
+	4       (00000010) invoke-virtual       v2, v12, v3, Lm5/c;->b(Ljava/lang/String; Ljava/lang/String;)Ljava/io/File;
+	5       (00000016) move-result-object   v2
+	6       (00000018) invoke-virtual       v2, Ljava/io/File;->exists()Z
+	7       (0000001e) move-result          v3
+	8       (00000020) const/4              v4, 3
+	9       (00000022) const-string         v5, "FirebaseCrashlytics"
+	10      (00000026) const/4              v6, 0
+	11      (00000028) if-eqz               v3, +064h
+
+d-BB@0x2c : [ d-BB@0x40 d-BB@0x42 ]
+	12      (0000002c) invoke-virtual       v2, Ljava/io/File;->length()J
+	13      (00000032) move-result-wide     v7
+	14      (00000034) const-wide/16        v9, 0
+	15      (00000038) cmp-long             v3, v7, v9
+	16      (0000003c) if-nez               v3, +003h
+
+d-BB@0x40 : [ d-BB@0xf0 ]
+	17      (00000040) goto                 +58h
+
+d-BB@0x42 : [ d-BB@0x4c ]
+	18      (00000042) new-instance         v3, Ljava/io/FileInputStream;
+	19      (00000046) invoke-direct        v3, v2, Ljava/io/FileInputStream;-><init>(Ljava/io/File;)V
+	42:4b
+	(Ljava/lang/Exception; -> cc d-BB@0xcc)
+	(Ljava/lang/Throwable; -> c8 d-BB@0xc8)
+
+d-BB@0x4c : [ d-BB@0x6e d-BB@0x78 ]
+	20      (0000004c) invoke-static        v3, Lg5/g;->i(Ljava/io/FileInputStream;)Ljava/lang/String;
+	21      (00000052) move-result-object   v7
+	22      (00000054) new-instance         v8, Lorg/json/JSONObject;
+	23      (00000058) invoke-direct        v8, v7, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+	24      (0000005e) const-string         v7, "userId"
+	25      (00000062) invoke-virtual       v8, v7, Lorg/json/JSONObject;->isNull(Ljava/lang/String;)Z
+	26      (00000068) move-result          v9
+	27      (0000006a) if-nez               v9, +007h
+	4c:b3
+	(Ljava/lang/Exception; -> c4 d-BB@0xc4)
+	(Ljava/lang/Throwable; -> c0 d-BB@0xc0)
+
+d-BB@0x6e : [ d-BB@0x7a ]
+	28      (0000006e) invoke-virtual       v8, v7, v6, Lorg/json/JSONObject;->optString(Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	29      (00000074) move-result-object   v7
+	30      (00000076) goto                 +2h
+	4c:b3
+	(Ljava/lang/Exception; -> c4 d-BB@0xc4)
+	(Ljava/lang/Throwable; -> c0 d-BB@0xc0)
+
+d-BB@0x78 : [ d-BB@0x7a ]
+	31      (00000078) move-object          v7, v6
+	4c:b3
+	(Ljava/lang/Exception; -> c4 d-BB@0xc4)
+	(Ljava/lang/Throwable; -> c0 d-BB@0xc0)
+
+d-BB@0x7a : [ d-BB@0xae d-BB@0xb4 ]
+	32      (0000007a) new-instance         v8, Ljava/lang/StringBuilder;
+	33      (0000007e) invoke-direct        v8, v1, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	34      (00000084) invoke-virtual       v8, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	35      (0000008a) const-string         v1, " for session "
+	36      (0000008e) invoke-virtual       v8, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	37      (00000094) invoke-virtual       v8, v12, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	38      (0000009a) invoke-virtual       v8, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	39      (000000a0) move-result-object   v12
+	40      (000000a2) invoke-static        v5, v4, Landroid/util/Log;->isLoggable(Ljava/lang/String; I)Z
+	41      (000000a8) move-result          v1
+	42      (000000aa) if-eqz               v1, +005h
+	4c:b3
+	(Ljava/lang/Exception; -> c4 d-BB@0xc4)
+	(Ljava/lang/Throwable; -> c0 d-BB@0xc0)
+
+d-BB@0xae : [ d-BB@0xb4 ]
+	43      (000000ae) invoke-static        v5, v12, v6, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+	4c:b3
+	(Ljava/lang/Exception; -> c4 d-BB@0xc4)
+	(Ljava/lang/Throwable; -> c0 d-BB@0xc0)
+
+d-BB@0xb4 : 
+	44      (000000b4) invoke-static        v3, v0, Lg5/g;->b(Ljava/io/Closeable; Ljava/lang/String;)V
+	45      (000000ba) return-object        v7
+
+d-BB@0xbc : [ d-BB@0xe8 ]
+	46      (000000bc) move-object          v6, v3
+	47      (000000be) goto                 +15h
+
+d-BB@0xc0 : [ d-BB@0xbc ]
+	48      (000000c0) move-exception       v12
+	49      (000000c2) goto                 -3h
+
+d-BB@0xc4 : [ d-BB@0xd0 ]
+	50      (000000c4) move-exception       v12
+	51      (000000c6) goto                 +5h
+
+d-BB@0xc8 : [ d-BB@0xe8 ]
+	52      (000000c8) move-exception       v12
+	53      (000000ca) goto                 +fh
+
+d-BB@0xcc : [ d-BB@0xd0 ]
+	54      (000000cc) move-exception       v12
+	55      (000000ce) move-object          v3, v6
+
+d-BB@0xd0 : 
+	56      (000000d0) const-string         v1, "Error deserializing user metadata."
+	57      (000000d4) invoke-static        v5, v1, v12, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+	58      (000000da) invoke-static        v2, Li5/g;->f(Ljava/io/File;)V
+	59      (000000e0) invoke-static        v3, v0, Lg5/g;->b(Ljava/io/Closeable; Ljava/lang/String;)V
+	60      (000000e6) return-object        v6
+	d0:df
+	(Ljava/lang/Throwable; -> c0 d-BB@0xc0)
+
+d-BB@0xe8 : 
+	61      (000000e8) invoke-static        v6, v0, Lg5/g;->b(Ljava/io/Closeable; Ljava/lang/String;)V
+	62      (000000ee) throw                v12
+
+d-BB@0xf0 : [ d-BB@0x108 d-BB@0x10e ]
+	63      (000000f0) const-string         v0, "No userId set for session "
+	64      (000000f4) invoke-static        v0, v12, Lg2/g;->l(Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	65      (000000fa) move-result-object   v12
+	66      (000000fc) invoke-static        v5, v4, Landroid/util/Log;->isLoggable(Ljava/lang/String; I)Z
+	67      (00000102) move-result          v0
+	68      (00000104) if-eqz               v0, +005h
+
+d-BB@0x108 : [ d-BB@0x10e ]
+	69      (00000108) invoke-static        v5, v12, v6, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+
+d-BB@0x10e : 
+	70      (0000010e) invoke-static        v2, Li5/g;->f(Ljava/io/File;)V
+	71      (00000114) return-object        v6
+

@@ -1,0 +1,54 @@
+# Li5/g;->e(Ljava/util/List;)Ljava/lang/String; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:java.util.List
+#
+# - return:java.lang.String
+
+e-BB@0x0 : [ e-BB@0x16 ]
+	0       (00000000) new-instance         v0, Ljava/util/HashMap;
+	1       (00000004) invoke-direct        v0, Ljava/util/HashMap;-><init>()V
+	2       (0000000a) new-instance         v1, Lorg/json/JSONArray;
+	3       (0000000e) invoke-direct        v1, Lorg/json/JSONArray;-><init>()V
+	4       (00000014) const/4              v2, 0
+
+e-BB@0x16 : [ e-BB@0x22 e-BB@0x5e ]
+	5       (00000016) invoke-interface     v6, Ljava/util/List;->size()I
+	6       (0000001c) move-result          v3
+	7       (0000001e) if-ge                v2, v3, +020h
+
+e-BB@0x22 : [ e-BB@0x36 ]
+	8       (00000022) sget-object          v3, Li5/m;->a Lj6/o;
+	9       (00000026) invoke-interface     v6, v2, Ljava/util/List;->get(I)Ljava/lang/Object;
+	10      (0000002c) move-result-object   v4
+	11      (0000002e) invoke-virtual       v3, v4, Lj6/o;->q(Ljava/lang/Object;)Ljava/lang/String;
+	12      (00000034) move-result-object   v3
+
+e-BB@0x36 : [ e-BB@0x58 ]
+	13      (00000036) new-instance         v4, Lorg/json/JSONObject;
+	14      (0000003a) invoke-direct        v4, v3, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+	15      (00000040) invoke-virtual       v1, v4, Lorg/json/JSONArray;->put(Ljava/lang/Object;)Lorg/json/JSONArray;
+	16      (00000046) goto                 +9h
+	36:45
+	(Lorg/json/JSONException; -> 48 e-BB@0x48)
+
+e-BB@0x48 : [ e-BB@0x58 ]
+	17      (00000048) move-exception       v3
+	18      (0000004a) const-string         v4, "Exception parsing rollout assignment!"
+	19      (0000004e) const-string         v5, "FirebaseCrashlytics"
+	20      (00000052) invoke-static        v5, v4, v3, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+
+e-BB@0x58 : [ e-BB@0x16 ]
+	21      (00000058) add-int/lit8         v2, v2, 1
+	22      (0000005c) goto                 -23h
+
+e-BB@0x5e : 
+	23      (0000005e) const-string         v6, "rolloutsState"
+	24      (00000062) invoke-virtual       v0, v6, v1, Ljava/util/HashMap;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	25      (00000068) new-instance         v6, Lorg/json/JSONObject;
+	26      (0000006c) invoke-direct        v6, v0, Lorg/json/JSONObject;-><init>(Ljava/util/Map;)V
+	27      (00000072) invoke-virtual       v6, Lorg/json/JSONObject;->toString()Ljava/lang/String;
+	28      (00000078) move-result-object   v6
+	29      (0000007a) return-object        v6
+

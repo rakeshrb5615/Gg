@@ -1,0 +1,35 @@
+# Lh/c0;->A()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v2
+#
+# - return:void
+
+A-BB@0x0 : [ A-BB@0x8 A-BB@0x26 ]
+	0       (00000000) iget-object          v0, v2, Lh/c0;->r Landroid/view/Window;
+	1       (00000004) if-nez               v0, +011h
+
+A-BB@0x8 : [ A-BB@0x14 A-BB@0x26 ]
+	2       (00000008) iget-object          v0, v2, Lh/c0;->p Ljava/lang/Object;
+	3       (0000000c) instance-of          v1, v0, Landroid/app/Activity;
+	4       (00000010) if-eqz               v1, +00bh
+
+A-BB@0x14 : [ A-BB@0x26 ]
+	5       (00000014) check-cast           v0, Landroid/app/Activity;
+	6       (00000018) invoke-virtual       v0, Landroid/app/Activity;->getWindow()Landroid/view/Window;
+	7       (0000001e) move-result-object   v0
+	8       (00000020) invoke-virtual       v2, v0, Lh/c0;->r(Landroid/view/Window;)V
+
+A-BB@0x26 : [ A-BB@0x2e A-BB@0x30 ]
+	9       (00000026) iget-object          v0, v2, Lh/c0;->r Landroid/view/Window;
+	10      (0000002a) if-eqz               v0, +003h
+
+A-BB@0x2e : 
+	11      (0000002e) return-void          
+
+A-BB@0x30 : 
+	12      (00000030) new-instance         v0, Ljava/lang/IllegalStateException;
+	13      (00000034) const-string         v1, "We have not been given a Window"
+	14      (00000038) invoke-direct        v0, v1, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	15      (0000003e) throw                v0
+

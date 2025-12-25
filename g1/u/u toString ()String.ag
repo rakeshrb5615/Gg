@@ -1,0 +1,84 @@
+# Lg1/u;->toString()Ljava/lang/String; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v5
+#
+# - return:java.lang.String
+
+toString-BB@0x0 : [ toString-BB@0x3a toString-BB@0x52 ]
+	0       (00000000) new-instance         v0, Ljava/lang/StringBuilder;
+	1       (00000004) invoke-direct        v0, Ljava/lang/StringBuilder;-><init>()V
+	2       (0000000a) invoke-super         v5, Ljava/lang/Object;->toString()Ljava/lang/String;
+	3       (00000010) move-result-object   v1
+	4       (00000012) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	5       (00000018) const-string         v1, ", id:"
+	6       (0000001c) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	7       (00000022) invoke-virtual       v5, Lg1/u;->b()Lh1/a;
+	8       (00000028) move-result-object   v1
+	9       (0000002a) const/4              v2, 4
+	10      (0000002c) invoke-virtual       v1, v2, Lh1/c;->b(I)I
+	11      (00000032) move-result          v2
+	12      (00000034) const/4              v3, 0
+	13      (00000036) if-eqz               v2, +00eh
+
+toString-BB@0x3a : [ toString-BB@0x54 ]
+	14      (0000003a) iget-object          v4, v1, Lh1/c;->d Ljava/lang/Object;
+	15      (0000003e) check-cast           v4, Ljava/nio/ByteBuffer;
+	16      (00000042) iget                 v1, v1, Lh1/c;->a I
+	17      (00000046) add-int/2addr        v2, v1
+	18      (00000048) invoke-virtual       v4, v2, Ljava/nio/ByteBuffer;->getInt(I)I
+	19      (0000004e) move-result          v1
+	20      (00000050) goto                 +2h
+
+toString-BB@0x52 : [ toString-BB@0x54 ]
+	21      (00000052) move                 v1, v3
+
+toString-BB@0x54 : [ toString-BB@0x84 toString-BB@0xae ]
+	22      (00000054) invoke-static        v1, Ljava/lang/Integer;->toHexString(I)Ljava/lang/String;
+	23      (0000005a) move-result-object   v1
+	24      (0000005c) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	25      (00000062) const-string         v1, ", codepoints:"
+	26      (00000066) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	27      (0000006c) invoke-virtual       v5, Lg1/u;->b()Lh1/a;
+	28      (00000072) move-result-object   v1
+	29      (00000074) const/16             v2, 16
+	30      (00000078) invoke-virtual       v1, v2, Lh1/c;->b(I)I
+	31      (0000007e) move-result          v2
+	32      (00000080) if-eqz               v2, +017h
+
+toString-BB@0x84 : [ toString-BB@0xb0 ]
+	33      (00000084) iget                 v4, v1, Lh1/c;->a I
+	34      (00000088) add-int/2addr        v2, v4
+	35      (0000008a) iget-object          v4, v1, Lh1/c;->d Ljava/lang/Object;
+	36      (0000008e) check-cast           v4, Ljava/nio/ByteBuffer;
+	37      (00000092) invoke-virtual       v4, v2, Ljava/nio/ByteBuffer;->getInt(I)I
+	38      (00000098) move-result          v4
+	39      (0000009a) add-int/2addr        v4, v2
+	40      (0000009c) iget-object          v1, v1, Lh1/c;->d Ljava/lang/Object;
+	41      (000000a0) check-cast           v1, Ljava/nio/ByteBuffer;
+	42      (000000a4) invoke-virtual       v1, v4, Ljava/nio/ByteBuffer;->getInt(I)I
+	43      (000000aa) move-result          v1
+	44      (000000ac) goto                 +2h
+
+toString-BB@0xae : [ toString-BB@0xb0 ]
+	45      (000000ae) move                 v1, v3
+
+toString-BB@0xb0 : [ toString-BB@0xb4 toString-BB@0xda ]
+	46      (000000b0) if-ge                v3, v1, +015h
+
+toString-BB@0xb4 : [ toString-BB@0xb0 ]
+	47      (000000b4) invoke-virtual       v5, v3, Lg1/u;->a(I)I
+	48      (000000ba) move-result          v2
+	49      (000000bc) invoke-static        v2, Ljava/lang/Integer;->toHexString(I)Ljava/lang/String;
+	50      (000000c2) move-result-object   v2
+	51      (000000c4) invoke-virtual       v0, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	52      (000000ca) const-string         v2, " "
+	53      (000000ce) invoke-virtual       v0, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	54      (000000d4) add-int/lit8         v3, v3, 1
+	55      (000000d8) goto                 -14h
+
+toString-BB@0xda : 
+	56      (000000da) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	57      (000000e0) move-result-object   v0
+	58      (000000e2) return-object        v0
+

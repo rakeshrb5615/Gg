@@ -1,0 +1,42 @@
+# Lj6/i;->then(Lcom/google/android/gms/tasks/Task;)Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:com.google.android.gms.tasks.Task
+#
+# - return:java.lang.Object
+
+then-BB@0x0 : [ then-BB@0xc then-BB@0x5e ]
+	0       (00000000) invoke-static        Lcom/google/android/gms/common/util/PlatformVersion;->isAtLeastO()Z
+	1       (00000006) move-result          v0
+	2       (00000008) if-eqz               v0, +02bh
+
+then-BB@0xc : [ then-BB@0x28 then-BB@0x2a ]
+	3       (0000000c) invoke-virtual       v4, Lcom/google/android/gms/tasks/Task;->getResult()Ljava/lang/Object;
+	4       (00000012) move-result-object   v0
+	5       (00000014) check-cast           v0, Ljava/lang/Integer;
+	6       (00000018) invoke-virtual       v0, Ljava/lang/Integer;->intValue()I
+	7       (0000001e) move-result          v0
+	8       (00000020) const/16             v1, 402
+	9       (00000024) if-eq                v0, v1, +003h
+
+then-BB@0x28 : [ then-BB@0x5e ]
+	10      (00000028) goto                 +1bh
+
+then-BB@0x2a : [ then-BB@0x5e ]
+	11      (0000002a) iget-object          v4, v3, Lj6/i;->a Landroid/content/Context;
+	12      (0000002e) iget-object          v0, v3, Lj6/i;->b Landroid/content/Intent;
+	13      (00000032) iget-boolean         v1, v3, Lj6/i;->c Z
+	14      (00000036) invoke-static        v4, v0, v1, Lj6/j;->a(Landroid/content/Context; Landroid/content/Intent; Z)Lcom/google/android/gms/tasks/Task;
+	15      (0000003c) move-result-object   v4
+	16      (0000003e) new-instance         v0, Lx1/d;
+	17      (00000042) invoke-direct        v0, Ljava/lang/Object;-><init>()V
+	18      (00000048) new-instance         v1, La5/t;
+	19      (0000004c) const/16             v2, 20
+	20      (00000050) invoke-direct        v1, v2, La5/t;-><init>(I)V
+	21      (00000056) invoke-virtual       v4, v0, v1, Lcom/google/android/gms/tasks/Task;->continueWith(Ljava/util/concurrent/Executor; Lcom/google/android/gms/tasks/Continuation;)Lcom/google/android/gms/tasks/Task;
+	22      (0000005c) move-result-object   v4
+
+then-BB@0x5e : 
+	23      (0000005e) return-object        v4
+

@@ -1,0 +1,29 @@
+# Lh/c0;->E(I)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:int
+#
+# - return:void
+
+E-BB@0x0 : [ E-BB@0x18 E-BB@0x36 ]
+	0       (00000000) iget                 v0, v2, Lh/c0;->g0 I
+	1       (00000004) const/4              v1, 1
+	2       (00000006) shl-int              v3, v1, v3
+	3       (0000000a) or-int/2addr         v3, v0
+	4       (0000000c) iput                 v3, v2, Lh/c0;->g0 I
+	5       (00000010) iget-boolean         v3, v2, Lh/c0;->f0 Z
+	6       (00000014) if-nez               v3, +011h
+
+E-BB@0x18 : [ E-BB@0x36 ]
+	7       (00000018) iget-object          v3, v2, Lh/c0;->r Landroid/view/Window;
+	8       (0000001c) invoke-virtual       v3, Landroid/view/Window;->getDecorView()Landroid/view/View;
+	9       (00000022) move-result-object   v3
+	10      (00000024) sget-object          v0, Lq0/q0;->a Ljava/util/WeakHashMap;
+	11      (00000028) iget-object          v0, v2, Lh/c0;->h0 Lh/q;
+	12      (0000002c) invoke-virtual       v3, v0, Landroid/view/View;->postOnAnimation(Ljava/lang/Runnable;)V
+	13      (00000032) iput-boolean         v1, v2, Lh/c0;->f0 Z
+
+E-BB@0x36 : 
+	14      (00000036) return-void          
+

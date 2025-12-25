@@ -1,0 +1,70 @@
+# Lj7/f;->hashCode()I [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v6
+#
+# - return:int
+
+hashCode-BB@0x0 : [ hashCode-BB@0xe ]
+	0       (00000000) new-instance         v0, Lj7/d;
+	1       (00000004) const/4              v1, 0
+	2       (00000006) invoke-direct        v0, v6, v1, Lj7/d;-><init>(Lj7/f; I)V
+	3       (0000000c) move                 v2, v1
+
+hashCode-BB@0xe : [ hashCode-BB@0x1a hashCode-BB@0x8c ]
+	4       (0000000e) invoke-virtual       v0, Lh1/c;->hasNext()Z
+	5       (00000014) move-result          v3
+	6       (00000016) if-eqz               v3, +03bh
+
+hashCode-BB@0x1a : [ hashCode-BB@0x2e hashCode-BB@0x80 ]
+	7       (0000001a) iget                 v3, v0, Lh1/c;->a I
+	8       (0000001e) iget-object          v4, v0, Lh1/c;->d Ljava/lang/Object;
+	9       (00000022) check-cast           v4, Lj7/f;
+	10      (00000026) iget                 v5, v4, Lj7/f;->f I
+	11      (0000002a) if-ge                v3, v5, +02bh
+
+hashCode-BB@0x2e : [ hashCode-BB@0x46 hashCode-BB@0x50 ]
+	12      (0000002e) add-int/lit8         v5, v3, 1
+	13      (00000032) iput                 v5, v0, Lh1/c;->a I
+	14      (00000036) iput                 v3, v0, Lh1/c;->b I
+	15      (0000003a) iget-object          v5, v4, Lj7/f;->a [Ljava/lang/Object;
+	16      (0000003e) aget-object          v3, v5, v3
+	17      (00000042) if-eqz               v3, +007h
+
+hashCode-BB@0x46 : [ hashCode-BB@0x52 ]
+	18      (00000046) invoke-virtual       v3, Ljava/lang/Object;->hashCode()I
+	19      (0000004c) move-result          v3
+	20      (0000004e) goto                 +2h
+
+hashCode-BB@0x50 : [ hashCode-BB@0x52 ]
+	21      (00000050) move                 v3, v1
+
+hashCode-BB@0x52 : [ hashCode-BB@0x68 hashCode-BB@0x72 ]
+	22      (00000052) iget-object          v4, v4, Lj7/f;->b [Ljava/lang/Object;
+	23      (00000056) invoke-static        v4, Lkotlin/jvm/internal/j;->b(Ljava/lang/Object;)V
+	24      (0000005c) iget                 v5, v0, Lh1/c;->b I
+	25      (00000060) aget-object          v4, v4, v5
+	26      (00000064) if-eqz               v4, +007h
+
+hashCode-BB@0x68 : [ hashCode-BB@0x74 ]
+	27      (00000068) invoke-virtual       v4, Ljava/lang/Object;->hashCode()I
+	28      (0000006e) move-result          v4
+	29      (00000070) goto                 +2h
+
+hashCode-BB@0x72 : [ hashCode-BB@0x74 ]
+	30      (00000072) move                 v4, v1
+
+hashCode-BB@0x74 : [ hashCode-BB@0xe ]
+	31      (00000074) xor-int/2addr        v3, v4
+	32      (00000076) invoke-virtual       v0, Lh1/c;->f()V
+	33      (0000007c) add-int/2addr        v2, v3
+	34      (0000007e) goto                 -38h
+
+hashCode-BB@0x80 : 
+	35      (00000080) new-instance         v0, Ljava/util/NoSuchElementException;
+	36      (00000084) invoke-direct        v0, Ljava/util/NoSuchElementException;-><init>()V
+	37      (0000008a) throw                v0
+
+hashCode-BB@0x8c : 
+	38      (0000008c) return               v2
+

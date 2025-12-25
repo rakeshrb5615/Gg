@@ -1,0 +1,32 @@
+# Lg2/q;->setAlpha(I)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:int
+#
+# - return:void
+
+setAlpha-BB@0x0 : [ setAlpha-BB@0x8 setAlpha-BB@0x10 ]
+	0       (00000000) iget-object          v0, v1, Lg2/h;->a Landroid/graphics/drawable/Drawable;
+	1       (00000004) if-eqz               v0, +006h
+
+setAlpha-BB@0x8 : 
+	2       (00000008) invoke-virtual       v0, v2, Landroid/graphics/drawable/Drawable;->setAlpha(I)V
+	3       (0000000e) return-void          
+
+setAlpha-BB@0x10 : [ setAlpha-BB@0x24 setAlpha-BB@0x38 ]
+	4       (00000010) iget-object          v0, v1, Lg2/q;->b Lg2/o;
+	5       (00000014) iget-object          v0, v0, Lg2/o;->b Lg2/n;
+	6       (00000018) invoke-virtual       v0, Lg2/n;->getRootAlpha()I
+	7       (0000001e) move-result          v0
+	8       (00000020) if-eq                v0, v2, +00ch
+
+setAlpha-BB@0x24 : [ setAlpha-BB@0x38 ]
+	9       (00000024) iget-object          v0, v1, Lg2/q;->b Lg2/o;
+	10      (00000028) iget-object          v0, v0, Lg2/o;->b Lg2/n;
+	11      (0000002c) invoke-virtual       v0, v2, Lg2/n;->setRootAlpha(I)V
+	12      (00000032) invoke-virtual       v1, Lg2/q;->invalidateSelf()V
+
+setAlpha-BB@0x38 : 
+	13      (00000038) return-void          
+

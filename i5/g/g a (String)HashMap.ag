@@ -1,0 +1,41 @@
+# Li5/g;->a(Ljava/lang/String;)Ljava/util/HashMap; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:java.lang.String
+#
+# - return:java.util.HashMap
+
+a-BB@0x0 : [ a-BB@0x1c ]
+	0       (00000000) new-instance         v0, Lorg/json/JSONObject;
+	1       (00000004) invoke-direct        v0, v5, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+	2       (0000000a) new-instance         v5, Ljava/util/HashMap;
+	3       (0000000e) invoke-direct        v5, Ljava/util/HashMap;-><init>()V
+	4       (00000014) invoke-virtual       v0, Lorg/json/JSONObject;->keys()Ljava/util/Iterator;
+	5       (0000001a) move-result-object   v1
+
+a-BB@0x1c : [ a-BB@0x28 a-BB@0x52 ]
+	6       (0000001c) invoke-interface     v1, Ljava/util/Iterator;->hasNext()Z
+	7       (00000022) move-result          v2
+	8       (00000024) if-eqz               v2, +017h
+
+a-BB@0x28 : [ a-BB@0x42 a-BB@0x4a ]
+	9       (00000028) invoke-interface     v1, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	10      (0000002e) move-result-object   v2
+	11      (00000030) check-cast           v2, Ljava/lang/String;
+	12      (00000034) invoke-virtual       v0, v2, Lorg/json/JSONObject;->isNull(Ljava/lang/String;)Z
+	13      (0000003a) move-result          v3
+	14      (0000003c) const/4              v4, 0
+	15      (0000003e) if-nez               v3, +006h
+
+a-BB@0x42 : [ a-BB@0x4a ]
+	16      (00000042) invoke-virtual       v0, v2, v4, Lorg/json/JSONObject;->optString(Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	17      (00000048) move-result-object   v4
+
+a-BB@0x4a : [ a-BB@0x1c ]
+	18      (0000004a) invoke-virtual       v5, v2, v4, Ljava/util/HashMap;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	19      (00000050) goto                 -1ah
+
+a-BB@0x52 : 
+	20      (00000052) return-object        v5
+

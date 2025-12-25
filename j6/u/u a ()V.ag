@@ -1,0 +1,34 @@
+# Lj6/u;->a()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v2
+#
+# - return:void
+
+a-BB@0x0 : [ a-BB@0x12 a-BB@0x1c ]
+	0       (00000000) const/4              v0, 3
+	1       (00000002) const-string         v1, "FirebaseMessaging"
+	2       (00000006) invoke-static        v1, v0, Landroid/util/Log;->isLoggable(Ljava/lang/String; I)Z
+	3       (0000000c) move-result          v0
+	4       (0000000e) if-eqz               v0, +007h
+
+a-BB@0x12 : [ a-BB@0x1c ]
+	5       (00000012) const-string         v0, "Connectivity change received registered"
+	6       (00000016) invoke-static        v1, v0, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String;)I
+
+a-BB@0x1c : [ a-BB@0x32 a-BB@0x44 ]
+	7       (0000001c) new-instance         v0, Landroid/content/IntentFilter;
+	8       (00000020) const-string         v1, "android.net.conn.CONNECTIVITY_CHANGE"
+	9       (00000024) invoke-direct        v0, v1, Landroid/content/IntentFilter;-><init>(Ljava/lang/String;)V
+	10      (0000002a) iget-object          v1, v2, Lj6/u;->a Lj6/v;
+	11      (0000002e) if-eqz               v1, +00bh
+
+a-BB@0x32 : [ a-BB@0x44 ]
+	12      (00000032) iget-object          v1, v1, Lj6/v;->c Lcom/google/firebase/messaging/FirebaseMessaging;
+	13      (00000036) iget-object          v1, v1, Lcom/google/firebase/messaging/FirebaseMessaging;->b Landroid/content/Context;
+	14      (0000003a) iput-object          v1, v2, Lj6/u;->b Landroid/content/Context;
+	15      (0000003e) invoke-virtual       v1, v2, v0, Landroid/content/Context;->registerReceiver(Landroid/content/BroadcastReceiver; Landroid/content/IntentFilter;)Landroid/content/Intent;
+
+a-BB@0x44 : 
+	16      (00000044) return-void          
+

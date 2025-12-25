@@ -1,0 +1,51 @@
+# Lh/e;->a(Landroid/view/View; Landroid/view/View;)Landroid/view/ViewGroup; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:android.view.View
+# - v3:android.view.View
+#
+# - return:android.view.ViewGroup
+
+a-BB@0x0 : [ a-BB@0x4 a-BB@0x1e ]
+	0       (00000000) if-nez               v2, +00fh
+
+a-BB@0x4 : [ a-BB@0xc a-BB@0x18 ]
+	1       (00000004) instance-of          v2, v3, Landroid/view/ViewStub;
+	2       (00000008) if-eqz               v2, +008h
+
+a-BB@0xc : [ a-BB@0x18 ]
+	3       (0000000c) check-cast           v3, Landroid/view/ViewStub;
+	4       (00000010) invoke-virtual       v3, Landroid/view/ViewStub;->inflate()Landroid/view/View;
+	5       (00000016) move-result-object   v3
+
+a-BB@0x18 : 
+	6       (00000018) check-cast           v3, Landroid/view/ViewGroup;
+	7       (0000001c) return-object        v3
+
+a-BB@0x1e : [ a-BB@0x22 a-BB@0x3c ]
+	8       (0000001e) if-eqz               v3, +00fh
+
+a-BB@0x22 : [ a-BB@0x32 a-BB@0x3c ]
+	9       (00000022) invoke-virtual       v3, Landroid/view/View;->getParent()Landroid/view/ViewParent;
+	10      (00000028) move-result-object   v0
+	11      (0000002a) instance-of          v1, v0, Landroid/view/ViewGroup;
+	12      (0000002e) if-eqz               v1, +007h
+
+a-BB@0x32 : [ a-BB@0x3c ]
+	13      (00000032) check-cast           v0, Landroid/view/ViewGroup;
+	14      (00000036) invoke-virtual       v0, v3, Landroid/view/ViewGroup;->removeView(Landroid/view/View;)V
+
+a-BB@0x3c : [ a-BB@0x44 a-BB@0x50 ]
+	15      (0000003c) instance-of          v3, v2, Landroid/view/ViewStub;
+	16      (00000040) if-eqz               v3, +008h
+
+a-BB@0x44 : [ a-BB@0x50 ]
+	17      (00000044) check-cast           v2, Landroid/view/ViewStub;
+	18      (00000048) invoke-virtual       v2, Landroid/view/ViewStub;->inflate()Landroid/view/View;
+	19      (0000004e) move-result-object   v2
+
+a-BB@0x50 : 
+	20      (00000050) check-cast           v2, Landroid/view/ViewGroup;
+	21      (00000054) return-object        v2
+

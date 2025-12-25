@@ -1,0 +1,45 @@
+# Li7/h;->g0([Ljava/lang/Object;)Ljava/lang/String; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:java.lang.Object[]
+#
+# - return:java.lang.String
+
+g0-BB@0x0 : [ g0-BB@0x24 ]
+	0       (00000000) const-string         v0, "<this>"
+	1       (00000004) invoke-static        v6, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) new-instance         v0, Ljava/lang/StringBuilder;
+	3       (0000000e) invoke-direct        v0, Ljava/lang/StringBuilder;-><init>()V
+	4       (00000014) const-string         v1, "["
+	5       (00000018) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/CharSequence;)Ljava/lang/Appendable;
+	6       (0000001e) array-length         v1, v6
+	7       (00000020) const/4              v2, 0
+	8       (00000022) move                 v3, v2
+
+g0-BB@0x24 : [ g0-BB@0x28 g0-BB@0x4c ]
+	9       (00000024) if-ge                v2, v1, +014h
+
+g0-BB@0x28 : [ g0-BB@0x34 g0-BB@0x3e ]
+	10      (00000028) aget-object          v4, v6, v2
+	11      (0000002c) const/4              v5, 1
+	12      (0000002e) add-int/2addr        v3, v5
+	13      (00000030) if-le                v3, v5, +007h
+
+g0-BB@0x34 : [ g0-BB@0x3e ]
+	14      (00000034) const-string         v5, ","
+	15      (00000038) invoke-virtual       v0, v5, Ljava/lang/StringBuilder;->append(Ljava/lang/CharSequence;)Ljava/lang/Appendable;
+
+g0-BB@0x3e : [ g0-BB@0x24 ]
+	16      (0000003e) const/4              v5, 0
+	17      (00000040) invoke-static        v0, v4, v5, Lc4/b;->d(Ljava/lang/StringBuilder; Ljava/lang/Object; Lu7/l;)V
+	18      (00000046) add-int/lit8         v2, v2, 1
+	19      (0000004a) goto                 -13h
+
+g0-BB@0x4c : 
+	20      (0000004c) const-string         v6, "]"
+	21      (00000050) invoke-virtual       v0, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/CharSequence;)Ljava/lang/Appendable;
+	22      (00000056) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	23      (0000005c) move-result-object   v6
+	24      (0000005e) return-object        v6
+

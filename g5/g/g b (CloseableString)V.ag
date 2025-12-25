@@ -1,0 +1,26 @@
+# Lg5/g;->b(Ljava/io/Closeable; Ljava/lang/String;)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v0
+# - v1:java.io.Closeable
+# - v2:java.lang.String
+#
+# - return:void
+
+b-BB@0x0 : [ b-BB@0x4 b-BB@0x18 ]
+	0       (00000000) if-eqz               v1, +00ch
+
+b-BB@0x4 : 
+	1       (00000004) invoke-interface     v1, Ljava/io/Closeable;->close()V
+	2       (0000000a) return-void          
+	4:9
+	(Ljava/io/IOException; -> c b-BB@0xc)
+
+b-BB@0xc : [ b-BB@0x18 ]
+	3       (0000000c) move-exception       v1
+	4       (0000000e) const-string         v0, "FirebaseCrashlytics"
+	5       (00000012) invoke-static        v0, v2, v1, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+
+b-BB@0x18 : 
+	6       (00000018) return-void          
+

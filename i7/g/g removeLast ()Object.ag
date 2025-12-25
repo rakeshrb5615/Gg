@@ -1,0 +1,36 @@
+# Li7/g;->removeLast()Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v4
+#
+# - return:java.lang.Object
+
+removeLast-BB@0x0 : [ removeLast-BB@0xc removeLast-BB@0x48 ]
+	0       (00000000) invoke-virtual       v4, Li7/g;->isEmpty()Z
+	1       (00000006) move-result          v0
+	2       (00000008) if-nez               v0, +020h
+
+removeLast-BB@0xc : 
+	3       (0000000c) invoke-virtual       v4, Li7/g;->j()V
+	4       (00000012) iget                 v0, v4, Li7/g;->a I
+	5       (00000016) invoke-static        v4, La/a;->y(Ljava/util/List;)I
+	6       (0000001c) move-result          v1
+	7       (0000001e) add-int/2addr        v1, v0
+	8       (00000020) invoke-virtual       v4, v1, Li7/g;->i(I)I
+	9       (00000026) move-result          v0
+	10      (00000028) iget-object          v1, v4, Li7/g;->b [Ljava/lang/Object;
+	11      (0000002c) aget-object          v2, v1, v0
+	12      (00000030) const/4              v3, 0
+	13      (00000032) aput-object          v3, v1, v0
+	14      (00000036) invoke-virtual       v4, Li7/g;->b()I
+	15      (0000003c) move-result          v0
+	16      (0000003e) add-int/lit8         v0, v0, -1
+	17      (00000042) iput                 v0, v4, Li7/g;->c I
+	18      (00000046) return-object        v2
+
+removeLast-BB@0x48 : 
+	19      (00000048) new-instance         v0, Ljava/util/NoSuchElementException;
+	20      (0000004c) const-string         v1, "ArrayDeque is empty."
+	21      (00000050) invoke-direct        v0, v1, Ljava/util/NoSuchElementException;-><init>(Ljava/lang/String;)V
+	22      (00000056) throw                v0
+

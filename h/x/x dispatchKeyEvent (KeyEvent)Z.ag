@@ -1,0 +1,40 @@
+# Lh/x;->dispatchKeyEvent(Landroid/view/KeyEvent;)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:android.view.KeyEvent
+#
+# - return:boolean
+
+dispatchKeyEvent-BB@0x0 : [ dispatchKeyEvent-BB@0xc dispatchKeyEvent-BB@0x16 ]
+	0       (00000000) iget-boolean         v0, v2, Lh/x;->c Z
+	1       (00000004) iget-object          v1, v2, Lh/x;->a Landroid/view/Window$Callback;
+	2       (00000008) if-eqz               v0, +007h
+
+dispatchKeyEvent-BB@0xc : 
+	3       (0000000c) invoke-interface     v1, v3, Landroid/view/Window$Callback;->dispatchKeyEvent(Landroid/view/KeyEvent;)Z
+	4       (00000012) move-result          v3
+	5       (00000014) return               v3
+
+dispatchKeyEvent-BB@0x16 : [ dispatchKeyEvent-BB@0x26 dispatchKeyEvent-BB@0x38 ]
+	6       (00000016) iget-object          v0, v2, Lh/x;->e Lh/c0;
+	7       (0000001a) invoke-virtual       v0, v3, Lh/c0;->x(Landroid/view/KeyEvent;)Z
+	8       (00000020) move-result          v0
+	9       (00000022) if-nez               v0, +00bh
+
+dispatchKeyEvent-BB@0x26 : [ dispatchKeyEvent-BB@0x32 dispatchKeyEvent-BB@0x34 ]
+	10      (00000026) invoke-interface     v1, v3, Landroid/view/Window$Callback;->dispatchKeyEvent(Landroid/view/KeyEvent;)Z
+	11      (0000002c) move-result          v3
+	12      (0000002e) if-eqz               v3, +003h
+
+dispatchKeyEvent-BB@0x32 : [ dispatchKeyEvent-BB@0x38 ]
+	13      (00000032) goto                 +3h
+
+dispatchKeyEvent-BB@0x34 : 
+	14      (00000034) const/4              v3, 0
+	15      (00000036) return               v3
+
+dispatchKeyEvent-BB@0x38 : 
+	16      (00000038) const/4              v3, 1
+	17      (0000003a) return               v3
+

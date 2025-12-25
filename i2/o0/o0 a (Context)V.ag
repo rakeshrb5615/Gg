@@ -1,0 +1,58 @@
+# Li2/o0;->a(Landroid/content/Context;)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:android.content.Context
+#
+# - return:void
+
+a-BB@0x0 : [ a-BB@0x4 ]
+	0       (00000000) const-string         v0, "/shared_prefs/pksp.xml"
+
+a-BB@0x4 : [ a-BB@0x48 a-BB@0x4e ]
+	1       (00000004) new-instance         v1, Ljava/io/File;
+	2       (00000008) new-instance         v2, Ljava/lang/StringBuilder;
+	3       (0000000c) invoke-direct        v2, Ljava/lang/StringBuilder;-><init>()V
+	4       (00000012) invoke-virtual       v4, Landroid/content/Context;->getFilesDir()Ljava/io/File;
+	5       (00000018) move-result-object   v3
+	6       (0000001a) invoke-virtual       v3, Ljava/io/File;->getParent()Ljava/lang/String;
+	7       (00000020) move-result-object   v3
+	8       (00000022) invoke-virtual       v2, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	9       (00000028) invoke-virtual       v2, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	10      (0000002e) invoke-virtual       v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	11      (00000034) move-result-object   v0
+	12      (00000036) invoke-direct        v1, v0, Ljava/io/File;-><init>(Ljava/lang/String;)V
+	13      (0000003c) invoke-virtual       v1, Ljava/io/File;->exists()Z
+	14      (00000042) move-result          v0
+	15      (00000044) if-eqz               v0, +005h
+	4:8f
+	(Ljava/lang/Exception; -> 90 a-BB@0x90)
+
+a-BB@0x48 : [ a-BB@0x4e ]
+	16      (00000048) invoke-virtual       v1, Ljava/io/File;->delete()Z
+	4:8f
+	(Ljava/lang/Exception; -> 90 a-BB@0x90)
+
+a-BB@0x4e : [ a-BB@0x90 ]
+	17      (0000004e) const-string         v0, "AndroidKeyStore"
+	18      (00000052) invoke-static        v0, Ljava/security/KeyStore;->getInstance(Ljava/lang/String;)Ljava/security/KeyStore;
+	19      (00000058) move-result-object   v0
+	20      (0000005a) const/4              v1, 0
+	21      (0000005c) invoke-virtual       v0, v1, Ljava/security/KeyStore;->load(Ljava/security/KeyStore$LoadStoreParameter;)V
+	22      (00000062) const-string         v1, "pmk"
+	23      (00000066) invoke-virtual       v0, v1, Ljava/security/KeyStore;->deleteEntry(Ljava/lang/String;)V
+	24      (0000006c) const-string         v0, "psp"
+	25      (00000070) const/4              v1, 0
+	26      (00000072) invoke-virtual       v4, v0, v1, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String; I)Landroid/content/SharedPreferences;
+	27      (00000078) move-result-object   v4
+	28      (0000007a) invoke-interface     v4, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
+	29      (00000080) move-result-object   v4
+	30      (00000082) invoke-interface     v4, Landroid/content/SharedPreferences$Editor;->clear()Landroid/content/SharedPreferences$Editor;
+	31      (00000088) move-result-object   v4
+	32      (0000008a) invoke-interface     v4, Landroid/content/SharedPreferences$Editor;->apply()V
+	4:8f
+	(Ljava/lang/Exception; -> 90 a-BB@0x90)
+
+a-BB@0x90 : 
+	33      (00000090) return-void          
+

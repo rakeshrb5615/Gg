@@ -1,0 +1,102 @@
+# Li2/f;->e()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v12
+#
+# - return:void
+
+e-BB@0x0 : [ e-BB@0x2e ]
+	0       (00000000) new-instance         v4, Ljava/util/HashMap;
+	1       (00000004) invoke-direct        v4, Ljava/util/HashMap;-><init>()V
+	2       (0000000a) new-instance         v2, Ljava/util/HashMap;
+	3       (0000000e) invoke-direct        v2, Ljava/util/HashMap;-><init>()V
+	4       (00000014) new-instance         v3, Ljava/util/HashMap;
+	5       (00000018) invoke-direct        v3, Ljava/util/HashMap;-><init>()V
+	6       (0000001e) iget-object          v0, v12, Li2/f;->T Ljava/util/ArrayList;
+	7       (00000022) invoke-virtual       v0, Ljava/util/ArrayList;->size()I
+	8       (00000028) move-result          v1
+	9       (0000002a) const/4              v5, 0
+	10      (0000002c) move                 v6, v5
+
+e-BB@0x2e : [ e-BB@0x32 e-BB@0x108 ]
+	11      (0000002e) if-ge                v6, v1, +06dh
+
+e-BB@0x32 : [ e-BB@0x56 e-BB@0x78 ]
+	12      (00000032) invoke-virtual       v0, v6, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	13      (00000038) move-result-object   v7
+	14      (0000003a) add-int/lit8         v6, v6, 1
+	15      (0000003e) check-cast           v7, Lcom/android/billingclient/api/ProductDetails;
+	16      (00000042) invoke-virtual       v7, Lcom/android/billingclient/api/ProductDetails;->getProductId()Ljava/lang/String;
+	17      (00000048) move-result-object   v8
+	18      (0000004a) invoke-virtual       v7, Lcom/android/billingclient/api/ProductDetails;->getOneTimePurchaseOfferDetails()Lcom/android/billingclient/api/ProductDetails$OneTimePurchaseOfferDetails;
+	19      (00000050) move-result-object   v9
+	20      (00000052) if-eqz               v9, +013h
+
+e-BB@0x56 : [ e-BB@0xec ]
+	21      (00000056) invoke-virtual       v7, Lcom/android/billingclient/api/ProductDetails;->getOneTimePurchaseOfferDetails()Lcom/android/billingclient/api/ProductDetails$OneTimePurchaseOfferDetails;
+	22      (0000005c) move-result-object   v7
+	23      (0000005e) invoke-virtual       v7, Lcom/android/billingclient/api/ProductDetails$OneTimePurchaseOfferDetails;->getFormattedPrice()Ljava/lang/String;
+	24      (00000064) move-result-object   v9
+	25      (00000066) invoke-virtual       v7, Lcom/android/billingclient/api/ProductDetails$OneTimePurchaseOfferDetails;->getPriceAmountMicros()J
+	26      (0000006c) move-result-wide     v10
+	27      (0000006e) invoke-virtual       v7, Lcom/android/billingclient/api/ProductDetails$OneTimePurchaseOfferDetails;->getPriceCurrencyCode()Ljava/lang/String;
+	28      (00000074) move-result-object   v7
+	29      (00000076) goto                 +3bh
+
+e-BB@0x78 : [ e-BB@0x84 e-BB@0xe2 ]
+	30      (00000078) invoke-virtual       v7, Lcom/android/billingclient/api/ProductDetails;->getSubscriptionOfferDetails()Ljava/util/List;
+	31      (0000007e) move-result-object   v9
+	32      (00000080) if-eqz               v9, +031h
+
+e-BB@0x84 : [ e-BB@0x98 e-BB@0xe2 ]
+	33      (00000084) invoke-virtual       v7, Lcom/android/billingclient/api/ProductDetails;->getSubscriptionOfferDetails()Ljava/util/List;
+	34      (0000008a) move-result-object   v9
+	35      (0000008c) invoke-interface     v9, Ljava/util/List;->isEmpty()Z
+	36      (00000092) move-result          v9
+	37      (00000094) if-nez               v9, +027h
+
+e-BB@0x98 : [ e-BB@0xec ]
+	38      (00000098) invoke-virtual       v7, Lcom/android/billingclient/api/ProductDetails;->getSubscriptionOfferDetails()Ljava/util/List;
+	39      (0000009e) move-result-object   v7
+	40      (000000a0) invoke-interface     v7, v5, Ljava/util/List;->get(I)Ljava/lang/Object;
+	41      (000000a6) move-result-object   v7
+	42      (000000a8) check-cast           v7, Lcom/android/billingclient/api/ProductDetails$SubscriptionOfferDetails;
+	43      (000000ac) invoke-virtual       v7, Lcom/android/billingclient/api/ProductDetails$SubscriptionOfferDetails;->getPricingPhases()Lcom/android/billingclient/api/ProductDetails$PricingPhases;
+	44      (000000b2) move-result-object   v7
+	45      (000000b4) invoke-virtual       v7, Lcom/android/billingclient/api/ProductDetails$PricingPhases;->getPricingPhaseList()Ljava/util/List;
+	46      (000000ba) move-result-object   v7
+	47      (000000bc) invoke-interface     v7, v5, Ljava/util/List;->get(I)Ljava/lang/Object;
+	48      (000000c2) move-result-object   v7
+	49      (000000c4) check-cast           v7, Lcom/android/billingclient/api/ProductDetails$PricingPhase;
+	50      (000000c8) invoke-virtual       v7, Lcom/android/billingclient/api/ProductDetails$PricingPhase;->getFormattedPrice()Ljava/lang/String;
+	51      (000000ce) move-result-object   v9
+	52      (000000d0) invoke-virtual       v7, Lcom/android/billingclient/api/ProductDetails$PricingPhase;->getPriceAmountMicros()J
+	53      (000000d6) move-result-wide     v10
+	54      (000000d8) invoke-virtual       v7, Lcom/android/billingclient/api/ProductDetails$PricingPhase;->getPriceCurrencyCode()Ljava/lang/String;
+	55      (000000de) move-result-object   v7
+	56      (000000e0) goto                 +6h
+
+e-BB@0xe2 : [ e-BB@0xec ]
+	57      (000000e2) const-string         v9, ""
+	58      (000000e6) const-wide/16        v10, 0
+	59      (000000ea) move-object          v7, v9
+
+e-BB@0xec : [ e-BB@0x2e ]
+	60      (000000ec) invoke-virtual       v4, v8, v9, Ljava/util/HashMap;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	61      (000000f2) invoke-static        v10, v11, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+	62      (000000f8) move-result-object   v9
+	63      (000000fa) invoke-virtual       v2, v8, v9, Ljava/util/HashMap;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	64      (00000100) invoke-virtual       v3, v8, v7, Ljava/util/HashMap;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	65      (00000106) goto                 -6ch
+
+e-BB@0x108 : 
+	66      (00000108) new-instance         v0, Li2/e;
+	67      (0000010c) const/4              v5, 0
+	68      (0000010e) move-object          v1, v12
+	69      (00000110) invoke-direct/range  v0 ... v5, Li2/e;-><init>(Ljava/lang/Object; Ljava/lang/Object; Ljava/lang/Object; Ljava/lang/Object; I)V
+	70      (00000116) iget-object          v2, v1, Li2/f;->b Lcom/chilllive/chillwallpaperproject/MainActivity;
+	71      (0000011a) invoke-virtual       v2, v0, Landroid/app/Activity;->runOnUiThread(Ljava/lang/Runnable;)V
+	72      (00000120) invoke-virtual       v12, Li2/f;->f()V
+	73      (00000126) invoke-virtual       v12, Li2/f;->g()V
+	74      (0000012c) return-void          
+

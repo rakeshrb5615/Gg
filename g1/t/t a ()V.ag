@@ -1,0 +1,28 @@
+# Lg1/t;->a()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v3
+#
+# - return:void
+
+a-BB@0x0 : [ a-BB@0x2 ]
+	0       (00000000) const/4              v0, 0
+
+a-BB@0x2 : [ a-BB@0x12 a-BB@0x2e ]
+	1       (00000002) iget-object          v1, v3, Lg1/t;->b Ljava/util/ArrayList;
+	2       (00000006) invoke-virtual       v1, Ljava/util/ArrayList;->size()I
+	3       (0000000c) move-result          v2
+	4       (0000000e) if-ge                v0, v2, +010h
+
+a-BB@0x12 : [ a-BB@0x2 ]
+	5       (00000012) invoke-virtual       v1, v0, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	6       (00000018) move-result-object   v1
+	7       (0000001a) check-cast           v1, Lg1/s;
+	8       (0000001e) iget-object          v1, v1, Lg1/s;->b Ljava/util/concurrent/atomic/AtomicInteger;
+	9       (00000022) invoke-virtual       v1, Ljava/util/concurrent/atomic/AtomicInteger;->incrementAndGet()I
+	10      (00000028) add-int/lit8         v0, v0, 1
+	11      (0000002c) goto                 -15h
+
+a-BB@0x2e : 
+	12      (0000002e) return-void          
+

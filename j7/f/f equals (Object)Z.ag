@@ -1,0 +1,40 @@
+# Lj7/f;->equals(Ljava/lang/Object;)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:java.lang.Object
+#
+# - return:boolean
+
+equals-BB@0x0 : [ equals-BB@0x4 equals-BB@0x3a ]
+	0       (00000000) if-eq                v3, v2, +01dh
+
+equals-BB@0x4 : [ equals-BB@0xc equals-BB@0x36 ]
+	1       (00000004) instance-of          v0, v3, Ljava/util/Map;
+	2       (00000008) if-eqz               v0, +017h
+
+equals-BB@0xc : [ equals-BB@0x20 equals-BB@0x36 ]
+	3       (0000000c) check-cast           v3, Ljava/util/Map;
+	4       (00000010) iget                 v0, v2, Lj7/f;->o I
+	5       (00000014) invoke-interface     v3, Ljava/util/Map;->size()I
+	6       (0000001a) move-result          v1
+	7       (0000001c) if-ne                v0, v1, +00dh
+
+equals-BB@0x20 : [ equals-BB@0x34 equals-BB@0x36 ]
+	8       (00000020) invoke-interface     v3, Ljava/util/Map;->entrySet()Ljava/util/Set;
+	9       (00000026) move-result-object   v3
+	10      (00000028) invoke-virtual       v2, v3, Lj7/f;->e(Ljava/util/Collection;)Z
+	11      (0000002e) move-result          v3
+	12      (00000030) if-eqz               v3, +003h
+
+equals-BB@0x34 : [ equals-BB@0x3a ]
+	13      (00000034) goto                 +3h
+
+equals-BB@0x36 : 
+	14      (00000036) const/4              v3, 0
+	15      (00000038) return               v3
+
+equals-BB@0x3a : 
+	16      (0000003a) const/4              v3, 1
+	17      (0000003c) return               v3
+

@@ -1,0 +1,42 @@
+# Lj7/c;->addAll(I Ljava/util/Collection;)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:int
+# - v5:java.util.Collection
+#
+# - return:boolean
+
+addAll-BB@0x0 : [ addAll-BB@0x18 addAll-BB@0x36 ]
+	0       (00000000) const-string         v0, "elements"
+	1       (00000004) invoke-static        v5, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) invoke-virtual       v3, Lj7/c;->g()V
+	3       (00000010) iget                 v0, v3, Lj7/c;->b I
+	4       (00000014) if-ltz               v4, +011h
+
+addAll-BB@0x18 : [ addAll-BB@0x1c addAll-BB@0x36 ]
+	5       (00000018) if-gt                v4, v0, +00fh
+
+addAll-BB@0x1c : [ addAll-BB@0x2e addAll-BB@0x32 ]
+	6       (0000001c) invoke-interface     v5, Ljava/util/Collection;->size()I
+	7       (00000022) move-result          v0
+	8       (00000024) invoke-virtual       v3, v4, v5, v0, Lj7/c;->e(I Ljava/util/Collection; I)V
+	9       (0000002a) if-lez               v0, +004h
+
+addAll-BB@0x2e : 
+	10      (0000002e) const/4              v4, 1
+	11      (00000030) return               v4
+
+addAll-BB@0x32 : 
+	12      (00000032) const/4              v4, 0
+	13      (00000034) return               v4
+
+addAll-BB@0x36 : 
+	14      (00000036) new-instance         v5, Ljava/lang/IndexOutOfBoundsException;
+	15      (0000003a) const-string         v1, "index: "
+	16      (0000003e) const-string         v2, ", size: "
+	17      (00000042) invoke-static        v1, v4, v0, v2, Lv1/a;->i(Ljava/lang/String; I I Ljava/lang/String;)Ljava/lang/String;
+	18      (00000048) move-result-object   v4
+	19      (0000004a) invoke-direct        v5, v4, Ljava/lang/IndexOutOfBoundsException;-><init>(Ljava/lang/String;)V
+	20      (00000050) throw                v5
+

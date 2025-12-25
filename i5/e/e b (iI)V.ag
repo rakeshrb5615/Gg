@@ -1,0 +1,32 @@
+# Li5/e;->b(Li5/i; I)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:i5.i
+# - v6:int
+#
+# - return:void
+
+b-BB@0x0 : [ b-BB@0x8 ]
+	0       (00000000) iget-object          v0, v4, Li5/e;->b Ljava/lang/Object;
+	1       (00000004) check-cast           v0, [I
+
+b-BB@0x8 : 
+	2       (00000008) iget-object          v1, v4, Li5/e;->a Ljava/lang/Object;
+	3       (0000000c) check-cast           v1, [B
+	4       (00000010) const/4              v2, 0
+	5       (00000012) aget                 v3, v0, v2
+	6       (00000016) invoke-virtual       v5, v1, v3, v6, Li5/i;->read([B I I)I
+	7       (0000001c) aget                 v1, v0, v2
+	8       (00000020) add-int/2addr        v1, v6
+	9       (00000022) aput                 v1, v0, v2
+	10      (00000026) invoke-virtual       v5, Ljava/io/InputStream;->close()V
+	11      (0000002c) return-void          
+	8:25
+	(Ljava/lang/Throwable; -> 2e b-BB@0x2e)
+
+b-BB@0x2e : 
+	12      (0000002e) move-exception       v6
+	13      (00000030) invoke-virtual       v5, Ljava/io/InputStream;->close()V
+	14      (00000036) throw                v6
+

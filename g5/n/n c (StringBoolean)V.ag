@@ -1,0 +1,667 @@
+# Lg5/n;->c(Ljava/lang/String; Ljava/lang/Boolean;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v33
+# - v34:java.lang.String
+# - v35:java.lang.Boolean
+#
+# - return:void
+
+c-BB@0x0 : [ c-BB@0x38 c-BB@0x42 ]
+	0       (00000000) move-object/from16   v1, v33
+	1       (00000004) move-object/from16   v4, v34
+	2       (00000008) invoke-static        Ljava/lang/System;->currentTimeMillis()J
+	3       (0000000e) move-result-wide     v2
+	4       (00000010) const-wide/16        v8, 1000
+	5       (00000014) div-long             v10, v2, v8
+	6       (00000018) const-string         v0, "Opening a new session with ID "
+	7       (0000001c) invoke-static        v0, v4, Lg2/g;->l(Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	8       (00000022) move-result-object   v0
+	9       (00000024) const-string         v2, "FirebaseCrashlytics"
+	10      (00000028) const/4              v12, 3
+	11      (0000002a) invoke-static        v2, v12, Landroid/util/Log;->isLoggable(Ljava/lang/String; I)Z
+	12      (00000030) move-result          v2
+	13      (00000032) const/4              v13, 0
+	14      (00000034) if-eqz               v2, +007h
+
+c-BB@0x38 : [ c-BB@0x42 ]
+	15      (00000038) const-string         v2, "FirebaseCrashlytics"
+	16      (0000003c) invoke-static        v2, v0, v13, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+
+c-BB@0x42 : [ c-BB@0x74 c-BB@0x78 ]
+	17      (00000042) sget-object          v0, Ljava/util/Locale;->US Ljava/util/Locale;
+	18      (00000046) iget-object          v2, v1, Lg5/n;->f Lg5/y;
+	19      (0000004a) iget-object          v3, v1, Lg5/n;->h Lg5/a;
+	20      (0000004e) iget-object          v15, v2, Lg5/y;->c Ljava/lang/String;
+	21      (00000052) iget-object          v5, v3, Lg5/a;->f Ljava/lang/String;
+	22      (00000056) iget-object          v6, v3, Lg5/a;->g Ljava/lang/String;
+	23      (0000005a) invoke-virtual       v2, Lg5/y;->c()Lg5/c;
+	24      (00000060) move-result-object   v2
+	25      (00000062) iget-object          v2, v2, Lg5/c;->a Ljava/lang/String;
+	26      (00000066) iget-object          v7, v3, Lg5/a;->d Ljava/lang/String;
+	27      (0000006a) const/16             v21, 1
+	28      (0000006e) const/4              v14, 4
+	29      (00000070) if-eqz               v7, +004h
+
+c-BB@0x74 : [ c-BB@0x7c ]
+	30      (00000074) move                 v7, v14
+	31      (00000076) goto                 +3h
+
+c-BB@0x78 : [ c-BB@0x7c ]
+	32      (00000078) move/from16          v7, v21
+
+c-BB@0x7c : [ c-BB@0x112 c-BB@0x12a ]
+	33      (0000007c) invoke-static        v7, Lg2/g;->a(I)I
+	34      (00000082) move-result          v19
+	35      (00000084) iget-object          v3, v3, Lg5/a;->h Lk2/c;
+	36      (00000088) move                 v7, v14
+	37      (0000008a) new-instance         v14, Lj5/l1;
+	38      (0000008e) move-object/from16   v18, v2
+	39      (00000092) move-object/from16   v20, v3
+	40      (00000096) move-object/from16   v16, v5
+	41      (0000009a) move-object/from16   v17, v6
+	42      (0000009e) invoke-direct/range  v14 ... v20, Lj5/l1;-><init>(Ljava/lang/String; Ljava/lang/String; Ljava/lang/String; Ljava/lang/String; I Lk2/c;)V
+	43      (000000a4) sget-object          v15, Landroid/os/Build$VERSION;->RELEASE Ljava/lang/String;
+	44      (000000a8) sget-object          v2, Landroid/os/Build$VERSION;->CODENAME Ljava/lang/String;
+	45      (000000ac) invoke-static        Lg5/g;->g()Z
+	46      (000000b2) move-result          v3
+	47      (000000b4) new-instance         v5, Lj5/n1;
+	48      (000000b8) invoke-direct        v5, v3, Lj5/n1;-><init>(Z)V
+	49      (000000be) iget-object          v3, v1, Lg5/n;->a Landroid/content/Context;
+	50      (000000c2) new-instance         v6, Landroid/os/StatFs;
+	51      (000000c6) invoke-static        Landroid/os/Environment;->getDataDirectory()Ljava/io/File;
+	52      (000000cc) move-result-object   v16
+	53      (000000ce) invoke-virtual/range v16, Ljava/io/File;->getPath()Ljava/lang/String;
+	54      (000000d4) move-result-object   v7
+	55      (000000d6) invoke-direct        v6, v7, Landroid/os/StatFs;-><init>(Ljava/lang/String;)V
+	56      (000000dc) invoke-virtual       v6, Landroid/os/StatFs;->getBlockCount()I
+	57      (000000e2) move-result          v7
+	58      (000000e4) move-wide/from16     v18, v8
+	59      (000000e8) int-to-long          v8, v7
+	60      (000000ea) invoke-virtual       v6, Landroid/os/StatFs;->getBlockSize()I
+	61      (000000f0) move-result          v6
+	62      (000000f2) int-to-long          v6, v6
+	63      (000000f4) mul-long             v27, v8, v6
+	64      (000000f8) sget-object          v6, Lg5/f;->a Lg5/f;
+	65      (000000fc) const-string         v7, "FirebaseCrashlytics"
+	66      (00000100) sget-object          v8, Landroid/os/Build;->CPU_ABI Ljava/lang/String;
+	67      (00000104) invoke-static        v8, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+	68      (0000010a) move-result          v9
+	69      (0000010c) const/4              v12, 2
+	70      (0000010e) if-eqz               v9, +00eh
+
+c-BB@0x112 : [ c-BB@0x122 c-BB@0x14a ]
+	71      (00000112) const-string         v9, "Architecture#getValue()::Build.CPU_ABI returned null or empty"
+	72      (00000116) invoke-static        v7, v12, Landroid/util/Log;->isLoggable(Ljava/lang/String; I)Z
+	73      (0000011c) move-result          v20
+	74      (0000011e) if-eqz               v20, +016h
+
+c-BB@0x122 : [ c-BB@0x14a ]
+	75      (00000122) invoke-static        v7, v9, v13, Landroid/util/Log;->v(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+	76      (00000128) goto                 +11h
+
+c-BB@0x12a : [ c-BB@0x146 c-BB@0x148 ]
+	77      (0000012a) invoke-virtual       v8, v0, Ljava/lang/String;->toLowerCase(Ljava/util/Locale;)Ljava/lang/String;
+	78      (00000130) move-result-object   v7
+	79      (00000132) sget-object          v9, Lg5/f;->b Ljava/util/HashMap;
+	80      (00000136) invoke-virtual       v9, v7, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	81      (0000013c) move-result-object   v7
+	82      (0000013e) check-cast           v7, Lg5/f;
+	83      (00000142) if-nez               v7, +003h
+
+c-BB@0x146 : [ c-BB@0x14a ]
+	84      (00000146) goto                 +2h
+
+c-BB@0x148 : [ c-BB@0x14a ]
+	85      (00000148) move-object          v6, v7
+
+c-BB@0x14a : [ c-BB@0x1b8 c-BB@0x266 ]
+	86      (0000014a) invoke-virtual       v6, Ljava/lang/Enum;->ordinal()I
+	87      (00000150) move-result          v23
+	88      (00000152) sget-object          v9, Landroid/os/Build;->MODEL Ljava/lang/String;
+	89      (00000156) invoke-static        Ljava/lang/Runtime;->getRuntime()Ljava/lang/Runtime;
+	90      (0000015c) move-result-object   v6
+	91      (0000015e) invoke-virtual       v6, Ljava/lang/Runtime;->availableProcessors()I
+	92      (00000164) move-result          v24
+	93      (00000166) invoke-static        v3, Lg5/g;->a(Landroid/content/Context;)J
+	94      (0000016c) move-result-wide     v25
+	95      (0000016e) invoke-static        Lg5/g;->f()Z
+	96      (00000174) move-result          v29
+	97      (00000176) invoke-static        Lg5/g;->c()I
+	98      (0000017c) move-result          v30
+	99      (0000017e) sget-object          v3, Landroid/os/Build;->MANUFACTURER Ljava/lang/String;
+	100     (00000182) sget-object          v6, Landroid/os/Build;->PRODUCT Ljava/lang/String;
+	101     (00000186) new-instance         v22, Lj5/m1;
+	102     (0000018a) invoke-direct/range  v22 ... v30, Lj5/m1;-><init>(I I J J Z I)V
+	103     (00000190) move/from16          v20, v12
+	104     (00000194) move-object/from16   v7, v22
+	105     (00000198) iget-object          v12, v1, Lg5/n;->j Ld5/b;
+	106     (0000019c) new-instance         v13, Lj5/k1;
+	107     (000001a0) invoke-direct        v13, v14, v5, v7, Lj5/k1;-><init>(Lj5/l1; Lj5/n1; Lj5/m1;)V
+	108     (000001a6) invoke-virtual       v12, v4, v10, v11, v13, Ld5/b;->d(Ljava/lang/String; J Lj5/k1;)V
+	109     (000001ac) invoke-virtual/range v35, Ljava/lang/Boolean;->booleanValue()Z
+	110     (000001b2) move-result          v5
+	111     (000001b4) if-eqz               v5, +059h
+
+c-BB@0x1b8 : [ c-BB@0x1bc c-BB@0x266 ]
+	112     (000001b8) if-eqz               v4, +057h
+
+c-BB@0x1bc : [ c-BB@0x1ce ]
+	113     (000001bc) move-object          v5, v3
+	114     (000001be) iget-object          v3, v1, Lg5/n;->d Lm5/c;
+	115     (000001c2) iget-object          v7, v3, Lm5/c;->b Ljava/lang/Object;
+	116     (000001c6) move-object          v12, v7
+	117     (000001c8) check-cast           v12, Ljava/lang/String;
+	118     (000001cc) monitor-enter        v12
+
+c-BB@0x1ce : [ c-BB@0x1f0 ]
+	119     (000001ce) iput-object          v4, v3, Lm5/c;->b Ljava/lang/Object;
+	120     (000001d2) iget-object          v7, v3, Lm5/c;->e Ljava/lang/Object;
+	121     (000001d6) check-cast           v7, Li5/n;
+	122     (000001da) iget-object          v7, v7, Li5/n;->b Ljava/lang/Object;
+	123     (000001de) check-cast           v7, Ljava/util/concurrent/atomic/AtomicMarkableReference;
+	124     (000001e2) invoke-virtual       v7, Ljava/util/concurrent/atomic/AtomicMarkableReference;->getReference()Ljava/lang/Object;
+	125     (000001e8) move-result-object   v7
+	126     (000001ea) check-cast           v7, Li5/d;
+	127     (000001ee) monitor-enter        v7
+	1ce:1ef
+	(Ljava/lang/Throwable; -> 258 c-BB@0x258)
+
+c-BB@0x1f0 : [ c-BB@0x206 ]
+	128     (000001f0) new-instance         v13, Ljava/util/HashMap;
+	129     (000001f4) iget-object          v14, v7, Li5/d;->a Ljava/util/HashMap;
+	130     (000001f8) invoke-direct        v13, v14, Ljava/util/HashMap;-><init>(Ljava/util/Map;)V
+	131     (000001fe) invoke-static        v13, Ljava/util/Collections;->unmodifiableMap(Ljava/util/Map;)Ljava/util/Map;
+	132     (00000204) move-result-object   v13
+	1f0:205
+	(Ljava/lang/Throwable; -> 25c c-BB@0x25c)
+
+c-BB@0x206 : [ c-BB@0x276 ]
+	133     (00000206) monitor-exit         v7
+	134     (00000208) iget-object          v7, v3, Lm5/c;->m Ljava/lang/Object;
+	135     (0000020c) check-cast           v7, Lh/f;
+	136     (00000210) invoke-virtual       v7, Lh/f;->d()Ljava/util/List;
+	137     (00000216) move-result-object   v7
+	138     (00000218) iget-object          v14, v3, Lm5/c;->d Ljava/lang/Object;
+	139     (0000021c) check-cast           v14, Lh5/f;
+	140     (00000220) iget-object          v14, v14, Lh5/f;->b Lh5/c;
+	141     (00000224) move-object/from16   v23, v2
+	142     (00000228) new-instance         v2, Li2/e;
+	143     (0000022c) move-object/from16   v24, v6
+	144     (00000230) move-object          v6, v7
+	145     (00000232) const/4              v7, 2
+	146     (00000234) move-object/from16   v31, v5
+	147     (00000238) move-object/from16   v17, v9
+	148     (0000023c) move-object          v5, v13
+	149     (0000023e) move-object/from16   v13, v23
+	150     (00000242) move-object/from16   v32, v24
+	151     (00000246) const/4              v9, 4
+	152     (00000248) invoke-direct/range  v2 ... v7, Li2/e;-><init>(Ljava/lang/Object; Ljava/lang/Object; Ljava/lang/Object; Ljava/lang/Object; I)V
+	153     (0000024e) invoke-virtual       v14, v2, Lh5/c;->a(Ljava/lang/Runnable;)Lcom/google/android/gms/tasks/Task;
+	154     (00000254) monitor-exit         v12
+	155     (00000256) goto                 +10h
+	206:255
+	(Ljava/lang/Throwable; -> 258 c-BB@0x258)
+
+c-BB@0x258 : [ c-BB@0x262 ]
+	156     (00000258) move-exception       v0
+	157     (0000025a) goto                 +4h
+
+c-BB@0x25c : [ c-BB@0x25e ]
+	158     (0000025c) move-exception       v0
+
+c-BB@0x25e : [ c-BB@0x260 ]
+	159     (0000025e) monitor-exit         v7
+	25e:25f
+	(Ljava/lang/Throwable; -> 25c c-BB@0x25c)
+
+c-BB@0x260 : 
+	160     (00000260) throw                v0
+	260:263
+	(Ljava/lang/Throwable; -> 258 c-BB@0x258)
+
+c-BB@0x262 : 
+	161     (00000262) monitor-exit         v12
+	162     (00000264) throw                v0
+
+c-BB@0x266 : [ c-BB@0x276 ]
+	163     (00000266) move-object          v13, v2
+	164     (00000268) move-object/from16   v31, v3
+	165     (0000026c) move-object/from16   v32, v6
+	166     (00000270) move-object/from16   v17, v9
+	167     (00000274) const/4              v9, 4
+
+c-BB@0x276 : [ c-BB@0x294 c-BB@0x296 ]
+	168     (00000276) iget-object          v2, v1, Lg5/n;->i Li5/e;
+	169     (0000027a) iget-object          v3, v2, Li5/e;->b Ljava/lang/Object;
+	170     (0000027e) check-cast           v3, Li5/c;
+	171     (00000282) invoke-interface     v3, Li5/c;->a()V
+	172     (00000288) sget-object          v3, Li5/e;->c Lv3/f;
+	173     (0000028c) iput-object          v3, v2, Li5/e;->b Ljava/lang/Object;
+	174     (00000290) if-nez               v4, +003h
+
+c-BB@0x294 : [ c-BB@0x2b8 ]
+	175     (00000294) goto                 +12h
+
+c-BB@0x296 : [ c-BB@0x2b8 ]
+	176     (00000296) iget-object          v3, v2, Li5/e;->a Ljava/lang/Object;
+	177     (0000029a) check-cast           v3, Lm5/c;
+	178     (0000029e) const-string         v5, "userlog"
+	179     (000002a2) invoke-virtual       v3, v4, v5, Lm5/c;->b(Ljava/lang/String; Ljava/lang/String;)Ljava/io/File;
+	180     (000002a8) move-result-object   v3
+	181     (000002aa) new-instance         v5, Li5/l;
+	182     (000002ae) invoke-direct        v5, v3, Li5/l;-><init>(Ljava/io/File;)V
+	183     (000002b4) iput-object          v5, v2, Li5/e;->b Ljava/lang/Object;
+
+c-BB@0x2b8 : [ c-BB@0x2f0 c-BB@0x74c ]
+	184     (000002b8) iget-object          v2, v1, Lg5/n;->l Lg5/k;
+	185     (000002bc) invoke-virtual       v2, v4, Lg5/k;->a(Ljava/lang/String;)V
+	186     (000002c2) iget-object          v2, v1, Lg5/n;->m La5/z;
+	187     (000002c6) iget-object          v3, v2, La5/z;->a Ljava/lang/Object;
+	188     (000002ca) check-cast           v3, Lg5/t;
+	189     (000002ce) sget-object          v5, Lj5/n2;->a Ljava/nio/charset/Charset;
+	190     (000002d2) new-instance         v5, Lj5/a0;
+	191     (000002d6) invoke-direct        v5, Ljava/lang/Object;-><init>()V
+	192     (000002dc) const-string         v6, "20.0.3"
+	193     (000002e0) iput-object          v6, v5, Lj5/a0;->a Ljava/lang/String;
+	194     (000002e4) iget-object          v6, v3, Lg5/t;->c Lg5/a;
+	195     (000002e8) iget-object          v7, v6, Lg5/a;->a Ljava/lang/String;
+	196     (000002ec) if-eqz               v7, +230h
+
+c-BB@0x2f0 : [ c-BB@0x308 c-BB@0x73c ]
+	197     (000002f0) iput-object          v7, v5, Lj5/a0;->b Ljava/lang/String;
+	198     (000002f4) iget-object          v7, v3, Lg5/t;->b Lg5/y;
+	199     (000002f8) invoke-virtual       v7, Lg5/y;->c()Lg5/c;
+	200     (000002fe) move-result-object   v12
+	201     (00000300) iget-object          v12, v12, Lg5/c;->a Ljava/lang/String;
+	202     (00000304) if-eqz               v12, +21ch
+
+c-BB@0x308 : [ c-BB@0x334 c-BB@0x72c ]
+	203     (00000308) iput-object          v12, v5, Lj5/a0;->d Ljava/lang/String;
+	204     (0000030c) invoke-virtual       v7, Lg5/y;->c()Lg5/c;
+	205     (00000312) move-result-object   v12
+	206     (00000314) iget-object          v12, v12, Lg5/c;->b Ljava/lang/String;
+	207     (00000318) iput-object          v12, v5, Lj5/a0;->e Ljava/lang/String;
+	208     (0000031c) invoke-virtual       v7, Lg5/y;->c()Lg5/c;
+	209     (00000322) move-result-object   v12
+	210     (00000324) iget-object          v12, v12, Lg5/c;->c Ljava/lang/String;
+	211     (00000328) iput-object          v12, v5, Lj5/a0;->f Ljava/lang/String;
+	212     (0000032c) iget-object          v12, v6, Lg5/a;->f Ljava/lang/String;
+	213     (00000330) if-eqz               v12, +1feh
+
+c-BB@0x334 : [ c-BB@0x340 c-BB@0x71c ]
+	214     (00000334) iput-object          v12, v5, Lj5/a0;->h Ljava/lang/String;
+	215     (00000338) iget-object          v14, v6, Lg5/a;->g Ljava/lang/String;
+	216     (0000033c) if-eqz               v14, +1f0h
+
+c-BB@0x340 : [ c-BB@0x386 c-BB@0x70c ]
+	217     (00000340) iput-object          v14, v5, Lj5/a0;->i Ljava/lang/String;
+	218     (00000344) iput                 v9, v5, Lj5/a0;->c I
+	219     (00000348) move/from16          v30, v9
+	220     (0000034c) iget-byte            v9, v5, Lj5/a0;->m B
+	221     (00000350) or-int/lit8          v9, v9, 1
+	222     (00000354) int-to-byte          v9, v9
+	223     (00000356) iput-byte            v9, v5, Lj5/a0;->m B
+	224     (0000035a) new-instance         v9, Lj5/i0;
+	225     (0000035e) invoke-direct        v9, Ljava/lang/Object;-><init>()V
+	226     (00000364) const/4              v1, 0
+	227     (00000366) iput-boolean         v1, v9, Lj5/i0;->f Z
+	228     (0000036a) iget-byte            v1, v9, Lj5/i0;->m B
+	229     (0000036e) or-int/lit8          v1, v1, 2
+	230     (00000372) int-to-byte          v1, v1
+	231     (00000374) iput-wide            v10, v9, Lj5/i0;->d J
+	232     (00000378) or-int/lit8          v1, v1, 1
+	233     (0000037c) int-to-byte          v1, v1
+	234     (0000037e) iput-byte            v1, v9, Lj5/i0;->m B
+	235     (00000382) if-eqz               v4, +1c5h
+
+c-BB@0x386 : [ c-BB@0x392 c-BB@0x6fc ]
+	236     (00000386) iput-object          v4, v9, Lj5/i0;->b Ljava/lang/String;
+	237     (0000038a) sget-object          v1, Lg5/t;->g Ljava/lang/String;
+	238     (0000038e) if-eqz               v1, +1b7h
+
+c-BB@0x392 : [ c-BB@0x39e c-BB@0x6ec ]
+	239     (00000392) iput-object          v1, v9, Lj5/i0;->a Ljava/lang/String;
+	240     (00000396) iget-object          v1, v7, Lg5/y;->c Ljava/lang/String;
+	241     (0000039a) if-eqz               v1, +1a9h
+
+c-BB@0x39e : [ c-BB@0x3ba c-BB@0x3c8 ]
+	242     (0000039e) invoke-virtual       v7, Lg5/y;->c()Lg5/c;
+	243     (000003a4) move-result-object   v4
+	244     (000003a6) iget-object          v4, v4, Lg5/c;->a Ljava/lang/String;
+	245     (000003aa) iget-object          v6, v6, Lg5/a;->h Lk2/c;
+	246     (000003ae) iget-object          v7, v6, Lk2/c;->c Ljava/lang/Object;
+	247     (000003b2) check-cast           v7, Lk2/c;
+	248     (000003b6) if-nez               v7, +009h
+
+c-BB@0x3ba : [ c-BB@0x3c8 ]
+	249     (000003ba) new-instance         v7, Lk2/c;
+	250     (000003be) invoke-direct        v7, v6, Lk2/c;-><init>(Lk2/c;)V
+	251     (000003c4) iput-object          v7, v6, Lk2/c;->c Ljava/lang/Object;
+
+c-BB@0x3c8 : [ c-BB@0x3e0 c-BB@0x3ee ]
+	252     (000003c8) iget-object          v7, v6, Lk2/c;->c Ljava/lang/Object;
+	253     (000003cc) check-cast           v7, Lk2/c;
+	254     (000003d0) iget-object          v10, v7, Lk2/c;->b Ljava/lang/Object;
+	255     (000003d4) move-object/from16   v28, v10
+	256     (000003d8) check-cast           v28, Ljava/lang/String;
+	257     (000003dc) if-nez               v7, +009h
+
+c-BB@0x3e0 : [ c-BB@0x3ee ]
+	258     (000003e0) new-instance         v7, Lk2/c;
+	259     (000003e4) invoke-direct        v7, v6, Lk2/c;-><init>(Lk2/c;)V
+	260     (000003ea) iput-object          v7, v6, Lk2/c;->c Ljava/lang/Object;
+
+c-BB@0x3ee : [ c-BB@0x446 c-BB@0x6dc ]
+	261     (000003ee) iget-object          v6, v6, Lk2/c;->c Ljava/lang/Object;
+	262     (000003f2) check-cast           v6, Lk2/c;
+	263     (000003f6) iget-object          v6, v6, Lk2/c;->c Ljava/lang/Object;
+	264     (000003fa) move-object/from16   v29, v6
+	265     (000003fe) check-cast           v29, Ljava/lang/String;
+	266     (00000402) new-instance         v23, Lj5/k0;
+	267     (00000406) move-object/from16   v24, v1
+	268     (0000040a) move-object/from16   v27, v4
+	269     (0000040e) move-object/from16   v25, v12
+	270     (00000412) move-object/from16   v26, v14
+	271     (00000416) invoke-direct/range  v23 ... v29, Lj5/k0;-><init>(Ljava/lang/String; Ljava/lang/String; Ljava/lang/String; Ljava/lang/String; Ljava/lang/String; Ljava/lang/String;)V
+	272     (0000041c) move-object/from16   v1, v23
+	273     (00000420) iput-object          v1, v9, Lj5/i0;->g Lj5/u1;
+	274     (00000424) new-instance         v1, Lj5/h1;
+	275     (00000428) invoke-direct        v1, Ljava/lang/Object;-><init>()V
+	276     (0000042e) const/4              v4, 3
+	277     (00000430) iput                 v4, v1, Lj5/h1;->a I
+	278     (00000434) iget-byte            v4, v1, Lj5/h1;->e B
+	279     (00000438) or-int/lit8          v4, v4, 1
+	280     (0000043c) int-to-byte          v4, v4
+	281     (0000043e) iput-byte            v4, v1, Lj5/h1;->e B
+	282     (00000442) if-eqz               v15, +14dh
+
+c-BB@0x446 : [ c-BB@0x44e c-BB@0x6cc ]
+	283     (00000446) iput-object          v15, v1, Lj5/h1;->b Ljava/lang/String;
+	284     (0000044a) if-eqz               v13, +141h
+
+c-BB@0x44e : [ c-BB@0x4a0 c-BB@0x4a2 ]
+	285     (0000044e) iput-object          v13, v1, Lj5/h1;->c Ljava/lang/String;
+	286     (00000452) invoke-static        Lg5/g;->g()Z
+	287     (00000458) move-result          v4
+	288     (0000045a) iput-boolean         v4, v1, Lj5/h1;->d Z
+	289     (0000045e) iget-byte            v4, v1, Lj5/h1;->e B
+	290     (00000462) or-int/lit8          v4, v4, 2
+	291     (00000466) int-to-byte          v4, v4
+	292     (00000468) iput-byte            v4, v1, Lj5/h1;->e B
+	293     (0000046c) invoke-virtual       v1, Lj5/h1;->a()Lj5/i1;
+	294     (00000472) move-result-object   v1
+	295     (00000474) iput-object          v1, v9, Lj5/i0;->i Lj5/k2;
+	296     (00000478) new-instance         v1, Landroid/os/StatFs;
+	297     (0000047c) invoke-static        Landroid/os/Environment;->getDataDirectory()Ljava/io/File;
+	298     (00000482) move-result-object   v4
+	299     (00000484) invoke-virtual       v4, Ljava/io/File;->getPath()Ljava/lang/String;
+	300     (0000048a) move-result-object   v4
+	301     (0000048c) invoke-direct        v1, v4, Landroid/os/StatFs;-><init>(Ljava/lang/String;)V
+	302     (00000492) invoke-static        v8, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+	303     (00000498) move-result          v4
+	304     (0000049a) const/4              v6, 7
+	305     (0000049c) if-eqz               v4, +003h
+
+c-BB@0x4a0 : [ c-BB@0x4c8 ]
+	306     (000004a0) goto                 +14h
+
+c-BB@0x4a2 : [ c-BB@0x4be c-BB@0x4c0 ]
+	307     (000004a2) sget-object          v4, Lg5/t;->f Ljava/util/HashMap;
+	308     (000004a6) invoke-virtual       v8, v0, Ljava/lang/String;->toLowerCase(Ljava/util/Locale;)Ljava/lang/String;
+	309     (000004ac) move-result-object   v0
+	310     (000004ae) invoke-virtual       v4, v0, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	311     (000004b4) move-result-object   v0
+	312     (000004b6) check-cast           v0, Ljava/lang/Integer;
+	313     (000004ba) if-nez               v0, +003h
+
+c-BB@0x4be : [ c-BB@0x4c8 ]
+	314     (000004be) goto                 +5h
+
+c-BB@0x4c0 : [ c-BB@0x4c8 ]
+	315     (000004c0) invoke-virtual       v0, Ljava/lang/Integer;->intValue()I
+	316     (000004c6) move-result          v6
+
+c-BB@0x4c8 : [ c-BB@0x52a c-BB@0x6bc ]
+	317     (000004c8) invoke-static        Ljava/lang/Runtime;->getRuntime()Ljava/lang/Runtime;
+	318     (000004ce) move-result-object   v0
+	319     (000004d0) invoke-virtual       v0, Ljava/lang/Runtime;->availableProcessors()I
+	320     (000004d6) move-result          v0
+	321     (000004d8) iget-object          v3, v3, Lg5/t;->a Landroid/content/Context;
+	322     (000004dc) invoke-static        v3, Lg5/g;->a(Landroid/content/Context;)J
+	323     (000004e2) move-result-wide     v3
+	324     (000004e4) invoke-virtual       v1, Landroid/os/StatFs;->getBlockCount()I
+	325     (000004ea) move-result          v7
+	326     (000004ec) int-to-long          v7, v7
+	327     (000004ee) invoke-virtual       v1, Landroid/os/StatFs;->getBlockSize()I
+	328     (000004f4) move-result          v1
+	329     (000004f6) int-to-long          v10, v1
+	330     (000004f8) mul-long/2addr       v7, v10
+	331     (000004fa) invoke-static        Lg5/g;->f()Z
+	332     (00000500) move-result          v1
+	333     (00000502) invoke-static        Lg5/g;->c()I
+	334     (00000508) move-result          v10
+	335     (0000050a) new-instance         v11, Lj5/m0;
+	336     (0000050e) invoke-direct        v11, Ljava/lang/Object;-><init>()V
+	337     (00000514) iput                 v6, v11, Lj5/m0;->a I
+	338     (00000518) iget-byte            v6, v11, Lj5/m0;->j B
+	339     (0000051c) or-int/lit8          v6, v6, 1
+	340     (00000520) int-to-byte          v6, v6
+	341     (00000522) iput-byte            v6, v11, Lj5/m0;->j B
+	342     (00000526) if-eqz               v17, +0cbh
+
+c-BB@0x52a : [ c-BB@0x570 c-BB@0x6ac ]
+	343     (0000052a) move-object/from16   v12, v17
+	344     (0000052e) iput-object          v12, v11, Lj5/m0;->b Ljava/lang/String;
+	345     (00000532) iput                 v0, v11, Lj5/m0;->c I
+	346     (00000536) or-int/lit8          v0, v6, 2
+	347     (0000053a) int-to-byte          v0, v0
+	348     (0000053c) iput-wide            v3, v11, Lj5/m0;->d J
+	349     (00000540) or-int/lit8          v0, v0, 4
+	350     (00000544) int-to-byte          v0, v0
+	351     (00000546) iput-wide            v7, v11, Lj5/m0;->e J
+	352     (0000054a) or-int/lit8          v0, v0, 8
+	353     (0000054e) int-to-byte          v0, v0
+	354     (00000550) iput-boolean         v1, v11, Lj5/m0;->f Z
+	355     (00000554) or-int/lit8          v0, v0, 16
+	356     (00000558) int-to-byte          v0, v0
+	357     (0000055a) iput                 v10, v11, Lj5/m0;->g I
+	358     (0000055e) or-int/lit8          v0, v0, 32
+	359     (00000562) int-to-byte          v0, v0
+	360     (00000564) iput-byte            v0, v11, Lj5/m0;->j B
+	361     (00000568) move-object/from16   v0, v31
+	362     (0000056c) if-eqz               v0, +0a0h
+
+c-BB@0x570 : [ c-BB@0x57c c-BB@0x69c ]
+	363     (00000570) iput-object          v0, v11, Lj5/m0;->h Ljava/lang/String;
+	364     (00000574) move-object/from16   v0, v32
+	365     (00000578) if-eqz               v0, +092h
+
+c-BB@0x57c : [ c-BB@0x5cc c-BB@0x5e8 ]
+	366     (0000057c) iput-object          v0, v11, Lj5/m0;->i Ljava/lang/String;
+	367     (00000580) invoke-virtual       v11, Lj5/m0;->a()Lj5/n0;
+	368     (00000586) move-result-object   v0
+	369     (00000588) iput-object          v0, v9, Lj5/i0;->j Lj5/v1;
+	370     (0000058c) const/4              v4, 3
+	371     (0000058e) iput                 v4, v9, Lj5/i0;->l I
+	372     (00000592) iget-byte            v0, v9, Lj5/i0;->m B
+	373     (00000596) or-int/lit8          v0, v0, 4
+	374     (0000059a) int-to-byte          v0, v0
+	375     (0000059c) iput-byte            v0, v9, Lj5/i0;->m B
+	376     (000005a0) invoke-virtual       v9, Lj5/i0;->a()Lj5/j0;
+	377     (000005a6) move-result-object   v0
+	378     (000005a8) iput-object          v0, v5, Lj5/a0;->j Lj5/m2;
+	379     (000005ac) invoke-virtual       v5, Lj5/a0;->a()Lj5/b0;
+	380     (000005b2) move-result-object   v0
+	381     (000005b4) iget-object          v1, v2, La5/z;->b Ljava/lang/Object;
+	382     (000005b8) check-cast           v1, Lm5/a;
+	383     (000005bc) iget-object          v1, v1, Lm5/a;->b Lm5/c;
+	384     (000005c0) const-string         v2, "FirebaseCrashlytics"
+	385     (000005c4) iget-object          v3, v0, Lj5/b0;->k Lj5/m2;
+	386     (000005c8) if-nez               v3, +010h
+
+c-BB@0x5cc : [ c-BB@0x5de c-BB@0x69a ]
+	387     (000005cc) const-string         v0, "Could not get session for report"
+	388     (000005d0) const/4              v4, 3
+	389     (000005d2) invoke-static        v2, v4, Landroid/util/Log;->isLoggable(Ljava/lang/String; I)Z
+	390     (000005d8) move-result          v1
+	391     (000005da) if-eqz               v1, +060h
+
+c-BB@0x5de : 
+	392     (000005de) const/4              v1, 0
+	393     (000005e0) invoke-static        v2, v0, v1, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+	394     (000005e6) return-void          
+
+c-BB@0x5e8 : [ c-BB@0x5f2 ]
+	395     (000005e8) move-object          v4, v3
+	396     (000005ea) check-cast           v4, Lj5/j0;
+	397     (000005ee) iget-object          v4, v4, Lj5/j0;->b Ljava/lang/String;
+
+c-BB@0x5f2 : [ c-BB@0x64a ]
+	398     (000005f2) sget-object          v5, Lm5/a;->g Lk5/a;
+	399     (000005f6) invoke-virtual       v5, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	400     (000005fc) sget-object          v5, Lk5/a;->a Lj6/o;
+	401     (00000600) invoke-virtual       v5, v0, Lj6/o;->q(Ljava/lang/Object;)Ljava/lang/String;
+	402     (00000606) move-result-object   v0
+	403     (00000608) const-string         v5, "report"
+	404     (0000060c) invoke-virtual       v1, v4, v5, Lm5/c;->b(Ljava/lang/String; Ljava/lang/String;)Ljava/io/File;
+	405     (00000612) move-result-object   v5
+	406     (00000614) invoke-static        v5, v0, Lm5/a;->f(Ljava/io/File; Ljava/lang/String;)V
+	407     (0000061a) const-string         v0, "start-time"
+	408     (0000061e) invoke-virtual       v1, v4, v0, Lm5/c;->b(Ljava/lang/String; Ljava/lang/String;)Ljava/io/File;
+	409     (00000624) move-result-object   v0
+	410     (00000626) const-string         v1, ""
+	411     (0000062a) check-cast           v3, Lj5/j0;
+	412     (0000062e) iget-wide            v5, v3, Lj5/j0;->d J
+	413     (00000632) new-instance         v3, Ljava/io/OutputStreamWriter;
+	414     (00000636) new-instance         v7, Ljava/io/FileOutputStream;
+	415     (0000063a) invoke-direct        v7, v0, Ljava/io/FileOutputStream;-><init>(Ljava/io/File;)V
+	416     (00000640) sget-object          v8, Lm5/a;->e Ljava/nio/charset/Charset;
+	417     (00000644) invoke-direct        v3, v7, v8, Ljava/io/OutputStreamWriter;-><init>(Ljava/io/OutputStream; Ljava/nio/charset/Charset;)V
+	5f2:649
+	(Ljava/io/IOException; -> 678 c-BB@0x678)
+
+c-BB@0x64a : [ c-BB@0x65a ]
+	418     (0000064a) invoke-virtual       v3, v1, Ljava/io/Writer;->write(Ljava/lang/String;)V
+	419     (00000650) mul-long             v5, v5, v18
+	420     (00000654) invoke-virtual       v0, v5, v6, Ljava/io/File;->setLastModified(J)Z
+	64a:659
+	(Ljava/lang/Throwable; -> 662 c-BB@0x662)
+
+c-BB@0x65a : 
+	421     (0000065a) invoke-virtual       v3, Ljava/io/OutputStreamWriter;->close()V
+	422     (00000660) return-void          
+	65a:65f
+	(Ljava/io/IOException; -> 678 c-BB@0x678)
+
+c-BB@0x662 : [ c-BB@0x666 ]
+	423     (00000662) move-exception       v0
+	424     (00000664) move-object          v1, v0
+
+c-BB@0x666 : [ c-BB@0x676 ]
+	425     (00000666) invoke-virtual       v3, Ljava/io/OutputStreamWriter;->close()V
+	426     (0000066c) goto                 +5h
+	666:66b
+	(Ljava/lang/Throwable; -> 66e c-BB@0x66e)
+
+c-BB@0x66e : [ c-BB@0x670 ]
+	427     (0000066e) move-exception       v0
+
+c-BB@0x670 : [ c-BB@0x676 ]
+	428     (00000670) invoke-virtual       v1, v0, Ljava/lang/Throwable;->addSuppressed(Ljava/lang/Throwable;)V
+	670:677
+	(Ljava/io/IOException; -> 678 c-BB@0x678)
+
+c-BB@0x676 : 
+	429     (00000676) throw                v1
+	670:677
+	(Ljava/io/IOException; -> 678 c-BB@0x678)
+
+c-BB@0x678 : [ c-BB@0x694 c-BB@0x69a ]
+	430     (00000678) move-exception       v0
+	431     (0000067a) const-string         v1, "Could not persist report for session "
+	432     (0000067e) invoke-static        v1, v4, Lg2/g;->l(Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	433     (00000684) move-result-object   v1
+	434     (00000686) const/4              v4, 3
+	435     (00000688) invoke-static        v2, v4, Landroid/util/Log;->isLoggable(Ljava/lang/String; I)Z
+	436     (0000068e) move-result          v3
+	437     (00000690) if-eqz               v3, +005h
+
+c-BB@0x694 : [ c-BB@0x69a ]
+	438     (00000694) invoke-static        v2, v1, v0, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+
+c-BB@0x69a : 
+	439     (0000069a) return-void          
+
+c-BB@0x69c : 
+	440     (0000069c) new-instance         v0, Ljava/lang/NullPointerException;
+	441     (000006a0) const-string         v1, "Null modelClass"
+	442     (000006a4) invoke-direct        v0, v1, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
+	443     (000006aa) throw                v0
+
+c-BB@0x6ac : 
+	444     (000006ac) new-instance         v0, Ljava/lang/NullPointerException;
+	445     (000006b0) const-string         v1, "Null manufacturer"
+	446     (000006b4) invoke-direct        v0, v1, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
+	447     (000006ba) throw                v0
+
+c-BB@0x6bc : 
+	448     (000006bc) new-instance         v0, Ljava/lang/NullPointerException;
+	449     (000006c0) const-string         v1, "Null model"
+	450     (000006c4) invoke-direct        v0, v1, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
+	451     (000006ca) throw                v0
+
+c-BB@0x6cc : 
+	452     (000006cc) new-instance         v0, Ljava/lang/NullPointerException;
+	453     (000006d0) const-string         v1, "Null buildVersion"
+	454     (000006d4) invoke-direct        v0, v1, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
+	455     (000006da) throw                v0
+
+c-BB@0x6dc : 
+	456     (000006dc) new-instance         v0, Ljava/lang/NullPointerException;
+	457     (000006e0) const-string         v1, "Null version"
+	458     (000006e4) invoke-direct        v0, v1, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
+	459     (000006ea) throw                v0
+
+c-BB@0x6ec : 
+	460     (000006ec) new-instance         v0, Ljava/lang/NullPointerException;
+	461     (000006f0) const-string         v1, "Null identifier"
+	462     (000006f4) invoke-direct        v0, v1, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
+	463     (000006fa) throw                v0
+
+c-BB@0x6fc : 
+	464     (000006fc) new-instance         v0, Ljava/lang/NullPointerException;
+	465     (00000700) const-string         v1, "Null generator"
+	466     (00000704) invoke-direct        v0, v1, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
+	467     (0000070a) throw                v0
+
+c-BB@0x70c : 
+	468     (0000070c) new-instance         v0, Ljava/lang/NullPointerException;
+	469     (00000710) const-string         v1, "Null identifier"
+	470     (00000714) invoke-direct        v0, v1, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
+	471     (0000071a) throw                v0
+
+c-BB@0x71c : 
+	472     (0000071c) new-instance         v0, Ljava/lang/NullPointerException;
+	473     (00000720) const-string         v1, "Null displayVersion"
+	474     (00000724) invoke-direct        v0, v1, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
+	475     (0000072a) throw                v0
+
+c-BB@0x72c : 
+	476     (0000072c) new-instance         v0, Ljava/lang/NullPointerException;
+	477     (00000730) const-string         v1, "Null buildVersion"
+	478     (00000734) invoke-direct        v0, v1, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
+	479     (0000073a) throw                v0
+
+c-BB@0x73c : 
+	480     (0000073c) new-instance         v0, Ljava/lang/NullPointerException;
+	481     (00000740) const-string         v1, "Null installationUuid"
+	482     (00000744) invoke-direct        v0, v1, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
+	483     (0000074a) throw                v0
+
+c-BB@0x74c : 
+	484     (0000074c) new-instance         v0, Ljava/lang/NullPointerException;
+	485     (00000750) const-string         v1, "Null gmpAppId"
+	486     (00000754) invoke-direct        v0, v1, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
+	487     (0000075a) throw                v0
+

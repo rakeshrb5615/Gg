@@ -1,0 +1,111 @@
+# Lj6/o;->v()[I [access_flags=public]
+#
+# Parameters:
+# local registers: v0...v9
+#
+# - return:int[]
+
+v-BB@0x0 : [ v-BB@0x1e v-BB@0x20 ]
+	0       (00000000) const-string         v0, ". Skipping setting LightSettings"
+	1       (00000004) const-string         v1, "LightSettings is invalid: "
+	2       (00000008) const-string         v2, "NotificationParams"
+	3       (0000000c) const-string         v3, "gcm.n.light_settings"
+	4       (00000010) invoke-virtual       v9, v3, Lj6/o;->u(Ljava/lang/String;)Lorg/json/JSONArray;
+	5       (00000016) move-result-object   v3
+	6       (00000018) const/4              v4, 0
+	7       (0000001a) if-nez               v3, +003h
+
+v-BB@0x1e : 
+	8       (0000001e) return-object        v4
+
+v-BB@0x20 : [ v-BB@0x26 ]
+	9       (00000020) const/4              v5, 3
+	10      (00000022) new-array            v6, v5, [I
+
+v-BB@0x26 : [ v-BB@0x32 v-BB@0x82 ]
+	11      (00000026) invoke-virtual       v3, Lorg/json/JSONArray;->length()I
+	12      (0000002c) move-result          v7
+	13      (0000002e) if-ne                v7, v5, +02ah
+	26:91
+	(Lorg/json/JSONException; -> d0 v-BB@0xd0)
+	(Ljava/lang/IllegalArgumentException; -> 6e v-BB@0x6e)
+
+v-BB@0x32 : [ v-BB@0x4c v-BB@0x72 ]
+	14      (00000032) const/4              v5, 0
+	15      (00000034) invoke-virtual       v3, v5, Lorg/json/JSONArray;->optString(I)Ljava/lang/String;
+	16      (0000003a) move-result-object   v7
+	17      (0000003c) invoke-static        v7, Landroid/graphics/Color;->parseColor(Ljava/lang/String;)I
+	18      (00000042) move-result          v7
+	19      (00000044) const/high16         v8, -16777216
+	20      (00000048) if-eq                v7, v8, +015h
+	26:91
+	(Lorg/json/JSONException; -> d0 v-BB@0xd0)
+	(Ljava/lang/IllegalArgumentException; -> 6e v-BB@0x6e)
+
+v-BB@0x4c : 
+	21      (0000004c) aput                 v7, v6, v5
+	22      (00000050) const/4              v5, 1
+	23      (00000052) invoke-virtual       v3, v5, Lorg/json/JSONArray;->optInt(I)I
+	24      (00000058) move-result          v7
+	25      (0000005a) aput                 v7, v6, v5
+	26      (0000005e) const/4              v5, 2
+	27      (00000060) invoke-virtual       v3, v5, Lorg/json/JSONArray;->optInt(I)I
+	28      (00000066) move-result          v7
+	29      (00000068) aput                 v7, v6, v5
+	30      (0000006c) return-object        v6
+	26:91
+	(Lorg/json/JSONException; -> d0 v-BB@0xd0)
+	(Ljava/lang/IllegalArgumentException; -> 6e v-BB@0x6e)
+
+v-BB@0x6e : [ v-BB@0x92 ]
+	31      (0000006e) move-exception       v5
+	32      (00000070) goto                 +11h
+	26:91
+	(Lorg/json/JSONException; -> d0 v-BB@0xd0)
+	(Ljava/lang/IllegalArgumentException; -> 6e v-BB@0x6e)
+
+v-BB@0x72 : 
+	33      (00000072) new-instance         v5, Ljava/lang/IllegalArgumentException;
+	34      (00000076) const-string         v6, "Transparent color is invalid"
+	35      (0000007a) invoke-direct        v5, v6, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	36      (00000080) throw                v5
+	26:91
+	(Lorg/json/JSONException; -> d0 v-BB@0xd0)
+	(Ljava/lang/IllegalArgumentException; -> 6e v-BB@0x6e)
+
+v-BB@0x82 : 
+	37      (00000082) new-instance         v5, Lorg/json/JSONException;
+	38      (00000086) const-string         v6, "lightSettings don't have all three fields"
+	39      (0000008a) invoke-direct        v5, v6, Lorg/json/JSONException;-><init>(Ljava/lang/String;)V
+	40      (00000090) throw                v5
+	26:91
+	(Lorg/json/JSONException; -> d0 v-BB@0xd0)
+	(Ljava/lang/IllegalArgumentException; -> 6e v-BB@0x6e)
+
+v-BB@0x92 : [ v-BB@0xf4 ]
+	41      (00000092) new-instance         v6, Ljava/lang/StringBuilder;
+	42      (00000096) invoke-direct        v6, v1, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	43      (0000009c) invoke-virtual       v6, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	44      (000000a2) const-string         v1, ". "
+	45      (000000a6) invoke-virtual       v6, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	46      (000000ac) invoke-virtual       v5, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+	47      (000000b2) move-result-object   v1
+	48      (000000b4) invoke-virtual       v6, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	49      (000000ba) invoke-virtual       v6, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	50      (000000c0) invoke-virtual       v6, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	51      (000000c6) move-result-object   v0
+	52      (000000c8) invoke-static        v2, v0, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+	53      (000000ce) goto                 +13h
+
+v-BB@0xd0 : [ v-BB@0xf4 ]
+	54      (000000d0) new-instance         v5, Ljava/lang/StringBuilder;
+	55      (000000d4) invoke-direct        v5, v1, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	56      (000000da) invoke-virtual       v5, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	57      (000000e0) invoke-virtual       v5, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	58      (000000e6) invoke-virtual       v5, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	59      (000000ec) move-result-object   v0
+	60      (000000ee) invoke-static        v2, v0, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+
+v-BB@0xf4 : 
+	61      (000000f4) return-object        v4
+

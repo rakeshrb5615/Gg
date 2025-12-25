@@ -1,0 +1,72 @@
+# Lg1/u;->b()Lh1/a; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v4
+#
+# - return:h1.a
+
+b-BB@0x0 : [ b-BB@0x14 b-BB@0x24 ]
+	0       (00000000) sget-object          v0, Lg1/u;->d Ljava/lang/ThreadLocal;
+	1       (00000004) invoke-virtual       v0, Ljava/lang/ThreadLocal;->get()Ljava/lang/Object;
+	2       (0000000a) move-result-object   v1
+	3       (0000000c) check-cast           v1, Lh1/a;
+	4       (00000010) if-nez               v1, +00ah
+
+b-BB@0x14 : [ b-BB@0x24 ]
+	5       (00000014) new-instance         v1, Lh1/a;
+	6       (00000018) invoke-direct        v1, Lh1/c;-><init>()V
+	7       (0000001e) invoke-virtual       v0, v1, Ljava/lang/ThreadLocal;->set(Ljava/lang/Object;)V
+
+b-BB@0x24 : [ b-BB@0x3e b-BB@0xbc ]
+	8       (00000024) iget-object          v0, v4, Lg1/u;->b Lj6/s;
+	9       (00000028) iget-object          v0, v0, Lj6/s;->b Ljava/lang/Object;
+	10      (0000002c) check-cast           v0, Lh1/b;
+	11      (00000030) const/4              v2, 6
+	12      (00000032) invoke-virtual       v0, v2, Lh1/c;->b(I)I
+	13      (00000038) move-result          v2
+	14      (0000003a) if-eqz               v2, +041h
+
+b-BB@0x3e : [ b-BB@0x86 b-BB@0xae ]
+	15      (0000003e) iget                 v3, v0, Lh1/c;->a I
+	16      (00000042) add-int/2addr        v2, v3
+	17      (00000044) iget-object          v3, v0, Lh1/c;->d Ljava/lang/Object;
+	18      (00000048) check-cast           v3, Ljava/nio/ByteBuffer;
+	19      (0000004c) invoke-virtual       v3, v2, Ljava/nio/ByteBuffer;->getInt(I)I
+	20      (00000052) move-result          v3
+	21      (00000054) add-int/2addr        v3, v2
+	22      (00000056) add-int/lit8         v3, v3, 4
+	23      (0000005a) iget                 v2, v4, Lg1/u;->a I
+	24      (0000005e) mul-int/lit8         v2, v2, 4
+	25      (00000062) add-int/2addr        v2, v3
+	26      (00000064) iget-object          v3, v0, Lh1/c;->d Ljava/lang/Object;
+	27      (00000068) check-cast           v3, Ljava/nio/ByteBuffer;
+	28      (0000006c) invoke-virtual       v3, v2, Ljava/nio/ByteBuffer;->getInt(I)I
+	29      (00000072) move-result          v3
+	30      (00000074) add-int/2addr        v3, v2
+	31      (00000076) iget-object          v0, v0, Lh1/c;->d Ljava/lang/Object;
+	32      (0000007a) check-cast           v0, Ljava/nio/ByteBuffer;
+	33      (0000007e) iput-object          v0, v1, Lh1/c;->d Ljava/lang/Object;
+	34      (00000082) if-eqz               v0, +016h
+
+b-BB@0x86 : 
+	35      (00000086) iput                 v3, v1, Lh1/c;->a I
+	36      (0000008a) invoke-virtual       v0, v3, Ljava/nio/ByteBuffer;->getInt(I)I
+	37      (00000090) move-result          v0
+	38      (00000092) sub-int/2addr        v3, v0
+	39      (00000094) iput                 v3, v1, Lh1/c;->b I
+	40      (00000098) iget-object          v0, v1, Lh1/c;->d Ljava/lang/Object;
+	41      (0000009c) check-cast           v0, Ljava/nio/ByteBuffer;
+	42      (000000a0) invoke-virtual       v0, v3, Ljava/nio/ByteBuffer;->getShort(I)S
+	43      (000000a6) move-result          v0
+	44      (000000a8) iput                 v0, v1, Lh1/c;->c I
+	45      (000000ac) return-object        v1
+
+b-BB@0xae : [ b-BB@0xbc ]
+	46      (000000ae) const/4              v0, 0
+	47      (000000b0) iput                 v0, v1, Lh1/c;->a I
+	48      (000000b4) iput                 v0, v1, Lh1/c;->b I
+	49      (000000b8) iput                 v0, v1, Lh1/c;->c I
+
+b-BB@0xbc : 
+	50      (000000bc) return-object        v1
+

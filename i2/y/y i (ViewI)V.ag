@@ -1,0 +1,82 @@
+# Li2/y;->i(Landroid/view/View; I)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:android.view.View
+# - v6:int
+#
+# - return:void
+
+i-BB@0x0 : [ i-BB@0x10 i-BB@0x7a ]
+	0       (00000000) invoke-virtual       v5, Landroid/view/View;->getVisibility()I
+	1       (00000006) move-result          v0
+	2       (00000008) const/4              v1, 0
+	3       (0000000a) const/4              v2, 0
+	4       (0000000c) if-nez               v0, +037h
+
+i-BB@0x10 : 
+	5       (00000010) invoke-virtual       v5, Landroid/view/View;->getHeight()I
+	6       (00000016) move-result          v0
+	7       (00000018) filled-new-array     v0, v2, [I
+	8       (0000001e) move-result-object   v0
+	9       (00000020) invoke-static        v0, Landroid/animation/ValueAnimator;->ofInt([I)Landroid/animation/ValueAnimator;
+	10      (00000026) move-result-object   v0
+	11      (00000028) new-instance         v2, Li2/s;
+	12      (0000002c) const/4              v3, 1
+	13      (0000002e) invoke-direct        v2, v5, v3, Li2/s;-><init>(Landroid/view/View; I)V
+	14      (00000034) invoke-virtual       v0, v2, Landroid/animation/ValueAnimator;->addUpdateListener(Landroid/animation/ValueAnimator$AnimatorUpdateListener;)V
+	15      (0000003a) int-to-long          v2, v6
+	16      (0000003c) invoke-virtual       v0, v2, v3, Landroid/animation/ValueAnimator;->setDuration(J)Landroid/animation/ValueAnimator;
+	17      (00000042) new-instance         v6, Li2/x;
+	18      (00000046) const/4              v4, 0
+	19      (00000048) invoke-direct        v6, v5, v4, Li2/x;-><init>(Landroid/view/View; I)V
+	20      (0000004e) invoke-virtual       v0, v6, Landroid/animation/Animator;->addListener(Landroid/animation/Animator$AnimatorListener;)V
+	21      (00000054) invoke-virtual       v0, Landroid/animation/ValueAnimator;->start()V
+	22      (0000005a) invoke-virtual       v5, Landroid/view/View;->animate()Landroid/view/ViewPropertyAnimator;
+	23      (00000060) move-result-object   v5
+	24      (00000062) invoke-virtual       v5, v1, Landroid/view/ViewPropertyAnimator;->alpha(F)Landroid/view/ViewPropertyAnimator;
+	25      (00000068) move-result-object   v5
+	26      (0000006a) invoke-virtual       v5, v2, v3, Landroid/view/ViewPropertyAnimator;->setDuration(J)Landroid/view/ViewPropertyAnimator;
+	27      (00000070) move-result-object   v5
+	28      (00000072) invoke-virtual       v5, Landroid/view/ViewPropertyAnimator;->start()V
+	29      (00000078) return-void          
+
+i-BB@0x7a : 
+	30      (0000007a) invoke-virtual       v5, v2, Landroid/view/View;->setVisibility(I)V
+	31      (00000080) invoke-virtual       v5, v1, Landroid/view/View;->setAlpha(F)V
+	32      (00000086) invoke-virtual       v5, Landroid/view/View;->getParent()Landroid/view/ViewParent;
+	33      (0000008c) move-result-object   v0
+	34      (0000008e) check-cast           v0, Landroid/view/View;
+	35      (00000092) invoke-virtual       v0, Landroid/view/View;->getWidth()I
+	36      (00000098) move-result          v0
+	37      (0000009a) const/high16         v1, -2147483648
+	38      (0000009e) invoke-static        v0, v1, Landroid/view/View$MeasureSpec;->makeMeasureSpec(I I)I
+	39      (000000a4) move-result          v0
+	40      (000000a6) invoke-virtual       v5, v0, v2, Landroid/view/View;->measure(I I)V
+	41      (000000ac) invoke-virtual       v5, Landroid/view/View;->getMeasuredHeight()I
+	42      (000000b2) move-result          v0
+	43      (000000b4) invoke-virtual       v5, Landroid/view/View;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
+	44      (000000ba) move-result-object   v1
+	45      (000000bc) iput                 v2, v1, Landroid/view/ViewGroup$LayoutParams;->height I
+	46      (000000c0) invoke-virtual       v5, Landroid/view/View;->requestLayout()V
+	47      (000000c6) filled-new-array     v2, v0, [I
+	48      (000000cc) move-result-object   v0
+	49      (000000ce) invoke-static        v0, Landroid/animation/ValueAnimator;->ofInt([I)Landroid/animation/ValueAnimator;
+	50      (000000d4) move-result-object   v0
+	51      (000000d6) new-instance         v1, Li2/s;
+	52      (000000da) const/4              v2, 2
+	53      (000000dc) invoke-direct        v1, v5, v2, Li2/s;-><init>(Landroid/view/View; I)V
+	54      (000000e2) invoke-virtual       v0, v1, Landroid/animation/ValueAnimator;->addUpdateListener(Landroid/animation/ValueAnimator$AnimatorUpdateListener;)V
+	55      (000000e8) int-to-long          v1, v6
+	56      (000000ea) invoke-virtual       v0, v1, v2, Landroid/animation/ValueAnimator;->setDuration(J)Landroid/animation/ValueAnimator;
+	57      (000000f0) invoke-virtual       v0, Landroid/animation/ValueAnimator;->start()V
+	58      (000000f6) invoke-virtual       v5, Landroid/view/View;->animate()Landroid/view/ViewPropertyAnimator;
+	59      (000000fc) move-result-object   v5
+	60      (000000fe) const/high16         v6, 1065353216
+	61      (00000102) invoke-virtual       v5, v6, Landroid/view/ViewPropertyAnimator;->alpha(F)Landroid/view/ViewPropertyAnimator;
+	62      (00000108) move-result-object   v5
+	63      (0000010a) invoke-virtual       v5, v1, v2, Landroid/view/ViewPropertyAnimator;->setDuration(J)Landroid/view/ViewPropertyAnimator;
+	64      (00000110) move-result-object   v5
+	65      (00000112) invoke-virtual       v5, Landroid/view/ViewPropertyAnimator;->start()V
+	66      (00000118) return-void          
+

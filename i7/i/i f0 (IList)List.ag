@@ -1,0 +1,105 @@
+# Li7/i;->f0(I Ljava/util/List;)Ljava/util/List; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:int
+# - v7:java.util.List
+#
+# - return:java.util.List
+
+f0-BB@0x0 : [ f0-BB@0xe f0-BB@0xbe ]
+	0       (00000000) const-string         v0, "<this>"
+	1       (00000004) invoke-static        v7, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) if-ltz               v6, +05ah
+
+f0-BB@0xe : [ f0-BB@0x16 f0-BB@0x18 ]
+	3       (0000000e) sget-object          v0, Li7/n;->a Li7/n;
+	4       (00000012) if-nez               v6, +003h
+
+f0-BB@0x16 : 
+	5       (00000016) return-object        v0
+
+f0-BB@0x18 : [ f0-BB@0x24 f0-BB@0x2e ]
+	6       (00000018) invoke-interface     v7, Ljava/util/Collection;->size()I
+	7       (0000001e) move-result          v1
+	8       (00000020) if-lt                v6, v1, +007h
+
+f0-BB@0x24 : 
+	9       (00000024) invoke-static        v7, Li7/i;->j0(Ljava/lang/Iterable;)Ljava/util/List;
+	10      (0000002a) move-result-object   v6
+	11      (0000002c) return-object        v6
+
+f0-BB@0x2e : [ f0-BB@0x36 f0-BB@0x64 ]
+	12      (0000002e) const/4              v1, 0
+	13      (00000030) const/4              v2, 1
+	14      (00000032) if-ne                v6, v2, +019h
+
+f0-BB@0x36 : [ f0-BB@0x42 f0-BB@0x54 ]
+	15      (00000036) invoke-interface     v7, Ljava/util/List;->isEmpty()Z
+	16      (0000003c) move-result          v6
+	17      (0000003e) if-nez               v6, +00bh
+
+f0-BB@0x42 : 
+	18      (00000042) invoke-interface     v7, v1, Ljava/util/List;->get(I)Ljava/lang/Object;
+	19      (00000048) move-result-object   v6
+	20      (0000004a) invoke-static        v6, La/a;->G(Ljava/lang/Object;)Ljava/util/List;
+	21      (00000050) move-result-object   v6
+	22      (00000052) return-object        v6
+
+f0-BB@0x54 : 
+	23      (00000054) new-instance         v6, Ljava/util/NoSuchElementException;
+	24      (00000058) const-string         v7, "List is empty."
+	25      (0000005c) invoke-direct        v6, v7, Ljava/util/NoSuchElementException;-><init>(Ljava/lang/String;)V
+	26      (00000062) throw                v6
+
+f0-BB@0x64 : [ f0-BB@0x78 ]
+	27      (00000064) new-instance         v3, Ljava/util/ArrayList;
+	28      (00000068) invoke-direct        v3, v6, Ljava/util/ArrayList;-><init>(I)V
+	29      (0000006e) invoke-interface     v7, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
+	30      (00000074) move-result-object   v7
+	31      (00000076) move                 v4, v1
+
+f0-BB@0x78 : [ f0-BB@0x84 f0-BB@0x98 ]
+	32      (00000078) invoke-interface     v7, Ljava/util/Iterator;->hasNext()Z
+	33      (0000007e) move-result          v5
+	34      (00000080) if-eqz               v5, +00ch
+
+f0-BB@0x84 : [ f0-BB@0x98 f0-BB@0x78 ]
+	35      (00000084) invoke-interface     v7, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	36      (0000008a) move-result-object   v5
+	37      (0000008c) invoke-virtual       v3, v5, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	38      (00000092) add-int/2addr        v4, v2
+	39      (00000094) if-ne                v4, v6, -00eh
+
+f0-BB@0x98 : [ f0-BB@0xa4 f0-BB@0xbc ]
+	40      (00000098) invoke-virtual       v3, Ljava/util/ArrayList;->size()I
+	41      (0000009e) move-result          v6
+	42      (000000a0) if-eqz               v6, +00eh
+
+f0-BB@0xa4 : [ f0-BB@0xa8 f0-BB@0xaa ]
+	43      (000000a4) if-eq                v6, v2, +003h
+
+f0-BB@0xa8 : 
+	44      (000000a8) return-object        v3
+
+f0-BB@0xaa : 
+	45      (000000aa) invoke-virtual       v3, v1, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	46      (000000b0) move-result-object   v6
+	47      (000000b2) invoke-static        v6, La/a;->G(Ljava/lang/Object;)Ljava/util/List;
+	48      (000000b8) move-result-object   v6
+	49      (000000ba) return-object        v6
+
+f0-BB@0xbc : 
+	50      (000000bc) return-object        v0
+
+f0-BB@0xbe : 
+	51      (000000be) const-string         v7, "Requested element count "
+	52      (000000c2) const-string         v0, " is less than zero."
+	53      (000000c6) invoke-static        v7, v6, v0, Lv1/a;->j(Ljava/lang/String; I Ljava/lang/String;)Ljava/lang/String;
+	54      (000000cc) move-result-object   v6
+	55      (000000ce) new-instance         v7, Ljava/lang/IllegalArgumentException;
+	56      (000000d2) invoke-virtual       v6, Ljava/lang/Object;->toString()Ljava/lang/String;
+	57      (000000d8) move-result-object   v6
+	58      (000000da) invoke-direct        v7, v6, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	59      (000000e0) throw                v7
+

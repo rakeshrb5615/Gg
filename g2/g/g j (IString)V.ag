@@ -1,0 +1,70 @@
+# Lg2/g;->j(I Ljava/lang/String;)V [access_flags=public static synthetic]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:int
+# - v7:java.lang.String
+#
+# - return:void
+
+j-BB@0x0 : [ j-BB@0x4 j-BB@0xae ]
+	0       (00000000) if-nez               v6, +057h
+
+j-BB@0x4 : [ j-BB@0x26 ]
+	1       (00000004) new-instance         v6, Ljava/lang/NullPointerException;
+	2       (00000008) invoke-static        Ljava/lang/Thread;->currentThread()Ljava/lang/Thread;
+	3       (0000000e) move-result-object   v0
+	4       (00000010) invoke-virtual       v0, Ljava/lang/Thread;->getStackTrace()[Ljava/lang/StackTraceElement;
+	5       (00000016) move-result-object   v0
+	6       (00000018) const-class          v1, Lkotlin/jvm/internal/j;
+	7       (0000001c) invoke-virtual       v1, Ljava/lang/Class;->getName()Ljava/lang/String;
+	8       (00000022) move-result-object   v2
+	9       (00000024) const/4              v3, 0
+
+j-BB@0x26 : [ j-BB@0x3e j-BB@0x44 ]
+	10      (00000026) aget-object          v4, v0, v3
+	11      (0000002a) invoke-virtual       v4, Ljava/lang/StackTraceElement;->getClassName()Ljava/lang/String;
+	12      (00000030) move-result-object   v4
+	13      (00000032) invoke-virtual       v4, v2, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	14      (00000038) move-result          v4
+	15      (0000003a) if-nez               v4, +005h
+
+j-BB@0x3e : [ j-BB@0x26 ]
+	16      (0000003e) add-int/lit8         v3, v3, 1
+	17      (00000042) goto                 -eh
+
+j-BB@0x44 : [ j-BB@0x5c j-BB@0x62 ]
+	18      (00000044) aget-object          v4, v0, v3
+	19      (00000048) invoke-virtual       v4, Ljava/lang/StackTraceElement;->getClassName()Ljava/lang/String;
+	20      (0000004e) move-result-object   v4
+	21      (00000050) invoke-virtual       v4, v2, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	22      (00000056) move-result          v4
+	23      (00000058) if-eqz               v4, +005h
+
+j-BB@0x5c : [ j-BB@0x44 ]
+	24      (0000005c) add-int/lit8         v3, v3, 1
+	25      (00000060) goto                 -eh
+
+j-BB@0x62 : 
+	26      (00000062) aget-object          v0, v0, v3
+	27      (00000066) invoke-virtual       v0, Ljava/lang/StackTraceElement;->getClassName()Ljava/lang/String;
+	28      (0000006c) move-result-object   v2
+	29      (0000006e) invoke-virtual       v0, Ljava/lang/StackTraceElement;->getMethodName()Ljava/lang/String;
+	30      (00000074) move-result-object   v0
+	31      (00000076) const-string         v3, "."
+	32      (0000007a) const-string         v4, ", parameter "
+	33      (0000007e) const-string         v5, "Parameter specified as non-null is null: method "
+	34      (00000082) invoke-static        v5, v2, v3, v0, v4, Lv1/a;->r(Ljava/lang/String; Ljava/lang/String; Ljava/lang/String; Ljava/lang/String; Ljava/lang/String;)Ljava/lang/StringBuilder;
+	35      (00000088) move-result-object   v0
+	36      (0000008a) invoke-virtual       v0, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	37      (00000090) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	38      (00000096) move-result-object   v7
+	39      (00000098) invoke-direct        v6, v7, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
+	40      (0000009e) invoke-virtual       v1, Ljava/lang/Class;->getName()Ljava/lang/String;
+	41      (000000a4) move-result-object   v7
+	42      (000000a6) invoke-static        v6, v7, Lkotlin/jvm/internal/j;->h(Ljava/lang/RuntimeException; Ljava/lang/String;)V
+	43      (000000ac) throw                v6
+
+j-BB@0xae : 
+	44      (000000ae) return-void          
+

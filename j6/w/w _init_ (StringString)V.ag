@@ -1,0 +1,67 @@
+# Lj6/w;-><init>(Ljava/lang/String; Ljava/lang/String;)V [access_flags=public constructor]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:java.lang.String
+# - v4:java.lang.String
+#
+# - return:void
+
+<init>-BB@0x0 : [ <init>-BB@0xa <init>-BB@0x58 ]
+	0       (00000000) invoke-direct        v2, Ljava/lang/Object;-><init>()V
+	1       (00000006) if-eqz               v4, +029h
+
+<init>-BB@0xa : [ <init>-BB@0x1a <init>-BB@0x58 ]
+	2       (0000000a) const-string         v0, "/topics/"
+	3       (0000000e) invoke-virtual       v4, v0, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
+	4       (00000014) move-result          v0
+	5       (00000016) if-eqz               v0, +021h
+
+<init>-BB@0x1a : [ <init>-BB@0x5a ]
+	6       (0000001a) new-instance         v0, Ljava/lang/StringBuilder;
+	7       (0000001e) const-string         v1, "Format /topics/topic-name is deprecated. Only 'topic-name' should be used in "
+	8       (00000022) invoke-direct        v0, v1, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	9       (00000028) invoke-virtual       v0, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	10      (0000002e) const-string         v1, "."
+	11      (00000032) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	12      (00000038) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	13      (0000003e) move-result-object   v0
+	14      (00000040) const-string         v1, "FirebaseMessaging"
+	15      (00000044) invoke-static        v1, v0, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+	16      (0000004a) const/16             v0, 8
+	17      (0000004e) invoke-virtual       v4, v0, Ljava/lang/String;->substring(I)Ljava/lang/String;
+	18      (00000054) move-result-object   v0
+	19      (00000056) goto                 +2h
+
+<init>-BB@0x58 : [ <init>-BB@0x5a ]
+	20      (00000058) move-object          v0, v4
+
+<init>-BB@0x5a : [ <init>-BB@0x5e <init>-BB@0x90 ]
+	21      (0000005a) if-eqz               v0, +01bh
+
+<init>-BB@0x5e : [ <init>-BB@0x76 <init>-BB@0x90 ]
+	22      (0000005e) sget-object          v1, Lj6/w;->d Ljava/util/regex/Pattern;
+	23      (00000062) invoke-virtual       v1, v0, Ljava/util/regex/Pattern;->matcher(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;
+	24      (00000068) move-result-object   v1
+	25      (0000006a) invoke-virtual       v1, Ljava/util/regex/Matcher;->matches()Z
+	26      (00000070) move-result          v1
+	27      (00000072) if-eqz               v1, +00fh
+
+<init>-BB@0x76 : 
+	28      (00000076) iput-object          v0, v2, Lj6/w;->a Ljava/lang/String;
+	29      (0000007a) iput-object          v3, v2, Lj6/w;->b Ljava/lang/String;
+	30      (0000007e) const-string         v0, "!"
+	31      (00000082) invoke-static        v3, v0, v4, Lg2/g;->e(Ljava/lang/String; Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	32      (00000088) move-result-object   v3
+	33      (0000008a) iput-object          v3, v2, Lj6/w;->c Ljava/lang/String;
+	34      (0000008e) return-void          
+
+<init>-BB@0x90 : 
+	35      (00000090) new-instance         v3, Ljava/lang/IllegalArgumentException;
+	36      (00000094) const-string         v4, "Invalid topic name: "
+	37      (00000098) const-string         v1, " does not match the allowed format [a-zA-Z0-9-_.~%]{1,900}."
+	38      (0000009c) invoke-static        v4, v0, v1, Lv1/a;->l(Ljava/lang/String; Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	39      (000000a2) move-result-object   v4
+	40      (000000a4) invoke-direct        v3, v4, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	41      (000000aa) throw                v3
+

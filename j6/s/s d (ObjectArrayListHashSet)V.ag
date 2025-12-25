@@ -1,0 +1,58 @@
+# Lj6/s;->d(Ljava/lang/Object; Ljava/util/ArrayList; Ljava/util/HashSet;)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:java.lang.Object
+# - v6:java.util.ArrayList
+# - v7:java.util.HashSet
+#
+# - return:void
+
+d-BB@0x0 : [ d-BB@0xc d-BB@0xe ]
+	0       (00000000) invoke-virtual       v6, v5, Ljava/util/ArrayList;->contains(Ljava/lang/Object;)Z
+	1       (00000006) move-result          v0
+	2       (00000008) if-eqz               v0, +003h
+
+d-BB@0xc : 
+	3       (0000000c) return-void          
+
+d-BB@0xe : [ d-BB@0x1a d-BB@0x68 ]
+	4       (0000000e) invoke-virtual       v7, v5, Ljava/util/HashSet;->contains(Ljava/lang/Object;)Z
+	5       (00000014) move-result          v0
+	6       (00000016) if-nez               v0, +029h
+
+d-BB@0x1a : [ d-BB@0x38 d-BB@0x5a ]
+	7       (0000001a) invoke-virtual       v7, v5, Ljava/util/HashSet;->add(Ljava/lang/Object;)Z
+	8       (00000020) iget-object          v0, v4, Lj6/s;->c Ljava/lang/Object;
+	9       (00000024) check-cast           v0, Lr/j;
+	10      (00000028) invoke-virtual       v0, v5, Lr/j;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	11      (0000002e) move-result-object   v0
+	12      (00000030) check-cast           v0, Ljava/util/ArrayList;
+	13      (00000034) if-eqz               v0, +013h
+
+d-BB@0x38 : [ d-BB@0x42 ]
+	14      (00000038) invoke-virtual       v0, Ljava/util/ArrayList;->size()I
+	15      (0000003e) move-result          v1
+	16      (00000040) const/4              v2, 0
+
+d-BB@0x42 : [ d-BB@0x46 d-BB@0x5a ]
+	17      (00000042) if-ge                v2, v1, +00ch
+
+d-BB@0x46 : [ d-BB@0x42 ]
+	18      (00000046) invoke-virtual       v0, v2, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	19      (0000004c) move-result-object   v3
+	20      (0000004e) invoke-virtual       v4, v3, v6, v7, Lj6/s;->d(Ljava/lang/Object; Ljava/util/ArrayList; Ljava/util/HashSet;)V
+	21      (00000054) add-int/lit8         v2, v2, 1
+	22      (00000058) goto                 -bh
+
+d-BB@0x5a : 
+	23      (0000005a) invoke-virtual       v7, v5, Ljava/util/HashSet;->remove(Ljava/lang/Object;)Z
+	24      (00000060) invoke-virtual       v6, v5, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	25      (00000066) return-void          
+
+d-BB@0x68 : 
+	26      (00000068) new-instance         v5, Ljava/lang/RuntimeException;
+	27      (0000006c) const-string         v6, "This graph contains cyclic dependencies"
+	28      (00000070) invoke-direct        v5, v6, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
+	29      (00000076) throw                v5
+

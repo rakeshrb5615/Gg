@@ -1,0 +1,28 @@
+# Li7/i;->d0(Ljava/util/List;)Ljava/lang/Object; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v0
+# - v1:java.util.List
+#
+# - return:java.lang.Object
+
+d0-BB@0x0 : [ d0-BB@0x16 d0-BB@0x28 ]
+	0       (00000000) const-string         v0, "<this>"
+	1       (00000004) invoke-static        v1, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) invoke-interface     v1, Ljava/util/List;->isEmpty()Z
+	3       (00000010) move-result          v0
+	4       (00000012) if-nez               v0, +00bh
+
+d0-BB@0x16 : 
+	5       (00000016) invoke-static        v1, La/a;->y(Ljava/util/List;)I
+	6       (0000001c) move-result          v0
+	7       (0000001e) invoke-interface     v1, v0, Ljava/util/List;->get(I)Ljava/lang/Object;
+	8       (00000024) move-result-object   v1
+	9       (00000026) return-object        v1
+
+d0-BB@0x28 : 
+	10      (00000028) new-instance         v1, Ljava/util/NoSuchElementException;
+	11      (0000002c) const-string         v0, "List is empty."
+	12      (00000030) invoke-direct        v1, v0, Ljava/util/NoSuchElementException;-><init>(Ljava/lang/String;)V
+	13      (00000036) throw                v1
+

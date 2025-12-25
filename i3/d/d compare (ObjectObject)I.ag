@@ -1,0 +1,51 @@
+# Li3/d;->compare(Ljava/lang/Object; Ljava/lang/Object;)I [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:java.lang.Object
+# - v4:java.lang.Object
+#
+# - return:int
+
+compare-BB@0x0 : [ compare-BB@0x2c compare-BB@0x2e ]
+	0       (00000000) check-cast           v3, Lcom/google/android/material/button/MaterialButton;
+	1       (00000004) check-cast           v4, Lcom/google/android/material/button/MaterialButton;
+	2       (00000008) iget-boolean         v0, v3, Lcom/google/android/material/button/MaterialButton;->u Z
+	3       (0000000c) invoke-static        v0, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+	4       (00000012) move-result-object   v0
+	5       (00000014) iget-boolean         v1, v4, Lcom/google/android/material/button/MaterialButton;->u Z
+	6       (00000018) invoke-static        v1, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+	7       (0000001e) move-result-object   v1
+	8       (00000020) invoke-virtual       v0, v1, Ljava/lang/Boolean;->compareTo(Ljava/lang/Boolean;)I
+	9       (00000026) move-result          v0
+	10      (00000028) if-eqz               v0, +003h
+
+compare-BB@0x2c : 
+	11      (0000002c) return               v0
+
+compare-BB@0x2e : [ compare-BB@0x5a compare-BB@0x5c ]
+	12      (0000002e) invoke-virtual       v3, Landroid/view/View;->isPressed()Z
+	13      (00000034) move-result          v0
+	14      (00000036) invoke-static        v0, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+	15      (0000003c) move-result-object   v0
+	16      (0000003e) invoke-virtual       v4, Landroid/view/View;->isPressed()Z
+	17      (00000044) move-result          v1
+	18      (00000046) invoke-static        v1, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+	19      (0000004c) move-result-object   v1
+	20      (0000004e) invoke-virtual       v0, v1, Ljava/lang/Boolean;->compareTo(Ljava/lang/Boolean;)I
+	21      (00000054) move-result          v0
+	22      (00000056) if-eqz               v0, +003h
+
+compare-BB@0x5a : 
+	23      (0000005a) return               v0
+
+compare-BB@0x5c : 
+	24      (0000005c) iget-object          v0, v2, Li3/d;->a Lcom/google/android/material/button/MaterialButtonToggleGroup;
+	25      (00000060) invoke-virtual       v0, v3, Landroid/view/ViewGroup;->indexOfChild(Landroid/view/View;)I
+	26      (00000066) move-result          v3
+	27      (00000068) invoke-virtual       v0, v4, Landroid/view/ViewGroup;->indexOfChild(Landroid/view/View;)I
+	28      (0000006e) move-result          v4
+	29      (00000070) invoke-static        v3, v4, Ljava/lang/Integer;->compare(I I)I
+	30      (00000076) move-result          v3
+	31      (00000078) return               v3
+

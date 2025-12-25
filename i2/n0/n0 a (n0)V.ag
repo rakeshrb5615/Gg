@@ -1,0 +1,49 @@
+# Li2/n0;->a(Li2/n0;)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:i2.n0
+#
+# - return:void
+
+a-BB@0x0 : [ a-BB@0x8 a-BB@0x48 ]
+	0       (00000000) iget-boolean         v0, v3, Li2/n0;->N Z
+	1       (00000004) if-eqz               v0, +022h
+
+a-BB@0x8 : [ a-BB@0x14 a-BB@0x42 ]
+	2       (00000008) sget                 v0, Landroid/os/Build$VERSION;->SDK_INT I
+	3       (0000000c) const/16             v1, 27
+	4       (00000010) if-lt                v0, v1, +019h
+
+a-BB@0x14 : [ a-BB@0x20 a-BB@0x42 ]
+	5       (00000014) invoke-virtual       v3, Landroid/service/wallpaper/WallpaperService$Engine;->getSurfaceHolder()Landroid/view/SurfaceHolder;
+	6       (0000001a) move-result-object   v0
+	7       (0000001c) if-eqz               v0, +013h
+
+a-BB@0x20 : [ a-BB@0x34 a-BB@0x42 ]
+	8       (00000020) invoke-interface     v0, Landroid/view/SurfaceHolder;->getSurface()Landroid/view/Surface;
+	9       (00000026) move-result-object   v0
+	10      (00000028) invoke-virtual       v0, Landroid/view/Surface;->isValid()Z
+	11      (0000002e) move-result          v0
+	12      (00000030) if-eqz               v0, +009h
+
+a-BB@0x34 : [ a-BB@0x3c a-BB@0x42 ]
+	13      (00000034) iget-boolean         v0, v3, Li2/n0;->L Z
+	14      (00000038) if-nez               v0, +005h
+
+a-BB@0x3c : [ a-BB@0x42 ]
+	15      (0000003c) invoke-virtual       v3, Landroid/service/wallpaper/WallpaperService$Engine;->notifyColorsChanged()V
+	3c:41
+	(Ljava/lang/Exception; -> 42 a-BB@0x42)
+
+a-BB@0x42 : [ a-BB@0x48 ]
+	16      (00000042) const/4              v0, 0
+	17      (00000044) iput-boolean         v0, v3, Li2/n0;->N Z
+
+a-BB@0x48 : 
+	18      (00000048) iget-object          v0, v3, Li2/n0;->f Landroid/os/Handler;
+	19      (0000004c) iget-object          v3, v3, Li2/n0;->g Li2/m0;
+	20      (00000050) const-wide/16        v1, 2500
+	21      (00000054) invoke-virtual       v0, v3, v1, v2, Landroid/os/Handler;->postDelayed(Ljava/lang/Runnable; J)Z
+	22      (0000005a) return-void          
+

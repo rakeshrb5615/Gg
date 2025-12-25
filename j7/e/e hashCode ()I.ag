@@ -1,0 +1,34 @@
+# Lj7/e;->hashCode()I [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v3
+#
+# - return:int
+
+hashCode-BB@0x0 : [ hashCode-BB@0xe hashCode-BB@0x18 ]
+	0       (00000000) invoke-virtual       v3, Lj7/e;->getKey()Ljava/lang/Object;
+	1       (00000006) move-result-object   v0
+	2       (00000008) const/4              v1, 0
+	3       (0000000a) if-eqz               v0, +007h
+
+hashCode-BB@0xe : [ hashCode-BB@0x1a ]
+	4       (0000000e) invoke-virtual       v0, Ljava/lang/Object;->hashCode()I
+	5       (00000014) move-result          v0
+	6       (00000016) goto                 +2h
+
+hashCode-BB@0x18 : [ hashCode-BB@0x1a ]
+	7       (00000018) move                 v0, v1
+
+hashCode-BB@0x1a : [ hashCode-BB@0x26 hashCode-BB@0x2e ]
+	8       (0000001a) invoke-virtual       v3, Lj7/e;->getValue()Ljava/lang/Object;
+	9       (00000020) move-result-object   v2
+	10      (00000022) if-eqz               v2, +006h
+
+hashCode-BB@0x26 : [ hashCode-BB@0x2e ]
+	11      (00000026) invoke-virtual       v2, Ljava/lang/Object;->hashCode()I
+	12      (0000002c) move-result          v1
+
+hashCode-BB@0x2e : 
+	13      (0000002e) xor-int/2addr        v0, v1
+	14      (00000030) return               v0
+

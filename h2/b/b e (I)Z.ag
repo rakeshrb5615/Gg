@@ -1,0 +1,58 @@
+# Lh2/b;->e(I)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:int
+#
+# - return:boolean
+
+e-BB@0x0 : [ e-BB@0xc e-BB@0x62 ]
+	0       (00000000) iget                 v0, v2, Lh2/b;->j I
+	1       (00000004) iget                 v1, v2, Lh2/b;->g I
+	2       (00000008) if-ge                v0, v1, +02dh
+
+e-BB@0xc : [ e-BB@0x14 e-BB@0x16 ]
+	3       (0000000c) iget                 v0, v2, Lh2/b;->k I
+	4       (00000010) if-ne                v0, v3, +003h
+
+e-BB@0x14 : [ e-BB@0x6a ]
+	5       (00000014) goto                 +2bh
+
+e-BB@0x16 : [ e-BB@0x32 e-BB@0x34 ]
+	6       (00000016) invoke-static        v0, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
+	7       (0000001c) move-result-object   v0
+	8       (0000001e) invoke-static        v3, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
+	9       (00000024) move-result-object   v1
+	10      (00000026) invoke-virtual       v0, v1, Ljava/lang/String;->compareTo(Ljava/lang/String;)I
+	11      (0000002c) move-result          v0
+	12      (0000002e) if-lez               v0, +003h
+
+e-BB@0x32 : [ e-BB@0x6e ]
+	13      (00000032) goto                 +1eh
+
+e-BB@0x34 : [ e-BB@0x0 ]
+	14      (00000034) iget                 v0, v2, Lh2/b;->j I
+	15      (00000038) iget-object          v1, v2, Lh2/b;->e Landroid/os/Parcel;
+	16      (0000003c) invoke-virtual       v1, v0, Landroid/os/Parcel;->setDataPosition(I)V
+	17      (00000042) invoke-virtual       v1, Landroid/os/Parcel;->readInt()I
+	18      (00000048) move-result          v0
+	19      (0000004a) invoke-virtual       v1, Landroid/os/Parcel;->readInt()I
+	20      (00000050) move-result          v1
+	21      (00000052) iput                 v1, v2, Lh2/b;->k I
+	22      (00000056) iget                 v1, v2, Lh2/b;->j I
+	23      (0000005a) add-int/2addr        v1, v0
+	24      (0000005c) iput                 v1, v2, Lh2/b;->j I
+	25      (00000060) goto                 -30h
+
+e-BB@0x62 : [ e-BB@0x6a e-BB@0x6e ]
+	26      (00000062) iget                 v0, v2, Lh2/b;->k I
+	27      (00000066) if-ne                v0, v3, +004h
+
+e-BB@0x6a : 
+	28      (0000006a) const/4              v3, 1
+	29      (0000006c) return               v3
+
+e-BB@0x6e : 
+	30      (0000006e) const/4              v3, 0
+	31      (00000070) return               v3
+

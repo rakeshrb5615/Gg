@@ -1,0 +1,85 @@
+# Li5/g;->h(Ljava/lang/String; Ljava/util/Map; Z)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:java.lang.String
+# - v7:java.util.Map
+# - v8:boolean
+#
+# - return:void
+
+h-BB@0x0 : [ h-BB@0xc h-BB@0x1a ]
+	0       (00000000) const-string         v0, "Failed to close key/value metadata file."
+	1       (00000004) iget-object          v1, v5, Li5/g;->a Lm5/c;
+	2       (00000008) if-eqz               v8, +009h
+
+h-BB@0xc : [ h-BB@0x26 ]
+	3       (0000000c) const-string         v8, "internal-keys"
+	4       (00000010) invoke-virtual       v1, v6, v8, Lm5/c;->b(Ljava/lang/String; Ljava/lang/String;)Ljava/io/File;
+	5       (00000016) move-result-object   v6
+	6       (00000018) goto                 +7h
+
+h-BB@0x1a : [ h-BB@0x26 ]
+	7       (0000001a) const-string         v8, "keys"
+	8       (0000001e) invoke-virtual       v1, v6, v8, Lm5/c;->b(Ljava/lang/String; Ljava/lang/String;)Ljava/io/File;
+	9       (00000024) move-result-object   v6
+
+h-BB@0x26 : [ h-BB@0x28 ]
+	10      (00000026) const/4              v8, 0
+
+h-BB@0x28 : [ h-BB@0x5c ]
+	11      (00000028) new-instance         v1, Lorg/json/JSONObject;
+	12      (0000002c) invoke-direct        v1, v7, Lorg/json/JSONObject;-><init>(Ljava/util/Map;)V
+	13      (00000032) invoke-virtual       v1, Lorg/json/JSONObject;->toString()Ljava/lang/String;
+	14      (00000038) move-result-object   v7
+	15      (0000003a) new-instance         v1, Ljava/io/BufferedWriter;
+	16      (0000003e) new-instance         v2, Ljava/io/OutputStreamWriter;
+	17      (00000042) new-instance         v3, Ljava/io/FileOutputStream;
+	18      (00000046) invoke-direct        v3, v6, Ljava/io/FileOutputStream;-><init>(Ljava/io/File;)V
+	19      (0000004c) sget-object          v4, Li5/g;->b Ljava/nio/charset/Charset;
+	20      (00000050) invoke-direct        v2, v3, v4, Ljava/io/OutputStreamWriter;-><init>(Ljava/io/OutputStream; Ljava/nio/charset/Charset;)V
+	21      (00000056) invoke-direct        v1, v2, Ljava/io/BufferedWriter;-><init>(Ljava/io/Writer;)V
+	28:5b
+	(Ljava/lang/Exception; -> 80 h-BB@0x80)
+	(Ljava/lang/Throwable; -> 7c h-BB@0x7c)
+
+h-BB@0x5c : 
+	22      (0000005c) invoke-virtual       v1, v7, Ljava/io/Writer;->write(Ljava/lang/String;)V
+	23      (00000062) invoke-virtual       v1, Ljava/io/Writer;->flush()V
+	24      (00000068) invoke-static        v1, v0, Lg5/g;->b(Ljava/io/Closeable; Ljava/lang/String;)V
+	25      (0000006e) return-void          
+	5c:67
+	(Ljava/lang/Exception; -> 76 h-BB@0x76)
+	(Ljava/lang/Throwable; -> 70 h-BB@0x70)
+
+h-BB@0x70 : [ h-BB@0x9e ]
+	26      (00000070) move-exception       v6
+	27      (00000072) move-object          v8, v1
+	28      (00000074) goto                 +15h
+
+h-BB@0x76 : [ h-BB@0x82 ]
+	29      (00000076) move-exception       v7
+	30      (00000078) move-object          v8, v1
+	31      (0000007a) goto                 +4h
+
+h-BB@0x7c : [ h-BB@0x9e ]
+	32      (0000007c) move-exception       v6
+	33      (0000007e) goto                 +10h
+
+h-BB@0x80 : [ h-BB@0x82 ]
+	34      (00000080) move-exception       v7
+
+h-BB@0x82 : 
+	35      (00000082) const-string         v1, "Error serializing key/value metadata."
+	36      (00000086) const-string         v2, "FirebaseCrashlytics"
+	37      (0000008a) invoke-static        v2, v1, v7, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+	38      (00000090) invoke-static        v6, Li5/g;->f(Ljava/io/File;)V
+	39      (00000096) invoke-static        v8, v0, Lg5/g;->b(Ljava/io/Closeable; Ljava/lang/String;)V
+	40      (0000009c) return-void          
+	82:95
+	(Ljava/lang/Throwable; -> 7c h-BB@0x7c)
+
+h-BB@0x9e : 
+	41      (0000009e) invoke-static        v8, v0, Lg5/g;->b(Ljava/io/Closeable; Ljava/lang/String;)V
+	42      (000000a4) throw                v6
+

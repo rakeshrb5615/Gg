@@ -1,0 +1,59 @@
+# Li2/n0;->c()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v3
+#
+# - return:void
+
+c-BB@0x0 : [ c-BB@0x8 c-BB@0x7c ]
+	0       (00000000) iget-object          v0, v3, Li2/n0;->V Landroid/opengl/EGLDisplay;
+	1       (00000004) if-eqz               v0, +03ch
+
+c-BB@0x8 : [ c-BB@0x10 c-BB@0x12 ]
+	2       (00000008) sget-object          v1, Landroid/opengl/EGL14;->EGL_NO_DISPLAY Landroid/opengl/EGLDisplay;
+	3       (0000000c) if-ne                v0, v1, +003h
+
+c-BB@0x10 : [ c-BB@0x7c ]
+	4       (00000010) goto                 +36h
+
+c-BB@0x12 : [ c-BB@0x28 c-BB@0x42 ]
+	5       (00000012) sget-object          v1, Landroid/opengl/EGL14;->EGL_NO_SURFACE Landroid/opengl/EGLSurface;
+	6       (00000016) sget-object          v2, Landroid/opengl/EGL14;->EGL_NO_CONTEXT Landroid/opengl/EGLContext;
+	7       (0000001a) invoke-static        v0, v1, v1, v2, Landroid/opengl/EGL14;->eglMakeCurrent(Landroid/opengl/EGLDisplay; Landroid/opengl/EGLSurface; Landroid/opengl/EGLSurface; Landroid/opengl/EGLContext;)Z
+	8       (00000020) iget-object          v0, v3, Li2/n0;->X Landroid/opengl/EGLSurface;
+	9       (00000024) if-eqz               v0, +00fh
+
+c-BB@0x28 : [ c-BB@0x30 c-BB@0x42 ]
+	10      (00000028) sget-object          v1, Landroid/opengl/EGL14;->EGL_NO_SURFACE Landroid/opengl/EGLSurface;
+	11      (0000002c) if-eq                v0, v1, +00bh
+
+c-BB@0x30 : [ c-BB@0x42 ]
+	12      (00000030) iget-object          v1, v3, Li2/n0;->V Landroid/opengl/EGLDisplay;
+	13      (00000034) invoke-static        v1, v0, Landroid/opengl/EGL14;->eglDestroySurface(Landroid/opengl/EGLDisplay; Landroid/opengl/EGLSurface;)Z
+	14      (0000003a) sget-object          v0, Landroid/opengl/EGL14;->EGL_NO_SURFACE Landroid/opengl/EGLSurface;
+	15      (0000003e) iput-object          v0, v3, Li2/n0;->X Landroid/opengl/EGLSurface;
+
+c-BB@0x42 : [ c-BB@0x4a c-BB@0x64 ]
+	16      (00000042) iget-object          v0, v3, Li2/n0;->W Landroid/opengl/EGLContext;
+	17      (00000046) if-eqz               v0, +00fh
+
+c-BB@0x4a : [ c-BB@0x52 c-BB@0x64 ]
+	18      (0000004a) sget-object          v1, Landroid/opengl/EGL14;->EGL_NO_CONTEXT Landroid/opengl/EGLContext;
+	19      (0000004e) if-eq                v0, v1, +00bh
+
+c-BB@0x52 : [ c-BB@0x64 ]
+	20      (00000052) iget-object          v1, v3, Li2/n0;->V Landroid/opengl/EGLDisplay;
+	21      (00000056) invoke-static        v1, v0, Landroid/opengl/EGL14;->eglDestroyContext(Landroid/opengl/EGLDisplay; Landroid/opengl/EGLContext;)Z
+	22      (0000005c) sget-object          v0, Landroid/opengl/EGL14;->EGL_NO_CONTEXT Landroid/opengl/EGLContext;
+	23      (00000060) iput-object          v0, v3, Li2/n0;->W Landroid/opengl/EGLContext;
+
+c-BB@0x64 : [ c-BB@0x7c ]
+	24      (00000064) invoke-static        Landroid/opengl/EGL14;->eglReleaseThread()Z
+	25      (0000006a) iget-object          v0, v3, Li2/n0;->V Landroid/opengl/EGLDisplay;
+	26      (0000006e) invoke-static        v0, Landroid/opengl/EGL14;->eglTerminate(Landroid/opengl/EGLDisplay;)Z
+	27      (00000074) sget-object          v0, Landroid/opengl/EGL14;->EGL_NO_DISPLAY Landroid/opengl/EGLDisplay;
+	28      (00000078) iput-object          v0, v3, Li2/n0;->V Landroid/opengl/EGLDisplay;
+
+c-BB@0x7c : 
+	29      (0000007c) return-void          
+

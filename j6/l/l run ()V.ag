@@ -1,0 +1,120 @@
+# Lj6/l;->run()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v7
+#
+# - return:void
+
+run-BB@0x0 : [ D:run-BB@0xa 0:run-BB@0xb8 ]
+	0       (00000000) iget                 v0, v7, Lj6/l;->a I
+	1       (00000004) packed-switch        v0, +0000080h
+
+run-BB@0xa : [ run-BB@0x30 run-BB@0x32 ]
+	2       (0000000a) iget-object          v0, v7, Lj6/l;->b Lcom/google/firebase/messaging/FirebaseMessaging;
+	3       (0000000e) iget-object          v1, v0, Lcom/google/firebase/messaging/FirebaseMessaging;->b Landroid/content/Context;
+	4       (00000012) invoke-static        v1, Lf2/b0;->f(Landroid/content/Context;)V
+	5       (00000018) iget-object          v2, v0, Lcom/google/firebase/messaging/FirebaseMessaging;->c La5/z;
+	6       (0000001c) invoke-virtual       v0, Lcom/google/firebase/messaging/FirebaseMessaging;->e()Z
+	7       (00000022) move-result          v3
+	8       (00000024) invoke-static        Lcom/google/android/gms/common/util/PlatformVersion;->isAtLeastQ()Z
+	9       (0000002a) move-result          v4
+	10      (0000002c) if-nez               v4, +003h
+
+run-BB@0x30 : [ run-BB@0x84 ]
+	11      (00000030) goto                 +2ah
+
+run-BB@0x32 : [ run-BB@0x4a run-BB@0x5a ]
+	12      (00000032) invoke-static        v1, Lc4/b;->C(Landroid/content/Context;)Landroid/content/SharedPreferences;
+	13      (00000038) move-result-object   v4
+	14      (0000003a) const-string         v5, "proxy_retention"
+	15      (0000003e) invoke-interface     v4, v5, Landroid/content/SharedPreferences;->contains(Ljava/lang/String;)Z
+	16      (00000044) move-result          v6
+	17      (00000046) if-eqz               v6, +00ah
+
+run-BB@0x4a : [ run-BB@0x58 run-BB@0x5a ]
+	18      (0000004a) const/4              v6, 0
+	19      (0000004c) invoke-interface     v4, v5, v6, Landroid/content/SharedPreferences;->getBoolean(Ljava/lang/String; Z)Z
+	20      (00000052) move-result          v4
+	21      (00000054) if-ne                v4, v3, +003h
+
+run-BB@0x58 : [ run-BB@0x84 ]
+	22      (00000058) goto                 +16h
+
+run-BB@0x5a : [ run-BB@0x84 ]
+	23      (0000005a) iget-object          v4, v2, La5/z;->c Ljava/lang/Object;
+	24      (0000005e) check-cast           v4, Lcom/google/android/gms/cloudmessaging/Rpc;
+	25      (00000062) invoke-virtual       v4, v3, Lcom/google/android/gms/cloudmessaging/Rpc;->setRetainProxiedNotifications(Z)Lcom/google/android/gms/tasks/Task;
+	26      (00000068) move-result-object   v4
+	27      (0000006a) new-instance         v5, Lx1/d;
+	28      (0000006e) invoke-direct        v5, Ljava/lang/Object;-><init>()V
+	29      (00000074) new-instance         v6, Li2/o;
+	30      (00000078) invoke-direct        v6, v1, v3, Li2/o;-><init>(Ljava/lang/Object; Z)V
+	31      (0000007e) invoke-virtual       v4, v5, v6, Lcom/google/android/gms/tasks/Task;->addOnSuccessListener(Ljava/util/concurrent/Executor; Lcom/google/android/gms/tasks/OnSuccessListener;)Lcom/google/android/gms/tasks/Task;
+
+run-BB@0x84 : [ run-BB@0x90 run-BB@0xb6 ]
+	32      (00000084) invoke-virtual       v0, Lcom/google/firebase/messaging/FirebaseMessaging;->e()Z
+	33      (0000008a) move-result          v1
+	34      (0000008c) if-eqz               v1, +015h
+
+run-BB@0x90 : [ run-BB@0xb6 ]
+	35      (00000090) iget-object          v1, v2, La5/z;->c Ljava/lang/Object;
+	36      (00000094) check-cast           v1, Lcom/google/android/gms/cloudmessaging/Rpc;
+	37      (00000098) invoke-virtual       v1, Lcom/google/android/gms/cloudmessaging/Rpc;->getProxiedNotificationData()Lcom/google/android/gms/tasks/Task;
+	38      (0000009e) move-result-object   v1
+	39      (000000a0) iget-object          v2, v0, Lcom/google/firebase/messaging/FirebaseMessaging;->f Ljava/util/concurrent/ScheduledThreadPoolExecutor;
+	40      (000000a4) new-instance         v3, Lj6/m;
+	41      (000000a8) const/4              v4, 1
+	42      (000000aa) invoke-direct        v3, v0, v4, Lj6/m;-><init>(Lcom/google/firebase/messaging/FirebaseMessaging; I)V
+	43      (000000b0) invoke-virtual       v1, v2, v3, Lcom/google/android/gms/tasks/Task;->addOnSuccessListener(Ljava/util/concurrent/Executor; Lcom/google/android/gms/tasks/OnSuccessListener;)Lcom/google/android/gms/tasks/Task;
+
+run-BB@0xb6 : 
+	44      (000000b6) return-void          
+
+run-BB@0xb8 : [ run-BB@0xcc run-BB@0x102 ]
+	45      (000000b8) iget-object          v0, v7, Lj6/l;->b Lcom/google/firebase/messaging/FirebaseMessaging;
+	46      (000000bc) iget-object          v1, v0, Lcom/google/firebase/messaging/FirebaseMessaging;->e Li5/n;
+	47      (000000c0) invoke-virtual       v1, Li5/n;->b()Z
+	48      (000000c6) move-result          v1
+	49      (000000c8) if-eqz               v1, +01dh
+
+run-BB@0xcc : [ run-BB@0xe0 run-BB@0x102 ]
+	50      (000000cc) invoke-virtual       v0, Lcom/google/firebase/messaging/FirebaseMessaging;->d()Lj6/t;
+	51      (000000d2) move-result-object   v1
+	52      (000000d4) invoke-virtual       v0, v1, Lcom/google/firebase/messaging/FirebaseMessaging;->g(Lj6/t;)Z
+	53      (000000da) move-result          v1
+	54      (000000dc) if-eqz               v1, +013h
+
+run-BB@0xe0 : [ run-BB@0xe2 ]
+	55      (000000e0) monitor-enter        v0
+
+run-BB@0xe2 : [ run-BB@0xea run-BB@0xfa ]
+	56      (000000e2) iget-boolean         v1, v0, Lcom/google/firebase/messaging/FirebaseMessaging;->i Z
+	57      (000000e6) if-nez               v1, +00ah
+	e2:f3
+	(Ljava/lang/Throwable; -> f6 run-BB@0xf6)
+
+run-BB@0xea : [ run-BB@0xfa ]
+	58      (000000ea) const-wide/16        v1, 0
+	59      (000000ee) invoke-virtual       v0, v1, v2, Lcom/google/firebase/messaging/FirebaseMessaging;->f(J)V
+	60      (000000f4) goto                 +3h
+
+run-BB@0xf6 : [ run-BB@0xfe ]
+	61      (000000f6) move-exception       v1
+	62      (000000f8) goto                 +3h
+
+run-BB@0xfa : [ run-BB@0x102 ]
+	63      (000000fa) monitor-exit         v0
+	64      (000000fc) goto                 +3h
+
+run-BB@0xfe : 
+	65      (000000fe) monitor-exit         v0
+	66      (00000100) throw                v1
+	fe:ff
+	(Ljava/lang/Throwable; -> f6 run-BB@0xf6)
+
+run-BB@0x102 : 
+	67      (00000102) return-void          
+
+run-BB@0x104 : 
+	68      (00000104) packed-switch-payload 0
+

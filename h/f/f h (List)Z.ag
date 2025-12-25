@@ -1,0 +1,64 @@
+# Lh/f;->h(Ljava/util/List;)Z [access_flags=public synchronized]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:java.util.List
+#
+# - return:boolean
+
+h-BB@0x0 : [ h-BB@0x6 ]
+	0       (00000000) const-string         v0, "Ignored 0 entries when adding rollout assignments. Maximum allowable: "
+	1       (00000004) monitor-enter        v3
+
+h-BB@0x6 : [ h-BB@0x24 h-BB@0x72 ]
+	2       (00000006) iget-object          v1, v3, Lh/f;->c Ljava/lang/Object;
+	3       (0000000a) check-cast           v1, Ljava/util/ArrayList;
+	4       (0000000e) invoke-virtual       v1, Ljava/util/ArrayList;->clear()V
+	5       (00000014) invoke-interface     v4, Ljava/util/List;->size()I
+	6       (0000001a) move-result          v1
+	7       (0000001c) iget                 v2, v3, Lh/f;->b I
+	8       (00000020) if-le                v1, v2, +029h
+	6:69
+	(Ljava/lang/Throwable; -> 6e h-BB@0x6e)
+
+h-BB@0x24 : 
+	9       (00000024) new-instance         v1, Ljava/lang/StringBuilder;
+	10      (00000028) invoke-direct        v1, v0, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	11      (0000002e) iget                 v0, v3, Lh/f;->b I
+	12      (00000032) invoke-virtual       v1, v0, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	13      (00000038) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	14      (0000003e) move-result-object   v0
+	15      (00000040) const-string         v1, "FirebaseCrashlytics"
+	16      (00000044) const/4              v2, 0
+	17      (00000046) invoke-static        v1, v0, v2, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+	18      (0000004c) iget                 v0, v3, Lh/f;->b I
+	19      (00000050) const/4              v1, 0
+	20      (00000052) invoke-interface     v4, v1, v0, Ljava/util/List;->subList(I I)Ljava/util/List;
+	21      (00000058) move-result-object   v4
+	22      (0000005a) iget-object          v0, v3, Lh/f;->c Ljava/lang/Object;
+	23      (0000005e) check-cast           v0, Ljava/util/ArrayList;
+	24      (00000062) invoke-virtual       v0, v4, Ljava/util/ArrayList;->addAll(Ljava/util/Collection;)Z
+	25      (00000068) move-result          v4
+	26      (0000006a) monitor-exit         v3
+	27      (0000006c) return               v4
+
+h-BB@0x6e : [ h-BB@0x86 ]
+	28      (0000006e) move-exception       v4
+	29      (00000070) goto                 +bh
+
+h-BB@0x72 : 
+	30      (00000072) iget-object          v0, v3, Lh/f;->c Ljava/lang/Object;
+	31      (00000076) check-cast           v0, Ljava/util/ArrayList;
+	32      (0000007a) invoke-virtual       v0, v4, Ljava/util/ArrayList;->addAll(Ljava/util/Collection;)Z
+	33      (00000080) move-result          v4
+	34      (00000082) monitor-exit         v3
+	35      (00000084) return               v4
+	72:81
+	(Ljava/lang/Throwable; -> 6e h-BB@0x6e)
+
+h-BB@0x86 : 
+	36      (00000086) monitor-exit         v3
+	37      (00000088) throw                v4
+	86:87
+	(Ljava/lang/Throwable; -> 6e h-BB@0x6e)
+

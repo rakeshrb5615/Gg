@@ -1,0 +1,36 @@
+# Li7/d;->indexOf(Ljava/lang/Object;)I [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:java.lang.Object
+#
+# - return:int
+
+indexOf-BB@0x0 : [ indexOf-BB@0xa ]
+	0       (00000000) invoke-interface     v3, Ljava/util/List;->iterator()Ljava/util/Iterator;
+	1       (00000006) move-result-object   v0
+	2       (00000008) const/4              v1, 0
+
+indexOf-BB@0xa : [ indexOf-BB@0x16 indexOf-BB@0x32 ]
+	3       (0000000a) invoke-interface     v0, Ljava/util/Iterator;->hasNext()Z
+	4       (00000010) move-result          v2
+	5       (00000012) if-eqz               v2, +010h
+
+indexOf-BB@0x16 : [ indexOf-BB@0x2a indexOf-BB@0x2c ]
+	6       (00000016) invoke-interface     v0, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	7       (0000001c) move-result-object   v2
+	8       (0000001e) invoke-static        v2, v4, Lkotlin/jvm/internal/j;->a(Ljava/lang/Object; Ljava/lang/Object;)Z
+	9       (00000024) move-result          v2
+	10      (00000026) if-eqz               v2, +003h
+
+indexOf-BB@0x2a : 
+	11      (0000002a) return               v1
+
+indexOf-BB@0x2c : [ indexOf-BB@0xa ]
+	12      (0000002c) add-int/lit8         v1, v1, 1
+	13      (00000030) goto                 -13h
+
+indexOf-BB@0x32 : 
+	14      (00000032) const/4              v4, -1
+	15      (00000034) return               v4
+

@@ -1,0 +1,107 @@
+# Li5/g;->c(Ljava/lang/String; Z)Ljava/util/Map; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:java.lang.String
+# - v8:boolean
+#
+# - return:java.util.Map
+
+c-BB@0x0 : [ c-BB@0xc c-BB@0x1a ]
+	0       (00000000) const-string         v0, "Failed to close user metadata file."
+	1       (00000004) iget-object          v1, v6, Li5/g;->a Lm5/c;
+	2       (00000008) if-eqz               v8, +009h
+
+c-BB@0xc : [ c-BB@0x26 ]
+	3       (0000000c) const-string         v8, "internal-keys"
+	4       (00000010) invoke-virtual       v1, v7, v8, Lm5/c;->b(Ljava/lang/String; Ljava/lang/String;)Ljava/io/File;
+	5       (00000016) move-result-object   v8
+	6       (00000018) goto                 +7h
+
+c-BB@0x1a : [ c-BB@0x26 ]
+	7       (0000001a) const-string         v8, "keys"
+	8       (0000001e) invoke-virtual       v1, v7, v8, Lm5/c;->b(Ljava/lang/String; Ljava/lang/String;)Ljava/io/File;
+	9       (00000024) move-result-object   v8
+
+c-BB@0x26 : [ c-BB@0x32 c-BB@0xac ]
+	10      (00000026) invoke-virtual       v8, Ljava/io/File;->exists()Z
+	11      (0000002c) move-result          v1
+	12      (0000002e) if-eqz               v1, +03fh
+
+c-BB@0x32 : [ c-BB@0x46 c-BB@0x48 ]
+	13      (00000032) invoke-virtual       v8, Ljava/io/File;->length()J
+	14      (00000038) move-result-wide     v1
+	15      (0000003a) const-wide/16        v3, 0
+	16      (0000003e) cmp-long             v1, v1, v3
+	17      (00000042) if-nez               v1, +003h
+
+c-BB@0x46 : [ c-BB@0xac ]
+	18      (00000046) goto                 +33h
+
+c-BB@0x48 : [ c-BB@0x4a ]
+	19      (00000048) const/4              v7, 0
+
+c-BB@0x4a : [ c-BB@0x54 ]
+	20      (0000004a) new-instance         v1, Ljava/io/FileInputStream;
+	21      (0000004e) invoke-direct        v1, v8, Ljava/io/FileInputStream;-><init>(Ljava/io/File;)V
+	4a:53
+	(Ljava/lang/Exception; -> 7c c-BB@0x7c)
+	(Ljava/lang/Throwable; -> 74 c-BB@0x74)
+
+c-BB@0x54 : 
+	22      (00000054) invoke-static        v1, Lg5/g;->i(Ljava/io/FileInputStream;)Ljava/lang/String;
+	23      (0000005a) move-result-object   v7
+	24      (0000005c) invoke-static        v7, Li5/g;->a(Ljava/lang/String;)Ljava/util/HashMap;
+	25      (00000062) move-result-object   v7
+	26      (00000064) invoke-static        v1, v0, Lg5/g;->b(Ljava/io/Closeable; Ljava/lang/String;)V
+	27      (0000006a) return-object        v7
+	54:63
+	(Ljava/lang/Exception; -> 70 c-BB@0x70)
+	(Ljava/lang/Throwable; -> 6c c-BB@0x6c)
+
+c-BB@0x6c : [ c-BB@0xa4 ]
+	28      (0000006c) move-exception       v7
+	29      (0000006e) goto                 +1bh
+
+c-BB@0x70 : [ c-BB@0x84 ]
+	30      (00000070) move-exception       v7
+	31      (00000072) goto                 +9h
+
+c-BB@0x74 : [ c-BB@0xa4 ]
+	32      (00000074) move-exception       v8
+	33      (00000076) move-object          v1, v7
+	34      (00000078) move-object          v7, v8
+	35      (0000007a) goto                 +15h
+
+c-BB@0x7c : [ c-BB@0x84 ]
+	36      (0000007c) move-exception       v1
+	37      (0000007e) move-object          v5, v1
+	38      (00000080) move-object          v1, v7
+	39      (00000082) move-object          v7, v5
+
+c-BB@0x84 : 
+	40      (00000084) const-string         v2, "Error deserializing user metadata."
+	41      (00000088) const-string         v3, "FirebaseCrashlytics"
+	42      (0000008c) invoke-static        v3, v2, v7, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+	43      (00000092) invoke-static        v8, Li5/g;->f(Ljava/io/File;)V
+	44      (00000098) invoke-static        v1, v0, Lg5/g;->b(Ljava/io/Closeable; Ljava/lang/String;)V
+	45      (0000009e) sget-object          v7, Ljava/util/Collections;->EMPTY_MAP Ljava/util/Map;
+	46      (000000a2) return-object        v7
+	84:97
+	(Ljava/lang/Throwable; -> 6c c-BB@0x6c)
+
+c-BB@0xa4 : 
+	47      (000000a4) invoke-static        v1, v0, Lg5/g;->b(Ljava/io/Closeable; Ljava/lang/String;)V
+	48      (000000aa) throw                v7
+
+c-BB@0xac : 
+	49      (000000ac) new-instance         v0, Ljava/lang/StringBuilder;
+	50      (000000b0) const-string         v1, "The file has a length of zero for session: "
+	51      (000000b4) invoke-direct        v0, v1, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	52      (000000ba) invoke-virtual       v0, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	53      (000000c0) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	54      (000000c6) move-result-object   v7
+	55      (000000c8) invoke-static        v8, v7, Li5/g;->g(Ljava/io/File; Ljava/lang/String;)V
+	56      (000000ce) sget-object          v7, Ljava/util/Collections;->EMPTY_MAP Ljava/util/Map;
+	57      (000000d2) return-object        v7
+

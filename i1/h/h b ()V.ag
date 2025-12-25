@@ -1,0 +1,29 @@
+# Li1/h;->b()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v1
+#
+# - return:void
+
+b-BB@0x0 : [ b-BB@0x14 b-BB@0x16 ]
+	0       (00000000) iget-object          v0, v1, Li1/h;->a Ljava/lang/ref/WeakReference;
+	1       (00000004) invoke-virtual       v0, Ljava/lang/ref/Reference;->get()Ljava/lang/Object;
+	2       (0000000a) move-result-object   v0
+	3       (0000000c) check-cast           v0, Landroid/widget/EditText;
+	4       (00000010) if-nez               v0, +003h
+
+b-BB@0x14 : [ b-BB@0x22 ]
+	5       (00000014) goto                 +7h
+
+b-BB@0x16 : [ b-BB@0x22 b-BB@0x24 ]
+	6       (00000016) invoke-virtual       v0, Landroid/view/View;->getHandler()Landroid/os/Handler;
+	7       (0000001c) move-result-object   v0
+	8       (0000001e) if-nez               v0, +003h
+
+b-BB@0x22 : 
+	9       (00000022) return-void          
+
+b-BB@0x24 : 
+	10      (00000024) invoke-virtual       v0, v1, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
+	11      (0000002a) return-void          
+

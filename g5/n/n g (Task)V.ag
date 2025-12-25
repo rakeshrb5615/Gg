@@ -1,0 +1,141 @@
+# Lg5/n;->g(Lcom/google/android/gms/tasks/Task;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:com.google.android.gms.tasks.Task
+#
+# - return:void
+
+g-BB@0x0 : [ g-BB@0x3e g-BB@0xac ]
+	0       (00000000) iget-object          v0, v6, Lg5/n;->o Lcom/google/android/gms/tasks/TaskCompletionSource;
+	1       (00000004) const-string         v1, "FirebaseCrashlytics"
+	2       (00000008) iget-object          v2, v6, Lg5/n;->m La5/z;
+	3       (0000000c) iget-object          v2, v2, La5/z;->b Ljava/lang/Object;
+	4       (00000010) check-cast           v2, Lm5/a;
+	5       (00000014) iget-object          v2, v2, Lm5/a;->b Lm5/c;
+	6       (00000018) iget-object          v3, v2, Lm5/c;->f Ljava/lang/Object;
+	7       (0000001c) check-cast           v3, Ljava/io/File;
+	8       (00000020) invoke-virtual       v3, Ljava/io/File;->listFiles()[Ljava/io/File;
+	9       (00000026) move-result-object   v3
+	10      (00000028) invoke-static        v3, Lm5/c;->e([Ljava/lang/Object;)Ljava/util/List;
+	11      (0000002e) move-result-object   v3
+	12      (00000030) invoke-interface     v3, Ljava/util/List;->isEmpty()Z
+	13      (00000036) move-result          v3
+	14      (00000038) const/4              v4, 0
+	15      (0000003a) if-eqz               v3, +039h
+
+g-BB@0x3e : [ g-BB@0x62 g-BB@0xac ]
+	16      (0000003e) iget-object          v3, v2, Lm5/c;->m Ljava/lang/Object;
+	17      (00000042) check-cast           v3, Ljava/io/File;
+	18      (00000046) invoke-virtual       v3, Ljava/io/File;->listFiles()[Ljava/io/File;
+	19      (0000004c) move-result-object   v3
+	20      (0000004e) invoke-static        v3, Lm5/c;->e([Ljava/lang/Object;)Ljava/util/List;
+	21      (00000054) move-result-object   v3
+	22      (00000056) invoke-interface     v3, Ljava/util/List;->isEmpty()Z
+	23      (0000005c) move-result          v3
+	24      (0000005e) if-eqz               v3, +027h
+
+g-BB@0x62 : [ g-BB@0x86 g-BB@0x88 ]
+	25      (00000062) iget-object          v2, v2, Lm5/c;->n Ljava/lang/Object;
+	26      (00000066) check-cast           v2, Ljava/io/File;
+	27      (0000006a) invoke-virtual       v2, Ljava/io/File;->listFiles()[Ljava/io/File;
+	28      (00000070) move-result-object   v2
+	29      (00000072) invoke-static        v2, Lm5/c;->e([Ljava/lang/Object;)Ljava/util/List;
+	30      (00000078) move-result-object   v2
+	31      (0000007a) invoke-interface     v2, Ljava/util/List;->isEmpty()Z
+	32      (00000080) move-result          v2
+	33      (00000082) if-nez               v2, +003h
+
+g-BB@0x86 : [ g-BB@0xac ]
+	34      (00000086) goto                 +13h
+
+g-BB@0x88 : [ g-BB@0x9a g-BB@0xa0 ]
+	35      (00000088) const-string         v7, "No crash reports are available to be sent."
+	36      (0000008c) const/4              v2, 2
+	37      (0000008e) invoke-static        v1, v2, Landroid/util/Log;->isLoggable(Ljava/lang/String; I)Z
+	38      (00000094) move-result          v2
+	39      (00000096) if-eqz               v2, +005h
+
+g-BB@0x9a : [ g-BB@0xa0 ]
+	40      (0000009a) invoke-static        v1, v7, v4, Landroid/util/Log;->v(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+
+g-BB@0xa0 : 
+	41      (000000a0) sget-object          v7, Ljava/lang/Boolean;->FALSE Ljava/lang/Boolean;
+	42      (000000a4) invoke-virtual       v0, v7, Lcom/google/android/gms/tasks/TaskCompletionSource;->trySetResult(Ljava/lang/Object;)Z
+	43      (000000aa) return-void          
+
+g-BB@0xac : [ g-BB@0xca g-BB@0xfa ]
+	44      (000000ac) sget-object          v2, Ld5/d;->a Ld5/d;
+	45      (000000b0) const-string         v3, "Crash reports are available to be sent."
+	46      (000000b4) invoke-virtual       v2, v3, Ld5/d;->c(Ljava/lang/String;)V
+	47      (000000ba) iget-object          v3, v6, Lg5/n;->b Lg5/v;
+	48      (000000be) invoke-virtual       v3, Lg5/v;->a()Z
+	49      (000000c4) move-result          v5
+	50      (000000c6) if-eqz               v5, +01ah
+
+g-BB@0xca : [ g-BB@0xdc g-BB@0xe2 ]
+	51      (000000ca) const-string         v2, "Automatic data collection is enabled. Allowing upload."
+	52      (000000ce) const/4              v3, 3
+	53      (000000d0) invoke-static        v1, v3, Landroid/util/Log;->isLoggable(Ljava/lang/String; I)Z
+	54      (000000d6) move-result          v3
+	55      (000000d8) if-eqz               v3, +005h
+
+g-BB@0xdc : [ g-BB@0xe2 ]
+	56      (000000dc) invoke-static        v1, v2, v4, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+
+g-BB@0xe2 : [ g-BB@0x15c ]
+	57      (000000e2) sget-object          v1, Ljava/lang/Boolean;->FALSE Ljava/lang/Boolean;
+	58      (000000e6) invoke-virtual       v0, v1, Lcom/google/android/gms/tasks/TaskCompletionSource;->trySetResult(Ljava/lang/Object;)Z
+	59      (000000ec) sget-object          v0, Ljava/lang/Boolean;->TRUE Ljava/lang/Boolean;
+	60      (000000f0) invoke-static        v0, Lcom/google/android/gms/tasks/Tasks;->forResult(Ljava/lang/Object;)Lcom/google/android/gms/tasks/Task;
+	61      (000000f6) move-result-object   v0
+	62      (000000f8) goto                 +32h
+
+g-BB@0xfa : [ g-BB@0x11e ]
+	63      (000000fa) const-string         v1, "Automatic data collection is disabled."
+	64      (000000fe) invoke-virtual       v2, v1, Ld5/d;->b(Ljava/lang/String;)V
+	65      (00000104) const-string         v1, "Notifying that unsent reports are available."
+	66      (00000108) invoke-virtual       v2, v1, Ld5/d;->c(Ljava/lang/String;)V
+	67      (0000010e) sget-object          v1, Ljava/lang/Boolean;->TRUE Ljava/lang/Boolean;
+	68      (00000112) invoke-virtual       v0, v1, Lcom/google/android/gms/tasks/TaskCompletionSource;->trySetResult(Ljava/lang/Object;)Z
+	69      (00000118) iget-object          v0, v3, Lg5/v;->b Ljava/lang/Object;
+	70      (0000011c) monitor-enter        v0
+
+g-BB@0x11e : [ g-BB@0x15c ]
+	71      (0000011e) iget-object          v1, v3, Lg5/v;->c Lcom/google/android/gms/tasks/TaskCompletionSource;
+	72      (00000122) invoke-virtual       v1, Lcom/google/android/gms/tasks/TaskCompletionSource;->getTask()Lcom/google/android/gms/tasks/Task;
+	73      (00000128) move-result-object   v1
+	74      (0000012a) monitor-exit         v0
+	75      (0000012c) new-instance         v0, La6/e;
+	76      (00000130) invoke-direct        v0, Ljava/lang/Object;-><init>()V
+	77      (00000136) invoke-virtual       v1, v0, Lcom/google/android/gms/tasks/Task;->onSuccessTask(Lcom/google/android/gms/tasks/SuccessContinuation;)Lcom/google/android/gms/tasks/Task;
+	78      (0000013c) move-result-object   v0
+	79      (0000013e) const-string         v1, "Waiting for send/deleteUnsentReports to be called."
+	80      (00000142) invoke-virtual       v2, v1, Ld5/d;->b(Ljava/lang/String;)V
+	81      (00000148) iget-object          v1, v6, Lg5/n;->p Lcom/google/android/gms/tasks/TaskCompletionSource;
+	82      (0000014c) invoke-virtual       v1, Lcom/google/android/gms/tasks/TaskCompletionSource;->getTask()Lcom/google/android/gms/tasks/Task;
+	83      (00000152) move-result-object   v1
+	84      (00000154) invoke-static        v0, v1, Lh5/b;->a(Lcom/google/android/gms/tasks/Task; Lcom/google/android/gms/tasks/Task;)Lcom/google/android/gms/tasks/Task;
+	85      (0000015a) move-result-object   v0
+	11e:12b
+	(Ljava/lang/Throwable; -> 17c g-BB@0x17c)
+
+g-BB@0x15c : 
+	86      (0000015c) iget-object          v1, v6, Lg5/n;->e Lh5/f;
+	87      (00000160) iget-object          v1, v1, Lh5/f;->a Lh5/c;
+	88      (00000164) new-instance         v2, Lk2/c;
+	89      (00000168) const/16             v3, 15
+	90      (0000016c) const/4              v4, 0
+	91      (0000016e) invoke-direct        v2, v6, v7, v3, v4, Lk2/c;-><init>(Ljava/lang/Object; Ljava/lang/Object; I Z)V
+	92      (00000174) invoke-virtual       v0, v1, v2, Lcom/google/android/gms/tasks/Task;->onSuccessTask(Ljava/util/concurrent/Executor; Lcom/google/android/gms/tasks/SuccessContinuation;)Lcom/google/android/gms/tasks/Task;
+	93      (0000017a) return-void          
+
+g-BB@0x17c : [ g-BB@0x17e ]
+	94      (0000017c) move-exception       v7
+
+g-BB@0x17e : 
+	95      (0000017e) monitor-exit         v0
+	96      (00000180) throw                v7
+	17e:17f
+	(Ljava/lang/Throwable; -> 17c g-BB@0x17c)
+

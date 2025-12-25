@@ -1,0 +1,31 @@
+# Li3/e;->getFirstVisibleChildIndex()I [access_flags=private]
+#
+# Parameters:
+# local registers: v0...v3
+#
+# - return:int
+
+getFirstVisibleChildIndex-BB@0x0 : [ getFirstVisibleChildIndex-BB@0xa ]
+	0       (00000000) invoke-virtual       v3, Landroid/view/ViewGroup;->getChildCount()I
+	1       (00000006) move-result          v0
+	2       (00000008) const/4              v1, 0
+
+getFirstVisibleChildIndex-BB@0xa : [ getFirstVisibleChildIndex-BB@0xe getFirstVisibleChildIndex-BB@0x22 ]
+	3       (0000000a) if-ge                v1, v0, +00ch
+
+getFirstVisibleChildIndex-BB@0xe : [ getFirstVisibleChildIndex-BB@0x1a getFirstVisibleChildIndex-BB@0x1c ]
+	4       (0000000e) invoke-virtual       v3, v1, Li3/e;->c(I)Z
+	5       (00000014) move-result          v2
+	6       (00000016) if-eqz               v2, +003h
+
+getFirstVisibleChildIndex-BB@0x1a : 
+	7       (0000001a) return               v1
+
+getFirstVisibleChildIndex-BB@0x1c : [ getFirstVisibleChildIndex-BB@0xa ]
+	8       (0000001c) add-int/lit8         v1, v1, 1
+	9       (00000020) goto                 -bh
+
+getFirstVisibleChildIndex-BB@0x22 : 
+	10      (00000022) const/4              v0, -1
+	11      (00000024) return               v0
+

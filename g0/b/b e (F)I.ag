@@ -1,0 +1,99 @@
+# Lg0/b;->e(F)I [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v14
+# - v15:float
+#
+# - return:int
+
+e-BB@0x0 : [ e-BB@0xc e-BB@0x12 ]
+	0       (00000000) const/high16         v0, 1065353216
+	1       (00000004) cmpg-float           v0, v15, v0
+	2       (00000008) if-gez               v0, +005h
+
+e-BB@0xc : 
+	3       (0000000c) const/high16         v15, -16777216
+	4       (00000010) return               v15
+
+e-BB@0x12 : [ e-BB@0x1e e-BB@0x22 ]
+	5       (00000012) const/high16         v0, 1120272384
+	6       (00000016) cmpl-float           v0, v15, v0
+	7       (0000001a) if-lez               v0, +004h
+
+e-BB@0x1e : 
+	8       (0000001e) const/4              v15, -1
+	9       (00000020) return               v15
+
+e-BB@0x22 : [ e-BB@0x42 e-BB@0x4a ]
+	10      (00000022) const/high16         v0, 1098907648
+	11      (00000026) add-float            v1, v15, v0
+	12      (0000002a) const/high16         v2, 1122500608
+	13      (0000002e) div-float/2addr      v1, v2
+	14      (00000030) const/high16         v3, 1090519040
+	15      (00000034) cmpl-float           v3, v15, v3
+	16      (00000038) const                v4, 1147261687
+	17      (0000003e) if-lez               v3, +006h
+
+e-BB@0x42 : [ e-BB@0x4c ]
+	18      (00000042) mul-float            v15, v1, v1
+	19      (00000046) mul-float/2addr      v15, v1
+	20      (00000048) goto                 +2h
+
+e-BB@0x4a : [ e-BB@0x4c ]
+	21      (0000004a) div-float/2addr      v15, v4
+
+e-BB@0x4c : [ e-BB@0x64 e-BB@0x68 ]
+	22      (0000004c) mul-float            v3, v1, v1
+	23      (00000050) mul-float/2addr      v3, v1
+	24      (00000052) const                v5, 1007753895
+	25      (00000058) cmpl-float           v5, v3, v5
+	26      (0000005c) const/4              v6, 0
+	27      (0000005e) const/4              v7, 1
+	28      (00000060) if-lez               v5, +004h
+
+e-BB@0x64 : [ e-BB@0x6a ]
+	29      (00000064) move                 v5, v7
+	30      (00000066) goto                 +2h
+
+e-BB@0x68 : [ e-BB@0x6a ]
+	31      (00000068) move                 v5, v6
+
+e-BB@0x6a : [ e-BB@0x6e e-BB@0x72 ]
+	32      (0000006a) if-eqz               v5, +004h
+
+e-BB@0x6e : [ e-BB@0x7a ]
+	33      (0000006e) move                 v8, v3
+	34      (00000070) goto                 +5h
+
+e-BB@0x72 : [ e-BB@0x7a ]
+	35      (00000072) mul-float            v8, v1, v2
+	36      (00000076) sub-float/2addr      v8, v0
+	37      (00000078) div-float/2addr      v8, v4
+
+e-BB@0x7a : [ e-BB@0x7e e-BB@0x80 ]
+	38      (0000007a) if-eqz               v5, +003h
+
+e-BB@0x7e : [ e-BB@0x88 ]
+	39      (0000007e) goto                 +5h
+
+e-BB@0x80 : [ e-BB@0x88 ]
+	40      (00000080) mul-float/2addr      v1, v2
+	41      (00000082) sub-float/2addr      v1, v0
+	42      (00000084) div-float            v3, v1, v4
+
+e-BB@0x88 : 
+	43      (00000088) sget-object          v0, Lg0/b;->c [F
+	44      (0000008c) aget                 v1, v0, v6
+	45      (00000090) mul-float/2addr      v8, v1
+	46      (00000092) float-to-double      v9, v8
+	47      (00000094) aget                 v1, v0, v7
+	48      (00000098) mul-float/2addr      v15, v1
+	49      (0000009a) float-to-double      v11, v15
+	50      (0000009c) const/4              v15, 2
+	51      (0000009e) aget                 v15, v0, v15
+	52      (000000a2) mul-float/2addr      v3, v15
+	53      (000000a4) float-to-double      v13, v3
+	54      (000000a6) invoke-static/range  v9 ... v14, Lh0/a;->c(D D D)I
+	55      (000000ac) move-result          v15
+	56      (000000ae) return               v15
+

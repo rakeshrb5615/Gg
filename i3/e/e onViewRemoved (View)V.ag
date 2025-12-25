@@ -1,0 +1,38 @@
+# Li3/e;->onViewRemoved(Landroid/view/View;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:android.view.View
+#
+# - return:void
+
+onViewRemoved-BB@0x0 : [ onViewRemoved-BB@0xe onViewRemoved-BB@0x1c ]
+	0       (00000000) invoke-super         v2, v3, Landroid/view/ViewGroup;->onViewRemoved(Landroid/view/View;)V
+	1       (00000006) instance-of          v0, v3, Lcom/google/android/material/button/MaterialButton;
+	2       (0000000a) if-eqz               v0, +009h
+
+onViewRemoved-BB@0xe : [ onViewRemoved-BB@0x1c ]
+	3       (0000000e) move-object          v0, v3
+	4       (00000010) check-cast           v0, Lcom/google/android/material/button/MaterialButton;
+	5       (00000014) const/4              v1, 0
+	6       (00000016) invoke-virtual       v0, v1, Lcom/google/android/material/button/MaterialButton;->setOnPressedChangeListenerInternal(Li3/b;)V
+
+onViewRemoved-BB@0x1c : [ onViewRemoved-BB@0x28 onViewRemoved-BB@0x3c ]
+	7       (0000001c) invoke-virtual       v2, v3, Landroid/view/ViewGroup;->indexOfChild(Landroid/view/View;)I
+	8       (00000022) move-result          v3
+	9       (00000024) if-ltz               v3, +00ch
+
+onViewRemoved-BB@0x28 : [ onViewRemoved-BB@0x3c ]
+	10      (00000028) iget-object          v0, v2, Li3/e;->a Ljava/util/ArrayList;
+	11      (0000002c) invoke-virtual       v0, v3, Ljava/util/ArrayList;->remove(I)Ljava/lang/Object;
+	12      (00000032) iget-object          v0, v2, Li3/e;->b Ljava/util/ArrayList;
+	13      (00000036) invoke-virtual       v0, v3, Ljava/util/ArrayList;->remove(I)Ljava/lang/Object;
+
+onViewRemoved-BB@0x3c : 
+	14      (0000003c) const/4              v3, 1
+	15      (0000003e) iput-boolean         v3, v2, Li3/e;->p Z
+	16      (00000042) invoke-virtual       v2, Li3/e;->e()V
+	17      (00000048) invoke-virtual       v2, Li3/e;->d()V
+	18      (0000004e) invoke-virtual       v2, Li3/e;->a()V
+	19      (00000054) return-void          
+

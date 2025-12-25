@@ -1,0 +1,58 @@
+# Lj7/b;->equals(Ljava/lang/Object;)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:java.lang.Object
+#
+# - return:boolean
+
+equals-BB@0x0 : [ equals-BB@0xa equals-BB@0x5c ]
+	0       (00000000) invoke-virtual       v6, Lj7/b;->g()V
+	1       (00000006) if-eq                v7, v6, +02bh
+
+equals-BB@0xa : [ equals-BB@0x14 equals-BB@0x5a ]
+	2       (0000000a) instance-of          v0, v7, Ljava/util/List;
+	3       (0000000e) const/4              v1, 0
+	4       (00000010) if-eqz               v0, +025h
+
+equals-BB@0x14 : [ equals-BB@0x2c equals-BB@0x2e ]
+	5       (00000014) check-cast           v7, Ljava/util/List;
+	6       (00000018) iget-object          v0, v6, Lj7/b;->a [Ljava/lang/Object;
+	7       (0000001c) iget                 v2, v6, Lj7/b;->c I
+	8       (00000020) invoke-interface     v7, Ljava/util/List;->size()I
+	9       (00000026) move-result          v3
+	10      (00000028) if-eq                v2, v3, +003h
+
+equals-BB@0x2c : [ equals-BB@0x5a ]
+	11      (0000002c) goto                 +17h
+
+equals-BB@0x2e : [ equals-BB@0x30 ]
+	12      (0000002e) move                 v3, v1
+
+equals-BB@0x30 : [ equals-BB@0x34 equals-BB@0x5c ]
+	13      (00000030) if-ge                v3, v2, +016h
+
+equals-BB@0x34 : [ equals-BB@0x52 equals-BB@0x54 ]
+	14      (00000034) iget                 v4, v6, Lj7/b;->b I
+	15      (00000038) add-int/2addr        v4, v3
+	16      (0000003a) aget-object          v4, v0, v4
+	17      (0000003e) invoke-interface     v7, v3, Ljava/util/List;->get(I)Ljava/lang/Object;
+	18      (00000044) move-result-object   v5
+	19      (00000046) invoke-static        v4, v5, Lkotlin/jvm/internal/j;->a(Ljava/lang/Object; Ljava/lang/Object;)Z
+	20      (0000004c) move-result          v4
+	21      (0000004e) if-nez               v4, +003h
+
+equals-BB@0x52 : [ equals-BB@0x5a ]
+	22      (00000052) goto                 +4h
+
+equals-BB@0x54 : [ equals-BB@0x30 ]
+	23      (00000054) add-int/lit8         v3, v3, 1
+	24      (00000058) goto                 -14h
+
+equals-BB@0x5a : 
+	25      (0000005a) return               v1
+
+equals-BB@0x5c : 
+	26      (0000005c) const/4              v7, 1
+	27      (0000005e) return               v7
+

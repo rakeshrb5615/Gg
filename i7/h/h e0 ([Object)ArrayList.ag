@@ -1,0 +1,31 @@
+# Li7/h;->e0([Ljava/lang/Object;)Ljava/util/ArrayList; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:java.lang.Object[]
+#
+# - return:java.util.ArrayList
+
+e0-BB@0x0 : [ e0-BB@0xe ]
+	0       (00000000) new-instance         v0, Ljava/util/ArrayList;
+	1       (00000004) invoke-direct        v0, Ljava/util/ArrayList;-><init>()V
+	2       (0000000a) array-length         v1, v4
+	3       (0000000c) const/4              v2, 0
+
+e0-BB@0xe : [ e0-BB@0x12 e0-BB@0x26 ]
+	4       (0000000e) if-ge                v2, v1, +00ch
+
+e0-BB@0x12 : [ e0-BB@0x1a e0-BB@0x20 ]
+	5       (00000012) aget-object          v3, v4, v2
+	6       (00000016) if-eqz               v3, +005h
+
+e0-BB@0x1a : [ e0-BB@0x20 ]
+	7       (0000001a) invoke-virtual       v0, v3, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+e0-BB@0x20 : [ e0-BB@0xe ]
+	8       (00000020) add-int/lit8         v2, v2, 1
+	9       (00000024) goto                 -bh
+
+e0-BB@0x26 : 
+	10      (00000026) return-object        v0
+

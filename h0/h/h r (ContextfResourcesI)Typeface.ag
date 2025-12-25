@@ -1,0 +1,110 @@
+# Lh0/h;->r(Landroid/content/Context; Lg0/f; Landroid/content/res/Resources; I)Landroid/graphics/Typeface; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:android.content.Context
+# - v8:g0.f
+# - v9:android.content.res.Resources
+# - v10:int
+#
+# - return:android.graphics.Typeface
+
+r-BB@0x0 : [ r-BB@0x2 ]
+	0       (00000000) const/4              v7, 0
+
+r-BB@0x2 : [ r-BB@0xc ]
+	1       (00000002) iget-object          v8, v8, Lg0/f;->a [Lg0/g;
+	2       (00000006) array-length         v0, v8
+	3       (00000008) const/4              v1, 0
+	4       (0000000a) move-object          v2, v7
+	2:13
+	(Ljava/lang/Exception; -> 6c r-BB@0x6c)
+
+r-BB@0xc : [ r-BB@0x10 r-BB@0x7c ]
+	5       (0000000c) if-ge                v1, v0, +038h
+	2:13
+	(Ljava/lang/Exception; -> 6c r-BB@0x6c)
+
+r-BB@0x10 : [ r-BB@0x14 ]
+	6       (00000010) aget-object          v3, v8, v1
+	2:13
+	(Ljava/lang/Exception; -> 6c r-BB@0x6c)
+
+r-BB@0x14 : [ r-BB@0x5e r-BB@0x70 ]
+	7       (00000014) new-instance         v4, Landroid/graphics/fonts/Font$Builder;
+	8       (00000018) iget                 v5, v3, Lg0/g;->f I
+	9       (0000001c) invoke-direct        v4, v9, v5, Landroid/graphics/fonts/Font$Builder;-><init>(Landroid/content/res/Resources; I)V
+	10      (00000022) iget                 v5, v3, Lg0/g;->b I
+	11      (00000026) invoke-virtual       v4, v5, Landroid/graphics/fonts/Font$Builder;->setWeight(I)Landroid/graphics/fonts/Font$Builder;
+	12      (0000002c) move-result-object   v4
+	13      (0000002e) iget-boolean         v5, v3, Lg0/g;->c Z
+	14      (00000032) invoke-virtual       v4, v5, Landroid/graphics/fonts/Font$Builder;->setSlant(I)Landroid/graphics/fonts/Font$Builder;
+	15      (00000038) move-result-object   v4
+	16      (0000003a) iget                 v5, v3, Lg0/g;->e I
+	17      (0000003e) invoke-virtual       v4, v5, Landroid/graphics/fonts/Font$Builder;->setTtcIndex(I)Landroid/graphics/fonts/Font$Builder;
+	18      (00000044) move-result-object   v4
+	19      (00000046) iget-object          v3, v3, Lg0/g;->d Ljava/lang/String;
+	20      (0000004a) invoke-virtual       v4, v3, Landroid/graphics/fonts/Font$Builder;->setFontVariationSettings(Ljava/lang/String;)Landroid/graphics/fonts/Font$Builder;
+	21      (00000050) move-result-object   v3
+	22      (00000052) invoke-virtual       v3, Landroid/graphics/fonts/Font$Builder;->build()Landroid/graphics/fonts/Font;
+	23      (00000058) move-result-object   v3
+	24      (0000005a) if-nez               v2, +00bh
+	14:75
+	(Ljava/io/IOException; -> 76 r-BB@0x76)
+	(Ljava/lang/Exception; -> 6c r-BB@0x6c)
+
+r-BB@0x5e : [ r-BB@0x76 ]
+	25      (0000005e) new-instance         v4, Landroid/graphics/fonts/FontFamily$Builder;
+	26      (00000062) invoke-direct        v4, v3, Landroid/graphics/fonts/FontFamily$Builder;-><init>(Landroid/graphics/fonts/Font;)V
+	27      (00000068) move-object          v2, v4
+	28      (0000006a) goto                 +6h
+	14:75
+	(Ljava/io/IOException; -> 76 r-BB@0x76)
+	(Ljava/lang/Exception; -> 6c r-BB@0x6c)
+
+r-BB@0x6c : [ r-BB@0xb6 ]
+	29      (0000006c) move-exception       v8
+	30      (0000006e) goto                 +24h
+	14:75
+	(Ljava/io/IOException; -> 76 r-BB@0x76)
+	(Ljava/lang/Exception; -> 6c r-BB@0x6c)
+
+r-BB@0x70 : [ r-BB@0x76 ]
+	31      (00000070) invoke-virtual       v2, v3, Landroid/graphics/fonts/FontFamily$Builder;->addFont(Landroid/graphics/fonts/Font;)Landroid/graphics/fonts/FontFamily$Builder;
+	14:75
+	(Ljava/io/IOException; -> 76 r-BB@0x76)
+	(Ljava/lang/Exception; -> 6c r-BB@0x6c)
+
+r-BB@0x76 : [ r-BB@0xc ]
+	32      (00000076) add-int/lit8         v1, v1, 1
+	33      (0000007a) goto                 -37h
+
+r-BB@0x7c : [ r-BB@0x80 r-BB@0x82 ]
+	34      (0000007c) if-nez               v2, +003h
+
+r-BB@0x80 : 
+	35      (00000080) return-object        v7
+
+r-BB@0x82 : 
+	36      (00000082) invoke-virtual       v2, Landroid/graphics/fonts/FontFamily$Builder;->build()Landroid/graphics/fonts/FontFamily;
+	37      (00000088) move-result-object   v8
+	38      (0000008a) new-instance         v9, Landroid/graphics/Typeface$CustomFallbackBuilder;
+	39      (0000008e) invoke-direct        v9, v8, Landroid/graphics/Typeface$CustomFallbackBuilder;-><init>(Landroid/graphics/fonts/FontFamily;)V
+	40      (00000094) invoke-static        v8, v10, Lh0/h;->k0(Landroid/graphics/fonts/FontFamily; I)Landroid/graphics/fonts/Font;
+	41      (0000009a) move-result-object   v8
+	42      (0000009c) invoke-virtual       v8, Landroid/graphics/fonts/Font;->getStyle()Landroid/graphics/fonts/FontStyle;
+	43      (000000a2) move-result-object   v8
+	44      (000000a4) invoke-virtual       v9, v8, Landroid/graphics/Typeface$CustomFallbackBuilder;->setStyle(Landroid/graphics/fonts/FontStyle;)Landroid/graphics/Typeface$CustomFallbackBuilder;
+	45      (000000aa) move-result-object   v8
+	46      (000000ac) invoke-virtual       v8, Landroid/graphics/Typeface$CustomFallbackBuilder;->build()Landroid/graphics/Typeface;
+	47      (000000b2) move-result-object   v7
+	48      (000000b4) return-object        v7
+	82:b3
+	(Ljava/lang/Exception; -> 6c r-BB@0x6c)
+
+r-BB@0xb6 : 
+	49      (000000b6) const-string         v9, "TypefaceCompatApi29Impl"
+	50      (000000ba) const-string         v10, "Font load failed"
+	51      (000000be) invoke-static        v9, v10, v8, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+	52      (000000c4) return-object        v7
+

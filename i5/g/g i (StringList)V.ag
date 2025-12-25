@@ -1,0 +1,88 @@
+# Li5/g;->i(Ljava/lang/String; Ljava/util/List;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:java.lang.String
+# - v8:java.util.List
+#
+# - return:void
+
+i-BB@0x0 : [ i-BB@0x20 i-BB@0x44 ]
+	0       (00000000) const-string         v0, "Failed to close rollouts state file."
+	1       (00000004) iget-object          v1, v6, Li5/g;->a Lm5/c;
+	2       (00000008) const-string         v2, "rollouts-state"
+	3       (0000000c) invoke-virtual       v1, v7, v2, Lm5/c;->b(Ljava/lang/String; Ljava/lang/String;)Ljava/io/File;
+	4       (00000012) move-result-object   v1
+	5       (00000014) invoke-interface     v8, Ljava/util/List;->isEmpty()Z
+	6       (0000001a) move-result          v2
+	7       (0000001c) if-eqz               v2, +014h
+
+i-BB@0x20 : 
+	8       (00000020) new-instance         v8, Ljava/lang/StringBuilder;
+	9       (00000024) const-string         v0, "Rollout state is empty for session: "
+	10      (00000028) invoke-direct        v8, v0, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	11      (0000002e) invoke-virtual       v8, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	12      (00000034) invoke-virtual       v8, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	13      (0000003a) move-result-object   v7
+	14      (0000003c) invoke-static        v1, v7, Li5/g;->g(Ljava/io/File; Ljava/lang/String;)V
+	15      (00000042) return-void          
+
+i-BB@0x44 : [ i-BB@0x46 ]
+	16      (00000044) const/4              v7, 0
+
+i-BB@0x46 : [ i-BB@0x70 ]
+	17      (00000046) invoke-static        v8, Li5/g;->e(Ljava/util/List;)Ljava/lang/String;
+	18      (0000004c) move-result-object   v8
+	19      (0000004e) new-instance         v2, Ljava/io/BufferedWriter;
+	20      (00000052) new-instance         v3, Ljava/io/OutputStreamWriter;
+	21      (00000056) new-instance         v4, Ljava/io/FileOutputStream;
+	22      (0000005a) invoke-direct        v4, v1, Ljava/io/FileOutputStream;-><init>(Ljava/io/File;)V
+	23      (00000060) sget-object          v5, Li5/g;->b Ljava/nio/charset/Charset;
+	24      (00000064) invoke-direct        v3, v4, v5, Ljava/io/OutputStreamWriter;-><init>(Ljava/io/OutputStream; Ljava/nio/charset/Charset;)V
+	25      (0000006a) invoke-direct        v2, v3, Ljava/io/BufferedWriter;-><init>(Ljava/io/Writer;)V
+	46:6f
+	(Ljava/lang/Exception; -> 94 i-BB@0x94)
+	(Ljava/lang/Throwable; -> 8c i-BB@0x8c)
+
+i-BB@0x70 : 
+	26      (00000070) invoke-virtual       v2, v8, Ljava/io/Writer;->write(Ljava/lang/String;)V
+	27      (00000076) invoke-virtual       v2, Ljava/io/Writer;->flush()V
+	28      (0000007c) invoke-static        v2, v0, Lg5/g;->b(Ljava/io/Closeable; Ljava/lang/String;)V
+	29      (00000082) return-void          
+	70:7b
+	(Ljava/lang/Exception; -> 88 i-BB@0x88)
+	(Ljava/lang/Throwable; -> 84 i-BB@0x84)
+
+i-BB@0x84 : [ i-BB@0xb6 ]
+	30      (00000084) move-exception       v7
+	31      (00000086) goto                 +18h
+
+i-BB@0x88 : [ i-BB@0x9a ]
+	32      (00000088) move-exception       v7
+	33      (0000008a) goto                 +8h
+
+i-BB@0x8c : [ i-BB@0xb6 ]
+	34      (0000008c) move-exception       v8
+	35      (0000008e) move-object          v2, v7
+	36      (00000090) move-object          v7, v8
+	37      (00000092) goto                 +12h
+
+i-BB@0x94 : [ i-BB@0x9a ]
+	38      (00000094) move-exception       v8
+	39      (00000096) move-object          v2, v7
+	40      (00000098) move-object          v7, v8
+
+i-BB@0x9a : 
+	41      (0000009a) const-string         v8, "Error serializing rollouts state."
+	42      (0000009e) const-string         v3, "FirebaseCrashlytics"
+	43      (000000a2) invoke-static        v3, v8, v7, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+	44      (000000a8) invoke-static        v1, Li5/g;->f(Ljava/io/File;)V
+	45      (000000ae) invoke-static        v2, v0, Lg5/g;->b(Ljava/io/Closeable; Ljava/lang/String;)V
+	46      (000000b4) return-void          
+	9a:ad
+	(Ljava/lang/Throwable; -> 84 i-BB@0x84)
+
+i-BB@0xb6 : 
+	47      (000000b6) invoke-static        v2, v0, Lg5/g;->b(Ljava/io/Closeable; Ljava/lang/String;)V
+	48      (000000bc) throw                v7
+

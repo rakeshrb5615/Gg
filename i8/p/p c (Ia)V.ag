@@ -1,0 +1,47 @@
+# Li8/p;->c(I Lk8/a;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:int
+# - v7:k8.a
+#
+# - return:void
+
+c-BB@0x0 : [ c-BB@0x10 c-BB@0x18 ]
+	0       (00000000) iget-object          v0, v5, Li8/p;->array Ljava/util/concurrent/atomic/AtomicReferenceArray;
+	1       (00000004) invoke-virtual       v0, Ljava/util/concurrent/atomic/AtomicReferenceArray;->length()I
+	2       (0000000a) move-result          v1
+	3       (0000000c) if-ge                v6, v1, +006h
+
+c-BB@0x10 : 
+	4       (00000010) invoke-virtual       v0, v6, v7, Ljava/util/concurrent/atomic/AtomicReferenceArray;->set(I Ljava/lang/Object;)V
+	5       (00000016) return-void          
+
+c-BB@0x18 : [ c-BB@0x28 c-BB@0x2a ]
+	6       (00000018) new-instance         v2, Ljava/util/concurrent/atomic/AtomicReferenceArray;
+	7       (0000001c) add-int/lit8         v3, v6, 1
+	8       (00000020) mul-int/lit8         v4, v1, 2
+	9       (00000024) if-ge                v3, v4, +003h
+
+c-BB@0x28 : [ c-BB@0x2a ]
+	10      (00000028) move                 v3, v4
+
+c-BB@0x2a : [ c-BB@0x32 ]
+	11      (0000002a) invoke-direct        v2, v3, Ljava/util/concurrent/atomic/AtomicReferenceArray;-><init>(I)V
+	12      (00000030) const/4              v3, 0
+
+c-BB@0x32 : [ c-BB@0x36 c-BB@0x4a ]
+	13      (00000032) if-ge                v3, v1, +00ch
+
+c-BB@0x36 : [ c-BB@0x32 ]
+	14      (00000036) invoke-virtual       v0, v3, Ljava/util/concurrent/atomic/AtomicReferenceArray;->get(I)Ljava/lang/Object;
+	15      (0000003c) move-result-object   v4
+	16      (0000003e) invoke-virtual       v2, v3, v4, Ljava/util/concurrent/atomic/AtomicReferenceArray;->set(I Ljava/lang/Object;)V
+	17      (00000044) add-int/lit8         v3, v3, 1
+	18      (00000048) goto                 -bh
+
+c-BB@0x4a : 
+	19      (0000004a) invoke-virtual       v2, v6, v7, Ljava/util/concurrent/atomic/AtomicReferenceArray;->set(I Ljava/lang/Object;)V
+	20      (00000050) iput-object          v2, v5, Li8/p;->array Ljava/util/concurrent/atomic/AtomicReferenceArray;
+	21      (00000054) return-void          
+

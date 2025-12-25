@@ -1,0 +1,72 @@
+# Lg5/y;->a(Landroid/content/SharedPreferences; Ljava/lang/String;)Ljava/lang/String; [access_flags=public final synchronized]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:android.content.SharedPreferences
+# - v6:java.lang.String
+#
+# - return:java.lang.String
+
+a-BB@0x0 : [ a-BB@0x6 ]
+	0       (00000000) const-string         v0, "Created new Crashlytics installation ID: "
+	1       (00000004) monitor-enter        v4
+
+a-BB@0x6 : [ a-BB@0x74 a-BB@0x80 ]
+	2       (00000006) invoke-static        Ljava/util/UUID;->randomUUID()Ljava/util/UUID;
+	3       (0000000c) move-result-object   v1
+	4       (0000000e) invoke-virtual       v1, Ljava/util/UUID;->toString()Ljava/lang/String;
+	5       (00000014) move-result-object   v1
+	6       (00000016) sget-object          v2, Lg5/y;->g Ljava/util/regex/Pattern;
+	7       (0000001a) invoke-virtual       v2, v1, Ljava/util/regex/Pattern;->matcher(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;
+	8       (00000020) move-result-object   v1
+	9       (00000022) const-string         v2, ""
+	10      (00000026) invoke-virtual       v1, v2, Ljava/util/regex/Matcher;->replaceAll(Ljava/lang/String;)Ljava/lang/String;
+	11      (0000002c) move-result-object   v1
+	12      (0000002e) sget-object          v2, Ljava/util/Locale;->US Ljava/util/Locale;
+	13      (00000032) invoke-virtual       v1, v2, Ljava/lang/String;->toLowerCase(Ljava/util/Locale;)Ljava/lang/String;
+	14      (00000038) move-result-object   v1
+	15      (0000003a) new-instance         v2, Ljava/lang/StringBuilder;
+	16      (0000003e) invoke-direct        v2, v0, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	17      (00000044) invoke-virtual       v2, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	18      (0000004a) const-string         v0, " for FID: "
+	19      (0000004e) invoke-virtual       v2, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	20      (00000054) invoke-virtual       v2, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	21      (0000005a) invoke-virtual       v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	22      (00000060) move-result-object   v0
+	23      (00000062) const-string         v2, "FirebaseCrashlytics"
+	24      (00000066) const/4              v3, 2
+	25      (00000068) invoke-static        v2, v3, Landroid/util/Log;->isLoggable(Ljava/lang/String; I)Z
+	26      (0000006e) move-result          v2
+	27      (00000070) if-eqz               v2, +008h
+	6:a5
+	(Ljava/lang/Throwable; -> aa a-BB@0xaa)
+
+a-BB@0x74 : [ a-BB@0x80 ]
+	28      (00000074) const-string         v2, "FirebaseCrashlytics"
+	29      (00000078) const/4              v3, 0
+	30      (0000007a) invoke-static        v2, v0, v3, Landroid/util/Log;->v(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+	6:a5
+	(Ljava/lang/Throwable; -> aa a-BB@0xaa)
+
+a-BB@0x80 : 
+	31      (00000080) invoke-interface     v5, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
+	32      (00000086) move-result-object   v5
+	33      (00000088) const-string         v0, "crashlytics.installation.id"
+	34      (0000008c) invoke-interface     v5, v0, v1, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String; Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
+	35      (00000092) move-result-object   v5
+	36      (00000094) const-string         v0, "firebase.installation.id"
+	37      (00000098) invoke-interface     v5, v0, v6, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String; Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
+	38      (0000009e) move-result-object   v5
+	39      (000000a0) invoke-interface     v5, Landroid/content/SharedPreferences$Editor;->apply()V
+	40      (000000a6) monitor-exit         v4
+	41      (000000a8) return-object        v1
+
+a-BB@0xaa : [ a-BB@0xac ]
+	42      (000000aa) move-exception       v5
+
+a-BB@0xac : 
+	43      (000000ac) monitor-exit         v4
+	44      (000000ae) throw                v5
+	ac:ad
+	(Ljava/lang/Throwable; -> aa a-BB@0xaa)
+

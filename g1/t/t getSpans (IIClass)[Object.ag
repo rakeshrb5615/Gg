@@ -1,0 +1,44 @@
+# Lg1/t;->getSpans(I I Ljava/lang/Class;)[Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:int
+# - v3:int
+# - v4:java.lang.Class
+#
+# - return:java.lang.Object[]
+
+getSpans-BB@0x0 : [ getSpans-BB@0x8 getSpans-BB@0x42 ]
+	0       (00000000) iget-object          v0, v1, Lg1/t;->a Ljava/lang/Class;
+	1       (00000004) if-ne                v0, v4, +01fh
+
+getSpans-BB@0x8 : [ getSpans-BB@0x28 ]
+	2       (00000008) const-class          v0, Lg1/s;
+	3       (0000000c) invoke-super         v1, v2, v3, v0, Landroid/text/SpannableStringBuilder;->getSpans(I I Ljava/lang/Class;)[Ljava/lang/Object;
+	4       (00000012) move-result-object   v2
+	5       (00000014) check-cast           v2, [Lg1/s;
+	6       (00000018) array-length         v3, v2
+	7       (0000001a) invoke-static        v4, v3, Ljava/lang/reflect/Array;->newInstance(Ljava/lang/Class; I)Ljava/lang/Object;
+	8       (00000020) move-result-object   v3
+	9       (00000022) check-cast           v3, [Ljava/lang/Object;
+	10      (00000026) const/4              v4, 0
+
+getSpans-BB@0x28 : [ getSpans-BB@0x2e getSpans-BB@0x40 ]
+	11      (00000028) array-length         v0, v2
+	12      (0000002a) if-ge                v4, v0, +00bh
+
+getSpans-BB@0x2e : [ getSpans-BB@0x28 ]
+	13      (0000002e) aget-object          v0, v2, v4
+	14      (00000032) iget-object          v0, v0, Lg1/s;->a Ljava/lang/Object;
+	15      (00000036) aput-object          v0, v3, v4
+	16      (0000003a) add-int/lit8         v4, v4, 1
+	17      (0000003e) goto                 -bh
+
+getSpans-BB@0x40 : 
+	18      (00000040) return-object        v3
+
+getSpans-BB@0x42 : 
+	19      (00000042) invoke-super         v1, v2, v3, v4, Landroid/text/SpannableStringBuilder;->getSpans(I I Ljava/lang/Class;)[Ljava/lang/Object;
+	20      (00000048) move-result-object   v2
+	21      (0000004a) return-object        v2
+

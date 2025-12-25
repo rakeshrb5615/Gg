@@ -1,0 +1,115 @@
+# Lg5/i;->compare(Ljava/lang/Object; Ljava/lang/Object;)I [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:java.lang.Object
+# - v6:java.lang.Object
+#
+# - return:int
+
+compare-BB@0x0 : [ D:compare-BB@0xa 0:compare-BB@0xde 1:compare-BB@0xbc 2:compare-BB@0x9a 3:compare-BB@0x62 4:compare-BB@0x24 ]
+	0       (00000000) iget                 v0, v4, Lg5/i;->a I
+	1       (00000004) packed-switch        v0, +000007eh
+
+compare-BB@0xa : 
+	2       (0000000a) check-cast           v5, Ln2/c;
+	3       (0000000e) check-cast           v6, Ln2/c;
+	4       (00000012) iget                 v5, v5, Ln2/c;->c F
+	5       (00000016) iget                 v6, v6, Ln2/c;->c F
+	6       (0000001a) invoke-static        v5, v6, Ljava/lang/Float;->compare(F F)I
+	7       (00000020) move-result          v5
+	8       (00000022) return               v5
+
+compare-BB@0x24 : [ compare-BB@0x34 compare-BB@0x3c ]
+	9       (00000024) check-cast           v5, [B
+	10      (00000028) check-cast           v6, [B
+	11      (0000002c) array-length         v0, v5
+	12      (0000002e) array-length         v1, v6
+	13      (00000030) if-eq                v0, v1, +006h
+
+compare-BB@0x34 : [ compare-BB@0x60 ]
+	14      (00000034) array-length         v5, v5
+	15      (00000036) array-length         v6, v6
+	16      (00000038) sub-int/2addr        v5, v6
+	17      (0000003a) goto                 +13h
+
+compare-BB@0x3c : [ compare-BB@0x40 ]
+	18      (0000003c) const/4              v0, 0
+	19      (0000003e) move                 v1, v0
+
+compare-BB@0x40 : [ compare-BB@0x46 compare-BB@0x5e ]
+	20      (00000040) array-length         v2, v5
+	21      (00000042) if-ge                v1, v2, +00eh
+
+compare-BB@0x46 : [ compare-BB@0x52 compare-BB@0x58 ]
+	22      (00000046) aget-byte            v2, v5, v1
+	23      (0000004a) aget-byte            v3, v6, v1
+	24      (0000004e) if-eq                v2, v3, +005h
+
+compare-BB@0x52 : [ compare-BB@0x60 ]
+	25      (00000052) sub-int              v5, v2, v3
+	26      (00000056) goto                 +5h
+
+compare-BB@0x58 : [ compare-BB@0x40 ]
+	27      (00000058) add-int/lit8         v1, v1, 1
+	28      (0000005c) goto                 -eh
+
+compare-BB@0x5e : [ compare-BB@0x60 ]
+	29      (0000005e) move                 v5, v0
+
+compare-BB@0x60 : 
+	30      (00000060) return               v5
+
+compare-BB@0x62 : 
+	31      (00000062) check-cast           v5, Ljava/io/File;
+	32      (00000066) check-cast           v6, Ljava/io/File;
+	33      (0000006a) invoke-virtual       v5, Ljava/io/File;->getName()Ljava/lang/String;
+	34      (00000070) move-result-object   v5
+	35      (00000072) sget                 v0, Lm5/a;->f I
+	36      (00000076) const/4              v1, 0
+	37      (00000078) invoke-virtual       v5, v1, v0, Ljava/lang/String;->substring(I I)Ljava/lang/String;
+	38      (0000007e) move-result-object   v5
+	39      (00000080) invoke-virtual       v6, Ljava/io/File;->getName()Ljava/lang/String;
+	40      (00000086) move-result-object   v6
+	41      (00000088) invoke-virtual       v6, v1, v0, Ljava/lang/String;->substring(I I)Ljava/lang/String;
+	42      (0000008e) move-result-object   v6
+	43      (00000090) invoke-virtual       v5, v6, Ljava/lang/String;->compareTo(Ljava/lang/String;)I
+	44      (00000096) move-result          v5
+	45      (00000098) return               v5
+
+compare-BB@0x9a : 
+	46      (0000009a) check-cast           v5, Ljava/io/File;
+	47      (0000009e) check-cast           v6, Ljava/io/File;
+	48      (000000a2) invoke-virtual       v6, Ljava/io/File;->getName()Ljava/lang/String;
+	49      (000000a8) move-result-object   v6
+	50      (000000aa) invoke-virtual       v5, Ljava/io/File;->getName()Ljava/lang/String;
+	51      (000000b0) move-result-object   v5
+	52      (000000b2) invoke-virtual       v6, v5, Ljava/lang/String;->compareTo(Ljava/lang/String;)I
+	53      (000000b8) move-result          v5
+	54      (000000ba) return               v5
+
+compare-BB@0xbc : 
+	55      (000000bc) check-cast           v5, Lj5/q1;
+	56      (000000c0) check-cast           v6, Lj5/q1;
+	57      (000000c4) check-cast           v5, Lj5/f0;
+	58      (000000c8) iget-object          v5, v5, Lj5/f0;->a Ljava/lang/String;
+	59      (000000cc) check-cast           v6, Lj5/f0;
+	60      (000000d0) iget-object          v6, v6, Lj5/f0;->a Ljava/lang/String;
+	61      (000000d4) invoke-virtual       v5, v6, Ljava/lang/String;->compareTo(Ljava/lang/String;)I
+	62      (000000da) move-result          v5
+	63      (000000dc) return               v5
+
+compare-BB@0xde : 
+	64      (000000de) check-cast           v5, Ljava/io/File;
+	65      (000000e2) check-cast           v6, Ljava/io/File;
+	66      (000000e6) invoke-virtual       v6, Ljava/io/File;->lastModified()J
+	67      (000000ec) move-result-wide     v0
+	68      (000000ee) invoke-virtual       v5, Ljava/io/File;->lastModified()J
+	69      (000000f4) move-result-wide     v5
+	70      (000000f6) invoke-static        v0, v1, v5, v6, Ljava/lang/Long;->compare(J J)I
+	71      (000000fc) move-result          v5
+	72      (000000fe) return               v5
+
+compare-BB@0x100 : 
+	73      (00000100) packed-switch-payload 0 1 2 3 4
+

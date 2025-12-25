@@ -1,0 +1,51 @@
+# Lj6/s;->p(Ly3/f;)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:y3.f
+#
+# - return:void
+
+p-BB@0x0 : [ p-BB@0x6 ]
+	0       (00000000) iget-object          v0, v2, Lj6/s;->b Ljava/lang/Object;
+	1       (00000004) monitor-enter        v0
+
+p-BB@0x6 : [ p-BB@0x12 p-BB@0x34 ]
+	2       (00000006) invoke-virtual       v2, v3, Lj6/s;->l(Ly3/f;)Z
+	3       (0000000c) move-result          v3
+	4       (0000000e) if-eqz               v3, +013h
+	6:39
+	(Ljava/lang/Throwable; -> 30 p-BB@0x30)
+
+p-BB@0x12 : [ p-BB@0x22 p-BB@0x34 ]
+	5       (00000012) iget-object          v3, v2, Lj6/s;->d Ljava/lang/Object;
+	6       (00000016) check-cast           v3, Ly3/l;
+	7       (0000001a) iget-boolean         v1, v3, Ly3/l;->c Z
+	8       (0000001e) if-eqz               v1, +00bh
+	6:39
+	(Ljava/lang/Throwable; -> 30 p-BB@0x30)
+
+p-BB@0x22 : [ p-BB@0x34 ]
+	9       (00000022) const/4              v1, 0
+	10      (00000024) iput-boolean         v1, v3, Ly3/l;->c Z
+	11      (00000028) invoke-virtual       v2, v3, Lj6/s;->r(Ly3/l;)V
+	12      (0000002e) goto                 +3h
+	6:39
+	(Ljava/lang/Throwable; -> 30 p-BB@0x30)
+
+p-BB@0x30 : [ p-BB@0x38 ]
+	13      (00000030) move-exception       v3
+	14      (00000032) goto                 +3h
+	6:39
+	(Ljava/lang/Throwable; -> 30 p-BB@0x30)
+
+p-BB@0x34 : 
+	15      (00000034) monitor-exit         v0
+	16      (00000036) return-void          
+	6:39
+	(Ljava/lang/Throwable; -> 30 p-BB@0x30)
+
+p-BB@0x38 : 
+	17      (00000038) monitor-exit         v0
+	18      (0000003a) throw                v3
+

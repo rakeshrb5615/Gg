@@ -1,0 +1,26 @@
+# Lj5/t1;->c(Ljava/lang/String;)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:java.lang.String
+#
+# - return:void
+
+c-BB@0x0 : [ c-BB@0x10 c-BB@0x12 ]
+	0       (00000000) invoke-virtual       v2, Ljava/lang/String;->length()I
+	1       (00000006) move-result          v0
+	2       (00000008) const/16             v1, 127
+	3       (0000000c) if-gt                v0, v1, +003h
+
+c-BB@0x10 : [ c-BB@0x1c ]
+	4       (00000010) goto                 +6h
+
+c-BB@0x12 : [ c-BB@0x1c ]
+	5       (00000012) const/4              v0, 0
+	6       (00000014) invoke-virtual       v2, v0, v1, Ljava/lang/String;->substring(I I)Ljava/lang/String;
+	7       (0000001a) move-result-object   v2
+
+c-BB@0x1c : 
+	8       (0000001c) invoke-static        v2, Landroid/os/Trace;->beginSection(Ljava/lang/String;)V
+	9       (00000022) return-void          
+

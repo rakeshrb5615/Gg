@@ -1,0 +1,174 @@
+# Lg5/n;->e()Ljava/lang/String; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v6
+#
+# - return:java.lang.String
+
+e-BB@0x0 : [ e-BB@0x1a e-BB@0x1e ]
+	0       (00000000) const-string         v0, "com.google.firebase.crashlytics.version_control_info"
+	1       (00000004) const-string         v1, "string"
+	2       (00000008) iget-object          v2, v6, Lg5/n;->a Landroid/content/Context;
+	3       (0000000c) invoke-static        v2, v0, v1, Lg5/g;->d(Landroid/content/Context; Ljava/lang/String; Ljava/lang/String;)I
+	4       (00000012) move-result          v0
+	5       (00000014) const/4              v1, 0
+	6       (00000016) if-nez               v0, +004h
+
+e-BB@0x1a : [ e-BB@0x2e ]
+	7       (0000001a) move-object          v0, v1
+	8       (0000001c) goto                 +9h
+
+e-BB@0x1e : [ e-BB@0x2e ]
+	9       (0000001e) invoke-virtual       v2, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+	10      (00000024) move-result-object   v2
+	11      (00000026) invoke-virtual       v2, v0, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
+	12      (0000002c) move-result-object   v0
+
+e-BB@0x2e : [ e-BB@0x3a e-BB@0x66 ]
+	13      (0000002e) const/4              v2, 3
+	14      (00000030) const/4              v3, 0
+	15      (00000032) const-string         v4, "FirebaseCrashlytics"
+	16      (00000036) if-eqz               v0, +018h
+
+e-BB@0x3a : [ e-BB@0x46 e-BB@0x50 ]
+	17      (0000003a) invoke-static        v4, v2, Landroid/util/Log;->isLoggable(Ljava/lang/String; I)Z
+	18      (00000040) move-result          v2
+	19      (00000042) if-eqz               v2, +007h
+
+e-BB@0x46 : [ e-BB@0x50 ]
+	20      (00000046) const-string         v2, "Read version control info from string resource"
+	21      (0000004a) invoke-static        v4, v2, v1, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+
+e-BB@0x50 : 
+	22      (00000050) sget-object          v1, Lg5/n;->s Ljava/nio/charset/Charset;
+	23      (00000054) invoke-virtual       v0, v1, Ljava/lang/String;->getBytes(Ljava/nio/charset/Charset;)[B
+	24      (0000005a) move-result-object   v0
+	25      (0000005c) invoke-static        v0, v3, Landroid/util/Base64;->encodeToString([B I)Ljava/lang/String;
+	26      (00000062) move-result-object   v0
+	27      (00000064) return-object        v0
+
+e-BB@0x66 : [ e-BB@0x76 e-BB@0x84 ]
+	28      (00000066) const-class          v0, Lg5/n;
+	29      (0000006a) invoke-virtual       v0, Ljava/lang/Class;->getClassLoader()Ljava/lang/ClassLoader;
+	30      (00000070) move-result-object   v0
+	31      (00000072) if-nez               v0, +009h
+
+e-BB@0x76 : [ e-BB@0x90 ]
+	32      (00000076) const-string         v0, "Couldn't get Class Loader"
+	33      (0000007a) invoke-static        v4, v0, v1, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+	34      (00000080) move-object          v0, v1
+	35      (00000082) goto                 +7h
+
+e-BB@0x84 : [ e-BB@0x90 ]
+	36      (00000084) const-string         v5, "META-INF/version-control-info.textproto"
+	37      (00000088) invoke-virtual       v0, v5, Ljava/lang/ClassLoader;->getResourceAsStream(Ljava/lang/String;)Ljava/io/InputStream;
+	38      (0000008e) move-result-object   v0
+
+e-BB@0x90 : [ e-BB@0x94 e-BB@0x11c ]
+	39      (00000090) if-eqz               v0, +046h
+
+e-BB@0x94 : [ e-BB@0xa4 e-BB@0xaa ]
+	40      (00000094) const-string         v5, "Read version control info from file"
+	41      (00000098) invoke-static        v4, v2, Landroid/util/Log;->isLoggable(Ljava/lang/String; I)Z
+	42      (0000009e) move-result          v2
+	43      (000000a0) if-eqz               v2, +005h
+	94:b3
+	(Ljava/lang/Throwable; -> f4 e-BB@0xf4)
+
+e-BB@0xa4 : [ e-BB@0xaa ]
+	44      (000000a4) invoke-static        v4, v5, v1, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+	94:b3
+	(Ljava/lang/Throwable; -> f4 e-BB@0xf4)
+
+e-BB@0xaa : [ e-BB@0xb8 ]
+	45      (000000aa) new-instance         v1, Ljava/io/ByteArrayOutputStream;
+	46      (000000ae) invoke-direct        v1, Ljava/io/ByteArrayOutputStream;-><init>()V
+	47      (000000b4) const/16             v2, 1024
+
+e-BB@0xb8 : [ e-BB@0xbc ]
+	48      (000000b8) new-array            v2, v2, [B
+	b8:dd
+	(Ljava/lang/Throwable; -> d2 e-BB@0xd2)
+
+e-BB@0xbc : [ e-BB@0xca e-BB@0xd6 ]
+	49      (000000bc) invoke-virtual       v0, v2, Ljava/io/InputStream;->read([B)I
+	50      (000000c2) move-result          v4
+	51      (000000c4) const/4              v5, -1
+	52      (000000c6) if-eq                v4, v5, +008h
+	b8:dd
+	(Ljava/lang/Throwable; -> d2 e-BB@0xd2)
+
+e-BB@0xca : [ e-BB@0xbc ]
+	53      (000000ca) invoke-virtual       v1, v2, v3, v4, Ljava/io/ByteArrayOutputStream;->write([B I I)V
+	54      (000000d0) goto                 -ah
+	b8:dd
+	(Ljava/lang/Throwable; -> d2 e-BB@0xd2)
+
+e-BB@0xd2 : [ e-BB@0xf8 ]
+	55      (000000d2) move-exception       v2
+	56      (000000d4) goto                 +12h
+	b8:dd
+	(Ljava/lang/Throwable; -> d2 e-BB@0xd2)
+
+e-BB@0xd6 : [ e-BB@0xde ]
+	57      (000000d6) invoke-virtual       v1, Ljava/io/ByteArrayOutputStream;->toByteArray()[B
+	58      (000000dc) move-result-object   v2
+	b8:dd
+	(Ljava/lang/Throwable; -> d2 e-BB@0xd2)
+
+e-BB@0xde : 
+	59      (000000de) invoke-virtual       v1, Ljava/io/ByteArrayOutputStream;->close()V
+	60      (000000e4) invoke-static        v2, v3, Landroid/util/Base64;->encodeToString([B I)Ljava/lang/String;
+	61      (000000ea) move-result-object   v1
+	62      (000000ec) invoke-virtual       v0, Ljava/io/InputStream;->close()V
+	63      (000000f2) return-object        v1
+	de:eb
+	(Ljava/lang/Throwable; -> f4 e-BB@0xf4)
+
+e-BB@0xf4 : [ e-BB@0x10a ]
+	64      (000000f4) move-exception       v1
+	65      (000000f6) goto                 +ah
+
+e-BB@0xf8 : [ e-BB@0x108 ]
+	66      (000000f8) invoke-virtual       v1, Ljava/io/ByteArrayOutputStream;->close()V
+	67      (000000fe) goto                 +5h
+	f8:fd
+	(Ljava/lang/Throwable; -> 100 e-BB@0x100)
+
+e-BB@0x100 : [ e-BB@0x102 ]
+	68      (00000100) move-exception       v1
+
+e-BB@0x102 : [ e-BB@0x108 ]
+	69      (00000102) invoke-virtual       v2, v1, Ljava/lang/Throwable;->addSuppressed(Ljava/lang/Throwable;)V
+	102:109
+	(Ljava/lang/Throwable; -> f4 e-BB@0xf4)
+
+e-BB@0x108 : 
+	70      (00000108) throw                v2
+	102:109
+	(Ljava/lang/Throwable; -> f4 e-BB@0xf4)
+
+e-BB@0x10a : [ e-BB@0x11a ]
+	71      (0000010a) invoke-virtual       v0, Ljava/io/InputStream;->close()V
+	72      (00000110) goto                 +5h
+	10a:10f
+	(Ljava/lang/Throwable; -> 112 e-BB@0x112)
+
+e-BB@0x112 : [ e-BB@0x11a ]
+	73      (00000112) move-exception       v0
+	74      (00000114) invoke-virtual       v1, v0, Ljava/lang/Throwable;->addSuppressed(Ljava/lang/Throwable;)V
+
+e-BB@0x11a : 
+	75      (0000011a) throw                v1
+
+e-BB@0x11c : [ e-BB@0x120 e-BB@0x126 ]
+	76      (0000011c) if-eqz               v0, +005h
+
+e-BB@0x120 : [ e-BB@0x126 ]
+	77      (00000120) invoke-virtual       v0, Ljava/io/InputStream;->close()V
+
+e-BB@0x126 : 
+	78      (00000126) const-string         v0, "No version control information found"
+	79      (0000012a) invoke-static        v4, v0, v1, Landroid/util/Log;->i(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+	80      (00000130) return-object        v1
+

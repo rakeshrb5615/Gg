@@ -1,0 +1,33 @@
+# Li8/a;->f(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object; [access_flags=public static final]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:java.lang.Object
+# - v3:java.lang.Object
+#
+# - return:java.lang.Object
+
+f-BB@0x0 : [ f-BB@0x4 f-BB@0x6 ]
+	0       (00000000) if-nez               v2, +003h
+
+f-BB@0x4 : 
+	1       (00000004) return-object        v3
+
+f-BB@0x6 : [ f-BB@0xe f-BB@0x1c ]
+	2       (00000006) instance-of          v0, v2, Ljava/util/ArrayList;
+	3       (0000000a) if-eqz               v0, +009h
+
+f-BB@0xe : 
+	4       (0000000e) move-object          v0, v2
+	5       (00000010) check-cast           v0, Ljava/util/ArrayList;
+	6       (00000014) invoke-virtual       v0, v3, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	7       (0000001a) return-object        v2
+
+f-BB@0x1c : 
+	8       (0000001c) new-instance         v0, Ljava/util/ArrayList;
+	9       (00000020) const/4              v1, 4
+	10      (00000022) invoke-direct        v0, v1, Ljava/util/ArrayList;-><init>(I)V
+	11      (00000028) invoke-virtual       v0, v2, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	12      (0000002e) invoke-virtual       v0, v3, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	13      (00000034) return-object        v0
+

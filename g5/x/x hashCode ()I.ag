@@ -1,0 +1,36 @@
+# Lg5/x;->hashCode()I [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v3
+#
+# - return:int
+
+hashCode-BB@0x0 : [ hashCode-BB@0xa hashCode-BB@0xe ]
+	0       (00000000) const/4              v0, 0
+	1       (00000002) iget-object          v1, v3, Lg5/x;->a Ljava/lang/String;
+	2       (00000006) if-nez               v1, +004h
+
+hashCode-BB@0xa : [ hashCode-BB@0x16 ]
+	3       (0000000a) move                 v1, v0
+	4       (0000000c) goto                 +5h
+
+hashCode-BB@0xe : [ hashCode-BB@0x16 ]
+	5       (0000000e) invoke-virtual       v1, Ljava/lang/String;->hashCode()I
+	6       (00000014) move-result          v1
+
+hashCode-BB@0x16 : [ hashCode-BB@0x22 hashCode-BB@0x24 ]
+	7       (00000016) mul-int/lit8         v1, v1, 31
+	8       (0000001a) iget-object          v2, v3, Lg5/x;->b Ljava/lang/String;
+	9       (0000001e) if-nez               v2, +003h
+
+hashCode-BB@0x22 : [ hashCode-BB@0x2c ]
+	10      (00000022) goto                 +5h
+
+hashCode-BB@0x24 : [ hashCode-BB@0x2c ]
+	11      (00000024) invoke-virtual       v2, Ljava/lang/String;->hashCode()I
+	12      (0000002a) move-result          v0
+
+hashCode-BB@0x2c : 
+	13      (0000002c) add-int/2addr        v1, v0
+	14      (0000002e) return               v1
+

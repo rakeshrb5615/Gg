@@ -1,0 +1,37 @@
+# Li5/k;->A(I [B I I)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:int
+# - v7:byte[]
+# - v8:int
+# - v9:int
+#
+# - return:void
+
+A-BB@0x0 : [ A-BB@0x18 A-BB@0x28 ]
+	0       (00000000) invoke-virtual       v5, v6, Li5/k;->D(I)I
+	1       (00000006) move-result          v6
+	2       (00000008) add-int              v0, v6, v9
+	3       (0000000c) iget                 v1, v5, Li5/k;->b I
+	4       (00000010) iget-object          v2, v5, Li5/k;->a Ljava/io/RandomAccessFile;
+	5       (00000014) if-gt                v0, v1, +00ah
+
+A-BB@0x18 : 
+	6       (00000018) int-to-long          v0, v6
+	7       (0000001a) invoke-virtual       v2, v0, v1, Ljava/io/RandomAccessFile;->seek(J)V
+	8       (00000020) invoke-virtual       v2, v7, v8, v9, Ljava/io/RandomAccessFile;->readFully([B I I)V
+	9       (00000026) return-void          
+
+A-BB@0x28 : 
+	10      (00000028) sub-int/2addr        v1, v6
+	11      (0000002a) int-to-long          v3, v6
+	12      (0000002c) invoke-virtual       v2, v3, v4, Ljava/io/RandomAccessFile;->seek(J)V
+	13      (00000032) invoke-virtual       v2, v7, v8, v1, Ljava/io/RandomAccessFile;->readFully([B I I)V
+	14      (00000038) const-wide/16        v3, 16
+	15      (0000003c) invoke-virtual       v2, v3, v4, Ljava/io/RandomAccessFile;->seek(J)V
+	16      (00000042) add-int/2addr        v8, v1
+	17      (00000044) sub-int/2addr        v9, v1
+	18      (00000046) invoke-virtual       v2, v7, v8, v9, Ljava/io/RandomAccessFile;->readFully([B I I)V
+	19      (0000004c) return-void          
+

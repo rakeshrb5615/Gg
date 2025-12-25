@@ -1,0 +1,45 @@
+# Lh/n;->execute(Ljava/lang/Runnable;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:java.lang.Runnable
+#
+# - return:void
+
+execute-BB@0x0 : [ execute-BB@0x6 ]
+	0       (00000000) iget-object          v0, v4, Lh/n;->a Ljava/lang/Object;
+	1       (00000004) monitor-enter        v0
+
+execute-BB@0x6 : [ execute-BB@0x24 execute-BB@0x30 ]
+	2       (00000006) iget-object          v1, v4, Lh/n;->b Ljava/util/ArrayDeque;
+	3       (0000000a) new-instance         v2, La5/i;
+	4       (0000000e) const/4              v3, 7
+	5       (00000010) invoke-direct        v2, v3, v4, v5, La5/i;-><init>(I Ljava/lang/Object; Ljava/lang/Object;)V
+	6       (00000016) invoke-virtual       v1, v2, Ljava/util/ArrayDeque;->add(Ljava/lang/Object;)Z
+	7       (0000001c) iget-object          v5, v4, Lh/n;->d Ljava/lang/Runnable;
+	8       (00000020) if-nez               v5, +008h
+	6:35
+	(Ljava/lang/Throwable; -> 2c execute-BB@0x2c)
+
+execute-BB@0x24 : [ execute-BB@0x30 ]
+	9       (00000024) invoke-virtual       v4, Lh/n;->a()V
+	10      (0000002a) goto                 +3h
+	6:35
+	(Ljava/lang/Throwable; -> 2c execute-BB@0x2c)
+
+execute-BB@0x2c : [ execute-BB@0x34 ]
+	11      (0000002c) move-exception       v5
+	12      (0000002e) goto                 +3h
+	6:35
+	(Ljava/lang/Throwable; -> 2c execute-BB@0x2c)
+
+execute-BB@0x30 : 
+	13      (00000030) monitor-exit         v0
+	14      (00000032) return-void          
+	6:35
+	(Ljava/lang/Throwable; -> 2c execute-BB@0x2c)
+
+execute-BB@0x34 : 
+	15      (00000034) monitor-exit         v0
+	16      (00000036) throw                v5
+

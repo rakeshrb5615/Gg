@@ -1,0 +1,452 @@
+# Lg5/l;->call()Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v34
+#
+# - return:java.lang.Object
+
+call-BB@0x0 : [ call-BB@0x36 call-BB@0x46 ]
+	0       (00000000) move-object/from16   v1, v34
+	1       (00000004) const-wide/16        v2, 1000
+	2       (00000008) iget-wide            v4, v1, Lg5/l;->a J
+	3       (0000000c) div-long             v2, v4, v2
+	4       (00000010) iget-object          v6, v1, Lg5/l;->e Lg5/n;
+	5       (00000014) iget-object          v0, v6, Lg5/n;->m La5/z;
+	6       (00000018) iget-object          v0, v0, La5/z;->b Ljava/lang/Object;
+	7       (0000001c) check-cast           v0, Lm5/a;
+	8       (00000020) invoke-virtual       v0, Lm5/a;->c()Ljava/util/NavigableSet;
+	9       (00000026) move-result-object   v0
+	10      (00000028) invoke-interface     v0, Ljava/util/Set;->isEmpty()Z
+	11      (0000002e) move-result          v7
+	12      (00000030) const/4              v8, 0
+	13      (00000032) if-nez               v7, +00ah
+
+call-BB@0x36 : [ call-BB@0x48 ]
+	14      (00000036) invoke-interface     v0, Ljava/util/SortedSet;->first()Ljava/lang/Object;
+	15      (0000003c) move-result-object   v0
+	16      (0000003e) check-cast           v0, Ljava/lang/String;
+	17      (00000042) move-object          v7, v0
+	18      (00000044) goto                 +2h
+
+call-BB@0x46 : [ call-BB@0x48 ]
+	19      (00000046) move-object          v7, v8
+
+call-BB@0x48 : [ call-BB@0x50 call-BB@0x64 ]
+	20      (00000048) const-string         v9, "FirebaseCrashlytics"
+	21      (0000004c) if-nez               v7, +00ch
+
+call-BB@0x50 : 
+	22      (00000050) const-string         v0, "Tried to write a fatal exception while no session was open."
+	23      (00000054) invoke-static        v9, v0, v8, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+	24      (0000005a) invoke-static        v8, Lcom/google/android/gms/tasks/Tasks;->forResult(Ljava/lang/Object;)Lcom/google/android/gms/tasks/Task;
+	25      (00000060) move-result-object   v0
+	26      (00000062) return-object        v0
+
+call-BB@0x64 : [ call-BB@0x92 call-BB@0x98 ]
+	27      (00000064) iget-object          v0, v6, Lg5/n;->c Lk2/c;
+	28      (00000068) invoke-virtual       v0, Lk2/c;->k()V
+	29      (0000006e) iget-object          v0, v6, Lg5/n;->m La5/z;
+	30      (00000072) invoke-virtual       v0, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	31      (00000078) const-string         v10, "Persisting fatal event for session "
+	32      (0000007c) invoke-virtual       v10, v7, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	33      (00000082) move-result-object   v10
+	34      (00000084) const/4              v11, 2
+	35      (00000086) invoke-static        v9, v11, Landroid/util/Log;->isLoggable(Ljava/lang/String; I)Z
+	36      (0000008c) move-result          v11
+	37      (0000008e) if-eqz               v11, +005h
+
+call-BB@0x92 : [ call-BB@0x98 ]
+	38      (00000092) invoke-static        v9, v10, v8, Landroid/util/Log;->v(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+
+call-BB@0x98 : [ call-BB@0xca ]
+	39      (00000098) iget-object          v10, v0, La5/z;->a Ljava/lang/Object;
+	40      (0000009c) check-cast           v10, Lg5/t;
+	41      (000000a0) iget-object          v11, v10, Lg5/t;->a Landroid/content/Context;
+	42      (000000a4) invoke-virtual       v11, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+	43      (000000aa) move-result-object   v12
+	44      (000000ac) invoke-virtual       v12, Landroid/content/res/Resources;->getConfiguration()Landroid/content/res/Configuration;
+	45      (000000b2) move-result-object   v12
+	46      (000000b4) iget                 v12, v12, Landroid/content/res/Configuration;->orientation I
+	47      (000000b8) iget-object          v13, v10, Lg5/t;->d Ln0/a;
+	48      (000000bc) new-instance         v14, Ljava/util/Stack;
+	49      (000000c0) invoke-direct        v14, Ljava/util/Stack;-><init>()V
+	50      (000000c6) iget-object          v15, v1, Lg5/l;->b Ljava/lang/Throwable;
+
+call-BB@0xca : [ call-BB@0xce call-BB@0xde ]
+	51      (000000ca) if-eqz               v15, +00ah
+
+call-BB@0xce : [ call-BB@0xca ]
+	52      (000000ce) invoke-virtual       v14, v15, Ljava/util/Stack;->push(Ljava/lang/Object;)Ljava/lang/Object;
+	53      (000000d4) invoke-virtual       v15, Ljava/lang/Throwable;->getCause()Ljava/lang/Throwable;
+	54      (000000da) move-result-object   v15
+	55      (000000dc) goto                 -9h
+
+call-BB@0xde : [ call-BB@0xe2 ]
+	56      (000000de) move-object/from16   v20, v8
+
+call-BB@0xe2 : [ call-BB@0xee call-BB@0x136 ]
+	57      (000000e2) invoke-virtual       v14, Ljava/util/AbstractCollection;->isEmpty()Z
+	58      (000000e8) move-result          v15
+	59      (000000ea) if-nez               v15, +026h
+
+call-BB@0xee : [ call-BB@0xe2 ]
+	60      (000000ee) invoke-virtual       v14, Ljava/util/Stack;->pop()Ljava/lang/Object;
+	61      (000000f4) move-result-object   v15
+	62      (000000f6) check-cast           v15, Ljava/lang/Throwable;
+	63      (000000fa) new-instance         v16, Lj6/s;
+	64      (000000fe) invoke-virtual       v15, Ljava/lang/Throwable;->getLocalizedMessage()Ljava/lang/String;
+	65      (00000104) move-result-object   v17
+	66      (00000106) invoke-virtual       v15, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	67      (0000010c) move-result-object   v18
+	68      (0000010e) invoke-virtual/range v18, Ljava/lang/Class;->getName()Ljava/lang/String;
+	69      (00000114) move-result-object   v18
+	70      (00000116) invoke-virtual       v15, Ljava/lang/Throwable;->getStackTrace()[Ljava/lang/StackTraceElement;
+	71      (0000011c) move-result-object   v15
+	72      (0000011e) invoke-virtual       v13, v15, Ln0/a;->f([Ljava/lang/StackTraceElement;)[Ljava/lang/StackTraceElement;
+	73      (00000124) move-result-object   v19
+	74      (00000126) const/16             v21, 10
+	75      (0000012a) invoke-direct/range  v16 ... v21, Lj6/s;-><init>(Ljava/lang/Object; Ljava/lang/Object; Ljava/lang/Object; Ljava/lang/Object; I)V
+	76      (00000130) move-object/from16   v20, v16
+	77      (00000134) goto                 -29h
+
+call-BB@0x136 : [ call-BB@0x17e call-BB@0x19a ]
+	78      (00000136) move-object/from16   v15, v20
+	79      (0000013a) new-instance         v14, Lj5/o0;
+	80      (0000013e) invoke-direct        v14, Ljava/lang/Object;-><init>()V
+	81      (00000144) move-object/from16   v21, v8
+	82      (00000148) const-string         v8, "crash"
+	83      (0000014c) iput-object          v8, v14, Lj5/o0;->b Ljava/lang/String;
+	84      (00000150) iput-wide            v2, v14, Lj5/o0;->a J
+	85      (00000154) iget-byte            v2, v14, Lj5/o0;->g B
+	86      (00000158) const/4              v3, 1
+	87      (0000015a) or-int/2addr         v2, v3
+	88      (0000015c) int-to-byte          v2, v2
+	89      (0000015e) iput-byte            v2, v14, Lj5/o0;->g B
+	90      (00000162) sget-object          v2, Ld5/e;->a Ld5/e;
+	91      (00000166) invoke-virtual       v2, v11, Ld5/e;->b(Landroid/content/Context;)Lj5/c2;
+	92      (0000016c) move-result-object   v18
+	93      (0000016e) move-object/from16   v2, v18
+	94      (00000172) check-cast           v2, Lj5/z0;
+	95      (00000176) iget                 v2, v2, Lj5/z0;->c I
+	96      (0000017a) if-lez               v2, +010h
+
+call-BB@0x17e : [ call-BB@0x186 call-BB@0x18a ]
+	97      (0000017e) const/16             v8, 100
+	98      (00000182) if-eq                v2, v8, +004h
+
+call-BB@0x186 : [ call-BB@0x18c ]
+	99      (00000186) move                 v2, v3
+	100     (00000188) goto                 +2h
+
+call-BB@0x18a : [ call-BB@0x18c ]
+	101     (0000018a) const/4              v2, 0
+
+call-BB@0x18c : [ call-BB@0x19e ]
+	102     (0000018c) invoke-static        v2, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+	103     (00000192) move-result-object   v2
+	104     (00000194) move-object/from16   v17, v2
+	105     (00000198) goto                 +3h
+
+call-BB@0x19a : [ call-BB@0x19e ]
+	106     (0000019a) move-object/from16   v17, v21
+
+call-BB@0x19e : [ call-BB@0x1d6 call-BB@0x50a ]
+	107     (0000019e) invoke-static        v11, Ld5/e;->a(Landroid/content/Context;)Ljava/util/ArrayList;
+	108     (000001a4) move-result-object   v19
+	109     (000001a6) int-to-byte          v2, v3
+	110     (000001a8) new-instance         v8, Ljava/util/ArrayList;
+	111     (000001ac) invoke-direct        v8, Ljava/util/ArrayList;-><init>()V
+	112     (000001b2) iget-object          v11, v15, Lj6/s;->d Ljava/lang/Object;
+	113     (000001b6) check-cast           v11, [Ljava/lang/StackTraceElement;
+	114     (000001ba) iget-object          v3, v1, Lg5/l;->c Ljava/lang/Thread;
+	115     (000001be) move/from16          v20, v12
+	116     (000001c2) invoke-virtual       v3, Ljava/lang/Thread;->getName()Ljava/lang/String;
+	117     (000001c8) move-result-object   v12
+	118     (000001ca) move-object/from16   v16, v14
+	119     (000001ce) const-string         v14, "Null name"
+	120     (000001d2) if-eqz               v12, +19ch
+
+call-BB@0x1d6 : [ call-BB@0x1f0 call-BB@0x4fa ]
+	121     (000001d6) move-object/from16   v22, v9
+	122     (000001da) const/4              v1, 1
+	123     (000001dc) int-to-byte          v9, v1
+	124     (000001de) const/4              v1, 4
+	125     (000001e0) invoke-static        v11, v1, Lg5/t;->d([Ljava/lang/StackTraceElement; I)Ljava/util/List;
+	126     (000001e6) move-result-object   v11
+	127     (000001e8) const-string         v1, "Null frames"
+	128     (000001ec) if-eqz               v11, +187h
+
+call-BB@0x1f0 : [ call-BB@0x206 call-BB@0x4ce ]
+	129     (000001f0) move-wide/from16     v24, v4
+	130     (000001f4) const-string         v4, " importance"
+	131     (000001f8) const-string         v5, "Missing required properties:"
+	132     (000001fc) move-object/from16   v26, v6
+	133     (00000200) const/4              v6, 1
+	134     (00000202) if-ne                v9, v6, +166h
+
+call-BB@0x206 : [ call-BB@0x234 ]
+	135     (00000206) new-instance         v6, Lj5/v0;
+	136     (0000020a) move-object/from16   v27, v7
+	137     (0000020e) const/4              v7, 4
+	138     (00000210) invoke-direct        v6, v12, v7, v11, Lj5/v0;-><init>(Ljava/lang/String; I Ljava/util/List;)V
+	139     (00000216) invoke-virtual       v8, v6, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	140     (0000021c) invoke-static        Ljava/lang/Thread;->getAllStackTraces()Ljava/util/Map;
+	141     (00000222) move-result-object   v6
+	142     (00000224) invoke-interface     v6, Ljava/util/Map;->entrySet()Ljava/util/Set;
+	143     (0000022a) move-result-object   v6
+	144     (0000022c) invoke-interface     v6, Ljava/util/Set;->iterator()Ljava/util/Iterator;
+	145     (00000232) move-result-object   v6
+
+call-BB@0x234 : [ call-BB@0x240 call-BB@0x2fa ]
+	146     (00000234) invoke-interface     v6, Ljava/util/Iterator;->hasNext()Z
+	147     (0000023a) move-result          v7
+	148     (0000023c) if-eqz               v7, +05fh
+
+call-BB@0x240 : [ call-BB@0x264 call-BB@0x2f0 ]
+	149     (00000240) invoke-interface     v6, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	150     (00000246) move-result-object   v7
+	151     (00000248) check-cast           v7, Ljava/util/Map$Entry;
+	152     (0000024c) invoke-interface     v7, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
+	153     (00000252) move-result-object   v11
+	154     (00000254) check-cast           v11, Ljava/lang/Thread;
+	155     (00000258) invoke-virtual       v11, v3, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+	156     (0000025e) move-result          v12
+	157     (00000260) if-nez               v12, +048h
+
+call-BB@0x264 : [ call-BB@0x284 call-BB@0x2e4 ]
+	158     (00000264) invoke-interface     v7, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
+	159     (0000026a) move-result-object   v7
+	160     (0000026c) check-cast           v7, [Ljava/lang/StackTraceElement;
+	161     (00000270) invoke-virtual       v13, v7, Ln0/a;->f([Ljava/lang/StackTraceElement;)[Ljava/lang/StackTraceElement;
+	162     (00000276) move-result-object   v7
+	163     (00000278) invoke-virtual       v11, Ljava/lang/Thread;->getName()Ljava/lang/String;
+	164     (0000027e) move-result-object   v11
+	165     (00000280) if-eqz               v11, +032h
+
+call-BB@0x284 : [ call-BB@0x292 call-BB@0x2d8 ]
+	166     (00000284) const/4              v12, 0
+	167     (00000286) invoke-static        v7, v12, Lg5/t;->d([Ljava/lang/StackTraceElement; I)Ljava/util/List;
+	168     (0000028c) move-result-object   v7
+	169     (0000028e) if-eqz               v7, +025h
+
+call-BB@0x292 : [ call-BB@0x298 call-BB@0x2b0 ]
+	170     (00000292) const/4              v12, 1
+	171     (00000294) if-ne                v9, v12, +00eh
+
+call-BB@0x298 : [ call-BB@0x2f4 ]
+	172     (00000298) new-instance         v12, Lj5/v0;
+	173     (0000029c) move-object/from16   v23, v3
+	174     (000002a0) const/4              v3, 0
+	175     (000002a2) invoke-direct        v12, v11, v3, v7, Lj5/v0;-><init>(Ljava/lang/String; I Ljava/util/List;)V
+	176     (000002a8) invoke-virtual       v8, v12, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	177     (000002ae) goto                 +23h
+
+call-BB@0x2b0 : [ call-BB@0x2be call-BB@0x2c4 ]
+	178     (000002b0) new-instance         v0, Ljava/lang/StringBuilder;
+	179     (000002b4) invoke-direct        v0, Ljava/lang/StringBuilder;-><init>()V
+	180     (000002ba) if-nez               v9, +005h
+
+call-BB@0x2be : [ call-BB@0x2c4 ]
+	181     (000002be) invoke-virtual       v0, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+call-BB@0x2c4 : 
+	182     (000002c4) new-instance         v1, Ljava/lang/IllegalStateException;
+	183     (000002c8) invoke-static        v5, v0, Lg2/g;->g(Ljava/lang/String; Ljava/lang/StringBuilder;)Ljava/lang/String;
+	184     (000002ce) move-result-object   v0
+	185     (000002d0) invoke-direct        v1, v0, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	186     (000002d6) throw                v1
+
+call-BB@0x2d8 : 
+	187     (000002d8) new-instance         v0, Ljava/lang/NullPointerException;
+	188     (000002dc) invoke-direct        v0, v1, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
+	189     (000002e2) throw                v0
+
+call-BB@0x2e4 : 
+	190     (000002e4) new-instance         v0, Ljava/lang/NullPointerException;
+	191     (000002e8) invoke-direct        v0, v14, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
+	192     (000002ee) throw                v0
+
+call-BB@0x2f0 : [ call-BB@0x2f4 ]
+	193     (000002f0) move-object/from16   v23, v3
+
+call-BB@0x2f4 : [ call-BB@0x234 ]
+	194     (000002f4) move-object/from16   v3, v23
+	195     (000002f8) goto                 -62h
+
+call-BB@0x2fa : [ call-BB@0x320 call-BB@0x4ba ]
+	196     (000002fa) invoke-static        v8, Ljava/util/Collections;->unmodifiableList(Ljava/util/List;)Ljava/util/List;
+	197     (00000300) move-result-object   v29
+	198     (00000302) const/4              v3, 0
+	199     (00000304) invoke-static        v15, v3, Lg5/t;->c(Lj6/s; I)Lj5/t0;
+	200     (0000030a) move-result-object   v30
+	201     (0000030c) invoke-static        Lg5/t;->e()Lj5/u0;
+	202     (00000312) move-result-object   v32
+	203     (00000314) invoke-virtual       v10, Lg5/t;->a()Ljava/util/List;
+	204     (0000031a) move-result-object   v33
+	205     (0000031c) if-eqz               v33, +0cfh
+
+call-BB@0x320 : [ call-BB@0x334 call-BB@0x48a ]
+	206     (00000320) new-instance         v28, Lj5/r0;
+	207     (00000324) const/16             v31, 0
+	208     (00000328) invoke-direct/range  v28 ... v33, Lj5/r0;-><init>(Ljava/util/List; Lj5/t0; Lj5/p1; Lj5/u0; Ljava/util/List;)V
+	209     (0000032e) const/4              v1, 1
+	210     (00000330) if-ne                v2, v1, +0adh
+
+call-BB@0x334 : [ call-BB@0x3a8 ]
+	211     (00000334) new-instance         v13, Lj5/q0;
+	212     (00000338) const/4              v15, 0
+	213     (0000033a) move-object/from16   v1, v16
+	214     (0000033e) const/16             v16, 0
+	215     (00000342) move-object/from16   v14, v28
+	216     (00000346) invoke-direct/range  v13 ... v20, Lj5/q0;-><init>(Lj5/r0; Ljava/util/List; Ljava/util/List; Ljava/lang/Boolean; Lj5/c2; Ljava/util/List; I)V
+	217     (0000034c) move/from16          v2, v20
+	218     (00000350) iput-object          v13, v1, Lj5/o0;->c Lj5/d2;
+	219     (00000354) invoke-virtual       v10, v2, Lg5/t;->b(I)Lj5/b1;
+	220     (0000035a) move-result-object   v2
+	221     (0000035c) iput-object          v2, v1, Lj5/o0;->d Lj5/e2;
+	222     (00000360) invoke-virtual       v1, Lj5/o0;->a()Lj5/p0;
+	223     (00000366) move-result-object   v1
+	224     (00000368) iget-object          v2, v0, La5/z;->d Ljava/lang/Object;
+	225     (0000036c) check-cast           v2, Li5/e;
+	226     (00000370) iget-object          v3, v0, La5/z;->e Ljava/lang/Object;
+	227     (00000374) check-cast           v3, Lm5/c;
+	228     (00000378) sget-object          v4, Li7/o;->a Li7/o;
+	229     (0000037c) invoke-static        v1, v2, v3, v4, La5/z;->i(Lj5/p0; Li5/e; Lm5/c; Ljava/util/Map;)Lj5/p0;
+	230     (00000382) move-result-object   v1
+	231     (00000384) invoke-static        v1, v3, La5/z;->j(Lj5/p0; Lm5/c;)Lj5/j2;
+	232     (0000038a) move-result-object   v1
+	233     (0000038c) iget-object          v0, v0, La5/z;->b Ljava/lang/Object;
+	234     (00000390) check-cast           v0, Lm5/a;
+	235     (00000394) move-object/from16   v8, v27
+	236     (00000398) const/4              v6, 1
+	237     (0000039a) invoke-virtual       v0, v1, v8, v6, Lm5/a;->d(Lj5/j2; Ljava/lang/String; Z)V
+	238     (000003a0) const-string         v0, ".ae"
+	239     (000003a4) move-object/from16   v1, v26
+
+call-BB@0x3a8 : [ call-BB@0x3ec call-BB@0x3f2 ]
+	240     (000003a8) iget-object          v2, v1, Lg5/n;->g Lm5/c;
+	241     (000003ac) new-instance         v3, Ljava/lang/StringBuilder;
+	242     (000003b0) invoke-direct        v3, v0, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	243     (000003b6) move-wide/from16     v4, v24
+	244     (000003ba) invoke-virtual       v3, v4, v5, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+	245     (000003c0) invoke-virtual       v3, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	246     (000003c6) move-result-object   v0
+	247     (000003c8) invoke-virtual       v2, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	248     (000003ce) new-instance         v3, Ljava/io/File;
+	249     (000003d2) iget-object          v2, v2, Lm5/c;->d Ljava/lang/Object;
+	250     (000003d6) check-cast           v2, Ljava/io/File;
+	251     (000003da) invoke-direct        v3, v2, v0, Ljava/io/File;-><init>(Ljava/io/File; Ljava/lang/String;)V
+	252     (000003e0) invoke-virtual       v3, Ljava/io/File;->createNewFile()Z
+	253     (000003e6) move-result          v0
+	254     (000003e8) if-eqz               v0, +005h
+	3a8:401
+	(Ljava/io/IOException; -> 402 call-BB@0x402)
+
+call-BB@0x3ec : [ call-BB@0x414 ]
+	255     (000003ec) move-object/from16   v3, v34
+	256     (000003f0) goto                 +12h
+	3a8:401
+	(Ljava/io/IOException; -> 402 call-BB@0x402)
+
+call-BB@0x3f2 : 
+	257     (000003f2) new-instance         v0, Ljava/io/IOException;
+	258     (000003f6) const-string         v2, "Create new file failed."
+	259     (000003fa) invoke-direct        v0, v2, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+	260     (00000400) throw                v0
+	3a8:401
+	(Ljava/io/IOException; -> 402 call-BB@0x402)
+
+call-BB@0x402 : [ call-BB@0x3ec ]
+	261     (00000402) move-exception       v0
+	262     (00000404) const-string         v2, "Could not create app exception marker file."
+	263     (00000408) move-object/from16   v3, v22
+	264     (0000040c) invoke-static        v3, v2, v0, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+	265     (00000412) goto                 -13h
+
+call-BB@0x414 : [ call-BB@0x448 call-BB@0x452 ]
+	266     (00000414) iget-object          v0, v3, Lg5/l;->d Lo5/d;
+	267     (00000418) const/4              v12, 0
+	268     (0000041a) invoke-virtual       v1, v12, v0, v12, Lg5/n;->b(Z Lo5/d; Z)V
+	269     (00000420) new-instance         v2, Lg5/e;
+	270     (00000424) invoke-direct        v2, Lg5/e;-><init>()V
+	271     (0000042a) iget-object          v2, v2, Lg5/e;->a Ljava/lang/String;
+	272     (0000042e) sget-object          v4, Ljava/lang/Boolean;->FALSE Ljava/lang/Boolean;
+	273     (00000432) invoke-virtual       v1, v2, v4, Lg5/n;->c(Ljava/lang/String; Ljava/lang/Boolean;)V
+	274     (00000438) iget-object          v2, v1, Lg5/n;->b Lg5/v;
+	275     (0000043c) invoke-virtual       v2, Lg5/v;->a()Z
+	276     (00000442) move-result          v2
+	277     (00000444) if-nez               v2, +007h
+
+call-BB@0x448 : 
+	278     (00000448) invoke-static/range  v21, Lcom/google/android/gms/tasks/Tasks;->forResult(Ljava/lang/Object;)Lcom/google/android/gms/tasks/Task;
+	279     (0000044e) move-result-object   v0
+	280     (00000450) return-object        v0
+
+call-BB@0x452 : 
+	281     (00000452) iget-object          v0, v0, Lo5/d;->i Ljava/lang/Object;
+	282     (00000456) check-cast           v0, Ljava/util/concurrent/atomic/AtomicReference;
+	283     (0000045a) invoke-virtual       v0, Ljava/util/concurrent/atomic/AtomicReference;->get()Ljava/lang/Object;
+	284     (00000460) move-result-object   v0
+	285     (00000462) check-cast           v0, Lcom/google/android/gms/tasks/TaskCompletionSource;
+	286     (00000466) invoke-virtual       v0, Lcom/google/android/gms/tasks/TaskCompletionSource;->getTask()Lcom/google/android/gms/tasks/Task;
+	287     (0000046c) move-result-object   v0
+	288     (0000046e) iget-object          v1, v1, Lg5/n;->e Lh5/f;
+	289     (00000472) iget-object          v1, v1, Lh5/f;->a Lh5/c;
+	290     (00000476) new-instance         v2, Ll6/c;
+	291     (0000047a) invoke-direct        v2, v3, v8, Ll6/c;-><init>(Lg5/l; Ljava/lang/String;)V
+	292     (00000480) invoke-virtual       v0, v1, v2, Lcom/google/android/gms/tasks/Task;->onSuccessTask(Ljava/util/concurrent/Executor; Lcom/google/android/gms/tasks/SuccessContinuation;)Lcom/google/android/gms/tasks/Task;
+	293     (00000486) move-result-object   v0
+	294     (00000488) return-object        v0
+
+call-BB@0x48a : [ call-BB@0x49c call-BB@0x4a6 ]
+	295     (0000048a) move-object/from16   v3, v34
+	296     (0000048e) new-instance         v0, Ljava/lang/StringBuilder;
+	297     (00000492) invoke-direct        v0, Ljava/lang/StringBuilder;-><init>()V
+	298     (00000498) if-nez               v2, +007h
+
+call-BB@0x49c : [ call-BB@0x4a6 ]
+	299     (0000049c) const-string         v1, " uiOrientation"
+	300     (000004a0) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+call-BB@0x4a6 : 
+	301     (000004a6) new-instance         v1, Ljava/lang/IllegalStateException;
+	302     (000004aa) invoke-static        v5, v0, Lg2/g;->g(Ljava/lang/String; Ljava/lang/StringBuilder;)Ljava/lang/String;
+	303     (000004b0) move-result-object   v0
+	304     (000004b2) invoke-direct        v1, v0, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	305     (000004b8) throw                v1
+
+call-BB@0x4ba : 
+	306     (000004ba) move-object/from16   v3, v34
+	307     (000004be) new-instance         v0, Ljava/lang/NullPointerException;
+	308     (000004c2) const-string         v1, "Null binaries"
+	309     (000004c6) invoke-direct        v0, v1, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
+	310     (000004cc) throw                v0
+
+call-BB@0x4ce : [ call-BB@0x4e0 call-BB@0x4e6 ]
+	311     (000004ce) move-object/from16   v3, v34
+	312     (000004d2) new-instance         v0, Ljava/lang/StringBuilder;
+	313     (000004d6) invoke-direct        v0, Ljava/lang/StringBuilder;-><init>()V
+	314     (000004dc) if-nez               v9, +005h
+
+call-BB@0x4e0 : [ call-BB@0x4e6 ]
+	315     (000004e0) invoke-virtual       v0, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+call-BB@0x4e6 : 
+	316     (000004e6) new-instance         v1, Ljava/lang/IllegalStateException;
+	317     (000004ea) invoke-static        v5, v0, Lg2/g;->g(Ljava/lang/String; Ljava/lang/StringBuilder;)Ljava/lang/String;
+	318     (000004f0) move-result-object   v0
+	319     (000004f2) invoke-direct        v1, v0, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	320     (000004f8) throw                v1
+
+call-BB@0x4fa : 
+	321     (000004fa) move-object/from16   v3, v34
+	322     (000004fe) new-instance         v0, Ljava/lang/NullPointerException;
+	323     (00000502) invoke-direct        v0, v1, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
+	324     (00000508) throw                v0
+
+call-BB@0x50a : 
+	325     (0000050a) move-object          v3, v1
+	326     (0000050c) new-instance         v0, Ljava/lang/NullPointerException;
+	327     (00000510) invoke-direct        v0, v14, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
+	328     (00000516) throw                v0
+

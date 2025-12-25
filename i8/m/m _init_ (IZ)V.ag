@@ -1,0 +1,39 @@
+# Li8/m;-><init>(I Z)V [access_flags=public constructor]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:int
+# - v4:boolean
+#
+# - return:void
+
+<init>-BB@0x0 : [ <init>-BB@0x32 <init>-BB@0x46 ]
+	0       (00000000) invoke-direct        v2, Ljava/lang/Object;-><init>()V
+	1       (00000006) iput                 v3, v2, Li8/m;->a I
+	2       (0000000a) iput-boolean         v4, v2, Li8/m;->b Z
+	3       (0000000e) add-int/lit8         v4, v3, -1
+	4       (00000012) iput                 v4, v2, Li8/m;->c I
+	5       (00000016) new-instance         v0, Ljava/util/concurrent/atomic/AtomicReferenceArray;
+	6       (0000001a) invoke-direct        v0, v3, Ljava/util/concurrent/atomic/AtomicReferenceArray;-><init>(I)V
+	7       (00000020) iput-object          v0, v2, Li8/m;->d Ljava/util/concurrent/atomic/AtomicReferenceArray;
+	8       (00000024) const                v0, 1073741823
+	9       (0000002a) const-string         v1, "Check failed."
+	10      (0000002e) if-gt                v4, v0, +00ch
+
+<init>-BB@0x32 : [ <init>-BB@0x38 <init>-BB@0x3a ]
+	11      (00000032) and-int/2addr        v3, v4
+	12      (00000034) if-nez               v3, +003h
+
+<init>-BB@0x38 : 
+	13      (00000038) return-void          
+
+<init>-BB@0x3a : 
+	14      (0000003a) new-instance         v3, Ljava/lang/IllegalStateException;
+	15      (0000003e) invoke-direct        v3, v1, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	16      (00000044) throw                v3
+
+<init>-BB@0x46 : 
+	17      (00000046) new-instance         v3, Ljava/lang/IllegalStateException;
+	18      (0000004a) invoke-direct        v3, v1, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	19      (00000050) throw                v3
+

@@ -1,0 +1,29 @@
+# Lh0/a;->h(I I)I [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v0
+# - v1:int
+# - v2:int
+#
+# - return:int
+
+h-BB@0x0 : [ h-BB@0x4 h-BB@0x1c ]
+	0       (00000000) if-ltz               v2, +00eh
+
+h-BB@0x4 : [ h-BB@0xc h-BB@0x1c ]
+	1       (00000004) const/16             v0, 255
+	2       (00000008) if-gt                v2, v0, +00ah
+
+h-BB@0xc : 
+	3       (0000000c) const                v0, 16777215
+	4       (00000012) and-int/2addr        v1, v0
+	5       (00000014) shl-int/lit8         v2, v2, 24
+	6       (00000018) or-int/2addr         v1, v2
+	7       (0000001a) return               v1
+
+h-BB@0x1c : 
+	8       (0000001c) new-instance         v1, Ljava/lang/IllegalArgumentException;
+	9       (00000020) const-string         v2, "alpha must be between 0 and 255."
+	10      (00000024) invoke-direct        v1, v2, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	11      (0000002a) throw                v1
+

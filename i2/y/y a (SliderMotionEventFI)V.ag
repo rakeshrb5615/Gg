@@ -1,0 +1,78 @@
+# Li2/y;->a(Lcom/google/android/material/slider/Slider; Landroid/view/MotionEvent; F I)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:com.google.android.material.slider.Slider
+# - v3:android.view.MotionEvent
+# - v4:float
+# - v5:int
+#
+# - return:void
+
+a-BB@0x0 : [ a-BB@0x4 a-BB@0x7e ]
+	0       (00000000) if-eqz               v3, +03fh
+
+a-BB@0x4 : [ a-BB@0x24 a-BB@0x30 ]
+	1       (00000004) invoke-virtual       v2, Landroid/view/View;->getWidth()I
+	2       (0000000a) move-result          v4
+	3       (0000000c) invoke-virtual       v2, Landroid/view/View;->getPaddingLeft()I
+	4       (00000012) move-result          v0
+	5       (00000014) sub-int/2addr        v4, v0
+	6       (00000016) invoke-virtual       v2, Landroid/view/View;->getPaddingRight()I
+	7       (0000001c) move-result          v0
+	8       (0000001e) sub-int/2addr        v4, v0
+	9       (00000020) if-gtz               v4, +008h
+
+a-BB@0x24 : [ a-BB@0x2c ]
+	10      (00000024) invoke-virtual       v2, Lcom/google/android/material/slider/Slider;->getValue()F
+	11      (0000002a) move-result          v3
+
+a-BB@0x2c : [ a-BB@0x7e ]
+	12      (0000002c) move                 v4, v3
+	13      (0000002e) goto                 +28h
+
+a-BB@0x30 : [ a-BB@0x2c ]
+	14      (00000030) invoke-virtual       v3, Landroid/view/MotionEvent;->getX()F
+	15      (00000036) move-result          v3
+	16      (00000038) invoke-virtual       v2, Landroid/view/View;->getPaddingLeft()I
+	17      (0000003e) move-result          v0
+	18      (00000040) int-to-float         v0, v0
+	19      (00000042) sub-float/2addr      v3, v0
+	20      (00000044) int-to-float         v4, v4
+	21      (00000046) div-float/2addr      v3, v4
+	22      (00000048) const/4              v4, 0
+	23      (0000004a) invoke-static        v3, v4, Ljava/lang/Math;->max(F F)F
+	24      (00000050) move-result          v3
+	25      (00000052) const/high16         v4, 1065353216
+	26      (00000056) invoke-static        v3, v4, Ljava/lang/Math;->min(F F)F
+	27      (0000005c) move-result          v3
+	28      (0000005e) invoke-virtual       v2, Lcom/google/android/material/slider/Slider;->getValueTo()F
+	29      (00000064) move-result          v4
+	30      (00000066) invoke-virtual       v2, Lcom/google/android/material/slider/Slider;->getValueFrom()F
+	31      (0000006c) move-result          v0
+	32      (0000006e) sub-float/2addr      v4, v0
+	33      (00000070) invoke-virtual       v2, Lcom/google/android/material/slider/Slider;->getValueFrom()F
+	34      (00000076) move-result          v0
+	35      (00000078) mul-float/2addr      v3, v4
+	36      (0000007a) add-float/2addr      v3, v0
+	37      (0000007c) goto                 -28h
+
+a-BB@0x7e : 
+	38      (0000007e) invoke-virtual       v2, Lcom/google/android/material/slider/Slider;->getValue()F
+	39      (00000084) move-result          v3
+	40      (00000086) const/4              v0, 2
+	41      (00000088) new-array            v0, v0, [F
+	42      (0000008c) const/4              v1, 0
+	43      (0000008e) aput                 v3, v0, v1
+	44      (00000092) const/4              v3, 1
+	45      (00000094) aput                 v4, v0, v3
+	46      (00000098) invoke-static        v0, Landroid/animation/ValueAnimator;->ofFloat([F)Landroid/animation/ValueAnimator;
+	47      (0000009e) move-result-object   v4
+	48      (000000a0) int-to-long          v0, v5
+	49      (000000a2) invoke-virtual       v4, v0, v1, Landroid/animation/ValueAnimator;->setDuration(J)Landroid/animation/ValueAnimator;
+	50      (000000a8) new-instance         v5, Li2/j;
+	51      (000000ac) invoke-direct        v5, v2, v3, Li2/j;-><init>(Ljava/lang/Object; I)V
+	52      (000000b2) invoke-virtual       v4, v5, Landroid/animation/ValueAnimator;->addUpdateListener(Landroid/animation/ValueAnimator$AnimatorUpdateListener;)V
+	53      (000000b8) invoke-virtual       v4, Landroid/animation/ValueAnimator;->start()V
+	54      (000000be) return-void          
+

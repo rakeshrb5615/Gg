@@ -1,0 +1,68 @@
+# Lh/c0;->w(Landroid/content/Context; I Lm0/h; Landroid/content/res/Configuration; Z)Landroid/content/res/Configuration; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v0
+# - v1:android.content.Context
+# - v2:int
+# - v3:m0.h
+# - v4:android.content.res.Configuration
+# - v5:boolean
+#
+# - return:android.content.res.Configuration
+
+w-BB@0x0 : [ w-BB@0x6 w-BB@0x3c ]
+	0       (00000000) const/4              v0, 1
+	1       (00000002) if-eq                v2, v0, +01dh
+
+w-BB@0x6 : [ w-BB@0xc w-BB@0x36 ]
+	2       (00000006) const/4              v0, 2
+	3       (00000008) if-eq                v2, v0, +017h
+
+w-BB@0xc : [ w-BB@0x10 w-BB@0x14 ]
+	4       (0000000c) if-eqz               v5, +004h
+
+w-BB@0x10 : [ w-BB@0x40 ]
+	5       (00000010) const/4              v1, 0
+	6       (00000012) goto                 +17h
+
+w-BB@0x14 : [ w-BB@0x40 ]
+	7       (00000014) invoke-virtual       v1, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;
+	8       (0000001a) move-result-object   v1
+	9       (0000001c) invoke-virtual       v1, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+	10      (00000022) move-result-object   v1
+	11      (00000024) invoke-virtual       v1, Landroid/content/res/Resources;->getConfiguration()Landroid/content/res/Configuration;
+	12      (0000002a) move-result-object   v1
+	13      (0000002c) iget                 v1, v1, Landroid/content/res/Configuration;->uiMode I
+	14      (00000030) and-int/lit8         v1, v1, 48
+	15      (00000034) goto                 +6h
+
+w-BB@0x36 : [ w-BB@0x40 ]
+	16      (00000036) const/16             v1, 32
+	17      (0000003a) goto                 +3h
+
+w-BB@0x3c : [ w-BB@0x40 ]
+	18      (0000003c) const/16             v1, 16
+
+w-BB@0x40 : [ w-BB@0x54 w-BB@0x5a ]
+	19      (00000040) new-instance         v2, Landroid/content/res/Configuration;
+	20      (00000044) invoke-direct        v2, Landroid/content/res/Configuration;-><init>()V
+	21      (0000004a) const/4              v5, 0
+	22      (0000004c) iput                 v5, v2, Landroid/content/res/Configuration;->fontScale F
+	23      (00000050) if-eqz               v4, +005h
+
+w-BB@0x54 : [ w-BB@0x5a ]
+	24      (00000054) invoke-virtual       v2, v4, Landroid/content/res/Configuration;->setTo(Landroid/content/res/Configuration;)V
+
+w-BB@0x5a : [ w-BB@0x6c w-BB@0x72 ]
+	25      (0000005a) iget                 v4, v2, Landroid/content/res/Configuration;->uiMode I
+	26      (0000005e) and-int/lit8         v4, v4, -49
+	27      (00000062) or-int/2addr         v1, v4
+	28      (00000064) iput                 v1, v2, Landroid/content/res/Configuration;->uiMode I
+	29      (00000068) if-eqz               v3, +005h
+
+w-BB@0x6c : [ w-BB@0x72 ]
+	30      (0000006c) invoke-static        v2, v3, Lh/u;->d(Landroid/content/res/Configuration; Lm0/h;)V
+
+w-BB@0x72 : 
+	31      (00000072) return-object        v2
+

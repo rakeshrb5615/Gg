@@ -1,0 +1,91 @@
+# Lh/c0;->h()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v4
+#
+# - return:void
+
+h-BB@0x0 : [ h-BB@0x20 h-BB@0x88 ]
+	0       (00000000) const/4              v0, 1
+	1       (00000002) iput-boolean         v0, v4, Lh/c0;->V Z
+	2       (00000006) const/4              v1, 0
+	3       (00000008) invoke-virtual       v4, v1, v0, Lh/c0;->q(Z Z)Z
+	4       (0000000e) invoke-virtual       v4, Lh/c0;->A()V
+	5       (00000014) iget-object          v1, v4, Lh/c0;->p Ljava/lang/Object;
+	6       (00000018) instance-of          v2, v1, Landroid/app/Activity;
+	7       (0000001c) if-eqz               v2, +036h
+
+h-BB@0x20 : [ h-BB@0x24 ]
+	8       (00000020) check-cast           v1, Landroid/app/Activity;
+	20:23
+	(Ljava/lang/IllegalArgumentException; -> 44 h-BB@0x44)
+
+h-BB@0x24 : [ h-BB@0x46 ]
+	9       (00000024) invoke-virtual       v1, Landroid/app/Activity;->getComponentName()Landroid/content/ComponentName;
+	10      (0000002a) move-result-object   v2
+	11      (0000002c) invoke-static        v1, v2, Ld0/d;->c(Landroid/content/Context; Landroid/content/ComponentName;)Ljava/lang/String;
+	12      (00000032) move-result-object   v1
+	13      (00000034) goto                 +9h
+	24:33
+	(Landroid/content/pm/PackageManager$NameNotFoundException; -> 36 h-BB@0x36)
+	(Ljava/lang/IllegalArgumentException; -> 44 h-BB@0x44)
+
+h-BB@0x36 : [ h-BB@0x38 ]
+	14      (00000036) move-exception       v1
+
+h-BB@0x38 : 
+	15      (00000038) new-instance         v2, Ljava/lang/IllegalArgumentException;
+	16      (0000003c) invoke-direct        v2, v1, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/Throwable;)V
+	17      (00000042) throw                v2
+	38:43
+	(Ljava/lang/IllegalArgumentException; -> 44 h-BB@0x44)
+
+h-BB@0x44 : [ h-BB@0x46 ]
+	18      (00000044) const/4              v1, 0
+
+h-BB@0x46 : [ h-BB@0x4a h-BB@0x5e ]
+	19      (00000046) if-eqz               v1, +00ch
+
+h-BB@0x4a : [ h-BB@0x52 h-BB@0x58 ]
+	20      (0000004a) iget-object          v1, v4, Lh/c0;->u Lh/n0;
+	21      (0000004e) if-nez               v1, +005h
+
+h-BB@0x52 : [ h-BB@0x5e ]
+	22      (00000052) iput-boolean         v0, v4, Lh/c0;->i0 Z
+	23      (00000056) goto                 +4h
+
+h-BB@0x58 : [ h-BB@0x5e ]
+	24      (00000058) invoke-virtual       v1, v0, Lh/n0;->Z(Z)V
+
+h-BB@0x5e : [ h-BB@0x64 ]
+	25      (0000005e) sget-object          v1, Lh/p;->n Ljava/lang/Object;
+	26      (00000062) monitor-enter        v1
+
+h-BB@0x64 : [ h-BB@0x88 ]
+	27      (00000064) invoke-static        v4, Lh/p;->j(Lh/c0;)V
+	28      (0000006a) sget-object          v2, Lh/p;->m Lr/f;
+	29      (0000006e) new-instance         v3, Ljava/lang/ref/WeakReference;
+	30      (00000072) invoke-direct        v3, v4, Ljava/lang/ref/WeakReference;-><init>(Ljava/lang/Object;)V
+	31      (00000078) invoke-virtual       v2, v3, Lr/f;->add(Ljava/lang/Object;)Z
+	32      (0000007e) monitor-exit         v1
+	33      (00000080) goto                 +4h
+	64:85
+	(Ljava/lang/Throwable; -> 82 h-BB@0x82)
+
+h-BB@0x82 : 
+	34      (00000082) move-exception       v0
+	35      (00000084) monitor-exit         v1
+	36      (00000086) throw                v0
+
+h-BB@0x88 : 
+	37      (00000088) new-instance         v1, Landroid/content/res/Configuration;
+	38      (0000008c) iget-object          v2, v4, Lh/c0;->q Landroid/content/Context;
+	39      (00000090) invoke-virtual       v2, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+	40      (00000096) move-result-object   v2
+	41      (00000098) invoke-virtual       v2, Landroid/content/res/Resources;->getConfiguration()Landroid/content/res/Configuration;
+	42      (0000009e) move-result-object   v2
+	43      (000000a0) invoke-direct        v1, v2, Landroid/content/res/Configuration;-><init>(Landroid/content/res/Configuration;)V
+	44      (000000a6) iput-object          v1, v4, Lh/c0;->Y Landroid/content/res/Configuration;
+	45      (000000aa) iput-boolean         v0, v4, Lh/c0;->W Z
+	46      (000000ae) return-void          
+

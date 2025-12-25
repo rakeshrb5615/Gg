@@ -1,0 +1,33 @@
+# Lj7/c;->lastIndexOf(Ljava/lang/Object;)I [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:java.lang.Object
+#
+# - return:int
+
+lastIndexOf-BB@0x0 : [ lastIndexOf-BB@0x8 ]
+	0       (00000000) iget                 v0, v2, Lj7/c;->b I
+	1       (00000004) add-int/lit8         v0, v0, -1
+
+lastIndexOf-BB@0x8 : [ lastIndexOf-BB@0xc lastIndexOf-BB@0x28 ]
+	2       (00000008) if-ltz               v0, +010h
+
+lastIndexOf-BB@0xc : [ lastIndexOf-BB@0x20 lastIndexOf-BB@0x22 ]
+	3       (0000000c) iget-object          v1, v2, Lj7/c;->a [Ljava/lang/Object;
+	4       (00000010) aget-object          v1, v1, v0
+	5       (00000014) invoke-static        v1, v3, Lkotlin/jvm/internal/j;->a(Ljava/lang/Object; Ljava/lang/Object;)Z
+	6       (0000001a) move-result          v1
+	7       (0000001c) if-eqz               v1, +003h
+
+lastIndexOf-BB@0x20 : 
+	8       (00000020) return               v0
+
+lastIndexOf-BB@0x22 : [ lastIndexOf-BB@0x8 ]
+	9       (00000022) add-int/lit8         v0, v0, -1
+	10      (00000026) goto                 -fh
+
+lastIndexOf-BB@0x28 : 
+	11      (00000028) const/4              v3, -1
+	12      (0000002a) return               v3
+

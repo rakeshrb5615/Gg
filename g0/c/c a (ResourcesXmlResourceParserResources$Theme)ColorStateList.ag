@@ -1,0 +1,41 @@
+# Lg0/c;->a(Landroid/content/res/Resources; Landroid/content/res/XmlResourceParser; Landroid/content/res/Resources$Theme;)Landroid/content/res/ColorStateList; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:android.content.res.Resources
+# - v5:android.content.res.XmlResourceParser
+# - v6:android.content.res.Resources$Theme
+#
+# - return:android.content.res.ColorStateList
+
+a-BB@0x0 : [ a-BB@0x8 ]
+	0       (00000000) invoke-static        v5, Landroid/util/Xml;->asAttributeSet(Lorg/xmlpull/v1/XmlPullParser;)Landroid/util/AttributeSet;
+	1       (00000006) move-result-object   v0
+
+a-BB@0x8 : [ a-BB@0x16 a-BB@0x1e ]
+	2       (00000008) invoke-interface     v5, Lorg/xmlpull/v1/XmlPullParser;->next()I
+	3       (0000000e) move-result          v1
+	4       (00000010) const/4              v2, 2
+	5       (00000012) if-eq                v1, v2, +006h
+
+a-BB@0x16 : [ a-BB@0x1c a-BB@0x1e ]
+	6       (00000016) const/4              v3, 1
+	7       (00000018) if-eq                v1, v3, +003h
+
+a-BB@0x1c : [ a-BB@0x8 ]
+	8       (0000001c) goto                 -ah
+
+a-BB@0x1e : [ a-BB@0x22 a-BB@0x2c ]
+	9       (0000001e) if-ne                v1, v2, +007h
+
+a-BB@0x22 : 
+	10      (00000022) invoke-static        v4, v5, v0, v6, Lg0/c;->b(Landroid/content/res/Resources; Lorg/xmlpull/v1/XmlPullParser; Landroid/util/AttributeSet; Landroid/content/res/Resources$Theme;)Landroid/content/res/ColorStateList;
+	11      (00000028) move-result-object   v4
+	12      (0000002a) return-object        v4
+
+a-BB@0x2c : 
+	13      (0000002c) new-instance         v4, Lorg/xmlpull/v1/XmlPullParserException;
+	14      (00000030) const-string         v5, "No start tag found"
+	15      (00000034) invoke-direct        v4, v5, Lorg/xmlpull/v1/XmlPullParserException;-><init>(Ljava/lang/String;)V
+	16      (0000003a) throw                v4
+

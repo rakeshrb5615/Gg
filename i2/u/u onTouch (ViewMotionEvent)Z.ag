@@ -1,0 +1,89 @@
+# Li2/u;->onTouch(Landroid/view/View; Landroid/view/MotionEvent;)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:android.view.View
+# - v7:android.view.MotionEvent
+#
+# - return:boolean
+
+onTouch-BB@0x0 : [ onTouch-BB@0x14 onTouch-BB@0x94 ]
+	0       (00000000) invoke-virtual       v7, Landroid/view/MotionEvent;->getAction()I
+	1       (00000006) move-result          v6
+	2       (00000008) iget-object          v0, v5, Li2/u;->a Li2/w;
+	3       (0000000c) const/4              v1, 0
+	4       (0000000e) const/4              v2, 1
+	5       (00000010) if-eqz               v6, +042h
+
+onTouch-BB@0x14 : [ onTouch-BB@0x1c onTouch-BB@0x74 ]
+	6       (00000014) iget-object          v3, v5, Li2/u;->c Lcom/google/android/material/slider/Slider;
+	7       (00000018) if-eq                v6, v2, +02eh
+
+onTouch-BB@0x1c : [ onTouch-BB@0x22 onTouch-BB@0x30 ]
+	8       (0000001c) const/4              v4, 2
+	9       (0000001e) if-eq                v6, v4, +009h
+
+onTouch-BB@0x22 : [ onTouch-BB@0x28 onTouch-BB@0x2a ]
+	10      (00000022) const/4              v7, 3
+	11      (00000024) if-eq                v6, v7, +003h
+
+onTouch-BB@0x28 : 
+	12      (00000028) return               v1
+
+onTouch-BB@0x2a : 
+	13      (0000002a) iput-boolean         v1, v0, Li2/w;->a Z
+	14      (0000002e) return               v2
+
+onTouch-BB@0x30 : [ onTouch-BB@0x38 onTouch-BB@0x60 ]
+	15      (00000030) iget-boolean         v6, v0, Li2/w;->a Z
+	16      (00000034) if-nez               v6, +016h
+
+onTouch-BB@0x38 : [ onTouch-BB@0x5c onTouch-BB@0x60 ]
+	17      (00000038) invoke-virtual       v7, Landroid/view/MotionEvent;->getX()F
+	18      (0000003e) move-result          v6
+	19      (00000040) iget                 v1, v0, Li2/w;->b F
+	20      (00000044) sub-float/2addr      v6, v1
+	21      (00000046) invoke-static        v6, Ljava/lang/Math;->abs(F)F
+	22      (0000004c) move-result          v6
+	23      (0000004e) iget                 v1, v5, Li2/u;->b I
+	24      (00000052) int-to-float         v1, v1
+	25      (00000054) cmpl-float           v6, v6, v1
+	26      (00000058) if-lez               v6, +004h
+
+onTouch-BB@0x5c : [ onTouch-BB@0x60 ]
+	27      (0000005c) iput-boolean         v2, v0, Li2/w;->a Z
+
+onTouch-BB@0x60 : [ onTouch-BB@0x68 onTouch-BB@0x72 ]
+	28      (00000060) iget-boolean         v6, v0, Li2/w;->a Z
+	29      (00000064) if-eqz               v6, +007h
+
+onTouch-BB@0x68 : 
+	30      (00000068) invoke-virtual       v3, v7, Lx3/e;->onTouchEvent(Landroid/view/MotionEvent;)Z
+	31      (0000006e) move-result          v6
+	32      (00000070) return               v6
+
+onTouch-BB@0x72 : 
+	33      (00000072) return               v2
+
+onTouch-BB@0x74 : [ onTouch-BB@0x7c onTouch-BB@0x86 ]
+	34      (00000074) iget-boolean         v6, v0, Li2/w;->a Z
+	35      (00000078) if-eqz               v6, +007h
+
+onTouch-BB@0x7c : 
+	36      (0000007c) invoke-virtual       v3, v7, Lx3/e;->onTouchEvent(Landroid/view/MotionEvent;)Z
+	37      (00000082) move-result          v6
+	38      (00000084) return               v6
+
+onTouch-BB@0x86 : 
+	39      (00000086) const/4              v6, 0
+	40      (00000088) const/16             v0, 300
+	41      (0000008c) invoke-static        v3, v7, v6, v0, Li2/y;->a(Lcom/google/android/material/slider/Slider; Landroid/view/MotionEvent; F I)V
+	42      (00000092) return               v2
+
+onTouch-BB@0x94 : 
+	43      (00000094) invoke-virtual       v7, Landroid/view/MotionEvent;->getX()F
+	44      (0000009a) move-result          v6
+	45      (0000009c) iput                 v6, v0, Li2/w;->b F
+	46      (000000a0) iput-boolean         v1, v0, Li2/w;->a Z
+	47      (000000a4) return               v2
+

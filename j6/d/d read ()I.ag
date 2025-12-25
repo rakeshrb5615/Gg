@@ -1,0 +1,32 @@
+# Lj6/d;->read()I [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v5
+#
+# - return:int
+
+read-BB@0x0 : [ read-BB@0x12 read-BB@0x14 ]
+	0       (00000000) iget-wide            v0, v5, Lj6/d;->a J
+	1       (00000004) const-wide/16        v2, 0
+	2       (00000008) cmp-long             v0, v0, v2
+	3       (0000000c) const/4              v1, -1
+	4       (0000000e) if-nez               v0, +003h
+
+read-BB@0x12 : 
+	5       (00000012) return               v1
+
+read-BB@0x14 : [ read-BB@0x24 read-BB@0x32 ]
+	6       (00000014) iget-object          v0, v5, Ljava/io/FilterInputStream;->in Ljava/io/InputStream;
+	7       (00000018) invoke-virtual       v0, Ljava/io/InputStream;->read()I
+	8       (0000001e) move-result          v0
+	9       (00000020) if-eq                v0, v1, +009h
+
+read-BB@0x24 : [ read-BB@0x32 ]
+	10      (00000024) iget-wide            v1, v5, Lj6/d;->a J
+	11      (00000028) const-wide/16        v3, 1
+	12      (0000002c) sub-long/2addr       v1, v3
+	13      (0000002e) iput-wide            v1, v5, Lj6/d;->a J
+
+read-BB@0x32 : 
+	14      (00000032) return               v0
+

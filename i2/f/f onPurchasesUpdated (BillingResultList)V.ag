@@ -1,0 +1,71 @@
+# Li2/f;->onPurchasesUpdated(Lcom/android/billingclient/api/BillingResult; Ljava/util/List;)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:com.android.billingclient.api.BillingResult
+# - v7:java.util.List
+#
+# - return:void
+
+onPurchasesUpdated-BB@0x0 : [ onPurchasesUpdated-BB@0xc onPurchasesUpdated-BB@0xac ]
+	0       (00000000) invoke-virtual       v6, Lcom/android/billingclient/api/BillingResult;->getResponseCode()I
+	1       (00000006) move-result          v0
+	2       (00000008) if-nez               v0, +052h
+
+onPurchasesUpdated-BB@0xc : [ onPurchasesUpdated-BB@0x10 onPurchasesUpdated-BB@0xac ]
+	3       (0000000c) if-eqz               v7, +050h
+
+onPurchasesUpdated-BB@0x10 : [ onPurchasesUpdated-BB@0x18 ]
+	4       (00000010) invoke-interface     v7, Ljava/util/List;->iterator()Ljava/util/Iterator;
+	5       (00000016) move-result-object   v6
+
+onPurchasesUpdated-BB@0x18 : [ onPurchasesUpdated-BB@0x24 onPurchasesUpdated-BB@0xaa ]
+	6       (00000018) invoke-interface     v6, Ljava/util/Iterator;->hasNext()Z
+	7       (0000001e) move-result          v7
+	8       (00000020) if-eqz               v7, +045h
+
+onPurchasesUpdated-BB@0x24 : [ onPurchasesUpdated-BB@0x5e onPurchasesUpdated-BB@0xa2 ]
+	9       (00000024) invoke-interface     v6, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	10      (0000002a) move-result-object   v7
+	11      (0000002c) check-cast           v7, Lcom/android/billingclient/api/Purchase;
+	12      (00000030) invoke-virtual       v7, Lcom/android/billingclient/api/Purchase;->getProducts()Ljava/util/List;
+	13      (00000036) move-result-object   v0
+	14      (00000038) const/4              v1, 0
+	15      (0000003a) invoke-interface     v0, v1, Ljava/util/List;->get(I)Ljava/lang/Object;
+	16      (00000040) move-result-object   v0
+	17      (00000042) check-cast           v0, Ljava/lang/String;
+	18      (00000046) invoke-virtual       v7, Lcom/android/billingclient/api/Purchase;->getPurchaseToken()Ljava/lang/String;
+	19      (0000004c) move-result-object   v1
+	20      (0000004e) iget-object          v2, v5, Li2/f;->d Ljava/lang/String;
+	21      (00000052) invoke-virtual       v0, v2, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	22      (00000058) move-result          v2
+	23      (0000005a) if-eqz               v2, +024h
+
+onPurchasesUpdated-BB@0x5e : [ onPurchasesUpdated-BB@0xa2 ]
+	24      (0000005e) iget-object          v2, v5, Li2/f;->a Landroid/content/Context;
+	25      (00000062) invoke-static        v2, Lj5/t1;->z(Landroid/content/Context;)Landroid/content/SharedPreferences;
+	26      (00000068) move-result-object   v2
+	27      (0000006a) invoke-interface     v2, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
+	28      (00000070) move-result-object   v2
+	29      (00000072) new-instance         v3, Ljava/lang/StringBuilder;
+	30      (00000076) invoke-direct        v3, Ljava/lang/StringBuilder;-><init>()V
+	31      (0000007c) iget-object          v4, v5, Li2/f;->P Ljava/lang/String;
+	32      (00000080) invoke-virtual       v3, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	33      (00000086) invoke-virtual       v3, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	34      (0000008c) invoke-virtual       v3, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	35      (00000092) move-result-object   v0
+	36      (00000094) invoke-interface     v2, v0, v1, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String; Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
+	37      (0000009a) move-result-object   v0
+	38      (0000009c) invoke-interface     v0, Landroid/content/SharedPreferences$Editor;->apply()V
+
+onPurchasesUpdated-BB@0xa2 : [ onPurchasesUpdated-BB@0x18 ]
+	39      (000000a2) invoke-virtual       v5, v7, Li2/f;->c(Lcom/android/billingclient/api/Purchase;)V
+	40      (000000a8) goto                 -48h
+
+onPurchasesUpdated-BB@0xaa : 
+	41      (000000aa) return-void          
+
+onPurchasesUpdated-BB@0xac : 
+	42      (000000ac) invoke-virtual       v6, Lcom/android/billingclient/api/BillingResult;->getResponseCode()I
+	43      (000000b2) return-void          
+

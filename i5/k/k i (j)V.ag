@@ -1,0 +1,54 @@
+# Li5/k;->i(Li5/j;)V [access_flags=public final synchronized]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:i5.j
+#
+# - return:void
+
+i-BB@0x0 : [ i-BB@0x2 ]
+	0       (00000000) monitor-enter        v4
+
+i-BB@0x2 : [ i-BB@0xc ]
+	1       (00000002) iget-object          v0, v4, Li5/k;->d Li5/h;
+	2       (00000006) iget                 v0, v0, Li5/h;->a I
+	3       (0000000a) const/4              v1, 0
+	2:45
+	(Ljava/lang/Throwable; -> 4c i-BB@0x4c)
+
+i-BB@0xc : [ i-BB@0x14 i-BB@0x50 ]
+	4       (0000000c) iget                 v2, v4, Li5/k;->c I
+	5       (00000010) if-ge                v1, v2, +020h
+	2:45
+	(Ljava/lang/Throwable; -> 4c i-BB@0x4c)
+
+i-BB@0x14 : [ i-BB@0xc ]
+	6       (00000014) invoke-virtual       v4, v0, Li5/k;->x(I)Li5/h;
+	7       (0000001a) move-result-object   v0
+	8       (0000001c) new-instance         v2, Li5/i;
+	9       (00000020) invoke-direct        v2, v4, v0, Li5/i;-><init>(Li5/k; Li5/h;)V
+	10      (00000026) iget                 v3, v0, Li5/h;->b I
+	11      (0000002a) invoke-interface     v5, v2, v3, Li5/j;->b(Li5/i; I)V
+	12      (00000030) iget                 v2, v0, Li5/h;->a I
+	13      (00000034) add-int/lit8         v2, v2, 4
+	14      (00000038) iget                 v0, v0, Li5/h;->b I
+	15      (0000003c) add-int/2addr        v2, v0
+	16      (0000003e) invoke-virtual       v4, v2, Li5/k;->D(I)I
+	17      (00000044) move-result          v0
+	18      (00000046) add-int/lit8         v1, v1, 1
+	19      (0000004a) goto                 -1fh
+
+i-BB@0x4c : [ i-BB@0x54 ]
+	20      (0000004c) move-exception       v5
+	21      (0000004e) goto                 +3h
+
+i-BB@0x50 : 
+	22      (00000050) monitor-exit         v4
+	23      (00000052) return-void          
+
+i-BB@0x54 : 
+	24      (00000054) monitor-exit         v4
+	25      (00000056) throw                v5
+	54:55
+	(Ljava/lang/Throwable; -> 4c i-BB@0x4c)
+

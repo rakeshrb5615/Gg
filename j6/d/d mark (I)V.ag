@@ -1,0 +1,30 @@
+# Lj6/d;->mark(I)V [access_flags=public final synchronized]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:int
+#
+# - return:void
+
+mark-BB@0x0 : [ mark-BB@0x2 ]
+	0       (00000000) monitor-enter        v2
+
+mark-BB@0x2 : 
+	1       (00000002) iget-object          v0, v2, Ljava/io/FilterInputStream;->in Ljava/io/InputStream;
+	2       (00000006) invoke-virtual       v0, v3, Ljava/io/InputStream;->mark(I)V
+	3       (0000000c) iget-wide            v0, v2, Lj6/d;->a J
+	4       (00000010) iput-wide            v0, v2, Lj6/d;->b J
+	5       (00000014) monitor-exit         v2
+	6       (00000016) return-void          
+	2:13
+	(Ljava/lang/Throwable; -> 18 mark-BB@0x18)
+
+mark-BB@0x18 : [ mark-BB@0x1a ]
+	7       (00000018) move-exception       v3
+
+mark-BB@0x1a : 
+	8       (0000001a) monitor-exit         v2
+	9       (0000001c) throw                v3
+	1a:1b
+	(Ljava/lang/Throwable; -> 18 mark-BB@0x18)
+

@@ -1,0 +1,36 @@
+# Lj5/t1;->C([Ljava/lang/String; I)F [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:java.lang.String[]
+# - v3:int
+#
+# - return:float
+
+C-BB@0x0 : [ C-BB@0x16 C-BB@0x24 ]
+	0       (00000000) aget-object          v2, v2, v3
+	1       (00000004) invoke-static        v2, Ljava/lang/Float;->parseFloat(Ljava/lang/String;)F
+	2       (0000000a) move-result          v2
+	3       (0000000c) const/4              v3, 0
+	4       (0000000e) cmpg-float           v3, v2, v3
+	5       (00000012) if-ltz               v3, +009h
+
+C-BB@0x16 : [ C-BB@0x22 C-BB@0x24 ]
+	6       (00000016) const/high16         v3, 1065353216
+	7       (0000001a) cmpl-float           v3, v2, v3
+	8       (0000001e) if-gtz               v3, +003h
+
+C-BB@0x22 : 
+	9       (00000022) return               v2
+
+C-BB@0x24 : 
+	10      (00000024) new-instance         v3, Ljava/lang/IllegalArgumentException;
+	11      (00000028) new-instance         v0, Ljava/lang/StringBuilder;
+	12      (0000002c) const-string         v1, "Motion easing control point value must be between 0 and 1; instead got: "
+	13      (00000030) invoke-direct        v0, v1, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	14      (00000036) invoke-virtual       v0, v2, Ljava/lang/StringBuilder;->append(F)Ljava/lang/StringBuilder;
+	15      (0000003c) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	16      (00000042) move-result-object   v2
+	17      (00000044) invoke-direct        v3, v2, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	18      (0000004a) throw                v3
+

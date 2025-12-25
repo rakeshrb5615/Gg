@@ -1,0 +1,67 @@
+# Li7/h;->W([Ljava/lang/Object; Ljava/lang/Object;)Z [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:java.lang.Object[]
+# - v5:java.lang.Object
+#
+# - return:boolean
+
+W-BB@0x0 : [ W-BB@0x10 W-BB@0x28 ]
+	0       (00000000) const-string         v0, "<this>"
+	1       (00000004) invoke-static        v4, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) const/4              v0, 0
+	3       (0000000c) if-nez               v5, +00eh
+
+W-BB@0x10 : [ W-BB@0x14 ]
+	4       (00000010) array-length         v5, v4
+	5       (00000012) move                 v1, v0
+
+W-BB@0x14 : [ W-BB@0x18 W-BB@0x4a ]
+	6       (00000014) if-ge                v1, v5, +01bh
+
+W-BB@0x18 : [ W-BB@0x20 W-BB@0x22 ]
+	7       (00000018) aget-object          v2, v4, v1
+	8       (0000001c) if-nez               v2, +003h
+
+W-BB@0x20 : [ W-BB@0x4c ]
+	9       (00000020) goto                 +16h
+
+W-BB@0x22 : [ W-BB@0x14 ]
+	10      (00000022) add-int/lit8         v1, v1, 1
+	11      (00000026) goto                 -9h
+
+W-BB@0x28 : [ W-BB@0x2c ]
+	12      (00000028) array-length         v1, v4
+	13      (0000002a) move                 v2, v0
+
+W-BB@0x2c : [ W-BB@0x30 W-BB@0x4a ]
+	14      (0000002c) if-ge                v2, v1, +00fh
+
+W-BB@0x30 : [ W-BB@0x40 W-BB@0x44 ]
+	15      (00000030) aget-object          v3, v4, v2
+	16      (00000034) invoke-virtual       v5, v3, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+	17      (0000003a) move-result          v3
+	18      (0000003c) if-eqz               v3, +004h
+
+W-BB@0x40 : [ W-BB@0x4c ]
+	19      (00000040) move                 v1, v2
+	20      (00000042) goto                 +5h
+
+W-BB@0x44 : [ W-BB@0x2c ]
+	21      (00000044) add-int/lit8         v2, v2, 1
+	22      (00000048) goto                 -eh
+
+W-BB@0x4a : [ W-BB@0x4c ]
+	23      (0000004a) const/4              v1, -1
+
+W-BB@0x4c : [ W-BB@0x50 W-BB@0x54 ]
+	24      (0000004c) if-ltz               v1, +004h
+
+W-BB@0x50 : 
+	25      (00000050) const/4              v4, 1
+	26      (00000052) return               v4
+
+W-BB@0x54 : 
+	27      (00000054) return               v0
+

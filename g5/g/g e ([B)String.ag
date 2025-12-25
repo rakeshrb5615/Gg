@@ -1,0 +1,38 @@
+# Lg5/g;->e([B)Ljava/lang/String; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:byte[]
+#
+# - return:java.lang.String
+
+e-BB@0x0 : [ e-BB@0xc ]
+	0       (00000000) array-length         v0, v6
+	1       (00000002) mul-int/lit8         v0, v0, 2
+	2       (00000006) new-array            v0, v0, [C
+	3       (0000000a) const/4              v1, 0
+
+e-BB@0xc : [ e-BB@0x12 e-BB@0x44 ]
+	4       (0000000c) array-length         v2, v6
+	5       (0000000e) if-ge                v1, v2, +01bh
+
+e-BB@0x12 : [ e-BB@0xc ]
+	6       (00000012) aget-byte            v2, v6, v1
+	7       (00000016) and-int/lit16        v3, v2, 255
+	8       (0000001a) mul-int/lit8         v4, v1, 2
+	9       (0000001e) ushr-int/lit8        v3, v3, 4
+	10      (00000022) sget-object          v5, Lg5/g;->a [C
+	11      (00000026) aget-char            v3, v5, v3
+	12      (0000002a) aput-char            v3, v0, v4
+	13      (0000002e) add-int/lit8         v4, v4, 1
+	14      (00000032) and-int/lit8         v2, v2, 15
+	15      (00000036) aget-char            v2, v5, v2
+	16      (0000003a) aput-char            v2, v0, v4
+	17      (0000003e) add-int/lit8         v1, v1, 1
+	18      (00000042) goto                 -1bh
+
+e-BB@0x44 : 
+	19      (00000044) new-instance         v6, Ljava/lang/String;
+	20      (00000048) invoke-direct        v6, v0, Ljava/lang/String;-><init>([C)V
+	21      (0000004e) return-object        v6
+

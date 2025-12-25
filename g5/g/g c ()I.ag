@@ -1,0 +1,37 @@
+# Lg5/g;->c()I [access_flags=public static]
+#
+# Parameters:
+# local registers: v0...v1
+#
+# - return:int
+
+c-BB@0x0 : [ c-BB@0x14 c-BB@0x18 ]
+	0       (00000000) invoke-static        Lg5/g;->f()Z
+	1       (00000006) move-result          v0
+	2       (00000008) invoke-static        Lg5/g;->g()Z
+	3       (0000000e) move-result          v1
+	4       (00000010) if-eqz               v1, +004h
+
+c-BB@0x14 : [ c-BB@0x18 ]
+	5       (00000014) or-int/lit8          v0, v0, 2
+
+c-BB@0x18 : [ c-BB@0x24 c-BB@0x34 ]
+	6       (00000018) invoke-static        Landroid/os/Debug;->isDebuggerConnected()Z
+	7       (0000001e) move-result          v1
+	8       (00000020) if-nez               v1, +00ah
+
+c-BB@0x24 : [ c-BB@0x30 c-BB@0x32 ]
+	9       (00000024) invoke-static        Landroid/os/Debug;->waitingForDebugger()Z
+	10      (0000002a) move-result          v1
+	11      (0000002c) if-eqz               v1, +003h
+
+c-BB@0x30 : [ c-BB@0x34 ]
+	12      (00000030) goto                 +2h
+
+c-BB@0x32 : 
+	13      (00000032) return               v0
+
+c-BB@0x34 : 
+	14      (00000034) or-int/lit8          v0, v0, 4
+	15      (00000038) return               v0
+

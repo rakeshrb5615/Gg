@@ -1,0 +1,35 @@
+# Lg1/t;->c(Ljava/lang/Object;)Lg1/s; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:java.lang.Object
+#
+# - return:g1.s
+
+c-BB@0x0 : [ c-BB@0x2 ]
+	0       (00000000) const/4              v0, 0
+
+c-BB@0x2 : [ c-BB@0x12 c-BB@0x2e ]
+	1       (00000002) iget-object          v1, v3, Lg1/t;->b Ljava/util/ArrayList;
+	2       (00000006) invoke-virtual       v1, Ljava/util/ArrayList;->size()I
+	3       (0000000c) move-result          v2
+	4       (0000000e) if-ge                v0, v2, +010h
+
+c-BB@0x12 : [ c-BB@0x26 c-BB@0x28 ]
+	5       (00000012) invoke-virtual       v1, v0, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	6       (00000018) move-result-object   v1
+	7       (0000001a) check-cast           v1, Lg1/s;
+	8       (0000001e) iget-object          v2, v1, Lg1/s;->a Ljava/lang/Object;
+	9       (00000022) if-ne                v2, v4, +003h
+
+c-BB@0x26 : 
+	10      (00000026) return-object        v1
+
+c-BB@0x28 : [ c-BB@0x2 ]
+	11      (00000028) add-int/lit8         v0, v0, 1
+	12      (0000002c) goto                 -15h
+
+c-BB@0x2e : 
+	13      (0000002e) const/4              v4, 0
+	14      (00000030) return-object        v4
+

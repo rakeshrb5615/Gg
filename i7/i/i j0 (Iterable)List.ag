@@ -1,0 +1,81 @@
+# Li7/i;->j0(Ljava/lang/Iterable;)Ljava/util/List; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:java.lang.Iterable
+#
+# - return:java.util.List
+
+j0-BB@0x0 : [ j0-BB@0x1a j0-BB@0x6c ]
+	0       (00000000) const-string         v0, "<this>"
+	1       (00000004) invoke-static        v5, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) instance-of          v0, v5, Ljava/util/Collection;
+	3       (0000000e) sget-object          v1, Li7/n;->a Li7/n;
+	4       (00000012) const/4              v2, 0
+	5       (00000014) const/4              v3, 1
+	6       (00000016) if-eqz               v0, +02bh
+
+j0-BB@0x1a : [ j0-BB@0x2c j0-BB@0x6a ]
+	7       (0000001a) move-object          v0, v5
+	8       (0000001c) check-cast           v0, Ljava/util/Collection;
+	9       (00000020) invoke-interface     v0, Ljava/util/Collection;->size()I
+	10      (00000026) move-result          v4
+	11      (00000028) if-eqz               v4, +021h
+
+j0-BB@0x2c : [ j0-BB@0x30 j0-BB@0x3a ]
+	12      (0000002c) if-eq                v4, v3, +007h
+
+j0-BB@0x30 : 
+	13      (00000030) invoke-static        v0, Li7/i;->l0(Ljava/util/Collection;)Ljava/util/ArrayList;
+	14      (00000036) move-result-object   v5
+	15      (00000038) return-object        v5
+
+j0-BB@0x3a : [ j0-BB@0x42 j0-BB@0x50 ]
+	16      (0000003a) instance-of          v1, v5, Ljava/util/List;
+	17      (0000003e) if-eqz               v1, +009h
+
+j0-BB@0x42 : [ j0-BB@0x60 ]
+	18      (00000042) check-cast           v5, Ljava/util/List;
+	19      (00000046) invoke-interface     v5, v2, Ljava/util/List;->get(I)Ljava/lang/Object;
+	20      (0000004c) move-result-object   v5
+	21      (0000004e) goto                 +9h
+
+j0-BB@0x50 : [ j0-BB@0x60 ]
+	22      (00000050) invoke-interface     v0, Ljava/util/Collection;->iterator()Ljava/util/Iterator;
+	23      (00000056) move-result-object   v5
+	24      (00000058) invoke-interface     v5, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	25      (0000005e) move-result-object   v5
+
+j0-BB@0x60 : 
+	26      (00000060) invoke-static        v5, La/a;->G(Ljava/lang/Object;)Ljava/util/List;
+	27      (00000066) move-result-object   v5
+	28      (00000068) return-object        v5
+
+j0-BB@0x6a : 
+	29      (0000006a) return-object        v1
+
+j0-BB@0x6c : [ j0-BB@0x86 j0-BB@0x9e ]
+	30      (0000006c) invoke-static        v5, Li7/i;->m0(Ljava/lang/Iterable;)Ljava/util/List;
+	31      (00000072) move-result-object   v5
+	32      (00000074) move-object          v0, v5
+	33      (00000076) check-cast           v0, Ljava/util/ArrayList;
+	34      (0000007a) invoke-virtual       v0, Ljava/util/ArrayList;->size()I
+	35      (00000080) move-result          v4
+	36      (00000082) if-eqz               v4, +00eh
+
+j0-BB@0x86 : [ j0-BB@0x8a j0-BB@0x8c ]
+	37      (00000086) if-eq                v4, v3, +003h
+
+j0-BB@0x8a : 
+	38      (0000008a) return-object        v5
+
+j0-BB@0x8c : 
+	39      (0000008c) invoke-virtual       v0, v2, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	40      (00000092) move-result-object   v5
+	41      (00000094) invoke-static        v5, La/a;->G(Ljava/lang/Object;)Ljava/util/List;
+	42      (0000009a) move-result-object   v5
+	43      (0000009c) return-object        v5
+
+j0-BB@0x9e : 
+	44      (0000009e) return-object        v1
+

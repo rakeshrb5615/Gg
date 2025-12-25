@@ -1,0 +1,39 @@
+# Li2/q0;->g()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v5
+#
+# - return:void
+
+g-BB@0x0 : [ g-BB@0x8 g-BB@0x30 ]
+	0       (00000000) iget-object          v0, v5, Li2/q0;->q [Landroid/graphics/Bitmap;
+	1       (00000004) if-eqz               v0, +016h
+
+g-BB@0x8 : [ g-BB@0xc ]
+	2       (00000008) array-length         v1, v0
+	3       (0000000a) const/4              v2, 0
+
+g-BB@0xc : [ g-BB@0x10 g-BB@0x30 ]
+	4       (0000000c) if-ge                v2, v1, +012h
+
+g-BB@0x10 : [ g-BB@0x18 g-BB@0x2a ]
+	5       (00000010) aget-object          v3, v0, v2
+	6       (00000014) if-eqz               v3, +00bh
+
+g-BB@0x18 : [ g-BB@0x24 g-BB@0x2a ]
+	7       (00000018) invoke-virtual       v3, Landroid/graphics/Bitmap;->isRecycled()Z
+	8       (0000001e) move-result          v4
+	9       (00000020) if-nez               v4, +005h
+
+g-BB@0x24 : [ g-BB@0x2a ]
+	10      (00000024) invoke-virtual       v3, Landroid/graphics/Bitmap;->recycle()V
+
+g-BB@0x2a : [ g-BB@0xc ]
+	11      (0000002a) add-int/lit8         v2, v2, 1
+	12      (0000002e) goto                 -11h
+
+g-BB@0x30 : 
+	13      (00000030) const/4              v0, 0
+	14      (00000032) iput-object          v0, v5, Li2/q0;->q [Landroid/graphics/Bitmap;
+	15      (00000036) return-void          
+

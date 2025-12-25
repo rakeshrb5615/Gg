@@ -1,0 +1,49 @@
+# Lj6/g;->a(Landroid/content/Intent;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:android.content.Intent
+#
+# - return:void
+
+a-BB@0x0 : [ a-BB@0x4 a-BB@0xa ]
+	0       (00000000) if-eqz               v2, +005h
+
+a-BB@0x4 : [ a-BB@0xa ]
+	1       (00000004) invoke-static        v2, Lj6/c0;->a(Landroid/content/Intent;)V
+
+a-BB@0xa : [ a-BB@0x10 ]
+	2       (0000000a) iget-object          v2, v1, Lj6/g;->c Ljava/lang/Object;
+	3       (0000000e) monitor-enter        v2
+
+a-BB@0x10 : [ a-BB@0x20 a-BB@0x30 ]
+	4       (00000010) iget                 v0, v1, Lj6/g;->e I
+	5       (00000014) add-int/lit8         v0, v0, -1
+	6       (00000018) iput                 v0, v1, Lj6/g;->e I
+	7       (0000001c) if-nez               v0, +00ah
+	10:35
+	(Ljava/lang/Throwable; -> 2c a-BB@0x2c)
+
+a-BB@0x20 : [ a-BB@0x30 ]
+	8       (00000020) iget                 v0, v1, Lj6/g;->d I
+	9       (00000024) invoke-virtual       v1, v0, Landroid/app/Service;->stopSelfResult(I)Z
+	10      (0000002a) goto                 +3h
+	10:35
+	(Ljava/lang/Throwable; -> 2c a-BB@0x2c)
+
+a-BB@0x2c : [ a-BB@0x34 ]
+	11      (0000002c) move-exception       v0
+	12      (0000002e) goto                 +3h
+	10:35
+	(Ljava/lang/Throwable; -> 2c a-BB@0x2c)
+
+a-BB@0x30 : 
+	13      (00000030) monitor-exit         v2
+	14      (00000032) return-void          
+	10:35
+	(Ljava/lang/Throwable; -> 2c a-BB@0x2c)
+
+a-BB@0x34 : 
+	15      (00000034) monitor-exit         v2
+	16      (00000036) throw                v0
+

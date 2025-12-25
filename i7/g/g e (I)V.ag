@@ -1,0 +1,81 @@
+# Li7/g;->e(I)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:int
+#
+# - return:void
+
+e-BB@0x0 : [ e-BB@0x4 e-BB@0x88 ]
+	0       (00000000) if-ltz               v5, +044h
+
+e-BB@0x4 : [ e-BB@0xe e-BB@0x10 ]
+	1       (00000004) iget-object          v0, v4, Li7/g;->b [Ljava/lang/Object;
+	2       (00000008) array-length         v1, v0
+	3       (0000000a) if-gt                v5, v1, +003h
+
+e-BB@0xe : 
+	4       (0000000e) return-void          
+
+e-BB@0x10 : [ e-BB@0x18 e-BB@0x2c ]
+	5       (00000010) sget-object          v1, Li7/g;->d [Ljava/lang/Object;
+	6       (00000014) if-ne                v0, v1, +00ch
+
+e-BB@0x18 : [ e-BB@0x20 e-BB@0x22 ]
+	7       (00000018) const/16             v0, 10
+	8       (0000001c) if-ge                v5, v0, +003h
+
+e-BB@0x20 : [ e-BB@0x22 ]
+	9       (00000020) move                 v5, v0
+
+e-BB@0x22 : 
+	10      (00000022) new-array            v5, v5, [Ljava/lang/Object;
+	11      (00000026) iput-object          v5, v4, Li7/g;->b [Ljava/lang/Object;
+	12      (0000002a) return-void          
+
+e-BB@0x2c : [ e-BB@0x3c e-BB@0x3e ]
+	13      (0000002c) array-length         v1, v0
+	14      (0000002e) shr-int/lit8         v2, v1, 1
+	15      (00000032) add-int/2addr        v1, v2
+	16      (00000034) sub-int              v2, v1, v5
+	17      (00000038) if-gez               v2, +003h
+
+e-BB@0x3c : [ e-BB@0x3e ]
+	18      (0000003c) move                 v1, v5
+
+e-BB@0x3e : [ e-BB@0x4c e-BB@0x5a ]
+	19      (0000003e) const                v2, 2147483639
+	20      (00000044) sub-int              v3, v1, v2
+	21      (00000048) if-lez               v3, +009h
+
+e-BB@0x4c : [ e-BB@0x50 e-BB@0x58 ]
+	22      (0000004c) if-le                v5, v2, +006h
+
+e-BB@0x50 : [ e-BB@0x5a ]
+	23      (00000050) const                v1, 2147483647
+	24      (00000056) goto                 +2h
+
+e-BB@0x58 : [ e-BB@0x5a ]
+	25      (00000058) move                 v1, v2
+
+e-BB@0x5a : 
+	26      (0000005a) new-array            v5, v1, [Ljava/lang/Object;
+	27      (0000005e) iget                 v1, v4, Li7/g;->a I
+	28      (00000062) array-length         v2, v0
+	29      (00000064) const/4              v3, 0
+	30      (00000066) invoke-static        v0, v3, v5, v1, v2, Li7/h;->Z([Ljava/lang/Object; I [Ljava/lang/Object; I I)V
+	31      (0000006c) iget-object          v0, v4, Li7/g;->b [Ljava/lang/Object;
+	32      (00000070) array-length         v1, v0
+	33      (00000072) iget                 v2, v4, Li7/g;->a I
+	34      (00000076) sub-int/2addr        v1, v2
+	35      (00000078) invoke-static        v0, v1, v5, v3, v2, Li7/h;->Z([Ljava/lang/Object; I [Ljava/lang/Object; I I)V
+	36      (0000007e) iput                 v3, v4, Li7/g;->a I
+	37      (00000082) iput-object          v5, v4, Li7/g;->b [Ljava/lang/Object;
+	38      (00000086) return-void          
+
+e-BB@0x88 : 
+	39      (00000088) new-instance         v5, Ljava/lang/IllegalStateException;
+	40      (0000008c) const-string         v0, "Deque is too big."
+	41      (00000090) invoke-direct        v5, v0, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	42      (00000096) throw                v5
+

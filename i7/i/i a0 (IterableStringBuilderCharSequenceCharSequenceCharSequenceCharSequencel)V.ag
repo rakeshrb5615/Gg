@@ -1,0 +1,45 @@
+# Li7/i;->a0(Ljava/lang/Iterable; Ljava/lang/StringBuilder; Ljava/lang/CharSequence; Ljava/lang/CharSequence; Ljava/lang/CharSequence; Ljava/lang/CharSequence; Lu7/l;)V [access_flags=public static final]
+#
+# Parameters:
+# - local registers: v0...v0
+# - v1:java.lang.Iterable
+# - v2:java.lang.StringBuilder
+# - v3:java.lang.CharSequence
+# - v4:java.lang.CharSequence
+# - v5:java.lang.CharSequence
+# - v6:java.lang.CharSequence
+# - v7:u7.l
+#
+# - return:void
+
+a0-BB@0x0 : [ a0-BB@0x1a ]
+	0       (00000000) const-string         v6, "<this>"
+	1       (00000004) invoke-static        v1, v6, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) invoke-virtual       v2, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/CharSequence;)Ljava/lang/Appendable;
+	3       (00000010) invoke-interface     v1, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
+	4       (00000016) move-result-object   v1
+	5       (00000018) const/4              v4, 0
+
+a0-BB@0x1a : [ a0-BB@0x26 a0-BB@0x44 ]
+	6       (0000001a) invoke-interface     v1, Ljava/util/Iterator;->hasNext()Z
+	7       (00000020) move-result          v6
+	8       (00000022) if-eqz               v6, +011h
+
+a0-BB@0x26 : [ a0-BB@0x36 a0-BB@0x3c ]
+	9       (00000026) invoke-interface     v1, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	10      (0000002c) move-result-object   v6
+	11      (0000002e) const/4              v0, 1
+	12      (00000030) add-int/2addr        v4, v0
+	13      (00000032) if-le                v4, v0, +005h
+
+a0-BB@0x36 : [ a0-BB@0x3c ]
+	14      (00000036) invoke-virtual       v2, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/CharSequence;)Ljava/lang/Appendable;
+
+a0-BB@0x3c : [ a0-BB@0x1a ]
+	15      (0000003c) invoke-static        v2, v6, v7, Lc4/b;->d(Ljava/lang/StringBuilder; Ljava/lang/Object; Lu7/l;)V
+	16      (00000042) goto                 -14h
+
+a0-BB@0x44 : 
+	17      (00000044) invoke-virtual       v2, v5, Ljava/lang/StringBuilder;->append(Ljava/lang/CharSequence;)Ljava/lang/Appendable;
+	18      (0000004a) return-void          
+

@@ -1,0 +1,80 @@
+# Li8/j;->d(Li8/j; I)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:i8.j
+# - v6:int
+#
+# - return:boolean
+
+d-BB@0x0 : [ d-BB@0x10 d-BB@0x38 ]
+	0       (00000000) invoke-virtual       v4, Li8/j;->e()Li8/j;
+	1       (00000006) move-result-object   v0
+	2       (00000008) sget-object          v1, Li8/j;->b Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;
+	3       (0000000c) if-nez               v0, +016h
+
+d-BB@0x10 : [ d-BB@0x1c ]
+	4       (00000010) invoke-virtual       v1, v4, Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	5       (00000016) move-result-object   v0
+	6       (00000018) check-cast           v0, Li8/j;
+
+d-BB@0x1c : [ d-BB@0x28 d-BB@0x2a ]
+	7       (0000001c) invoke-virtual       v0, Li8/j;->h()Z
+	8       (00000022) move-result          v2
+	9       (00000024) if-nez               v2, +003h
+
+d-BB@0x28 : [ d-BB@0x38 ]
+	10      (00000028) goto                 +8h
+
+d-BB@0x2a : [ d-BB@0x1c ]
+	11      (0000002a) invoke-virtual       v1, v0, Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	12      (00000030) move-result-object   v0
+	13      (00000032) check-cast           v0, Li8/j;
+	14      (00000036) goto                 -dh
+
+d-BB@0x38 : [ d-BB@0x42 d-BB@0x64 ]
+	15      (00000038) instance-of          v2, v0, Li8/h;
+	16      (0000003c) const/4              v3, 1
+	17      (0000003e) if-eqz               v2, +013h
+
+d-BB@0x42 : [ d-BB@0x52 d-BB@0x60 ]
+	18      (00000042) move-object          v1, v0
+	19      (00000044) check-cast           v1, Li8/h;
+	20      (00000048) iget                 v1, v1, Li8/h;->d I
+	21      (0000004c) and-int/2addr        v1, v6
+	22      (0000004e) if-nez               v1, +009h
+
+d-BB@0x52 : [ d-BB@0x5e d-BB@0x60 ]
+	23      (00000052) invoke-virtual       v0, v5, v6, Li8/j;->d(Li8/j; I)Z
+	24      (00000058) move-result          v5
+	25      (0000005a) if-eqz               v5, +003h
+
+d-BB@0x5e : 
+	26      (0000005e) return               v3
+
+d-BB@0x60 : 
+	27      (00000060) const/4              v5, 0
+	28      (00000062) return               v5
+
+d-BB@0x64 : [ d-BB@0x74 ]
+	29      (00000064) invoke-virtual       v1, v5, v0, Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;->set(Ljava/lang/Object; Ljava/lang/Object;)V
+	30      (0000006a) sget-object          v1, Li8/j;->a Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;
+	31      (0000006e) invoke-virtual       v1, v5, v4, Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;->set(Ljava/lang/Object; Ljava/lang/Object;)V
+
+d-BB@0x74 : [ d-BB@0x80 d-BB@0x88 ]
+	32      (00000074) invoke-virtual       v1, v0, v4, v5, Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;->compareAndSet(Ljava/lang/Object; Ljava/lang/Object; Ljava/lang/Object;)Z
+	33      (0000007a) move-result          v2
+	34      (0000007c) if-eqz               v2, +006h
+
+d-BB@0x80 : 
+	35      (00000080) invoke-virtual       v5, v4, Li8/j;->f(Li8/j;)V
+	36      (00000086) return               v3
+
+d-BB@0x88 : [ d-BB@0x94 d-BB@0x74 ]
+	37      (00000088) invoke-virtual       v1, v0, Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	38      (0000008e) move-result-object   v2
+	39      (00000090) if-eq                v2, v4, -00eh
+
+d-BB@0x94 : [ d-BB@0x0 ]
+	40      (00000094) goto                 -4ah
+

@@ -1,0 +1,33 @@
+# Lh/f;->c(I I)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:int
+# - v4:int
+#
+# - return:void
+
+c-BB@0x0 : [ c-BB@0x10 c-BB@0x30 ]
+	0       (00000000) add-int/2addr        v4, v3
+	1       (00000002) iget-object          v0, v2, Lh/f;->c Ljava/lang/Object;
+	2       (00000006) check-cast           v0, [C
+	3       (0000000a) array-length         v1, v0
+	4       (0000000c) if-gt                v1, v4, +012h
+
+c-BB@0x10 : [ c-BB@0x18 c-BB@0x1a ]
+	5       (00000010) mul-int/lit8         v3, v3, 2
+	6       (00000014) if-ge                v4, v3, +003h
+
+c-BB@0x18 : [ c-BB@0x1a ]
+	7       (00000018) move                 v4, v3
+
+c-BB@0x1a : [ c-BB@0x30 ]
+	8       (0000001a) invoke-static        v0, v4, Ljava/util/Arrays;->copyOf([C I)[C
+	9       (00000020) move-result-object   v3
+	10      (00000022) const-string         v4, "copyOf(...)"
+	11      (00000026) invoke-static        v3, v4, Lkotlin/jvm/internal/j;->d(Ljava/lang/Object; Ljava/lang/String;)V
+	12      (0000002c) iput-object          v3, v2, Lh/f;->c Ljava/lang/Object;
+
+c-BB@0x30 : 
+	13      (00000030) return-void          
+

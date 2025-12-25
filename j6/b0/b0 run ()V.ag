@@ -1,0 +1,172 @@
+# Lj6/b0;->run()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v10
+#
+# - return:void
+
+run-BB@0x0 : [ run-BB@0x24 run-BB@0x2e ]
+	0       (00000000) const-string         v0, "TopicsSyncTask's wakelock was already released due to timeout."
+	1       (00000004) const-string         v1, "FirebaseMessaging"
+	2       (00000008) iget-object          v2, v10, Lj6/b0;->d Lj6/z;
+	3       (0000000c) const-string         v3, "Failed to sync topics. Won't retry sync. "
+	4       (00000010) iget-object          v4, v10, Lj6/b0;->a Landroid/content/Context;
+	5       (00000014) invoke-static        v4, Lj6/b0;->c(Landroid/content/Context;)Z
+	6       (0000001a) move-result          v5
+	7       (0000001c) iget-object          v6, v10, Lj6/b0;->c Landroid/os/PowerManager$WakeLock;
+	8       (00000020) if-eqz               v5, +007h
+
+run-BB@0x24 : [ run-BB@0x2e ]
+	9       (00000024) sget-wide            v7, Lj6/f;->a J
+	10      (00000028) invoke-virtual       v6, v7, v8, Landroid/os/PowerManager$WakeLock;->acquire(J)V
+
+run-BB@0x2e : [ run-BB@0x32 ]
+	11      (0000002e) const/4              v5, 1
+	12      (00000030) const/4              v7, 0
+
+run-BB@0x32 : [ run-BB@0x48 run-BB@0x72 ]
+	13      (00000032) invoke-virtual       v2, v5, Lj6/z;->d(Z)V
+	14      (00000038) iget-object          v5, v10, Lj6/b0;->b Lh3/k;
+	15      (0000003c) invoke-virtual       v5, Lh3/k;->d()Z
+	16      (00000042) move-result          v5
+	17      (00000044) if-nez               v5, +017h
+	32:4d
+	(Ljava/io/IOException; -> 6e run-BB@0x6e)
+	(Ljava/lang/Throwable; -> 6a run-BB@0x6a)
+
+run-BB@0x48 : [ run-BB@0x5a run-BB@0x12e ]
+	18      (00000048) invoke-virtual       v2, v7, Lj6/z;->d(Z)V
+	19      (0000004e) invoke-static        v4, Lj6/b0;->c(Landroid/content/Context;)Z
+	20      (00000054) move-result          v2
+	21      (00000056) if-eqz               v2, +06ch
+
+run-BB@0x5a : 
+	22      (0000005a) invoke-virtual       v6, Landroid/os/PowerManager$WakeLock;->release()V
+	23      (00000060) return-void          
+	5a:5f
+	(Ljava/lang/RuntimeException; -> 62 run-BB@0x62)
+
+run-BB@0x62 : 
+	24      (00000062) invoke-static        v1, v0, Landroid/util/Log;->i(Ljava/lang/String; Ljava/lang/String;)I
+	25      (00000068) return-void          
+
+run-BB@0x6a : [ run-BB@0x130 ]
+	26      (0000006a) move-exception       v2
+	27      (0000006c) goto                 +62h
+
+run-BB@0x6e : [ run-BB@0xf0 ]
+	28      (0000006e) move-exception       v5
+	29      (00000070) goto                 +40h
+
+run-BB@0x72 : [ run-BB@0x7e run-BB@0xb6 ]
+	30      (00000072) invoke-static        v4, Lj6/b0;->a(Landroid/content/Context;)Z
+	31      (00000078) move-result          v5
+	32      (0000007a) if-eqz               v5, +01eh
+	72:99
+	(Ljava/io/IOException; -> 6e run-BB@0x6e)
+	(Ljava/lang/Throwable; -> 6a run-BB@0x6a)
+
+run-BB@0x7e : [ run-BB@0x8a run-BB@0xb6 ]
+	33      (0000007e) invoke-virtual       v10, Lj6/b0;->d()Z
+	34      (00000084) move-result          v5
+	35      (00000086) if-nez               v5, +018h
+	72:99
+	(Ljava/io/IOException; -> 6e run-BB@0x6e)
+	(Ljava/lang/Throwable; -> 6a run-BB@0x6a)
+
+run-BB@0x8a : [ run-BB@0xa6 run-BB@0x12e ]
+	36      (0000008a) new-instance         v5, Lj6/a0;
+	37      (0000008e) invoke-direct        v5, v10, v10, Lj6/a0;-><init>(Lj6/b0; Lj6/b0;)V
+	38      (00000094) invoke-virtual       v5, Lj6/a0;->a()V
+	39      (0000009a) invoke-static        v4, Lj6/b0;->c(Landroid/content/Context;)Z
+	40      (000000a0) move-result          v2
+	41      (000000a2) if-eqz               v2, +046h
+
+run-BB@0xa6 : 
+	42      (000000a6) invoke-virtual       v6, Landroid/os/PowerManager$WakeLock;->release()V
+	43      (000000ac) return-void          
+	a6:ab
+	(Ljava/lang/RuntimeException; -> ae run-BB@0xae)
+
+run-BB@0xae : 
+	44      (000000ae) invoke-static        v1, v0, Landroid/util/Log;->i(Ljava/lang/String; Ljava/lang/String;)I
+	45      (000000b4) return-void          
+
+run-BB@0xb6 : [ run-BB@0xc2 run-BB@0xca ]
+	46      (000000b6) invoke-virtual       v2, Lj6/z;->e()Z
+	47      (000000bc) move-result          v5
+	48      (000000be) if-eqz               v5, +006h
+	b6:d3
+	(Ljava/io/IOException; -> 6e run-BB@0x6e)
+	(Ljava/lang/Throwable; -> 6a run-BB@0x6a)
+
+run-BB@0xc2 : [ run-BB@0xd4 ]
+	49      (000000c2) invoke-virtual       v2, v7, Lj6/z;->d(Z)V
+	50      (000000c8) goto                 +6h
+	b6:d3
+	(Ljava/io/IOException; -> 6e run-BB@0x6e)
+	(Ljava/lang/Throwable; -> 6a run-BB@0x6a)
+
+run-BB@0xca : [ run-BB@0xd4 ]
+	51      (000000ca) iget-wide            v8, v10, Lj6/b0;->e J
+	52      (000000ce) invoke-virtual       v2, v8, v9, Lj6/z;->f(J)V
+	b6:d3
+	(Ljava/io/IOException; -> 6e run-BB@0x6e)
+	(Ljava/lang/Throwable; -> 6a run-BB@0x6a)
+
+run-BB@0xd4 : [ run-BB@0xe0 run-BB@0x12e ]
+	53      (000000d4) invoke-static        v4, Lj6/b0;->c(Landroid/content/Context;)Z
+	54      (000000da) move-result          v2
+	55      (000000dc) if-eqz               v2, +029h
+
+run-BB@0xe0 : 
+	56      (000000e0) invoke-virtual       v6, Landroid/os/PowerManager$WakeLock;->release()V
+	57      (000000e6) return-void          
+	e0:e5
+	(Ljava/lang/RuntimeException; -> e8 run-BB@0xe8)
+
+run-BB@0xe8 : [ run-BB@0x12e ]
+	58      (000000e8) invoke-static        v1, v0, Landroid/util/Log;->i(Ljava/lang/String; Ljava/lang/String;)I
+	59      (000000ee) goto                 +20h
+
+run-BB@0xf0 : [ run-BB@0x128 run-BB@0x12e ]
+	60      (000000f0) new-instance         v8, Ljava/lang/StringBuilder;
+	61      (000000f4) invoke-direct        v8, v3, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	62      (000000fa) invoke-virtual       v5, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+	63      (00000100) move-result-object   v3
+	64      (00000102) invoke-virtual       v8, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	65      (00000108) invoke-virtual       v8, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	66      (0000010e) move-result-object   v3
+	67      (00000110) invoke-static        v1, v3, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String;)I
+	68      (00000116) invoke-virtual       v2, v7, Lj6/z;->d(Z)V
+	69      (0000011c) invoke-static        v4, Lj6/b0;->c(Landroid/content/Context;)Z
+	70      (00000122) move-result          v2
+	71      (00000124) if-eqz               v2, +005h
+	f0:11b
+	(Ljava/lang/Throwable; -> 6a run-BB@0x6a)
+
+run-BB@0x128 : [ run-BB@0x12e ]
+	72      (00000128) invoke-virtual       v6, Landroid/os/PowerManager$WakeLock;->release()V
+	128:12d
+	(Ljava/lang/RuntimeException; -> e8 run-BB@0xe8)
+
+run-BB@0x12e : 
+	73      (0000012e) return-void          
+
+run-BB@0x130 : [ run-BB@0x13c run-BB@0x14a ]
+	74      (00000130) invoke-static        v4, Lj6/b0;->c(Landroid/content/Context;)Z
+	75      (00000136) move-result          v3
+	76      (00000138) if-eqz               v3, +009h
+
+run-BB@0x13c : [ run-BB@0x14a ]
+	77      (0000013c) invoke-virtual       v6, Landroid/os/PowerManager$WakeLock;->release()V
+	78      (00000142) goto                 +4h
+	13c:141
+	(Ljava/lang/RuntimeException; -> 144 run-BB@0x144)
+
+run-BB@0x144 : [ run-BB@0x14a ]
+	79      (00000144) invoke-static        v1, v0, Landroid/util/Log;->i(Ljava/lang/String; Ljava/lang/String;)I
+
+run-BB@0x14a : 
+	80      (0000014a) throw                v2
+

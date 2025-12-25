@@ -1,0 +1,54 @@
+# Lj6/b0;->b(Landroid/content/Context; Ljava/lang/String; Ljava/lang/Boolean;)Z [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:android.content.Context
+# - v3:java.lang.String
+# - v4:java.lang.Boolean
+#
+# - return:boolean
+
+b-BB@0x0 : [ b-BB@0x4 b-BB@0xe ]
+	0       (00000000) if-eqz               v4, +007h
+
+b-BB@0x4 : 
+	1       (00000004) invoke-virtual       v4, Ljava/lang/Boolean;->booleanValue()Z
+	2       (0000000a) move-result          v2
+	3       (0000000c) return               v2
+
+b-BB@0xe : [ b-BB@0x1a b-BB@0x1e ]
+	4       (0000000e) invoke-virtual       v2, v3, Landroid/content/Context;->checkCallingOrSelfPermission(Ljava/lang/String;)I
+	5       (00000014) move-result          v2
+	6       (00000016) if-nez               v2, +004h
+
+b-BB@0x1a : [ b-BB@0x20 ]
+	7       (0000001a) const/4              v2, 1
+	8       (0000001c) goto                 +2h
+
+b-BB@0x1e : [ b-BB@0x20 ]
+	9       (0000001e) const/4              v2, 0
+
+b-BB@0x20 : [ b-BB@0x24 b-BB@0x62 ]
+	10      (00000020) if-nez               v2, +021h
+
+b-BB@0x24 : [ b-BB@0x36 b-BB@0x62 ]
+	11      (00000024) const/4              v4, 3
+	12      (00000026) const-string         v0, "FirebaseMessaging"
+	13      (0000002a) invoke-static        v0, v4, Landroid/util/Log;->isLoggable(Ljava/lang/String; I)Z
+	14      (00000030) move-result          v4
+	15      (00000032) if-eqz               v4, +018h
+
+b-BB@0x36 : [ b-BB@0x62 ]
+	16      (00000036) new-instance         v4, Ljava/lang/StringBuilder;
+	17      (0000003a) const-string         v1, "Missing Permission: "
+	18      (0000003e) invoke-direct        v4, v1, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	19      (00000044) invoke-virtual       v4, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	20      (0000004a) const-string         v3, ". This permission should normally be included by the manifest merger, but may needed to be manually added to your manifest"
+	21      (0000004e) invoke-virtual       v4, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	22      (00000054) invoke-virtual       v4, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	23      (0000005a) move-result-object   v3
+	24      (0000005c) invoke-static        v0, v3, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String;)I
+
+b-BB@0x62 : 
+	25      (00000062) return               v2
+

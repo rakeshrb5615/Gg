@@ -1,0 +1,62 @@
+# Lg5/v;->b(Z)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:boolean
+#
+# - return:void
+
+b-BB@0x0 : [ b-BB@0x4 b-BB@0xa ]
+	0       (00000000) if-eqz               v4, +005h
+
+b-BB@0x4 : [ b-BB@0xe ]
+	1       (00000004) const-string         v4, "ENABLED"
+	2       (00000008) goto                 +3h
+
+b-BB@0xa : [ b-BB@0xe ]
+	3       (0000000a) const-string         v4, "DISABLED"
+
+b-BB@0xe : [ b-BB@0x16 b-BB@0x1c ]
+	4       (0000000e) iget-object          v0, v3, Lg5/v;->e Ljava/lang/Boolean;
+	5       (00000012) if-nez               v0, +005h
+
+b-BB@0x16 : [ b-BB@0x2e ]
+	6       (00000016) const-string         v0, "global Firebase setting"
+	7       (0000001a) goto                 +ah
+
+b-BB@0x1c : [ b-BB@0x24 b-BB@0x2a ]
+	8       (0000001c) iget-boolean         v0, v3, Lg5/v;->d Z
+	9       (00000020) if-eqz               v0, +005h
+
+b-BB@0x24 : [ b-BB@0x2e ]
+	10      (00000024) const-string         v0, "firebase_crashlytics_collection_enabled manifest flag"
+	11      (00000028) goto                 +3h
+
+b-BB@0x2a : [ b-BB@0x2e ]
+	12      (0000002a) const-string         v0, "API"
+
+b-BB@0x2e : [ b-BB@0x76 b-BB@0x7e ]
+	13      (0000002e) new-instance         v1, Ljava/lang/StringBuilder;
+	14      (00000032) const-string         v2, "Crashlytics automatic data collection "
+	15      (00000036) invoke-direct        v1, v2, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	16      (0000003c) invoke-virtual       v1, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	17      (00000042) const-string         v4, " by "
+	18      (00000046) invoke-virtual       v1, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	19      (0000004c) invoke-virtual       v1, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	20      (00000052) const-string         v4, "."
+	21      (00000056) invoke-virtual       v1, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	22      (0000005c) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	23      (00000062) move-result-object   v4
+	24      (00000064) const/4              v0, 3
+	25      (00000066) const-string         v1, "FirebaseCrashlytics"
+	26      (0000006a) invoke-static        v1, v0, Landroid/util/Log;->isLoggable(Ljava/lang/String; I)Z
+	27      (00000070) move-result          v0
+	28      (00000072) if-eqz               v0, +006h
+
+b-BB@0x76 : [ b-BB@0x7e ]
+	29      (00000076) const/4              v0, 0
+	30      (00000078) invoke-static        v1, v4, v0, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+
+b-BB@0x7e : 
+	31      (0000007e) return-void          
+

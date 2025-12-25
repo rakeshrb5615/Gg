@@ -1,0 +1,66 @@
+# Li2/o;->onComplete(Lcom/google/android/gms/tasks/Task;)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:com.google.android.gms.tasks.Task
+#
+# - return:void
+
+onComplete-BB@0x0 : [ onComplete-BB@0xe ]
+	0       (00000000) iget-object          v0, v4, Li2/o;->b Ljava/lang/Object;
+	1       (00000004) check-cast           v0, Li2/q;
+	2       (00000008) invoke-virtual       v0, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+onComplete-BB@0xe : [ onComplete-BB@0x22 onComplete-BB@0x2e ]
+	3       (0000000e) invoke-virtual       v5, Lcom/google/android/gms/tasks/Task;->getResult()Ljava/lang/Object;
+	4       (00000014) move-result-object   v5
+	5       (00000016) check-cast           v5, Landroid/location/Location;
+	6       (0000001a) iget-boolean         v1, v4, Li2/o;->a Z
+	7       (0000001e) if-eqz               v5, +008h
+	e:19
+	(Lcom/google/android/gms/tasks/RuntimeExecutionException; -> 2a onComplete-BB@0x2a)
+
+onComplete-BB@0x22 : 
+	8       (00000022) invoke-virtual       v0, v5, v1, Li2/q;->c(Landroid/location/Location; Z)V
+	9       (00000028) return-void          
+	22:95
+	(Lcom/google/android/gms/tasks/RuntimeExecutionException; -> 2a onComplete-BB@0x2a)
+
+onComplete-BB@0x2a : [ onComplete-BB@0x98 ]
+	10      (0000002a) move-exception       v5
+	11      (0000002c) goto                 +36h
+	22:95
+	(Lcom/google/android/gms/tasks/RuntimeExecutionException; -> 2a onComplete-BB@0x2a)
+
+onComplete-BB@0x2e : 
+	12      (0000002e) new-instance         v5, Lcom/google/android/gms/location/LocationRequest$Builder;
+	13      (00000032) const-wide/16        v2, 10000
+	14      (00000036) invoke-direct        v5, v2, v3, Lcom/google/android/gms/location/LocationRequest$Builder;-><init>(J)V
+	15      (0000003c) invoke-virtual       v5, v2, v3, Lcom/google/android/gms/location/LocationRequest$Builder;->setIntervalMillis(J)Lcom/google/android/gms/location/LocationRequest$Builder;
+	16      (00000042) move-result-object   v5
+	17      (00000044) const-wide/16        v2, 1000
+	18      (00000048) invoke-virtual       v5, v2, v3, Lcom/google/android/gms/location/LocationRequest$Builder;->setMinUpdateIntervalMillis(J)Lcom/google/android/gms/location/LocationRequest$Builder;
+	19      (0000004e) move-result-object   v5
+	20      (00000050) const/16             v2, 104
+	21      (00000054) invoke-virtual       v5, v2, Lcom/google/android/gms/location/LocationRequest$Builder;->setPriority(I)Lcom/google/android/gms/location/LocationRequest$Builder;
+	22      (0000005a) move-result-object   v5
+	23      (0000005c) const-wide/16        v2, 1
+	24      (00000060) invoke-virtual       v5, v2, v3, Lcom/google/android/gms/location/LocationRequest$Builder;->setMaxUpdateDelayMillis(J)Lcom/google/android/gms/location/LocationRequest$Builder;
+	25      (00000066) move-result-object   v5
+	26      (00000068) const/4              v2, 2
+	27      (0000006a) invoke-virtual       v5, v2, Lcom/google/android/gms/location/LocationRequest$Builder;->setMaxUpdates(I)Lcom/google/android/gms/location/LocationRequest$Builder;
+	28      (00000070) move-result-object   v5
+	29      (00000072) invoke-virtual       v5, Lcom/google/android/gms/location/LocationRequest$Builder;->build()Lcom/google/android/gms/location/LocationRequest;
+	30      (00000078) move-result-object   v5
+	31      (0000007a) new-instance         v2, Li2/p;
+	32      (0000007e) invoke-direct        v2, v0, v1, Li2/p;-><init>(Li2/q; Z)V
+	33      (00000084) iget-object          v1, v0, Li2/q;->a Lcom/google/android/gms/location/FusedLocationProviderClient;
+	34      (00000088) invoke-static        Landroid/os/Looper;->getMainLooper()Landroid/os/Looper;
+	35      (0000008e) move-result-object   v3
+	36      (00000090) invoke-interface     v1, v5, v2, v3, Lcom/google/android/gms/location/FusedLocationProviderClient;->requestLocationUpdates(Lcom/google/android/gms/location/LocationRequest; Lcom/google/android/gms/location/LocationCallback; Landroid/os/Looper;)Lcom/google/android/gms/tasks/Task;
+	37      (00000096) return-void          
+
+onComplete-BB@0x98 : 
+	38      (00000098) invoke-virtual       v0, v5, Li2/q;->b(Lcom/google/android/gms/tasks/RuntimeExecutionException;)V
+	39      (0000009e) return-void          
+

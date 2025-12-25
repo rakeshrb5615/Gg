@@ -1,0 +1,73 @@
+# Li7/g;->toArray([Ljava/lang/Object;)[Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:java.lang.Object[]
+#
+# - return:java.lang.Object[]
+
+toArray-BB@0x0 : [ toArray-BB@0x14 toArray-BB@0x16 ]
+	0       (00000000) const-string         v0, "array"
+	1       (00000004) invoke-static        v6, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) array-length         v0, v6
+	3       (0000000c) iget                 v1, v5, Li7/g;->c I
+	4       (00000010) if-lt                v0, v1, +003h
+
+toArray-BB@0x14 : [ toArray-BB@0x3c ]
+	5       (00000014) goto                 +14h
+
+toArray-BB@0x16 : [ toArray-BB@0x3c ]
+	6       (00000016) invoke-virtual       v6, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	7       (0000001c) move-result-object   v6
+	8       (0000001e) invoke-virtual       v6, Ljava/lang/Class;->getComponentType()Ljava/lang/Class;
+	9       (00000024) move-result-object   v6
+	10      (00000026) invoke-static        v6, v1, Ljava/lang/reflect/Array;->newInstance(Ljava/lang/Class; I)Ljava/lang/Object;
+	11      (0000002c) move-result-object   v6
+	12      (0000002e) const-string         v0, "null cannot be cast to non-null type kotlin.Array<T of kotlin.collections.ArraysKt__ArraysJVMKt.arrayOfNulls>"
+	13      (00000032) invoke-static        v6, v0, Lkotlin/jvm/internal/j;->c(Ljava/lang/Object; Ljava/lang/String;)V
+	14      (00000038) check-cast           v6, [Ljava/lang/Object;
+
+toArray-BB@0x3c : [ toArray-BB@0x56 toArray-BB@0x64 ]
+	15      (0000003c) iget                 v0, v5, Li7/g;->a I
+	16      (00000040) iget                 v1, v5, Li7/g;->c I
+	17      (00000044) add-int/2addr        v1, v0
+	18      (00000046) invoke-virtual       v5, v1, Li7/g;->i(I)I
+	19      (0000004c) move-result          v0
+	20      (0000004e) iget                 v1, v5, Li7/g;->a I
+	21      (00000052) if-ge                v1, v0, +009h
+
+toArray-BB@0x56 : [ toArray-BB@0x94 ]
+	22      (00000056) iget-object          v2, v5, Li7/g;->b [Ljava/lang/Object;
+	23      (0000005a) const/4              v3, 2
+	24      (0000005c) invoke-static        v2, v1, v6, v0, v3, Li7/h;->a0([Ljava/lang/Object; I [Ljava/lang/Object; I I)V
+	25      (00000062) goto                 +19h
+
+toArray-BB@0x64 : [ toArray-BB@0x70 toArray-BB@0x94 ]
+	26      (00000064) invoke-virtual       v5, Li7/g;->isEmpty()Z
+	27      (0000006a) move-result          v1
+	28      (0000006c) if-nez               v1, +014h
+
+toArray-BB@0x70 : [ toArray-BB@0x94 ]
+	29      (00000070) iget-object          v1, v5, Li7/g;->b [Ljava/lang/Object;
+	30      (00000074) iget                 v2, v5, Li7/g;->a I
+	31      (00000078) array-length         v3, v1
+	32      (0000007a) const/4              v4, 0
+	33      (0000007c) invoke-static        v1, v4, v6, v2, v3, Li7/h;->Z([Ljava/lang/Object; I [Ljava/lang/Object; I I)V
+	34      (00000082) iget-object          v1, v5, Li7/g;->b [Ljava/lang/Object;
+	35      (00000086) array-length         v2, v1
+	36      (00000088) iget                 v3, v5, Li7/g;->a I
+	37      (0000008c) sub-int/2addr        v2, v3
+	38      (0000008e) invoke-static        v1, v2, v6, v4, v0, Li7/h;->Z([Ljava/lang/Object; I [Ljava/lang/Object; I I)V
+
+toArray-BB@0x94 : [ toArray-BB@0x9e toArray-BB@0xa4 ]
+	39      (00000094) iget                 v0, v5, Li7/g;->c I
+	40      (00000098) array-length         v1, v6
+	41      (0000009a) if-ge                v0, v1, +005h
+
+toArray-BB@0x9e : [ toArray-BB@0xa4 ]
+	42      (0000009e) const/4              v1, 0
+	43      (000000a0) aput-object          v1, v6, v0
+
+toArray-BB@0xa4 : 
+	44      (000000a4) return-object        v6
+

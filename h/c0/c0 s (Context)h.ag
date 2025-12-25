@@ -1,0 +1,115 @@
+# Lh/c0;->s(Landroid/content/Context;)Lm0/h; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:android.content.Context
+#
+# - return:m0.h
+
+s-BB@0x0 : [ s-BB@0xc s-BB@0xe ]
+	0       (00000000) sget                 v0, Landroid/os/Build$VERSION;->SDK_INT I
+	1       (00000004) const/16             v1, 33
+	2       (00000008) if-lt                v0, v1, +003h
+
+s-BB@0xc : [ s-BB@0x16 ]
+	3       (0000000c) goto                 +5h
+
+s-BB@0xe : [ s-BB@0x16 s-BB@0x1a ]
+	4       (0000000e) sget-object          v0, Lh/p;->c Lm0/h;
+	5       (00000012) if-nez               v0, +004h
+
+s-BB@0x16 : 
+	6       (00000016) const/4              v5, 0
+	7       (00000018) return-object        v5
+
+s-BB@0x1a : [ s-BB@0x4a s-BB@0x50 ]
+	8       (0000001a) iget-object          v1, v0, Lm0/h;->a Lm0/i;
+	9       (0000001e) invoke-virtual       v5, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;
+	10      (00000024) move-result-object   v5
+	11      (00000026) invoke-virtual       v5, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+	12      (0000002c) move-result-object   v5
+	13      (0000002e) invoke-virtual       v5, Landroid/content/res/Resources;->getConfiguration()Landroid/content/res/Configuration;
+	14      (00000034) move-result-object   v5
+	15      (00000036) invoke-static        v5, Lh/u;->b(Landroid/content/res/Configuration;)Lm0/h;
+	16      (0000003c) move-result-object   v5
+	17      (0000003e) invoke-virtual       v0, Lm0/h;->b()Z
+	18      (00000044) move-result          v0
+	19      (00000046) if-eqz               v0, +005h
+
+s-BB@0x4a : [ s-BB@0x102 ]
+	20      (0000004a) sget-object          v0, Lm0/h;->b Lm0/h;
+	21      (0000004e) goto                 +5ah
+
+s-BB@0x50 : [ s-BB@0x5c ]
+	22      (00000050) new-instance         v0, Ljava/util/LinkedHashSet;
+	23      (00000054) invoke-direct        v0, Ljava/util/LinkedHashSet;-><init>()V
+	24      (0000005a) const/4              v2, 0
+
+s-BB@0x5c : [ s-BB@0x7e s-BB@0xcc ]
+	25      (0000005c) iget-object          v3, v1, Lm0/i;->a Landroid/os/LocaleList;
+	26      (00000060) invoke-virtual       v3, Landroid/os/LocaleList;->size()I
+	27      (00000066) move-result          v3
+	28      (00000068) iget-object          v4, v5, Lm0/h;->a Lm0/i;
+	29      (0000006c) iget-object          v4, v4, Lm0/i;->a Landroid/os/LocaleList;
+	30      (00000070) invoke-virtual       v4, Landroid/os/LocaleList;->size()I
+	31      (00000076) move-result          v4
+	32      (00000078) add-int/2addr        v4, v3
+	33      (0000007a) if-ge                v2, v4, +029h
+
+s-BB@0x7e : [ s-BB@0x8e s-BB@0x9c ]
+	34      (0000007e) iget-object          v3, v1, Lm0/i;->a Landroid/os/LocaleList;
+	35      (00000082) invoke-virtual       v3, Landroid/os/LocaleList;->size()I
+	36      (00000088) move-result          v3
+	37      (0000008a) if-ge                v2, v3, +009h
+
+s-BB@0x8e : [ s-BB@0xbc ]
+	38      (0000008e) iget-object          v3, v1, Lm0/i;->a Landroid/os/LocaleList;
+	39      (00000092) invoke-virtual       v3, v2, Landroid/os/LocaleList;->get(I)Ljava/util/Locale;
+	40      (00000098) move-result-object   v3
+	41      (0000009a) goto                 +11h
+
+s-BB@0x9c : [ s-BB@0xbc ]
+	42      (0000009c) iget-object          v3, v1, Lm0/i;->a Landroid/os/LocaleList;
+	43      (000000a0) invoke-virtual       v3, Landroid/os/LocaleList;->size()I
+	44      (000000a6) move-result          v3
+	45      (000000a8) sub-int              v3, v2, v3
+	46      (000000ac) iget-object          v4, v5, Lm0/h;->a Lm0/i;
+	47      (000000b0) iget-object          v4, v4, Lm0/i;->a Landroid/os/LocaleList;
+	48      (000000b4) invoke-virtual       v4, v3, Landroid/os/LocaleList;->get(I)Ljava/util/Locale;
+	49      (000000ba) move-result-object   v3
+
+s-BB@0xbc : [ s-BB@0xc0 s-BB@0xc6 ]
+	50      (000000bc) if-eqz               v3, +005h
+
+s-BB@0xc0 : [ s-BB@0xc6 ]
+	51      (000000c0) invoke-interface     v0, v3, Ljava/util/Set;->add(Ljava/lang/Object;)Z
+
+s-BB@0xc6 : [ s-BB@0x5c ]
+	52      (000000c6) add-int/lit8         v2, v2, 1
+	53      (000000ca) goto                 -37h
+
+s-BB@0xcc : [ s-BB@0x102 ]
+	54      (000000cc) invoke-interface     v0, Ljava/util/Set;->size()I
+	55      (000000d2) move-result          v1
+	56      (000000d4) new-array            v1, v1, [Ljava/util/Locale;
+	57      (000000d8) invoke-interface     v0, v1, Ljava/util/Set;->toArray([Ljava/lang/Object;)[Ljava/lang/Object;
+	58      (000000de) move-result-object   v0
+	59      (000000e0) check-cast           v0, [Ljava/util/Locale;
+	60      (000000e4) new-instance         v1, Landroid/os/LocaleList;
+	61      (000000e8) invoke-direct        v1, v0, Landroid/os/LocaleList;-><init>([Ljava/util/Locale;)V
+	62      (000000ee) new-instance         v0, Lm0/h;
+	63      (000000f2) new-instance         v2, Lm0/i;
+	64      (000000f6) invoke-direct        v2, v1, Lm0/i;-><init>(Landroid/os/LocaleList;)V
+	65      (000000fc) invoke-direct        v0, v2, Lm0/h;-><init>(Lm0/i;)V
+
+s-BB@0x102 : [ s-BB@0x10e s-BB@0x110 ]
+	66      (00000102) invoke-virtual       v0, Lm0/h;->b()Z
+	67      (00000108) move-result          v1
+	68      (0000010a) if-eqz               v1, +003h
+
+s-BB@0x10e : 
+	69      (0000010e) return-object        v5
+
+s-BB@0x110 : 
+	70      (00000110) return-object        v0
+

@@ -1,0 +1,130 @@
+# Lh/c0;->r(Landroid/view/Window;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v7
+# - v8:android.view.Window
+#
+# - return:void
+
+r-BB@0x0 : [ r-BB@0xc r-BB@0x100 ]
+	0       (00000000) const-string         v0, "AppCompat has already installed itself into the Window"
+	1       (00000004) iget-object          v1, v7, Lh/c0;->r Landroid/view/Window;
+	2       (00000008) if-nez               v1, +07ch
+
+r-BB@0xc : [ r-BB@0x1c r-BB@0xf4 ]
+	3       (0000000c) invoke-virtual       v8, Landroid/view/Window;->getCallback()Landroid/view/Window$Callback;
+	4       (00000012) move-result-object   v1
+	5       (00000014) instance-of          v2, v1, Lh/x;
+	6       (00000018) if-nez               v2, +06eh
+
+r-BB@0x1c : [ r-BB@0x50 r-BB@0x7e ]
+	7       (0000001c) new-instance         v0, Lh/x;
+	8       (00000020) invoke-direct        v0, v7, v1, Lh/x;-><init>(Lh/c0; Landroid/view/Window$Callback;)V
+	9       (00000026) iput-object          v0, v7, Lh/c0;->s Lh/x;
+	10      (0000002a) invoke-virtual       v8, v0, Landroid/view/Window;->setCallback(Landroid/view/Window$Callback;)V
+	11      (00000030) iget-object          v0, v7, Lh/c0;->q Landroid/content/Context;
+	12      (00000034) sget-object          v1, Lh/c0;->p0 [I
+	13      (00000038) const/4              v2, 0
+	14      (0000003a) invoke-virtual       v0, v2, v1, Landroid/content/Context;->obtainStyledAttributes(Landroid/util/AttributeSet; [I)Landroid/content/res/TypedArray;
+	15      (00000040) move-result-object   v1
+	16      (00000042) const/4              v3, 0
+	17      (00000044) invoke-virtual       v1, v3, Landroid/content/res/TypedArray;->hasValue(I)Z
+	18      (0000004a) move-result          v4
+	19      (0000004c) if-eqz               v4, +019h
+
+r-BB@0x50 : [ r-BB@0x5c r-BB@0x7e ]
+	20      (00000050) invoke-virtual       v1, v3, v3, Landroid/content/res/TypedArray;->getResourceId(I I)I
+	21      (00000056) move-result          v3
+	22      (00000058) if-eqz               v3, +013h
+
+r-BB@0x5c : [ r-BB@0x66 ]
+	23      (0000005c) invoke-static        Ln/u;->a()Ln/u;
+	24      (00000062) move-result-object   v4
+	25      (00000064) monitor-enter        v4
+
+r-BB@0x66 : [ r-BB@0x80 ]
+	26      (00000066) iget-object          v5, v4, Ln/u;->a Ln/n2;
+	27      (0000006a) const/4              v6, 1
+	28      (0000006c) invoke-virtual       v5, v0, v3, v6, Ln/n2;->d(Landroid/content/Context; I Z)Landroid/graphics/drawable/Drawable;
+	29      (00000072) move-result-object   v0
+	30      (00000074) monitor-exit         v4
+	31      (00000076) goto                 +5h
+	66:73
+	(Ljava/lang/Throwable; -> 78 r-BB@0x78)
+
+r-BB@0x78 : [ r-BB@0x7a ]
+	32      (00000078) move-exception       v8
+
+r-BB@0x7a : 
+	33      (0000007a) monitor-exit         v4
+	34      (0000007c) throw                v8
+	7a:7b
+	(Ljava/lang/Throwable; -> 78 r-BB@0x78)
+
+r-BB@0x7e : [ r-BB@0x80 ]
+	35      (0000007e) move-object          v0, v2
+
+r-BB@0x80 : [ r-BB@0x84 r-BB@0x8a ]
+	36      (00000080) if-eqz               v0, +005h
+
+r-BB@0x84 : [ r-BB@0x8a ]
+	37      (00000084) invoke-virtual       v8, v0, Landroid/view/Window;->setBackgroundDrawable(Landroid/graphics/drawable/Drawable;)V
+
+r-BB@0x8a : [ r-BB@0xa0 r-BB@0xf2 ]
+	38      (0000008a) invoke-virtual       v1, Landroid/content/res/TypedArray;->recycle()V
+	39      (00000090) iput-object          v8, v7, Lh/c0;->r Landroid/view/Window;
+	40      (00000094) sget                 v8, Landroid/os/Build$VERSION;->SDK_INT I
+	41      (00000098) const/16             v0, 33
+	42      (0000009c) if-lt                v8, v0, +02bh
+
+r-BB@0xa0 : [ r-BB@0xa8 r-BB@0xf2 ]
+	43      (000000a0) iget-object          v8, v7, Lh/c0;->m0 Landroid/window/OnBackInvokedDispatcher;
+	44      (000000a4) if-nez               v8, +027h
+
+r-BB@0xa8 : [ r-BB@0xb0 r-BB@0xc2 ]
+	45      (000000a8) iget-object          v0, v7, Lh/c0;->p Ljava/lang/Object;
+	46      (000000ac) if-eqz               v8, +00bh
+
+r-BB@0xb0 : [ r-BB@0xb8 r-BB@0xc2 ]
+	47      (000000b0) iget-object          v1, v7, Lh/c0;->n0 Landroid/window/OnBackInvokedCallback;
+	48      (000000b4) if-eqz               v1, +007h
+
+r-BB@0xb8 : [ r-BB@0xc2 ]
+	49      (000000b8) invoke-static        v8, v1, Lh/w;->c(Ljava/lang/Object; Ljava/lang/Object;)V
+	50      (000000be) iput-object          v2, v7, Lh/c0;->n0 Landroid/window/OnBackInvokedCallback;
+
+r-BB@0xc2 : [ r-BB@0xca r-BB@0xe8 ]
+	51      (000000c2) instance-of          v8, v0, Landroid/app/Activity;
+	52      (000000c6) if-eqz               v8, +011h
+
+r-BB@0xca : [ r-BB@0xda r-BB@0xe8 ]
+	53      (000000ca) check-cast           v0, Landroid/app/Activity;
+	54      (000000ce) invoke-virtual       v0, Landroid/app/Activity;->getWindow()Landroid/view/Window;
+	55      (000000d4) move-result-object   v8
+	56      (000000d6) if-eqz               v8, +009h
+
+r-BB@0xda : [ r-BB@0xec ]
+	57      (000000da) invoke-static        v0, Lh/w;->a(Landroid/app/Activity;)Landroid/window/OnBackInvokedDispatcher;
+	58      (000000e0) move-result-object   v8
+	59      (000000e2) iput-object          v8, v7, Lh/c0;->m0 Landroid/window/OnBackInvokedDispatcher;
+	60      (000000e6) goto                 +3h
+
+r-BB@0xe8 : [ r-BB@0xec ]
+	61      (000000e8) iput-object          v2, v7, Lh/c0;->m0 Landroid/window/OnBackInvokedDispatcher;
+
+r-BB@0xec : [ r-BB@0xf2 ]
+	62      (000000ec) invoke-virtual       v7, Lh/c0;->L()V
+
+r-BB@0xf2 : 
+	63      (000000f2) return-void          
+
+r-BB@0xf4 : 
+	64      (000000f4) new-instance         v8, Ljava/lang/IllegalStateException;
+	65      (000000f8) invoke-direct        v8, v0, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	66      (000000fe) throw                v8
+
+r-BB@0x100 : 
+	67      (00000100) new-instance         v8, Ljava/lang/IllegalStateException;
+	68      (00000104) invoke-direct        v8, v0, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	69      (0000010a) throw                v8
+

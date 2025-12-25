@@ -1,0 +1,82 @@
+# Li4/h;->b(Li4/h; Lh4/d;)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:i4.h
+# - v7:h4.d
+#
+# - return:void
+
+b-BB@0x0 : [ b-BB@0x12 b-BB@0xa6 ]
+	0       (00000000) iget-object          v0, v6, Li4/h;->m Li4/d;
+	1       (00000004) iget-object          v1, v6, Li4/h;->b Ld4/l;
+	2       (00000008) iget-object          v2, v6, Li4/h;->d Ljava/util/ArrayList;
+	3       (0000000c) const/4              v3, 0
+	4       (0000000e) if-nez               v0, +04ch
+
+b-BB@0x12 : [ b-BB@0x1a b-BB@0xa6 ]
+	5       (00000012) iget-boolean         v0, v6, Li4/h;->g Z
+	6       (00000016) if-nez               v0, +048h
+
+b-BB@0x1a : [ b-BB@0x56 b-BB@0xa4 ]
+	7       (0000001a) new-array            v0, v3, [Ljava/lang/Object;
+	8       (0000001e) const-string         v4, "Initiate binding to the service."
+	9       (00000022) invoke-virtual       v1, v4, v0, Ld4/l;->g(Ljava/lang/String; [Ljava/lang/Object;)V
+	10      (00000028) invoke-virtual       v2, v7, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	11      (0000002e) new-instance         v7, Ld4/q;
+	12      (00000032) const/4              v0, 1
+	13      (00000034) invoke-direct        v7, v6, v0, Ld4/q;-><init>(Ljava/lang/Object; I)V
+	14      (0000003a) iput-object          v7, v6, Li4/h;->l Ld4/q;
+	15      (0000003e) iput-boolean         v0, v6, Li4/h;->g Z
+	16      (00000042) iget-object          v4, v6, Li4/h;->a Landroid/content/Context;
+	17      (00000046) iget-object          v5, v6, Li4/h;->h Landroid/content/Intent;
+	18      (0000004a) invoke-virtual       v4, v5, v7, v0, Landroid/content/Context;->bindService(Landroid/content/Intent; Landroid/content/ServiceConnection; I)Z
+	19      (00000050) move-result          v7
+	20      (00000052) if-nez               v7, +029h
+
+b-BB@0x56 : [ b-BB@0x70 ]
+	21      (00000056) new-array            v7, v3, [Ljava/lang/Object;
+	22      (0000005a) const-string         v0, "Failed to bind to the service."
+	23      (0000005e) invoke-virtual       v1, v0, v7, Ld4/l;->g(Ljava/lang/String; [Ljava/lang/Object;)V
+	24      (00000064) iput-boolean         v3, v6, Li4/h;->g Z
+	25      (00000068) invoke-virtual       v2, Ljava/util/ArrayList;->size()I
+	26      (0000006e) move-result          v6
+
+b-BB@0x70 : [ b-BB@0x74 b-BB@0x9e ]
+	27      (00000070) if-ge                v3, v6, +017h
+
+b-BB@0x74 : [ b-BB@0x96 b-BB@0x70 ]
+	28      (00000074) invoke-virtual       v2, v3, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	29      (0000007a) move-result-object   v7
+	30      (0000007c) add-int/lit8         v3, v3, 1
+	31      (00000080) check-cast           v7, Li4/e;
+	32      (00000084) new-instance         v1, La5/o;
+	33      (00000088) invoke-direct        v1, v0, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
+	34      (0000008e) iget-object          v7, v7, Li4/e;->a Lcom/google/android/gms/tasks/TaskCompletionSource;
+	35      (00000092) if-eqz               v7, -011h
+
+b-BB@0x96 : [ b-BB@0x70 ]
+	36      (00000096) invoke-virtual       v7, v1, Lcom/google/android/gms/tasks/TaskCompletionSource;->trySetException(Ljava/lang/Exception;)Z
+	37      (0000009c) goto                 -16h
+
+b-BB@0x9e : [ b-BB@0xa4 ]
+	38      (0000009e) invoke-virtual       v2, Ljava/util/ArrayList;->clear()V
+
+b-BB@0xa4 : 
+	39      (000000a4) return-void          
+
+b-BB@0xa6 : [ b-BB@0xae b-BB@0xc4 ]
+	40      (000000a6) iget-boolean         v6, v6, Li4/h;->g Z
+	41      (000000aa) if-eqz               v6, +00dh
+
+b-BB@0xae : 
+	42      (000000ae) new-array            v6, v3, [Ljava/lang/Object;
+	43      (000000b2) const-string         v0, "Waiting to bind to the service."
+	44      (000000b6) invoke-virtual       v1, v0, v6, Ld4/l;->g(Ljava/lang/String; [Ljava/lang/Object;)V
+	45      (000000bc) invoke-virtual       v2, v7, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	46      (000000c2) return-void          
+
+b-BB@0xc4 : 
+	47      (000000c4) invoke-virtual       v7, Li4/e;->run()V
+	48      (000000ca) return-void          
+

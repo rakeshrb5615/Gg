@@ -1,0 +1,57 @@
+# Li2/v0;->c(Ljava/lang/String;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:java.lang.String
+#
+# - return:void
+
+c-BB@0x0 : [ c-BB@0x16 c-BB@0x24 ]
+	0       (00000000) iget-object          v0, v4, Li2/v0;->I Ljava/lang/String;
+	1       (00000004) invoke-virtual       v5, v0, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	2       (0000000a) move-result          v0
+	3       (0000000c) const/4              v1, 1
+	4       (0000000e) iget-object          v2, v4, Li2/v0;->c Landroid/content/SharedPreferences;
+	5       (00000012) if-eqz               v0, +009h
+
+c-BB@0x16 : 
+	6       (00000016) invoke-interface     v2, v5, v1, Landroid/content/SharedPreferences;->getBoolean(Ljava/lang/String; Z)Z
+	7       (0000001c) move-result          v5
+	8       (0000001e) iput-boolean         v5, v4, Li2/v0;->S0 Z
+	9       (00000022) return-void          
+
+c-BB@0x24 : [ c-BB@0x42 c-BB@0x50 ]
+	10      (00000024) const                v0, 2131951874
+	11      (0000002a) iget-object          v3, v4, Li2/v0;->a Landroid/content/Context;
+	12      (0000002e) invoke-virtual       v3, v0, Landroid/content/Context;->getString(I)Ljava/lang/String;
+	13      (00000034) move-result-object   v0
+	14      (00000036) invoke-virtual       v5, v0, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
+	15      (0000003c) move-result          v0
+	16      (0000003e) if-eqz               v0, +009h
+
+c-BB@0x42 : 
+	17      (00000042) invoke-interface     v2, v5, v1, Landroid/content/SharedPreferences;->getBoolean(Ljava/lang/String; Z)Z
+	18      (00000048) move-result          v5
+	19      (0000004a) iput-boolean         v5, v4, Li2/v0;->T0 Z
+	20      (0000004e) return-void          
+
+c-BB@0x50 : [ c-BB@0x6a c-BB@0x84 ]
+	21      (00000050) const                v0, 2131952379
+	22      (00000056) invoke-virtual       v3, v0, Landroid/content/Context;->getString(I)Ljava/lang/String;
+	23      (0000005c) move-result-object   v0
+	24      (0000005e) invoke-virtual       v5, v0, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
+	25      (00000064) move-result          v0
+	26      (00000066) if-eqz               v0, +00fh
+
+c-BB@0x6a : [ c-BB@0x84 ]
+	27      (0000006a) const/16             v0, 40
+	28      (0000006e) invoke-interface     v2, v5, v0, Landroid/content/SharedPreferences;->getInt(Ljava/lang/String; I)I
+	29      (00000074) move-result          v5
+	30      (00000076) int-to-float         v5, v5
+	31      (00000078) const                v0, 1022739087
+	32      (0000007e) mul-float/2addr      v5, v0
+	33      (00000080) iput                 v5, v4, Li2/v0;->b2 F
+
+c-BB@0x84 : 
+	34      (00000084) return-void          
+

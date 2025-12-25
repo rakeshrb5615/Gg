@@ -1,0 +1,330 @@
+# Lh8/g;->d(Ll7/c; Ljava/lang/Object;)Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v11
+# - v12:l7.c
+# - v13:java.lang.Object
+#
+# - return:java.lang.Object
+
+d-BB@0x0 : [ d-BB@0x16 d-BB@0x31a ]
+	0       (00000000) invoke-interface     v12, Ll7/c;->getContext()Ll7/h;
+	1       (00000006) move-result-object   v0
+	2       (00000008) invoke-static        v0, Ld8/f0;->g(Ll7/h;)V
+	3       (0000000e) iget-object          v1, v11, Lh8/g;->d Ll7/h;
+	4       (00000012) if-eq                v1, v0, +184h
+
+d-BB@0x16 : [ d-BB@0x1e d-BB@0xa6 ]
+	5       (00000016) instance-of          v2, v1, Lh8/c;
+	6       (0000001a) if-nez               v2, +046h
+
+d-BB@0x1e : [ d-BB@0x50 d-BB@0x58 ]
+	7       (0000001e) const/4              v1, 0
+	8       (00000020) invoke-static        v1, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+	9       (00000026) move-result-object   v1
+	10      (00000028) new-instance         v2, Lb8/q;
+	11      (0000002c) const/4              v3, 1
+	12      (0000002e) invoke-direct        v2, v3, v11, Lb8/q;-><init>(I Ljava/io/Serializable;)V
+	13      (00000034) invoke-interface     v0, v1, v2, Ll7/h;->fold(Ljava/lang/Object; Lu7/p;)Ljava/lang/Object;
+	14      (0000003a) move-result-object   v1
+	15      (0000003c) check-cast           v1, Ljava/lang/Number;
+	16      (00000040) invoke-virtual       v1, Ljava/lang/Number;->intValue()I
+	17      (00000046) move-result          v1
+	18      (00000048) iget                 v2, v11, Lh8/g;->c I
+	19      (0000004c) if-ne                v1, v2, +006h
+
+d-BB@0x50 : [ d-BB@0x31a ]
+	20      (00000050) iput-object          v0, v11, Lh8/g;->d Ll7/h;
+	21      (00000054) goto/16              +163h
+
+d-BB@0x58 : 
+	22      (00000058) new-instance         v12, Ljava/lang/IllegalStateException;
+	23      (0000005c) new-instance         v13, Ljava/lang/StringBuilder;
+	24      (00000060) const-string         v1, "Flow invariant is violated:
+		Flow was collected in "
+	25      (00000064) invoke-direct        v13, v1, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	26      (0000006a) iget-object          v1, v11, Lh8/g;->b Ll7/h;
+	27      (0000006e) invoke-virtual       v13, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	28      (00000074) const-string         v1, ",
+		but emission happened in "
+	29      (00000078) invoke-virtual       v13, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	30      (0000007e) invoke-virtual       v13, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	31      (00000084) const-string         v0, ".
+		Please refer to 'flow' documentation or use 'flowOn' instead"
+	32      (00000088) invoke-virtual       v13, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	33      (0000008e) invoke-virtual       v13, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	34      (00000094) move-result-object   v13
+	35      (00000096) invoke-virtual       v13, Ljava/lang/Object;->toString()Ljava/lang/String;
+	36      (0000009c) move-result-object   v13
+	37      (0000009e) invoke-direct        v12, v13, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	38      (000000a4) throw                v12
+
+d-BB@0xa6 : [ d-BB@0x118 ]
+	39      (000000a6) check-cast           v1, Lh8/c;
+	40      (000000aa) new-instance         v12, Ljava/lang/IllegalStateException;
+	41      (000000ae) new-instance         v0, Ljava/lang/StringBuilder;
+	42      (000000b2) const-string         v2, "
+            Flow exception transparency is violated:
+                Previous 'emit' call has thrown exception "
+	43      (000000b6) invoke-direct        v0, v2, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	44      (000000bc) iget-object          v1, v1, Lh8/c;->b Ljava/lang/Throwable;
+	45      (000000c0) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	46      (000000c6) const-string         v1, ", but then emission attempt of value '"
+	47      (000000ca) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	48      (000000d0) invoke-virtual       v0, v13, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	49      (000000d6) const-string         v13, "' has been detected.
+                Emissions from 'catch' blocks are prohibited in order to avoid unspecified behaviour, 'Flow.catch' operator can be used instead.
+                For a more detailed explanation, please refer to Flow documentation.
+            "
+	50      (000000da) invoke-virtual       v0, v13, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	51      (000000e0) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	52      (000000e6) move-result-object   v13
+	53      (000000e8) const-string         v0, "<this>"
+	54      (000000ec) invoke-static        v13, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	55      (000000f2) new-instance         v0, La8/i;
+	56      (000000f6) const/4              v1, 2
+	57      (000000f8) invoke-direct        v0, v13, v1, La8/i;-><init>(Ljava/lang/Object; I)V
+	58      (000000fe) invoke-static        v0, La8/h;->X(La8/f;)Ljava/util/List;
+	59      (00000104) move-result-object   v0
+	60      (00000106) new-instance         v1, Ljava/util/ArrayList;
+	61      (0000010a) invoke-direct        v1, Ljava/util/ArrayList;-><init>()V
+	62      (00000110) invoke-interface     v0, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
+	63      (00000116) move-result-object   v2
+
+d-BB@0x118 : [ d-BB@0x124 d-BB@0x146 ]
+	64      (00000118) invoke-interface     v2, Ljava/util/Iterator;->hasNext()Z
+	65      (0000011e) move-result          v3
+	66      (00000120) if-eqz               v3, +013h
+
+d-BB@0x124 : [ d-BB@0x13e d-BB@0x118 ]
+	67      (00000124) invoke-interface     v2, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	68      (0000012a) move-result-object   v3
+	69      (0000012c) move-object          v4, v3
+	70      (0000012e) check-cast           v4, Ljava/lang/String;
+	71      (00000132) invoke-static        v4, Lb8/i;->y0(Ljava/lang/String;)Z
+	72      (00000138) move-result          v4
+	73      (0000013a) if-nez               v4, -011h
+
+d-BB@0x13e : [ d-BB@0x118 ]
+	74      (0000013e) invoke-virtual       v1, v3, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	75      (00000144) goto                 -16h
+
+d-BB@0x146 : [ d-BB@0x168 ]
+	76      (00000146) new-instance         v2, Ljava/util/ArrayList;
+	77      (0000014a) const/16             v3, 10
+	78      (0000014e) invoke-static        v1, v3, Li7/j;->X(Ljava/lang/Iterable; I)I
+	79      (00000154) move-result          v3
+	80      (00000156) invoke-direct        v2, v3, Ljava/util/ArrayList;-><init>(I)V
+	81      (0000015c) invoke-virtual       v1, Ljava/util/ArrayList;->size()I
+	82      (00000162) move-result          v3
+	83      (00000164) const/4              v4, 0
+	84      (00000166) move                 v5, v4
+
+d-BB@0x168 : [ d-BB@0x16c d-BB@0x1c6 ]
+	85      (00000168) if-ge                v5, v3, +02fh
+
+d-BB@0x16c : [ d-BB@0x186 ]
+	86      (0000016c) invoke-virtual       v1, v5, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	87      (00000172) move-result-object   v6
+	88      (00000174) add-int/lit8         v5, v5, 1
+	89      (00000178) check-cast           v6, Ljava/lang/String;
+	90      (0000017c) invoke-virtual       v6, Ljava/lang/String;->length()I
+	91      (00000182) move-result          v7
+	92      (00000184) move                 v8, v4
+
+d-BB@0x186 : [ d-BB@0x18c d-BB@0x1a8 ]
+	93      (00000186) const/4              v9, -1
+	94      (00000188) if-ge                v8, v7, +010h
+
+d-BB@0x18c : [ d-BB@0x1a0 d-BB@0x1a2 ]
+	95      (0000018c) invoke-virtual       v6, v8, Ljava/lang/String;->charAt(I)C
+	96      (00000192) move-result          v10
+	97      (00000194) invoke-static        v10, La/a;->D(C)Z
+	98      (0000019a) move-result          v10
+	99      (0000019c) if-nez               v10, +003h
+
+d-BB@0x1a0 : [ d-BB@0x1aa ]
+	100     (000001a0) goto                 +5h
+
+d-BB@0x1a2 : [ d-BB@0x186 ]
+	101     (000001a2) add-int/lit8         v8, v8, 1
+	102     (000001a6) goto                 -10h
+
+d-BB@0x1a8 : [ d-BB@0x1aa ]
+	103     (000001a8) move                 v8, v9
+
+d-BB@0x1aa : [ d-BB@0x1ae d-BB@0x1b6 ]
+	104     (000001aa) if-ne                v8, v9, +006h
+
+d-BB@0x1ae : [ d-BB@0x1b6 ]
+	105     (000001ae) invoke-virtual       v6, Ljava/lang/String;->length()I
+	106     (000001b4) move-result          v8
+
+d-BB@0x1b6 : [ d-BB@0x168 ]
+	107     (000001b6) invoke-static        v8, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+	108     (000001bc) move-result-object   v6
+	109     (000001be) invoke-virtual       v2, v6, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	110     (000001c4) goto                 -2eh
+
+d-BB@0x1c6 : [ d-BB@0x1dc d-BB@0x1e0 ]
+	111     (000001c6) invoke-virtual       v2, Ljava/util/ArrayList;->iterator()Ljava/util/Iterator;
+	112     (000001cc) move-result-object   v1
+	113     (000001ce) invoke-interface     v1, Ljava/util/Iterator;->hasNext()Z
+	114     (000001d4) move-result          v2
+	115     (000001d6) const/4              v3, 0
+	116     (000001d8) if-nez               v2, +004h
+
+d-BB@0x1dc : [ d-BB@0x214 ]
+	117     (000001dc) move-object          v2, v3
+	118     (000001de) goto                 +1bh
+
+d-BB@0x1e0 : [ d-BB@0x1ec ]
+	119     (000001e0) invoke-interface     v1, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	120     (000001e6) move-result-object   v2
+	121     (000001e8) check-cast           v2, Ljava/lang/Comparable;
+
+d-BB@0x1ec : [ d-BB@0x1f8 d-BB@0x214 ]
+	122     (000001ec) invoke-interface     v1, Ljava/util/Iterator;->hasNext()Z
+	123     (000001f2) move-result          v5
+	124     (000001f4) if-eqz               v5, +010h
+
+d-BB@0x1f8 : [ d-BB@0x210 d-BB@0x1ec ]
+	125     (000001f8) invoke-interface     v1, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	126     (000001fe) move-result-object   v5
+	127     (00000200) check-cast           v5, Ljava/lang/Comparable;
+	128     (00000204) invoke-interface     v2, v5, Ljava/lang/Comparable;->compareTo(Ljava/lang/Object;)I
+	129     (0000020a) move-result          v6
+	130     (0000020c) if-lez               v6, -010h
+
+d-BB@0x210 : [ d-BB@0x1ec ]
+	131     (00000210) move-object          v2, v5
+	132     (00000212) goto                 -13h
+
+d-BB@0x214 : [ d-BB@0x21c d-BB@0x226 ]
+	133     (00000214) check-cast           v2, Ljava/lang/Integer;
+	134     (00000218) if-eqz               v2, +007h
+
+d-BB@0x21c : [ d-BB@0x228 ]
+	135     (0000021c) invoke-virtual       v2, Ljava/lang/Integer;->intValue()I
+	136     (00000222) move-result          v1
+	137     (00000224) goto                 +2h
+
+d-BB@0x226 : [ d-BB@0x228 ]
+	138     (00000226) move                 v1, v4
+
+d-BB@0x228 : [ d-BB@0x250 ]
+	139     (00000228) invoke-virtual       v13, Ljava/lang/String;->length()I
+	140     (0000022e) move-result          v13
+	141     (00000230) invoke-interface     v0, Ljava/util/List;->size()I
+	142     (00000236) invoke-static        v0, La/a;->y(Ljava/util/List;)I
+	143     (0000023c) move-result          v2
+	144     (0000023e) new-instance         v5, Ljava/util/ArrayList;
+	145     (00000242) invoke-direct        v5, Ljava/util/ArrayList;-><init>()V
+	146     (00000248) invoke-interface     v0, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
+	147     (0000024e) move-result-object   v0
+
+d-BB@0x250 : [ d-BB@0x25c d-BB@0x2f2 ]
+	148     (00000250) invoke-interface     v0, Ljava/util/Iterator;->hasNext()Z
+	149     (00000256) move-result          v6
+	150     (00000258) if-eqz               v6, +04dh
+
+d-BB@0x25c : [ d-BB@0x26c d-BB@0x2ea ]
+	151     (0000025c) invoke-interface     v0, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	152     (00000262) move-result-object   v6
+	153     (00000264) add-int/lit8         v7, v4, 1
+	154     (00000268) if-ltz               v4, +041h
+
+d-BB@0x26c : [ d-BB@0x274 d-BB@0x278 ]
+	155     (0000026c) check-cast           v6, Ljava/lang/String;
+	156     (00000270) if-eqz               v4, +004h
+
+d-BB@0x274 : [ d-BB@0x278 d-BB@0x288 ]
+	157     (00000274) if-ne                v4, v2, +00ah
+
+d-BB@0x278 : [ d-BB@0x284 d-BB@0x288 ]
+	158     (00000278) invoke-static        v6, Lb8/i;->y0(Ljava/lang/String;)Z
+	159     (0000027e) move-result          v4
+	160     (00000280) if-eqz               v4, +004h
+
+d-BB@0x284 : [ d-BB@0x2b8 ]
+	161     (00000284) move-object          v4, v3
+	162     (00000286) goto                 +19h
+
+d-BB@0x288 : [ d-BB@0x296 d-BB@0x2c6 ]
+	163     (00000288) const-string         v4, "<this>"
+	164     (0000028c) invoke-static        v6, v4, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	165     (00000292) if-ltz               v1, +01ah
+
+d-BB@0x296 : [ d-BB@0x2a2 d-BB@0x2a4 ]
+	166     (00000296) invoke-virtual       v6, Ljava/lang/String;->length()I
+	167     (0000029c) move-result          v4
+	168     (0000029e) if-le                v1, v4, +003h
+
+d-BB@0x2a2 : [ d-BB@0x2a6 ]
+	169     (000002a2) goto                 +2h
+
+d-BB@0x2a4 : [ d-BB@0x2a6 ]
+	170     (000002a4) move                 v4, v1
+
+d-BB@0x2a6 : [ d-BB@0x2b8 ]
+	171     (000002a6) invoke-virtual       v6, v4, Ljava/lang/String;->substring(I)Ljava/lang/String;
+	172     (000002ac) move-result-object   v4
+	173     (000002ae) const-string         v6, "substring(...)"
+	174     (000002b2) invoke-static        v4, v6, Lkotlin/jvm/internal/j;->d(Ljava/lang/Object; Ljava/lang/String;)V
+
+d-BB@0x2b8 : [ d-BB@0x2bc d-BB@0x2c2 ]
+	175     (000002b8) if-eqz               v4, +005h
+
+d-BB@0x2bc : [ d-BB@0x2c2 ]
+	176     (000002bc) invoke-virtual       v5, v4, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+d-BB@0x2c2 : [ d-BB@0x250 ]
+	177     (000002c2) move                 v4, v7
+	178     (000002c4) goto                 -3ah
+
+d-BB@0x2c6 : 
+	179     (000002c6) const-string         v12, "Requested character count "
+	180     (000002ca) const-string         v13, " is less than zero."
+	181     (000002ce) invoke-static        v12, v1, v13, Lv1/a;->j(Ljava/lang/String; I Ljava/lang/String;)Ljava/lang/String;
+	182     (000002d4) move-result-object   v12
+	183     (000002d6) new-instance         v13, Ljava/lang/IllegalArgumentException;
+	184     (000002da) invoke-virtual       v12, Ljava/lang/Object;->toString()Ljava/lang/String;
+	185     (000002e0) move-result-object   v12
+	186     (000002e2) invoke-direct        v13, v12, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	187     (000002e8) throw                v13
+
+d-BB@0x2ea : 
+	188     (000002ea) invoke-static        La/a;->V()V
+	189     (000002f0) throw                v3
+
+d-BB@0x2f2 : 
+	190     (000002f2) new-instance         v0, Ljava/lang/StringBuilder;
+	191     (000002f6) invoke-direct        v0, v13, Ljava/lang/StringBuilder;-><init>(I)V
+	192     (000002fc) invoke-static        v5, v0, Li7/i;->b0(Ljava/util/ArrayList; Ljava/lang/StringBuilder;)V
+	193     (00000302) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	194     (00000308) move-result-object   v13
+	195     (0000030a) invoke-virtual       v13, Ljava/lang/Object;->toString()Ljava/lang/String;
+	196     (00000310) move-result-object   v13
+	197     (00000312) invoke-direct        v12, v13, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	198     (00000318) throw                v12
+
+d-BB@0x31a : [ d-BB@0x348 d-BB@0x34e ]
+	199     (0000031a) iput-object          v12, v11, Lh8/g;->e Ll7/c;
+	200     (0000031e) sget-object          v12, Lh8/i;->a Lu7/q;
+	201     (00000322) const-string         v0, "null cannot be cast to non-null type kotlinx.coroutines.flow.FlowCollector<kotlin.Any?>"
+	202     (00000326) iget-object          v1, v11, Lh8/g;->a Lg8/d;
+	203     (0000032a) invoke-static        v1, v0, Lkotlin/jvm/internal/j;->c(Ljava/lang/Object; Ljava/lang/String;)V
+	204     (00000330) invoke-interface     v12, v1, v13, v11, Lu7/q;->b(Ljava/lang/Object; Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	205     (00000336) move-result-object   v12
+	206     (00000338) sget-object          v13, Lm7/a;->a Lm7/a;
+	207     (0000033c) invoke-static        v12, v13, Lkotlin/jvm/internal/j;->a(Ljava/lang/Object; Ljava/lang/Object;)Z
+	208     (00000342) move-result          v13
+	209     (00000344) if-nez               v13, +005h
+
+d-BB@0x348 : [ d-BB@0x34e ]
+	210     (00000348) const/4              v13, 0
+	211     (0000034a) iput-object          v13, v11, Lh8/g;->e Ll7/c;
+
+d-BB@0x34e : 
+	212     (0000034e) return-object        v12
+

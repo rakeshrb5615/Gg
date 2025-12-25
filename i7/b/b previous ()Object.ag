@@ -1,0 +1,26 @@
+# Li7/b;->previous()Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v2
+#
+# - return:java.lang.Object
+
+previous-BB@0x0 : [ previous-BB@0xc previous-BB@0x26 ]
+	0       (00000000) invoke-virtual       v2, Li7/b;->hasPrevious()Z
+	1       (00000006) move-result          v0
+	2       (00000008) if-eqz               v0, +00fh
+
+previous-BB@0xc : 
+	3       (0000000c) iget                 v0, v2, La8/b;->b I
+	4       (00000010) add-int/lit8         v0, v0, -1
+	5       (00000014) iput                 v0, v2, La8/b;->b I
+	6       (00000018) iget-object          v1, v2, Li7/b;->d Li7/d;
+	7       (0000001c) invoke-interface     v1, v0, Ljava/util/List;->get(I)Ljava/lang/Object;
+	8       (00000022) move-result-object   v0
+	9       (00000024) return-object        v0
+
+previous-BB@0x26 : 
+	10      (00000026) new-instance         v0, Ljava/util/NoSuchElementException;
+	11      (0000002a) invoke-direct        v0, Ljava/util/NoSuchElementException;-><init>()V
+	12      (00000030) throw                v0
+

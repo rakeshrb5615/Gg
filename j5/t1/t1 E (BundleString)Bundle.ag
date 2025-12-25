@@ -1,0 +1,26 @@
+# Lj5/t1;->E(Landroid/os/Bundle; Ljava/lang/String;)Landroid/os/Bundle; [access_flags=public static final]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:android.os.Bundle
+# - v3:java.lang.String
+#
+# - return:android.os.Bundle
+
+E-BB@0x0 : [ E-BB@0xc E-BB@0xe ]
+	0       (00000000) invoke-virtual       v2, v3, Landroid/os/Bundle;->getBundle(Ljava/lang/String;)Landroid/os/Bundle;
+	1       (00000006) move-result-object   v2
+	2       (00000008) if-eqz               v2, +003h
+
+E-BB@0xc : 
+	3       (0000000c) return-object        v2
+
+E-BB@0xe : 
+	4       (0000000e) new-instance         v2, Ljava/lang/IllegalArgumentException;
+	5       (00000012) const-string         v0, "No valid saved state was found for the key '"
+	6       (00000016) const-string         v1, "'. It may be missing, null, or not of the expected type. This can occur if the value was saved with a different type or if the saved state was modified unexpectedly."
+	7       (0000001a) invoke-static        v0, v3, v1, Lv1/a;->l(Ljava/lang/String; Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	8       (00000020) move-result-object   v3
+	9       (00000022) invoke-direct        v2, v3, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	10      (00000028) throw                v2
+

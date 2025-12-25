@@ -1,0 +1,36 @@
+# Lj7/b;->indexOf(Ljava/lang/Object;)I [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:java.lang.Object
+#
+# - return:int
+
+indexOf-BB@0x0 : [ indexOf-BB@0x8 ]
+	0       (00000000) invoke-virtual       v3, Lj7/b;->g()V
+	1       (00000006) const/4              v0, 0
+
+indexOf-BB@0x8 : [ indexOf-BB@0x10 indexOf-BB@0x32 ]
+	2       (00000008) iget                 v1, v3, Lj7/b;->c I
+	3       (0000000c) if-ge                v0, v1, +013h
+
+indexOf-BB@0x10 : [ indexOf-BB@0x2a indexOf-BB@0x2c ]
+	4       (00000010) iget-object          v1, v3, Lj7/b;->a [Ljava/lang/Object;
+	5       (00000014) iget                 v2, v3, Lj7/b;->b I
+	6       (00000018) add-int/2addr        v2, v0
+	7       (0000001a) aget-object          v1, v1, v2
+	8       (0000001e) invoke-static        v1, v4, Lkotlin/jvm/internal/j;->a(Ljava/lang/Object; Ljava/lang/Object;)Z
+	9       (00000024) move-result          v1
+	10      (00000026) if-eqz               v1, +003h
+
+indexOf-BB@0x2a : 
+	11      (0000002a) return               v0
+
+indexOf-BB@0x2c : [ indexOf-BB@0x8 ]
+	12      (0000002c) add-int/lit8         v0, v0, 1
+	13      (00000030) goto                 -14h
+
+indexOf-BB@0x32 : 
+	14      (00000032) const/4              v4, -1
+	15      (00000034) return               v4
+

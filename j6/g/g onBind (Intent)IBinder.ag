@@ -1,0 +1,61 @@
+# Lj6/g;->onBind(Landroid/content/Intent;)Landroid/os/IBinder; [access_flags=public final synchronized]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:android.content.Intent
+#
+# - return:android.os.IBinder
+
+onBind-BB@0x0 : [ onBind-BB@0x2 ]
+	0       (00000000) monitor-enter        v2
+
+onBind-BB@0x2 : [ onBind-BB@0x14 onBind-BB@0x28 ]
+	1       (00000002) const-string         v3, "EnhancedIntentService"
+	2       (00000006) const/4              v0, 3
+	3       (00000008) invoke-static        v3, v0, Landroid/util/Log;->isLoggable(Ljava/lang/String; I)Z
+	4       (0000000e) move-result          v3
+	5       (00000010) if-eqz               v3, +00ch
+	2:4f
+	(Ljava/lang/Throwable; -> 24 onBind-BB@0x24)
+
+onBind-BB@0x14 : [ onBind-BB@0x28 ]
+	6       (00000014) const-string         v3, "EnhancedIntentService"
+	7       (00000018) const-string         v0, "Service received bind request"
+	8       (0000001c) invoke-static        v3, v0, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String;)I
+	9       (00000022) goto                 +3h
+	2:4f
+	(Ljava/lang/Throwable; -> 24 onBind-BB@0x24)
+
+onBind-BB@0x24 : [ onBind-BB@0x54 ]
+	10      (00000024) move-exception       v3
+	11      (00000026) goto                 +17h
+	2:4f
+	(Ljava/lang/Throwable; -> 24 onBind-BB@0x24)
+
+onBind-BB@0x28 : [ onBind-BB@0x30 onBind-BB@0x4c ]
+	12      (00000028) iget-object          v3, v2, Lj6/g;->b Lj6/d0;
+	13      (0000002c) if-nez               v3, +010h
+	2:4f
+	(Ljava/lang/Throwable; -> 24 onBind-BB@0x24)
+
+onBind-BB@0x30 : [ onBind-BB@0x4c ]
+	14      (00000030) new-instance         v3, Lj6/d0;
+	15      (00000034) new-instance         v0, Ll6/c;
+	16      (00000038) const/16             v1, 29
+	17      (0000003c) invoke-direct        v0, v2, v1, Ll6/c;-><init>(Ljava/lang/Object; I)V
+	18      (00000042) invoke-direct        v3, v0, Lj6/d0;-><init>(Ll6/c;)V
+	19      (00000048) iput-object          v3, v2, Lj6/g;->b Lj6/d0;
+	2:4f
+	(Ljava/lang/Throwable; -> 24 onBind-BB@0x24)
+
+onBind-BB@0x4c : 
+	20      (0000004c) iget-object          v3, v2, Lj6/g;->b Lj6/d0;
+	21      (00000050) monitor-exit         v2
+	22      (00000052) return-object        v3
+
+onBind-BB@0x54 : 
+	23      (00000054) monitor-exit         v2
+	24      (00000056) throw                v3
+	54:55
+	(Ljava/lang/Throwable; -> 24 onBind-BB@0x24)
+

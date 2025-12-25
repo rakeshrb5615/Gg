@@ -1,0 +1,43 @@
+# Lh7/i;->getValue()Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v4
+#
+# - return:java.lang.Object
+
+getValue-BB@0x0 : [ getValue-BB@0xc getValue-BB@0xe ]
+	0       (00000000) iget-object          v0, v4, Lh7/i;->b Ljava/lang/Object;
+	1       (00000004) sget-object          v1, Lh7/k;->a Lh7/k;
+	2       (00000008) if-eq                v0, v1, +003h
+
+getValue-BB@0xc : 
+	3       (0000000c) return-object        v0
+
+getValue-BB@0xe : [ getValue-BB@0x16 getValue-BB@0x42 ]
+	4       (0000000e) iget-object          v0, v4, Lh7/i;->a Lu7/a;
+	5       (00000012) if-eqz               v0, +018h
+
+getValue-BB@0x16 : [ getValue-BB@0x22 ]
+	6       (00000016) invoke-interface     v0, Lu7/a;->invoke()Ljava/lang/Object;
+	7       (0000001c) move-result-object   v0
+	8       (0000001e) sget-object          v2, Lh7/i;->c Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;
+
+getValue-BB@0x22 : [ getValue-BB@0x2e getValue-BB@0x36 ]
+	9       (00000022) invoke-virtual       v2, v4, v1, v0, Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;->compareAndSet(Ljava/lang/Object; Ljava/lang/Object; Ljava/lang/Object;)Z
+	10      (00000028) move-result          v3
+	11      (0000002a) if-eqz               v3, +006h
+
+getValue-BB@0x2e : 
+	12      (0000002e) const/4              v1, 0
+	13      (00000030) iput-object          v1, v4, Lh7/i;->a Lu7/a;
+	14      (00000034) return-object        v0
+
+getValue-BB@0x36 : [ getValue-BB@0x42 getValue-BB@0x22 ]
+	15      (00000036) invoke-virtual       v2, v4, Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	16      (0000003c) move-result-object   v3
+	17      (0000003e) if-eq                v3, v1, -00eh
+
+getValue-BB@0x42 : 
+	18      (00000042) iget-object          v0, v4, Lh7/i;->b Ljava/lang/Object;
+	19      (00000046) return-object        v0
+

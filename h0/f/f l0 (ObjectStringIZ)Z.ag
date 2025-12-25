@@ -1,0 +1,38 @@
+# Lh0/f;->l0(Ljava/lang/Object; Ljava/lang/String; I Z)Z [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v0
+# - v1:java.lang.Object
+# - v2:java.lang.String
+# - v3:int
+# - v4:boolean
+#
+# - return:boolean
+
+l0-BB@0x0 : [ l0-BB@0x6 ]
+	0       (00000000) invoke-static        Lh0/f;->o0()V
+
+l0-BB@0x6 : 
+	1       (00000006) sget-object          v0, Lh0/f;->l Ljava/lang/reflect/Method;
+	2       (0000000a) invoke-static        v3, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+	3       (00000010) move-result-object   v3
+	4       (00000012) invoke-static        v4, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+	5       (00000018) move-result-object   v4
+	6       (0000001a) filled-new-array     v2, v3, v4, [Ljava/lang/Object;
+	7       (00000020) move-result-object   v2
+	8       (00000022) invoke-virtual       v0, v1, v2, Ljava/lang/reflect/Method;->invoke(Ljava/lang/Object; [Ljava/lang/Object;)Ljava/lang/Object;
+	9       (00000028) move-result-object   v1
+	10      (0000002a) check-cast           v1, Ljava/lang/Boolean;
+	11      (0000002e) invoke-virtual       v1, Ljava/lang/Boolean;->booleanValue()Z
+	12      (00000034) move-result          v1
+	13      (00000036) return               v1
+	6:35
+	(Ljava/lang/IllegalAccessException; -> 38 l0-BB@0x38)
+	(Ljava/lang/reflect/InvocationTargetException; -> 38 l0-BB@0x38)
+
+l0-BB@0x38 : 
+	14      (00000038) move-exception       v1
+	15      (0000003a) new-instance         v2, Ljava/lang/RuntimeException;
+	16      (0000003e) invoke-direct        v2, v1, Ljava/lang/RuntimeException;-><init>(Ljava/lang/Throwable;)V
+	17      (00000044) throw                v2
+

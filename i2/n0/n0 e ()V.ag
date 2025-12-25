@@ -1,0 +1,37 @@
+# Li2/n0;->e()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v4
+#
+# - return:void
+
+e-BB@0x0 : [ e-BB@0x8 e-BB@0xa ]
+	0       (00000000) iget-object          v0, v4, Li2/n0;->Y Ljava/lang/Thread;
+	1       (00000004) if-eqz               v0, +003h
+
+e-BB@0x8 : [ e-BB@0x12 ]
+	2       (00000008) goto                 +5h
+
+e-BB@0xa : [ e-BB@0x12 e-BB@0x14 ]
+	3       (0000000a) iget-object          v0, v4, Li2/n0;->b Li2/v0;
+	4       (0000000e) if-nez               v0, +003h
+
+e-BB@0x12 : 
+	5       (00000012) return-void          
+
+e-BB@0x14 : 
+	6       (00000014) const/4              v1, 1
+	7       (00000016) iput-boolean         v1, v4, Li2/n0;->Z Z
+	8       (0000001a) new-instance         v1, Ljava/lang/Thread;
+	9       (0000001e) new-instance         v2, La5/i;
+	10      (00000022) const/16             v3, 9
+	11      (00000026) invoke-direct        v2, v3, v4, v0, La5/i;-><init>(I Ljava/lang/Object; Ljava/lang/Object;)V
+	12      (0000002c) const-string         v0, "GLRenderThread"
+	13      (00000030) invoke-direct        v1, v2, v0, Ljava/lang/Thread;-><init>(Ljava/lang/Runnable; Ljava/lang/String;)V
+	14      (00000036) iput-object          v1, v4, Li2/n0;->Y Ljava/lang/Thread;
+	15      (0000003a) const/4              v0, 5
+	16      (0000003c) invoke-virtual       v1, v0, Ljava/lang/Thread;->setPriority(I)V
+	17      (00000042) iget-object          v0, v4, Li2/n0;->Y Ljava/lang/Thread;
+	18      (00000046) invoke-virtual       v0, Ljava/lang/Thread;->start()V
+	19      (0000004c) return-void          
+

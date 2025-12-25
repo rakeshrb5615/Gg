@@ -1,0 +1,65 @@
+# Lj6/b0;->d()Z [access_flags=public final synchronized]
+#
+# Parameters:
+# local registers: v0...v2
+#
+# - return:boolean
+
+d-BB@0x0 : [ d-BB@0x2 ]
+	0       (00000000) monitor-enter        v2
+
+d-BB@0x2 : [ d-BB@0x1a d-BB@0x28 ]
+	1       (00000002) iget-object          v0, v2, Lj6/b0;->a Landroid/content/Context;
+	2       (00000006) const-string         v1, "connectivity"
+	3       (0000000a) invoke-virtual       v0, v1, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+	4       (00000010) move-result-object   v0
+	5       (00000012) check-cast           v0, Landroid/net/ConnectivityManager;
+	6       (00000016) if-eqz               v0, +009h
+	2:35
+	(Ljava/lang/Throwable; -> 24 d-BB@0x24)
+
+d-BB@0x1a : [ d-BB@0x2a ]
+	7       (0000001a) invoke-virtual       v0, Landroid/net/ConnectivityManager;->getActiveNetworkInfo()Landroid/net/NetworkInfo;
+	8       (00000020) move-result-object   v0
+	9       (00000022) goto                 +4h
+	2:35
+	(Ljava/lang/Throwable; -> 24 d-BB@0x24)
+
+d-BB@0x24 : [ d-BB@0x44 ]
+	10      (00000024) move-exception       v0
+	11      (00000026) goto                 +fh
+	2:35
+	(Ljava/lang/Throwable; -> 24 d-BB@0x24)
+
+d-BB@0x28 : [ d-BB@0x2a ]
+	12      (00000028) const/4              v0, 0
+	2:35
+	(Ljava/lang/Throwable; -> 24 d-BB@0x24)
+
+d-BB@0x2a : [ d-BB@0x2e d-BB@0x3e ]
+	13      (0000002a) if-eqz               v0, +00ah
+	2:35
+	(Ljava/lang/Throwable; -> 24 d-BB@0x24)
+
+d-BB@0x2e : [ d-BB@0x3a d-BB@0x3e ]
+	14      (0000002e) invoke-virtual       v0, Landroid/net/NetworkInfo;->isConnected()Z
+	15      (00000034) move-result          v0
+	16      (00000036) if-eqz               v0, +004h
+
+d-BB@0x3a : [ d-BB@0x40 ]
+	17      (0000003a) const/4              v0, 1
+	18      (0000003c) goto                 +2h
+
+d-BB@0x3e : [ d-BB@0x40 ]
+	19      (0000003e) const/4              v0, 0
+
+d-BB@0x40 : 
+	20      (00000040) monitor-exit         v2
+	21      (00000042) return               v0
+
+d-BB@0x44 : 
+	22      (00000044) monitor-exit         v2
+	23      (00000046) throw                v0
+	44:45
+	(Ljava/lang/Throwable; -> 24 d-BB@0x24)
+

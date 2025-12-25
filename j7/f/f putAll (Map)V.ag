@@ -1,0 +1,90 @@
+# Lj7/f;->putAll(Ljava/util/Map;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:java.util.Map
+#
+# - return:void
+
+putAll-BB@0x0 : [ putAll-BB@0x24 putAll-BB@0x26 ]
+	0       (00000000) const-string         v0, "from"
+	1       (00000004) invoke-static        v6, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) invoke-virtual       v5, Lj7/f;->c()V
+	3       (00000010) invoke-interface     v6, Ljava/util/Map;->entrySet()Ljava/util/Set;
+	4       (00000016) move-result-object   v6
+	5       (00000018) invoke-interface     v6, Ljava/util/Collection;->isEmpty()Z
+	6       (0000001e) move-result          v0
+	7       (00000020) if-eqz               v0, +003h
+
+putAll-BB@0x24 : [ putAll-BB@0xce ]
+	8       (00000024) goto                 +55h
+
+putAll-BB@0x26 : [ putAll-BB@0x3c ]
+	9       (00000026) invoke-interface     v6, Ljava/util/Collection;->size()I
+	10      (0000002c) move-result          v0
+	11      (0000002e) invoke-virtual       v5, v0, Lj7/f;->g(I)V
+	12      (00000034) invoke-interface     v6, Ljava/util/Collection;->iterator()Ljava/util/Iterator;
+	13      (0000003a) move-result-object   v6
+
+putAll-BB@0x3c : [ putAll-BB@0x48 putAll-BB@0xce ]
+	14      (0000003c) invoke-interface     v6, Ljava/util/Iterator;->hasNext()Z
+	15      (00000042) move-result          v0
+	16      (00000044) if-eqz               v0, +045h
+
+putAll-BB@0x48 : [ putAll-BB@0x6c putAll-BB@0x6e ]
+	17      (00000048) invoke-interface     v6, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	18      (0000004e) move-result-object   v0
+	19      (00000050) check-cast           v0, Ljava/util/Map$Entry;
+	20      (00000054) invoke-interface     v0, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
+	21      (0000005a) move-result-object   v1
+	22      (0000005c) invoke-virtual       v5, v1, Lj7/f;->b(Ljava/lang/Object;)I
+	23      (00000062) move-result          v1
+	24      (00000064) iget-object          v2, v5, Lj7/f;->b [Ljava/lang/Object;
+	25      (00000068) if-eqz               v2, +003h
+
+putAll-BB@0x6c : [ putAll-BB@0x80 ]
+	26      (0000006c) goto                 +ah
+
+putAll-BB@0x6e : [ putAll-BB@0x78 putAll-BB@0xbe ]
+	27      (0000006e) iget-object          v2, v5, Lj7/f;->a [Ljava/lang/Object;
+	28      (00000072) array-length         v2, v2
+	29      (00000074) if-ltz               v2, +025h
+
+putAll-BB@0x78 : [ putAll-BB@0x80 ]
+	30      (00000078) new-array            v2, v2, [Ljava/lang/Object;
+	31      (0000007c) iput-object          v2, v5, Lj7/f;->b [Ljava/lang/Object;
+
+putAll-BB@0x80 : [ putAll-BB@0x84 putAll-BB@0x92 ]
+	32      (00000080) if-ltz               v1, +009h
+
+putAll-BB@0x84 : [ putAll-BB@0x3c ]
+	33      (00000084) invoke-interface     v0, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
+	34      (0000008a) move-result-object   v0
+	35      (0000008c) aput-object          v0, v2, v1
+	36      (00000090) goto                 -2ah
+
+putAll-BB@0x92 : [ putAll-BB@0xb0 putAll-BB@0x3c ]
+	37      (00000092) neg-int              v1, v1
+	38      (00000094) add-int/lit8         v1, v1, -1
+	39      (00000098) aget-object          v3, v2, v1
+	40      (0000009c) invoke-interface     v0, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
+	41      (000000a2) move-result-object   v4
+	42      (000000a4) invoke-static        v4, v3, Lkotlin/jvm/internal/j;->a(Ljava/lang/Object; Ljava/lang/Object;)Z
+	43      (000000aa) move-result          v3
+	44      (000000ac) if-nez               v3, -038h
+
+putAll-BB@0xb0 : [ putAll-BB@0x3c ]
+	45      (000000b0) invoke-interface     v0, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
+	46      (000000b6) move-result-object   v0
+	47      (000000b8) aput-object          v0, v2, v1
+	48      (000000bc) goto                 -40h
+
+putAll-BB@0xbe : 
+	49      (000000be) new-instance         v6, Ljava/lang/IllegalArgumentException;
+	50      (000000c2) const-string         v0, "capacity must be non-negative."
+	51      (000000c6) invoke-direct        v6, v0, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	52      (000000cc) throw                v6
+
+putAll-BB@0xce : 
+	53      (000000ce) return-void          
+

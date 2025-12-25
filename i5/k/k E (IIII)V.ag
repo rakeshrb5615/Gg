@@ -1,0 +1,36 @@
+# Li5/k;->E(I I I I)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:int
+# - v4:int
+# - v5:int
+# - v6:int
+#
+# - return:void
+
+E-BB@0x0 : [ E-BB@0xc ]
+	0       (00000000) filled-new-array     v3, v4, v5, v6, [I
+	1       (00000006) move-result-object   v3
+	2       (00000008) const/4              v4, 0
+	3       (0000000a) move                 v5, v4
+
+E-BB@0xc : [ E-BB@0x16 E-BB@0x28 ]
+	4       (0000000c) iget-object          v6, v2, Li5/k;->f [B
+	5       (00000010) const/4              v0, 4
+	6       (00000012) if-ge                v4, v0, +00bh
+
+E-BB@0x16 : [ E-BB@0xc ]
+	7       (00000016) aget                 v1, v3, v4
+	8       (0000001a) invoke-static        v6, v5, v1, Li5/k;->F([B I I)V
+	9       (00000020) add-int/2addr        v5, v0
+	10      (00000022) add-int/lit8         v4, v4, 1
+	11      (00000026) goto                 -dh
+
+E-BB@0x28 : 
+	12      (00000028) const-wide/16        v3, 0
+	13      (0000002c) iget-object          v5, v2, Li5/k;->a Ljava/io/RandomAccessFile;
+	14      (00000030) invoke-virtual       v5, v3, v4, Ljava/io/RandomAccessFile;->seek(J)V
+	15      (00000036) invoke-virtual       v5, v6, Ljava/io/RandomAccessFile;->write([B)V
+	16      (0000003c) return-void          
+

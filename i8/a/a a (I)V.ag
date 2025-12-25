@@ -1,0 +1,25 @@
+# Li8/a;->a(I)V [access_flags=public static final]
+#
+# Parameters:
+# - local registers: v0...v0
+# - v1:int
+#
+# - return:void
+
+a-BB@0x0 : [ a-BB@0x6 a-BB@0x8 ]
+	0       (00000000) const/4              v0, 1
+	1       (00000002) if-lt                v1, v0, +003h
+
+a-BB@0x6 : 
+	2       (00000006) return-void          
+
+a-BB@0x8 : 
+	3       (00000008) const-string         v0, "Expected positive parallelism level, but got "
+	4       (0000000c) invoke-static        v1, v0, Lg2/g;->c(I Ljava/lang/String;)Ljava/lang/String;
+	5       (00000012) move-result-object   v1
+	6       (00000014) new-instance         v0, Ljava/lang/IllegalArgumentException;
+	7       (00000018) invoke-virtual       v1, Ljava/lang/Object;->toString()Ljava/lang/String;
+	8       (0000001e) move-result-object   v1
+	9       (00000020) invoke-direct        v0, v1, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	10      (00000026) throw                v0
+

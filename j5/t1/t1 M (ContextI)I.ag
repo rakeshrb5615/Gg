@@ -1,0 +1,46 @@
+# Lj5/t1;->M(Landroid/content/Context; I)I [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:android.content.Context
+# - v5:int
+#
+# - return:int
+
+M-BB@0x0 : [ M-BB@0xe M-BB@0x10 ]
+	0       (00000000) invoke-static        v4, v5, Le0/c;->getDrawable(Landroid/content/Context; I)Landroid/graphics/drawable/Drawable;
+	1       (00000006) move-result-object   v4
+	2       (00000008) const/4              v5, 0
+	3       (0000000a) if-nez               v4, +003h
+
+M-BB@0xe : 
+	4       (0000000e) return               v5
+
+M-BB@0x10 : 
+	5       (00000010) invoke-virtual       v4, Landroid/graphics/drawable/Drawable;->getIntrinsicWidth()I
+	6       (00000016) move-result          v0
+	7       (00000018) invoke-virtual       v4, Landroid/graphics/drawable/Drawable;->getIntrinsicHeight()I
+	8       (0000001e) move-result          v1
+	9       (00000020) sget-object          v2, Landroid/graphics/Bitmap$Config;->ARGB_8888 Landroid/graphics/Bitmap$Config;
+	10      (00000024) invoke-static        v0, v1, v2, Landroid/graphics/Bitmap;->createBitmap(I I Landroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+	11      (0000002a) move-result-object   v2
+	12      (0000002c) new-instance         v3, Landroid/graphics/Canvas;
+	13      (00000030) invoke-direct        v3, v2, Landroid/graphics/Canvas;-><init>(Landroid/graphics/Bitmap;)V
+	14      (00000036) invoke-virtual       v4, v5, v5, v0, v1, Landroid/graphics/drawable/Drawable;->setBounds(I I I I)V
+	15      (0000003c) invoke-virtual       v4, v3, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V
+	16      (00000042) const/4              v4, 1
+	17      (00000044) new-array            v0, v4, [I
+	18      (00000048) invoke-static        v4, v0, v5, Landroid/opengl/GLES20;->glGenTextures(I [I I)V
+	19      (0000004e) aget                 v4, v0, v5
+	20      (00000052) const/16             v1, 3553
+	21      (00000056) invoke-static        v1, v4, Landroid/opengl/GLES20;->glBindTexture(I I)V
+	22      (0000005c) const/16             v4, 10241
+	23      (00000060) const/16             v3, 9729
+	24      (00000064) invoke-static        v1, v4, v3, Landroid/opengl/GLES20;->glTexParameteri(I I I)V
+	25      (0000006a) const/16             v4, 10240
+	26      (0000006e) invoke-static        v1, v4, v3, Landroid/opengl/GLES20;->glTexParameteri(I I I)V
+	27      (00000074) invoke-static        v1, v5, v2, v5, Landroid/opengl/GLUtils;->texImage2D(I I Landroid/graphics/Bitmap; I)V
+	28      (0000007a) invoke-virtual       v2, Landroid/graphics/Bitmap;->recycle()V
+	29      (00000080) aget                 v4, v0, v5
+	30      (00000084) return               v4
+

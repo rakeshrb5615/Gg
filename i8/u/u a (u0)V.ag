@@ -1,0 +1,49 @@
+# Li8/u;->a(Ld8/u0;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:d8.u0
+#
+# - return:void
+
+a-BB@0x0 : [ a-BB@0x18 a-BB@0x24 ]
+	0       (00000000) move-object          v0, v4
+	1       (00000002) check-cast           v0, Ld8/v0;
+	2       (00000006) invoke-virtual       v5, v0, Ld8/u0;->d(Ld8/v0;)V
+	3       (0000000c) iget-object          v0, v4, Li8/u;->a [Ld8/u0;
+	4       (00000010) sget-object          v1, Li8/u;->b Ljava/util/concurrent/atomic/AtomicIntegerFieldUpdater;
+	5       (00000014) if-nez               v0, +008h
+
+a-BB@0x18 : [ a-BB@0x58 ]
+	6       (00000018) const/4              v0, 4
+	7       (0000001a) new-array            v0, v0, [Ld8/u0;
+	8       (0000001e) iput-object          v0, v4, Li8/u;->a [Ld8/u0;
+	9       (00000022) goto                 +1bh
+
+a-BB@0x24 : [ a-BB@0x32 a-BB@0x58 ]
+	10      (00000024) invoke-virtual       v1, v4, Ljava/util/concurrent/atomic/AtomicIntegerFieldUpdater;->get(Ljava/lang/Object;)I
+	11      (0000002a) move-result          v2
+	12      (0000002c) array-length         v3, v0
+	13      (0000002e) if-lt                v2, v3, +015h
+
+a-BB@0x32 : [ a-BB@0x58 ]
+	14      (00000032) invoke-virtual       v1, v4, Ljava/util/concurrent/atomic/AtomicIntegerFieldUpdater;->get(Ljava/lang/Object;)I
+	15      (00000038) move-result          v2
+	16      (0000003a) mul-int/lit8         v2, v2, 2
+	17      (0000003e) invoke-static        v0, v2, Ljava/util/Arrays;->copyOf([Ljava/lang/Object; I)[Ljava/lang/Object;
+	18      (00000044) move-result-object   v0
+	19      (00000046) const-string         v2, "copyOf(...)"
+	20      (0000004a) invoke-static        v0, v2, Lkotlin/jvm/internal/j;->d(Ljava/lang/Object; Ljava/lang/String;)V
+	21      (00000050) check-cast           v0, [Ld8/u0;
+	22      (00000054) iput-object          v0, v4, Li8/u;->a [Ld8/u0;
+
+a-BB@0x58 : 
+	23      (00000058) invoke-virtual       v1, v4, Ljava/util/concurrent/atomic/AtomicIntegerFieldUpdater;->get(Ljava/lang/Object;)I
+	24      (0000005e) move-result          v2
+	25      (00000060) add-int/lit8         v3, v2, 1
+	26      (00000064) invoke-virtual       v1, v4, v3, Ljava/util/concurrent/atomic/AtomicIntegerFieldUpdater;->set(Ljava/lang/Object; I)V
+	27      (0000006a) aput-object          v5, v0, v2
+	28      (0000006e) iput                 v2, v5, Ld8/u0;->b I
+	29      (00000072) invoke-virtual       v4, v2, Li8/u;->c(I)V
+	30      (00000078) return-void          
+

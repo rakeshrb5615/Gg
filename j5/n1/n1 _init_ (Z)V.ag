@@ -1,0 +1,33 @@
+# Lj5/n1;-><init>(Z)V [access_flags=public constructor]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:boolean
+#
+# - return:void
+
+<init>-BB@0x0 : [ <init>-BB@0x12 <init>-BB@0x2c ]
+	0       (00000000) sget-object          v0, Landroid/os/Build$VERSION;->RELEASE Ljava/lang/String;
+	1       (00000004) sget-object          v1, Landroid/os/Build$VERSION;->CODENAME Ljava/lang/String;
+	2       (00000008) invoke-direct        v2, Ljava/lang/Object;-><init>()V
+	3       (0000000e) if-eqz               v0, +00fh
+
+<init>-BB@0x12 : [ <init>-BB@0x16 <init>-BB@0x1c ]
+	4       (00000012) if-eqz               v1, +005h
+
+<init>-BB@0x16 : 
+	5       (00000016) iput-boolean         v3, v2, Lj5/n1;->a Z
+	6       (0000001a) return-void          
+
+<init>-BB@0x1c : 
+	7       (0000001c) new-instance         v3, Ljava/lang/NullPointerException;
+	8       (00000020) const-string         v0, "Null osCodeName"
+	9       (00000024) invoke-direct        v3, v0, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
+	10      (0000002a) throw                v3
+
+<init>-BB@0x2c : 
+	11      (0000002c) new-instance         v3, Ljava/lang/NullPointerException;
+	12      (00000030) const-string         v0, "Null osRelease"
+	13      (00000034) invoke-direct        v3, v0, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
+	14      (0000003a) throw                v3
+

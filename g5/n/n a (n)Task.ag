@@ -1,0 +1,110 @@
+# Lg5/n;->a(Lg5/n;)Lcom/google/android/gms/tasks/Task; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v8
+# - v9:g5.n
+#
+# - return:com.google.android.gms.tasks.Task
+
+a-BB@0x0 : [ a-BB@0x3c ]
+	0       (00000000) invoke-virtual       v9, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	1       (00000006) const-string         v0, "FirebaseCrashlytics"
+	2       (0000000a) new-instance         v1, Ljava/util/ArrayList;
+	3       (0000000e) invoke-direct        v1, Ljava/util/ArrayList;-><init>()V
+	4       (00000014) iget-object          v2, v9, Lg5/n;->g Lm5/c;
+	5       (00000018) iget-object          v2, v2, Lm5/c;->d Ljava/lang/Object;
+	6       (0000001c) check-cast           v2, Ljava/io/File;
+	7       (00000020) sget-object          v3, Lg5/n;->r Lg5/h;
+	8       (00000024) invoke-virtual       v2, v3, Ljava/io/File;->listFiles(Ljava/io/FilenameFilter;)[Ljava/io/File;
+	9       (0000002a) move-result-object   v2
+	10      (0000002c) invoke-static        v2, Lm5/c;->e([Ljava/lang/Object;)Ljava/util/List;
+	11      (00000032) move-result-object   v2
+	12      (00000034) invoke-interface     v2, Ljava/util/List;->iterator()Ljava/util/Iterator;
+	13      (0000003a) move-result-object   v2
+
+a-BB@0x3c : [ a-BB@0x48 a-BB@0xfc ]
+	14      (0000003c) invoke-interface     v2, Ljava/util/Iterator;->hasNext()Z
+	15      (00000042) move-result          v3
+	16      (00000044) if-eqz               v3, +05ch
+
+a-BB@0x48 : [ a-BB@0x56 ]
+	17      (00000048) invoke-interface     v2, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	18      (0000004e) move-result-object   v3
+	19      (00000050) check-cast           v3, Ljava/io/File;
+	20      (00000054) const/4              v4, 0
+
+a-BB@0x56 : [ a-BB@0x70 ]
+	21      (00000056) invoke-virtual       v3, Ljava/io/File;->getName()Ljava/lang/String;
+	22      (0000005c) move-result-object   v5
+	23      (0000005e) const/4              v6, 3
+	24      (00000060) invoke-virtual       v5, v6, Ljava/lang/String;->substring(I)Ljava/lang/String;
+	25      (00000066) move-result-object   v5
+	26      (00000068) invoke-static        v5, Ljava/lang/Long;->parseLong(Ljava/lang/String;)J
+	27      (0000006e) move-result-wide     v7
+	56:6f
+	(Ljava/lang/NumberFormatException; -> ca a-BB@0xca)
+
+a-BB@0x70 : [ a-BB@0x7a ]
+	28      (00000070) const-string         v5, "com.google.firebase.crash.FirebaseCrash"
+	29      (00000074) invoke-static        v5, Ljava/lang/Class;->forName(Ljava/lang/String;)Ljava/lang/Class;
+	70:79
+	(Ljava/lang/ClassNotFoundException; -> 8e a-BB@0x8e)
+	(Ljava/lang/NumberFormatException; -> ca a-BB@0xca)
+
+a-BB@0x7a : [ a-BB@0xc2 ]
+	30      (0000007a) const-string         v5, "Skipping logging Crashlytics event to Firebase, FirebaseCrash exists"
+	31      (0000007e) invoke-static        v0, v5, v4, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+	32      (00000084) invoke-static        v4, Lcom/google/android/gms/tasks/Tasks;->forResult(Ljava/lang/Object;)Lcom/google/android/gms/tasks/Task;
+	33      (0000008a) move-result-object   v5
+	34      (0000008c) goto                 +1bh
+	7a:c7
+	(Ljava/lang/NumberFormatException; -> ca a-BB@0xca)
+
+a-BB@0x8e : [ a-BB@0x9e a-BB@0xa4 ]
+	35      (0000008e) const-string         v5, "Logging app exception event to Firebase Analytics"
+	36      (00000092) invoke-static        v0, v6, Landroid/util/Log;->isLoggable(Ljava/lang/String; I)Z
+	37      (00000098) move-result          v6
+	38      (0000009a) if-eqz               v6, +005h
+	7a:c7
+	(Ljava/lang/NumberFormatException; -> ca a-BB@0xca)
+
+a-BB@0x9e : [ a-BB@0xa4 ]
+	39      (0000009e) invoke-static        v0, v5, v4, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+	7a:c7
+	(Ljava/lang/NumberFormatException; -> ca a-BB@0xca)
+
+a-BB@0xa4 : [ a-BB@0xc2 ]
+	40      (000000a4) new-instance         v5, Ljava/util/concurrent/ScheduledThreadPoolExecutor;
+	41      (000000a8) const/4              v6, 1
+	42      (000000aa) invoke-direct        v5, v6, Ljava/util/concurrent/ScheduledThreadPoolExecutor;-><init>(I)V
+	43      (000000b0) new-instance         v6, Lg5/m;
+	44      (000000b4) invoke-direct        v6, v9, v7, v8, Lg5/m;-><init>(Lg5/n; J)V
+	45      (000000ba) invoke-static        v5, v6, Lcom/google/android/gms/tasks/Tasks;->call(Ljava/util/concurrent/Executor; Ljava/util/concurrent/Callable;)Lcom/google/android/gms/tasks/Task;
+	46      (000000c0) move-result-object   v5
+	7a:c7
+	(Ljava/lang/NumberFormatException; -> ca a-BB@0xca)
+
+a-BB@0xc2 : [ a-BB@0xf4 ]
+	47      (000000c2) invoke-virtual       v1, v5, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	48      (000000c8) goto                 +16h
+
+a-BB@0xca : [ a-BB@0xf4 ]
+	49      (000000ca) new-instance         v5, Ljava/lang/StringBuilder;
+	50      (000000ce) const-string         v6, "Could not parse app exception timestamp from file "
+	51      (000000d2) invoke-direct        v5, v6, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	52      (000000d8) invoke-virtual       v3, Ljava/io/File;->getName()Ljava/lang/String;
+	53      (000000de) move-result-object   v6
+	54      (000000e0) invoke-virtual       v5, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	55      (000000e6) invoke-virtual       v5, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	56      (000000ec) move-result-object   v5
+	57      (000000ee) invoke-static        v0, v5, v4, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+
+a-BB@0xf4 : [ a-BB@0x3c ]
+	58      (000000f4) invoke-virtual       v3, Ljava/io/File;->delete()Z
+	59      (000000fa) goto                 -5fh
+
+a-BB@0xfc : 
+	60      (000000fc) invoke-static        v1, Lcom/google/android/gms/tasks/Tasks;->whenAll(Ljava/util/Collection;)Lcom/google/android/gms/tasks/Task;
+	61      (00000102) move-result-object   v9
+	62      (00000104) return-object        v9
+

@@ -1,0 +1,32 @@
+# Li3/e;->getChildDrawingOrder(I I)I [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:int
+# - v3:int
+#
+# - return:int
+
+getChildDrawingOrder-BB@0x0 : [ getChildDrawingOrder-BB@0x8 getChildDrawingOrder-BB@0x1e ]
+	0       (00000000) iget-object          v2, v1, Li3/e;->e [Ljava/lang/Integer;
+	1       (00000004) if-eqz               v2, +00dh
+
+getChildDrawingOrder-BB@0x8 : [ getChildDrawingOrder-BB@0xe getChildDrawingOrder-BB@0x10 ]
+	2       (00000008) array-length         v0, v2
+	3       (0000000a) if-lt                v3, v0, +003h
+
+getChildDrawingOrder-BB@0xe : [ getChildDrawingOrder-BB@0x1e ]
+	4       (0000000e) goto                 +8h
+
+getChildDrawingOrder-BB@0x10 : 
+	5       (00000010) aget-object          v2, v2, v3
+	6       (00000014) invoke-virtual       v2, Ljava/lang/Integer;->intValue()I
+	7       (0000001a) move-result          v2
+	8       (0000001c) return               v2
+
+getChildDrawingOrder-BB@0x1e : 
+	9       (0000001e) const-string         v2, "MButtonGroup"
+	10      (00000022) const-string         v0, "Child order wasn't updated"
+	11      (00000026) invoke-static        v2, v0, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+	12      (0000002c) return               v3
+

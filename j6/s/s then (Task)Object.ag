@@ -1,0 +1,209 @@
+# Lj6/s;->then(Lcom/google/android/gms/tasks/Task;)Ljava/lang/Object; [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v7
+# - v8:com.google.android.gms.tasks.Task
+#
+# - return:java.lang.Object
+
+then-BB@0x0 : [ D:then-BB@0xa 17:then-BB@0xa0 ]
+	0       (00000000) iget                 v0, v7, Lj6/s;->a I
+	1       (00000004) packed-switch        v0, +00000fah
+
+then-BB@0xa : [ then-BB@0x22 then-BB@0x9e ]
+	2       (0000000a) iget-object          v0, v7, Lj6/s;->b Ljava/lang/Object;
+	3       (0000000e) check-cast           v0, Ljava/lang/String;
+	4       (00000012) const-string         v1, "RecaptchaCallWrapper"
+	5       (00000016) invoke-virtual       v8, Lcom/google/android/gms/tasks/Task;->isSuccessful()Z
+	6       (0000001c) move-result          v2
+	7       (0000001e) if-nez               v2, +040h
+
+then-BB@0x22 : [ then-BB@0x42 then-BB@0x9e ]
+	8       (00000022) invoke-virtual       v8, Lcom/google/android/gms/tasks/Task;->getException()Ljava/lang/Exception;
+	9       (00000028) move-result-object   v2
+	10      (0000002a) invoke-static        v2, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;
+	11      (00000030) move-result-object   v2
+	12      (00000032) check-cast           v2, Ljava/lang/Exception;
+	13      (00000036) invoke-static        v2, Lcom/google/android/gms/internal/firebase-auth-api/zzaen;->zzc(Ljava/lang/Exception;)Z
+	14      (0000003c) move-result          v2
+	15      (0000003e) if-eqz               v2, +030h
+
+then-BB@0x42 : [ then-BB@0x50 then-BB@0x72 ]
+	16      (00000042) const/4              v8, 4
+	17      (00000044) invoke-static        v1, v8, Landroid/util/Log;->isLoggable(Ljava/lang/String; I)Z
+	18      (0000004a) move-result          v8
+	19      (0000004c) if-eqz               v8, +013h
+
+then-BB@0x50 : [ then-BB@0x72 ]
+	20      (00000050) new-instance         v8, Ljava/lang/StringBuilder;
+	21      (00000054) const-string         v2, "Invalid token - Refreshing Recaptcha Enterprise config and fetching new token for tenant "
+	22      (00000058) invoke-direct        v8, v2, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	23      (0000005e) invoke-virtual       v8, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	24      (00000064) invoke-virtual       v8, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	25      (0000006a) move-result-object   v8
+	26      (0000006c) invoke-static        v1, v8, Landroid/util/Log;->i(Ljava/lang/String; Ljava/lang/String;)I
+
+then-BB@0x72 : [ then-BB@0x9e ]
+	27      (00000072) iget-object          v8, v7, Lj6/s;->c Ljava/lang/Object;
+	28      (00000076) check-cast           v8, La5/z;
+	29      (0000007a) sget-object          v1, Ljava/lang/Boolean;->TRUE Ljava/lang/Boolean;
+	30      (0000007e) iget-object          v2, v7, Lj6/s;->d Ljava/lang/Object;
+	31      (00000082) check-cast           v2, Lcom/google/android/recaptcha/RecaptchaAction;
+	32      (00000086) invoke-virtual       v8, v0, v1, v2, La5/z;->w(Ljava/lang/String; Ljava/lang/Boolean; Lcom/google/android/recaptcha/RecaptchaAction;)Lcom/google/android/gms/tasks/Task;
+	33      (0000008c) move-result-object   v8
+	34      (0000008e) iget-object          v0, v7, Lj6/s;->e Ljava/lang/Object;
+	35      (00000092) check-cast           v0, Lj6/o;
+	36      (00000096) invoke-virtual       v8, v0, Lcom/google/android/gms/tasks/Task;->continueWithTask(Lcom/google/android/gms/tasks/Continuation;)Lcom/google/android/gms/tasks/Task;
+	37      (0000009c) move-result-object   v8
+
+then-BB@0x9e : 
+	38      (0000009e) return-object        v8
+
+then-BB@0xa0 : [ then-BB@0xd4 then-BB@0xe8 ]
+	39      (000000a0) iget-object          v0, v7, Lj6/s;->c Ljava/lang/Object;
+	40      (000000a4) move-object          v4, v0
+	41      (000000a6) check-cast           v4, Lcom/google/android/recaptcha/RecaptchaAction;
+	42      (000000aa) iget-object          v0, v7, Lj6/s;->d Ljava/lang/Object;
+	43      (000000ae) move-object          v1, v0
+	44      (000000b0) check-cast           v1, Lcom/google/firebase/auth/FirebaseAuth;
+	45      (000000b4) iget-object          v0, v7, Lj6/s;->b Ljava/lang/Object;
+	46      (000000b8) move-object          v2, v0
+	47      (000000ba) check-cast           v2, Ljava/lang/String;
+	48      (000000be) iget-object          v0, v7, Lj6/s;->e Ljava/lang/Object;
+	49      (000000c2) move-object          v5, v0
+	50      (000000c4) check-cast           v5, Lj6/o;
+	51      (000000c8) invoke-virtual       v8, Lcom/google/android/gms/tasks/Task;->isSuccessful()Z
+	52      (000000ce) move-result          v0
+	53      (000000d0) if-eqz               v0, +00ch
+
+then-BB@0xd4 : [ then-BB@0x1f6 ]
+	54      (000000d4) invoke-virtual       v8, Lcom/google/android/gms/tasks/Task;->getResult()Ljava/lang/Object;
+	55      (000000da) move-result-object   v8
+	56      (000000dc) invoke-static        v8, Lcom/google/android/gms/tasks/Tasks;->forResult(Ljava/lang/Object;)Lcom/google/android/gms/tasks/Task;
+	57      (000000e2) move-result-object   v8
+	58      (000000e4) goto/16              +089h
+
+then-BB@0xe8 : [ then-BB@0x108 then-BB@0x1a8 ]
+	59      (000000e8) invoke-virtual       v8, Lcom/google/android/gms/tasks/Task;->getException()Ljava/lang/Exception;
+	60      (000000ee) move-result-object   v8
+	61      (000000f0) invoke-static        v8, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;
+	62      (000000f6) move-result-object   v8
+	63      (000000f8) check-cast           v8, Ljava/lang/Exception;
+	64      (000000fc) invoke-static        v8, Lcom/google/android/gms/internal/firebase-auth-api/zzaen;->zzd(Ljava/lang/Exception;)Z
+	65      (00000102) move-result          v0
+	66      (00000104) if-eqz               v0, +052h
+
+then-BB@0x108 : [ then-BB@0x11a then-BB@0x138 ]
+	67      (00000108) const-string         v8, "RecaptchaCallWrapper"
+	68      (0000010c) const/4              v0, 4
+	69      (0000010e) invoke-static        v8, v0, Landroid/util/Log;->isLoggable(Ljava/lang/String; I)Z
+	70      (00000114) move-result          v8
+	71      (00000116) if-eqz               v8, +011h
+
+then-BB@0x11a : [ then-BB@0x138 ]
+	72      (0000011a) const-string         v8, "RecaptchaCallWrapper"
+	73      (0000011e) invoke-static        v4, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
+	74      (00000124) move-result-object   v0
+	75      (00000126) const-string         v3, "Falling back to recaptcha enterprise flow for action "
+	76      (0000012a) invoke-virtual       v3, v0, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	77      (00000130) move-result-object   v0
+	78      (00000132) invoke-static        v8, v0, Landroid/util/Log;->i(Ljava/lang/String; Ljava/lang/String;)I
+
+then-BB@0x138 : [ then-BB@0x13a ]
+	79      (00000138) monitor-enter        v1
+
+then-BB@0x13a : [ then-BB@0x144 then-BB@0x164 ]
+	80      (0000013a) iget-object          v8, v1, Lcom/google/firebase/auth/FirebaseAuth;->j La5/z;
+	81      (0000013e) monitor-exit         v1
+	82      (00000140) if-nez               v8, +012h
+	13a:13d
+	(Ljava/lang/Throwable; -> 1a0 then-BB@0x1a0)
+
+then-BB@0x144 : [ then-BB@0x154 ]
+	83      (00000144) new-instance         v8, La5/z;
+	84      (00000148) iget-object          v0, v1, Lcom/google/firebase/auth/FirebaseAuth;->a Lq4/f;
+	85      (0000014c) invoke-direct        v8, v0, v1, La5/z;-><init>(Lq4/f; Lcom/google/firebase/auth/FirebaseAuth;)V
+	86      (00000152) monitor-enter        v1
+
+then-BB@0x154 : [ then-BB@0x164 ]
+	87      (00000154) iput-object          v8, v1, Lcom/google/firebase/auth/FirebaseAuth;->j La5/z;
+	88      (00000158) monitor-exit         v1
+	89      (0000015a) goto                 +5h
+	154:157
+	(Ljava/lang/Throwable; -> 15c then-BB@0x15c)
+
+then-BB@0x15c : [ then-BB@0x160 ]
+	90      (0000015c) move-exception       v0
+	91      (0000015e) move-object          v8, v0
+
+then-BB@0x160 : 
+	92      (00000160) monitor-exit         v1
+	93      (00000162) throw                v8
+	160:161
+	(Ljava/lang/Throwable; -> 15c then-BB@0x15c)
+
+then-BB@0x164 : [ then-BB@0x166 ]
+	94      (00000164) monitor-enter        v1
+
+then-BB@0x166 : [ then-BB@0x1f6 ]
+	95      (00000166) iget-object          v3, v1, Lcom/google/firebase/auth/FirebaseAuth;->j La5/z;
+	96      (0000016a) monitor-exit         v1
+	97      (0000016c) sget-object          v8, Ljava/lang/Boolean;->FALSE Ljava/lang/Boolean;
+	98      (00000170) invoke-virtual       v3, v2, v8, v4, La5/z;->w(Ljava/lang/String; Ljava/lang/Boolean; Lcom/google/android/recaptcha/RecaptchaAction;)Lcom/google/android/gms/tasks/Task;
+	99      (00000176) move-result-object   v8
+	100     (00000178) new-instance         v1, Lj6/s;
+	101     (0000017c) const/16             v6, 18
+	102     (00000180) invoke-direct/range  v1 ... v6, Lj6/s;-><init>(Ljava/lang/Object; Ljava/lang/Object; Ljava/lang/Object; Ljava/lang/Object; I)V
+	103     (00000186) invoke-virtual       v8, v5, Lcom/google/android/gms/tasks/Task;->continueWithTask(Lcom/google/android/gms/tasks/Continuation;)Lcom/google/android/gms/tasks/Task;
+	104     (0000018c) move-result-object   v8
+	105     (0000018e) invoke-virtual       v8, v1, Lcom/google/android/gms/tasks/Task;->continueWithTask(Lcom/google/android/gms/tasks/Continuation;)Lcom/google/android/gms/tasks/Task;
+	106     (00000194) move-result-object   v8
+	107     (00000196) goto                 +30h
+	166:169
+	(Ljava/lang/Throwable; -> 198 then-BB@0x198)
+
+then-BB@0x198 : [ then-BB@0x19c ]
+	108     (00000198) move-exception       v0
+	109     (0000019a) move-object          v8, v0
+
+then-BB@0x19c : 
+	110     (0000019c) monitor-exit         v1
+	111     (0000019e) throw                v8
+	19c:19d
+	(Ljava/lang/Throwable; -> 198 then-BB@0x198)
+
+then-BB@0x1a0 : [ then-BB@0x1a4 ]
+	112     (000001a0) move-exception       v0
+	113     (000001a2) move-object          v8, v0
+
+then-BB@0x1a4 : 
+	114     (000001a4) monitor-exit         v1
+	115     (000001a6) throw                v8
+	1a4:1a5
+	(Ljava/lang/Throwable; -> 1a0 then-BB@0x1a0)
+
+then-BB@0x1a8 : [ then-BB@0x1f6 ]
+	116     (000001a8) const-string         v0, "RecaptchaCallWrapper"
+	117     (000001ac) invoke-static        v4, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
+	118     (000001b2) move-result-object   v1
+	119     (000001b4) invoke-virtual       v8, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+	120     (000001ba) move-result-object   v2
+	121     (000001bc) new-instance         v3, Ljava/lang/StringBuilder;
+	122     (000001c0) const-string         v4, "Initial task failed for action "
+	123     (000001c4) invoke-direct        v3, v4, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	124     (000001ca) invoke-virtual       v3, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	125     (000001d0) const-string         v1, "with exception - "
+	126     (000001d4) invoke-virtual       v3, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	127     (000001da) invoke-virtual       v3, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	128     (000001e0) invoke-virtual       v3, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	129     (000001e6) move-result-object   v1
+	130     (000001e8) invoke-static        v0, v1, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String;)I
+	131     (000001ee) invoke-static        v8, Lcom/google/android/gms/tasks/Tasks;->forException(Ljava/lang/Exception;)Lcom/google/android/gms/tasks/Task;
+	132     (000001f4) move-result-object   v8
+
+then-BB@0x1f6 : 
+	133     (000001f6) return-object        v8
+
+then-BB@0x1f8 : 
+	134     (000001f8) packed-switch-payload 11
+

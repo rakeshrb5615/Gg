@@ -1,0 +1,67 @@
+# Li2/v0;->C()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v5
+#
+# - return:void
+
+C-BB@0x0 : [ C-BB@0xa C-BB@0x82 ]
+	0       (00000000) iget                 v0, v5, Li2/v0;->a1 I
+	1       (00000004) const/4              v1, 5
+	2       (00000006) if-ne                v0, v1, +03eh
+
+C-BB@0xa : [ C-BB@0xc ]
+	3       (0000000a) const/4              v0, 0
+
+C-BB@0xc : [ C-BB@0x14 C-BB@0x82 ]
+	4       (0000000c) iget                 v1, v5, Li2/v0;->b1 I
+	5       (00000010) if-ge                v0, v1, +039h
+
+C-BB@0x14 : [ C-BB@0x3e C-BB@0x50 ]
+	6       (00000014) iget-object          v1, v5, Li2/v0;->O0 Ljava/util/Random;
+	7       (00000018) invoke-virtual       v1, Ljava/util/Random;->nextFloat()F
+	8       (0000001e) move-result          v1
+	9       (00000020) const/high16         v2, 1073741824
+	10      (00000024) mul-float/2addr      v1, v2
+	11      (00000026) const/high16         v2, 1065353216
+	12      (0000002a) sub-float/2addr      v1, v2
+	13      (0000002c) const                v2, 1032805417
+	14      (00000032) mul-float/2addr      v1, v2
+	15      (00000034) const/4              v2, 0
+	16      (00000036) cmpl-float           v3, v1, v2
+	17      (0000003a) if-ltz               v3, +00bh
+
+C-BB@0x3e : [ C-BB@0x4c C-BB@0x50 ]
+	18      (0000003e) const                v3, 1008981770
+	19      (00000044) cmpg-float           v4, v1, v3
+	20      (00000048) if-gez               v4, +004h
+
+C-BB@0x4c : [ C-BB@0x68 ]
+	21      (0000004c) move                 v1, v3
+	22      (0000004e) goto                 +dh
+
+C-BB@0x50 : [ C-BB@0x58 C-BB@0x68 ]
+	23      (00000050) cmpg-float           v2, v1, v2
+	24      (00000054) if-gez               v2, +00ah
+
+C-BB@0x58 : [ C-BB@0x66 C-BB@0x68 ]
+	25      (00000058) const                v2, -1138501878
+	26      (0000005e) cmpl-float           v3, v1, v2
+	27      (00000062) if-lez               v3, +003h
+
+C-BB@0x66 : [ C-BB@0x68 ]
+	28      (00000066) move                 v1, v2
+
+C-BB@0x68 : [ C-BB@0xc ]
+	29      (00000068) iget                 v2, v5, Li2/v0;->e F
+	30      (0000006c) mul-float/2addr      v1, v2
+	31      (0000006e) const/high16         v2, 1114636288
+	32      (00000072) div-float/2addr      v1, v2
+	33      (00000074) iget-object          v2, v5, Li2/v0;->G1 [F
+	34      (00000078) aput                 v1, v2, v0
+	35      (0000007c) add-int/lit8         v0, v0, 1
+	36      (00000080) goto                 -3ah
+
+C-BB@0x82 : 
+	37      (00000082) return-void          
+

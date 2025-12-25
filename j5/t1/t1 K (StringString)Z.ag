@@ -1,0 +1,31 @@
+# Lj5/t1;->K(Ljava/lang/String; Ljava/lang/String;)Z [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v0
+# - v1:java.lang.String
+# - v2:java.lang.String
+#
+# - return:boolean
+
+K-BB@0x0 : [ K-BB@0x18 K-BB@0x2c ]
+	0       (00000000) const-string         v0, "("
+	1       (00000004) invoke-virtual       v2, v0, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	2       (0000000a) move-result-object   v2
+	3       (0000000c) invoke-virtual       v1, v2, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
+	4       (00000012) move-result          v2
+	5       (00000014) if-eqz               v2, +00ch
+
+K-BB@0x18 : [ K-BB@0x28 K-BB@0x2c ]
+	6       (00000018) const-string         v2, ")"
+	7       (0000001c) invoke-virtual       v1, v2, Ljava/lang/String;->endsWith(Ljava/lang/String;)Z
+	8       (00000022) move-result          v1
+	9       (00000024) if-eqz               v1, +004h
+
+K-BB@0x28 : 
+	10      (00000028) const/4              v1, 1
+	11      (0000002a) return               v1
+
+K-BB@0x2c : 
+	12      (0000002c) const/4              v1, 0
+	13      (0000002e) return               v1
+

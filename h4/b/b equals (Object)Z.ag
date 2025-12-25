@@ -1,0 +1,40 @@
+# Lh4/b;->equals(Ljava/lang/Object;)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:java.lang.Object
+#
+# - return:boolean
+
+equals-BB@0x0 : [ equals-BB@0x6 equals-BB@0x8 ]
+	0       (00000000) const/4              v0, 1
+	1       (00000002) if-ne                v5, v4, +003h
+
+equals-BB@0x6 : 
+	2       (00000006) return               v0
+
+equals-BB@0x8 : [ equals-BB@0x12 equals-BB@0x3c ]
+	3       (00000008) instance-of          v1, v5, Lh4/a;
+	4       (0000000c) const/4              v2, 0
+	5       (0000000e) if-eqz               v1, +017h
+
+equals-BB@0x12 : [ equals-BB@0x2e equals-BB@0x3c ]
+	6       (00000012) check-cast           v5, Lh4/a;
+	7       (00000016) check-cast           v5, Lh4/b;
+	8       (0000001a) iget-object          v1, v5, Lh4/b;->a Landroid/app/PendingIntent;
+	9       (0000001e) iget-object          v3, v4, Lh4/b;->a Landroid/app/PendingIntent;
+	10      (00000022) invoke-virtual       v3, v1, Landroid/app/PendingIntent;->equals(Ljava/lang/Object;)Z
+	11      (00000028) move-result          v1
+	12      (0000002a) if-eqz               v1, +009h
+
+equals-BB@0x2e : [ equals-BB@0x3a equals-BB@0x3c ]
+	13      (0000002e) iget-boolean         v1, v4, Lh4/b;->b Z
+	14      (00000032) iget-boolean         v5, v5, Lh4/b;->b Z
+	15      (00000036) if-ne                v1, v5, +003h
+
+equals-BB@0x3a : 
+	16      (0000003a) return               v0
+
+equals-BB@0x3c : 
+	17      (0000003c) return               v2
+

@@ -1,0 +1,63 @@
+# Lg5/t;->a()Ljava/util/List; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v9
+#
+# - return:java.util.List
+
+a-BB@0x0 : [ a-BB@0x1a a-BB@0x84 ]
+	0       (00000000) const/4              v0, 0
+	1       (00000002) or-int/lit8          v0, v0, 1
+	2       (00000006) int-to-byte          v0, v0
+	3       (00000008) or-int/lit8          v0, v0, 2
+	4       (0000000c) int-to-byte          v0, v0
+	5       (0000000e) iget-object          v1, v9, Lg5/t;->c Lg5/a;
+	6       (00000012) iget-object          v7, v1, Lg5/a;->e Ljava/lang/String;
+	7       (00000016) if-eqz               v7, +037h
+
+a-BB@0x1a : [ a-BB@0x24 a-BB@0x3e ]
+	8       (0000001a) iget-object          v8, v1, Lg5/a;->b Ljava/lang/String;
+	9       (0000001e) const/4              v1, 3
+	10      (00000020) if-ne                v0, v1, +00fh
+
+a-BB@0x24 : 
+	11      (00000024) new-instance         v2, Lj5/s0;
+	12      (00000028) const-wide/16        v3, 0
+	13      (0000002c) move-wide            v5, v3
+	14      (0000002e) invoke-direct/range  v2 ... v8, Lj5/s0;-><init>(J J Ljava/lang/String; Ljava/lang/String;)V
+	15      (00000034) invoke-static        v2, Ljava/util/Collections;->singletonList(Ljava/lang/Object;)Ljava/util/List;
+	16      (0000003a) move-result-object   v0
+	17      (0000003c) return-object        v0
+
+a-BB@0x3e : [ a-BB@0x50 a-BB@0x5a ]
+	18      (0000003e) new-instance         v1, Ljava/lang/StringBuilder;
+	19      (00000042) invoke-direct        v1, Ljava/lang/StringBuilder;-><init>()V
+	20      (00000048) and-int/lit8         v2, v0, 1
+	21      (0000004c) if-nez               v2, +007h
+
+a-BB@0x50 : [ a-BB@0x5a ]
+	22      (00000050) const-string         v2, " baseAddress"
+	23      (00000054) invoke-virtual       v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+a-BB@0x5a : [ a-BB@0x62 a-BB@0x6c ]
+	24      (0000005a) and-int/lit8         v0, v0, 2
+	25      (0000005e) if-nez               v0, +007h
+
+a-BB@0x62 : [ a-BB@0x6c ]
+	26      (00000062) const-string         v0, " size"
+	27      (00000066) invoke-virtual       v1, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+a-BB@0x6c : 
+	28      (0000006c) new-instance         v0, Ljava/lang/IllegalStateException;
+	29      (00000070) const-string         v2, "Missing required properties:"
+	30      (00000074) invoke-static        v2, v1, Lg2/g;->g(Ljava/lang/String; Ljava/lang/StringBuilder;)Ljava/lang/String;
+	31      (0000007a) move-result-object   v1
+	32      (0000007c) invoke-direct        v0, v1, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	33      (00000082) throw                v0
+
+a-BB@0x84 : 
+	34      (00000084) new-instance         v0, Ljava/lang/NullPointerException;
+	35      (00000088) const-string         v1, "Null name"
+	36      (0000008c) invoke-direct        v0, v1, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
+	37      (00000092) throw                v0
+

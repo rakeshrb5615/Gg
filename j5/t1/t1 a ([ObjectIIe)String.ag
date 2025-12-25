@@ -1,0 +1,56 @@
+# Lj5/t1;->a([Ljava/lang/Object; I I Li7/e;)Ljava/lang/String; [access_flags=public static final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:java.lang.Object[]
+# - v4:int
+# - v5:int
+# - v6:i7.e
+#
+# - return:java.lang.String
+
+a-BB@0x0 : [ a-BB@0x1e ]
+	0       (00000000) new-instance         v0, Ljava/lang/StringBuilder;
+	1       (00000004) mul-int/lit8         v1, v5, 3
+	2       (00000008) add-int/lit8         v1, v1, 2
+	3       (0000000c) invoke-direct        v0, v1, Ljava/lang/StringBuilder;-><init>(I)V
+	4       (00000012) const-string         v1, "["
+	5       (00000016) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	6       (0000001c) const/4              v1, 0
+
+a-BB@0x1e : [ a-BB@0x22 a-BB@0x54 ]
+	7       (0000001e) if-ge                v1, v5, +01bh
+
+a-BB@0x22 : [ a-BB@0x26 a-BB@0x30 ]
+	8       (00000022) if-lez               v1, +007h
+
+a-BB@0x26 : [ a-BB@0x30 ]
+	9       (00000026) const-string         v2, ", "
+	10      (0000002a) invoke-virtual       v0, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+a-BB@0x30 : [ a-BB@0x3c a-BB@0x48 ]
+	11      (00000030) add-int              v2, v4, v1
+	12      (00000034) aget-object          v2, v3, v2
+	13      (00000038) if-ne                v2, v6, +008h
+
+a-BB@0x3c : [ a-BB@0x4e ]
+	14      (0000003c) const-string         v2, "(this Collection)"
+	15      (00000040) invoke-virtual       v0, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	16      (00000046) goto                 +4h
+
+a-BB@0x48 : [ a-BB@0x4e ]
+	17      (00000048) invoke-virtual       v0, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+a-BB@0x4e : [ a-BB@0x1e ]
+	18      (0000004e) add-int/lit8         v1, v1, 1
+	19      (00000052) goto                 -1ah
+
+a-BB@0x54 : 
+	20      (00000054) const-string         v3, "]"
+	21      (00000058) invoke-virtual       v0, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	22      (0000005e) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	23      (00000064) move-result-object   v3
+	24      (00000066) const-string         v4, "toString(...)"
+	25      (0000006a) invoke-static        v3, v4, Lkotlin/jvm/internal/j;->d(Ljava/lang/Object; Ljava/lang/String;)V
+	26      (00000070) return-object        v3
+

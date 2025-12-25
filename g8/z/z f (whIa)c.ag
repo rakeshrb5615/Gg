@@ -1,0 +1,56 @@
+# Lg8/z;->f(Lg8/w; Ll7/h; I Lf8/a;)Lg8/c; [access_flags=public static final]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:g8.w
+# - v8:l7.h
+# - v9:int
+# - v10:f8.a
+#
+# - return:g8.c
+
+f-BB@0x0 : [ f-BB@0x4 f-BB@0xc ]
+	0       (00000000) if-ltz               v9, +006h
+
+f-BB@0x4 : [ f-BB@0xa f-BB@0xc ]
+	1       (00000004) const/4              v0, 2
+	2       (00000006) if-ge                v9, v0, +003h
+
+f-BB@0xa : [ f-BB@0x12 ]
+	3       (0000000a) goto                 +4h
+
+f-BB@0xc : [ f-BB@0x12 f-BB@0x1c ]
+	4       (0000000c) const/4              v0, -2
+	5       (0000000e) if-ne                v9, v0, +007h
+
+f-BB@0x12 : [ f-BB@0x1a f-BB@0x1c ]
+	6       (00000012) sget-object          v0, Lf8/a;->b Lf8/a;
+	7       (00000016) if-ne                v10, v0, +003h
+
+f-BB@0x1a : [ f-BB@0x2e ]
+	8       (0000001a) goto                 +ah
+
+f-BB@0x1c : [ f-BB@0x20 f-BB@0x26 ]
+	9       (0000001c) if-eqz               v9, +005h
+
+f-BB@0x20 : [ f-BB@0x26 f-BB@0x30 ]
+	10      (00000020) const/4              v0, -3
+	11      (00000022) if-ne                v9, v0, +007h
+
+f-BB@0x26 : [ f-BB@0x2e f-BB@0x30 ]
+	12      (00000026) sget-object          v0, Lf8/a;->a Lf8/a;
+	13      (0000002a) if-ne                v10, v0, +003h
+
+f-BB@0x2e : 
+	14      (0000002e) return-object        v7
+
+f-BB@0x30 : 
+	15      (00000030) new-instance         v1, Lg8/b;
+	16      (00000034) const/4              v6, 1
+	17      (00000036) move-object          v2, v7
+	18      (00000038) move-object          v3, v8
+	19      (0000003a) move                 v4, v9
+	20      (0000003c) move-object          v5, v10
+	21      (0000003e) invoke-direct/range  v1 ... v6, Lg8/b;-><init>(Ljava/lang/Object; Ll7/h; I Lf8/a; I)V
+	22      (00000044) return-object        v1
+

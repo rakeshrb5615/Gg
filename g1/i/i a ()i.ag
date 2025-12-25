@@ -1,0 +1,88 @@
+# Lg1/i;->a()Lg1/i; [access_flags=public static]
+#
+# Parameters:
+# local registers: v0...v3
+#
+# - return:g1.i
+
+a-BB@0x0 : [ a-BB@0x6 ]
+	0       (00000000) sget-object          v0, Lg1/i;->j Ljava/lang/Object;
+	1       (00000004) monitor-enter        v0
+
+a-BB@0x6 : [ a-BB@0xe a-BB@0x12 ]
+	2       (00000006) sget-object          v1, Lg1/i;->k Lg1/i;
+	3       (0000000a) if-eqz               v1, +004h
+	6:31
+	(Ljava/lang/Throwable; -> 20 a-BB@0x20)
+
+a-BB@0xe : [ a-BB@0x14 ]
+	4       (0000000e) const/4              v2, 1
+	5       (00000010) goto                 +2h
+	6:31
+	(Ljava/lang/Throwable; -> 20 a-BB@0x20)
+
+a-BB@0x12 : [ a-BB@0x14 ]
+	6       (00000012) const/4              v2, 0
+	6:31
+	(Ljava/lang/Throwable; -> 20 a-BB@0x20)
+
+a-BB@0x14 : [ a-BB@0x1c a-BB@0x24 ]
+	7       (00000014) const-string         v3, "EmojiCompat is not initialized.
+
+You must initialize EmojiCompat prior to referencing the EmojiCompat instance.
+
+The most likely cause of this error is disabling the EmojiCompatInitializer
+either explicitly in AndroidManifest.xml, or by including
+androidx.emoji2:emoji2-bundled.
+
+Automatic initialization is typically performed by EmojiCompatInitializer. If
+you are not expecting to initialize EmojiCompat manually in your application,
+please check to ensure it has not been removed from your APK's manifest. You can
+do this in Android Studio using Build > Analyze APK.
+
+In the APK Analyzer, ensure that the startup entry for
+EmojiCompatInitializer and InitializationProvider is present in
+ AndroidManifest.xml. If it is missing or contains tools:node="remove", and you
+intend to use automatic configuration, verify:
+
+  1. Your application does not include emoji2-bundled
+  2. All modules do not contain an exclusion manifest rule for
+     EmojiCompatInitializer or InitializationProvider. For more information
+     about manifest exclusions see the documentation for the androidx startup
+     library.
+
+If you intend to use emoji2-bundled, please call EmojiCompat.init. You can
+learn more in the documentation for BundledEmojiCompatConfig.
+
+If you intended to perform manual configuration, it is recommended that you call
+EmojiCompat.init immediately on application startup.
+
+If you still cannot resolve this issue, please open a bug with your specific
+configuration to help improve error message."
+	8       (00000018) if-eqz               v2, +006h
+	6:31
+	(Ljava/lang/Throwable; -> 20 a-BB@0x20)
+
+a-BB@0x1c : 
+	9       (0000001c) monitor-exit         v0
+	10      (0000001e) return-object        v1
+	6:31
+	(Ljava/lang/Throwable; -> 20 a-BB@0x20)
+
+a-BB@0x20 : [ a-BB@0x30 ]
+	11      (00000020) move-exception       v1
+	12      (00000022) goto                 +7h
+	6:31
+	(Ljava/lang/Throwable; -> 20 a-BB@0x20)
+
+a-BB@0x24 : 
+	13      (00000024) new-instance         v1, Ljava/lang/IllegalStateException;
+	14      (00000028) invoke-direct        v1, v3, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	15      (0000002e) throw                v1
+	6:31
+	(Ljava/lang/Throwable; -> 20 a-BB@0x20)
+
+a-BB@0x30 : 
+	16      (00000030) monitor-exit         v0
+	17      (00000032) throw                v1
+

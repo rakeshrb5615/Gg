@@ -1,0 +1,219 @@
+# Lh5/a;->then(Lcom/google/android/gms/tasks/Task;)Ljava/lang/Object; [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:com.google.android.gms.tasks.Task
+#
+# - return:java.lang.Object
+
+then-BB@0x0 : [ D:then-BB@0xa 0:then-BB@0x1ce 3:then-BB@0xf4 ]
+	0       (00000000) iget                 v0, v6, Lh5/a;->a I
+	1       (00000004) sparse-switch        v0, +000011eh
+
+then-BB@0xa : [ then-BB@0x2e then-BB@0x4e ]
+	2       (0000000a) iget-object          v7, v6, Lh5/a;->b Ljava/lang/Object;
+	3       (0000000e) check-cast           v7, Ln6/l;
+	4       (00000012) iget-object          v0, v6, Lh5/a;->c Ljava/lang/Object;
+	5       (00000016) check-cast           v0, Lcom/google/android/gms/tasks/Task;
+	6       (0000001a) iget-object          v1, v6, Lh5/a;->d Ljava/lang/Object;
+	7       (0000001e) check-cast           v1, Lcom/google/android/gms/tasks/Task;
+	8       (00000022) invoke-virtual       v0, Lcom/google/android/gms/tasks/Task;->isSuccessful()Z
+	9       (00000028) move-result          v2
+	10      (0000002a) if-nez               v2, +012h
+
+then-BB@0x2e : [ then-BB@0xf2 ]
+	11      (0000002e) new-instance         v7, Lm6/c;
+	12      (00000032) const-string         v1, "Firebase Installations failed to get installation auth token for config update listener connection."
+	13      (00000036) invoke-virtual       v0, Lcom/google/android/gms/tasks/Task;->getException()Ljava/lang/Exception;
+	14      (0000003c) move-result-object   v0
+	15      (0000003e) invoke-direct        v7, v1, v0, Lq4/h;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	16      (00000044) invoke-static        v7, Lcom/google/android/gms/tasks/Tasks;->forException(Ljava/lang/Exception;)Lcom/google/android/gms/tasks/Task;
+	17      (0000004a) move-result-object   v7
+	18      (0000004c) goto                 +53h
+
+then-BB@0x4e : [ then-BB@0x5a then-BB@0x7a ]
+	19      (0000004e) invoke-virtual       v1, Lcom/google/android/gms/tasks/Task;->isSuccessful()Z
+	20      (00000054) move-result          v2
+	21      (00000056) if-nez               v2, +012h
+
+then-BB@0x5a : [ then-BB@0xf2 ]
+	22      (0000005a) new-instance         v7, Lm6/c;
+	23      (0000005e) const-string         v0, "Firebase Installations failed to get installation ID for config update listener connection."
+	24      (00000062) invoke-virtual       v1, Lcom/google/android/gms/tasks/Task;->getException()Ljava/lang/Exception;
+	25      (00000068) move-result-object   v1
+	26      (0000006a) invoke-direct        v7, v0, v1, Lq4/h;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	27      (00000070) invoke-static        v7, Lcom/google/android/gms/tasks/Tasks;->forException(Ljava/lang/Exception;)Lcom/google/android/gms/tasks/Task;
+	28      (00000076) move-result-object   v7
+	29      (00000078) goto                 +3dh
+
+then-BB@0x7a : [ then-BB@0xa2 ]
+	30      (0000007a) new-instance         v2, Ljava/net/URL;
+	31      (0000007e) iget-object          v3, v7, Ln6/l;->n Ljava/lang/String;
+	32      (00000082) invoke-virtual       v7, v3, Ln6/l;->c(Ljava/lang/String;)Ljava/lang/String;
+	33      (00000088) move-result-object   v3
+	34      (0000008a) invoke-direct        v2, v3, Ljava/net/URL;-><init>(Ljava/lang/String;)V
+	35      (00000090) goto                 +9h
+	7a:8f
+	(Ljava/net/MalformedURLException; -> 92 then-BB@0x92)
+	(Ljava/io/IOException; -> da then-BB@0xda)
+
+then-BB@0x92 : [ then-BB@0xa2 ]
+	36      (00000092) const-string         v2, "FirebaseRemoteConfig"
+	37      (00000096) const-string         v3, "URL is malformed"
+	38      (0000009a) invoke-static        v2, v3, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String;)I
+	39      (000000a0) const/4              v2, 0
+	92:cf
+	(Ljava/io/IOException; -> da then-BB@0xda)
+
+then-BB@0xa2 : [ then-BB@0xf2 ]
+	40      (000000a2) invoke-virtual       v2, Ljava/net/URL;->openConnection()Ljava/net/URLConnection;
+	41      (000000a8) move-result-object   v2
+	42      (000000aa) check-cast           v2, Ljava/net/HttpURLConnection;
+	43      (000000ae) invoke-virtual       v0, Lcom/google/android/gms/tasks/Task;->getResult()Ljava/lang/Object;
+	44      (000000b4) move-result-object   v0
+	45      (000000b6) check-cast           v0, Ld6/a;
+	46      (000000ba) iget-object          v0, v0, Ld6/a;->a Ljava/lang/String;
+	47      (000000be) invoke-virtual       v1, Lcom/google/android/gms/tasks/Task;->getResult()Ljava/lang/Object;
+	48      (000000c4) move-result-object   v1
+	49      (000000c6) check-cast           v1, Ljava/lang/String;
+	50      (000000ca) invoke-virtual       v7, v2, v1, v0, Ln6/l;->i(Ljava/net/HttpURLConnection; Ljava/lang/String; Ljava/lang/String;)V
+	51      (000000d0) invoke-static        v2, Lcom/google/android/gms/tasks/Tasks;->forResult(Ljava/lang/Object;)Lcom/google/android/gms/tasks/Task;
+	52      (000000d6) move-result-object   v7
+	53      (000000d8) goto                 +dh
+
+then-BB@0xda : [ then-BB@0xf2 ]
+	54      (000000da) move-exception       v7
+	55      (000000dc) new-instance         v0, Lm6/c;
+	56      (000000e0) const-string         v1, "Failed to open HTTP stream connection"
+	57      (000000e4) invoke-direct        v0, v1, v7, Lq4/h;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	58      (000000ea) invoke-static        v0, Lcom/google/android/gms/tasks/Tasks;->forException(Ljava/lang/Exception;)Lcom/google/android/gms/tasks/Task;
+	59      (000000f0) move-result-object   v7
+
+then-BB@0xf2 : 
+	60      (000000f2) return-object        v7
+
+then-BB@0xf4 : [ then-BB@0x11e then-BB@0x1c0 ]
+	61      (000000f4) iget-object          v7, v6, Lh5/a;->b Ljava/lang/Object;
+	62      (000000f8) check-cast           v7, Lm6/b;
+	63      (000000fc) iget-object          v0, v6, Lh5/a;->c Ljava/lang/Object;
+	64      (00000100) check-cast           v0, Lcom/google/android/gms/tasks/Task;
+	65      (00000104) iget-object          v1, v6, Lh5/a;->d Ljava/lang/Object;
+	66      (00000108) check-cast           v1, Lcom/google/android/gms/tasks/Task;
+	67      (0000010c) invoke-virtual       v7, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	68      (00000112) invoke-virtual       v0, Lcom/google/android/gms/tasks/Task;->isSuccessful()Z
+	69      (00000118) move-result          v2
+	70      (0000011a) if-eqz               v2, +053h
+
+then-BB@0x11e : [ then-BB@0x12a then-BB@0x12c ]
+	71      (0000011e) invoke-virtual       v0, Lcom/google/android/gms/tasks/Task;->getResult()Ljava/lang/Object;
+	72      (00000124) move-result-object   v2
+	73      (00000126) if-nez               v2, +003h
+
+then-BB@0x12a : [ then-BB@0x1c0 ]
+	74      (0000012a) goto                 +4bh
+
+then-BB@0x12c : [ then-BB@0x144 then-BB@0x178 ]
+	75      (0000012c) invoke-virtual       v0, Lcom/google/android/gms/tasks/Task;->getResult()Ljava/lang/Object;
+	76      (00000132) move-result-object   v0
+	77      (00000134) check-cast           v0, Ln6/f;
+	78      (00000138) invoke-virtual       v1, Lcom/google/android/gms/tasks/Task;->isSuccessful()Z
+	79      (0000013e) move-result          v2
+	80      (00000140) if-eqz               v2, +01ch
+
+then-BB@0x144 : [ then-BB@0x154 then-BB@0x178 ]
+	81      (00000144) invoke-virtual       v1, Lcom/google/android/gms/tasks/Task;->getResult()Ljava/lang/Object;
+	82      (0000014a) move-result-object   v1
+	83      (0000014c) check-cast           v1, Ln6/f;
+	84      (00000150) if-eqz               v1, +014h
+
+then-BB@0x154 : [ then-BB@0x168 then-BB@0x16a ]
+	85      (00000154) iget-object          v2, v0, Ln6/f;->c Ljava/util/Date;
+	86      (00000158) iget-object          v1, v1, Ln6/f;->c Ljava/util/Date;
+	87      (0000015c) invoke-virtual       v2, v1, Ljava/util/Date;->equals(Ljava/lang/Object;)Z
+	88      (00000162) move-result          v1
+	89      (00000164) if-nez               v1, +003h
+
+then-BB@0x168 : [ then-BB@0x178 ]
+	90      (00000168) goto                 +8h
+
+then-BB@0x16a : [ then-BB@0x1cc ]
+	91      (0000016a) sget-object          v7, Ljava/lang/Boolean;->FALSE Ljava/lang/Boolean;
+	92      (0000016e) invoke-static        v7, Lcom/google/android/gms/tasks/Tasks;->forResult(Ljava/lang/Object;)Lcom/google/android/gms/tasks/Task;
+	93      (00000174) move-result-object   v7
+	94      (00000176) goto                 +2bh
+
+then-BB@0x178 : [ then-BB@0x1cc ]
+	95      (00000178) iget-object          v1, v7, Lm6/b;->d Ln6/d;
+	96      (0000017c) iget-object          v2, v1, Ln6/d;->a Ljava/util/concurrent/Executor;
+	97      (00000180) new-instance         v3, Lj6/h;
+	98      (00000184) const/4              v4, 2
+	99      (00000186) invoke-direct        v3, v4, v1, v0, Lj6/h;-><init>(I Ljava/lang/Object; Ljava/lang/Object;)V
+	100     (0000018c) invoke-static        v2, v3, Lcom/google/android/gms/tasks/Tasks;->call(Ljava/util/concurrent/Executor; Ljava/util/concurrent/Callable;)Lcom/google/android/gms/tasks/Task;
+	101     (00000192) move-result-object   v3
+	102     (00000194) new-instance         v4, La5/u;
+	103     (00000198) const/4              v5, 5
+	104     (0000019a) invoke-direct        v4, v5, v1, v0, La5/u;-><init>(I Ljava/lang/Object; Ljava/lang/Object;)V
+	105     (000001a0) invoke-virtual       v3, v2, v4, Lcom/google/android/gms/tasks/Task;->onSuccessTask(Ljava/util/concurrent/Executor; Lcom/google/android/gms/tasks/SuccessContinuation;)Lcom/google/android/gms/tasks/Task;
+	106     (000001a6) move-result-object   v0
+	107     (000001a8) iget-object          v1, v7, Lm6/b;->b Ljava/util/concurrent/Executor;
+	108     (000001ac) new-instance         v2, Lm6/a;
+	109     (000001b0) invoke-direct        v2, v7, Lm6/a;-><init>(Lm6/b;)V
+	110     (000001b6) invoke-virtual       v0, v1, v2, Lcom/google/android/gms/tasks/Task;->continueWith(Ljava/util/concurrent/Executor; Lcom/google/android/gms/tasks/Continuation;)Lcom/google/android/gms/tasks/Task;
+	111     (000001bc) move-result-object   v7
+	112     (000001be) goto                 +7h
+
+then-BB@0x1c0 : [ then-BB@0x1cc ]
+	113     (000001c0) sget-object          v7, Ljava/lang/Boolean;->FALSE Ljava/lang/Boolean;
+	114     (000001c4) invoke-static        v7, Lcom/google/android/gms/tasks/Tasks;->forResult(Ljava/lang/Object;)Lcom/google/android/gms/tasks/Task;
+	115     (000001ca) move-result-object   v7
+
+then-BB@0x1cc : 
+	116     (000001cc) return-object        v7
+
+then-BB@0x1ce : [ then-BB@0x1f2 then-BB@0x202 ]
+	117     (000001ce) iget-object          v0, v6, Lh5/a;->b Ljava/lang/Object;
+	118     (000001d2) check-cast           v0, Lcom/google/android/gms/tasks/TaskCompletionSource;
+	119     (000001d6) iget-object          v1, v6, Lh5/a;->c Ljava/lang/Object;
+	120     (000001da) check-cast           v1, Ljava/util/concurrent/atomic/AtomicBoolean;
+	121     (000001de) iget-object          v2, v6, Lh5/a;->d Ljava/lang/Object;
+	122     (000001e2) check-cast           v2, Lcom/google/android/gms/tasks/CancellationTokenSource;
+	123     (000001e6) invoke-virtual       v7, Lcom/google/android/gms/tasks/Task;->isSuccessful()Z
+	124     (000001ec) move-result          v3
+	125     (000001ee) if-eqz               v3, +00ah
+
+then-BB@0x1f2 : [ then-BB@0x232 ]
+	126     (000001f2) invoke-virtual       v7, Lcom/google/android/gms/tasks/Task;->getResult()Ljava/lang/Object;
+	127     (000001f8) move-result-object   v7
+	128     (000001fa) invoke-virtual       v0, v7, Lcom/google/android/gms/tasks/TaskCompletionSource;->trySetResult(Ljava/lang/Object;)Z
+	129     (00000200) goto                 +19h
+
+then-BB@0x202 : [ then-BB@0x20e then-BB@0x21e ]
+	130     (00000202) invoke-virtual       v7, Lcom/google/android/gms/tasks/Task;->getException()Ljava/lang/Exception;
+	131     (00000208) move-result-object   v3
+	132     (0000020a) if-eqz               v3, +00ah
+
+then-BB@0x20e : [ then-BB@0x232 ]
+	133     (0000020e) invoke-virtual       v7, Lcom/google/android/gms/tasks/Task;->getException()Ljava/lang/Exception;
+	134     (00000214) move-result-object   v7
+	135     (00000216) invoke-virtual       v0, v7, Lcom/google/android/gms/tasks/TaskCompletionSource;->trySetException(Ljava/lang/Exception;)Z
+	136     (0000021c) goto                 +bh
+
+then-BB@0x21e : [ then-BB@0x22c then-BB@0x232 ]
+	137     (0000021e) const/4              v7, 1
+	138     (00000220) invoke-virtual       v1, v7, Ljava/util/concurrent/atomic/AtomicBoolean;->getAndSet(Z)Z
+	139     (00000226) move-result          v7
+	140     (00000228) if-eqz               v7, +005h
+
+then-BB@0x22c : [ then-BB@0x232 ]
+	141     (0000022c) invoke-virtual       v2, Lcom/google/android/gms/tasks/CancellationTokenSource;->cancel()V
+
+then-BB@0x232 : 
+	142     (00000232) const/4              v7, 0
+	143     (00000234) invoke-static        v7, Lcom/google/android/gms/tasks/Tasks;->forResult(Ljava/lang/Object;)Lcom/google/android/gms/tasks/Task;
+	144     (0000023a) move-result-object   v7
+	145     (0000023c) return-object        v7
+
+then-BB@0x23e : 
+	146     (0000023e) nop                  
+	147     (00000240) sparse-switch-payload 0 3
+

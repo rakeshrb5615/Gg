@@ -1,0 +1,73 @@
+# Lj5/w0;->a()Lj5/x0; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v10
+#
+# - return:j5.x0
+
+a-BB@0x0 : [ a-BB@0xa a-BB@0x30 ]
+	0       (00000000) iget-byte            v0, v10, Lj5/w0;->f B
+	1       (00000004) const/4              v1, 7
+	2       (00000006) if-ne                v0, v1, +015h
+
+a-BB@0xa : [ a-BB@0x12 a-BB@0x14 ]
+	3       (0000000a) iget-object          v5, v10, Lj5/w0;->b Ljava/lang/String;
+	4       (0000000e) if-nez               v5, +003h
+
+a-BB@0x12 : [ a-BB@0x30 ]
+	5       (00000012) goto                 +fh
+
+a-BB@0x14 : 
+	6       (00000014) new-instance         v2, Lj5/x0;
+	7       (00000018) iget-wide            v3, v10, Lj5/w0;->a J
+	8       (0000001c) iget-object          v6, v10, Lj5/w0;->c Ljava/lang/String;
+	9       (00000020) iget-wide            v7, v10, Lj5/w0;->d J
+	10      (00000024) iget                 v9, v10, Lj5/w0;->e I
+	11      (00000028) invoke-direct/range  v2 ... v9, Lj5/x0;-><init>(J Ljava/lang/String; Ljava/lang/String; J I)V
+	12      (0000002e) return-object        v2
+
+a-BB@0x30 : [ a-BB@0x46 a-BB@0x50 ]
+	13      (00000030) new-instance         v0, Ljava/lang/StringBuilder;
+	14      (00000034) invoke-direct        v0, Ljava/lang/StringBuilder;-><init>()V
+	15      (0000003a) iget-byte            v1, v10, Lj5/w0;->f B
+	16      (0000003e) and-int/lit8         v1, v1, 1
+	17      (00000042) if-nez               v1, +007h
+
+a-BB@0x46 : [ a-BB@0x50 ]
+	18      (00000046) const-string         v1, " pc"
+	19      (0000004a) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+a-BB@0x50 : [ a-BB@0x58 a-BB@0x62 ]
+	20      (00000050) iget-object          v1, v10, Lj5/w0;->b Ljava/lang/String;
+	21      (00000054) if-nez               v1, +007h
+
+a-BB@0x58 : [ a-BB@0x62 ]
+	22      (00000058) const-string         v1, " symbol"
+	23      (0000005c) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+a-BB@0x62 : [ a-BB@0x6e a-BB@0x78 ]
+	24      (00000062) iget-byte            v1, v10, Lj5/w0;->f B
+	25      (00000066) and-int/lit8         v1, v1, 2
+	26      (0000006a) if-nez               v1, +007h
+
+a-BB@0x6e : [ a-BB@0x78 ]
+	27      (0000006e) const-string         v1, " offset"
+	28      (00000072) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+a-BB@0x78 : [ a-BB@0x84 a-BB@0x8e ]
+	29      (00000078) iget-byte            v1, v10, Lj5/w0;->f B
+	30      (0000007c) and-int/lit8         v1, v1, 4
+	31      (00000080) if-nez               v1, +007h
+
+a-BB@0x84 : [ a-BB@0x8e ]
+	32      (00000084) const-string         v1, " importance"
+	33      (00000088) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+a-BB@0x8e : 
+	34      (0000008e) new-instance         v1, Ljava/lang/IllegalStateException;
+	35      (00000092) const-string         v2, "Missing required properties:"
+	36      (00000096) invoke-static        v2, v0, Lg2/g;->g(Ljava/lang/String; Ljava/lang/StringBuilder;)Ljava/lang/String;
+	37      (0000009c) move-result-object   v0
+	38      (0000009e) invoke-direct        v1, v0, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	39      (000000a4) throw                v1
+

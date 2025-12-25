@@ -1,0 +1,63 @@
+# Lj5/s0;->equals(Ljava/lang/Object;)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v7
+# - v8:java.lang.Object
+#
+# - return:boolean
+
+equals-BB@0x0 : [ equals-BB@0x6 equals-BB@0x8 ]
+	0       (00000000) const/4              v0, 1
+	1       (00000002) if-ne                v8, v7, +003h
+
+equals-BB@0x6 : 
+	2       (00000006) return               v0
+
+equals-BB@0x8 : [ equals-BB@0x12 equals-BB@0x6e ]
+	3       (00000008) instance-of          v1, v8, Lj5/w1;
+	4       (0000000c) const/4              v2, 0
+	5       (0000000e) if-eqz               v1, +030h
+
+equals-BB@0x12 : [ equals-BB@0x2e equals-BB@0x6e ]
+	6       (00000012) check-cast           v8, Lj5/w1;
+	7       (00000016) check-cast           v8, Lj5/s0;
+	8       (0000001a) iget-object          v1, v8, Lj5/s0;->d Ljava/lang/String;
+	9       (0000001e) iget-wide            v3, v8, Lj5/s0;->a J
+	10      (00000022) iget-wide            v5, v7, Lj5/s0;->a J
+	11      (00000026) cmp-long             v3, v5, v3
+	12      (0000002a) if-nez               v3, +022h
+
+equals-BB@0x2e : [ equals-BB@0x3e equals-BB@0x6e ]
+	13      (0000002e) iget-wide            v3, v7, Lj5/s0;->b J
+	14      (00000032) iget-wide            v5, v8, Lj5/s0;->b J
+	15      (00000036) cmp-long             v3, v3, v5
+	16      (0000003a) if-nez               v3, +01ah
+
+equals-BB@0x3e : [ equals-BB@0x52 equals-BB@0x6e ]
+	17      (0000003e) iget-object          v3, v7, Lj5/s0;->c Ljava/lang/String;
+	18      (00000042) iget-object          v8, v8, Lj5/s0;->c Ljava/lang/String;
+	19      (00000046) invoke-virtual       v3, v8, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	20      (0000004c) move-result          v8
+	21      (0000004e) if-eqz               v8, +010h
+
+equals-BB@0x52 : [ equals-BB@0x5a equals-BB@0x60 ]
+	22      (00000052) iget-object          v8, v7, Lj5/s0;->d Ljava/lang/String;
+	23      (00000056) if-nez               v8, +005h
+
+equals-BB@0x5a : [ equals-BB@0x5e equals-BB@0x6e ]
+	24      (0000005a) if-nez               v1, +00ah
+
+equals-BB@0x5e : [ equals-BB@0x6c ]
+	25      (0000005e) goto                 +7h
+
+equals-BB@0x60 : [ equals-BB@0x6c equals-BB@0x6e ]
+	26      (00000060) invoke-virtual       v8, v1, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	27      (00000066) move-result          v8
+	28      (00000068) if-eqz               v8, +003h
+
+equals-BB@0x6c : 
+	29      (0000006c) return               v0
+
+equals-BB@0x6e : 
+	30      (0000006e) return               v2
+

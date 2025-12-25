@@ -1,0 +1,112 @@
+# Lj6/o;->then(Lcom/google/android/gms/tasks/Task;)Ljava/lang/Object; [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:com.google.android.gms.tasks.Task
+#
+# - return:java.lang.Object
+
+then-BB@0x0 : [ D:then-BB@0xa 24:then-BB@0xa4 ]
+	0       (00000000) iget                 v0, v3, Lj6/o;->a I
+	1       (00000004) packed-switch        v0, +0000092h
+
+then-BB@0xa : [ then-BB@0x16 then-BB@0x34 ]
+	2       (0000000a) invoke-virtual       v4, Lcom/google/android/gms/tasks/Task;->isSuccessful()Z
+	3       (00000010) move-result          v0
+	4       (00000012) if-eqz               v0, +011h
+
+then-BB@0x16 : [ then-BB@0xa2 ]
+	5       (00000016) invoke-virtual       v4, Lcom/google/android/gms/tasks/Task;->getResult()Ljava/lang/Object;
+	6       (0000001c) move-result-object   v4
+	7       (0000001e) check-cast           v4, Lcom/google/android/recaptcha/RecaptchaTasksClient;
+	8       (00000022) iget-object          v0, v3, Lj6/o;->b Ljava/lang/Object;
+	9       (00000026) check-cast           v0, Lcom/google/android/recaptcha/RecaptchaAction;
+	10      (0000002a) invoke-interface     v4, v0, Lcom/google/android/recaptcha/RecaptchaTasksClient;->executeTask(Lcom/google/android/recaptcha/RecaptchaAction;)Lcom/google/android/gms/tasks/Task;
+	11      (00000030) move-result-object   v4
+	12      (00000032) goto                 +38h
+
+then-BB@0x34 : [ then-BB@0x50 then-BB@0x9a ]
+	13      (00000034) invoke-virtual       v4, Lcom/google/android/gms/tasks/Task;->getException()Ljava/lang/Exception;
+	14      (0000003a) move-result-object   v4
+	15      (0000003c) invoke-static        v4, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;
+	16      (00000042) move-result-object   v4
+	17      (00000044) check-cast           v4, Ljava/lang/Exception;
+	18      (00000048) instance-of          v0, v4, Lz4/q;
+	19      (0000004c) if-eqz               v0, +027h
+
+then-BB@0x50 : [ then-BB@0x62 then-BB@0x8c ]
+	20      (00000050) const/4              v0, 4
+	21      (00000052) const-string         v1, "RecaptchaHandler"
+	22      (00000056) invoke-static        v1, v0, Landroid/util/Log;->isLoggable(Ljava/lang/String; I)Z
+	23      (0000005c) move-result          v0
+	24      (0000005e) if-eqz               v0, +017h
+
+then-BB@0x62 : [ then-BB@0x8c ]
+	25      (00000062) invoke-virtual       v4, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+	26      (00000068) move-result-object   v4
+	27      (0000006a) new-instance         v0, Ljava/lang/StringBuilder;
+	28      (0000006e) const-string         v2, "Ignoring error related to fetching recaptcha config - "
+	29      (00000072) invoke-direct        v0, v2, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	30      (00000078) invoke-virtual       v0, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	31      (0000007e) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	32      (00000084) move-result-object   v4
+	33      (00000086) invoke-static        v1, v4, Landroid/util/Log;->i(Ljava/lang/String; Ljava/lang/String;)I
+
+then-BB@0x8c : [ then-BB@0xa2 ]
+	34      (0000008c) const-string         v4, ""
+	35      (00000090) invoke-static        v4, Lcom/google/android/gms/tasks/Tasks;->forResult(Ljava/lang/Object;)Lcom/google/android/gms/tasks/Task;
+	36      (00000096) move-result-object   v4
+	37      (00000098) goto                 +5h
+
+then-BB@0x9a : [ then-BB@0xa2 ]
+	38      (0000009a) invoke-static        v4, Lcom/google/android/gms/tasks/Tasks;->forException(Ljava/lang/Exception;)Lcom/google/android/gms/tasks/Task;
+	39      (000000a0) move-result-object   v4
+
+then-BB@0xa2 : 
+	40      (000000a2) return-object        v4
+
+then-BB@0xa4 : [ then-BB@0xb8 then-BB@0x112 ]
+	41      (000000a4) iget-object          v0, v3, Lj6/o;->b Ljava/lang/Object;
+	42      (000000a8) check-cast           v0, Lx1/b;
+	43      (000000ac) invoke-virtual       v4, Lcom/google/android/gms/tasks/Task;->isSuccessful()Z
+	44      (000000b2) move-result          v1
+	45      (000000b4) if-nez               v1, +02fh
+
+then-BB@0xb8 : [ then-BB@0x126 ]
+	46      (000000b8) invoke-virtual       v4, Lcom/google/android/gms/tasks/Task;->getException()Ljava/lang/Exception;
+	47      (000000be) move-result-object   v4
+	48      (000000c0) invoke-static        v4, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;
+	49      (000000c6) move-result-object   v4
+	50      (000000c8) check-cast           v4, Ljava/lang/Exception;
+	51      (000000cc) invoke-virtual       v4, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+	52      (000000d2) move-result-object   v4
+	53      (000000d4) new-instance         v1, Ljava/lang/StringBuilder;
+	54      (000000d8) const-string         v2, "Failed to get Recaptcha token, error - "
+	55      (000000dc) invoke-direct        v1, v2, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	56      (000000e2) invoke-virtual       v1, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	57      (000000e8) const-string         v4, "
+
+ Failing open with a fake token."
+	58      (000000ec) invoke-virtual       v1, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	59      (000000f2) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	60      (000000f8) move-result-object   v4
+	61      (000000fa) const-string         v1, "RecaptchaCallWrapper"
+	62      (000000fe) invoke-static        v1, v4, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String;)I
+	63      (00000104) const-string         v4, "NO_RECAPTCHA"
+	64      (00000108) invoke-virtual       v0, v4, Lx1/b;->f(Ljava/lang/String;)Lcom/google/android/gms/tasks/Task;
+	65      (0000010e) move-result-object   v4
+	66      (00000110) goto                 +bh
+
+then-BB@0x112 : [ then-BB@0x126 ]
+	67      (00000112) invoke-virtual       v4, Lcom/google/android/gms/tasks/Task;->getResult()Ljava/lang/Object;
+	68      (00000118) move-result-object   v4
+	69      (0000011a) check-cast           v4, Ljava/lang/String;
+	70      (0000011e) invoke-virtual       v0, v4, Lx1/b;->f(Ljava/lang/String;)Lcom/google/android/gms/tasks/Task;
+	71      (00000124) move-result-object   v4
+
+then-BB@0x126 : 
+	72      (00000126) return-object        v4
+
+then-BB@0x128 : 
+	73      (00000128) packed-switch-payload 18
+

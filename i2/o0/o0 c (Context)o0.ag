@@ -1,0 +1,124 @@
+# Li2/o0;->c(Landroid/content/Context;)Li2/o0; [access_flags=public static synchronized]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:android.content.Context
+#
+# - return:i2.o0
+
+c-BB@0x0 : [ c-BB@0x6 ]
+	0       (00000000) const-class          v0, Li2/o0;
+	1       (00000004) monitor-enter        v0
+
+c-BB@0x6 : [ c-BB@0xe c-BB@0xbc ]
+	2       (00000006) sget-object          v1, Li2/o0;->t Li2/o0;
+	3       (0000000a) if-nez               v1, +059h
+	6:9
+	(Ljava/lang/Throwable; -> 26 c-BB@0x26)
+
+c-BB@0xe : [ c-BB@0xbc ]
+	4       (0000000e) new-instance         v1, Li2/o0;
+	5       (00000012) invoke-virtual       v3, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;
+	6       (00000018) move-result-object   v2
+	7       (0000001a) invoke-direct        v1, v2, Li2/o0;-><init>(Landroid/content/Context;)V
+	8       (00000020) sput-object          v1, Li2/o0;->t Li2/o0;
+	9       (00000024) goto                 +4ch
+	e:23
+	(Ljava/security/InvalidKeyException; -> 4e c-BB@0x4e)
+	(Ljava/security/UnrecoverableKeyException; -> 4e c-BB@0x4e)
+	(Ljava/security/KeyStoreException; -> 4e c-BB@0x4e)
+	(Ljava/io/IOException; -> 4e c-BB@0x4e)
+	(Ljava/security/GeneralSecurityException; -> 2e c-BB@0x2e)
+	(Ljava/lang/Exception; -> 2a c-BB@0x2a)
+	(Ljava/lang/Throwable; -> 26 c-BB@0x26)
+
+c-BB@0x26 : [ c-BB@0xc4 ]
+	10      (00000026) move-exception       v3
+	11      (00000028) goto                 +4eh
+
+c-BB@0x2a : [ c-BB@0x32 ]
+	12      (0000002a) move-exception       v3
+	13      (0000002c) goto                 +3h
+
+c-BB@0x2e : [ c-BB@0x3e ]
+	14      (0000002e) move-exception       v3
+	15      (00000030) goto                 +7h
+
+c-BB@0x32 : 
+	16      (00000032) new-instance         v1, Ljava/lang/RuntimeException;
+	17      (00000036) invoke-direct        v1, v3, Ljava/lang/RuntimeException;-><init>(Ljava/lang/Throwable;)V
+	18      (0000003c) throw                v1
+	32:4d
+	(Ljava/lang/Throwable; -> 26 c-BB@0x26)
+
+c-BB@0x3e : 
+	19      (0000003e) new-instance         v1, Ljava/lang/RuntimeException;
+	20      (00000042) const-string         v2, "Security error initializing."
+	21      (00000046) invoke-direct        v1, v2, v3, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	22      (0000004c) throw                v1
+	32:4d
+	(Ljava/lang/Throwable; -> 26 c-BB@0x26)
+
+c-BB@0x4e : [ c-BB@0x6c ]
+	23      (0000004e) const-string         v1, "AndroidKeyStore"
+	24      (00000052) invoke-static        v1, Ljava/security/KeyStore;->getInstance(Ljava/lang/String;)Ljava/security/KeyStore;
+	25      (00000058) move-result-object   v1
+	26      (0000005a) const/4              v2, 0
+	27      (0000005c) invoke-virtual       v1, v2, Ljava/security/KeyStore;->load(Ljava/security/KeyStore$LoadStoreParameter;)V
+	28      (00000062) const-string         v2, "pmk"
+	29      (00000066) invoke-virtual       v1, v2, Ljava/security/KeyStore;->deleteEntry(Ljava/lang/String;)V
+	4e:6b
+	(Ljava/lang/Exception; -> 6c c-BB@0x6c)
+	(Ljava/lang/Throwable; -> 26 c-BB@0x26)
+
+c-BB@0x6c : [ c-BB@0xbc ]
+	30      (0000006c) new-instance         v1, Li2/o0;
+	31      (00000070) invoke-virtual       v3, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;
+	32      (00000076) move-result-object   v2
+	33      (00000078) invoke-direct        v1, v2, Li2/o0;-><init>(Landroid/content/Context;)V
+	34      (0000007e) sput-object          v1, Li2/o0;->t Li2/o0;
+	35      (00000082) goto                 +1dh
+	6c:81
+	(Ljava/lang/Exception; -> 84 c-BB@0x84)
+	(Ljava/lang/Throwable; -> 26 c-BB@0x26)
+
+c-BB@0x84 : [ c-BB@0x92 ]
+	36      (00000084) invoke-virtual       v3, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;
+	37      (0000008a) move-result-object   v1
+	38      (0000008c) invoke-static        v1, Li2/o0;->a(Landroid/content/Context;)V
+	84:91
+	(Ljava/lang/Throwable; -> 26 c-BB@0x26)
+
+c-BB@0x92 : [ c-BB@0xbc ]
+	39      (00000092) new-instance         v1, Li2/o0;
+	40      (00000096) invoke-virtual       v3, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;
+	41      (0000009c) move-result-object   v3
+	42      (0000009e) invoke-direct        v1, v3, Li2/o0;-><init>(Landroid/content/Context;)V
+	43      (000000a4) sput-object          v1, Li2/o0;->t Li2/o0;
+	44      (000000a8) goto                 +ah
+	92:a7
+	(Ljava/lang/Exception; -> aa c-BB@0xaa)
+	(Ljava/lang/Throwable; -> 26 c-BB@0x26)
+
+c-BB@0xaa : [ c-BB@0xac ]
+	45      (000000aa) move-exception       v3
+
+c-BB@0xac : 
+	46      (000000ac) new-instance         v1, Ljava/lang/RuntimeException;
+	47      (000000b0) const-string         v2, "Failed to recover instance after full reset."
+	48      (000000b4) invoke-direct        v1, v2, v3, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	49      (000000ba) throw                v1
+	ac:bf
+	(Ljava/lang/Throwable; -> 26 c-BB@0x26)
+
+c-BB@0xbc : 
+	50      (000000bc) sget-object          v3, Li2/o0;->t Li2/o0;
+	51      (000000c0) monitor-exit         v0
+	52      (000000c2) return-object        v3
+
+c-BB@0xc4 : 
+	53      (000000c4) monitor-exit         v0
+	54      (000000c6) throw                v3
+	c4:c5
+	(Ljava/lang/Throwable; -> 26 c-BB@0x26)
+

@@ -1,0 +1,22 @@
+# Li8/a;->c(Ljava/lang/Object;)Li8/r; [access_flags=public static final]
+#
+# Parameters:
+# - local registers: v0...v0
+# - v1:java.lang.Object
+#
+# - return:i8.r
+
+c-BB@0x0 : [ c-BB@0x8 c-BB@0xe ]
+	0       (00000000) sget-object          v0, Li8/a;->a Ld4/l;
+	1       (00000004) if-eq                v1, v0, +005h
+
+c-BB@0x8 : 
+	2       (00000008) check-cast           v1, Li8/r;
+	3       (0000000c) return-object        v1
+
+c-BB@0xe : 
+	4       (0000000e) new-instance         v1, Ljava/lang/IllegalStateException;
+	5       (00000012) const-string         v0, "Does not contain segment"
+	6       (00000016) invoke-direct        v1, v0, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	7       (0000001c) throw                v1
+

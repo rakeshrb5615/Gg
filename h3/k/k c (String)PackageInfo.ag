@@ -1,0 +1,33 @@
+# Lh3/k;->c(Ljava/lang/String;)Landroid/content/pm/PackageInfo; [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:java.lang.String
+#
+# - return:android.content.pm.PackageInfo
+
+c-BB@0x0 : 
+	0       (00000000) iget-object          v0, v2, Lh3/k;->c Ljava/lang/Object;
+	1       (00000004) check-cast           v0, Landroid/content/Context;
+	2       (00000008) invoke-virtual       v0, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
+	3       (0000000e) move-result-object   v0
+	4       (00000010) const/4              v1, 0
+	5       (00000012) invoke-virtual       v0, v3, v1, Landroid/content/pm/PackageManager;->getPackageInfo(Ljava/lang/String; I)Landroid/content/pm/PackageInfo;
+	6       (00000018) move-result-object   v3
+	7       (0000001a) return-object        v3
+	0:19
+	(Landroid/content/pm/PackageManager$NameNotFoundException; -> 1c c-BB@0x1c)
+
+c-BB@0x1c : 
+	8       (0000001c) move-exception       v3
+	9       (0000001e) new-instance         v0, Ljava/lang/StringBuilder;
+	10      (00000022) const-string         v1, "Failed to find package "
+	11      (00000026) invoke-direct        v0, v1, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	12      (0000002c) invoke-virtual       v0, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	13      (00000032) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	14      (00000038) move-result-object   v3
+	15      (0000003a) const-string         v0, "FirebaseMessaging"
+	16      (0000003e) invoke-static        v0, v3, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+	17      (00000044) const/4              v3, 0
+	18      (00000046) return-object        v3
+

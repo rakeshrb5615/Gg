@@ -1,0 +1,47 @@
+# Lj6/o;->D()Landroid/os/Bundle; [access_flags=public]
+#
+# Parameters:
+# local registers: v0...v4
+#
+# - return:android.os.Bundle
+
+D-BB@0x0 : [ D-BB@0x22 ]
+	0       (00000000) new-instance         v0, Landroid/os/Bundle;
+	1       (00000004) iget-object          v1, v4, Lj6/o;->b Ljava/lang/Object;
+	2       (00000008) check-cast           v1, Landroid/os/Bundle;
+	3       (0000000c) invoke-direct        v0, v1, Landroid/os/Bundle;-><init>(Landroid/os/Bundle;)V
+	4       (00000012) invoke-virtual       v1, Landroid/os/BaseBundle;->keySet()Ljava/util/Set;
+	5       (00000018) move-result-object   v1
+	6       (0000001a) invoke-interface     v1, Ljava/util/Set;->iterator()Ljava/util/Iterator;
+	7       (00000020) move-result-object   v1
+
+D-BB@0x22 : [ D-BB@0x2e D-BB@0x64 ]
+	8       (00000022) invoke-interface     v1, Ljava/util/Iterator;->hasNext()Z
+	9       (00000028) move-result          v2
+	10      (0000002a) if-eqz               v2, +01dh
+
+D-BB@0x2e : [ D-BB@0x4a D-BB@0x22 ]
+	11      (0000002e) invoke-interface     v1, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	12      (00000034) move-result-object   v2
+	13      (00000036) check-cast           v2, Ljava/lang/String;
+	14      (0000003a) const-string         v3, "google.c.a."
+	15      (0000003e) invoke-virtual       v2, v3, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
+	16      (00000044) move-result          v3
+	17      (00000046) if-nez               v3, -012h
+
+D-BB@0x4a : [ D-BB@0x5a D-BB@0x5c ]
+	18      (0000004a) const-string         v3, "from"
+	19      (0000004e) invoke-virtual       v2, v3, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	20      (00000054) move-result          v3
+	21      (00000056) if-eqz               v3, +003h
+
+D-BB@0x5a : [ D-BB@0x22 ]
+	22      (0000005a) goto                 -1ch
+
+D-BB@0x5c : [ D-BB@0x22 ]
+	23      (0000005c) invoke-virtual       v0, v2, Landroid/os/Bundle;->remove(Ljava/lang/String;)V
+	24      (00000062) goto                 -20h
+
+D-BB@0x64 : 
+	25      (00000064) return-object        v0
+

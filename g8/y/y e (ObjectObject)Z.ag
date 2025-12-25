@@ -1,0 +1,183 @@
+# Lg8/y;->e(Ljava/lang/Object; Ljava/lang/Object;)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v9
+# - v10:java.lang.Object
+# - v11:java.lang.Object
+#
+# - return:boolean
+
+e-BB@0x0 : [ e-BB@0x2 ]
+	0       (00000000) monitor-enter        v9
+
+e-BB@0x2 : [ e-BB@0x14 e-BB@0x2a ]
+	1       (00000002) sget-object          v0, Lg8/y;->e Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;
+	2       (00000006) invoke-virtual       v0, v9, Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	3       (0000000c) move-result-object   v1
+	4       (0000000e) const/4              v2, 0
+	5       (00000010) if-eqz               v10, +00dh
+	2:1b
+	(Ljava/lang/Throwable; -> 24 e-BB@0x24)
+
+e-BB@0x14 : [ e-BB@0x20 e-BB@0x2a ]
+	6       (00000014) invoke-static        v1, v10, Lkotlin/jvm/internal/j;->a(Ljava/lang/Object; Ljava/lang/Object;)Z
+	7       (0000001a) move-result          v10
+	8       (0000001c) if-nez               v10, +007h
+
+e-BB@0x20 : 
+	9       (00000020) monitor-exit         v9
+	10      (00000022) return               v2
+
+e-BB@0x24 : [ e-BB@0x118 ]
+	11      (00000024) move-exception       v10
+	12      (00000026) goto/16              +079h
+
+e-BB@0x2a : [ e-BB@0x38 e-BB@0x3c ]
+	13      (0000002a) invoke-static        v1, v11, Lkotlin/jvm/internal/j;->a(Ljava/lang/Object; Ljava/lang/Object;)Z
+	14      (00000030) move-result          v10
+	15      (00000032) const/4              v1, 1
+	16      (00000034) if-eqz               v10, +004h
+	2a:31
+	(Ljava/lang/Throwable; -> 24 e-BB@0x24)
+
+e-BB@0x38 : 
+	17      (00000038) monitor-exit         v9
+	18      (0000003a) return               v1
+
+e-BB@0x3c : [ e-BB@0x4e e-BB@0x10c ]
+	19      (0000003c) invoke-virtual       v0, v9, v11, Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;->set(Ljava/lang/Object; Ljava/lang/Object;)V
+	20      (00000042) iget                 v10, v9, Lg8/y;->d I
+	21      (00000046) and-int/lit8         v11, v10, 1
+	22      (0000004a) if-nez               v11, +061h
+	3c:57
+	(Ljava/lang/Throwable; -> 24 e-BB@0x24)
+
+e-BB@0x4e : [ e-BB@0x5a ]
+	23      (0000004e) add-int/2addr        v10, v1
+	24      (00000050) iput                 v10, v9, Lg8/y;->d I
+	25      (00000054) iget-object          v11, v9, Lh8/b;->a [Lg8/a0;
+	26      (00000058) monitor-exit         v9
+
+e-BB@0x5a : [ e-BB@0x62 e-BB@0xe2 ]
+	27      (0000005a) check-cast           v11, [Lg8/a0;
+	28      (0000005e) if-eqz               v11, +042h
+
+e-BB@0x62 : [ e-BB@0x66 ]
+	29      (00000062) array-length         v0, v11
+	30      (00000064) move                 v3, v2
+
+e-BB@0x66 : [ e-BB@0x6a e-BB@0xe2 ]
+	31      (00000066) if-ge                v3, v0, +03eh
+
+e-BB@0x6a : [ e-BB@0x72 e-BB@0xdc ]
+	32      (0000006a) aget-object          v4, v11, v3
+	33      (0000006e) if-eqz               v4, +037h
+
+e-BB@0x72 : [ e-BB@0x76 ]
+	34      (00000072) iget-object          v4, v4, Lg8/a0;->a Ljava/util/concurrent/atomic/AtomicReference;
+
+e-BB@0x76 : [ e-BB@0x82 e-BB@0x84 ]
+	35      (00000076) invoke-virtual       v4, Ljava/util/concurrent/atomic/AtomicReference;->get()Ljava/lang/Object;
+	36      (0000007c) move-result-object   v5
+	37      (0000007e) if-nez               v5, +003h
+
+e-BB@0x82 : [ e-BB@0xdc ]
+	38      (00000082) goto                 +2dh
+
+e-BB@0x84 : [ e-BB@0x8c e-BB@0x8e ]
+	39      (00000084) sget-object          v6, Lg8/z;->b Ld4/l;
+	40      (00000088) if-ne                v5, v6, +003h
+
+e-BB@0x8c : [ e-BB@0xdc ]
+	41      (0000008c) goto                 +28h
+
+e-BB@0x8e : [ e-BB@0x96 e-BB@0xb2 ]
+	42      (0000008e) sget-object          v7, Lg8/z;->a Ld4/l;
+	43      (00000092) if-ne                v5, v7, +010h
+
+e-BB@0x96 : [ e-BB@0xa2 e-BB@0xa4 ]
+	44      (00000096) invoke-virtual       v4, v5, v6, Ljava/util/concurrent/atomic/AtomicReference;->compareAndSet(Ljava/lang/Object; Ljava/lang/Object;)Z
+	45      (0000009c) move-result          v7
+	46      (0000009e) if-eqz               v7, +003h
+
+e-BB@0xa2 : [ e-BB@0xdc ]
+	47      (000000a2) goto                 +1dh
+
+e-BB@0xa4 : [ e-BB@0xb0 e-BB@0x96 ]
+	48      (000000a4) invoke-virtual       v4, Ljava/util/concurrent/atomic/AtomicReference;->get()Ljava/lang/Object;
+	49      (000000aa) move-result-object   v7
+	50      (000000ac) if-eq                v7, v5, -00bh
+
+e-BB@0xb0 : [ e-BB@0x76 ]
+	51      (000000b0) goto                 -1dh
+
+e-BB@0xb2 : [ e-BB@0xbe e-BB@0xce ]
+	52      (000000b2) invoke-virtual       v4, v5, v7, Ljava/util/concurrent/atomic/AtomicReference;->compareAndSet(Ljava/lang/Object; Ljava/lang/Object;)Z
+	53      (000000b8) move-result          v6
+	54      (000000ba) if-eqz               v6, +00ah
+
+e-BB@0xbe : [ e-BB@0xdc ]
+	55      (000000be) check-cast           v5, Ld8/n;
+	56      (000000c2) sget-object          v4, Lh7/l;->a Lh7/l;
+	57      (000000c6) invoke-virtual       v5, v4, Ld8/n;->resumeWith(Ljava/lang/Object;)V
+	58      (000000cc) goto                 +8h
+
+e-BB@0xce : [ e-BB@0xda e-BB@0xb2 ]
+	59      (000000ce) invoke-virtual       v4, Ljava/util/concurrent/atomic/AtomicReference;->get()Ljava/lang/Object;
+	60      (000000d4) move-result-object   v6
+	61      (000000d6) if-eq                v6, v5, -012h
+
+e-BB@0xda : [ e-BB@0x76 ]
+	62      (000000da) goto                 -32h
+
+e-BB@0xdc : [ e-BB@0x66 ]
+	63      (000000dc) add-int/lit8         v3, v3, 1
+	64      (000000e0) goto                 -3dh
+
+e-BB@0xe2 : [ e-BB@0xe4 ]
+	65      (000000e2) monitor-enter        v9
+
+e-BB@0xe4 : [ e-BB@0xec e-BB@0xfa ]
+	66      (000000e4) iget                 v11, v9, Lg8/y;->d I
+	67      (000000e8) if-ne                v11, v10, +009h
+	e4:f1
+	(Ljava/lang/Throwable; -> f6 e-BB@0xf6)
+
+e-BB@0xec : 
+	68      (000000ec) add-int/2addr        v10, v1
+	69      (000000ee) iput                 v10, v9, Lg8/y;->d I
+	70      (000000f2) monitor-exit         v9
+	71      (000000f4) return               v1
+
+e-BB@0xf6 : [ e-BB@0x108 ]
+	72      (000000f6) move-exception       v10
+	73      (000000f8) goto                 +8h
+
+e-BB@0xfa : [ e-BB@0x5a ]
+	74      (000000fa) iget-object          v10, v9, Lh8/b;->a [Lg8/a0;
+	75      (000000fe) monitor-exit         v9
+	76      (00000100) move                 v8, v11
+	77      (00000102) move-object          v11, v10
+	78      (00000104) move                 v10, v8
+	79      (00000106) goto                 -56h
+	fa:fd
+	(Ljava/lang/Throwable; -> f6 e-BB@0xf6)
+
+e-BB@0x108 : 
+	80      (00000108) monitor-exit         v9
+	81      (0000010a) throw                v10
+
+e-BB@0x10c : [ e-BB@0x110 ]
+	82      (0000010c) add-int/lit8         v10, v10, 2
+
+e-BB@0x110 : 
+	83      (00000110) iput                 v10, v9, Lg8/y;->d I
+	84      (00000114) monitor-exit         v9
+	85      (00000116) return               v1
+	110:113
+	(Ljava/lang/Throwable; -> 24 e-BB@0x24)
+
+e-BB@0x118 : 
+	86      (00000118) monitor-exit         v9
+	87      (0000011a) throw                v10
+

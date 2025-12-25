@@ -1,0 +1,33 @@
+# Lh2/a;->c(Ljava/lang/String;)Ljava/lang/reflect/Method; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:java.lang.String
+#
+# - return:java.lang.reflect.Method
+
+c-BB@0x0 : [ c-BB@0x14 c-BB@0x4a ]
+	0       (00000000) iget-object          v0, v4, Lh2/a;->a Lr/e;
+	1       (00000004) invoke-virtual       v0, v5, Lr/j;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	2       (0000000a) move-result-object   v1
+	3       (0000000c) check-cast           v1, Ljava/lang/reflect/Method;
+	4       (00000010) if-nez               v1, +01dh
+
+c-BB@0x14 : [ c-BB@0x4a ]
+	5       (00000014) invoke-static        Ljava/lang/System;->currentTimeMillis()J
+	6       (0000001a) const/4              v1, 1
+	7       (0000001c) const-class          v2, Lh2/a;
+	8       (00000020) invoke-virtual       v2, Ljava/lang/Class;->getClassLoader()Ljava/lang/ClassLoader;
+	9       (00000026) move-result-object   v3
+	10      (00000028) invoke-static        v5, v1, v3, Ljava/lang/Class;->forName(Ljava/lang/String; Z Ljava/lang/ClassLoader;)Ljava/lang/Class;
+	11      (0000002e) move-result-object   v1
+	12      (00000030) const-string         v3, "read"
+	13      (00000034) filled-new-array     v2, [Ljava/lang/Class;
+	14      (0000003a) move-result-object   v2
+	15      (0000003c) invoke-virtual       v1, v3, v2, Ljava/lang/Class;->getDeclaredMethod(Ljava/lang/String; [Ljava/lang/Class;)Ljava/lang/reflect/Method;
+	16      (00000042) move-result-object   v1
+	17      (00000044) invoke-virtual       v0, v5, v1, Lr/j;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+
+c-BB@0x4a : 
+	18      (0000004a) return-object        v1
+

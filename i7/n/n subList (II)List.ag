@@ -1,0 +1,27 @@
+# Li7/n;->subList(I I)Ljava/util/List; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:int
+# - v5:int
+#
+# - return:java.util.List
+
+subList-BB@0x0 : [ subList-BB@0x4 subList-BB@0xa ]
+	0       (00000000) if-nez               v4, +005h
+
+subList-BB@0x4 : [ subList-BB@0x8 subList-BB@0xa ]
+	1       (00000004) if-nez               v5, +003h
+
+subList-BB@0x8 : 
+	2       (00000008) return-object        v3
+
+subList-BB@0xa : 
+	3       (0000000a) new-instance         v0, Ljava/lang/IndexOutOfBoundsException;
+	4       (0000000e) const-string         v1, "fromIndex: "
+	5       (00000012) const-string         v2, ", toIndex: "
+	6       (00000016) invoke-static        v1, v4, v5, v2, Lv1/a;->i(Ljava/lang/String; I I Ljava/lang/String;)Ljava/lang/String;
+	7       (0000001c) move-result-object   v4
+	8       (0000001e) invoke-direct        v0, v4, Ljava/lang/IndexOutOfBoundsException;-><init>(Ljava/lang/String;)V
+	9       (00000024) throw                v0
+

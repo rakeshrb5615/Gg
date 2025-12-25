@@ -1,0 +1,41 @@
+# Li3/e;->dispatchDraw(Landroid/graphics/Canvas;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:android.graphics.Canvas
+#
+# - return:void
+
+dispatchDraw-BB@0x0 : [ dispatchDraw-BB@0x1a ]
+	0       (00000000) new-instance         v0, Ljava/util/TreeMap;
+	1       (00000004) iget-object          v1, v6, Li3/e;->d Li3/d;
+	2       (00000008) invoke-direct        v0, v1, Ljava/util/TreeMap;-><init>(Ljava/util/Comparator;)V
+	3       (0000000e) invoke-virtual       v6, Landroid/view/ViewGroup;->getChildCount()I
+	4       (00000014) move-result          v1
+	5       (00000016) const/4              v2, 0
+	6       (00000018) move                 v3, v2
+
+dispatchDraw-BB@0x1a : [ dispatchDraw-BB@0x1e dispatchDraw-BB@0x3e ]
+	7       (0000001a) if-ge                v3, v1, +012h
+
+dispatchDraw-BB@0x1e : [ dispatchDraw-BB@0x1a ]
+	8       (0000001e) invoke-virtual       v6, v3, Landroid/view/ViewGroup;->getChildAt(I)Landroid/view/View;
+	9       (00000024) move-result-object   v4
+	10      (00000026) check-cast           v4, Lcom/google/android/material/button/MaterialButton;
+	11      (0000002a) invoke-static        v3, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+	12      (00000030) move-result-object   v5
+	13      (00000032) invoke-virtual       v0, v4, v5, Ljava/util/TreeMap;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	14      (00000038) add-int/lit8         v3, v3, 1
+	15      (0000003c) goto                 -11h
+
+dispatchDraw-BB@0x3e : 
+	16      (0000003e) invoke-virtual       v0, Ljava/util/TreeMap;->values()Ljava/util/Collection;
+	17      (00000044) move-result-object   v0
+	18      (00000046) new-array            v1, v2, [Ljava/lang/Integer;
+	19      (0000004a) invoke-interface     v0, v1, Ljava/util/Collection;->toArray([Ljava/lang/Object;)[Ljava/lang/Object;
+	20      (00000050) move-result-object   v0
+	21      (00000052) check-cast           v0, [Ljava/lang/Integer;
+	22      (00000056) iput-object          v0, v6, Li3/e;->e [Ljava/lang/Integer;
+	23      (0000005a) invoke-super         v6, v7, Landroid/view/View;->dispatchDraw(Landroid/graphics/Canvas;)V
+	24      (00000060) return-void          
+

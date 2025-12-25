@@ -1,0 +1,38 @@
+# Lj6/t;->a(Ljava/lang/String; Ljava/lang/String; J)Ljava/lang/String; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:java.lang.String
+# - v4:java.lang.String
+# - v5:long
+#
+# - return:java.lang.String
+
+a-BB@0x0 : 
+	0       (00000000) new-instance         v0, Lorg/json/JSONObject;
+	1       (00000004) invoke-direct        v0, Lorg/json/JSONObject;-><init>()V
+	2       (0000000a) const-string         v1, "token"
+	3       (0000000e) invoke-virtual       v0, v1, v2, Lorg/json/JSONObject;->put(Ljava/lang/String; Ljava/lang/Object;)Lorg/json/JSONObject;
+	4       (00000014) const-string         v2, "appVersion"
+	5       (00000018) invoke-virtual       v0, v2, v3, Lorg/json/JSONObject;->put(Ljava/lang/String; Ljava/lang/Object;)Lorg/json/JSONObject;
+	6       (0000001e) const-string         v2, "timestamp"
+	7       (00000022) invoke-virtual       v0, v2, v4, v5, Lorg/json/JSONObject;->put(Ljava/lang/String; J)Lorg/json/JSONObject;
+	8       (00000028) invoke-virtual       v0, Lorg/json/JSONObject;->toString()Ljava/lang/String;
+	9       (0000002e) move-result-object   v2
+	10      (00000030) return-object        v2
+	0:2f
+	(Lorg/json/JSONException; -> 32 a-BB@0x32)
+
+a-BB@0x32 : 
+	11      (00000032) move-exception       v2
+	12      (00000034) new-instance         v3, Ljava/lang/StringBuilder;
+	13      (00000038) const-string         v4, "Failed to encode token: "
+	14      (0000003c) invoke-direct        v3, v4, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	15      (00000042) invoke-virtual       v3, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	16      (00000048) invoke-virtual       v3, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	17      (0000004e) move-result-object   v2
+	18      (00000050) const-string         v3, "FirebaseMessaging"
+	19      (00000054) invoke-static        v3, v2, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+	20      (0000005a) const/4              v2, 0
+	21      (0000005c) return-object        v2
+

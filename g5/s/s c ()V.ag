@@ -1,0 +1,46 @@
+# Lg5/s;->c()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v4
+#
+# - return:void
+
+c-BB@0x0 : [ c-BB@0xa ]
+	0       (00000000) const-string         v0, "FirebaseCrashlytics"
+	1       (00000004) invoke-static        Lh5/f;->a()V
+
+c-BB@0xa : [ c-BB@0x42 c-BB@0x54 ]
+	2       (0000000a) iget-object          v1, v4, Lg5/s;->e Lk2/c;
+	3       (0000000e) iget-object          v2, v1, Lk2/c;->c Ljava/lang/Object;
+	4       (00000012) check-cast           v2, Lm5/c;
+	5       (00000016) iget-object          v1, v1, Lk2/c;->b Ljava/lang/Object;
+	6       (0000001a) check-cast           v1, Ljava/lang/String;
+	7       (0000001e) invoke-virtual       v2, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	8       (00000024) new-instance         v3, Ljava/io/File;
+	9       (00000028) iget-object          v2, v2, Lm5/c;->d Ljava/lang/Object;
+	10      (0000002c) check-cast           v2, Ljava/io/File;
+	11      (00000030) invoke-direct        v3, v2, v1, Ljava/io/File;-><init>(Ljava/io/File; Ljava/lang/String;)V
+	12      (00000036) invoke-virtual       v3, Ljava/io/File;->delete()Z
+	13      (0000003c) move-result          v1
+	14      (0000003e) if-nez               v1, +00bh
+	a:4d
+	(Ljava/lang/Exception; -> 50 c-BB@0x50)
+
+c-BB@0x42 : 
+	15      (00000042) const-string         v1, "Initialization marker file was not properly removed."
+	16      (00000046) const/4              v2, 0
+	17      (00000048) invoke-static        v0, v1, v2, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+	18      (0000004e) return-void          
+
+c-BB@0x50 : [ c-BB@0x56 ]
+	19      (00000050) move-exception       v1
+	20      (00000052) goto                 +2h
+
+c-BB@0x54 : 
+	21      (00000054) return-void          
+
+c-BB@0x56 : 
+	22      (00000056) const-string         v2, "Problem encountered deleting Crashlytics initialization marker."
+	23      (0000005a) invoke-static        v0, v2, v1, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+	24      (00000060) return-void          
+

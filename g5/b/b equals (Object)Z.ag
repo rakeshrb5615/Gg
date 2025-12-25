@@ -1,0 +1,48 @@
+# Lg5/b;->equals(Ljava/lang/Object;)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:java.lang.Object
+#
+# - return:boolean
+
+equals-BB@0x0 : [ equals-BB@0x4 equals-BB@0x6 ]
+	0       (00000000) if-ne                v3, v2, +003h
+
+equals-BB@0x4 : [ equals-BB@0x4e ]
+	1       (00000004) goto                 +25h
+
+equals-BB@0x6 : [ equals-BB@0xe equals-BB@0x52 ]
+	2       (00000006) instance-of          v0, v3, Lg5/b;
+	3       (0000000a) if-eqz               v0, +024h
+
+equals-BB@0xe : [ equals-BB@0x26 equals-BB@0x52 ]
+	4       (0000000e) check-cast           v3, Lg5/b;
+	5       (00000012) iget-object          v0, v2, Lg5/b;->a Lj5/b0;
+	6       (00000016) iget-object          v1, v3, Lg5/b;->a Lj5/b0;
+	7       (0000001a) invoke-virtual       v0, v1, Lj5/b0;->equals(Ljava/lang/Object;)Z
+	8       (00000020) move-result          v0
+	9       (00000022) if-eqz               v0, +018h
+
+equals-BB@0x26 : [ equals-BB@0x3a equals-BB@0x52 ]
+	10      (00000026) iget-object          v0, v2, Lg5/b;->b Ljava/lang/String;
+	11      (0000002a) iget-object          v1, v3, Lg5/b;->b Ljava/lang/String;
+	12      (0000002e) invoke-virtual       v0, v1, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	13      (00000034) move-result          v0
+	14      (00000036) if-eqz               v0, +00eh
+
+equals-BB@0x3a : [ equals-BB@0x4e equals-BB@0x52 ]
+	15      (0000003a) iget-object          v0, v2, Lg5/b;->c Ljava/io/File;
+	16      (0000003e) iget-object          v3, v3, Lg5/b;->c Ljava/io/File;
+	17      (00000042) invoke-virtual       v0, v3, Ljava/io/File;->equals(Ljava/lang/Object;)Z
+	18      (00000048) move-result          v3
+	19      (0000004a) if-eqz               v3, +004h
+
+equals-BB@0x4e : 
+	20      (0000004e) const/4              v3, 1
+	21      (00000050) return               v3
+
+equals-BB@0x52 : 
+	22      (00000052) const/4              v3, 0
+	23      (00000054) return               v3
+

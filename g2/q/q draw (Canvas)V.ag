@@ -1,0 +1,272 @@
+# Lg2/q;->draw(Landroid/graphics/Canvas;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v18
+# - v19:android.graphics.Canvas
+#
+# - return:void
+
+draw-BB@0x0 : [ draw-BB@0x10 draw-BB@0x18 ]
+	0       (00000000) move-object/from16   v0, v18
+	1       (00000004) move-object/from16   v1, v19
+	2       (00000008) iget-object          v2, v0, Lg2/h;->a Landroid/graphics/drawable/Drawable;
+	3       (0000000c) if-eqz               v2, +006h
+
+draw-BB@0x10 : 
+	4       (00000010) invoke-virtual       v2, v1, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V
+	5       (00000016) return-void          
+
+draw-BB@0x18 : [ draw-BB@0x2e draw-BB@0x2dc ]
+	6       (00000018) iget-object          v2, v0, Lg2/q;->o Landroid/graphics/Rect;
+	7       (0000001c) invoke-virtual       v0, v2, Landroid/graphics/drawable/Drawable;->copyBounds(Landroid/graphics/Rect;)V
+	8       (00000022) invoke-virtual       v2, Landroid/graphics/Rect;->width()I
+	9       (00000028) move-result          v3
+	10      (0000002a) if-lez               v3, +159h
+
+draw-BB@0x2e : [ draw-BB@0x3a draw-BB@0x3e ]
+	11      (0000002e) invoke-virtual       v2, Landroid/graphics/Rect;->height()I
+	12      (00000034) move-result          v3
+	13      (00000036) if-gtz               v3, +004h
+
+draw-BB@0x3a : [ draw-BB@0x2dc ]
+	14      (0000003a) goto/16              +151h
+
+draw-BB@0x3e : [ draw-BB@0x46 draw-BB@0x4a ]
+	15      (0000003e) iget-object          v3, v0, Lg2/q;->d Landroid/graphics/ColorFilter;
+	16      (00000042) if-nez               v3, +004h
+
+draw-BB@0x46 : [ draw-BB@0x4a ]
+	17      (00000046) iget-object          v3, v0, Lg2/q;->c Landroid/graphics/PorterDuffColorFilter;
+
+draw-BB@0x4a : [ draw-BB@0xa4 draw-BB@0xac ]
+	18      (0000004a) iget-object          v4, v0, Lg2/q;->n Landroid/graphics/Matrix;
+	19      (0000004e) invoke-virtual       v1, v4, Landroid/graphics/Canvas;->getMatrix(Landroid/graphics/Matrix;)V
+	20      (00000054) iget-object          v5, v0, Lg2/q;->m [F
+	21      (00000058) invoke-virtual       v4, v5, Landroid/graphics/Matrix;->getValues([F)V
+	22      (0000005e) const/4              v4, 0
+	23      (00000060) aget                 v6, v5, v4
+	24      (00000064) invoke-static        v6, Ljava/lang/Math;->abs(F)F
+	25      (0000006a) move-result          v6
+	26      (0000006c) const/4              v7, 4
+	27      (0000006e) aget                 v7, v5, v7
+	28      (00000072) invoke-static        v7, Ljava/lang/Math;->abs(F)F
+	29      (00000078) move-result          v7
+	30      (0000007a) const/4              v8, 1
+	31      (0000007c) aget                 v9, v5, v8
+	32      (00000080) invoke-static        v9, Ljava/lang/Math;->abs(F)F
+	33      (00000086) move-result          v9
+	34      (00000088) const/4              v10, 3
+	35      (0000008a) aget                 v5, v5, v10
+	36      (0000008e) invoke-static        v5, Ljava/lang/Math;->abs(F)F
+	37      (00000094) move-result          v5
+	38      (00000096) const/4              v10, 0
+	39      (00000098) cmpl-float           v9, v9, v10
+	40      (0000009c) const/high16         v11, 1065353216
+	41      (000000a0) if-nez               v9, +006h
+
+draw-BB@0xa4 : [ draw-BB@0xac draw-BB@0xb0 ]
+	42      (000000a4) cmpl-float           v5, v5, v10
+	43      (000000a8) if-eqz               v5, +004h
+
+draw-BB@0xac : [ draw-BB@0xb0 ]
+	44      (000000ac) move                 v6, v11
+	45      (000000ae) move                 v7, v6
+
+draw-BB@0xb0 : [ draw-BB@0xe4 draw-BB@0x2dc ]
+	46      (000000b0) invoke-virtual       v2, Landroid/graphics/Rect;->width()I
+	47      (000000b6) move-result          v5
+	48      (000000b8) int-to-float         v5, v5
+	49      (000000ba) mul-float/2addr      v5, v6
+	50      (000000bc) float-to-int         v5, v5
+	51      (000000be) invoke-virtual       v2, Landroid/graphics/Rect;->height()I
+	52      (000000c4) move-result          v6
+	53      (000000c6) int-to-float         v6, v6
+	54      (000000c8) mul-float/2addr      v6, v7
+	55      (000000ca) float-to-int         v6, v6
+	56      (000000cc) const/16             v7, 2048
+	57      (000000d0) invoke-static        v7, v5, Ljava/lang/Math;->min(I I)I
+	58      (000000d6) move-result          v5
+	59      (000000d8) invoke-static        v7, v6, Ljava/lang/Math;->min(I I)I
+	60      (000000de) move-result          v6
+	61      (000000e0) if-lez               v5, +0feh
+
+draw-BB@0xe4 : [ draw-BB@0xe8 draw-BB@0xec ]
+	62      (000000e4) if-gtz               v6, +004h
+
+draw-BB@0xe8 : [ draw-BB@0x2dc ]
+	63      (000000e8) goto/16              +0fah
+
+draw-BB@0xec : [ draw-BB@0x112 draw-BB@0x138 ]
+	64      (000000ec) invoke-virtual       v1, Landroid/graphics/Canvas;->save()I
+	65      (000000f2) move-result          v7
+	66      (000000f4) iget                 v9, v2, Landroid/graphics/Rect;->left I
+	67      (000000f8) int-to-float         v9, v9
+	68      (000000fa) iget                 v12, v2, Landroid/graphics/Rect;->top I
+	69      (000000fe) int-to-float         v12, v12
+	70      (00000100) invoke-virtual       v1, v9, v12, Landroid/graphics/Canvas;->translate(F F)V
+	71      (00000106) invoke-virtual       v0, Lg2/q;->isAutoMirrored()Z
+	72      (0000010c) move-result          v9
+	73      (0000010e) if-eqz               v9, +015h
+
+draw-BB@0x112 : [ draw-BB@0x11e draw-BB@0x138 ]
+	74      (00000112) invoke-virtual       v0, Landroid/graphics/drawable/Drawable;->getLayoutDirection()I
+	75      (00000118) move-result          v9
+	76      (0000011a) if-ne                v9, v8, +00fh
+
+draw-BB@0x11e : [ draw-BB@0x138 ]
+	77      (0000011e) invoke-virtual       v2, Landroid/graphics/Rect;->width()I
+	78      (00000124) move-result          v9
+	79      (00000126) int-to-float         v9, v9
+	80      (00000128) invoke-virtual       v1, v9, v10, Landroid/graphics/Canvas;->translate(F F)V
+	81      (0000012e) const/high16         v9, -1082130432
+	82      (00000132) invoke-virtual       v1, v9, v11, Landroid/graphics/Canvas;->scale(F F)V
+
+draw-BB@0x138 : [ draw-BB@0x14a draw-BB@0x168 ]
+	83      (00000138) invoke-virtual       v2, v4, v4, Landroid/graphics/Rect;->offsetTo(I I)V
+	84      (0000013e) iget-object          v9, v0, Lg2/q;->b Lg2/o;
+	85      (00000142) iget-object          v10, v9, Lg2/o;->f Landroid/graphics/Bitmap;
+	86      (00000146) if-eqz               v10, +011h
+
+draw-BB@0x14a : [ draw-BB@0x156 draw-BB@0x168 ]
+	87      (0000014a) invoke-virtual       v10, Landroid/graphics/Bitmap;->getWidth()I
+	88      (00000150) move-result          v10
+	89      (00000152) if-ne                v5, v10, +00bh
+
+draw-BB@0x156 : [ draw-BB@0x166 draw-BB@0x168 ]
+	90      (00000156) iget-object          v10, v9, Lg2/o;->f Landroid/graphics/Bitmap;
+	91      (0000015a) invoke-virtual       v10, Landroid/graphics/Bitmap;->getHeight()I
+	92      (00000160) move-result          v10
+	93      (00000162) if-ne                v6, v10, +003h
+
+draw-BB@0x166 : [ draw-BB@0x17c ]
+	94      (00000166) goto                 +bh
+
+draw-BB@0x168 : [ draw-BB@0x17c ]
+	95      (00000168) sget-object          v10, Landroid/graphics/Bitmap$Config;->ARGB_8888 Landroid/graphics/Bitmap$Config;
+	96      (0000016c) invoke-static        v5, v6, v10, Landroid/graphics/Bitmap;->createBitmap(I I Landroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+	97      (00000172) move-result-object   v10
+	98      (00000174) iput-object          v10, v9, Lg2/o;->f Landroid/graphics/Bitmap;
+	99      (00000178) iput-boolean         v8, v9, Lg2/o;->k Z
+
+draw-BB@0x17c : [ draw-BB@0x184 draw-BB@0x1bc ]
+	100     (0000017c) iget-boolean         v9, v0, Lg2/q;->f Z
+	101     (00000180) if-nez               v9, +01eh
+
+draw-BB@0x184 : [ draw-BB@0x268 ]
+	102     (00000184) iget-object          v9, v0, Lg2/q;->b Lg2/o;
+	103     (00000188) iget-object          v10, v9, Lg2/o;->f Landroid/graphics/Bitmap;
+	104     (0000018c) invoke-virtual       v10, v4, Landroid/graphics/Bitmap;->eraseColor(I)V
+	105     (00000192) new-instance         v15, Landroid/graphics/Canvas;
+	106     (00000196) iget-object          v4, v9, Lg2/o;->f Landroid/graphics/Bitmap;
+	107     (0000019a) invoke-direct        v15, v4, Landroid/graphics/Canvas;-><init>(Landroid/graphics/Bitmap;)V
+	108     (000001a0) iget-object          v12, v9, Lg2/o;->b Lg2/n;
+	109     (000001a4) iget-object          v13, v12, Lg2/n;->g Lg2/k;
+	110     (000001a8) sget-object          v14, Lg2/n;->p Landroid/graphics/Matrix;
+	111     (000001ac) move/from16          v16, v5
+	112     (000001b0) move/from16          v17, v6
+	113     (000001b4) invoke-virtual/range v12 ... v17, Lg2/n;->a(Lg2/k; Landroid/graphics/Matrix; Landroid/graphics/Canvas; I I)V
+	114     (000001ba) goto                 +57h
+
+draw-BB@0x1bc : [ draw-BB@0x1d0 draw-BB@0x20a ]
+	115     (000001bc) move/from16          v16, v5
+	116     (000001c0) move/from16          v17, v6
+	117     (000001c4) iget-object          v5, v0, Lg2/q;->b Lg2/o;
+	118     (000001c8) iget-boolean         v6, v5, Lg2/o;->k Z
+	119     (000001cc) if-nez               v6, +01fh
+
+draw-BB@0x1d0 : [ draw-BB@0x1dc draw-BB@0x20a ]
+	120     (000001d0) iget-object          v6, v5, Lg2/o;->g Landroid/content/res/ColorStateList;
+	121     (000001d4) iget-object          v9, v5, Lg2/o;->c Landroid/content/res/ColorStateList;
+	122     (000001d8) if-ne                v6, v9, +019h
+
+draw-BB@0x1dc : [ draw-BB@0x1e8 draw-BB@0x20a ]
+	123     (000001dc) iget-object          v6, v5, Lg2/o;->h Landroid/graphics/PorterDuff$Mode;
+	124     (000001e0) iget-object          v9, v5, Lg2/o;->d Landroid/graphics/PorterDuff$Mode;
+	125     (000001e4) if-ne                v6, v9, +013h
+
+draw-BB@0x1e8 : [ draw-BB@0x1f4 draw-BB@0x20a ]
+	126     (000001e8) iget-boolean         v6, v5, Lg2/o;->j Z
+	127     (000001ec) iget-boolean         v9, v5, Lg2/o;->e Z
+	128     (000001f0) if-ne                v6, v9, +00dh
+
+draw-BB@0x1f4 : [ draw-BB@0x208 draw-BB@0x20a ]
+	129     (000001f4) iget                 v6, v5, Lg2/o;->i I
+	130     (000001f8) iget-object          v5, v5, Lg2/o;->b Lg2/n;
+	131     (000001fc) invoke-virtual       v5, Lg2/n;->getRootAlpha()I
+	132     (00000202) move-result          v5
+	133     (00000204) if-ne                v6, v5, +003h
+
+draw-BB@0x208 : [ draw-BB@0x268 ]
+	134     (00000208) goto                 +30h
+
+draw-BB@0x20a : [ draw-BB@0x268 ]
+	135     (0000020a) iget-object          v5, v0, Lg2/q;->b Lg2/o;
+	136     (0000020e) iget-object          v6, v5, Lg2/o;->f Landroid/graphics/Bitmap;
+	137     (00000212) invoke-virtual       v6, v4, Landroid/graphics/Bitmap;->eraseColor(I)V
+	138     (00000218) new-instance         v15, Landroid/graphics/Canvas;
+	139     (0000021c) iget-object          v6, v5, Lg2/o;->f Landroid/graphics/Bitmap;
+	140     (00000220) invoke-direct        v15, v6, Landroid/graphics/Canvas;-><init>(Landroid/graphics/Bitmap;)V
+	141     (00000226) iget-object          v12, v5, Lg2/o;->b Lg2/n;
+	142     (0000022a) iget-object          v13, v12, Lg2/n;->g Lg2/k;
+	143     (0000022e) sget-object          v14, Lg2/n;->p Landroid/graphics/Matrix;
+	144     (00000232) invoke-virtual/range v12 ... v17, Lg2/n;->a(Lg2/k; Landroid/graphics/Matrix; Landroid/graphics/Canvas; I I)V
+	145     (00000238) iget-object          v5, v0, Lg2/q;->b Lg2/o;
+	146     (0000023c) iget-object          v6, v5, Lg2/o;->c Landroid/content/res/ColorStateList;
+	147     (00000240) iput-object          v6, v5, Lg2/o;->g Landroid/content/res/ColorStateList;
+	148     (00000244) iget-object          v6, v5, Lg2/o;->d Landroid/graphics/PorterDuff$Mode;
+	149     (00000248) iput-object          v6, v5, Lg2/o;->h Landroid/graphics/PorterDuff$Mode;
+	150     (0000024c) iget-object          v6, v5, Lg2/o;->b Lg2/n;
+	151     (00000250) invoke-virtual       v6, Lg2/n;->getRootAlpha()I
+	152     (00000256) move-result          v6
+	153     (00000258) iput                 v6, v5, Lg2/o;->i I
+	154     (0000025c) iget-boolean         v6, v5, Lg2/o;->e Z
+	155     (00000260) iput-boolean         v6, v5, Lg2/o;->j Z
+	156     (00000264) iput-boolean         v4, v5, Lg2/o;->k Z
+
+draw-BB@0x268 : [ draw-BB@0x282 draw-BB@0x284 ]
+	157     (00000268) iget-object          v4, v0, Lg2/q;->b Lg2/o;
+	158     (0000026c) iget-object          v5, v4, Lg2/o;->b Lg2/n;
+	159     (00000270) invoke-virtual       v5, Lg2/n;->getRootAlpha()I
+	160     (00000276) move-result          v5
+	161     (00000278) const/16             v6, 255
+	162     (0000027c) const/4              v9, 0
+	163     (0000027e) if-ge                v5, v6, +003h
+
+draw-BB@0x282 : [ draw-BB@0x28c ]
+	164     (00000282) goto                 +5h
+
+draw-BB@0x284 : [ draw-BB@0x288 draw-BB@0x28c ]
+	165     (00000284) if-nez               v3, +004h
+
+draw-BB@0x288 : [ draw-BB@0x2cc ]
+	166     (00000288) move-object          v3, v9
+	167     (0000028a) goto                 +21h
+
+draw-BB@0x28c : [ draw-BB@0x294 draw-BB@0x2a8 ]
+	168     (0000028c) iget-object          v5, v4, Lg2/o;->l Landroid/graphics/Paint;
+	169     (00000290) if-nez               v5, +00ch
+
+draw-BB@0x294 : [ draw-BB@0x2a8 ]
+	170     (00000294) new-instance         v5, Landroid/graphics/Paint;
+	171     (00000298) invoke-direct        v5, Landroid/graphics/Paint;-><init>()V
+	172     (0000029e) iput-object          v5, v4, Lg2/o;->l Landroid/graphics/Paint;
+	173     (000002a2) invoke-virtual       v5, v8, Landroid/graphics/Paint;->setFilterBitmap(Z)V
+
+draw-BB@0x2a8 : [ draw-BB@0x2cc ]
+	174     (000002a8) iget-object          v5, v4, Lg2/o;->l Landroid/graphics/Paint;
+	175     (000002ac) iget-object          v6, v4, Lg2/o;->b Lg2/n;
+	176     (000002b0) invoke-virtual       v6, Lg2/n;->getRootAlpha()I
+	177     (000002b6) move-result          v6
+	178     (000002b8) invoke-virtual       v5, v6, Landroid/graphics/Paint;->setAlpha(I)V
+	179     (000002be) iget-object          v5, v4, Lg2/o;->l Landroid/graphics/Paint;
+	180     (000002c2) invoke-virtual       v5, v3, Landroid/graphics/Paint;->setColorFilter(Landroid/graphics/ColorFilter;)Landroid/graphics/ColorFilter;
+	181     (000002c8) iget-object          v3, v4, Lg2/o;->l Landroid/graphics/Paint;
+
+draw-BB@0x2cc : [ draw-BB@0x2dc ]
+	182     (000002cc) iget-object          v4, v4, Lg2/o;->f Landroid/graphics/Bitmap;
+	183     (000002d0) invoke-virtual       v1, v4, v9, v2, v3, Landroid/graphics/Canvas;->drawBitmap(Landroid/graphics/Bitmap; Landroid/graphics/Rect; Landroid/graphics/Rect; Landroid/graphics/Paint;)V
+	184     (000002d6) invoke-virtual       v1, v7, Landroid/graphics/Canvas;->restoreToCount(I)V
+
+draw-BB@0x2dc : 
+	185     (000002dc) return-void          
+

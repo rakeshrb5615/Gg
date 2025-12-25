@@ -1,0 +1,52 @@
+# Lj5/t1;->T(Landroid/view/View; I)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:android.view.View
+# - v5:int
+#
+# - return:void
+
+T-BB@0x0 : [ T-BB@0x8 T-BB@0x38 ]
+	0       (00000000) sget-boolean         v0, Lj5/t1;->e Z
+	1       (00000004) if-nez               v0, +01ah
+
+T-BB@0x8 : [ T-BB@0xa ]
+	2       (00000008) const/4              v0, 1
+
+T-BB@0xa : [ T-BB@0x34 ]
+	3       (0000000a) const-class          v1, Landroid/view/View;
+	4       (0000000e) const-string         v2, "mViewFlags"
+	5       (00000012) invoke-virtual       v1, v2, Ljava/lang/Class;->getDeclaredField(Ljava/lang/String;)Ljava/lang/reflect/Field;
+	6       (00000018) move-result-object   v1
+	7       (0000001a) sput-object          v1, Lj5/t1;->d Ljava/lang/reflect/Field;
+	8       (0000001e) invoke-virtual       v1, v0, Ljava/lang/reflect/AccessibleObject;->setAccessible(Z)V
+	9       (00000024) goto                 +8h
+	a:23
+	(Ljava/lang/NoSuchFieldException; -> 26 T-BB@0x26)
+
+T-BB@0x26 : [ T-BB@0x34 ]
+	10      (00000026) const-string         v1, "ViewUtilsApi19"
+	11      (0000002a) const-string         v2, "fetchViewFlagsField: "
+	12      (0000002e) invoke-static        v1, v2, Landroid/util/Log;->i(Ljava/lang/String; Ljava/lang/String;)I
+
+T-BB@0x34 : [ T-BB@0x38 ]
+	13      (00000034) sput-boolean         v0, Lj5/t1;->e Z
+
+T-BB@0x38 : [ T-BB@0x40 T-BB@0x58 ]
+	14      (00000038) sget-object          v0, Lj5/t1;->d Ljava/lang/reflect/Field;
+	15      (0000003c) if-eqz               v0, +00eh
+
+T-BB@0x40 : [ T-BB@0x58 ]
+	16      (00000040) invoke-virtual       v0, v4, Ljava/lang/reflect/Field;->getInt(Ljava/lang/Object;)I
+	17      (00000046) move-result          v0
+	18      (00000048) sget-object          v1, Lj5/t1;->d Ljava/lang/reflect/Field;
+	19      (0000004c) and-int/lit8         v0, v0, -13
+	20      (00000050) or-int/2addr         v5, v0
+	21      (00000052) invoke-virtual       v1, v4, v5, Ljava/lang/reflect/Field;->setInt(Ljava/lang/Object; I)V
+	40:57
+	(Ljava/lang/IllegalAccessException; -> 58 T-BB@0x58)
+
+T-BB@0x58 : 
+	22      (00000058) return-void          
+

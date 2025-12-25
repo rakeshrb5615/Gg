@@ -1,0 +1,75 @@
+# Li2/f;->c(Lcom/android/billingclient/api/Purchase;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:com.android.billingclient.api.Purchase
+#
+# - return:void
+
+c-BB@0x0 : [ c-BB@0xe c-BB@0xbe ]
+	0       (00000000) invoke-virtual       v5, Lcom/android/billingclient/api/Purchase;->getPurchaseState()I
+	1       (00000006) move-result          v0
+	2       (00000008) const/4              v1, 1
+	3       (0000000a) if-ne                v0, v1, +05ah
+
+c-BB@0xe : [ c-BB@0x1e c-BB@0x50 ]
+	4       (0000000e) invoke-virtual       v5, Lcom/android/billingclient/api/Purchase;->isAcknowledged()Z
+	5       (00000014) move-result          v0
+	6       (00000016) iget-object          v1, v4, Li2/f;->c Lcom/android/billingclient/api/BillingClient;
+	7       (0000001a) if-nez               v0, +01bh
+
+c-BB@0x1e : [ c-BB@0x50 ]
+	8       (0000001e) invoke-static        Lcom/android/billingclient/api/AcknowledgePurchaseParams;->newBuilder()Lcom/android/billingclient/api/AcknowledgePurchaseParams$Builder;
+	9       (00000024) move-result-object   v0
+	10      (00000026) invoke-virtual       v5, Lcom/android/billingclient/api/Purchase;->getPurchaseToken()Ljava/lang/String;
+	11      (0000002c) move-result-object   v2
+	12      (0000002e) invoke-virtual       v0, v2, Lcom/android/billingclient/api/AcknowledgePurchaseParams$Builder;->setPurchaseToken(Ljava/lang/String;)Lcom/android/billingclient/api/AcknowledgePurchaseParams$Builder;
+	13      (00000034) move-result-object   v0
+	14      (00000036) invoke-virtual       v0, Lcom/android/billingclient/api/AcknowledgePurchaseParams$Builder;->build()Lcom/android/billingclient/api/AcknowledgePurchaseParams;
+	15      (0000003c) move-result-object   v0
+	16      (0000003e) new-instance         v2, Li2/b;
+	17      (00000042) const/4              v3, 0
+	18      (00000044) invoke-direct        v2, v4, v3, Li2/b;-><init>(Li2/f; I)V
+	19      (0000004a) invoke-virtual       v1, v0, v2, Lcom/android/billingclient/api/BillingClient;->acknowledgePurchase(Lcom/android/billingclient/api/AcknowledgePurchaseParams; Lcom/android/billingclient/api/AcknowledgePurchaseResponseListener;)V
+
+c-BB@0x50 : [ c-BB@0x60 ]
+	20      (00000050) invoke-virtual       v5, Lcom/android/billingclient/api/Purchase;->getProducts()Ljava/util/List;
+	21      (00000056) move-result-object   v0
+	22      (00000058) invoke-interface     v0, Ljava/util/List;->iterator()Ljava/util/Iterator;
+	23      (0000005e) move-result-object   v0
+
+c-BB@0x60 : [ c-BB@0x6c c-BB@0xbc ]
+	24      (00000060) invoke-interface     v0, Ljava/util/Iterator;->hasNext()Z
+	25      (00000066) move-result          v2
+	26      (00000068) if-eqz               v2, +02ah
+
+c-BB@0x6c : [ c-BB@0x88 c-BB@0x60 ]
+	27      (0000006c) invoke-interface     v0, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	28      (00000072) move-result-object   v2
+	29      (00000074) check-cast           v2, Ljava/lang/String;
+	30      (00000078) iget-object          v3, v4, Li2/f;->z Ljava/lang/String;
+	31      (0000007c) invoke-virtual       v2, v3, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	32      (00000082) move-result          v2
+	33      (00000084) if-eqz               v2, -012h
+
+c-BB@0x88 : [ c-BB@0xbc ]
+	34      (00000088) invoke-static        Lcom/android/billingclient/api/ConsumeParams;->newBuilder()Lcom/android/billingclient/api/ConsumeParams$Builder;
+	35      (0000008e) move-result-object   v0
+	36      (00000090) invoke-virtual       v5, Lcom/android/billingclient/api/Purchase;->getPurchaseToken()Ljava/lang/String;
+	37      (00000096) move-result-object   v5
+	38      (00000098) invoke-virtual       v0, v5, Lcom/android/billingclient/api/ConsumeParams$Builder;->setPurchaseToken(Ljava/lang/String;)Lcom/android/billingclient/api/ConsumeParams$Builder;
+	39      (0000009e) move-result-object   v5
+	40      (000000a0) invoke-virtual       v5, Lcom/android/billingclient/api/ConsumeParams$Builder;->build()Lcom/android/billingclient/api/ConsumeParams;
+	41      (000000a6) move-result-object   v5
+	42      (000000a8) new-instance         v0, La5/t;
+	43      (000000ac) const/16             v2, 18
+	44      (000000b0) invoke-direct        v0, v2, La5/t;-><init>(I)V
+	45      (000000b6) invoke-virtual       v1, v5, v0, Lcom/android/billingclient/api/BillingClient;->consumeAsync(Lcom/android/billingclient/api/ConsumeParams; Lcom/android/billingclient/api/ConsumeResponseListener;)V
+
+c-BB@0xbc : 
+	46      (000000bc) return-void          
+
+c-BB@0xbe : 
+	47      (000000be) invoke-virtual       v5, Lcom/android/billingclient/api/Purchase;->getPurchaseState()I
+	48      (000000c4) return-void          
+

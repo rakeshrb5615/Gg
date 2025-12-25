@@ -1,0 +1,51 @@
+# Lg5/g;->d(Landroid/content/Context; Ljava/lang/String; Ljava/lang/String;)I [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:android.content.Context
+# - v4:java.lang.String
+# - v5:java.lang.String
+#
+# - return:int
+
+d-BB@0x0 : [ d-BB@0x20 d-BB@0x54 ]
+	0       (00000000) invoke-virtual       v3, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+	1       (00000006) move-result-object   v0
+	2       (00000008) invoke-virtual       v3, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;
+	3       (0000000e) move-result-object   v1
+	4       (00000010) invoke-virtual       v1, Landroid/content/Context;->getApplicationInfo()Landroid/content/pm/ApplicationInfo;
+	5       (00000016) move-result-object   v1
+	6       (00000018) iget                 v1, v1, Landroid/content/pm/ApplicationInfo;->icon I
+	7       (0000001c) if-lez               v1, +01ch
+
+d-BB@0x20 : [ d-BB@0x40 d-BB@0x5c ]
+	8       (00000020) invoke-virtual       v3, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+	9       (00000026) move-result-object   v2
+	10      (00000028) invoke-virtual       v2, v1, Landroid/content/res/Resources;->getResourcePackageName(I)Ljava/lang/String;
+	11      (0000002e) move-result-object   v1
+	12      (00000030) const-string         v2, "android"
+	13      (00000034) invoke-virtual       v2, v1, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	14      (0000003a) move-result          v2
+	15      (0000003c) if-eqz               v2, +010h
+	20:47
+	(Landroid/content/res/Resources$NotFoundException; -> 4a d-BB@0x4a)
+
+d-BB@0x40 : [ d-BB@0x5c ]
+	16      (00000040) invoke-virtual       v3, Landroid/content/Context;->getPackageName()Ljava/lang/String;
+	17      (00000046) move-result-object   v1
+	18      (00000048) goto                 +ah
+
+d-BB@0x4a : [ d-BB@0x5c ]
+	19      (0000004a) invoke-virtual       v3, Landroid/content/Context;->getPackageName()Ljava/lang/String;
+	20      (00000050) move-result-object   v1
+	21      (00000052) goto                 +5h
+
+d-BB@0x54 : [ d-BB@0x5c ]
+	22      (00000054) invoke-virtual       v3, Landroid/content/Context;->getPackageName()Ljava/lang/String;
+	23      (0000005a) move-result-object   v1
+
+d-BB@0x5c : 
+	24      (0000005c) invoke-virtual       v0, v4, v5, v1, Landroid/content/res/Resources;->getIdentifier(Ljava/lang/String; Ljava/lang/String; Ljava/lang/String;)I
+	25      (00000062) move-result          v3
+	26      (00000064) return               v3
+

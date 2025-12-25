@@ -1,0 +1,39 @@
+# Li7/r;->l0(I)I [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v0
+# - v1:int
+#
+# - return:int
+
+l0-BB@0x0 : [ l0-BB@0x4 l0-BB@0x6 ]
+	0       (00000000) if-gez               v1, +003h
+
+l0-BB@0x4 : 
+	1       (00000004) return               v1
+
+l0-BB@0x6 : [ l0-BB@0xc l0-BB@0x12 ]
+	2       (00000006) const/4              v0, 3
+	3       (00000008) if-ge                v1, v0, +005h
+
+l0-BB@0xc : 
+	4       (0000000c) add-int/lit8         v1, v1, 1
+	5       (00000010) return               v1
+
+l0-BB@0x12 : [ l0-BB@0x1a l0-BB@0x2c ]
+	6       (00000012) const/high16         v0, 1073741824
+	7       (00000016) if-ge                v1, v0, +00bh
+
+l0-BB@0x1a : 
+	8       (0000001a) int-to-float         v1, v1
+	9       (0000001c) const/high16         v0, 1061158912
+	10      (00000020) div-float/2addr      v1, v0
+	11      (00000022) const/high16         v0, 1065353216
+	12      (00000026) add-float/2addr      v1, v0
+	13      (00000028) float-to-int         v1, v1
+	14      (0000002a) return               v1
+
+l0-BB@0x2c : 
+	15      (0000002c) const                v1, 2147483647
+	16      (00000032) return               v1
+

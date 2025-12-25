@@ -1,0 +1,294 @@
+# Li2/q;->a(Z)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v17
+# - v18:boolean
+#
+# - return:void
+
+a-BB@0x0 : [ a-BB@0x28 a-BB@0x38 ]
+	0       (00000000) move-object/from16   v1, v17
+	1       (00000004) move/from16          v2, v18
+	2       (00000008) invoke-static        Lcom/google/android/gms/common/GoogleApiAvailability;->getInstance()Lcom/google/android/gms/common/GoogleApiAvailability;
+	3       (0000000e) move-result-object   v0
+	4       (00000010) iget-object          v3, v1, Li2/q;->n Landroid/content/Context;
+	5       (00000014) invoke-virtual       v0, v3, Lcom/google/android/gms/common/GoogleApiAvailability;->isGooglePlayServicesAvailable(Landroid/content/Context;)I
+	6       (0000001a) move-result          v0
+	7       (0000001c) const                v4, 2131952462
+	8       (00000022) const/4              v5, 0
+	9       (00000024) if-eqz               v0, +00ah
+
+a-BB@0x28 : 
+	10      (00000028) invoke-static        v3, v4, v5, Landroid/widget/Toast;->makeText(Landroid/content/Context; I I)Landroid/widget/Toast;
+	11      (0000002e) move-result-object   v0
+	12      (00000030) invoke-virtual       v0, Landroid/widget/Toast;->show()V
+	13      (00000036) return-void          
+
+a-BB@0x38 : [ a-BB@0x60 a-BB@0x15e ]
+	14      (00000038) const-string         v0, "location"
+	15      (0000003c) invoke-virtual       v3, v0, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+	16      (00000042) move-result-object   v0
+	17      (00000044) check-cast           v0, Landroid/location/LocationManager;
+	18      (00000048) const-string         v6, "gps"
+	19      (0000004c) invoke-virtual       v0, v6, Landroid/location/LocationManager;->isProviderEnabled(Ljava/lang/String;)Z
+	20      (00000052) move-result          v6
+	21      (00000054) iget-object          v7, v1, Li2/q;->l Landroid/content/SharedPreferences;
+	22      (00000058) iget-object          v8, v1, Li2/q;->m Landroid/content/SharedPreferences$Editor;
+	23      (0000005c) if-nez               v6, +081h
+
+a-BB@0x60 : [ a-BB@0x70 a-BB@0x74 ]
+	24      (00000060) const-string         v6, "network"
+	25      (00000064) invoke-virtual       v0, v6, Landroid/location/LocationManager;->isProviderEnabled(Ljava/lang/String;)Z
+	26      (0000006a) move-result          v0
+	27      (0000006c) if-eqz               v0, +004h
+
+a-BB@0x70 : [ a-BB@0x15e ]
+	28      (00000070) goto/16              +077h
+
+a-BB@0x74 : [ a-BB@0x78 ]
+	29      (00000074) iget-object          v0, v1, Li2/q;->k Ljava/lang/String;
+
+a-BB@0x78 : [ a-BB@0x9a ]
+	30      (00000078) invoke-interface     v7, v0, v5, Landroid/content/SharedPreferences;->getBoolean(Ljava/lang/String; Z)Z
+	31      (0000007e) move-result          v0
+	32      (00000080) goto                 +dh
+	78:7f
+	(Ljava/lang/ClassCastException; -> 82 a-BB@0x82)
+
+a-BB@0x82 : [ a-BB@0x9a ]
+	33      (00000082) invoke-interface     v7, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
+	34      (00000088) move-result-object   v4
+	35      (0000008a) invoke-interface     v4, v0, Landroid/content/SharedPreferences$Editor;->remove(Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
+	36      (00000090) move-result-object   v0
+	37      (00000092) invoke-interface     v0, Landroid/content/SharedPreferences$Editor;->apply()V
+	38      (00000098) move                 v0, v5
+
+a-BB@0x9a : [ a-BB@0x9e a-BB@0x132 ]
+	39      (0000009a) if-eqz               v0, +04ch
+
+a-BB@0x9e : [ a-BB@0xae ]
+	40      (0000009e) invoke-virtual       v1, Li2/q;->d()V
+	41      (000000a4) iget-object          v0, v1, Li2/q;->i Ljava/lang/String;
+	42      (000000a8) const                v3, 1148829696
+
+a-BB@0xae : [ a-BB@0xd0 ]
+	43      (000000ae) invoke-interface     v7, v0, v3, Landroid/content/SharedPreferences;->getFloat(Ljava/lang/String; F)F
+	44      (000000b4) move-result          v0
+	45      (000000b6) goto                 +dh
+	ae:b5
+	(Ljava/lang/ClassCastException; -> b8 a-BB@0xb8)
+
+a-BB@0xb8 : [ a-BB@0xd0 ]
+	46      (000000b8) invoke-interface     v7, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
+	47      (000000be) move-result-object   v4
+	48      (000000c0) invoke-interface     v4, v0, Landroid/content/SharedPreferences$Editor;->remove(Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
+	49      (000000c6) move-result-object   v0
+	50      (000000c8) invoke-interface     v0, Landroid/content/SharedPreferences$Editor;->apply()V
+	51      (000000ce) move                 v0, v3
+
+a-BB@0xd0 : [ a-BB@0xda ]
+	52      (000000d0) float-to-double      v4, v0
+	53      (000000d2) iput-wide            v4, v1, Li2/q;->b D
+	54      (000000d6) iget-object          v0, v1, Li2/q;->j Ljava/lang/String;
+
+a-BB@0xda : [ a-BB@0xfa ]
+	55      (000000da) invoke-interface     v7, v0, v3, Landroid/content/SharedPreferences;->getFloat(Ljava/lang/String; F)F
+	56      (000000e0) move-result          v3
+	57      (000000e2) goto                 +ch
+	da:e1
+	(Ljava/lang/ClassCastException; -> e4 a-BB@0xe4)
+
+a-BB@0xe4 : [ a-BB@0xfa ]
+	58      (000000e4) invoke-interface     v7, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
+	59      (000000ea) move-result-object   v4
+	60      (000000ec) invoke-interface     v4, v0, Landroid/content/SharedPreferences$Editor;->remove(Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
+	61      (000000f2) move-result-object   v0
+	62      (000000f4) invoke-interface     v0, Landroid/content/SharedPreferences$Editor;->apply()V
+
+a-BB@0xfa : 
+	63      (000000fa) float-to-double      v7, v3
+	64      (000000fc) iput-wide            v7, v1, Li2/q;->c D
+	65      (00000100) iget-wide            v5, v1, Li2/q;->b D
+	66      (00000104) iget-object          v9, v1, Li2/q;->m Landroid/content/SharedPreferences$Editor;
+	67      (00000108) iget-object          v4, v1, Li2/q;->o Lj2/j;
+	68      (0000010c) invoke-virtual/range v4 ... v9, Lj2/j;->f(D D Landroid/content/SharedPreferences$Editor;)V
+	69      (00000112) iget-wide            v11, v1, Li2/q;->b D
+	70      (00000116) iget-wide            v13, v1, Li2/q;->c D
+	71      (0000011a) xor-int/lit8         v15, v2, 1
+	72      (0000011e) iget-object          v0, v1, Li2/q;->q Lc5/c;
+	73      (00000122) iget-object          v10, v1, Li2/q;->o Lj2/j;
+	74      (00000126) move-object/from16   v16, v0
+	75      (0000012a) invoke-virtual/range v10 ... v16, Lj2/j;->c(D D Z Lj2/i;)V
+	76      (00000130) return-void          
+
+a-BB@0x132 : [ a-BB@0x136 a-BB@0x154 ]
+	77      (00000132) if-eqz               v2, +011h
+
+a-BB@0x136 : [ a-BB@0x154 ]
+	78      (00000136) const                v0, 2131952459
+	79      (0000013c) invoke-static        v3, v0, v5, Landroid/widget/Toast;->makeText(Landroid/content/Context; I I)Landroid/widget/Toast;
+	80      (00000142) move-result-object   v0
+	81      (00000144) invoke-virtual       v0, Landroid/widget/Toast;->show()V
+	82      (0000014a) iget-object          v0, v1, Li2/q;->e Ljava/lang/String;
+	83      (0000014e) invoke-interface     v8, v0, v5, Landroid/content/SharedPreferences$Editor;->putBoolean(Ljava/lang/String; Z)Landroid/content/SharedPreferences$Editor;
+
+a-BB@0x154 : [ a-BB@0x2de ]
+	84      (00000154) invoke-interface     v8, Landroid/content/SharedPreferences$Editor;->apply()V
+	85      (0000015a) goto/16              +0c2h
+
+a-BB@0x15e : [ a-BB@0x1aa a-BB@0x238 ]
+	86      (0000015e) new-instance         v0, Ljava/text/SimpleDateFormat;
+	87      (00000162) const-string         v6, "dd/MM yyyy, HH:mm"
+	88      (00000166) iget-object          v9, v1, Li2/q;->p Ljava/util/Locale;
+	89      (0000016a) invoke-direct        v0, v6, v9, Ljava/text/SimpleDateFormat;-><init>(Ljava/lang/String; Ljava/util/Locale;)V
+	90      (00000170) iget-object          v6, v1, Li2/q;->h Ljava/lang/String;
+	91      (00000174) const-string         v9, "No update"
+	92      (00000178) invoke-interface     v7, v6, v9, Landroid/content/SharedPreferences;->getString(Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	93      (0000017e) move-result-object   v6
+	94      (00000180) invoke-static        Ljava/util/Calendar;->getInstance()Ljava/util/Calendar;
+	95      (00000186) move-result-object   v7
+	96      (00000188) invoke-virtual       v7, Ljava/util/Calendar;->getTime()Ljava/util/Date;
+	97      (0000018e) move-result-object   v7
+	98      (00000190) invoke-virtual       v0, v7, Ljava/text/DateFormat;->format(Ljava/util/Date;)Ljava/lang/String;
+	99      (00000196) move-result-object   v7
+	100     (00000198) invoke-static        v3, Li2/o0;->c(Landroid/content/Context;)Li2/o0;
+	101     (0000019e) move-result-object   v10
+	102     (000001a0) invoke-virtual       v10, Li2/o0;->b()I
+	103     (000001a6) if-eqz               v2, +049h
+
+a-BB@0x1aa : [ a-BB@0x1b6 a-BB@0x238 ]
+	104     (000001aa) invoke-virtual       v6, v9, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+	105     (000001b0) move-result          v9
+	106     (000001b2) if-nez               v9, +043h
+
+a-BB@0x1b6 : [ a-BB@0x1c6 a-BB@0x238 ]
+	107     (000001b6) const-string         v9, "failed"
+	108     (000001ba) invoke-virtual       v6, v9, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+	109     (000001c0) move-result          v9
+	110     (000001c2) if-nez               v9, +03bh
+
+a-BB@0x1c6 : [ a-BB@0x1da a-BB@0x2de ]
+	111     (000001c6) invoke-virtual       v0, v6, Ljava/text/DateFormat;->parse(Ljava/lang/String;)Ljava/util/Date;
+	112     (000001cc) move-result-object   v9
+	113     (000001ce) invoke-virtual       v0, v7, Ljava/text/DateFormat;->parse(Ljava/lang/String;)Ljava/util/Date;
+	114     (000001d4) move-result-object   v0
+	115     (000001d6) if-eqz               v9, +084h
+	1c6:22f
+	(Ljava/text/ParseException; -> 21a a-BB@0x21a)
+
+a-BB@0x1da : [ a-BB@0x1de a-BB@0x1e2 ]
+	116     (000001da) if-nez               v0, +004h
+	1c6:22f
+	(Ljava/text/ParseException; -> 21a a-BB@0x21a)
+
+a-BB@0x1de : [ a-BB@0x2de ]
+	117     (000001de) goto/16              +080h
+	1c6:22f
+	(Ljava/text/ParseException; -> 21a a-BB@0x21a)
+
+a-BB@0x1e2 : [ a-BB@0x208 a-BB@0x21e ]
+	118     (000001e2) invoke-virtual       v0, Ljava/util/Date;->getTime()J
+	119     (000001e8) move-result-wide     v10
+	120     (000001ea) invoke-virtual       v9, Ljava/util/Date;->getTime()J
+	121     (000001f0) move-result-wide     v12
+	122     (000001f2) sub-long/2addr       v10, v12
+	123     (000001f4) const-wide/32        v12, 60000
+	124     (000001fa) div-long/2addr       v10, v12
+	125     (000001fc) const-wide/16        v12, 1
+	126     (00000200) cmp-long             v0, v10, v12
+	127     (00000204) if-ltz               v0, +00dh
+	1c6:22f
+	(Ljava/text/ParseException; -> 21a a-BB@0x21a)
+
+a-BB@0x208 : [ a-BB@0x218 a-BB@0x238 ]
+	128     (00000208) const-string         v0, "Not"
+	129     (0000020c) invoke-virtual       v6, v0, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+	130     (00000212) move-result          v0
+	131     (00000214) if-eqz               v0, +012h
+	1c6:22f
+	(Ljava/text/ParseException; -> 21a a-BB@0x21a)
+
+a-BB@0x218 : [ a-BB@0x21e ]
+	132     (00000218) goto                 +3h
+	1c6:22f
+	(Ljava/text/ParseException; -> 21a a-BB@0x21a)
+
+a-BB@0x21a : [ a-BB@0x232 ]
+	133     (0000021a) move-exception       v0
+	134     (0000021c) goto                 +bh
+	1c6:22f
+	(Ljava/text/ParseException; -> 21a a-BB@0x21a)
+
+a-BB@0x21e : 
+	135     (0000021e) iget-object          v0, v1, Li2/q;->g Ljava/lang/String;
+	136     (00000222) invoke-static        v3, v0, v5, Landroid/widget/Toast;->makeText(Landroid/content/Context; Ljava/lang/CharSequence; I)Landroid/widget/Toast;
+	137     (00000228) move-result-object   v0
+	138     (0000022a) invoke-virtual       v0, Landroid/widget/Toast;->show()V
+	139     (00000230) return-void          
+
+a-BB@0x232 : [ a-BB@0x238 ]
+	140     (00000232) invoke-virtual       v0, Ljava/lang/Throwable;->printStackTrace()V
+
+a-BB@0x238 : [ a-BB@0x258 a-BB@0x26a ]
+	141     (00000238) const-string         v0, "lastLocationRefresh"
+	142     (0000023c) invoke-interface     v8, v0, v7, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String; Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
+	143     (00000242) invoke-interface     v8, Landroid/content/SharedPreferences$Editor;->apply()V
+	144     (00000248) const-string         v0, "android.permission.ACCESS_FINE_LOCATION"
+	145     (0000024c) invoke-static        v3, v0, Le0/c;->checkSelfPermission(Landroid/content/Context; Ljava/lang/String;)I
+	146     (00000252) move-result          v0
+	147     (00000254) if-eqz               v0, +00bh
+
+a-BB@0x258 : [ a-BB@0x268 a-BB@0x26a ]
+	148     (00000258) const-string         v0, "android.permission.ACCESS_COARSE_LOCATION"
+	149     (0000025c) invoke-static        v3, v0, Le0/c;->checkSelfPermission(Landroid/content/Context; Ljava/lang/String;)I
+	150     (00000262) move-result          v0
+	151     (00000264) if-eqz               v0, +003h
+
+a-BB@0x268 : [ a-BB@0x2de ]
+	152     (00000268) goto                 +3bh
+
+a-BB@0x26a : [ a-BB@0x27e a-BB@0x294 ]
+	153     (0000026a) invoke-static        Lcom/google/android/gms/common/GoogleApiAvailability;->getInstance()Lcom/google/android/gms/common/GoogleApiAvailability;
+	154     (00000270) move-result-object   v0
+	155     (00000272) invoke-virtual       v0, v3, Lcom/google/android/gms/common/GoogleApiAvailability;->isGooglePlayServicesAvailable(Landroid/content/Context;)I
+	156     (00000278) move-result          v0
+	157     (0000027a) if-eqz               v0, +00dh
+
+a-BB@0x27e : 
+	158     (0000027e) invoke-static        v3, v4, v5, Landroid/widget/Toast;->makeText(Landroid/content/Context; I I)Landroid/widget/Toast;
+	159     (00000284) move-result-object   v0
+	160     (00000286) invoke-virtual       v0, Landroid/widget/Toast;->show()V
+	161     (0000028c) invoke-interface     v8, Landroid/content/SharedPreferences$Editor;->apply()V
+	162     (00000292) return-void          
+
+a-BB@0x294 : [ a-BB@0x2a8 a-BB@0x2b8 ]
+	163     (00000294) invoke-static        Lcom/google/android/gms/common/GoogleApiAvailability;->getInstance()Lcom/google/android/gms/common/GoogleApiAvailability;
+	164     (0000029a) move-result-object   v0
+	165     (0000029c) invoke-virtual       v0, v3, Lcom/google/android/gms/common/GoogleApiAvailability;->isGooglePlayServicesAvailable(Landroid/content/Context;)I
+	166     (000002a2) move-result          v0
+	167     (000002a4) if-eqz               v0, +00ah
+
+a-BB@0x2a8 : 
+	168     (000002a8) invoke-static        v3, v4, v5, Landroid/widget/Toast;->makeText(Landroid/content/Context; I I)Landroid/widget/Toast;
+	169     (000002ae) move-result-object   v0
+	170     (000002b0) invoke-virtual       v0, Landroid/widget/Toast;->show()V
+	171     (000002b6) return-void          
+
+a-BB@0x2b8 : [ a-BB@0x2de ]
+	172     (000002b8) iget-object          v0, v1, Li2/q;->a Lcom/google/android/gms/location/FusedLocationProviderClient;
+	173     (000002bc) invoke-interface     v0, Lcom/google/android/gms/location/FusedLocationProviderClient;->getLastLocation()Lcom/google/android/gms/tasks/Task;
+	174     (000002c2) move-result-object   v0
+	175     (000002c4) new-instance         v3, Li2/o;
+	176     (000002c8) invoke-direct        v3, v1, v2, Li2/o;-><init>(Ljava/lang/Object; Z)V
+	177     (000002ce) invoke-virtual       v0, v3, Lcom/google/android/gms/tasks/Task;->addOnCompleteListener(Lcom/google/android/gms/tasks/OnCompleteListener;)Lcom/google/android/gms/tasks/Task;
+	178     (000002d4) goto                 +5h
+	2b8:2d3
+	(Lcom/google/android/gms/tasks/RuntimeExecutionException; -> 2d6 a-BB@0x2d6)
+
+a-BB@0x2d6 : [ a-BB@0x2de ]
+	179     (000002d6) move-exception       v0
+	180     (000002d8) invoke-virtual       v1, v0, Li2/q;->b(Lcom/google/android/gms/tasks/RuntimeExecutionException;)V
+
+a-BB@0x2de : 
+	181     (000002de) return-void          
+

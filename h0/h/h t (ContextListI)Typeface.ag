@@ -1,0 +1,90 @@
+# Lh0/h;->t(Landroid/content/Context; Ljava/util/List; I)Landroid/graphics/Typeface; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:android.content.Context
+# - v7:java.util.List
+# - v8:int
+#
+# - return:android.graphics.Typeface
+
+t-BB@0x0 : [ t-BB@0xc ]
+	0       (00000000) invoke-virtual       v6, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
+	1       (00000006) move-result-object   v6
+	2       (00000008) const/4              v0, 0
+	3       (0000000a) const/4              v1, 0
+
+t-BB@0xc : [ t-BB@0x24 t-BB@0x26 ]
+	4       (0000000c) invoke-interface     v7, v0, Ljava/util/List;->get(I)Ljava/lang/Object;
+	5       (00000012) move-result-object   v0
+	6       (00000014) check-cast           v0, [Ln0/i;
+	7       (00000018) invoke-static        v0, v6, Lh0/h;->l0([Ln0/i; Landroid/content/ContentResolver;)Landroid/graphics/fonts/FontFamily;
+	8       (0000001e) move-result-object   v0
+	9       (00000020) if-nez               v0, +003h
+	c:87
+	(Ljava/lang/Exception; -> 5e t-BB@0x5e)
+
+t-BB@0x24 : 
+	10      (00000024) return-object        v1
+	c:87
+	(Ljava/lang/Exception; -> 5e t-BB@0x5e)
+
+t-BB@0x26 : [ t-BB@0x32 ]
+	11      (00000026) new-instance         v2, Landroid/graphics/Typeface$CustomFallbackBuilder;
+	12      (0000002a) invoke-direct        v2, v0, Landroid/graphics/Typeface$CustomFallbackBuilder;-><init>(Landroid/graphics/fonts/FontFamily;)V
+	13      (00000030) const/4              v3, 1
+	c:87
+	(Ljava/lang/Exception; -> 5e t-BB@0x5e)
+
+t-BB@0x32 : [ t-BB@0x3e t-BB@0x68 ]
+	14      (00000032) invoke-interface     v7, Ljava/util/List;->size()I
+	15      (00000038) move-result          v4
+	16      (0000003a) if-ge                v3, v4, +017h
+	c:87
+	(Ljava/lang/Exception; -> 5e t-BB@0x5e)
+
+t-BB@0x3e : [ t-BB@0x56 t-BB@0x62 ]
+	17      (0000003e) invoke-interface     v7, v3, Ljava/util/List;->get(I)Ljava/lang/Object;
+	18      (00000044) move-result-object   v4
+	19      (00000046) check-cast           v4, [Ln0/i;
+	20      (0000004a) invoke-static        v4, v6, Lh0/h;->l0([Ln0/i; Landroid/content/ContentResolver;)Landroid/graphics/fonts/FontFamily;
+	21      (00000050) move-result-object   v4
+	22      (00000052) if-eqz               v4, +008h
+	c:87
+	(Ljava/lang/Exception; -> 5e t-BB@0x5e)
+
+t-BB@0x56 : [ t-BB@0x62 ]
+	23      (00000056) invoke-virtual       v2, v4, Landroid/graphics/Typeface$CustomFallbackBuilder;->addCustomFallback(Landroid/graphics/fonts/FontFamily;)Landroid/graphics/Typeface$CustomFallbackBuilder;
+	24      (0000005c) goto                 +3h
+	c:87
+	(Ljava/lang/Exception; -> 5e t-BB@0x5e)
+
+t-BB@0x5e : [ t-BB@0x8a ]
+	25      (0000005e) move-exception       v6
+	26      (00000060) goto                 +15h
+	c:87
+	(Ljava/lang/Exception; -> 5e t-BB@0x5e)
+
+t-BB@0x62 : [ t-BB@0x32 ]
+	27      (00000062) add-int/lit8         v3, v3, 1
+	28      (00000066) goto                 -1ah
+	c:87
+	(Ljava/lang/Exception; -> 5e t-BB@0x5e)
+
+t-BB@0x68 : 
+	29      (00000068) invoke-static        v0, v8, Lh0/h;->k0(Landroid/graphics/fonts/FontFamily; I)Landroid/graphics/fonts/Font;
+	30      (0000006e) move-result-object   v6
+	31      (00000070) invoke-virtual       v6, Landroid/graphics/fonts/Font;->getStyle()Landroid/graphics/fonts/FontStyle;
+	32      (00000076) move-result-object   v6
+	33      (00000078) invoke-virtual       v2, v6, Landroid/graphics/Typeface$CustomFallbackBuilder;->setStyle(Landroid/graphics/fonts/FontStyle;)Landroid/graphics/Typeface$CustomFallbackBuilder;
+	34      (0000007e) move-result-object   v6
+	35      (00000080) invoke-virtual       v6, Landroid/graphics/Typeface$CustomFallbackBuilder;->build()Landroid/graphics/Typeface;
+	36      (00000086) move-result-object   v6
+	37      (00000088) return-object        v6
+
+t-BB@0x8a : 
+	38      (0000008a) const-string         v7, "TypefaceCompatApi29Impl"
+	39      (0000008e) const-string         v8, "Font load failed"
+	40      (00000092) invoke-static        v7, v8, v6, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+	41      (00000098) return-object        v1
+

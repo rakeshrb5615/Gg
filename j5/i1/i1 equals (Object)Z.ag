@@ -1,0 +1,52 @@
+# Lj5/i1;->equals(Ljava/lang/Object;)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:java.lang.Object
+#
+# - return:boolean
+
+equals-BB@0x0 : [ equals-BB@0x6 equals-BB@0x8 ]
+	0       (00000000) const/4              v0, 1
+	1       (00000002) if-ne                v5, v4, +003h
+
+equals-BB@0x6 : 
+	2       (00000006) return               v0
+
+equals-BB@0x8 : [ equals-BB@0x12 equals-BB@0x5c ]
+	3       (00000008) instance-of          v1, v5, Lj5/k2;
+	4       (0000000c) const/4              v2, 0
+	5       (0000000e) if-eqz               v1, +027h
+
+equals-BB@0x12 : [ equals-BB@0x26 equals-BB@0x5c ]
+	6       (00000012) check-cast           v5, Lj5/k2;
+	7       (00000016) check-cast           v5, Lj5/i1;
+	8       (0000001a) iget                 v1, v5, Lj5/i1;->a I
+	9       (0000001e) iget                 v3, v4, Lj5/i1;->a I
+	10      (00000022) if-ne                v3, v1, +01dh
+
+equals-BB@0x26 : [ equals-BB@0x3a equals-BB@0x5c ]
+	11      (00000026) iget-object          v1, v4, Lj5/i1;->b Ljava/lang/String;
+	12      (0000002a) iget-object          v3, v5, Lj5/i1;->b Ljava/lang/String;
+	13      (0000002e) invoke-virtual       v1, v3, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	14      (00000034) move-result          v1
+	15      (00000036) if-eqz               v1, +013h
+
+equals-BB@0x3a : [ equals-BB@0x4e equals-BB@0x5c ]
+	16      (0000003a) iget-object          v1, v4, Lj5/i1;->c Ljava/lang/String;
+	17      (0000003e) iget-object          v3, v5, Lj5/i1;->c Ljava/lang/String;
+	18      (00000042) invoke-virtual       v1, v3, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	19      (00000048) move-result          v1
+	20      (0000004a) if-eqz               v1, +009h
+
+equals-BB@0x4e : [ equals-BB@0x5a equals-BB@0x5c ]
+	21      (0000004e) iget-boolean         v1, v4, Lj5/i1;->d Z
+	22      (00000052) iget-boolean         v5, v5, Lj5/i1;->d Z
+	23      (00000056) if-ne                v1, v5, +003h
+
+equals-BB@0x5a : 
+	24      (0000005a) return               v0
+
+equals-BB@0x5c : 
+	25      (0000005c) return               v2
+

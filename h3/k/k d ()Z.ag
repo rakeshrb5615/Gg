@@ -1,0 +1,146 @@
+# Lh3/k;->d()Z [access_flags=public]
+#
+# Parameters:
+# local registers: v0...v5
+#
+# - return:boolean
+
+d-BB@0x0 : [ d-BB@0x2 ]
+	0       (00000000) monitor-enter        v5
+
+d-BB@0x2 : [ d-BB@0xe d-BB@0x14 ]
+	1       (00000002) iget                 v0, v5, Lh3/k;->b I
+	2       (00000006) const/4              v1, 1
+	3       (00000008) const/4              v2, 0
+	4       (0000000a) if-eqz               v0, +005h
+	2:5
+	(Ljava/lang/Throwable; -> 4e d-BB@0x4e)
+
+d-BB@0xe : [ d-BB@0xfe ]
+	5       (0000000e) monitor-exit         v5
+	6       (00000010) goto/16              +077h
+
+d-BB@0x14 : [ d-BB@0x3a d-BB@0x52 ]
+	7       (00000014) iget-object          v0, v5, Lh3/k;->c Ljava/lang/Object;
+	8       (00000018) check-cast           v0, Landroid/content/Context;
+	9       (0000001c) invoke-virtual       v0, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
+	10      (00000022) move-result-object   v0
+	11      (00000024) const-string         v3, "com.google.android.c2dm.permission.SEND"
+	12      (00000028) const-string         v4, "com.google.android.gms"
+	13      (0000002c) invoke-virtual       v0, v3, v4, Landroid/content/pm/PackageManager;->checkPermission(Ljava/lang/String; Ljava/lang/String;)I
+	14      (00000032) move-result          v3
+	15      (00000034) const/4              v4, -1
+	16      (00000036) if-ne                v3, v4, +00eh
+	14:47
+	(Ljava/lang/Throwable; -> 4e d-BB@0x4e)
+
+d-BB@0x3a : [ d-BB@0xfe ]
+	17      (0000003a) const-string         v0, "FirebaseMessaging"
+	18      (0000003e) const-string         v3, "Google Play services missing or without correct permission."
+	19      (00000042) invoke-static        v0, v3, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String;)I
+	20      (00000048) monitor-exit         v5
+	21      (0000004a) move                 v0, v2
+	22      (0000004c) goto                 +59h
+
+d-BB@0x4e : [ d-BB@0x106 ]
+	23      (0000004e) move-exception       v0
+	24      (00000050) goto                 +5bh
+
+d-BB@0x52 : [ d-BB@0x5e d-BB@0x98 ]
+	25      (00000052) invoke-static        Lcom/google/android/gms/common/util/PlatformVersion;->isAtLeastO()Z
+	26      (00000058) move-result          v3
+	27      (0000005a) if-nez               v3, +01fh
+	52:91
+	(Ljava/lang/Throwable; -> 4e d-BB@0x4e)
+
+d-BB@0x5e : [ d-BB@0x82 d-BB@0x98 ]
+	28      (0000005e) new-instance         v3, Landroid/content/Intent;
+	29      (00000062) const-string         v4, "com.google.android.c2dm.intent.REGISTER"
+	30      (00000066) invoke-direct        v3, v4, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
+	31      (0000006c) const-string         v4, "com.google.android.gms"
+	32      (00000070) invoke-virtual       v3, v4, Landroid/content/Intent;->setPackage(Ljava/lang/String;)Landroid/content/Intent;
+	33      (00000076) invoke-virtual       v0, v3, v2, Landroid/content/pm/PackageManager;->queryIntentServices(Landroid/content/Intent; I)Ljava/util/List;
+	34      (0000007c) move-result-object   v3
+	35      (0000007e) if-eqz               v3, +00dh
+	52:91
+	(Ljava/lang/Throwable; -> 4e d-BB@0x4e)
+
+d-BB@0x82 : [ d-BB@0x8e d-BB@0x98 ]
+	36      (00000082) invoke-interface     v3, Ljava/util/List;->size()I
+	37      (00000088) move-result          v3
+	38      (0000008a) if-lez               v3, +007h
+	52:91
+	(Ljava/lang/Throwable; -> 4e d-BB@0x4e)
+
+d-BB@0x8e : [ d-BB@0xfe ]
+	39      (0000008e) iput                 v1, v5, Lh3/k;->b I
+	40      (00000092) monitor-exit         v5
+	41      (00000094) move                 v0, v1
+	42      (00000096) goto                 +34h
+
+d-BB@0x98 : [ d-BB@0xbe d-BB@0xd4 ]
+	43      (00000098) new-instance         v3, Landroid/content/Intent;
+	44      (0000009c) const-string         v4, "com.google.iid.TOKEN_REQUEST"
+	45      (000000a0) invoke-direct        v3, v4, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
+	46      (000000a6) const-string         v4, "com.google.android.gms"
+	47      (000000aa) invoke-virtual       v3, v4, Landroid/content/Intent;->setPackage(Ljava/lang/String;)Landroid/content/Intent;
+	48      (000000b0) invoke-virtual       v0, v3, v2, Landroid/content/pm/PackageManager;->queryBroadcastReceivers(Landroid/content/Intent; I)Ljava/util/List;
+	49      (000000b6) move-result-object   v0
+	50      (000000b8) const/4              v3, 2
+	51      (000000ba) if-eqz               v0, +00dh
+	98:cd
+	(Ljava/lang/Throwable; -> 4e d-BB@0x4e)
+
+d-BB@0xbe : [ d-BB@0xca d-BB@0xd4 ]
+	52      (000000be) invoke-interface     v0, Ljava/util/List;->size()I
+	53      (000000c4) move-result          v0
+	54      (000000c6) if-lez               v0, +007h
+	98:cd
+	(Ljava/lang/Throwable; -> 4e d-BB@0x4e)
+
+d-BB@0xca : [ d-BB@0xfe ]
+	55      (000000ca) iput                 v3, v5, Lh3/k;->b I
+	56      (000000ce) monitor-exit         v5
+	57      (000000d0) move                 v0, v3
+	58      (000000d2) goto                 +16h
+
+d-BB@0xd4 : [ d-BB@0xee d-BB@0xf4 ]
+	59      (000000d4) const-string         v0, "FirebaseMessaging"
+	60      (000000d8) const-string         v4, "Failed to resolve IID implementation package, falling back"
+	61      (000000dc) invoke-static        v0, v4, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+	62      (000000e2) invoke-static        Lcom/google/android/gms/common/util/PlatformVersion;->isAtLeastO()Z
+	63      (000000e8) move-result          v0
+	64      (000000ea) if-eqz               v0, +005h
+	d4:fb
+	(Ljava/lang/Throwable; -> 4e d-BB@0x4e)
+
+d-BB@0xee : [ d-BB@0xf8 ]
+	65      (000000ee) iput                 v3, v5, Lh3/k;->b I
+	66      (000000f2) goto                 +3h
+	d4:fb
+	(Ljava/lang/Throwable; -> 4e d-BB@0x4e)
+
+d-BB@0xf4 : [ d-BB@0xf8 ]
+	67      (000000f4) iput                 v1, v5, Lh3/k;->b I
+	d4:fb
+	(Ljava/lang/Throwable; -> 4e d-BB@0x4e)
+
+d-BB@0xf8 : [ d-BB@0xfe ]
+	68      (000000f8) iget                 v0, v5, Lh3/k;->b I
+	69      (000000fc) monitor-exit         v5
+
+d-BB@0xfe : [ d-BB@0x102 d-BB@0x104 ]
+	70      (000000fe) if-eqz               v0, +003h
+
+d-BB@0x102 : 
+	71      (00000102) return               v1
+
+d-BB@0x104 : 
+	72      (00000104) return               v2
+
+d-BB@0x106 : 
+	73      (00000106) monitor-exit         v5
+	74      (00000108) throw                v0
+	106:107
+	(Ljava/lang/Throwable; -> 4e d-BB@0x4e)
+

@@ -1,0 +1,27 @@
+# Lj6/a0;->a()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v3
+#
+# - return:void
+
+a-BB@0x0 : [ a-BB@0x12 a-BB@0x1c ]
+	0       (00000000) const/4              v0, 3
+	1       (00000002) const-string         v1, "FirebaseMessaging"
+	2       (00000006) invoke-static        v1, v0, Landroid/util/Log;->isLoggable(Ljava/lang/String; I)Z
+	3       (0000000c) move-result          v0
+	4       (0000000e) if-eqz               v0, +007h
+
+a-BB@0x12 : [ a-BB@0x1c ]
+	5       (00000012) const-string         v0, "Connectivity change received registered"
+	6       (00000016) invoke-static        v1, v0, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String;)I
+
+a-BB@0x1c : 
+	7       (0000001c) iget-object          v0, v3, Lj6/a0;->b Lj6/b0;
+	8       (00000020) iget-object          v0, v0, Lj6/b0;->a Landroid/content/Context;
+	9       (00000024) new-instance         v1, Landroid/content/IntentFilter;
+	10      (00000028) const-string         v2, "android.net.conn.CONNECTIVITY_CHANGE"
+	11      (0000002c) invoke-direct        v1, v2, Landroid/content/IntentFilter;-><init>(Ljava/lang/String;)V
+	12      (00000032) invoke-virtual       v0, v3, v1, Landroid/content/Context;->registerReceiver(Landroid/content/BroadcastReceiver; Landroid/content/IntentFilter;)Landroid/content/Intent;
+	13      (00000038) return-void          
+

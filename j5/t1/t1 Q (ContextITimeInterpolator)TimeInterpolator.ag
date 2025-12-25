@@ -1,0 +1,146 @@
+# Lj5/t1;->Q(Landroid/content/Context; I Landroid/animation/TimeInterpolator;)Landroid/animation/TimeInterpolator; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:android.content.Context
+# - v6:int
+# - v7:android.animation.TimeInterpolator
+#
+# - return:android.animation.TimeInterpolator
+
+Q-BB@0x0 : [ Q-BB@0x20 Q-BB@0x22 ]
+	0       (00000000) new-instance         v0, Landroid/util/TypedValue;
+	1       (00000004) invoke-direct        v0, Landroid/util/TypedValue;-><init>()V
+	2       (0000000a) invoke-virtual       v5, Landroid/content/Context;->getTheme()Landroid/content/res/Resources$Theme;
+	3       (00000010) move-result-object   v1
+	4       (00000012) const/4              v2, 1
+	5       (00000014) invoke-virtual       v1, v6, v0, v2, Landroid/content/res/Resources$Theme;->resolveAttribute(I Landroid/util/TypedValue; Z)Z
+	6       (0000001a) move-result          v6
+	7       (0000001c) if-nez               v6, +003h
+
+Q-BB@0x20 : 
+	8       (00000020) return-object        v7
+
+Q-BB@0x22 : [ Q-BB@0x2c Q-BB@0x16e ]
+	9       (00000022) iget                 v6, v0, Landroid/util/TypedValue;->type I
+	10      (00000026) const/4              v7, 3
+	11      (00000028) if-ne                v6, v7, +0a3h
+
+Q-BB@0x2c : [ Q-BB@0x4c Q-BB@0x68 ]
+	12      (0000002c) iget-object          v6, v0, Landroid/util/TypedValue;->string Ljava/lang/CharSequence;
+	13      (00000030) invoke-static        v6, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
+	14      (00000036) move-result-object   v6
+	15      (00000038) const-string         v1, "cubic-bezier"
+	16      (0000003c) invoke-static        v6, v1, Lj5/t1;->K(Ljava/lang/String; Ljava/lang/String;)Z
+	17      (00000042) move-result          v3
+	18      (00000044) const-string         v4, "path"
+	19      (00000048) if-nez               v3, +010h
+
+Q-BB@0x4c : [ Q-BB@0x58 Q-BB@0x5a ]
+	20      (0000004c) invoke-static        v6, v4, Lj5/t1;->K(Ljava/lang/String; Ljava/lang/String;)Z
+	21      (00000052) move-result          v3
+	22      (00000054) if-eqz               v3, +003h
+
+Q-BB@0x58 : [ Q-BB@0x68 ]
+	23      (00000058) goto                 +8h
+
+Q-BB@0x5a : 
+	24      (0000005a) iget                 v6, v0, Landroid/util/TypedValue;->resourceId I
+	25      (0000005e) invoke-static        v5, v6, Landroid/view/animation/AnimationUtils;->loadInterpolator(Landroid/content/Context; I)Landroid/view/animation/Interpolator;
+	26      (00000064) move-result-object   v5
+	27      (00000066) return-object        v5
+
+Q-BB@0x68 : [ Q-BB@0x74 Q-BB@0xf8 ]
+	28      (00000068) invoke-static        v6, v1, Lj5/t1;->K(Ljava/lang/String; Ljava/lang/String;)Z
+	29      (0000006e) move-result          v5
+	30      (00000070) if-eqz               v5, +044h
+
+Q-BB@0x74 : [ Q-BB@0x9e Q-BB@0xce ]
+	31      (00000074) invoke-virtual       v6, Ljava/lang/String;->length()I
+	32      (0000007a) move-result          v5
+	33      (0000007c) sub-int/2addr        v5, v2
+	34      (0000007e) const/16             v0, 13
+	35      (00000082) invoke-virtual       v6, v0, v5, Ljava/lang/String;->substring(I I)Ljava/lang/String;
+	36      (00000088) move-result-object   v5
+	37      (0000008a) const-string         v6, ","
+	38      (0000008e) invoke-virtual       v5, v6, Ljava/lang/String;->split(Ljava/lang/String;)[Ljava/lang/String;
+	39      (00000094) move-result-object   v5
+	40      (00000096) array-length         v6, v5
+	41      (00000098) const/4              v0, 4
+	42      (0000009a) if-ne                v6, v0, +01ah
+
+Q-BB@0x9e : 
+	43      (0000009e) const/4              v6, 0
+	44      (000000a0) invoke-static        v5, v6, Lj5/t1;->C([Ljava/lang/String; I)F
+	45      (000000a6) move-result          v6
+	46      (000000a8) invoke-static        v5, v2, Lj5/t1;->C([Ljava/lang/String; I)F
+	47      (000000ae) move-result          v0
+	48      (000000b0) const/4              v1, 2
+	49      (000000b2) invoke-static        v5, v1, Lj5/t1;->C([Ljava/lang/String; I)F
+	50      (000000b8) move-result          v1
+	51      (000000ba) invoke-static        v5, v7, Lj5/t1;->C([Ljava/lang/String; I)F
+	52      (000000c0) move-result          v5
+	53      (000000c2) new-instance         v7, Landroid/view/animation/PathInterpolator;
+	54      (000000c6) invoke-direct        v7, v6, v0, v1, v5, Landroid/view/animation/PathInterpolator;-><init>(F F F F)V
+	55      (000000cc) return-object        v7
+
+Q-BB@0xce : 
+	56      (000000ce) new-instance         v6, Ljava/lang/IllegalArgumentException;
+	57      (000000d2) new-instance         v7, Ljava/lang/StringBuilder;
+	58      (000000d6) const-string         v0, "Motion easing theme attribute must have 4 control points if using bezier curve format; instead got: "
+	59      (000000da) invoke-direct        v7, v0, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	60      (000000e0) array-length         v5, v5
+	61      (000000e2) invoke-virtual       v7, v5, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	62      (000000e8) invoke-virtual       v7, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	63      (000000ee) move-result-object   v5
+	64      (000000f0) invoke-direct        v6, v5, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	65      (000000f6) throw                v6
+
+Q-BB@0xf8 : [ Q-BB@0x104 Q-BB@0x156 ]
+	66      (000000f8) invoke-static        v6, v4, Lj5/t1;->K(Ljava/lang/String; Ljava/lang/String;)Z
+	67      (000000fe) move-result          v5
+	68      (00000100) if-eqz               v5, +02bh
+
+Q-BB@0x104 : [ Q-BB@0x12e ]
+	69      (00000104) invoke-virtual       v6, Ljava/lang/String;->length()I
+	70      (0000010a) move-result          v5
+	71      (0000010c) sub-int/2addr        v5, v2
+	72      (0000010e) const/4              v7, 5
+	73      (00000110) invoke-virtual       v6, v7, v5, Ljava/lang/String;->substring(I I)Ljava/lang/String;
+	74      (00000116) move-result-object   v5
+	75      (00000118) new-instance         v6, Landroid/view/animation/PathInterpolator;
+	76      (0000011c) new-instance         v7, Landroid/graphics/Path;
+	77      (00000120) invoke-direct        v7, Landroid/graphics/Path;-><init>()V
+	78      (00000126) invoke-static        v5, La/a;->m(Ljava/lang/String;)[Lh0/d;
+	79      (0000012c) move-result-object   v0
+
+Q-BB@0x12e : 
+	80      (0000012e) invoke-static        v0, v7, Lh0/d;->b([Lh0/d; Landroid/graphics/Path;)V
+	81      (00000134) invoke-direct        v6, v7, Landroid/view/animation/PathInterpolator;-><init>(Landroid/graphics/Path;)V
+	82      (0000013a) return-object        v6
+	12e:133
+	(Ljava/lang/RuntimeException; -> 13c Q-BB@0x13c)
+
+Q-BB@0x13c : 
+	83      (0000013c) move-exception       v6
+	84      (0000013e) new-instance         v7, Ljava/lang/RuntimeException;
+	85      (00000142) const-string         v0, "Error in parsing "
+	86      (00000146) invoke-virtual       v0, v5, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	87      (0000014c) move-result-object   v5
+	88      (0000014e) invoke-direct        v7, v5, v6, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	89      (00000154) throw                v7
+
+Q-BB@0x156 : 
+	90      (00000156) new-instance         v5, Ljava/lang/IllegalArgumentException;
+	91      (0000015a) const-string         v7, "Invalid motion easing type: "
+	92      (0000015e) invoke-virtual       v7, v6, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	93      (00000164) move-result-object   v6
+	94      (00000166) invoke-direct        v5, v6, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	95      (0000016c) throw                v5
+
+Q-BB@0x16e : 
+	96      (0000016e) new-instance         v5, Ljava/lang/IllegalArgumentException;
+	97      (00000172) const-string         v6, "Motion easing theme attribute must be an @interpolator resource for ?attr/motionEasing*Interpolator attributes or a string for ?attr/motionEasing* attributes."
+	98      (00000176) invoke-direct        v5, v6, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	99      (0000017c) throw                v5
+

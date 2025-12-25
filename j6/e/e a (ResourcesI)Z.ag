@@ -1,0 +1,56 @@
+# Lj6/e;->a(Landroid/content/res/Resources; I)Z [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:android.content.res.Resources
+# - v6:int
+#
+# - return:boolean
+
+a-BB@0x0 : [ a-BB@0x16 a-BB@0x18 ]
+	0       (00000000) const-string         v0, "FirebaseMessaging"
+	1       (00000004) const-string         v1, "Adaptive icons cannot be used in notifications. Ignoring icon id: "
+	2       (00000008) sget                 v2, Landroid/os/Build$VERSION;->SDK_INT I
+	3       (0000000c) const/16             v3, 26
+	4       (00000010) const/4              v4, 1
+	5       (00000012) if-eq                v2, v3, +003h
+
+a-BB@0x16 : 
+	6       (00000016) return               v4
+
+a-BB@0x18 : [ a-BB@0x1c ]
+	7       (00000018) const/4              v2, 0
+	8       (0000001a) const/4              v3, 0
+
+a-BB@0x1c : [ a-BB@0x2c a-BB@0x4c ]
+	9       (0000001c) invoke-virtual       v5, v6, v2, Landroid/content/res/Resources;->getDrawable(I Landroid/content/res/Resources$Theme;)Landroid/graphics/drawable/Drawable;
+	10      (00000022) move-result-object   v5
+	11      (00000024) instance-of          v5, v5, Landroid/graphics/drawable/AdaptiveIconDrawable;
+	12      (00000028) if-eqz               v5, +012h
+	1c:49
+	(Landroid/content/res/Resources$NotFoundException; -> 4e a-BB@0x4e)
+
+a-BB@0x2c : 
+	13      (0000002c) new-instance         v5, Ljava/lang/StringBuilder;
+	14      (00000030) invoke-direct        v5, v1, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	15      (00000036) invoke-virtual       v5, v6, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	16      (0000003c) invoke-virtual       v5, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	17      (00000042) move-result-object   v5
+	18      (00000044) invoke-static        v0, v5, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String;)I
+	19      (0000004a) return               v3
+
+a-BB@0x4c : 
+	20      (0000004c) return               v4
+
+a-BB@0x4e : 
+	21      (0000004e) new-instance         v5, Ljava/lang/StringBuilder;
+	22      (00000052) const-string         v1, "Couldn't find resource "
+	23      (00000056) invoke-direct        v5, v1, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	24      (0000005c) invoke-virtual       v5, v6, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	25      (00000062) const-string         v6, ", treating it as an invalid icon"
+	26      (00000066) invoke-virtual       v5, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	27      (0000006c) invoke-virtual       v5, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	28      (00000072) move-result-object   v5
+	29      (00000074) invoke-static        v0, v5, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String;)I
+	30      (0000007a) return               v3
+

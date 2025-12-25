@@ -1,0 +1,38 @@
+# Lj6/v;-><init>(Lcom/google/firebase/messaging/FirebaseMessaging; J)V [access_flags=public constructor]
+#
+# Parameters:
+# - local registers: v0...v9
+# - v10:com.google.firebase.messaging.FirebaseMessaging
+# - v11:long
+#
+# - return:void
+
+<init>-BB@0x0 : 
+	0       (00000000) invoke-direct        v8, Ljava/lang/Object;-><init>()V
+	1       (00000006) new-instance         v0, Ljava/util/concurrent/ThreadPoolExecutor;
+	2       (0000000a) sget-object          v5, Ljava/util/concurrent/TimeUnit;->SECONDS Ljava/util/concurrent/TimeUnit;
+	3       (0000000e) new-instance         v6, Ljava/util/concurrent/LinkedBlockingQueue;
+	4       (00000012) invoke-direct        v6, Ljava/util/concurrent/LinkedBlockingQueue;-><init>()V
+	5       (00000018) new-instance         v7, Lcom/google/android/gms/common/util/concurrent/NamedThreadFactory;
+	6       (0000001c) const-string         v1, "firebase-iid-executor"
+	7       (00000020) invoke-direct        v7, v1, Lcom/google/android/gms/common/util/concurrent/NamedThreadFactory;-><init>(Ljava/lang/String;)V
+	8       (00000026) const/4              v1, 0
+	9       (00000028) const/4              v2, 1
+	10      (0000002a) const-wide/16        v3, 30
+	11      (0000002e) invoke-direct/range  v0 ... v7, Ljava/util/concurrent/ThreadPoolExecutor;-><init>(I I J Ljava/util/concurrent/TimeUnit; Ljava/util/concurrent/BlockingQueue; Ljava/util/concurrent/ThreadFactory;)V
+	12      (00000034) iput-object          v9, v8, Lj6/v;->c Lcom/google/firebase/messaging/FirebaseMessaging;
+	13      (00000038) iput-wide            v10, v8, Lj6/v;->a J
+	14      (0000003c) iget-object          v9, v9, Lcom/google/firebase/messaging/FirebaseMessaging;->b Landroid/content/Context;
+	15      (00000040) const-string         v10, "power"
+	16      (00000044) invoke-virtual       v9, v10, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+	17      (0000004a) move-result-object   v9
+	18      (0000004c) check-cast           v9, Landroid/os/PowerManager;
+	19      (00000050) const/4              v10, 1
+	20      (00000052) const-string         v11, "fiid-sync"
+	21      (00000056) invoke-virtual       v9, v10, v11, Landroid/os/PowerManager;->newWakeLock(I Ljava/lang/String;)Landroid/os/PowerManager$WakeLock;
+	22      (0000005c) move-result-object   v9
+	23      (0000005e) iput-object          v9, v8, Lj6/v;->b Landroid/os/PowerManager$WakeLock;
+	24      (00000062) const/4              v10, 0
+	25      (00000064) invoke-virtual       v9, v10, Landroid/os/PowerManager$WakeLock;->setReferenceCounted(Z)V
+	26      (0000006a) return-void          
+

@@ -1,0 +1,66 @@
+# Lj7/c;->h(I I)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:int
+# - v7:int
+#
+# - return:void
+
+h-BB@0x0 : [ h-BB@0xa h-BB@0x76 ]
+	0       (00000000) iget                 v0, v5, Lj7/c;->b I
+	1       (00000004) add-int/2addr        v0, v7
+	2       (00000006) if-ltz               v0, +038h
+
+h-BB@0xa : [ h-BB@0x14 h-BB@0x58 ]
+	3       (0000000a) iget-object          v1, v5, Lj7/c;->a [Ljava/lang/Object;
+	4       (0000000e) array-length         v2, v1
+	5       (00000010) if-le                v0, v2, +024h
+
+h-BB@0x14 : [ h-BB@0x24 h-BB@0x26 ]
+	6       (00000014) array-length         v2, v1
+	7       (00000016) shr-int/lit8         v3, v2, 1
+	8       (0000001a) add-int/2addr        v2, v3
+	9       (0000001c) sub-int              v3, v2, v0
+	10      (00000020) if-gez               v3, +003h
+
+h-BB@0x24 : [ h-BB@0x26 ]
+	11      (00000024) move                 v2, v0
+
+h-BB@0x26 : [ h-BB@0x34 h-BB@0x42 ]
+	12      (00000026) const                v3, 2147483639
+	13      (0000002c) sub-int              v4, v2, v3
+	14      (00000030) if-lez               v4, +009h
+
+h-BB@0x34 : [ h-BB@0x38 h-BB@0x40 ]
+	15      (00000034) if-le                v0, v3, +006h
+
+h-BB@0x38 : [ h-BB@0x42 ]
+	16      (00000038) const                v2, 2147483647
+	17      (0000003e) goto                 +2h
+
+h-BB@0x40 : [ h-BB@0x42 ]
+	18      (00000040) move                 v2, v3
+
+h-BB@0x42 : [ h-BB@0x58 ]
+	19      (00000042) invoke-static        v1, v2, Ljava/util/Arrays;->copyOf([Ljava/lang/Object; I)[Ljava/lang/Object;
+	20      (00000048) move-result-object   v0
+	21      (0000004a) const-string         v1, "copyOf(...)"
+	22      (0000004e) invoke-static        v0, v1, Lkotlin/jvm/internal/j;->d(Ljava/lang/Object; Ljava/lang/String;)V
+	23      (00000054) iput-object          v0, v5, Lj7/c;->a [Ljava/lang/Object;
+
+h-BB@0x58 : 
+	24      (00000058) iget-object          v0, v5, Lj7/c;->a [Ljava/lang/Object;
+	25      (0000005c) iget                 v1, v5, Lj7/c;->b I
+	26      (00000060) add-int              v2, v6, v7
+	27      (00000064) invoke-static        v0, v2, v0, v6, v1, Li7/h;->Z([Ljava/lang/Object; I [Ljava/lang/Object; I I)V
+	28      (0000006a) iget                 v6, v5, Lj7/c;->b I
+	29      (0000006e) add-int/2addr        v6, v7
+	30      (00000070) iput                 v6, v5, Lj7/c;->b I
+	31      (00000074) return-void          
+
+h-BB@0x76 : 
+	32      (00000076) new-instance         v6, Ljava/lang/OutOfMemoryError;
+	33      (0000007a) invoke-direct        v6, Ljava/lang/OutOfMemoryError;-><init>()V
+	34      (00000080) throw                v6
+

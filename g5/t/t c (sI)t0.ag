@@ -1,0 +1,100 @@
+# Lg5/t;->c(Lj6/s; I)Lj5/t0; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:j6.s
+# - v8:int
+#
+# - return:j5.t0
+
+c-BB@0x0 : [ c-BB@0x22 c-BB@0x24 ]
+	0       (00000000) iget-object          v0, v7, Lj6/s;->c Ljava/lang/Object;
+	1       (00000004) move-object          v2, v0
+	2       (00000006) check-cast           v2, Ljava/lang/String;
+	3       (0000000a) iget-object          v0, v7, Lj6/s;->b Ljava/lang/Object;
+	4       (0000000e) move-object          v3, v0
+	5       (00000010) check-cast           v3, Ljava/lang/String;
+	6       (00000014) iget-object          v0, v7, Lj6/s;->d Ljava/lang/Object;
+	7       (00000018) check-cast           v0, [Ljava/lang/StackTraceElement;
+	8       (0000001c) const/4              v1, 0
+	9       (0000001e) if-eqz               v0, +003h
+
+c-BB@0x22 : [ c-BB@0x28 ]
+	10      (00000022) goto                 +3h
+
+c-BB@0x24 : [ c-BB@0x28 ]
+	11      (00000024) new-array            v0, v1, [Ljava/lang/StackTraceElement;
+
+c-BB@0x28 : [ c-BB@0x38 c-BB@0x4c ]
+	12      (00000028) iget-object          v7, v7, Lj6/s;->e Ljava/lang/Object;
+	13      (0000002c) check-cast           v7, Lj6/s;
+	14      (00000030) const/16             v4, 8
+	15      (00000034) if-lt                v8, v4, +00ch
+
+c-BB@0x38 : [ c-BB@0x3a ]
+	16      (00000038) move-object          v4, v7
+
+c-BB@0x3a : [ c-BB@0x3e c-BB@0x4c ]
+	17      (0000003a) if-eqz               v4, +009h
+
+c-BB@0x3e : [ c-BB@0x3a ]
+	18      (0000003e) iget-object          v4, v4, Lj6/s;->e Ljava/lang/Object;
+	19      (00000042) check-cast           v4, Lj6/s;
+	20      (00000046) add-int/lit8         v1, v1, 1
+	21      (0000004a) goto                 -8h
+
+c-BB@0x4c : [ c-BB@0x5c c-BB@0xbc ]
+	22      (0000004c) move                 v6, v1
+	23      (0000004e) const/4              v1, 4
+	24      (00000050) invoke-static        v0, v1, Lg5/t;->d([Ljava/lang/StackTraceElement; I)Ljava/util/List;
+	25      (00000056) move-result-object   v4
+	26      (00000058) if-eqz               v4, +032h
+
+c-BB@0x5c : [ c-BB@0x6a c-BB@0x78 ]
+	27      (0000005c) const/4              v0, 0
+	28      (0000005e) const/4              v1, 1
+	29      (00000060) or-int/2addr         v0, v1
+	30      (00000062) int-to-byte          v0, v0
+	31      (00000064) const/4              v5, 0
+	32      (00000066) if-eqz               v7, +009h
+
+c-BB@0x6a : [ c-BB@0x6e c-BB@0x78 ]
+	33      (0000006a) if-nez               v6, +007h
+
+c-BB@0x6e : [ c-BB@0x78 ]
+	34      (0000006e) add-int/2addr        v8, v1
+	35      (00000070) invoke-static        v7, v8, Lg5/t;->c(Lj6/s; I)Lj5/t0;
+	36      (00000076) move-result-object   v5
+
+c-BB@0x78 : [ c-BB@0x7c c-BB@0x88 ]
+	37      (00000078) if-ne                v0, v1, +008h
+
+c-BB@0x7c : 
+	38      (0000007c) new-instance         v1, Lj5/t0;
+	39      (00000080) invoke-direct/range  v1 ... v6, Lj5/t0;-><init>(Ljava/lang/String; Ljava/lang/String; Ljava/util/List; Lj5/x1; I)V
+	40      (00000086) return-object        v1
+
+c-BB@0x88 : [ c-BB@0x9a c-BB@0xa4 ]
+	41      (00000088) new-instance         v7, Ljava/lang/StringBuilder;
+	42      (0000008c) invoke-direct        v7, Ljava/lang/StringBuilder;-><init>()V
+	43      (00000092) and-int/lit8         v8, v0, 1
+	44      (00000096) if-nez               v8, +007h
+
+c-BB@0x9a : [ c-BB@0xa4 ]
+	45      (0000009a) const-string         v8, " overflowCount"
+	46      (0000009e) invoke-virtual       v7, v8, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+c-BB@0xa4 : 
+	47      (000000a4) new-instance         v8, Ljava/lang/IllegalStateException;
+	48      (000000a8) const-string         v0, "Missing required properties:"
+	49      (000000ac) invoke-static        v0, v7, Lg2/g;->g(Ljava/lang/String; Ljava/lang/StringBuilder;)Ljava/lang/String;
+	50      (000000b2) move-result-object   v7
+	51      (000000b4) invoke-direct        v8, v7, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	52      (000000ba) throw                v8
+
+c-BB@0xbc : 
+	53      (000000bc) new-instance         v7, Ljava/lang/NullPointerException;
+	54      (000000c0) const-string         v8, "Null frames"
+	55      (000000c4) invoke-direct        v7, v8, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
+	56      (000000ca) throw                v7
+

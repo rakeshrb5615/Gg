@@ -1,0 +1,36 @@
+# Lj7/b;->set(I Ljava/lang/Object;)Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:int
+# - v5:java.lang.Object
+#
+# - return:java.lang.Object
+
+set-BB@0x0 : [ set-BB@0x14 set-BB@0x30 ]
+	0       (00000000) invoke-virtual       v3, Lj7/b;->h()V
+	1       (00000006) invoke-virtual       v3, Lj7/b;->g()V
+	2       (0000000c) iget                 v0, v3, Lj7/b;->c I
+	3       (00000010) if-ltz               v4, +010h
+
+set-BB@0x14 : [ set-BB@0x18 set-BB@0x30 ]
+	4       (00000014) if-ge                v4, v0, +00eh
+
+set-BB@0x18 : 
+	5       (00000018) iget-object          v0, v3, Lj7/b;->a [Ljava/lang/Object;
+	6       (0000001c) iget                 v1, v3, Lj7/b;->b I
+	7       (00000020) add-int              v2, v1, v4
+	8       (00000024) aget-object          v2, v0, v2
+	9       (00000028) add-int/2addr        v1, v4
+	10      (0000002a) aput-object          v5, v0, v1
+	11      (0000002e) return-object        v2
+
+set-BB@0x30 : 
+	12      (00000030) new-instance         v5, Ljava/lang/IndexOutOfBoundsException;
+	13      (00000034) const-string         v1, "index: "
+	14      (00000038) const-string         v2, ", size: "
+	15      (0000003c) invoke-static        v1, v4, v0, v2, Lv1/a;->i(Ljava/lang/String; I I Ljava/lang/String;)Ljava/lang/String;
+	16      (00000042) move-result-object   v4
+	17      (00000044) invoke-direct        v5, v4, Ljava/lang/IndexOutOfBoundsException;-><init>(Ljava/lang/String;)V
+	18      (0000004a) throw                v5
+

@@ -1,0 +1,214 @@
+# Lg5/y;->c()Lg5/c; [access_flags=public final synchronized]
+#
+# Parameters:
+# local registers: v0...v9
+#
+# - return:g5.c
+
+c-BB@0x0 : [ c-BB@0xe ]
+	0       (00000000) const-string         v0, "Install IDs: "
+	1       (00000004) const-string         v1, "Fetched Firebase Installation ID: "
+	2       (00000008) const-string         v2, "Cached Firebase Installation ID: "
+	3       (0000000c) monitor-enter        v9
+
+c-BB@0xe : [ c-BB@0x16 c-BB@0x3e ]
+	4       (0000000e) iget-object          v3, v9, Lg5/y;->f Lg5/c;
+	5       (00000012) if-eqz               v3, +016h
+	e:33
+	(Ljava/lang/Throwable; -> 38 c-BB@0x38)
+
+c-BB@0x16 : [ c-BB@0x1e c-BB@0x30 ]
+	6       (00000016) iget-object          v3, v3, Lg5/c;->b Ljava/lang/String;
+	7       (0000001a) if-nez               v3, +00bh
+	e:33
+	(Ljava/lang/Throwable; -> 38 c-BB@0x38)
+
+c-BB@0x1e : [ c-BB@0x2e c-BB@0x30 ]
+	8       (0000001e) iget-object          v3, v9, Lg5/y;->e Lg5/v;
+	9       (00000022) invoke-virtual       v3, Lg5/v;->a()Z
+	10      (00000028) move-result          v3
+	11      (0000002a) if-eqz               v3, +003h
+	e:33
+	(Ljava/lang/Throwable; -> 38 c-BB@0x38)
+
+c-BB@0x2e : [ c-BB@0x3e ]
+	12      (0000002e) goto                 +8h
+	e:33
+	(Ljava/lang/Throwable; -> 38 c-BB@0x38)
+
+c-BB@0x30 : 
+	13      (00000030) iget-object          v0, v9, Lg5/y;->f Lg5/c;
+	14      (00000034) monitor-exit         v9
+	15      (00000036) return-object        v0
+
+c-BB@0x38 : [ c-BB@0x1fe ]
+	16      (00000038) move-exception       v0
+	17      (0000003a) goto/16              +0e2h
+
+c-BB@0x3e : [ c-BB@0x9a c-BB@0x162 ]
+	18      (0000003e) sget-object          v3, Ld5/d;->a Ld5/d;
+	19      (00000042) const-string         v4, "Determining Crashlytics installation ID..."
+	20      (00000046) invoke-virtual       v3, v4, Ld5/d;->c(Ljava/lang/String;)V
+	21      (0000004c) iget-object          v4, v9, Lg5/y;->b Landroid/content/Context;
+	22      (00000050) const-string         v5, "com.google.firebase.crashlytics"
+	23      (00000054) const/4              v6, 0
+	24      (00000056) invoke-virtual       v4, v5, v6, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String; I)Landroid/content/SharedPreferences;
+	25      (0000005c) move-result-object   v4
+	26      (0000005e) const-string         v5, "firebase.installation.id"
+	27      (00000062) const/4              v7, 0
+	28      (00000064) invoke-interface     v4, v5, v7, Landroid/content/SharedPreferences;->getString(Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	29      (0000006a) move-result-object   v5
+	30      (0000006c) new-instance         v8, Ljava/lang/StringBuilder;
+	31      (00000070) invoke-direct        v8, v2, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	32      (00000076) invoke-virtual       v8, v5, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	33      (0000007c) invoke-virtual       v8, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	34      (00000082) move-result-object   v2
+	35      (00000084) invoke-virtual       v3, v2, Ld5/d;->c(Ljava/lang/String;)V
+	36      (0000008a) iget-object          v2, v9, Lg5/y;->e Lg5/v;
+	37      (0000008e) invoke-virtual       v2, Lg5/v;->a()Z
+	38      (00000094) move-result          v2
+	39      (00000096) if-eqz               v2, +066h
+	3e:1f9
+	(Ljava/lang/Throwable; -> 38 c-BB@0x38)
+
+c-BB@0x9a : [ c-BB@0xcc c-BB@0x10a ]
+	40      (0000009a) invoke-virtual       v9, v6, Lg5/y;->b(Z)Lg5/x;
+	41      (000000a0) move-result-object   v2
+	42      (000000a2) new-instance         v6, Ljava/lang/StringBuilder;
+	43      (000000a6) invoke-direct        v6, v1, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	44      (000000ac) iget-object          v1, v2, Lg5/x;->a Ljava/lang/String;
+	45      (000000b0) invoke-virtual       v6, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	46      (000000b6) invoke-virtual       v6, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	47      (000000bc) move-result-object   v1
+	48      (000000be) invoke-virtual       v3, v1, Ld5/d;->c(Ljava/lang/String;)V
+	49      (000000c4) iget-object          v1, v2, Lg5/x;->a Ljava/lang/String;
+	50      (000000c8) if-nez               v1, +021h
+	3e:1f9
+	(Ljava/lang/Throwable; -> 38 c-BB@0x38)
+
+c-BB@0xcc : [ c-BB@0xd4 c-BB@0x102 ]
+	51      (000000cc) new-instance         v2, Lg5/x;
+	52      (000000d0) if-nez               v5, +019h
+	3e:1f9
+	(Ljava/lang/Throwable; -> 38 c-BB@0x38)
+
+c-BB@0xd4 : [ c-BB@0x104 ]
+	53      (000000d4) new-instance         v1, Ljava/lang/StringBuilder;
+	54      (000000d8) const-string         v6, "SYN_"
+	55      (000000dc) invoke-direct        v1, v6, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	56      (000000e2) invoke-static        Ljava/util/UUID;->randomUUID()Ljava/util/UUID;
+	57      (000000e8) move-result-object   v6
+	58      (000000ea) invoke-virtual       v6, Ljava/util/UUID;->toString()Ljava/lang/String;
+	59      (000000f0) move-result-object   v6
+	60      (000000f2) invoke-virtual       v1, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	61      (000000f8) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	62      (000000fe) move-result-object   v1
+	63      (00000100) goto                 +2h
+	3e:1f9
+	(Ljava/lang/Throwable; -> 38 c-BB@0x38)
+
+c-BB@0x102 : [ c-BB@0x104 ]
+	64      (00000102) move-object          v1, v5
+	3e:1f9
+	(Ljava/lang/Throwable; -> 38 c-BB@0x38)
+
+c-BB@0x104 : [ c-BB@0x10a ]
+	65      (00000104) invoke-direct        v2, v1, v7, Lg5/x;-><init>(Ljava/lang/String; Ljava/lang/String;)V
+	3e:1f9
+	(Ljava/lang/Throwable; -> 38 c-BB@0x38)
+
+c-BB@0x10a : [ c-BB@0x11a c-BB@0x13e ]
+	66      (0000010a) iget-object          v1, v2, Lg5/x;->a Ljava/lang/String;
+	67      (0000010e) invoke-static        v1, v5, Ljava/util/Objects;->equals(Ljava/lang/Object; Ljava/lang/Object;)Z
+	68      (00000114) move-result          v1
+	69      (00000116) if-eqz               v1, +014h
+	3e:1f9
+	(Ljava/lang/Throwable; -> 38 c-BB@0x38)
+
+c-BB@0x11a : [ c-BB@0x1d4 ]
+	70      (0000011a) const-string         v1, "crashlytics.installation.id"
+	71      (0000011e) invoke-interface     v4, v1, v7, Landroid/content/SharedPreferences;->getString(Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	72      (00000124) move-result-object   v1
+	73      (00000126) new-instance         v4, Lg5/c;
+	74      (0000012a) iget-object          v5, v2, Lg5/x;->a Ljava/lang/String;
+	75      (0000012e) iget-object          v2, v2, Lg5/x;->b Ljava/lang/String;
+	76      (00000132) invoke-direct        v4, v1, v5, v2, Lg5/c;-><init>(Ljava/lang/String; Ljava/lang/String; Ljava/lang/String;)V
+	77      (00000138) iput-object          v4, v9, Lg5/y;->f Lg5/c;
+	78      (0000013c) goto                 +4ch
+	3e:1f9
+	(Ljava/lang/Throwable; -> 38 c-BB@0x38)
+
+c-BB@0x13e : [ c-BB@0x1d4 ]
+	79      (0000013e) iget-object          v1, v2, Lg5/x;->a Ljava/lang/String;
+	80      (00000142) invoke-virtual       v9, v4, v1, Lg5/y;->a(Landroid/content/SharedPreferences; Ljava/lang/String;)Ljava/lang/String;
+	81      (00000148) move-result-object   v1
+	82      (0000014a) new-instance         v4, Lg5/c;
+	83      (0000014e) iget-object          v5, v2, Lg5/x;->a Ljava/lang/String;
+	84      (00000152) iget-object          v2, v2, Lg5/x;->b Ljava/lang/String;
+	85      (00000156) invoke-direct        v4, v1, v5, v2, Lg5/c;-><init>(Ljava/lang/String; Ljava/lang/String; Ljava/lang/String;)V
+	86      (0000015c) iput-object          v4, v9, Lg5/y;->f Lg5/c;
+	87      (00000160) goto                 +3ah
+	3e:1f9
+	(Ljava/lang/Throwable; -> 38 c-BB@0x38)
+
+c-BB@0x162 : [ c-BB@0x166 c-BB@0x192 ]
+	88      (00000162) if-eqz               v5, +018h
+	3e:1f9
+	(Ljava/lang/Throwable; -> 38 c-BB@0x38)
+
+c-BB@0x166 : [ c-BB@0x176 c-BB@0x192 ]
+	89      (00000166) const-string         v1, "SYN_"
+	90      (0000016a) invoke-virtual       v5, v1, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
+	91      (00000170) move-result          v1
+	92      (00000172) if-eqz               v1, +010h
+	3e:1f9
+	(Ljava/lang/Throwable; -> 38 c-BB@0x38)
+
+c-BB@0x176 : [ c-BB@0x1d4 ]
+	93      (00000176) const-string         v1, "crashlytics.installation.id"
+	94      (0000017a) invoke-interface     v4, v1, v7, Landroid/content/SharedPreferences;->getString(Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	95      (00000180) move-result-object   v1
+	96      (00000182) new-instance         v2, Lg5/c;
+	97      (00000186) invoke-direct        v2, v1, v7, v7, Lg5/c;-><init>(Ljava/lang/String; Ljava/lang/String; Ljava/lang/String;)V
+	98      (0000018c) iput-object          v2, v9, Lg5/y;->f Lg5/c;
+	99      (00000190) goto                 +22h
+	3e:1f9
+	(Ljava/lang/Throwable; -> 38 c-BB@0x38)
+
+c-BB@0x192 : [ c-BB@0x1d4 ]
+	100     (00000192) new-instance         v1, Ljava/lang/StringBuilder;
+	101     (00000196) const-string         v2, "SYN_"
+	102     (0000019a) invoke-direct        v1, v2, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	103     (000001a0) invoke-static        Ljava/util/UUID;->randomUUID()Ljava/util/UUID;
+	104     (000001a6) move-result-object   v2
+	105     (000001a8) invoke-virtual       v2, Ljava/util/UUID;->toString()Ljava/lang/String;
+	106     (000001ae) move-result-object   v2
+	107     (000001b0) invoke-virtual       v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	108     (000001b6) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	109     (000001bc) move-result-object   v1
+	110     (000001be) invoke-virtual       v9, v4, v1, Lg5/y;->a(Landroid/content/SharedPreferences; Ljava/lang/String;)Ljava/lang/String;
+	111     (000001c4) move-result-object   v1
+	112     (000001c6) new-instance         v2, Lg5/c;
+	113     (000001ca) invoke-direct        v2, v1, v7, v7, Lg5/c;-><init>(Ljava/lang/String; Ljava/lang/String; Ljava/lang/String;)V
+	114     (000001d0) iput-object          v2, v9, Lg5/y;->f Lg5/c;
+	3e:1f9
+	(Ljava/lang/Throwable; -> 38 c-BB@0x38)
+
+c-BB@0x1d4 : 
+	115     (000001d4) new-instance         v1, Ljava/lang/StringBuilder;
+	116     (000001d8) invoke-direct        v1, v0, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	117     (000001de) iget-object          v0, v9, Lg5/y;->f Lg5/c;
+	118     (000001e2) invoke-virtual       v1, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	119     (000001e8) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	120     (000001ee) move-result-object   v0
+	121     (000001f0) invoke-virtual       v3, v0, Ld5/d;->c(Ljava/lang/String;)V
+	122     (000001f6) iget-object          v0, v9, Lg5/y;->f Lg5/c;
+	123     (000001fa) monitor-exit         v9
+	124     (000001fc) return-object        v0
+
+c-BB@0x1fe : 
+	125     (000001fe) monitor-exit         v9
+	126     (00000200) throw                v0
+	1fe:1ff
+	(Ljava/lang/Throwable; -> 38 c-BB@0x38)
+

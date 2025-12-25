@@ -1,0 +1,41 @@
+# Li8/m;->b()Z [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v12
+#
+# - return:boolean
+
+b-BB@0x0 : [ b-BB@0x22 b-BB@0x24 ]
+	0       (00000000) sget-object          v0, Li8/m;->f Ljava/util/concurrent/atomic/AtomicLongFieldUpdater;
+	1       (00000004) invoke-virtual       v0, v12, Ljava/util/concurrent/atomic/AtomicLongFieldUpdater;->get(Ljava/lang/Object;)J
+	2       (0000000a) move-result-wide     v2
+	3       (0000000c) const-wide/high16    v4, 2305843009213693952
+	4       (00000010) and-long             v6, v2, v4
+	5       (00000014) const-wide/16        v8, 0
+	6       (00000018) cmp-long             v1, v6, v8
+	7       (0000001c) const/4              v6, 1
+	8       (0000001e) if-eqz               v1, +003h
+
+b-BB@0x22 : 
+	9       (00000022) return               v6
+
+b-BB@0x24 : [ b-BB@0x32 b-BB@0x36 ]
+	10      (00000024) const-wide/high16    v10, 1152921504606846976
+	11      (00000028) and-long/2addr       v10, v2
+	12      (0000002a) cmp-long             v1, v10, v8
+	13      (0000002e) if-eqz               v1, +004h
+
+b-BB@0x32 : 
+	14      (00000032) const/4              v0, 0
+	15      (00000034) return               v0
+
+b-BB@0x36 : [ b-BB@0x46 b-BB@0x0 ]
+	16      (00000036) or-long/2addr        v4, v2
+	17      (00000038) move-object          v1, v12
+	18      (0000003a) invoke-virtual/range v0 ... v5, Ljava/util/concurrent/atomic/AtomicLongFieldUpdater;->compareAndSet(Ljava/lang/Object; J J)Z
+	19      (00000040) move-result          v0
+	20      (00000042) if-eqz               v0, -021h
+
+b-BB@0x46 : 
+	21      (00000046) return               v6
+

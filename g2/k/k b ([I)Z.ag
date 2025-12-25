@@ -1,0 +1,31 @@
+# Lg2/k;->b([I)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:int[]
+#
+# - return:boolean
+
+b-BB@0x0 : [ b-BB@0x4 ]
+	0       (00000000) const/4              v0, 0
+	1       (00000002) move                 v1, v0
+
+b-BB@0x4 : [ b-BB@0x14 b-BB@0x30 ]
+	2       (00000004) iget-object          v2, v4, Lg2/k;->b Ljava/util/ArrayList;
+	3       (00000008) invoke-virtual       v2, Ljava/util/ArrayList;->size()I
+	4       (0000000e) move-result          v3
+	5       (00000010) if-ge                v0, v3, +010h
+
+b-BB@0x14 : [ b-BB@0x4 ]
+	6       (00000014) invoke-virtual       v2, v0, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	7       (0000001a) move-result-object   v2
+	8       (0000001c) check-cast           v2, Lg2/l;
+	9       (00000020) invoke-virtual       v2, v5, Lg2/l;->b([I)Z
+	10      (00000026) move-result          v2
+	11      (00000028) or-int/2addr         v1, v2
+	12      (0000002a) add-int/lit8         v0, v0, 1
+	13      (0000002e) goto                 -15h
+
+b-BB@0x30 : 
+	14      (00000030) return               v1
+

@@ -1,0 +1,61 @@
+# Li5/i;->read([B I I)I [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:byte[]
+# - v4:int
+# - v5:int
+#
+# - return:int
+
+read-BB@0x0 : [ read-BB@0x4 read-BB@0x5e ]
+	0       (00000000) if-eqz               v3, +02fh
+
+read-BB@0x4 : [ read-BB@0xc read-BB@0x52 ]
+	1       (00000004) or-int               v0, v4, v5
+	2       (00000008) if-ltz               v0, +025h
+
+read-BB@0xc : [ read-BB@0x14 read-BB@0x52 ]
+	3       (0000000c) array-length         v0, v3
+	4       (0000000e) sub-int/2addr        v0, v4
+	5       (00000010) if-gt                v5, v0, +021h
+
+read-BB@0x14 : [ read-BB@0x1c read-BB@0x4e ]
+	6       (00000014) iget                 v0, v2, Li5/i;->b I
+	7       (00000018) if-lez               v0, +01bh
+
+read-BB@0x1c : [ read-BB@0x20 read-BB@0x22 ]
+	8       (0000001c) if-le                v5, v0, +003h
+
+read-BB@0x20 : [ read-BB@0x22 ]
+	9       (00000020) move                 v5, v0
+
+read-BB@0x22 : 
+	10      (00000022) iget                 v0, v2, Li5/i;->a I
+	11      (00000026) iget-object          v1, v2, Li5/i;->c Li5/k;
+	12      (0000002a) invoke-virtual       v1, v0, v3, v4, v5, Li5/k;->A(I [B I I)V
+	13      (00000030) iget                 v3, v2, Li5/i;->a I
+	14      (00000034) add-int/2addr        v3, v5
+	15      (00000036) invoke-virtual       v1, v3, Li5/k;->D(I)I
+	16      (0000003c) move-result          v3
+	17      (0000003e) iput                 v3, v2, Li5/i;->a I
+	18      (00000042) iget                 v3, v2, Li5/i;->b I
+	19      (00000046) sub-int/2addr        v3, v5
+	20      (00000048) iput                 v3, v2, Li5/i;->b I
+	21      (0000004c) return               v5
+
+read-BB@0x4e : 
+	22      (0000004e) const/4              v3, -1
+	23      (00000050) return               v3
+
+read-BB@0x52 : 
+	24      (00000052) new-instance         v3, Ljava/lang/ArrayIndexOutOfBoundsException;
+	25      (00000056) invoke-direct        v3, Ljava/lang/ArrayIndexOutOfBoundsException;-><init>()V
+	26      (0000005c) throw                v3
+
+read-BB@0x5e : 
+	27      (0000005e) new-instance         v3, Ljava/lang/NullPointerException;
+	28      (00000062) const-string         v4, "buffer"
+	29      (00000066) invoke-direct        v3, v4, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
+	30      (0000006c) throw                v3
+

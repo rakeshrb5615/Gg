@@ -1,0 +1,104 @@
+# Lg5/t;->d([Ljava/lang/StackTraceElement; I)Ljava/util/List; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v11
+# - v12:java.lang.StackTraceElement[]
+# - v13:int
+#
+# - return:java.util.List
+
+d-BB@0x0 : [ d-BB@0xe ]
+	0       (00000000) new-instance         v0, Ljava/util/ArrayList;
+	1       (00000004) invoke-direct        v0, Ljava/util/ArrayList;-><init>()V
+	2       (0000000a) array-length         v1, v12
+	3       (0000000c) const/4              v2, 0
+
+d-BB@0xe : [ d-BB@0x12 d-BB@0x10a ]
+	4       (0000000e) if-ge                v2, v1, +07eh
+
+d-BB@0x12 : [ d-BB@0x42 d-BB@0x56 ]
+	5       (00000012) aget-object          v3, v12, v2
+	6       (00000016) new-instance         v4, Lj5/w0;
+	7       (0000001a) invoke-direct        v4, Ljava/lang/Object;-><init>()V
+	8       (00000020) iput                 v13, v4, Lj5/w0;->e I
+	9       (00000024) iget-byte            v5, v4, Lj5/w0;->f B
+	10      (00000028) or-int/lit8          v5, v5, 4
+	11      (0000002c) int-to-byte          v5, v5
+	12      (0000002e) iput-byte            v5, v4, Lj5/w0;->f B
+	13      (00000032) invoke-virtual       v3, Ljava/lang/StackTraceElement;->isNativeMethod()Z
+	14      (00000038) move-result          v5
+	15      (0000003a) const-wide/16        v6, 0
+	16      (0000003e) if-eqz               v5, +00ch
+
+d-BB@0x42 : [ d-BB@0x58 ]
+	17      (00000042) invoke-virtual       v3, Ljava/lang/StackTraceElement;->getLineNumber()I
+	18      (00000048) move-result          v5
+	19      (0000004a) int-to-long          v8, v5
+	20      (0000004c) invoke-static        v8, v9, v6, v7, Ljava/lang/Math;->max(J J)J
+	21      (00000052) move-result-wide     v8
+	22      (00000054) goto                 +2h
+
+d-BB@0x56 : [ d-BB@0x58 ]
+	23      (00000056) move-wide            v8, v6
+
+d-BB@0x58 : [ d-BB@0xa4 d-BB@0xba ]
+	24      (00000058) new-instance         v5, Ljava/lang/StringBuilder;
+	25      (0000005c) invoke-direct        v5, Ljava/lang/StringBuilder;-><init>()V
+	26      (00000062) invoke-virtual       v3, Ljava/lang/StackTraceElement;->getClassName()Ljava/lang/String;
+	27      (00000068) move-result-object   v10
+	28      (0000006a) invoke-virtual       v5, v10, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	29      (00000070) const-string         v10, "."
+	30      (00000074) invoke-virtual       v5, v10, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	31      (0000007a) invoke-virtual       v3, Ljava/lang/StackTraceElement;->getMethodName()Ljava/lang/String;
+	32      (00000080) move-result-object   v10
+	33      (00000082) invoke-virtual       v5, v10, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	34      (00000088) invoke-virtual       v5, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	35      (0000008e) move-result-object   v5
+	36      (00000090) invoke-virtual       v3, Ljava/lang/StackTraceElement;->getFileName()Ljava/lang/String;
+	37      (00000096) move-result-object   v10
+	38      (00000098) invoke-virtual       v3, Ljava/lang/StackTraceElement;->isNativeMethod()Z
+	39      (0000009e) move-result          v11
+	40      (000000a0) if-nez               v11, +00dh
+
+d-BB@0xa4 : [ d-BB@0xb0 d-BB@0xba ]
+	41      (000000a4) invoke-virtual       v3, Ljava/lang/StackTraceElement;->getLineNumber()I
+	42      (000000aa) move-result          v11
+	43      (000000ac) if-lez               v11, +007h
+
+d-BB@0xb0 : [ d-BB@0xba ]
+	44      (000000b0) invoke-virtual       v3, Ljava/lang/StackTraceElement;->getLineNumber()I
+	45      (000000b6) move-result          v3
+	46      (000000b8) int-to-long          v6, v3
+
+d-BB@0xba : [ d-BB@0xd0 d-BB@0xfa ]
+	47      (000000ba) iput-wide            v8, v4, Lj5/w0;->a J
+	48      (000000be) iget-byte            v3, v4, Lj5/w0;->f B
+	49      (000000c2) or-int/lit8          v3, v3, 1
+	50      (000000c6) int-to-byte          v3, v3
+	51      (000000c8) iput-byte            v3, v4, Lj5/w0;->f B
+	52      (000000cc) if-eqz               v5, +017h
+
+d-BB@0xd0 : [ d-BB@0xe ]
+	53      (000000d0) iput-object          v5, v4, Lj5/w0;->b Ljava/lang/String;
+	54      (000000d4) iput-object          v10, v4, Lj5/w0;->c Ljava/lang/String;
+	55      (000000d8) iput-wide            v6, v4, Lj5/w0;->d J
+	56      (000000dc) or-int/lit8          v3, v3, 2
+	57      (000000e0) int-to-byte          v3, v3
+	58      (000000e2) iput-byte            v3, v4, Lj5/w0;->f B
+	59      (000000e6) invoke-virtual       v4, Lj5/w0;->a()Lj5/x0;
+	60      (000000ec) move-result-object   v3
+	61      (000000ee) invoke-virtual       v0, v3, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	62      (000000f4) add-int/lit8         v2, v2, 1
+	63      (000000f8) goto                 -75h
+
+d-BB@0xfa : 
+	64      (000000fa) new-instance         v12, Ljava/lang/NullPointerException;
+	65      (000000fe) const-string         v13, "Null symbol"
+	66      (00000102) invoke-direct        v12, v13, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
+	67      (00000108) throw                v12
+
+d-BB@0x10a : 
+	68      (0000010a) invoke-static        v0, Ljava/util/Collections;->unmodifiableList(Ljava/util/List;)Ljava/util/List;
+	69      (00000110) move-result-object   v12
+	70      (00000112) return-object        v12
+

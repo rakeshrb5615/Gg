@@ -1,0 +1,50 @@
+# Li5/n;->b()Z [access_flags=public synchronized]
+#
+# Parameters:
+# local registers: v0...v1
+#
+# - return:boolean
+
+b-BB@0x0 : [ b-BB@0x2 ]
+	0       (00000000) monitor-enter        v1
+
+b-BB@0x2 : [ b-BB@0x14 b-BB@0x22 ]
+	1       (00000002) invoke-virtual       v1, Li5/n;->a()V
+	2       (00000008) iget-object          v0, v1, Li5/n;->c Ljava/io/Serializable;
+	3       (0000000c) check-cast           v0, Ljava/lang/Boolean;
+	4       (00000010) if-eqz               v0, +009h
+	2:35
+	(Ljava/lang/Throwable; -> 1e b-BB@0x1e)
+
+b-BB@0x14 : [ b-BB@0x36 ]
+	5       (00000014) invoke-virtual       v0, Ljava/lang/Boolean;->booleanValue()Z
+	6       (0000001a) move-result          v0
+	7       (0000001c) goto                 +dh
+	2:35
+	(Ljava/lang/Throwable; -> 1e b-BB@0x1e)
+
+b-BB@0x1e : [ b-BB@0x3a ]
+	8       (0000001e) move-exception       v0
+	9       (00000020) goto                 +dh
+	2:35
+	(Ljava/lang/Throwable; -> 1e b-BB@0x1e)
+
+b-BB@0x22 : [ b-BB@0x36 ]
+	10      (00000022) iget-object          v0, v1, Li5/n;->d Ljava/lang/Object;
+	11      (00000026) check-cast           v0, Lcom/google/firebase/messaging/FirebaseMessaging;
+	12      (0000002a) iget-object          v0, v0, Lcom/google/firebase/messaging/FirebaseMessaging;->a Lq4/f;
+	13      (0000002e) invoke-virtual       v0, Lq4/f;->j()Z
+	14      (00000034) move-result          v0
+	2:35
+	(Ljava/lang/Throwable; -> 1e b-BB@0x1e)
+
+b-BB@0x36 : 
+	15      (00000036) monitor-exit         v1
+	16      (00000038) return               v0
+
+b-BB@0x3a : 
+	17      (0000003a) monitor-exit         v1
+	18      (0000003c) throw                v0
+	3a:3b
+	(Ljava/lang/Throwable; -> 1e b-BB@0x1e)
+

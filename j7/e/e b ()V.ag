@@ -1,0 +1,22 @@
+# Lj7/e;->b()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v2
+#
+# - return:void
+
+b-BB@0x0 : [ b-BB@0x10 b-BB@0x12 ]
+	0       (00000000) iget-object          v0, v2, Lj7/e;->a Lj7/f;
+	1       (00000004) iget                 v0, v0, Lj7/f;->n I
+	2       (00000008) iget                 v1, v2, Lj7/e;->c I
+	3       (0000000c) if-ne                v0, v1, +003h
+
+b-BB@0x10 : 
+	4       (00000010) return-void          
+
+b-BB@0x12 : 
+	5       (00000012) new-instance         v0, Ljava/util/ConcurrentModificationException;
+	6       (00000016) const-string         v1, "The backing map has been modified after this entry was obtained."
+	7       (0000001a) invoke-direct        v0, v1, Ljava/util/ConcurrentModificationException;-><init>(Ljava/lang/String;)V
+	8       (00000020) throw                v0
+

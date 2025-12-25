@@ -1,0 +1,59 @@
+# Li7/g;->d(I Ljava/util/Collection;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:int
+# - v6:java.util.Collection
+#
+# - return:void
+
+d-BB@0x0 : [ d-BB@0xe ]
+	0       (00000000) invoke-interface     v6, Ljava/util/Collection;->iterator()Ljava/util/Iterator;
+	1       (00000006) move-result-object   v0
+	2       (00000008) iget-object          v1, v4, Li7/g;->b [Ljava/lang/Object;
+	3       (0000000c) array-length         v1, v1
+
+d-BB@0xe : [ d-BB@0x12 d-BB@0x34 ]
+	4       (0000000e) if-ge                v5, v1, +013h
+
+d-BB@0x12 : [ d-BB@0x1e d-BB@0x34 ]
+	5       (00000012) invoke-interface     v0, Ljava/util/Iterator;->hasNext()Z
+	6       (00000018) move-result          v2
+	7       (0000001a) if-eqz               v2, +00dh
+
+d-BB@0x1e : [ d-BB@0xe ]
+	8       (0000001e) iget-object          v2, v4, Li7/g;->b [Ljava/lang/Object;
+	9       (00000022) invoke-interface     v0, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	10      (00000028) move-result-object   v3
+	11      (0000002a) aput-object          v3, v2, v5
+	12      (0000002e) add-int/lit8         v5, v5, 1
+	13      (00000032) goto                 -12h
+
+d-BB@0x34 : [ d-BB@0x3a ]
+	14      (00000034) iget                 v5, v4, Li7/g;->a I
+	15      (00000038) const/4              v1, 0
+
+d-BB@0x3a : [ d-BB@0x3e d-BB@0x60 ]
+	16      (0000003a) if-ge                v1, v5, +013h
+
+d-BB@0x3e : [ d-BB@0x4a d-BB@0x60 ]
+	17      (0000003e) invoke-interface     v0, Ljava/util/Iterator;->hasNext()Z
+	18      (00000044) move-result          v2
+	19      (00000046) if-eqz               v2, +00dh
+
+d-BB@0x4a : [ d-BB@0x3a ]
+	20      (0000004a) iget-object          v2, v4, Li7/g;->b [Ljava/lang/Object;
+	21      (0000004e) invoke-interface     v0, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	22      (00000054) move-result-object   v3
+	23      (00000056) aput-object          v3, v2, v1
+	24      (0000005a) add-int/lit8         v1, v1, 1
+	25      (0000005e) goto                 -12h
+
+d-BB@0x60 : 
+	26      (00000060) iget                 v5, v4, Li7/g;->c I
+	27      (00000064) invoke-interface     v6, Ljava/util/Collection;->size()I
+	28      (0000006a) move-result          v6
+	29      (0000006c) add-int/2addr        v6, v5
+	30      (0000006e) iput                 v6, v4, Li7/g;->c I
+	31      (00000072) return-void          
+

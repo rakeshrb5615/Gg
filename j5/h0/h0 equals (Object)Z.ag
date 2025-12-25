@@ -1,0 +1,54 @@
+# Lj5/h0;->equals(Ljava/lang/Object;)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:java.lang.Object
+#
+# - return:boolean
+
+equals-BB@0x0 : [ equals-BB@0x6 equals-BB@0x8 ]
+	0       (00000000) const/4              v0, 1
+	1       (00000002) if-ne                v6, v5, +003h
+
+equals-BB@0x6 : 
+	2       (00000006) return               v0
+
+equals-BB@0x8 : [ equals-BB@0x12 equals-BB@0x58 ]
+	3       (00000008) instance-of          v1, v6, Lj5/r1;
+	4       (0000000c) const/4              v2, 0
+	5       (0000000e) if-eqz               v1, +025h
+
+equals-BB@0x12 : [ equals-BB@0x30 equals-BB@0x58 ]
+	6       (00000012) check-cast           v6, Lj5/r1;
+	7       (00000016) move-object          v1, v6
+	8       (00000018) check-cast           v1, Lj5/h0;
+	9       (0000001c) iget-object          v3, v1, Lj5/h0;->a Ljava/lang/String;
+	10      (00000020) iget-object          v4, v5, Lj5/h0;->a Ljava/lang/String;
+	11      (00000024) invoke-virtual       v4, v3, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	12      (0000002a) move-result          v3
+	13      (0000002c) if-eqz               v3, +016h
+
+equals-BB@0x30 : [ equals-BB@0x38 equals-BB@0x42 ]
+	14      (00000030) instance-of          v3, v6, Lj5/h0;
+	15      (00000034) if-eqz               v3, +007h
+
+equals-BB@0x38 : [ equals-BB@0x46 ]
+	16      (00000038) check-cast           v6, Lj5/h0;
+	17      (0000003c) iget-object          v6, v6, Lj5/h0;->b [B
+	18      (00000040) goto                 +3h
+
+equals-BB@0x42 : [ equals-BB@0x46 ]
+	19      (00000042) iget-object          v6, v1, Lj5/h0;->b [B
+
+equals-BB@0x46 : [ equals-BB@0x56 equals-BB@0x58 ]
+	20      (00000046) iget-object          v1, v5, Lj5/h0;->b [B
+	21      (0000004a) invoke-static        v1, v6, Ljava/util/Arrays;->equals([B [B)Z
+	22      (00000050) move-result          v6
+	23      (00000052) if-eqz               v6, +003h
+
+equals-BB@0x56 : 
+	24      (00000056) return               v0
+
+equals-BB@0x58 : 
+	25      (00000058) return               v2
+

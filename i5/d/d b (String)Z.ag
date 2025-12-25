@@ -1,0 +1,113 @@
+# Li5/d;->b(Ljava/lang/String;)Z [access_flags=public final synchronized]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:java.lang.String
+#
+# - return:boolean
+
+b-BB@0x0 : [ b-BB@0xa ]
+	0       (00000000) const-string         v0, "Ignored entry "com.crashlytics.version-control-info" when adding custom keys. Maximum allowable: "
+	1       (00000004) const-string         v1, "com.crashlytics.version-control-info"
+	2       (00000008) monitor-enter        v5
+
+b-BB@0xa : [ b-BB@0x2c b-BB@0x6e ]
+	3       (0000000a) iget                 v2, v5, Li5/d;->c I
+	4       (0000000e) invoke-static        v2, v1, Li5/d;->a(I Ljava/lang/String;)Ljava/lang/String;
+	5       (00000014) move-result-object   v1
+	6       (00000016) iget-object          v2, v5, Li5/d;->a Ljava/util/HashMap;
+	7       (0000001a) invoke-virtual       v2, Ljava/util/HashMap;->size()I
+	8       (00000020) move-result          v2
+	9       (00000022) iget                 v3, v5, Li5/d;->b I
+	10      (00000026) const/4              v4, 0
+	11      (00000028) if-lt                v2, v3, +023h
+	a:65
+	(Ljava/lang/Throwable; -> 6a b-BB@0x6a)
+
+b-BB@0x2c : [ b-BB@0x3c b-BB@0x3e ]
+	12      (0000002c) iget-object          v2, v5, Li5/d;->a Ljava/util/HashMap;
+	13      (00000030) invoke-virtual       v2, v1, Ljava/util/HashMap;->containsKey(Ljava/lang/Object;)Z
+	14      (00000036) move-result          v2
+	15      (00000038) if-eqz               v2, +003h
+	a:65
+	(Ljava/lang/Throwable; -> 6a b-BB@0x6a)
+
+b-BB@0x3c : [ b-BB@0x6e ]
+	16      (0000003c) goto                 +19h
+	a:65
+	(Ljava/lang/Throwable; -> 6a b-BB@0x6a)
+
+b-BB@0x3e : 
+	17      (0000003e) new-instance         v6, Ljava/lang/StringBuilder;
+	18      (00000042) invoke-direct        v6, v0, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	19      (00000048) iget                 v0, v5, Li5/d;->b I
+	20      (0000004c) invoke-virtual       v6, v0, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	21      (00000052) invoke-virtual       v6, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	22      (00000058) move-result-object   v6
+	23      (0000005a) const-string         v0, "FirebaseCrashlytics"
+	24      (0000005e) const/4              v1, 0
+	25      (00000060) invoke-static        v0, v6, v1, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+	26      (00000066) monitor-exit         v5
+	27      (00000068) return               v4
+
+b-BB@0x6a : [ b-BB@0xba ]
+	28      (0000006a) move-exception       v6
+	29      (0000006c) goto                 +27h
+
+b-BB@0x6e : [ b-BB@0x90 b-BB@0x9c ]
+	30      (0000006e) iget                 v0, v5, Li5/d;->c I
+	31      (00000072) invoke-static        v0, v6, Li5/d;->a(I Ljava/lang/String;)Ljava/lang/String;
+	32      (00000078) move-result-object   v6
+	33      (0000007a) iget-object          v0, v5, Li5/d;->a Ljava/util/HashMap;
+	34      (0000007e) invoke-virtual       v0, v1, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	35      (00000084) move-result-object   v0
+	36      (00000086) check-cast           v0, Ljava/lang/String;
+	37      (0000008a) const/4              v2, 1
+	38      (0000008c) if-nez               v0, +008h
+	6e:a3
+	(Ljava/lang/Throwable; -> 6a b-BB@0x6a)
+
+b-BB@0x90 : [ b-BB@0x94 b-BB@0x98 ]
+	39      (00000090) if-nez               v6, +004h
+	6e:a3
+	(Ljava/lang/Throwable; -> 6a b-BB@0x6a)
+
+b-BB@0x94 : [ b-BB@0xa4 ]
+	40      (00000094) move                 v0, v2
+	41      (00000096) goto                 +7h
+	6e:a3
+	(Ljava/lang/Throwable; -> 6a b-BB@0x6a)
+
+b-BB@0x98 : [ b-BB@0xa4 ]
+	42      (00000098) move                 v0, v4
+	43      (0000009a) goto                 +5h
+	6e:a3
+	(Ljava/lang/Throwable; -> 6a b-BB@0x6a)
+
+b-BB@0x9c : [ b-BB@0xa4 ]
+	44      (0000009c) invoke-virtual       v0, v6, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	45      (000000a2) move-result          v0
+	6e:a3
+	(Ljava/lang/Throwable; -> 6a b-BB@0x6a)
+
+b-BB@0xa4 : [ b-BB@0xa8 b-BB@0xac ]
+	46      (000000a4) if-eqz               v0, +004h
+
+b-BB@0xa8 : 
+	47      (000000a8) monitor-exit         v5
+	48      (000000aa) return               v4
+
+b-BB@0xac : 
+	49      (000000ac) iget-object          v0, v5, Li5/d;->a Ljava/util/HashMap;
+	50      (000000b0) invoke-virtual       v0, v1, v6, Ljava/util/HashMap;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	51      (000000b6) monitor-exit         v5
+	52      (000000b8) return               v2
+	ac:b5
+	(Ljava/lang/Throwable; -> 6a b-BB@0x6a)
+
+b-BB@0xba : 
+	53      (000000ba) monitor-exit         v5
+	54      (000000bc) throw                v6
+	ba:bb
+	(Ljava/lang/Throwable; -> 6a b-BB@0x6a)
+

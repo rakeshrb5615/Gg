@@ -1,0 +1,130 @@
+# Li8/m;->a(Ljava/lang/Object;)I [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v14
+# - v15:java.lang.Object
+#
+# - return:int
+
+a-BB@0x0 : [ a-BB@0x1e a-BB@0x30 ]
+	0       (00000000) sget-object          v0, Li8/m;->f Ljava/util/concurrent/atomic/AtomicLongFieldUpdater;
+	1       (00000004) invoke-virtual       v0, v14, Ljava/util/concurrent/atomic/AtomicLongFieldUpdater;->get(Ljava/lang/Object;)J
+	2       (0000000a) move-result-wide     v3
+	3       (0000000c) const-wide/high16    v1, 3458764513820540928
+	4       (00000010) and-long/2addr       v1, v3
+	5       (00000012) const-wide/16        v7, 0
+	6       (00000016) cmp-long             v1, v1, v7
+	7       (0000001a) if-eqz               v1, +00bh
+
+a-BB@0x1e : [ a-BB@0x2c a-BB@0x9e ]
+	8       (0000001e) const-wide/high16    v0, 2305843009213693952
+	9       (00000022) and-long/2addr       v0, v3
+	10      (00000024) cmp-long             v15, v0, v7
+	11      (00000028) if-eqz               v15, +03bh
+
+a-BB@0x2c : 
+	12      (0000002c) const/4              v15, 2
+	13      (0000002e) return               v15
+
+a-BB@0x30 : [ a-BB@0x60 a-BB@0x62 ]
+	14      (00000030) const-wide/32        v1, 1073741823
+	15      (00000036) and-long/2addr       v1, v3
+	16      (00000038) long-to-int          v1, v1
+	17      (0000003a) const-wide           v5, 1152921503533105152
+	18      (00000044) and-long/2addr       v5, v3
+	19      (00000046) const/16             v2, 30
+	20      (0000004a) shr-long/2addr       v5, v2
+	21      (0000004c) long-to-int          v9, v5
+	22      (0000004e) add-int/lit8         v5, v9, 2
+	23      (00000052) iget                 v10, v14, Li8/m;->c I
+	24      (00000056) and-int/2addr        v5, v10
+	25      (00000058) and-int              v6, v1, v10
+	26      (0000005c) if-ne                v5, v6, +003h
+
+a-BB@0x60 : [ a-BB@0x9e ]
+	27      (00000060) goto                 +1fh
+
+a-BB@0x62 : [ a-BB@0x74 a-BB@0xa2 ]
+	28      (00000062) iget-boolean         v5, v14, Li8/m;->b Z
+	29      (00000066) const                v6, 1073741823
+	30      (0000006c) iget-object          v11, v14, Li8/m;->d Ljava/util/concurrent/atomic/AtomicReferenceArray;
+	31      (00000070) if-nez               v5, +019h
+
+a-BB@0x74 : [ a-BB@0x84 a-BB@0xa2 ]
+	32      (00000074) and-int              v5, v9, v10
+	33      (00000078) invoke-virtual       v11, v5, Ljava/util/concurrent/atomic/AtomicReferenceArray;->get(I)Ljava/lang/Object;
+	34      (0000007e) move-result-object   v5
+	35      (00000080) if-eqz               v5, +011h
+
+a-BB@0x84 : [ a-BB@0x90 a-BB@0x9e ]
+	36      (00000084) const/16             v0, 1024
+	37      (00000088) iget                 v2, v14, Li8/m;->a I
+	38      (0000008c) if-lt                v2, v0, +009h
+
+a-BB@0x90 : [ a-BB@0x9e a-BB@0x0 ]
+	39      (00000090) sub-int/2addr        v9, v1
+	40      (00000092) and-int              v0, v9, v6
+	41      (00000096) shr-int/lit8         v1, v2, 1
+	42      (0000009a) if-le                v0, v1, -04dh
+
+a-BB@0x9e : 
+	43      (0000009e) const/4              v15, 1
+	44      (000000a0) return               v15
+
+a-BB@0xa2 : [ a-BB@0xce a-BB@0x0 ]
+	45      (000000a2) add-int/lit8         v1, v9, 1
+	46      (000000a6) and-int/2addr        v1, v6
+	47      (000000a8) const-wide           v5, -1152921503533105153
+	48      (000000b2) and-long/2addr       v5, v3
+	49      (000000b4) int-to-long          v12, v1
+	50      (000000b6) shl-long             v1, v12, v2
+	51      (000000ba) or-long/2addr        v5, v1
+	52      (000000bc) sget-object          v1, Li8/m;->f Ljava/util/concurrent/atomic/AtomicLongFieldUpdater;
+	53      (000000c0) move-object          v2, v14
+	54      (000000c2) invoke-virtual/range v1 ... v6, Ljava/util/concurrent/atomic/AtomicLongFieldUpdater;->compareAndSet(Ljava/lang/Object; J J)Z
+	55      (000000c8) move-result          v1
+	56      (000000ca) if-eqz               v1, -065h
+
+a-BB@0xce : [ a-BB@0xda ]
+	57      (000000ce) and-int              v1, v9, v10
+	58      (000000d2) invoke-virtual       v11, v1, v15, Ljava/util/concurrent/atomic/AtomicReferenceArray;->set(I Ljava/lang/Object;)V
+	59      (000000d8) move-object          v1, v14
+
+a-BB@0xda : [ a-BB@0xf0 a-BB@0x12c ]
+	60      (000000da) invoke-virtual       v0, v1, Ljava/util/concurrent/atomic/AtomicLongFieldUpdater;->get(Ljava/lang/Object;)J
+	61      (000000e0) move-result-wide     v2
+	62      (000000e2) const-wide/high16    v4, 1152921504606846976
+	63      (000000e6) and-long/2addr       v2, v4
+	64      (000000e8) cmp-long             v2, v2, v7
+	65      (000000ec) if-eqz               v2, +020h
+
+a-BB@0xf0 : [ a-BB@0x112 a-BB@0x126 ]
+	66      (000000f0) invoke-virtual       v1, Li8/m;->c()Li8/m;
+	67      (000000f6) move-result-object   v1
+	68      (000000f8) iget-object          v2, v1, Li8/m;->d Ljava/util/concurrent/atomic/AtomicReferenceArray;
+	69      (000000fc) iget                 v3, v1, Li8/m;->c I
+	70      (00000100) and-int/2addr        v3, v9
+	71      (00000102) invoke-virtual       v2, v3, Ljava/util/concurrent/atomic/AtomicReferenceArray;->get(I)Ljava/lang/Object;
+	72      (00000108) move-result-object   v4
+	73      (0000010a) instance-of          v5, v4, Li8/l;
+	74      (0000010e) if-eqz               v5, +00ch
+
+a-BB@0x112 : [ a-BB@0x11e a-BB@0x126 ]
+	75      (00000112) check-cast           v4, Li8/l;
+	76      (00000116) iget                 v4, v4, Li8/l;->a I
+	77      (0000011a) if-ne                v4, v9, +006h
+
+a-BB@0x11e : [ a-BB@0x128 ]
+	78      (0000011e) invoke-virtual       v2, v3, v15, Ljava/util/concurrent/atomic/AtomicReferenceArray;->set(I Ljava/lang/Object;)V
+	79      (00000124) goto                 +2h
+
+a-BB@0x126 : [ a-BB@0x128 ]
+	80      (00000126) const/4              v1, 0
+
+a-BB@0x128 : [ a-BB@0x12c a-BB@0xda ]
+	81      (00000128) if-nez               v1, -027h
+
+a-BB@0x12c : 
+	82      (0000012c) const/4              v15, 0
+	83      (0000012e) return               v15
+

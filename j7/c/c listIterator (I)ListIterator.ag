@@ -1,0 +1,29 @@
+# Lj7/c;->listIterator(I)Ljava/util/ListIterator; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:int
+#
+# - return:java.util.ListIterator
+
+listIterator-BB@0x0 : [ listIterator-BB@0x8 listIterator-BB@0x18 ]
+	0       (00000000) iget                 v0, v4, Lj7/c;->b I
+	1       (00000004) if-ltz               v5, +00ah
+
+listIterator-BB@0x8 : [ listIterator-BB@0xc listIterator-BB@0x18 ]
+	2       (00000008) if-gt                v5, v0, +008h
+
+listIterator-BB@0xc : 
+	3       (0000000c) new-instance         v0, Lj7/a;
+	4       (00000010) invoke-direct        v0, v4, v5, Lj7/a;-><init>(Lj7/c; I)V
+	5       (00000016) return-object        v0
+
+listIterator-BB@0x18 : 
+	6       (00000018) new-instance         v1, Ljava/lang/IndexOutOfBoundsException;
+	7       (0000001c) const-string         v2, "index: "
+	8       (00000020) const-string         v3, ", size: "
+	9       (00000024) invoke-static        v2, v5, v0, v3, Lv1/a;->i(Ljava/lang/String; I I Ljava/lang/String;)Ljava/lang/String;
+	10      (0000002a) move-result-object   v5
+	11      (0000002c) invoke-direct        v1, v5, Ljava/lang/IndexOutOfBoundsException;-><init>(Ljava/lang/String;)V
+	12      (00000032) throw                v1
+

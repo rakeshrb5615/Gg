@@ -1,0 +1,33 @@
+# Lg5/g;->h(Ljava/lang/String;)Ljava/lang/String; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:java.lang.String
+#
+# - return:java.lang.String
+
+h-BB@0x0 : [ h-BB@0xc ]
+	0       (00000000) const-string         v0, "SHA-1"
+	1       (00000004) invoke-virtual       v2, Ljava/lang/String;->getBytes()[B
+	2       (0000000a) move-result-object   v2
+
+h-BB@0xc : 
+	3       (0000000c) invoke-static        v0, Ljava/security/MessageDigest;->getInstance(Ljava/lang/String;)Ljava/security/MessageDigest;
+	4       (00000012) move-result-object   v0
+	5       (00000014) invoke-virtual       v0, v2, Ljava/security/MessageDigest;->update([B)V
+	6       (0000001a) invoke-virtual       v0, Ljava/security/MessageDigest;->digest()[B
+	7       (00000020) move-result-object   v2
+	8       (00000022) invoke-static        v2, Lg5/g;->e([B)Ljava/lang/String;
+	9       (00000028) move-result-object   v2
+	10      (0000002a) return-object        v2
+	c:13
+	(Ljava/security/NoSuchAlgorithmException; -> 2c h-BB@0x2c)
+
+h-BB@0x2c : 
+	11      (0000002c) move-exception       v2
+	12      (0000002e) const-string         v0, "Could not create hashing algorithm: SHA-1, returning empty string."
+	13      (00000032) const-string         v1, "FirebaseCrashlytics"
+	14      (00000036) invoke-static        v1, v0, v2, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+	15      (0000003c) const-string         v2, ""
+	16      (00000040) return-object        v2
+

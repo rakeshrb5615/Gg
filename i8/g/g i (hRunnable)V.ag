@@ -1,0 +1,61 @@
+# Li8/g;->i(Ll7/h; Ljava/lang/Runnable;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:l7.h
+# - v4:java.lang.Runnable
+#
+# - return:void
+
+i-BB@0x0 : [ i-BB@0x1e i-BB@0x6a ]
+	0       (00000000) iget-object          v3, v2, Li8/g;->f Li8/k;
+	1       (00000004) invoke-virtual       v3, v4, Li8/k;->a(Ljava/lang/Runnable;)Z
+	2       (0000000a) sget-object          v3, Li8/g;->n Ljava/util/concurrent/atomic/AtomicIntegerFieldUpdater;
+	3       (0000000e) invoke-virtual       v3, v2, Ljava/util/concurrent/atomic/AtomicIntegerFieldUpdater;->get(Ljava/lang/Object;)I
+	4       (00000014) move-result          v4
+	5       (00000016) iget                 v0, v2, Li8/g;->e I
+	6       (0000001a) if-ge                v4, v0, +028h
+
+i-BB@0x1e : [ i-BB@0x24 ]
+	7       (0000001e) iget-object          v4, v2, Li8/g;->m Ljava/lang/Object;
+	8       (00000022) monitor-enter        v4
+
+i-BB@0x24 : [ i-BB@0x34 i-BB@0x38 ]
+	9       (00000024) invoke-virtual       v3, v2, Ljava/util/concurrent/atomic/AtomicIntegerFieldUpdater;->get(Ljava/lang/Object;)I
+	10      (0000002a) move-result          v0
+	11      (0000002c) iget                 v1, v2, Li8/g;->e I
+	12      (00000030) if-lt                v0, v1, +004h
+	24:2f
+	(Ljava/lang/Throwable; -> 64 i-BB@0x64)
+
+i-BB@0x34 : 
+	13      (00000034) monitor-exit         v4
+	14      (00000036) return-void          
+
+i-BB@0x38 : [ i-BB@0x4c i-BB@0x4e ]
+	15      (00000038) invoke-virtual       v3, v2, Ljava/util/concurrent/atomic/AtomicIntegerFieldUpdater;->incrementAndGet(Ljava/lang/Object;)I
+	16      (0000003e) monitor-exit         v4
+	17      (00000040) invoke-virtual       v2, Li8/g;->y()Ljava/lang/Runnable;
+	18      (00000046) move-result-object   v3
+	19      (00000048) if-nez               v3, +003h
+	38:3d
+	(Ljava/lang/Throwable; -> 64 i-BB@0x64)
+
+i-BB@0x4c : [ i-BB@0x6a ]
+	20      (0000004c) goto                 +fh
+
+i-BB@0x4e : 
+	21      (0000004e) new-instance         v4, Lb5/l;
+	22      (00000052) invoke-direct        v4, v2, v3, Lb5/l;-><init>(Li8/g; Ljava/lang/Runnable;)V
+	23      (00000058) iget-object          v3, v2, Li8/g;->d Ld8/a0;
+	24      (0000005c) invoke-virtual       v3, v2, v4, Ld8/a0;->i(Ll7/h; Ljava/lang/Runnable;)V
+	25      (00000062) return-void          
+
+i-BB@0x64 : 
+	26      (00000064) move-exception       v3
+	27      (00000066) monitor-exit         v4
+	28      (00000068) throw                v3
+
+i-BB@0x6a : 
+	29      (0000006a) return-void          
+

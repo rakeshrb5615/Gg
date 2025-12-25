@@ -1,0 +1,80 @@
+# Lg1/i;-><init>(Lg1/q;)V [access_flags=public constructor]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:g1.q
+#
+# - return:void
+
+<init>-BB@0x0 : [ <init>-BB@0x8e <init>-BB@0xaa ]
+	0       (00000000) invoke-direct        v5, Ljava/lang/Object;-><init>()V
+	1       (00000006) new-instance         v0, Ljava/util/concurrent/locks/ReentrantReadWriteLock;
+	2       (0000000a) invoke-direct        v0, Ljava/util/concurrent/locks/ReentrantReadWriteLock;-><init>()V
+	3       (00000010) iput-object          v0, v5, Lg1/i;->a Ljava/util/concurrent/locks/ReentrantReadWriteLock;
+	4       (00000014) const/4              v1, 3
+	5       (00000016) iput                 v1, v5, Lg1/i;->c I
+	6       (0000001a) iget-object          v1, v6, La2/e0;->b Ljava/lang/Object;
+	7       (0000001e) check-cast           v1, Lg1/h;
+	8       (00000022) iput-object          v1, v5, Lg1/i;->f Lg1/h;
+	9       (00000026) iget                 v2, v6, La2/e0;->a I
+	10      (0000002a) iput                 v2, v5, Lg1/i;->h I
+	11      (0000002e) iget-object          v6, v6, La2/e0;->c Ljava/lang/Object;
+	12      (00000032) check-cast           v6, Lg1/d;
+	13      (00000036) iput-object          v6, v5, Lg1/i;->i Lg1/d;
+	14      (0000003a) new-instance         v6, Landroid/os/Handler;
+	15      (0000003e) invoke-static        Landroid/os/Looper;->getMainLooper()Landroid/os/Looper;
+	16      (00000044) move-result-object   v3
+	17      (00000046) invoke-direct        v6, v3, Landroid/os/Handler;-><init>(Landroid/os/Looper;)V
+	18      (0000004c) iput-object          v6, v5, Lg1/i;->d Landroid/os/Handler;
+	19      (00000050) new-instance         v6, Lr/f;
+	20      (00000054) const/4              v3, 0
+	21      (00000056) invoke-direct        v6, v3, Lr/f;-><init>(I)V
+	22      (0000005c) iput-object          v6, v5, Lg1/i;->b Lr/f;
+	23      (00000060) new-instance         v6, La6/e;
+	24      (00000064) invoke-direct        v6, Ljava/lang/Object;-><init>()V
+	25      (0000006a) iput-object          v6, v5, Lg1/i;->g La6/e;
+	26      (0000006e) new-instance         v6, Lc5/b;
+	27      (00000072) invoke-direct        v6, v5, Lc5/b;-><init>(Lg1/i;)V
+	28      (00000078) iput-object          v6, v5, Lg1/i;->e Lc5/b;
+	29      (0000007c) invoke-virtual       v0, Ljava/util/concurrent/locks/ReentrantReadWriteLock;->writeLock()Ljava/util/concurrent/locks/Lock;
+	30      (00000082) move-result-object   v4
+	31      (00000084) invoke-interface     v4, Ljava/util/concurrent/locks/Lock;->lock()V
+	32      (0000008a) if-nez               v2, +010h
+
+<init>-BB@0x8e : [ <init>-BB@0xaa ]
+	33      (0000008e) iput                 v3, v5, Lg1/i;->c I
+	34      (00000092) goto                 +ch
+	8e:91
+	(Ljava/lang/Throwable; -> 94 <init>-BB@0x94)
+
+<init>-BB@0x94 : 
+	35      (00000094) move-exception       v6
+	36      (00000096) iget-object          v0, v5, Lg1/i;->a Ljava/util/concurrent/locks/ReentrantReadWriteLock;
+	37      (0000009a) invoke-virtual       v0, Ljava/util/concurrent/locks/ReentrantReadWriteLock;->writeLock()Ljava/util/concurrent/locks/Lock;
+	38      (000000a0) move-result-object   v0
+	39      (000000a2) invoke-interface     v0, Ljava/util/concurrent/locks/Lock;->unlock()V
+	40      (000000a8) throw                v6
+
+<init>-BB@0xaa : [ <init>-BB@0xc4 <init>-BB@0xde ]
+	41      (000000aa) invoke-virtual       v0, Ljava/util/concurrent/locks/ReentrantReadWriteLock;->writeLock()Ljava/util/concurrent/locks/Lock;
+	42      (000000b0) move-result-object   v0
+	43      (000000b2) invoke-interface     v0, Ljava/util/concurrent/locks/Lock;->unlock()V
+	44      (000000b8) invoke-virtual       v5, Lg1/i;->b()I
+	45      (000000be) move-result          v0
+	46      (000000c0) if-nez               v0, +00fh
+
+<init>-BB@0xc4 : 
+	47      (000000c4) new-instance         v0, Lg1/e;
+	48      (000000c8) invoke-direct        v0, v6, Lg1/e;-><init>(Lc5/b;)V
+	49      (000000ce) invoke-interface     v1, v0, Lg1/h;->a(Lq4/b;)V
+	50      (000000d4) return-void          
+	c4:d3
+	(Ljava/lang/Throwable; -> d6 <init>-BB@0xd6)
+
+<init>-BB@0xd6 : [ <init>-BB@0xde ]
+	51      (000000d6) move-exception       v6
+	52      (000000d8) invoke-virtual       v5, v6, Lg1/i;->d(Ljava/lang/Throwable;)V
+
+<init>-BB@0xde : 
+	53      (000000de) return-void          
+

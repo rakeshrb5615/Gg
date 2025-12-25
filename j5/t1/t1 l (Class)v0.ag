@@ -1,0 +1,82 @@
+# Lj5/t1;->l(Ljava/lang/Class;)Landroidx/lifecycle/v0; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:java.lang.Class
+#
+# - return:androidx.lifecycle.v0
+
+l-BB@0x0 : [ l-BB@0x6 ]
+	0       (00000000) const-string         v0, "Cannot create an instance of "
+	1       (00000004) const/4              v1, 0
+
+l-BB@0x6 : [ l-BB@0x22 l-BB@0x86 ]
+	2       (00000006) invoke-virtual       v4, v1, Ljava/lang/Class;->getDeclaredConstructor([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
+	3       (0000000c) move-result-object   v2
+	4       (0000000e) invoke-virtual       v2, Ljava/lang/reflect/Constructor;->getModifiers()I
+	5       (00000014) move-result          v3
+	6       (00000016) invoke-static        v3, Ljava/lang/reflect/Modifier;->isPublic(I)Z
+	7       (0000001c) move-result          v3
+	8       (0000001e) if-eqz               v3, +034h
+	6:d
+	(Ljava/lang/NoSuchMethodException; -> aa l-BB@0xaa)
+
+l-BB@0x22 : 
+	9       (00000022) invoke-virtual       v2, v1, Ljava/lang/reflect/Constructor;->newInstance([Ljava/lang/Object;)Ljava/lang/Object;
+	10      (00000028) move-result-object   v1
+	11      (0000002a) invoke-static        v1, Lkotlin/jvm/internal/j;->b(Ljava/lang/Object;)V
+	12      (00000030) check-cast           v1, Landroidx/lifecycle/v0;
+	13      (00000034) return-object        v1
+	22:33
+	(Ljava/lang/InstantiationException; -> 3a l-BB@0x3a)
+	(Ljava/lang/IllegalAccessException; -> 36 l-BB@0x36)
+
+l-BB@0x36 : [ l-BB@0x3e ]
+	14      (00000036) move-exception       v1
+	15      (00000038) goto                 +3h
+
+l-BB@0x3a : [ l-BB@0x62 ]
+	16      (0000003a) move-exception       v1
+	17      (0000003c) goto                 +13h
+
+l-BB@0x3e : 
+	18      (0000003e) new-instance         v2, Ljava/lang/RuntimeException;
+	19      (00000042) new-instance         v3, Ljava/lang/StringBuilder;
+	20      (00000046) invoke-direct        v3, v0, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	21      (0000004c) invoke-virtual       v3, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	22      (00000052) invoke-virtual       v3, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	23      (00000058) move-result-object   v4
+	24      (0000005a) invoke-direct        v2, v4, v1, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	25      (00000060) throw                v2
+
+l-BB@0x62 : 
+	26      (00000062) new-instance         v2, Ljava/lang/RuntimeException;
+	27      (00000066) new-instance         v3, Ljava/lang/StringBuilder;
+	28      (0000006a) invoke-direct        v3, v0, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	29      (00000070) invoke-virtual       v3, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	30      (00000076) invoke-virtual       v3, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	31      (0000007c) move-result-object   v4
+	32      (0000007e) invoke-direct        v2, v4, v1, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	33      (00000084) throw                v2
+
+l-BB@0x86 : 
+	34      (00000086) new-instance         v1, Ljava/lang/RuntimeException;
+	35      (0000008a) new-instance         v2, Ljava/lang/StringBuilder;
+	36      (0000008e) invoke-direct        v2, v0, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	37      (00000094) invoke-virtual       v2, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	38      (0000009a) invoke-virtual       v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	39      (000000a0) move-result-object   v4
+	40      (000000a2) invoke-direct        v1, v4, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
+	41      (000000a8) throw                v1
+
+l-BB@0xaa : 
+	42      (000000aa) move-exception       v1
+	43      (000000ac) new-instance         v2, Ljava/lang/RuntimeException;
+	44      (000000b0) new-instance         v3, Ljava/lang/StringBuilder;
+	45      (000000b4) invoke-direct        v3, v0, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	46      (000000ba) invoke-virtual       v3, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	47      (000000c0) invoke-virtual       v3, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	48      (000000c6) move-result-object   v4
+	49      (000000c8) invoke-direct        v2, v4, v1, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	50      (000000ce) throw                v2
+

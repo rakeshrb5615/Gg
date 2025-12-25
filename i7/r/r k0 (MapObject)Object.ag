@@ -1,0 +1,50 @@
+# Li7/r;->k0(Ljava/util/Map; Ljava/lang/Object;)Ljava/lang/Object; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:java.util.Map
+# - v3:java.lang.Object
+#
+# - return:java.lang.Object
+
+k0-BB@0x0 : [ k0-BB@0x12 k0-BB@0x20 ]
+	0       (00000000) const-string         v0, "<this>"
+	1       (00000004) invoke-static        v2, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) instance-of          v0, v2, Li7/q;
+	3       (0000000e) if-eqz               v0, +009h
+
+k0-BB@0x12 : 
+	4       (00000012) check-cast           v2, Li7/q;
+	5       (00000016) invoke-interface     v2, Li7/q;->a()Ljava/lang/Object;
+	6       (0000001c) move-result-object   v2
+	7       (0000001e) return-object        v2
+
+k0-BB@0x20 : [ k0-BB@0x2c k0-BB@0x6c ]
+	8       (00000020) invoke-interface     v2, v3, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	9       (00000026) move-result-object   v0
+	10      (00000028) if-nez               v0, +022h
+
+k0-BB@0x2c : [ k0-BB@0x38 k0-BB@0x3a ]
+	11      (0000002c) invoke-interface     v2, v3, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z
+	12      (00000032) move-result          v2
+	13      (00000034) if-eqz               v2, +003h
+
+k0-BB@0x38 : [ k0-BB@0x6c ]
+	14      (00000038) goto                 +1ah
+
+k0-BB@0x3a : 
+	15      (0000003a) new-instance         v2, Ljava/util/NoSuchElementException;
+	16      (0000003e) new-instance         v0, Ljava/lang/StringBuilder;
+	17      (00000042) const-string         v1, "Key "
+	18      (00000046) invoke-direct        v0, v1, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	19      (0000004c) invoke-virtual       v0, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	20      (00000052) const-string         v3, " is missing in the map."
+	21      (00000056) invoke-virtual       v0, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	22      (0000005c) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	23      (00000062) move-result-object   v3
+	24      (00000064) invoke-direct        v2, v3, Ljava/util/NoSuchElementException;-><init>(Ljava/lang/String;)V
+	25      (0000006a) throw                v2
+
+k0-BB@0x6c : 
+	26      (0000006c) return-object        v0
+

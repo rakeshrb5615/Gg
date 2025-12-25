@@ -1,0 +1,43 @@
+# Lj6/s;->f(Ll/a;)Ll/e; [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:l.a
+#
+# - return:l.e
+
+f-BB@0x0 : [ f-BB@0x12 ]
+	0       (00000000) iget-object          v0, v5, Lj6/s;->d Ljava/lang/Object;
+	1       (00000004) check-cast           v0, Ljava/util/ArrayList;
+	2       (00000008) invoke-virtual       v0, Ljava/util/ArrayList;->size()I
+	3       (0000000e) move-result          v1
+	4       (00000010) const/4              v2, 0
+
+f-BB@0x12 : [ f-BB@0x16 f-BB@0x36 ]
+	5       (00000012) if-ge                v2, v1, +012h
+
+f-BB@0x16 : [ f-BB@0x26 f-BB@0x30 ]
+	6       (00000016) invoke-virtual       v0, v2, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	7       (0000001c) move-result-object   v3
+	8       (0000001e) check-cast           v3, Ll/e;
+	9       (00000022) if-eqz               v3, +007h
+
+f-BB@0x26 : [ f-BB@0x2e f-BB@0x30 ]
+	10      (00000026) iget-object          v4, v3, Ll/e;->b Ll/a;
+	11      (0000002a) if-ne                v4, v6, +003h
+
+f-BB@0x2e : 
+	12      (0000002e) return-object        v3
+
+f-BB@0x30 : [ f-BB@0x12 ]
+	13      (00000030) add-int/lit8         v2, v2, 1
+	14      (00000034) goto                 -11h
+
+f-BB@0x36 : 
+	15      (00000036) new-instance         v1, Ll/e;
+	16      (0000003a) iget-object          v2, v5, Lj6/s;->c Ljava/lang/Object;
+	17      (0000003e) check-cast           v2, Landroid/content/Context;
+	18      (00000042) invoke-direct        v1, v2, v6, Ll/e;-><init>(Landroid/content/Context; Ll/a;)V
+	19      (00000048) invoke-virtual       v0, v1, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	20      (0000004e) return-object        v1
+

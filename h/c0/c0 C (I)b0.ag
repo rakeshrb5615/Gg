@@ -1,0 +1,44 @@
+# Lh/c0;->C(I)Lh/b0; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:int
+#
+# - return:h.b0
+
+C-BB@0x0 : [ C-BB@0xa C-BB@0x10 ]
+	0       (00000000) iget-object          v0, v4, Lh/c0;->S [Lh/b0;
+	1       (00000004) const/4              v1, 0
+	2       (00000006) if-eqz               v0, +005h
+
+C-BB@0xa : [ C-BB@0x10 C-BB@0x2a ]
+	3       (0000000a) array-length         v2, v0
+	4       (0000000c) if-gt                v2, v5, +00fh
+
+C-BB@0x10 : [ C-BB@0x1c C-BB@0x24 ]
+	5       (00000010) add-int/lit8         v2, v5, 1
+	6       (00000014) new-array            v2, v2, [Lh/b0;
+	7       (00000018) if-eqz               v0, +006h
+
+C-BB@0x1c : [ C-BB@0x24 ]
+	8       (0000001c) array-length         v3, v0
+	9       (0000001e) invoke-static        v0, v1, v2, v1, v3, Ljava/lang/System;->arraycopy(Ljava/lang/Object; I Ljava/lang/Object; I I)V
+
+C-BB@0x24 : [ C-BB@0x2a ]
+	10      (00000024) iput-object          v2, v4, Lh/c0;->S [Lh/b0;
+	11      (00000028) move-object          v0, v2
+
+C-BB@0x2a : [ C-BB@0x32 C-BB@0x48 ]
+	12      (0000002a) aget-object          v2, v0, v5
+	13      (0000002e) if-nez               v2, +00dh
+
+C-BB@0x32 : [ C-BB@0x48 ]
+	14      (00000032) new-instance         v2, Lh/b0;
+	15      (00000036) invoke-direct        v2, Ljava/lang/Object;-><init>()V
+	16      (0000003c) iput                 v5, v2, Lh/b0;->a I
+	17      (00000040) iput-boolean         v1, v2, Lh/b0;->n Z
+	18      (00000044) aput-object          v2, v0, v5
+
+C-BB@0x48 : 
+	19      (00000048) return-object        v2
+

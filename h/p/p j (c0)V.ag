@@ -1,0 +1,65 @@
+# Lh/p;->j(Lh/c0;)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:h.c0
+#
+# - return:void
+
+j-BB@0x0 : [ j-BB@0x6 ]
+	0       (00000000) sget-object          v0, Lh/p;->n Ljava/lang/Object;
+	1       (00000004) monitor-enter        v0
+
+j-BB@0x6 : [ j-BB@0x1a ]
+	2       (00000006) sget-object          v1, Lh/p;->m Lr/f;
+	3       (0000000a) invoke-virtual       v1, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	4       (00000010) new-instance         v2, Lr/a;
+	5       (00000014) invoke-direct        v2, v1, Lr/a;-><init>(Lr/f;)V
+	6:57
+	(Ljava/lang/Throwable; -> 4e j-BB@0x4e)
+
+j-BB@0x1a : [ j-BB@0x26 j-BB@0x52 ]
+	6       (0000001a) invoke-virtual       v2, Lr/a;->hasNext()Z
+	7       (00000020) move-result          v1
+	8       (00000022) if-eqz               v1, +018h
+	6:57
+	(Ljava/lang/Throwable; -> 4e j-BB@0x4e)
+
+j-BB@0x26 : [ j-BB@0x42 j-BB@0x46 ]
+	9       (00000026) invoke-virtual       v2, Lr/a;->next()Ljava/lang/Object;
+	10      (0000002c) move-result-object   v1
+	11      (0000002e) check-cast           v1, Ljava/lang/ref/WeakReference;
+	12      (00000032) invoke-virtual       v1, Ljava/lang/ref/Reference;->get()Ljava/lang/Object;
+	13      (00000038) move-result-object   v1
+	14      (0000003a) check-cast           v1, Lh/p;
+	15      (0000003e) if-eq                v1, v3, +004h
+	6:57
+	(Ljava/lang/Throwable; -> 4e j-BB@0x4e)
+
+j-BB@0x42 : [ j-BB@0x46 j-BB@0x1a ]
+	16      (00000042) if-nez               v1, -014h
+	6:57
+	(Ljava/lang/Throwable; -> 4e j-BB@0x4e)
+
+j-BB@0x46 : [ j-BB@0x1a ]
+	17      (00000046) invoke-virtual       v2, Lr/a;->remove()V
+	18      (0000004c) goto                 -19h
+	6:57
+	(Ljava/lang/Throwable; -> 4e j-BB@0x4e)
+
+j-BB@0x4e : [ j-BB@0x56 ]
+	19      (0000004e) move-exception       v3
+	20      (00000050) goto                 +3h
+	6:57
+	(Ljava/lang/Throwable; -> 4e j-BB@0x4e)
+
+j-BB@0x52 : 
+	21      (00000052) monitor-exit         v0
+	22      (00000054) return-void          
+	6:57
+	(Ljava/lang/Throwable; -> 4e j-BB@0x4e)
+
+j-BB@0x56 : 
+	23      (00000056) monitor-exit         v0
+	24      (00000058) throw                v3
+

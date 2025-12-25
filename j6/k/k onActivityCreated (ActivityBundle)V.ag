@@ -1,0 +1,195 @@
+# Lj6/k;->onActivityCreated(Landroid/app/Activity; Landroid/os/Bundle;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:android.app.Activity
+# - v7:android.os.Bundle
+#
+# - return:void
+
+onActivityCreated-BB@0x0 : [ onActivityCreated-BB@0xc onActivityCreated-BB@0x10 ]
+	0       (00000000) invoke-virtual       v6, Landroid/app/Activity;->getIntent()Landroid/content/Intent;
+	1       (00000006) move-result-object   v6
+	2       (00000008) if-nez               v6, +004h
+
+onActivityCreated-BB@0xc : [ onActivityCreated-BB@0x19e ]
+	3       (0000000c) goto/16              +0c9h
+
+onActivityCreated-BB@0x10 : [ onActivityCreated-BB@0x1a ]
+	4       (00000010) const-string         v7, "FirebaseMessaging"
+	5       (00000014) iget-object          v0, v5, Lj6/k;->a Ljava/util/ArrayDeque;
+	6       (00000018) const/4              v1, 0
+
+onActivityCreated-BB@0x1a : [ onActivityCreated-BB@0x26 onActivityCreated-BB@0x82 ]
+	7       (0000001a) invoke-virtual       v6, Landroid/content/Intent;->getExtras()Landroid/os/Bundle;
+	8       (00000020) move-result-object   v6
+	9       (00000022) if-eqz               v6, +030h
+	1a:75
+	(Ljava/lang/RuntimeException; -> 66 onActivityCreated-BB@0x66)
+
+onActivityCreated-BB@0x26 : [ onActivityCreated-BB@0x36 onActivityCreated-BB@0x42 ]
+	10      (00000026) const-string         v2, "google.message_id"
+	11      (0000002a) invoke-virtual       v6, v2, Landroid/os/BaseBundle;->getString(Ljava/lang/String;)Ljava/lang/String;
+	12      (00000030) move-result-object   v2
+	13      (00000032) if-nez               v2, +008h
+	1a:75
+	(Ljava/lang/RuntimeException; -> 66 onActivityCreated-BB@0x66)
+
+onActivityCreated-BB@0x36 : [ onActivityCreated-BB@0x42 ]
+	14      (00000036) const-string         v2, "message_id"
+	15      (0000003a) invoke-virtual       v6, v2, Landroid/os/BaseBundle;->getString(Ljava/lang/String;)Ljava/lang/String;
+	16      (00000040) move-result-object   v2
+	1a:75
+	(Ljava/lang/RuntimeException; -> 66 onActivityCreated-BB@0x66)
+
+onActivityCreated-BB@0x42 : [ onActivityCreated-BB@0x4e onActivityCreated-BB@0x6a ]
+	17      (00000042) invoke-static        v2, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+	18      (00000048) move-result          v3
+	19      (0000004a) if-nez               v3, +010h
+	1a:75
+	(Ljava/lang/RuntimeException; -> 66 onActivityCreated-BB@0x66)
+
+onActivityCreated-BB@0x4e : [ onActivityCreated-BB@0x5a onActivityCreated-BB@0x5e ]
+	20      (0000004e) invoke-virtual       v0, v2, Ljava/util/ArrayDeque;->contains(Ljava/lang/Object;)Z
+	21      (00000054) move-result          v3
+	22      (00000056) if-eqz               v3, +004h
+	1a:75
+	(Ljava/lang/RuntimeException; -> 66 onActivityCreated-BB@0x66)
+
+onActivityCreated-BB@0x5a : [ onActivityCreated-BB@0x19e ]
+	23      (0000005a) goto/16              +0a2h
+	1a:75
+	(Ljava/lang/RuntimeException; -> 66 onActivityCreated-BB@0x66)
+
+onActivityCreated-BB@0x5e : [ onActivityCreated-BB@0x6a ]
+	24      (0000005e) invoke-virtual       v0, v2, Ljava/util/ArrayDeque;->add(Ljava/lang/Object;)Z
+	25      (00000064) goto                 +3h
+	1a:75
+	(Ljava/lang/RuntimeException; -> 66 onActivityCreated-BB@0x66)
+
+onActivityCreated-BB@0x66 : [ onActivityCreated-BB@0x78 ]
+	26      (00000066) move-exception       v6
+	27      (00000068) goto                 +8h
+	1a:75
+	(Ljava/lang/RuntimeException; -> 66 onActivityCreated-BB@0x66)
+
+onActivityCreated-BB@0x6a : [ onActivityCreated-BB@0x82 ]
+	28      (0000006a) const-string         v0, "gcm.n.analytics_data"
+	29      (0000006e) invoke-virtual       v6, v0, Landroid/os/Bundle;->getBundle(Ljava/lang/String;)Landroid/os/Bundle;
+	30      (00000074) move-result-object   v1
+	31      (00000076) goto                 +6h
+
+onActivityCreated-BB@0x78 : [ onActivityCreated-BB@0x82 ]
+	32      (00000078) const-string         v0, "Failed trying to get analytics data from Intent extras."
+	33      (0000007c) invoke-static        v7, v0, v6, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+
+onActivityCreated-BB@0x82 : [ onActivityCreated-BB@0x8a onActivityCreated-BB@0x8e ]
+	34      (00000082) const-string         v6, "1"
+	35      (00000086) if-nez               v1, +004h
+
+onActivityCreated-BB@0x8a : [ onActivityCreated-BB@0xa2 ]
+	36      (0000008a) const/4              v0, 0
+	37      (0000008c) goto                 +bh
+
+onActivityCreated-BB@0x8e : [ onActivityCreated-BB@0xa2 ]
+	38      (0000008e) const-string         v0, "google.c.a.e"
+	39      (00000092) invoke-virtual       v1, v0, Landroid/os/BaseBundle;->getString(Ljava/lang/String;)Ljava/lang/String;
+	40      (00000098) move-result-object   v0
+	41      (0000009a) invoke-virtual       v6, v0, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	42      (000000a0) move-result          v0
+
+onActivityCreated-BB@0xa2 : [ onActivityCreated-BB@0xa6 onActivityCreated-BB@0x19e ]
+	43      (000000a2) if-eqz               v0, +07eh
+
+onActivityCreated-BB@0xa6 : [ onActivityCreated-BB@0xaa onActivityCreated-BB@0xae ]
+	44      (000000a6) if-nez               v1, +004h
+
+onActivityCreated-BB@0xaa : [ onActivityCreated-BB@0x194 ]
+	45      (000000aa) goto/16              +075h
+
+onActivityCreated-BB@0xae : [ onActivityCreated-BB@0xc8 onActivityCreated-BB@0x17e ]
+	46      (000000ae) const-string         v0, "google.c.a.tc"
+	47      (000000b2) invoke-virtual       v1, v0, Landroid/os/BaseBundle;->getString(Ljava/lang/String;)Ljava/lang/String;
+	48      (000000b8) move-result-object   v0
+	49      (000000ba) invoke-virtual       v6, v0, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	50      (000000c0) move-result          v6
+	51      (000000c2) const/4              v0, 3
+	52      (000000c4) if-eqz               v6, +05dh
+
+onActivityCreated-BB@0xc8 : [ onActivityCreated-BB@0xec onActivityCreated-BB@0xf6 ]
+	53      (000000c8) invoke-static        Lq4/f;->d()Lq4/f;
+	54      (000000ce) move-result-object   v6
+	55      (000000d0) const-class          v2, Lu4/b;
+	56      (000000d4) invoke-virtual       v6, v2, Lq4/f;->b(Ljava/lang/Class;)Ljava/lang/Object;
+	57      (000000da) move-result-object   v6
+	58      (000000dc) check-cast           v6, Lu4/b;
+	59      (000000e0) invoke-static        v7, v0, Landroid/util/Log;->isLoggable(Ljava/lang/String; I)Z
+	60      (000000e6) move-result          v0
+	61      (000000e8) if-eqz               v0, +007h
+
+onActivityCreated-BB@0xec : [ onActivityCreated-BB@0xf6 ]
+	62      (000000ec) const-string         v0, "Received event with track-conversion=true. Setting user property and reengagement event"
+	63      (000000f0) invoke-static        v7, v0, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String;)I
+
+onActivityCreated-BB@0xf6 : [ onActivityCreated-BB@0xfa onActivityCreated-BB@0x172 ]
+	64      (000000f6) if-eqz               v6, +03eh
+
+onActivityCreated-BB@0xfa : [ onActivityCreated-BB@0x11a onActivityCreated-BB@0x11c ]
+	65      (000000fa) const-string         v7, "google.c.a.c_id"
+	66      (000000fe) invoke-virtual       v1, v7, Landroid/os/BaseBundle;->getString(Ljava/lang/String;)Ljava/lang/String;
+	67      (00000104) move-result-object   v7
+	68      (00000106) check-cast           v6, Lu4/c;
+	69      (0000010a) const-string         v0, "fcm"
+	70      (0000010e) invoke-static        v0, Lv4/a;->a(Ljava/lang/String;)Z
+	71      (00000114) move-result          v2
+	72      (00000116) if-nez               v2, +003h
+
+onActivityCreated-BB@0x11a : [ onActivityCreated-BB@0x136 ]
+	73      (0000011a) goto                 +eh
+
+onActivityCreated-BB@0x11c : [ onActivityCreated-BB@0x12c onActivityCreated-BB@0x136 ]
+	74      (0000011c) const-string         v2, "_ln"
+	75      (00000120) invoke-static        v0, v2, Lv4/a;->c(Ljava/lang/String; Ljava/lang/String;)Z
+	76      (00000126) move-result          v3
+	77      (00000128) if-eqz               v3, +007h
+
+onActivityCreated-BB@0x12c : [ onActivityCreated-BB@0x136 ]
+	78      (0000012c) iget-object          v3, v6, Lu4/c;->a Lcom/google/android/gms/measurement/api/AppMeasurementSdk;
+	79      (00000130) invoke-virtual       v3, v0, v2, v7, Lcom/google/android/gms/measurement/api/AppMeasurementSdk;->setUserProperty(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Object;)V
+
+onActivityCreated-BB@0x136 : [ onActivityCreated-BB@0x194 ]
+	80      (00000136) new-instance         v2, Landroid/os/Bundle;
+	81      (0000013a) invoke-direct        v2, Landroid/os/Bundle;-><init>()V
+	82      (00000140) const-string         v3, "source"
+	83      (00000144) const-string         v4, "Firebase"
+	84      (00000148) invoke-virtual       v2, v3, v4, Landroid/os/BaseBundle;->putString(Ljava/lang/String; Ljava/lang/String;)V
+	85      (0000014e) const-string         v3, "medium"
+	86      (00000152) const-string         v4, "notification"
+	87      (00000156) invoke-virtual       v2, v3, v4, Landroid/os/BaseBundle;->putString(Ljava/lang/String; Ljava/lang/String;)V
+	88      (0000015c) const-string         v3, "campaign"
+	89      (00000160) invoke-virtual       v2, v3, v7, Landroid/os/BaseBundle;->putString(Ljava/lang/String; Ljava/lang/String;)V
+	90      (00000166) const-string         v7, "_cmp"
+	91      (0000016a) invoke-virtual       v6, v0, v7, v2, Lu4/c;->a(Ljava/lang/String; Ljava/lang/String; Landroid/os/Bundle;)V
+	92      (00000170) goto                 +12h
+
+onActivityCreated-BB@0x172 : [ onActivityCreated-BB@0x194 ]
+	93      (00000172) const-string         v6, "Unable to set user property for conversion tracking:  analytics library is missing"
+	94      (00000176) invoke-static        v7, v6, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+	95      (0000017c) goto                 +ch
+
+onActivityCreated-BB@0x17e : [ onActivityCreated-BB@0x18a onActivityCreated-BB@0x194 ]
+	96      (0000017e) invoke-static        v7, v0, Landroid/util/Log;->isLoggable(Ljava/lang/String; I)Z
+	97      (00000184) move-result          v6
+	98      (00000186) if-eqz               v6, +007h
+
+onActivityCreated-BB@0x18a : [ onActivityCreated-BB@0x194 ]
+	99      (0000018a) const-string         v6, "Received event with track-conversion=false. Do not set user property"
+	100     (0000018e) invoke-static        v7, v6, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String;)I
+
+onActivityCreated-BB@0x194 : [ onActivityCreated-BB@0x19e ]
+	101     (00000194) const-string         v6, "_no"
+	102     (00000198) invoke-static        v1, v6, La/a;->K(Landroid/os/Bundle; Ljava/lang/String;)V
+
+onActivityCreated-BB@0x19e : 
+	103     (0000019e) return-void          
+

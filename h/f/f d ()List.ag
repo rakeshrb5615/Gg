@@ -1,0 +1,31 @@
+# Lh/f;->d()Ljava/util/List; [access_flags=public synchronized]
+#
+# Parameters:
+# local registers: v0...v2
+#
+# - return:java.util.List
+
+d-BB@0x0 : [ d-BB@0x2 ]
+	0       (00000000) monitor-enter        v2
+
+d-BB@0x2 : 
+	1       (00000002) new-instance         v0, Ljava/util/ArrayList;
+	2       (00000006) iget-object          v1, v2, Lh/f;->c Ljava/lang/Object;
+	3       (0000000a) check-cast           v1, Ljava/util/ArrayList;
+	4       (0000000e) invoke-direct        v0, v1, Ljava/util/ArrayList;-><init>(Ljava/util/Collection;)V
+	5       (00000014) invoke-static        v0, Ljava/util/Collections;->unmodifiableList(Ljava/util/List;)Ljava/util/List;
+	6       (0000001a) move-result-object   v0
+	7       (0000001c) monitor-exit         v2
+	8       (0000001e) return-object        v0
+	2:1b
+	(Ljava/lang/Throwable; -> 20 d-BB@0x20)
+
+d-BB@0x20 : [ d-BB@0x22 ]
+	9       (00000020) move-exception       v0
+
+d-BB@0x22 : 
+	10      (00000022) monitor-exit         v2
+	11      (00000024) throw                v0
+	22:23
+	(Ljava/lang/Throwable; -> 20 d-BB@0x20)
+

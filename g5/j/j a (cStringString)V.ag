@@ -1,0 +1,36 @@
+# Lg5/j;->a(Lm5/c; Ljava/lang/String; Ljava/lang/String;)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v0
+# - v1:m5.c
+# - v2:java.lang.String
+# - v3:java.lang.String
+#
+# - return:void
+
+a-BB@0x0 : [ a-BB@0x8 a-BB@0x34 ]
+	0       (00000000) const-string         v0, "aqs."
+	1       (00000004) if-eqz               v2, +018h
+
+a-BB@0x8 : [ a-BB@0xc a-BB@0x34 ]
+	2       (00000008) if-eqz               v3, +016h
+
+a-BB@0xc : 
+	3       (0000000c) invoke-virtual       v0, v3, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	4       (00000012) move-result-object   v3
+	5       (00000014) invoke-virtual       v1, v2, v3, Lm5/c;->b(Ljava/lang/String; Ljava/lang/String;)Ljava/io/File;
+	6       (0000001a) move-result-object   v1
+	7       (0000001c) invoke-virtual       v1, Ljava/io/File;->createNewFile()Z
+	8       (00000022) return-void          
+	c:21
+	(Ljava/io/IOException; -> 24 a-BB@0x24)
+
+a-BB@0x24 : [ a-BB@0x34 ]
+	9       (00000024) move-exception       v1
+	10      (00000026) const-string         v2, "Failed to persist App Quality Sessions session id."
+	11      (0000002a) const-string         v3, "FirebaseCrashlytics"
+	12      (0000002e) invoke-static        v3, v2, v1, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+
+a-BB@0x34 : 
+	13      (00000034) return-void          
+

@@ -1,0 +1,95 @@
+# Li2/h;->onClick(Landroid/view/View;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:android.view.View
+#
+# - return:void
+
+onClick-BB@0x0 : [ onClick-BB@0x8 onClick-BB@0xc0 ]
+	0       (00000000) iget-object          v0, v5, Li2/h;->d Landroid/widget/LinearLayout;
+	1       (00000004) if-ne                v6, v0, +05eh
+
+onClick-BB@0x8 : [ onClick-BB@0x9a onClick-BB@0xa2 ]
+	2       (00000008) const                v6, 2131951821
+	3       (0000000e) invoke-virtual       v5, v6, Landroidx/fragment/app/e0;->getString(I)Ljava/lang/String;
+	4       (00000014) move-result-object   v6
+	5       (00000016) const                v0, 2131952377
+	6       (0000001c) invoke-virtual       v5, v0, Landroidx/fragment/app/e0;->getString(I)Ljava/lang/String;
+	7       (00000022) move-result-object   v0
+	8       (00000024) const                v1, 2131951824
+	9       (0000002a) invoke-virtual       v5, v1, Landroidx/fragment/app/e0;->getString(I)Ljava/lang/String;
+	10      (00000030) move-result-object   v1
+	11      (00000032) new-instance         v2, Landroid/content/Intent;
+	12      (00000036) const-string         v3, "mailto:"
+	13      (0000003a) invoke-static        v3, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
+	14      (00000040) move-result-object   v3
+	15      (00000042) const-string         v4, "android.intent.action.SENDTO"
+	16      (00000046) invoke-direct        v2, v4, v3, Landroid/content/Intent;-><init>(Ljava/lang/String; Landroid/net/Uri;)V
+	17      (0000004c) const-string         v3, "android.intent.extra.EMAIL"
+	18      (00000050) filled-new-array     v6, [Ljava/lang/String;
+	19      (00000056) move-result-object   v6
+	20      (00000058) invoke-virtual       v2, v3, v6, Landroid/content/Intent;->putExtra(Ljava/lang/String; [Ljava/lang/String;)Landroid/content/Intent;
+	21      (0000005e) const-string         v6, "android.intent.extra.SUBJECT"
+	22      (00000062) invoke-virtual       v2, v6, v0, Landroid/content/Intent;->putExtra(Ljava/lang/String; Ljava/lang/String;)Landroid/content/Intent;
+	23      (00000068) const-string         v6, "android.intent.extra.TEXT"
+	24      (0000006c) invoke-virtual       v2, v6, v1, Landroid/content/Intent;->putExtra(Ljava/lang/String; Ljava/lang/String;)Landroid/content/Intent;
+	25      (00000072) const-string         v6, "Say Hello! 👋"
+	26      (00000076) invoke-static        v2, v6, Landroid/content/Intent;->createChooser(Landroid/content/Intent; Ljava/lang/CharSequence;)Landroid/content/Intent;
+	27      (0000007c) move-result-object   v6
+	28      (0000007e) invoke-virtual       v5, Landroidx/fragment/app/e0;->requireActivity()Landroidx/fragment/app/j0;
+	29      (00000084) move-result-object   v0
+	30      (00000086) invoke-virtual       v0, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
+	31      (0000008c) move-result-object   v0
+	32      (0000008e) invoke-virtual       v2, v0, Landroid/content/Intent;->resolveActivity(Landroid/content/pm/PackageManager;)Landroid/content/ComponentName;
+	33      (00000094) move-result-object   v0
+	34      (00000096) if-eqz               v0, +006h
+
+onClick-BB@0x9a : 
+	35      (0000009a) invoke-virtual       v5, v6, Landroidx/fragment/app/e0;->startActivity(Landroid/content/Intent;)V
+	36      (000000a0) return-void          
+
+onClick-BB@0xa2 : 
+	37      (000000a2) invoke-virtual       v5, Landroidx/fragment/app/e0;->getContext()Landroid/content/Context;
+	38      (000000a8) move-result-object   v6
+	39      (000000aa) const-string         v0, "No email app installed."
+	40      (000000ae) const/4              v1, 0
+	41      (000000b0) invoke-static        v6, v0, v1, Landroid/widget/Toast;->makeText(Landroid/content/Context; Ljava/lang/CharSequence; I)Landroid/widget/Toast;
+	42      (000000b6) move-result-object   v6
+	43      (000000b8) invoke-virtual       v6, Landroid/widget/Toast;->show()V
+	44      (000000be) return-void          
+
+onClick-BB@0xc0 : [ onClick-BB@0xc8 onClick-BB@0xe0 ]
+	45      (000000c0) iget-object          v0, v5, Li2/h;->e Landroid/widget/LinearLayout;
+	46      (000000c4) if-ne                v6, v0, +00eh
+
+onClick-BB@0xc8 : 
+	47      (000000c8) invoke-virtual       v5, Landroidx/fragment/app/e0;->requireActivity()Landroidx/fragment/app/j0;
+	48      (000000ce) move-result-object   v0
+	49      (000000d0) invoke-virtual       v6, Landroid/view/View;->getContext()Landroid/content/Context;
+	50      (000000d6) move-result-object   v6
+	51      (000000d8) invoke-static        v0, v6, Lc4/b;->K(Landroid/app/Activity; Landroid/content/Context;)V
+	52      (000000de) return-void          
+
+onClick-BB@0xe0 : [ onClick-BB@0xe8 onClick-BB@0xf4 ]
+	53      (000000e0) iget-object          v0, v5, Li2/h;->f Landroid/widget/LinearLayout;
+	54      (000000e4) if-ne                v6, v0, +008h
+
+onClick-BB@0xe8 : 
+	55      (000000e8) iget-object          v6, v5, Li2/h;->a Landroid/content/Context;
+	56      (000000ec) invoke-static        v6, Lc4/b;->F(Landroid/content/Context;)V
+	57      (000000f2) return-void          
+
+onClick-BB@0xf4 : [ onClick-BB@0xfc onClick-BB@0x10e ]
+	58      (000000f4) iget-object          v0, v5, Li2/h;->m Landroid/widget/LinearLayout;
+	59      (000000f8) if-ne                v6, v0, +00bh
+
+onClick-BB@0xfc : [ onClick-BB@0x10e ]
+	60      (000000fc) iget-object          v6, v5, Li2/h;->a Landroid/content/Context;
+	61      (00000100) invoke-virtual       v5, Landroidx/fragment/app/e0;->getActivity()Landroidx/fragment/app/j0;
+	62      (00000106) move-result-object   v0
+	63      (00000108) invoke-static        v0, v6, Lc4/b;->b0(Landroid/app/Activity; Landroid/content/Context;)V
+
+onClick-BB@0x10e : 
+	64      (0000010e) return-void          
+

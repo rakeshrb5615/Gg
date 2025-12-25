@@ -1,0 +1,51 @@
+# Lh/p;->g(Landroid/content/Context;)Z [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:android.content.Context
+#
+# - return:boolean
+
+g-BB@0x0 : [ g-BB@0x8 g-BB@0x6e ]
+	0       (00000000) sget-object          v0, Lh/p;->e Ljava/lang/Boolean;
+	1       (00000004) if-nez               v0, +035h
+
+g-BB@0x8 : [ g-BB@0x3e g-BB@0x6e ]
+	2       (00000008) sget                 v0, Landroidx/appcompat/app/AppLocalesMetadataHolderService;->a I
+	3       (0000000c) invoke-static        Lh/i0;->a()I
+	4       (00000012) move-result          v0
+	5       (00000014) or-int/lit16         v0, v0, 128
+	6       (00000018) invoke-virtual       v4, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
+	7       (0000001e) move-result-object   v1
+	8       (00000020) new-instance         v2, Landroid/content/ComponentName;
+	9       (00000024) const-class          v3, Landroidx/appcompat/app/AppLocalesMetadataHolderService;
+	10      (00000028) invoke-direct        v2, v4, v3, Landroid/content/ComponentName;-><init>(Landroid/content/Context; Ljava/lang/Class;)V
+	11      (0000002e) invoke-virtual       v1, v2, v0, Landroid/content/pm/PackageManager;->getServiceInfo(Landroid/content/ComponentName; I)Landroid/content/pm/ServiceInfo;
+	12      (00000034) move-result-object   v4
+	13      (00000036) iget-object          v4, v4, Landroid/content/pm/ServiceInfo;->metaData Landroid/os/Bundle;
+	14      (0000003a) if-eqz               v4, +01ah
+	8:55
+	(Landroid/content/pm/PackageManager$NameNotFoundException; -> 58 g-BB@0x58)
+
+g-BB@0x3e : [ g-BB@0x6e ]
+	15      (0000003e) const-string         v0, "autoStoreLocales"
+	16      (00000042) invoke-virtual       v4, v0, Landroid/os/BaseBundle;->getBoolean(Ljava/lang/String;)Z
+	17      (00000048) move-result          v4
+	18      (0000004a) invoke-static        v4, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+	19      (00000050) move-result-object   v4
+	20      (00000052) sput-object          v4, Lh/p;->e Ljava/lang/Boolean;
+	21      (00000056) goto                 +ch
+
+g-BB@0x58 : [ g-BB@0x6e ]
+	22      (00000058) const-string         v4, "AppCompatDelegate"
+	23      (0000005c) const-string         v0, "Checking for metadata for AppLocalesMetadataHolderService : Service not found"
+	24      (00000060) invoke-static        v4, v0, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String;)I
+	25      (00000066) sget-object          v4, Ljava/lang/Boolean;->FALSE Ljava/lang/Boolean;
+	26      (0000006a) sput-object          v4, Lh/p;->e Ljava/lang/Boolean;
+
+g-BB@0x6e : 
+	27      (0000006e) sget-object          v4, Lh/p;->e Ljava/lang/Boolean;
+	28      (00000072) invoke-virtual       v4, Ljava/lang/Boolean;->booleanValue()Z
+	29      (00000078) move-result          v4
+	30      (0000007a) return               v4
+

@@ -1,0 +1,31 @@
+# Lh8/g;->invokeSuspend(Ljava/lang/Object;)Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:java.lang.Object
+#
+# - return:java.lang.Object
+
+invokeSuspend-BB@0x0 : [ invokeSuspend-BB@0xc invokeSuspend-BB@0x22 ]
+	0       (00000000) invoke-static        v4, Lh7/h;->a(Ljava/lang/Object;)Ljava/lang/Throwable;
+	1       (00000006) move-result-object   v0
+	2       (00000008) if-eqz               v0, +00dh
+
+invokeSuspend-BB@0xc : [ invokeSuspend-BB@0x22 ]
+	3       (0000000c) new-instance         v1, Lh8/c;
+	4       (00000010) invoke-virtual       v3, Lh8/g;->getContext()Ll7/h;
+	5       (00000016) move-result-object   v2
+	6       (00000018) invoke-direct        v1, v0, v2, Lh8/c;-><init>(Ljava/lang/Throwable; Ll7/h;)V
+	7       (0000001e) iput-object          v1, v3, Lh8/g;->d Ll7/h;
+
+invokeSuspend-BB@0x22 : [ invokeSuspend-BB@0x2a invokeSuspend-BB@0x30 ]
+	8       (00000022) iget-object          v0, v3, Lh8/g;->e Ll7/c;
+	9       (00000026) if-eqz               v0, +005h
+
+invokeSuspend-BB@0x2a : [ invokeSuspend-BB@0x30 ]
+	10      (0000002a) invoke-interface     v0, v4, Ll7/c;->resumeWith(Ljava/lang/Object;)V
+
+invokeSuspend-BB@0x30 : 
+	11      (00000030) sget-object          v4, Lm7/a;->a Lm7/a;
+	12      (00000034) return-object        v4
+

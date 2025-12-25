@@ -1,0 +1,114 @@
+# Li1/c;->run()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v6
+#
+# - return:void
+
+run-BB@0x0 : [ run-BB@0x24 run-BB@0xda ]
+	0       (00000000) iget-object          v0, v6, Li1/c;->a Ljava/lang/ref/WeakReference;
+	1       (00000004) invoke-virtual       v0, Ljava/lang/ref/Reference;->get()Ljava/lang/Object;
+	2       (0000000a) move-result-object   v0
+	3       (0000000c) check-cast           v0, Landroid/widget/TextView;
+	4       (00000010) iget-object          v1, v6, Li1/c;->b Ljava/lang/ref/WeakReference;
+	5       (00000014) invoke-virtual       v1, Ljava/lang/ref/Reference;->get()Ljava/lang/Object;
+	6       (0000001a) move-result-object   v1
+	7       (0000001c) check-cast           v1, Landroid/text/InputFilter;
+	8       (00000020) if-eqz               v1, +05dh
+
+run-BB@0x24 : [ run-BB@0x28 run-BB@0x2a ]
+	9       (00000024) if-nez               v0, +003h
+
+run-BB@0x28 : [ run-BB@0xda ]
+	10      (00000028) goto                 +59h
+
+run-BB@0x2a : [ run-BB@0x36 run-BB@0x38 ]
+	11      (0000002a) invoke-virtual       v0, Landroid/widget/TextView;->getFilters()[Landroid/text/InputFilter;
+	12      (00000030) move-result-object   v2
+	13      (00000032) if-nez               v2, +003h
+
+run-BB@0x36 : [ run-BB@0xda ]
+	14      (00000036) goto                 +52h
+
+run-BB@0x38 : [ run-BB@0x3c ]
+	15      (00000038) const/4              v3, 0
+	16      (0000003a) move                 v4, v3
+
+run-BB@0x3c : [ run-BB@0x42 run-BB@0xda ]
+	17      (0000003c) array-length         v5, v2
+	18      (0000003e) if-ge                v4, v5, +04eh
+
+run-BB@0x42 : [ run-BB@0x4a run-BB@0xd4 ]
+	19      (00000042) aget-object          v5, v2, v4
+	20      (00000046) if-ne                v5, v1, +047h
+
+run-BB@0x4a : [ run-BB@0x56 run-BB@0xda ]
+	21      (0000004a) invoke-virtual       v0, Landroid/view/View;->isAttachedToWindow()Z
+	22      (00000050) move-result          v1
+	23      (00000052) if-eqz               v1, +044h
+
+run-BB@0x56 : [ run-BB@0x6a run-BB@0x6e ]
+	24      (00000056) invoke-virtual       v0, Landroid/widget/TextView;->getText()Ljava/lang/CharSequence;
+	25      (0000005c) move-result-object   v1
+	26      (0000005e) invoke-static        Lg1/i;->a()Lg1/i;
+	27      (00000064) move-result-object   v2
+	28      (00000066) if-nez               v1, +004h
+
+run-BB@0x6a : [ run-BB@0x7c ]
+	29      (0000006a) move                 v4, v3
+	30      (0000006c) goto                 +8h
+
+run-BB@0x6e : [ run-BB@0x7c ]
+	31      (0000006e) invoke-virtual       v2, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	32      (00000074) invoke-interface     v1, Ljava/lang/CharSequence;->length()I
+	33      (0000007a) move-result          v4
+
+run-BB@0x7c : [ run-BB@0x88 run-BB@0x8a ]
+	34      (0000007c) invoke-virtual       v2, v1, v3, v4, Lg1/i;->e(Ljava/lang/CharSequence; I I)Ljava/lang/CharSequence;
+	35      (00000082) move-result-object   v2
+	36      (00000084) if-ne                v1, v2, +003h
+
+run-BB@0x88 : [ run-BB@0xda ]
+	37      (00000088) goto                 +29h
+
+run-BB@0x8a : [ run-BB@0xa8 run-BB@0xda ]
+	38      (0000008a) invoke-static        v2, Landroid/text/Selection;->getSelectionStart(Ljava/lang/CharSequence;)I
+	39      (00000090) move-result          v1
+	40      (00000092) invoke-static        v2, Landroid/text/Selection;->getSelectionEnd(Ljava/lang/CharSequence;)I
+	41      (00000098) move-result          v3
+	42      (0000009a) invoke-virtual       v0, v2, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+	43      (000000a0) instance-of          v0, v2, Landroid/text/Spannable;
+	44      (000000a4) if-eqz               v0, +01bh
+
+run-BB@0xa8 : [ run-BB@0xb0 run-BB@0xbc ]
+	45      (000000a8) check-cast           v2, Landroid/text/Spannable;
+	46      (000000ac) if-ltz               v1, +008h
+
+run-BB@0xb0 : [ run-BB@0xb4 run-BB@0xbc ]
+	47      (000000b0) if-ltz               v3, +006h
+
+run-BB@0xb4 : 
+	48      (000000b4) invoke-static        v2, v1, v3, Landroid/text/Selection;->setSelection(Landroid/text/Spannable; I I)V
+	49      (000000ba) return-void          
+
+run-BB@0xbc : [ run-BB@0xc0 run-BB@0xc8 ]
+	50      (000000bc) if-ltz               v1, +006h
+
+run-BB@0xc0 : 
+	51      (000000c0) invoke-static        v2, v1, Landroid/text/Selection;->setSelection(Landroid/text/Spannable; I)V
+	52      (000000c6) return-void          
+
+run-BB@0xc8 : [ run-BB@0xcc run-BB@0xda ]
+	53      (000000c8) if-ltz               v3, +009h
+
+run-BB@0xcc : 
+	54      (000000cc) invoke-static        v2, v3, Landroid/text/Selection;->setSelection(Landroid/text/Spannable; I)V
+	55      (000000d2) return-void          
+
+run-BB@0xd4 : [ run-BB@0x3c ]
+	56      (000000d4) add-int/lit8         v4, v4, 1
+	57      (000000d8) goto                 -4eh
+
+run-BB@0xda : 
+	58      (000000da) return-void          
+

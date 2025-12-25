@@ -1,0 +1,36 @@
+# Li3/f;->a(Z)Lv3/k; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:boolean
+#
+# - return:v3.k
+
+a-BB@0x0 : [ a-BB@0x8 a-BB@0x44 ]
+	0       (00000000) iget-object          v0, v2, Li3/f;->v Landroid/graphics/drawable/RippleDrawable;
+	1       (00000004) if-eqz               v0, +020h
+
+a-BB@0x8 : [ a-BB@0x14 a-BB@0x44 ]
+	2       (00000008) invoke-virtual       v0, Landroid/graphics/drawable/LayerDrawable;->getNumberOfLayers()I
+	3       (0000000e) move-result          v0
+	4       (00000010) if-lez               v0, +01ah
+
+a-BB@0x14 : 
+	5       (00000014) iget-object          v0, v2, Li3/f;->v Landroid/graphics/drawable/RippleDrawable;
+	6       (00000018) const/4              v1, 0
+	7       (0000001a) invoke-virtual       v0, v1, Landroid/graphics/drawable/LayerDrawable;->getDrawable(I)Landroid/graphics/drawable/Drawable;
+	8       (00000020) move-result-object   v0
+	9       (00000022) check-cast           v0, Landroid/graphics/drawable/InsetDrawable;
+	10      (00000026) invoke-virtual       v0, Landroid/graphics/drawable/DrawableWrapper;->getDrawable()Landroid/graphics/drawable/Drawable;
+	11      (0000002c) move-result-object   v0
+	12      (0000002e) check-cast           v0, Landroid/graphics/drawable/LayerDrawable;
+	13      (00000032) xor-int/lit8         v3, v3, 1
+	14      (00000036) invoke-virtual       v0, v3, Landroid/graphics/drawable/LayerDrawable;->getDrawable(I)Landroid/graphics/drawable/Drawable;
+	15      (0000003c) move-result-object   v3
+	16      (0000003e) check-cast           v3, Lv3/k;
+	17      (00000042) return-object        v3
+
+a-BB@0x44 : 
+	18      (00000044) const/4              v3, 0
+	19      (00000046) return-object        v3
+

@@ -1,0 +1,67 @@
+# Lj6/f0;->b(Landroid/content/Intent;)Lcom/google/android/gms/tasks/Task; [access_flags=public final synchronized]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:android.content.Intent
+#
+# - return:com.google.android.gms.tasks.Task
+
+b-BB@0x0 : [ b-BB@0x2 ]
+	0       (00000000) monitor-enter        v5
+
+b-BB@0x2 : [ b-BB@0x14 b-BB@0x28 ]
+	1       (00000002) const-string         v0, "FirebaseMessaging"
+	2       (00000006) const/4              v1, 3
+	3       (00000008) invoke-static        v0, v1, Landroid/util/Log;->isLoggable(Ljava/lang/String; I)Z
+	4       (0000000e) move-result          v0
+	5       (00000010) if-eqz               v0, +00ch
+	2:8f
+	(Ljava/lang/Throwable; -> 24 b-BB@0x24)
+
+b-BB@0x14 : [ b-BB@0x28 ]
+	6       (00000014) const-string         v0, "FirebaseMessaging"
+	7       (00000018) const-string         v1, "new intent queued in the bind-strategy delivery"
+	8       (0000001c) invoke-static        v0, v1, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String;)I
+	9       (00000022) goto                 +3h
+	2:8f
+	(Ljava/lang/Throwable; -> 24 b-BB@0x24)
+
+b-BB@0x24 : [ b-BB@0x94 ]
+	10      (00000024) move-exception       v6
+	11      (00000026) goto                 +37h
+	2:8f
+	(Ljava/lang/Throwable; -> 24 b-BB@0x24)
+
+b-BB@0x28 : 
+	12      (00000028) new-instance         v0, Lj6/e0;
+	13      (0000002c) invoke-direct        v0, v6, Lj6/e0;-><init>(Landroid/content/Intent;)V
+	14      (00000032) iget-object          v6, v5, Lj6/f0;->c Ljava/util/concurrent/ScheduledThreadPoolExecutor;
+	15      (00000036) new-instance         v1, Landroidx/lifecycle/g0;
+	16      (0000003a) const/16             v2, 11
+	17      (0000003e) invoke-direct        v1, v0, v2, Landroidx/lifecycle/g0;-><init>(Ljava/lang/Object; I)V
+	18      (00000044) sget-object          v2, Ljava/util/concurrent/TimeUnit;->SECONDS Ljava/util/concurrent/TimeUnit;
+	19      (00000048) const-wide/16        v3, 20
+	20      (0000004c) invoke-virtual       v6, v1, v3, v4, v2, Ljava/util/concurrent/ScheduledThreadPoolExecutor;->schedule(Ljava/lang/Runnable; J Ljava/util/concurrent/TimeUnit;)Ljava/util/concurrent/ScheduledFuture;
+	21      (00000052) move-result-object   v1
+	22      (00000054) iget-object          v2, v0, Lj6/e0;->b Lcom/google/android/gms/tasks/TaskCompletionSource;
+	23      (00000058) invoke-virtual       v2, Lcom/google/android/gms/tasks/TaskCompletionSource;->getTask()Lcom/google/android/gms/tasks/Task;
+	24      (0000005e) move-result-object   v2
+	25      (00000060) new-instance         v3, La5/a;
+	26      (00000064) const/16             v4, 13
+	27      (00000068) invoke-direct        v3, v1, v4, La5/a;-><init>(Ljava/lang/Object; I)V
+	28      (0000006e) invoke-virtual       v2, v6, v3, Lcom/google/android/gms/tasks/Task;->addOnCompleteListener(Ljava/util/concurrent/Executor; Lcom/google/android/gms/tasks/OnCompleteListener;)Lcom/google/android/gms/tasks/Task;
+	29      (00000074) iget-object          v6, v5, Lj6/f0;->d Ljava/util/ArrayDeque;
+	30      (00000078) invoke-virtual       v6, v0, Ljava/util/ArrayDeque;->add(Ljava/lang/Object;)Z
+	31      (0000007e) invoke-virtual       v5, Lj6/f0;->a()V
+	32      (00000084) iget-object          v6, v0, Lj6/e0;->b Lcom/google/android/gms/tasks/TaskCompletionSource;
+	33      (00000088) invoke-virtual       v6, Lcom/google/android/gms/tasks/TaskCompletionSource;->getTask()Lcom/google/android/gms/tasks/Task;
+	34      (0000008e) move-result-object   v6
+	35      (00000090) monitor-exit         v5
+	36      (00000092) return-object        v6
+
+b-BB@0x94 : 
+	37      (00000094) monitor-exit         v5
+	38      (00000096) throw                v6
+	94:95
+	(Ljava/lang/Throwable; -> 24 b-BB@0x24)
+

@@ -1,0 +1,46 @@
+# Lh/f;->f()V [access_flags=public]
+#
+# Parameters:
+# local registers: v0...v5
+#
+# - return:void
+
+f-BB@0x0 : [ f-BB@0x1e ]
+	0       (00000000) sget-object          v0, Lu8/b;->c Lu8/b;
+	1       (00000004) iget-object          v1, v5, Lh/f;->c Ljava/lang/Object;
+	2       (00000008) check-cast           v1, [C
+	3       (0000000c) invoke-virtual       v0, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	4       (00000012) const-string         v2, "array"
+	5       (00000016) invoke-static        v1, v2, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	6       (0000001c) monitor-enter        v0
+
+f-BB@0x1e : [ f-BB@0x2e f-BB@0x4a ]
+	7       (0000001e) iget                 v2, v0, Landroidx/datastore/preferences/protobuf/j;->a I
+	8       (00000022) array-length         v3, v1
+	9       (00000024) add-int/2addr        v3, v2
+	10      (00000026) sget                 v4, Lu8/a;->a I
+	11      (0000002a) if-ge                v3, v4, +010h
+	1e:43
+	(Ljava/lang/Throwable; -> 46 f-BB@0x46)
+
+f-BB@0x2e : [ f-BB@0x4a ]
+	12      (0000002e) array-length         v3, v1
+	13      (00000030) add-int/2addr        v2, v3
+	14      (00000032) iput                 v2, v0, Landroidx/datastore/preferences/protobuf/j;->a I
+	15      (00000036) iget-object          v2, v0, Landroidx/datastore/preferences/protobuf/j;->b Ljava/lang/Object;
+	16      (0000003a) check-cast           v2, Li7/g;
+	17      (0000003e) invoke-virtual       v2, v1, Li7/g;->addLast(Ljava/lang/Object;)V
+	18      (00000044) goto                 +3h
+
+f-BB@0x46 : [ f-BB@0x4e ]
+	19      (00000046) move-exception       v1
+	20      (00000048) goto                 +3h
+
+f-BB@0x4a : 
+	21      (0000004a) monitor-exit         v0
+	22      (0000004c) return-void          
+
+f-BB@0x4e : 
+	23      (0000004e) monitor-exit         v0
+	24      (00000050) throw                v1
+

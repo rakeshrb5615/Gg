@@ -1,0 +1,59 @@
+# Li5/n;->a()V [access_flags=public synchronized]
+#
+# Parameters:
+# local registers: v0...v3
+#
+# - return:void
+
+a-BB@0x0 : [ a-BB@0x2 ]
+	0       (00000000) monitor-enter        v3
+
+a-BB@0x2 : [ a-BB@0xa a-BB@0xe ]
+	1       (00000002) iget-boolean         v0, v3, Li5/n;->a Z
+	2       (00000006) if-eqz               v0, +004h
+	2:5
+	(Ljava/lang/Throwable; -> 44 a-BB@0x44)
+
+a-BB@0xa : 
+	3       (0000000a) monitor-exit         v3
+	4       (0000000c) return-void          
+
+a-BB@0xe : [ a-BB@0x1e a-BB@0x48 ]
+	5       (0000000e) invoke-virtual       v3, Li5/n;->c()Ljava/lang/Boolean;
+	6       (00000014) move-result-object   v0
+	7       (00000016) iput-object          v0, v3, Li5/n;->c Ljava/io/Serializable;
+	8       (0000001a) if-nez               v0, +017h
+	e:4d
+	(Ljava/lang/Throwable; -> 44 a-BB@0x44)
+
+a-BB@0x1e : [ a-BB@0x48 ]
+	9       (0000001e) new-instance         v0, La5/t;
+	10      (00000022) const/16             v1, 22
+	11      (00000026) invoke-direct        v0, v1, La5/t;-><init>(I)V
+	12      (0000002c) iget-object          v1, v3, Li5/n;->b Ljava/lang/Object;
+	13      (00000030) check-cast           v1, Lx5/c;
+	14      (00000034) check-cast           v1, La5/p;
+	15      (00000038) iget-object          v2, v1, La5/p;->c Lb5/n;
+	16      (0000003c) invoke-virtual       v1, v2, v0, La5/p;->a(Ljava/util/concurrent/Executor; Lx5/a;)V
+	17      (00000042) goto                 +3h
+	e:4d
+	(Ljava/lang/Throwable; -> 44 a-BB@0x44)
+
+a-BB@0x44 : [ a-BB@0x52 ]
+	18      (00000044) move-exception       v0
+	19      (00000046) goto                 +6h
+	e:4d
+	(Ljava/lang/Throwable; -> 44 a-BB@0x44)
+
+a-BB@0x48 : 
+	20      (00000048) const/4              v0, 1
+	21      (0000004a) iput-boolean         v0, v3, Li5/n;->a Z
+	22      (0000004e) monitor-exit         v3
+	23      (00000050) return-void          
+
+a-BB@0x52 : 
+	24      (00000052) monitor-exit         v3
+	25      (00000054) throw                v0
+	52:53
+	(Ljava/lang/Throwable; -> 44 a-BB@0x44)
+

@@ -1,0 +1,59 @@
+# Lj6/t;->b(Ljava/lang/String;)Lj6/t; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:java.lang.String
+#
+# - return:j6.t
+
+b-BB@0x0 : [ b-BB@0xe b-BB@0x10 ]
+	0       (00000000) invoke-static        v6, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+	1       (00000006) move-result          v0
+	2       (00000008) const/4              v1, 0
+	3       (0000000a) if-eqz               v0, +003h
+
+b-BB@0xe : 
+	4       (0000000e) return-object        v1
+
+b-BB@0x10 : [ b-BB@0x20 b-BB@0x84 ]
+	5       (00000010) const-string         v0, "{"
+	6       (00000014) invoke-virtual       v6, v0, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
+	7       (0000001a) move-result          v0
+	8       (0000001c) if-eqz               v0, +034h
+
+b-BB@0x20 : 
+	9       (00000020) new-instance         v0, Lorg/json/JSONObject;
+	10      (00000024) invoke-direct        v0, v6, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+	11      (0000002a) new-instance         v6, Lj6/t;
+	12      (0000002e) const-string         v2, "token"
+	13      (00000032) invoke-virtual       v0, v2, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
+	14      (00000038) move-result-object   v2
+	15      (0000003a) const-string         v3, "appVersion"
+	16      (0000003e) invoke-virtual       v0, v3, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
+	17      (00000044) move-result-object   v3
+	18      (00000046) const-string         v4, "timestamp"
+	19      (0000004a) invoke-virtual       v0, v4, Lorg/json/JSONObject;->getLong(Ljava/lang/String;)J
+	20      (00000050) move-result-wide     v4
+	21      (00000052) invoke-direct        v6, v2, v3, v4, v5, Lj6/t;-><init>(Ljava/lang/String; Ljava/lang/String; J)V
+	22      (00000058) return-object        v6
+	20:57
+	(Lorg/json/JSONException; -> 5a b-BB@0x5a)
+
+b-BB@0x5a : 
+	23      (0000005a) move-exception       v6
+	24      (0000005c) new-instance         v0, Ljava/lang/StringBuilder;
+	25      (00000060) const-string         v2, "Failed to parse token: "
+	26      (00000064) invoke-direct        v0, v2, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	27      (0000006a) invoke-virtual       v0, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	28      (00000070) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	29      (00000076) move-result-object   v6
+	30      (00000078) const-string         v0, "FirebaseMessaging"
+	31      (0000007c) invoke-static        v0, v6, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+	32      (00000082) return-object        v1
+
+b-BB@0x84 : 
+	33      (00000084) new-instance         v0, Lj6/t;
+	34      (00000088) const-wide/16        v2, 0
+	35      (0000008c) invoke-direct        v0, v6, v1, v2, v3, Lj6/t;-><init>(Ljava/lang/String; Ljava/lang/String; J)V
+	36      (00000092) return-object        v0
+

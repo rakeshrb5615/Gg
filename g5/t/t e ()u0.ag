@@ -1,0 +1,36 @@
+# Lg5/t;->e()Lj5/u0; [access_flags=public static]
+#
+# Parameters:
+# local registers: v0...v3
+#
+# - return:j5.u0
+
+e-BB@0x0 : [ e-BB@0x8 e-BB@0x1c ]
+	0       (00000000) const/4              v0, 1
+	1       (00000002) int-to-byte          v1, v0
+	2       (00000004) if-ne                v1, v0, +00ch
+
+e-BB@0x8 : 
+	3       (00000008) new-instance         v0, Lj5/u0;
+	4       (0000000c) const-string         v1, "0"
+	5       (00000010) const-wide/16        v2, 0
+	6       (00000014) invoke-direct        v0, v1, v1, v2, v3, Lj5/u0;-><init>(Ljava/lang/String; Ljava/lang/String; J)V
+	7       (0000001a) return-object        v0
+
+e-BB@0x1c : [ e-BB@0x2a e-BB@0x34 ]
+	8       (0000001c) new-instance         v0, Ljava/lang/StringBuilder;
+	9       (00000020) invoke-direct        v0, Ljava/lang/StringBuilder;-><init>()V
+	10      (00000026) if-nez               v1, +007h
+
+e-BB@0x2a : [ e-BB@0x34 ]
+	11      (0000002a) const-string         v1, " address"
+	12      (0000002e) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+e-BB@0x34 : 
+	13      (00000034) new-instance         v1, Ljava/lang/IllegalStateException;
+	14      (00000038) const-string         v2, "Missing required properties:"
+	15      (0000003c) invoke-static        v2, v0, Lg2/g;->g(Ljava/lang/String; Ljava/lang/StringBuilder;)Ljava/lang/String;
+	16      (00000042) move-result-object   v0
+	17      (00000044) invoke-direct        v1, v0, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	18      (0000004a) throw                v1
+

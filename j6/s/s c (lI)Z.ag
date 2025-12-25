@@ -1,0 +1,32 @@
+# Lj6/s;->c(Ly3/l; I)Z [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:y3.l
+# - v5:int
+#
+# - return:boolean
+
+c-BB@0x0 : [ c-BB@0x16 c-BB@0x3e ]
+	0       (00000000) iget-object          v0, v4, Ly3/l;->a Ljava/lang/ref/WeakReference;
+	1       (00000004) invoke-virtual       v0, Ljava/lang/ref/Reference;->get()Ljava/lang/Object;
+	2       (0000000a) move-result-object   v0
+	3       (0000000c) check-cast           v0, Ly3/f;
+	4       (00000010) const/4              v1, 0
+	5       (00000012) if-eqz               v0, +016h
+
+c-BB@0x16 : 
+	6       (00000016) iget-object          v2, v3, Lj6/s;->c Ljava/lang/Object;
+	7       (0000001a) check-cast           v2, Landroid/os/Handler;
+	8       (0000001e) invoke-virtual       v2, v4, Landroid/os/Handler;->removeCallbacksAndMessages(Ljava/lang/Object;)V
+	9       (00000024) sget-object          v4, Ly3/h;->x Landroid/os/Handler;
+	10      (00000028) iget-object          v0, v0, Ly3/f;->a Ly3/h;
+	11      (0000002c) const/4              v2, 1
+	12      (0000002e) invoke-virtual       v4, v2, v5, v1, v0, Landroid/os/Handler;->obtainMessage(I I I Ljava/lang/Object;)Landroid/os/Message;
+	13      (00000034) move-result-object   v5
+	14      (00000036) invoke-virtual       v4, v5, Landroid/os/Handler;->sendMessage(Landroid/os/Message;)Z
+	15      (0000003c) return               v2
+
+c-BB@0x3e : 
+	16      (0000003e) return               v1
+

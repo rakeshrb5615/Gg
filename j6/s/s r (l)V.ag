@@ -1,0 +1,44 @@
+# Lj6/s;->r(Ly3/l;)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:y3.l
+#
+# - return:void
+
+r-BB@0x0 : [ r-BB@0x12 r-BB@0x14 ]
+	0       (00000000) iget-object          v0, v3, Lj6/s;->c Ljava/lang/Object;
+	1       (00000004) check-cast           v0, Landroid/os/Handler;
+	2       (00000008) iget                 v1, v4, Ly3/l;->b I
+	3       (0000000c) const/4              v2, -2
+	4       (0000000e) if-ne                v1, v2, +003h
+
+r-BB@0x12 : 
+	5       (00000012) return-void          
+
+r-BB@0x14 : [ r-BB@0x18 r-BB@0x1a ]
+	6       (00000014) if-lez               v1, +003h
+
+r-BB@0x18 : [ r-BB@0x2a ]
+	7       (00000018) goto                 +9h
+
+r-BB@0x1a : [ r-BB@0x20 r-BB@0x26 ]
+	8       (0000001a) const/4              v2, -1
+	9       (0000001c) if-ne                v1, v2, +005h
+
+r-BB@0x20 : [ r-BB@0x2a ]
+	10      (00000020) const/16             v1, 1500
+	11      (00000024) goto                 +3h
+
+r-BB@0x26 : [ r-BB@0x2a ]
+	12      (00000026) const/16             v1, 2750
+
+r-BB@0x2a : 
+	13      (0000002a) invoke-virtual       v0, v4, Landroid/os/Handler;->removeCallbacksAndMessages(Ljava/lang/Object;)V
+	14      (00000030) const/4              v2, 0
+	15      (00000032) invoke-static        v0, v2, v4, Landroid/os/Message;->obtain(Landroid/os/Handler; I Ljava/lang/Object;)Landroid/os/Message;
+	16      (00000038) move-result-object   v4
+	17      (0000003a) int-to-long          v1, v1
+	18      (0000003c) invoke-virtual       v0, v4, v1, v2, Landroid/os/Handler;->sendMessageDelayed(Landroid/os/Message; J)Z
+	19      (00000042) return-void          
+

@@ -1,0 +1,71 @@
+# Lh5/a;->onComplete(Lcom/google/android/gms/tasks/Task;)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:com.google.android.gms.tasks.Task
+#
+# - return:void
+
+onComplete-BB@0x0 : [ onComplete-BB@0x24 onComplete-BB@0xd0 ]
+	0       (00000000) iget-object          v0, v4, Lh5/a;->b Ljava/lang/Object;
+	1       (00000004) check-cast           v0, Lk2/c;
+	2       (00000008) iget-object          v1, v4, Lh5/a;->c Ljava/lang/Object;
+	3       (0000000c) check-cast           v1, Landroid/app/Activity;
+	4       (00000010) iget-object          v2, v4, Lh5/a;->d Ljava/lang/Object;
+	5       (00000014) check-cast           v2, Landroid/content/Context;
+	6       (00000018) invoke-virtual       v5, Lcom/google/android/gms/tasks/Task;->isSuccessful()Z
+	7       (0000001e) move-result          v3
+	8       (00000020) if-eqz               v3, +058h
+
+onComplete-BB@0x24 : [ onComplete-BB@0x3c onComplete-BB@0x48 ]
+	9       (00000024) invoke-virtual       v5, Lcom/google/android/gms/tasks/Task;->getResult()Ljava/lang/Object;
+	10      (0000002a) move-result-object   v5
+	11      (0000002c) check-cast           v5, Lh4/a;
+	12      (00000030) check-cast           v5, Lh4/b;
+	13      (00000034) iget-boolean         v2, v5, Lh4/b;->b Z
+	14      (00000038) if-eqz               v2, +008h
+
+onComplete-BB@0x3c : [ onComplete-BB@0xba ]
+	15      (0000003c) const/4              v5, 0
+	16      (0000003e) invoke-static        v5, Lcom/google/android/gms/tasks/Tasks;->forResult(Ljava/lang/Object;)Lcom/google/android/gms/tasks/Task;
+	17      (00000044) move-result-object   v5
+	18      (00000046) goto                 +3ah
+
+onComplete-BB@0x48 : [ onComplete-BB@0xba ]
+	19      (00000048) new-instance         v2, Landroid/content/Intent;
+	20      (0000004c) const-class          v3, Lcom/google/android/play/core/common/PlayCoreDialogWrapperActivity;
+	21      (00000050) invoke-direct        v2, v1, v3, Landroid/content/Intent;-><init>(Landroid/content/Context; Ljava/lang/Class;)V
+	22      (00000056) iget-object          v5, v5, Lh4/b;->a Landroid/app/PendingIntent;
+	23      (0000005a) const-string         v3, "confirmation_intent"
+	24      (0000005e) invoke-virtual       v2, v3, v5, Landroid/content/Intent;->putExtra(Ljava/lang/String; Landroid/os/Parcelable;)Landroid/content/Intent;
+	25      (00000064) invoke-virtual       v1, Landroid/app/Activity;->getWindow()Landroid/view/Window;
+	26      (0000006a) move-result-object   v5
+	27      (0000006c) invoke-virtual       v5, Landroid/view/Window;->getDecorView()Landroid/view/View;
+	28      (00000072) move-result-object   v5
+	29      (00000074) invoke-virtual       v5, Landroid/view/View;->getWindowSystemUiVisibility()I
+	30      (0000007a) move-result          v5
+	31      (0000007c) const-string         v3, "window_flags"
+	32      (00000080) invoke-virtual       v2, v3, v5, Landroid/content/Intent;->putExtra(Ljava/lang/String; I)Landroid/content/Intent;
+	33      (00000086) new-instance         v5, Lcom/google/android/gms/tasks/TaskCompletionSource;
+	34      (0000008a) invoke-direct        v5, Lcom/google/android/gms/tasks/TaskCompletionSource;-><init>()V
+	35      (00000090) iget-object          v0, v0, Lk2/c;->c Ljava/lang/Object;
+	36      (00000094) check-cast           v0, Landroid/os/Handler;
+	37      (00000098) new-instance         v3, Lh4/c;
+	38      (0000009c) invoke-direct        v3, v0, v5, Lh4/c;-><init>(Landroid/os/Handler; Lcom/google/android/gms/tasks/TaskCompletionSource;)V
+	39      (000000a2) const-string         v0, "result_receiver"
+	40      (000000a6) invoke-virtual       v2, v0, v3, Landroid/content/Intent;->putExtra(Ljava/lang/String; Landroid/os/Parcelable;)Landroid/content/Intent;
+	41      (000000ac) invoke-virtual       v1, v2, Landroid/app/Activity;->startActivity(Landroid/content/Intent;)V
+	42      (000000b2) invoke-virtual       v5, Lcom/google/android/gms/tasks/TaskCompletionSource;->getTask()Lcom/google/android/gms/tasks/Task;
+	43      (000000b8) move-result-object   v5
+
+onComplete-BB@0xba : 
+	44      (000000ba) new-instance         v0, La5/t;
+	45      (000000be) const/16             v1, 17
+	46      (000000c2) invoke-direct        v0, v1, La5/t;-><init>(I)V
+	47      (000000c8) invoke-virtual       v5, v0, Lcom/google/android/gms/tasks/Task;->addOnCompleteListener(Lcom/google/android/gms/tasks/OnCompleteListener;)Lcom/google/android/gms/tasks/Task;
+	48      (000000ce) return-void          
+
+onComplete-BB@0xd0 : 
+	49      (000000d0) invoke-static        v2, Lc4/b;->F(Landroid/content/Context;)V
+	50      (000000d6) return-void          
+

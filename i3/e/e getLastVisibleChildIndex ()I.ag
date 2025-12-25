@@ -1,0 +1,31 @@
+# Li3/e;->getLastVisibleChildIndex()I [access_flags=private]
+#
+# Parameters:
+# local registers: v0...v2
+#
+# - return:int
+
+getLastVisibleChildIndex-BB@0x0 : [ getLastVisibleChildIndex-BB@0xc ]
+	0       (00000000) invoke-virtual       v2, Landroid/view/ViewGroup;->getChildCount()I
+	1       (00000006) move-result          v0
+	2       (00000008) add-int/lit8         v0, v0, -1
+
+getLastVisibleChildIndex-BB@0xc : [ getLastVisibleChildIndex-BB@0x10 getLastVisibleChildIndex-BB@0x24 ]
+	3       (0000000c) if-ltz               v0, +00ch
+
+getLastVisibleChildIndex-BB@0x10 : [ getLastVisibleChildIndex-BB@0x1c getLastVisibleChildIndex-BB@0x1e ]
+	4       (00000010) invoke-virtual       v2, v0, Li3/e;->c(I)Z
+	5       (00000016) move-result          v1
+	6       (00000018) if-eqz               v1, +003h
+
+getLastVisibleChildIndex-BB@0x1c : 
+	7       (0000001c) return               v0
+
+getLastVisibleChildIndex-BB@0x1e : [ getLastVisibleChildIndex-BB@0xc ]
+	8       (0000001e) add-int/lit8         v0, v0, -1
+	9       (00000022) goto                 -bh
+
+getLastVisibleChildIndex-BB@0x24 : 
+	10      (00000024) const/4              v0, -1
+	11      (00000026) return               v0
+

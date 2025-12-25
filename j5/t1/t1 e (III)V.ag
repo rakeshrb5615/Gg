@@ -1,0 +1,47 @@
+# Lj5/t1;->e(I I I)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:int
+# - v4:int
+# - v5:int
+#
+# - return:void
+
+e-BB@0x0 : [ e-BB@0x8 e-BB@0x2a ]
+	0       (00000000) const-string         v0, "fromIndex: "
+	1       (00000004) if-ltz               v3, +013h
+
+e-BB@0x8 : [ e-BB@0xc e-BB@0x2a ]
+	2       (00000008) if-gt                v4, v5, +011h
+
+e-BB@0xc : [ e-BB@0x10 e-BB@0x12 ]
+	3       (0000000c) if-gt                v3, v4, +003h
+
+e-BB@0x10 : 
+	4       (00000010) return-void          
+
+e-BB@0x12 : 
+	5       (00000012) new-instance         v5, Ljava/lang/IllegalArgumentException;
+	6       (00000016) const-string         v1, " > toIndex: "
+	7       (0000001a) invoke-static        v0, v3, v4, v1, Lv1/a;->i(Ljava/lang/String; I I Ljava/lang/String;)Ljava/lang/String;
+	8       (00000020) move-result-object   v3
+	9       (00000022) invoke-direct        v5, v3, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	10      (00000028) throw                v5
+
+e-BB@0x2a : 
+	11      (0000002a) new-instance         v1, Ljava/lang/IndexOutOfBoundsException;
+	12      (0000002e) new-instance         v2, Ljava/lang/StringBuilder;
+	13      (00000032) invoke-direct        v2, v0, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	14      (00000038) invoke-virtual       v2, v3, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	15      (0000003e) const-string         v3, ", toIndex: "
+	16      (00000042) invoke-virtual       v2, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	17      (00000048) invoke-virtual       v2, v4, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	18      (0000004e) const-string         v3, ", size: "
+	19      (00000052) invoke-virtual       v2, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	20      (00000058) invoke-virtual       v2, v5, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	21      (0000005e) invoke-virtual       v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	22      (00000064) move-result-object   v3
+	23      (00000066) invoke-direct        v1, v3, Ljava/lang/IndexOutOfBoundsException;-><init>(Ljava/lang/String;)V
+	24      (0000006c) throw                v1
+

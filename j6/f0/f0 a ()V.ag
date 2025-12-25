@@ -1,0 +1,110 @@
+# Lj6/f0;->a()V [access_flags=public final synchronized]
+#
+# Parameters:
+# local registers: v0...v3
+#
+# - return:void
+
+a-BB@0x0 : [ a-BB@0x2 ]
+	0       (00000000) monitor-enter        v3
+
+a-BB@0x2 : [ a-BB@0x14 a-BB@0x28 ]
+	1       (00000002) const-string         v0, "FirebaseMessaging"
+	2       (00000006) const/4              v1, 3
+	3       (00000008) invoke-static        v0, v1, Landroid/util/Log;->isLoggable(Ljava/lang/String; I)Z
+	4       (0000000e) move-result          v0
+	5       (00000010) if-eqz               v0, +00ch
+	2:a9
+	(Ljava/lang/Throwable; -> 24 a-BB@0x24)
+
+a-BB@0x14 : [ a-BB@0x28 ]
+	6       (00000014) const-string         v0, "FirebaseMessaging"
+	7       (00000018) const-string         v2, "flush queue called"
+	8       (0000001c) invoke-static        v0, v2, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String;)I
+	9       (00000022) goto                 +3h
+	2:a9
+	(Ljava/lang/Throwable; -> 24 a-BB@0x24)
+
+a-BB@0x24 : [ a-BB@0xb2 ]
+	10      (00000024) move-exception       v0
+	11      (00000026) goto                 +46h
+	2:a9
+	(Ljava/lang/Throwable; -> 24 a-BB@0x24)
+
+a-BB@0x28 : [ a-BB@0x38 a-BB@0xae ]
+	12      (00000028) iget-object          v0, v3, Lj6/f0;->d Ljava/util/ArrayDeque;
+	13      (0000002c) invoke-virtual       v0, Ljava/util/ArrayDeque;->isEmpty()Z
+	14      (00000032) move-result          v0
+	15      (00000034) if-nez               v0, +03dh
+	2:a9
+	(Ljava/lang/Throwable; -> 24 a-BB@0x24)
+
+a-BB@0x38 : [ a-BB@0x48 a-BB@0x56 ]
+	16      (00000038) const-string         v0, "FirebaseMessaging"
+	17      (0000003c) invoke-static        v0, v1, Landroid/util/Log;->isLoggable(Ljava/lang/String; I)Z
+	18      (00000042) move-result          v0
+	19      (00000044) if-eqz               v0, +009h
+	2:a9
+	(Ljava/lang/Throwable; -> 24 a-BB@0x24)
+
+a-BB@0x48 : [ a-BB@0x56 ]
+	20      (00000048) const-string         v0, "FirebaseMessaging"
+	21      (0000004c) const-string         v2, "found intent to be delivered"
+	22      (00000050) invoke-static        v0, v2, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String;)I
+	2:a9
+	(Ljava/lang/Throwable; -> 24 a-BB@0x24)
+
+a-BB@0x56 : [ a-BB@0x5e a-BB@0xa4 ]
+	23      (00000056) iget-object          v0, v3, Lj6/f0;->e Lj6/d0;
+	24      (0000005a) if-eqz               v0, +025h
+	2:a9
+	(Ljava/lang/Throwable; -> 24 a-BB@0x24)
+
+a-BB@0x5e : [ a-BB@0x6a a-BB@0xa4 ]
+	25      (0000005e) invoke-virtual       v0, Landroid/os/Binder;->isBinderAlive()Z
+	26      (00000064) move-result          v0
+	27      (00000066) if-eqz               v0, +01fh
+	2:a9
+	(Ljava/lang/Throwable; -> 24 a-BB@0x24)
+
+a-BB@0x6a : [ a-BB@0x7a a-BB@0x88 ]
+	28      (0000006a) const-string         v0, "FirebaseMessaging"
+	29      (0000006e) invoke-static        v0, v1, Landroid/util/Log;->isLoggable(Ljava/lang/String; I)Z
+	30      (00000074) move-result          v0
+	31      (00000076) if-eqz               v0, +009h
+	2:a9
+	(Ljava/lang/Throwable; -> 24 a-BB@0x24)
+
+a-BB@0x7a : [ a-BB@0x88 ]
+	32      (0000007a) const-string         v0, "FirebaseMessaging"
+	33      (0000007e) const-string         v2, "binder is alive, sending the intent."
+	34      (00000082) invoke-static        v0, v2, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String;)I
+	2:a9
+	(Ljava/lang/Throwable; -> 24 a-BB@0x24)
+
+a-BB@0x88 : [ a-BB@0x28 ]
+	35      (00000088) iget-object          v0, v3, Lj6/f0;->d Ljava/util/ArrayDeque;
+	36      (0000008c) invoke-virtual       v0, Ljava/util/ArrayDeque;->poll()Ljava/lang/Object;
+	37      (00000092) move-result-object   v0
+	38      (00000094) check-cast           v0, Lj6/e0;
+	39      (00000098) iget-object          v2, v3, Lj6/f0;->e Lj6/d0;
+	40      (0000009c) invoke-virtual       v2, v0, Lj6/d0;->a(Lj6/e0;)V
+	41      (000000a2) goto                 -3dh
+	2:a9
+	(Ljava/lang/Throwable; -> 24 a-BB@0x24)
+
+a-BB@0xa4 : 
+	42      (000000a4) invoke-virtual       v3, Lj6/f0;->c()V
+	43      (000000aa) monitor-exit         v3
+	44      (000000ac) return-void          
+
+a-BB@0xae : 
+	45      (000000ae) monitor-exit         v3
+	46      (000000b0) return-void          
+
+a-BB@0xb2 : 
+	47      (000000b2) monitor-exit         v3
+	48      (000000b4) throw                v0
+	b2:b3
+	(Ljava/lang/Throwable; -> 24 a-BB@0x24)
+

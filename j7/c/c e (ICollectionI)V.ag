@@ -1,0 +1,34 @@
+# Lj7/c;->e(I Ljava/util/Collection; I)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:int
+# - v6:java.util.Collection
+# - v7:int
+#
+# - return:void
+
+e-BB@0x0 : [ e-BB@0x1c ]
+	0       (00000000) iget                 v0, v4, Ljava/util/AbstractList;->modCount I
+	1       (00000004) add-int/lit8         v0, v0, 1
+	2       (00000008) iput                 v0, v4, Ljava/util/AbstractList;->modCount I
+	3       (0000000c) invoke-virtual       v4, v5, v7, Lj7/c;->h(I I)V
+	4       (00000012) invoke-interface     v6, Ljava/util/Collection;->iterator()Ljava/util/Iterator;
+	5       (00000018) move-result-object   v6
+	6       (0000001a) const/4              v0, 0
+
+e-BB@0x1c : [ e-BB@0x20 e-BB@0x3a ]
+	7       (0000001c) if-ge                v0, v7, +00fh
+
+e-BB@0x20 : [ e-BB@0x1c ]
+	8       (00000020) iget-object          v1, v4, Lj7/c;->a [Ljava/lang/Object;
+	9       (00000024) add-int              v2, v5, v0
+	10      (00000028) invoke-interface     v6, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	11      (0000002e) move-result-object   v3
+	12      (00000030) aput-object          v3, v1, v2
+	13      (00000034) add-int/lit8         v0, v0, 1
+	14      (00000038) goto                 -eh
+
+e-BB@0x3a : 
+	15      (0000003a) return-void          
+

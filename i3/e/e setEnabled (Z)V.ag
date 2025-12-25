@@ -1,0 +1,28 @@
+# Li3/e;->setEnabled(Z)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:boolean
+#
+# - return:void
+
+setEnabled-BB@0x0 : [ setEnabled-BB@0x8 ]
+	0       (00000000) invoke-super         v2, v3, Landroid/view/View;->setEnabled(Z)V
+	1       (00000006) const/4              v0, 0
+
+setEnabled-BB@0x8 : [ setEnabled-BB@0x14 setEnabled-BB@0x2c ]
+	2       (00000008) invoke-virtual       v2, Landroid/view/ViewGroup;->getChildCount()I
+	3       (0000000e) move-result          v1
+	4       (00000010) if-ge                v0, v1, +00eh
+
+setEnabled-BB@0x14 : [ setEnabled-BB@0x8 ]
+	5       (00000014) invoke-virtual       v2, v0, Landroid/view/ViewGroup;->getChildAt(I)Landroid/view/View;
+	6       (0000001a) move-result-object   v1
+	7       (0000001c) check-cast           v1, Lcom/google/android/material/button/MaterialButton;
+	8       (00000020) invoke-virtual       v1, v3, Landroid/view/View;->setEnabled(Z)V
+	9       (00000026) add-int/lit8         v0, v0, 1
+	10      (0000002a) goto                 -11h
+
+setEnabled-BB@0x2c : 
+	11      (0000002c) return-void          
+

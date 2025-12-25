@@ -1,0 +1,67 @@
+# Li8/a;->d(Ljava/lang/Throwable; Ll7/h;)V [access_flags=public static final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:java.lang.Throwable
+# - v5:l7.h
+#
+# - return:void
+
+d-BB@0x0 : [ d-BB@0xc ]
+	0       (00000000) sget-object          v0, Li8/d;->a Ljava/util/List;
+	1       (00000004) invoke-interface     v0, Ljava/util/Collection;->iterator()Ljava/util/Iterator;
+	2       (0000000a) move-result-object   v0
+
+d-BB@0xc : [ d-BB@0x18 d-BB@0x62 ]
+	3       (0000000c) invoke-interface     v0, Ljava/util/Iterator;->hasNext()Z
+	4       (00000012) move-result          v1
+	5       (00000014) if-eqz               v1, +027h
+
+d-BB@0x18 : [ d-BB@0x24 ]
+	6       (00000018) invoke-interface     v0, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	7       (0000001e) move-result-object   v1
+	8       (00000020) check-cast           v1, Le8/b;
+
+d-BB@0x24 : [ d-BB@0xc ]
+	9       (00000024) invoke-virtual       v1, v4, Le8/b;->i(Ljava/lang/Throwable;)V
+	10      (0000002a) goto                 -fh
+	24:29
+	(Ljava/lang/Throwable; -> 2c d-BB@0x2c)
+
+d-BB@0x2c : [ d-BB@0x32 d-BB@0x36 ]
+	11      (0000002c) move-exception       v1
+	12      (0000002e) if-ne                v4, v1, +004h
+
+d-BB@0x32 : [ d-BB@0x4a ]
+	13      (00000032) move-object          v2, v4
+	14      (00000034) goto                 +bh
+
+d-BB@0x36 : [ d-BB@0x4a ]
+	15      (00000036) new-instance         v2, Ljava/lang/RuntimeException;
+	16      (0000003a) const-string         v3, "Exception while trying to handle coroutine exception"
+	17      (0000003e) invoke-direct        v2, v3, v1, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	18      (00000044) invoke-static        v2, v4, Lq4/b;->a(Ljava/lang/Throwable; Ljava/lang/Throwable;)V
+
+d-BB@0x4a : [ d-BB@0xc ]
+	19      (0000004a) invoke-static        Ljava/lang/Thread;->currentThread()Ljava/lang/Thread;
+	20      (00000050) move-result-object   v1
+	21      (00000052) invoke-virtual       v1, Ljava/lang/Thread;->getUncaughtExceptionHandler()Ljava/lang/Thread$UncaughtExceptionHandler;
+	22      (00000058) move-result-object   v3
+	23      (0000005a) invoke-interface     v3, v1, v2, Ljava/lang/Thread$UncaughtExceptionHandler;->uncaughtException(Ljava/lang/Thread; Ljava/lang/Throwable;)V
+	24      (00000060) goto                 -2ah
+
+d-BB@0x62 : [ d-BB@0x72 ]
+	25      (00000062) new-instance         v0, Li8/e;
+	26      (00000066) invoke-direct        v0, v5, Li8/e;-><init>(Ll7/h;)V
+	27      (0000006c) invoke-static        v4, v0, Lq4/b;->a(Ljava/lang/Throwable; Ljava/lang/Throwable;)V
+	62:71
+	(Ljava/lang/Throwable; -> 72 d-BB@0x72)
+
+d-BB@0x72 : 
+	28      (00000072) invoke-static        Ljava/lang/Thread;->currentThread()Ljava/lang/Thread;
+	29      (00000078) move-result-object   v5
+	30      (0000007a) invoke-virtual       v5, Ljava/lang/Thread;->getUncaughtExceptionHandler()Ljava/lang/Thread$UncaughtExceptionHandler;
+	31      (00000080) move-result-object   v0
+	32      (00000082) invoke-interface     v0, v5, v4, Ljava/lang/Thread$UncaughtExceptionHandler;->uncaughtException(Ljava/lang/Thread; Ljava/lang/Throwable;)V
+	33      (00000088) return-void          
+

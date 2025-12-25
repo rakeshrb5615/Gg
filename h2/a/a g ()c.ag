@@ -1,0 +1,90 @@
+# Lh2/a;->g()Lh2/c; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v3
+#
+# - return:h2.c
+
+g-BB@0x0 : [ g-BB@0x18 g-BB@0x1a ]
+	0       (00000000) move-object          v0, v3
+	1       (00000002) check-cast           v0, Lh2/b;
+	2       (00000006) iget-object          v0, v0, Lh2/b;->e Landroid/os/Parcel;
+	3       (0000000a) invoke-virtual       v0, Landroid/os/Parcel;->readString()Ljava/lang/String;
+	4       (00000010) move-result-object   v0
+	5       (00000012) const/4              v1, 0
+	6       (00000014) if-nez               v0, +003h
+
+g-BB@0x18 : 
+	7       (00000018) return-object        v1
+
+g-BB@0x1a : [ g-BB@0x22 ]
+	8       (0000001a) invoke-virtual       v3, Lh2/a;->a()Lh2/b;
+	9       (00000020) move-result-object   v2
+
+g-BB@0x22 : 
+	10      (00000022) invoke-virtual       v3, v0, Lh2/a;->c(Ljava/lang/String;)Ljava/lang/reflect/Method;
+	11      (00000028) move-result-object   v0
+	12      (0000002a) filled-new-array     v2, [Ljava/lang/Object;
+	13      (00000030) move-result-object   v2
+	14      (00000032) invoke-virtual       v0, v1, v2, Ljava/lang/reflect/Method;->invoke(Ljava/lang/Object; [Ljava/lang/Object;)Ljava/lang/Object;
+	15      (00000038) move-result-object   v0
+	16      (0000003a) check-cast           v0, Lh2/c;
+	17      (0000003e) return-object        v0
+	22:3d
+	(Ljava/lang/IllegalAccessException; -> 4c g-BB@0x4c)
+	(Ljava/lang/reflect/InvocationTargetException; -> 48 g-BB@0x48)
+	(Ljava/lang/NoSuchMethodException; -> 44 g-BB@0x44)
+	(Ljava/lang/ClassNotFoundException; -> 40 g-BB@0x40)
+
+g-BB@0x40 : [ g-BB@0x50 ]
+	18      (00000040) move-exception       v0
+	19      (00000042) goto                 +7h
+
+g-BB@0x44 : [ g-BB@0x60 ]
+	20      (00000044) move-exception       v0
+	21      (00000046) goto                 +dh
+
+g-BB@0x48 : [ g-BB@0x70 ]
+	22      (00000048) move-exception       v0
+	23      (0000004a) goto                 +13h
+
+g-BB@0x4c : [ g-BB@0x9e ]
+	24      (0000004c) move-exception       v0
+	25      (0000004e) goto                 +28h
+
+g-BB@0x50 : 
+	26      (00000050) new-instance         v1, Ljava/lang/RuntimeException;
+	27      (00000054) const-string         v2, "VersionedParcel encountered ClassNotFoundException"
+	28      (00000058) invoke-direct        v1, v2, v0, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	29      (0000005e) throw                v1
+
+g-BB@0x60 : 
+	30      (00000060) new-instance         v1, Ljava/lang/RuntimeException;
+	31      (00000064) const-string         v2, "VersionedParcel encountered NoSuchMethodException"
+	32      (00000068) invoke-direct        v1, v2, v0, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	33      (0000006e) throw                v1
+
+g-BB@0x70 : [ g-BB@0x80 g-BB@0x8e ]
+	34      (00000070) invoke-virtual       v0, Ljava/lang/reflect/InvocationTargetException;->getCause()Ljava/lang/Throwable;
+	35      (00000076) move-result-object   v1
+	36      (00000078) instance-of          v1, v1, Ljava/lang/RuntimeException;
+	37      (0000007c) if-eqz               v1, +009h
+
+g-BB@0x80 : 
+	38      (00000080) invoke-virtual       v0, Ljava/lang/reflect/InvocationTargetException;->getCause()Ljava/lang/Throwable;
+	39      (00000086) move-result-object   v0
+	40      (00000088) check-cast           v0, Ljava/lang/RuntimeException;
+	41      (0000008c) throw                v0
+
+g-BB@0x8e : 
+	42      (0000008e) new-instance         v1, Ljava/lang/RuntimeException;
+	43      (00000092) const-string         v2, "VersionedParcel encountered InvocationTargetException"
+	44      (00000096) invoke-direct        v1, v2, v0, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	45      (0000009c) throw                v1
+
+g-BB@0x9e : 
+	46      (0000009e) new-instance         v1, Ljava/lang/RuntimeException;
+	47      (000000a2) const-string         v2, "VersionedParcel encountered IllegalAccessException"
+	48      (000000a6) invoke-direct        v1, v2, v0, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	49      (000000ac) throw                v1
+

@@ -1,0 +1,25 @@
+# Li5/k;->x(I)Li5/h; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:int
+#
+# - return:i5.h
+
+x-BB@0x0 : [ x-BB@0x4 x-BB@0xa ]
+	0       (00000000) if-nez               v4, +005h
+
+x-BB@0x4 : 
+	1       (00000004) sget-object          v4, Li5/h;->c Li5/h;
+	2       (00000008) return-object        v4
+
+x-BB@0xa : 
+	3       (0000000a) int-to-long          v0, v4
+	4       (0000000c) iget-object          v2, v3, Li5/k;->a Ljava/io/RandomAccessFile;
+	5       (00000010) invoke-virtual       v2, v0, v1, Ljava/io/RandomAccessFile;->seek(J)V
+	6       (00000016) new-instance         v0, Li5/h;
+	7       (0000001a) invoke-virtual       v2, Ljava/io/RandomAccessFile;->readInt()I
+	8       (00000020) move-result          v1
+	9       (00000022) invoke-direct        v0, v4, v1, Li5/h;-><init>(I I)V
+	10      (00000028) return-object        v0
+

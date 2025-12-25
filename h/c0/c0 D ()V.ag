@@ -1,0 +1,33 @@
+# Lh/c0;->d()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v2
+#
+# - return:void
+
+d-BB@0x0 : [ d-BB@0x18 d-BB@0x20 ]
+	0       (00000000) iget-object          v0, v2, Lh/c0;->q Landroid/content/Context;
+	1       (00000004) invoke-static        v0, Landroid/view/LayoutInflater;->from(Landroid/content/Context;)Landroid/view/LayoutInflater;
+	2       (0000000a) move-result-object   v0
+	3       (0000000c) invoke-virtual       v0, Landroid/view/LayoutInflater;->getFactory()Landroid/view/LayoutInflater$Factory;
+	4       (00000012) move-result-object   v1
+	5       (00000014) if-nez               v1, +006h
+
+d-BB@0x18 : 
+	6       (00000018) invoke-virtual       v0, v2, Landroid/view/LayoutInflater;->setFactory2(Landroid/view/LayoutInflater$Factory2;)V
+	7       (0000001e) return-void          
+
+d-BB@0x20 : [ d-BB@0x30 d-BB@0x3e ]
+	8       (00000020) invoke-virtual       v0, Landroid/view/LayoutInflater;->getFactory2()Landroid/view/LayoutInflater$Factory2;
+	9       (00000026) move-result-object   v0
+	10      (00000028) instance-of          v0, v0, Lh/c0;
+	11      (0000002c) if-nez               v0, +009h
+
+d-BB@0x30 : [ d-BB@0x3e ]
+	12      (00000030) const-string         v0, "AppCompatDelegate"
+	13      (00000034) const-string         v1, "The Activity's LayoutInflater already has a Factory installed so we can not install AppCompat's"
+	14      (00000038) invoke-static        v0, v1, Landroid/util/Log;->i(Ljava/lang/String; Ljava/lang/String;)I
+
+d-BB@0x3e : 
+	15      (0000003e) return-void          
+

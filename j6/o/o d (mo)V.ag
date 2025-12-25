@@ -1,0 +1,69 @@
+# Lj6/o;->d(Lm/m; Lm/o;)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v7
+# - v8:m.m
+# - v9:m.o
+#
+# - return:void
+
+d-BB@0x0 : [ d-BB@0x22 ]
+	0       (00000000) iget-object          v0, v7, Lj6/o;->b Ljava/lang/Object;
+	1       (00000004) check-cast           v0, Lm/g;
+	2       (00000008) iget-object          v1, v0, Lm/g;->f Landroid/os/Handler;
+	3       (0000000c) const/4              v2, 0
+	4       (0000000e) invoke-virtual       v1, v2, Landroid/os/Handler;->removeCallbacksAndMessages(Ljava/lang/Object;)V
+	5       (00000014) iget-object          v0, v0, Lm/g;->n Ljava/util/ArrayList;
+	6       (00000018) invoke-virtual       v0, Ljava/util/ArrayList;->size()I
+	7       (0000001e) move-result          v3
+	8       (00000020) const/4              v4, 0
+
+d-BB@0x22 : [ d-BB@0x28 d-BB@0x44 ]
+	9       (00000022) const/4              v5, -1
+	10      (00000024) if-ge                v4, v3, +010h
+
+d-BB@0x28 : [ d-BB@0x3c d-BB@0x3e ]
+	11      (00000028) invoke-virtual       v0, v4, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	12      (0000002e) move-result-object   v6
+	13      (00000030) check-cast           v6, Lm/f;
+	14      (00000034) iget-object          v6, v6, Lm/f;->b Lm/m;
+	15      (00000038) if-ne                v8, v6, +003h
+
+d-BB@0x3c : [ d-BB@0x46 ]
+	16      (0000003c) goto                 +5h
+
+d-BB@0x3e : [ d-BB@0x22 ]
+	17      (0000003e) add-int/lit8         v4, v4, 1
+	18      (00000042) goto                 -10h
+
+d-BB@0x44 : [ d-BB@0x46 ]
+	19      (00000044) move                 v4, v5
+
+d-BB@0x46 : [ d-BB@0x4a d-BB@0x4c ]
+	20      (00000046) if-ne                v4, v5, +003h
+
+d-BB@0x4a : 
+	21      (0000004a) return-void          
+
+d-BB@0x4c : [ d-BB@0x5c d-BB@0x6a ]
+	22      (0000004c) add-int/lit8         v4, v4, 1
+	23      (00000050) invoke-virtual       v0, Ljava/util/ArrayList;->size()I
+	24      (00000056) move-result          v3
+	25      (00000058) if-ge                v4, v3, +009h
+
+d-BB@0x5c : [ d-BB@0x6a ]
+	26      (0000005c) invoke-virtual       v0, v4, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	27      (00000062) move-result-object   v0
+	28      (00000064) move-object          v2, v0
+	29      (00000066) check-cast           v2, Lm/f;
+
+d-BB@0x6a : 
+	30      (0000006a) new-instance         v0, Lm/e;
+	31      (0000006e) invoke-direct        v0, v7, v2, v9, v8, Lm/e;-><init>(Lj6/o; Lm/f; Lm/o; Lm/m;)V
+	32      (00000074) invoke-static        Landroid/os/SystemClock;->uptimeMillis()J
+	33      (0000007a) move-result-wide     v2
+	34      (0000007c) const-wide/16        v4, 200
+	35      (00000080) add-long/2addr       v2, v4
+	36      (00000082) invoke-virtual       v1, v0, v8, v2, v3, Landroid/os/Handler;->postAtTime(Ljava/lang/Runnable; Ljava/lang/Object; J)Z
+	37      (00000088) return-void          
+

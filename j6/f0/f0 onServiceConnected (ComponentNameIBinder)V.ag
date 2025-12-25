@@ -1,0 +1,96 @@
+# Lj6/f0;->onServiceConnected(Landroid/content/ComponentName; Landroid/os/IBinder;)V [access_flags=public final synchronized]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:android.content.ComponentName
+# - v6:android.os.IBinder
+#
+# - return:void
+
+onServiceConnected-BB@0x0 : [ onServiceConnected-BB@0xa ]
+	0       (00000000) const-string         v0, "Invalid service connection: "
+	1       (00000004) const-string         v1, "onServiceConnected: "
+	2       (00000008) monitor-enter        v4
+
+onServiceConnected-BB@0xa : [ onServiceConnected-BB@0x1c onServiceConnected-BB@0x44 ]
+	3       (0000000a) const-string         v2, "FirebaseMessaging"
+	4       (0000000e) const/4              v3, 3
+	5       (00000010) invoke-static        v2, v3, Landroid/util/Log;->isLoggable(Ljava/lang/String; I)Z
+	6       (00000016) move-result          v2
+	7       (00000018) if-eqz               v2, +016h
+	a:9b
+	(Ljava/lang/Throwable; -> 40 onServiceConnected-BB@0x40)
+
+onServiceConnected-BB@0x1c : [ onServiceConnected-BB@0x44 ]
+	8       (0000001c) const-string         v2, "FirebaseMessaging"
+	9       (00000020) new-instance         v3, Ljava/lang/StringBuilder;
+	10      (00000024) invoke-direct        v3, v1, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	11      (0000002a) invoke-virtual       v3, v5, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	12      (00000030) invoke-virtual       v3, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	13      (00000036) move-result-object   v5
+	14      (00000038) invoke-static        v2, v5, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String;)I
+	15      (0000003e) goto                 +3h
+	a:9b
+	(Ljava/lang/Throwable; -> 40 onServiceConnected-BB@0x40)
+
+onServiceConnected-BB@0x40 : [ onServiceConnected-BB@0xb4 ]
+	16      (00000040) move-exception       v5
+	17      (00000042) goto                 +39h
+	a:9b
+	(Ljava/lang/Throwable; -> 40 onServiceConnected-BB@0x40)
+
+onServiceConnected-BB@0x44 : [ onServiceConnected-BB@0x52 onServiceConnected-BB@0xa2 ]
+	18      (00000044) const/4              v5, 0
+	19      (00000046) iput-boolean         v5, v4, Lj6/f0;->f Z
+	20      (0000004a) instance-of          v5, v6, Lj6/d0;
+	21      (0000004e) if-nez               v5, +02ah
+	a:9b
+	(Ljava/lang/Throwable; -> 40 onServiceConnected-BB@0x40)
+
+onServiceConnected-BB@0x52 : [ onServiceConnected-BB@0x78 ]
+	22      (00000052) const-string         v5, "FirebaseMessaging"
+	23      (00000056) new-instance         v1, Ljava/lang/StringBuilder;
+	24      (0000005a) invoke-direct        v1, v0, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	25      (00000060) invoke-virtual       v1, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	26      (00000066) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	27      (0000006c) move-result-object   v6
+	28      (0000006e) invoke-static        v5, v6, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String;)I
+	29      (00000074) iget-object          v5, v4, Lj6/f0;->d Ljava/util/ArrayDeque;
+	a:9b
+	(Ljava/lang/Throwable; -> 40 onServiceConnected-BB@0x40)
+
+onServiceConnected-BB@0x78 : [ onServiceConnected-BB@0x84 onServiceConnected-BB@0x9e ]
+	30      (00000078) invoke-virtual       v5, Ljava/util/ArrayDeque;->isEmpty()Z
+	31      (0000007e) move-result          v6
+	32      (00000080) if-nez               v6, +00fh
+	a:9b
+	(Ljava/lang/Throwable; -> 40 onServiceConnected-BB@0x40)
+
+onServiceConnected-BB@0x84 : [ onServiceConnected-BB@0x78 ]
+	33      (00000084) invoke-virtual       v5, Ljava/util/ArrayDeque;->poll()Ljava/lang/Object;
+	34      (0000008a) move-result-object   v6
+	35      (0000008c) check-cast           v6, Lj6/e0;
+	36      (00000090) iget-object          v6, v6, Lj6/e0;->b Lcom/google/android/gms/tasks/TaskCompletionSource;
+	37      (00000094) const/4              v0, 0
+	38      (00000096) invoke-virtual       v6, v0, Lcom/google/android/gms/tasks/TaskCompletionSource;->trySetResult(Ljava/lang/Object;)Z
+	39      (0000009c) goto                 -12h
+
+onServiceConnected-BB@0x9e : 
+	40      (0000009e) monitor-exit         v4
+	41      (000000a0) return-void          
+
+onServiceConnected-BB@0xa2 : 
+	42      (000000a2) check-cast           v6, Lj6/d0;
+	43      (000000a6) iput-object          v6, v4, Lj6/f0;->e Lj6/d0;
+	44      (000000aa) invoke-virtual       v4, Lj6/f0;->a()V
+	45      (000000b0) monitor-exit         v4
+	46      (000000b2) return-void          
+	a2:af
+	(Ljava/lang/Throwable; -> 40 onServiceConnected-BB@0x40)
+
+onServiceConnected-BB@0xb4 : 
+	47      (000000b4) monitor-exit         v4
+	48      (000000b6) throw                v5
+	b4:b5
+	(Ljava/lang/Throwable; -> 40 onServiceConnected-BB@0x40)
+

@@ -1,0 +1,34 @@
+# Li5/l;->c()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v4
+#
+# - return:void
+
+c-BB@0x0 : [ c-BB@0xc c-BB@0x44 ]
+	0       (00000000) iget-object          v0, v4, Li5/l;->a Ljava/io/File;
+	1       (00000004) iget-object          v1, v4, Li5/l;->b Li5/k;
+	2       (00000008) if-nez               v1, +01eh
+
+c-BB@0xc : 
+	3       (0000000c) new-instance         v1, Li5/k;
+	4       (00000010) invoke-direct        v1, v0, Li5/k;-><init>(Ljava/io/File;)V
+	5       (00000016) iput-object          v1, v4, Li5/l;->b Li5/k;
+	6       (0000001a) return-void          
+	c:19
+	(Ljava/io/IOException; -> 1c c-BB@0x1c)
+
+c-BB@0x1c : [ c-BB@0x44 ]
+	7       (0000001c) move-exception       v1
+	8       (0000001e) new-instance         v2, Ljava/lang/StringBuilder;
+	9       (00000022) const-string         v3, "Could not open log file: "
+	10      (00000026) invoke-direct        v2, v3, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	11      (0000002c) invoke-virtual       v2, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	12      (00000032) invoke-virtual       v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	13      (00000038) move-result-object   v0
+	14      (0000003a) const-string         v2, "FirebaseCrashlytics"
+	15      (0000003e) invoke-static        v2, v0, v1, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+
+c-BB@0x44 : 
+	16      (00000044) return-void          
+

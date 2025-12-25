@@ -1,0 +1,85 @@
+# Lj6/f0;->c()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v5
+#
+# - return:void
+
+c-BB@0x0 : [ c-BB@0x14 c-BB@0x3c ]
+	0       (00000000) const/4              v0, 3
+	1       (00000002) const-string         v1, "FirebaseMessaging"
+	2       (00000006) invoke-static        v1, v0, Landroid/util/Log;->isLoggable(Ljava/lang/String; I)Z
+	3       (0000000c) move-result          v0
+	4       (0000000e) const/4              v2, 1
+	5       (00000010) if-eqz               v0, +016h
+
+c-BB@0x14 : [ c-BB@0x3c ]
+	6       (00000014) new-instance         v0, Ljava/lang/StringBuilder;
+	7       (00000018) const-string         v3, "binder is dead. start connection? "
+	8       (0000001c) invoke-direct        v0, v3, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	9       (00000022) iget-boolean         v3, v5, Lj6/f0;->f Z
+	10      (00000026) xor-int/2addr        v3, v2
+	11      (00000028) invoke-virtual       v0, v3, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+	12      (0000002e) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	13      (00000034) move-result-object   v0
+	14      (00000036) invoke-static        v1, v0, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String;)I
+
+c-BB@0x3c : [ c-BB@0x44 c-BB@0x46 ]
+	15      (0000003c) iget-boolean         v0, v5, Lj6/f0;->f Z
+	16      (00000040) if-eqz               v0, +003h
+
+c-BB@0x44 : [ c-BB@0xb4 ]
+	17      (00000044) goto                 +38h
+
+c-BB@0x46 : [ c-BB@0x4a ]
+	18      (00000046) iput-boolean         v2, v5, Lj6/f0;->f Z
+
+c-BB@0x4a : [ c-BB@0x6a c-BB@0x6c ]
+	19      (0000004a) invoke-static        Lcom/google/android/gms/common/stats/ConnectionTracker;->getInstance()Lcom/google/android/gms/common/stats/ConnectionTracker;
+	20      (00000050) move-result-object   v0
+	21      (00000052) iget-object          v2, v5, Lj6/f0;->a Landroid/content/Context;
+	22      (00000056) iget-object          v3, v5, Lj6/f0;->b Landroid/content/Intent;
+	23      (0000005a) const/16             v4, 65
+	24      (0000005e) invoke-virtual       v0, v2, v3, v5, v4, Lcom/google/android/gms/common/stats/ConnectionTracker;->bindService(Landroid/content/Context; Landroid/content/Intent; Landroid/content/ServiceConnection; I)Z
+	25      (00000064) move-result          v0
+	26      (00000066) if-eqz               v0, +003h
+	4a:75
+	(Ljava/lang/SecurityException; -> 78 c-BB@0x78)
+
+c-BB@0x6a : [ c-BB@0xb4 ]
+	27      (0000006a) goto                 +25h
+	4a:75
+	(Ljava/lang/SecurityException; -> 78 c-BB@0x78)
+
+c-BB@0x6c : [ c-BB@0x84 ]
+	28      (0000006c) const-string         v0, "binding to the service failed"
+	29      (00000070) invoke-static        v1, v0, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String;)I
+	30      (00000076) goto                 +7h
+
+c-BB@0x78 : [ c-BB@0x84 ]
+	31      (00000078) move-exception       v0
+	32      (0000007a) const-string         v2, "Exception while binding the service"
+	33      (0000007e) invoke-static        v1, v2, v0, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+
+c-BB@0x84 : [ c-BB@0x8a ]
+	34      (00000084) const/4              v0, 0
+	35      (00000086) iput-boolean         v0, v5, Lj6/f0;->f Z
+
+c-BB@0x8a : [ c-BB@0x9a c-BB@0xb4 ]
+	36      (0000008a) iget-object          v0, v5, Lj6/f0;->d Ljava/util/ArrayDeque;
+	37      (0000008e) invoke-virtual       v0, Ljava/util/ArrayDeque;->isEmpty()Z
+	38      (00000094) move-result          v1
+	39      (00000096) if-nez               v1, +00fh
+
+c-BB@0x9a : [ c-BB@0x8a ]
+	40      (0000009a) invoke-virtual       v0, Ljava/util/ArrayDeque;->poll()Ljava/lang/Object;
+	41      (000000a0) move-result-object   v0
+	42      (000000a2) check-cast           v0, Lj6/e0;
+	43      (000000a6) iget-object          v0, v0, Lj6/e0;->b Lcom/google/android/gms/tasks/TaskCompletionSource;
+	44      (000000aa) const/4              v1, 0
+	45      (000000ac) invoke-virtual       v0, v1, Lcom/google/android/gms/tasks/TaskCompletionSource;->trySetResult(Ljava/lang/Object;)Z
+	46      (000000b2) goto                 -14h
+
+c-BB@0xb4 : 
+	47      (000000b4) return-void          
+

@@ -1,0 +1,44 @@
+# Lj5/t1;->R(Landroid/view/Window; Z)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:android.view.Window
+# - v3:boolean
+#
+# - return:void
+
+R-BB@0x0 : [ R-BB@0xc R-BB@0x14 ]
+	0       (00000000) sget                 v0, Landroid/os/Build$VERSION;->SDK_INT I
+	1       (00000004) const/16             v1, 35
+	2       (00000008) if-lt                v0, v1, +006h
+
+R-BB@0xc : 
+	3       (0000000c) invoke-static        v2, v3, Le0/b;->h(Landroid/view/Window; Z)V
+	4       (00000012) return-void          
+
+R-BB@0x14 : [ R-BB@0x1c R-BB@0x24 ]
+	5       (00000014) const/16             v1, 30
+	6       (00000018) if-lt                v0, v1, +006h
+
+R-BB@0x1c : 
+	7       (0000001c) invoke-static        v2, v3, Le0/b;->g(Landroid/view/Window; Z)V
+	8       (00000022) return-void          
+
+R-BB@0x24 : [ R-BB@0x38 R-BB@0x3e ]
+	9       (00000024) invoke-virtual       v2, Landroid/view/Window;->getDecorView()Landroid/view/View;
+	10      (0000002a) move-result-object   v2
+	11      (0000002c) invoke-virtual       v2, Landroid/view/View;->getSystemUiVisibility()I
+	12      (00000032) move-result          v0
+	13      (00000034) if-eqz               v3, +005h
+
+R-BB@0x38 : [ R-BB@0x42 ]
+	14      (00000038) and-int/lit16        v3, v0, -1793
+	15      (0000003c) goto                 +3h
+
+R-BB@0x3e : [ R-BB@0x42 ]
+	16      (0000003e) or-int/lit16         v3, v0, 1792
+
+R-BB@0x42 : 
+	17      (00000042) invoke-virtual       v2, v3, Landroid/view/View;->setSystemUiVisibility(I)V
+	18      (00000048) return-void          
+

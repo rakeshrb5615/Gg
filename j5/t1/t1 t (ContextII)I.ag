@@ -1,0 +1,46 @@
+# Lj5/t1;->t(Landroid/content/Context; I I)I [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v0
+# - v1:android.content.Context
+# - v2:int
+# - v3:int
+#
+# - return:int
+
+t-BB@0x0 : [ t-BB@0xc t-BB@0x2c ]
+	0       (00000000) invoke-static        v1, v2, Lc4/b;->T(Landroid/content/Context; I)Landroid/util/TypedValue;
+	1       (00000006) move-result-object   v2
+	2       (00000008) if-eqz               v2, +012h
+
+t-BB@0xc : [ t-BB@0x14 t-BB@0x1e ]
+	3       (0000000c) iget                 v0, v2, Landroid/util/TypedValue;->resourceId I
+	4       (00000010) if-eqz               v0, +007h
+
+t-BB@0x14 : [ t-BB@0x22 ]
+	5       (00000014) invoke-static        v1, v0, Le0/c;->getColor(Landroid/content/Context; I)I
+	6       (0000001a) move-result          v1
+	7       (0000001c) goto                 +3h
+
+t-BB@0x1e : [ t-BB@0x22 ]
+	8       (0000001e) iget                 v1, v2, Landroid/util/TypedValue;->data I
+
+t-BB@0x22 : [ t-BB@0x2e ]
+	9       (00000022) invoke-static        v1, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+	10      (00000028) move-result-object   v1
+	11      (0000002a) goto                 +2h
+
+t-BB@0x2c : [ t-BB@0x2e ]
+	12      (0000002c) const/4              v1, 0
+
+t-BB@0x2e : [ t-BB@0x32 t-BB@0x3c ]
+	13      (0000002e) if-eqz               v1, +007h
+
+t-BB@0x32 : 
+	14      (00000032) invoke-virtual       v1, Ljava/lang/Integer;->intValue()I
+	15      (00000038) move-result          v1
+	16      (0000003a) return               v1
+
+t-BB@0x3c : 
+	17      (0000003c) return               v3
+

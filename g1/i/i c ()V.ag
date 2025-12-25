@@ -1,0 +1,90 @@
+# Lg1/i;->c()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v3
+#
+# - return:void
+
+c-BB@0x0 : [ c-BB@0xc c-BB@0x10 ]
+	0       (00000000) iget                 v0, v3, Lg1/i;->h I
+	1       (00000004) const/4              v1, 0
+	2       (00000006) const/4              v2, 1
+	3       (00000008) if-ne                v0, v2, +004h
+
+c-BB@0xc : [ c-BB@0x12 ]
+	4       (0000000c) move                 v0, v2
+	5       (0000000e) goto                 +2h
+
+c-BB@0x10 : [ c-BB@0x12 ]
+	6       (00000010) move                 v0, v1
+
+c-BB@0x12 : [ c-BB@0x16 c-BB@0xaa ]
+	7       (00000012) if-eqz               v0, +04ch
+
+c-BB@0x16 : [ c-BB@0x22 c-BB@0x24 ]
+	8       (00000016) invoke-virtual       v3, Lg1/i;->b()I
+	9       (0000001c) move-result          v0
+	10      (0000001e) if-ne                v0, v2, +003h
+
+c-BB@0x22 : 
+	11      (00000022) return-void          
+
+c-BB@0x24 : [ c-BB@0x36 ]
+	12      (00000024) iget-object          v0, v3, Lg1/i;->a Ljava/util/concurrent/locks/ReentrantReadWriteLock;
+	13      (00000028) invoke-virtual       v0, Ljava/util/concurrent/locks/ReentrantReadWriteLock;->writeLock()Ljava/util/concurrent/locks/Lock;
+	14      (0000002e) move-result-object   v0
+	15      (00000030) invoke-interface     v0, Ljava/util/concurrent/locks/Lock;->lock()V
+
+c-BB@0x36 : [ c-BB@0x3e c-BB@0x52 ]
+	16      (00000036) iget                 v0, v3, Lg1/i;->c I
+	17      (0000003a) if-nez               v0, +00ch
+	36:39
+	(Ljava/lang/Throwable; -> 94 c-BB@0x94)
+
+c-BB@0x3e : 
+	18      (0000003e) iget-object          v0, v3, Lg1/i;->a Ljava/util/concurrent/locks/ReentrantReadWriteLock;
+	19      (00000042) invoke-virtual       v0, Ljava/util/concurrent/locks/ReentrantReadWriteLock;->writeLock()Ljava/util/concurrent/locks/Lock;
+	20      (00000048) move-result-object   v0
+	21      (0000004a) invoke-interface     v0, Ljava/util/concurrent/locks/Lock;->unlock()V
+	22      (00000050) return-void          
+
+c-BB@0x52 : [ c-BB@0x74 ]
+	23      (00000052) iput                 v1, v3, Lg1/i;->c I
+	24      (00000056) iget-object          v0, v3, Lg1/i;->a Ljava/util/concurrent/locks/ReentrantReadWriteLock;
+	25      (0000005a) invoke-virtual       v0, Ljava/util/concurrent/locks/ReentrantReadWriteLock;->writeLock()Ljava/util/concurrent/locks/Lock;
+	26      (00000060) move-result-object   v0
+	27      (00000062) invoke-interface     v0, Ljava/util/concurrent/locks/Lock;->unlock()V
+	28      (00000068) iget-object          v0, v3, Lg1/i;->e Lc5/b;
+	29      (0000006c) iget-object          v1, v0, Lc5/b;->a Ljava/lang/Object;
+	30      (00000070) check-cast           v1, Lg1/i;
+	52:55
+	(Ljava/lang/Throwable; -> 94 c-BB@0x94)
+
+c-BB@0x74 : 
+	31      (00000074) new-instance         v2, Lg1/e;
+	32      (00000078) invoke-direct        v2, v0, Lg1/e;-><init>(Lc5/b;)V
+	33      (0000007e) iget-object          v0, v1, Lg1/i;->f Lg1/h;
+	34      (00000082) invoke-interface     v0, v2, Lg1/h;->a(Lq4/b;)V
+	35      (00000088) return-void          
+	74:87
+	(Ljava/lang/Throwable; -> 8a c-BB@0x8a)
+
+c-BB@0x8a : 
+	36      (0000008a) move-exception       v0
+	37      (0000008c) invoke-virtual       v1, v0, Lg1/i;->d(Ljava/lang/Throwable;)V
+	38      (00000092) return-void          
+
+c-BB@0x94 : 
+	39      (00000094) move-exception       v0
+	40      (00000096) iget-object          v1, v3, Lg1/i;->a Ljava/util/concurrent/locks/ReentrantReadWriteLock;
+	41      (0000009a) invoke-virtual       v1, Ljava/util/concurrent/locks/ReentrantReadWriteLock;->writeLock()Ljava/util/concurrent/locks/Lock;
+	42      (000000a0) move-result-object   v1
+	43      (000000a2) invoke-interface     v1, Ljava/util/concurrent/locks/Lock;->unlock()V
+	44      (000000a8) throw                v0
+
+c-BB@0xaa : 
+	45      (000000aa) new-instance         v0, Ljava/lang/IllegalStateException;
+	46      (000000ae) const-string         v1, "Set metadataLoadStrategy to LOAD_STRATEGY_MANUAL to execute manual loading"
+	47      (000000b2) invoke-direct        v0, v1, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	48      (000000b8) throw                v0
+
