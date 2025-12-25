@@ -1,0 +1,70 @@
+# Lm/m;->p(Z)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:boolean
+#
+# - return:void
+
+p-BB@0x0 : [ p-BB@0xa p-BB@0x76 ]
+	0       (00000000) iget-boolean         v0, v3, Lm/m;->p Z
+	1       (00000004) const/4              v1, 1
+	2       (00000006) if-nez               v0, +038h
+
+p-BB@0xa : [ p-BB@0xe p-BB@0x16 ]
+	3       (0000000a) if-eqz               v4, +006h
+
+p-BB@0xe : [ p-BB@0x16 ]
+	4       (0000000e) iput-boolean         v1, v3, Lm/m;->h Z
+	5       (00000012) iput-boolean         v1, v3, Lm/m;->k Z
+
+p-BB@0x16 : [ p-BB@0x26 p-BB@0x28 ]
+	6       (00000016) iget-object          v4, v3, Lm/m;->u Ljava/util/concurrent/CopyOnWriteArrayList;
+	7       (0000001a) invoke-virtual       v4, Ljava/util/concurrent/CopyOnWriteArrayList;->isEmpty()Z
+	8       (00000020) move-result          v0
+	9       (00000022) if-eqz               v0, +003h
+
+p-BB@0x26 : [ p-BB@0x82 ]
+	10      (00000026) goto                 +2eh
+
+p-BB@0x28 : [ p-BB@0x36 ]
+	11      (00000028) invoke-virtual       v3, Lm/m;->w()V
+	12      (0000002e) invoke-virtual       v4, Ljava/util/concurrent/CopyOnWriteArrayList;->iterator()Ljava/util/Iterator;
+	13      (00000034) move-result-object   v0
+
+p-BB@0x36 : [ p-BB@0x42 p-BB@0x6e ]
+	14      (00000036) invoke-interface     v0, Ljava/util/Iterator;->hasNext()Z
+	15      (0000003c) move-result          v1
+	16      (0000003e) if-eqz               v1, +018h
+
+p-BB@0x42 : [ p-BB@0x5e p-BB@0x66 ]
+	17      (00000042) invoke-interface     v0, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	18      (00000048) move-result-object   v1
+	19      (0000004a) check-cast           v1, Ljava/lang/ref/WeakReference;
+	20      (0000004e) invoke-virtual       v1, Ljava/lang/ref/Reference;->get()Ljava/lang/Object;
+	21      (00000054) move-result-object   v2
+	22      (00000056) check-cast           v2, Lm/y;
+	23      (0000005a) if-nez               v2, +006h
+
+p-BB@0x5e : [ p-BB@0x36 ]
+	24      (0000005e) invoke-virtual       v4, v1, Ljava/util/concurrent/CopyOnWriteArrayList;->remove(Ljava/lang/Object;)Z
+	25      (00000064) goto                 -17h
+
+p-BB@0x66 : [ p-BB@0x36 ]
+	26      (00000066) invoke-interface     v2, Lm/y;->d()V
+	27      (0000006c) goto                 -1bh
+
+p-BB@0x6e : 
+	28      (0000006e) invoke-virtual       v3, Lm/m;->v()V
+	29      (00000074) return-void          
+
+p-BB@0x76 : [ p-BB@0x7e p-BB@0x82 ]
+	30      (00000076) iput-boolean         v1, v3, Lm/m;->q Z
+	31      (0000007a) if-eqz               v4, +004h
+
+p-BB@0x7e : [ p-BB@0x82 ]
+	32      (0000007e) iput-boolean         v1, v3, Lm/m;->r Z
+
+p-BB@0x82 : 
+	33      (00000082) return-void          
+

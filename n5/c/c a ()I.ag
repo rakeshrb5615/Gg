@@ -1,0 +1,60 @@
+# Ln5/c;->a()I [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v4
+#
+# - return:int
+
+a-BB@0x0 : [ a-BB@0x10 a-BB@0x1c ]
+	0       (00000000) iget-wide            v0, v4, Ln5/c;->k J
+	1       (00000004) const-wide/16        v2, 0
+	2       (00000008) cmp-long             v0, v0, v2
+	3       (0000000c) if-nez               v0, +008h
+
+a-BB@0x10 : [ a-BB@0x1c ]
+	4       (00000010) invoke-static        Ljava/lang/System;->currentTimeMillis()J
+	5       (00000016) move-result-wide     v0
+	6       (00000018) iput-wide            v0, v4, Ln5/c;->k J
+
+a-BB@0x1c : [ a-BB@0x46 a-BB@0x5a ]
+	7       (0000001c) invoke-static        Ljava/lang/System;->currentTimeMillis()J
+	8       (00000022) move-result-wide     v0
+	9       (00000024) iget-wide            v2, v4, Ln5/c;->k J
+	10      (00000028) sub-long/2addr       v0, v2
+	11      (0000002a) iget-wide            v2, v4, Ln5/c;->c J
+	12      (0000002e) div-long/2addr       v0, v2
+	13      (00000030) long-to-int          v0, v0
+	14      (00000032) iget-object          v1, v4, Ln5/c;->f Ljava/util/concurrent/ArrayBlockingQueue;
+	15      (00000036) invoke-virtual       v1, Ljava/util/concurrent/ArrayBlockingQueue;->size()I
+	16      (0000003c) move-result          v1
+	17      (0000003e) iget                 v2, v4, Ln5/c;->e I
+	18      (00000042) if-ne                v1, v2, +00ch
+
+a-BB@0x46 : [ a-BB@0x6a ]
+	19      (00000046) iget                 v1, v4, Ln5/c;->j I
+	20      (0000004a) add-int/2addr        v1, v0
+	21      (0000004c) const/16             v0, 100
+	22      (00000050) invoke-static        v0, v1, Ljava/lang/Math;->min(I I)I
+	23      (00000056) move-result          v0
+	24      (00000058) goto                 +9h
+
+a-BB@0x5a : [ a-BB@0x6a ]
+	25      (0000005a) iget                 v1, v4, Ln5/c;->j I
+	26      (0000005e) sub-int/2addr        v1, v0
+	27      (00000060) const/4              v0, 0
+	28      (00000062) invoke-static        v0, v1, Ljava/lang/Math;->max(I I)I
+	29      (00000068) move-result          v0
+
+a-BB@0x6a : [ a-BB@0x72 a-BB@0x82 ]
+	30      (0000006a) iget                 v1, v4, Ln5/c;->j I
+	31      (0000006e) if-eq                v1, v0, +00ah
+
+a-BB@0x72 : [ a-BB@0x82 ]
+	32      (00000072) iput                 v0, v4, Ln5/c;->j I
+	33      (00000076) invoke-static        Ljava/lang/System;->currentTimeMillis()J
+	34      (0000007c) move-result-wide     v1
+	35      (0000007e) iput-wide            v1, v4, Ln5/c;->k J
+
+a-BB@0x82 : 
+	36      (00000082) return               v0
+

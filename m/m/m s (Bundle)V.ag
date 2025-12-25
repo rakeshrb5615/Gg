@@ -1,0 +1,75 @@
+# Lm/m;->s(Landroid/os/Bundle;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v7
+# - v8:android.os.Bundle
+#
+# - return:void
+
+s-BB@0x0 : [ s-BB@0x4 s-BB@0x6 ]
+	0       (00000000) if-nez               v8, +003h
+
+s-BB@0x4 : [ s-BB@0x96 ]
+	1       (00000004) goto                 +49h
+
+s-BB@0x6 : [ s-BB@0x24 ]
+	2       (00000006) invoke-virtual       v7, Lm/m;->j()Ljava/lang/String;
+	3       (0000000c) move-result-object   v0
+	4       (0000000e) invoke-virtual       v8, v0, Landroid/os/Bundle;->getSparseParcelableArray(Ljava/lang/String;)Landroid/util/SparseArray;
+	5       (00000014) move-result-object   v0
+	6       (00000016) iget-object          v1, v7, Lm/m;->f Ljava/util/ArrayList;
+	7       (0000001a) invoke-virtual       v1, Ljava/util/ArrayList;->size()I
+	8       (00000020) move-result          v1
+	9       (00000022) const/4              v2, 0
+
+s-BB@0x24 : [ s-BB@0x28 s-BB@0x74 ]
+	10      (00000024) if-ge                v2, v1, +028h
+
+s-BB@0x28 : [ s-BB@0x3c s-BB@0x50 ]
+	11      (00000028) invoke-virtual       v7, v2, Lm/m;->getItem(I)Landroid/view/MenuItem;
+	12      (0000002e) move-result-object   v3
+	13      (00000030) invoke-interface     v3, Landroid/view/MenuItem;->getActionView()Landroid/view/View;
+	14      (00000036) move-result-object   v4
+	15      (00000038) if-eqz               v4, +00ch
+
+s-BB@0x3c : [ s-BB@0x4a s-BB@0x50 ]
+	16      (0000003c) invoke-virtual       v4, Landroid/view/View;->getId()I
+	17      (00000042) move-result          v5
+	18      (00000044) const/4              v6, -1
+	19      (00000046) if-eq                v5, v6, +005h
+
+s-BB@0x4a : [ s-BB@0x50 ]
+	20      (0000004a) invoke-virtual       v4, v0, Landroid/view/View;->restoreHierarchyState(Landroid/util/SparseArray;)V
+
+s-BB@0x50 : [ s-BB@0x5c s-BB@0x6e ]
+	21      (00000050) invoke-interface     v3, Landroid/view/MenuItem;->hasSubMenu()Z
+	22      (00000056) move-result          v4
+	23      (00000058) if-eqz               v4, +00bh
+
+s-BB@0x5c : [ s-BB@0x6e ]
+	24      (0000005c) invoke-interface     v3, Landroid/view/MenuItem;->getSubMenu()Landroid/view/SubMenu;
+	25      (00000062) move-result-object   v3
+	26      (00000064) check-cast           v3, Lm/e0;
+	27      (00000068) invoke-virtual       v3, v8, Lm/m;->s(Landroid/os/Bundle;)V
+
+s-BB@0x6e : [ s-BB@0x24 ]
+	28      (0000006e) add-int/lit8         v2, v2, 1
+	29      (00000072) goto                 -27h
+
+s-BB@0x74 : [ s-BB@0x84 s-BB@0x96 ]
+	30      (00000074) const-string         v0, "android:menu:expandedactionview"
+	31      (00000078) invoke-virtual       v8, v0, Landroid/os/BaseBundle;->getInt(Ljava/lang/String;)I
+	32      (0000007e) move-result          v8
+	33      (00000080) if-lez               v8, +00bh
+
+s-BB@0x84 : [ s-BB@0x90 s-BB@0x96 ]
+	34      (00000084) invoke-virtual       v7, v8, Lm/m;->findItem(I)Landroid/view/MenuItem;
+	35      (0000008a) move-result-object   v8
+	36      (0000008c) if-eqz               v8, +005h
+
+s-BB@0x90 : [ s-BB@0x96 ]
+	37      (00000090) invoke-interface     v8, Landroid/view/MenuItem;->expandActionView()Z
+
+s-BB@0x96 : 
+	38      (00000096) return-void          
+

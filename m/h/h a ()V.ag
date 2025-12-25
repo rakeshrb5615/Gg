@@ -1,0 +1,42 @@
+# Lm/h;->a()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v5
+#
+# - return:void
+
+a-BB@0x0 : [ a-BB@0x10 a-BB@0x44 ]
+	0       (00000000) iget-object          v0, v5, Lm/h;->b Lm/i;
+	1       (00000004) iget-object          v0, v0, Lm/i;->c Lm/m;
+	2       (00000008) iget-object          v1, v0, Lm/m;->v Lm/o;
+	3       (0000000c) if-eqz               v1, +01ch
+
+a-BB@0x10 : [ a-BB@0x24 ]
+	4       (00000010) invoke-virtual       v0, Lm/m;->i()V
+	5       (00000016) iget-object          v0, v0, Lm/m;->j Ljava/util/ArrayList;
+	6       (0000001a) invoke-virtual       v0, Ljava/util/ArrayList;->size()I
+	7       (00000020) move-result          v2
+	8       (00000022) const/4              v3, 0
+
+a-BB@0x24 : [ a-BB@0x28 a-BB@0x44 ]
+	9       (00000024) if-ge                v3, v2, +010h
+
+a-BB@0x28 : [ a-BB@0x38 a-BB@0x3e ]
+	10      (00000028) invoke-virtual       v0, v3, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	11      (0000002e) move-result-object   v4
+	12      (00000030) check-cast           v4, Lm/o;
+	13      (00000034) if-ne                v4, v1, +005h
+
+a-BB@0x38 : 
+	14      (00000038) iput                 v3, v5, Lm/h;->a I
+	15      (0000003c) return-void          
+
+a-BB@0x3e : [ a-BB@0x24 ]
+	16      (0000003e) add-int/lit8         v3, v3, 1
+	17      (00000042) goto                 -fh
+
+a-BB@0x44 : 
+	18      (00000044) const/4              v0, -1
+	19      (00000046) iput                 v0, v5, Lm/h;->a I
+	20      (0000004a) return-void          
+

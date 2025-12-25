@@ -1,0 +1,43 @@
+# Ll3/f;->setTintMode(Landroid/graphics/PorterDuff$Mode;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:android.graphics.PorterDuff$Mode
+#
+# - return:void
+
+setTintMode-BB@0x0 : [ setTintMode-BB@0x8 setTintMode-BB@0x44 ]
+	0       (00000000) iget-object          v0, v3, Ll3/f;->M0 Landroid/graphics/PorterDuff$Mode;
+	1       (00000004) if-eq                v0, v4, +020h
+
+setTintMode-BB@0x8 : [ setTintMode-BB@0x14 setTintMode-BB@0x38 ]
+	2       (00000008) iput-object          v4, v3, Ll3/f;->M0 Landroid/graphics/PorterDuff$Mode;
+	3       (0000000c) iget-object          v0, v3, Ll3/f;->L0 Landroid/content/res/ColorStateList;
+	4       (00000010) if-eqz               v0, +014h
+
+setTintMode-BB@0x14 : [ setTintMode-BB@0x18 setTintMode-BB@0x1a ]
+	5       (00000014) if-nez               v4, +003h
+
+setTintMode-BB@0x18 : [ setTintMode-BB@0x38 ]
+	6       (00000018) goto                 +10h
+
+setTintMode-BB@0x1a : [ setTintMode-BB@0x3a ]
+	7       (0000001a) invoke-virtual       v3, Landroid/graphics/drawable/Drawable;->getState()[I
+	8       (00000020) move-result-object   v1
+	9       (00000022) const/4              v2, 0
+	10      (00000024) invoke-virtual       v0, v1, v2, Landroid/content/res/ColorStateList;->getColorForState([I I)I
+	11      (0000002a) move-result          v0
+	12      (0000002c) new-instance         v1, Landroid/graphics/PorterDuffColorFilter;
+	13      (00000030) invoke-direct        v1, v0, v4, Landroid/graphics/PorterDuffColorFilter;-><init>(I Landroid/graphics/PorterDuff$Mode;)V
+	14      (00000036) goto                 +2h
+
+setTintMode-BB@0x38 : [ setTintMode-BB@0x3a ]
+	15      (00000038) const/4              v1, 0
+
+setTintMode-BB@0x3a : [ setTintMode-BB@0x44 ]
+	16      (0000003a) iput-object          v1, v3, Ll3/f;->K0 Landroid/graphics/PorterDuffColorFilter;
+	17      (0000003e) invoke-virtual       v3, Lv3/k;->invalidateSelf()V
+
+setTintMode-BB@0x44 : 
+	18      (00000044) return-void          
+

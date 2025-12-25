@@ -1,0 +1,70 @@
+# Lm8/c;->f(Ljava/lang/Object;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:java.lang.Object
+#
+# - return:void
+
+f-BB@0x0 : [ f-BB@0xc f-BB@0x96 ]
+	0       (00000000) invoke-virtual       v4, Lm8/c;->c()Z
+	1       (00000006) move-result          v0
+	2       (00000008) if-eqz               v0, +047h
+
+f-BB@0xc : [ f-BB@0x20 f-BB@0x0 ]
+	3       (0000000c) sget-object          v0, Lm8/c;->g Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;
+	4       (00000010) invoke-virtual       v0, v4, Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	5       (00000016) move-result-object   v1
+	6       (00000018) sget-object          v2, Lm8/d;->a Ld4/l;
+	7       (0000001c) if-eq                v1, v2, -00eh
+
+f-BB@0x20 : [ f-BB@0x24 f-BB@0x74 ]
+	8       (00000020) if-eq                v1, v5, +02ah
+
+f-BB@0x24 : [ f-BB@0x28 f-BB@0x2a ]
+	9       (00000024) if-nez               v5, +003h
+
+f-BB@0x28 : [ f-BB@0x74 ]
+	10      (00000028) goto                 +26h
+
+f-BB@0x2a : 
+	11      (0000002a) new-instance         v0, Ljava/lang/StringBuilder;
+	12      (0000002e) const-string         v2, "This mutex is locked by "
+	13      (00000032) invoke-direct        v0, v2, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	14      (00000038) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	15      (0000003e) const-string         v1, ", but "
+	16      (00000042) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	17      (00000048) invoke-virtual       v0, v5, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	18      (0000004e) const-string         v5, " is expected"
+	19      (00000052) invoke-virtual       v0, v5, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	20      (00000058) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	21      (0000005e) move-result-object   v5
+	22      (00000060) new-instance         v0, Ljava/lang/IllegalStateException;
+	23      (00000064) invoke-virtual       v5, Ljava/lang/Object;->toString()Ljava/lang/String;
+	24      (0000006a) move-result-object   v5
+	25      (0000006c) invoke-direct        v0, v5, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	26      (00000072) throw                v0
+
+f-BB@0x74 : [ f-BB@0x80 f-BB@0x88 ]
+	27      (00000074) invoke-virtual       v0, v4, v1, v2, Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;->compareAndSet(Ljava/lang/Object; Ljava/lang/Object; Ljava/lang/Object;)Z
+	28      (0000007a) move-result          v3
+	29      (0000007c) if-eqz               v3, +006h
+
+f-BB@0x80 : 
+	30      (00000080) invoke-virtual       v4, Lm8/g;->b()V
+	31      (00000086) return-void          
+
+f-BB@0x88 : [ f-BB@0x94 f-BB@0x74 ]
+	32      (00000088) invoke-virtual       v0, v4, Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	33      (0000008e) move-result-object   v3
+	34      (00000090) if-eq                v3, v1, -00eh
+
+f-BB@0x94 : [ f-BB@0x0 ]
+	35      (00000094) goto                 -4ah
+
+f-BB@0x96 : 
+	36      (00000096) new-instance         v5, Ljava/lang/IllegalStateException;
+	37      (0000009a) const-string         v0, "This mutex is not locked"
+	38      (0000009e) invoke-direct        v5, v0, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	39      (000000a4) throw                v5
+

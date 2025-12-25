@@ -1,0 +1,54 @@
+# Ln/k;->l()Z [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v4
+#
+# - return:boolean
+
+l-BB@0x0 : [ l-BB@0x8 l-BB@0x78 ]
+	0       (00000000) iget-boolean         v0, v4, Ln/k;->r Z
+	1       (00000004) if-eqz               v0, +03ah
+
+l-BB@0x8 : [ l-BB@0x14 l-BB@0x78 ]
+	2       (00000008) invoke-virtual       v4, Ln/k;->f()Z
+	3       (0000000e) move-result          v0
+	4       (00000010) if-nez               v0, +034h
+
+l-BB@0x14 : [ l-BB@0x1c l-BB@0x78 ]
+	5       (00000014) iget-object          v0, v4, Ln/k;->c Lm/m;
+	6       (00000018) if-eqz               v0, +030h
+
+l-BB@0x1c : [ l-BB@0x24 l-BB@0x78 ]
+	7       (0000001c) iget-object          v1, v4, Ln/k;->n Lm/a0;
+	8       (00000020) if-eqz               v1, +02ch
+
+l-BB@0x24 : [ l-BB@0x2c l-BB@0x78 ]
+	9       (00000024) iget-object          v1, v4, Ln/k;->A Ln/i;
+	10      (00000028) if-nez               v1, +028h
+
+l-BB@0x2c : [ l-BB@0x42 l-BB@0x78 ]
+	11      (0000002c) invoke-virtual       v0, Lm/m;->i()V
+	12      (00000032) iget-object          v0, v0, Lm/m;->j Ljava/util/ArrayList;
+	13      (00000036) invoke-virtual       v0, Ljava/util/ArrayList;->isEmpty()Z
+	14      (0000003c) move-result          v0
+	15      (0000003e) if-nez               v0, +01dh
+
+l-BB@0x42 : 
+	16      (00000042) new-instance         v0, Ln/g;
+	17      (00000046) iget-object          v1, v4, Ln/k;->b Landroid/content/Context;
+	18      (0000004a) iget-object          v2, v4, Ln/k;->c Lm/m;
+	19      (0000004e) iget-object          v3, v4, Ln/k;->o Ln/j;
+	20      (00000052) invoke-direct        v0, v4, v1, v2, v3, Ln/g;-><init>(Ln/k; Landroid/content/Context; Lm/m; Landroid/view/View;)V
+	21      (00000058) new-instance         v1, Ln/i;
+	22      (0000005c) invoke-direct        v1, v4, v0, Ln/i;-><init>(Ln/k; Ln/g;)V
+	23      (00000062) iput-object          v1, v4, Ln/k;->A Ln/i;
+	24      (00000066) iget-object          v0, v4, Ln/k;->n Lm/a0;
+	25      (0000006a) check-cast           v0, Landroid/view/View;
+	26      (0000006e) invoke-virtual       v0, v1, Landroid/view/View;->post(Ljava/lang/Runnable;)Z
+	27      (00000074) const/4              v0, 1
+	28      (00000076) return               v0
+
+l-BB@0x78 : 
+	29      (00000078) const/4              v0, 0
+	30      (0000007a) return               v0
+

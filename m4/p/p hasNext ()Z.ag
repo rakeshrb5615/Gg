@@ -1,0 +1,78 @@
+# Lm4/p;->hasNext()Z [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v4
+#
+# - return:boolean
+
+hasNext-BB@0x0 : [ hasNext-BB@0xa hasNext-BB@0x8a ]
+	0       (00000000) iget                 v0, v4, Lm4/p;->a I
+	1       (00000004) const/4              v1, 4
+	2       (00000006) if-eq                v0, v1, +042h
+
+hasNext-BB@0xa : [ hasNext-BB@0x18 hasNext-BB@0x88 ]
+	3       (0000000a) invoke-static        v0, Lu/e;->c(I)I
+	4       (00000010) move-result          v0
+	5       (00000012) const/4              v2, 1
+	6       (00000014) if-eqz               v0, +03ah
+
+hasNext-BB@0x18 : [ hasNext-BB@0x1e hasNext-BB@0x84 ]
+	7       (00000018) const/4              v3, 2
+	8       (0000001a) if-eq                v0, v3, +035h
+
+hasNext-BB@0x1e : [ hasNext-BB@0x34 hasNext-BB@0x3e ]
+	9       (0000001e) iput                 v1, v4, Lm4/p;->a I
+	10      (00000022) iget-object          v0, v4, Lm4/p;->c Ljava/util/Iterator;
+	11      (00000026) invoke-interface     v0, Ljava/util/Iterator;->hasNext()Z
+	12      (0000002c) move-result          v1
+	13      (0000002e) const/4              v3, 3
+	14      (00000030) if-eqz               v1, +007h
+
+hasNext-BB@0x34 : [ hasNext-BB@0x72 ]
+	15      (00000034) invoke-interface     v0, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	16      (0000003a) move-result-object   v0
+	17      (0000003c) goto                 +1bh
+
+hasNext-BB@0x3e : [ hasNext-BB@0x4e hasNext-BB@0x6c ]
+	18      (0000003e) iget-object          v0, v4, Lm4/p;->d Ljava/util/Iterator;
+	19      (00000042) invoke-interface     v0, Ljava/util/Iterator;->hasNext()Z
+	20      (00000048) move-result          v1
+	21      (0000004a) if-eqz               v1, +011h
+
+hasNext-BB@0x4e : [ hasNext-BB@0x6a hasNext-BB@0x3e ]
+	22      (0000004e) invoke-interface     v0, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	23      (00000054) move-result-object   v0
+	24      (00000056) iget-object          v1, v4, Lm4/p;->e Lm4/q;
+	25      (0000005a) iget-object          v1, v1, Lm4/q;->a Ljava/util/Set;
+	26      (0000005e) invoke-interface     v1, v0, Ljava/util/Set;->contains(Ljava/lang/Object;)Z
+	27      (00000064) move-result          v1
+	28      (00000066) if-nez               v1, -014h
+
+hasNext-BB@0x6a : [ hasNext-BB@0x72 ]
+	29      (0000006a) goto                 +4h
+
+hasNext-BB@0x6c : [ hasNext-BB@0x72 ]
+	30      (0000006c) iput                 v3, v4, Lm4/p;->a I
+	31      (00000070) const/4              v0, 0
+
+hasNext-BB@0x72 : [ hasNext-BB@0x7e hasNext-BB@0x84 ]
+	32      (00000072) iput-object          v0, v4, Lm4/p;->b Ljava/lang/Object;
+	33      (00000076) iget                 v0, v4, Lm4/p;->a I
+	34      (0000007a) if-eq                v0, v3, +005h
+
+hasNext-BB@0x7e : 
+	35      (0000007e) iput                 v2, v4, Lm4/p;->a I
+	36      (00000082) return               v2
+
+hasNext-BB@0x84 : 
+	37      (00000084) const/4              v0, 0
+	38      (00000086) return               v0
+
+hasNext-BB@0x88 : 
+	39      (00000088) return               v2
+
+hasNext-BB@0x8a : 
+	40      (0000008a) new-instance         v0, Ljava/lang/IllegalStateException;
+	41      (0000008e) invoke-direct        v0, Ljava/lang/IllegalStateException;-><init>()V
+	42      (00000094) throw                v0
+

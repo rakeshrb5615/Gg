@@ -1,0 +1,326 @@
+# Ln0/c;->c(Landroid/content/Context; Ln0/d; Ljava/lang/String;)[Ln0/i; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v17
+# - v18:android.content.Context
+# - v19:n0.d
+# - v20:java.lang.String
+#
+# - return:n0.i[]
+
+c-BB@0x0 : [ c-BB@0x12 ]
+	0       (00000000) move-object/from16   v0, v20
+	1       (00000004) const-string         v1, "content"
+	2       (00000008) const-string         v2, "FontProvider.query"
+	3       (0000000c) invoke-static        v2, Lj5/t1;->c(Ljava/lang/String;)V
+
+c-BB@0x12 : [ c-BB@0x7e ]
+	4       (00000012) new-instance         v2, Ljava/util/ArrayList;
+	5       (00000016) invoke-direct        v2, Ljava/util/ArrayList;-><init>()V
+	6       (0000001c) new-instance         v3, Landroid/net/Uri$Builder;
+	7       (00000020) invoke-direct        v3, Landroid/net/Uri$Builder;-><init>()V
+	8       (00000026) invoke-virtual       v3, v1, Landroid/net/Uri$Builder;->scheme(Ljava/lang/String;)Landroid/net/Uri$Builder;
+	9       (0000002c) move-result-object   v3
+	10      (0000002e) invoke-virtual       v3, v0, Landroid/net/Uri$Builder;->authority(Ljava/lang/String;)Landroid/net/Uri$Builder;
+	11      (00000034) move-result-object   v3
+	12      (00000036) invoke-virtual       v3, Landroid/net/Uri$Builder;->build()Landroid/net/Uri;
+	13      (0000003c) move-result-object   v5
+	14      (0000003e) new-instance         v3, Landroid/net/Uri$Builder;
+	15      (00000042) invoke-direct        v3, Landroid/net/Uri$Builder;-><init>()V
+	16      (00000048) invoke-virtual       v3, v1, Landroid/net/Uri$Builder;->scheme(Ljava/lang/String;)Landroid/net/Uri$Builder;
+	17      (0000004e) move-result-object   v1
+	18      (00000050) invoke-virtual       v1, v0, Landroid/net/Uri$Builder;->authority(Ljava/lang/String;)Landroid/net/Uri$Builder;
+	19      (00000056) move-result-object   v0
+	20      (00000058) const-string         v1, "file"
+	21      (0000005c) invoke-virtual       v0, v1, Landroid/net/Uri$Builder;->appendPath(Ljava/lang/String;)Landroid/net/Uri$Builder;
+	22      (00000062) move-result-object   v0
+	23      (00000064) invoke-virtual       v0, Landroid/net/Uri$Builder;->build()Landroid/net/Uri;
+	24      (0000006a) move-result-object   v1
+	25      (0000006c) invoke-virtual/range v18, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
+	26      (00000072) move-result-object   v0
+	27      (00000074) invoke-virtual       v0, v5, Landroid/content/ContentResolver;->acquireUnstableContentProviderClient(Landroid/net/Uri;)Landroid/content/ContentProviderClient;
+	28      (0000007a) move-result-object   v4
+	29      (0000007c) const/4              v3, 0
+	12:7b
+	(Ljava/lang/Throwable; -> 242 c-BB@0x242)
+
+c-BB@0x7e : [ c-BB@0xac ]
+	30      (0000007e) const-string         v6, "_id"
+	31      (00000082) const-string         v7, "file_id"
+	32      (00000086) const-string         v8, "font_ttc_index"
+	33      (0000008a) const-string         v9, "font_variation_settings"
+	34      (0000008e) const-string         v10, "font_weight"
+	35      (00000092) const-string         v11, "font_italic"
+	36      (00000096) const-string         v12, "result_code"
+	37      (0000009a) filled-new-array/range v6 ... v12, [Ljava/lang/String;
+	38      (000000a0) move-result-object   v6
+	39      (000000a2) const-string         v0, "ContentQueryWrapper.query"
+	40      (000000a6) invoke-static        v0, Lj5/t1;->c(Ljava/lang/String;)V
+	7e:ab
+	(Ljava/lang/Throwable; -> 16c c-BB@0x16c)
+
+c-BB@0xac : [ c-BB@0xc4 c-BB@0xc6 ]
+	41      (000000ac) const-string         v7, "query = ?"
+	42      (000000b0) move-object/from16   v0, v19
+	43      (000000b4) iget-object          v0, v0, Ln0/d;->c Ljava/lang/String;
+	44      (000000b8) filled-new-array     v0, [Ljava/lang/String;
+	45      (000000be) move-result-object   v8
+	46      (000000c0) if-nez               v4, +003h
+	ac:bf
+	(Ljava/lang/Throwable; -> 222 c-BB@0x222)
+
+c-BB@0xc4 : [ c-BB@0xe4 ]
+	47      (000000c4) goto                 +10h
+
+c-BB@0xc6 : [ c-BB@0xca ]
+	48      (000000c6) const/4              v10, 0
+	49      (000000c8) const/4              v9, 0
+
+c-BB@0xca : [ c-BB@0xe4 ]
+	50      (000000ca) invoke-virtual/range v4 ... v10, Landroid/content/ContentProviderClient;->query(Landroid/net/Uri; [Ljava/lang/String; Ljava/lang/String; [Ljava/lang/String; Ljava/lang/String; Landroid/os/CancellationSignal;)Landroid/database/Cursor;
+	51      (000000d0) move-result-object   v3
+	52      (000000d2) goto                 +9h
+	ca:d1
+	(Landroid/os/RemoteException; -> d4 c-BB@0xd4)
+	(Ljava/lang/Throwable; -> 222 c-BB@0x222)
+
+c-BB@0xd4 : [ c-BB@0xd6 ]
+	53      (000000d4) move-exception       v0
+
+c-BB@0xd6 : [ c-BB@0xe4 ]
+	54      (000000d6) const-string         v6, "FontsProvider"
+	55      (000000da) const-string         v7, "Unable to query the content provider"
+	56      (000000de) invoke-static        v6, v7, v0, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+	d6:e3
+	(Ljava/lang/Throwable; -> 222 c-BB@0x222)
+
+c-BB@0xe4 : [ c-BB@0xee c-BB@0x1f4 ]
+	57      (000000e4) invoke-static        Landroid/os/Trace;->endSection()V
+	58      (000000ea) if-eqz               v3, +085h
+	e4:1ef
+	(Ljava/lang/Throwable; -> 16c c-BB@0x16c)
+
+c-BB@0xee : [ c-BB@0xfa c-BB@0x1f4 ]
+	59      (000000ee) invoke-interface     v3, Landroid/database/Cursor;->getCount()I
+	60      (000000f4) move-result          v6
+	61      (000000f6) if-lez               v6, +07fh
+	e4:1ef
+	(Ljava/lang/Throwable; -> 16c c-BB@0x16c)
+
+c-BB@0xfa : [ c-BB@0x14c ]
+	62      (000000fa) const-string         v2, "result_code"
+	63      (000000fe) invoke-interface     v3, v2, Landroid/database/Cursor;->getColumnIndex(Ljava/lang/String;)I
+	64      (00000104) move-result          v2
+	65      (00000106) new-instance         v6, Ljava/util/ArrayList;
+	66      (0000010a) invoke-direct        v6, Ljava/util/ArrayList;-><init>()V
+	67      (00000110) const-string         v7, "_id"
+	68      (00000114) invoke-interface     v3, v7, Landroid/database/Cursor;->getColumnIndex(Ljava/lang/String;)I
+	69      (0000011a) move-result          v7
+	70      (0000011c) const-string         v8, "file_id"
+	71      (00000120) invoke-interface     v3, v8, Landroid/database/Cursor;->getColumnIndex(Ljava/lang/String;)I
+	72      (00000126) move-result          v8
+	73      (00000128) const-string         v9, "font_ttc_index"
+	74      (0000012c) invoke-interface     v3, v9, Landroid/database/Cursor;->getColumnIndex(Ljava/lang/String;)I
+	75      (00000132) move-result          v9
+	76      (00000134) const-string         v10, "font_weight"
+	77      (00000138) invoke-interface     v3, v10, Landroid/database/Cursor;->getColumnIndex(Ljava/lang/String;)I
+	78      (0000013e) move-result          v10
+	79      (00000140) const-string         v11, "font_italic"
+	80      (00000144) invoke-interface     v3, v11, Landroid/database/Cursor;->getColumnIndex(Ljava/lang/String;)I
+	81      (0000014a) move-result          v11
+	e4:1ef
+	(Ljava/lang/Throwable; -> 16c c-BB@0x16c)
+
+c-BB@0x14c : [ c-BB@0x158 c-BB@0x1f2 ]
+	82      (0000014c) invoke-interface     v3, Landroid/database/Cursor;->moveToNext()Z
+	83      (00000152) move-result          v12
+	84      (00000154) if-eqz               v12, +04fh
+	e4:1ef
+	(Ljava/lang/Throwable; -> 16c c-BB@0x16c)
+
+c-BB@0x158 : [ c-BB@0x15e c-BB@0x170 ]
+	85      (00000158) const/4              v12, -1
+	86      (0000015a) if-eq                v2, v12, +00bh
+	e4:1ef
+	(Ljava/lang/Throwable; -> 16c c-BB@0x16c)
+
+c-BB@0x15e : [ c-BB@0x174 ]
+	87      (0000015e) invoke-interface     v3, v2, Landroid/database/Cursor;->getInt(I)I
+	88      (00000164) move-result          v13
+	89      (00000166) move/from16          v17, v13
+	90      (0000016a) goto                 +5h
+	e4:1ef
+	(Ljava/lang/Throwable; -> 16c c-BB@0x16c)
+
+c-BB@0x16c : [ c-BB@0x22c ]
+	91      (0000016c) move-exception       v0
+	92      (0000016e) goto                 +5fh
+	e4:1ef
+	(Ljava/lang/Throwable; -> 16c c-BB@0x16c)
+
+c-BB@0x170 : [ c-BB@0x174 ]
+	93      (00000170) const/16             v17, 0
+	e4:1ef
+	(Ljava/lang/Throwable; -> 16c c-BB@0x16c)
+
+c-BB@0x174 : [ c-BB@0x178 c-BB@0x184 ]
+	94      (00000174) if-eq                v9, v12, +008h
+	e4:1ef
+	(Ljava/lang/Throwable; -> 16c c-BB@0x16c)
+
+c-BB@0x178 : [ c-BB@0x186 ]
+	95      (00000178) invoke-interface     v3, v9, Landroid/database/Cursor;->getInt(I)I
+	96      (0000017e) move-result          v13
+	97      (00000180) move                 v14, v13
+	98      (00000182) goto                 +2h
+	e4:1ef
+	(Ljava/lang/Throwable; -> 16c c-BB@0x16c)
+
+c-BB@0x184 : [ c-BB@0x186 ]
+	99      (00000184) const/4              v14, 0
+	e4:1ef
+	(Ljava/lang/Throwable; -> 16c c-BB@0x16c)
+
+c-BB@0x186 : [ c-BB@0x18a c-BB@0x1a0 ]
+	100     (00000186) if-ne                v8, v12, +00dh
+	e4:1ef
+	(Ljava/lang/Throwable; -> 16c c-BB@0x16c)
+
+c-BB@0x18a : [ c-BB@0x19a ]
+	101     (0000018a) invoke-interface     v3, v7, Landroid/database/Cursor;->getLong(I)J
+	102     (00000190) move-result-wide     v12
+	103     (00000192) invoke-static        v5, v12, v13, Landroid/content/ContentUris;->withAppendedId(Landroid/net/Uri; J)Landroid/net/Uri;
+	104     (00000198) move-result-object   v12
+	e4:1ef
+	(Ljava/lang/Throwable; -> 16c c-BB@0x16c)
+
+c-BB@0x19a : [ c-BB@0x1b2 ]
+	105     (0000019a) move-object          v13, v12
+	106     (0000019c) const/4              v12, -1
+	107     (0000019e) goto                 +ah
+	e4:1ef
+	(Ljava/lang/Throwable; -> 16c c-BB@0x16c)
+
+c-BB@0x1a0 : [ c-BB@0x19a ]
+	108     (000001a0) invoke-interface     v3, v8, Landroid/database/Cursor;->getLong(I)J
+	109     (000001a6) move-result-wide     v12
+	110     (000001a8) invoke-static        v1, v12, v13, Landroid/content/ContentUris;->withAppendedId(Landroid/net/Uri; J)Landroid/net/Uri;
+	111     (000001ae) move-result-object   v12
+	112     (000001b0) goto                 -bh
+	e4:1ef
+	(Ljava/lang/Throwable; -> 16c c-BB@0x16c)
+
+c-BB@0x1b2 : [ c-BB@0x1b6 c-BB@0x1c0 ]
+	113     (000001b2) if-eq                v10, v12, +007h
+	e4:1ef
+	(Ljava/lang/Throwable; -> 16c c-BB@0x16c)
+
+c-BB@0x1b6 : [ c-BB@0x1c4 ]
+	114     (000001b6) invoke-interface     v3, v10, Landroid/database/Cursor;->getInt(I)I
+	115     (000001bc) move-result          v15
+	116     (000001be) goto                 +3h
+	e4:1ef
+	(Ljava/lang/Throwable; -> 16c c-BB@0x16c)
+
+c-BB@0x1c0 : [ c-BB@0x1c4 ]
+	117     (000001c0) const/16             v15, 400
+	e4:1ef
+	(Ljava/lang/Throwable; -> 16c c-BB@0x16c)
+
+c-BB@0x1c4 : [ c-BB@0x1c8 c-BB@0x1dc ]
+	118     (000001c4) if-eq                v11, v12, +00ch
+	e4:1ef
+	(Ljava/lang/Throwable; -> 16c c-BB@0x16c)
+
+c-BB@0x1c8 : [ c-BB@0x1d6 c-BB@0x1dc ]
+	119     (000001c8) invoke-interface     v3, v11, Landroid/database/Cursor;->getInt(I)I
+	120     (000001ce) move-result          v12
+	121     (000001d0) const/4              v0, 1
+	122     (000001d2) if-ne                v12, v0, +005h
+	e4:1ef
+	(Ljava/lang/Throwable; -> 16c c-BB@0x16c)
+
+c-BB@0x1d6 : [ c-BB@0x1e0 ]
+	123     (000001d6) move/from16          v16, v0
+	124     (000001da) goto                 +3h
+	e4:1ef
+	(Ljava/lang/Throwable; -> 16c c-BB@0x16c)
+
+c-BB@0x1dc : [ c-BB@0x1e0 ]
+	125     (000001dc) const/16             v16, 0
+	e4:1ef
+	(Ljava/lang/Throwable; -> 16c c-BB@0x16c)
+
+c-BB@0x1e0 : [ c-BB@0x14c ]
+	126     (000001e0) new-instance         v12, Ln0/i;
+	127     (000001e4) invoke-direct/range  v12 ... v17, Ln0/i;-><init>(Landroid/net/Uri; I I Z I)V
+	128     (000001ea) invoke-virtual       v6, v12, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	129     (000001f0) goto                 -52h
+
+c-BB@0x1f2 : [ c-BB@0x1f4 ]
+	130     (000001f2) move-object          v2, v6
+
+c-BB@0x1f4 : [ c-BB@0x1f8 c-BB@0x1fe ]
+	131     (000001f4) if-eqz               v3, +005h
+
+c-BB@0x1f8 : [ c-BB@0x1fe ]
+	132     (000001f8) invoke-interface     v3, Landroid/database/Cursor;->close()V
+	1f8:219
+	(Ljava/lang/Throwable; -> 242 c-BB@0x242)
+
+c-BB@0x1fe : [ c-BB@0x202 c-BB@0x208 ]
+	133     (000001fe) if-eqz               v4, +005h
+	1f8:219
+	(Ljava/lang/Throwable; -> 242 c-BB@0x242)
+
+c-BB@0x202 : [ c-BB@0x208 ]
+	134     (00000202) invoke-virtual       v4, Landroid/content/ContentProviderClient;->close()V
+	1f8:219
+	(Ljava/lang/Throwable; -> 242 c-BB@0x242)
+
+c-BB@0x208 : 
+	135     (00000208) const/4              v0, 0
+	136     (0000020a) new-array            v0, v0, [Ln0/i;
+	137     (0000020e) invoke-virtual       v2, v0, Ljava/util/ArrayList;->toArray([Ljava/lang/Object;)[Ljava/lang/Object;
+	138     (00000214) move-result-object   v0
+	139     (00000216) check-cast           v0, [Ln0/i;
+	140     (0000021a) invoke-static        Landroid/os/Trace;->endSection()V
+	141     (00000220) return-object        v0
+
+c-BB@0x222 : [ c-BB@0x224 ]
+	142     (00000222) move-exception       v0
+
+c-BB@0x224 : 
+	143     (00000224) invoke-static        Landroid/os/Trace;->endSection()V
+	144     (0000022a) throw                v0
+	224:22b
+	(Ljava/lang/Throwable; -> 16c c-BB@0x16c)
+
+c-BB@0x22c : [ c-BB@0x230 c-BB@0x236 ]
+	145     (0000022c) if-eqz               v3, +005h
+
+c-BB@0x230 : [ c-BB@0x236 ]
+	146     (00000230) invoke-interface     v3, Landroid/database/Cursor;->close()V
+	230:241
+	(Ljava/lang/Throwable; -> 242 c-BB@0x242)
+
+c-BB@0x236 : [ c-BB@0x23a c-BB@0x240 ]
+	147     (00000236) if-eqz               v4, +005h
+	230:241
+	(Ljava/lang/Throwable; -> 242 c-BB@0x242)
+
+c-BB@0x23a : [ c-BB@0x240 ]
+	148     (0000023a) invoke-virtual       v4, Landroid/content/ContentProviderClient;->close()V
+	230:241
+	(Ljava/lang/Throwable; -> 242 c-BB@0x242)
+
+c-BB@0x240 : 
+	149     (00000240) throw                v0
+	230:241
+	(Ljava/lang/Throwable; -> 242 c-BB@0x242)
+
+c-BB@0x242 : 
+	150     (00000242) move-exception       v0
+	151     (00000244) invoke-static        Landroid/os/Trace;->endSection()V
+	152     (0000024a) throw                v0
+

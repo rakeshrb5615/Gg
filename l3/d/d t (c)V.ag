@@ -1,0 +1,38 @@
+# Ll3/d;->t(Lr0/c;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:r0.c
+#
+# - return:void
+
+t-BB@0x0 : [ t-BB@0x10 t-BB@0x1c ]
+	0       (00000000) iget-object          v0, v4, Lr0/c;->a Landroid/view/accessibility/AccessibilityNodeInfo;
+	1       (00000004) iget-object          v1, v3, Ll3/d;->q Lcom/google/android/material/chip/Chip;
+	2       (00000008) iget-object          v2, v1, Lcom/google/android/material/chip/Chip;->e Ll3/f;
+	3       (0000000c) if-eqz               v2, +008h
+
+t-BB@0x10 : [ t-BB@0x18 t-BB@0x1c ]
+	4       (00000010) iget-boolean         v2, v2, Ll3/f;->f0 Z
+	5       (00000014) if-eqz               v2, +004h
+
+t-BB@0x18 : [ t-BB@0x1e ]
+	6       (00000018) const/4              v2, 1
+	7       (0000001a) goto                 +2h
+
+t-BB@0x1c : [ t-BB@0x1e ]
+	8       (0000001c) const/4              v2, 0
+
+t-BB@0x1e : 
+	9       (0000001e) invoke-virtual       v0, v2, Landroid/view/accessibility/AccessibilityNodeInfo;->setCheckable(Z)V
+	10      (00000024) invoke-virtual       v1, Landroid/view/View;->isClickable()Z
+	11      (0000002a) move-result          v2
+	12      (0000002c) invoke-virtual       v0, v2, Landroid/view/accessibility/AccessibilityNodeInfo;->setClickable(Z)V
+	13      (00000032) invoke-virtual       v1, Lcom/google/android/material/chip/Chip;->getAccessibilityClassName()Ljava/lang/CharSequence;
+	14      (00000038) move-result-object   v2
+	15      (0000003a) invoke-virtual       v4, v2, Lr0/c;->i(Ljava/lang/CharSequence;)V
+	16      (00000040) invoke-virtual       v1, Landroid/widget/TextView;->getText()Ljava/lang/CharSequence;
+	17      (00000046) move-result-object   v4
+	18      (00000048) invoke-virtual       v0, v4, Landroid/view/accessibility/AccessibilityNodeInfo;->setText(Ljava/lang/CharSequence;)V
+	19      (0000004e) return-void          
+

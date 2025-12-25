@@ -1,0 +1,69 @@
+# Ln0/c;->a(Landroid/content/Context; Ljava/util/List;)Lh/f; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:android.content.Context
+# - v6:java.util.List
+#
+# - return:h.f
+
+a-BB@0x0 : [ a-BB@0xa ]
+	0       (00000000) const-string         v0, "FontProvider.getFontFamilyResult"
+	1       (00000004) invoke-static        v0, Lj5/t1;->c(Ljava/lang/String;)V
+
+a-BB@0xa : [ a-BB@0x16 ]
+	2       (0000000a) new-instance         v0, Ljava/util/ArrayList;
+	3       (0000000e) invoke-direct        v0, Ljava/util/ArrayList;-><init>()V
+	4       (00000014) const/4              v1, 0
+	a:55
+	(Ljava/lang/Throwable; -> 88 a-BB@0x88)
+
+a-BB@0x16 : [ a-BB@0x22 a-BB@0x76 ]
+	5       (00000016) invoke-interface     v6, Ljava/util/List;->size()I
+	6       (0000001c) move-result          v2
+	7       (0000001e) if-ge                v1, v2, +02ch
+	a:55
+	(Ljava/lang/Throwable; -> 88 a-BB@0x88)
+
+a-BB@0x22 : [ a-BB@0x4a a-BB@0x5e ]
+	8       (00000022) invoke-interface     v6, v1, Ljava/util/List;->get(I)Ljava/lang/Object;
+	9       (00000028) move-result-object   v2
+	10      (0000002a) check-cast           v2, Ln0/d;
+	11      (0000002e) invoke-virtual       v5, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
+	12      (00000034) move-result-object   v3
+	13      (00000036) invoke-virtual       v5, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+	14      (0000003c) move-result-object   v4
+	15      (0000003e) invoke-static        v3, v2, v4, Ln0/c;->b(Landroid/content/pm/PackageManager; Ln0/d; Landroid/content/res/Resources;)Landroid/content/pm/ProviderInfo;
+	16      (00000044) move-result-object   v3
+	17      (00000046) if-nez               v3, +00ch
+	a:55
+	(Ljava/lang/Throwable; -> 88 a-BB@0x88)
+
+a-BB@0x4a : 
+	18      (0000004a) new-instance         v5, Lh/f;
+	19      (0000004e) const/4              v6, 5
+	20      (00000050) invoke-direct        v5, v6, Lh/f;-><init>(I)V
+	21      (00000056) invoke-static        Landroid/os/Trace;->endSection()V
+	22      (0000005c) return-object        v5
+
+a-BB@0x5e : [ a-BB@0x16 ]
+	23      (0000005e) iget-object          v3, v3, Landroid/content/pm/ProviderInfo;->authority Ljava/lang/String;
+	24      (00000062) invoke-static        v5, v2, v3, Ln0/c;->c(Landroid/content/Context; Ln0/d; Ljava/lang/String;)[Ln0/i;
+	25      (00000068) move-result-object   v2
+	26      (0000006a) invoke-virtual       v0, v2, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	27      (00000070) add-int/lit8         v1, v1, 1
+	28      (00000074) goto                 -2fh
+	5e:7f
+	(Ljava/lang/Throwable; -> 88 a-BB@0x88)
+
+a-BB@0x76 : 
+	29      (00000076) new-instance         v5, Lh/f;
+	30      (0000007a) invoke-direct        v5, v0, Lh/f;-><init>(Ljava/util/ArrayList;)V
+	31      (00000080) invoke-static        Landroid/os/Trace;->endSection()V
+	32      (00000086) return-object        v5
+
+a-BB@0x88 : 
+	33      (00000088) move-exception       v5
+	34      (0000008a) invoke-static        Landroid/os/Trace;->endSection()V
+	35      (00000090) throw                v5
+

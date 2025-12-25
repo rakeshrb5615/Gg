@@ -1,0 +1,47 @@
+# Ln2/h;->p0([F)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:float[]
+#
+# - return:void
+
+p0-BB@0x0 : [ p0-BB@0x4 p0-BB@0x6 ]
+	0       (00000000) if-nez               v4, +003h
+
+p0-BB@0x4 : 
+	1       (00000004) return-void          
+
+p0-BB@0x6 : [ p0-BB@0x12 p0-BB@0x1a ]
+	2       (00000006) array-length         v0, v4
+	3       (00000008) const/16             v1, 8
+	4       (0000000c) const/4              v2, 1
+	5       (0000000e) if-ne                v0, v1, +006h
+
+p0-BB@0x12 : [ p0-BB@0x28 ]
+	6       (00000012) const/4              v0, 0
+	7       (00000014) iput-boolean         v0, v3, Ln2/h;->j Z
+	8       (00000018) goto                 +8h
+
+p0-BB@0x1a : [ p0-BB@0x24 p0-BB@0x3e ]
+	9       (0000001a) array-length         v0, v4
+	10      (0000001c) const/16             v1, 12
+	11      (00000020) if-ne                v0, v1, +00fh
+
+p0-BB@0x24 : [ p0-BB@0x28 ]
+	12      (00000024) iput-boolean         v2, v3, Ln2/h;->j Z
+
+p0-BB@0x28 : 
+	13      (00000028) invoke-virtual       v4, [F->clone()Ljava/lang/Object;
+	14      (0000002e) move-result-object   v4
+	15      (00000030) check-cast           v4, [F
+	16      (00000034) iput-object          v4, v3, Ln2/h;->i [F
+	17      (00000038) iput-boolean         v2, v3, Ln2/h;->K Z
+	18      (0000003c) return-void          
+
+p0-BB@0x3e : 
+	19      (0000003e) new-instance         v4, Ljava/lang/IllegalArgumentException;
+	20      (00000042) const-string         v0, "Gradient colors must be 8 or 12 floats."
+	21      (00000046) invoke-direct        v4, v0, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	22      (0000004c) throw                v4
+

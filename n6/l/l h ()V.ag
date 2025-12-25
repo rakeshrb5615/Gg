@@ -1,0 +1,43 @@
+# Ln6/l;->h()V [access_flags=public final synchronized]
+#
+# Parameters:
+# local registers: v0...v5
+#
+# - return:void
+
+h-BB@0x0 : [ h-BB@0x2 ]
+	0       (00000000) monitor-enter        v5
+
+h-BB@0x2 : 
+	1       (00000002) new-instance         v0, Ljava/util/Date;
+	2       (00000006) iget-object          v1, v5, Ln6/l;->p Lcom/google/android/gms/common/util/Clock;
+	3       (0000000a) invoke-interface     v1, Lcom/google/android/gms/common/util/Clock;->currentTimeMillis()J
+	4       (00000010) move-result-wide     v1
+	5       (00000012) invoke-direct        v0, v1, v2, Ljava/util/Date;-><init>(J)V
+	6       (00000018) iget-object          v1, v5, Ln6/l;->q Ln6/n;
+	7       (0000001c) invoke-virtual       v1, Ln6/n;->c()Ln6/m;
+	8       (00000022) move-result-object   v1
+	9       (00000024) iget-object          v1, v1, Ln6/m;->b Ljava/util/Date;
+	10      (00000028) invoke-virtual       v1, Ljava/util/Date;->getTime()J
+	11      (0000002e) move-result-wide     v1
+	12      (00000030) invoke-virtual       v0, Ljava/util/Date;->getTime()J
+	13      (00000036) move-result-wide     v3
+	14      (00000038) sub-long/2addr       v1, v3
+	15      (0000003a) const-wide/16        v3, 0
+	16      (0000003e) invoke-static        v3, v4, v1, v2, Ljava/lang/Math;->max(J J)J
+	17      (00000044) move-result-wide     v0
+	18      (00000046) invoke-virtual       v5, v0, v1, Ln6/l;->e(J)V
+	19      (0000004c) monitor-exit         v5
+	20      (0000004e) return-void          
+	2:4b
+	(Ljava/lang/Throwable; -> 50 h-BB@0x50)
+
+h-BB@0x50 : [ h-BB@0x52 ]
+	21      (00000050) move-exception       v0
+
+h-BB@0x52 : 
+	22      (00000052) monitor-exit         v5
+	23      (00000054) throw                v0
+	52:53
+	(Ljava/lang/Throwable; -> 50 h-BB@0x50)
+

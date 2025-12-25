@@ -1,0 +1,44 @@
+# Ln6/b;->run()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v9
+#
+# - return:void
+
+run-BB@0x0 : [ run-BB@0x16 ]
+	0       (00000000) iget-object          v1, v9, Ln6/b;->c Ln6/c;
+	1       (00000004) iget                 v0, v9, Ln6/b;->a I
+	2       (00000008) iget-wide            v4, v9, Ln6/b;->b J
+	3       (0000000c) monitor-enter        v1
+	4       (0000000e) add-int/lit8         v6, v0, -1
+	5       (00000012) rsub-int/lit8        v0, v6, 3
+
+run-BB@0x16 : 
+	6       (00000016) iget-object          v2, v1, Ln6/c;->c Ln6/i;
+	7       (0000001a) invoke-virtual       v2, v0, Ln6/i;->c(I)Lcom/google/android/gms/tasks/Task;
+	8       (00000020) move-result-object   v2
+	9       (00000022) iget-object          v0, v1, Ln6/c;->d Ln6/d;
+	10      (00000026) invoke-virtual       v0, Ln6/d;->b()Lcom/google/android/gms/tasks/Task;
+	11      (0000002c) move-result-object   v3
+	12      (0000002e) filled-new-array     v2, v3, [Lcom/google/android/gms/tasks/Task;
+	13      (00000034) move-result-object   v0
+	14      (00000036) invoke-static        v0, Lcom/google/android/gms/tasks/Tasks;->whenAllComplete([Lcom/google/android/gms/tasks/Task;)Lcom/google/android/gms/tasks/Task;
+	15      (0000003c) move-result-object   v7
+	16      (0000003e) iget-object          v8, v1, Ln6/c;->f Ljava/util/concurrent/ScheduledExecutorService;
+	17      (00000042) new-instance         v0, Ln6/a;
+	18      (00000046) invoke-direct/range  v0 ... v6, Ln6/a;-><init>(Ln6/c; Lcom/google/android/gms/tasks/Task; Lcom/google/android/gms/tasks/Task; J I)V
+	19      (0000004c) invoke-virtual       v7, v8, v0, Lcom/google/android/gms/tasks/Task;->continueWithTask(Ljava/util/concurrent/Executor; Lcom/google/android/gms/tasks/Continuation;)Lcom/google/android/gms/tasks/Task;
+	20      (00000052) monitor-exit         v1
+	21      (00000054) return-void          
+	16:51
+	(Ljava/lang/Throwable; -> 56 run-BB@0x56)
+
+run-BB@0x56 : [ run-BB@0x58 ]
+	22      (00000056) move-exception       v0
+
+run-BB@0x58 : 
+	23      (00000058) monitor-exit         v1
+	24      (0000005a) throw                v0
+	58:59
+	(Ljava/lang/Throwable; -> 56 run-BB@0x56)
+

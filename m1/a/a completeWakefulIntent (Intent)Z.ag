@@ -1,0 +1,63 @@
+# Lm1/a;->completeWakefulIntent(Landroid/content/Intent;)Z [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:android.content.Intent
+#
+# - return:boolean
+
+completeWakefulIntent-BB@0x0 : [ completeWakefulIntent-BB@0x16 completeWakefulIntent-BB@0x18 ]
+	0       (00000000) const-string         v0, "No active wake lock id #"
+	1       (00000004) const-string         v1, "androidx.contentpager.content.wakelockid"
+	2       (00000008) const/4              v2, 0
+	3       (0000000a) invoke-virtual       v5, v1, v2, Landroid/content/Intent;->getIntExtra(Ljava/lang/String; I)I
+	4       (00000010) move-result          v5
+	5       (00000012) if-nez               v5, +003h
+
+completeWakefulIntent-BB@0x16 : 
+	6       (00000016) return               v2
+
+completeWakefulIntent-BB@0x18 : [ completeWakefulIntent-BB@0x1e ]
+	7       (00000018) sget-object          v1, Lm1/a;->sActiveWakeLocks Landroid/util/SparseArray;
+	8       (0000001c) monitor-enter        v1
+
+completeWakefulIntent-BB@0x1e : [ completeWakefulIntent-BB@0x30 completeWakefulIntent-BB@0x44 ]
+	9       (0000001e) invoke-virtual       v1, v5, Landroid/util/SparseArray;->get(I)Ljava/lang/Object;
+	10      (00000024) move-result-object   v2
+	11      (00000026) check-cast           v2, Landroid/os/PowerManager$WakeLock;
+	12      (0000002a) const/4              v3, 1
+	13      (0000002c) if-eqz               v2, +00ch
+	1e:6b
+	(Ljava/lang/Throwable; -> 40 completeWakefulIntent-BB@0x40)
+
+completeWakefulIntent-BB@0x30 : 
+	14      (00000030) invoke-virtual       v2, Landroid/os/PowerManager$WakeLock;->release()V
+	15      (00000036) invoke-virtual       v1, v5, Landroid/util/SparseArray;->remove(I)V
+	16      (0000003c) monitor-exit         v1
+	17      (0000003e) return               v3
+	1e:6b
+	(Ljava/lang/Throwable; -> 40 completeWakefulIntent-BB@0x40)
+
+completeWakefulIntent-BB@0x40 : [ completeWakefulIntent-BB@0x6a ]
+	18      (00000040) move-exception       v5
+	19      (00000042) goto                 +14h
+	1e:6b
+	(Ljava/lang/Throwable; -> 40 completeWakefulIntent-BB@0x40)
+
+completeWakefulIntent-BB@0x44 : 
+	20      (00000044) const-string         v2, "WakefulBroadcastReceiv."
+	21      (00000048) new-instance         v4, Ljava/lang/StringBuilder;
+	22      (0000004c) invoke-direct        v4, v0, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	23      (00000052) invoke-virtual       v4, v5, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	24      (00000058) invoke-virtual       v4, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	25      (0000005e) move-result-object   v5
+	26      (00000060) invoke-static        v2, v5, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+	27      (00000066) monitor-exit         v1
+	28      (00000068) return               v3
+	1e:6b
+	(Ljava/lang/Throwable; -> 40 completeWakefulIntent-BB@0x40)
+
+completeWakefulIntent-BB@0x6a : 
+	29      (0000006a) monitor-exit         v1
+	30      (0000006c) throw                v5
+

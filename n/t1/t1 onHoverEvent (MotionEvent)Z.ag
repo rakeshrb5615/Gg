@@ -1,0 +1,154 @@
+# Ln/t1;->onHoverEvent(Landroid/view/MotionEvent;)Z [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:android.view.MotionEvent
+#
+# - return:boolean
+
+onHoverEvent-BB@0x0 : [ onHoverEvent-BB@0x14 onHoverEvent-BB@0x32 ]
+	0       (00000000) sget                 v0, Landroid/os/Build$VERSION;->SDK_INT I
+	1       (00000004) invoke-virtual       v7, Landroid/view/MotionEvent;->getActionMasked()I
+	2       (0000000a) move-result          v1
+	3       (0000000c) const/16             v2, 10
+	4       (00000010) if-ne                v1, v2, +011h
+
+onHoverEvent-BB@0x14 : [ onHoverEvent-BB@0x1c onHoverEvent-BB@0x32 ]
+	5       (00000014) iget-object          v2, v6, Ln/t1;->r La2/l;
+	6       (00000018) if-nez               v2, +00dh
+
+onHoverEvent-BB@0x1c : [ onHoverEvent-BB@0x32 ]
+	7       (0000001c) new-instance         v2, La2/l;
+	8       (00000020) const/4              v3, 4
+	9       (00000022) invoke-direct        v2, v6, v3, La2/l;-><init>(Ljava/lang/Object; I)V
+	10      (00000028) iput-object          v2, v6, Ln/t1;->r La2/l;
+	11      (0000002c) invoke-virtual       v6, v2, Landroid/view/View;->post(Ljava/lang/Runnable;)Z
+
+onHoverEvent-BB@0x32 : [ onHoverEvent-BB@0x44 onHoverEvent-BB@0x54 ]
+	12      (00000032) invoke-super         v6, v7, Landroid/view/View;->onHoverEvent(Landroid/view/MotionEvent;)Z
+	13      (00000038) move-result          v2
+	14      (0000003a) const/16             v3, 9
+	15      (0000003e) const/4              v4, -1
+	16      (00000040) if-eq                v1, v3, +00ah
+
+onHoverEvent-BB@0x44 : [ onHoverEvent-BB@0x4a onHoverEvent-BB@0x4c ]
+	17      (00000044) const/4              v3, 7
+	18      (00000046) if-ne                v1, v3, +003h
+
+onHoverEvent-BB@0x4a : [ onHoverEvent-BB@0x54 ]
+	19      (0000004a) goto                 +5h
+
+onHoverEvent-BB@0x4c : 
+	20      (0000004c) invoke-virtual       v6, v4, Landroid/widget/AdapterView;->setSelection(I)V
+	21      (00000052) return               v2
+
+onHoverEvent-BB@0x54 : [ onHoverEvent-BB@0x74 onHoverEvent-BB@0x170 ]
+	22      (00000054) invoke-virtual       v7, Landroid/view/MotionEvent;->getX()F
+	23      (0000005a) move-result          v1
+	24      (0000005c) float-to-int         v1, v1
+	25      (0000005e) invoke-virtual       v7, Landroid/view/MotionEvent;->getY()F
+	26      (00000064) move-result          v7
+	27      (00000066) float-to-int         v7, v7
+	28      (00000068) invoke-virtual       v6, v1, v7, Landroid/widget/AbsListView;->pointToPosition(I I)I
+	29      (0000006e) move-result          v7
+	30      (00000070) if-eq                v7, v4, +080h
+
+onHoverEvent-BB@0x74 : [ onHoverEvent-BB@0x80 onHoverEvent-BB@0x170 ]
+	31      (00000074) invoke-virtual       v6, Landroid/widget/AdapterView;->getSelectedItemPosition()I
+	32      (0000007a) move-result          v1
+	33      (0000007c) if-eq                v7, v1, +07ah
+
+onHoverEvent-BB@0x80 : [ onHoverEvent-BB@0xa0 onHoverEvent-BB@0x142 ]
+	34      (00000080) invoke-virtual       v6, Landroid/widget/AdapterView;->getFirstVisiblePosition()I
+	35      (00000086) move-result          v1
+	36      (00000088) sub-int              v1, v7, v1
+	37      (0000008c) invoke-virtual       v6, v1, Landroid/view/ViewGroup;->getChildAt(I)Landroid/view/View;
+	38      (00000092) move-result-object   v1
+	39      (00000094) invoke-virtual       v1, Landroid/view/View;->isEnabled()Z
+	40      (0000009a) move-result          v3
+	41      (0000009c) if-eqz               v3, +053h
+
+onHoverEvent-BB@0xa0 : [ onHoverEvent-BB@0xae onHoverEvent-BB@0x12a ]
+	42      (000000a0) invoke-virtual       v6, Landroid/view/View;->requestFocus()Z
+	43      (000000a6) const/16             v3, 30
+	44      (000000aa) if-lt                v0, v3, +040h
+
+onHoverEvent-BB@0xae : [ onHoverEvent-BB@0xb6 onHoverEvent-BB@0x12a ]
+	45      (000000ae) sget-boolean         v0, Ln/p1;->d Z
+	46      (000000b2) if-eqz               v0, +03ch
+
+onHoverEvent-BB@0xb6 : [ onHoverEvent-BB@0xbe ]
+	47      (000000b6) invoke-static        v4, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+	48      (000000bc) move-result-object   v0
+
+onHoverEvent-BB@0xbe : [ onHoverEvent-BB@0x142 ]
+	49      (000000be) sget-object          v3, Ln/p1;->a Ljava/lang/reflect/Method;
+	50      (000000c2) invoke-static        v7, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+	51      (000000c8) move-result-object   v4
+	52      (000000ca) sget-object          v5, Ljava/lang/Boolean;->FALSE Ljava/lang/Boolean;
+	53      (000000ce) filled-new-array     v4, v1, v5, v0, v0, [Ljava/lang/Object;
+	54      (000000d4) move-result-object   v0
+	55      (000000d6) invoke-virtual       v3, v6, v0, Ljava/lang/reflect/Method;->invoke(Ljava/lang/Object; [Ljava/lang/Object;)Ljava/lang/Object;
+	56      (000000dc) sget-object          v0, Ln/p1;->b Ljava/lang/reflect/Method;
+	57      (000000e0) invoke-static        v7, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+	58      (000000e6) move-result-object   v1
+	59      (000000e8) filled-new-array     v1, [Ljava/lang/Object;
+	60      (000000ee) move-result-object   v1
+	61      (000000f0) invoke-virtual       v0, v6, v1, Ljava/lang/reflect/Method;->invoke(Ljava/lang/Object; [Ljava/lang/Object;)Ljava/lang/Object;
+	62      (000000f6) sget-object          v0, Ln/p1;->c Ljava/lang/reflect/Method;
+	63      (000000fa) invoke-static        v7, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+	64      (00000100) move-result-object   v7
+	65      (00000102) filled-new-array     v7, [Ljava/lang/Object;
+	66      (00000108) move-result-object   v7
+	67      (0000010a) invoke-virtual       v0, v6, v7, Ljava/lang/reflect/Method;->invoke(Ljava/lang/Object; [Ljava/lang/Object;)Ljava/lang/Object;
+	68      (00000110) goto                 +19h
+	be:10f
+	(Ljava/lang/IllegalAccessException; -> 116 onHoverEvent-BB@0x116)
+	(Ljava/lang/reflect/InvocationTargetException; -> 112 onHoverEvent-BB@0x112)
+
+onHoverEvent-BB@0x112 : [ onHoverEvent-BB@0x11a ]
+	69      (00000112) move-exception       v7
+	70      (00000114) goto                 +3h
+
+onHoverEvent-BB@0x116 : [ onHoverEvent-BB@0x122 ]
+	71      (00000116) move-exception       v7
+	72      (00000118) goto                 +5h
+
+onHoverEvent-BB@0x11a : [ onHoverEvent-BB@0x142 ]
+	73      (0000011a) invoke-virtual       v7, Ljava/lang/Throwable;->printStackTrace()V
+	74      (00000120) goto                 +11h
+
+onHoverEvent-BB@0x122 : [ onHoverEvent-BB@0x142 ]
+	75      (00000122) invoke-virtual       v7, Ljava/lang/Throwable;->printStackTrace()V
+	76      (00000128) goto                 +dh
+
+onHoverEvent-BB@0x12a : [ onHoverEvent-BB@0x142 ]
+	77      (0000012a) invoke-virtual       v1, Landroid/view/View;->getTop()I
+	78      (00000130) move-result          v0
+	79      (00000132) invoke-virtual       v6, Landroid/view/View;->getTop()I
+	80      (00000138) move-result          v1
+	81      (0000013a) sub-int/2addr        v0, v1
+	82      (0000013c) invoke-virtual       v6, v7, v0, Landroid/widget/AbsListView;->setSelectionFromTop(I I)V
+
+onHoverEvent-BB@0x142 : [ onHoverEvent-BB@0x14e onHoverEvent-BB@0x170 ]
+	83      (00000142) invoke-virtual       v6, Landroid/widget/AbsListView;->getSelector()Landroid/graphics/drawable/Drawable;
+	84      (00000148) move-result-object   v7
+	85      (0000014a) if-eqz               v7, +013h
+
+onHoverEvent-BB@0x14e : [ onHoverEvent-BB@0x156 onHoverEvent-BB@0x170 ]
+	86      (0000014e) iget-boolean         v0, v6, Ln/t1;->p Z
+	87      (00000152) if-eqz               v0, +00fh
+
+onHoverEvent-BB@0x156 : [ onHoverEvent-BB@0x162 onHoverEvent-BB@0x170 ]
+	88      (00000156) invoke-virtual       v6, Landroid/view/View;->isPressed()Z
+	89      (0000015c) move-result          v0
+	90      (0000015e) if-eqz               v0, +009h
+
+onHoverEvent-BB@0x162 : [ onHoverEvent-BB@0x170 ]
+	91      (00000162) invoke-virtual       v6, Landroid/view/View;->getDrawableState()[I
+	92      (00000168) move-result-object   v0
+	93      (0000016a) invoke-virtual       v7, v0, Landroid/graphics/drawable/Drawable;->setState([I)Z
+
+onHoverEvent-BB@0x170 : 
+	94      (00000170) return               v2
+

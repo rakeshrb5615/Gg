@@ -1,0 +1,45 @@
+# Ln6/c;->d()V [access_flags=public final synchronized]
+#
+# Parameters:
+# local registers: v0...v2
+#
+# - return:void
+
+d-BB@0x0 : [ d-BB@0x2 ]
+	0       (00000000) monitor-enter        v2
+
+d-BB@0x2 : [ d-BB@0xe ]
+	1       (00000002) iget-object          v0, v2, Ln6/c;->a Ljava/util/LinkedHashSet;
+	2       (00000006) invoke-interface     v0, Ljava/util/Set;->iterator()Ljava/util/Iterator;
+	3       (0000000c) move-result-object   v0
+	2:2b
+	(Ljava/lang/Throwable; -> 2e d-BB@0x2e)
+
+d-BB@0xe : [ d-BB@0x1a d-BB@0x32 ]
+	4       (0000000e) invoke-interface     v0, Ljava/util/Iterator;->hasNext()Z
+	5       (00000014) move-result          v1
+	6       (00000016) if-eqz               v1, +00eh
+	2:2b
+	(Ljava/lang/Throwable; -> 2e d-BB@0x2e)
+
+d-BB@0x1a : [ d-BB@0xe ]
+	7       (0000001a) invoke-interface     v0, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	8       (00000020) move-result-object   v1
+	9       (00000022) check-cast           v1, Ln6/k;
+	10      (00000026) invoke-virtual       v1, Ln6/k;->a()V
+	11      (0000002c) goto                 -fh
+
+d-BB@0x2e : [ d-BB@0x36 ]
+	12      (0000002e) move-exception       v0
+	13      (00000030) goto                 +3h
+
+d-BB@0x32 : 
+	14      (00000032) monitor-exit         v2
+	15      (00000034) return-void          
+
+d-BB@0x36 : 
+	16      (00000036) monitor-exit         v2
+	17      (00000038) throw                v0
+	36:37
+	(Ljava/lang/Throwable; -> 2e d-BB@0x2e)
+

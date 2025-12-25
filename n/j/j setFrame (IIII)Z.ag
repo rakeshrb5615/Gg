@@ -1,0 +1,54 @@
+# Ln/j;->setFrame(I I I I)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:int
+# - v6:int
+# - v7:int
+# - v8:int
+#
+# - return:boolean
+
+setFrame-BB@0x0 : [ setFrame-BB@0x1c setFrame-BB@0x7e ]
+	0       (00000000) invoke-super         v4, v5, v6, v7, v8, Landroid/widget/ImageView;->setFrame(I I I I)Z
+	1       (00000006) move-result          v5
+	2       (00000008) invoke-virtual       v4, Landroid/widget/ImageView;->getDrawable()Landroid/graphics/drawable/Drawable;
+	3       (0000000e) move-result-object   v6
+	4       (00000010) invoke-virtual       v4, Landroid/view/View;->getBackground()Landroid/graphics/drawable/Drawable;
+	5       (00000016) move-result-object   v7
+	6       (00000018) if-eqz               v6, +033h
+
+setFrame-BB@0x1c : [ setFrame-BB@0x20 setFrame-BB@0x7e ]
+	7       (0000001c) if-eqz               v7, +031h
+
+setFrame-BB@0x20 : [ setFrame-BB@0x7e ]
+	8       (00000020) invoke-virtual       v4, Landroid/view/View;->getWidth()I
+	9       (00000026) move-result          v6
+	10      (00000028) invoke-virtual       v4, Landroid/view/View;->getHeight()I
+	11      (0000002e) move-result          v8
+	12      (00000030) invoke-static        v6, v8, Ljava/lang/Math;->max(I I)I
+	13      (00000036) move-result          v0
+	14      (00000038) div-int/lit8         v0, v0, 2
+	15      (0000003c) invoke-virtual       v4, Landroid/view/View;->getPaddingLeft()I
+	16      (00000042) move-result          v1
+	17      (00000044) invoke-virtual       v4, Landroid/view/View;->getPaddingRight()I
+	18      (0000004a) move-result          v2
+	19      (0000004c) sub-int/2addr        v1, v2
+	20      (0000004e) invoke-virtual       v4, Landroid/view/View;->getPaddingTop()I
+	21      (00000054) move-result          v2
+	22      (00000056) invoke-virtual       v4, Landroid/view/View;->getPaddingBottom()I
+	23      (0000005c) move-result          v3
+	24      (0000005e) sub-int/2addr        v2, v3
+	25      (00000060) add-int/2addr        v6, v1
+	26      (00000062) div-int/lit8         v6, v6, 2
+	27      (00000066) add-int/2addr        v8, v2
+	28      (00000068) div-int/lit8         v8, v8, 2
+	29      (0000006c) sub-int              v1, v6, v0
+	30      (00000070) sub-int              v2, v8, v0
+	31      (00000074) add-int/2addr        v6, v0
+	32      (00000076) add-int/2addr        v8, v0
+	33      (00000078) invoke-virtual       v7, v1, v2, v6, v8, Landroid/graphics/drawable/Drawable;->setHotspotBounds(I I I I)V
+
+setFrame-BB@0x7e : 
+	34      (0000007e) return               v5
+

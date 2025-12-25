@@ -1,0 +1,20 @@
+# Ln/w;->getSuperCaller()Ln/v; [access_flags=private]
+#
+# Parameters:
+# local registers: v0...v1
+#
+# - return:n.v
+
+getSuperCaller-BB@0x0 : [ getSuperCaller-BB@0x8 getSuperCaller-BB@0x16 ]
+	0       (00000000) iget-object          v0, v1, Ln/w;->f Ln/v;
+	1       (00000004) if-nez               v0, +009h
+
+getSuperCaller-BB@0x8 : [ getSuperCaller-BB@0x16 ]
+	2       (00000008) new-instance         v0, Ln/v;
+	3       (0000000c) invoke-direct        v0, v1, Ln/v;-><init>(Ln/w;)V
+	4       (00000012) iput-object          v0, v1, Ln/w;->f Ln/v;
+
+getSuperCaller-BB@0x16 : 
+	5       (00000016) iget-object          v0, v1, Ln/w;->f Ln/v;
+	6       (0000001a) return-object        v0
+

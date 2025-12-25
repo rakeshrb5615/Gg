@@ -1,0 +1,85 @@
+# Ln6/c;->c()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v5
+#
+# - return:void
+
+c-BB@0x0 : [ c-BB@0x10 c-BB@0x12 ]
+	0       (00000000) const-string         v0, "Exception thrown when closing connection stream. Retrying connection..."
+	1       (00000004) const-string         v1, "FirebaseRemoteConfig"
+	2       (00000008) iget-object          v2, v5, Ln6/c;->b Ljava/net/HttpURLConnection;
+	3       (0000000c) if-nez               v2, +003h
+
+c-BB@0x10 : [ c-BB@0x5a ]
+	4       (00000010) goto                 +25h
+
+c-BB@0x12 : [ c-BB@0x14 ]
+	5       (00000012) const/4              v3, 0
+
+c-BB@0x14 : [ c-BB@0x26 c-BB@0x5a ]
+	6       (00000014) invoke-virtual       v2, Ljava/net/URLConnection;->getInputStream()Ljava/io/InputStream;
+	7       (0000001a) move-result-object   v3
+	8       (0000001c) invoke-virtual       v5, v3, Ln6/c;->b(Ljava/io/InputStream;)V
+	9       (00000022) if-eqz               v3, +01ch
+	14:21
+	(Ljava/io/IOException; -> 3c c-BB@0x3c)
+	(Ljava/lang/Throwable; -> 38 c-BB@0x38)
+
+c-BB@0x26 : 
+	10      (00000026) invoke-virtual       v3, Ljava/io/InputStream;->close()V
+	11      (0000002c) return-void          
+	26:2b
+	(Ljava/io/IOException; -> 2e c-BB@0x2e)
+
+c-BB@0x2e : [ c-BB@0x5a ]
+	12      (0000002e) move-exception       v2
+	13      (00000030) invoke-static        v1, v0, v2, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+	14      (00000036) goto                 +12h
+
+c-BB@0x38 : [ c-BB@0x5c ]
+	15      (00000038) move-exception       v2
+	16      (0000003a) goto                 +11h
+
+c-BB@0x3c : [ c-BB@0x3e ]
+	17      (0000003c) move-exception       v2
+
+c-BB@0x3e : [ c-BB@0x46 c-BB@0x50 ]
+	18      (0000003e) iget-boolean         v4, v5, Ln6/c;->j Z
+	19      (00000042) if-nez               v4, +007h
+	3e:4f
+	(Ljava/lang/Throwable; -> 38 c-BB@0x38)
+
+c-BB@0x46 : [ c-BB@0x50 ]
+	20      (00000046) const-string         v4, "Real-time connection was closed due to an exception."
+	21      (0000004a) invoke-static        v1, v4, v2, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+	3e:4f
+	(Ljava/lang/Throwable; -> 38 c-BB@0x38)
+
+c-BB@0x50 : [ c-BB@0x54 c-BB@0x5a ]
+	22      (00000050) if-eqz               v3, +005h
+
+c-BB@0x54 : [ c-BB@0x5a ]
+	23      (00000054) invoke-virtual       v3, Ljava/io/InputStream;->close()V
+	54:59
+	(Ljava/io/IOException; -> 2e c-BB@0x2e)
+
+c-BB@0x5a : 
+	24      (0000005a) return-void          
+
+c-BB@0x5c : [ c-BB@0x60 c-BB@0x70 ]
+	25      (0000005c) if-eqz               v3, +00ah
+
+c-BB@0x60 : [ c-BB@0x70 ]
+	26      (00000060) invoke-virtual       v3, Ljava/io/InputStream;->close()V
+	27      (00000066) goto                 +5h
+	60:65
+	(Ljava/io/IOException; -> 68 c-BB@0x68)
+
+c-BB@0x68 : [ c-BB@0x70 ]
+	28      (00000068) move-exception       v3
+	29      (0000006a) invoke-static        v1, v0, v3, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+
+c-BB@0x70 : 
+	30      (00000070) throw                v2
+

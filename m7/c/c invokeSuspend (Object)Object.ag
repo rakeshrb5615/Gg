@@ -1,0 +1,40 @@
+# Lm7/c;->invokeSuspend(Ljava/lang/Object;)Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:java.lang.Object
+#
+# - return:java.lang.Object
+
+invokeSuspend-BB@0x0 : [ invokeSuspend-BB@0xc invokeSuspend-BB@0x2c ]
+	0       (00000000) iget                 v0, v3, Lm7/c;->a I
+	1       (00000004) const/4              v1, 2
+	2       (00000006) const/4              v2, 1
+	3       (00000008) if-eqz               v0, +012h
+
+invokeSuspend-BB@0xc : [ invokeSuspend-BB@0x10 invokeSuspend-BB@0x1c ]
+	4       (0000000c) if-ne                v0, v2, +008h
+
+invokeSuspend-BB@0x10 : 
+	5       (00000010) iput                 v1, v3, Lm7/c;->a I
+	6       (00000014) invoke-static        v4, Lc4/b;->e0(Ljava/lang/Object;)V
+	7       (0000001a) return-object        v4
+
+invokeSuspend-BB@0x1c : 
+	8       (0000001c) new-instance         v4, Ljava/lang/IllegalStateException;
+	9       (00000020) const-string         v0, "This coroutine had already completed"
+	10      (00000024) invoke-direct        v4, v0, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	11      (0000002a) throw                v4
+
+invokeSuspend-BB@0x2c : 
+	12      (0000002c) iput                 v2, v3, Lm7/c;->a I
+	13      (00000030) invoke-static        v4, Lc4/b;->e0(Ljava/lang/Object;)V
+	14      (00000036) const-string         v4, "null cannot be cast to non-null type kotlin.Function2<R of kotlin.coroutines.intrinsics.IntrinsicsKt__IntrinsicsJvmKt.createCoroutineUnintercepted, kotlin.coroutines.Continuation<T of kotlin.coroutines.intrinsics.IntrinsicsKt__IntrinsicsJvmKt.createCoroutineUnintercepted>, kotlin.Any?>"
+	15      (0000003a) iget-object          v0, v3, Lm7/c;->b Lu7/p;
+	16      (0000003e) invoke-static        v0, v4, Lkotlin/jvm/internal/j;->c(Ljava/lang/Object; Ljava/lang/String;)V
+	17      (00000044) invoke-static        v1, v0, Lkotlin/jvm/internal/u;->a(I Ljava/lang/Object;)V
+	18      (0000004a) iget-object          v4, v3, Lm7/c;->c Ll7/c;
+	19      (0000004e) invoke-interface     v0, v4, v3, Lu7/p;->invoke(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	20      (00000054) move-result-object   v4
+	21      (00000056) return-object        v4
+

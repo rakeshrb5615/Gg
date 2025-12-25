@@ -1,0 +1,35 @@
+# Ln2/f;->m0(I)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:int
+#
+# - return:void
+
+m0-BB@0x0 : [ m0-BB@0x10 m0-BB@0x38 ]
+	0       (00000000) iget-object          v0, v4, Ln2/f;->k Ljava/util/ArrayList;
+	1       (00000004) invoke-virtual       v0, Ljava/util/ArrayList;->size()I
+	2       (0000000a) move-result          v1
+	3       (0000000c) if-le                v1, v5, +016h
+
+m0-BB@0x10 : [ m0-BB@0x1e ]
+	4       (00000010) invoke-virtual       v0, Ljava/util/ArrayList;->size()I
+	5       (00000016) move-result          v1
+	6       (00000018) sub-int/2addr        v1, v5
+	7       (0000001a) const/4              v5, 1
+	8       (0000001c) move                 v2, v5
+
+m0-BB@0x1e : [ m0-BB@0x22 m0-BB@0x38 ]
+	9       (0000001e) if-ge                v2, v1, +00dh
+
+m0-BB@0x22 : [ m0-BB@0x1e ]
+	10      (00000022) invoke-virtual       v0, Ljava/util/ArrayList;->size()I
+	11      (00000028) move-result          v3
+	12      (0000002a) sub-int/2addr        v3, v5
+	13      (0000002c) invoke-virtual       v0, v3, Ljava/util/ArrayList;->remove(I)Ljava/lang/Object;
+	14      (00000032) add-int/lit8         v2, v2, 1
+	15      (00000036) goto                 -ch
+
+m0-BB@0x38 : 
+	16      (00000038) return-void          
+

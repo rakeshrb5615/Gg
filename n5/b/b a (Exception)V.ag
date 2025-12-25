@@ -1,0 +1,92 @@
+# Ln5/b;->a(Ljava/lang/Exception;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v8
+# - v9:java.lang.Exception
+#
+# - return:void
+
+a-BB@0x0 : [ a-BB@0x8 a-BB@0x10 ]
+	0       (00000000) iget-object          v0, v8, Ln5/b;->b Lcom/google/android/gms/tasks/TaskCompletionSource;
+	1       (00000004) if-eqz               v9, +006h
+
+a-BB@0x8 : 
+	2       (00000008) invoke-virtual       v0, v9, Lcom/google/android/gms/tasks/TaskCompletionSource;->trySetException(Ljava/lang/Exception;)Z
+	3       (0000000e) return-void          
+
+a-BB@0x10 : [ a-BB@0x18 a-BB@0xb0 ]
+	4       (00000010) iget-boolean         v9, v8, Ln5/b;->c Z
+	5       (00000014) if-eqz               v9, +04eh
+
+a-BB@0x18 : [ a-BB@0x54 ]
+	6       (00000018) new-instance         v9, Ljava/util/concurrent/CountDownLatch;
+	7       (0000001c) const/4              v1, 1
+	8       (0000001e) invoke-direct        v9, v1, Ljava/util/concurrent/CountDownLatch;-><init>(I)V
+	9       (00000024) new-instance         v2, Ljava/lang/Thread;
+	10      (00000028) new-instance         v3, La5/i;
+	11      (0000002c) const/16             v4, 13
+	12      (00000030) iget-object          v5, v8, Ln5/b;->a Ln5/c;
+	13      (00000034) invoke-direct        v3, v4, v5, v9, La5/i;-><init>(I Ljava/lang/Object; Ljava/lang/Object;)V
+	14      (0000003a) invoke-direct        v2, v3, Ljava/lang/Thread;-><init>(Ljava/lang/Runnable;)V
+	15      (00000040) invoke-virtual       v2, Ljava/lang/Thread;->start()V
+	16      (00000046) sget-object          v2, Ljava/util/concurrent/TimeUnit;->SECONDS Ljava/util/concurrent/TimeUnit;
+	17      (0000004a) sget-object          v3, Lg5/z;->a Ljava/util/concurrent/ExecutorService;
+	18      (0000004e) const-wide/16        v3, 2
+	19      (00000052) const/4              v5, 0
+
+a-BB@0x54 : [ a-BB@0x66 ]
+	20      (00000054) invoke-virtual       v2, v3, v4, Ljava/util/concurrent/TimeUnit;->toNanos(J)J
+	21      (0000005a) move-result-wide     v2
+	22      (0000005c) invoke-static        Ljava/lang/System;->nanoTime()J
+	23      (00000062) move-result-wide     v6
+	24      (00000064) add-long/2addr       v6, v2
+	54:63
+	(Ljava/lang/Throwable; -> 84 a-BB@0x84)
+
+a-BB@0x66 : [ a-BB@0x74 a-BB@0xb0 ]
+	25      (00000066) sget-object          v4, Ljava/util/concurrent/TimeUnit;->NANOSECONDS Ljava/util/concurrent/TimeUnit;
+	26      (0000006a) invoke-virtual       v9, v2, v3, v4, Ljava/util/concurrent/CountDownLatch;->await(J Ljava/util/concurrent/TimeUnit;)Z
+	27      (00000070) if-eqz               v5, +020h
+	66:6f
+	(Ljava/lang/InterruptedException; -> 8a a-BB@0x8a)
+	(Ljava/lang/Throwable; -> 84 a-BB@0x84)
+
+a-BB@0x74 : [ a-BB@0xb0 ]
+	28      (00000074) invoke-static        Ljava/lang/Thread;->currentThread()Ljava/lang/Thread;
+	29      (0000007a) move-result-object   v9
+	30      (0000007c) invoke-virtual       v9, Ljava/lang/Thread;->interrupt()V
+	31      (00000082) goto                 +17h
+
+a-BB@0x84 : [ a-BB@0x9c ]
+	32      (00000084) move-exception       v9
+	33      (00000086) move                 v1, v5
+	34      (00000088) goto                 +ah
+
+a-BB@0x8a : [ a-BB@0x66 ]
+	35      (0000008a) invoke-static        Ljava/lang/System;->nanoTime()J
+	36      (00000090) move-result-wide     v2
+	37      (00000092) sub-long             v2, v6, v2
+	38      (00000096) move                 v5, v1
+	39      (00000098) goto                 -19h
+	8a:91
+	(Ljava/lang/Throwable; -> 9a a-BB@0x9a)
+
+a-BB@0x9a : [ a-BB@0x9c ]
+	40      (0000009a) move-exception       v9
+
+a-BB@0x9c : [ a-BB@0xa0 a-BB@0xae ]
+	41      (0000009c) if-eqz               v1, +009h
+
+a-BB@0xa0 : [ a-BB@0xae ]
+	42      (000000a0) invoke-static        Ljava/lang/Thread;->currentThread()Ljava/lang/Thread;
+	43      (000000a6) move-result-object   v0
+	44      (000000a8) invoke-virtual       v0, Ljava/lang/Thread;->interrupt()V
+
+a-BB@0xae : 
+	45      (000000ae) throw                v9
+
+a-BB@0xb0 : 
+	46      (000000b0) iget-object          v9, v8, Ln5/b;->d Lg5/b;
+	47      (000000b4) invoke-virtual       v0, v9, Lcom/google/android/gms/tasks/TaskCompletionSource;->trySetResult(Ljava/lang/Object;)Z
+	48      (000000ba) return-void          
+

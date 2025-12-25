@@ -1,0 +1,81 @@
+# Ln6/d;->c()Ln6/f; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v3
+#
+# - return:n6.f
+
+c-BB@0x0 : [ c-BB@0x2 ]
+	0       (00000000) monitor-enter        v3
+
+c-BB@0x2 : [ c-BB@0xa c-BB@0x2e ]
+	1       (00000002) iget-object          v0, v3, Ln6/d;->c Lcom/google/android/gms/tasks/Task;
+	2       (00000006) if-eqz               v0, +014h
+	2:2f
+	(Ljava/lang/Throwable; -> 2a c-BB@0x2a)
+
+c-BB@0xa : [ c-BB@0x16 c-BB@0x2e ]
+	3       (0000000a) invoke-virtual       v0, Lcom/google/android/gms/tasks/Task;->isSuccessful()Z
+	4       (00000010) move-result          v0
+	5       (00000012) if-eqz               v0, +00eh
+	2:2f
+	(Ljava/lang/Throwable; -> 2a c-BB@0x2a)
+
+c-BB@0x16 : 
+	6       (00000016) iget-object          v0, v3, Ln6/d;->c Lcom/google/android/gms/tasks/Task;
+	7       (0000001a) invoke-virtual       v0, Lcom/google/android/gms/tasks/Task;->getResult()Ljava/lang/Object;
+	8       (00000020) move-result-object   v0
+	9       (00000022) check-cast           v0, Ln6/f;
+	10      (00000026) monitor-exit         v3
+	11      (00000028) return-object        v0
+	2:2f
+	(Ljava/lang/Throwable; -> 2a c-BB@0x2a)
+
+c-BB@0x2a : [ c-BB@0x66 ]
+	12      (0000002a) move-exception       v0
+	13      (0000002c) goto                 +1dh
+	2:2f
+	(Ljava/lang/Throwable; -> 2a c-BB@0x2a)
+
+c-BB@0x2e : [ c-BB@0x30 ]
+	14      (0000002e) monitor-exit         v3
+	2:2f
+	(Ljava/lang/Throwable; -> 2a c-BB@0x2a)
+
+c-BB@0x30 : 
+	15      (00000030) invoke-virtual       v3, Ln6/d;->b()Lcom/google/android/gms/tasks/Task;
+	16      (00000036) move-result-object   v0
+	17      (00000038) sget-object          v1, Ljava/util/concurrent/TimeUnit;->SECONDS Ljava/util/concurrent/TimeUnit;
+	18      (0000003c) invoke-static        v0, Ln6/d;->a(Lcom/google/android/gms/tasks/Task;)Ljava/lang/Object;
+	19      (00000042) move-result-object   v0
+	20      (00000044) check-cast           v0, Ln6/f;
+	21      (00000048) return-object        v0
+	30:47
+	(Ljava/lang/InterruptedException; -> 52 c-BB@0x52)
+	(Ljava/util/concurrent/ExecutionException; -> 4e c-BB@0x4e)
+	(Ljava/util/concurrent/TimeoutException; -> 4a c-BB@0x4a)
+
+c-BB@0x4a : [ c-BB@0x54 ]
+	22      (0000004a) move-exception       v0
+	23      (0000004c) goto                 +4h
+
+c-BB@0x4e : [ c-BB@0x54 ]
+	24      (0000004e) move-exception       v0
+	25      (00000050) goto                 +2h
+
+c-BB@0x52 : [ c-BB@0x54 ]
+	26      (00000052) move-exception       v0
+
+c-BB@0x54 : 
+	27      (00000054) const-string         v1, "FirebaseRemoteConfig"
+	28      (00000058) const-string         v2, "Reading from storage file failed."
+	29      (0000005c) invoke-static        v1, v2, v0, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+	30      (00000062) const/4              v0, 0
+	31      (00000064) return-object        v0
+
+c-BB@0x66 : 
+	32      (00000066) monitor-exit         v3
+	33      (00000068) throw                v0
+	66:67
+	(Ljava/lang/Throwable; -> 2a c-BB@0x2a)
+

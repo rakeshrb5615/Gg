@@ -1,0 +1,31 @@
+# Lm4/d;->hashCode()I [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v4
+#
+# - return:int
+
+hashCode-BB@0x0 : [ hashCode-BB@0xc ]
+	0       (00000000) invoke-virtual       v4, Ljava/util/AbstractCollection;->size()I
+	1       (00000006) move-result          v0
+	2       (00000008) const/4              v1, 1
+	3       (0000000a) const/4              v2, 0
+
+hashCode-BB@0xc : [ hashCode-BB@0x10 hashCode-BB@0x30 ]
+	4       (0000000c) if-ge                v2, v0, +012h
+
+hashCode-BB@0x10 : [ hashCode-BB@0xc ]
+	5       (00000010) mul-int/lit8         v1, v1, 31
+	6       (00000014) invoke-interface     v4, v2, Ljava/util/List;->get(I)Ljava/lang/Object;
+	7       (0000001a) move-result-object   v3
+	8       (0000001c) invoke-virtual       v3, Ljava/lang/Object;->hashCode()I
+	9       (00000022) move-result          v3
+	10      (00000024) add-int/2addr        v3, v1
+	11      (00000026) not-int              v1, v3
+	12      (00000028) not-int              v1, v1
+	13      (0000002a) add-int/lit8         v2, v2, 1
+	14      (0000002e) goto                 -11h
+
+hashCode-BB@0x30 : 
+	15      (00000030) return               v1
+

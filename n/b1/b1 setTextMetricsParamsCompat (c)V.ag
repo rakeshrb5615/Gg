@@ -1,0 +1,81 @@
+# Ln/b1;->setTextMetricsParamsCompat(Lo0/c;)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:o0.c
+#
+# - return:void
+
+setTextMetricsParamsCompat-BB@0x0 : [ setTextMetricsParamsCompat-BB@0xe setTextMetricsParamsCompat-BB@0x10 ]
+	0       (00000000) iget-object          v0, v6, Lo0/c;->b Landroid/text/TextDirectionHeuristic;
+	1       (00000004) sget-object          v1, Landroid/text/TextDirectionHeuristics;->FIRSTSTRONG_RTL Landroid/text/TextDirectionHeuristic;
+	2       (00000008) const/4              v2, 1
+	3       (0000000a) if-ne                v0, v1, +003h
+
+setTextMetricsParamsCompat-BB@0xe : [ setTextMetricsParamsCompat-BB@0x58 ]
+	4       (0000000e) goto                 +25h
+
+setTextMetricsParamsCompat-BB@0x10 : [ setTextMetricsParamsCompat-BB@0x18 setTextMetricsParamsCompat-BB@0x1a ]
+	5       (00000010) sget-object          v3, Landroid/text/TextDirectionHeuristics;->FIRSTSTRONG_LTR Landroid/text/TextDirectionHeuristic;
+	6       (00000014) if-ne                v0, v3, +003h
+
+setTextMetricsParamsCompat-BB@0x18 : [ setTextMetricsParamsCompat-BB@0x58 ]
+	7       (00000018) goto                 +20h
+
+setTextMetricsParamsCompat-BB@0x1a : [ setTextMetricsParamsCompat-BB@0x22 setTextMetricsParamsCompat-BB@0x26 ]
+	8       (0000001a) sget-object          v4, Landroid/text/TextDirectionHeuristics;->ANYRTL_LTR Landroid/text/TextDirectionHeuristic;
+	9       (0000001e) if-ne                v0, v4, +004h
+
+setTextMetricsParamsCompat-BB@0x22 : [ setTextMetricsParamsCompat-BB@0x58 ]
+	10      (00000022) const/4              v2, 2
+	11      (00000024) goto                 +1ah
+
+setTextMetricsParamsCompat-BB@0x26 : [ setTextMetricsParamsCompat-BB@0x2e setTextMetricsParamsCompat-BB@0x32 ]
+	12      (00000026) sget-object          v4, Landroid/text/TextDirectionHeuristics;->LTR Landroid/text/TextDirectionHeuristic;
+	13      (0000002a) if-ne                v0, v4, +004h
+
+setTextMetricsParamsCompat-BB@0x2e : [ setTextMetricsParamsCompat-BB@0x58 ]
+	14      (0000002e) const/4              v2, 3
+	15      (00000030) goto                 +14h
+
+setTextMetricsParamsCompat-BB@0x32 : [ setTextMetricsParamsCompat-BB@0x3a setTextMetricsParamsCompat-BB@0x3e ]
+	16      (00000032) sget-object          v4, Landroid/text/TextDirectionHeuristics;->RTL Landroid/text/TextDirectionHeuristic;
+	17      (00000036) if-ne                v0, v4, +004h
+
+setTextMetricsParamsCompat-BB@0x3a : [ setTextMetricsParamsCompat-BB@0x58 ]
+	18      (0000003a) const/4              v2, 4
+	19      (0000003c) goto                 +eh
+
+setTextMetricsParamsCompat-BB@0x3e : [ setTextMetricsParamsCompat-BB@0x46 setTextMetricsParamsCompat-BB@0x4a ]
+	20      (0000003e) sget-object          v4, Landroid/text/TextDirectionHeuristics;->LOCALE Landroid/text/TextDirectionHeuristic;
+	21      (00000042) if-ne                v0, v4, +004h
+
+setTextMetricsParamsCompat-BB@0x46 : [ setTextMetricsParamsCompat-BB@0x58 ]
+	22      (00000046) const/4              v2, 5
+	23      (00000048) goto                 +8h
+
+setTextMetricsParamsCompat-BB@0x4a : [ setTextMetricsParamsCompat-BB@0x4e setTextMetricsParamsCompat-BB@0x52 ]
+	24      (0000004a) if-ne                v0, v3, +004h
+
+setTextMetricsParamsCompat-BB@0x4e : [ setTextMetricsParamsCompat-BB@0x58 ]
+	25      (0000004e) const/4              v2, 6
+	26      (00000050) goto                 +4h
+
+setTextMetricsParamsCompat-BB@0x52 : [ setTextMetricsParamsCompat-BB@0x56 setTextMetricsParamsCompat-BB@0x58 ]
+	27      (00000052) if-ne                v0, v1, +003h
+
+setTextMetricsParamsCompat-BB@0x56 : [ setTextMetricsParamsCompat-BB@0x58 ]
+	28      (00000056) const/4              v2, 7
+
+setTextMetricsParamsCompat-BB@0x58 : 
+	29      (00000058) invoke-virtual       v5, v2, Landroid/view/View;->setTextDirection(I)V
+	30      (0000005e) invoke-virtual       v5, Landroid/widget/TextView;->getPaint()Landroid/text/TextPaint;
+	31      (00000064) move-result-object   v0
+	32      (00000066) iget-object          v1, v6, Lo0/c;->a Landroid/text/TextPaint;
+	33      (0000006a) invoke-virtual       v0, v1, Landroid/text/TextPaint;->set(Landroid/text/TextPaint;)V
+	34      (00000070) iget                 v0, v6, Lo0/c;->c I
+	35      (00000074) invoke-virtual       v5, v0, Landroid/widget/TextView;->setBreakStrategy(I)V
+	36      (0000007a) iget                 v6, v6, Lo0/c;->d I
+	37      (0000007e) invoke-virtual       v5, v6, Landroid/widget/TextView;->setHyphenationFrequency(I)V
+	38      (00000084) return-void          
+

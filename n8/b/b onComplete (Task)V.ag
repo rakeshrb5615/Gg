@@ -1,0 +1,36 @@
+# Ln8/b;->onComplete(Lcom/google/android/gms/tasks/Task;)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:com.google.android.gms.tasks.Task
+#
+# - return:void
+
+onComplete-BB@0x0 : [ onComplete-BB@0x10 onComplete-BB@0x36 ]
+	0       (00000000) invoke-virtual       v3, Lcom/google/android/gms/tasks/Task;->getException()Ljava/lang/Exception;
+	1       (00000006) move-result-object   v0
+	2       (00000008) iget-object          v1, v2, Ln8/b;->b Ld8/n;
+	3       (0000000c) if-nez               v0, +015h
+
+onComplete-BB@0x10 : [ onComplete-BB@0x1c onComplete-BB@0x26 ]
+	4       (00000010) invoke-virtual       v3, Lcom/google/android/gms/tasks/Task;->isCanceled()Z
+	5       (00000016) move-result          v0
+	6       (00000018) if-eqz               v0, +007h
+
+onComplete-BB@0x1c : 
+	7       (0000001c) const/4              v3, 0
+	8       (0000001e) invoke-virtual       v1, v3, Ld8/n;->m(Ljava/lang/Throwable;)Z
+	9       (00000024) return-void          
+
+onComplete-BB@0x26 : 
+	10      (00000026) invoke-virtual       v3, Lcom/google/android/gms/tasks/Task;->getResult()Ljava/lang/Object;
+	11      (0000002c) move-result-object   v3
+	12      (0000002e) invoke-virtual       v1, v3, Ld8/n;->resumeWith(Ljava/lang/Object;)V
+	13      (00000034) return-void          
+
+onComplete-BB@0x36 : 
+	14      (00000036) invoke-static        v0, Lc4/b;->p(Ljava/lang/Throwable;)Lh7/g;
+	15      (0000003c) move-result-object   v3
+	16      (0000003e) invoke-virtual       v1, v3, Ld8/n;->resumeWith(Ljava/lang/Object;)V
+	17      (00000044) return-void          
+

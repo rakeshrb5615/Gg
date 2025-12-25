@@ -1,0 +1,54 @@
+# Ln2/l;->m0(F F)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:float
+# - v6:float
+#
+# - return:void
+
+m0-BB@0x0 : [ m0-BB@0xc m0-BB@0x10 ]
+	0       (00000000) iget                 v0, v4, Ln2/l;->m I
+	1       (00000004) iget                 v1, v4, Ln2/l;->n I
+	2       (00000008) if-ge                v0, v1, +004h
+
+m0-BB@0xc : [ m0-BB@0x12 ]
+	3       (0000000c) const/4              v2, 1
+	4       (0000000e) goto                 +2h
+
+m0-BB@0x10 : [ m0-BB@0x12 ]
+	5       (00000010) const/4              v2, 0
+
+m0-BB@0x12 : [ m0-BB@0x16 m0-BB@0x1c ]
+	6       (00000012) if-eqz               v2, +005h
+
+m0-BB@0x16 : [ m0-BB@0x18 ]
+	7       (00000016) int-to-float         v3, v0
+
+m0-BB@0x18 : [ m0-BB@0x20 ]
+	8       (00000018) mul-float/2addr      v3, v5
+	9       (0000001a) goto                 +3h
+
+m0-BB@0x1c : [ m0-BB@0x18 ]
+	10      (0000001c) int-to-float         v3, v1
+	11      (0000001e) goto                 -3h
+
+m0-BB@0x20 : [ m0-BB@0x28 m0-BB@0x2e ]
+	12      (00000020) iput                 v3, v4, Ln2/l;->r F
+	13      (00000024) if-eqz               v2, +005h
+
+m0-BB@0x28 : [ m0-BB@0x2a ]
+	14      (00000028) int-to-float         v5, v0
+
+m0-BB@0x2a : [ m0-BB@0x32 ]
+	15      (0000002a) mul-float/2addr      v5, v6
+	16      (0000002c) goto                 +3h
+
+m0-BB@0x2e : [ m0-BB@0x2a ]
+	17      (0000002e) int-to-float         v5, v1
+	18      (00000030) goto                 -3h
+
+m0-BB@0x32 : 
+	19      (00000032) iput                 v5, v4, Ln2/l;->s F
+	20      (00000036) return-void          
+

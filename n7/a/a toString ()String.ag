@@ -1,0 +1,27 @@
+# Ln7/a;->toString()Ljava/lang/String; [access_flags=public]
+#
+# Parameters:
+# local registers: v0...v2
+#
+# - return:java.lang.String
+
+toString-BB@0x0 : [ toString-BB@0x1a toString-BB@0x2a ]
+	0       (00000000) new-instance         v0, Ljava/lang/StringBuilder;
+	1       (00000004) const-string         v1, "Continuation at "
+	2       (00000008) invoke-direct        v0, v1, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	3       (0000000e) invoke-virtual       v2, Ln7/a;->getStackTraceElement()Ljava/lang/StackTraceElement;
+	4       (00000014) move-result-object   v1
+	5       (00000016) if-nez               v1, +00ah
+
+toString-BB@0x1a : [ toString-BB@0x2a ]
+	6       (0000001a) invoke-virtual       v2, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	7       (00000020) move-result-object   v1
+	8       (00000022) invoke-virtual       v1, Ljava/lang/Class;->getName()Ljava/lang/String;
+	9       (00000028) move-result-object   v1
+
+toString-BB@0x2a : 
+	10      (0000002a) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	11      (00000030) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	12      (00000036) move-result-object   v0
+	13      (00000038) return-object        v0
+

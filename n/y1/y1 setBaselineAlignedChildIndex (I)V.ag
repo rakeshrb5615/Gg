@@ -1,0 +1,35 @@
+# Ln/y1;->setBaselineAlignedChildIndex(I)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:int
+#
+# - return:void
+
+setBaselineAlignedChildIndex-BB@0x0 : [ setBaselineAlignedChildIndex-BB@0x4 setBaselineAlignedChildIndex-BB@0x16 ]
+	0       (00000000) if-ltz               v3, +00bh
+
+setBaselineAlignedChildIndex-BB@0x4 : [ setBaselineAlignedChildIndex-BB@0x10 setBaselineAlignedChildIndex-BB@0x16 ]
+	1       (00000004) invoke-virtual       v2, Landroid/view/ViewGroup;->getChildCount()I
+	2       (0000000a) move-result          v0
+	3       (0000000c) if-ge                v3, v0, +005h
+
+setBaselineAlignedChildIndex-BB@0x10 : 
+	4       (00000010) iput                 v3, v2, Ln/y1;->b I
+	5       (00000014) return-void          
+
+setBaselineAlignedChildIndex-BB@0x16 : 
+	6       (00000016) new-instance         v3, Ljava/lang/IllegalArgumentException;
+	7       (0000001a) new-instance         v0, Ljava/lang/StringBuilder;
+	8       (0000001e) const-string         v1, "base aligned child index out of range (0, "
+	9       (00000022) invoke-direct        v0, v1, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	10      (00000028) invoke-virtual       v2, Landroid/view/ViewGroup;->getChildCount()I
+	11      (0000002e) move-result          v1
+	12      (00000030) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	13      (00000036) const-string         v1, ")"
+	14      (0000003a) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	15      (00000040) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	16      (00000046) move-result-object   v0
+	17      (00000048) invoke-direct        v3, v0, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	18      (0000004e) throw                v3
+

@@ -1,0 +1,50 @@
+# Ln2/f;->o0(I [F [F)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:int
+# - v4:float[]
+# - v5:float[]
+#
+# - return:void
+
+o0-BB@0x0 : [ o0-BB@0x6 ]
+	0       (00000000) iget-object          v0, v2, Ln2/f;->k Ljava/util/ArrayList;
+	1       (00000004) monitor-enter        v0
+
+o0-BB@0x6 : [ o0-BB@0x16 o0-BB@0x38 ]
+	2       (00000006) iget-object          v1, v2, Ln2/f;->k Ljava/util/ArrayList;
+	3       (0000000a) invoke-virtual       v1, Ljava/util/ArrayList;->size()I
+	4       (00000010) move-result          v1
+	5       (00000012) if-ge                v3, v1, +013h
+	6:3d
+	(Ljava/lang/Throwable; -> 34 o0-BB@0x34)
+
+o0-BB@0x16 : [ o0-BB@0x38 ]
+	6       (00000016) iget-object          v1, v2, Ln2/f;->k Ljava/util/ArrayList;
+	7       (0000001a) invoke-virtual       v1, v3, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	8       (00000020) move-result-object   v3
+	9       (00000022) check-cast           v3, Ln2/g;
+	10      (00000026) iget-object          v3, v3, Ln2/g;->a Ln2/a;
+	11      (0000002a) iput-object          v4, v3, Ln2/a;->B [F
+	12      (0000002e) iput-object          v5, v3, Ln2/a;->C [F
+	13      (00000032) goto                 +3h
+	6:3d
+	(Ljava/lang/Throwable; -> 34 o0-BB@0x34)
+
+o0-BB@0x34 : [ o0-BB@0x3c ]
+	14      (00000034) move-exception       v3
+	15      (00000036) goto                 +3h
+	6:3d
+	(Ljava/lang/Throwable; -> 34 o0-BB@0x34)
+
+o0-BB@0x38 : 
+	16      (00000038) monitor-exit         v0
+	17      (0000003a) return-void          
+	6:3d
+	(Ljava/lang/Throwable; -> 34 o0-BB@0x34)
+
+o0-BB@0x3c : 
+	18      (0000003c) monitor-exit         v0
+	19      (0000003e) throw                v3
+

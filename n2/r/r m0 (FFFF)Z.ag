@@ -1,0 +1,58 @@
+# Ln2/r;->m0(F F F F)Z [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:float
+# - v3:float
+# - v4:float
+# - v5:float
+#
+# - return:boolean
+
+m0-BB@0x0 : [ m0-BB@0x16 m0-BB@0x26 ]
+	0       (00000000) invoke-static        v2, Ljava/lang/Math;->abs(F)F
+	1       (00000006) move-result          v0
+	2       (00000008) const                v1, 1008981770
+	3       (0000000e) cmpg-float           v0, v0, v1
+	4       (00000012) if-gez               v0, +00ah
+
+m0-BB@0x16 : [ m0-BB@0x26 m0-BB@0x6a ]
+	5       (00000016) invoke-static        v3, Ljava/lang/Math;->abs(F)F
+	6       (0000001c) move-result          v0
+	7       (0000001e) cmpg-float           v0, v0, v1
+	8       (00000022) if-ltz               v0, +024h
+
+m0-BB@0x26 : [ m0-BB@0x36 m0-BB@0x46 ]
+	9       (00000026) invoke-static        v4, Ljava/lang/Math;->abs(F)F
+	10      (0000002c) move-result          v0
+	11      (0000002e) cmpg-float           v0, v0, v1
+	12      (00000032) if-gez               v0, +00ah
+
+m0-BB@0x36 : [ m0-BB@0x46 m0-BB@0x6a ]
+	13      (00000036) invoke-static        v5, Ljava/lang/Math;->abs(F)F
+	14      (0000003c) move-result          v0
+	15      (0000003e) cmpg-float           v0, v0, v1
+	16      (00000042) if-ltz               v0, +014h
+
+m0-BB@0x46 : [ m0-BB@0x58 m0-BB@0x6e ]
+	17      (00000046) sub-float/2addr      v2, v4
+	18      (00000048) invoke-static        v2, Ljava/lang/Math;->abs(F)F
+	19      (0000004e) move-result          v2
+	20      (00000050) cmpg-float           v2, v2, v1
+	21      (00000054) if-gez               v2, +00dh
+
+m0-BB@0x58 : [ m0-BB@0x6a m0-BB@0x6e ]
+	22      (00000058) sub-float/2addr      v3, v5
+	23      (0000005a) invoke-static        v3, Ljava/lang/Math;->abs(F)F
+	24      (00000060) move-result          v2
+	25      (00000062) cmpg-float           v2, v2, v1
+	26      (00000066) if-gez               v2, +004h
+
+m0-BB@0x6a : 
+	27      (0000006a) const/4              v2, 1
+	28      (0000006c) return               v2
+
+m0-BB@0x6e : 
+	29      (0000006e) const/4              v2, 0
+	30      (00000070) return               v2
+

@@ -1,0 +1,30 @@
+# Ln6/k;->a()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v2
+#
+# - return:void
+
+a-BB@0x0 : [ a-BB@0x8 ]
+	0       (00000000) iget-object          v0, v2, Ln6/k;->a Ln6/l;
+	1       (00000004) monitor-enter        v0
+	2       (00000006) const/4              v1, 1
+
+a-BB@0x8 : 
+	3       (00000008) iput-boolean         v1, v0, Ln6/l;->d Z
+	4       (0000000c) monitor-exit         v0
+	5       (0000000e) iget-object          v0, v2, Ln6/k;->a Ln6/l;
+	6       (00000012) invoke-virtual       v0, Ln6/l;->g()V
+	7       (00000018) return-void          
+	8:b
+	(Ljava/lang/Throwable; -> 1a a-BB@0x1a)
+
+a-BB@0x1a : [ a-BB@0x1c ]
+	8       (0000001a) move-exception       v1
+
+a-BB@0x1c : 
+	9       (0000001c) monitor-exit         v0
+	10      (0000001e) throw                v1
+	1c:1d
+	(Ljava/lang/Throwable; -> 1a a-BB@0x1a)
+

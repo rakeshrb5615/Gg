@@ -1,0 +1,32 @@
+# Ln6/c;->a(I J)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:int
+# - v5:long
+#
+# - return:void
+
+a-BB@0x0 : [ a-BB@0x4 a-BB@0x1a ]
+	0       (00000000) if-nez               v3, +00dh
+
+a-BB@0x4 : 
+	1       (00000004) new-instance         v3, Lm6/f;
+	2       (00000008) const-string         v4, "Unable to fetch the latest version of the template."
+	3       (0000000c) invoke-direct        v3, v4, Lm6/f;-><init>(Ljava/lang/String;)V
+	4       (00000012) invoke-virtual       v2, Ln6/c;->d()V
+	5       (00000018) return-void          
+
+a-BB@0x1a : 
+	6       (0000001a) iget-object          v0, v2, Ln6/c;->g Ljava/util/Random;
+	7       (0000001e) const/4              v1, 4
+	8       (00000020) invoke-virtual       v0, v1, Ljava/util/Random;->nextInt(I)I
+	9       (00000026) move-result          v0
+	10      (00000028) new-instance         v1, Ln6/b;
+	11      (0000002c) invoke-direct        v1, v2, v3, v4, v5, Ln6/b;-><init>(Ln6/c; I J)V
+	12      (00000032) int-to-long          v3, v0
+	13      (00000034) sget-object          v5, Ljava/util/concurrent/TimeUnit;->SECONDS Ljava/util/concurrent/TimeUnit;
+	14      (00000038) iget-object          v0, v2, Ln6/c;->f Ljava/util/concurrent/ScheduledExecutorService;
+	15      (0000003c) invoke-interface     v0, v1, v3, v4, v5, Ljava/util/concurrent/ScheduledExecutorService;->schedule(Ljava/lang/Runnable; J Ljava/util/concurrent/TimeUnit;)Ljava/util/concurrent/ScheduledFuture;
+	16      (00000042) return-void          
+

@@ -1,0 +1,54 @@
+# Ln/g1;->d(Ljava/lang/String;)Ljava/lang/reflect/Method; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:java.lang.String
+#
+# - return:java.lang.reflect.Method
+
+d-BB@0x0 : [ d-BB@0x2 ]
+	0       (00000000) const/4              v0, 0
+
+d-BB@0x2 : [ d-BB@0x16 d-BB@0x3a ]
+	1       (00000002) sget-object          v1, Ln/g1;->m Ljava/util/concurrent/ConcurrentHashMap;
+	2       (00000006) invoke-virtual       v1, v4, Ljava/util/concurrent/ConcurrentHashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	3       (0000000c) move-result-object   v2
+	4       (0000000e) check-cast           v2, Ljava/lang/reflect/Method;
+	5       (00000012) if-nez               v2, +014h
+	2:33
+	(Ljava/lang/Exception; -> 36 d-BB@0x36)
+
+d-BB@0x16 : [ d-BB@0x26 d-BB@0x3a ]
+	6       (00000016) const-class          v2, Landroid/widget/TextView;
+	7       (0000001a) invoke-virtual       v2, v4, v0, Ljava/lang/Class;->getDeclaredMethod(Ljava/lang/String; [Ljava/lang/Class;)Ljava/lang/reflect/Method;
+	8       (00000020) move-result-object   v2
+	9       (00000022) if-eqz               v2, +00ch
+	2:33
+	(Ljava/lang/Exception; -> 36 d-BB@0x36)
+
+d-BB@0x26 : 
+	10      (00000026) const/4              v3, 1
+	11      (00000028) invoke-virtual       v2, v3, Ljava/lang/reflect/AccessibleObject;->setAccessible(Z)V
+	12      (0000002e) invoke-virtual       v1, v4, v2, Ljava/util/concurrent/ConcurrentHashMap;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	13      (00000034) return-object        v2
+
+d-BB@0x36 : [ d-BB@0x3c ]
+	14      (00000036) move-exception       v1
+	15      (00000038) goto                 +2h
+
+d-BB@0x3a : 
+	16      (0000003a) return-object        v2
+
+d-BB@0x3c : 
+	17      (0000003c) new-instance         v2, Ljava/lang/StringBuilder;
+	18      (00000040) const-string         v3, "Failed to retrieve TextView#"
+	19      (00000044) invoke-direct        v2, v3, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	20      (0000004a) invoke-virtual       v2, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	21      (00000050) const-string         v4, "() method"
+	22      (00000054) invoke-virtual       v2, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	23      (0000005a) invoke-virtual       v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	24      (00000060) move-result-object   v4
+	25      (00000062) const-string         v2, "ACTVAutoSizeHelper"
+	26      (00000066) invoke-static        v2, v4, v1, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+	27      (0000006c) return-object        v0
+

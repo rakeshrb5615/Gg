@@ -1,0 +1,33 @@
+# Ln2/q;->o0(Ljava/time/ZonedDateTime;)F [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:java.time.ZonedDateTime
+#
+# - return:float
+
+o0-BB@0x0 : [ o0-BB@0x4 o0-BB@0xa ]
+	0       (00000000) if-nez               v3, +005h
+
+o0-BB@0x4 : 
+	1       (00000004) const/high16         v3, 2143289344
+	2       (00000008) return               v3
+
+o0-BB@0xa : 
+	3       (0000000a) invoke-virtual       v3, Ljava/time/ZonedDateTime;->getHour()I
+	4       (00000010) move-result          v0
+	5       (00000012) int-to-float         v0, v0
+	6       (00000014) invoke-virtual       v3, Ljava/time/ZonedDateTime;->getMinute()I
+	7       (0000001a) move-result          v1
+	8       (0000001c) int-to-float         v1, v1
+	9       (0000001e) const/high16         v2, 1114636288
+	10      (00000022) div-float/2addr      v1, v2
+	11      (00000024) add-float/2addr      v1, v0
+	12      (00000026) invoke-virtual       v3, Ljava/time/ZonedDateTime;->getSecond()I
+	13      (0000002c) move-result          v3
+	14      (0000002e) int-to-float         v3, v3
+	15      (00000030) const/high16         v0, 1163984896
+	16      (00000034) div-float/2addr      v3, v0
+	17      (00000036) add-float/2addr      v3, v1
+	18      (00000038) return               v3
+

@@ -1,0 +1,95 @@
+# Ln/u;->e(Landroid/graphics/drawable/Drawable; Ln/v2; [I)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:android.graphics.drawable.Drawable
+# - v5:n.v2
+# - v6:int[]
+#
+# - return:void
+
+e-BB@0x0 : [ e-BB@0x18 e-BB@0x9a ]
+	0       (00000000) sget-object          v0, Ln/n2;->f Landroid/graphics/PorterDuff$Mode;
+	1       (00000004) invoke-virtual       v4, Landroid/graphics/drawable/Drawable;->getState()[I
+	2       (0000000a) move-result-object   v0
+	3       (0000000c) invoke-virtual       v4, Landroid/graphics/drawable/Drawable;->mutate()Landroid/graphics/drawable/Drawable;
+	4       (00000012) move-result-object   v1
+	5       (00000014) if-ne                v1, v4, +043h
+
+e-BB@0x18 : [ e-BB@0x22 e-BB@0x3e ]
+	6       (00000018) instance-of          v1, v4, Landroid/graphics/drawable/LayerDrawable;
+	7       (0000001c) const/4              v2, 0
+	8       (0000001e) if-eqz               v1, +010h
+
+e-BB@0x22 : [ e-BB@0x2e e-BB@0x3e ]
+	9       (00000022) invoke-virtual       v4, Landroid/graphics/drawable/Drawable;->isStateful()Z
+	10      (00000028) move-result          v1
+	11      (0000002a) if-eqz               v1, +00ah
+
+e-BB@0x2e : [ e-BB@0x3e ]
+	12      (0000002e) new-array            v1, v2, [I
+	13      (00000032) invoke-virtual       v4, v1, Landroid/graphics/drawable/Drawable;->setState([I)Z
+	14      (00000038) invoke-virtual       v4, v0, Landroid/graphics/drawable/Drawable;->setState([I)Z
+
+e-BB@0x3e : [ e-BB@0x46 e-BB@0x58 ]
+	15      (0000003e) iget-boolean         v0, v5, Ln/v2;->d Z
+	16      (00000042) if-nez               v0, +00bh
+
+e-BB@0x46 : [ e-BB@0x4e e-BB@0x50 ]
+	17      (00000046) iget-boolean         v1, v5, Ln/v2;->c Z
+	18      (0000004a) if-eqz               v1, +003h
+
+e-BB@0x4e : [ e-BB@0x58 ]
+	19      (0000004e) goto                 +5h
+
+e-BB@0x50 : 
+	20      (00000050) invoke-virtual       v4, Landroid/graphics/drawable/Drawable;->clearColorFilter()V
+	21      (00000056) return-void          
+
+e-BB@0x58 : [ e-BB@0x5e e-BB@0x64 ]
+	22      (00000058) const/4              v1, 0
+	23      (0000005a) if-eqz               v0, +005h
+
+e-BB@0x5e : [ e-BB@0x66 ]
+	24      (0000005e) iget-object          v0, v5, Ln/v2;->a Landroid/content/res/ColorStateList;
+	25      (00000062) goto                 +2h
+
+e-BB@0x64 : [ e-BB@0x66 ]
+	26      (00000064) move-object          v0, v1
+
+e-BB@0x66 : [ e-BB@0x6e e-BB@0x74 ]
+	27      (00000066) iget-boolean         v3, v5, Ln/v2;->c Z
+	28      (0000006a) if-eqz               v3, +005h
+
+e-BB@0x6e : [ e-BB@0x78 ]
+	29      (0000006e) iget-object          v5, v5, Ln/v2;->b Landroid/graphics/PorterDuff$Mode;
+	30      (00000072) goto                 +3h
+
+e-BB@0x74 : [ e-BB@0x78 ]
+	31      (00000074) sget-object          v5, Ln/n2;->f Landroid/graphics/PorterDuff$Mode;
+
+e-BB@0x78 : [ e-BB@0x7c e-BB@0x92 ]
+	32      (00000078) if-eqz               v0, +00dh
+
+e-BB@0x7c : [ e-BB@0x80 e-BB@0x82 ]
+	33      (0000007c) if-nez               v5, +003h
+
+e-BB@0x80 : [ e-BB@0x92 ]
+	34      (00000080) goto                 +9h
+
+e-BB@0x82 : [ e-BB@0x92 ]
+	35      (00000082) invoke-virtual       v0, v6, v2, Landroid/content/res/ColorStateList;->getColorForState([I I)I
+	36      (00000088) move-result          v6
+	37      (0000008a) invoke-static        v6, v5, Ln/n2;->e(I Landroid/graphics/PorterDuff$Mode;)Landroid/graphics/PorterDuffColorFilter;
+	38      (00000090) move-result-object   v1
+
+e-BB@0x92 : 
+	39      (00000092) invoke-virtual       v4, v1, Landroid/graphics/drawable/Drawable;->setColorFilter(Landroid/graphics/ColorFilter;)V
+	40      (00000098) return-void          
+
+e-BB@0x9a : 
+	41      (0000009a) const-string         v4, "ResourceManagerInternal"
+	42      (0000009e) const-string         v5, "Mutated drawable is not the same instance as the input."
+	43      (000000a2) invoke-static        v4, v5, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String;)I
+	44      (000000a8) return-void          
+

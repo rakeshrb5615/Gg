@@ -1,0 +1,100 @@
+# Lm4/d;->equals(Ljava/lang/Object;)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:java.lang.Object
+#
+# - return:boolean
+
+equals-BB@0x0 : [ equals-BB@0x6 equals-BB@0x8 ]
+	0       (00000000) const/4              v0, 1
+	1       (00000002) if-ne                v7, v6, +003h
+
+equals-BB@0x6 : [ equals-BB@0x60 ]
+	2       (00000006) goto                 +2dh
+
+equals-BB@0x8 : [ equals-BB@0x12 equals-BB@0x14 ]
+	3       (00000008) instance-of          v1, v7, Ljava/util/List;
+	4       (0000000c) const/4              v2, 0
+	5       (0000000e) if-nez               v1, +003h
+
+equals-BB@0x12 : [ equals-BB@0xa8 ]
+	6       (00000012) goto                 +4bh
+
+equals-BB@0x14 : [ equals-BB@0x2c equals-BB@0x2e ]
+	7       (00000014) check-cast           v7, Ljava/util/List;
+	8       (00000018) invoke-interface     v6, Ljava/util/List;->size()I
+	9       (0000001e) move-result          v1
+	10      (00000020) invoke-interface     v7, Ljava/util/List;->size()I
+	11      (00000026) move-result          v3
+	12      (00000028) if-eq                v1, v3, +003h
+
+equals-BB@0x2c : [ equals-BB@0xa8 ]
+	13      (0000002c) goto                 +3eh
+
+equals-BB@0x2e : [ equals-BB@0x36 equals-BB@0x62 ]
+	14      (0000002e) instance-of          v3, v7, Ljava/util/RandomAccess;
+	15      (00000032) if-eqz               v3, +018h
+
+equals-BB@0x36 : [ equals-BB@0x38 ]
+	16      (00000036) move                 v3, v2
+
+equals-BB@0x38 : [ equals-BB@0x3c equals-BB@0x60 ]
+	17      (00000038) if-ge                v3, v1, +014h
+
+equals-BB@0x3c : [ equals-BB@0x58 equals-BB@0x5a ]
+	18      (0000003c) invoke-interface     v6, v3, Ljava/util/List;->get(I)Ljava/lang/Object;
+	19      (00000042) move-result-object   v4
+	20      (00000044) invoke-interface     v7, v3, Ljava/util/List;->get(I)Ljava/lang/Object;
+	21      (0000004a) move-result-object   v5
+	22      (0000004c) invoke-static        v4, v5, Lq4/b;->p(Ljava/lang/Object; Ljava/lang/Object;)Z
+	23      (00000052) move-result          v4
+	24      (00000054) if-nez               v4, +003h
+
+equals-BB@0x58 : [ equals-BB@0xa8 ]
+	25      (00000058) goto                 +28h
+
+equals-BB@0x5a : [ equals-BB@0x38 ]
+	26      (0000005a) add-int/lit8         v3, v3, 1
+	27      (0000005e) goto                 -13h
+
+equals-BB@0x60 : 
+	28      (00000060) return               v0
+
+equals-BB@0x62 : [ equals-BB@0x72 ]
+	29      (00000062) invoke-interface     v6, Ljava/util/List;->iterator()Ljava/util/Iterator;
+	30      (00000068) move-result-object   v1
+	31      (0000006a) invoke-interface     v7, Ljava/util/List;->iterator()Ljava/util/Iterator;
+	32      (00000070) move-result-object   v7
+
+equals-BB@0x72 : [ equals-BB@0x7e equals-BB@0xaa ]
+	33      (00000072) invoke-interface     v1, Ljava/util/Iterator;->hasNext()Z
+	34      (00000078) move-result          v3
+	35      (0000007a) if-eqz               v3, +018h
+
+equals-BB@0x7e : [ equals-BB@0x8a equals-BB@0x8c ]
+	36      (0000007e) invoke-interface     v7, Ljava/util/Iterator;->hasNext()Z
+	37      (00000084) move-result          v3
+	38      (00000086) if-nez               v3, +003h
+
+equals-BB@0x8a : [ equals-BB@0xa8 ]
+	39      (0000008a) goto                 +fh
+
+equals-BB@0x8c : [ equals-BB@0xa8 equals-BB@0x72 ]
+	40      (0000008c) invoke-interface     v1, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	41      (00000092) move-result-object   v3
+	42      (00000094) invoke-interface     v7, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	43      (0000009a) move-result-object   v4
+	44      (0000009c) invoke-static        v3, v4, Lq4/b;->p(Ljava/lang/Object; Ljava/lang/Object;)Z
+	45      (000000a2) move-result          v3
+	46      (000000a4) if-nez               v3, -019h
+
+equals-BB@0xa8 : 
+	47      (000000a8) return               v2
+
+equals-BB@0xaa : 
+	48      (000000aa) invoke-interface     v7, Ljava/util/Iterator;->hasNext()Z
+	49      (000000b0) move-result          v7
+	50      (000000b2) xor-int/2addr        v7, v0
+	51      (000000b4) return               v7
+

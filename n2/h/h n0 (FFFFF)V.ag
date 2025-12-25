@@ -1,0 +1,59 @@
+# Ln2/h;->n0(F F F F F)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v7
+# - v8:float
+# - v9:float
+# - v10:float
+# - v11:float
+# - v12:float
+#
+# - return:void
+
+n0-BB@0x0 : [ n0-BB@0x14 n0-BB@0x16 ]
+	0       (00000000) iput                 v8, v7, Ln2/h;->l F
+	1       (00000004) iput                 v9, v7, Ln2/h;->m F
+	2       (00000008) iput                 v10, v7, Ln2/h;->p F
+	3       (0000000c) iget-boolean         v8, v7, Ln2/h;->J Z
+	4       (00000010) if-eqz               v8, +003h
+
+n0-BB@0x14 : [ n0-BB@0x1a ]
+	5       (00000014) goto                 +3h
+
+n0-BB@0x16 : [ n0-BB@0x1a ]
+	6       (00000016) iget                 v11, v7, Ln2/h;->g F
+
+n0-BB@0x1a : 
+	7       (0000001a) iput                 v11, v7, Ln2/h;->n F
+	8       (0000001e) iput                 v12, v7, Ln2/h;->o F
+	9       (00000022) iget-object          v8, v7, Ln2/h;->t [F
+	10      (00000026) const/4              v9, 0
+	11      (00000028) invoke-static        v8, v9, Landroid/opengl/Matrix;->setIdentityM([F I)V
+	12      (0000002e) iget                 v10, v7, Ln2/h;->l F
+	13      (00000032) iget                 v11, v7, Ln2/h;->n F
+	14      (00000036) const/high16         v12, 1073741824
+	15      (0000003a) div-float/2addr      v11, v12
+	16      (0000003c) add-float/2addr      v11, v10
+	17      (0000003e) iget                 v10, v7, Ln2/h;->m F
+	18      (00000042) iget                 v0, v7, Ln2/h;->o F
+	19      (00000046) div-float/2addr      v0, v12
+	20      (00000048) add-float/2addr      v0, v10
+	21      (0000004a) iget                 v10, v7, Ln2/h;->p F
+	22      (0000004e) invoke-static        v8, v9, v11, v0, v10, Landroid/opengl/Matrix;->translateM([F I F F F)V
+	23      (00000054) iget                 v10, v7, Ln2/h;->n F
+	24      (00000058) div-float/2addr      v10, v12
+	25      (0000005a) const/high16         v11, 1065353216
+	26      (0000005e) mul-float/2addr      v10, v11
+	27      (00000060) iget                 v0, v7, Ln2/h;->o F
+	28      (00000064) div-float/2addr      v0, v12
+	29      (00000066) mul-float/2addr      v0, v11
+	30      (00000068) invoke-static        v8, v9, v10, v0, v11, Landroid/opengl/Matrix;->scaleM([F I F F F)V
+	31      (0000006e) iget-object          v5, v7, Ln2/h;->t [F
+	32      (00000072) const/4              v6, 0
+	33      (00000074) iget-object          v1, v7, Ln2/h;->v [F
+	34      (00000078) const/4              v2, 0
+	35      (0000007a) iget-object          v3, v7, Ln2/h;->u [F
+	36      (0000007e) const/4              v4, 0
+	37      (00000080) invoke-static/range  v1 ... v6, Landroid/opengl/Matrix;->multiplyMM([F I [F I [F I)V
+	38      (00000086) return-void          
+

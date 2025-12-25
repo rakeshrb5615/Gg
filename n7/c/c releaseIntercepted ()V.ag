@@ -1,0 +1,55 @@
+# Ln7/c;->releaseIntercepted()V [access_flags=public]
+#
+# Parameters:
+# local registers: v0...v4
+#
+# - return:void
+
+releaseIntercepted-BB@0x0 : [ releaseIntercepted-BB@0x8 releaseIntercepted-BB@0x64 ]
+	0       (00000000) iget-object          v0, v4, Ln7/c;->intercepted Ll7/c;
+	1       (00000004) if-eqz               v0, +030h
+
+releaseIntercepted-BB@0x8 : [ releaseIntercepted-BB@0xc releaseIntercepted-BB@0x64 ]
+	2       (00000008) if-eq                v0, v4, +02eh
+
+releaseIntercepted-BB@0xc : [ releaseIntercepted-BB@0x32 ]
+	3       (0000000c) invoke-virtual       v4, Ln7/c;->getContext()Ll7/h;
+	4       (00000012) move-result-object   v1
+	5       (00000014) sget-object          v2, Ll7/d;->a Ll7/d;
+	6       (00000018) invoke-interface     v1, v2, Ll7/h;->get(Ll7/g;)Ll7/f;
+	7       (0000001e) move-result-object   v1
+	8       (00000020) invoke-static        v1, Lkotlin/jvm/internal/j;->b(Ljava/lang/Object;)V
+	9       (00000026) check-cast           v1, Ll7/e;
+	10      (0000002a) check-cast           v0, Li8/f;
+	11      (0000002e) sget-object          v1, Li8/f;->n Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;
+
+releaseIntercepted-BB@0x32 : [ releaseIntercepted-BB@0x42 releaseIntercepted-BB@0x32 ]
+	12      (00000032) invoke-virtual       v1, v0, Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	13      (00000038) move-result-object   v2
+	14      (0000003a) sget-object          v3, Li8/a;->c Ld4/l;
+	15      (0000003e) if-eq                v2, v3, -006h
+
+releaseIntercepted-BB@0x42 : [ releaseIntercepted-BB@0x52 releaseIntercepted-BB@0x58 ]
+	16      (00000042) invoke-virtual       v1, v0, Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	17      (00000048) move-result-object   v0
+	18      (0000004a) instance-of          v1, v0, Ld8/n;
+	19      (0000004e) if-eqz               v1, +005h
+
+releaseIntercepted-BB@0x52 : [ releaseIntercepted-BB@0x5a ]
+	20      (00000052) check-cast           v0, Ld8/n;
+	21      (00000056) goto                 +2h
+
+releaseIntercepted-BB@0x58 : [ releaseIntercepted-BB@0x5a ]
+	22      (00000058) const/4              v0, 0
+
+releaseIntercepted-BB@0x5a : [ releaseIntercepted-BB@0x5e releaseIntercepted-BB@0x64 ]
+	23      (0000005a) if-eqz               v0, +005h
+
+releaseIntercepted-BB@0x5e : [ releaseIntercepted-BB@0x64 ]
+	24      (0000005e) invoke-virtual       v0, Ld8/n;->n()V
+
+releaseIntercepted-BB@0x64 : 
+	25      (00000064) sget-object          v0, Ln7/b;->a Ln7/b;
+	26      (00000068) iput-object          v0, v4, Ln7/c;->intercepted Ll7/c;
+	27      (0000006c) return-void          
+

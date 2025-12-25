@@ -1,0 +1,61 @@
+# Lm/m;->d(Lm/o;)Z [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:m.o
+#
+# - return:boolean
+
+d-BB@0x0 : [ d-BB@0x12 d-BB@0x76 ]
+	0       (00000000) iget-object          v0, v5, Lm/m;->u Ljava/util/concurrent/CopyOnWriteArrayList;
+	1       (00000004) invoke-virtual       v0, Ljava/util/concurrent/CopyOnWriteArrayList;->isEmpty()Z
+	2       (0000000a) move-result          v1
+	3       (0000000c) const/4              v2, 0
+	4       (0000000e) if-nez               v1, +034h
+
+d-BB@0x12 : [ d-BB@0x1a d-BB@0x1c ]
+	5       (00000012) iget-object          v1, v5, Lm/m;->v Lm/o;
+	6       (00000016) if-eq                v1, v6, +003h
+
+d-BB@0x1a : [ d-BB@0x76 ]
+	7       (0000001a) goto                 +2eh
+
+d-BB@0x1c : [ d-BB@0x2a ]
+	8       (0000001c) invoke-virtual       v5, Lm/m;->w()V
+	9       (00000022) invoke-virtual       v0, Ljava/util/concurrent/CopyOnWriteArrayList;->iterator()Ljava/util/Iterator;
+	10      (00000028) move-result-object   v1
+
+d-BB@0x2a : [ d-BB@0x36 d-BB@0x66 ]
+	11      (0000002a) invoke-interface     v1, Ljava/util/Iterator;->hasNext()Z
+	12      (00000030) move-result          v3
+	13      (00000032) if-eqz               v3, +01ah
+
+d-BB@0x36 : [ d-BB@0x52 d-BB@0x5a ]
+	14      (00000036) invoke-interface     v1, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	15      (0000003c) move-result-object   v3
+	16      (0000003e) check-cast           v3, Ljava/lang/ref/WeakReference;
+	17      (00000042) invoke-virtual       v3, Ljava/lang/ref/Reference;->get()Ljava/lang/Object;
+	18      (00000048) move-result-object   v4
+	19      (0000004a) check-cast           v4, Lm/y;
+	20      (0000004e) if-nez               v4, +006h
+
+d-BB@0x52 : [ d-BB@0x2a ]
+	21      (00000052) invoke-virtual       v0, v3, Ljava/util/concurrent/CopyOnWriteArrayList;->remove(Ljava/lang/Object;)Z
+	22      (00000058) goto                 -17h
+
+d-BB@0x5a : [ d-BB@0x66 d-BB@0x2a ]
+	23      (0000005a) invoke-interface     v4, v6, Lm/y;->k(Lm/o;)Z
+	24      (00000060) move-result          v2
+	25      (00000062) if-eqz               v2, -01ch
+
+d-BB@0x66 : [ d-BB@0x70 d-BB@0x76 ]
+	26      (00000066) invoke-virtual       v5, Lm/m;->v()V
+	27      (0000006c) if-eqz               v2, +005h
+
+d-BB@0x70 : [ d-BB@0x76 ]
+	28      (00000070) const/4              v6, 0
+	29      (00000072) iput-object          v6, v5, Lm/m;->v Lm/o;
+
+d-BB@0x76 : 
+	30      (00000076) return               v2
+

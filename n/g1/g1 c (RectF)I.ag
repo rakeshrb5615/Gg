@@ -1,0 +1,139 @@
+# Ln/g1;->c(Landroid/graphics/RectF;)I [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v18
+# - v19:android.graphics.RectF
+#
+# - return:int
+
+c-BB@0x0 : [ c-BB@0x12 c-BB@0x146 ]
+	0       (00000000) move-object/from16   v0, v18
+	1       (00000004) move-object/from16   v1, v19
+	2       (00000008) iget-object          v2, v0, Ln/g1;->f [I
+	3       (0000000c) array-length         v2, v2
+	4       (0000000e) if-eqz               v2, +09ch
+
+c-BB@0x12 : [ c-BB@0x1c ]
+	5       (00000012) const/4              v3, 1
+	6       (00000014) sub-int/2addr        v2, v3
+	7       (00000016) const/4              v4, 0
+	8       (00000018) move                 v5, v4
+	9       (0000001a) move                 v4, v3
+
+c-BB@0x1c : [ c-BB@0x20 c-BB@0x13c ]
+	10      (0000001c) if-gt                v4, v2, +090h
+
+c-BB@0x20 : [ c-BB@0x48 c-BB@0x58 ]
+	11      (00000020) add-int              v5, v4, v2
+	12      (00000024) div-int/lit8         v5, v5, 2
+	13      (00000028) iget-object          v6, v0, Ln/g1;->f [I
+	14      (0000002c) aget                 v6, v6, v5
+	15      (00000030) iget-object          v7, v0, Ln/g1;->i Landroid/widget/TextView;
+	16      (00000034) invoke-virtual       v7, Landroid/widget/TextView;->getText()Ljava/lang/CharSequence;
+	17      (0000003a) move-result-object   v8
+	18      (0000003c) invoke-virtual       v7, Landroid/widget/TextView;->getTransformationMethod()Landroid/text/method/TransformationMethod;
+	19      (00000042) move-result-object   v9
+	20      (00000044) if-eqz               v9, +00ah
+
+c-BB@0x48 : [ c-BB@0x54 c-BB@0x58 ]
+	21      (00000048) invoke-interface     v9, v8, v7, Landroid/text/method/TransformationMethod;->getTransformation(Ljava/lang/CharSequence; Landroid/view/View;)Ljava/lang/CharSequence;
+	22      (0000004e) move-result-object   v9
+	23      (00000050) if-eqz               v9, +004h
+
+c-BB@0x54 : [ c-BB@0x5a ]
+	24      (00000054) move-object          v10, v9
+	25      (00000056) goto                 +2h
+
+c-BB@0x58 : [ c-BB@0x5a ]
+	26      (00000058) move-object          v10, v8
+
+c-BB@0x5a : [ c-BB@0x6a c-BB@0x7a ]
+	27      (0000005a) invoke-virtual       v7, Landroid/widget/TextView;->getMaxLines()I
+	28      (00000060) move-result          v13
+	29      (00000062) iget-object          v8, v0, Ln/g1;->h Landroid/text/TextPaint;
+	30      (00000066) if-nez               v8, +00ah
+
+c-BB@0x6a : [ c-BB@0x80 ]
+	31      (0000006a) new-instance         v8, Landroid/text/TextPaint;
+	32      (0000006e) invoke-direct        v8, Landroid/text/TextPaint;-><init>()V
+	33      (00000074) iput-object          v8, v0, Ln/g1;->h Landroid/text/TextPaint;
+	34      (00000078) goto                 +4h
+
+c-BB@0x7a : [ c-BB@0x80 ]
+	35      (0000007a) invoke-virtual       v8, Landroid/graphics/Paint;->reset()V
+
+c-BB@0x80 : [ c-BB@0xde c-BB@0x10a ]
+	36      (00000080) iget-object          v8, v0, Ln/g1;->h Landroid/text/TextPaint;
+	37      (00000084) invoke-virtual       v7, Landroid/widget/TextView;->getPaint()Landroid/text/TextPaint;
+	38      (0000008a) move-result-object   v9
+	39      (0000008c) invoke-virtual       v8, v9, Landroid/text/TextPaint;->set(Landroid/text/TextPaint;)V
+	40      (00000092) iget-object          v8, v0, Ln/g1;->h Landroid/text/TextPaint;
+	41      (00000096) int-to-float         v6, v6
+	42      (00000098) invoke-virtual       v8, v6, Landroid/graphics/Paint;->setTextSize(F)V
+	43      (0000009e) const-string         v6, "getLayoutAlignment"
+	44      (000000a2) sget-object          v8, Landroid/text/Layout$Alignment;->ALIGN_NORMAL Landroid/text/Layout$Alignment;
+	45      (000000a6) invoke-static        v6, v7, v8, Ln/g1;->e(Ljava/lang/String; Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	46      (000000ac) move-result-object   v6
+	47      (000000ae) move-object          v11, v6
+	48      (000000b0) check-cast           v11, Landroid/text/Layout$Alignment;
+	49      (000000b4) iget                 v6, v1, Landroid/graphics/RectF;->right F
+	50      (000000b8) invoke-static        v6, Ljava/lang/Math;->round(F)I
+	51      (000000be) move-result          v12
+	52      (000000c0) iget-object          v15, v0, Ln/g1;->h Landroid/text/TextPaint;
+	53      (000000c4) iget-object          v6, v0, Ln/g1;->k Ln/d1;
+	54      (000000c8) iget-object          v14, v0, Ln/g1;->i Landroid/widget/TextView;
+	55      (000000cc) move-object/from16   v16, v6
+	56      (000000d0) invoke-static/range  v10 ... v16, Ln/c1;->a(Ljava/lang/CharSequence; Landroid/text/Layout$Alignment; I I Landroid/widget/TextView; Landroid/text/TextPaint; Ln/f1;)Landroid/text/StaticLayout;
+	57      (000000d6) move-result-object   v6
+	58      (000000d8) const/4              v7, -1
+	59      (000000da) if-eq                v13, v7, +018h
+
+c-BB@0xde : [ c-BB@0xea c-BB@0x120 ]
+	60      (000000de) invoke-virtual       v6, Landroid/text/StaticLayout;->getLineCount()I
+	61      (000000e4) move-result          v7
+	62      (000000e6) if-gt                v7, v13, +01dh
+
+c-BB@0xea : [ c-BB@0x108 c-BB@0x10a ]
+	63      (000000ea) invoke-virtual       v6, Landroid/text/StaticLayout;->getLineCount()I
+	64      (000000f0) move-result          v7
+	65      (000000f2) sub-int/2addr        v7, v3
+	66      (000000f4) invoke-virtual       v6, v7, Landroid/text/Layout;->getLineEnd(I)I
+	67      (000000fa) move-result          v7
+	68      (000000fc) invoke-interface     v10, Ljava/lang/CharSequence;->length()I
+	69      (00000102) move-result          v8
+	70      (00000104) if-eq                v7, v8, +003h
+
+c-BB@0x108 : [ c-BB@0x120 ]
+	71      (00000108) goto                 +ch
+
+c-BB@0x10a : [ c-BB@0x120 c-BB@0x12a ]
+	72      (0000010a) invoke-virtual       v6, Landroid/text/Layout;->getHeight()I
+	73      (00000110) move-result          v6
+	74      (00000112) int-to-float         v6, v6
+	75      (00000114) iget                 v7, v1, Landroid/graphics/RectF;->bottom F
+	76      (00000118) cmpl-float           v6, v6, v7
+	77      (0000011c) if-lez               v6, +007h
+
+c-BB@0x120 : [ c-BB@0x1c ]
+	78      (00000120) add-int/lit8         v5, v5, -1
+	79      (00000124) move                 v2, v5
+	80      (00000126) goto/16              -085h
+
+c-BB@0x12a : [ c-BB@0x1c ]
+	81      (0000012a) add-int/lit8         v5, v5, 1
+	82      (0000012e) move/from16          v17, v5
+	83      (00000132) move                 v5, v4
+	84      (00000134) move/from16          v4, v17
+	85      (00000138) goto/16              -08eh
+
+c-BB@0x13c : 
+	86      (0000013c) iget-object          v1, v0, Ln/g1;->f [I
+	87      (00000140) aget                 v1, v1, v5
+	88      (00000144) return               v1
+
+c-BB@0x146 : 
+	89      (00000146) new-instance         v1, Ljava/lang/IllegalStateException;
+	90      (0000014a) const-string         v2, "No available text sizes to choose from."
+	91      (0000014e) invoke-direct        v1, v2, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	92      (00000154) throw                v1
+

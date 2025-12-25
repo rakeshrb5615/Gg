@@ -1,0 +1,39 @@
+# Ln/b1;->setLineHeight(I F)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:int
+# - v4:float
+#
+# - return:void
+
+setLineHeight-BB@0x0 : [ setLineHeight-BB@0xc setLineHeight-BB@0x1c ]
+	0       (00000000) sget                 v0, Landroid/os/Build$VERSION;->SDK_INT I
+	1       (00000004) const/16             v1, 34
+	2       (00000008) if-lt                v0, v1, +00ah
+
+setLineHeight-BB@0xc : 
+	3       (0000000c) invoke-virtual       v2, Ln/b1;->getSuperCaller()Ln/y0;
+	4       (00000012) move-result-object   v0
+	5       (00000014) invoke-interface     v0, v3, v4, Ln/y0;->m(I F)V
+	6       (0000001a) return-void          
+
+setLineHeight-BB@0x1c : [ setLineHeight-BB@0x20 setLineHeight-BB@0x28 ]
+	7       (0000001c) if-lt                v0, v1, +006h
+
+setLineHeight-BB@0x20 : 
+	8       (00000020) invoke-static        v2, v3, v4, Lq0/a0;->h(Landroid/widget/TextView; I F)V
+	9       (00000026) return-void          
+
+setLineHeight-BB@0x28 : 
+	10      (00000028) invoke-virtual       v2, Landroid/view/View;->getResources()Landroid/content/res/Resources;
+	11      (0000002e) move-result-object   v0
+	12      (00000030) invoke-virtual       v0, Landroid/content/res/Resources;->getDisplayMetrics()Landroid/util/DisplayMetrics;
+	13      (00000036) move-result-object   v0
+	14      (00000038) invoke-static        v3, v4, v0, Landroid/util/TypedValue;->applyDimension(I F Landroid/util/DisplayMetrics;)F
+	15      (0000003e) move-result          v3
+	16      (00000040) invoke-static        v3, Ljava/lang/Math;->round(F)I
+	17      (00000046) move-result          v3
+	18      (00000048) invoke-static        v3, v2, Lc4/b;->Z(I Landroid/widget/TextView;)V
+	19      (0000004e) return-void          
+

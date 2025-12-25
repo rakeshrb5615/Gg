@@ -1,0 +1,60 @@
+# Ln/r0;->setAdapter(Landroid/widget/SpinnerAdapter;)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:android.widget.SpinnerAdapter
+#
+# - return:void
+
+setAdapter-BB@0x0 : [ setAdapter-BB@0x8 setAdapter-BB@0xe ]
+	0       (00000000) iget-boolean         v0, v4, Ln/r0;->e Z
+	1       (00000004) if-nez               v0, +005h
+
+setAdapter-BB@0x8 : 
+	2       (00000008) iput-object          v5, v4, Ln/r0;->d Landroid/widget/SpinnerAdapter;
+	3       (0000000c) return-void          
+
+setAdapter-BB@0xe : [ setAdapter-BB@0x1c setAdapter-BB@0x70 ]
+	4       (0000000e) invoke-super         v4, v5, Landroid/widget/Spinner;->setAdapter(Landroid/widget/SpinnerAdapter;)V
+	5       (00000014) iget-object          v0, v4, Ln/r0;->f Ln/q0;
+	6       (00000018) if-eqz               v0, +02ch
+
+setAdapter-BB@0x1c : [ setAdapter-BB@0x24 setAdapter-BB@0x2c ]
+	7       (0000001c) iget-object          v1, v4, Ln/r0;->b Landroid/content/Context;
+	8       (00000020) if-nez               v1, +006h
+
+setAdapter-BB@0x24 : [ setAdapter-BB@0x2c ]
+	9       (00000024) invoke-virtual       v4, Landroid/view/View;->getContext()Landroid/content/Context;
+	10      (0000002a) move-result-object   v1
+
+setAdapter-BB@0x2c : [ setAdapter-BB@0x4a setAdapter-BB@0x54 ]
+	11      (0000002c) new-instance         v2, Ln/l0;
+	12      (00000030) invoke-virtual       v1, Landroid/content/Context;->getTheme()Landroid/content/res/Resources$Theme;
+	13      (00000036) move-result-object   v1
+	14      (00000038) invoke-direct        v2, Ljava/lang/Object;-><init>()V
+	15      (0000003e) iput-object          v5, v2, Ln/l0;->a Landroid/widget/SpinnerAdapter;
+	16      (00000042) instance-of          v3, v5, Landroid/widget/ListAdapter;
+	17      (00000046) if-eqz               v3, +007h
+
+setAdapter-BB@0x4a : [ setAdapter-BB@0x54 ]
+	18      (0000004a) move-object          v3, v5
+	19      (0000004c) check-cast           v3, Landroid/widget/ListAdapter;
+	20      (00000050) iput-object          v3, v2, Ln/l0;->b Landroid/widget/ListAdapter;
+
+setAdapter-BB@0x54 : [ setAdapter-BB@0x58 setAdapter-BB@0x6a ]
+	21      (00000054) if-eqz               v1, +00bh
+
+setAdapter-BB@0x58 : [ setAdapter-BB@0x60 setAdapter-BB@0x6a ]
+	22      (00000058) instance-of          v3, v5, Landroid/widget/ThemedSpinnerAdapter;
+	23      (0000005c) if-eqz               v3, +007h
+
+setAdapter-BB@0x60 : [ setAdapter-BB@0x6a ]
+	24      (00000060) check-cast           v5, Landroid/widget/ThemedSpinnerAdapter;
+	25      (00000064) invoke-static        v5, v1, Ln/j0;->a(Landroid/widget/ThemedSpinnerAdapter; Landroid/content/res/Resources$Theme;)V
+
+setAdapter-BB@0x6a : [ setAdapter-BB@0x70 ]
+	26      (0000006a) invoke-interface     v0, v2, Ln/q0;->p(Landroid/widget/ListAdapter;)V
+
+setAdapter-BB@0x70 : 
+	27      (00000070) return-void          
+

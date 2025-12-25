@@ -1,0 +1,41 @@
+# Ln/z;->setImageResource(I)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:int
+#
+# - return:void
+
+setImageResource-BB@0x0 : [ setImageResource-BB@0x8 setImageResource-BB@0x44 ]
+	0       (00000000) iget-object          v0, v3, Ln/z;->b Lg0/d;
+	1       (00000004) if-eqz               v0, +020h
+
+setImageResource-BB@0x8 : [ setImageResource-BB@0x14 setImageResource-BB@0x36 ]
+	2       (00000008) iget-object          v1, v0, Lg0/d;->c Ljava/lang/Object;
+	3       (0000000c) check-cast           v1, Landroid/widget/ImageView;
+	4       (00000010) if-eqz               v4, +013h
+
+setImageResource-BB@0x14 : [ setImageResource-BB@0x28 setImageResource-BB@0x2e ]
+	5       (00000014) invoke-virtual       v1, Landroid/view/View;->getContext()Landroid/content/Context;
+	6       (0000001a) move-result-object   v2
+	7       (0000001c) invoke-static        v2, v4, Lj5/t1;->A(Landroid/content/Context; I)Landroid/graphics/drawable/Drawable;
+	8       (00000022) move-result-object   v4
+	9       (00000024) if-eqz               v4, +005h
+
+setImageResource-BB@0x28 : [ setImageResource-BB@0x2e ]
+	10      (00000028) invoke-static        v4, Ln/n1;->a(Landroid/graphics/drawable/Drawable;)V
+
+setImageResource-BB@0x2e : [ setImageResource-BB@0x3e ]
+	11      (0000002e) invoke-virtual       v1, v4, Landroid/widget/ImageView;->setImageDrawable(Landroid/graphics/drawable/Drawable;)V
+	12      (00000034) goto                 +5h
+
+setImageResource-BB@0x36 : [ setImageResource-BB@0x3e ]
+	13      (00000036) const/4              v4, 0
+	14      (00000038) invoke-virtual       v1, v4, Landroid/widget/ImageView;->setImageDrawable(Landroid/graphics/drawable/Drawable;)V
+
+setImageResource-BB@0x3e : [ setImageResource-BB@0x44 ]
+	15      (0000003e) invoke-virtual       v0, Lg0/d;->a()V
+
+setImageResource-BB@0x44 : 
+	16      (00000044) return-void          
+

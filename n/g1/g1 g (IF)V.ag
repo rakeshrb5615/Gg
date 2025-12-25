@@ -1,0 +1,84 @@
+# Ln/g1;->g(I F)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:int
+# - v5:float
+#
+# - return:void
+
+g-BB@0x0 : [ g-BB@0x8 g-BB@0x12 ]
+	0       (00000000) iget-object          v0, v3, Ln/g1;->j Landroid/content/Context;
+	1       (00000004) if-nez               v0, +007h
+
+g-BB@0x8 : [ g-BB@0x1a ]
+	2       (00000008) invoke-static        Landroid/content/res/Resources;->getSystem()Landroid/content/res/Resources;
+	3       (0000000e) move-result-object   v0
+	4       (00000010) goto                 +5h
+
+g-BB@0x12 : [ g-BB@0x1a ]
+	5       (00000012) invoke-virtual       v0, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+	6       (00000018) move-result-object   v0
+
+g-BB@0x1a : [ g-BB@0x46 g-BB@0xb0 ]
+	7       (0000001a) invoke-virtual       v0, Landroid/content/res/Resources;->getDisplayMetrics()Landroid/util/DisplayMetrics;
+	8       (00000020) move-result-object   v0
+	9       (00000022) invoke-static        v4, v5, v0, Landroid/util/TypedValue;->applyDimension(I F Landroid/util/DisplayMetrics;)F
+	10      (00000028) move-result          v4
+	11      (0000002a) iget-object          v5, v3, Ln/g1;->i Landroid/widget/TextView;
+	12      (0000002e) invoke-virtual       v5, Landroid/widget/TextView;->getPaint()Landroid/text/TextPaint;
+	13      (00000034) move-result-object   v0
+	14      (00000036) invoke-virtual       v0, Landroid/graphics/Paint;->getTextSize()F
+	15      (0000003c) move-result          v0
+	16      (0000003e) cmpl-float           v0, v4, v0
+	17      (00000042) if-eqz               v0, +037h
+
+g-BB@0x46 : [ g-BB@0x68 g-BB@0xb0 ]
+	18      (00000046) invoke-virtual       v5, Landroid/widget/TextView;->getPaint()Landroid/text/TextPaint;
+	19      (0000004c) move-result-object   v0
+	20      (0000004e) invoke-virtual       v0, v4, Landroid/graphics/Paint;->setTextSize(F)V
+	21      (00000054) invoke-virtual       v5, Landroid/view/View;->isInLayout()Z
+	22      (0000005a) move-result          v4
+	23      (0000005c) invoke-virtual       v5, Landroid/widget/TextView;->getLayout()Landroid/text/Layout;
+	24      (00000062) move-result-object   v0
+	25      (00000064) if-eqz               v0, +026h
+
+g-BB@0x68 : [ g-BB@0x6e ]
+	26      (00000068) const/4              v0, 0
+	27      (0000006a) iput-boolean         v0, v3, Ln/g1;->b Z
+
+g-BB@0x6e : [ g-BB@0x7e g-BB@0x98 ]
+	28      (0000006e) const-string         v0, "nullLayouts"
+	29      (00000072) invoke-static        v0, Ln/g1;->d(Ljava/lang/String;)Ljava/lang/reflect/Method;
+	30      (00000078) move-result-object   v0
+	31      (0000007a) if-eqz               v0, +00fh
+	6e:85
+	(Ljava/lang/Exception; -> 88 g-BB@0x88)
+
+g-BB@0x7e : [ g-BB@0x98 ]
+	32      (0000007e) const/4              v1, 0
+	33      (00000080) invoke-virtual       v0, v5, v1, Ljava/lang/reflect/Method;->invoke(Ljava/lang/Object; [Ljava/lang/Object;)Ljava/lang/Object;
+	34      (00000086) goto                 +9h
+
+g-BB@0x88 : [ g-BB@0x98 ]
+	35      (00000088) move-exception       v0
+	36      (0000008a) const-string         v1, "ACTVAutoSizeHelper"
+	37      (0000008e) const-string         v2, "Failed to invoke TextView#nullLayouts() method"
+	38      (00000092) invoke-static        v1, v2, v0, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+
+g-BB@0x98 : [ g-BB@0x9c g-BB@0xa4 ]
+	39      (00000098) if-nez               v4, +006h
+
+g-BB@0x9c : [ g-BB@0xaa ]
+	40      (0000009c) invoke-virtual       v5, Landroid/view/View;->requestLayout()V
+	41      (000000a2) goto                 +4h
+
+g-BB@0xa4 : [ g-BB@0xaa ]
+	42      (000000a4) invoke-virtual       v5, Landroid/view/View;->forceLayout()V
+
+g-BB@0xaa : [ g-BB@0xb0 ]
+	43      (000000aa) invoke-virtual       v5, Landroid/view/View;->invalidate()V
+
+g-BB@0xb0 : 
+	44      (000000b0) return-void          
+

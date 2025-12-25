@@ -1,0 +1,402 @@
+# Ln/y1;->onLayout(Z I I I I)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v22
+# - v23:boolean
+# - v24:int
+# - v25:int
+# - v26:int
+# - v27:int
+#
+# - return:void
+
+onLayout-BB@0x0 : [ onLayout-BB@0x24 onLayout-BB@0x16a ]
+	0       (00000000) move-object/from16   v0, v22
+	1       (00000004) iget                 v1, v0, Ln/y1;->d I
+	2       (00000008) const/4              v2, 5
+	3       (0000000a) const/16             v3, 8
+	4       (0000000e) const/16             v5, 80
+	5       (00000012) const/16             v6, 16
+	6       (00000016) const                v7, 8388615
+	7       (0000001c) const/4              v8, 2
+	8       (0000001e) const/4              v9, 1
+	9       (00000020) if-ne                v1, v9, +0a5h
+
+onLayout-BB@0x24 : [ onLayout-BB@0x5e onLayout-BB@0x84 ]
+	10      (00000024) invoke-virtual       v0, Landroid/view/View;->getPaddingLeft()I
+	11      (0000002a) move-result          v1
+	12      (0000002c) sub-int              v10, v26, v24
+	13      (00000030) invoke-virtual       v0, Landroid/view/View;->getPaddingRight()I
+	14      (00000036) move-result          v11
+	15      (00000038) sub-int              v11, v10, v11
+	16      (0000003c) sub-int/2addr        v10, v1
+	17      (0000003e) invoke-virtual       v0, Landroid/view/View;->getPaddingRight()I
+	18      (00000044) move-result          v12
+	19      (00000046) sub-int/2addr        v10, v12
+	20      (00000048) invoke-virtual       v0, Ln/y1;->getVirtualChildCount()I
+	21      (0000004e) move-result          v12
+	22      (00000050) iget                 v13, v0, Ln/y1;->e I
+	23      (00000054) and-int/lit8         v14, v13, 112
+	24      (00000058) and-int/2addr        v7, v13
+	25      (0000005a) if-eq                v14, v6, +015h
+
+onLayout-BB@0x5e : [ onLayout-BB@0x62 onLayout-BB@0x6c ]
+	26      (0000005e) if-eq                v14, v5, +007h
+
+onLayout-BB@0x62 : [ onLayout-BB@0x9a ]
+	27      (00000062) invoke-virtual       v0, Landroid/view/View;->getPaddingTop()I
+	28      (00000068) move-result          v5
+	29      (0000006a) goto                 +18h
+
+onLayout-BB@0x6c : [ onLayout-BB@0x9a ]
+	30      (0000006c) invoke-virtual       v0, Landroid/view/View;->getPaddingTop()I
+	31      (00000072) move-result          v5
+	32      (00000074) add-int              v5, v5, v27
+	33      (00000078) sub-int              v5, v5, v25
+	34      (0000007c) iget                 v6, v0, Ln/y1;->f I
+	35      (00000080) sub-int/2addr        v5, v6
+	36      (00000082) goto                 +ch
+
+onLayout-BB@0x84 : [ onLayout-BB@0x9a ]
+	37      (00000084) invoke-virtual       v0, Landroid/view/View;->getPaddingTop()I
+	38      (0000008a) move-result          v5
+	39      (0000008c) sub-int              v6, v27, v25
+	40      (00000090) iget                 v13, v0, Ln/y1;->f I
+	41      (00000094) sub-int/2addr        v6, v13
+	42      (00000096) div-int/2addr        v6, v8
+	43      (00000098) add-int/2addr        v5, v6
+
+onLayout-BB@0x9a : [ onLayout-BB@0x9c ]
+	44      (0000009a) const/4              v4, 0
+
+onLayout-BB@0x9c : [ onLayout-BB@0xa0 onLayout-BB@0x398 ]
+	45      (0000009c) if-ge                v4, v12, +17eh
+
+onLayout-BB@0xa0 : [ onLayout-BB@0xac onLayout-BB@0xb2 ]
+	46      (000000a0) invoke-virtual       v0, v4, Landroid/view/ViewGroup;->getChildAt(I)Landroid/view/View;
+	47      (000000a6) move-result-object   v6
+	48      (000000a8) if-nez               v6, +005h
+
+onLayout-BB@0xac : [ onLayout-BB@0x15c ]
+	49      (000000ac) move/from16          v23, v8
+	50      (000000b0) goto                 +56h
+
+onLayout-BB@0xb2 : [ onLayout-BB@0xbe onLayout-BB@0xac ]
+	51      (000000b2) invoke-virtual       v6, Landroid/view/View;->getVisibility()I
+	52      (000000b8) move-result          v13
+	53      (000000ba) if-eq                v13, v3, -007h
+
+onLayout-BB@0xbe : [ onLayout-BB@0xe6 onLayout-BB@0xe8 ]
+	54      (000000be) invoke-virtual       v6, Landroid/view/View;->getMeasuredWidth()I
+	55      (000000c4) move-result          v13
+	56      (000000c6) invoke-virtual       v6, Landroid/view/View;->getMeasuredHeight()I
+	57      (000000cc) move-result          v14
+	58      (000000ce) invoke-virtual       v6, Landroid/view/View;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
+	59      (000000d4) move-result-object   v15
+	60      (000000d6) check-cast           v15, Ln/x1;
+	61      (000000da) move/from16          v23, v8
+	62      (000000de) iget                 v8, v15, Landroid/widget/LinearLayout$LayoutParams;->gravity I
+	63      (000000e2) if-gez               v8, +003h
+
+onLayout-BB@0xe6 : [ onLayout-BB@0xe8 ]
+	64      (000000e6) move                 v8, v7
+
+onLayout-BB@0xe8 : [ onLayout-BB@0x100 onLayout-BB@0x118 ]
+	65      (000000e8) invoke-virtual       v0, Landroid/view/View;->getLayoutDirection()I
+	66      (000000ee) move-result          v3
+	67      (000000f0) invoke-static        v8, v3, Landroid/view/Gravity;->getAbsoluteGravity(I I)I
+	68      (000000f6) move-result          v3
+	69      (000000f8) and-int/lit8         v3, v3, 7
+	70      (000000fc) if-eq                v3, v9, +00eh
+
+onLayout-BB@0x100 : [ onLayout-BB@0x104 onLayout-BB@0x10c ]
+	71      (00000100) if-eq                v3, v2, +006h
+
+onLayout-BB@0x104 : [ onLayout-BB@0x12e ]
+	72      (00000104) iget                 v3, v15, Landroid/widget/LinearLayout$LayoutParams;->leftMargin I
+	73      (00000108) add-int/2addr        v3, v1
+	74      (0000010a) goto                 +12h
+
+onLayout-BB@0x10c : [ onLayout-BB@0x114 ]
+	75      (0000010c) sub-int              v3, v11, v13
+	76      (00000110) iget                 v8, v15, Landroid/widget/LinearLayout$LayoutParams;->rightMargin I
+
+onLayout-BB@0x114 : [ onLayout-BB@0x12e ]
+	77      (00000114) sub-int/2addr        v3, v8
+	78      (00000116) goto                 +ch
+
+onLayout-BB@0x118 : [ onLayout-BB@0x114 ]
+	79      (00000118) sub-int              v3, v10, v13
+	80      (0000011c) div-int/lit8         v3, v3, 2
+	81      (00000120) add-int/2addr        v3, v1
+	82      (00000122) iget                 v8, v15, Landroid/widget/LinearLayout$LayoutParams;->leftMargin I
+	83      (00000126) add-int/2addr        v3, v8
+	84      (00000128) iget                 v8, v15, Landroid/widget/LinearLayout$LayoutParams;->rightMargin I
+	85      (0000012c) goto                 -ch
+
+onLayout-BB@0x12e : [ onLayout-BB@0x13a onLayout-BB@0x140 ]
+	86      (0000012e) invoke-virtual       v0, v4, Ln/y1;->i(I)Z
+	87      (00000134) move-result          v8
+	88      (00000136) if-eqz               v8, +005h
+
+onLayout-BB@0x13a : [ onLayout-BB@0x140 ]
+	89      (0000013a) iget                 v8, v0, Ln/y1;->s I
+	90      (0000013e) add-int/2addr        v5, v8
+
+onLayout-BB@0x140 : [ onLayout-BB@0x15c ]
+	91      (00000140) iget                 v8, v15, Landroid/widget/LinearLayout$LayoutParams;->topMargin I
+	92      (00000144) add-int/2addr        v5, v8
+	93      (00000146) add-int/2addr        v13, v3
+	94      (00000148) add-int              v8, v5, v14
+	95      (0000014c) invoke-virtual       v6, v3, v5, v13, v8, Landroid/view/View;->layout(I I I I)V
+	96      (00000152) iget                 v3, v15, Landroid/widget/LinearLayout$LayoutParams;->bottomMargin I
+	97      (00000156) add-int/2addr        v14, v3
+	98      (00000158) add-int/2addr        v14, v5
+	99      (0000015a) move                 v5, v14
+
+onLayout-BB@0x15c : [ onLayout-BB@0x9c ]
+	100     (0000015c) add-int/lit8         v4, v4, 1
+	101     (00000160) move/from16          v8, v23
+	102     (00000164) const/16             v3, 8
+	103     (00000168) goto                 -66h
+
+onLayout-BB@0x16a : [ onLayout-BB@0x17e onLayout-BB@0x182 ]
+	104     (0000016a) move/from16          v23, v8
+	105     (0000016e) sget-boolean         v1, Ln/k3;->a Z
+	106     (00000172) invoke-virtual       v0, Landroid/view/View;->getLayoutDirection()I
+	107     (00000178) move-result          v1
+	108     (0000017a) if-ne                v1, v9, +004h
+
+onLayout-BB@0x17e : [ onLayout-BB@0x184 ]
+	109     (0000017e) move                 v1, v9
+	110     (00000180) goto                 +2h
+
+onLayout-BB@0x182 : [ onLayout-BB@0x184 ]
+	111     (00000182) const/4              v1, 0
+
+onLayout-BB@0x184 : [ onLayout-BB@0x1da onLayout-BB@0x200 ]
+	112     (00000184) invoke-virtual       v0, Landroid/view/View;->getPaddingTop()I
+	113     (0000018a) move-result          v3
+	114     (0000018c) sub-int              v8, v27, v25
+	115     (00000190) invoke-virtual       v0, Landroid/view/View;->getPaddingBottom()I
+	116     (00000196) move-result          v10
+	117     (00000198) sub-int              v10, v8, v10
+	118     (0000019c) sub-int/2addr        v8, v3
+	119     (0000019e) invoke-virtual       v0, Landroid/view/View;->getPaddingBottom()I
+	120     (000001a4) move-result          v11
+	121     (000001a6) sub-int/2addr        v8, v11
+	122     (000001a8) invoke-virtual       v0, Ln/y1;->getVirtualChildCount()I
+	123     (000001ae) move-result          v11
+	124     (000001b0) iget                 v12, v0, Ln/y1;->e I
+	125     (000001b4) and-int/2addr        v7, v12
+	126     (000001b6) and-int/lit8         v12, v12, 112
+	127     (000001ba) iget-boolean         v13, v0, Ln/y1;->a Z
+	128     (000001be) iget-object          v14, v0, Ln/y1;->o [I
+	129     (000001c2) iget-object          v15, v0, Ln/y1;->p [I
+	130     (000001c6) invoke-virtual       v0, Landroid/view/View;->getLayoutDirection()I
+	131     (000001cc) move-result          v4
+	132     (000001ce) invoke-static        v7, v4, Landroid/view/Gravity;->getAbsoluteGravity(I I)I
+	133     (000001d4) move-result          v4
+	134     (000001d6) if-eq                v4, v9, +015h
+
+onLayout-BB@0x1da : [ onLayout-BB@0x1de onLayout-BB@0x1e8 ]
+	135     (000001da) if-eq                v4, v2, +007h
+
+onLayout-BB@0x1de : [ onLayout-BB@0x218 ]
+	136     (000001de) invoke-virtual       v0, Landroid/view/View;->getPaddingLeft()I
+	137     (000001e4) move-result          v2
+	138     (000001e6) goto                 +19h
+
+onLayout-BB@0x1e8 : [ onLayout-BB@0x218 ]
+	139     (000001e8) invoke-virtual       v0, Landroid/view/View;->getPaddingLeft()I
+	140     (000001ee) move-result          v2
+	141     (000001f0) add-int              v2, v2, v26
+	142     (000001f4) sub-int              v2, v2, v24
+	143     (000001f8) iget                 v4, v0, Ln/y1;->f I
+	144     (000001fc) sub-int/2addr        v2, v4
+	145     (000001fe) goto                 +dh
+
+onLayout-BB@0x200 : [ onLayout-BB@0x218 ]
+	146     (00000200) invoke-virtual       v0, Landroid/view/View;->getPaddingLeft()I
+	147     (00000206) move-result          v2
+	148     (00000208) sub-int              v4, v26, v24
+	149     (0000020c) iget                 v7, v0, Ln/y1;->f I
+	150     (00000210) sub-int/2addr        v4, v7
+	151     (00000212) div-int/lit8         v4, v4, 2
+	152     (00000216) add-int/2addr        v2, v4
+
+onLayout-BB@0x218 : [ onLayout-BB@0x21c onLayout-BB@0x224 ]
+	153     (00000218) if-eqz               v1, +006h
+
+onLayout-BB@0x21c : [ onLayout-BB@0x228 ]
+	154     (0000021c) add-int/lit8         v1, v11, -1
+	155     (00000220) const/4              v7, -1
+	156     (00000222) goto                 +3h
+
+onLayout-BB@0x224 : [ onLayout-BB@0x228 ]
+	157     (00000224) move                 v7, v9
+	158     (00000226) const/4              v1, 0
+
+onLayout-BB@0x228 : [ onLayout-BB@0x22e ]
+	159     (00000228) move/from16          v17, v9
+	160     (0000022c) const/4              v9, 0
+
+onLayout-BB@0x22e : [ onLayout-BB@0x232 onLayout-BB@0x398 ]
+	161     (0000022e) if-ge                v9, v11, +0b5h
+
+onLayout-BB@0x232 : [ onLayout-BB@0x246 onLayout-BB@0x252 ]
+	162     (00000232) mul-int              v18, v7, v9
+	163     (00000236) add-int              v5, v18, v1
+	164     (0000023a) invoke-virtual       v0, v5, Landroid/view/ViewGroup;->getChildAt(I)Landroid/view/View;
+	165     (00000240) move-result-object   v6
+	166     (00000242) if-nez               v6, +008h
+
+onLayout-BB@0x246 : [ onLayout-BB@0x24a ]
+	167     (00000246) move/from16          v25, v1
+
+onLayout-BB@0x24a : [ onLayout-BB@0x380 ]
+	168     (0000024a) move/from16          v19, v3
+	169     (0000024e) goto/16              +099h
+
+onLayout-BB@0x252 : [ onLayout-BB@0x266 onLayout-BB@0x378 ]
+	170     (00000252) invoke-virtual       v6, Landroid/view/View;->getVisibility()I
+	171     (00000258) move-result          v4
+	172     (0000025a) move/from16          v25, v1
+	173     (0000025e) const/16             v1, 8
+	174     (00000262) if-eq                v4, v1, +08bh
+
+onLayout-BB@0x266 : [ onLayout-BB@0x28e onLayout-BB@0x2a6 ]
+	175     (00000266) invoke-virtual       v6, Landroid/view/View;->getMeasuredWidth()I
+	176     (0000026c) move-result          v4
+	177     (0000026e) invoke-virtual       v6, Landroid/view/View;->getMeasuredHeight()I
+	178     (00000274) move-result          v16
+	179     (00000276) invoke-virtual       v6, Landroid/view/View;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
+	180     (0000027c) move-result-object   v19
+	181     (0000027e) move-object/from16   v1, v19
+	182     (00000282) check-cast           v1, Ln/x1;
+	183     (00000286) move/from16          v27, v2
+	184     (0000028a) if-eqz               v13, +00eh
+
+onLayout-BB@0x28e : [ onLayout-BB@0x29c onLayout-BB@0x2aa ]
+	185     (0000028e) iget                 v2, v1, Landroid/widget/LinearLayout$LayoutParams;->height I
+	186     (00000292) move/from16          v19, v3
+	187     (00000296) const/4              v3, -1
+	188     (00000298) if-eq                v2, v3, +009h
+
+onLayout-BB@0x29c : [ onLayout-BB@0x2ac ]
+	189     (0000029c) invoke-virtual       v6, Landroid/view/View;->getBaseline()I
+	190     (000002a2) move-result          v3
+	191     (000002a4) goto                 +4h
+
+onLayout-BB@0x2a6 : [ onLayout-BB@0x2aa ]
+	192     (000002a6) move/from16          v19, v3
+
+onLayout-BB@0x2aa : [ onLayout-BB@0x2ac ]
+	193     (000002aa) const/4              v3, -1
+
+onLayout-BB@0x2ac : [ onLayout-BB@0x2b4 onLayout-BB@0x2b6 ]
+	194     (000002ac) iget                 v2, v1, Landroid/widget/LinearLayout$LayoutParams;->gravity I
+	195     (000002b0) if-gez               v2, +003h
+
+onLayout-BB@0x2b4 : [ onLayout-BB@0x2b6 ]
+	196     (000002b4) move                 v2, v12
+
+onLayout-BB@0x2b6 : [ onLayout-BB@0x2c6 onLayout-BB@0x322 ]
+	197     (000002b6) and-int/lit8         v2, v2, 112
+	198     (000002ba) move/from16          v20, v4
+	199     (000002be) const/16             v4, 16
+	200     (000002c2) if-eq                v2, v4, +030h
+
+onLayout-BB@0x2c6 : [ onLayout-BB@0x2ce onLayout-BB@0x306 ]
+	201     (000002c6) const/16             v4, 48
+	202     (000002ca) if-eq                v2, v4, +01eh
+
+onLayout-BB@0x2ce : [ onLayout-BB@0x2d6 onLayout-BB@0x2de ]
+	203     (000002ce) const/16             v4, 80
+	204     (000002d2) if-eq                v2, v4, +006h
+
+onLayout-BB@0x2d6 : [ onLayout-BB@0x33c ]
+	205     (000002d6) move/from16          v2, v19
+	206     (000002da) const/4              v4, -1
+	207     (000002dc) goto                 +30h
+
+onLayout-BB@0x2de : [ onLayout-BB@0x2ee onLayout-BB@0x33c ]
+	208     (000002de) sub-int              v2, v10, v16
+	209     (000002e2) iget                 v4, v1, Landroid/widget/LinearLayout$LayoutParams;->bottomMargin I
+	210     (000002e6) sub-int/2addr        v2, v4
+	211     (000002e8) const/4              v4, -1
+	212     (000002ea) if-eq                v3, v4, +029h
+
+onLayout-BB@0x2ee : [ onLayout-BB@0x302 ]
+	213     (000002ee) invoke-virtual       v6, Landroid/view/View;->getMeasuredHeight()I
+	214     (000002f4) move-result          v21
+	215     (000002f6) sub-int              v21, v21, v3
+	216     (000002fa) aget                 v3, v15, v23
+	217     (000002fe) sub-int              v3, v3, v21
+
+onLayout-BB@0x302 : [ onLayout-BB@0x33c ]
+	218     (00000302) sub-int/2addr        v2, v3
+	219     (00000304) goto                 +1ch
+
+onLayout-BB@0x306 : [ onLayout-BB@0x314 onLayout-BB@0x33c ]
+	220     (00000306) const/4              v4, -1
+	221     (00000308) iget                 v2, v1, Landroid/widget/LinearLayout$LayoutParams;->topMargin I
+	222     (0000030c) add-int              v2, v19, v2
+	223     (00000310) if-eq                v3, v4, +016h
+
+onLayout-BB@0x314 : [ onLayout-BB@0x33c ]
+	224     (00000314) aget                 v21, v14, v17
+	225     (00000318) sub-int              v21, v21, v3
+	226     (0000031c) add-int              v2, v21, v2
+	227     (00000320) goto                 +eh
+
+onLayout-BB@0x322 : [ onLayout-BB@0x302 ]
+	228     (00000322) const/4              v4, -1
+	229     (00000324) sub-int              v2, v8, v16
+	230     (00000328) div-int/lit8         v2, v2, 2
+	231     (0000032c) add-int              v2, v2, v19
+	232     (00000330) iget                 v3, v1, Landroid/widget/LinearLayout$LayoutParams;->topMargin I
+	233     (00000334) add-int/2addr        v2, v3
+	234     (00000336) iget                 v3, v1, Landroid/widget/LinearLayout$LayoutParams;->bottomMargin I
+	235     (0000033a) goto                 -1ch
+
+onLayout-BB@0x33c : [ onLayout-BB@0x348 onLayout-BB@0x352 ]
+	236     (0000033c) invoke-virtual       v0, v5, Ln/y1;->i(I)Z
+	237     (00000342) move-result          v3
+	238     (00000344) if-eqz               v3, +007h
+
+onLayout-BB@0x348 : [ onLayout-BB@0x356 ]
+	239     (00000348) iget                 v3, v0, Ln/y1;->r I
+	240     (0000034c) add-int              v3, v27, v3
+	241     (00000350) goto                 +3h
+
+onLayout-BB@0x352 : [ onLayout-BB@0x356 ]
+	242     (00000352) move/from16          v3, v27
+
+onLayout-BB@0x356 : [ onLayout-BB@0x380 ]
+	243     (00000356) iget                 v5, v1, Landroid/widget/LinearLayout$LayoutParams;->leftMargin I
+	244     (0000035a) add-int/2addr        v3, v5
+	245     (0000035c) add-int              v5, v3, v20
+	246     (00000360) add-int              v4, v2, v16
+	247     (00000364) invoke-virtual       v6, v3, v2, v5, v4, Landroid/view/View;->layout(I I I I)V
+	248     (0000036a) iget                 v1, v1, Landroid/widget/LinearLayout$LayoutParams;->rightMargin I
+	249     (0000036e) add-int              v4, v20, v1
+	250     (00000372) add-int/2addr        v4, v3
+	251     (00000374) move                 v2, v4
+	252     (00000376) goto                 +5h
+
+onLayout-BB@0x378 : [ onLayout-BB@0x24a ]
+	253     (00000378) move/from16          v27, v2
+	254     (0000037c) goto/16              -099h
+
+onLayout-BB@0x380 : [ onLayout-BB@0x22e ]
+	255     (00000380) add-int/lit8         v9, v9, 1
+	256     (00000384) move/from16          v1, v25
+	257     (00000388) move/from16          v3, v19
+	258     (0000038c) const/16             v5, 80
+	259     (00000390) const/16             v6, 16
+	260     (00000394) goto/16              -0b3h
+
+onLayout-BB@0x398 : 
+	261     (00000398) return-void          
+

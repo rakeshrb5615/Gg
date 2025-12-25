@@ -1,0 +1,36 @@
+# Lm/o;->setShowAsAction(I)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:int
+#
+# - return:void
+
+setShowAsAction-BB@0x0 : [ setShowAsAction-BB@0xa setShowAsAction-BB@0x26 ]
+	0       (00000000) and-int/lit8         v0, v4, 3
+	1       (00000004) const/4              v1, 1
+	2       (00000006) if-eqz               v0, +010h
+
+setShowAsAction-BB@0xa : [ setShowAsAction-BB@0xe setShowAsAction-BB@0x26 ]
+	3       (0000000a) if-eq                v0, v1, +00eh
+
+setShowAsAction-BB@0xe : [ setShowAsAction-BB@0x14 setShowAsAction-BB@0x16 ]
+	4       (0000000e) const/4              v2, 2
+	5       (00000010) if-ne                v0, v2, +003h
+
+setShowAsAction-BB@0x14 : [ setShowAsAction-BB@0x26 ]
+	6       (00000014) goto                 +9h
+
+setShowAsAction-BB@0x16 : 
+	7       (00000016) new-instance         v4, Ljava/lang/IllegalArgumentException;
+	8       (0000001a) const-string         v0, "SHOW_AS_ACTION_ALWAYS, SHOW_AS_ACTION_IF_ROOM, and SHOW_AS_ACTION_NEVER are mutually exclusive."
+	9       (0000001e) invoke-direct        v4, v0, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	10      (00000024) throw                v4
+
+setShowAsAction-BB@0x26 : 
+	11      (00000026) iput                 v4, v3, Lm/o;->y I
+	12      (0000002a) iget-object          v4, v3, Lm/o;->n Lm/m;
+	13      (0000002e) iput-boolean         v1, v4, Lm/m;->k Z
+	14      (00000032) invoke-virtual       v4, v1, Lm/m;->p(Z)V
+	15      (00000038) return-void          
+

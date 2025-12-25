@@ -1,0 +1,36 @@
+# Ll7/b;->get(Ll7/g;)Ll7/f; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:l7.g
+#
+# - return:l7.f
+
+get-BB@0x0 : [ get-BB@0xc ]
+	0       (00000000) const-string         v0, "key"
+	1       (00000004) invoke-static        v3, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) move-object          v0, v2
+
+get-BB@0xc : [ get-BB@0x1c get-BB@0x1e ]
+	3       (0000000c) iget-object          v1, v0, Ll7/b;->b Ll7/f;
+	4       (00000010) invoke-interface     v1, v3, Ll7/h;->get(Ll7/g;)Ll7/f;
+	5       (00000016) move-result-object   v1
+	6       (00000018) if-eqz               v1, +003h
+
+get-BB@0x1c : 
+	7       (0000001c) return-object        v1
+
+get-BB@0x1e : [ get-BB@0x2a get-BB@0x30 ]
+	8       (0000001e) iget-object          v0, v0, Ll7/b;->a Ll7/h;
+	9       (00000022) instance-of          v1, v0, Ll7/b;
+	10      (00000026) if-eqz               v1, +005h
+
+get-BB@0x2a : [ get-BB@0xc ]
+	11      (0000002a) check-cast           v0, Ll7/b;
+	12      (0000002e) goto                 -11h
+
+get-BB@0x30 : 
+	13      (00000030) invoke-interface     v0, v3, Ll7/h;->get(Ll7/g;)Ll7/f;
+	14      (00000036) move-result-object   v3
+	15      (00000038) return-object        v3
+

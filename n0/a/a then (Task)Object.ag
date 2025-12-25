@@ -1,0 +1,141 @@
+# Ln0/a;->then(Lcom/google/android/gms/tasks/Task;)Ljava/lang/Object; [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:com.google.android.gms.tasks.Task
+#
+# - return:java.lang.Object
+
+then-BB@0x0 : [ then-BB@0xc then-BB@0x48 ]
+	0       (00000000) invoke-virtual       v6, Lcom/google/android/gms/tasks/Task;->isSuccessful()Z
+	1       (00000006) move-result          v0
+	2       (00000008) if-nez               v0, +020h
+
+then-BB@0xc : 
+	3       (0000000c) new-instance         v0, Lz4/q;
+	4       (00000010) invoke-virtual       v6, Lcom/google/android/gms/tasks/Task;->getException()Ljava/lang/Exception;
+	5       (00000016) move-result-object   v6
+	6       (00000018) invoke-static        v6, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;
+	7       (0000001e) move-result-object   v6
+	8       (00000020) check-cast           v6, Ljava/lang/Exception;
+	9       (00000024) invoke-virtual       v6, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+	10      (0000002a) move-result-object   v6
+	11      (0000002c) invoke-static        v6, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;
+	12      (00000032) move-result-object   v6
+	13      (00000034) check-cast           v6, Ljava/lang/String;
+	14      (00000038) invoke-direct        v0, v6, Ljava/lang/Exception;-><init>(Ljava/lang/String;)V
+	15      (0000003e) invoke-static        v0, Lcom/google/android/gms/tasks/Tasks;->forException(Ljava/lang/Exception;)Lcom/google/android/gms/tasks/Task;
+	16      (00000044) move-result-object   v6
+	17      (00000046) return-object        v6
+
+then-BB@0x48 : [ then-BB@0x68 then-BB@0x90 ]
+	18      (00000048) invoke-virtual       v6, Lcom/google/android/gms/tasks/Task;->getResult()Ljava/lang/Object;
+	19      (0000004e) move-result-object   v6
+	20      (00000050) check-cast           v6, Lcom/google/android/gms/internal/firebase-auth-api/zzahs;
+	21      (00000054) invoke-virtual       v6, Lcom/google/android/gms/internal/firebase-auth-api/zzahs;->zza()Ljava/lang/String;
+	22      (0000005a) move-result-object   v0
+	23      (0000005c) invoke-static        v0, Lcom/google/android/gms/internal/firebase-auth-api/zzac;->zzc(Ljava/lang/String;)Z
+	24      (00000062) move-result          v1
+	25      (00000064) if-eqz               v1, +016h
+
+then-BB@0x68 : 
+	26      (00000068) new-instance         v6, Lz4/q;
+	27      (0000006c) iget-object          v0, v5, Ln0/a;->b Ljava/lang/Object;
+	28      (00000070) check-cast           v0, Ljava/lang/String;
+	29      (00000074) const-string         v1, "No Recaptcha Enterprise siteKey configured for tenant/project "
+	30      (00000078) invoke-static        v1, v0, Lg2/g;->l(Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	31      (0000007e) move-result-object   v0
+	32      (00000080) invoke-direct        v6, v0, Ljava/lang/Exception;-><init>(Ljava/lang/String;)V
+	33      (00000086) invoke-static        v6, Lcom/google/android/gms/tasks/Tasks;->forException(Ljava/lang/Exception;)Lcom/google/android/gms/tasks/Task;
+	34      (0000008c) move-result-object   v6
+	35      (0000008e) return-object        v6
+
+then-BB@0x90 : [ then-BB@0xb2 then-BB@0xb6 ]
+	36      (00000090) const/16             v1, 47
+	37      (00000094) invoke-static        v1, Lcom/google/android/gms/internal/firebase-auth-api/zzt;->zza(C)Lcom/google/android/gms/internal/firebase-auth-api/zzt;
+	38      (0000009a) move-result-object   v1
+	39      (0000009c) invoke-virtual       v1, v0, Lcom/google/android/gms/internal/firebase-auth-api/zzt;->zza(Ljava/lang/CharSequence;)Ljava/util/List;
+	40      (000000a2) move-result-object   v1
+	41      (000000a4) invoke-interface     v1, Ljava/util/List;->size()I
+	42      (000000aa) move-result          v2
+	43      (000000ac) const/4              v3, 4
+	44      (000000ae) if-eq                v2, v3, +004h
+
+then-BB@0xb2 : [ then-BB@0xc4 ]
+	45      (000000b2) const/4              v1, 0
+	46      (000000b4) goto                 +8h
+
+then-BB@0xb6 : [ then-BB@0xc4 ]
+	47      (000000b6) const/4              v2, 3
+	48      (000000b8) invoke-interface     v1, v2, Ljava/util/List;->get(I)Ljava/lang/Object;
+	49      (000000be) move-result-object   v1
+	50      (000000c0) check-cast           v1, Ljava/lang/String;
+
+then-BB@0xc4 : [ then-BB@0xd0 then-BB@0xf0 ]
+	51      (000000c4) invoke-static        v1, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+	52      (000000ca) move-result          v2
+	53      (000000cc) if-eqz               v2, +012h
+
+then-BB@0xd0 : 
+	54      (000000d0) new-instance         v6, Ljava/lang/Exception;
+	55      (000000d4) const-string         v1, "Invalid siteKey format "
+	56      (000000d8) invoke-static        v1, v0, Lg2/g;->l(Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	57      (000000de) move-result-object   v0
+	58      (000000e0) invoke-direct        v6, v0, Ljava/lang/Exception;-><init>(Ljava/lang/String;)V
+	59      (000000e6) invoke-static        v6, Lcom/google/android/gms/tasks/Tasks;->forException(Ljava/lang/Exception;)Lcom/google/android/gms/tasks/Task;
+	60      (000000ec) move-result-object   v6
+	61      (000000ee) return-object        v6
+
+then-BB@0xf0 : [ then-BB@0x100 then-BB@0x12e ]
+	62      (000000f0) const-string         v0, "RecaptchaHandler"
+	63      (000000f4) invoke-static        v0, v3, Landroid/util/Log;->isLoggable(Ljava/lang/String; I)Z
+	64      (000000fa) move-result          v0
+	65      (000000fc) if-eqz               v0, +019h
+
+then-BB@0x100 : [ then-BB@0x12e ]
+	66      (00000100) const-string         v0, "RecaptchaHandler"
+	67      (00000104) iget-object          v2, v5, Ln0/a;->b Ljava/lang/Object;
+	68      (00000108) check-cast           v2, Ljava/lang/String;
+	69      (0000010c) new-instance         v3, Ljava/lang/StringBuilder;
+	70      (00000110) const-string         v4, "Successfully obtained site key for tenant "
+	71      (00000114) invoke-direct        v3, v4, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	72      (0000011a) invoke-virtual       v3, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	73      (00000120) invoke-virtual       v3, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	74      (00000126) move-result-object   v2
+	75      (00000128) invoke-static        v0, v2, Landroid/util/Log;->i(Ljava/lang/String; Ljava/lang/String;)I
+
+then-BB@0x12e : [ then-BB@0x178 ]
+	76      (0000012e) iget-object          v0, v5, Ln0/a;->c Ljava/lang/Object;
+	77      (00000132) check-cast           v0, La5/z;
+	78      (00000136) iget-object          v2, v0, La5/z;->f Ljava/lang/Object;
+	79      (0000013a) check-cast           v2, Lz4/z;
+	80      (0000013e) iget-object          v0, v0, La5/z;->d Ljava/lang/Object;
+	81      (00000142) check-cast           v0, Lq4/f;
+	82      (00000146) invoke-virtual       v0, Lq4/f;->a()V
+	83      (0000014c) iget-object          v0, v0, Lq4/f;->a Landroid/content/Context;
+	84      (00000150) check-cast           v0, Landroid/app/Application;
+	85      (00000154) invoke-virtual       v2, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	86      (0000015a) invoke-static        v0, v1, Lcom/google/android/recaptcha/Recaptcha;->fetchTaskClient(Landroid/app/Application; Ljava/lang/String;)Lcom/google/android/gms/tasks/Task;
+	87      (00000160) move-result-object   v0
+	88      (00000162) iget-object          v1, v5, Ln0/a;->c Ljava/lang/Object;
+	89      (00000166) check-cast           v1, La5/z;
+	90      (0000016a) iget-object          v2, v5, Ln0/a;->b Ljava/lang/Object;
+	91      (0000016e) check-cast           v2, Ljava/lang/String;
+	92      (00000172) iget-object          v3, v1, La5/z;->a Ljava/lang/Object;
+	93      (00000176) monitor-enter        v3
+
+then-BB@0x178 : 
+	94      (00000178) iput-object          v6, v1, La5/z;->c Ljava/lang/Object;
+	95      (0000017c) iget-object          v6, v1, La5/z;->b Ljava/lang/Object;
+	96      (00000180) check-cast           v6, Ljava/util/HashMap;
+	97      (00000184) invoke-virtual       v6, v2, v0, Ljava/util/HashMap;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	98      (0000018a) monitor-exit         v3
+	99      (0000018c) return-object        v0
+	178:191
+	(Ljava/lang/Throwable; -> 18e then-BB@0x18e)
+
+then-BB@0x18e : 
+	100     (0000018e) move-exception       v6
+	101     (00000190) monitor-exit         v3
+	102     (00000192) throw                v6
+

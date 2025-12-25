@@ -1,0 +1,49 @@
+# Lm/u;->onItemClick(Landroid/widget/AdapterView; Landroid/view/View; I J)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:android.widget.AdapterView
+# - v3:android.view.View
+# - v4:int
+# - v5:long
+#
+# - return:void
+
+onItemClick-BB@0x0 : [ onItemClick-BB@0x14 onItemClick-BB@0x28 ]
+	0       (00000000) invoke-virtual       v1, Landroid/widget/AdapterView;->getAdapter()Landroid/widget/Adapter;
+	1       (00000006) move-result-object   v1
+	2       (00000008) check-cast           v1, Landroid/widget/ListAdapter;
+	3       (0000000c) instance-of          v2, v1, Landroid/widget/HeaderViewListAdapter;
+	4       (00000010) if-eqz               v2, +00ch
+
+onItemClick-BB@0x14 : [ onItemClick-BB@0x2e ]
+	5       (00000014) move-object          v2, v1
+	6       (00000016) check-cast           v2, Landroid/widget/HeaderViewListAdapter;
+	7       (0000001a) invoke-virtual       v2, Landroid/widget/HeaderViewListAdapter;->getWrappedAdapter()Landroid/widget/ListAdapter;
+	8       (00000020) move-result-object   v2
+	9       (00000022) check-cast           v2, Lm/j;
+	10      (00000026) goto                 +4h
+
+onItemClick-BB@0x28 : [ onItemClick-BB@0x2e ]
+	11      (00000028) move-object          v2, v1
+	12      (0000002a) check-cast           v2, Lm/j;
+
+onItemClick-BB@0x2e : [ onItemClick-BB@0x46 onItemClick-BB@0x4a ]
+	13      (0000002e) iget-object          v2, v2, Lm/j;->a Lm/m;
+	14      (00000032) invoke-interface     v1, v3, Landroid/widget/Adapter;->getItem(I)Ljava/lang/Object;
+	15      (00000038) move-result-object   v1
+	16      (0000003a) check-cast           v1, Landroid/view/MenuItem;
+	17      (0000003e) instance-of          v3, v0, Lm/g;
+	18      (00000042) if-nez               v3, +004h
+
+onItemClick-BB@0x46 : [ onItemClick-BB@0x4c ]
+	19      (00000046) const/4              v3, 0
+	20      (00000048) goto                 +2h
+
+onItemClick-BB@0x4a : [ onItemClick-BB@0x4c ]
+	21      (0000004a) const/4              v3, 4
+
+onItemClick-BB@0x4c : 
+	22      (0000004c) invoke-virtual       v2, v1, v0, v3, Lm/m;->q(Landroid/view/MenuItem; Lm/y; I)Z
+	23      (00000052) return-void          
+

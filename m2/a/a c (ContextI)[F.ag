@@ -1,0 +1,84 @@
+# Lm2/a;->c(Landroid/content/Context; I)[F [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:android.content.Context
+# - v5:int
+#
+# - return:float[]
+
+c-BB@0x0 : [ c-BB@0x44 c-BB@0x48 ]
+	0       (00000000) invoke-static        v4, Lj5/t1;->z(Landroid/content/Context;)Landroid/content/SharedPreferences;
+	1       (00000006) move-result-object   v4
+	2       (00000008) const-string         v0, "sunriseTimeFloatKey"
+	3       (0000000c) const/high16         v1, 1086324736
+	4       (00000010) invoke-interface     v4, v0, v1, Landroid/content/SharedPreferences;->getFloat(Ljava/lang/String; F)F
+	5       (00000016) move-result          v0
+	6       (00000018) const-string         v1, "sunsetTimeFloatKey"
+	7       (0000001c) const/high16         v2, 1099956224
+	8       (00000020) invoke-interface     v4, v1, v2, Landroid/content/SharedPreferences;->getFloat(Ljava/lang/String; F)F
+	9       (00000026) move-result          v1
+	10      (00000028) const-string         v2, "systemTime"
+	11      (0000002c) const/high16         v3, 1094713344
+	12      (00000030) invoke-interface     v4, v2, v3, Landroid/content/SharedPreferences;->getFloat(Ljava/lang/String; F)F
+	13      (00000036) move-result          v4
+	14      (00000038) const/16             v2, 9
+	15      (0000003c) const/high16         v3, 1073741824
+	16      (00000040) if-ne                v5, v2, +004h
+
+c-BB@0x44 : [ c-BB@0x4c ]
+	17      (00000044) move                 v5, v3
+	18      (00000046) goto                 +3h
+
+c-BB@0x48 : [ c-BB@0x4c ]
+	19      (00000048) const/high16         v5, 1065353216
+
+c-BB@0x4c : [ c-BB@0x5a c-BB@0x70 ]
+	20      (0000004c) mul-float/2addr      v3, v5
+	21      (0000004e) sub-float            v2, v0, v5
+	22      (00000052) cmpl-float           v2, v4, v2
+	23      (00000056) if-lez               v2, +00dh
+
+c-BB@0x5a : [ c-BB@0x66 c-BB@0x70 ]
+	24      (0000005a) add-float            v2, v0, v5
+	25      (0000005e) cmpg-float           v2, v4, v2
+	26      (00000062) if-gez               v2, +007h
+
+c-BB@0x66 : [ c-BB@0x6a ]
+	27      (00000066) sub-float            v2, v4, v0
+
+c-BB@0x6a : [ c-BB@0x92 ]
+	28      (0000006a) add-float/2addr      v2, v5
+	29      (0000006c) div-float/2addr      v2, v3
+	30      (0000006e) goto                 +12h
+
+c-BB@0x70 : [ c-BB@0x7c c-BB@0x8e ]
+	31      (00000070) sub-float            v2, v1, v5
+	32      (00000074) cmpl-float           v2, v4, v2
+	33      (00000078) if-lez               v2, +00bh
+
+c-BB@0x7c : [ c-BB@0x88 c-BB@0x8e ]
+	34      (0000007c) add-float            v2, v1, v5
+	35      (00000080) cmpg-float           v2, v4, v2
+	36      (00000084) if-gez               v2, +005h
+
+c-BB@0x88 : [ c-BB@0x6a ]
+	37      (00000088) sub-float            v2, v4, v1
+	38      (0000008c) goto                 -11h
+
+c-BB@0x8e : [ c-BB@0x92 ]
+	39      (0000008e) const/high16         v2, -1082130432
+
+c-BB@0x92 : 
+	40      (00000092) const/4              v5, 4
+	41      (00000094) new-array            v5, v5, [F
+	42      (00000098) const/4              v3, 0
+	43      (0000009a) aput                 v4, v5, v3
+	44      (0000009e) const/4              v4, 1
+	45      (000000a0) aput                 v0, v5, v4
+	46      (000000a4) const/4              v4, 2
+	47      (000000a6) aput                 v1, v5, v4
+	48      (000000aa) const/4              v4, 3
+	49      (000000ac) aput                 v2, v5, v4
+	50      (000000b0) return-object        v5
+

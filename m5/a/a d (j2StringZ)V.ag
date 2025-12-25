@@ -1,0 +1,111 @@
+# Lm5/a;->d(Lj5/j2; Ljava/lang/String; Z)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:j5.j2
+# - v7:java.lang.String
+# - v8:boolean
+#
+# - return:void
+
+d-BB@0x0 : [ d-BB@0x5e d-BB@0x64 ]
+	0       (00000000) iget-object          v0, v5, Lm5/a;->b Lm5/c;
+	1       (00000004) iget-object          v1, v5, Lm5/a;->c Lo5/d;
+	2       (00000008) invoke-virtual       v1, Lo5/d;->b()Lo5/c;
+	3       (0000000e) move-result-object   v1
+	4       (00000010) iget-object          v1, v1, Lo5/c;->a Lo5/b;
+	5       (00000014) iget                 v1, v1, Lo5/b;->a I
+	6       (00000018) sget-object          v2, Lm5/a;->g Lk5/a;
+	7       (0000001c) invoke-virtual       v2, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	8       (00000022) sget-object          v2, Lk5/a;->a Lj6/o;
+	9       (00000026) invoke-virtual       v2, v6, Lj6/o;->q(Ljava/lang/Object;)Ljava/lang/String;
+	10      (0000002c) move-result-object   v6
+	11      (0000002e) iget-object          v2, v5, Lm5/a;->a Ljava/util/concurrent/atomic/AtomicInteger;
+	12      (00000032) invoke-virtual       v2, Ljava/util/concurrent/atomic/AtomicInteger;->getAndIncrement()I
+	13      (00000038) move-result          v2
+	14      (0000003a) sget-object          v3, Ljava/util/Locale;->US Ljava/util/Locale;
+	15      (0000003e) invoke-static        v2, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+	16      (00000044) move-result-object   v2
+	17      (00000046) filled-new-array     v2, [Ljava/lang/Object;
+	18      (0000004c) move-result-object   v2
+	19      (0000004e) const-string         v4, "%010d"
+	20      (00000052) invoke-static        v3, v4, v2, Ljava/lang/String;->format(Ljava/util/Locale; Ljava/lang/String; [Ljava/lang/Object;)Ljava/lang/String;
+	21      (00000058) move-result-object   v2
+	22      (0000005a) if-eqz               v8, +005h
+
+d-BB@0x5e : [ d-BB@0x68 ]
+	23      (0000005e) const-string         v8, "_"
+	24      (00000062) goto                 +3h
+
+d-BB@0x64 : [ d-BB@0x68 ]
+	25      (00000064) const-string         v8, ""
+
+d-BB@0x68 : [ d-BB@0x74 ]
+	26      (00000068) const-string         v3, "event"
+	27      (0000006c) invoke-static        v3, v2, v8, Lv1/a;->l(Ljava/lang/String; Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	28      (00000072) move-result-object   v8
+
+d-BB@0x74 : [ d-BB@0xac ]
+	29      (00000074) invoke-virtual       v0, v7, v8, Lm5/c;->b(Ljava/lang/String; Ljava/lang/String;)Ljava/io/File;
+	30      (0000007a) move-result-object   v8
+	31      (0000007c) invoke-static        v8, v6, Lm5/a;->f(Ljava/io/File; Ljava/lang/String;)V
+	32      (00000082) goto                 +15h
+	74:81
+	(Ljava/io/IOException; -> 84 d-BB@0x84)
+
+d-BB@0x84 : [ d-BB@0xac ]
+	33      (00000084) move-exception       v6
+	34      (00000086) new-instance         v8, Ljava/lang/StringBuilder;
+	35      (0000008a) const-string         v2, "Could not persist event for session "
+	36      (0000008e) invoke-direct        v8, v2, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	37      (00000094) invoke-virtual       v8, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	38      (0000009a) invoke-virtual       v8, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	39      (000000a0) move-result-object   v8
+	40      (000000a2) const-string         v2, "FirebaseCrashlytics"
+	41      (000000a6) invoke-static        v2, v8, v6, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+
+d-BB@0xac : [ d-BB@0x108 ]
+	42      (000000ac) new-instance         v6, Lg5/h;
+	43      (000000b0) const/4              v8, 3
+	44      (000000b2) invoke-direct        v6, v8, Lg5/h;-><init>(I)V
+	45      (000000b8) invoke-virtual       v0, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	46      (000000be) new-instance         v8, Ljava/io/File;
+	47      (000000c2) iget-object          v0, v0, Lm5/c;->e Ljava/lang/Object;
+	48      (000000c6) check-cast           v0, Ljava/io/File;
+	49      (000000ca) invoke-direct        v8, v0, v7, Ljava/io/File;-><init>(Ljava/io/File; Ljava/lang/String;)V
+	50      (000000d0) invoke-virtual       v8, Ljava/io/File;->mkdirs()Z
+	51      (000000d6) invoke-virtual       v8, v6, Ljava/io/File;->listFiles(Ljava/io/FilenameFilter;)[Ljava/io/File;
+	52      (000000dc) move-result-object   v6
+	53      (000000de) invoke-static        v6, Lm5/c;->e([Ljava/lang/Object;)Ljava/util/List;
+	54      (000000e4) move-result-object   v6
+	55      (000000e6) new-instance         v7, Lg5/i;
+	56      (000000ea) const/4              v8, 3
+	57      (000000ec) invoke-direct        v7, v8, Lg5/i;-><init>(I)V
+	58      (000000f2) invoke-static        v6, v7, Ljava/util/Collections;->sort(Ljava/util/List; Ljava/util/Comparator;)V
+	59      (000000f8) invoke-interface     v6, Ljava/util/List;->size()I
+	60      (000000fe) move-result          v7
+	61      (00000100) invoke-interface     v6, Ljava/util/List;->iterator()Ljava/util/Iterator;
+	62      (00000106) move-result-object   v6
+
+d-BB@0x108 : [ d-BB@0x114 d-BB@0x132 ]
+	63      (00000108) invoke-interface     v6, Ljava/util/Iterator;->hasNext()Z
+	64      (0000010e) move-result          v8
+	65      (00000110) if-eqz               v8, +011h
+
+d-BB@0x114 : [ d-BB@0x124 d-BB@0x126 ]
+	66      (00000114) invoke-interface     v6, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	67      (0000011a) move-result-object   v8
+	68      (0000011c) check-cast           v8, Ljava/io/File;
+	69      (00000120) if-gt                v7, v1, +003h
+
+d-BB@0x124 : [ d-BB@0x132 ]
+	70      (00000124) goto                 +7h
+
+d-BB@0x126 : [ d-BB@0x108 ]
+	71      (00000126) invoke-static        v8, Lm5/c;->d(Ljava/io/File;)Z
+	72      (0000012c) add-int/lit8         v7, v7, -1
+	73      (00000130) goto                 -14h
+
+d-BB@0x132 : 
+	74      (00000132) return-void          
+

@@ -1,0 +1,41 @@
+# Ln2/f;->p0(F)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:float
+#
+# - return:void
+
+p0-BB@0x0 : [ p0-BB@0x8 p0-BB@0x40 ]
+	0       (00000000) iget-object          v0, v3, Ln2/f;->q Ln2/o;
+	1       (00000004) if-eqz               v0, +01eh
+
+p0-BB@0x8 : [ p0-BB@0x12 p0-BB@0x16 ]
+	2       (00000008) const/4              v1, 0
+	3       (0000000a) cmpl-float           v2, v4, v1
+	4       (0000000e) if-eqz               v2, +004h
+
+p0-BB@0x12 : [ p0-BB@0x18 ]
+	5       (00000012) const/4              v2, 1
+	6       (00000014) goto                 +2h
+
+p0-BB@0x16 : [ p0-BB@0x18 ]
+	7       (00000016) const/4              v2, 0
+
+p0-BB@0x18 : [ p0-BB@0x28 p0-BB@0x40 ]
+	8       (00000018) iput-boolean         v2, v0, Ln2/o;->l Z
+	9       (0000001c) iget                 v2, v0, Ln2/o;->g F
+	10      (00000020) cmpl-float           v2, v2, v4
+	11      (00000024) if-eqz               v2, +00eh
+
+p0-BB@0x28 : [ p0-BB@0x40 ]
+	12      (00000028) const/high16         v2, 1065353216
+	13      (0000002c) invoke-static        v2, v4, Ljava/lang/Math;->min(F F)F
+	14      (00000032) move-result          v4
+	15      (00000034) invoke-static        v1, v4, Ljava/lang/Math;->max(F F)F
+	16      (0000003a) move-result          v4
+	17      (0000003c) iput                 v4, v0, Ln2/o;->g F
+
+p0-BB@0x40 : 
+	18      (00000040) return-void          
+

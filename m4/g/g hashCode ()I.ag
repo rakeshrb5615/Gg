@@ -1,0 +1,40 @@
+# Lm4/g;->hashCode()I [access_flags=public]
+#
+# Parameters:
+# local registers: v0...v4
+#
+# - return:int
+
+hashCode-BB@0x0 : [ hashCode-BB@0xc ]
+	0       (00000000) invoke-interface     v4, Ljava/util/Set;->iterator()Ljava/util/Iterator;
+	1       (00000006) move-result-object   v0
+	2       (00000008) const/4              v1, 0
+	3       (0000000a) move                 v2, v1
+
+hashCode-BB@0xc : [ hashCode-BB@0x18 hashCode-BB@0x38 ]
+	4       (0000000c) invoke-interface     v0, Ljava/util/Iterator;->hasNext()Z
+	5       (00000012) move-result          v3
+	6       (00000014) if-eqz               v3, +012h
+
+hashCode-BB@0x18 : [ hashCode-BB@0x24 hashCode-BB@0x2e ]
+	7       (00000018) invoke-interface     v0, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	8       (0000001e) move-result-object   v3
+	9       (00000020) if-eqz               v3, +007h
+
+hashCode-BB@0x24 : [ hashCode-BB@0x30 ]
+	10      (00000024) invoke-virtual       v3, Ljava/lang/Object;->hashCode()I
+	11      (0000002a) move-result          v3
+	12      (0000002c) goto                 +2h
+
+hashCode-BB@0x2e : [ hashCode-BB@0x30 ]
+	13      (0000002e) move                 v3, v1
+
+hashCode-BB@0x30 : [ hashCode-BB@0xc ]
+	14      (00000030) add-int/2addr        v2, v3
+	15      (00000032) not-int              v2, v2
+	16      (00000034) not-int              v2, v2
+	17      (00000036) goto                 -15h
+
+hashCode-BB@0x38 : 
+	18      (00000038) return               v2
+

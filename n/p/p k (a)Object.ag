@@ -1,0 +1,54 @@
+# Ln/p;->k(Lo8/a;)Ljava/lang/Object; [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:o8.a
+#
+# - return:java.lang.Object
+
+k-BB@0x0 : [ k-BB@0xa ]
+	0       (00000000) const-string         v0, "deserializer"
+	1       (00000004) invoke-static        v4, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+
+k-BB@0xa : 
+	2       (0000000a) invoke-interface     v4, v3, Lo8/a;->c(Ln/p;)Ljava/lang/Object;
+	3       (00000010) move-result-object   v4
+	4       (00000012) return-object        v4
+	a:11
+	(Lo8/b; -> 14 k-BB@0x14)
+
+k-BB@0x14 : [ k-BB@0x34 k-BB@0x36 ]
+	5       (00000014) move-exception       v4
+	6       (00000016) invoke-virtual       v4, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+	7       (0000001c) move-result-object   v0
+	8       (0000001e) invoke-static        v0, Lkotlin/jvm/internal/j;->b(Ljava/lang/Object;)V
+	9       (00000024) const-string         v1, "at path"
+	10      (00000028) invoke-static        v0, v1, Lb8/i;->s0(Ljava/lang/CharSequence; Ljava/lang/String;)Z
+	11      (0000002e) move-result          v0
+	12      (00000030) if-eqz               v0, +003h
+
+k-BB@0x34 : 
+	13      (00000034) throw                v4
+
+k-BB@0x36 : 
+	14      (00000036) new-instance         v0, Lo8/b;
+	15      (0000003a) new-instance         v1, Ljava/lang/StringBuilder;
+	16      (0000003e) invoke-direct        v1, Ljava/lang/StringBuilder;-><init>()V
+	17      (00000044) invoke-virtual       v4, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+	18      (0000004a) move-result-object   v2
+	19      (0000004c) invoke-virtual       v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	20      (00000052) const-string         v2, " at path: "
+	21      (00000056) invoke-virtual       v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	22      (0000005c) iget-object          v2, v3, Ln/p;->d Ljava/lang/Object;
+	23      (00000060) check-cast           v2, La2/d;
+	24      (00000064) iget-object          v2, v2, La2/d;->c Ljava/lang/Object;
+	25      (00000068) check-cast           v2, Lg0/d;
+	26      (0000006c) invoke-virtual       v2, Lg0/d;->d()Ljava/lang/String;
+	27      (00000072) move-result-object   v2
+	28      (00000074) invoke-virtual       v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	29      (0000007a) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	30      (00000080) move-result-object   v1
+	31      (00000082) iget-object          v2, v4, Lo8/b;->a Ljava/util/List;
+	32      (00000086) invoke-direct        v0, v2, v1, v4, Lo8/b;-><init>(Ljava/util/List; Ljava/lang/String; Lo8/b;)V
+	33      (0000008c) throw                v0
+

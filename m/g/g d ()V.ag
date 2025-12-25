@@ -1,0 +1,45 @@
+# Lm/g;->d()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v5
+#
+# - return:void
+
+d-BB@0x0 : [ d-BB@0xe ]
+	0       (00000000) iget-object          v0, v5, Lm/g;->n Ljava/util/ArrayList;
+	1       (00000004) invoke-virtual       v0, Ljava/util/ArrayList;->size()I
+	2       (0000000a) move-result          v1
+	3       (0000000c) const/4              v2, 0
+
+d-BB@0xe : [ d-BB@0x12 d-BB@0x58 ]
+	4       (0000000e) if-ge                v2, v1, +025h
+
+d-BB@0x12 : [ d-BB@0x3a d-BB@0x4c ]
+	5       (00000012) invoke-virtual       v0, v2, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	6       (00000018) move-result-object   v3
+	7       (0000001a) add-int/lit8         v2, v2, 1
+	8       (0000001e) check-cast           v3, Lm/f;
+	9       (00000022) iget-object          v3, v3, Lm/f;->a Ln/l2;
+	10      (00000026) iget-object          v3, v3, Ln/g2;->c Ln/t1;
+	11      (0000002a) invoke-virtual       v3, Landroid/widget/ListView;->getAdapter()Landroid/widget/ListAdapter;
+	12      (00000030) move-result-object   v3
+	13      (00000032) instance-of          v4, v3, Landroid/widget/HeaderViewListAdapter;
+	14      (00000036) if-eqz               v4, +00bh
+
+d-BB@0x3a : [ d-BB@0x50 ]
+	15      (0000003a) check-cast           v3, Landroid/widget/HeaderViewListAdapter;
+	16      (0000003e) invoke-virtual       v3, Landroid/widget/HeaderViewListAdapter;->getWrappedAdapter()Landroid/widget/ListAdapter;
+	17      (00000044) move-result-object   v3
+	18      (00000046) check-cast           v3, Lm/j;
+	19      (0000004a) goto                 +3h
+
+d-BB@0x4c : [ d-BB@0x50 ]
+	20      (0000004c) check-cast           v3, Lm/j;
+
+d-BB@0x50 : [ d-BB@0xe ]
+	21      (00000050) invoke-virtual       v3, Lm/j;->notifyDataSetChanged()V
+	22      (00000056) goto                 -24h
+
+d-BB@0x58 : 
+	23      (00000058) return-void          
+

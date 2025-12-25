@@ -1,0 +1,34 @@
+# Ln/b1;->onDetachedFromWindow()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v2
+#
+# - return:void
+
+onDetachedFromWindow-BB@0x0 : [ onDetachedFromWindow-BB@0x12 onDetachedFromWindow-BB@0x44 ]
+	0       (00000000) invoke-super         v2, Landroid/view/View;->onDetachedFromWindow()V
+	1       (00000006) sget                 v0, Landroid/os/Build$VERSION;->SDK_INT I
+	2       (0000000a) const/16             v1, 30
+	3       (0000000e) if-lt                v0, v1, +01bh
+
+onDetachedFromWindow-BB@0x12 : [ onDetachedFromWindow-BB@0x1a onDetachedFromWindow-BB@0x44 ]
+	4       (00000012) const/16             v1, 33
+	5       (00000016) if-ge                v0, v1, +017h
+
+onDetachedFromWindow-BB@0x1a : [ onDetachedFromWindow-BB@0x26 onDetachedFromWindow-BB@0x44 ]
+	6       (0000001a) invoke-virtual       v2, Landroid/view/View;->onCheckIsTextEditor()Z
+	7       (00000020) move-result          v0
+	8       (00000022) if-eqz               v0, +011h
+
+onDetachedFromWindow-BB@0x26 : [ onDetachedFromWindow-BB@0x44 ]
+	9       (00000026) invoke-virtual       v2, Landroid/view/View;->getContext()Landroid/content/Context;
+	10      (0000002c) move-result-object   v0
+	11      (0000002e) const-string         v1, "input_method"
+	12      (00000032) invoke-virtual       v0, v1, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+	13      (00000038) move-result-object   v0
+	14      (0000003a) check-cast           v0, Landroid/view/inputmethod/InputMethodManager;
+	15      (0000003e) invoke-virtual       v0, v2, Landroid/view/inputmethod/InputMethodManager;->isActive(Landroid/view/View;)Z
+
+onDetachedFromWindow-BB@0x44 : 
+	16      (00000044) return-void          
+

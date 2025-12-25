@@ -1,0 +1,86 @@
+# Ln/h0;->g(Landroid/graphics/Canvas;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v7
+# - v8:android.graphics.Canvas
+#
+# - return:void
+
+g-BB@0x0 : [ g-BB@0x8 g-BB@0xc0 ]
+	0       (00000000) iget-object          v0, v7, Ln/h0;->f Landroid/graphics/drawable/Drawable;
+	1       (00000004) if-eqz               v0, +05eh
+
+g-BB@0x8 : [ g-BB@0x1a g-BB@0xc0 ]
+	2       (00000008) iget-object          v0, v7, Ln/h0;->e Ln/g0;
+	3       (0000000c) invoke-virtual       v0, Landroid/widget/ProgressBar;->getMax()I
+	4       (00000012) move-result          v1
+	5       (00000014) const/4              v2, 1
+	6       (00000016) if-le                v1, v2, +055h
+
+g-BB@0x1a : [ g-BB@0x36 g-BB@0x3c ]
+	7       (0000001a) iget-object          v3, v7, Ln/h0;->f Landroid/graphics/drawable/Drawable;
+	8       (0000001e) invoke-virtual       v3, Landroid/graphics/drawable/Drawable;->getIntrinsicWidth()I
+	9       (00000024) move-result          v3
+	10      (00000026) iget-object          v4, v7, Ln/h0;->f Landroid/graphics/drawable/Drawable;
+	11      (0000002a) invoke-virtual       v4, Landroid/graphics/drawable/Drawable;->getIntrinsicHeight()I
+	12      (00000030) move-result          v4
+	13      (00000032) if-ltz               v3, +005h
+
+g-BB@0x36 : [ g-BB@0x3e ]
+	14      (00000036) div-int/lit8         v3, v3, 2
+	15      (0000003a) goto                 +2h
+
+g-BB@0x3c : [ g-BB@0x3e ]
+	16      (0000003c) move                 v3, v2
+
+g-BB@0x3e : [ g-BB@0x42 g-BB@0x46 ]
+	17      (0000003e) if-ltz               v4, +004h
+
+g-BB@0x42 : [ g-BB@0x46 ]
+	18      (00000042) div-int/lit8         v2, v4, 2
+
+g-BB@0x46 : [ g-BB@0x9e ]
+	19      (00000046) iget-object          v4, v7, Ln/h0;->f Landroid/graphics/drawable/Drawable;
+	20      (0000004a) neg-int              v5, v3
+	21      (0000004c) neg-int              v6, v2
+	22      (0000004e) invoke-virtual       v4, v5, v6, v3, v2, Landroid/graphics/drawable/Drawable;->setBounds(I I I I)V
+	23      (00000054) invoke-virtual       v0, Landroid/view/View;->getWidth()I
+	24      (0000005a) move-result          v2
+	25      (0000005c) invoke-virtual       v0, Landroid/view/View;->getPaddingLeft()I
+	26      (00000062) move-result          v3
+	27      (00000064) sub-int/2addr        v2, v3
+	28      (00000066) invoke-virtual       v0, Landroid/view/View;->getPaddingRight()I
+	29      (0000006c) move-result          v3
+	30      (0000006e) sub-int/2addr        v2, v3
+	31      (00000070) int-to-float         v2, v2
+	32      (00000072) int-to-float         v3, v1
+	33      (00000074) div-float/2addr      v2, v3
+	34      (00000076) invoke-virtual       v8, Landroid/graphics/Canvas;->save()I
+	35      (0000007c) move-result          v3
+	36      (0000007e) invoke-virtual       v0, Landroid/view/View;->getPaddingLeft()I
+	37      (00000084) move-result          v4
+	38      (00000086) int-to-float         v4, v4
+	39      (00000088) invoke-virtual       v0, Landroid/view/View;->getHeight()I
+	40      (0000008e) move-result          v0
+	41      (00000090) div-int/lit8         v0, v0, 2
+	42      (00000094) int-to-float         v0, v0
+	43      (00000096) invoke-virtual       v8, v4, v0, Landroid/graphics/Canvas;->translate(F F)V
+	44      (0000009c) const/4              v0, 0
+
+g-BB@0x9e : [ g-BB@0xa2 g-BB@0xba ]
+	45      (0000009e) if-gt                v0, v1, +00eh
+
+g-BB@0xa2 : [ g-BB@0x9e ]
+	46      (000000a2) iget-object          v4, v7, Ln/h0;->f Landroid/graphics/drawable/Drawable;
+	47      (000000a6) invoke-virtual       v4, v8, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V
+	48      (000000ac) const/4              v4, 0
+	49      (000000ae) invoke-virtual       v8, v2, v4, Landroid/graphics/Canvas;->translate(F F)V
+	50      (000000b4) add-int/lit8         v0, v0, 1
+	51      (000000b8) goto                 -dh
+
+g-BB@0xba : [ g-BB@0xc0 ]
+	52      (000000ba) invoke-virtual       v8, v3, Landroid/graphics/Canvas;->restoreToCount(I)V
+
+g-BB@0xc0 : 
+	53      (000000c0) return-void          
+

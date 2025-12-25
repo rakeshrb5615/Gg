@@ -1,0 +1,70 @@
+# Ln/u;->d()V [access_flags=public static synchronized]
+#
+# Parameters:
+# local registers: v0...v2
+#
+# - return:void
+
+d-BB@0x0 : [ d-BB@0x6 ]
+	0       (00000000) const-class          v0, Ln/u;
+	1       (00000004) monitor-enter        v0
+
+d-BB@0x6 : [ d-BB@0xe d-BB@0x4e ]
+	2       (00000006) sget-object          v1, Ln/u;->c Ln/u;
+	3       (0000000a) if-nez               v1, +022h
+	6:3b
+	(Ljava/lang/Throwable; -> 4a d-BB@0x4a)
+
+d-BB@0xe : [ d-BB@0x3c ]
+	4       (0000000e) new-instance         v1, Ln/u;
+	5       (00000012) invoke-direct        v1, Ljava/lang/Object;-><init>()V
+	6       (00000018) sput-object          v1, Ln/u;->c Ln/u;
+	7       (0000001c) invoke-static        Ln/n2;->b()Ln/n2;
+	8       (00000022) move-result-object   v2
+	9       (00000024) iput-object          v2, v1, Ln/u;->a Ln/n2;
+	10      (00000028) sget-object          v1, Ln/u;->c Ln/u;
+	11      (0000002c) iget-object          v1, v1, Ln/u;->a Ln/n2;
+	12      (00000030) new-instance         v2, La5/z;
+	13      (00000034) invoke-direct        v2, La5/z;-><init>()V
+	14      (0000003a) monitor-enter        v1
+	6:3b
+	(Ljava/lang/Throwable; -> 4a d-BB@0x4a)
+
+d-BB@0x3c : [ d-BB@0x40 ]
+	15      (0000003c) iput-object          v2, v1, Ln/n2;->e La5/z;
+	3c:3f
+	(Ljava/lang/Throwable; -> 44 d-BB@0x44)
+
+d-BB@0x40 : [ d-BB@0x4e ]
+	16      (00000040) monitor-exit         v1
+	17      (00000042) goto                 +6h
+	40:41
+	(Ljava/lang/Throwable; -> 4a d-BB@0x4a)
+
+d-BB@0x44 : [ d-BB@0x46 ]
+	18      (00000044) move-exception       v2
+
+d-BB@0x46 : [ d-BB@0x48 ]
+	19      (00000046) monitor-exit         v1
+	46:47
+	(Ljava/lang/Throwable; -> 44 d-BB@0x44)
+
+d-BB@0x48 : 
+	20      (00000048) throw                v2
+	48:49
+	(Ljava/lang/Throwable; -> 4a d-BB@0x4a)
+
+d-BB@0x4a : [ d-BB@0x52 ]
+	21      (0000004a) move-exception       v1
+	22      (0000004c) goto                 +3h
+
+d-BB@0x4e : 
+	23      (0000004e) monitor-exit         v0
+	24      (00000050) return-void          
+
+d-BB@0x52 : 
+	25      (00000052) monitor-exit         v0
+	26      (00000054) throw                v1
+	52:53
+	(Ljava/lang/Throwable; -> 4a d-BB@0x4a)
+

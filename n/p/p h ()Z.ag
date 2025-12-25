@@ -1,0 +1,97 @@
+# Ln/p;->h()Z [access_flags=public]
+#
+# Parameters:
+# local registers: v0...v11
+#
+# - return:boolean
+
+h-BB@0x0 : [ h-BB@0xe h-BB@0x14 ]
+	0       (00000000) iget-object          v0, v11, Ln/p;->f Ljava/lang/Object;
+	1       (00000004) check-cast           v0, Lu8/f;
+	2       (00000008) const/4              v1, 0
+	3       (0000000a) if-eqz               v0, +005h
+
+h-BB@0xe : [ h-BB@0x16 ]
+	4       (0000000e) iget-boolean         v0, v0, Lu8/f;->b Z
+	5       (00000012) goto                 +2h
+
+h-BB@0x14 : [ h-BB@0x16 ]
+	6       (00000014) move                 v0, v1
+
+h-BB@0x16 : [ h-BB@0x1a h-BB@0xac ]
+	7       (00000016) if-nez               v0, +04bh
+
+h-BB@0x1a : [ h-BB@0x4e h-BB@0xa6 ]
+	8       (0000001a) iget-object          v0, v11, Ln/p;->d Ljava/lang/Object;
+	9       (0000001e) check-cast           v0, La2/d;
+	10      (00000022) invoke-virtual       v0, La2/d;->x()I
+	11      (00000028) move-result          v2
+	12      (0000002a) invoke-virtual       v0, v2, La2/d;->w(I)I
+	13      (00000030) move-result          v2
+	14      (00000032) iget-object          v3, v0, La2/d;->f Ljava/lang/Object;
+	15      (00000036) check-cast           v3, Ljava/lang/String;
+	16      (0000003a) invoke-virtual       v3, Ljava/lang/String;->length()I
+	17      (00000040) move-result          v4
+	18      (00000042) sub-int/2addr        v4, v2
+	19      (00000044) const/4              v5, 1
+	20      (00000046) const/4              v6, 0
+	21      (00000048) const/4              v7, 4
+	22      (0000004a) if-lt                v4, v7, +02eh
+
+h-BB@0x4e : [ h-BB@0x54 h-BB@0x56 ]
+	23      (0000004e) const/4              v8, -1
+	24      (00000050) if-ne                v2, v8, +003h
+
+h-BB@0x54 : [ h-BB@0xa6 ]
+	25      (00000054) goto                 +29h
+
+h-BB@0x56 : [ h-BB@0x58 ]
+	26      (00000056) move                 v8, v6
+
+h-BB@0x58 : [ h-BB@0x5c h-BB@0x80 ]
+	27      (00000058) if-ge                v8, v7, +014h
+
+h-BB@0x5c : [ h-BB@0x78 h-BB@0x7a ]
+	28      (0000005c) const-string         v9, "null"
+	29      (00000060) invoke-virtual       v9, v8, Ljava/lang/String;->charAt(I)C
+	30      (00000066) move-result          v9
+	31      (00000068) add-int              v10, v2, v8
+	32      (0000006c) invoke-virtual       v3, v10, Ljava/lang/String;->charAt(I)C
+	33      (00000072) move-result          v10
+	34      (00000074) if-eq                v9, v10, +003h
+
+h-BB@0x78 : [ h-BB@0xa6 ]
+	35      (00000078) goto                 +17h
+
+h-BB@0x7a : [ h-BB@0x58 ]
+	36      (0000007a) add-int/lit8         v8, v8, 1
+	37      (0000007e) goto                 -13h
+
+h-BB@0x80 : [ h-BB@0x84 h-BB@0x9e ]
+	38      (00000080) if-le                v4, v7, +00fh
+
+h-BB@0x84 : [ h-BB@0x9c h-BB@0x9e ]
+	39      (00000084) add-int/lit8         v4, v2, 4
+	40      (00000088) invoke-virtual       v3, v4, Ljava/lang/String;->charAt(I)C
+	41      (0000008e) move-result          v3
+	42      (00000090) invoke-static        v3, Lu8/g;->b(C)B
+	43      (00000096) move-result          v3
+	44      (00000098) if-nez               v3, +003h
+
+h-BB@0x9c : [ h-BB@0xa6 ]
+	45      (0000009c) goto                 +5h
+
+h-BB@0x9e : [ h-BB@0xa6 ]
+	46      (0000009e) const/4              v6, 1
+	47      (000000a0) add-int/2addr        v2, v7
+	48      (000000a2) iput                 v2, v0, La2/d;->b I
+
+h-BB@0xa6 : [ h-BB@0xaa h-BB@0xac ]
+	49      (000000a6) if-nez               v6, +003h
+
+h-BB@0xaa : 
+	50      (000000aa) return               v5
+
+h-BB@0xac : 
+	51      (000000ac) return               v1
+

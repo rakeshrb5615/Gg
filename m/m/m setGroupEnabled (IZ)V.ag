@@ -1,0 +1,35 @@
+# Lm/m;->setGroupEnabled(I Z)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:int
+# - v7:boolean
+#
+# - return:void
+
+setGroupEnabled-BB@0x0 : [ setGroupEnabled-BB@0xe ]
+	0       (00000000) iget-object          v0, v5, Lm/m;->f Ljava/util/ArrayList;
+	1       (00000004) invoke-virtual       v0, Ljava/util/ArrayList;->size()I
+	2       (0000000a) move-result          v1
+	3       (0000000c) const/4              v2, 0
+
+setGroupEnabled-BB@0xe : [ setGroupEnabled-BB@0x12 setGroupEnabled-BB@0x32 ]
+	4       (0000000e) if-ge                v2, v1, +012h
+
+setGroupEnabled-BB@0x12 : [ setGroupEnabled-BB@0x26 setGroupEnabled-BB@0x2c ]
+	5       (00000012) invoke-virtual       v0, v2, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	6       (00000018) move-result-object   v3
+	7       (0000001a) check-cast           v3, Lm/o;
+	8       (0000001e) iget                 v4, v3, Lm/o;->b I
+	9       (00000022) if-ne                v4, v6, +005h
+
+setGroupEnabled-BB@0x26 : [ setGroupEnabled-BB@0x2c ]
+	10      (00000026) invoke-virtual       v3, v7, Lm/o;->setEnabled(Z)Landroid/view/MenuItem;
+
+setGroupEnabled-BB@0x2c : [ setGroupEnabled-BB@0xe ]
+	11      (0000002c) add-int/lit8         v2, v2, 1
+	12      (00000030) goto                 -11h
+
+setGroupEnabled-BB@0x32 : 
+	13      (00000032) return-void          
+

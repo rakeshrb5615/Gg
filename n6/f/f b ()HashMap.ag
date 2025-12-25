@@ -1,0 +1,70 @@
+# Ln6/f;->b()Ljava/util/HashMap; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v9
+#
+# - return:java.util.HashMap
+
+b-BB@0x0 : [ b-BB@0xe ]
+	0       (00000000) new-instance         v0, Ljava/util/HashMap;
+	1       (00000004) invoke-direct        v0, Ljava/util/HashMap;-><init>()V
+	2       (0000000a) const/4              v1, 0
+	3       (0000000c) move                 v2, v1
+
+b-BB@0xe : [ b-BB@0x1e b-BB@0x9e ]
+	4       (0000000e) iget-object          v3, v9, Ln6/f;->g Lorg/json/JSONArray;
+	5       (00000012) invoke-virtual       v3, Lorg/json/JSONArray;->length()I
+	6       (00000018) move-result          v4
+	7       (0000001a) if-ge                v2, v4, +042h
+
+b-BB@0x1e : [ b-BB@0x4c ]
+	8       (0000001e) invoke-virtual       v3, v2, Lorg/json/JSONArray;->getJSONObject(I)Lorg/json/JSONObject;
+	9       (00000024) move-result-object   v3
+	10      (00000026) const-string         v4, "rolloutId"
+	11      (0000002a) invoke-virtual       v3, v4, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
+	12      (00000030) move-result-object   v4
+	13      (00000032) const-string         v5, "variantId"
+	14      (00000036) invoke-virtual       v3, v5, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
+	15      (0000003c) move-result-object   v5
+	16      (0000003e) const-string         v6, "affectedParameterKeys"
+	17      (00000042) invoke-virtual       v3, v6, Lorg/json/JSONObject;->getJSONArray(Ljava/lang/String;)Lorg/json/JSONArray;
+	18      (00000048) move-result-object   v3
+	19      (0000004a) move                 v6, v1
+
+b-BB@0x4c : [ b-BB@0x58 b-BB@0x98 ]
+	20      (0000004c) invoke-virtual       v3, Lorg/json/JSONArray;->length()I
+	21      (00000052) move-result          v7
+	22      (00000054) if-ge                v6, v7, +022h
+
+b-BB@0x58 : [ b-BB@0x6c b-BB@0x7c ]
+	23      (00000058) invoke-virtual       v3, v6, Lorg/json/JSONArray;->getString(I)Ljava/lang/String;
+	24      (0000005e) move-result-object   v7
+	25      (00000060) invoke-virtual       v0, v7, Ljava/util/HashMap;->containsKey(Ljava/lang/Object;)Z
+	26      (00000066) move-result          v8
+	27      (00000068) if-nez               v8, +00ah
+
+b-BB@0x6c : [ b-BB@0x7c ]
+	28      (0000006c) new-instance         v8, Ljava/util/HashMap;
+	29      (00000070) invoke-direct        v8, Ljava/util/HashMap;-><init>()V
+	30      (00000076) invoke-virtual       v0, v7, v8, Ljava/util/HashMap;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+
+b-BB@0x7c : [ b-BB@0x8c b-BB@0x92 ]
+	31      (0000007c) invoke-virtual       v0, v7, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	32      (00000082) move-result-object   v7
+	33      (00000084) check-cast           v7, Ljava/util/Map;
+	34      (00000088) if-eqz               v7, +005h
+
+b-BB@0x8c : [ b-BB@0x92 ]
+	35      (0000008c) invoke-interface     v7, v4, v5, Ljava/util/Map;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+
+b-BB@0x92 : [ b-BB@0x4c ]
+	36      (00000092) add-int/lit8         v6, v6, 1
+	37      (00000096) goto                 -25h
+
+b-BB@0x98 : [ b-BB@0xe ]
+	38      (00000098) add-int/lit8         v2, v2, 1
+	39      (0000009c) goto                 -47h
+
+b-BB@0x9e : 
+	40      (0000009e) return-object        v0
+

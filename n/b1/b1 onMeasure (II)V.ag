@@ -1,0 +1,61 @@
+# Ln/b1;->onMeasure(I I)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:int
+# - v5:int
+#
+# - return:void
+
+onMeasure-BB@0x0 : [ onMeasure-BB@0x8 onMeasure-BB@0xa ]
+	0       (00000000) iget-object          v0, v3, Ln/b1;->m Ljava/util/concurrent/Future;
+	1       (00000004) if-nez               v0, +003h
+
+onMeasure-BB@0x8 : [ onMeasure-BB@0x3e ]
+	2       (00000008) goto                 +1bh
+
+onMeasure-BB@0xa : [ onMeasure-BB@0xc ]
+	3       (0000000a) const/4              v1, 0
+
+onMeasure-BB@0xc : [ onMeasure-BB@0x1c onMeasure-BB@0x32 ]
+	4       (0000000c) iput-object          v1, v3, Ln/b1;->m Ljava/util/concurrent/Future;
+	5       (00000010) invoke-interface     v0, Ljava/util/concurrent/Future;->get()Ljava/lang/Object;
+	6       (00000016) move-result-object   v0
+	7       (00000018) if-nez               v0, +00dh
+	c:3d
+	(Ljava/lang/InterruptedException; -> 3e onMeasure-BB@0x3e)
+	(Ljava/util/concurrent/ExecutionException; -> 3e onMeasure-BB@0x3e)
+
+onMeasure-BB@0x1c : [ onMeasure-BB@0x28 onMeasure-BB@0x2a ]
+	8       (0000001c) sget                 v0, Landroid/os/Build$VERSION;->SDK_INT I
+	9       (00000020) const/16             v2, 29
+	10      (00000024) if-lt                v0, v2, +003h
+	c:3d
+	(Ljava/lang/InterruptedException; -> 3e onMeasure-BB@0x3e)
+	(Ljava/util/concurrent/ExecutionException; -> 3e onMeasure-BB@0x3e)
+
+onMeasure-BB@0x28 : 
+	11      (00000028) throw                v1
+	c:3d
+	(Ljava/lang/InterruptedException; -> 3e onMeasure-BB@0x3e)
+	(Ljava/util/concurrent/ExecutionException; -> 3e onMeasure-BB@0x3e)
+
+onMeasure-BB@0x2a : 
+	12      (0000002a) invoke-static        v3, Lc4/b;->E(Ln/b1;)Lo0/c;
+	13      (00000030) throw                v1
+	c:3d
+	(Ljava/lang/InterruptedException; -> 3e onMeasure-BB@0x3e)
+	(Ljava/util/concurrent/ExecutionException; -> 3e onMeasure-BB@0x3e)
+
+onMeasure-BB@0x32 : 
+	14      (00000032) new-instance         v0, Ljava/lang/ClassCastException;
+	15      (00000036) invoke-direct        v0, Ljava/lang/ClassCastException;-><init>()V
+	16      (0000003c) throw                v0
+	c:3d
+	(Ljava/lang/InterruptedException; -> 3e onMeasure-BB@0x3e)
+	(Ljava/util/concurrent/ExecutionException; -> 3e onMeasure-BB@0x3e)
+
+onMeasure-BB@0x3e : 
+	17      (0000003e) invoke-super         v3, v4, v5, Landroid/widget/TextView;->onMeasure(I I)V
+	18      (00000044) return-void          
+

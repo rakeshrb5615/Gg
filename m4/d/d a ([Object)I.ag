@@ -1,0 +1,26 @@
+# Lm4/d;->a([Ljava/lang/Object;)I [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:java.lang.Object[]
+#
+# - return:int
+
+a-BB@0x0 : [ a-BB@0xa ]
+	0       (00000000) invoke-virtual       v3, Ljava/util/AbstractCollection;->size()I
+	1       (00000006) move-result          v0
+	2       (00000008) const/4              v1, 0
+
+a-BB@0xa : [ a-BB@0xe a-BB@0x20 ]
+	3       (0000000a) if-ge                v1, v0, +00bh
+
+a-BB@0xe : [ a-BB@0xa ]
+	4       (0000000e) invoke-interface     v3, v1, Ljava/util/List;->get(I)Ljava/lang/Object;
+	5       (00000014) move-result-object   v2
+	6       (00000016) aput-object          v2, v4, v1
+	7       (0000001a) add-int/lit8         v1, v1, 1
+	8       (0000001e) goto                 -ah
+
+a-BB@0x20 : 
+	9       (00000020) return               v0
+

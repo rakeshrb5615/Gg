@@ -1,0 +1,120 @@
+# Ln/c0;->b(Landroid/util/AttributeSet; I)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v8
+# - v9:android.util.AttributeSet
+# - v10:int
+#
+# - return:void
+
+b-BB@0x0 : [ D:b-BB@0xa 0:b-BB@0x5e ]
+	0       (00000000) iget                 v0, v8, Ln/c0;->a I
+	1       (00000004) packed-switch        v0, +000008ch
+
+b-BB@0xa : [ b-BB@0x2c ]
+	2       (0000000a) iget-object          v0, v8, Ln/c0;->b Landroid/view/View;
+	3       (0000000e) check-cast           v0, Landroid/widget/EditText;
+	4       (00000012) invoke-virtual       v0, Landroid/view/View;->getContext()Landroid/content/Context;
+	5       (00000018) move-result-object   v0
+	6       (0000001a) sget-object          v1, Lg/a;->i [I
+	7       (0000001e) const/4              v2, 0
+	8       (00000020) invoke-virtual       v0, v9, v1, v10, v2, Landroid/content/Context;->obtainStyledAttributes(Landroid/util/AttributeSet; [I I I)Landroid/content/res/TypedArray;
+	9       (00000026) move-result-object   v9
+	10      (00000028) const/16             v10, 14
+
+b-BB@0x2c : [ b-BB@0x3a b-BB@0x48 ]
+	11      (0000002c) invoke-virtual       v9, v10, Landroid/content/res/TypedArray;->hasValue(I)Z
+	12      (00000032) move-result          v0
+	13      (00000034) const/4              v1, 1
+	14      (00000036) if-eqz               v0, +009h
+	2c:41
+	(Ljava/lang/Throwable; -> 44 b-BB@0x44)
+
+b-BB@0x3a : [ b-BB@0x48 ]
+	15      (0000003a) invoke-virtual       v9, v10, v1, Landroid/content/res/TypedArray;->getBoolean(I Z)Z
+	16      (00000040) move-result          v1
+	17      (00000042) goto                 +3h
+
+b-BB@0x44 : [ b-BB@0x56 ]
+	18      (00000044) move-exception       v10
+	19      (00000046) goto                 +8h
+
+b-BB@0x48 : 
+	20      (00000048) invoke-virtual       v9, Landroid/content/res/TypedArray;->recycle()V
+	21      (0000004e) invoke-virtual       v8, v1, Ln/c0;->d(Z)V
+	22      (00000054) return-void          
+
+b-BB@0x56 : 
+	23      (00000056) invoke-virtual       v9, Landroid/content/res/TypedArray;->recycle()V
+	24      (0000005c) throw                v10
+
+b-BB@0x5e : [ b-BB@0x8a b-BB@0xf8 ]
+	25      (0000005e) iget-object          v0, v8, Ln/c0;->b Landroid/view/View;
+	26      (00000062) check-cast           v0, Landroid/widget/AbsSeekBar;
+	27      (00000066) invoke-virtual       v0, Landroid/view/View;->getContext()Landroid/content/Context;
+	28      (0000006c) move-result-object   v1
+	29      (0000006e) sget-object          v2, Ln/c0;->d [I
+	30      (00000072) invoke-static        v1, v9, v2, v10, Lb8/g;->p(Landroid/content/Context; Landroid/util/AttributeSet; [I I)Lb8/g;
+	31      (00000078) move-result-object   v9
+	32      (0000007a) const/4              v10, 0
+	33      (0000007c) invoke-virtual       v9, v10, Lb8/g;->j(I)Landroid/graphics/drawable/Drawable;
+	34      (00000082) move-result-object   v1
+	35      (00000084) const/4              v2, 1
+	36      (00000086) if-eqz               v1, +039h
+
+b-BB@0x8a : [ b-BB@0x92 b-BB@0xf2 ]
+	37      (0000008a) instance-of          v3, v1, Landroid/graphics/drawable/AnimationDrawable;
+	38      (0000008e) if-eqz               v3, +032h
+
+b-BB@0x92 : [ b-BB@0xb8 ]
+	39      (00000092) check-cast           v1, Landroid/graphics/drawable/AnimationDrawable;
+	40      (00000096) invoke-virtual       v1, Landroid/graphics/drawable/AnimationDrawable;->getNumberOfFrames()I
+	41      (0000009c) move-result          v3
+	42      (0000009e) new-instance         v4, Landroid/graphics/drawable/AnimationDrawable;
+	43      (000000a2) invoke-direct        v4, Landroid/graphics/drawable/AnimationDrawable;-><init>()V
+	44      (000000a8) invoke-virtual       v1, Landroid/graphics/drawable/AnimationDrawable;->isOneShot()Z
+	45      (000000ae) move-result          v5
+	46      (000000b0) invoke-virtual       v4, v5, Landroid/graphics/drawable/AnimationDrawable;->setOneShot(Z)V
+	47      (000000b6) move                 v5, v10
+
+b-BB@0xb8 : [ b-BB@0xc0 b-BB@0xea ]
+	48      (000000b8) const/16             v6, 10000
+	49      (000000bc) if-ge                v5, v3, +017h
+
+b-BB@0xc0 : [ b-BB@0xb8 ]
+	50      (000000c0) invoke-virtual       v1, v5, Landroid/graphics/drawable/AnimationDrawable;->getFrame(I)Landroid/graphics/drawable/Drawable;
+	51      (000000c6) move-result-object   v7
+	52      (000000c8) invoke-virtual       v8, v7, v2, Ln/c0;->e(Landroid/graphics/drawable/Drawable; Z)Landroid/graphics/drawable/Drawable;
+	53      (000000ce) move-result-object   v7
+	54      (000000d0) invoke-virtual       v7, v6, Landroid/graphics/drawable/Drawable;->setLevel(I)Z
+	55      (000000d6) invoke-virtual       v1, v5, Landroid/graphics/drawable/AnimationDrawable;->getDuration(I)I
+	56      (000000dc) move-result          v6
+	57      (000000de) invoke-virtual       v4, v7, v6, Landroid/graphics/drawable/AnimationDrawable;->addFrame(Landroid/graphics/drawable/Drawable; I)V
+	58      (000000e4) add-int/lit8         v5, v5, 1
+	59      (000000e8) goto                 -18h
+
+b-BB@0xea : [ b-BB@0xf2 ]
+	60      (000000ea) invoke-virtual       v4, v6, Landroid/graphics/drawable/Drawable;->setLevel(I)Z
+	61      (000000f0) move-object          v1, v4
+
+b-BB@0xf2 : [ b-BB@0xf8 ]
+	62      (000000f2) invoke-virtual       v0, v1, Landroid/widget/ProgressBar;->setIndeterminateDrawable(Landroid/graphics/drawable/Drawable;)V
+
+b-BB@0xf8 : [ b-BB@0x104 b-BB@0x112 ]
+	63      (000000f8) invoke-virtual       v9, v2, Lb8/g;->j(I)Landroid/graphics/drawable/Drawable;
+	64      (000000fe) move-result-object   v1
+	65      (00000100) if-eqz               v1, +009h
+
+b-BB@0x104 : [ b-BB@0x112 ]
+	66      (00000104) invoke-virtual       v8, v1, v10, Ln/c0;->e(Landroid/graphics/drawable/Drawable; Z)Landroid/graphics/drawable/Drawable;
+	67      (0000010a) move-result-object   v10
+	68      (0000010c) invoke-virtual       v0, v10, Landroid/widget/ProgressBar;->setProgressDrawable(Landroid/graphics/drawable/Drawable;)V
+
+b-BB@0x112 : 
+	69      (00000112) invoke-virtual       v9, Lb8/g;->r()V
+	70      (00000118) return-void          
+
+b-BB@0x11a : 
+	71      (0000011a) nop                  
+	72      (0000011c) packed-switch-payload 0
+

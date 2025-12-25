@@ -1,0 +1,30 @@
+# Ln7/g;-><init>(Ll7/c;)V [access_flags=public constructor]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:l7.c
+#
+# - return:void
+
+<init>-BB@0x0 : [ <init>-BB@0xa <init>-BB@0x2c ]
+	0       (00000000) invoke-direct        v1, v2, Ln7/a;-><init>(Ll7/c;)V
+	1       (00000006) if-eqz               v2, +013h
+
+<init>-BB@0xa : [ <init>-BB@0x1a <init>-BB@0x1c ]
+	2       (0000000a) invoke-interface     v2, Ll7/c;->getContext()Ll7/h;
+	3       (00000010) move-result-object   v2
+	4       (00000012) sget-object          v0, Ll7/i;->a Ll7/i;
+	5       (00000016) if-ne                v2, v0, +003h
+
+<init>-BB@0x1a : [ <init>-BB@0x2c ]
+	6       (0000001a) goto                 +9h
+
+<init>-BB@0x1c : 
+	7       (0000001c) new-instance         v2, Ljava/lang/IllegalArgumentException;
+	8       (00000020) const-string         v0, "Coroutines with restricted suspension must have EmptyCoroutineContext"
+	9       (00000024) invoke-direct        v2, v0, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	10      (0000002a) throw                v2
+
+<init>-BB@0x2c : 
+	11      (0000002c) return-void          
+

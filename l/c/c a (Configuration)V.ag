@@ -1,0 +1,34 @@
+# Ll/c;->a(Landroid/content/res/Configuration;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:android.content.res.Configuration
+#
+# - return:void
+
+a-BB@0x0 : [ a-BB@0x8 a-BB@0x30 ]
+	0       (00000000) iget-object          v0, v1, Ll/c;->e Landroid/content/res/Resources;
+	1       (00000004) if-nez               v0, +016h
+
+a-BB@0x8 : [ a-BB@0x10 a-BB@0x20 ]
+	2       (00000008) iget-object          v0, v1, Ll/c;->d Landroid/content/res/Configuration;
+	3       (0000000c) if-nez               v0, +00ah
+
+a-BB@0x10 : 
+	4       (00000010) new-instance         v0, Landroid/content/res/Configuration;
+	5       (00000014) invoke-direct        v0, v2, Landroid/content/res/Configuration;-><init>(Landroid/content/res/Configuration;)V
+	6       (0000001a) iput-object          v0, v1, Ll/c;->d Landroid/content/res/Configuration;
+	7       (0000001e) return-void          
+
+a-BB@0x20 : 
+	8       (00000020) new-instance         v2, Ljava/lang/IllegalStateException;
+	9       (00000024) const-string         v0, "Override configuration has already been set"
+	10      (00000028) invoke-direct        v2, v0, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	11      (0000002e) throw                v2
+
+a-BB@0x30 : 
+	12      (00000030) new-instance         v2, Ljava/lang/IllegalStateException;
+	13      (00000034) const-string         v0, "getResources() or getAssets() has already been called"
+	14      (00000038) invoke-direct        v2, v0, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	15      (0000003e) throw                v2
+

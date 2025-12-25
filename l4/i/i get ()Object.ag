@@ -1,0 +1,52 @@
+# Ll4/i;->get()Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v2
+#
+# - return:java.lang.Object
+
+get-BB@0x0 : [ get-BB@0xc get-BB@0x3a ]
+	0       (00000000) iget-object          v0, v2, Ll4/i;->a Ll4/f;
+	1       (00000004) sget-object          v1, Ll4/i;->c Ll4/h;
+	2       (00000008) if-eq                v0, v1, +019h
+
+get-BB@0xc : [ get-BB@0xe ]
+	3       (0000000c) monitor-enter        v2
+
+get-BB@0xe : [ get-BB@0x16 get-BB@0x32 ]
+	4       (0000000e) iget-object          v0, v2, Ll4/i;->a Ll4/f;
+	5       (00000012) if-eq                v0, v1, +010h
+	e:37
+	(Ljava/lang/Throwable; -> 2e get-BB@0x2e)
+
+get-BB@0x16 : 
+	6       (00000016) iget-object          v0, v2, Ll4/i;->a Ll4/f;
+	7       (0000001a) invoke-interface     v0, Ll4/f;->get()Ljava/lang/Object;
+	8       (00000020) move-result-object   v0
+	9       (00000022) iput-object          v0, v2, Ll4/i;->b Ljava/lang/Object;
+	10      (00000026) iput-object          v1, v2, Ll4/i;->a Ll4/f;
+	11      (0000002a) monitor-exit         v2
+	12      (0000002c) return-object        v0
+	e:37
+	(Ljava/lang/Throwable; -> 2e get-BB@0x2e)
+
+get-BB@0x2e : [ get-BB@0x36 ]
+	13      (0000002e) move-exception       v0
+	14      (00000030) goto                 +3h
+	e:37
+	(Ljava/lang/Throwable; -> 2e get-BB@0x2e)
+
+get-BB@0x32 : [ get-BB@0x3a ]
+	15      (00000032) monitor-exit         v2
+	16      (00000034) goto                 +3h
+	e:37
+	(Ljava/lang/Throwable; -> 2e get-BB@0x2e)
+
+get-BB@0x36 : 
+	17      (00000036) monitor-exit         v2
+	18      (00000038) throw                v0
+
+get-BB@0x3a : 
+	19      (0000003a) iget-object          v0, v2, Ll4/i;->b Ljava/lang/Object;
+	20      (0000003e) return-object        v0
+

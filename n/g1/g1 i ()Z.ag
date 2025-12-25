@@ -1,0 +1,40 @@
+# Ln/g1;->i()Z [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v5
+#
+# - return:boolean
+
+i-BB@0x0 : [ i-BB@0xe i-BB@0x12 ]
+	0       (00000000) iget-object          v0, v5, Ln/g1;->f [I
+	1       (00000004) array-length         v1, v0
+	2       (00000006) const/4              v2, 0
+	3       (00000008) const/4              v3, 1
+	4       (0000000a) if-lez               v1, +004h
+
+i-BB@0xe : [ i-BB@0x14 ]
+	5       (0000000e) move                 v4, v3
+	6       (00000010) goto                 +2h
+
+i-BB@0x12 : [ i-BB@0x14 ]
+	7       (00000012) move                 v4, v2
+
+i-BB@0x14 : [ i-BB@0x1c i-BB@0x3e ]
+	8       (00000014) iput-boolean         v4, v5, Ln/g1;->g Z
+	9       (00000018) if-eqz               v4, +013h
+
+i-BB@0x1c : [ i-BB@0x3e ]
+	10      (0000001c) iput                 v3, v5, Ln/g1;->a I
+	11      (00000020) aget                 v2, v0, v2
+	12      (00000024) int-to-float         v2, v2
+	13      (00000026) iput                 v2, v5, Ln/g1;->d F
+	14      (0000002a) sub-int/2addr        v1, v3
+	15      (0000002c) aget                 v0, v0, v1
+	16      (00000030) int-to-float         v0, v0
+	17      (00000032) iput                 v0, v5, Ln/g1;->e F
+	18      (00000036) const/high16         v0, -1082130432
+	19      (0000003a) iput                 v0, v5, Ln/g1;->c F
+
+i-BB@0x3e : 
+	20      (0000003e) return               v4
+

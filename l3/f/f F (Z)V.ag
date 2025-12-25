@@ -1,0 +1,39 @@
+# Ll3/f;->F(Z)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:boolean
+#
+# - return:void
+
+F-BB@0x0 : [ F-BB@0x8 F-BB@0x42 ]
+	0       (00000000) iget-boolean         v0, v1, Ll3/f;->f0 Z
+	1       (00000004) if-eq                v0, v2, +01fh
+
+F-BB@0x8 : [ F-BB@0x18 F-BB@0x26 ]
+	2       (00000008) iput-boolean         v2, v1, Ll3/f;->f0 Z
+	3       (0000000c) invoke-virtual       v1, Ll3/f;->y()F
+	4       (00000012) move-result          v0
+	5       (00000014) if-nez               v2, +009h
+
+F-BB@0x18 : [ F-BB@0x20 F-BB@0x26 ]
+	6       (00000018) iget-boolean         v2, v1, Ll3/f;->G0 Z
+	7       (0000001c) if-eqz               v2, +005h
+
+F-BB@0x20 : [ F-BB@0x26 ]
+	8       (00000020) const/4              v2, 0
+	9       (00000022) iput-boolean         v2, v1, Ll3/f;->G0 Z
+
+F-BB@0x26 : [ F-BB@0x3c F-BB@0x42 ]
+	10      (00000026) invoke-virtual       v1, Ll3/f;->y()F
+	11      (0000002c) move-result          v2
+	12      (0000002e) invoke-virtual       v1, Lv3/k;->invalidateSelf()V
+	13      (00000034) cmpl-float           v2, v0, v2
+	14      (00000038) if-eqz               v2, +005h
+
+F-BB@0x3c : [ F-BB@0x42 ]
+	15      (0000003c) invoke-virtual       v1, Ll3/f;->D()V
+
+F-BB@0x42 : 
+	16      (00000042) return-void          
+

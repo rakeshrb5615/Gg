@@ -1,0 +1,27 @@
+# Ln/t1;->dispatchDraw(Landroid/graphics/Canvas;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:android.graphics.Canvas
+#
+# - return:void
+
+dispatchDraw-BB@0x0 : [ dispatchDraw-BB@0x10 dispatchDraw-BB@0x28 ]
+	0       (00000000) iget-object          v0, v2, Ln/t1;->a Landroid/graphics/Rect;
+	1       (00000004) invoke-virtual       v0, Landroid/graphics/Rect;->isEmpty()Z
+	2       (0000000a) move-result          v1
+	3       (0000000c) if-nez               v1, +00eh
+
+dispatchDraw-BB@0x10 : [ dispatchDraw-BB@0x1c dispatchDraw-BB@0x28 ]
+	4       (00000010) invoke-virtual       v2, Landroid/widget/AbsListView;->getSelector()Landroid/graphics/drawable/Drawable;
+	5       (00000016) move-result-object   v1
+	6       (00000018) if-eqz               v1, +008h
+
+dispatchDraw-BB@0x1c : [ dispatchDraw-BB@0x28 ]
+	7       (0000001c) invoke-virtual       v1, v0, Landroid/graphics/drawable/Drawable;->setBounds(Landroid/graphics/Rect;)V
+	8       (00000022) invoke-virtual       v1, v3, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V
+
+dispatchDraw-BB@0x28 : 
+	9       (00000028) invoke-super         v2, v3, Landroid/widget/ListView;->dispatchDraw(Landroid/graphics/Canvas;)V
+	10      (0000002e) return-void          
+

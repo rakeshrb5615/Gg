@@ -1,0 +1,48 @@
+# Lm/b0;->removeItem(I)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:int
+#
+# - return:void
+
+removeItem-BB@0x0 : [ removeItem-BB@0xc removeItem-BB@0xe ]
+	0       (00000000) iget-object          v0, v3, Lh/z;->b Ljava/lang/Object;
+	1       (00000004) check-cast           v0, Lr/j;
+	2       (00000008) if-nez               v0, +003h
+
+removeItem-BB@0xc : [ removeItem-BB@0x4e ]
+	3       (0000000c) goto                 +21h
+
+removeItem-BB@0xe : [ removeItem-BB@0x10 ]
+	4       (0000000e) const/4              v0, 0
+
+removeItem-BB@0x10 : [ removeItem-BB@0x20 removeItem-BB@0x4e ]
+	5       (00000010) iget-object          v1, v3, Lh/z;->b Ljava/lang/Object;
+	6       (00000014) check-cast           v1, Lr/j;
+	7       (00000018) iget                 v2, v1, Lr/j;->c I
+	8       (0000001c) if-ge                v0, v2, +019h
+
+removeItem-BB@0x20 : [ removeItem-BB@0x38 removeItem-BB@0x48 ]
+	9       (00000020) invoke-virtual       v1, v0, Lr/j;->g(I)Ljava/lang/Object;
+	10      (00000026) move-result-object   v1
+	11      (00000028) check-cast           v1, Lj0/a;
+	12      (0000002c) invoke-interface     v1, Landroid/view/MenuItem;->getItemId()I
+	13      (00000032) move-result          v1
+	14      (00000034) if-ne                v1, v4, +00ah
+
+removeItem-BB@0x38 : [ removeItem-BB@0x4e ]
+	15      (00000038) iget-object          v1, v3, Lh/z;->b Ljava/lang/Object;
+	16      (0000003c) check-cast           v1, Lr/j;
+	17      (00000040) invoke-virtual       v1, v0, Lr/j;->h(I)Ljava/lang/Object;
+	18      (00000046) goto                 +4h
+
+removeItem-BB@0x48 : [ removeItem-BB@0x10 ]
+	19      (00000048) add-int/lit8         v0, v0, 1
+	20      (0000004c) goto                 -1eh
+
+removeItem-BB@0x4e : 
+	21      (0000004e) iget-object          v0, v3, Lm/b0;->c Lm/m;
+	22      (00000052) invoke-virtual       v0, v4, Lm/m;->removeItem(I)V
+	23      (00000058) return-void          
+

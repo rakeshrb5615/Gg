@@ -1,0 +1,31 @@
+# Lm5/c;->d(Ljava/io/File;)Z [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:java.io.File
+#
+# - return:boolean
+
+d-BB@0x0 : [ d-BB@0xc d-BB@0x24 ]
+	0       (00000000) invoke-virtual       v4, Ljava/io/File;->listFiles()[Ljava/io/File;
+	1       (00000006) move-result-object   v0
+	2       (00000008) if-eqz               v0, +00eh
+
+d-BB@0xc : [ d-BB@0x10 ]
+	3       (0000000c) array-length         v1, v0
+	4       (0000000e) const/4              v2, 0
+
+d-BB@0x10 : [ d-BB@0x14 d-BB@0x24 ]
+	5       (00000010) if-ge                v2, v1, +00ah
+
+d-BB@0x14 : [ d-BB@0x10 ]
+	6       (00000014) aget-object          v3, v0, v2
+	7       (00000018) invoke-static        v3, Lm5/c;->d(Ljava/io/File;)Z
+	8       (0000001e) add-int/lit8         v2, v2, 1
+	9       (00000022) goto                 -9h
+
+d-BB@0x24 : 
+	10      (00000024) invoke-virtual       v4, Ljava/io/File;->delete()Z
+	11      (0000002a) move-result          v4
+	12      (0000002c) return               v4
+

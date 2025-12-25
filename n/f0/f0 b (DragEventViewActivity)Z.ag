@@ -1,0 +1,37 @@
+# Ln/f0;->b(Landroid/view/DragEvent; Landroid/view/View; Landroid/app/Activity;)Z [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:android.view.DragEvent
+# - v3:android.view.View
+# - v4:android.app.Activity
+#
+# - return:boolean
+
+b-BB@0x0 : [ b-BB@0x1c b-BB@0x28 ]
+	0       (00000000) invoke-virtual       v4, v2, Landroid/app/Activity;->requestDragAndDropPermissions(Landroid/view/DragEvent;)Landroid/view/DragAndDropPermissions;
+	1       (00000006) invoke-virtual       v2, Landroid/view/DragEvent;->getClipData()Landroid/content/ClipData;
+	2       (0000000c) move-result-object   v2
+	3       (0000000e) sget                 v4, Landroid/os/Build$VERSION;->SDK_INT I
+	4       (00000012) const/16             v0, 31
+	5       (00000016) const/4              v1, 3
+	6       (00000018) if-lt                v4, v0, +008h
+
+b-BB@0x1c : [ b-BB@0x3a ]
+	7       (0000001c) new-instance         v4, Lq0/c;
+	8       (00000020) invoke-direct        v4, v2, v1, Lq0/c;-><init>(Landroid/content/ClipData; I)V
+	9       (00000026) goto                 +ah
+
+b-BB@0x28 : [ b-BB@0x3a ]
+	10      (00000028) new-instance         v4, Lq0/e;
+	11      (0000002c) invoke-direct        v4, Lq0/e;-><init>()V
+	12      (00000032) iput-object          v2, v4, Lq0/e;->b Landroid/content/ClipData;
+	13      (00000036) iput                 v1, v4, Lq0/e;->c I
+
+b-BB@0x3a : 
+	14      (0000003a) invoke-interface     v4, Lq0/d;->build()Lq0/g;
+	15      (00000040) move-result-object   v2
+	16      (00000042) invoke-static        v3, v2, Lq0/q0;->j(Landroid/view/View; Lq0/g;)Lq0/g;
+	17      (00000048) const/4              v2, 1
+	18      (0000004a) return               v2
+

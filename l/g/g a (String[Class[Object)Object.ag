@@ -1,0 +1,41 @@
+# Ll/g;->a(Ljava/lang/String; [Ljava/lang/Class; [Ljava/lang/Object;)Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:java.lang.String
+# - v4:java.lang.Class[]
+# - v5:java.lang.Object[]
+#
+# - return:java.lang.Object
+
+a-BB@0x0 : 
+	0       (00000000) iget-object          v0, v2, Ll/g;->E Ll/h;
+	1       (00000004) iget-object          v0, v0, Ll/h;->c Landroid/content/Context;
+	2       (00000008) invoke-virtual       v0, Landroid/content/Context;->getClassLoader()Ljava/lang/ClassLoader;
+	3       (0000000e) move-result-object   v0
+	4       (00000010) const/4              v1, 0
+	5       (00000012) invoke-static        v3, v1, v0, Ljava/lang/Class;->forName(Ljava/lang/String; Z Ljava/lang/ClassLoader;)Ljava/lang/Class;
+	6       (00000018) move-result-object   v0
+	7       (0000001a) invoke-virtual       v0, v4, Ljava/lang/Class;->getConstructor([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
+	8       (00000020) move-result-object   v4
+	9       (00000022) const/4              v0, 1
+	10      (00000024) invoke-virtual       v4, v0, Ljava/lang/reflect/AccessibleObject;->setAccessible(Z)V
+	11      (0000002a) invoke-virtual       v4, v5, Ljava/lang/reflect/Constructor;->newInstance([Ljava/lang/Object;)Ljava/lang/Object;
+	12      (00000030) move-result-object   v3
+	13      (00000032) return-object        v3
+	0:31
+	(Ljava/lang/Exception; -> 34 a-BB@0x34)
+
+a-BB@0x34 : 
+	14      (00000034) move-exception       v4
+	15      (00000036) new-instance         v5, Ljava/lang/StringBuilder;
+	16      (0000003a) const-string         v0, "Cannot instantiate class: "
+	17      (0000003e) invoke-direct        v5, v0, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	18      (00000044) invoke-virtual       v5, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	19      (0000004a) invoke-virtual       v5, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	20      (00000050) move-result-object   v3
+	21      (00000052) const-string         v5, "SupportMenuInflater"
+	22      (00000056) invoke-static        v5, v3, v4, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+	23      (0000005c) const/4              v3, 0
+	24      (0000005e) return-object        v3
+

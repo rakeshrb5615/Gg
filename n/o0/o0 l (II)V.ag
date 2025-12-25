@@ -1,0 +1,67 @@
+# Ln/o0;->l(I I)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:int
+# - v7:int
+#
+# - return:void
+
+l-BB@0x0 : [ l-BB@0x54 l-BB@0x78 ]
+	0       (00000000) iget-object          v0, v5, Ln/g2;->F Ln/b0;
+	1       (00000004) invoke-virtual       v0, Landroid/widget/PopupWindow;->isShowing()Z
+	2       (0000000a) move-result          v1
+	3       (0000000c) invoke-virtual       v5, Ln/o0;->s()V
+	4       (00000012) const/4              v2, 2
+	5       (00000014) invoke-virtual       v0, v2, Landroid/widget/PopupWindow;->setInputMethodMode(I)V
+	6       (0000001a) invoke-virtual       v5, Ln/g2;->c()V
+	7       (00000020) iget-object          v2, v5, Ln/g2;->c Ln/t1;
+	8       (00000024) const/4              v3, 1
+	9       (00000026) invoke-virtual       v2, v3, Landroid/widget/AbsListView;->setChoiceMode(I)V
+	10      (0000002c) invoke-virtual       v2, v6, Landroid/view/View;->setTextDirection(I)V
+	11      (00000032) invoke-virtual       v2, v7, Landroid/view/View;->setTextAlignment(I)V
+	12      (00000038) iget-object          v6, v5, Ln/o0;->M Ln/r0;
+	13      (0000003c) invoke-virtual       v6, Landroid/widget/AdapterView;->getSelectedItemPosition()I
+	14      (00000042) move-result          v7
+	15      (00000044) iget-object          v2, v5, Ln/g2;->c Ln/t1;
+	16      (00000048) invoke-virtual       v0, Landroid/widget/PopupWindow;->isShowing()Z
+	17      (0000004e) move-result          v4
+	18      (00000050) if-eqz               v4, +014h
+
+l-BB@0x54 : [ l-BB@0x58 l-BB@0x78 ]
+	19      (00000054) if-eqz               v2, +012h
+
+l-BB@0x58 : [ l-BB@0x72 l-BB@0x78 ]
+	20      (00000058) const/4              v4, 0
+	21      (0000005a) invoke-virtual       v2, v4, Ln/t1;->setListSelectionHidden(Z)V
+	22      (00000060) invoke-virtual       v2, v7, Landroid/widget/AdapterView;->setSelection(I)V
+	23      (00000066) invoke-virtual       v2, Landroid/widget/AbsListView;->getChoiceMode()I
+	24      (0000006c) move-result          v4
+	25      (0000006e) if-eqz               v4, +005h
+
+l-BB@0x72 : [ l-BB@0x78 ]
+	26      (00000072) invoke-virtual       v2, v7, v3, Landroid/widget/AbsListView;->setItemChecked(I Z)V
+
+l-BB@0x78 : [ l-BB@0x7c l-BB@0x7e ]
+	27      (00000078) if-eqz               v1, +003h
+
+l-BB@0x7c : [ l-BB@0xac ]
+	28      (0000007c) goto                 +18h
+
+l-BB@0x7e : [ l-BB@0x8a l-BB@0xac ]
+	29      (0000007e) invoke-virtual       v6, Landroid/view/View;->getViewTreeObserver()Landroid/view/ViewTreeObserver;
+	30      (00000084) move-result-object   v6
+	31      (00000086) if-eqz               v6, +013h
+
+l-BB@0x8a : [ l-BB@0xac ]
+	32      (0000008a) new-instance         v7, Lm/d;
+	33      (0000008e) const/4              v1, 3
+	34      (00000090) invoke-direct        v7, v5, v1, Lm/d;-><init>(Ljava/lang/Object; I)V
+	35      (00000096) invoke-virtual       v6, v7, Landroid/view/ViewTreeObserver;->addOnGlobalLayoutListener(Landroid/view/ViewTreeObserver$OnGlobalLayoutListener;)V
+	36      (0000009c) new-instance         v6, Ln/n0;
+	37      (000000a0) invoke-direct        v6, v5, v7, Ln/n0;-><init>(Ln/o0; Lm/d;)V
+	38      (000000a6) invoke-virtual       v0, v6, Landroid/widget/PopupWindow;->setOnDismissListener(Landroid/widget/PopupWindow$OnDismissListener;)V
+
+l-BB@0xac : 
+	39      (000000ac) return-void          
+

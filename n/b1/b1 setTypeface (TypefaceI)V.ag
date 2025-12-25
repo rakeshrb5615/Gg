@@ -1,0 +1,65 @@
+# Ln/b1;->setTypeface(Landroid/graphics/Typeface; I)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:android.graphics.Typeface
+# - v4:int
+#
+# - return:void
+
+setTypeface-BB@0x0 : [ setTypeface-BB@0x8 setTypeface-BB@0xa ]
+	0       (00000000) iget-boolean         v0, v2, Ln/b1;->e Z
+	1       (00000004) if-eqz               v0, +003h
+
+setTypeface-BB@0x8 : 
+	2       (00000008) return-void          
+
+setTypeface-BB@0xa : [ setTypeface-BB@0xe setTypeface-BB@0x3c ]
+	3       (0000000a) if-eqz               v3, +019h
+
+setTypeface-BB@0xe : [ setTypeface-BB@0x12 setTypeface-BB@0x3c ]
+	4       (0000000e) if-lez               v4, +017h
+
+setTypeface-BB@0x12 : [ setTypeface-BB@0x22 setTypeface-BB@0x2c ]
+	5       (00000012) invoke-virtual       v2, Landroid/view/View;->getContext()Landroid/content/Context;
+	6       (00000018) move-result-object   v0
+	7       (0000001a) sget-object          v1, Lh0/e;->a Lc4/b;
+	8       (0000001e) if-eqz               v0, +007h
+
+setTypeface-BB@0x22 : [ setTypeface-BB@0x3e ]
+	9       (00000022) invoke-static        v3, v4, Landroid/graphics/Typeface;->create(Landroid/graphics/Typeface; I)Landroid/graphics/Typeface;
+	10      (00000028) move-result-object   v0
+	11      (0000002a) goto                 +ah
+
+setTypeface-BB@0x2c : 
+	12      (0000002c) new-instance         v3, Ljava/lang/IllegalArgumentException;
+	13      (00000030) const-string         v4, "Context cannot be null"
+	14      (00000034) invoke-direct        v3, v4, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	15      (0000003a) throw                v3
+
+setTypeface-BB@0x3c : [ setTypeface-BB@0x3e ]
+	16      (0000003c) const/4              v0, 0
+
+setTypeface-BB@0x3e : [ setTypeface-BB@0x48 setTypeface-BB@0x4a ]
+	17      (0000003e) const/4              v1, 1
+	18      (00000040) iput-boolean         v1, v2, Ln/b1;->e Z
+	19      (00000044) if-eqz               v0, +003h
+
+setTypeface-BB@0x48 : [ setTypeface-BB@0x4a ]
+	20      (00000048) move-object          v3, v0
+
+setTypeface-BB@0x4a : [ setTypeface-BB@0x4c ]
+	21      (0000004a) const/4              v0, 0
+
+setTypeface-BB@0x4c : 
+	22      (0000004c) invoke-super         v2, v3, v4, Landroid/widget/TextView;->setTypeface(Landroid/graphics/Typeface; I)V
+	23      (00000052) iput-boolean         v0, v2, Ln/b1;->e Z
+	24      (00000056) return-void          
+	4c:51
+	(Ljava/lang/Throwable; -> 58 setTypeface-BB@0x58)
+
+setTypeface-BB@0x58 : 
+	25      (00000058) move-exception       v3
+	26      (0000005a) iput-boolean         v0, v2, Ln/b1;->e Z
+	27      (0000005e) throw                v3
+

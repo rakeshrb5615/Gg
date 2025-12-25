@@ -1,0 +1,62 @@
+# Ln/f0;->a(Landroid/view/DragEvent; Landroid/widget/TextView; Landroid/app/Activity;)Z [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:android.view.DragEvent
+# - v3:android.widget.TextView
+# - v4:android.app.Activity
+#
+# - return:boolean
+
+a-BB@0x0 : [ a-BB@0x24 ]
+	0       (00000000) invoke-virtual       v4, v2, Landroid/app/Activity;->requestDragAndDropPermissions(Landroid/view/DragEvent;)Landroid/view/DragAndDropPermissions;
+	1       (00000006) invoke-virtual       v2, Landroid/view/DragEvent;->getX()F
+	2       (0000000c) move-result          v4
+	3       (0000000e) invoke-virtual       v2, Landroid/view/DragEvent;->getY()F
+	4       (00000014) move-result          v0
+	5       (00000016) invoke-virtual       v3, v4, v0, Landroid/widget/TextView;->getOffsetForPosition(F F)I
+	6       (0000001c) move-result          v4
+	7       (0000001e) invoke-virtual       v3, Landroid/widget/TextView;->beginBatchEdit()V
+
+a-BB@0x24 : [ a-BB@0x4c a-BB@0x58 ]
+	8       (00000024) invoke-virtual       v3, Landroid/widget/TextView;->getText()Ljava/lang/CharSequence;
+	9       (0000002a) move-result-object   v0
+	10      (0000002c) check-cast           v0, Landroid/text/Spannable;
+	11      (00000030) invoke-static        v0, v4, Landroid/text/Selection;->setSelection(Landroid/text/Spannable; I)V
+	12      (00000036) invoke-virtual       v2, Landroid/view/DragEvent;->getClipData()Landroid/content/ClipData;
+	13      (0000003c) move-result-object   v2
+	14      (0000003e) sget                 v4, Landroid/os/Build$VERSION;->SDK_INT I
+	15      (00000042) const/16             v0, 31
+	16      (00000046) const/4              v1, 3
+	17      (00000048) if-lt                v4, v0, +008h
+	24:77
+	(Ljava/lang/Throwable; -> 82 a-BB@0x82)
+
+a-BB@0x4c : [ a-BB@0x6a ]
+	18      (0000004c) new-instance         v4, Lq0/c;
+	19      (00000050) invoke-direct        v4, v2, v1, Lq0/c;-><init>(Landroid/content/ClipData; I)V
+	20      (00000056) goto                 +ah
+	24:77
+	(Ljava/lang/Throwable; -> 82 a-BB@0x82)
+
+a-BB@0x58 : [ a-BB@0x6a ]
+	21      (00000058) new-instance         v4, Lq0/e;
+	22      (0000005c) invoke-direct        v4, Lq0/e;-><init>()V
+	23      (00000062) iput-object          v2, v4, Lq0/e;->b Landroid/content/ClipData;
+	24      (00000066) iput                 v1, v4, Lq0/e;->c I
+	24:77
+	(Ljava/lang/Throwable; -> 82 a-BB@0x82)
+
+a-BB@0x6a : 
+	25      (0000006a) invoke-interface     v4, Lq0/d;->build()Lq0/g;
+	26      (00000070) move-result-object   v2
+	27      (00000072) invoke-static        v3, v2, Lq0/q0;->j(Landroid/view/View; Lq0/g;)Lq0/g;
+	28      (00000078) invoke-virtual       v3, Landroid/widget/TextView;->endBatchEdit()V
+	29      (0000007e) const/4              v2, 1
+	30      (00000080) return               v2
+
+a-BB@0x82 : 
+	31      (00000082) move-exception       v2
+	32      (00000084) invoke-virtual       v3, Landroid/widget/TextView;->endBatchEdit()V
+	33      (0000008a) throw                v2
+

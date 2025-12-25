@@ -1,0 +1,53 @@
+# Ln6/i;->d()Ljava/util/HashMap; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v4
+#
+# - return:java.util.HashMap
+
+d-BB@0x0 : [ d-BB@0x1e d-BB@0x20 ]
+	0       (00000000) new-instance         v0, Ljava/util/HashMap;
+	1       (00000004) invoke-direct        v0, Ljava/util/HashMap;-><init>()V
+	2       (0000000a) iget-object          v1, v4, Ln6/i;->b Lc6/b;
+	3       (0000000e) invoke-interface     v1, Lc6/b;->get()Ljava/lang/Object;
+	4       (00000014) move-result-object   v1
+	5       (00000016) check-cast           v1, Lu4/b;
+	6       (0000001a) if-nez               v1, +003h
+
+d-BB@0x1e : [ d-BB@0x80 ]
+	7       (0000001e) goto                 +31h
+
+d-BB@0x20 : [ d-BB@0x44 ]
+	8       (00000020) check-cast           v1, Lu4/c;
+	9       (00000024) iget-object          v1, v1, Lu4/c;->a Lcom/google/android/gms/measurement/api/AppMeasurementSdk;
+	10      (00000028) const/4              v2, 0
+	11      (0000002a) const/4              v3, 0
+	12      (0000002c) invoke-virtual       v1, v2, v2, v3, Lcom/google/android/gms/measurement/api/AppMeasurementSdk;->getUserProperties(Ljava/lang/String; Ljava/lang/String; Z)Ljava/util/Map;
+	13      (00000032) move-result-object   v1
+	14      (00000034) invoke-interface     v1, Ljava/util/Map;->entrySet()Ljava/util/Set;
+	15      (0000003a) move-result-object   v1
+	16      (0000003c) invoke-interface     v1, Ljava/util/Set;->iterator()Ljava/util/Iterator;
+	17      (00000042) move-result-object   v1
+
+d-BB@0x44 : [ d-BB@0x50 d-BB@0x80 ]
+	18      (00000044) invoke-interface     v1, Ljava/util/Iterator;->hasNext()Z
+	19      (0000004a) move-result          v2
+	20      (0000004c) if-eqz               v2, +01ah
+
+d-BB@0x50 : [ d-BB@0x44 ]
+	21      (00000050) invoke-interface     v1, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	22      (00000056) move-result-object   v2
+	23      (00000058) check-cast           v2, Ljava/util/Map$Entry;
+	24      (0000005c) invoke-interface     v2, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
+	25      (00000062) move-result-object   v3
+	26      (00000064) check-cast           v3, Ljava/lang/String;
+	27      (00000068) invoke-interface     v2, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
+	28      (0000006e) move-result-object   v2
+	29      (00000070) invoke-virtual       v2, Ljava/lang/Object;->toString()Ljava/lang/String;
+	30      (00000076) move-result-object   v2
+	31      (00000078) invoke-virtual       v0, v3, v2, Ljava/util/HashMap;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	32      (0000007e) goto                 -1dh
+
+d-BB@0x80 : 
+	33      (00000080) return-object        v0
+

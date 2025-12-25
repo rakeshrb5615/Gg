@@ -1,0 +1,88 @@
+# Ln/x0;->j([I I)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:int[]
+# - v8:int
+#
+# - return:void
+
+j-BB@0x0 : [ j-BB@0x10 j-BB@0xc2 ]
+	0       (00000000) iget-object          v0, v6, Ln/x0;->i Ln/g1;
+	1       (00000004) invoke-virtual       v0, Ln/g1;->j()Z
+	2       (0000000a) move-result          v1
+	3       (0000000c) if-eqz               v1, +05bh
+
+j-BB@0x10 : [ j-BB@0x18 j-BB@0xac ]
+	4       (00000010) array-length         v1, v7
+	5       (00000012) const/4              v2, 0
+	6       (00000014) if-lez               v1, +04ch
+
+j-BB@0x18 : [ j-BB@0x20 j-BB@0x2a ]
+	7       (00000018) new-array            v3, v1, [I
+	8       (0000001c) if-nez               v8, +007h
+
+j-BB@0x20 : [ j-BB@0x62 ]
+	9       (00000020) invoke-static        v7, v1, Ljava/util/Arrays;->copyOf([I I)[I
+	10      (00000026) move-result-object   v3
+	11      (00000028) goto                 +1dh
+
+j-BB@0x2a : [ j-BB@0x3e ]
+	12      (0000002a) iget-object          v4, v0, Ln/g1;->j Landroid/content/Context;
+	13      (0000002e) invoke-virtual       v4, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+	14      (00000034) move-result-object   v4
+	15      (00000036) invoke-virtual       v4, Landroid/content/res/Resources;->getDisplayMetrics()Landroid/util/DisplayMetrics;
+	16      (0000003c) move-result-object   v4
+
+j-BB@0x3e : [ j-BB@0x42 j-BB@0x62 ]
+	17      (0000003e) if-ge                v2, v1, +012h
+
+j-BB@0x42 : [ j-BB@0x3e ]
+	18      (00000042) aget                 v5, v7, v2
+	19      (00000046) int-to-float         v5, v5
+	20      (00000048) invoke-static        v8, v5, v4, Landroid/util/TypedValue;->applyDimension(I F Landroid/util/DisplayMetrics;)F
+	21      (0000004e) move-result          v5
+	22      (00000050) invoke-static        v5, Ljava/lang/Math;->round(F)I
+	23      (00000056) move-result          v5
+	24      (00000058) aput                 v5, v3, v2
+	25      (0000005c) add-int/lit8         v2, v2, 1
+	26      (00000060) goto                 -11h
+
+j-BB@0x62 : [ j-BB@0x7a j-BB@0x7c ]
+	27      (00000062) invoke-static        v3, Ln/g1;->b([I)[I
+	28      (00000068) move-result-object   v8
+	29      (0000006a) iput-object          v8, v0, Ln/g1;->f [I
+	30      (0000006e) invoke-virtual       v0, Ln/g1;->i()Z
+	31      (00000074) move-result          v8
+	32      (00000076) if-eqz               v8, +003h
+
+j-BB@0x7a : [ j-BB@0xb0 ]
+	33      (0000007a) goto                 +1bh
+
+j-BB@0x7c : 
+	34      (0000007c) new-instance         v8, Ljava/lang/IllegalArgumentException;
+	35      (00000080) new-instance         v0, Ljava/lang/StringBuilder;
+	36      (00000084) const-string         v1, "None of the preset sizes is valid: "
+	37      (00000088) invoke-direct        v0, v1, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	38      (0000008e) invoke-static        v7, Ljava/util/Arrays;->toString([I)Ljava/lang/String;
+	39      (00000094) move-result-object   v7
+	40      (00000096) invoke-virtual       v0, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	41      (0000009c) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	42      (000000a2) move-result-object   v7
+	43      (000000a4) invoke-direct        v8, v7, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	44      (000000aa) throw                v8
+
+j-BB@0xac : [ j-BB@0xb0 ]
+	45      (000000ac) iput-boolean         v2, v0, Ln/g1;->g Z
+
+j-BB@0xb0 : [ j-BB@0xbc j-BB@0xc2 ]
+	46      (000000b0) invoke-virtual       v0, Ln/g1;->h()Z
+	47      (000000b6) move-result          v7
+	48      (000000b8) if-eqz               v7, +005h
+
+j-BB@0xbc : [ j-BB@0xc2 ]
+	49      (000000bc) invoke-virtual       v0, Ln/g1;->a()V
+
+j-BB@0xc2 : 
+	50      (000000c2) return-void          
+

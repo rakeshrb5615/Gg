@@ -1,0 +1,59 @@
+# Ll6/c;->e(Ljava/lang/Object;)Ljava/lang/Object; [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:java.lang.Object
+#
+# - return:java.lang.Object
+
+e-BB@0x0 : [ e-BB@0xc e-BB@0x32 ]
+	0       (00000000) check-cast           v4, Lokhttp3/ResponseBody;
+	1       (00000004) iget-object          v0, v4, Lokhttp3/ResponseBody;->a Lokhttp3/ResponseBody$BomAwareReader;
+	2       (00000008) if-nez               v0, +015h
+
+e-BB@0xc : [ e-BB@0x32 ]
+	3       (0000000c) new-instance         v0, Lokhttp3/ResponseBody$BomAwareReader;
+	4       (00000010) invoke-virtual       v4, Lokhttp3/ResponseBody;->i()Lx8/i;
+	5       (00000016) move-result-object   v1
+	6       (00000018) invoke-virtual       v4, Lokhttp3/ResponseBody;->f()Lokhttp3/MediaType;
+	7       (0000001e) move-result-object   v2
+	8       (00000020) invoke-static        v2, Lokhttp3/internal/Internal;->a(Lokhttp3/MediaType;)Ljava/nio/charset/Charset;
+	9       (00000026) move-result-object   v2
+	10      (00000028) invoke-direct        v0, v1, v2, Lokhttp3/ResponseBody$BomAwareReader;-><init>(Lx8/i; Ljava/nio/charset/Charset;)V
+	11      (0000002e) iput-object          v0, v4, Lokhttp3/ResponseBody;->a Lokhttp3/ResponseBody$BomAwareReader;
+
+e-BB@0x32 : [ e-BB@0x42 ]
+	12      (00000032) new-instance         v1, Le7/a;
+	13      (00000036) invoke-direct        v1, v0, Le7/a;-><init>(Lokhttp3/ResponseBody$BomAwareReader;)V
+	14      (0000003c) const/4              v0, 2
+	15      (0000003e) iput                 v0, v1, Le7/a;->u I
+
+e-BB@0x42 : [ e-BB@0x62 e-BB@0x6a ]
+	16      (00000042) iget-object          v0, v3, Ll6/c;->b Ljava/lang/Object;
+	17      (00000046) check-cast           v0, Lw6/z;
+	18      (0000004a) invoke-virtual       v0, v1, Lw6/z;->b(Le7/a;)Ljava/lang/Object;
+	19      (00000050) move-result-object   v0
+	20      (00000052) invoke-virtual       v1, Le7/a;->O()I
+	21      (00000058) move-result          v1
+	22      (0000005a) const/16             v2, 10
+	23      (0000005e) if-ne                v1, v2, +006h
+	42:59
+	(Ljava/lang/Throwable; -> 7a e-BB@0x7a)
+
+e-BB@0x62 : 
+	24      (00000062) invoke-virtual       v4, Lokhttp3/ResponseBody;->close()V
+	25      (00000068) return-object        v0
+
+e-BB@0x6a : 
+	26      (0000006a) new-instance         v0, Lw6/p;
+	27      (0000006e) const-string         v1, "JSON document was not fully consumed."
+	28      (00000072) invoke-direct        v0, v1, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
+	29      (00000078) throw                v0
+	6a:79
+	(Ljava/lang/Throwable; -> 7a e-BB@0x7a)
+
+e-BB@0x7a : 
+	30      (0000007a) move-exception       v0
+	31      (0000007c) invoke-virtual       v4, Lokhttp3/ResponseBody;->close()V
+	32      (00000082) throw                v0
+

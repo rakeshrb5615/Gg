@@ -1,0 +1,49 @@
+# Ln/t2;->a(Landroid/view/View; Landroid/content/Context;)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:android.view.View
+# - v4:android.content.Context
+#
+# - return:void
+
+a-BB@0x0 : [ a-BB@0x14 ]
+	0       (00000000) const-string         v0, "View "
+	1       (00000004) sget-object          v1, Lg/a;->j [I
+	2       (00000008) invoke-virtual       v4, v1, Landroid/content/Context;->obtainStyledAttributes([I)Landroid/content/res/TypedArray;
+	3       (0000000e) move-result-object   v4
+	4       (00000010) const/16             v1, 117
+
+a-BB@0x14 : [ a-BB@0x20 a-BB@0x5a ]
+	5       (00000014) invoke-virtual       v4, v1, Landroid/content/res/TypedArray;->hasValue(I)Z
+	6       (0000001a) move-result          v1
+	7       (0000001c) if-nez               v1, +01fh
+	14:53
+	(Ljava/lang/Throwable; -> 56 a-BB@0x56)
+
+a-BB@0x20 : [ a-BB@0x5a ]
+	8       (00000020) const-string         v1, "ThemeUtils"
+	9       (00000024) new-instance         v2, Ljava/lang/StringBuilder;
+	10      (00000028) invoke-direct        v2, v0, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	11      (0000002e) invoke-virtual       v3, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	12      (00000034) move-result-object   v3
+	13      (00000036) invoke-virtual       v2, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	14      (0000003c) const-string         v3, " is an AppCompat widget that can only be used with a Theme.AppCompat theme (or descendant)."
+	15      (00000040) invoke-virtual       v2, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	16      (00000046) invoke-virtual       v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	17      (0000004c) move-result-object   v3
+	18      (0000004e) invoke-static        v1, v3, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String;)I
+	19      (00000054) goto                 +3h
+
+a-BB@0x56 : [ a-BB@0x62 ]
+	20      (00000056) move-exception       v3
+	21      (00000058) goto                 +5h
+
+a-BB@0x5a : 
+	22      (0000005a) invoke-virtual       v4, Landroid/content/res/TypedArray;->recycle()V
+	23      (00000060) return-void          
+
+a-BB@0x62 : 
+	24      (00000062) invoke-virtual       v4, Landroid/content/res/TypedArray;->recycle()V
+	25      (00000068) throw                v3
+

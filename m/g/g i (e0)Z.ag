@@ -1,0 +1,52 @@
+# Lm/g;->i(Lm/e0;)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v7
+# - v8:m.e0
+#
+# - return:boolean
+
+i-BB@0x0 : [ i-BB@0x10 ]
+	0       (00000000) iget-object          v0, v7, Lm/g;->n Ljava/util/ArrayList;
+	1       (00000004) invoke-virtual       v0, Ljava/util/ArrayList;->size()I
+	2       (0000000a) move-result          v1
+	3       (0000000c) const/4              v2, 0
+	4       (0000000e) move                 v3, v2
+
+i-BB@0x10 : [ i-BB@0x16 i-BB@0x3e ]
+	5       (00000010) const/4              v4, 1
+	6       (00000012) if-ge                v3, v1, +016h
+
+i-BB@0x16 : [ i-BB@0x2e i-BB@0x10 ]
+	7       (00000016) invoke-virtual       v0, v3, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	8       (0000001c) move-result-object   v5
+	9       (0000001e) add-int/lit8         v3, v3, 1
+	10      (00000022) check-cast           v5, Lm/f;
+	11      (00000026) iget-object          v6, v5, Lm/f;->b Lm/m;
+	12      (0000002a) if-ne                v8, v6, -00dh
+
+i-BB@0x2e : 
+	13      (0000002e) iget-object          v8, v5, Lm/f;->a Ln/l2;
+	14      (00000032) iget-object          v8, v8, Ln/g2;->c Ln/t1;
+	15      (00000036) invoke-virtual       v8, Landroid/view/View;->requestFocus()Z
+	16      (0000003c) return               v4
+
+i-BB@0x3e : [ i-BB@0x4a i-BB@0x60 ]
+	17      (0000003e) invoke-virtual       v8, Lm/m;->hasVisibleItems()Z
+	18      (00000044) move-result          v0
+	19      (00000046) if-eqz               v0, +00dh
+
+i-BB@0x4a : [ i-BB@0x58 i-BB@0x5e ]
+	20      (0000004a) invoke-virtual       v7, v8, Lm/g;->l(Lm/m;)V
+	21      (00000050) iget-object          v0, v7, Lm/g;->C Lm/x;
+	22      (00000054) if-eqz               v0, +005h
+
+i-BB@0x58 : [ i-BB@0x5e ]
+	23      (00000058) invoke-interface     v0, v8, Lm/x;->h(Lm/m;)Z
+
+i-BB@0x5e : 
+	24      (0000005e) return               v4
+
+i-BB@0x60 : 
+	25      (00000060) return               v2
+

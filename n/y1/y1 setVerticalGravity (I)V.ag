@@ -1,0 +1,23 @@
+# Ln/y1;->setVerticalGravity(I)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:int
+#
+# - return:void
+
+setVerticalGravity-BB@0x0 : [ setVerticalGravity-BB@0x10 setVerticalGravity-BB@0x20 ]
+	0       (00000000) and-int/lit8         v3, v3, 112
+	1       (00000004) iget                 v0, v2, Ln/y1;->e I
+	2       (00000008) and-int/lit8         v1, v0, 112
+	3       (0000000c) if-eq                v1, v3, +00ah
+
+setVerticalGravity-BB@0x10 : [ setVerticalGravity-BB@0x20 ]
+	4       (00000010) and-int/lit8         v0, v0, -113
+	5       (00000014) or-int/2addr         v3, v0
+	6       (00000016) iput                 v3, v2, Ln/y1;->e I
+	7       (0000001a) invoke-virtual       v2, Landroid/view/View;->requestLayout()V
+
+setVerticalGravity-BB@0x20 : 
+	8       (00000020) return-void          
+

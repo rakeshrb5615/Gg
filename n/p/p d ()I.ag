@@ -1,0 +1,35 @@
+# Ln/p;->d()I [access_flags=public]
+#
+# Parameters:
+# local registers: v0...v6
+#
+# - return:int
+
+d-BB@0x0 : [ d-BB@0x1c d-BB@0x1e ]
+	0       (00000000) iget-object          v0, v6, Ln/p;->d Ljava/lang/Object;
+	1       (00000004) check-cast           v0, La2/d;
+	2       (00000008) invoke-virtual       v0, La2/d;->h()J
+	3       (0000000e) move-result-wide     v1
+	4       (00000010) long-to-int          v3, v1
+	5       (00000012) int-to-long          v4, v3
+	6       (00000014) cmp-long             v4, v1, v4
+	7       (00000018) if-nez               v4, +003h
+
+d-BB@0x1c : 
+	8       (0000001c) return               v3
+
+d-BB@0x1e : 
+	9       (0000001e) new-instance         v3, Ljava/lang/StringBuilder;
+	10      (00000022) const-string         v4, "Failed to parse int for input '"
+	11      (00000026) invoke-direct        v3, v4, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	12      (0000002c) invoke-virtual       v3, v1, v2, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+	13      (00000032) const/16             v1, 39
+	14      (00000036) invoke-virtual       v3, v1, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+	15      (0000003c) invoke-virtual       v3, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	16      (00000042) move-result-object   v1
+	17      (00000044) const/4              v2, 0
+	18      (00000046) const/4              v3, 6
+	19      (00000048) invoke-static        v0, v1, v2, v3, La2/d;->n(La2/d; Ljava/lang/String; I I)V
+	20      (0000004e) const/4              v0, 0
+	21      (00000050) throw                v0
+

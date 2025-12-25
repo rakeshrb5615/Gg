@@ -1,0 +1,48 @@
+# Ln6/n;->b()Ljava/util/HashMap; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v5
+#
+# - return:java.util.HashMap
+
+b-BB@0x0 : [ b-BB@0x14 ]
+	0       (00000000) const-string         v0, "customSignals"
+	1       (00000004) const-string         v1, "{}"
+	2       (00000008) iget-object          v2, v5, Ln6/n;->a Landroid/content/SharedPreferences;
+	3       (0000000c) invoke-interface     v2, v0, v1, Landroid/content/SharedPreferences;->getString(Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	4       (00000012) move-result-object   v0
+
+b-BB@0x14 : [ b-BB@0x30 ]
+	5       (00000014) new-instance         v1, Lorg/json/JSONObject;
+	6       (00000018) invoke-direct        v1, v0, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+	7       (0000001e) new-instance         v0, Ljava/util/HashMap;
+	8       (00000022) invoke-direct        v0, Ljava/util/HashMap;-><init>()V
+	9       (00000028) invoke-virtual       v1, Lorg/json/JSONObject;->keys()Ljava/util/Iterator;
+	10      (0000002e) move-result-object   v2
+	14:55
+	(Lorg/json/JSONException; -> 5a b-BB@0x5a)
+
+b-BB@0x30 : [ b-BB@0x3c b-BB@0x58 ]
+	11      (00000030) invoke-interface     v2, Ljava/util/Iterator;->hasNext()Z
+	12      (00000036) move-result          v3
+	13      (00000038) if-eqz               v3, +010h
+	14:55
+	(Lorg/json/JSONException; -> 5a b-BB@0x5a)
+
+b-BB@0x3c : [ b-BB@0x30 ]
+	14      (0000003c) invoke-interface     v2, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	15      (00000042) move-result-object   v3
+	16      (00000044) check-cast           v3, Ljava/lang/String;
+	17      (00000048) invoke-virtual       v1, v3, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+	18      (0000004e) move-result-object   v4
+	19      (00000050) invoke-virtual       v0, v3, v4, Ljava/util/HashMap;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	20      (00000056) goto                 -13h
+
+b-BB@0x58 : 
+	21      (00000058) return-object        v0
+
+b-BB@0x5a : 
+	22      (0000005a) new-instance         v0, Ljava/util/HashMap;
+	23      (0000005e) invoke-direct        v0, Ljava/util/HashMap;-><init>()V
+	24      (00000064) return-object        v0
+

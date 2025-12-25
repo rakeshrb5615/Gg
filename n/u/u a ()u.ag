@@ -1,0 +1,40 @@
+# Ln/u;->a()Ln/u; [access_flags=public static synchronized]
+#
+# Parameters:
+# local registers: v0...v1
+#
+# - return:n.u
+
+a-BB@0x0 : [ a-BB@0x6 ]
+	0       (00000000) const-class          v0, Ln/u;
+	1       (00000004) monitor-enter        v0
+
+a-BB@0x6 : [ a-BB@0xe a-BB@0x1a ]
+	2       (00000006) sget-object          v1, Ln/u;->c Ln/u;
+	3       (0000000a) if-nez               v1, +008h
+	6:1d
+	(Ljava/lang/Throwable; -> 16 a-BB@0x16)
+
+a-BB@0xe : [ a-BB@0x1a ]
+	4       (0000000e) invoke-static        Ln/u;->d()V
+	5       (00000014) goto                 +3h
+	6:1d
+	(Ljava/lang/Throwable; -> 16 a-BB@0x16)
+
+a-BB@0x16 : [ a-BB@0x22 ]
+	6       (00000016) move-exception       v1
+	7       (00000018) goto                 +5h
+	6:1d
+	(Ljava/lang/Throwable; -> 16 a-BB@0x16)
+
+a-BB@0x1a : 
+	8       (0000001a) sget-object          v1, Ln/u;->c Ln/u;
+	9       (0000001e) monitor-exit         v0
+	10      (00000020) return-object        v1
+
+a-BB@0x22 : 
+	11      (00000022) monitor-exit         v0
+	12      (00000024) throw                v1
+	22:23
+	(Ljava/lang/Throwable; -> 16 a-BB@0x16)
+

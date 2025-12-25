@@ -1,0 +1,186 @@
+# Ln0/a;->g(Ln6/f;)Lq6/d; [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v13
+# - v14:n6.f
+#
+# - return:q6.d
+
+g-BB@0x0 : [ g-BB@0x1a ]
+	0       (00000000) const-string         v0, ""
+	1       (00000004) iget-object          v1, v14, Ln6/f;->g Lorg/json/JSONArray;
+	2       (00000008) iget-wide            v2, v14, Ln6/f;->f J
+	3       (0000000c) new-instance         v14, Ljava/util/HashSet;
+	4       (00000010) invoke-direct        v14, Ljava/util/HashSet;-><init>()V
+	5       (00000016) const/4              v4, 0
+	6       (00000018) move                 v5, v4
+
+g-BB@0x1a : [ g-BB@0x26 g-BB@0x176 ]
+	7       (0000001a) invoke-virtual       v1, Lorg/json/JSONArray;->length()I
+	8       (00000020) move-result          v6
+	9       (00000022) if-ge                v5, v6, +0aah
+
+g-BB@0x26 : [ g-BB@0x54 g-BB@0x7a ]
+	10      (00000026) invoke-virtual       v1, v5, Lorg/json/JSONArray;->getJSONObject(I)Lorg/json/JSONObject;
+	11      (0000002c) move-result-object   v6
+	12      (0000002e) const-string         v7, "rolloutId"
+	13      (00000032) invoke-virtual       v6, v7, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
+	14      (00000038) move-result-object   v7
+	15      (0000003a) const-string         v8, "affectedParameterKeys"
+	16      (0000003e) invoke-virtual       v6, v8, Lorg/json/JSONObject;->getJSONArray(Ljava/lang/String;)Lorg/json/JSONArray;
+	17      (00000044) move-result-object   v8
+	18      (00000046) invoke-virtual       v8, Lorg/json/JSONArray;->length()I
+	19      (0000004c) move-result          v9
+	20      (0000004e) const/4              v10, 1
+	21      (00000050) if-le                v9, v10, +015h
+	26:91
+	(Lorg/json/JSONException; -> 74 g-BB@0x74)
+
+g-BB@0x54 : [ g-BB@0x7a ]
+	22      (00000054) const-string         v9, "FirebaseRemoteConfig"
+	23      (00000058) const-string         v11, "Rollout has multiple affected parameter keys.Only the first key will be included in RolloutsState. rolloutId: %s, affectedParameterKeys: %s"
+	24      (0000005c) filled-new-array     v7, v8, [Ljava/lang/Object;
+	25      (00000062) move-result-object   v12
+	26      (00000064) invoke-static        v11, v12, Ljava/lang/String;->format(Ljava/lang/String; [Ljava/lang/Object;)Ljava/lang/String;
+	27      (0000006a) move-result-object   v11
+	28      (0000006c) invoke-static        v9, v11, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+	29      (00000072) goto                 +4h
+	26:91
+	(Lorg/json/JSONException; -> 74 g-BB@0x74)
+
+g-BB@0x74 : [ g-BB@0x166 ]
+	30      (00000074) move-exception       v14
+	31      (00000076) goto/16              +078h
+	26:91
+	(Lorg/json/JSONException; -> 74 g-BB@0x74)
+
+g-BB@0x7a : [ g-BB@0x98 g-BB@0x9c ]
+	32      (0000007a) invoke-virtual       v8, v4, v0, Lorg/json/JSONArray;->optString(I Ljava/lang/String;)Ljava/lang/String;
+	33      (00000080) move-result-object   v8
+	34      (00000082) iget-object          v9, v13, Ln0/a;->b Ljava/lang/Object;
+	35      (00000086) check-cast           v9, Ln6/d;
+	36      (0000008a) invoke-virtual       v9, Ln6/d;->c()Ln6/f;
+	37      (00000090) move-result-object   v9
+	38      (00000092) const/4              v11, 0
+	39      (00000094) if-nez               v9, +004h
+
+g-BB@0x98 : [ g-BB@0xa8 ]
+	40      (00000098) move-object          v9, v11
+	41      (0000009a) goto                 +7h
+
+g-BB@0x9c : [ g-BB@0xa8 ]
+	42      (0000009c) iget-object          v9, v9, Ln6/f;->b Lorg/json/JSONObject;
+	43      (000000a0) invoke-virtual       v9, v8, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
+	44      (000000a6) move-result-object   v9
+	9c:a7
+	(Lorg/json/JSONException; -> 98 g-BB@0x98)
+
+g-BB@0xa8 : [ g-BB@0xac g-BB@0xae ]
+	45      (000000a8) if-eqz               v9, +003h
+
+g-BB@0xac : [ g-BB@0xda ]
+	46      (000000ac) goto                 +17h
+
+g-BB@0xae : [ g-BB@0xc2 g-BB@0xc4 ]
+	47      (000000ae) iget-object          v9, v13, Ln0/a;->c Ljava/lang/Object;
+	48      (000000b2) check-cast           v9, Ln6/d;
+	49      (000000b6) invoke-virtual       v9, Ln6/d;->c()Ln6/f;
+	50      (000000bc) move-result-object   v9
+	51      (000000be) if-nez               v9, +003h
+	ae:bd
+	(Lorg/json/JSONException; -> 74 g-BB@0x74)
+
+g-BB@0xc2 : [ g-BB@0xd0 ]
+	52      (000000c2) goto                 +7h
+
+g-BB@0xc4 : [ g-BB@0xd0 ]
+	53      (000000c4) iget-object          v9, v9, Ln6/f;->b Lorg/json/JSONObject;
+	54      (000000c8) invoke-virtual       v9, v8, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
+	55      (000000ce) move-result-object   v11
+	c4:cf
+	(Lorg/json/JSONException; -> d0 g-BB@0xd0)
+
+g-BB@0xd0 : [ g-BB@0xd4 g-BB@0xd8 ]
+	56      (000000d0) if-eqz               v11, +004h
+
+g-BB@0xd4 : [ g-BB@0xda ]
+	57      (000000d4) move-object          v9, v11
+	58      (000000d6) goto                 +2h
+
+g-BB@0xd8 : [ g-BB@0xda ]
+	59      (000000d8) move-object          v9, v0
+
+g-BB@0xda : [ g-BB@0xec g-BB@0x156 ]
+	60      (000000da) sget                 v11, Lq6/e;->a I
+	61      (000000de) new-instance         v11, Lq6/b;
+	62      (000000e2) invoke-direct        v11, Ljava/lang/Object;-><init>()V
+	63      (000000e8) if-eqz               v7, +037h
+	da:165
+	(Lorg/json/JSONException; -> 74 g-BB@0x74)
+
+g-BB@0xec : [ g-BB@0x100 g-BB@0x146 ]
+	64      (000000ec) iput-object          v7, v11, Lq6/b;->a Ljava/lang/String;
+	65      (000000f0) const-string         v7, "variantId"
+	66      (000000f4) invoke-virtual       v6, v7, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
+	67      (000000fa) move-result-object   v6
+	68      (000000fc) if-eqz               v6, +025h
+	da:165
+	(Lorg/json/JSONException; -> 74 g-BB@0x74)
+
+g-BB@0x100 : [ g-BB@0x108 g-BB@0x136 ]
+	69      (00000100) iput-object          v6, v11, Lq6/b;->b Ljava/lang/String;
+	70      (00000104) if-eqz               v8, +019h
+	da:165
+	(Lorg/json/JSONException; -> 74 g-BB@0x74)
+
+g-BB@0x108 : [ g-BB@0x1a ]
+	71      (00000108) iput-object          v8, v11, Lq6/b;->c Ljava/lang/String;
+	72      (0000010c) iput-object          v9, v11, Lq6/b;->d Ljava/lang/String;
+	73      (00000110) iput-wide            v2, v11, Lq6/b;->e J
+	74      (00000114) iget-byte            v6, v11, Lq6/b;->f B
+	75      (00000118) or-int/2addr         v6, v10
+	76      (0000011a) int-to-byte          v6, v6
+	77      (0000011c) iput-byte            v6, v11, Lq6/b;->f B
+	78      (00000120) invoke-virtual       v11, Lq6/b;->a()Lq6/c;
+	79      (00000126) move-result-object   v6
+	80      (00000128) invoke-virtual       v14, v6, Ljava/util/HashSet;->add(Ljava/lang/Object;)Z
+	81      (0000012e) add-int/lit8         v5, v5, 1
+	82      (00000132) goto/16              -08ch
+	da:165
+	(Lorg/json/JSONException; -> 74 g-BB@0x74)
+
+g-BB@0x136 : 
+	83      (00000136) new-instance         v14, Ljava/lang/NullPointerException;
+	84      (0000013a) const-string         v0, "Null parameterKey"
+	85      (0000013e) invoke-direct        v14, v0, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
+	86      (00000144) throw                v14
+	da:165
+	(Lorg/json/JSONException; -> 74 g-BB@0x74)
+
+g-BB@0x146 : 
+	87      (00000146) new-instance         v14, Ljava/lang/NullPointerException;
+	88      (0000014a) const-string         v0, "Null variantId"
+	89      (0000014e) invoke-direct        v14, v0, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
+	90      (00000154) throw                v14
+	da:165
+	(Lorg/json/JSONException; -> 74 g-BB@0x74)
+
+g-BB@0x156 : 
+	91      (00000156) new-instance         v14, Ljava/lang/NullPointerException;
+	92      (0000015a) const-string         v0, "Null rolloutId"
+	93      (0000015e) invoke-direct        v14, v0, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
+	94      (00000164) throw                v14
+	da:165
+	(Lorg/json/JSONException; -> 74 g-BB@0x74)
+
+g-BB@0x166 : 
+	95      (00000166) new-instance         v0, Lm6/c;
+	96      (0000016a) const-string         v1, "Exception parsing rollouts metadata to create RolloutsState."
+	97      (0000016e) invoke-direct        v0, v1, v14, Lq4/h;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	98      (00000174) throw                v0
+
+g-BB@0x176 : 
+	99      (00000176) new-instance         v0, Lq6/d;
+	100     (0000017a) invoke-direct        v0, v14, Lq6/d;-><init>(Ljava/util/HashSet;)V
+	101     (00000180) return-object        v0
+

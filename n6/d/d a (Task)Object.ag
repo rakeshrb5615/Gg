@@ -1,0 +1,47 @@
+# Ln6/d;->a(Lcom/google/android/gms/tasks/Task;)Ljava/lang/Object; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:com.google.android.gms.tasks.Task
+#
+# - return:java.lang.Object
+
+a-BB@0x0 : [ a-BB@0x3e a-BB@0x68 ]
+	0       (00000000) sget-object          v0, Ljava/util/concurrent/TimeUnit;->SECONDS Ljava/util/concurrent/TimeUnit;
+	1       (00000004) new-instance         v1, Lj6/o;
+	2       (00000008) const/4              v2, 7
+	3       (0000000a) invoke-direct        v1, v2, Lj6/o;-><init>(I)V
+	4       (00000010) sget-object          v2, Ln6/d;->e Lx1/d;
+	5       (00000014) invoke-virtual       v4, v2, v1, Lcom/google/android/gms/tasks/Task;->addOnSuccessListener(Ljava/util/concurrent/Executor; Lcom/google/android/gms/tasks/OnSuccessListener;)Lcom/google/android/gms/tasks/Task;
+	6       (0000001a) invoke-virtual       v4, v2, v1, Lcom/google/android/gms/tasks/Task;->addOnFailureListener(Ljava/util/concurrent/Executor; Lcom/google/android/gms/tasks/OnFailureListener;)Lcom/google/android/gms/tasks/Task;
+	7       (00000020) invoke-virtual       v4, v2, v1, Lcom/google/android/gms/tasks/Task;->addOnCanceledListener(Ljava/util/concurrent/Executor; Lcom/google/android/gms/tasks/OnCanceledListener;)Lcom/google/android/gms/tasks/Task;
+	8       (00000026) iget-object          v1, v1, Lj6/o;->b Ljava/lang/Object;
+	9       (0000002a) check-cast           v1, Ljava/util/concurrent/CountDownLatch;
+	10      (0000002e) const-wide/16        v2, 5
+	11      (00000032) invoke-virtual       v1, v2, v3, v0, Ljava/util/concurrent/CountDownLatch;->await(J Ljava/util/concurrent/TimeUnit;)Z
+	12      (00000038) move-result          v0
+	13      (0000003a) if-eqz               v0, +017h
+
+a-BB@0x3e : [ a-BB@0x4a a-BB@0x54 ]
+	14      (0000003e) invoke-virtual       v4, Lcom/google/android/gms/tasks/Task;->isSuccessful()Z
+	15      (00000044) move-result          v0
+	16      (00000046) if-eqz               v0, +007h
+
+a-BB@0x4a : 
+	17      (0000004a) invoke-virtual       v4, Lcom/google/android/gms/tasks/Task;->getResult()Ljava/lang/Object;
+	18      (00000050) move-result-object   v4
+	19      (00000052) return-object        v4
+
+a-BB@0x54 : 
+	20      (00000054) new-instance         v0, Ljava/util/concurrent/ExecutionException;
+	21      (00000058) invoke-virtual       v4, Lcom/google/android/gms/tasks/Task;->getException()Ljava/lang/Exception;
+	22      (0000005e) move-result-object   v4
+	23      (00000060) invoke-direct        v0, v4, Ljava/util/concurrent/ExecutionException;-><init>(Ljava/lang/Throwable;)V
+	24      (00000066) throw                v0
+
+a-BB@0x68 : 
+	25      (00000068) new-instance         v4, Ljava/util/concurrent/TimeoutException;
+	26      (0000006c) const-string         v0, "Task await timed out."
+	27      (00000070) invoke-direct        v4, v0, Ljava/util/concurrent/TimeoutException;-><init>(Ljava/lang/String;)V
+	28      (00000076) throw                v4
+

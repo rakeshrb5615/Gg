@@ -1,0 +1,42 @@
+# Ll6/c;->k(Landroid/os/Bundle; Ljava/lang/String;)Ljava/lang/String; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:android.os.Bundle
+# - v6:java.lang.String
+#
+# - return:java.lang.String
+
+k-BB@0x0 : [ k-BB@0x24 ]
+	0       (00000000) new-instance         v0, Lorg/json/JSONObject;
+	1       (00000004) invoke-direct        v0, Lorg/json/JSONObject;-><init>()V
+	2       (0000000a) new-instance         v1, Lorg/json/JSONObject;
+	3       (0000000e) invoke-direct        v1, Lorg/json/JSONObject;-><init>()V
+	4       (00000014) invoke-virtual       v5, Landroid/os/BaseBundle;->keySet()Ljava/util/Set;
+	5       (0000001a) move-result-object   v2
+	6       (0000001c) invoke-interface     v2, Ljava/util/Set;->iterator()Ljava/util/Iterator;
+	7       (00000022) move-result-object   v2
+
+k-BB@0x24 : [ k-BB@0x30 k-BB@0x4c ]
+	8       (00000024) invoke-interface     v2, Ljava/util/Iterator;->hasNext()Z
+	9       (0000002a) move-result          v3
+	10      (0000002c) if-eqz               v3, +010h
+
+k-BB@0x30 : [ k-BB@0x24 ]
+	11      (00000030) invoke-interface     v2, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	12      (00000036) move-result-object   v3
+	13      (00000038) check-cast           v3, Ljava/lang/String;
+	14      (0000003c) invoke-virtual       v5, v3, Landroid/os/BaseBundle;->get(Ljava/lang/String;)Ljava/lang/Object;
+	15      (00000042) move-result-object   v4
+	16      (00000044) invoke-virtual       v1, v3, v4, Lorg/json/JSONObject;->put(Ljava/lang/String; Ljava/lang/Object;)Lorg/json/JSONObject;
+	17      (0000004a) goto                 -13h
+
+k-BB@0x4c : 
+	18      (0000004c) const-string         v5, "name"
+	19      (00000050) invoke-virtual       v0, v5, v6, Lorg/json/JSONObject;->put(Ljava/lang/String; Ljava/lang/Object;)Lorg/json/JSONObject;
+	20      (00000056) const-string         v5, "parameters"
+	21      (0000005a) invoke-virtual       v0, v5, v1, Lorg/json/JSONObject;->put(Ljava/lang/String; Ljava/lang/Object;)Lorg/json/JSONObject;
+	22      (00000060) invoke-virtual       v0, Lorg/json/JSONObject;->toString()Ljava/lang/String;
+	23      (00000066) move-result-object   v5
+	24      (00000068) return-object        v5
+

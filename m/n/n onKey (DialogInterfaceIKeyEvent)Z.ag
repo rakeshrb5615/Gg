@@ -1,0 +1,92 @@
+# Lm/n;->onKey(Landroid/content/DialogInterface; I Landroid/view/KeyEvent;)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:android.content.DialogInterface
+# - v5:int
+# - v6:android.view.KeyEvent
+#
+# - return:boolean
+
+onKey-BB@0x0 : [ onKey-BB@0xc onKey-BB@0x12 ]
+	0       (00000000) iget-object          v0, v3, Lm/n;->a Lm/e0;
+	1       (00000004) const/16             v1, 82
+	2       (00000008) if-eq                v5, v1, +005h
+
+onKey-BB@0xc : [ onKey-BB@0x12 onKey-BB@0xb6 ]
+	3       (0000000c) const/4              v1, 4
+	4       (0000000e) if-ne                v5, v1, +054h
+
+onKey-BB@0x12 : [ onKey-BB@0x20 onKey-BB@0x5c ]
+	5       (00000012) invoke-virtual       v6, Landroid/view/KeyEvent;->getAction()I
+	6       (00000018) move-result          v1
+	7       (0000001a) const/4              v2, 1
+	8       (0000001c) if-nez               v1, +020h
+
+onKey-BB@0x20 : [ onKey-BB@0x2c onKey-BB@0x5c ]
+	9       (00000020) invoke-virtual       v6, Landroid/view/KeyEvent;->getRepeatCount()I
+	10      (00000026) move-result          v1
+	11      (00000028) if-nez               v1, +01ah
+
+onKey-BB@0x2c : [ onKey-BB@0x3c onKey-BB@0xb6 ]
+	12      (0000002c) iget-object          v4, v3, Lm/n;->b Lh/g;
+	13      (00000030) invoke-virtual       v4, Landroid/app/Dialog;->getWindow()Landroid/view/Window;
+	14      (00000036) move-result-object   v4
+	15      (00000038) if-eqz               v4, +03fh
+
+onKey-BB@0x3c : [ onKey-BB@0x48 onKey-BB@0xb6 ]
+	16      (0000003c) invoke-virtual       v4, Landroid/view/Window;->getDecorView()Landroid/view/View;
+	17      (00000042) move-result-object   v4
+	18      (00000044) if-eqz               v4, +039h
+
+onKey-BB@0x48 : [ onKey-BB@0x54 onKey-BB@0xb6 ]
+	19      (00000048) invoke-virtual       v4, Landroid/view/View;->getKeyDispatcherState()Landroid/view/KeyEvent$DispatcherState;
+	20      (0000004e) move-result-object   v4
+	21      (00000050) if-eqz               v4, +033h
+
+onKey-BB@0x54 : 
+	22      (00000054) invoke-virtual       v4, v6, v3, Landroid/view/KeyEvent$DispatcherState;->startTracking(Landroid/view/KeyEvent; Ljava/lang/Object;)V
+	23      (0000005a) return               v2
+
+onKey-BB@0x5c : [ onKey-BB@0x68 onKey-BB@0xb6 ]
+	24      (0000005c) invoke-virtual       v6, Landroid/view/KeyEvent;->getAction()I
+	25      (00000062) move-result          v1
+	26      (00000064) if-ne                v1, v2, +029h
+
+onKey-BB@0x68 : [ onKey-BB@0x74 onKey-BB@0xb6 ]
+	27      (00000068) invoke-virtual       v6, Landroid/view/KeyEvent;->isCanceled()Z
+	28      (0000006e) move-result          v1
+	29      (00000070) if-nez               v1, +023h
+
+onKey-BB@0x74 : [ onKey-BB@0x84 onKey-BB@0xb6 ]
+	30      (00000074) iget-object          v1, v3, Lm/n;->b Lh/g;
+	31      (00000078) invoke-virtual       v1, Landroid/app/Dialog;->getWindow()Landroid/view/Window;
+	32      (0000007e) move-result-object   v1
+	33      (00000080) if-eqz               v1, +01bh
+
+onKey-BB@0x84 : [ onKey-BB@0x90 onKey-BB@0xb6 ]
+	34      (00000084) invoke-virtual       v1, Landroid/view/Window;->getDecorView()Landroid/view/View;
+	35      (0000008a) move-result-object   v1
+	36      (0000008c) if-eqz               v1, +015h
+
+onKey-BB@0x90 : [ onKey-BB@0x9c onKey-BB@0xb6 ]
+	37      (00000090) invoke-virtual       v1, Landroid/view/View;->getKeyDispatcherState()Landroid/view/KeyEvent$DispatcherState;
+	38      (00000096) move-result-object   v1
+	39      (00000098) if-eqz               v1, +00fh
+
+onKey-BB@0x9c : [ onKey-BB@0xa8 onKey-BB@0xb6 ]
+	40      (0000009c) invoke-virtual       v1, v6, Landroid/view/KeyEvent$DispatcherState;->isTracking(Landroid/view/KeyEvent;)Z
+	41      (000000a2) move-result          v1
+	42      (000000a4) if-eqz               v1, +009h
+
+onKey-BB@0xa8 : 
+	43      (000000a8) invoke-virtual       v0, v2, Lm/m;->c(Z)V
+	44      (000000ae) invoke-interface     v4, Landroid/content/DialogInterface;->dismiss()V
+	45      (000000b4) return               v2
+
+onKey-BB@0xb6 : 
+	46      (000000b6) const/4              v4, 0
+	47      (000000b8) invoke-virtual       v0, v5, v6, v4, Lm/m;->performShortcut(I Landroid/view/KeyEvent; I)Z
+	48      (000000be) move-result          v4
+	49      (000000c0) return               v4
+

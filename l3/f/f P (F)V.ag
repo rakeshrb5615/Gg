@@ -1,0 +1,31 @@
+# Ll3/f;->P(F)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:float
+#
+# - return:void
+
+P-BB@0x0 : [ P-BB@0xc P-BB@0x36 ]
+	0       (00000000) iget                 v0, v1, Ll3/f;->R F
+	1       (00000004) cmpl-float           v0, v0, v2
+	2       (00000008) if-eqz               v0, +017h
+
+P-BB@0xc : [ P-BB@0x22 P-BB@0x30 ]
+	3       (0000000c) iput                 v2, v1, Ll3/f;->R F
+	4       (00000010) iget-object          v0, v1, Ll3/f;->u0 Landroid/graphics/Paint;
+	5       (00000014) invoke-virtual       v0, v2, Landroid/graphics/Paint;->setStrokeWidth(F)V
+	6       (0000001a) iget-boolean         v0, v1, Ll3/f;->T0 Z
+	7       (0000001e) if-eqz               v0, +009h
+
+P-BB@0x22 : [ P-BB@0x30 ]
+	8       (00000022) iget-object          v0, v1, Lv3/k;->b Lv3/i;
+	9       (00000026) iput                 v2, v0, Lv3/i;->k F
+	10      (0000002a) invoke-virtual       v1, Lv3/k;->invalidateSelf()V
+
+P-BB@0x30 : [ P-BB@0x36 ]
+	11      (00000030) invoke-virtual       v1, Lv3/k;->invalidateSelf()V
+
+P-BB@0x36 : 
+	12      (00000036) return-void          
+

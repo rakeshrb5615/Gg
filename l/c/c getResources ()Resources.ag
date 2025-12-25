@@ -1,0 +1,53 @@
+# Ll/c;->getResources()Landroid/content/res/Resources; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v3
+#
+# - return:android.content.res.Resources
+
+getResources-BB@0x0 : [ getResources-BB@0x8 getResources-BB@0x64 ]
+	0       (00000000) iget-object          v0, v3, Ll/c;->e Landroid/content/res/Resources;
+	1       (00000004) if-nez               v0, +030h
+
+getResources-BB@0x8 : [ getResources-BB@0x10 getResources-BB@0x58 ]
+	2       (00000008) iget-object          v0, v3, Ll/c;->d Landroid/content/res/Configuration;
+	3       (0000000c) if-eqz               v0, +026h
+
+getResources-BB@0x10 : [ getResources-BB@0x18 getResources-BB@0x2c ]
+	4       (00000010) sget-object          v1, Ll/c;->f Landroid/content/res/Configuration;
+	5       (00000014) if-nez               v1, +00ch
+
+getResources-BB@0x18 : [ getResources-BB@0x2c ]
+	6       (00000018) new-instance         v1, Landroid/content/res/Configuration;
+	7       (0000001c) invoke-direct        v1, Landroid/content/res/Configuration;-><init>()V
+	8       (00000022) const/4              v2, 0
+	9       (00000024) iput                 v2, v1, Landroid/content/res/Configuration;->fontScale F
+	10      (00000028) sput-object          v1, Ll/c;->f Landroid/content/res/Configuration;
+
+getResources-BB@0x2c : [ getResources-BB@0x3c getResources-BB@0x3e ]
+	11      (0000002c) sget-object          v1, Ll/c;->f Landroid/content/res/Configuration;
+	12      (00000030) invoke-virtual       v0, v1, Landroid/content/res/Configuration;->equals(Landroid/content/res/Configuration;)Z
+	13      (00000036) move-result          v0
+	14      (00000038) if-eqz               v0, +003h
+
+getResources-BB@0x3c : [ getResources-BB@0x58 ]
+	15      (0000003c) goto                 +eh
+
+getResources-BB@0x3e : [ getResources-BB@0x64 ]
+	16      (0000003e) iget-object          v0, v3, Ll/c;->d Landroid/content/res/Configuration;
+	17      (00000042) invoke-virtual       v3, v0, Landroid/content/Context;->createConfigurationContext(Landroid/content/res/Configuration;)Landroid/content/Context;
+	18      (00000048) move-result-object   v0
+	19      (0000004a) invoke-virtual       v0, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+	20      (00000050) move-result-object   v0
+	21      (00000052) iput-object          v0, v3, Ll/c;->e Landroid/content/res/Resources;
+	22      (00000056) goto                 +7h
+
+getResources-BB@0x58 : [ getResources-BB@0x64 ]
+	23      (00000058) invoke-super         v3, Landroid/content/ContextWrapper;->getResources()Landroid/content/res/Resources;
+	24      (0000005e) move-result-object   v0
+	25      (00000060) iput-object          v0, v3, Ll/c;->e Landroid/content/res/Resources;
+
+getResources-BB@0x64 : 
+	26      (00000064) iget-object          v0, v3, Ll/c;->e Landroid/content/res/Resources;
+	27      (00000068) return-object        v0
+

@@ -1,0 +1,100 @@
+# Lm6/j;->c(Ljava/lang/String;)Ln6/d; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:java.lang.String
+#
+# - return:n6.d
+
+c-BB@0x0 : [ c-BB@0x4c ]
+	0       (00000000) iget-object          v0, v5, Lm6/j;->h Ljava/lang/String;
+	1       (00000004) new-instance         v1, Ljava/lang/StringBuilder;
+	2       (00000008) const-string         v2, "frc_"
+	3       (0000000c) invoke-direct        v1, v2, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	4       (00000012) invoke-virtual       v1, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	5       (00000018) const-string         v0, "_firebase_"
+	6       (0000001c) invoke-virtual       v1, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	7       (00000022) invoke-virtual       v1, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	8       (00000028) const-string         v6, ".json"
+	9       (0000002c) invoke-virtual       v1, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	10      (00000032) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	11      (00000038) move-result-object   v6
+	12      (0000003a) iget-object          v0, v5, Lm6/j;->c Ljava/util/concurrent/ScheduledExecutorService;
+	13      (0000003e) iget-object          v1, v5, Lm6/j;->b Landroid/content/Context;
+	14      (00000042) sget-object          v2, Ln6/o;->c Ljava/util/HashMap;
+	15      (00000046) const-class          v2, Ln6/o;
+	16      (0000004a) monitor-enter        v2
+
+c-BB@0x4c : [ c-BB@0x5c c-BB@0x72 ]
+	17      (0000004c) sget-object          v3, Ln6/o;->c Ljava/util/HashMap;
+	18      (00000050) invoke-virtual       v3, v6, Ljava/util/HashMap;->containsKey(Ljava/lang/Object;)Z
+	19      (00000056) move-result          v4
+	20      (00000058) if-nez               v4, +00dh
+	4c:7d
+	(Ljava/lang/Throwable; -> 6e c-BB@0x6e)
+
+c-BB@0x5c : [ c-BB@0x72 ]
+	21      (0000005c) new-instance         v4, Ln6/o;
+	22      (00000060) invoke-direct        v4, v1, v6, Ln6/o;-><init>(Landroid/content/Context; Ljava/lang/String;)V
+	23      (00000066) invoke-virtual       v3, v6, v4, Ljava/util/HashMap;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	24      (0000006c) goto                 +3h
+	4c:7d
+	(Ljava/lang/Throwable; -> 6e c-BB@0x6e)
+
+c-BB@0x6e : [ c-BB@0xc8 ]
+	25      (0000006e) move-exception       v6
+	26      (00000070) goto                 +2ch
+	4c:7d
+	(Ljava/lang/Throwable; -> 6e c-BB@0x6e)
+
+c-BB@0x72 : [ c-BB@0x8a ]
+	27      (00000072) invoke-virtual       v3, v6, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	28      (00000078) move-result-object   v6
+	29      (0000007a) check-cast           v6, Ln6/o;
+	30      (0000007e) monitor-exit         v2
+	31      (00000080) sget-object          v1, Ln6/d;->d Ljava/util/HashMap;
+	32      (00000084) const-class          v1, Ln6/d;
+	33      (00000088) monitor-enter        v1
+
+c-BB@0x8a : [ c-BB@0x9e c-BB@0xb4 ]
+	34      (0000008a) iget-object          v2, v6, Ln6/o;->b Ljava/lang/String;
+	35      (0000008e) sget-object          v3, Ln6/d;->d Ljava/util/HashMap;
+	36      (00000092) invoke-virtual       v3, v2, Ljava/util/HashMap;->containsKey(Ljava/lang/Object;)Z
+	37      (00000098) move-result          v4
+	38      (0000009a) if-nez               v4, +00dh
+	8a:bf
+	(Ljava/lang/Throwable; -> b0 c-BB@0xb0)
+
+c-BB@0x9e : [ c-BB@0xb4 ]
+	39      (0000009e) new-instance         v4, Ln6/d;
+	40      (000000a2) invoke-direct        v4, v0, v6, Ln6/d;-><init>(Ljava/util/concurrent/Executor; Ln6/o;)V
+	41      (000000a8) invoke-virtual       v3, v2, v4, Ljava/util/HashMap;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	42      (000000ae) goto                 +3h
+	8a:bf
+	(Ljava/lang/Throwable; -> b0 c-BB@0xb0)
+
+c-BB@0xb0 : [ c-BB@0xc4 ]
+	43      (000000b0) move-exception       v6
+	44      (000000b2) goto                 +9h
+	8a:bf
+	(Ljava/lang/Throwable; -> b0 c-BB@0xb0)
+
+c-BB@0xb4 : 
+	45      (000000b4) invoke-virtual       v3, v2, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	46      (000000ba) move-result-object   v6
+	47      (000000bc) check-cast           v6, Ln6/d;
+	48      (000000c0) monitor-exit         v1
+	49      (000000c2) return-object        v6
+
+c-BB@0xc4 : 
+	50      (000000c4) monitor-exit         v1
+	51      (000000c6) throw                v6
+	c4:c5
+	(Ljava/lang/Throwable; -> b0 c-BB@0xb0)
+
+c-BB@0xc8 : 
+	52      (000000c8) monitor-exit         v2
+	53      (000000ca) throw                v6
+	c8:c9
+	(Ljava/lang/Throwable; -> 6e c-BB@0x6e)
+

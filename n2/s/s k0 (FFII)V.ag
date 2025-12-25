@@ -1,0 +1,171 @@
+# Ln2/s;->k0(F F I I)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v18
+# - v19:float
+# - v20:float
+# - v21:int
+# - v22:int
+#
+# - return:void
+
+k0-BB@0x0 : [ k0-BB@0x102 k0-BB@0x120 ]
+	0       (00000000) move-object/from16   v0, v18
+	1       (00000004) iget-object          v1, v0, Ln2/s;->B [[I
+	2       (00000008) aget-object          v1, v1, v21
+	3       (0000000c) aget                 v1, v1, v22
+	4       (00000010) iget-object          v2, v0, Ln2/s;->s [[F
+	5       (00000014) aget-object          v2, v2, v21
+	6       (00000018) aget                 v5, v2, v22
+	7       (0000001c) iget-object          v2, v0, Ln2/s;->r [[[F
+	8       (00000020) aget-object          v2, v2, v21
+	9       (00000024) aget-object          v2, v2, v22
+	10      (00000028) const/4              v9, 2
+	11      (0000002a) aget                 v2, v2, v9
+	12      (0000002e) iget-object          v3, v0, Ln2/s;->f [F
+	13      (00000032) aget                 v3, v3, v1
+	14      (00000036) iget-object          v4, v0, Ln2/s;->t [[F
+	15      (0000003a) aget-object          v4, v4, v21
+	16      (0000003e) aget                 v4, v4, v22
+	17      (00000042) mul-float/2addr      v3, v4
+	18      (00000044) iget-object          v6, v0, Ln2/s;->g [F
+	19      (00000048) aget                 v6, v6, v1
+	20      (0000004c) mul-float/2addr      v6, v4
+	21      (0000004e) float-to-double      v7, v5
+	22      (00000050) invoke-static        v7, v8, Ljava/lang/Math;->toRadians(D)D
+	23      (00000056) move-result-wide     v7
+	24      (00000058) invoke-static        v7, v8, Ljava/lang/Math;->sin(D)D
+	25      (0000005e) move-result-wide     v7
+	26      (00000060) invoke-static        v7, v8, Ljava/lang/Math;->abs(D)D
+	27      (00000066) move-result-wide     v7
+	28      (00000068) double-to-float      v4, v7
+	29      (0000006a) const/4              v10, 0
+	30      (0000006c) mul-float/2addr      v4, v10
+	31      (0000006e) const/high16         v7, 1065353216
+	32      (00000072) sub-float            v8, v7, v4
+	33      (00000076) mul-float/2addr      v8, v3
+	34      (00000078) add-float/2addr      v4, v7
+	35      (0000007a) mul-float/2addr      v4, v6
+	36      (0000007c) iget-object          v3, v0, Ln2/s;->i0 [F
+	37      (00000080) const/4              v11, 0
+	38      (00000082) aput                 v8, v3, v11
+	39      (00000086) const/4              v12, 1
+	40      (00000088) aput                 v4, v3, v12
+	41      (0000008c) iget-object          v13, v0, Ln2/s;->u [F
+	42      (00000090) invoke-static        v13, v11, Landroid/opengl/Matrix;->setIdentityM([F I)V
+	43      (00000096) move/from16          v3, v19
+	44      (0000009a) move/from16          v6, v20
+	45      (0000009e) invoke-static        v13, v11, v3, v6, v2, Landroid/opengl/Matrix;->translateM([F I F F F)V
+	46      (000000a4) invoke-static        v13, v11, v8, v4, v7, Landroid/opengl/Matrix;->scaleM([F I F F F)V
+	47      (000000aa) const/high16         v2, -1090519040
+	48      (000000ae) invoke-static        v13, v11, v10, v2, v10, Landroid/opengl/Matrix;->translateM([F I F F F)V
+	49      (000000b4) const/4              v7, 0
+	50      (000000b6) const/high16         v8, 1065353216
+	51      (000000ba) iget-object          v3, v0, Ln2/s;->u [F
+	52      (000000be) const/4              v4, 0
+	53      (000000c0) const/4              v6, 0
+	54      (000000c2) invoke-static/range  v3 ... v8, Landroid/opengl/Matrix;->rotateM([F I F F F F)V
+	55      (000000c8) const/high16         v2, 1056964608
+	56      (000000cc) invoke-static        v13, v11, v10, v2, v10, Landroid/opengl/Matrix;->translateM([F I F F F)V
+	57      (000000d2) iget-object          v7, v0, Ln2/s;->u [F
+	58      (000000d6) const/4              v8, 0
+	59      (000000d8) iget-object          v3, v0, Ln2/s;->w [F
+	60      (000000dc) iget-object          v5, v0, Ln2/s;->v [F
+	61      (000000e0) const/4              v6, 0
+	62      (000000e2) invoke-static/range  v3 ... v8, Landroid/opengl/Matrix;->multiplyMM([F I [F I [F I)V
+	63      (000000e8) iget                 v2, v0, Ln2/s;->b0 I
+	64      (000000ec) iget-object          v3, v0, Ln2/s;->w [F
+	65      (000000f0) invoke-static        v2, v12, v11, v3, v11, Landroid/opengl/GLES20;->glUniformMatrix4fv(I I Z [F I)V
+	66      (000000f6) iget                 v2, v0, Ln2/s;->P I
+	67      (000000fa) const/4              v3, 5
+	68      (000000fc) const/4              v4, 3
+	69      (000000fe) if-ne                v2, v4, +011h
+
+k0-BB@0x102 : [ k0-BB@0x106 k0-BB@0x110 ]
+	70      (00000102) if-ne                v1, v3, +007h
+
+k0-BB@0x106 : [ k0-BB@0x128 ]
+	71      (00000106) iget-object          v5, v0, Ln2/s;->p [I
+	72      (0000010a) aget                 v5, v5, v11
+	73      (0000010e) goto                 +dh
+
+k0-BB@0x110 : [ k0-BB@0x116 k0-BB@0x120 ]
+	74      (00000110) const/4              v5, 6
+	75      (00000112) if-ne                v1, v5, +007h
+
+k0-BB@0x116 : [ k0-BB@0x128 ]
+	76      (00000116) iget-object          v5, v0, Ln2/s;->p [I
+	77      (0000011a) aget                 v5, v5, v12
+	78      (0000011e) goto                 +5h
+
+k0-BB@0x120 : [ k0-BB@0x128 ]
+	79      (00000120) iget-object          v5, v0, Ln2/s;->o [I
+	80      (00000124) aget                 v5, v5, v1
+
+k0-BB@0x128 : [ k0-BB@0x138 k0-BB@0x146 ]
+	81      (00000128) iget-object          v6, v0, Ln2/s;->B [[I
+	82      (0000012c) aget-object          v6, v6, v21
+	83      (00000130) aget                 v6, v6, v22
+	84      (00000134) if-ne                v6, v3, +009h
+
+k0-BB@0x138 : [ k0-BB@0x13c k0-BB@0x146 ]
+	85      (00000138) if-eq                v2, v4, +007h
+
+k0-BB@0x13c : [ k0-BB@0x166 ]
+	86      (0000013c) iget-object          v2, v0, Ln2/s;->L [[F
+	87      (00000140) aget-object          v2, v2, v21
+	88      (00000144) goto                 +11h
+
+k0-BB@0x146 : [ k0-BB@0x14a k0-BB@0x154 ]
+	89      (00000146) if-ne                v6, v9, +007h
+
+k0-BB@0x14a : [ k0-BB@0x166 ]
+	90      (0000014a) iget-object          v2, v0, Ln2/s;->M [[F
+	91      (0000014e) aget-object          v2, v2, v21
+	92      (00000152) goto                 +ah
+
+k0-BB@0x154 : [ k0-BB@0x158 k0-BB@0x162 ]
+	93      (00000154) if-ne                v6, v4, +007h
+
+k0-BB@0x158 : [ k0-BB@0x166 ]
+	94      (00000158) iget-object          v2, v0, Ln2/s;->M [[F
+	95      (0000015c) aget-object          v2, v2, v21
+	96      (00000160) goto                 +3h
+
+k0-BB@0x162 : [ k0-BB@0x166 ]
+	97      (00000162) iget-object          v2, v0, Ln2/s;->N [F
+
+k0-BB@0x166 : 
+	98      (00000166) const                v4, 33984
+	99      (0000016c) invoke-static        v4, Landroid/opengl/GLES20;->glActiveTexture(I)V
+	100     (00000172) const/16             v4, 3553
+	101     (00000176) invoke-static        v4, v5, Landroid/opengl/GLES20;->glBindTexture(I I)V
+	102     (0000017c) iget                 v4, v0, Ln2/s;->Y I
+	103     (00000180) invoke-static        v4, v11, Landroid/opengl/GLES20;->glUniform1i(I I)V
+	104     (00000186) iget                 v4, v0, Ln2/s;->e0 I
+	105     (0000018a) invoke-static        v4, v12, v2, v11, Landroid/opengl/GLES20;->glUniform4fv(I I [F I)V
+	106     (00000190) iget                 v2, v0, Ln2/s;->f0 I
+	107     (00000194) iget                 v4, v0, Ln2/s;->h0 F
+	108     (00000198) invoke-static        v2, v4, Landroid/opengl/GLES20;->glUniform1f(I F)V
+	109     (0000019e) iget-object          v2, v0, Ln2/s;->l [Ljava/nio/FloatBuffer;
+	110     (000001a2) aget-object          v9, v2, v1
+	111     (000001a6) iget-object          v1, v0, Ln2/s;->m Ljava/nio/FloatBuffer;
+	112     (000001aa) invoke-virtual       v9, v11, Ljava/nio/FloatBuffer;->position(I)Ljava/nio/Buffer;
+	113     (000001b0) iget                 v4, v0, Ln2/s;->W I
+	114     (000001b4) const/4              v7, 0
+	115     (000001b6) const/16             v8, 12
+	116     (000001ba) const/4              v5, 3
+	117     (000001bc) const/16             v6, 5126
+	118     (000001c0) invoke-static/range  v4 ... v9, Landroid/opengl/GLES20;->glVertexAttribPointer(I I I Z I Ljava/nio/Buffer;)V
+	119     (000001c6) invoke-virtual       v1, v11, Ljava/nio/FloatBuffer;->position(I)Ljava/nio/Buffer;
+	120     (000001cc) iget                 v12, v0, Ln2/s;->X I
+	121     (000001d0) const/4              v15, 0
+	122     (000001d2) const/16             v16, 8
+	123     (000001d6) const/4              v13, 2
+	124     (000001d8) const/16             v14, 5126
+	125     (000001dc) move-object/from16   v17, v1
+	126     (000001e0) invoke-static/range  v12 ... v17, Landroid/opengl/GLES20;->glVertexAttribPointer(I I I Z I Ljava/nio/Buffer;)V
+	127     (000001e6) const/4              v1, 4
+	128     (000001e8) invoke-static        v3, v11, v1, Landroid/opengl/GLES20;->glDrawArrays(I I I)V
+	129     (000001ee) return-void          
+

@@ -1,0 +1,57 @@
+# Ll4/h;->e(La5/z;)Ljava/lang/Object; [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:a5.z
+#
+# - return:java.lang.Object
+
+e-BB@0x0 : [ e-BB@0x20 e-BB@0x4c ]
+	0       (00000000) new-instance         v0, Ll6/b;
+	1       (00000004) const-class          v1, Ll6/a;
+	2       (00000008) invoke-static        v1, La5/x;->a(Ljava/lang/Class;)La5/x;
+	3       (0000000e) move-result-object   v1
+	4       (00000010) invoke-virtual       v5, v1, La5/z;->c(La5/x;)Ljava/util/Set;
+	5       (00000016) move-result-object   v5
+	6       (00000018) sget-object          v1, Ll6/c;->c Ll6/c;
+	7       (0000001c) if-nez               v1, +018h
+
+e-BB@0x20 : [ e-BB@0x26 ]
+	8       (00000020) const-class          v2, Ll6/c;
+	9       (00000024) monitor-enter        v2
+
+e-BB@0x26 : [ e-BB@0x2e e-BB@0x44 ]
+	10      (00000026) sget-object          v1, Ll6/c;->c Ll6/c;
+	11      (0000002a) if-nez               v1, +00dh
+	26:49
+	(Ljava/lang/Throwable; -> 40 e-BB@0x40)
+
+e-BB@0x2e : [ e-BB@0x44 ]
+	12      (0000002e) new-instance         v1, Ll6/c;
+	13      (00000032) const/4              v3, 0
+	14      (00000034) invoke-direct        v1, v3, Ll6/c;-><init>(I)V
+	15      (0000003a) sput-object          v1, Ll6/c;->c Ll6/c;
+	16      (0000003e) goto                 +3h
+	26:49
+	(Ljava/lang/Throwable; -> 40 e-BB@0x40)
+
+e-BB@0x40 : [ e-BB@0x48 ]
+	17      (00000040) move-exception       v5
+	18      (00000042) goto                 +3h
+	26:49
+	(Ljava/lang/Throwable; -> 40 e-BB@0x40)
+
+e-BB@0x44 : [ e-BB@0x4c ]
+	19      (00000044) monitor-exit         v2
+	20      (00000046) goto                 +3h
+	26:49
+	(Ljava/lang/Throwable; -> 40 e-BB@0x40)
+
+e-BB@0x48 : 
+	21      (00000048) monitor-exit         v2
+	22      (0000004a) throw                v5
+
+e-BB@0x4c : 
+	23      (0000004c) invoke-direct        v0, v5, v1, Ll6/b;-><init>(Ljava/util/Set; Ll6/c;)V
+	24      (00000052) return-object        v0
+

@@ -1,0 +1,80 @@
+# Ll6/c;->then(Ljava/lang/Object;)Lcom/google/android/gms/tasks/Task; [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:java.lang.Object
+#
+# - return:com.google.android.gms.tasks.Task
+
+then-BB@0x0 : [ D:then-BB@0xa 19:then-BB@0x70 ]
+	0       (00000000) iget                 v0, v3, Ll6/c;->a I
+	1       (00000004) packed-switch        v0, +0000064h
+
+then-BB@0xa : [ then-BB@0x1c then-BB@0x34 ]
+	2       (0000000a) check-cast           v4, Lo5/c;
+	3       (0000000e) iget-object          v0, v3, Ll6/c;->b Ljava/lang/Object;
+	4       (00000012) check-cast           v0, Lk2/c;
+	5       (00000016) const/4              v1, 0
+	6       (00000018) if-nez               v4, +00eh
+
+then-BB@0x1c : [ then-BB@0x6e ]
+	7       (0000001c) const-string         v4, "Received null app settings at app startup. Cannot send cached reports"
+	8       (00000020) const-string         v0, "FirebaseCrashlytics"
+	9       (00000024) invoke-static        v0, v4, v1, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+	10      (0000002a) invoke-static        v1, Lcom/google/android/gms/tasks/Tasks;->forResult(Ljava/lang/Object;)Lcom/google/android/gms/tasks/Task;
+	11      (00000030) move-result-object   v4
+	12      (00000032) goto                 +1eh
+
+then-BB@0x34 : [ then-BB@0x6e ]
+	13      (00000034) iget-object          v4, v0, Lk2/c;->c Ljava/lang/Object;
+	14      (00000038) check-cast           v4, Lg5/n;
+	15      (0000003c) iget-object          v0, v0, Lk2/c;->c Ljava/lang/Object;
+	16      (00000040) check-cast           v0, Lg5/n;
+	17      (00000044) invoke-static        v4, Lg5/n;->a(Lg5/n;)Lcom/google/android/gms/tasks/Task;
+	18      (0000004a) iget-object          v4, v0, Lg5/n;->m La5/z;
+	19      (0000004e) iget-object          v2, v0, Lg5/n;->e Lh5/f;
+	20      (00000052) iget-object          v2, v2, Lh5/f;->a Lh5/c;
+	21      (00000056) invoke-virtual       v4, v1, v2, La5/z;->s(Ljava/lang/String; Ljava/util/concurrent/Executor;)Lcom/google/android/gms/tasks/Task;
+	22      (0000005c) iget-object          v4, v0, Lg5/n;->q Lcom/google/android/gms/tasks/TaskCompletionSource;
+	23      (00000060) invoke-virtual       v4, v1, Lcom/google/android/gms/tasks/TaskCompletionSource;->trySetResult(Ljava/lang/Object;)Z
+	24      (00000066) invoke-static        v1, Lcom/google/android/gms/tasks/Tasks;->forResult(Ljava/lang/Object;)Lcom/google/android/gms/tasks/Task;
+	25      (0000006c) move-result-object   v4
+
+then-BB@0x6e : 
+	26      (0000006e) return-object        v4
+
+then-BB@0x70 : [ then-BB@0x86 then-BB@0x9e ]
+	27      (00000070) check-cast           v4, Lo5/c;
+	28      (00000074) iget-object          v0, v3, Ll6/c;->b Ljava/lang/Object;
+	29      (00000078) check-cast           v0, Lg5/l;
+	30      (0000007c) iget-object          v0, v0, Lg5/l;->e Lg5/n;
+	31      (00000080) const/4              v1, 0
+	32      (00000082) if-nez               v4, +00eh
+
+then-BB@0x86 : [ then-BB@0xca ]
+	33      (00000086) const-string         v4, "Received null app settings, cannot send reports at crash time."
+	34      (0000008a) const-string         v0, "FirebaseCrashlytics"
+	35      (0000008e) invoke-static        v0, v4, v1, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+	36      (00000094) invoke-static        v1, Lcom/google/android/gms/tasks/Tasks;->forResult(Ljava/lang/Object;)Lcom/google/android/gms/tasks/Task;
+	37      (0000009a) move-result-object   v4
+	38      (0000009c) goto                 +17h
+
+then-BB@0x9e : [ then-BB@0xca ]
+	39      (0000009e) invoke-static        v0, Lg5/n;->a(Lg5/n;)Lcom/google/android/gms/tasks/Task;
+	40      (000000a4) move-result-object   v4
+	41      (000000a6) iget-object          v2, v0, Lg5/n;->m La5/z;
+	42      (000000aa) iget-object          v0, v0, Lg5/n;->e Lh5/f;
+	43      (000000ae) iget-object          v0, v0, Lh5/f;->a Lh5/c;
+	44      (000000b2) invoke-virtual       v2, v1, v0, La5/z;->s(Ljava/lang/String; Ljava/util/concurrent/Executor;)Lcom/google/android/gms/tasks/Task;
+	45      (000000b8) move-result-object   v0
+	46      (000000ba) filled-new-array     v4, v0, [Lcom/google/android/gms/tasks/Task;
+	47      (000000c0) move-result-object   v4
+	48      (000000c2) invoke-static        v4, Lcom/google/android/gms/tasks/Tasks;->whenAll([Lcom/google/android/gms/tasks/Task;)Lcom/google/android/gms/tasks/Task;
+	49      (000000c8) move-result-object   v4
+
+then-BB@0xca : 
+	50      (000000ca) return-object        v4
+
+then-BB@0xcc : 
+	51      (000000cc) packed-switch-payload 13
+

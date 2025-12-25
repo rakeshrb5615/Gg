@@ -1,0 +1,25 @@
+# Lm4/p;->next()Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v2
+#
+# - return:java.lang.Object
+
+next-BB@0x0 : [ next-BB@0xc next-BB@0x1e ]
+	0       (00000000) invoke-virtual       v2, Lm4/p;->hasNext()Z
+	1       (00000006) move-result          v0
+	2       (00000008) if-eqz               v0, +00bh
+
+next-BB@0xc : 
+	3       (0000000c) const/4              v0, 2
+	4       (0000000e) iput                 v0, v2, Lm4/p;->a I
+	5       (00000012) iget-object          v0, v2, Lm4/p;->b Ljava/lang/Object;
+	6       (00000016) const/4              v1, 0
+	7       (00000018) iput-object          v1, v2, Lm4/p;->b Ljava/lang/Object;
+	8       (0000001c) return-object        v0
+
+next-BB@0x1e : 
+	9       (0000001e) new-instance         v0, Ljava/util/NoSuchElementException;
+	10      (00000022) invoke-direct        v0, Ljava/util/NoSuchElementException;-><init>()V
+	11      (00000028) throw                v0
+

@@ -1,0 +1,45 @@
+# Ln6/l;->f(Ljava/io/InputStream;)Ljava/lang/String; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:java.io.InputStream
+#
+# - return:java.lang.String
+
+f-BB@0x0 : [ f-BB@0xa ]
+	0       (00000000) new-instance         v0, Ljava/lang/StringBuilder;
+	1       (00000004) invoke-direct        v0, Ljava/lang/StringBuilder;-><init>()V
+
+f-BB@0xa : [ f-BB@0x1e ]
+	2       (0000000a) new-instance         v1, Ljava/io/BufferedReader;
+	3       (0000000e) new-instance         v2, Ljava/io/InputStreamReader;
+	4       (00000012) invoke-direct        v2, v3, Ljava/io/InputStreamReader;-><init>(Ljava/io/InputStream;)V
+	5       (00000018) invoke-direct        v1, v2, Ljava/io/BufferedReader;-><init>(Ljava/io/Reader;)V
+	a:2f
+	(Ljava/io/IOException; -> 32 f-BB@0x32)
+
+f-BB@0x1e : [ f-BB@0x2a f-BB@0x44 ]
+	6       (0000001e) invoke-virtual       v1, Ljava/io/BufferedReader;->readLine()Ljava/lang/String;
+	7       (00000024) move-result-object   v3
+	8       (00000026) if-eqz               v3, +00fh
+	a:2f
+	(Ljava/io/IOException; -> 32 f-BB@0x32)
+
+f-BB@0x2a : [ f-BB@0x1e ]
+	9       (0000002a) invoke-virtual       v0, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	10      (00000030) goto                 -9h
+
+f-BB@0x32 : [ f-BB@0x3e f-BB@0x44 ]
+	11      (00000032) invoke-virtual       v0, Ljava/lang/StringBuilder;->length()I
+	12      (00000038) move-result          v3
+	13      (0000003a) if-nez               v3, +005h
+
+f-BB@0x3e : 
+	14      (0000003e) const-string         v3, "Unable to connect to the server, access is forbidden. HTTP status code: 403"
+	15      (00000042) return-object        v3
+
+f-BB@0x44 : 
+	16      (00000044) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	17      (0000004a) move-result-object   v3
+	18      (0000004c) return-object        v3
+

@@ -1,0 +1,40 @@
+# Ln2/s;->l0(Z)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:boolean
+#
+# - return:void
+
+l0-BB@0x0 : [ l0-BB@0x2a l0-BB@0x36 ]
+	0       (00000000) sget-object          v0, Lm2/a;->a [Ljava/text/SimpleDateFormat;
+	1       (00000004) invoke-static        Ljava/util/Calendar;->getInstance()Ljava/util/Calendar;
+	2       (0000000a) move-result-object   v0
+	3       (0000000c) const/4              v1, 2
+	4       (0000000e) invoke-virtual       v0, v1, Ljava/util/Calendar;->get(I)I
+	5       (00000014) move-result          v0
+	6       (00000016) add-int/lit8         v0, v0, 1
+	7       (0000001a) const/16             v1, 12
+	8       (0000001e) iget-object          v2, v4, Ln2/s;->m0 Landroid/graphics/drawable/Drawable;
+	9       (00000022) iget-object          v3, v4, Ln2/s;->l0 Ljava/util/ArrayList;
+	10      (00000026) if-ne                v0, v1, +008h
+
+l0-BB@0x2a : [ l0-BB@0x2e l0-BB@0x36 ]
+	11      (0000002a) if-eqz               v5, +006h
+
+l0-BB@0x2e : [ l0-BB@0x3c ]
+	12      (0000002e) invoke-virtual       v3, v2, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	13      (00000034) goto                 +4h
+
+l0-BB@0x36 : [ l0-BB@0x3c ]
+	14      (00000036) invoke-virtual       v3, v2, Ljava/util/ArrayList;->remove(Ljava/lang/Object;)Z
+
+l0-BB@0x3c : 
+	15      (0000003c) const/4              v5, 0
+	16      (0000003e) new-array            v5, v5, [Landroid/graphics/drawable/Drawable;
+	17      (00000042) invoke-virtual       v3, v5, Ljava/util/ArrayList;->toArray([Ljava/lang/Object;)[Ljava/lang/Object;
+	18      (00000048) move-result-object   v5
+	19      (0000004a) check-cast           v5, [Landroid/graphics/drawable/Drawable;
+	20      (0000004e) iput-object          v5, v4, Ln2/s;->O [Landroid/graphics/drawable/Drawable;
+	21      (00000052) return-void          
+

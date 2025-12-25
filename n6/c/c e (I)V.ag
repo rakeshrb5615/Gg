@@ -1,0 +1,65 @@
+# Ln6/c;->e(I)V [access_flags=public final synchronized]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:int
+#
+# - return:void
+
+e-BB@0x0 : [ e-BB@0x2 ]
+	0       (00000000) monitor-enter        v5
+
+e-BB@0x2 : [ e-BB@0x3e ]
+	1       (00000002) new-instance         v0, Ljava/util/Date;
+	2       (00000006) iget-object          v1, v5, Ln6/c;->h Lcom/google/android/gms/common/util/Clock;
+	3       (0000000a) invoke-interface     v1, Lcom/google/android/gms/common/util/Clock;->currentTimeMillis()J
+	4       (00000010) move-result-wide     v1
+	5       (00000012) invoke-direct        v0, v1, v2, Ljava/util/Date;-><init>(J)V
+	6       (00000018) int-to-long          v1, v6
+	7       (0000001a) const-wide/16        v3, 1000
+	8       (0000001e) mul-long/2addr       v1, v3
+	9       (00000020) new-instance         v6, Ljava/util/Date;
+	10      (00000024) invoke-virtual       v0, Ljava/util/Date;->getTime()J
+	11      (0000002a) move-result-wide     v3
+	12      (0000002c) add-long/2addr       v3, v1
+	13      (0000002e) invoke-direct        v6, v3, v4, Ljava/util/Date;-><init>(J)V
+	14      (00000034) iget-object          v0, v5, Ln6/c;->i Ln6/n;
+	15      (00000038) iget-object          v1, v0, Ln6/n;->d Ljava/lang/Object;
+	16      (0000003c) monitor-enter        v1
+	2:3d
+	(Ljava/lang/Throwable; -> 70 e-BB@0x70)
+
+e-BB@0x3e : 
+	17      (0000003e) iget-object          v0, v0, Ln6/n;->a Landroid/content/SharedPreferences;
+	18      (00000042) invoke-interface     v0, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
+	19      (00000048) move-result-object   v0
+	20      (0000004a) const-string         v2, "realtime_backoff_end_time_in_millis"
+	21      (0000004e) invoke-virtual       v6, Ljava/util/Date;->getTime()J
+	22      (00000054) move-result-wide     v3
+	23      (00000056) invoke-interface     v0, v2, v3, v4, Landroid/content/SharedPreferences$Editor;->putLong(Ljava/lang/String; J)Landroid/content/SharedPreferences$Editor;
+	24      (0000005c) move-result-object   v6
+	25      (0000005e) invoke-interface     v6, Landroid/content/SharedPreferences$Editor;->apply()V
+	26      (00000064) monitor-exit         v1
+	27      (00000066) monitor-exit         v5
+	28      (00000068) return-void          
+	3e:65
+	(Ljava/lang/Throwable; -> 6a e-BB@0x6a)
+
+e-BB@0x6a : [ e-BB@0x6c ]
+	29      (0000006a) move-exception       v6
+
+e-BB@0x6c : [ e-BB@0x6e ]
+	30      (0000006c) monitor-exit         v1
+	6c:6d
+	(Ljava/lang/Throwable; -> 6a e-BB@0x6a)
+
+e-BB@0x6e : 
+	31      (0000006e) throw                v6
+	6e:73
+	(Ljava/lang/Throwable; -> 70 e-BB@0x70)
+
+e-BB@0x70 : 
+	32      (00000070) move-exception       v6
+	33      (00000072) monitor-exit         v5
+	34      (00000074) throw                v6
+

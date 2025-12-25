@@ -1,0 +1,78 @@
+# Ll/j;->b()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v8
+#
+# - return:void
+
+b-BB@0x0 : [ b-BB@0x8 b-BB@0xa ]
+	0       (00000000) iget-boolean         v0, v8, Ll/j;->e Z
+	1       (00000004) if-eqz               v0, +003h
+
+b-BB@0x8 : 
+	2       (00000008) return-void          
+
+b-BB@0xa : [ b-BB@0x18 ]
+	3       (0000000a) iget-object          v0, v8, Ll/j;->a Ljava/util/ArrayList;
+	4       (0000000e) invoke-virtual       v0, Ljava/util/ArrayList;->size()I
+	5       (00000014) move-result          v1
+	6       (00000016) const/4              v2, 0
+
+b-BB@0x18 : [ b-BB@0x1c b-BB@0xa2 ]
+	7       (00000018) if-ge                v2, v1, +045h
+
+b-BB@0x1c : [ b-BB@0x3c b-BB@0x42 ]
+	8       (0000001c) invoke-virtual       v0, v2, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	9       (00000022) move-result-object   v3
+	10      (00000024) add-int/lit8         v2, v2, 1
+	11      (00000028) check-cast           v3, Lq0/t0;
+	12      (0000002c) iget-wide            v4, v8, Ll/j;->b J
+	13      (00000030) const-wide/16        v6, 0
+	14      (00000034) cmp-long             v6, v4, v6
+	15      (00000038) if-ltz               v6, +005h
+
+b-BB@0x3c : [ b-BB@0x42 ]
+	16      (0000003c) invoke-virtual       v3, v4, v5, Lq0/t0;->c(J)V
+
+b-BB@0x42 : [ b-BB@0x4a b-BB@0x6c ]
+	17      (00000042) iget-object          v4, v8, Ll/j;->c Landroid/view/animation/Interpolator;
+	18      (00000046) if-eqz               v4, +013h
+
+b-BB@0x4a : [ b-BB@0x5e b-BB@0x6c ]
+	19      (0000004a) iget-object          v5, v3, Lq0/t0;->a Ljava/lang/ref/WeakReference;
+	20      (0000004e) invoke-virtual       v5, Ljava/lang/ref/Reference;->get()Ljava/lang/Object;
+	21      (00000054) move-result-object   v5
+	22      (00000056) check-cast           v5, Landroid/view/View;
+	23      (0000005a) if-eqz               v5, +009h
+
+b-BB@0x5e : [ b-BB@0x6c ]
+	24      (0000005e) invoke-virtual       v5, Landroid/view/View;->animate()Landroid/view/ViewPropertyAnimator;
+	25      (00000064) move-result-object   v5
+	26      (00000066) invoke-virtual       v5, v4, Landroid/view/ViewPropertyAnimator;->setInterpolator(Landroid/animation/TimeInterpolator;)Landroid/view/ViewPropertyAnimator;
+
+b-BB@0x6c : [ b-BB@0x74 b-BB@0x7e ]
+	27      (0000006c) iget-object          v4, v8, Ll/j;->d Lq0/u0;
+	28      (00000070) if-eqz               v4, +007h
+
+b-BB@0x74 : [ b-BB@0x7e ]
+	29      (00000074) iget-object          v4, v8, Ll/j;->f Ll/i;
+	30      (00000078) invoke-virtual       v3, v4, Lq0/t0;->d(Lq0/u0;)V
+
+b-BB@0x7e : [ b-BB@0x92 b-BB@0x18 ]
+	31      (0000007e) iget-object          v3, v3, Lq0/t0;->a Ljava/lang/ref/WeakReference;
+	32      (00000082) invoke-virtual       v3, Ljava/lang/ref/Reference;->get()Ljava/lang/Object;
+	33      (00000088) move-result-object   v3
+	34      (0000008a) check-cast           v3, Landroid/view/View;
+	35      (0000008e) if-eqz               v3, -03bh
+
+b-BB@0x92 : [ b-BB@0x18 ]
+	36      (00000092) invoke-virtual       v3, Landroid/view/View;->animate()Landroid/view/ViewPropertyAnimator;
+	37      (00000098) move-result-object   v3
+	38      (0000009a) invoke-virtual       v3, Landroid/view/ViewPropertyAnimator;->start()V
+	39      (000000a0) goto                 -44h
+
+b-BB@0xa2 : 
+	40      (000000a2) const/4              v0, 1
+	41      (000000a4) iput-boolean         v0, v8, Ll/j;->e Z
+	42      (000000a8) return-void          
+

@@ -1,0 +1,43 @@
+# Ll6/b;->b(Ljava/util/Set;)Ljava/lang/String; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:java.util.Set
+#
+# - return:java.lang.String
+
+b-BB@0x0 : [ b-BB@0x12 ]
+	0       (00000000) new-instance         v0, Ljava/lang/StringBuilder;
+	1       (00000004) invoke-direct        v0, Ljava/lang/StringBuilder;-><init>()V
+	2       (0000000a) invoke-interface     v3, Ljava/util/Set;->iterator()Ljava/util/Iterator;
+	3       (00000010) move-result-object   v3
+
+b-BB@0x12 : [ b-BB@0x1e b-BB@0x60 ]
+	4       (00000012) invoke-interface     v3, Ljava/util/Iterator;->hasNext()Z
+	5       (00000018) move-result          v1
+	6       (0000001a) if-eqz               v1, +023h
+
+b-BB@0x1e : [ b-BB@0x54 b-BB@0x12 ]
+	7       (0000001e) invoke-interface     v3, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	8       (00000024) move-result-object   v1
+	9       (00000026) check-cast           v1, Ll6/a;
+	10      (0000002a) iget-object          v2, v1, Ll6/a;->a Ljava/lang/String;
+	11      (0000002e) invoke-virtual       v0, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	12      (00000034) const/16             v2, 47
+	13      (00000038) invoke-virtual       v0, v2, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+	14      (0000003e) iget-object          v1, v1, Ll6/a;->b Ljava/lang/String;
+	15      (00000042) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	16      (00000048) invoke-interface     v3, Ljava/util/Iterator;->hasNext()Z
+	17      (0000004e) move-result          v1
+	18      (00000050) if-eqz               v1, -01fh
+
+b-BB@0x54 : [ b-BB@0x12 ]
+	19      (00000054) const/16             v1, 32
+	20      (00000058) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+	21      (0000005e) goto                 -26h
+
+b-BB@0x60 : 
+	22      (00000060) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	23      (00000066) move-result-object   v3
+	24      (00000068) return-object        v3
+

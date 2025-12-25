@@ -1,0 +1,46 @@
+# Lm8/c;->e()Z [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v4
+#
+# - return:boolean
+
+e-BB@0x0 : [ e-BB@0x12 e-BB@0x2c ]
+	0       (00000000) sget-object          v0, Lm8/g;->f Ljava/util/concurrent/atomic/AtomicIntegerFieldUpdater;
+	1       (00000004) invoke-virtual       v0, v4, Ljava/util/concurrent/atomic/AtomicIntegerFieldUpdater;->get(Ljava/lang/Object;)I
+	2       (0000000a) move-result          v1
+	3       (0000000c) const/4              v2, 1
+	4       (0000000e) if-le                v1, v2, +00fh
+
+e-BB@0x12 : [ e-BB@0x1e e-BB@0x0 ]
+	5       (00000012) invoke-virtual       v0, v4, Ljava/util/concurrent/atomic/AtomicIntegerFieldUpdater;->get(Ljava/lang/Object;)I
+	6       (00000018) move-result          v1
+	7       (0000001a) if-le                v1, v2, -00dh
+
+e-BB@0x1e : [ e-BB@0x2a e-BB@0x12 ]
+	8       (0000001e) invoke-virtual       v0, v4, v1, v2, Ljava/util/concurrent/atomic/AtomicIntegerFieldUpdater;->compareAndSet(Ljava/lang/Object; I I)Z
+	9       (00000024) move-result          v1
+	10      (00000026) if-eqz               v1, -00ah
+
+e-BB@0x2a : [ e-BB@0x0 ]
+	11      (0000002a) goto                 -15h
+
+e-BB@0x2c : [ e-BB@0x30 e-BB@0x34 ]
+	12      (0000002c) if-gtz               v1, +004h
+
+e-BB@0x30 : 
+	13      (00000030) const/4              v0, 0
+	14      (00000032) return               v0
+
+e-BB@0x34 : [ e-BB@0x44 e-BB@0x0 ]
+	15      (00000034) add-int/lit8         v3, v1, -1
+	16      (00000038) invoke-virtual       v0, v4, v1, v3, Ljava/util/concurrent/atomic/AtomicIntegerFieldUpdater;->compareAndSet(Ljava/lang/Object; I I)Z
+	17      (0000003e) move-result          v0
+	18      (00000040) if-eqz               v0, -020h
+
+e-BB@0x44 : 
+	19      (00000044) sget-object          v0, Lm8/c;->g Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;
+	20      (00000048) const/4              v1, 0
+	21      (0000004a) invoke-virtual       v0, v4, v1, Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;->set(Ljava/lang/Object; Ljava/lang/Object;)V
+	22      (00000050) return               v2
+

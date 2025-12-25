@@ -1,0 +1,45 @@
+# Ln7/a;->resumeWith(Ljava/lang/Object;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:java.lang.Object
+#
+# - return:void
+
+resumeWith-BB@0x0 : [ resumeWith-BB@0x2 ]
+	0       (00000000) move-object          v0, v3
+
+resumeWith-BB@0x2 : [ resumeWith-BB@0x10 ]
+	1       (00000002) check-cast           v0, Ln7/a;
+	2       (00000006) iget-object          v1, v0, Ln7/a;->completion Ll7/c;
+	3       (0000000a) invoke-static        v1, Lkotlin/jvm/internal/j;->b(Ljava/lang/Object;)V
+
+resumeWith-BB@0x10 : [ resumeWith-BB@0x20 resumeWith-BB@0x2c ]
+	4       (00000010) invoke-virtual       v0, v4, Ln7/a;->invokeSuspend(Ljava/lang/Object;)Ljava/lang/Object;
+	5       (00000016) move-result-object   v4
+	6       (00000018) sget-object          v2, Lm7/a;->a Lm7/a;
+	7       (0000001c) if-ne                v4, v2, +008h
+	10:1b
+	(Ljava/lang/Throwable; -> 22 resumeWith-BB@0x22)
+
+resumeWith-BB@0x20 : 
+	8       (00000020) return-void          
+
+resumeWith-BB@0x22 : [ resumeWith-BB@0x2c ]
+	9       (00000022) move-exception       v4
+	10      (00000024) invoke-static        v4, Lc4/b;->p(Ljava/lang/Throwable;)Lh7/g;
+	11      (0000002a) move-result-object   v4
+
+resumeWith-BB@0x2c : [ resumeWith-BB@0x3a resumeWith-BB@0x3e ]
+	12      (0000002c) invoke-virtual       v0, Ln7/a;->releaseIntercepted()V
+	13      (00000032) instance-of          v0, v1, Ln7/a;
+	14      (00000036) if-eqz               v0, +004h
+
+resumeWith-BB@0x3a : [ resumeWith-BB@0x2 ]
+	15      (0000003a) move-object          v0, v1
+	16      (0000003c) goto                 -1dh
+
+resumeWith-BB@0x3e : 
+	17      (0000003e) invoke-interface     v1, v4, Ll7/c;->resumeWith(Ljava/lang/Object;)V
+	18      (00000044) return-void          
+
