@@ -1,0 +1,33 @@
+# La1/n1;->flush()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v2
+#
+# - return:void
+
+flush-BB@0x0 : [ D:flush-BB@0xa 0:flush-BB@0x22 1:flush-BB@0x20 ]
+	0       (00000000) iget                 v0, v2, La1/n1;->a I
+	1       (00000004) packed-switch        v0, +0000018h
+
+flush-BB@0xa : [ flush-BB@0x1a flush-BB@0x20 ]
+	2       (0000000a) iget-object          v0, v2, La1/n1;->b Ljava/lang/Object;
+	3       (0000000e) check-cast           v0, Lx8/a0;
+	4       (00000012) iget-boolean         v1, v0, Lx8/a0;->c Z
+	5       (00000016) if-nez               v1, +005h
+
+flush-BB@0x1a : [ flush-BB@0x20 ]
+	6       (0000001a) invoke-virtual       v0, Lx8/a0;->flush()V
+
+flush-BB@0x20 : 
+	7       (00000020) return-void          
+
+flush-BB@0x22 : 
+	8       (00000022) iget-object          v0, v2, La1/n1;->b Ljava/lang/Object;
+	9       (00000026) check-cast           v0, Ljava/io/FileOutputStream;
+	10      (0000002a) invoke-virtual       v0, Ljava/io/OutputStream;->flush()V
+	11      (00000030) return-void          
+
+flush-BB@0x32 : 
+	12      (00000032) nop                  
+	13      (00000034) packed-switch-payload 0 1
+

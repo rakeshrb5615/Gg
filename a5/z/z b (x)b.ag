@@ -1,0 +1,35 @@
+# La5/z;->b(La5/x;)Lc6/b; [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:a5.x
+#
+# - return:c6.b
+
+b-BB@0x0 : [ b-BB@0x14 b-BB@0x26 ]
+	0       (00000000) iget-object          v0, v3, La5/z;->b Ljava/lang/Object;
+	1       (00000004) check-cast           v0, Ljava/util/Set;
+	2       (00000008) invoke-interface     v0, v4, Ljava/util/Set;->contains(Ljava/lang/Object;)Z
+	3       (0000000e) move-result          v0
+	4       (00000010) if-eqz               v0, +00bh
+
+b-BB@0x14 : 
+	5       (00000014) iget-object          v0, v3, La5/z;->f Ljava/lang/Object;
+	6       (00000018) check-cast           v0, La5/d;
+	7       (0000001c) invoke-interface     v0, v4, La5/d;->b(La5/x;)Lc6/b;
+	8       (00000022) move-result-object   v4
+	9       (00000024) return-object        v4
+
+b-BB@0x26 : 
+	10      (00000026) new-instance         v0, La5/o;
+	11      (0000002a) new-instance         v1, Ljava/lang/StringBuilder;
+	12      (0000002e) const-string         v2, "Attempting to request an undeclared dependency Provider<"
+	13      (00000032) invoke-direct        v1, v2, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	14      (00000038) invoke-virtual       v1, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	15      (0000003e) const-string         v4, ">."
+	16      (00000042) invoke-virtual       v1, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	17      (00000048) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	18      (0000004e) move-result-object   v4
+	19      (00000050) invoke-direct        v0, v4, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
+	20      (00000056) throw                v0
+

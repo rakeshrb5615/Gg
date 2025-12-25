@@ -1,0 +1,383 @@
+# La5/a;->d(Lb8/g;)Lp2/b; [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v21
+# - v22:b8.g
+#
+# - return:p2.b
+
+d-BB@0x0 : [ d-BB@0x36 d-BB@0x50 ]
+	0       (00000000) move-object/from16   v1, v21
+	1       (00000004) move-object/from16   v0, v22
+	2       (00000008) iget-object          v2, v1, La5/a;->b Ljava/lang/Object;
+	3       (0000000c) check-cast           v2, Lp2/c;
+	4       (00000010) iget-object          v3, v0, Lb8/g;->b Ljava/lang/Object;
+	5       (00000014) check-cast           v3, Ljava/net/URL;
+	6       (00000018) const-string         v4, "TRuntime."
+	7       (0000001c) const-string         v5, "CctTransportBackend"
+	8       (00000020) invoke-virtual       v4, v5, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	9       (00000026) move-result-object   v6
+	10      (00000028) const/4              v7, 4
+	11      (0000002a) invoke-static        v6, v7, Landroid/util/Log;->isLoggable(Ljava/lang/String; I)Z
+	12      (00000030) move-result          v8
+	13      (00000032) if-eqz               v8, +00fh
+
+d-BB@0x36 : [ d-BB@0x50 ]
+	14      (00000036) filled-new-array     v3, [Ljava/lang/Object;
+	15      (0000003c) move-result-object   v8
+	16      (0000003e) const-string         v9, "Making request to: %s"
+	17      (00000042) invoke-static        v9, v8, Ljava/lang/String;->format(Ljava/lang/String; [Ljava/lang/Object;)Ljava/lang/String;
+	18      (00000048) move-result-object   v8
+	19      (0000004a) invoke-static        v6, v8, Landroid/util/Log;->i(Ljava/lang/String; Ljava/lang/String;)I
+
+d-BB@0x50 : [ d-BB@0xca d-BB@0xd4 ]
+	20      (00000050) invoke-virtual       v3, Ljava/net/URL;->openConnection()Ljava/net/URLConnection;
+	21      (00000056) move-result-object   v3
+	22      (00000058) check-cast           v3, Ljava/net/HttpURLConnection;
+	23      (0000005c) const/16             v6, 30000
+	24      (00000060) invoke-virtual       v3, v6, Ljava/net/URLConnection;->setConnectTimeout(I)V
+	25      (00000066) iget                 v6, v2, Lp2/c;->g I
+	26      (0000006a) invoke-virtual       v3, v6, Ljava/net/URLConnection;->setReadTimeout(I)V
+	27      (00000070) const/4              v6, 1
+	28      (00000072) invoke-virtual       v3, v6, Ljava/net/URLConnection;->setDoOutput(Z)V
+	29      (00000078) const/4              v6, 0
+	30      (0000007a) invoke-virtual       v3, v6, Ljava/net/HttpURLConnection;->setInstanceFollowRedirects(Z)V
+	31      (00000080) const-string         v6, "POST"
+	32      (00000084) invoke-virtual       v3, v6, Ljava/net/HttpURLConnection;->setRequestMethod(Ljava/lang/String;)V
+	33      (0000008a) const-string         v6, "User-Agent"
+	34      (0000008e) const-string         v8, "datatransport/3.3.0 android/"
+	35      (00000092) invoke-virtual       v3, v6, v8, Ljava/net/URLConnection;->setRequestProperty(Ljava/lang/String; Ljava/lang/String;)V
+	36      (00000098) const-string         v6, "Content-Encoding"
+	37      (0000009c) const-string         v8, "gzip"
+	38      (000000a0) invoke-virtual       v3, v6, v8, Ljava/net/URLConnection;->setRequestProperty(Ljava/lang/String; Ljava/lang/String;)V
+	39      (000000a6) const-string         v9, "application/json"
+	40      (000000aa) const-string         v10, "Content-Type"
+	41      (000000ae) invoke-virtual       v3, v10, v9, Ljava/net/URLConnection;->setRequestProperty(Ljava/lang/String; Ljava/lang/String;)V
+	42      (000000b4) const-string         v9, "Accept-Encoding"
+	43      (000000b8) invoke-virtual       v3, v9, v8, Ljava/net/URLConnection;->setRequestProperty(Ljava/lang/String; Ljava/lang/String;)V
+	44      (000000be) iget-object          v9, v0, Lb8/g;->d Ljava/lang/Object;
+	45      (000000c2) check-cast           v9, Ljava/lang/String;
+	46      (000000c6) if-eqz               v9, +007h
+
+d-BB@0xca : [ d-BB@0xd4 ]
+	47      (000000ca) const-string         v11, "X-Goog-Api-Key"
+	48      (000000ce) invoke-virtual       v3, v11, v9, Ljava/net/URLConnection;->setRequestProperty(Ljava/lang/String; Ljava/lang/String;)V
+
+d-BB@0xd4 : [ d-BB@0xdc ]
+	49      (000000d4) invoke-virtual       v3, Ljava/net/URLConnection;->getOutputStream()Ljava/io/OutputStream;
+	50      (000000da) move-result-object   v13
+	d4:db
+	(Ljava/net/ConnectException; -> 17c d-BB@0x17c)
+	(Ljava/net/UnknownHostException; -> 170 d-BB@0x170)
+	(Lt5/b; -> 16a d-BB@0x16a)
+	(Ljava/io/IOException; -> 164 d-BB@0x164)
+
+d-BB@0xdc : [ d-BB@0xe6 ]
+	51      (000000dc) new-instance         v14, Ljava/util/zip/GZIPOutputStream;
+	52      (000000e0) invoke-direct        v14, v13, Ljava/util/zip/GZIPOutputStream;-><init>(Ljava/io/OutputStream;)V
+	dc:e5
+	(Ljava/lang/Throwable; -> 2e0 d-BB@0x2e0)
+
+d-BB@0xe6 : [ d-BB@0x152 ]
+	53      (000000e6) iget-object          v2, v2, Lp2/c;->a Lj6/o;
+	54      (000000ea) iget-object          v0, v0, Lb8/g;->c Ljava/lang/Object;
+	55      (000000ee) check-cast           v0, Lq2/m;
+	56      (000000f2) new-instance         v15, Ljava/io/BufferedWriter;
+	57      (000000f6) new-instance         v9, Ljava/io/OutputStreamWriter;
+	58      (000000fa) invoke-direct        v9, v14, Ljava/io/OutputStreamWriter;-><init>(Ljava/io/OutputStream;)V
+	59      (00000100) invoke-direct        v15, v9, Ljava/io/BufferedWriter;-><init>(Ljava/io/Writer;)V
+	60      (00000106) move-object/from16   v16, v15
+	61      (0000010a) new-instance         v15, Lv5/e;
+	62      (0000010e) iget-object          v2, v2, Lj6/o;->b Ljava/lang/Object;
+	63      (00000112) check-cast           v2, Lv5/d;
+	64      (00000116) iget-object          v9, v2, Lv5/d;->a Ljava/util/HashMap;
+	65      (0000011a) iget-object          v11, v2, Lv5/d;->b Ljava/util/HashMap;
+	66      (0000011e) iget-object          v12, v2, Lv5/d;->c Lv5/a;
+	67      (00000122) iget-boolean         v2, v2, Lv5/d;->d Z
+	68      (00000126) move/from16          v20, v2
+	69      (0000012a) move-object/from16   v17, v9
+	70      (0000012e) move-object/from16   v18, v11
+	71      (00000132) move-object/from16   v19, v12
+	72      (00000136) invoke-direct/range  v15 ... v20, Lv5/e;-><init>(Ljava/io/Writer; Ljava/util/HashMap; Ljava/util/HashMap; Lv5/a; Z)V
+	73      (0000013c) invoke-virtual       v15, v0, Lv5/e;->h(Ljava/lang/Object;)Lv5/e;
+	74      (00000142) invoke-virtual       v15, Lv5/e;->j()V
+	75      (00000148) iget-object          v0, v15, Lv5/e;->b Landroid/util/JsonWriter;
+	76      (0000014c) invoke-virtual       v0, Landroid/util/JsonWriter;->flush()V
+	e6:151
+	(Ljava/lang/Throwable; -> 2ea d-BB@0x2ea)
+
+d-BB@0x152 : [ d-BB@0x15c d-BB@0x180 ]
+	77      (00000152) invoke-virtual       v14, Ljava/io/OutputStream;->close()V
+	78      (00000158) if-eqz               v13, +014h
+	152:157
+	(Ljava/lang/Throwable; -> 2e0 d-BB@0x2e0)
+
+d-BB@0x15c : [ d-BB@0x180 ]
+	79      (0000015c) invoke-virtual       v13, Ljava/io/OutputStream;->close()V
+	80      (00000162) goto                 +fh
+	15c:161
+	(Ljava/net/ConnectException; -> 17c d-BB@0x17c)
+	(Ljava/net/UnknownHostException; -> 170 d-BB@0x170)
+	(Lt5/b; -> 16a d-BB@0x16a)
+	(Ljava/io/IOException; -> 164 d-BB@0x164)
+
+d-BB@0x164 : [ d-BB@0x316 ]
+	81      (00000164) move-exception       v0
+	82      (00000166) goto/16              +0d8h
+
+d-BB@0x16a : [ d-BB@0x316 ]
+	83      (0000016a) move-exception       v0
+	84      (0000016c) goto/16              +0d5h
+
+d-BB@0x170 : [ d-BB@0x172 ]
+	85      (00000170) move-exception       v0
+
+d-BB@0x172 : [ d-BB@0x336 ]
+	86      (00000172) const-wide/16        v3, 0
+	87      (00000176) const/4              v7, 0
+	88      (00000178) goto/16              +0dfh
+
+d-BB@0x17c : [ d-BB@0x172 ]
+	89      (0000017c) move-exception       v0
+	90      (0000017e) goto                 -6h
+
+d-BB@0x180 : [ d-BB@0x1a4 d-BB@0x1be ]
+	91      (00000180) invoke-virtual       v3, Ljava/net/HttpURLConnection;->getResponseCode()I
+	92      (00000186) move-result          v0
+	93      (00000188) invoke-static        v0, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+	94      (0000018e) move-result-object   v2
+	95      (00000190) invoke-virtual       v4, v5, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	96      (00000196) move-result-object   v4
+	97      (00000198) invoke-static        v4, v7, Landroid/util/Log;->isLoggable(Ljava/lang/String; I)Z
+	98      (0000019e) move-result          v7
+	99      (000001a0) if-eqz               v7, +00fh
+
+d-BB@0x1a4 : [ d-BB@0x1be ]
+	100     (000001a4) filled-new-array     v2, [Ljava/lang/Object;
+	101     (000001aa) move-result-object   v2
+	102     (000001ac) const-string         v7, "Status Code: %d"
+	103     (000001b0) invoke-static        v7, v2, Ljava/lang/String;->format(Ljava/lang/String; [Ljava/lang/Object;)Ljava/lang/String;
+	104     (000001b6) move-result-object   v2
+	105     (000001b8) invoke-static        v4, v2, Landroid/util/Log;->i(Ljava/lang/String; Ljava/lang/String;)I
+
+d-BB@0x1be : [ d-BB@0x1ea d-BB@0x2ba ]
+	106     (000001be) const-string         v2, "Content-Type: %s"
+	107     (000001c2) invoke-virtual       v3, v10, Ljava/net/URLConnection;->getHeaderField(Ljava/lang/String;)Ljava/lang/String;
+	108     (000001c8) move-result-object   v4
+	109     (000001ca) invoke-static        v5, v2, v4, Lc4/b;->v(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Object;)V
+	110     (000001d0) const-string         v2, "Content-Encoding: %s"
+	111     (000001d4) invoke-virtual       v3, v6, Ljava/net/URLConnection;->getHeaderField(Ljava/lang/String;)Ljava/lang/String;
+	112     (000001da) move-result-object   v4
+	113     (000001dc) invoke-static        v5, v2, v4, Lc4/b;->v(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Object;)V
+	114     (000001e2) const/16             v2, 302
+	115     (000001e6) if-eq                v0, v2, +06ah
+
+d-BB@0x1ea : [ d-BB@0x1f2 d-BB@0x2ba ]
+	116     (000001ea) const/16             v2, 301
+	117     (000001ee) if-eq                v0, v2, +066h
+
+d-BB@0x1f2 : [ d-BB@0x1fa d-BB@0x1fc ]
+	118     (000001f2) const/16             v2, 307
+	119     (000001f6) if-ne                v0, v2, +003h
+
+d-BB@0x1fa : [ d-BB@0x2ba ]
+	120     (000001fa) goto                 +60h
+
+d-BB@0x1fc : [ d-BB@0x204 d-BB@0x216 ]
+	121     (000001fc) const/16             v2, 200
+	122     (00000200) if-eq                v0, v2, +00bh
+
+d-BB@0x204 : 
+	123     (00000204) new-instance         v2, Lp2/b;
+	124     (00000208) const-wide/16        v3, 0
+	125     (0000020c) const/4              v5, 0
+	126     (0000020e) invoke-direct        v2, v0, v5, v3, v4, Lp2/b;-><init>(I Ljava/net/URL; J)V
+	127     (00000214) return-object        v2
+
+d-BB@0x216 : [ d-BB@0x21e ]
+	128     (00000216) invoke-virtual       v3, Ljava/net/URLConnection;->getInputStream()Ljava/io/InputStream;
+	129     (0000021c) move-result-object   v2
+
+d-BB@0x21e : [ d-BB@0x232 d-BB@0x23e ]
+	130     (0000021e) invoke-virtual       v3, v6, Ljava/net/URLConnection;->getHeaderField(Ljava/lang/String;)Ljava/lang/String;
+	131     (00000224) move-result-object   v3
+	132     (00000226) invoke-virtual       v8, v3, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	133     (0000022c) move-result          v3
+	134     (0000022e) if-eqz               v3, +008h
+	21e:23b
+	(Ljava/lang/Throwable; -> 278 d-BB@0x278)
+
+d-BB@0x232 : [ d-BB@0x240 ]
+	135     (00000232) new-instance         v3, Ljava/util/zip/GZIPInputStream;
+	136     (00000236) invoke-direct        v3, v2, Ljava/util/zip/GZIPInputStream;-><init>(Ljava/io/InputStream;)V
+	137     (0000023c) goto                 +2h
+
+d-BB@0x23e : [ d-BB@0x240 ]
+	138     (0000023e) move-object          v3, v2
+
+d-BB@0x240 : [ d-BB@0x270 d-BB@0x27e ]
+	139     (00000240) new-instance         v4, Ljava/io/BufferedReader;
+	140     (00000244) new-instance         v5, Ljava/io/InputStreamReader;
+	141     (00000248) invoke-direct        v5, v3, Ljava/io/InputStreamReader;-><init>(Ljava/io/InputStream;)V
+	142     (0000024e) invoke-direct        v4, v5, Ljava/io/BufferedReader;-><init>(Ljava/io/Reader;)V
+	143     (00000254) invoke-static        v4, Lq2/u;->a(Ljava/io/BufferedReader;)Lq2/u;
+	144     (0000025a) move-result-object   v4
+	145     (0000025c) iget-wide            v4, v4, Lq2/u;->a J
+	146     (00000260) new-instance         v6, Lp2/b;
+	147     (00000264) const/4              v7, 0
+	148     (00000266) invoke-direct        v6, v0, v7, v4, v5, Lp2/b;-><init>(I Ljava/net/URL; J)V
+	149     (0000026c) if-eqz               v3, +009h
+	240:26b
+	(Ljava/lang/Throwable; -> 28a d-BB@0x28a)
+
+d-BB@0x270 : [ d-BB@0x27e ]
+	150     (00000270) invoke-virtual       v3, Ljava/io/InputStream;->close()V
+	151     (00000276) goto                 +4h
+	270:275
+	(Ljava/lang/Throwable; -> 278 d-BB@0x278)
+
+d-BB@0x278 : [ d-BB@0x2a4 ]
+	152     (00000278) move-exception       v0
+	153     (0000027a) move-object          v3, v0
+	154     (0000027c) goto                 +14h
+
+d-BB@0x27e : [ d-BB@0x282 d-BB@0x288 ]
+	155     (0000027e) if-eqz               v2, +005h
+
+d-BB@0x282 : [ d-BB@0x288 ]
+	156     (00000282) invoke-virtual       v2, Ljava/io/InputStream;->close()V
+
+d-BB@0x288 : 
+	157     (00000288) return-object        v6
+
+d-BB@0x28a : [ d-BB@0x292 d-BB@0x2a2 ]
+	158     (0000028a) move-exception       v0
+	159     (0000028c) move-object          v4, v0
+	160     (0000028e) if-eqz               v3, +00ah
+
+d-BB@0x292 : [ d-BB@0x2a2 ]
+	161     (00000292) invoke-virtual       v3, Ljava/io/InputStream;->close()V
+	162     (00000298) goto                 +5h
+	292:297
+	(Ljava/lang/Throwable; -> 29a d-BB@0x29a)
+
+d-BB@0x29a : [ d-BB@0x29c ]
+	163     (0000029a) move-exception       v0
+
+d-BB@0x29c : [ d-BB@0x2a2 ]
+	164     (0000029c) invoke-virtual       v4, v0, Ljava/lang/Throwable;->addSuppressed(Ljava/lang/Throwable;)V
+	29c:2a3
+	(Ljava/lang/Throwable; -> 278 d-BB@0x278)
+
+d-BB@0x2a2 : 
+	165     (000002a2) throw                v4
+	29c:2a3
+	(Ljava/lang/Throwable; -> 278 d-BB@0x278)
+
+d-BB@0x2a4 : [ d-BB@0x2a8 d-BB@0x2b8 ]
+	166     (000002a4) if-eqz               v2, +00ah
+
+d-BB@0x2a8 : [ d-BB@0x2b8 ]
+	167     (000002a8) invoke-virtual       v2, Ljava/io/InputStream;->close()V
+	168     (000002ae) goto                 +5h
+	2a8:2ad
+	(Ljava/lang/Throwable; -> 2b0 d-BB@0x2b0)
+
+d-BB@0x2b0 : [ d-BB@0x2b8 ]
+	169     (000002b0) move-exception       v0
+	170     (000002b2) invoke-virtual       v3, v0, Ljava/lang/Throwable;->addSuppressed(Ljava/lang/Throwable;)V
+
+d-BB@0x2b8 : 
+	171     (000002b8) throw                v3
+
+d-BB@0x2ba : 
+	172     (000002ba) const-string         v2, "Location"
+	173     (000002be) invoke-virtual       v3, v2, Ljava/net/URLConnection;->getHeaderField(Ljava/lang/String;)Ljava/lang/String;
+	174     (000002c4) move-result-object   v2
+	175     (000002c6) new-instance         v3, Lp2/b;
+	176     (000002ca) new-instance         v4, Ljava/net/URL;
+	177     (000002ce) invoke-direct        v4, v2, Ljava/net/URL;-><init>(Ljava/lang/String;)V
+	178     (000002d4) const-wide/16        v5, 0
+	179     (000002d8) invoke-direct        v3, v0, v4, v5, v6, Lp2/b;-><init>(I Ljava/net/URL; J)V
+	180     (000002de) return-object        v3
+
+d-BB@0x2e0 : [ d-BB@0x300 ]
+	181     (000002e0) move-exception       v0
+	182     (000002e2) move-object          v2, v0
+	183     (000002e4) goto                 +eh
+
+d-BB@0x2e6 : [ d-BB@0x2ee ]
+	184     (000002e6) move-object          v2, v0
+	185     (000002e8) goto                 +3h
+
+d-BB@0x2ea : [ d-BB@0x2e6 ]
+	186     (000002ea) move-exception       v0
+	187     (000002ec) goto                 -3h
+
+d-BB@0x2ee : [ d-BB@0x2fe ]
+	188     (000002ee) invoke-virtual       v14, Ljava/io/OutputStream;->close()V
+	189     (000002f4) goto                 +5h
+	2ee:2f3
+	(Ljava/lang/Throwable; -> 2f6 d-BB@0x2f6)
+
+d-BB@0x2f6 : [ d-BB@0x2f8 ]
+	190     (000002f6) move-exception       v0
+
+d-BB@0x2f8 : [ d-BB@0x2fe ]
+	191     (000002f8) invoke-virtual       v2, v0, Ljava/lang/Throwable;->addSuppressed(Ljava/lang/Throwable;)V
+	2f8:2ff
+	(Ljava/lang/Throwable; -> 2e0 d-BB@0x2e0)
+
+d-BB@0x2fe : 
+	192     (000002fe) throw                v2
+	2f8:2ff
+	(Ljava/lang/Throwable; -> 2e0 d-BB@0x2e0)
+
+d-BB@0x300 : [ d-BB@0x304 d-BB@0x314 ]
+	193     (00000300) if-eqz               v13, +00ah
+
+d-BB@0x304 : [ d-BB@0x314 ]
+	194     (00000304) invoke-virtual       v13, Ljava/io/OutputStream;->close()V
+	195     (0000030a) goto                 +5h
+	304:309
+	(Ljava/lang/Throwable; -> 30c d-BB@0x30c)
+
+d-BB@0x30c : [ d-BB@0x30e ]
+	196     (0000030c) move-exception       v0
+
+d-BB@0x30e : [ d-BB@0x314 ]
+	197     (0000030e) invoke-virtual       v2, v0, Ljava/lang/Throwable;->addSuppressed(Ljava/lang/Throwable;)V
+	30e:315
+	(Ljava/net/ConnectException; -> 17c d-BB@0x17c)
+	(Ljava/net/UnknownHostException; -> 170 d-BB@0x170)
+	(Lt5/b; -> 16a d-BB@0x16a)
+	(Ljava/io/IOException; -> 164 d-BB@0x164)
+
+d-BB@0x314 : 
+	198     (00000314) throw                v2
+	30e:315
+	(Ljava/net/ConnectException; -> 17c d-BB@0x17c)
+	(Ljava/net/UnknownHostException; -> 170 d-BB@0x170)
+	(Lt5/b; -> 16a d-BB@0x16a)
+	(Ljava/io/IOException; -> 164 d-BB@0x164)
+
+d-BB@0x316 : [ d-BB@0x34e ]
+	199     (00000316) const-string         v2, "Couldn't encode request, returning with 400"
+	200     (0000031a) invoke-static        v0, v5, v2, Lc4/b;->w(Ljava/lang/Exception; Ljava/lang/String; Ljava/lang/String;)V
+	201     (00000320) new-instance         v0, Lp2/b;
+	202     (00000324) const/16             v2, 400
+	203     (00000328) const-wide/16        v3, 0
+	204     (0000032c) const/4              v7, 0
+	205     (0000032e) invoke-direct        v0, v2, v7, v3, v4, Lp2/b;-><init>(I Ljava/net/URL; J)V
+	206     (00000334) goto                 +dh
+
+d-BB@0x336 : [ d-BB@0x34e ]
+	207     (00000336) const-string         v2, "Couldn't open connection, returning with 500"
+	208     (0000033a) invoke-static        v0, v5, v2, Lc4/b;->w(Ljava/lang/Exception; Ljava/lang/String; Ljava/lang/String;)V
+	209     (00000340) new-instance         v0, Lp2/b;
+	210     (00000344) const/16             v2, 500
+	211     (00000348) invoke-direct        v0, v2, v7, v3, v4, Lp2/b;-><init>(I Ljava/net/URL; J)V
+
+d-BB@0x34e : 
+	212     (0000034e) return-object        v0
+

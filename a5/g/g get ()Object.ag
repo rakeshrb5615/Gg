@@ -1,0 +1,113 @@
+# La5/g;->get()Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v5
+#
+# - return:java.lang.Object
+
+get-BB@0x0 : [ D:get-BB@0xe 0:get-BB@0x14e 1:get-BB@0x14c 2:get-BB@0xe2 3:get-BB@0x70 4:get-BB@0x36 5:get-BB@0x1a 6:get-BB@0x14 ]
+	0       (00000000) iget                 v0, v5, La5/g;->a I
+	1       (00000004) const/4              v1, 0
+	2       (00000006) const/4              v2, 0
+	3       (00000008) packed-switch        v0, +00000a6h
+
+get-BB@0xe : 
+	4       (0000000e) sget-object          v0, Lm6/j;->j Lcom/google/android/gms/common/util/Clock;
+	5       (00000012) return-object        v2
+
+get-BB@0x14 : 
+	6       (00000014) sget-object          v0, Lcom/google/firebase/messaging/FirebaseMessaging;->k Lj6/o;
+	7       (00000018) return-object        v2
+
+get-BB@0x1a : 
+	8       (0000001a) sget-object          v0, Lcom/google/firebase/concurrent/ExecutorsRegistrar;->a La5/r;
+	9       (0000001e) new-instance         v0, Lb5/a;
+	10      (00000022) const-string         v3, "Firebase Scheduler"
+	11      (00000026) invoke-direct        v0, v3, v1, v2, Lb5/a;-><init>(Ljava/lang/String; I Landroid/os/StrictMode$ThreadPolicy;)V
+	12      (0000002c) invoke-static        v0, Ljava/util/concurrent/Executors;->newSingleThreadScheduledExecutor(Ljava/util/concurrent/ThreadFactory;)Ljava/util/concurrent/ScheduledExecutorService;
+	13      (00000032) move-result-object   v0
+	14      (00000034) return-object        v0
+
+get-BB@0x36 : 
+	15      (00000036) sget-object          v0, Lcom/google/firebase/concurrent/ExecutorsRegistrar;->a La5/r;
+	16      (0000003a) new-instance         v0, Lb5/a;
+	17      (0000003e) const-string         v1, "Firebase Blocking"
+	18      (00000042) const/16             v3, 11
+	19      (00000046) invoke-direct        v0, v1, v3, v2, Lb5/a;-><init>(Ljava/lang/String; I Landroid/os/StrictMode$ThreadPolicy;)V
+	20      (0000004c) invoke-static        v0, Ljava/util/concurrent/Executors;->newCachedThreadPool(Ljava/util/concurrent/ThreadFactory;)Ljava/util/concurrent/ExecutorService;
+	21      (00000052) move-result-object   v0
+	22      (00000054) new-instance         v1, Lb5/g;
+	23      (00000058) sget-object          v2, Lcom/google/firebase/concurrent/ExecutorsRegistrar;->d La5/r;
+	24      (0000005c) invoke-virtual       v2, La5/r;->get()Ljava/lang/Object;
+	25      (00000062) move-result-object   v2
+	26      (00000064) check-cast           v2, Ljava/util/concurrent/ScheduledExecutorService;
+	27      (00000068) invoke-direct        v1, v0, v2, Lb5/g;-><init>(Ljava/util/concurrent/ExecutorService; Ljava/util/concurrent/ScheduledExecutorService;)V
+	28      (0000006e) return-object        v1
+
+get-BB@0x70 : 
+	29      (00000070) sget-object          v0, Lcom/google/firebase/concurrent/ExecutorsRegistrar;->a La5/r;
+	30      (00000074) invoke-static        Ljava/lang/Runtime;->getRuntime()Ljava/lang/Runtime;
+	31      (0000007a) move-result-object   v0
+	32      (0000007c) invoke-virtual       v0, Ljava/lang/Runtime;->availableProcessors()I
+	33      (00000082) move-result          v0
+	34      (00000084) const/4              v2, 2
+	35      (00000086) invoke-static        v2, v0, Ljava/lang/Math;->max(I I)I
+	36      (0000008c) move-result          v0
+	37      (0000008e) new-instance         v2, Landroid/os/StrictMode$ThreadPolicy$Builder;
+	38      (00000092) invoke-direct        v2, Landroid/os/StrictMode$ThreadPolicy$Builder;-><init>()V
+	39      (00000098) invoke-virtual       v2, Landroid/os/StrictMode$ThreadPolicy$Builder;->detectAll()Landroid/os/StrictMode$ThreadPolicy$Builder;
+	40      (0000009e) move-result-object   v2
+	41      (000000a0) invoke-virtual       v2, Landroid/os/StrictMode$ThreadPolicy$Builder;->penaltyLog()Landroid/os/StrictMode$ThreadPolicy$Builder;
+	42      (000000a6) move-result-object   v2
+	43      (000000a8) invoke-virtual       v2, Landroid/os/StrictMode$ThreadPolicy$Builder;->build()Landroid/os/StrictMode$ThreadPolicy;
+	44      (000000ae) move-result-object   v2
+	45      (000000b0) new-instance         v3, Lb5/a;
+	46      (000000b4) const-string         v4, "Firebase Lite"
+	47      (000000b8) invoke-direct        v3, v4, v1, v2, Lb5/a;-><init>(Ljava/lang/String; I Landroid/os/StrictMode$ThreadPolicy;)V
+	48      (000000be) invoke-static        v0, v3, Ljava/util/concurrent/Executors;->newFixedThreadPool(I Ljava/util/concurrent/ThreadFactory;)Ljava/util/concurrent/ExecutorService;
+	49      (000000c4) move-result-object   v0
+	50      (000000c6) new-instance         v1, Lb5/g;
+	51      (000000ca) sget-object          v2, Lcom/google/firebase/concurrent/ExecutorsRegistrar;->d La5/r;
+	52      (000000ce) invoke-virtual       v2, La5/r;->get()Ljava/lang/Object;
+	53      (000000d4) move-result-object   v2
+	54      (000000d6) check-cast           v2, Ljava/util/concurrent/ScheduledExecutorService;
+	55      (000000da) invoke-direct        v1, v0, v2, Lb5/g;-><init>(Ljava/util/concurrent/ExecutorService; Ljava/util/concurrent/ScheduledExecutorService;)V
+	56      (000000e0) return-object        v1
+
+get-BB@0xe2 : 
+	57      (000000e2) sget-object          v0, Lcom/google/firebase/concurrent/ExecutorsRegistrar;->a La5/r;
+	58      (000000e6) new-instance         v0, Landroid/os/StrictMode$ThreadPolicy$Builder;
+	59      (000000ea) invoke-direct        v0, Landroid/os/StrictMode$ThreadPolicy$Builder;-><init>()V
+	60      (000000f0) invoke-virtual       v0, Landroid/os/StrictMode$ThreadPolicy$Builder;->detectNetwork()Landroid/os/StrictMode$ThreadPolicy$Builder;
+	61      (000000f6) move-result-object   v0
+	62      (000000f8) invoke-virtual       v0, Landroid/os/StrictMode$ThreadPolicy$Builder;->detectResourceMismatches()Landroid/os/StrictMode$ThreadPolicy$Builder;
+	63      (000000fe) invoke-virtual       v0, Landroid/os/StrictMode$ThreadPolicy$Builder;->detectUnbufferedIo()Landroid/os/StrictMode$ThreadPolicy$Builder;
+	64      (00000104) invoke-virtual       v0, Landroid/os/StrictMode$ThreadPolicy$Builder;->penaltyLog()Landroid/os/StrictMode$ThreadPolicy$Builder;
+	65      (0000010a) move-result-object   v0
+	66      (0000010c) invoke-virtual       v0, Landroid/os/StrictMode$ThreadPolicy$Builder;->build()Landroid/os/StrictMode$ThreadPolicy;
+	67      (00000112) move-result-object   v0
+	68      (00000114) new-instance         v1, Lb5/a;
+	69      (00000118) const-string         v2, "Firebase Background"
+	70      (0000011c) const/16             v3, 10
+	71      (00000120) invoke-direct        v1, v2, v3, v0, Lb5/a;-><init>(Ljava/lang/String; I Landroid/os/StrictMode$ThreadPolicy;)V
+	72      (00000126) const/4              v0, 4
+	73      (00000128) invoke-static        v0, v1, Ljava/util/concurrent/Executors;->newFixedThreadPool(I Ljava/util/concurrent/ThreadFactory;)Ljava/util/concurrent/ExecutorService;
+	74      (0000012e) move-result-object   v0
+	75      (00000130) new-instance         v1, Lb5/g;
+	76      (00000134) sget-object          v2, Lcom/google/firebase/concurrent/ExecutorsRegistrar;->d La5/r;
+	77      (00000138) invoke-virtual       v2, La5/r;->get()Ljava/lang/Object;
+	78      (0000013e) move-result-object   v2
+	79      (00000140) check-cast           v2, Ljava/util/concurrent/ScheduledExecutorService;
+	80      (00000144) invoke-direct        v1, v0, v2, Lb5/g;-><init>(Ljava/util/concurrent/ExecutorService; Ljava/util/concurrent/ScheduledExecutorService;)V
+	81      (0000014a) return-object        v1
+
+get-BB@0x14c : 
+	82      (0000014c) return-object        v2
+
+get-BB@0x14e : 
+	83      (0000014e) sget-object          v0, Ljava/util/Collections;->EMPTY_SET Ljava/util/Set;
+	84      (00000152) return-object        v0
+
+get-BB@0x154 : 
+	85      (00000154) packed-switch-payload 0 1 2 3 4 5 6
+

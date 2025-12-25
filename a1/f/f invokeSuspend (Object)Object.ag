@@ -1,0 +1,152 @@
+# La1/f;->invokeSuspend(Ljava/lang/Object;)Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:java.lang.Object
+#
+# - return:java.lang.Object
+
+invokeSuspend-BB@0x0 : [ D:invokeSuspend-BB@0xa 0:invokeSuspend-BB@0x56 ]
+	0       (00000000) iget                 v0, v6, La1/f;->a I
+	1       (00000004) packed-switch        v0, +00000a6h
+
+invokeSuspend-BB@0xa : [ invokeSuspend-BB@0x18 invokeSuspend-BB@0x34 ]
+	2       (0000000a) sget-object          v0, Lm7/a;->a Lm7/a;
+	3       (0000000e) iget                 v1, v6, La1/f;->b I
+	4       (00000012) const/4              v2, 1
+	5       (00000014) if-eqz               v1, +010h
+
+invokeSuspend-BB@0x18 : [ invokeSuspend-BB@0x1c invokeSuspend-BB@0x24 ]
+	6       (00000018) if-ne                v1, v2, +006h
+
+invokeSuspend-BB@0x1c : [ invokeSuspend-BB@0x54 ]
+	7       (0000001c) invoke-static        v7, Lc4/b;->e0(Ljava/lang/Object;)V
+	8       (00000022) goto                 +19h
+
+invokeSuspend-BB@0x24 : 
+	9       (00000024) new-instance         v7, Ljava/lang/IllegalStateException;
+	10      (00000028) const-string         v0, "call to 'resume' before 'invoke' with coroutine"
+	11      (0000002c) invoke-direct        v7, v0, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	12      (00000032) throw                v7
+
+invokeSuspend-BB@0x34 : [ invokeSuspend-BB@0x52 invokeSuspend-BB@0x54 ]
+	13      (00000034) invoke-static        v7, Lc4/b;->e0(Ljava/lang/Object;)V
+	14      (0000003a) iget-object          v7, v6, La1/f;->c Ljava/lang/Object;
+	15      (0000003e) check-cast           v7, La1/c0;
+	16      (00000042) iput                 v2, v6, La1/f;->b I
+	17      (00000046) invoke-virtual       v7, v6, La1/c0;->invoke(Ljava/lang/Object;)Ljava/lang/Object;
+	18      (0000004c) move-result-object   v7
+	19      (0000004e) if-ne                v7, v0, +003h
+
+invokeSuspend-BB@0x52 : [ invokeSuspend-BB@0x54 ]
+	20      (00000052) move-object          v7, v0
+
+invokeSuspend-BB@0x54 : 
+	21      (00000054) return-object        v7
+
+invokeSuspend-BB@0x56 : [ invokeSuspend-BB@0x68 invokeSuspend-BB@0x86 ]
+	22      (00000056) sget-object          v0, Lm7/a;->a Lm7/a;
+	23      (0000005a) iget                 v1, v6, La1/f;->b I
+	24      (0000005e) sget-object          v2, Lh7/l;->a Lh7/l;
+	25      (00000062) const/4              v3, 1
+	26      (00000064) if-eqz               v1, +011h
+
+invokeSuspend-BB@0x68 : [ invokeSuspend-BB@0x6c invokeSuspend-BB@0x76 ]
+	27      (00000068) if-ne                v1, v3, +007h
+
+invokeSuspend-BB@0x6c : [ invokeSuspend-BB@0x72 ]
+	28      (0000006c) invoke-static        v7, Lc4/b;->e0(Ljava/lang/Object;)V
+
+invokeSuspend-BB@0x72 : [ invokeSuspend-BB@0x13c ]
+	29      (00000072) move-object          v0, v2
+	30      (00000074) goto                 +64h
+
+invokeSuspend-BB@0x76 : 
+	31      (00000076) new-instance         v7, Ljava/lang/IllegalStateException;
+	32      (0000007a) const-string         v0, "call to 'resume' before 'invoke' with coroutine"
+	33      (0000007e) invoke-direct        v7, v0, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	34      (00000084) throw                v7
+
+invokeSuspend-BB@0x86 : [ invokeSuspend-BB@0xb8 invokeSuspend-BB@0xc0 ]
+	35      (00000086) invoke-static        v7, Lc4/b;->e0(Ljava/lang/Object;)V
+	36      (0000008c) iget-object          v7, v6, La1/f;->c Ljava/lang/Object;
+	37      (00000090) check-cast           v7, Lc1/d;
+	38      (00000094) iput                 v3, v6, La1/f;->b I
+	39      (00000098) iget-object          v1, v7, Lc1/d;->e Lh7/j;
+	40      (0000009c) invoke-virtual       v1, Lh7/j;->getValue()Ljava/lang/Object;
+	41      (000000a2) move-result-object   v1
+	42      (000000a4) check-cast           v1, Landroid/content/SharedPreferences;
+	43      (000000a8) invoke-interface     v1, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
+	44      (000000ae) move-result-object   v1
+	45      (000000b0) iget-object          v3, v7, Lc1/d;->f Ljava/util/Set;
+	46      (000000b4) if-nez               v3, +006h
+
+invokeSuspend-BB@0xb8 : [ invokeSuspend-BB@0xe8 ]
+	47      (000000b8) invoke-interface     v1, Landroid/content/SharedPreferences$Editor;->clear()Landroid/content/SharedPreferences$Editor;
+	48      (000000be) goto                 +15h
+
+invokeSuspend-BB@0xc0 : [ invokeSuspend-BB@0xc8 ]
+	49      (000000c0) invoke-interface     v3, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
+	50      (000000c6) move-result-object   v4
+
+invokeSuspend-BB@0xc8 : [ invokeSuspend-BB@0xd4 invokeSuspend-BB@0xe8 ]
+	51      (000000c8) invoke-interface     v4, Ljava/util/Iterator;->hasNext()Z
+	52      (000000ce) move-result          v5
+	53      (000000d0) if-eqz               v5, +00ch
+
+invokeSuspend-BB@0xd4 : [ invokeSuspend-BB@0xc8 ]
+	54      (000000d4) invoke-interface     v4, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	55      (000000da) move-result-object   v5
+	56      (000000dc) check-cast           v5, Ljava/lang/String;
+	57      (000000e0) invoke-interface     v1, v5, Landroid/content/SharedPreferences$Editor;->remove(Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
+	58      (000000e6) goto                 -fh
+
+invokeSuspend-BB@0xe8 : [ invokeSuspend-BB@0xf4 invokeSuspend-BB@0x13e ]
+	59      (000000e8) invoke-interface     v1, Landroid/content/SharedPreferences$Editor;->commit()Z
+	60      (000000ee) move-result          v1
+	61      (000000f0) if-eqz               v1, +027h
+
+invokeSuspend-BB@0xf4 : [ invokeSuspend-BB@0x118 invokeSuspend-BB@0x12e ]
+	62      (000000f4) iget-object          v1, v7, Lc1/d;->e Lh7/j;
+	63      (000000f8) invoke-virtual       v1, Lh7/j;->getValue()Ljava/lang/Object;
+	64      (000000fe) move-result-object   v1
+	65      (00000100) check-cast           v1, Landroid/content/SharedPreferences;
+	66      (00000104) invoke-interface     v1, Landroid/content/SharedPreferences;->getAll()Ljava/util/Map;
+	67      (0000010a) move-result-object   v1
+	68      (0000010c) invoke-interface     v1, Ljava/util/Map;->isEmpty()Z
+	69      (00000112) move-result          v1
+	70      (00000114) if-eqz               v1, +00dh
+
+invokeSuspend-BB@0x118 : [ invokeSuspend-BB@0x120 invokeSuspend-BB@0x12e ]
+	71      (00000118) iget-object          v1, v7, Lc1/d;->c Landroid/content/Context;
+	72      (0000011c) if-eqz               v1, +009h
+
+invokeSuspend-BB@0x120 : [ invokeSuspend-BB@0x128 invokeSuspend-BB@0x12e ]
+	73      (00000120) iget-object          v7, v7, Lc1/d;->d Ljava/lang/String;
+	74      (00000124) if-eqz               v7, +005h
+
+invokeSuspend-BB@0x128 : [ invokeSuspend-BB@0x12e ]
+	75      (00000128) invoke-static        v1, v7, Lc1/b;->a(Landroid/content/Context; Ljava/lang/String;)Z
+
+invokeSuspend-BB@0x12e : [ invokeSuspend-BB@0x132 invokeSuspend-BB@0x138 ]
+	76      (0000012e) if-eqz               v3, +005h
+
+invokeSuspend-BB@0x132 : [ invokeSuspend-BB@0x138 ]
+	77      (00000132) invoke-interface     v3, Ljava/util/Set;->clear()V
+
+invokeSuspend-BB@0x138 : [ invokeSuspend-BB@0x13c invokeSuspend-BB@0x72 ]
+	78      (00000138) if-ne                v2, v0, -063h
+
+invokeSuspend-BB@0x13c : 
+	79      (0000013c) return-object        v0
+
+invokeSuspend-BB@0x13e : 
+	80      (0000013e) new-instance         v7, Ljava/io/IOException;
+	81      (00000142) const-string         v0, "Unable to delete migrated keys from SharedPreferences."
+	82      (00000146) invoke-direct        v7, v0, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+	83      (0000014c) throw                v7
+
+invokeSuspend-BB@0x14e : 
+	84      (0000014e) nop                  
+	85      (00000150) packed-switch-payload 0
+

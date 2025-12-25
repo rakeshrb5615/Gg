@@ -1,0 +1,177 @@
+# La2/k1;->toString()Ljava/lang/String; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v5
+#
+# - return:java.lang.String
+
+toString-BB@0x0 : [ toString-BB@0x14 toString-BB@0x1a ]
+	0       (00000000) invoke-virtual       v5, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	1       (00000006) move-result-object   v0
+	2       (00000008) invoke-virtual       v0, Ljava/lang/Class;->isAnonymousClass()Z
+	3       (0000000e) move-result          v0
+	4       (00000010) if-eqz               v0, +005h
+
+toString-BB@0x14 : [ toString-BB@0x2a ]
+	5       (00000014) const-string         v0, "ViewHolder"
+	6       (00000018) goto                 +9h
+
+toString-BB@0x1a : [ toString-BB@0x2a ]
+	7       (0000001a) invoke-virtual       v5, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	8       (00000020) move-result-object   v0
+	9       (00000022) invoke-virtual       v0, Ljava/lang/Class;->getSimpleName()Ljava/lang/String;
+	10      (00000028) move-result-object   v0
+
+toString-BB@0x2a : [ toString-BB@0xc8 toString-BB@0xea ]
+	11      (0000002a) new-instance         v1, Ljava/lang/StringBuilder;
+	12      (0000002e) new-instance         v2, Ljava/lang/StringBuilder;
+	13      (00000032) invoke-direct        v2, Ljava/lang/StringBuilder;-><init>()V
+	14      (00000038) invoke-virtual       v2, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	15      (0000003e) const-string         v0, "{"
+	16      (00000042) invoke-virtual       v2, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	17      (00000048) invoke-virtual       v5, Ljava/lang/Object;->hashCode()I
+	18      (0000004e) move-result          v0
+	19      (00000050) invoke-static        v0, Ljava/lang/Integer;->toHexString(I)Ljava/lang/String;
+	20      (00000056) move-result-object   v0
+	21      (00000058) invoke-virtual       v2, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	22      (0000005e) const-string         v0, " position="
+	23      (00000062) invoke-virtual       v2, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	24      (00000068) iget                 v0, v5, La2/k1;->c I
+	25      (0000006c) invoke-virtual       v2, v0, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	26      (00000072) const-string         v0, " id="
+	27      (00000076) invoke-virtual       v2, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	28      (0000007c) iget-wide            v3, v5, La2/k1;->e J
+	29      (00000080) invoke-virtual       v2, v3, v4, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+	30      (00000086) const-string         v0, ", oldPos="
+	31      (0000008a) invoke-virtual       v2, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	32      (00000090) iget                 v0, v5, La2/k1;->d I
+	33      (00000094) invoke-virtual       v2, v0, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	34      (0000009a) const-string         v0, ", pLpos:"
+	35      (0000009e) invoke-virtual       v2, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	36      (000000a4) iget                 v0, v5, La2/k1;->g I
+	37      (000000a8) invoke-virtual       v2, v0, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	38      (000000ae) invoke-virtual       v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	39      (000000b4) move-result-object   v0
+	40      (000000b6) invoke-direct        v1, v0, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	41      (000000bc) invoke-virtual       v5, La2/k1;->i()Z
+	42      (000000c2) move-result          v0
+	43      (000000c4) if-eqz               v0, +013h
+
+toString-BB@0xc8 : [ toString-BB@0xda toString-BB@0xe0 ]
+	44      (000000c8) const-string         v0, " scrap "
+	45      (000000cc) invoke-virtual       v1, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	46      (000000d2) iget-boolean         v0, v5, La2/k1;->o Z
+	47      (000000d6) if-eqz               v0, +005h
+
+toString-BB@0xda : [ toString-BB@0xe4 ]
+	48      (000000da) const-string         v0, "[changeScrap]"
+	49      (000000de) goto                 +3h
+
+toString-BB@0xe0 : [ toString-BB@0xe4 ]
+	50      (000000e0) const-string         v0, "[attachedScrap]"
+
+toString-BB@0xe4 : [ toString-BB@0xea ]
+	51      (000000e4) invoke-virtual       v1, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+toString-BB@0xea : [ toString-BB@0xf6 toString-BB@0x100 ]
+	52      (000000ea) invoke-virtual       v5, La2/k1;->f()Z
+	53      (000000f0) move-result          v0
+	54      (000000f2) if-eqz               v0, +007h
+
+toString-BB@0xf6 : [ toString-BB@0x100 ]
+	55      (000000f6) const-string         v0, " invalid"
+	56      (000000fa) invoke-virtual       v1, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+toString-BB@0x100 : [ toString-BB@0x10c toString-BB@0x116 ]
+	57      (00000100) invoke-virtual       v5, La2/k1;->e()Z
+	58      (00000106) move-result          v0
+	59      (00000108) if-nez               v0, +007h
+
+toString-BB@0x10c : [ toString-BB@0x116 ]
+	60      (0000010c) const-string         v0, " unbound"
+	61      (00000110) invoke-virtual       v1, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+toString-BB@0x116 : [ toString-BB@0x122 toString-BB@0x12c ]
+	62      (00000116) iget                 v0, v5, La2/k1;->j I
+	63      (0000011a) and-int/lit8         v0, v0, 2
+	64      (0000011e) if-eqz               v0, +007h
+
+toString-BB@0x122 : [ toString-BB@0x12c ]
+	65      (00000122) const-string         v0, " update"
+	66      (00000126) invoke-virtual       v1, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+toString-BB@0x12c : [ toString-BB@0x138 toString-BB@0x142 ]
+	67      (0000012c) invoke-virtual       v5, La2/k1;->h()Z
+	68      (00000132) move-result          v0
+	69      (00000134) if-eqz               v0, +007h
+
+toString-BB@0x138 : [ toString-BB@0x142 ]
+	70      (00000138) const-string         v0, " removed"
+	71      (0000013c) invoke-virtual       v1, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+toString-BB@0x142 : [ toString-BB@0x14e toString-BB@0x158 ]
+	72      (00000142) invoke-virtual       v5, La2/k1;->o()Z
+	73      (00000148) move-result          v0
+	74      (0000014a) if-eqz               v0, +007h
+
+toString-BB@0x14e : [ toString-BB@0x158 ]
+	75      (0000014e) const-string         v0, " ignored"
+	76      (00000152) invoke-virtual       v1, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+toString-BB@0x158 : [ toString-BB@0x164 toString-BB@0x16e ]
+	77      (00000158) invoke-virtual       v5, La2/k1;->j()Z
+	78      (0000015e) move-result          v0
+	79      (00000160) if-eqz               v0, +007h
+
+toString-BB@0x164 : [ toString-BB@0x16e ]
+	80      (00000164) const-string         v0, " tmpDetached"
+	81      (00000168) invoke-virtual       v1, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+toString-BB@0x16e : [ toString-BB@0x17a toString-BB@0x1aa ]
+	82      (0000016e) invoke-virtual       v5, La2/k1;->g()Z
+	83      (00000174) move-result          v0
+	84      (00000176) if-nez               v0, +01ah
+
+toString-BB@0x17a : [ toString-BB@0x1aa ]
+	85      (0000017a) new-instance         v0, Ljava/lang/StringBuilder;
+	86      (0000017e) const-string         v2, " not recyclable("
+	87      (00000182) invoke-direct        v0, v2, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	88      (00000188) iget                 v2, v5, La2/k1;->m I
+	89      (0000018c) invoke-virtual       v0, v2, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	90      (00000192) const-string         v2, ")"
+	91      (00000196) invoke-virtual       v0, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	92      (0000019c) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	93      (000001a2) move-result-object   v0
+	94      (000001a4) invoke-virtual       v1, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+toString-BB@0x1aa : [ toString-BB@0x1b6 toString-BB@0x1c2 ]
+	95      (000001aa) iget                 v0, v5, La2/k1;->j I
+	96      (000001ae) and-int/lit16        v0, v0, 512
+	97      (000001b2) if-nez               v0, +008h
+
+toString-BB@0x1b6 : [ toString-BB@0x1c2 toString-BB@0x1cc ]
+	98      (000001b6) invoke-virtual       v5, La2/k1;->f()Z
+	99      (000001bc) move-result          v0
+	100     (000001be) if-eqz               v0, +007h
+
+toString-BB@0x1c2 : [ toString-BB@0x1cc ]
+	101     (000001c2) const-string         v0, " undefined adapter position"
+	102     (000001c6) invoke-virtual       v1, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+toString-BB@0x1cc : [ toString-BB@0x1dc toString-BB@0x1e6 ]
+	103     (000001cc) iget-object          v0, v5, La2/k1;->a Landroid/view/View;
+	104     (000001d0) invoke-virtual       v0, Landroid/view/View;->getParent()Landroid/view/ViewParent;
+	105     (000001d6) move-result-object   v0
+	106     (000001d8) if-nez               v0, +007h
+
+toString-BB@0x1dc : [ toString-BB@0x1e6 ]
+	107     (000001dc) const-string         v0, " no parent"
+	108     (000001e0) invoke-virtual       v1, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+toString-BB@0x1e6 : 
+	109     (000001e6) const-string         v0, "}"
+	110     (000001ea) invoke-virtual       v1, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	111     (000001f0) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	112     (000001f6) move-result-object   v0
+	113     (000001f8) return-object        v0
+

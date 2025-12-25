@@ -1,0 +1,55 @@
+# La2/b0;->a(I I I I I)I [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v0
+# - v1:int
+# - v2:int
+# - v3:int
+# - v4:int
+# - v5:int
+#
+# - return:int
+
+a-BB@0x0 : [ a-BB@0x6 a-BB@0x38 ]
+	0       (00000000) const/4              v0, -1
+	1       (00000002) if-eq                v5, v0, +01bh
+
+a-BB@0x6 : [ a-BB@0xa a-BB@0x24 ]
+	2       (00000006) if-eqz               v5, +00fh
+
+a-BB@0xa : [ a-BB@0x10 a-BB@0x14 ]
+	3       (0000000a) const/4              v1, 1
+	4       (0000000c) if-ne                v5, v1, +004h
+
+a-BB@0x10 : 
+	5       (00000010) sub-int/2addr        v4, v2
+	6       (00000012) return               v4
+
+a-BB@0x14 : 
+	7       (00000014) new-instance         v1, Ljava/lang/IllegalArgumentException;
+	8       (00000018) const-string         v2, "snap preference should be one of the constants defined in SmoothScroller, starting with SNAP_"
+	9       (0000001c) invoke-direct        v1, v2, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	10      (00000022) throw                v1
+
+a-BB@0x24 : [ a-BB@0x2a a-BB@0x2c ]
+	11      (00000024) sub-int/2addr        v3, v1
+	12      (00000026) if-lez               v3, +003h
+
+a-BB@0x2a : 
+	13      (0000002a) return               v3
+
+a-BB@0x2c : [ a-BB@0x32 a-BB@0x34 ]
+	14      (0000002c) sub-int/2addr        v4, v2
+	15      (0000002e) if-gez               v4, +003h
+
+a-BB@0x32 : 
+	16      (00000032) return               v4
+
+a-BB@0x34 : 
+	17      (00000034) const/4              v1, 0
+	18      (00000036) return               v1
+
+a-BB@0x38 : 
+	19      (00000038) sub-int/2addr        v3, v1
+	20      (0000003a) return               v3
+

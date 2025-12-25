@@ -1,0 +1,32 @@
+# La5/z;->k([I I)Z [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:int[]
+# - v5:int
+#
+# - return:boolean
+
+k-BB@0x0 : [ k-BB@0x6 ]
+	0       (00000000) array-length         v0, v4
+	1       (00000002) const/4              v1, 0
+	2       (00000004) move                 v2, v1
+
+k-BB@0x6 : [ k-BB@0xa k-BB@0x1c ]
+	3       (00000006) if-ge                v2, v0, +00bh
+
+k-BB@0xa : [ k-BB@0x12 k-BB@0x16 ]
+	4       (0000000a) aget                 v3, v4, v2
+	5       (0000000e) if-ne                v3, v5, +004h
+
+k-BB@0x12 : 
+	6       (00000012) const/4              v4, 1
+	7       (00000014) return               v4
+
+k-BB@0x16 : [ k-BB@0x6 ]
+	8       (00000016) add-int/lit8         v2, v2, 1
+	9       (0000001a) goto                 -ah
+
+k-BB@0x1c : 
+	10      (0000001c) return               v1
+

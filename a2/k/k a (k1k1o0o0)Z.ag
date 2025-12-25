@@ -1,0 +1,86 @@
+# La2/k;->a(La2/k1; La2/k1; La2/o0; La2/o0;)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v9
+# - v10:a2.k1
+# - v11:a2.k1
+# - v12:a2.o0
+# - v13:a2.o0
+#
+# - return:boolean
+
+a-BB@0x0 : [ a-BB@0x14 a-BB@0x22 ]
+	0       (00000000) iget                 v2, v12, La2/o0;->a I
+	1       (00000004) iget                 v3, v12, La2/o0;->b I
+	2       (00000008) invoke-virtual       v11, La2/k1;->o()Z
+	3       (0000000e) move-result          v0
+	4       (00000010) if-eqz               v0, +009h
+
+a-BB@0x14 : [ a-BB@0x2e ]
+	5       (00000014) iget                 v13, v12, La2/o0;->a I
+	6       (00000018) iget                 v12, v12, La2/o0;->b I
+	7       (0000001c) move                 v5, v12
+	8       (0000001e) move                 v4, v13
+	9       (00000020) goto                 +7h
+
+a-BB@0x22 : [ a-BB@0x2e ]
+	10      (00000022) iget                 v12, v13, La2/o0;->a I
+	11      (00000026) iget                 v13, v13, La2/o0;->b I
+	12      (0000002a) move                 v4, v12
+	13      (0000002c) move                 v5, v13
+
+a-BB@0x2e : [ a-BB@0x32 a-BB@0x40 ]
+	14      (0000002e) if-ne                v10, v11, +009h
+
+a-BB@0x32 : 
+	15      (00000032) move-object          v0, v9
+	16      (00000034) move-object          v1, v10
+	17      (00000036) invoke-virtual/range v0 ... v5, La2/k;->g(La2/k1; I I I I)Z
+	18      (0000003c) move-result          v10
+	19      (0000003e) return               v10
+
+a-BB@0x40 : 
+	20      (00000040) move-object          v0, v9
+	21      (00000042) move-object          v1, v10
+	22      (00000044) iget-object          v10, v1, La2/k1;->a Landroid/view/View;
+	23      (00000048) invoke-virtual       v10, Landroid/view/View;->getTranslationX()F
+	24      (0000004e) move-result          v12
+	25      (00000050) invoke-virtual       v10, Landroid/view/View;->getTranslationY()F
+	26      (00000056) move-result          v13
+	27      (00000058) invoke-virtual       v10, Landroid/view/View;->getAlpha()F
+	28      (0000005e) move-result          v6
+	29      (00000060) invoke-virtual       v9, v1, La2/k;->l(La2/k1;)V
+	30      (00000066) sub-int              v7, v4, v2
+	31      (0000006a) int-to-float         v7, v7
+	32      (0000006c) sub-float/2addr      v7, v12
+	33      (0000006e) float-to-int         v7, v7
+	34      (00000070) sub-int              v8, v5, v3
+	35      (00000074) int-to-float         v8, v8
+	36      (00000076) sub-float/2addr      v8, v13
+	37      (00000078) float-to-int         v8, v8
+	38      (0000007a) invoke-virtual       v10, v12, Landroid/view/View;->setTranslationX(F)V
+	39      (00000080) invoke-virtual       v10, v13, Landroid/view/View;->setTranslationY(F)V
+	40      (00000086) invoke-virtual       v10, v6, Landroid/view/View;->setAlpha(F)V
+	41      (0000008c) iget-object          v10, v11, La2/k1;->a Landroid/view/View;
+	42      (00000090) invoke-virtual       v9, v11, La2/k;->l(La2/k1;)V
+	43      (00000096) neg-int              v12, v7
+	44      (00000098) int-to-float         v12, v12
+	45      (0000009a) invoke-virtual       v10, v12, Landroid/view/View;->setTranslationX(F)V
+	46      (000000a0) neg-int              v12, v8
+	47      (000000a2) int-to-float         v12, v12
+	48      (000000a4) invoke-virtual       v10, v12, Landroid/view/View;->setTranslationY(F)V
+	49      (000000aa) const/4              v12, 0
+	50      (000000ac) invoke-virtual       v10, v12, Landroid/view/View;->setAlpha(F)V
+	51      (000000b2) iget-object          v10, v0, La2/k;->k Ljava/util/ArrayList;
+	52      (000000b6) new-instance         v12, La2/i;
+	53      (000000ba) invoke-direct        v12, Ljava/lang/Object;-><init>()V
+	54      (000000c0) iput-object          v1, v12, La2/i;->a La2/k1;
+	55      (000000c4) iput-object          v11, v12, La2/i;->b La2/k1;
+	56      (000000c8) iput                 v2, v12, La2/i;->c I
+	57      (000000cc) iput                 v3, v12, La2/i;->d I
+	58      (000000d0) iput                 v4, v12, La2/i;->e I
+	59      (000000d4) iput                 v5, v12, La2/i;->f I
+	60      (000000d8) invoke-virtual       v10, v12, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	61      (000000de) const/4              v10, 1
+	62      (000000e0) return               v10
+

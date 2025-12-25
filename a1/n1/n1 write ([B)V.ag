@@ -1,0 +1,27 @@
+# La1/n1;->write([B)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:byte[]
+#
+# - return:void
+
+write-BB@0x0 : [ D:write-BB@0xa 0:write-BB@0x12 ]
+	0       (00000000) iget                 v0, v1, La1/n1;->a I
+	1       (00000004) packed-switch        v0, +0000014h
+
+write-BB@0xa : 
+	2       (0000000a) invoke-super         v1, v2, Ljava/io/OutputStream;->write([B)V
+	3       (00000010) return-void          
+
+write-BB@0x12 : 
+	4       (00000012) const-string         v0, "b"
+	5       (00000016) invoke-static        v2, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	6       (0000001c) iget-object          v0, v1, La1/n1;->b Ljava/lang/Object;
+	7       (00000020) check-cast           v0, Ljava/io/FileOutputStream;
+	8       (00000024) invoke-virtual       v0, v2, Ljava/io/FileOutputStream;->write([B)V
+	9       (0000002a) return-void          
+
+write-BB@0x2c : 
+	10      (0000002c) packed-switch-payload 0
+

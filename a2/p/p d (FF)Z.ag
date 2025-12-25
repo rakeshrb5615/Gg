@@ -1,0 +1,54 @@
+# La2/p;->d(F F)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:float
+# - v5:float
+#
+# - return:boolean
+
+d-BB@0x0 : [ d-BB@0x16 d-BB@0x22 ]
+	0       (00000000) iget-object          v0, v3, La2/p;->s Landroidx/recyclerview/widget/RecyclerView;
+	1       (00000004) invoke-virtual       v0, Landroid/view/View;->getLayoutDirection()I
+	2       (0000000a) move-result          v0
+	3       (0000000c) iget                 v1, v3, La2/p;->e I
+	4       (00000010) const/4              v2, 1
+	5       (00000012) if-ne                v0, v2, +008h
+
+d-BB@0x16 : [ d-BB@0x20 d-BB@0x5a ]
+	6       (00000016) int-to-float         v0, v1
+	7       (00000018) cmpg-float           v4, v4, v0
+	8       (0000001c) if-gtz               v4, +01fh
+
+d-BB@0x20 : [ d-BB@0x32 ]
+	9       (00000020) goto                 +9h
+
+d-BB@0x22 : [ d-BB@0x32 d-BB@0x5a ]
+	10      (00000022) iget                 v0, v3, La2/p;->q I
+	11      (00000026) sub-int/2addr        v0, v1
+	12      (00000028) int-to-float         v0, v0
+	13      (0000002a) cmpl-float           v4, v4, v0
+	14      (0000002e) if-ltz               v4, +016h
+
+d-BB@0x32 : [ d-BB@0x4c d-BB@0x5a ]
+	15      (00000032) iget                 v4, v3, La2/p;->l I
+	16      (00000036) iget                 v0, v3, La2/p;->k I
+	17      (0000003a) div-int/lit8         v0, v0, 2
+	18      (0000003e) sub-int              v1, v4, v0
+	19      (00000042) int-to-float         v1, v1
+	20      (00000044) cmpl-float           v1, v5, v1
+	21      (00000048) if-ltz               v1, +009h
+
+d-BB@0x4c : [ d-BB@0x58 d-BB@0x5a ]
+	22      (0000004c) add-int/2addr        v0, v4
+	23      (0000004e) int-to-float         v4, v0
+	24      (00000050) cmpg-float           v4, v5, v4
+	25      (00000054) if-gtz               v4, +003h
+
+d-BB@0x58 : 
+	26      (00000058) return               v2
+
+d-BB@0x5a : 
+	27      (0000005a) const/4              v4, 0
+	28      (0000005c) return               v4
+

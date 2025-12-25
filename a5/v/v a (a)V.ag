@@ -1,0 +1,61 @@
+# La5/v;->a(Lc6/a;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:c6.a
+#
+# - return:void
+
+a-BB@0x0 : [ a-BB@0xc a-BB@0x14 ]
+	0       (00000000) iget-object          v0, v4, La5/v;->b Lc6/b;
+	1       (00000004) sget-object          v1, La5/v;->d La5/g;
+	2       (00000008) if-eq                v0, v1, +006h
+
+a-BB@0xc : 
+	3       (0000000c) invoke-interface     v5, v0, Lc6/a;->a(Lc6/b;)V
+	4       (00000012) return-void          
+
+a-BB@0x14 : [ a-BB@0x16 ]
+	5       (00000014) monitor-enter        v4
+
+a-BB@0x16 : [ a-BB@0x1e a-BB@0x22 ]
+	6       (00000016) iget-object          v0, v4, La5/v;->b Lc6/b;
+	7       (0000001a) if-eq                v0, v1, +004h
+	16:39
+	(Ljava/lang/Throwable; -> 46 a-BB@0x46)
+
+a-BB@0x1e : [ a-BB@0x38 ]
+	8       (0000001e) move-object          v1, v0
+	9       (00000020) goto                 +ch
+	16:39
+	(Ljava/lang/Throwable; -> 46 a-BB@0x46)
+
+a-BB@0x22 : [ a-BB@0x38 ]
+	10      (00000022) iget-object          v1, v4, La5/v;->a Lc6/a;
+	11      (00000026) new-instance         v2, La5/u;
+	12      (0000002a) const/4              v3, 0
+	13      (0000002c) invoke-direct        v2, v3, v1, v5, La5/u;-><init>(I Ljava/lang/Object; Ljava/lang/Object;)V
+	14      (00000032) iput-object          v2, v4, La5/v;->a Lc6/a;
+	15      (00000036) const/4              v1, 0
+	16:39
+	(Ljava/lang/Throwable; -> 46 a-BB@0x46)
+
+a-BB@0x38 : [ a-BB@0x3e a-BB@0x44 ]
+	16      (00000038) monitor-exit         v4
+	17      (0000003a) if-eqz               v1, +005h
+
+a-BB@0x3e : [ a-BB@0x44 ]
+	18      (0000003e) invoke-interface     v5, v0, Lc6/a;->a(Lc6/b;)V
+
+a-BB@0x44 : 
+	19      (00000044) return-void          
+
+a-BB@0x46 : [ a-BB@0x48 ]
+	20      (00000046) move-exception       v5
+
+a-BB@0x48 : 
+	21      (00000048) monitor-exit         v4
+	22      (0000004a) throw                v5
+	48:49
+	(Ljava/lang/Throwable; -> 46 a-BB@0x46)
+

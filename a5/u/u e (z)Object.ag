@@ -1,0 +1,142 @@
+# La5/u;->e(La5/z;)Ljava/lang/Object; [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:a5.z
+#
+# - return:java.lang.Object
+
+e-BB@0x0 : [ D:e-BB@0xa 4:e-BB@0x3e ]
+	0       (00000000) iget                 v0, v3, La5/u;->a I
+	1       (00000004) packed-switch        v0, +00000a4h
+
+e-BB@0xa : [ e-BB@0x1a ]
+	2       (0000000a) iget-object          v0, v3, La5/u;->b Ljava/lang/Object;
+	3       (0000000e) check-cast           v0, Ljava/lang/String;
+	4       (00000012) iget-object          v1, v3, La5/u;->c Ljava/lang/Object;
+	5       (00000016) check-cast           v1, La5/c;
+
+e-BB@0x1a : 
+	6       (0000001a) invoke-static        v0, Landroid/os/Trace;->beginSection(Ljava/lang/String;)V
+	7       (00000020) iget-object          v0, v1, La5/c;->f La5/f;
+	8       (00000024) invoke-interface     v0, v4, La5/f;->e(La5/z;)Ljava/lang/Object;
+	9       (0000002a) move-result-object   v4
+	10      (0000002c) invoke-static        Landroid/os/Trace;->endSection()V
+	11      (00000032) return-object        v4
+	1a:2b
+	(Ljava/lang/Throwable; -> 34 e-BB@0x34)
+
+e-BB@0x34 : 
+	12      (00000034) move-exception       v4
+	13      (00000036) invoke-static        Landroid/os/Trace;->endSection()V
+	14      (0000003c) throw                v4
+
+e-BB@0x3e : [ D:e-BB@0x68 14:e-BB@0x126 15:e-BB@0x10c 16:e-BB@0x94 ]
+	15      (0000003e) iget-object          v0, v3, La5/u;->b Ljava/lang/Object;
+	16      (00000042) check-cast           v0, Ljava/lang/String;
+	17      (00000046) iget-object          v1, v3, La5/u;->c Ljava/lang/Object;
+	18      (0000004a) check-cast           v1, Ll4/h;
+	19      (0000004e) const-class          v2, Landroid/content/Context;
+	20      (00000052) invoke-virtual       v4, v2, La5/z;->a(Ljava/lang/Class;)Ljava/lang/Object;
+	21      (00000058) move-result-object   v4
+	22      (0000005a) check-cast           v4, Landroid/content/Context;
+	23      (0000005e) iget                 v1, v1, Ll4/h;->a I
+	24      (00000062) packed-switch        v1, +000007bh
+
+e-BB@0x68 : [ e-BB@0x84 e-BB@0x8e ]
+	25      (00000068) invoke-virtual       v4, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
+	26      (0000006e) move-result-object   v1
+	27      (00000070) invoke-virtual       v4, Landroid/content/Context;->getPackageName()Ljava/lang/String;
+	28      (00000076) move-result-object   v4
+	29      (00000078) invoke-virtual       v1, v4, Landroid/content/pm/PackageManager;->getInstallerPackageName(Ljava/lang/String;)Ljava/lang/String;
+	30      (0000007e) move-result-object   v4
+	31      (00000080) if-eqz               v4, +007h
+
+e-BB@0x84 : [ e-BB@0x13e ]
+	32      (00000084) invoke-static        v4, Lcom/google/firebase/FirebaseCommonRegistrar;->a(Ljava/lang/String;)Ljava/lang/String;
+	33      (0000008a) move-result-object   v4
+	34      (0000008c) goto                 +59h
+
+e-BB@0x8e : [ e-BB@0x13e ]
+	35      (0000008e) const-string         v4, ""
+	36      (00000092) goto                 +56h
+
+e-BB@0x94 : [ e-BB@0xac e-BB@0xb2 ]
+	37      (00000094) invoke-virtual       v4, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
+	38      (0000009a) move-result-object   v1
+	39      (0000009c) const-string         v2, "android.hardware.type.television"
+	40      (000000a0) invoke-virtual       v1, v2, Landroid/content/pm/PackageManager;->hasSystemFeature(Ljava/lang/String;)Z
+	41      (000000a6) move-result          v1
+	42      (000000a8) if-eqz               v1, +005h
+
+e-BB@0xac : [ e-BB@0x13e ]
+	43      (000000ac) const-string         v4, "tv"
+	44      (000000b0) goto                 +47h
+
+e-BB@0xb2 : [ e-BB@0xca e-BB@0xd0 ]
+	45      (000000b2) invoke-virtual       v4, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
+	46      (000000b8) move-result-object   v1
+	47      (000000ba) const-string         v2, "android.hardware.type.watch"
+	48      (000000be) invoke-virtual       v1, v2, Landroid/content/pm/PackageManager;->hasSystemFeature(Ljava/lang/String;)Z
+	49      (000000c4) move-result          v1
+	50      (000000c6) if-eqz               v1, +005h
+
+e-BB@0xca : [ e-BB@0x13e ]
+	51      (000000ca) const-string         v4, "watch"
+	52      (000000ce) goto                 +38h
+
+e-BB@0xd0 : [ e-BB@0xe8 e-BB@0xee ]
+	53      (000000d0) invoke-virtual       v4, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
+	54      (000000d6) move-result-object   v1
+	55      (000000d8) const-string         v2, "android.hardware.type.automotive"
+	56      (000000dc) invoke-virtual       v1, v2, Landroid/content/pm/PackageManager;->hasSystemFeature(Ljava/lang/String;)Z
+	57      (000000e2) move-result          v1
+	58      (000000e4) if-eqz               v1, +005h
+
+e-BB@0xe8 : [ e-BB@0x13e ]
+	59      (000000e8) const-string         v4, "auto"
+	60      (000000ec) goto                 +29h
+
+e-BB@0xee : [ e-BB@0x106 e-BB@0x8e ]
+	61      (000000ee) invoke-virtual       v4, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
+	62      (000000f4) move-result-object   v4
+	63      (000000f6) const-string         v1, "android.hardware.type.embedded"
+	64      (000000fa) invoke-virtual       v4, v1, Landroid/content/pm/PackageManager;->hasSystemFeature(Ljava/lang/String;)Z
+	65      (00000100) move-result          v4
+	66      (00000102) if-eqz               v4, -03ah
+
+e-BB@0x106 : [ e-BB@0x13e ]
+	67      (00000106) const-string         v4, "embedded"
+	68      (0000010a) goto                 +1ah
+
+e-BB@0x10c : [ e-BB@0x118 e-BB@0x8e ]
+	69      (0000010c) invoke-virtual       v4, Landroid/content/Context;->getApplicationInfo()Landroid/content/pm/ApplicationInfo;
+	70      (00000112) move-result-object   v4
+	71      (00000114) if-eqz               v4, -043h
+
+e-BB@0x118 : [ e-BB@0x13e ]
+	72      (00000118) iget                 v4, v4, Landroid/content/pm/ApplicationInfo;->minSdkVersion I
+	73      (0000011c) invoke-static        v4, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
+	74      (00000122) move-result-object   v4
+	75      (00000124) goto                 +dh
+
+e-BB@0x126 : [ e-BB@0x132 e-BB@0x8e ]
+	76      (00000126) invoke-virtual       v4, Landroid/content/Context;->getApplicationInfo()Landroid/content/pm/ApplicationInfo;
+	77      (0000012c) move-result-object   v4
+	78      (0000012e) if-eqz               v4, -050h
+
+e-BB@0x132 : [ e-BB@0x13e ]
+	79      (00000132) iget                 v4, v4, Landroid/content/pm/ApplicationInfo;->targetSdkVersion I
+	80      (00000136) invoke-static        v4, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
+	81      (0000013c) move-result-object   v4
+
+e-BB@0x13e : 
+	82      (0000013e) new-instance         v1, Ll6/a;
+	83      (00000142) invoke-direct        v1, v0, v4, Ll6/a;-><init>(Ljava/lang/String; Ljava/lang/String;)V
+	84      (00000148) return-object        v1
+
+e-BB@0x14a : 
+	85      (0000014a) nop                  
+	86      (0000014c) packed-switch-payload 4
+	87      (00000158) packed-switch-payload e f 10
+

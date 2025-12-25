@@ -1,0 +1,51 @@
+# La2/z0;->b(I)I [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:int
+#
+# - return:int
+
+b-BB@0x0 : [ b-BB@0x8 b-BB@0x36 ]
+	0       (00000000) iget-object          v0, v4, La2/z0;->h Landroidx/recyclerview/widget/RecyclerView;
+	1       (00000004) if-ltz               v5, +019h
+
+b-BB@0x8 : [ b-BB@0x18 b-BB@0x36 ]
+	2       (00000008) iget-object          v1, v0, Landroidx/recyclerview/widget/RecyclerView;->k0 La2/g1;
+	3       (0000000c) invoke-virtual       v1, La2/g1;->b()I
+	4       (00000012) move-result          v1
+	5       (00000014) if-ge                v5, v1, +011h
+
+b-BB@0x18 : [ b-BB@0x24 b-BB@0x26 ]
+	6       (00000018) iget-object          v1, v0, Landroidx/recyclerview/widget/RecyclerView;->k0 La2/g1;
+	7       (0000001c) iget-boolean         v1, v1, La2/g1;->g Z
+	8       (00000020) if-nez               v1, +003h
+
+b-BB@0x24 : 
+	9       (00000024) return               v5
+
+b-BB@0x26 : 
+	10      (00000026) iget-object          v0, v0, Landroidx/recyclerview/widget/RecyclerView;->e La2/b;
+	11      (0000002a) const/4              v1, 0
+	12      (0000002c) invoke-virtual       v0, v5, v1, La2/b;->g(I I)I
+	13      (00000032) move-result          v5
+	14      (00000034) return               v5
+
+b-BB@0x36 : 
+	15      (00000036) new-instance         v1, Ljava/lang/IndexOutOfBoundsException;
+	16      (0000003a) const-string         v2, "invalid position "
+	17      (0000003e) const-string         v3, ". State item count is "
+	18      (00000042) invoke-static        v2, v5, v3, Lv1/a;->p(Ljava/lang/String; I Ljava/lang/String;)Ljava/lang/StringBuilder;
+	19      (00000048) move-result-object   v5
+	20      (0000004a) iget-object          v2, v0, Landroidx/recyclerview/widget/RecyclerView;->k0 La2/g1;
+	21      (0000004e) invoke-virtual       v2, La2/g1;->b()I
+	22      (00000054) move-result          v2
+	23      (00000056) invoke-virtual       v5, v2, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	24      (0000005c) invoke-virtual       v0, Landroidx/recyclerview/widget/RecyclerView;->B()Ljava/lang/String;
+	25      (00000062) move-result-object   v0
+	26      (00000064) invoke-virtual       v5, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	27      (0000006a) invoke-virtual       v5, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	28      (00000070) move-result-object   v5
+	29      (00000072) invoke-direct        v1, v5, Ljava/lang/IndexOutOfBoundsException;-><init>(Ljava/lang/String;)V
+	30      (00000078) throw                v1
+

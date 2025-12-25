@@ -1,0 +1,76 @@
+# La5/a;->a(Lc6/b;)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:c6.b
+#
+# - return:void
+
+a-BB@0x0 : [ D:a-BB@0xa 3:a-BB@0x86 ]
+	0       (00000000) iget                 v0, v5, La5/a;->a I
+	1       (00000004) packed-switch        v0, +0000064h
+
+a-BB@0xa : [ a-BB@0x78 a-BB@0x84 ]
+	2       (0000000a) iget-object          v0, v5, La5/a;->b Ljava/lang/Object;
+	3       (0000000e) check-cast           v0, Ld5/c;
+	4       (00000012) invoke-interface     v6, Lc6/b;->get()Ljava/lang/Object;
+	5       (00000018) move-result-object   v6
+	6       (0000001a) check-cast           v6, Lp6/a;
+	7       (0000001e) check-cast           v6, Lm6/j;
+	8       (00000022) invoke-virtual       v6, Lm6/j;->a()Lm6/b;
+	9       (00000028) move-result-object   v6
+	10      (0000002a) iget-object          v6, v6, Lm6/b;->i Lj6/s;
+	11      (0000002e) iget-object          v1, v6, Lj6/s;->e Ljava/lang/Object;
+	12      (00000032) check-cast           v1, Ljava/util/Set;
+	13      (00000036) invoke-interface     v1, v0, Ljava/util/Set;->add(Ljava/lang/Object;)Z
+	14      (0000003c) iget-object          v1, v6, Lj6/s;->b Ljava/lang/Object;
+	15      (00000040) check-cast           v1, Ln6/d;
+	16      (00000044) invoke-virtual       v1, Ln6/d;->b()Lcom/google/android/gms/tasks/Task;
+	17      (0000004a) move-result-object   v1
+	18      (0000004c) iget-object          v2, v6, Lj6/s;->d Ljava/lang/Object;
+	19      (00000050) check-cast           v2, Ljava/util/concurrent/Executor;
+	20      (00000054) new-instance         v3, Lh5/a;
+	21      (00000058) const/4              v4, 5
+	22      (0000005a) invoke-direct        v3, v6, v1, v0, v4, Lh5/a;-><init>(Ljava/lang/Object; Ljava/lang/Object; Ljava/lang/Object; I)V
+	23      (00000060) invoke-virtual       v1, v2, v3, Lcom/google/android/gms/tasks/Task;->addOnSuccessListener(Ljava/util/concurrent/Executor; Lcom/google/android/gms/tasks/OnSuccessListener;)Lcom/google/android/gms/tasks/Task;
+	24      (00000066) const-string         v6, "FirebaseCrashlytics"
+	25      (0000006a) const/4              v0, 3
+	26      (0000006c) invoke-static        v6, v0, Landroid/util/Log;->isLoggable(Ljava/lang/String; I)Z
+	27      (00000072) move-result          v0
+	28      (00000074) if-eqz               v0, +008h
+
+a-BB@0x78 : [ a-BB@0x84 ]
+	29      (00000078) const-string         v0, "Registering RemoteConfig Rollouts subscriber"
+	30      (0000007c) const/4              v1, 0
+	31      (0000007e) invoke-static        v6, v0, v1, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+
+a-BB@0x84 : 
+	32      (00000084) return-void          
+
+a-BB@0x86 : [ a-BB@0xa6 a-BB@0xb2 ]
+	33      (00000086) iget-object          v0, v5, La5/a;->b Ljava/lang/Object;
+	34      (0000008a) check-cast           v0, Ld5/b;
+	35      (0000008e) invoke-virtual       v0, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	36      (00000094) const-string         v1, "FirebaseCrashlytics"
+	37      (00000098) const/4              v2, 3
+	38      (0000009a) invoke-static        v1, v2, Landroid/util/Log;->isLoggable(Ljava/lang/String; I)Z
+	39      (000000a0) move-result          v2
+	40      (000000a2) if-eqz               v2, +008h
+
+a-BB@0xa6 : [ a-BB@0xb2 ]
+	41      (000000a6) const-string         v2, "Crashlytics native component now available."
+	42      (000000aa) const/4              v3, 0
+	43      (000000ac) invoke-static        v1, v2, v3, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+
+a-BB@0xb2 : 
+	44      (000000b2) iget-object          v0, v0, Ld5/b;->b Ljava/util/concurrent/atomic/AtomicReference;
+	45      (000000b6) invoke-interface     v6, Lc6/b;->get()Ljava/lang/Object;
+	46      (000000bc) move-result-object   v6
+	47      (000000be) check-cast           v6, Ld5/b;
+	48      (000000c2) invoke-virtual       v0, v6, Ljava/util/concurrent/atomic/AtomicReference;->set(Ljava/lang/Object;)V
+	49      (000000c8) return-void          
+
+a-BB@0xca : 
+	50      (000000ca) nop                  
+	51      (000000cc) packed-switch-payload 3
+

@@ -1,0 +1,52 @@
+# La5/p;->a(Ljava/util/concurrent/Executor; Lx5/a;)V [access_flags=public final synchronized]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:java.util.concurrent.Executor
+# - v5:x5.a
+#
+# - return:void
+
+a-BB@0x0 : [ a-BB@0x6 ]
+	0       (00000000) const-class          v0, Lq4/b;
+	1       (00000004) monitor-enter        v3
+
+a-BB@0x6 : [ a-BB@0x1c a-BB@0x36 ]
+	2       (00000006) invoke-virtual       v4, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	3       (0000000c) iget-object          v1, v3, La5/p;->a Ljava/util/HashMap;
+	4       (00000010) invoke-virtual       v1, v0, Ljava/util/HashMap;->containsKey(Ljava/lang/Object;)Z
+	5       (00000016) move-result          v1
+	6       (00000018) if-nez               v1, +00fh
+	6:4b
+	(Ljava/lang/Throwable; -> 32 a-BB@0x32)
+
+a-BB@0x1c : [ a-BB@0x36 ]
+	7       (0000001c) iget-object          v1, v3, La5/p;->a Ljava/util/HashMap;
+	8       (00000020) new-instance         v2, Ljava/util/concurrent/ConcurrentHashMap;
+	9       (00000024) invoke-direct        v2, Ljava/util/concurrent/ConcurrentHashMap;-><init>()V
+	10      (0000002a) invoke-virtual       v1, v0, v2, Ljava/util/HashMap;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	11      (00000030) goto                 +3h
+	6:4b
+	(Ljava/lang/Throwable; -> 32 a-BB@0x32)
+
+a-BB@0x32 : [ a-BB@0x50 ]
+	12      (00000032) move-exception       v4
+	13      (00000034) goto                 +eh
+	6:4b
+	(Ljava/lang/Throwable; -> 32 a-BB@0x32)
+
+a-BB@0x36 : 
+	14      (00000036) iget-object          v1, v3, La5/p;->a Ljava/util/HashMap;
+	15      (0000003a) invoke-virtual       v1, v0, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	16      (00000040) move-result-object   v0
+	17      (00000042) check-cast           v0, Ljava/util/concurrent/ConcurrentHashMap;
+	18      (00000046) invoke-virtual       v0, v5, v4, Ljava/util/concurrent/ConcurrentHashMap;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	19      (0000004c) monitor-exit         v3
+	20      (0000004e) return-void          
+
+a-BB@0x50 : 
+	21      (00000050) monitor-exit         v3
+	22      (00000052) throw                v4
+	50:51
+	(Ljava/lang/Throwable; -> 32 a-BB@0x32)
+

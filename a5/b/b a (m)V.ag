@@ -1,0 +1,26 @@
+# La5/b;->a(La5/m;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:a5.m
+#
+# - return:void
+
+a-BB@0x0 : [ a-BB@0x14 a-BB@0x20 ]
+	0       (00000000) iget-object          v0, v3, La5/m;->a La5/x;
+	1       (00000004) iget-object          v1, v2, La5/b;->b Ljava/util/HashSet;
+	2       (00000008) invoke-virtual       v1, v0, Ljava/util/HashSet;->contains(Ljava/lang/Object;)Z
+	3       (0000000e) move-result          v0
+	4       (00000010) if-nez               v0, +008h
+
+a-BB@0x14 : 
+	5       (00000014) iget-object          v0, v2, La5/b;->c Ljava/util/HashSet;
+	6       (00000018) invoke-virtual       v0, v3, Ljava/util/HashSet;->add(Ljava/lang/Object;)Z
+	7       (0000001e) return-void          
+
+a-BB@0x20 : 
+	8       (00000020) new-instance         v3, Ljava/lang/IllegalArgumentException;
+	9       (00000024) const-string         v0, "Components are not allowed to depend on interfaces they themselves provide."
+	10      (00000028) invoke-direct        v3, v0, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	11      (0000002e) throw                v3
+

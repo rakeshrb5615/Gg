@@ -1,0 +1,28 @@
+# La/a;->p([Lh0/d;)[Lh0/d; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:h0.d[]
+#
+# - return:h0.d[]
+
+p-BB@0x0 : [ p-BB@0x8 ]
+	0       (00000000) array-length         v0, v4
+	1       (00000002) new-array            v0, v0, [Lh0/d;
+	2       (00000006) const/4              v1, 0
+
+p-BB@0x8 : [ p-BB@0xe p-BB@0x26 ]
+	3       (00000008) array-length         v2, v4
+	4       (0000000a) if-ge                v1, v2, +00eh
+
+p-BB@0xe : [ p-BB@0x8 ]
+	5       (0000000e) new-instance         v2, Lh0/d;
+	6       (00000012) aget-object          v3, v4, v1
+	7       (00000016) invoke-direct        v2, v3, Lh0/d;-><init>(Lh0/d;)V
+	8       (0000001c) aput-object          v2, v0, v1
+	9       (00000020) add-int/lit8         v1, v1, 1
+	10      (00000024) goto                 -eh
+
+p-BB@0x26 : 
+	11      (00000026) return-object        v0
+

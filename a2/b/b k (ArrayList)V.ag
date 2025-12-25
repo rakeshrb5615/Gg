@@ -1,0 +1,31 @@
+# La2/b;->k(Ljava/util/ArrayList;)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:java.util.ArrayList
+#
+# - return:void
+
+k-BB@0x0 : [ k-BB@0xa ]
+	0       (00000000) invoke-virtual       v5, Ljava/util/ArrayList;->size()I
+	1       (00000006) move-result          v0
+	2       (00000008) const/4              v1, 0
+
+k-BB@0xa : [ k-BB@0xe k-BB@0x34 ]
+	3       (0000000a) if-ge                v1, v0, +015h
+
+k-BB@0xe : [ k-BB@0xa ]
+	4       (0000000e) invoke-virtual       v5, v1, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	5       (00000014) move-result-object   v2
+	6       (00000016) check-cast           v2, La2/a;
+	7       (0000001a) invoke-virtual       v2, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	8       (00000020) iget-object          v3, v4, La2/b;->b Ljava/lang/Object;
+	9       (00000024) check-cast           v3, Lp0/c;
+	10      (00000028) invoke-virtual       v3, v2, Lp0/c;->c(Ljava/lang/Object;)Z
+	11      (0000002e) add-int/lit8         v1, v1, 1
+	12      (00000032) goto                 -14h
+
+k-BB@0x34 : 
+	13      (00000034) invoke-virtual       v5, Ljava/util/ArrayList;->clear()V
+	14      (0000003a) return-void          
+

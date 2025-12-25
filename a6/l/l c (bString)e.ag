@@ -1,0 +1,91 @@
+# La6/l;->c(Le1/b; Ljava/lang/String;)Le1/e; [access_flags=public final synchronized]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:e1.b
+# - v5:java.lang.String
+#
+# - return:e1.e
+
+c-BB@0x0 : [ c-BB@0x2 ]
+	0       (00000000) monitor-enter        v3
+
+c-BB@0x2 : [ c-BB@0x1a ]
+	1       (00000002) invoke-virtual       v4, Le1/b;->a()Ljava/util/Map;
+	2       (00000008) move-result-object   v4
+	3       (0000000a) invoke-interface     v4, Ljava/util/Map;->entrySet()Ljava/util/Set;
+	4       (00000010) move-result-object   v4
+	5       (00000012) invoke-interface     v4, Ljava/util/Set;->iterator()Ljava/util/Iterator;
+	6       (00000018) move-result-object   v4
+	2:91
+	(Ljava/lang/Throwable; -> 96 c-BB@0x96)
+
+c-BB@0x1a : [ c-BB@0x26 c-BB@0x9a ]
+	7       (0000001a) invoke-interface     v4, Ljava/util/Iterator;->hasNext()Z
+	8       (00000020) move-result          v0
+	9       (00000022) if-eqz               v0, +03ch
+	2:91
+	(Ljava/lang/Throwable; -> 96 c-BB@0x96)
+
+c-BB@0x26 : [ c-BB@0x42 c-BB@0x1a ]
+	10      (00000026) invoke-interface     v4, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	11      (0000002c) move-result-object   v0
+	12      (0000002e) check-cast           v0, Ljava/util/Map$Entry;
+	13      (00000032) invoke-interface     v0, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
+	14      (00000038) move-result-object   v1
+	15      (0000003a) instance-of          v1, v1, Ljava/util/Set;
+	16      (0000003e) if-eqz               v1, -012h
+	2:91
+	(Ljava/lang/Throwable; -> 96 c-BB@0x96)
+
+c-BB@0x42 : [ c-BB@0x56 ]
+	17      (00000042) invoke-interface     v0, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
+	18      (00000048) move-result-object   v1
+	19      (0000004a) check-cast           v1, Ljava/util/Set;
+	20      (0000004e) invoke-interface     v1, Ljava/util/Set;->iterator()Ljava/util/Iterator;
+	21      (00000054) move-result-object   v1
+	2:91
+	(Ljava/lang/Throwable; -> 96 c-BB@0x96)
+
+c-BB@0x56 : [ c-BB@0x62 c-BB@0x1a ]
+	22      (00000056) invoke-interface     v1, Ljava/util/Iterator;->hasNext()Z
+	23      (0000005c) move-result          v2
+	24      (0000005e) if-eqz               v2, -022h
+	2:91
+	(Ljava/lang/Throwable; -> 96 c-BB@0x96)
+
+c-BB@0x62 : [ c-BB@0x7a c-BB@0x56 ]
+	25      (00000062) invoke-interface     v1, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	26      (00000068) move-result-object   v2
+	27      (0000006a) check-cast           v2, Ljava/lang/String;
+	28      (0000006e) invoke-virtual       v5, v2, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	29      (00000074) move-result          v2
+	30      (00000076) if-eqz               v2, -010h
+	2:91
+	(Ljava/lang/Throwable; -> 96 c-BB@0x96)
+
+c-BB@0x7a : 
+	31      (0000007a) invoke-interface     v0, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
+	32      (00000080) move-result-object   v4
+	33      (00000082) check-cast           v4, Le1/e;
+	34      (00000086) iget-object          v4, v4, Le1/e;->a Ljava/lang/String;
+	35      (0000008a) invoke-static        v4, Lc4/b;->c0(Ljava/lang/String;)Le1/e;
+	36      (00000090) move-result-object   v4
+	37      (00000092) monitor-exit         v3
+	38      (00000094) return-object        v4
+
+c-BB@0x96 : [ c-BB@0xa0 ]
+	39      (00000096) move-exception       v4
+	40      (00000098) goto                 +4h
+
+c-BB@0x9a : 
+	41      (0000009a) monitor-exit         v3
+	42      (0000009c) const/4              v4, 0
+	43      (0000009e) return-object        v4
+
+c-BB@0xa0 : 
+	44      (000000a0) monitor-exit         v3
+	45      (000000a2) throw                v4
+	a0:a1
+	(Ljava/lang/Throwable; -> 96 c-BB@0x96)
+

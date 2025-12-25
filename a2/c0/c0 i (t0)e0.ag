@@ -1,0 +1,27 @@
+# La2/c0;->i(La2/t0;)La2/e0; [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:a2.t0
+#
+# - return:a2.e0
+
+i-BB@0x0 : [ i-BB@0x8 i-BB@0x14 ]
+	0       (00000000) iget-object          v0, v2, La2/c0;->f La2/d0;
+	1       (00000004) if-eqz               v0, +008h
+
+i-BB@0x8 : [ i-BB@0x14 i-BB@0x24 ]
+	2       (00000008) iget-object          v0, v0, La2/e0;->b Ljava/lang/Object;
+	3       (0000000c) check-cast           v0, La2/t0;
+	4       (00000010) if-eq                v0, v3, +00ah
+
+i-BB@0x14 : [ i-BB@0x24 ]
+	5       (00000014) new-instance         v0, La2/d0;
+	6       (00000018) const/4              v1, 0
+	7       (0000001a) invoke-direct        v0, v3, v1, La2/d0;-><init>(La2/t0; I)V
+	8       (00000020) iput-object          v0, v2, La2/c0;->f La2/d0;
+
+i-BB@0x24 : 
+	9       (00000024) iget-object          v3, v2, La2/c0;->f La2/d0;
+	10      (00000028) return-object        v3
+

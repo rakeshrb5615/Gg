@@ -1,0 +1,96 @@
+# La/a;->I(I)I [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:int
+#
+# - return:int
+
+I-BB@0x0 : [ I-BB@0x8 I-BB@0x9e ]
+	0       (00000000) sget-object          v0, Ljava/math/RoundingMode;->UNNECESSARY Ljava/math/RoundingMode;
+	1       (00000004) if-lez               v4, +04dh
+
+I-BB@0x8 : [ D:I-BB@0x20 1:I-BB@0x5e 2:I-BB@0x80 3:I-BB@0x80 4:I-BB@0x4e 5:I-BB@0x4e 6:I-BB@0x2c 7:I-BB@0x2c 8:I-BB@0x2c ]
+	2       (00000008) sget-object          v1, Lo4/a;->a [I
+	3       (0000000c) invoke-virtual       v0, Ljava/lang/Enum;->ordinal()I
+	4       (00000012) move-result          v0
+	5       (00000014) aget                 v0, v1, v0
+	6       (00000018) const/4              v1, 1
+	7       (0000001a) packed-switch        v0, +0000051h
+
+I-BB@0x20 : 
+	8       (00000020) new-instance         v4, Ljava/lang/AssertionError;
+	9       (00000024) invoke-direct        v4, Ljava/lang/AssertionError;-><init>()V
+	10      (0000002a) throw                v4
+
+I-BB@0x2c : 
+	11      (0000002c) invoke-static        v4, Ljava/lang/Integer;->numberOfLeadingZeros(I)I
+	12      (00000032) move-result          v0
+	13      (00000034) const                v1, -1257966797
+	14      (0000003a) ushr-int/2addr       v1, v0
+	15      (0000003c) rsub-int/lit8        v0, v0, 31
+	16      (00000040) sub-int/2addr        v1, v4
+	17      (00000042) not-int              v4, v1
+	18      (00000044) not-int              v4, v4
+	19      (00000046) ushr-int/lit8        v4, v4, 31
+	20      (0000004a) add-int/2addr        v0, v4
+	21      (0000004c) return               v0
+
+I-BB@0x4e : 
+	22      (0000004e) sub-int/2addr        v4, v1
+	23      (00000050) invoke-static        v4, Ljava/lang/Integer;->numberOfLeadingZeros(I)I
+	24      (00000056) move-result          v4
+	25      (00000058) rsub-int/lit8        v4, v4, 32
+	26      (0000005c) return               v4
+
+I-BB@0x5e : [ I-BB@0x64 I-BB@0x68 ]
+	27      (0000005e) const/4              v0, 0
+	28      (00000060) if-lez               v4, +004h
+
+I-BB@0x64 : [ I-BB@0x6a ]
+	29      (00000064) move                 v2, v1
+	30      (00000066) goto                 +2h
+
+I-BB@0x68 : [ I-BB@0x6a ]
+	31      (00000068) move                 v2, v0
+
+I-BB@0x6a : [ I-BB@0x74 I-BB@0x76 ]
+	32      (0000006a) add-int/lit8         v3, v4, -1
+	33      (0000006e) and-int/2addr        v3, v4
+	34      (00000070) if-nez               v3, +003h
+
+I-BB@0x74 : [ I-BB@0x78 ]
+	35      (00000074) goto                 +2h
+
+I-BB@0x76 : [ I-BB@0x78 ]
+	36      (00000076) move                 v1, v0
+
+I-BB@0x78 : [ I-BB@0x80 I-BB@0x8e ]
+	37      (00000078) and-int              v0, v2, v1
+	38      (0000007c) if-eqz               v0, +009h
+
+I-BB@0x80 : 
+	39      (00000080) invoke-static        v4, Ljava/lang/Integer;->numberOfLeadingZeros(I)I
+	40      (00000086) move-result          v4
+	41      (00000088) rsub-int/lit8        v4, v4, 31
+	42      (0000008c) return               v4
+
+I-BB@0x8e : 
+	43      (0000008e) new-instance         v4, Ljava/lang/ArithmeticException;
+	44      (00000092) const-string         v0, "mode was UNNECESSARY, but rounding was necessary"
+	45      (00000096) invoke-direct        v4, v0, Ljava/lang/ArithmeticException;-><init>(Ljava/lang/String;)V
+	46      (0000009c) throw                v4
+
+I-BB@0x9e : 
+	47      (0000009e) new-instance         v0, Ljava/lang/IllegalArgumentException;
+	48      (000000a2) const-string         v1, "x ("
+	49      (000000a6) const-string         v2, ") must be > 0"
+	50      (000000aa) invoke-static        v1, v4, v2, Lv1/a;->j(Ljava/lang/String; I Ljava/lang/String;)Ljava/lang/String;
+	51      (000000b0) move-result-object   v4
+	52      (000000b2) invoke-direct        v0, v4, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	53      (000000b8) throw                v0
+
+I-BB@0xba : 
+	54      (000000ba) nop                  
+	55      (000000bc) packed-switch-payload 1 2 3 4 5 6 7 8
+

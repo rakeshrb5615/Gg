@@ -1,0 +1,93 @@
+# La1/z;->invokeSuspend(Ljava/lang/Object;)Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:java.lang.Object
+#
+# - return:java.lang.Object
+
+invokeSuspend-BB@0x0 : [ invokeSuspend-BB@0x14 invokeSuspend-BB@0x44 ]
+	0       (00000000) sget-object          v0, Lm7/a;->a Lm7/a;
+	1       (00000004) iget                 v1, v5, La1/z;->b I
+	2       (00000008) iget-object          v2, v5, La1/z;->c La1/g0;
+	3       (0000000c) const/4              v3, 2
+	4       (0000000e) const/4              v4, 1
+	5       (00000010) if-eqz               v1, +01ah
+
+invokeSuspend-BB@0x14 : [ invokeSuspend-BB@0x18 invokeSuspend-BB@0x38 ]
+	6       (00000014) if-eq                v1, v4, +012h
+
+invokeSuspend-BB@0x18 : [ invokeSuspend-BB@0x1c invokeSuspend-BB@0x28 ]
+	7       (00000018) if-ne                v1, v3, +008h
+
+invokeSuspend-BB@0x1c : [ invokeSuspend-BB@0x84 ]
+	8       (0000001c) iget-object          v0, v5, La1/z;->a Ljava/lang/Throwable;
+	9       (00000020) invoke-static        v6, Lc4/b;->e0(Ljava/lang/Object;)V
+	10      (00000026) goto                 +2fh
+
+invokeSuspend-BB@0x28 : 
+	11      (00000028) new-instance         v6, Ljava/lang/IllegalStateException;
+	12      (0000002c) const-string         v0, "call to 'resume' before 'invoke' with coroutine"
+	13      (00000030) invoke-direct        v6, v0, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	14      (00000036) throw                v6
+
+invokeSuspend-BB@0x38 : [ invokeSuspend-BB@0x5c ]
+	15      (00000038) invoke-static        v6, Lc4/b;->e0(Ljava/lang/Object;)V
+	16      (0000003e) goto                 +fh
+	38:3d
+	(Ljava/lang/Throwable; -> 40 invokeSuspend-BB@0x40)
+
+invokeSuspend-BB@0x40 : [ invokeSuspend-BB@0x62 ]
+	17      (00000040) move-exception       v6
+	18      (00000042) goto                 +10h
+
+invokeSuspend-BB@0x44 : [ invokeSuspend-BB@0x4a ]
+	19      (00000044) invoke-static        v6, Lc4/b;->e0(Ljava/lang/Object;)V
+
+invokeSuspend-BB@0x4a : [ invokeSuspend-BB@0x5a invokeSuspend-BB@0x5c ]
+	20      (0000004a) iput                 v4, v5, La1/z;->b I
+	21      (0000004e) invoke-static        v2, v4, v5, La1/g0;->g(La1/g0; Z Ln7/c;)Ljava/lang/Object;
+	22      (00000054) move-result-object   v6
+	23      (00000056) if-ne                v6, v0, +003h
+	4a:5f
+	(Ljava/lang/Throwable; -> 40 invokeSuspend-BB@0x40)
+
+invokeSuspend-BB@0x5a : [ invokeSuspend-BB@0x7e ]
+	24      (0000005a) goto                 +12h
+	4a:5f
+	(Ljava/lang/Throwable; -> 40 invokeSuspend-BB@0x40)
+
+invokeSuspend-BB@0x5c : [ invokeSuspend-BB@0x9c ]
+	25      (0000005c) check-cast           v6, La1/l1;
+	26      (00000060) goto                 +1eh
+
+invokeSuspend-BB@0x62 : [ invokeSuspend-BB@0x7e invokeSuspend-BB@0x80 ]
+	27      (00000062) invoke-virtual       v2, La1/g0;->h()La1/s0;
+	28      (00000068) move-result-object   v1
+	29      (0000006a) iput-object          v6, v5, La1/z;->a Ljava/lang/Throwable;
+	30      (0000006e) iput                 v3, v5, La1/z;->b I
+	31      (00000072) invoke-interface     v1, v5, La1/s0;->e(Ln7/c;)Ljava/lang/Object;
+	32      (00000078) move-result-object   v1
+	33      (0000007a) if-ne                v1, v0, +003h
+
+invokeSuspend-BB@0x7e : 
+	34      (0000007e) return-object        v0
+
+invokeSuspend-BB@0x80 : [ invokeSuspend-BB@0x84 ]
+	35      (00000080) move-object          v0, v6
+	36      (00000082) move-object          v6, v1
+
+invokeSuspend-BB@0x84 : [ invokeSuspend-BB@0x9c ]
+	37      (00000084) check-cast           v6, Ljava/lang/Number;
+	38      (00000088) invoke-virtual       v6, Ljava/lang/Number;->intValue()I
+	39      (0000008e) move-result          v6
+	40      (00000090) new-instance         v1, La1/d1;
+	41      (00000094) invoke-direct        v1, v6, v0, La1/d1;-><init>(I Ljava/lang/Throwable;)V
+	42      (0000009a) move-object          v6, v1
+
+invokeSuspend-BB@0x9c : 
+	43      (0000009c) sget-object          v0, Ljava/lang/Boolean;->TRUE Ljava/lang/Boolean;
+	44      (000000a0) new-instance         v1, Lh7/f;
+	45      (000000a4) invoke-direct        v1, v6, v0, Lh7/f;-><init>(Ljava/lang/Object; Ljava/lang/Object;)V
+	46      (000000aa) return-object        v1
+

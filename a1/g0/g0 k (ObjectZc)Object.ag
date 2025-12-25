@@ -1,0 +1,84 @@
+# La1/g0;->k(Ljava/lang/Object; Z Ln7/c;)Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v10
+# - v11:java.lang.Object
+# - v12:boolean
+# - v13:n7.c
+#
+# - return:java.lang.Object
+
+k-BB@0x0 : [ k-BB@0x8 k-BB@0x26 ]
+	0       (00000000) instance-of          v0, v13, La1/e0;
+	1       (00000004) if-eqz               v0, +011h
+
+k-BB@0x8 : [ k-BB@0x1e k-BB@0x26 ]
+	2       (00000008) move-object          v0, v13
+	3       (0000000a) check-cast           v0, La1/e0;
+	4       (0000000e) iget                 v1, v0, La1/e0;->d I
+	5       (00000012) const/high16         v2, -2147483648
+	6       (00000016) and-int              v3, v1, v2
+	7       (0000001a) if-eqz               v3, +006h
+
+k-BB@0x1e : [ k-BB@0x30 ]
+	8       (0000001e) sub-int/2addr        v1, v2
+	9       (00000020) iput                 v1, v0, La1/e0;->d I
+	10      (00000024) goto                 +6h
+
+k-BB@0x26 : [ k-BB@0x30 ]
+	11      (00000026) new-instance         v0, La1/e0;
+	12      (0000002a) invoke-direct        v0, v10, v13, La1/e0;-><init>(La1/g0; Ln7/c;)V
+
+k-BB@0x30 : [ k-BB@0x42 k-BB@0x62 ]
+	13      (00000030) iget-object          v13, v0, La1/e0;->b Ljava/lang/Object;
+	14      (00000034) sget-object          v1, Lm7/a;->a Lm7/a;
+	15      (00000038) iget                 v2, v0, La1/e0;->d I
+	16      (0000003c) const/4              v3, 1
+	17      (0000003e) if-eqz               v2, +012h
+
+k-BB@0x42 : [ k-BB@0x46 k-BB@0x52 ]
+	18      (00000042) if-ne                v2, v3, +008h
+
+k-BB@0x46 : [ k-BB@0xac ]
+	19      (00000046) iget-object          v11, v0, La1/e0;->a Lkotlin/jvm/internal/p;
+	20      (0000004a) invoke-static        v13, Lc4/b;->e0(Ljava/lang/Object;)V
+	21      (00000050) goto                 +2eh
+
+k-BB@0x52 : 
+	22      (00000052) new-instance         v11, Ljava/lang/IllegalStateException;
+	23      (00000056) const-string         v12, "call to 'resume' before 'invoke' with coroutine"
+	24      (0000005a) invoke-direct        v11, v12, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	25      (00000060) throw                v11
+
+k-BB@0x62 : [ k-BB@0xa8 k-BB@0xaa ]
+	26      (00000062) invoke-static        v13, Lc4/b;->e0(Ljava/lang/Object;)V
+	27      (00000068) new-instance         v5, Lkotlin/jvm/internal/p;
+	28      (0000006c) invoke-direct        v5, Ljava/lang/Object;-><init>()V
+	29      (00000072) iget-object          v13, v10, La1/g0;->j Lh7/j;
+	30      (00000076) invoke-virtual       v13, Lh7/j;->getValue()Ljava/lang/Object;
+	31      (0000007c) move-result-object   v13
+	32      (0000007e) check-cast           v13, La1/o0;
+	33      (00000082) new-instance         v4, La1/f0;
+	34      (00000086) const/4              v9, 0
+	35      (00000088) move-object          v6, v10
+	36      (0000008a) move-object          v7, v11
+	37      (0000008c) move                 v8, v12
+	38      (0000008e) invoke-direct/range  v4 ... v9, La1/f0;-><init>(Lkotlin/jvm/internal/p; La1/g0; Ljava/lang/Object; Z Ll7/c;)V
+	39      (00000094) iput-object          v5, v0, La1/e0;->a Lkotlin/jvm/internal/p;
+	40      (00000098) iput                 v3, v0, La1/e0;->d I
+	41      (0000009c) invoke-virtual       v13, v4, v0, La1/o0;->b(La1/f0; Ln7/c;)Ljava/lang/Object;
+	42      (000000a2) move-result-object   v11
+	43      (000000a4) if-ne                v11, v1, +003h
+
+k-BB@0xa8 : 
+	44      (000000a8) return-object        v1
+
+k-BB@0xaa : [ k-BB@0xac ]
+	45      (000000aa) move-object          v11, v5
+
+k-BB@0xac : 
+	46      (000000ac) iget                 v11, v11, Lkotlin/jvm/internal/p;->a I
+	47      (000000b0) new-instance         v12, Ljava/lang/Integer;
+	48      (000000b4) invoke-direct        v12, v11, Ljava/lang/Integer;-><init>(I)V
+	49      (000000ba) return-object        v12
+

@@ -1,0 +1,47 @@
+# La1/n1;->write(I)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:int
+#
+# - return:void
+
+write-BB@0x0 : [ D:write-BB@0xa 0:write-BB@0x4e 1:write-BB@0x3e ]
+	0       (00000000) iget                 v0, v2, La1/n1;->a I
+	1       (00000004) packed-switch        v0, +000002eh
+
+write-BB@0xa : [ write-BB@0x1a write-BB@0x2e ]
+	2       (0000000a) iget-object          v0, v2, La1/n1;->b Ljava/lang/Object;
+	3       (0000000e) check-cast           v0, Lx8/a0;
+	4       (00000012) iget-boolean         v1, v0, Lx8/a0;->c Z
+	5       (00000016) if-nez               v1, +00ch
+
+write-BB@0x1a : 
+	6       (0000001a) iget-object          v1, v0, Lx8/a0;->b Lx8/g;
+	7       (0000001e) int-to-byte          v3, v3
+	8       (00000020) invoke-virtual       v1, v3, Lx8/g;->M(I)V
+	9       (00000026) invoke-virtual       v0, Lx8/a0;->c()Lx8/h;
+	10      (0000002c) return-void          
+
+write-BB@0x2e : 
+	11      (0000002e) new-instance         v3, Ljava/io/IOException;
+	12      (00000032) const-string         v0, "closed"
+	13      (00000036) invoke-direct        v3, v0, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+	14      (0000003c) throw                v3
+
+write-BB@0x3e : 
+	15      (0000003e) iget-object          v0, v2, La1/n1;->b Ljava/lang/Object;
+	16      (00000042) check-cast           v0, Lx8/g;
+	17      (00000046) invoke-virtual       v0, v3, Lx8/g;->M(I)V
+	18      (0000004c) return-void          
+
+write-BB@0x4e : 
+	19      (0000004e) iget-object          v0, v2, La1/n1;->b Ljava/lang/Object;
+	20      (00000052) check-cast           v0, Ljava/io/FileOutputStream;
+	21      (00000056) invoke-virtual       v0, v3, Ljava/io/FileOutputStream;->write(I)V
+	22      (0000005c) return-void          
+
+write-BB@0x5e : 
+	23      (0000005e) nop                  
+	24      (00000060) packed-switch-payload 0 1
+

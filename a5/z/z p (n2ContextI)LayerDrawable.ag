@@ -1,0 +1,106 @@
+# La5/z;->p(Ln/n2; Landroid/content/Context; I)Landroid/graphics/drawable/LayerDrawable; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:n.n2
+# - v5:android.content.Context
+# - v6:int
+#
+# - return:android.graphics.drawable.LayerDrawable
+
+p-BB@0x0 : [ p-BB@0x36 p-BB@0x66 ]
+	0       (00000000) invoke-virtual       v5, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+	1       (00000006) move-result-object   v0
+	2       (00000008) invoke-virtual       v0, v6, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+	3       (0000000e) move-result          v6
+	4       (00000010) const                v0, 2131231043
+	5       (00000016) invoke-virtual       v4, v5, v0, Ln/n2;->c(Landroid/content/Context; I)Landroid/graphics/drawable/Drawable;
+	6       (0000001c) move-result-object   v0
+	7       (0000001e) const                v1, 2131231044
+	8       (00000024) invoke-virtual       v4, v5, v1, Ln/n2;->c(Landroid/content/Context; I)Landroid/graphics/drawable/Drawable;
+	9       (0000002a) move-result-object   v4
+	10      (0000002c) instance-of          v5, v0, Landroid/graphics/drawable/BitmapDrawable;
+	11      (00000030) const/4              v1, 0
+	12      (00000032) if-eqz               v5, +01ah
+
+p-BB@0x36 : [ p-BB@0x42 p-BB@0x66 ]
+	13      (00000036) invoke-virtual       v0, Landroid/graphics/drawable/Drawable;->getIntrinsicWidth()I
+	14      (0000003c) move-result          v5
+	15      (0000003e) if-ne                v5, v6, +014h
+
+p-BB@0x42 : [ p-BB@0x4e p-BB@0x66 ]
+	16      (00000042) invoke-virtual       v0, Landroid/graphics/drawable/Drawable;->getIntrinsicHeight()I
+	17      (00000048) move-result          v5
+	18      (0000004a) if-ne                v5, v6, +00eh
+
+p-BB@0x4e : [ p-BB@0x9e ]
+	19      (0000004e) check-cast           v0, Landroid/graphics/drawable/BitmapDrawable;
+	20      (00000052) new-instance         v5, Landroid/graphics/drawable/BitmapDrawable;
+	21      (00000056) invoke-virtual       v0, Landroid/graphics/drawable/BitmapDrawable;->getBitmap()Landroid/graphics/Bitmap;
+	22      (0000005c) move-result-object   v2
+	23      (0000005e) invoke-direct        v5, v2, Landroid/graphics/drawable/BitmapDrawable;-><init>(Landroid/graphics/Bitmap;)V
+	24      (00000064) goto                 +1dh
+
+p-BB@0x66 : [ p-BB@0x9e ]
+	25      (00000066) sget-object          v5, Landroid/graphics/Bitmap$Config;->ARGB_8888 Landroid/graphics/Bitmap$Config;
+	26      (0000006a) invoke-static        v6, v6, v5, Landroid/graphics/Bitmap;->createBitmap(I I Landroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+	27      (00000070) move-result-object   v5
+	28      (00000072) new-instance         v2, Landroid/graphics/Canvas;
+	29      (00000076) invoke-direct        v2, v5, Landroid/graphics/Canvas;-><init>(Landroid/graphics/Bitmap;)V
+	30      (0000007c) invoke-virtual       v0, v1, v1, v6, v6, Landroid/graphics/drawable/Drawable;->setBounds(I I I I)V
+	31      (00000082) invoke-virtual       v0, v2, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V
+	32      (00000088) new-instance         v0, Landroid/graphics/drawable/BitmapDrawable;
+	33      (0000008c) invoke-direct        v0, v5, Landroid/graphics/drawable/BitmapDrawable;-><init>(Landroid/graphics/Bitmap;)V
+	34      (00000092) new-instance         v2, Landroid/graphics/drawable/BitmapDrawable;
+	35      (00000096) invoke-direct        v2, v5, Landroid/graphics/drawable/BitmapDrawable;-><init>(Landroid/graphics/Bitmap;)V
+	36      (0000009c) move-object          v5, v2
+
+p-BB@0x9e : [ p-BB@0xb0 p-BB@0xce ]
+	37      (0000009e) sget-object          v2, Landroid/graphics/Shader$TileMode;->REPEAT Landroid/graphics/Shader$TileMode;
+	38      (000000a2) invoke-virtual       v5, v2, Landroid/graphics/drawable/BitmapDrawable;->setTileModeX(Landroid/graphics/Shader$TileMode;)V
+	39      (000000a8) instance-of          v2, v4, Landroid/graphics/drawable/BitmapDrawable;
+	40      (000000ac) if-eqz               v2, +011h
+
+p-BB@0xb0 : [ p-BB@0xbc p-BB@0xce ]
+	41      (000000b0) invoke-virtual       v4, Landroid/graphics/drawable/Drawable;->getIntrinsicWidth()I
+	42      (000000b6) move-result          v2
+	43      (000000b8) if-ne                v2, v6, +00bh
+
+p-BB@0xbc : [ p-BB@0xc8 p-BB@0xce ]
+	44      (000000bc) invoke-virtual       v4, Landroid/graphics/drawable/Drawable;->getIntrinsicHeight()I
+	45      (000000c2) move-result          v2
+	46      (000000c4) if-ne                v2, v6, +005h
+
+p-BB@0xc8 : [ p-BB@0xfa ]
+	47      (000000c8) check-cast           v4, Landroid/graphics/drawable/BitmapDrawable;
+	48      (000000cc) goto                 +17h
+
+p-BB@0xce : [ p-BB@0xfa ]
+	49      (000000ce) sget-object          v2, Landroid/graphics/Bitmap$Config;->ARGB_8888 Landroid/graphics/Bitmap$Config;
+	50      (000000d2) invoke-static        v6, v6, v2, Landroid/graphics/Bitmap;->createBitmap(I I Landroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+	51      (000000d8) move-result-object   v2
+	52      (000000da) new-instance         v3, Landroid/graphics/Canvas;
+	53      (000000de) invoke-direct        v3, v2, Landroid/graphics/Canvas;-><init>(Landroid/graphics/Bitmap;)V
+	54      (000000e4) invoke-virtual       v4, v1, v1, v6, v6, Landroid/graphics/drawable/Drawable;->setBounds(I I I I)V
+	55      (000000ea) invoke-virtual       v4, v3, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V
+	56      (000000f0) new-instance         v4, Landroid/graphics/drawable/BitmapDrawable;
+	57      (000000f4) invoke-direct        v4, v2, Landroid/graphics/drawable/BitmapDrawable;-><init>(Landroid/graphics/Bitmap;)V
+
+p-BB@0xfa : 
+	58      (000000fa) new-instance         v6, Landroid/graphics/drawable/LayerDrawable;
+	59      (000000fe) const/4              v2, 3
+	60      (00000100) new-array            v2, v2, [Landroid/graphics/drawable/Drawable;
+	61      (00000104) aput-object          v0, v2, v1
+	62      (00000108) const/4              v0, 1
+	63      (0000010a) aput-object          v4, v2, v0
+	64      (0000010e) const/4              v4, 2
+	65      (00000110) aput-object          v5, v2, v4
+	66      (00000114) invoke-direct        v6, v2, Landroid/graphics/drawable/LayerDrawable;-><init>([Landroid/graphics/drawable/Drawable;)V
+	67      (0000011a) const/high16         v5, 16908288
+	68      (0000011e) invoke-virtual       v6, v1, v5, Landroid/graphics/drawable/LayerDrawable;->setId(I I)V
+	69      (00000124) const                v5, 16908303
+	70      (0000012a) invoke-virtual       v6, v0, v5, Landroid/graphics/drawable/LayerDrawable;->setId(I I)V
+	71      (00000130) const                v5, 16908301
+	72      (00000136) invoke-virtual       v6, v4, v5, Landroid/graphics/drawable/LayerDrawable;->setId(I I)V
+	73      (0000013c) return-object        v6
+

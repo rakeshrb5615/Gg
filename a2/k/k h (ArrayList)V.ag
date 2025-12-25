@@ -1,0 +1,30 @@
+# La2/k;->h(Ljava/util/ArrayList;)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:java.util.ArrayList
+#
+# - return:void
+
+h-BB@0x0 : [ h-BB@0xc ]
+	0       (00000000) invoke-virtual       v2, Ljava/util/ArrayList;->size()I
+	1       (00000006) move-result          v0
+	2       (00000008) add-int/lit8         v0, v0, -1
+
+h-BB@0xc : [ h-BB@0x10 h-BB@0x34 ]
+	3       (0000000c) if-ltz               v0, +014h
+
+h-BB@0x10 : [ h-BB@0xc ]
+	4       (00000010) invoke-virtual       v2, v0, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	5       (00000016) move-result-object   v1
+	6       (00000018) check-cast           v1, La2/k1;
+	7       (0000001c) iget-object          v1, v1, La2/k1;->a Landroid/view/View;
+	8       (00000020) invoke-virtual       v1, Landroid/view/View;->animate()Landroid/view/ViewPropertyAnimator;
+	9       (00000026) move-result-object   v1
+	10      (00000028) invoke-virtual       v1, Landroid/view/ViewPropertyAnimator;->cancel()V
+	11      (0000002e) add-int/lit8         v0, v0, -1
+	12      (00000032) goto                 -13h
+
+h-BB@0x34 : 
+	13      (00000034) return-void          
+

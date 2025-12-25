@@ -1,0 +1,42 @@
+# La2/s1;->h(I)I [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:int
+#
+# - return:int
+
+h-BB@0x0 : [ h-BB@0xc h-BB@0xe ]
+	0       (00000000) iget                 v0, v2, La2/s1;->b I
+	1       (00000004) const/high16         v1, -2147483648
+	2       (00000008) if-eq                v0, v1, +003h
+
+h-BB@0xc : 
+	3       (0000000c) return               v0
+
+h-BB@0xe : [ h-BB@0x1e h-BB@0x20 ]
+	4       (0000000e) iget-object          v0, v2, La2/s1;->a Ljava/util/ArrayList;
+	5       (00000012) invoke-virtual       v0, Ljava/util/ArrayList;->size()I
+	6       (00000018) move-result          v1
+	7       (0000001a) if-nez               v1, +003h
+
+h-BB@0x1e : 
+	8       (0000001e) return               v3
+
+h-BB@0x20 : 
+	9       (00000020) const/4              v3, 0
+	10      (00000022) invoke-virtual       v0, v3, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	11      (00000028) move-result-object   v3
+	12      (0000002a) check-cast           v3, Landroid/view/View;
+	13      (0000002e) invoke-virtual       v3, Landroid/view/View;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
+	14      (00000034) move-result-object   v0
+	15      (00000036) check-cast           v0, La2/p1;
+	16      (0000003a) iget-object          v1, v2, La2/s1;->f Landroidx/recyclerview/widget/StaggeredGridLayoutManager;
+	17      (0000003e) iget-object          v1, v1, Landroidx/recyclerview/widget/StaggeredGridLayoutManager;->r La2/e0;
+	18      (00000042) invoke-virtual       v1, v3, La2/e0;->e(Landroid/view/View;)I
+	19      (00000048) move-result          v3
+	20      (0000004a) iput                 v3, v2, La2/s1;->b I
+	21      (0000004e) invoke-virtual       v0, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	22      (00000054) iget                 v3, v2, La2/s1;->b I
+	23      (00000058) return               v3
+

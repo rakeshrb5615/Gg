@@ -1,0 +1,43 @@
+# La/a;->T(Landroid/content/Intent;)Z [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:android.content.Intent
+#
+# - return:boolean
+
+T-BB@0x0 : [ T-BB@0x6 T-BB@0x48 ]
+	0       (00000000) const/4              v0, 0
+	1       (00000002) if-eqz               v3, +023h
+
+T-BB@0x6 : [ T-BB@0x1e T-BB@0x20 ]
+	2       (00000006) const-string         v1, "com.google.firebase.messaging.RECEIVE_DIRECT_BOOT"
+	3       (0000000a) invoke-virtual       v3, Landroid/content/Intent;->getAction()Ljava/lang/String;
+	4       (00000010) move-result-object   v2
+	5       (00000012) invoke-virtual       v1, v2, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	6       (00000018) move-result          v1
+	7       (0000001a) if-eqz               v1, +003h
+
+T-BB@0x1e : [ T-BB@0x48 ]
+	8       (0000001e) goto                 +15h
+
+T-BB@0x20 : [ T-BB@0x2c T-BB@0x2e ]
+	9       (00000020) invoke-virtual       v3, Landroid/content/Intent;->getExtras()Landroid/os/Bundle;
+	10      (00000026) move-result-object   v3
+	11      (00000028) if-nez               v3, +003h
+
+T-BB@0x2c : 
+	12      (0000002c) return               v0
+
+T-BB@0x2e : 
+	13      (0000002e) const-string         v0, "google.c.a.e"
+	14      (00000032) invoke-virtual       v3, v0, Landroid/os/BaseBundle;->getString(Ljava/lang/String;)Ljava/lang/String;
+	15      (00000038) move-result-object   v3
+	16      (0000003a) const-string         v0, "1"
+	17      (0000003e) invoke-virtual       v0, v3, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	18      (00000044) move-result          v3
+	19      (00000046) return               v3
+
+T-BB@0x48 : 
+	20      (00000048) return               v0
+

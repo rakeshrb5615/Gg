@@ -1,0 +1,40 @@
+# La2/d;->y()Z [access_flags=public]
+#
+# Parameters:
+# local registers: v0...v4
+#
+# - return:boolean
+
+y-BB@0x0 : [ y-BB@0x1e y-BB@0x44 ]
+	0       (00000000) invoke-virtual       v4, La2/d;->x()I
+	1       (00000006) move-result          v0
+	2       (00000008) iget-object          v1, v4, La2/d;->f Ljava/lang/Object;
+	3       (0000000c) check-cast           v1, Ljava/lang/String;
+	4       (00000010) invoke-virtual       v1, Ljava/lang/String;->length()I
+	5       (00000016) move-result          v2
+	6       (00000018) const/4              v3, 0
+	7       (0000001a) if-ge                v0, v2, +015h
+
+y-BB@0x1e : [ y-BB@0x24 y-BB@0x26 ]
+	8       (0000001e) const/4              v2, -1
+	9       (00000020) if-ne                v0, v2, +003h
+
+y-BB@0x24 : [ y-BB@0x44 ]
+	10      (00000024) goto                 +10h
+
+y-BB@0x26 : [ y-BB@0x36 y-BB@0x44 ]
+	11      (00000026) invoke-virtual       v1, v0, Ljava/lang/String;->charAt(I)C
+	12      (0000002c) move-result          v0
+	13      (0000002e) const/16             v1, 44
+	14      (00000032) if-ne                v0, v1, +009h
+
+y-BB@0x36 : 
+	15      (00000036) iget                 v0, v4, La2/d;->b I
+	16      (0000003a) const/4              v1, 1
+	17      (0000003c) add-int/2addr        v0, v1
+	18      (0000003e) iput                 v0, v4, La2/d;->b I
+	19      (00000042) return               v1
+
+y-BB@0x44 : 
+	20      (00000044) return               v3
+

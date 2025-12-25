@@ -1,0 +1,35 @@
+# La8/c;-><init>(La8/f; I)V [access_flags=public constructor]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:a8.f
+# - v3:int
+#
+# - return:void
+
+<init>-BB@0x0 : [ <init>-BB@0x1c <init>-BB@0x1e ]
+	0       (00000000) const-string         v0, "sequence"
+	1       (00000004) invoke-static        v2, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) invoke-direct        v1, Ljava/lang/Object;-><init>()V
+	3       (00000010) iput-object          v2, v1, La8/c;->a La8/f;
+	4       (00000014) iput                 v3, v1, La8/c;->b I
+	5       (00000018) if-ltz               v3, +003h
+
+<init>-BB@0x1c : 
+	6       (0000001c) return-void          
+
+<init>-BB@0x1e : 
+	7       (0000001e) new-instance         v2, Ljava/lang/StringBuilder;
+	8       (00000022) const-string         v0, "count must be non-negative, but was "
+	9       (00000026) invoke-direct        v2, v0, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	10      (0000002c) invoke-virtual       v2, v3, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	11      (00000032) const/16             v3, 46
+	12      (00000036) invoke-virtual       v2, v3, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+	13      (0000003c) invoke-virtual       v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	14      (00000042) move-result-object   v2
+	15      (00000044) new-instance         v3, Ljava/lang/IllegalArgumentException;
+	16      (00000048) invoke-virtual       v2, Ljava/lang/Object;->toString()Ljava/lang/String;
+	17      (0000004e) move-result-object   v2
+	18      (00000050) invoke-direct        v3, v2, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	19      (00000056) throw                v3
+

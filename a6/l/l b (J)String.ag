@@ -1,0 +1,38 @@
+# La6/l;->b(J)Ljava/lang/String; [access_flags=public final synchronized]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:long
+#
+# - return:java.lang.String
+
+b-BB@0x0 : [ b-BB@0x2 ]
+	0       (00000000) monitor-enter        v1
+
+b-BB@0x2 : 
+	1       (00000002) new-instance         v0, Ljava/util/Date;
+	2       (00000006) invoke-direct        v0, v2, v3, Ljava/util/Date;-><init>(J)V
+	3       (0000000c) invoke-virtual       v0, Ljava/util/Date;->toInstant()Ljava/time/Instant;
+	4       (00000012) move-result-object   v2
+	5       (00000014) sget-object          v3, Ljava/time/ZoneOffset;->UTC Ljava/time/ZoneOffset;
+	6       (00000018) invoke-virtual       v2, v3, Ljava/time/Instant;->atOffset(Ljava/time/ZoneOffset;)Ljava/time/OffsetDateTime;
+	7       (0000001e) move-result-object   v2
+	8       (00000020) invoke-virtual       v2, Ljava/time/OffsetDateTime;->toLocalDateTime()Ljava/time/LocalDateTime;
+	9       (00000026) move-result-object   v2
+	10      (00000028) sget-object          v3, Ljava/time/format/DateTimeFormatter;->ISO_LOCAL_DATE Ljava/time/format/DateTimeFormatter;
+	11      (0000002c) invoke-virtual       v2, v3, Ljava/time/LocalDateTime;->format(Ljava/time/format/DateTimeFormatter;)Ljava/lang/String;
+	12      (00000032) move-result-object   v2
+	13      (00000034) monitor-exit         v1
+	14      (00000036) return-object        v2
+	2:33
+	(Ljava/lang/Throwable; -> 38 b-BB@0x38)
+
+b-BB@0x38 : [ b-BB@0x3a ]
+	15      (00000038) move-exception       v2
+
+b-BB@0x3a : 
+	16      (0000003a) monitor-exit         v1
+	17      (0000003c) throw                v2
+	3a:3b
+	(Ljava/lang/Throwable; -> 38 b-BB@0x38)
+

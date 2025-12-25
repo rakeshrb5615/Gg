@@ -1,0 +1,106 @@
+# La5/s;->get()Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v3
+#
+# - return:java.lang.Object
+
+get-BB@0x0 : [ get-BB@0x8 get-BB@0x80 ]
+	0       (00000000) iget-object          v0, v3, La5/s;->b Ljava/util/Set;
+	1       (00000004) if-nez               v0, +03eh
+
+get-BB@0x8 : [ get-BB@0xa ]
+	2       (00000008) monitor-enter        v3
+
+get-BB@0xa : [ get-BB@0x12 get-BB@0x78 ]
+	3       (0000000a) iget-object          v0, v3, La5/s;->b Ljava/util/Set;
+	4       (0000000e) if-nez               v0, +035h
+	a:29
+	(Ljava/lang/Throwable; -> 74 get-BB@0x74)
+
+get-BB@0x12 : [ get-BB@0x2a ]
+	5       (00000012) new-instance         v0, Ljava/util/concurrent/ConcurrentHashMap;
+	6       (00000016) invoke-direct        v0, Ljava/util/concurrent/ConcurrentHashMap;-><init>()V
+	7       (0000001c) invoke-static        v0, Ljava/util/Collections;->newSetFromMap(Ljava/util/Map;)Ljava/util/Set;
+	8       (00000022) move-result-object   v0
+	9       (00000024) iput-object          v0, v3, La5/s;->b Ljava/util/Set;
+	10      (00000028) monitor-enter        v3
+	a:29
+	(Ljava/lang/Throwable; -> 74 get-BB@0x74)
+
+get-BB@0x2a : [ get-BB@0x36 ]
+	11      (0000002a) iget-object          v0, v3, La5/s;->a Ljava/util/Set;
+	12      (0000002e) invoke-interface     v0, Ljava/util/Set;->iterator()Ljava/util/Iterator;
+	13      (00000034) move-result-object   v0
+	2a:6b
+	(Ljava/lang/Throwable; -> 62 get-BB@0x62)
+
+get-BB@0x36 : [ get-BB@0x42 get-BB@0x66 ]
+	14      (00000036) invoke-interface     v0, Ljava/util/Iterator;->hasNext()Z
+	15      (0000003c) move-result          v1
+	16      (0000003e) if-eqz               v1, +014h
+	2a:6b
+	(Ljava/lang/Throwable; -> 62 get-BB@0x62)
+
+get-BB@0x42 : [ get-BB@0x36 ]
+	17      (00000042) invoke-interface     v0, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	18      (00000048) move-result-object   v1
+	19      (0000004a) check-cast           v1, Lc6/b;
+	20      (0000004e) iget-object          v2, v3, La5/s;->b Ljava/util/Set;
+	21      (00000052) invoke-interface     v1, Lc6/b;->get()Ljava/lang/Object;
+	22      (00000058) move-result-object   v1
+	23      (0000005a) invoke-interface     v2, v1, Ljava/util/Set;->add(Ljava/lang/Object;)Z
+	24      (00000060) goto                 -15h
+	2a:6b
+	(Ljava/lang/Throwable; -> 62 get-BB@0x62)
+
+get-BB@0x62 : [ get-BB@0x70 ]
+	25      (00000062) move-exception       v0
+	26      (00000064) goto                 +6h
+	2a:6b
+	(Ljava/lang/Throwable; -> 62 get-BB@0x62)
+
+get-BB@0x66 : [ get-BB@0x6c ]
+	27      (00000066) const/4              v0, 0
+	28      (00000068) iput-object          v0, v3, La5/s;->a Ljava/util/Set;
+	2a:6b
+	(Ljava/lang/Throwable; -> 62 get-BB@0x62)
+
+get-BB@0x6c : [ get-BB@0x78 ]
+	29      (0000006c) monitor-exit         v3
+	30      (0000006e) goto                 +5h
+	6c:6d
+	(Ljava/lang/Throwable; -> 74 get-BB@0x74)
+
+get-BB@0x70 : [ get-BB@0x72 ]
+	31      (00000070) monitor-exit         v3
+	70:71
+	(Ljava/lang/Throwable; -> 62 get-BB@0x62)
+
+get-BB@0x72 : 
+	32      (00000072) throw                v0
+	72:7d
+	(Ljava/lang/Throwable; -> 74 get-BB@0x74)
+
+get-BB@0x74 : [ get-BB@0x7c ]
+	33      (00000074) move-exception       v0
+	34      (00000076) goto                 +3h
+	72:7d
+	(Ljava/lang/Throwable; -> 74 get-BB@0x74)
+
+get-BB@0x78 : [ get-BB@0x80 ]
+	35      (00000078) monitor-exit         v3
+	36      (0000007a) goto                 +3h
+	72:7d
+	(Ljava/lang/Throwable; -> 74 get-BB@0x74)
+
+get-BB@0x7c : 
+	37      (0000007c) monitor-exit         v3
+	38      (0000007e) throw                v0
+
+get-BB@0x80 : 
+	39      (00000080) iget-object          v0, v3, La5/s;->b Ljava/util/Set;
+	40      (00000084) invoke-static        v0, Ljava/util/Collections;->unmodifiableSet(Ljava/util/Set;)Ljava/util/Set;
+	41      (0000008a) move-result-object   v0
+	42      (0000008c) return-object        v0
+

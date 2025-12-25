@@ -1,0 +1,50 @@
+# La2/d;->toString()Ljava/lang/String; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v2
+#
+# - return:java.lang.String
+
+toString-BB@0x0 : [ D:toString-BB@0xa 0:toString-BB@0x4e ]
+	0       (00000000) iget                 v0, v2, La2/d;->a I
+	1       (00000004) packed-switch        v0, +000004ah
+
+toString-BB@0xa : 
+	2       (0000000a) new-instance         v0, Ljava/lang/StringBuilder;
+	3       (0000000e) const-string         v1, "JsonReader(source='"
+	4       (00000012) invoke-direct        v0, v1, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	5       (00000018) iget-object          v1, v2, La2/d;->f Ljava/lang/Object;
+	6       (0000001c) check-cast           v1, Ljava/lang/String;
+	7       (00000020) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	8       (00000026) const-string         v1, "', currentPosition="
+	9       (0000002a) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	10      (00000030) iget                 v1, v2, La2/d;->b I
+	11      (00000034) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	12      (0000003a) const/16             v1, 41
+	13      (0000003e) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+	14      (00000044) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	15      (0000004a) move-result-object   v0
+	16      (0000004c) return-object        v0
+
+toString-BB@0x4e : 
+	17      (0000004e) new-instance         v0, Ljava/lang/StringBuilder;
+	18      (00000052) invoke-direct        v0, Ljava/lang/StringBuilder;-><init>()V
+	19      (00000058) iget-object          v1, v2, La2/d;->d Ljava/lang/Object;
+	20      (0000005c) check-cast           v1, La2/c;
+	21      (00000060) invoke-virtual       v1, La2/c;->toString()Ljava/lang/String;
+	22      (00000066) move-result-object   v1
+	23      (00000068) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	24      (0000006e) const-string         v1, ", hidden list:"
+	25      (00000072) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	26      (00000078) iget-object          v1, v2, La2/d;->e Ljava/io/Serializable;
+	27      (0000007c) check-cast           v1, Ljava/util/ArrayList;
+	28      (00000080) invoke-virtual       v1, Ljava/util/ArrayList;->size()I
+	29      (00000086) move-result          v1
+	30      (00000088) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	31      (0000008e) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	32      (00000094) move-result-object   v0
+	33      (00000096) return-object        v0
+
+toString-BB@0x98 : 
+	34      (00000098) packed-switch-payload 0
+

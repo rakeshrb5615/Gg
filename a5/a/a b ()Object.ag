@@ -1,0 +1,202 @@
+# La5/a;->b()Ljava/lang/Object; [access_flags=public]
+#
+# Parameters:
+# local registers: v0...v10
+#
+# - return:java.lang.Object
+
+b-BB@0x0 : [ D:b-BB@0x14 22:b-BB@0x1a2 23:b-BB@0xee 24:b-BB@0x70 ]
+	0       (00000000) iget                 v0, v10, La5/a;->a I
+	1       (00000004) const/4              v1, 1
+	2       (00000006) const/4              v2, 0
+	3       (00000008) const/4              v3, 0
+	4       (0000000a) iget-object          v4, v10, La5/a;->b Ljava/lang/Object;
+	5       (0000000e) packed-switch        v0, +0000117h
+
+b-BB@0x14 : [ b-BB@0x46 ]
+	6       (00000014) check-cast           v4, Lj6/s;
+	7       (00000018) iget-object          v0, v4, Lj6/s;->c Ljava/lang/Object;
+	8       (0000001c) check-cast           v0, Ly2/d;
+	9       (00000020) check-cast           v0, Ly2/h;
+	10      (00000024) new-instance         v5, Lr2/q;
+	11      (00000028) const/16             v6, 13
+	12      (0000002c) invoke-direct        v5, v6, Lr2/q;-><init>(I)V
+	13      (00000032) invoke-virtual       v0, v5, Ly2/h;->i(Ly2/f;)Ljava/lang/Object;
+	14      (00000038) move-result-object   v0
+	15      (0000003a) check-cast           v0, Ljava/lang/Iterable;
+	16      (0000003e) invoke-interface     v0, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
+	17      (00000044) move-result-object   v0
+
+b-BB@0x46 : [ b-BB@0x52 b-BB@0x6e ]
+	18      (00000046) invoke-interface     v0, Ljava/util/Iterator;->hasNext()Z
+	19      (0000004c) move-result          v5
+	20      (0000004e) if-eqz               v5, +010h
+
+b-BB@0x52 : [ b-BB@0x46 ]
+	21      (00000052) invoke-interface     v0, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	22      (00000058) move-result-object   v5
+	23      (0000005a) check-cast           v5, Lr2/j;
+	24      (0000005e) iget-object          v6, v4, Lj6/s;->d Ljava/lang/Object;
+	25      (00000062) check-cast           v6, Lb8/g;
+	26      (00000066) invoke-virtual       v6, v5, v1, v3, Lb8/g;->s(Lr2/j; I Z)V
+	27      (0000006c) goto                 -13h
+
+b-BB@0x6e : 
+	28      (0000006e) return-object        v2
+
+b-BB@0x70 : [ b-BB@0x8e ]
+	29      (00000070) check-cast           v4, Lo5/d;
+	30      (00000074) iget-object          v0, v4, Lo5/d;->i Ljava/lang/Object;
+	31      (00000078) check-cast           v0, Ly2/c;
+	32      (0000007c) check-cast           v0, Ly2/h;
+	33      (00000080) invoke-virtual       v0, Ly2/h;->c()Landroid/database/sqlite/SQLiteDatabase;
+	34      (00000086) move-result-object   v1
+	35      (00000088) invoke-virtual       v1, Landroid/database/sqlite/SQLiteDatabase;->beginTransaction()V
+
+b-BB@0x8e : 
+	36      (0000008e) const-string         v3, "DELETE FROM log_event_dropped"
+	37      (00000092) invoke-virtual       v1, v3, Landroid/database/sqlite/SQLiteDatabase;->compileStatement(Ljava/lang/String;)Landroid/database/sqlite/SQLiteStatement;
+	38      (00000098) move-result-object   v3
+	39      (0000009a) invoke-virtual       v3, Landroid/database/sqlite/SQLiteStatement;->execute()V
+	40      (000000a0) new-instance         v3, Ljava/lang/StringBuilder;
+	41      (000000a4) const-string         v4, "UPDATE global_log_event_state SET last_metrics_upload_ms="
+	42      (000000a8) invoke-direct        v3, v4, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	43      (000000ae) iget-object          v0, v0, Ly2/h;->b La3/a;
+	44      (000000b2) invoke-interface     v0, La3/a;->b()J
+	45      (000000b8) move-result-wide     v4
+	46      (000000ba) invoke-virtual       v3, v4, v5, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+	47      (000000c0) invoke-virtual       v3, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	48      (000000c6) move-result-object   v0
+	49      (000000c8) invoke-virtual       v1, v0, Landroid/database/sqlite/SQLiteDatabase;->compileStatement(Ljava/lang/String;)Landroid/database/sqlite/SQLiteStatement;
+	50      (000000ce) move-result-object   v0
+	51      (000000d0) invoke-virtual       v0, Landroid/database/sqlite/SQLiteStatement;->execute()V
+	52      (000000d6) invoke-virtual       v1, Landroid/database/sqlite/SQLiteDatabase;->setTransactionSuccessful()V
+	53      (000000dc) invoke-virtual       v1, Landroid/database/sqlite/SQLiteDatabase;->endTransaction()V
+	54      (000000e2) return-object        v2
+	8e:db
+	(Ljava/lang/Throwable; -> e4 b-BB@0xe4)
+
+b-BB@0xe4 : 
+	55      (000000e4) move-exception       v0
+	56      (000000e6) invoke-virtual       v1, Landroid/database/sqlite/SQLiteDatabase;->endTransaction()V
+	57      (000000ec) throw                v0
+
+b-BB@0xee : [ b-BB@0x11a ]
+	58      (000000ee) check-cast           v4, Ly2/d;
+	59      (000000f2) check-cast           v4, Ly2/h;
+	60      (000000f6) iget-object          v0, v4, Ly2/h;->b La3/a;
+	61      (000000fa) invoke-interface     v0, La3/a;->b()J
+	62      (00000100) move-result-wide     v5
+	63      (00000102) iget-object          v0, v4, Ly2/h;->d Ly2/a;
+	64      (00000106) iget-wide            v7, v0, Ly2/a;->d J
+	65      (0000010a) sub-long/2addr       v5, v7
+	66      (0000010c) invoke-virtual       v4, Ly2/h;->c()Landroid/database/sqlite/SQLiteDatabase;
+	67      (00000112) move-result-object   v0
+	68      (00000114) invoke-virtual       v0, Landroid/database/sqlite/SQLiteDatabase;->beginTransaction()V
+
+b-BB@0x11a : [ b-BB@0x136 ]
+	69      (0000011a) const-string         v2, "SELECT COUNT(*), transport_name FROM events WHERE timestamp_ms < ? GROUP BY transport_name"
+	70      (0000011e) invoke-static        v5, v6, Ljava/lang/String;->valueOf(J)Ljava/lang/String;
+	71      (00000124) move-result-object   v5
+	72      (00000126) filled-new-array     v5, [Ljava/lang/String;
+	73      (0000012c) move-result-object   v5
+	74      (0000012e) invoke-virtual       v0, v2, v5, Landroid/database/sqlite/SQLiteDatabase;->rawQuery(Ljava/lang/String; [Ljava/lang/String;)Landroid/database/Cursor;
+	75      (00000134) move-result-object   v2
+	11a:135
+	(Ljava/lang/Throwable; -> 18c b-BB@0x18c)
+
+b-BB@0x136 : [ b-BB@0x142 b-BB@0x160 ]
+	76      (00000136) invoke-interface     v2, Landroid/database/Cursor;->moveToNext()Z
+	77      (0000013c) move-result          v6
+	78      (0000013e) if-eqz               v6, +011h
+	136:15d
+	(Ljava/lang/Throwable; -> 190 b-BB@0x190)
+
+b-BB@0x142 : [ b-BB@0x136 ]
+	79      (00000142) invoke-interface     v2, v3, Landroid/database/Cursor;->getInt(I)I
+	80      (00000148) move-result          v6
+	81      (0000014a) invoke-interface     v2, v1, Landroid/database/Cursor;->getString(I)Ljava/lang/String;
+	82      (00000150) move-result-object   v7
+	83      (00000152) int-to-long          v8, v6
+	84      (00000154) sget-object          v6, Lu2/c;->c Lu2/c;
+	85      (00000158) invoke-virtual       v4, v8, v9, v6, v7, Ly2/h;->x(J Lu2/c; Ljava/lang/String;)V
+	86      (0000015e) goto                 -14h
+
+b-BB@0x160 : 
+	87      (00000160) invoke-interface     v2, Landroid/database/Cursor;->close()V
+	88      (00000166) const-string         v1, "events"
+	89      (0000016a) const-string         v2, "timestamp_ms < ?"
+	90      (0000016e) invoke-virtual       v0, v1, v2, v5, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String; Ljava/lang/String; [Ljava/lang/String;)I
+	91      (00000174) move-result          v1
+	92      (00000176) invoke-virtual       v0, Landroid/database/sqlite/SQLiteDatabase;->setTransactionSuccessful()V
+	93      (0000017c) invoke-virtual       v0, Landroid/database/sqlite/SQLiteDatabase;->endTransaction()V
+	94      (00000182) invoke-static        v1, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+	95      (00000188) move-result-object   v0
+	96      (0000018a) return-object        v0
+	160:17b
+	(Ljava/lang/Throwable; -> 18c b-BB@0x18c)
+
+b-BB@0x18c : [ b-BB@0x19a ]
+	97      (0000018c) move-exception       v1
+	98      (0000018e) goto                 +6h
+
+b-BB@0x190 : [ b-BB@0x192 ]
+	99      (00000190) move-exception       v1
+
+b-BB@0x192 : 
+	100     (00000192) invoke-interface     v2, Landroid/database/Cursor;->close()V
+	101     (00000198) throw                v1
+	192:199
+	(Ljava/lang/Throwable; -> 18c b-BB@0x18c)
+
+b-BB@0x19a : 
+	102     (0000019a) invoke-virtual       v0, Landroid/database/sqlite/SQLiteDatabase;->endTransaction()V
+	103     (000001a0) throw                v1
+
+b-BB@0x1a2 : [ b-BB@0x1fc ]
+	104     (000001a2) check-cast           v4, Ly2/c;
+	105     (000001a6) check-cast           v4, Ly2/h;
+	106     (000001aa) invoke-virtual       v4, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	107     (000001b0) sget                 v0, Lu2/a;->e I
+	108     (000001b4) new-instance         v0, Lj6/s;
+	109     (000001b8) const/16             v1, 12
+	110     (000001bc) invoke-direct        v0, v1, v3, Lj6/s;-><init>(I Z)V
+	111     (000001c2) iput-object          v2, v0, Lj6/s;->c Ljava/lang/Object;
+	112     (000001c6) new-instance         v1, Ljava/util/ArrayList;
+	113     (000001ca) invoke-direct        v1, Ljava/util/ArrayList;-><init>()V
+	114     (000001d0) iput-object          v1, v0, Lj6/s;->d Ljava/lang/Object;
+	115     (000001d4) iput-object          v2, v0, Lj6/s;->e Ljava/lang/Object;
+	116     (000001d8) const-string         v1, ""
+	117     (000001dc) iput-object          v1, v0, Lj6/s;->b Ljava/lang/Object;
+	118     (000001e0) new-instance         v1, Ljava/util/HashMap;
+	119     (000001e4) invoke-direct        v1, Ljava/util/HashMap;-><init>()V
+	120     (000001ea) const-string         v2, "SELECT log_source, reason, events_dropped_count FROM log_event_dropped"
+	121     (000001ee) invoke-virtual       v4, Ly2/h;->c()Landroid/database/sqlite/SQLiteDatabase;
+	122     (000001f4) move-result-object   v5
+	123     (000001f6) invoke-virtual       v5, Landroid/database/sqlite/SQLiteDatabase;->beginTransaction()V
+
+b-BB@0x1fc : 
+	124     (000001fc) new-array            v3, v3, [Ljava/lang/String;
+	125     (00000200) invoke-virtual       v5, v2, v3, Landroid/database/sqlite/SQLiteDatabase;->rawQuery(Ljava/lang/String; [Ljava/lang/String;)Landroid/database/Cursor;
+	126     (00000206) move-result-object   v2
+	127     (00000208) new-instance         v3, Lh5/a;
+	128     (0000020c) const/16             v6, 9
+	129     (00000210) invoke-direct        v3, v4, v1, v0, v6, Lh5/a;-><init>(Ljava/lang/Object; Ljava/lang/Object; Ljava/lang/Object; I)V
+	130     (00000216) invoke-static        v2, v3, Ly2/h;->A(Landroid/database/Cursor; Ly2/f;)Ljava/lang/Object;
+	131     (0000021c) move-result-object   v0
+	132     (0000021e) check-cast           v0, Lu2/a;
+	133     (00000222) invoke-virtual       v5, Landroid/database/sqlite/SQLiteDatabase;->setTransactionSuccessful()V
+	134     (00000228) invoke-virtual       v5, Landroid/database/sqlite/SQLiteDatabase;->endTransaction()V
+	135     (0000022e) return-object        v0
+	1fc:227
+	(Ljava/lang/Throwable; -> 230 b-BB@0x230)
+
+b-BB@0x230 : 
+	136     (00000230) move-exception       v0
+	137     (00000232) invoke-virtual       v5, Landroid/database/sqlite/SQLiteDatabase;->endTransaction()V
+	138     (00000238) throw                v0
+
+b-BB@0x23a : 
+	139     (0000023a) nop                  
+	140     (0000023c) packed-switch-payload 16 17 18
+

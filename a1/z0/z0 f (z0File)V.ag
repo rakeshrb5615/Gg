@@ -1,0 +1,47 @@
+# La1/z0;->f(La1/z0; Ljava/io/File;)V [access_flags=public static final]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:a1.z0
+# - v3:java.io.File
+#
+# - return:void
+
+f-BB@0x0 : [ f-BB@0x14 f-BB@0x50 ]
+	0       (00000000) invoke-virtual       v3, Ljava/io/File;->getCanonicalFile()Ljava/io/File;
+	1       (00000006) move-result-object   v2
+	2       (00000008) invoke-virtual       v2, Ljava/io/File;->getParentFile()Ljava/io/File;
+	3       (0000000e) move-result-object   v2
+	4       (00000010) if-eqz               v2, +020h
+
+f-BB@0x14 : [ f-BB@0x26 f-BB@0x28 ]
+	5       (00000014) invoke-virtual       v2, Ljava/io/File;->mkdirs()Z
+	6       (0000001a) invoke-virtual       v2, Ljava/io/File;->isDirectory()Z
+	7       (00000020) move-result          v2
+	8       (00000022) if-eqz               v2, +003h
+
+f-BB@0x26 : [ f-BB@0x50 ]
+	9       (00000026) goto                 +15h
+
+f-BB@0x28 : 
+	10      (00000028) new-instance         v2, Ljava/io/IOException;
+	11      (0000002c) new-instance         v0, Ljava/lang/StringBuilder;
+	12      (00000030) const-string         v1, "Unable to create parent directories of "
+	13      (00000034) invoke-direct        v0, v1, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	14      (0000003a) invoke-virtual       v0, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	15      (00000040) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	16      (00000046) move-result-object   v3
+	17      (00000048) invoke-direct        v2, v3, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+	18      (0000004e) throw                v2
+
+f-BB@0x50 : [ f-BB@0x5c f-BB@0x62 ]
+	19      (00000050) invoke-virtual       v3, Ljava/io/File;->exists()Z
+	20      (00000056) move-result          v2
+	21      (00000058) if-nez               v2, +005h
+
+f-BB@0x5c : [ f-BB@0x62 ]
+	22      (0000005c) invoke-virtual       v3, Ljava/io/File;->createNewFile()Z
+
+f-BB@0x62 : 
+	23      (00000062) return-void          
+

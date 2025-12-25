@@ -1,0 +1,44 @@
+# La2/p;->e(F F [I I I I)I [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:float
+# - v3:float
+# - v4:int[]
+# - v5:int
+# - v6:int
+# - v7:int
+#
+# - return:int
+
+e-BB@0x0 : [ e-BB@0x12 e-BB@0x14 ]
+	0       (00000000) const/4              v0, 1
+	1       (00000002) aget                 v0, v4, v0
+	2       (00000006) const/4              v1, 0
+	3       (00000008) aget                 v4, v4, v1
+	4       (0000000c) sub-int/2addr        v0, v4
+	5       (0000000e) if-nez               v0, +003h
+
+e-BB@0x12 : [ e-BB@0x2e ]
+	6       (00000012) goto                 +eh
+
+e-BB@0x14 : [ e-BB@0x28 e-BB@0x2e ]
+	7       (00000014) sub-float/2addr      v3, v2
+	8       (00000016) int-to-float         v2, v0
+	9       (00000018) div-float/2addr      v3, v2
+	10      (0000001a) sub-int/2addr        v5, v7
+	11      (0000001c) int-to-float         v2, v5
+	12      (0000001e) mul-float/2addr      v3, v2
+	13      (00000020) float-to-int         v2, v3
+	14      (00000022) add-int/2addr        v6, v2
+	15      (00000024) if-ge                v6, v5, +005h
+
+e-BB@0x28 : [ e-BB@0x2c e-BB@0x2e ]
+	16      (00000028) if-ltz               v6, +003h
+
+e-BB@0x2c : 
+	17      (0000002c) return               v2
+
+e-BB@0x2e : 
+	18      (0000002e) return               v1
+

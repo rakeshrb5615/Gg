@@ -1,0 +1,45 @@
+# La2/z0;->h(I)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:int
+#
+# - return:void
+
+h-BB@0x0 : [ h-BB@0xc h-BB@0x2e ]
+	0       (00000000) sget-boolean         v0, Landroidx/recyclerview/widget/RecyclerView;->G0 Z
+	1       (00000004) const-string         v1, "RecyclerView"
+	2       (00000008) if-eqz               v0, +013h
+
+h-BB@0xc : [ h-BB@0x2e ]
+	3       (0000000c) new-instance         v0, Ljava/lang/StringBuilder;
+	4       (00000010) const-string         v2, "Recycling cached view at index "
+	5       (00000014) invoke-direct        v0, v2, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	6       (0000001a) invoke-virtual       v0, v6, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	7       (00000020) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	8       (00000026) move-result-object   v0
+	9       (00000028) invoke-static        v1, v0, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String;)I
+
+h-BB@0x2e : [ h-BB@0x46 h-BB@0x68 ]
+	10      (0000002e) iget-object          v0, v5, La2/z0;->c Ljava/util/ArrayList;
+	11      (00000032) invoke-virtual       v0, v6, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	12      (00000038) move-result-object   v2
+	13      (0000003a) check-cast           v2, La2/k1;
+	14      (0000003e) sget-boolean         v3, Landroidx/recyclerview/widget/RecyclerView;->G0 Z
+	15      (00000042) if-eqz               v3, +013h
+
+h-BB@0x46 : [ h-BB@0x68 ]
+	16      (00000046) new-instance         v3, Ljava/lang/StringBuilder;
+	17      (0000004a) const-string         v4, "CachedViewHolder to be recycled: "
+	18      (0000004e) invoke-direct        v3, v4, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	19      (00000054) invoke-virtual       v3, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	20      (0000005a) invoke-virtual       v3, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	21      (00000060) move-result-object   v3
+	22      (00000062) invoke-static        v1, v3, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String;)I
+
+h-BB@0x68 : 
+	23      (00000068) const/4              v1, 1
+	24      (0000006a) invoke-virtual       v5, v2, v1, La2/z0;->a(La2/k1; Z)V
+	25      (00000070) invoke-virtual       v0, v6, Ljava/util/ArrayList;->remove(I)Ljava/lang/Object;
+	26      (00000076) return-void          
+

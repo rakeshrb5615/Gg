@@ -1,0 +1,213 @@
+# La1/n;->invokeSuspend(Ljava/lang/Object;)Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v12
+# - v13:java.lang.Object
+#
+# - return:java.lang.Object
+
+invokeSuspend-BB@0x0 : [ D:invokeSuspend-BB@0x1a 0:invokeSuspend-BB@0x16c 1:invokeSuspend-BB@0xb0 ]
+	0       (00000000) iget                 v0, v12, La1/n;->a I
+	1       (00000004) sget-object          v1, Lh7/l;->a Lh7/l;
+	2       (00000008) const/4              v2, 2
+	3       (0000000a) const-string         v3, "call to 'resume' before 'invoke' with coroutine"
+	4       (0000000e) iget-object          v4, v12, La1/n;->c La1/g0;
+	5       (00000012) const/4              v5, 1
+	6       (00000014) packed-switch        v0, +00000cch
+
+invokeSuspend-BB@0x1a : [ invokeSuspend-BB@0x2a invokeSuspend-BB@0x54 ]
+	7       (0000001a) iget-object          v0, v4, La1/g0;->h Ll6/c;
+	8       (0000001e) sget-object          v1, Lm7/a;->a Lm7/a;
+	9       (00000022) iget                 v6, v12, La1/n;->b I
+	10      (00000026) if-eqz               v6, +017h
+
+invokeSuspend-BB@0x2a : [ invokeSuspend-BB@0x2e invokeSuspend-BB@0x46 ]
+	11      (0000002a) if-eq                v6, v5, +00eh
+
+invokeSuspend-BB@0x2e : [ invokeSuspend-BB@0x32 invokeSuspend-BB@0x3a ]
+	12      (0000002e) if-ne                v6, v2, +006h
+
+invokeSuspend-BB@0x32 : [ invokeSuspend-BB@0x9a ]
+	13      (00000032) invoke-static        v13, Lc4/b;->e0(Ljava/lang/Object;)V
+	14      (00000038) goto                 +31h
+
+invokeSuspend-BB@0x3a : 
+	15      (0000003a) new-instance         v13, Ljava/lang/IllegalStateException;
+	16      (0000003e) invoke-direct        v13, v3, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	17      (00000044) throw                v13
+
+invokeSuspend-BB@0x46 : [ invokeSuspend-BB@0x86 ]
+	18      (00000046) invoke-static        v13, Lc4/b;->e0(Ljava/lang/Object;)V
+	19      (0000004c) goto                 +1dh
+	46:4b
+	(Ljava/lang/Throwable; -> 4e invokeSuspend-BB@0x4e)
+
+invokeSuspend-BB@0x4e : [ invokeSuspend-BB@0xa2 ]
+	20      (0000004e) move-exception       v0
+	21      (00000050) move-object          v13, v0
+	22      (00000052) goto                 +28h
+
+invokeSuspend-BB@0x54 : [ invokeSuspend-BB@0x6a invokeSuspend-BB@0x74 ]
+	23      (00000054) invoke-static        v13, Lc4/b;->e0(Ljava/lang/Object;)V
+	24      (0000005a) invoke-virtual       v0, Ll6/c;->h()La1/l1;
+	25      (00000060) move-result-object   v13
+	26      (00000062) instance-of          v13, v13, La1/r0;
+	27      (00000066) if-eqz               v13, +007h
+
+invokeSuspend-BB@0x6a : [ invokeSuspend-BB@0xae ]
+	28      (0000006a) invoke-virtual       v0, Ll6/c;->h()La1/l1;
+	29      (00000070) move-result-object   v1
+	30      (00000072) goto                 +1eh
+
+invokeSuspend-BB@0x74 : [ invokeSuspend-BB@0x84 invokeSuspend-BB@0x86 ]
+	31      (00000074) iput                 v5, v12, La1/n;->b I
+	32      (00000078) invoke-virtual       v4, v12, La1/g0;->i(Ln7/c;)Ljava/lang/Object;
+	33      (0000007e) move-result-object   v13
+	34      (00000080) if-ne                v13, v1, +003h
+	74:7f
+	(Ljava/lang/Throwable; -> 4e invokeSuspend-BB@0x4e)
+
+invokeSuspend-BB@0x84 : [ invokeSuspend-BB@0xae ]
+	35      (00000084) goto                 +15h
+
+invokeSuspend-BB@0x86 : [ invokeSuspend-BB@0x98 invokeSuspend-BB@0x9a ]
+	36      (00000086) iput                 v2, v12, La1/n;->b I
+	37      (0000008a) const/4              v13, 0
+	38      (0000008c) invoke-static        v4, v13, v12, La1/g0;->f(La1/g0; Z Ll7/c;)Ljava/lang/Object;
+	39      (00000092) move-result-object   v13
+	40      (00000094) if-ne                v13, v1, +003h
+
+invokeSuspend-BB@0x98 : [ invokeSuspend-BB@0xae ]
+	41      (00000098) goto                 +bh
+
+invokeSuspend-BB@0x9a : [ invokeSuspend-BB@0xae ]
+	42      (0000009a) move-object          v1, v13
+	43      (0000009c) check-cast           v1, La1/l1;
+	44      (000000a0) goto                 +7h
+
+invokeSuspend-BB@0xa2 : [ invokeSuspend-BB@0xae ]
+	45      (000000a2) new-instance         v1, La1/d1;
+	46      (000000a6) const/4              v0, -1
+	47      (000000a8) invoke-direct        v1, v0, v13, La1/d1;-><init>(I Ljava/lang/Throwable;)V
+
+invokeSuspend-BB@0xae : 
+	48      (000000ae) return-object        v1
+
+invokeSuspend-BB@0xb0 : [ invokeSuspend-BB@0xbc invokeSuspend-BB@0xe0 ]
+	49      (000000b0) sget-object          v0, Lm7/a;->a Lm7/a;
+	50      (000000b4) iget                 v6, v12, La1/n;->b I
+	51      (000000b8) if-eqz               v6, +014h
+
+invokeSuspend-BB@0xbc : [ invokeSuspend-BB@0xc0 invokeSuspend-BB@0xd8 ]
+	52      (000000bc) if-eq                v6, v5, +00eh
+
+invokeSuspend-BB@0xc0 : [ invokeSuspend-BB@0xc4 invokeSuspend-BB@0xcc ]
+	53      (000000c0) if-ne                v6, v2, +006h
+
+invokeSuspend-BB@0xc4 : [ invokeSuspend-BB@0x16a ]
+	54      (000000c4) invoke-static        v13, Lc4/b;->e0(Ljava/lang/Object;)V
+	55      (000000ca) goto                 +50h
+
+invokeSuspend-BB@0xcc : 
+	56      (000000cc) new-instance         v13, Ljava/lang/IllegalStateException;
+	57      (000000d0) invoke-direct        v13, v3, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	58      (000000d6) throw                v13
+
+invokeSuspend-BB@0xd8 : [ invokeSuspend-BB@0x10c ]
+	59      (000000d8) invoke-static        v13, Lc4/b;->e0(Ljava/lang/Object;)V
+	60      (000000de) goto                 +17h
+
+invokeSuspend-BB@0xe0 : [ invokeSuspend-BB@0x102 invokeSuspend-BB@0x104 ]
+	61      (000000e0) invoke-static        v13, Lc4/b;->e0(Ljava/lang/Object;)V
+	62      (000000e6) iget-object          v13, v4, La1/g0;->i Lj6/s;
+	63      (000000ea) iput                 v5, v12, La1/n;->b I
+	64      (000000ee) iget-object          v13, v13, Lj6/s;->c Ljava/lang/Object;
+	65      (000000f2) check-cast           v13, Ld8/u;
+	66      (000000f6) invoke-virtual       v13, v12, Ld8/r1;->h(Ll7/c;)Ljava/lang/Object;
+	67      (000000fc) move-result-object   v13
+	68      (000000fe) if-ne                v13, v0, +003h
+
+invokeSuspend-BB@0x102 : [ invokeSuspend-BB@0x106 ]
+	69      (00000102) goto                 +2h
+
+invokeSuspend-BB@0x104 : [ invokeSuspend-BB@0x106 ]
+	70      (00000104) move-object          v13, v1
+
+invokeSuspend-BB@0x106 : [ invokeSuspend-BB@0x10a invokeSuspend-BB@0x10c ]
+	71      (00000106) if-ne                v13, v0, +003h
+
+invokeSuspend-BB@0x10a : [ invokeSuspend-BB@0x168 ]
+	72      (0000010a) goto                 +2fh
+
+invokeSuspend-BB@0x10c : [ invokeSuspend-BB@0x132 invokeSuspend-BB@0x140 ]
+	73      (0000010c) invoke-virtual       v4, La1/g0;->h()La1/s0;
+	74      (00000112) move-result-object   v13
+	75      (00000114) invoke-interface     v13, La1/s0;->d()Lg8/c;
+	76      (0000011a) move-result-object   v7
+	77      (0000011c) sget-object          v13, Lf8/a;->a Lf8/a;
+	78      (00000120) sget-object          v10, Lf8/a;->b Lf8/a;
+	79      (00000124) instance-of          v13, v7, Lh8/d;
+	80      (00000128) sget-object          v8, Ll7/i;->a Ll7/i;
+	81      (0000012c) const/4              v9, 0
+	82      (0000012e) if-eqz               v13, +009h
+
+invokeSuspend-BB@0x132 : [ invokeSuspend-BB@0x14e ]
+	83      (00000132) check-cast           v7, Lh8/d;
+	84      (00000136) invoke-interface     v7, v8, v9, v10, Lh8/d;->c(Ll7/h; I Lf8/a;)Lg8/c;
+	85      (0000013c) move-result-object   v13
+	86      (0000013e) goto                 +8h
+
+invokeSuspend-BB@0x140 : [ invokeSuspend-BB@0x14e ]
+	87      (00000140) new-instance         v6, Lg8/b;
+	88      (00000144) const/4              v11, 1
+	89      (00000146) invoke-direct/range  v6 ... v11, Lg8/b;-><init>(Ljava/lang/Object; Ll7/h; I Lf8/a; I)V
+	90      (0000014c) move-object          v13, v6
+
+invokeSuspend-BB@0x14e : [ invokeSuspend-BB@0x168 invokeSuspend-BB@0x16a ]
+	91      (0000014e) new-instance         v3, La1/s;
+	92      (00000152) invoke-direct        v3, v4, v5, La1/s;-><init>(Ljava/lang/Object; I)V
+	93      (00000158) iput                 v2, v12, La1/n;->b I
+	94      (0000015c) invoke-interface     v13, v3, v12, Lg8/c;->f(Lg8/d; Ln7/c;)Ljava/lang/Object;
+	95      (00000162) move-result-object   v13
+	96      (00000164) if-ne                v13, v0, +003h
+
+invokeSuspend-BB@0x168 : [ invokeSuspend-BB@0x16a ]
+	97      (00000168) move-object          v1, v0
+
+invokeSuspend-BB@0x16a : 
+	98      (0000016a) return-object        v1
+
+invokeSuspend-BB@0x16c : [ invokeSuspend-BB@0x178 invokeSuspend-BB@0x190 ]
+	99      (0000016c) sget-object          v0, Lm7/a;->a Lm7/a;
+	100     (00000170) iget                 v2, v12, La1/n;->b I
+	101     (00000174) if-eqz               v2, +00eh
+
+invokeSuspend-BB@0x178 : [ invokeSuspend-BB@0x17c invokeSuspend-BB@0x184 ]
+	102     (00000178) if-ne                v2, v5, +006h
+
+invokeSuspend-BB@0x17c : [ invokeSuspend-BB@0x1a8 ]
+	103     (0000017c) invoke-static        v13, Lc4/b;->e0(Ljava/lang/Object;)V
+	104     (00000182) goto                 +13h
+
+invokeSuspend-BB@0x184 : 
+	105     (00000184) new-instance         v13, Ljava/lang/IllegalStateException;
+	106     (00000188) invoke-direct        v13, v3, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	107     (0000018e) throw                v13
+
+invokeSuspend-BB@0x190 : [ invokeSuspend-BB@0x1a6 invokeSuspend-BB@0x1a8 ]
+	108     (00000190) invoke-static        v13, Lc4/b;->e0(Ljava/lang/Object;)V
+	109     (00000196) iput                 v5, v12, La1/n;->b I
+	110     (0000019a) invoke-static        v4, v12, La1/g0;->e(La1/g0; Ln7/c;)Ljava/lang/Object;
+	111     (000001a0) move-result-object   v13
+	112     (000001a2) if-ne                v13, v0, +003h
+
+invokeSuspend-BB@0x1a6 : [ invokeSuspend-BB@0x1a8 ]
+	113     (000001a6) move-object          v1, v0
+
+invokeSuspend-BB@0x1a8 : 
+	114     (000001a8) return-object        v1
+
+invokeSuspend-BB@0x1aa : 
+	115     (000001aa) nop                  
+	116     (000001ac) packed-switch-payload 0 1
+

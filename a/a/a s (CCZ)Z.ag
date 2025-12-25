@@ -1,0 +1,47 @@
+# La/a;->s(C C Z)Z [access_flags=public static final]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:char
+# - v3:char
+# - v4:boolean
+#
+# - return:boolean
+
+s-BB@0x0 : [ s-BB@0x6 s-BB@0x8 ]
+	0       (00000000) const/4              v0, 1
+	1       (00000002) if-ne                v2, v3, +003h
+
+s-BB@0x6 : 
+	2       (00000006) return               v0
+
+s-BB@0x8 : [ s-BB@0xe s-BB@0x10 ]
+	3       (00000008) const/4              v1, 0
+	4       (0000000a) if-nez               v4, +003h
+
+s-BB@0xe : 
+	5       (0000000e) return               v1
+
+s-BB@0x10 : [ s-BB@0x24 s-BB@0x3c ]
+	6       (00000010) invoke-static        v2, Ljava/lang/Character;->toUpperCase(C)C
+	7       (00000016) move-result          v2
+	8       (00000018) invoke-static        v3, Ljava/lang/Character;->toUpperCase(C)C
+	9       (0000001e) move-result          v3
+	10      (00000020) if-eq                v2, v3, +00eh
+
+s-BB@0x24 : [ s-BB@0x38 s-BB@0x3a ]
+	11      (00000024) invoke-static        v2, Ljava/lang/Character;->toLowerCase(C)C
+	12      (0000002a) move-result          v2
+	13      (0000002c) invoke-static        v3, Ljava/lang/Character;->toLowerCase(C)C
+	14      (00000032) move-result          v3
+	15      (00000034) if-ne                v2, v3, +003h
+
+s-BB@0x38 : [ s-BB@0x3c ]
+	16      (00000038) goto                 +2h
+
+s-BB@0x3a : 
+	17      (0000003a) return               v1
+
+s-BB@0x3c : 
+	18      (0000003c) return               v0
+

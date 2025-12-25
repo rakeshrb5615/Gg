@@ -1,0 +1,51 @@
+# La2/t;->a(Landroidx/recyclerview/widget/RecyclerView; I I)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:androidx.recyclerview.widget.RecyclerView
+# - v6:int
+# - v7:int
+#
+# - return:void
+
+a-BB@0x0 : [ a-BB@0x8 a-BB@0x54 ]
+	0       (00000000) iget-boolean         v0, v5, Landroidx/recyclerview/widget/RecyclerView;->x Z
+	1       (00000004) if-eqz               v0, +028h
+
+a-BB@0x8 : [ a-BB@0x10 a-BB@0x32 ]
+	2       (00000008) sget-boolean         v0, Landroidx/recyclerview/widget/RecyclerView;->F0 Z
+	3       (0000000c) if-eqz               v0, +013h
+
+a-BB@0x10 : [ a-BB@0x20 a-BB@0x22 ]
+	4       (00000010) iget-object          v0, v4, La2/t;->a Ljava/util/ArrayList;
+	5       (00000014) invoke-virtual       v0, v5, Ljava/util/ArrayList;->contains(Ljava/lang/Object;)Z
+	6       (0000001a) move-result          v0
+	7       (0000001c) if-eqz               v0, +003h
+
+a-BB@0x20 : [ a-BB@0x32 ]
+	8       (00000020) goto                 +9h
+
+a-BB@0x22 : 
+	9       (00000022) new-instance         v5, Ljava/lang/IllegalStateException;
+	10      (00000026) const-string         v6, "attempting to post unregistered view!"
+	11      (0000002a) invoke-direct        v5, v6, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	12      (00000030) throw                v5
+
+a-BB@0x32 : [ a-BB@0x42 a-BB@0x54 ]
+	13      (00000032) iget-wide            v0, v4, La2/t;->b J
+	14      (00000036) const-wide/16        v2, 0
+	15      (0000003a) cmp-long             v0, v0, v2
+	16      (0000003e) if-nez               v0, +00bh
+
+a-BB@0x42 : [ a-BB@0x54 ]
+	17      (00000042) invoke-virtual       v5, Landroidx/recyclerview/widget/RecyclerView;->getNanoTime()J
+	18      (00000048) move-result-wide     v0
+	19      (0000004a) iput-wide            v0, v4, La2/t;->b J
+	20      (0000004e) invoke-virtual       v5, v4, Landroid/view/View;->post(Ljava/lang/Runnable;)Z
+
+a-BB@0x54 : 
+	21      (00000054) iget-object          v5, v5, Landroidx/recyclerview/widget/RecyclerView;->j0 La2/r;
+	22      (00000058) iput                 v6, v5, La2/r;->a I
+	23      (0000005c) iput                 v7, v5, La2/r;->b I
+	24      (00000060) return-void          
+

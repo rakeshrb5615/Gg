@@ -1,0 +1,77 @@
+# La/a;->q()Z [access_flags=public static]
+#
+# Parameters:
+# local registers: v0...v5
+#
+# - return:boolean
+
+q-BB@0x0 : [ q-BB@0x6 ]
+	0       (00000000) const-string         v0, "delivery_metrics_exported_to_big_query_enabled"
+	1       (00000004) const/4              v1, 0
+
+q-BB@0x6 : [ q-BB@0x3a q-BB@0x44 ]
+	2       (00000006) invoke-static        Lq4/f;->d()Lq4/f;
+	3       (0000000c) invoke-static        Lq4/f;->d()Lq4/f;
+	4       (00000012) move-result-object   v2
+	5       (00000014) invoke-virtual       v2, Lq4/f;->a()V
+	6       (0000001a) iget-object          v2, v2, Lq4/f;->a Landroid/content/Context;
+	7       (0000001e) const-string         v3, "com.google.firebase.messaging"
+	8       (00000022) invoke-virtual       v2, v3, v1, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String; I)Landroid/content/SharedPreferences;
+	9       (00000028) move-result-object   v3
+	10      (0000002a) const-string         v4, "export_to_big_query"
+	11      (0000002e) invoke-interface     v3, v4, Landroid/content/SharedPreferences;->contains(Ljava/lang/String;)Z
+	12      (00000034) move-result          v5
+	13      (00000036) if-eqz               v5, +007h
+	6:b
+	(Ljava/lang/IllegalStateException; -> 8c q-BB@0x8c)
+
+q-BB@0x3a : 
+	14      (0000003a) invoke-interface     v3, v4, v1, Landroid/content/SharedPreferences;->getBoolean(Ljava/lang/String; Z)Z
+	15      (00000040) move-result          v0
+	16      (00000042) return               v0
+
+q-BB@0x44 : [ q-BB@0x50 q-BB@0x8a ]
+	17      (00000044) invoke-virtual       v2, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
+	18      (0000004a) move-result-object   v3
+	19      (0000004c) if-eqz               v3, +01fh
+	44:87
+	(Landroid/content/pm/PackageManager$NameNotFoundException; -> 8a q-BB@0x8a)
+
+q-BB@0x50 : [ q-BB@0x68 q-BB@0x8a ]
+	20      (00000050) invoke-virtual       v2, Landroid/content/Context;->getPackageName()Ljava/lang/String;
+	21      (00000056) move-result-object   v2
+	22      (00000058) const/16             v4, 128
+	23      (0000005c) invoke-virtual       v3, v2, v4, Landroid/content/pm/PackageManager;->getApplicationInfo(Ljava/lang/String; I)Landroid/content/pm/ApplicationInfo;
+	24      (00000062) move-result-object   v2
+	25      (00000064) if-eqz               v2, +013h
+	44:87
+	(Landroid/content/pm/PackageManager$NameNotFoundException; -> 8a q-BB@0x8a)
+
+q-BB@0x68 : [ q-BB@0x70 q-BB@0x8a ]
+	26      (00000068) iget-object          v3, v2, Landroid/content/pm/ApplicationInfo;->metaData Landroid/os/Bundle;
+	27      (0000006c) if-eqz               v3, +00fh
+	44:87
+	(Landroid/content/pm/PackageManager$NameNotFoundException; -> 8a q-BB@0x8a)
+
+q-BB@0x70 : [ q-BB@0x7c q-BB@0x8a ]
+	28      (00000070) invoke-virtual       v3, v0, Landroid/os/BaseBundle;->containsKey(Ljava/lang/String;)Z
+	29      (00000076) move-result          v3
+	30      (00000078) if-eqz               v3, +009h
+	44:87
+	(Landroid/content/pm/PackageManager$NameNotFoundException; -> 8a q-BB@0x8a)
+
+q-BB@0x7c : 
+	31      (0000007c) iget-object          v2, v2, Landroid/content/pm/ApplicationInfo;->metaData Landroid/os/Bundle;
+	32      (00000080) invoke-virtual       v2, v0, v1, Landroid/os/BaseBundle;->getBoolean(Ljava/lang/String; Z)Z
+	33      (00000086) move-result          v0
+	34      (00000088) return               v0
+
+q-BB@0x8a : 
+	35      (0000008a) return               v1
+
+q-BB@0x8c : 
+	36      (0000008c) const-string         v0, "FirebaseMessaging"
+	37      (00000090) const-string         v2, "FirebaseApp has not being initialized. Device might be in direct boot mode. Skip exporting delivery metrics to Big Query"
+	38      (00000094) invoke-static        v0, v2, Landroid/util/Log;->i(Ljava/lang/String; Ljava/lang/String;)I
+	39      (0000009a) return               v1
+

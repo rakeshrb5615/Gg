@@ -1,0 +1,100 @@
+# La/a;->a(I Lf8/a; I)Lf8/c; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v0
+# - v1:int
+# - v2:f8.a
+# - v3:int
+#
+# - return:f8.c
+
+a-BB@0x0 : [ a-BB@0x8 a-BB@0xc ]
+	0       (00000000) and-int/lit8         v3, v3, 2
+	1       (00000004) if-eqz               v3, +004h
+
+a-BB@0x8 : [ a-BB@0xc ]
+	2       (00000008) sget-object          v2, Lf8/a;->a Lf8/a;
+
+a-BB@0xc : [ a-BB@0x14 a-BB@0x9e ]
+	3       (0000000c) const/4              v3, -2
+	4       (0000000e) const/4              v0, 1
+	5       (00000010) if-eq                v1, v3, +047h
+
+a-BB@0x14 : [ a-BB@0x1a a-BB@0x76 ]
+	6       (00000014) const/4              v3, -1
+	7       (00000016) if-eq                v1, v3, +030h
+
+a-BB@0x1a : [ a-BB@0x1e a-BB@0x54 ]
+	8       (0000001a) if-eqz               v1, +01dh
+
+a-BB@0x1e : [ a-BB@0x28 a-BB@0x48 ]
+	9       (0000001e) const                v3, 2147483647
+	10      (00000024) if-eq                v1, v3, +012h
+
+a-BB@0x28 : [ a-BB@0x30 a-BB@0x3c ]
+	11      (00000028) sget-object          v3, Lf8/a;->a Lf8/a;
+	12      (0000002c) if-ne                v2, v3, +008h
+
+a-BB@0x30 : 
+	13      (00000030) new-instance         v2, Lf8/c;
+	14      (00000034) invoke-direct        v2, v1, Lf8/c;-><init>(I)V
+	15      (0000003a) return-object        v2
+
+a-BB@0x3c : 
+	16      (0000003c) new-instance         v3, Lf8/n;
+	17      (00000040) invoke-direct        v3, v1, v2, Lf8/n;-><init>(I Lf8/a;)V
+	18      (00000046) return-object        v3
+
+a-BB@0x48 : 
+	19      (00000048) new-instance         v1, Lf8/c;
+	20      (0000004c) invoke-direct        v1, v3, Lf8/c;-><init>(I)V
+	21      (00000052) return-object        v1
+
+a-BB@0x54 : [ a-BB@0x5c a-BB@0x6a ]
+	22      (00000054) sget-object          v1, Lf8/a;->a Lf8/a;
+	23      (00000058) if-ne                v2, v1, +009h
+
+a-BB@0x5c : 
+	24      (0000005c) new-instance         v1, Lf8/c;
+	25      (00000060) const/4              v2, 0
+	26      (00000062) invoke-direct        v1, v2, Lf8/c;-><init>(I)V
+	27      (00000068) return-object        v1
+
+a-BB@0x6a : 
+	28      (0000006a) new-instance         v1, Lf8/n;
+	29      (0000006e) invoke-direct        v1, v0, v2, Lf8/n;-><init>(I Lf8/a;)V
+	30      (00000074) return-object        v1
+
+a-BB@0x76 : [ a-BB@0x7e a-BB@0x8e ]
+	31      (00000076) sget-object          v1, Lf8/a;->a Lf8/a;
+	32      (0000007a) if-ne                v2, v1, +00ah
+
+a-BB@0x7e : 
+	33      (0000007e) new-instance         v1, Lf8/n;
+	34      (00000082) sget-object          v2, Lf8/a;->b Lf8/a;
+	35      (00000086) invoke-direct        v1, v0, v2, Lf8/n;-><init>(I Lf8/a;)V
+	36      (0000008c) return-object        v1
+
+a-BB@0x8e : 
+	37      (0000008e) new-instance         v1, Ljava/lang/IllegalArgumentException;
+	38      (00000092) const-string         v2, "CONFLATED capacity cannot be used with non-default onBufferOverflow"
+	39      (00000096) invoke-direct        v1, v2, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	40      (0000009c) throw                v1
+
+a-BB@0x9e : [ a-BB@0xa6 a-BB@0xc0 ]
+	41      (0000009e) sget-object          v1, Lf8/a;->a Lf8/a;
+	42      (000000a2) if-ne                v2, v1, +00fh
+
+a-BB@0xa6 : 
+	43      (000000a6) new-instance         v1, Lf8/c;
+	44      (000000aa) sget-object          v2, Lf8/g;->l Lf8/f;
+	45      (000000ae) invoke-virtual       v2, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	46      (000000b4) sget                 v2, Lf8/f;->b I
+	47      (000000b8) invoke-direct        v1, v2, Lf8/c;-><init>(I)V
+	48      (000000be) return-object        v1
+
+a-BB@0xc0 : 
+	49      (000000c0) new-instance         v1, Lf8/n;
+	50      (000000c4) invoke-direct        v1, v0, v2, Lf8/n;-><init>(I Lf8/a;)V
+	51      (000000ca) return-object        v1
+

@@ -1,0 +1,48 @@
+# La6/e;->f(Lcom/google/firebase/components/ComponentRegistrar;)Ljava/util/List; [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v10
+# - v11:com.google.firebase.components.ComponentRegistrar
+#
+# - return:java.util.List
+
+f-BB@0x0 : [ f-BB@0x1a ]
+	0       (00000000) new-instance         v0, Ljava/util/ArrayList;
+	1       (00000004) invoke-direct        v0, Ljava/util/ArrayList;-><init>()V
+	2       (0000000a) invoke-interface     v11, Lcom/google/firebase/components/ComponentRegistrar;->getComponents()Ljava/util/List;
+	3       (00000010) move-result-object   v11
+	4       (00000012) invoke-interface     v11, Ljava/util/List;->iterator()Ljava/util/Iterator;
+	5       (00000018) move-result-object   v11
+
+f-BB@0x1a : [ f-BB@0x26 f-BB@0x70 ]
+	6       (0000001a) invoke-interface     v11, Ljava/util/Iterator;->hasNext()Z
+	7       (00000020) move-result          v1
+	8       (00000022) if-eqz               v1, +027h
+
+f-BB@0x26 : [ f-BB@0x3a f-BB@0x68 ]
+	9       (00000026) invoke-interface     v11, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	10      (0000002c) move-result-object   v1
+	11      (0000002e) check-cast           v1, La5/c;
+	12      (00000032) iget-object          v3, v1, La5/c;->a Ljava/lang/String;
+	13      (00000036) if-eqz               v3, +019h
+
+f-BB@0x3a : [ f-BB@0x68 ]
+	14      (0000003a) new-instance         v8, La5/u;
+	15      (0000003e) const/16             v2, 9
+	16      (00000042) invoke-direct        v8, v2, v3, v1, La5/u;-><init>(I Ljava/lang/Object; Ljava/lang/Object;)V
+	17      (00000048) new-instance         v2, La5/c;
+	18      (0000004c) iget-object          v4, v1, La5/c;->b Ljava/util/Set;
+	19      (00000050) iget-object          v5, v1, La5/c;->c Ljava/util/Set;
+	20      (00000054) iget                 v6, v1, La5/c;->d I
+	21      (00000058) iget                 v7, v1, La5/c;->e I
+	22      (0000005c) iget-object          v9, v1, La5/c;->g Ljava/util/Set;
+	23      (00000060) invoke-direct/range  v2 ... v9, La5/c;-><init>(Ljava/lang/String; Ljava/util/Set; Ljava/util/Set; I I La5/f; Ljava/util/Set;)V
+	24      (00000066) move-object          v1, v2
+
+f-BB@0x68 : [ f-BB@0x1a ]
+	25      (00000068) invoke-virtual       v0, v1, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	26      (0000006e) goto                 -2ah
+
+f-BB@0x70 : 
+	27      (00000070) return-object        v0
+

@@ -1,0 +1,75 @@
+# La2/c;->e(I Z)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v9
+# - v10:int
+# - v11:boolean
+#
+# - return:void
+
+e-BB@0x0 : [ e-BB@0x8 e-BB@0x1c ]
+	0       (00000000) const/16             v0, 64
+	1       (00000004) if-lt                v10, v0, +00ch
+
+e-BB@0x8 : 
+	2       (00000008) invoke-virtual       v9, La2/c;->c()V
+	3       (0000000e) iget-object          v1, v9, La2/c;->b La2/c;
+	4       (00000012) sub-int/2addr        v10, v0
+	5       (00000014) invoke-virtual       v1, v10, v11, La2/c;->e(I Z)V
+	6       (0000001a) return-void          
+
+e-BB@0x1c : [ e-BB@0x36 e-BB@0x3a ]
+	7       (0000001c) iget-wide            v0, v9, La2/c;->a J
+	8       (00000020) const-wide/high16    v2, -9223372036854775808
+	9       (00000024) and-long/2addr       v2, v0
+	10      (00000026) const-wide/16        v4, 0
+	11      (0000002a) cmp-long             v2, v2, v4
+	12      (0000002e) const/4              v3, 0
+	13      (00000030) const/4              v4, 1
+	14      (00000032) if-eqz               v2, +004h
+
+e-BB@0x36 : [ e-BB@0x3c ]
+	15      (00000036) move                 v2, v4
+	16      (00000038) goto                 +2h
+
+e-BB@0x3a : [ e-BB@0x3c ]
+	17      (0000003a) move                 v2, v3
+
+e-BB@0x3c : [ e-BB@0x5a e-BB@0x62 ]
+	18      (0000003c) const-wide/16        v5, 1
+	19      (00000040) shl-long             v7, v5, v10
+	20      (00000044) sub-long/2addr       v7, v5
+	21      (00000046) and-long             v5, v0, v7
+	22      (0000004a) not-long             v7, v7
+	23      (0000004c) and-long/2addr       v0, v7
+	24      (0000004e) shl-long/2addr       v0, v4
+	25      (00000050) or-long/2addr        v0, v5
+	26      (00000052) iput-wide            v0, v9, La2/c;->a J
+	27      (00000056) if-eqz               v11, +006h
+
+e-BB@0x5a : [ e-BB@0x68 ]
+	28      (0000005a) invoke-virtual       v9, v10, La2/c;->h(I)V
+	29      (00000060) goto                 +4h
+
+e-BB@0x62 : [ e-BB@0x68 ]
+	30      (00000062) invoke-virtual       v9, v10, La2/c;->a(I)V
+
+e-BB@0x68 : [ e-BB@0x6c e-BB@0x78 ]
+	31      (00000068) if-nez               v2, +008h
+
+e-BB@0x6c : [ e-BB@0x74 e-BB@0x76 ]
+	32      (0000006c) iget-object          v10, v9, La2/c;->b La2/c;
+	33      (00000070) if-eqz               v10, +003h
+
+e-BB@0x74 : [ e-BB@0x78 ]
+	34      (00000074) goto                 +2h
+
+e-BB@0x76 : 
+	35      (00000076) return-void          
+
+e-BB@0x78 : 
+	36      (00000078) invoke-virtual       v9, La2/c;->c()V
+	37      (0000007e) iget-object          v10, v9, La2/c;->b La2/c;
+	38      (00000082) invoke-virtual       v10, v3, v2, La2/c;->e(I Z)V
+	39      (00000088) return-void          
+

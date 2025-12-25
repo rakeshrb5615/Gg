@@ -1,0 +1,58 @@
+# La/a;->v(Lp4/b;)Ljava/lang/Object; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:p4.b
+#
+# - return:java.lang.Object
+
+v-BB@0x0 : [ v-BB@0xc v-BB@0x44 ]
+	0       (00000000) invoke-interface     v2, Ljava/util/concurrent/Future;->isDone()Z
+	1       (00000006) move-result          v0
+	2       (00000008) if-eqz               v0, +01eh
+
+v-BB@0xc : [ v-BB@0xe ]
+	3       (0000000c) const/4              v0, 0
+
+v-BB@0xe : [ v-BB@0x1a v-BB@0x28 ]
+	4       (0000000e) invoke-interface     v2, Ljava/util/concurrent/Future;->get()Ljava/lang/Object;
+	5       (00000014) move-result-object   v2
+	6       (00000016) if-eqz               v0, +009h
+	e:15
+	(Ljava/lang/InterruptedException; -> 40 v-BB@0x40)
+	(Ljava/lang/Throwable; -> 2a v-BB@0x2a)
+
+v-BB@0x1a : [ v-BB@0x28 ]
+	7       (0000001a) invoke-static        Ljava/lang/Thread;->currentThread()Ljava/lang/Thread;
+	8       (00000020) move-result-object   v0
+	9       (00000022) invoke-virtual       v0, Ljava/lang/Thread;->interrupt()V
+
+v-BB@0x28 : 
+	10      (00000028) return-object        v2
+
+v-BB@0x2a : [ v-BB@0x30 v-BB@0x3e ]
+	11      (0000002a) move-exception       v2
+	12      (0000002c) if-eqz               v0, +009h
+
+v-BB@0x30 : [ v-BB@0x3e ]
+	13      (00000030) invoke-static        Ljava/lang/Thread;->currentThread()Ljava/lang/Thread;
+	14      (00000036) move-result-object   v0
+	15      (00000038) invoke-virtual       v0, Ljava/lang/Thread;->interrupt()V
+
+v-BB@0x3e : 
+	16      (0000003e) throw                v2
+
+v-BB@0x40 : [ v-BB@0xe ]
+	17      (00000040) const/4              v0, 1
+	18      (00000042) goto                 -1ah
+
+v-BB@0x44 : 
+	19      (00000044) new-instance         v0, Ljava/lang/IllegalStateException;
+	20      (00000048) filled-new-array     v2, [Ljava/lang/Object;
+	21      (0000004e) move-result-object   v2
+	22      (00000050) const-string         v1, "Future was expected to be done: %s"
+	23      (00000054) invoke-static        v1, v2, Lc4/b;->L(Ljava/lang/String; [Ljava/lang/Object;)Ljava/lang/String;
+	24      (0000005a) move-result-object   v2
+	25      (0000005c) invoke-direct        v0, v2, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	26      (00000062) throw                v0
+

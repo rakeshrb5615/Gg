@@ -1,0 +1,32 @@
+# La5/j;->b(La5/x;)Lc6/b; [access_flags=public final synchronized]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:a5.x
+#
+# - return:c6.b
+
+b-BB@0x0 : [ b-BB@0x2 ]
+	0       (00000000) monitor-enter        v1
+
+b-BB@0x2 : 
+	1       (00000002) const-string         v0, "Null interface requested."
+	2       (00000006) invoke-static        v2, v0, Lq4/b;->f(Ljava/lang/Object; Ljava/lang/String;)V
+	3       (0000000c) iget-object          v0, v1, La5/j;->b Ljava/util/HashMap;
+	4       (00000010) invoke-virtual       v0, v2, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	5       (00000016) move-result-object   v2
+	6       (00000018) check-cast           v2, Lc6/b;
+	7       (0000001c) monitor-exit         v1
+	8       (0000001e) return-object        v2
+	2:1b
+	(Ljava/lang/Throwable; -> 20 b-BB@0x20)
+
+b-BB@0x20 : [ b-BB@0x22 ]
+	9       (00000020) move-exception       v2
+
+b-BB@0x22 : 
+	10      (00000022) monitor-exit         v1
+	11      (00000024) throw                v2
+	22:23
+	(Ljava/lang/Throwable; -> 20 b-BB@0x20)
+

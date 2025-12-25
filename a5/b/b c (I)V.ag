@@ -1,0 +1,32 @@
+# La5/b;->c(I)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:int
+#
+# - return:void
+
+c-BB@0x0 : [ c-BB@0x8 c-BB@0xc ]
+	0       (00000000) iget                 v0, v1, La5/b;->d I
+	1       (00000004) if-nez               v0, +004h
+
+c-BB@0x8 : [ c-BB@0xe ]
+	2       (00000008) const/4              v0, 1
+	3       (0000000a) goto                 +2h
+
+c-BB@0xc : [ c-BB@0xe ]
+	4       (0000000c) const/4              v0, 0
+
+c-BB@0xe : [ c-BB@0x12 c-BB@0x18 ]
+	5       (0000000e) if-eqz               v0, +005h
+
+c-BB@0x12 : 
+	6       (00000012) iput                 v2, v1, La5/b;->d I
+	7       (00000016) return-void          
+
+c-BB@0x18 : 
+	8       (00000018) new-instance         v2, Ljava/lang/IllegalStateException;
+	9       (0000001c) const-string         v0, "Instantiation type has already been set."
+	10      (00000020) invoke-direct        v2, v0, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	11      (00000026) throw                v2
+

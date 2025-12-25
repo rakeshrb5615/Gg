@@ -1,0 +1,62 @@
+# La2/d;->p(Ljava/lang/CharSequence; I)I [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:java.lang.CharSequence
+# - v3:int
+#
+# - return:int
+
+p-BB@0x0 : [ p-BB@0x10 p-BB@0x1c ]
+	0       (00000000) invoke-interface     v2, v3, Ljava/lang/CharSequence;->charAt(I)C
+	1       (00000006) move-result          v2
+	2       (00000008) const/16             v3, 48
+	3       (0000000c) if-gt                v3, v2, +008h
+
+p-BB@0x10 : [ p-BB@0x18 p-BB@0x1c ]
+	4       (00000010) const/16             v0, 58
+	5       (00000014) if-ge                v2, v0, +004h
+
+p-BB@0x18 : 
+	6       (00000018) sub-int/2addr        v2, v3
+	7       (0000001a) return               v2
+
+p-BB@0x1c : [ p-BB@0x24 p-BB@0x32 ]
+	8       (0000001c) const/16             v3, 97
+	9       (00000020) if-gt                v3, v2, +009h
+
+p-BB@0x24 : [ p-BB@0x2c p-BB@0x32 ]
+	10      (00000024) const/16             v3, 103
+	11      (00000028) if-ge                v2, v3, +005h
+
+p-BB@0x2c : 
+	12      (0000002c) add-int/lit8         v2, v2, -87
+	13      (00000030) return               v2
+
+p-BB@0x32 : [ p-BB@0x3a p-BB@0x48 ]
+	14      (00000032) const/16             v3, 65
+	15      (00000036) if-gt                v3, v2, +009h
+
+p-BB@0x3a : [ p-BB@0x42 p-BB@0x48 ]
+	16      (0000003a) const/16             v3, 71
+	17      (0000003e) if-ge                v2, v3, +005h
+
+p-BB@0x42 : 
+	18      (00000042) add-int/lit8         v2, v2, -55
+	19      (00000046) return               v2
+
+p-BB@0x48 : 
+	20      (00000048) new-instance         v3, Ljava/lang/StringBuilder;
+	21      (0000004c) const-string         v0, "Invalid toHexChar char '"
+	22      (00000050) invoke-direct        v3, v0, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	23      (00000056) invoke-virtual       v3, v2, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+	24      (0000005c) const-string         v2, "' in unicode escape"
+	25      (00000060) invoke-virtual       v3, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	26      (00000066) invoke-virtual       v3, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	27      (0000006c) move-result-object   v2
+	28      (0000006e) const/4              v3, 0
+	29      (00000070) const/4              v0, 6
+	30      (00000072) invoke-static        v1, v2, v3, v0, La2/d;->n(La2/d; Ljava/lang/String; I I)V
+	31      (00000078) const/4              v2, 0
+	32      (0000007a) throw                v2
+

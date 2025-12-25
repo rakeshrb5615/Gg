@@ -1,0 +1,229 @@
+# La5/z;->i(Lj5/p0; Li5/e; Lm5/c; Ljava/util/Map;)Lj5/p0; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v9
+# - v10:j5.p0
+# - v11:i5.e
+# - v12:m5.c
+# - v13:java.util.Map
+#
+# - return:j5.p0
+
+i-BB@0x0 : [ i-BB@0x22 i-BB@0x32 ]
+	0       (00000000) const-string         v0, "FirebaseCrashlytics"
+	1       (00000004) invoke-virtual       v10, Lj5/p0;->a()Lj5/o0;
+	2       (0000000a) move-result-object   v1
+	3       (0000000c) iget-object          v11, v11, Li5/e;->b Ljava/lang/Object;
+	4       (00000010) check-cast           v11, Li5/c;
+	5       (00000014) invoke-interface     v11, Li5/c;->b()Ljava/lang/String;
+	6       (0000001a) move-result-object   v11
+	7       (0000001c) const/4              v2, 0
+	8       (0000001e) if-eqz               v11, +00ah
+
+i-BB@0x22 : [ i-BB@0x4a ]
+	9       (00000022) new-instance         v3, Lj5/c1;
+	10      (00000026) invoke-direct        v3, v11, Lj5/c1;-><init>(Ljava/lang/String;)V
+	11      (0000002c) iput-object          v3, v1, Lj5/o0;->e Lj5/f2;
+	12      (00000030) goto                 +dh
+
+i-BB@0x32 : [ i-BB@0x44 i-BB@0x4a ]
+	13      (00000032) const-string         v11, "No log data to include with this event."
+	14      (00000036) const/4              v3, 2
+	15      (00000038) invoke-static        v0, v3, Landroid/util/Log;->isLoggable(Ljava/lang/String; I)Z
+	16      (0000003e) move-result          v3
+	17      (00000040) if-eqz               v3, +005h
+
+i-BB@0x44 : [ i-BB@0x4a ]
+	18      (00000044) invoke-static        v0, v11, v2, Landroid/util/Log;->v(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+
+i-BB@0x4a : [ i-BB@0x5e i-BB@0x9a ]
+	19      (0000004a) iget-object          v11, v12, Lm5/c;->e Ljava/lang/Object;
+	20      (0000004e) check-cast           v11, Li5/n;
+	21      (00000052) invoke-interface     v13, Ljava/util/Map;->isEmpty()Z
+	22      (00000058) move-result          v3
+	23      (0000005a) if-eqz               v3, +020h
+
+i-BB@0x5e : [ i-BB@0x76 ]
+	24      (0000005e) iget-object          v11, v11, Li5/n;->b Ljava/lang/Object;
+	25      (00000062) check-cast           v11, Ljava/util/concurrent/atomic/AtomicMarkableReference;
+	26      (00000066) invoke-virtual       v11, Ljava/util/concurrent/atomic/AtomicMarkableReference;->getReference()Ljava/lang/Object;
+	27      (0000006c) move-result-object   v11
+	28      (0000006e) move-object          v3, v11
+	29      (00000070) check-cast           v3, Li5/d;
+	30      (00000074) monitor-enter        v3
+
+i-BB@0x76 : [ i-BB@0x18c ]
+	31      (00000076) new-instance         v11, Ljava/util/HashMap;
+	32      (0000007a) iget-object          v13, v3, Li5/d;->a Ljava/util/HashMap;
+	33      (0000007e) invoke-direct        v11, v13, Ljava/util/HashMap;-><init>(Ljava/util/Map;)V
+	34      (00000084) invoke-static        v11, Ljava/util/Collections;->unmodifiableMap(Ljava/util/Map;)Ljava/util/Map;
+	35      (0000008a) move-result-object   v11
+	36      (0000008c) monitor-exit         v3
+	37      (0000008e) goto/16              +07fh
+	76:8b
+	(Ljava/lang/Throwable; -> 92 i-BB@0x92)
+
+i-BB@0x92 : [ i-BB@0x96 ]
+	38      (00000092) move-exception       v0
+	39      (00000094) move-object          v10, v0
+
+i-BB@0x96 : 
+	40      (00000096) monitor-exit         v3
+	41      (00000098) throw                v10
+	96:97
+	(Ljava/lang/Throwable; -> 92 i-BB@0x92)
+
+i-BB@0x9a : [ i-BB@0xb0 ]
+	42      (0000009a) iget-object          v11, v11, Li5/n;->b Ljava/lang/Object;
+	43      (0000009e) check-cast           v11, Ljava/util/concurrent/atomic/AtomicMarkableReference;
+	44      (000000a2) invoke-virtual       v11, Ljava/util/concurrent/atomic/AtomicMarkableReference;->getReference()Ljava/lang/Object;
+	45      (000000a8) move-result-object   v11
+	46      (000000aa) check-cast           v11, Li5/d;
+	47      (000000ae) monitor-enter        v11
+
+i-BB@0xb0 : [ i-BB@0xe4 ]
+	48      (000000b0) new-instance         v3, Ljava/util/HashMap;
+	49      (000000b4) iget-object          v4, v11, Li5/d;->a Ljava/util/HashMap;
+	50      (000000b8) invoke-direct        v3, v4, Ljava/util/HashMap;-><init>(Ljava/util/Map;)V
+	51      (000000be) invoke-static        v3, Ljava/util/Collections;->unmodifiableMap(Ljava/util/Map;)Ljava/util/Map;
+	52      (000000c4) move-result-object   v3
+	53      (000000c6) monitor-exit         v11
+	54      (000000c8) new-instance         v11, Ljava/util/HashMap;
+	55      (000000cc) invoke-direct        v11, v3, Ljava/util/HashMap;-><init>(Ljava/util/Map;)V
+	56      (000000d2) invoke-interface     v13, Ljava/util/Map;->entrySet()Ljava/util/Set;
+	57      (000000d8) move-result-object   v13
+	58      (000000da) invoke-interface     v13, Ljava/util/Set;->iterator()Ljava/util/Iterator;
+	59      (000000e0) move-result-object   v13
+	60      (000000e2) const/4              v3, 0
+	b0:c5
+	(Ljava/lang/Throwable; -> 228 i-BB@0x228)
+
+i-BB@0xe4 : [ i-BB@0xf0 i-BB@0x154 ]
+	61      (000000e4) invoke-interface     v13, Ljava/util/Iterator;->hasNext()Z
+	62      (000000ea) move-result          v4
+	63      (000000ec) if-eqz               v4, +034h
+
+i-BB@0xf0 : [ i-BB@0x124 i-BB@0x138 ]
+	64      (000000f0) invoke-interface     v13, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	65      (000000f6) move-result-object   v4
+	66      (000000f8) check-cast           v4, Ljava/util/Map$Entry;
+	67      (000000fc) invoke-interface     v4, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
+	68      (00000102) move-result-object   v5
+	69      (00000104) check-cast           v5, Ljava/lang/String;
+	70      (00000108) const/16             v6, 1024
+	71      (0000010c) invoke-static        v6, v5, Li5/d;->a(I Ljava/lang/String;)Ljava/lang/String;
+	72      (00000112) move-result-object   v5
+	73      (00000114) invoke-virtual       v11, Ljava/util/HashMap;->size()I
+	74      (0000011a) move-result          v7
+	75      (0000011c) const/16             v8, 64
+	76      (00000120) if-lt                v7, v8, +00ch
+
+i-BB@0x124 : [ i-BB@0x130 i-BB@0x132 ]
+	77      (00000124) invoke-virtual       v11, v5, Ljava/util/HashMap;->containsKey(Ljava/lang/Object;)Z
+	78      (0000012a) move-result          v7
+	79      (0000012c) if-eqz               v7, +003h
+
+i-BB@0x130 : [ i-BB@0x138 ]
+	80      (00000130) goto                 +4h
+
+i-BB@0x132 : [ i-BB@0xe4 ]
+	81      (00000132) add-int/lit8         v3, v3, 1
+	82      (00000136) goto                 -29h
+
+i-BB@0x138 : [ i-BB@0xe4 ]
+	83      (00000138) invoke-interface     v4, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
+	84      (0000013e) move-result-object   v4
+	85      (00000140) check-cast           v4, Ljava/lang/String;
+	86      (00000144) invoke-static        v6, v4, Li5/d;->a(I Ljava/lang/String;)Ljava/lang/String;
+	87      (0000014a) move-result-object   v4
+	88      (0000014c) invoke-virtual       v11, v5, v4, Ljava/util/HashMap;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	89      (00000152) goto                 -37h
+
+i-BB@0x154 : [ i-BB@0x158 i-BB@0x184 ]
+	90      (00000154) if-lez               v3, +018h
+
+i-BB@0x158 : [ i-BB@0x184 ]
+	91      (00000158) new-instance         v13, Ljava/lang/StringBuilder;
+	92      (0000015c) const-string         v4, "Ignored "
+	93      (00000160) invoke-direct        v13, v4, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	94      (00000166) invoke-virtual       v13, v3, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	95      (0000016c) const-string         v3, " keys when adding event specific keys. Maximum allowable: 1024"
+	96      (00000170) invoke-virtual       v13, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	97      (00000176) invoke-virtual       v13, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	98      (0000017c) move-result-object   v13
+	99      (0000017e) invoke-static        v0, v13, v2, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+
+i-BB@0x184 : [ i-BB@0x18c ]
+	100     (00000184) invoke-static        v11, Ljava/util/Collections;->unmodifiableMap(Ljava/util/Map;)Ljava/util/Map;
+	101     (0000018a) move-result-object   v11
+
+i-BB@0x18c : [ i-BB@0x1b4 ]
+	102     (0000018c) invoke-static        v11, La5/z;->q(Ljava/util/Map;)Ljava/util/List;
+	103     (00000192) move-result-object   v4
+	104     (00000194) iget-object          v11, v12, Lm5/c;->f Ljava/lang/Object;
+	105     (00000198) check-cast           v11, Li5/n;
+	106     (0000019c) iget-object          v11, v11, Li5/n;->b Ljava/lang/Object;
+	107     (000001a0) check-cast           v11, Ljava/util/concurrent/atomic/AtomicMarkableReference;
+	108     (000001a4) invoke-virtual       v11, Ljava/util/concurrent/atomic/AtomicMarkableReference;->getReference()Ljava/lang/Object;
+	109     (000001aa) move-result-object   v11
+	110     (000001ac) move-object          v12, v11
+	111     (000001ae) check-cast           v12, Li5/d;
+	112     (000001b2) monitor-enter        v12
+
+i-BB@0x1b4 : [ i-BB@0x1e0 i-BB@0x1ec ]
+	113     (000001b4) new-instance         v11, Ljava/util/HashMap;
+	114     (000001b8) iget-object          v13, v12, Li5/d;->a Ljava/util/HashMap;
+	115     (000001bc) invoke-direct        v11, v13, Ljava/util/HashMap;-><init>(Ljava/util/Map;)V
+	116     (000001c2) invoke-static        v11, Ljava/util/Collections;->unmodifiableMap(Ljava/util/Map;)Ljava/util/Map;
+	117     (000001c8) move-result-object   v11
+	118     (000001ca) monitor-exit         v12
+	119     (000001cc) invoke-static        v11, La5/z;->q(Ljava/util/Map;)Ljava/util/List;
+	120     (000001d2) move-result-object   v5
+	121     (000001d4) invoke-interface     v4, Ljava/util/List;->isEmpty()Z
+	122     (000001da) move-result          v11
+	123     (000001dc) if-eqz               v11, +008h
+	1b4:1c9
+	(Ljava/lang/Throwable; -> 220 i-BB@0x220)
+
+i-BB@0x1e0 : [ i-BB@0x1ec i-BB@0x216 ]
+	124     (000001e0) invoke-interface     v5, Ljava/util/List;->isEmpty()Z
+	125     (000001e6) move-result          v11
+	126     (000001e8) if-nez               v11, +017h
+
+i-BB@0x1ec : [ i-BB@0x216 ]
+	127     (000001ec) iget-object          v10, v10, Lj5/p0;->c Lj5/d2;
+	128     (000001f0) check-cast           v10, Lj5/q0;
+	129     (000001f4) iget-object          v3, v10, Lj5/q0;->a Lj5/r0;
+	130     (000001f8) iget-object          v6, v10, Lj5/q0;->d Ljava/lang/Boolean;
+	131     (000001fc) iget-object          v7, v10, Lj5/q0;->e Lj5/c2;
+	132     (00000200) iget-object          v8, v10, Lj5/q0;->f Ljava/util/List;
+	133     (00000204) iget                 v9, v10, Lj5/q0;->g I
+	134     (00000208) new-instance         v2, Lj5/q0;
+	135     (0000020c) invoke-direct/range  v2 ... v9, Lj5/q0;-><init>(Lj5/r0; Ljava/util/List; Ljava/util/List; Ljava/lang/Boolean; Lj5/c2; Ljava/util/List; I)V
+	136     (00000212) iput-object          v2, v1, Lj5/o0;->c Lj5/d2;
+
+i-BB@0x216 : 
+	137     (00000216) invoke-virtual       v1, Lj5/o0;->a()Lj5/p0;
+	138     (0000021c) move-result-object   v10
+	139     (0000021e) return-object        v10
+
+i-BB@0x220 : [ i-BB@0x224 ]
+	140     (00000220) move-exception       v0
+	141     (00000222) move-object          v10, v0
+
+i-BB@0x224 : 
+	142     (00000224) monitor-exit         v12
+	143     (00000226) throw                v10
+	224:225
+	(Ljava/lang/Throwable; -> 220 i-BB@0x220)
+
+i-BB@0x228 : [ i-BB@0x22c ]
+	144     (00000228) move-exception       v0
+	145     (0000022a) move-object          v10, v0
+
+i-BB@0x22c : 
+	146     (0000022c) monitor-exit         v11
+	147     (0000022e) throw                v10
+	22c:22d
+	(Ljava/lang/Throwable; -> 228 i-BB@0x228)
+

@@ -1,0 +1,44 @@
+# La2/b;->f(La2/a; I)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:a2.a
+# - v5:int
+#
+# - return:void
+
+f-BB@0x0 : [ f-BB@0x18 f-BB@0x3a ]
+	0       (00000000) iget-object          v0, v3, La2/b;->e Ljava/lang/Object;
+	1       (00000004) check-cast           v0, La2/h0;
+	2       (00000008) invoke-virtual       v0, v4, La2/h0;->a(La2/a;)V
+	3       (0000000e) iget                 v1, v4, La2/a;->a I
+	4       (00000012) const/4              v2, 2
+	5       (00000014) if-eq                v1, v2, +013h
+
+f-BB@0x18 : [ f-BB@0x1e f-BB@0x2a ]
+	6       (00000018) const/4              v2, 4
+	7       (0000001a) if-ne                v1, v2, +008h
+
+f-BB@0x1e : 
+	8       (0000001e) iget                 v4, v4, La2/a;->c I
+	9       (00000022) invoke-virtual       v0, v5, v4, La2/h0;->c(I I)V
+	10      (00000028) return-void          
+
+f-BB@0x2a : 
+	11      (0000002a) new-instance         v4, Ljava/lang/IllegalArgumentException;
+	12      (0000002e) const-string         v5, "only remove and update ops can be dispatched in first pass"
+	13      (00000032) invoke-direct        v4, v5, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	14      (00000038) throw                v4
+
+f-BB@0x3a : 
+	15      (0000003a) iget                 v4, v4, La2/a;->c I
+	16      (0000003e) iget-object          v0, v0, La2/h0;->a Landroidx/recyclerview/widget/RecyclerView;
+	17      (00000042) const/4              v1, 1
+	18      (00000044) invoke-virtual       v0, v5, v1, v4, Landroidx/recyclerview/widget/RecyclerView;->S(I Z I)V
+	19      (0000004a) iput-boolean         v1, v0, Landroidx/recyclerview/widget/RecyclerView;->n0 Z
+	20      (0000004e) iget-object          v5, v0, Landroidx/recyclerview/widget/RecyclerView;->k0 La2/g1;
+	21      (00000052) iget                 v0, v5, La2/g1;->c I
+	22      (00000056) add-int/2addr        v0, v4
+	23      (00000058) iput                 v0, v5, La2/g1;->c I
+	24      (0000005c) return-void          
+

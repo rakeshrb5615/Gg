@@ -1,0 +1,37 @@
+# La2/c;->d(I)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:int
+#
+# - return:boolean
+
+d-BB@0x0 : [ d-BB@0x8 d-BB@0x1e ]
+	0       (00000000) const/16             v0, 64
+	1       (00000004) if-lt                v5, v0, +00dh
+
+d-BB@0x8 : 
+	2       (00000008) invoke-virtual       v4, La2/c;->c()V
+	3       (0000000e) iget-object          v1, v4, La2/c;->b La2/c;
+	4       (00000012) sub-int/2addr        v5, v0
+	5       (00000014) invoke-virtual       v1, v5, La2/c;->d(I)Z
+	6       (0000001a) move-result          v5
+	7       (0000001c) return               v5
+
+d-BB@0x1e : [ d-BB@0x36 d-BB@0x3a ]
+	8       (0000001e) iget-wide            v0, v4, La2/c;->a J
+	9       (00000022) const-wide/16        v2, 1
+	10      (00000026) shl-long/2addr       v2, v5
+	11      (00000028) and-long/2addr       v0, v2
+	12      (0000002a) const-wide/16        v2, 0
+	13      (0000002e) cmp-long             v5, v0, v2
+	14      (00000032) if-eqz               v5, +004h
+
+d-BB@0x36 : 
+	15      (00000036) const/4              v5, 1
+	16      (00000038) return               v5
+
+d-BB@0x3a : 
+	17      (0000003a) const/4              v5, 0
+	18      (0000003c) return               v5
+

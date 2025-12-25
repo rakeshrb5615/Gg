@@ -1,0 +1,502 @@
+# La/a;->J(Landroid/content/Intent;)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v21
+# - v22:android.content.Intent
+#
+# - return:void
+
+J-BB@0x0 : [ J-BB@0x10 J-BB@0x22 ]
+	0       (00000000) move-object/from16   v1, v22
+	1       (00000004) invoke-static        v1, La/a;->T(Landroid/content/Intent;)Z
+	2       (0000000a) move-result          v0
+	3       (0000000c) if-eqz               v0, +00bh
+
+J-BB@0x10 : [ J-BB@0x22 ]
+	4       (00000010) const-string         v0, "_nr"
+	5       (00000014) invoke-virtual       v1, Landroid/content/Intent;->getExtras()Landroid/os/Bundle;
+	6       (0000001a) move-result-object   v2
+	7       (0000001c) invoke-static        v2, v0, La/a;->K(Landroid/os/Bundle; Ljava/lang/String;)V
+
+J-BB@0x22 : [ J-BB@0x28 J-BB@0x4c ]
+	8       (00000022) const/4              v2, 0
+	9       (00000024) if-eqz               v1, +014h
+
+J-BB@0x28 : [ J-BB@0x40 J-BB@0x42 ]
+	10      (00000028) const-string         v0, "com.google.firebase.messaging.RECEIVE_DIRECT_BOOT"
+	11      (0000002c) invoke-virtual       v1, Landroid/content/Intent;->getAction()Ljava/lang/String;
+	12      (00000032) move-result-object   v3
+	13      (00000034) invoke-virtual       v0, v3, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	14      (0000003a) move-result          v0
+	15      (0000003c) if-eqz               v0, +003h
+
+J-BB@0x40 : [ J-BB@0x4c ]
+	16      (00000040) goto                 +6h
+
+J-BB@0x42 : [ J-BB@0x4e ]
+	17      (00000042) invoke-static        La/a;->q()Z
+	18      (00000048) move-result          v0
+	19      (0000004a) goto                 +2h
+
+J-BB@0x4c : [ J-BB@0x4e ]
+	20      (0000004c) move                 v0, v2
+
+J-BB@0x4e : [ J-BB@0x52 J-BB@0x432 ]
+	21      (0000004e) if-eqz               v0, +1f2h
+
+J-BB@0x52 : [ J-BB@0x6c J-BB@0x78 ]
+	22      (00000052) sget-object          v0, Lcom/google/firebase/messaging/FirebaseMessaging;->l Lc6/b;
+	23      (00000056) invoke-interface     v0, Lc6/b;->get()Ljava/lang/Object;
+	24      (0000005c) move-result-object   v0
+	25      (0000005e) move-object          v3, v0
+	26      (00000060) check-cast           v3, Lo2/g;
+	27      (00000064) const-string         v4, "FirebaseMessaging"
+	28      (00000068) if-nez               v3, +008h
+
+J-BB@0x6c : 
+	29      (0000006c) const-string         v0, "TransportFactory is null. Skip exporting message delivery metrics to Big Query"
+	30      (00000070) invoke-static        v4, v0, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String;)I
+	31      (00000076) return-void          
+
+J-BB@0x78 : [ J-BB@0x7e J-BB@0x82 ]
+	32      (00000078) const/4              v0, 0
+	33      (0000007a) if-nez               v1, +004h
+
+J-BB@0x7e : [ J-BB@0x392 ]
+	34      (0000007e) goto/16              +18ah
+
+J-BB@0x82 : [ J-BB@0x8e J-BB@0x92 ]
+	35      (00000082) invoke-virtual       v1, Landroid/content/Intent;->getExtras()Landroid/os/Bundle;
+	36      (00000088) move-result-object   v5
+	37      (0000008a) if-nez               v5, +004h
+
+J-BB@0x8e : [ J-BB@0x92 ]
+	38      (0000008e) sget-object          v5, Landroid/os/Bundle;->EMPTY Landroid/os/Bundle;
+
+J-BB@0x92 : [ J-BB@0xa6 J-BB@0xb8 ]
+	39      (00000092) const-string         v6, "google.ttl"
+	40      (00000096) invoke-virtual       v5, v6, Landroid/os/BaseBundle;->get(Ljava/lang/String;)Ljava/lang/Object;
+	41      (0000009c) move-result-object   v6
+	42      (0000009e) instance-of          v7, v6, Ljava/lang/Integer;
+	43      (000000a2) if-eqz               v7, +00bh
+
+J-BB@0xa6 : [ J-BB@0xb2 ]
+	44      (000000a6) check-cast           v6, Ljava/lang/Integer;
+	45      (000000aa) invoke-virtual       v6, Ljava/lang/Integer;->intValue()I
+	46      (000000b0) move-result          v6
+
+J-BB@0xb2 : [ J-BB@0xf6 ]
+	47      (000000b2) move/from16          v16, v6
+	48      (000000b6) goto                 +20h
+
+J-BB@0xb8 : [ J-BB@0xc0 J-BB@0xf2 ]
+	49      (000000b8) instance-of          v7, v6, Ljava/lang/String;
+	50      (000000bc) if-eqz               v7, +01bh
+
+J-BB@0xc0 : [ J-BB@0xb2 ]
+	51      (000000c0) move-object          v7, v6
+	52      (000000c2) check-cast           v7, Ljava/lang/String;
+	53      (000000c6) invoke-static        v7, Ljava/lang/Integer;->parseInt(Ljava/lang/String;)I
+	54      (000000cc) move-result          v6
+	55      (000000ce) goto                 -eh
+	c0:cd
+	(Ljava/lang/NumberFormatException; -> d0 J-BB@0xd0)
+
+J-BB@0xd0 : [ J-BB@0xf2 ]
+	56      (000000d0) new-instance         v7, Ljava/lang/StringBuilder;
+	57      (000000d4) const-string         v8, "Invalid TTL: "
+	58      (000000d8) invoke-direct        v7, v8, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	59      (000000de) invoke-virtual       v7, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	60      (000000e4) invoke-virtual       v7, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	61      (000000ea) move-result-object   v6
+	62      (000000ec) invoke-static        v4, v6, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String;)I
+
+J-BB@0xf2 : [ J-BB@0xf6 ]
+	63      (000000f2) move/from16          v16, v2
+
+J-BB@0xf6 : [ J-BB@0x110 J-BB@0x114 ]
+	64      (000000f6) const-string         v6, "google.to"
+	65      (000000fa) invoke-virtual       v5, v6, Landroid/os/BaseBundle;->getString(Ljava/lang/String;)Ljava/lang/String;
+	66      (00000100) move-result-object   v6
+	67      (00000102) invoke-static        v6, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+	68      (00000108) move-result          v7
+	69      (0000010a) const/4              v8, 1
+	70      (0000010c) if-nez               v7, +004h
+
+J-BB@0x110 : [ J-BB@0x150 ]
+	71      (00000110) move-object          v11, v6
+	72      (00000112) goto                 +1fh
+
+J-BB@0x114 : [ J-BB@0x11c ]
+	73      (00000114) invoke-static        Lq4/f;->d()Lq4/f;
+	74      (0000011a) move-result-object   v6
+	114:11b
+	(Ljava/util/concurrent/ExecutionException; -> 424 J-BB@0x424)
+	(Ljava/lang/InterruptedException; -> 424 J-BB@0x424)
+
+J-BB@0x11c : [ J-BB@0x13a ]
+	75      (0000011c) sget-object          v7, Ld6/c;->m Ljava/lang/Object;
+	76      (00000120) const-string         v7, "Null is not a valid value of FirebaseApp."
+	77      (00000124) invoke-static        v8, v7, Lcom/google/android/gms/common/internal/Preconditions;->checkArgument(Z Ljava/lang/Object;)V
+	78      (0000012a) const-class          v7, Ld6/d;
+	79      (0000012e) invoke-virtual       v6, v7, Lq4/f;->b(Ljava/lang/Class;)Ljava/lang/Object;
+	80      (00000134) move-result-object   v6
+	81      (00000136) check-cast           v6, Ld6/c;
+	11c:139
+	(Ljava/util/concurrent/ExecutionException; -> 424 J-BB@0x424)
+	(Ljava/lang/InterruptedException; -> 420 J-BB@0x420)
+
+J-BB@0x13a : [ J-BB@0x110 ]
+	82      (0000013a) invoke-virtual       v6, Ld6/c;->c()Lcom/google/android/gms/tasks/Task;
+	83      (00000140) move-result-object   v6
+	84      (00000142) invoke-static        v6, Lcom/google/android/gms/tasks/Tasks;->await(Lcom/google/android/gms/tasks/Task;)Ljava/lang/Object;
+	85      (00000148) move-result-object   v6
+	86      (0000014a) check-cast           v6, Ljava/lang/String;
+	87      (0000014e) goto                 -1fh
+	13a:14d
+	(Ljava/util/concurrent/ExecutionException; -> 424 J-BB@0x424)
+	(Ljava/lang/InterruptedException; -> 424 J-BB@0x424)
+
+J-BB@0x150 : [ J-BB@0x176 J-BB@0x17e ]
+	88      (00000150) invoke-static        Lq4/f;->d()Lq4/f;
+	89      (00000156) move-result-object   v6
+	90      (00000158) invoke-virtual       v6, Lq4/f;->a()V
+	91      (0000015e) iget-object          v6, v6, Lq4/f;->a Landroid/content/Context;
+	92      (00000162) invoke-virtual       v6, Landroid/content/Context;->getPackageName()Ljava/lang/String;
+	93      (00000168) move-result-object   v13
+	94      (0000016a) invoke-static        v5, Lj6/o;->C(Landroid/os/Bundle;)Z
+	95      (00000170) move-result          v6
+	96      (00000172) if-eqz               v6, +006h
+
+J-BB@0x176 : [ J-BB@0x17a ]
+	97      (00000176) sget-object          v6, Lk6/b;->c Lk6/b;
+
+J-BB@0x17a : [ J-BB@0x184 ]
+	98      (0000017a) move-object          v12, v6
+	99      (0000017c) goto                 +4h
+
+J-BB@0x17e : [ J-BB@0x17a ]
+	100     (0000017e) sget-object          v6, Lk6/b;->b Lk6/b;
+	101     (00000182) goto                 -4h
+
+J-BB@0x184 : [ J-BB@0x196 J-BB@0x1c2 ]
+	102     (00000184) const-string         v6, "google.delivered_priority"
+	103     (00000188) invoke-virtual       v5, v6, Landroid/os/BaseBundle;->getString(Ljava/lang/String;)Ljava/lang/String;
+	104     (0000018e) move-result-object   v6
+	105     (00000190) const/4              v7, 2
+	106     (00000192) if-nez               v6, +018h
+
+J-BB@0x196 : [ J-BB@0x1b2 J-BB@0x1b6 ]
+	107     (00000196) const-string         v6, "google.priority_reduced"
+	108     (0000019a) invoke-virtual       v5, v6, Landroid/os/BaseBundle;->getString(Ljava/lang/String;)Ljava/lang/String;
+	109     (000001a0) move-result-object   v6
+	110     (000001a2) const-string         v9, "1"
+	111     (000001a6) invoke-virtual       v9, v6, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	112     (000001ac) move-result          v6
+	113     (000001ae) if-eqz               v6, +004h
+
+J-BB@0x1b2 : [ J-BB@0x1ea ]
+	114     (000001b2) move                 v6, v7
+	115     (000001b4) goto                 +1bh
+
+J-BB@0x1b6 : [ J-BB@0x1c2 ]
+	116     (000001b6) const-string         v6, "google.priority"
+	117     (000001ba) invoke-virtual       v5, v6, Landroid/os/BaseBundle;->getString(Ljava/lang/String;)Ljava/lang/String;
+	118     (000001c0) move-result-object   v6
+
+J-BB@0x1c2 : [ J-BB@0x1d2 J-BB@0x1d6 ]
+	119     (000001c2) const-string         v9, "high"
+	120     (000001c6) invoke-virtual       v9, v6, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	121     (000001cc) move-result          v9
+	122     (000001ce) if-eqz               v9, +004h
+
+J-BB@0x1d2 : [ J-BB@0x1ea ]
+	123     (000001d2) move                 v6, v8
+	124     (000001d4) goto                 +bh
+
+J-BB@0x1d6 : [ J-BB@0x1e6 J-BB@0x1e8 ]
+	125     (000001d6) const-string         v9, "normal"
+	126     (000001da) invoke-virtual       v9, v6, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	127     (000001e0) move-result          v6
+	128     (000001e2) if-eqz               v6, +003h
+
+J-BB@0x1e6 : [ J-BB@0x1b2 ]
+	129     (000001e6) goto                 -1ah
+
+J-BB@0x1e8 : [ J-BB@0x1ea ]
+	130     (000001e8) move                 v6, v2
+
+J-BB@0x1ea : [ J-BB@0x1ee J-BB@0x1f4 ]
+	131     (000001ea) if-ne                v6, v7, +005h
+
+J-BB@0x1ee : [ J-BB@0x1f0 ]
+	132     (000001ee) const/4              v6, 5
+
+J-BB@0x1f0 : [ J-BB@0x200 ]
+	133     (000001f0) move                 v15, v6
+	134     (000001f2) goto                 +7h
+
+J-BB@0x1f4 : [ J-BB@0x1f8 J-BB@0x1fe ]
+	135     (000001f4) if-ne                v6, v8, +005h
+
+J-BB@0x1f8 : [ J-BB@0x1f0 ]
+	136     (000001f8) const/16             v6, 10
+	137     (000001fc) goto                 -6h
+
+J-BB@0x1fe : [ J-BB@0x200 ]
+	138     (000001fe) move                 v15, v2
+
+J-BB@0x200 : [ J-BB@0x210 J-BB@0x21c ]
+	139     (00000200) const-string         v6, "google.message_id"
+	140     (00000204) invoke-virtual       v5, v6, Landroid/os/BaseBundle;->getString(Ljava/lang/String;)Ljava/lang/String;
+	141     (0000020a) move-result-object   v6
+	142     (0000020c) if-nez               v6, +008h
+
+J-BB@0x210 : [ J-BB@0x21c ]
+	143     (00000210) const-string         v6, "message_id"
+	144     (00000214) invoke-virtual       v5, v6, Landroid/os/BaseBundle;->getString(Ljava/lang/String;)Ljava/lang/String;
+	145     (0000021a) move-result-object   v6
+
+J-BB@0x21c : [ J-BB@0x224 J-BB@0x228 ]
+	146     (0000021c) const-string         v9, ""
+	147     (00000220) if-eqz               v6, +004h
+
+J-BB@0x224 : [ J-BB@0x22a ]
+	148     (00000224) move-object          v10, v6
+	149     (00000226) goto                 +2h
+
+J-BB@0x228 : [ J-BB@0x22a ]
+	150     (00000228) move-object          v10, v9
+
+J-BB@0x22a : [ J-BB@0x23a J-BB@0x24c ]
+	151     (0000022a) const-string         v6, "from"
+	152     (0000022e) invoke-virtual       v5, v6, Landroid/os/BaseBundle;->getString(Ljava/lang/String;)Ljava/lang/String;
+	153     (00000234) move-result-object   v6
+	154     (00000236) if-eqz               v6, +00bh
+
+J-BB@0x23a : [ J-BB@0x24a J-BB@0x24c ]
+	155     (0000023a) const-string         v14, "/topics/"
+	156     (0000023e) invoke-virtual       v6, v14, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
+	157     (00000244) move-result          v14
+	158     (00000246) if-eqz               v14, +003h
+
+J-BB@0x24a : [ J-BB@0x24c ]
+	159     (0000024a) move-object          v0, v6
+
+J-BB@0x24c : [ J-BB@0x250 J-BB@0x256 ]
+	160     (0000024c) if-eqz               v0, +005h
+
+J-BB@0x250 : [ J-BB@0x25a ]
+	161     (00000250) move-object/from16   v17, v0
+	162     (00000254) goto                 +3h
+
+J-BB@0x256 : [ J-BB@0x25a ]
+	163     (00000256) move-object/from16   v17, v9
+
+J-BB@0x25a : [ J-BB@0x26a J-BB@0x26e ]
+	164     (0000025a) const-string         v0, "collapse_key"
+	165     (0000025e) invoke-virtual       v5, v0, Landroid/os/BaseBundle;->getString(Ljava/lang/String;)Ljava/lang/String;
+	166     (00000264) move-result-object   v0
+	167     (00000266) if-eqz               v0, +004h
+
+J-BB@0x26a : [ J-BB@0x270 ]
+	168     (0000026a) move-object          v14, v0
+	169     (0000026c) goto                 +2h
+
+J-BB@0x26e : [ J-BB@0x270 ]
+	170     (0000026e) move-object          v14, v9
+
+J-BB@0x270 : [ J-BB@0x280 J-BB@0x286 ]
+	171     (00000270) const-string         v0, "google.c.a.m_l"
+	172     (00000274) invoke-virtual       v5, v0, Landroid/os/BaseBundle;->getString(Ljava/lang/String;)Ljava/lang/String;
+	173     (0000027a) move-result-object   v0
+	174     (0000027c) if-eqz               v0, +005h
+
+J-BB@0x280 : [ J-BB@0x28a ]
+	175     (00000280) move-object/from16   v18, v0
+	176     (00000284) goto                 +3h
+
+J-BB@0x286 : [ J-BB@0x28a ]
+	177     (00000286) move-object/from16   v18, v9
+
+J-BB@0x28a : [ J-BB@0x29a J-BB@0x2a0 ]
+	178     (0000028a) const-string         v0, "google.c.a.c_l"
+	179     (0000028e) invoke-virtual       v5, v0, Landroid/os/BaseBundle;->getString(Ljava/lang/String;)Ljava/lang/String;
+	180     (00000294) move-result-object   v0
+	181     (00000296) if-eqz               v0, +005h
+
+J-BB@0x29a : [ J-BB@0x2a4 ]
+	182     (0000029a) move-object/from16   v19, v0
+	183     (0000029e) goto                 +3h
+
+J-BB@0x2a0 : [ J-BB@0x2a4 ]
+	184     (000002a0) move-object/from16   v19, v9
+
+J-BB@0x2a4 : [ J-BB@0x2b8 J-BB@0x2d6 ]
+	185     (000002a4) const-string         v0, "google.c.sender.id"
+	186     (000002a8) invoke-virtual       v5, v0, Landroid/os/BaseBundle;->containsKey(Ljava/lang/String;)Z
+	187     (000002ae) move-result          v6
+	188     (000002b0) const-wide/16        v20, 0
+	189     (000002b4) if-eqz               v6, +011h
+
+J-BB@0x2b8 : [ J-BB@0x376 ]
+	190     (000002b8) invoke-virtual       v5, v0, Landroid/os/BaseBundle;->getString(Ljava/lang/String;)Ljava/lang/String;
+	191     (000002be) move-result-object   v0
+	192     (000002c0) invoke-static        v0, Ljava/lang/Long;->parseLong(Ljava/lang/String;)J
+	193     (000002c6) move-result-wide     v5
+	194     (000002c8) goto                 +57h
+	2b8:2c7
+	(Ljava/lang/NumberFormatException; -> 2ca J-BB@0x2ca)
+
+J-BB@0x2ca : [ J-BB@0x2d6 ]
+	195     (000002ca) move-exception       v0
+	196     (000002cc) const-string         v5, "error parsing project number"
+	197     (000002d0) invoke-static        v4, v5, v0, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+
+J-BB@0x2d6 : [ J-BB@0x2f0 J-BB@0x306 ]
+	198     (000002d6) invoke-static        Lq4/f;->d()Lq4/f;
+	199     (000002dc) move-result-object   v5
+	200     (000002de) iget-object          v6, v5, Lq4/f;->c Lq4/j;
+	201     (000002e2) invoke-virtual       v5, Lq4/f;->a()V
+	202     (000002e8) iget-object          v0, v6, Lq4/j;->e Ljava/lang/String;
+	203     (000002ec) if-eqz               v0, +00dh
+
+J-BB@0x2f0 : [ J-BB@0x376 ]
+	204     (000002f0) invoke-static        v0, Ljava/lang/Long;->parseLong(Ljava/lang/String;)J
+	205     (000002f6) move-result-wide     v5
+	206     (000002f8) goto                 +3fh
+	2f0:2f7
+	(Ljava/lang/NumberFormatException; -> 2fa J-BB@0x2fa)
+
+J-BB@0x2fa : [ J-BB@0x306 ]
+	207     (000002fa) move-exception       v0
+	208     (000002fc) const-string         v9, "error parsing sender ID"
+	209     (00000300) invoke-static        v4, v9, v0, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+
+J-BB@0x306 : [ J-BB@0x324 J-BB@0x338 ]
+	210     (00000306) invoke-virtual       v5, Lq4/f;->a()V
+	211     (0000030c) iget-object          v0, v6, Lq4/j;->b Ljava/lang/String;
+	212     (00000310) const-string         v5, "1:"
+	213     (00000314) invoke-virtual       v0, v5, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
+	214     (0000031a) move-result          v5
+	215     (0000031c) const-string         v6, "error parsing app ID"
+	216     (00000320) if-nez               v5, +00ch
+
+J-BB@0x324 : [ J-BB@0x376 ]
+	217     (00000324) invoke-static        v0, Ljava/lang/Long;->parseLong(Ljava/lang/String;)J
+	218     (0000032a) move-result-wide     v5
+	219     (0000032c) goto                 +25h
+	324:32b
+	(Ljava/lang/NumberFormatException; -> 32e J-BB@0x32e)
+
+J-BB@0x32e : [ J-BB@0x34a ]
+	220     (0000032e) move-exception       v0
+	221     (00000330) invoke-static        v4, v6, v0, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+	222     (00000336) goto                 +ah
+
+J-BB@0x338 : [ J-BB@0x34a J-BB@0x350 ]
+	223     (00000338) const-string         v5, ":"
+	224     (0000033c) invoke-virtual       v0, v5, Ljava/lang/String;->split(Ljava/lang/String;)[Ljava/lang/String;
+	225     (00000342) move-result-object   v0
+	226     (00000344) array-length         v5, v0
+	227     (00000346) if-ge                v5, v7, +005h
+
+J-BB@0x34a : [ J-BB@0x376 ]
+	228     (0000034a) move-wide/from16     v5, v20
+	229     (0000034e) goto                 +14h
+
+J-BB@0x350 : [ J-BB@0x360 J-BB@0x362 ]
+	230     (00000350) aget-object          v0, v0, v8
+	231     (00000354) invoke-virtual       v0, Ljava/lang/String;->isEmpty()Z
+	232     (0000035a) move-result          v5
+	233     (0000035c) if-eqz               v5, +003h
+
+J-BB@0x360 : [ J-BB@0x34a ]
+	234     (00000360) goto                 -bh
+
+J-BB@0x362 : [ J-BB@0x376 ]
+	235     (00000362) invoke-static        v0, Ljava/lang/Long;->parseLong(Ljava/lang/String;)J
+	236     (00000368) move-result-wide     v5
+	237     (0000036a) goto                 +6h
+	362:369
+	(Ljava/lang/NumberFormatException; -> 36c J-BB@0x36c)
+
+J-BB@0x36c : [ J-BB@0x34a ]
+	238     (0000036c) move-exception       v0
+	239     (0000036e) invoke-static        v4, v6, v0, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+	240     (00000374) goto                 -15h
+
+J-BB@0x376 : [ J-BB@0x37e J-BB@0x382 ]
+	241     (00000376) cmp-long             v0, v5, v20
+	242     (0000037a) if-lez               v0, +004h
+
+J-BB@0x37e : [ J-BB@0x386 ]
+	243     (0000037e) move-wide            v8, v5
+	244     (00000380) goto                 +3h
+
+J-BB@0x382 : [ J-BB@0x386 ]
+	245     (00000382) move-wide/from16     v8, v20
+
+J-BB@0x386 : [ J-BB@0x392 ]
+	246     (00000386) new-instance         v7, Lk6/d;
+	247     (0000038a) invoke-direct/range  v7 ... v19, Lk6/d;-><init>(J Ljava/lang/String; Ljava/lang/String; Lk6/b; Ljava/lang/String; Ljava/lang/String; I I Ljava/lang/String; Ljava/lang/String; Ljava/lang/String;)V
+	248     (00000390) move-object          v0, v7
+
+J-BB@0x392 : [ J-BB@0x396 J-BB@0x398 ]
+	249     (00000392) if-nez               v0, +003h
+
+J-BB@0x396 : [ J-BB@0x432 ]
+	250     (00000396) goto                 +4eh
+
+J-BB@0x398 : [ J-BB@0x432 ]
+	251     (00000398) const-string         v5, "google.product_id"
+	252     (0000039c) const                v6, 111881503
+	253     (000003a2) invoke-virtual       v1, v5, v6, Landroid/content/Intent;->getIntExtra(Ljava/lang/String; I)I
+	254     (000003a8) move-result          v1
+	255     (000003aa) invoke-static        v1, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+	256     (000003b0) move-result-object   v1
+	257     (000003b2) new-instance         v5, Lo2/b;
+	258     (000003b6) invoke-direct        v5, v1, Lo2/b;-><init>(Ljava/lang/Integer;)V
+	259     (000003bc) const-string         v1, "FCM_CLIENT_EVENT_LOGGING"
+	260     (000003c0) const-string         v6, "proto"
+	261     (000003c4) new-instance         v7, Lo2/c;
+	262     (000003c8) invoke-direct        v7, v6, Lo2/c;-><init>(Ljava/lang/String;)V
+	263     (000003ce) new-instance         v6, La5/t;
+	264     (000003d2) const/16             v8, 23
+	265     (000003d6) invoke-direct        v6, v8, La5/t;-><init>(I)V
+	266     (000003dc) check-cast           v3, Lr2/p;
+	267     (000003e0) invoke-virtual       v3, v1, v7, v6, Lr2/p;->a(Ljava/lang/String; Lo2/c; Lo2/e;)La2/b;
+	268     (000003e6) move-result-object   v1
+	269     (000003e8) new-instance         v3, Lk6/e;
+	270     (000003ec) invoke-direct        v3, v0, Lk6/e;-><init>(Lk6/d;)V
+	271     (000003f2) new-instance         v0, Lo2/a;
+	272     (000003f6) sget-object          v6, Lo2/d;->a Lo2/d;
+	273     (000003fa) invoke-direct        v0, v3, v6, v5, Lo2/a;-><init>(Ljava/lang/Object; Lo2/d; Lo2/b;)V
+	274     (00000400) new-instance         v3, Lr2/q;
+	275     (00000404) invoke-direct        v3, v2, Lr2/q;-><init>(I)V
+	276     (0000040a) invoke-virtual       v1, v0, v3, La2/b;->l(Lo2/a; Lo2/h;)V
+	277     (00000410) goto                 +11h
+	398:40f
+	(Ljava/lang/RuntimeException; -> 412 J-BB@0x412)
+
+J-BB@0x412 : [ J-BB@0x432 ]
+	278     (00000412) move-exception       v0
+	279     (00000414) const-string         v1, "Failed to send big query analytics payload."
+	280     (00000418) invoke-static        v4, v1, v0, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+	281     (0000041e) goto                 +ah
+
+J-BB@0x420 : [ J-BB@0x426 ]
+	282     (00000420) move-exception       v0
+	283     (00000422) goto                 +2h
+
+J-BB@0x424 : [ J-BB@0x426 ]
+	284     (00000424) move-exception       v0
+
+J-BB@0x426 : 
+	285     (00000426) new-instance         v1, Ljava/lang/RuntimeException;
+	286     (0000042a) invoke-direct        v1, v0, Ljava/lang/RuntimeException;-><init>(Ljava/lang/Throwable;)V
+	287     (00000430) throw                v1
+
+J-BB@0x432 : 
+	288     (00000432) return-void          
+

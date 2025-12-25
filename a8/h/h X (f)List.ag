@@ -1,0 +1,52 @@
+# La8/h;->X(La8/f;)Ljava/util/List; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:a8.f
+#
+# - return:java.util.List
+
+X-BB@0x0 : [ X-BB@0x1e X-BB@0x24 ]
+	0       (00000000) const-string         v0, "<this>"
+	1       (00000004) invoke-static        v2, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) invoke-interface     v2, La8/f;->iterator()Ljava/util/Iterator;
+	3       (00000010) move-result-object   v2
+	4       (00000012) invoke-interface     v2, Ljava/util/Iterator;->hasNext()Z
+	5       (00000018) move-result          v0
+	6       (0000001a) if-nez               v0, +005h
+
+X-BB@0x1e : 
+	7       (0000001e) sget-object          v2, Li7/n;->a Li7/n;
+	8       (00000022) return-object        v2
+
+X-BB@0x24 : [ X-BB@0x38 X-BB@0x42 ]
+	9       (00000024) invoke-interface     v2, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	10      (0000002a) move-result-object   v0
+	11      (0000002c) invoke-interface     v2, Ljava/util/Iterator;->hasNext()Z
+	12      (00000032) move-result          v1
+	13      (00000034) if-nez               v1, +007h
+
+X-BB@0x38 : 
+	14      (00000038) invoke-static        v0, La/a;->G(Ljava/lang/Object;)Ljava/util/List;
+	15      (0000003e) move-result-object   v2
+	16      (00000040) return-object        v2
+
+X-BB@0x42 : [ X-BB@0x52 ]
+	17      (00000042) new-instance         v1, Ljava/util/ArrayList;
+	18      (00000046) invoke-direct        v1, Ljava/util/ArrayList;-><init>()V
+	19      (0000004c) invoke-virtual       v1, v0, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+X-BB@0x52 : [ X-BB@0x5e X-BB@0x6e ]
+	20      (00000052) invoke-interface     v2, Ljava/util/Iterator;->hasNext()Z
+	21      (00000058) move-result          v0
+	22      (0000005a) if-eqz               v0, +00ah
+
+X-BB@0x5e : [ X-BB@0x52 ]
+	23      (0000005e) invoke-interface     v2, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	24      (00000064) move-result-object   v0
+	25      (00000066) invoke-virtual       v1, v0, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	26      (0000006c) goto                 -dh
+
+X-BB@0x6e : 
+	27      (0000006e) return-object        v1
+

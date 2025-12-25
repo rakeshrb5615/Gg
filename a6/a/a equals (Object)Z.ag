@@ -1,0 +1,41 @@
+# La6/a;->equals(Ljava/lang/Object;)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:java.lang.Object
+#
+# - return:boolean
+
+equals-BB@0x0 : [ equals-BB@0x4 equals-BB@0x6 ]
+	0       (00000000) if-ne                v3, v2, +003h
+
+equals-BB@0x4 : [ equals-BB@0x3a ]
+	1       (00000004) goto                 +1bh
+
+equals-BB@0x6 : [ equals-BB@0xe equals-BB@0x3e ]
+	2       (00000006) instance-of          v0, v3, La6/a;
+	3       (0000000a) if-eqz               v0, +01ah
+
+equals-BB@0xe : [ equals-BB@0x26 equals-BB@0x3e ]
+	4       (0000000e) check-cast           v3, La6/a;
+	5       (00000012) iget-object          v0, v2, La6/a;->a Ljava/lang/String;
+	6       (00000016) iget-object          v1, v3, La6/a;->a Ljava/lang/String;
+	7       (0000001a) invoke-virtual       v0, v1, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	8       (00000020) move-result          v0
+	9       (00000022) if-eqz               v0, +00eh
+
+equals-BB@0x26 : [ equals-BB@0x3a equals-BB@0x3e ]
+	10      (00000026) iget-object          v0, v2, La6/a;->b Ljava/util/ArrayList;
+	11      (0000002a) iget-object          v3, v3, La6/a;->b Ljava/util/ArrayList;
+	12      (0000002e) invoke-virtual       v0, v3, Ljava/util/ArrayList;->equals(Ljava/lang/Object;)Z
+	13      (00000034) move-result          v3
+	14      (00000036) if-eqz               v3, +004h
+
+equals-BB@0x3a : 
+	15      (0000003a) const/4              v3, 1
+	16      (0000003c) return               v3
+
+equals-BB@0x3e : 
+	17      (0000003e) const/4              v3, 0
+	18      (00000040) return               v3
+

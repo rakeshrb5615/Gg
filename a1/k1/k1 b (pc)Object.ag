@@ -1,0 +1,111 @@
+# La1/k1;->b(Lu7/p; Ln7/c;)Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:u7.p
+# - v8:n7.c
+#
+# - return:java.lang.Object
+
+b-BB@0x0 : [ b-BB@0x8 b-BB@0x26 ]
+	0       (00000000) instance-of          v0, v8, La1/i1;
+	1       (00000004) if-eqz               v0, +011h
+
+b-BB@0x8 : [ b-BB@0x1e b-BB@0x26 ]
+	2       (00000008) move-object          v0, v8
+	3       (0000000a) check-cast           v0, La1/i1;
+	4       (0000000e) iget                 v1, v0, La1/i1;->e I
+	5       (00000012) const/high16         v2, -2147483648
+	6       (00000016) and-int              v3, v1, v2
+	7       (0000001a) if-eqz               v3, +006h
+
+b-BB@0x1e : [ b-BB@0x30 ]
+	8       (0000001e) sub-int/2addr        v1, v2
+	9       (00000020) iput                 v1, v0, La1/i1;->e I
+	10      (00000024) goto                 +6h
+
+b-BB@0x26 : [ b-BB@0x30 ]
+	11      (00000026) new-instance         v0, La1/i1;
+	12      (0000002a) invoke-direct        v0, v6, v8, La1/i1;-><init>(La1/k1; Ln7/c;)V
+
+b-BB@0x30 : [ b-BB@0x44 b-BB@0x6c ]
+	13      (00000030) iget-object          v8, v0, La1/i1;->c Ljava/lang/Object;
+	14      (00000034) sget-object          v1, Lm7/a;->a Lm7/a;
+	15      (00000038) iget                 v2, v0, La1/i1;->e I
+	16      (0000003c) const/4              v3, 1
+	17      (0000003e) const/4              v4, 0
+	18      (00000040) if-eqz               v2, +016h
+
+b-BB@0x44 : [ b-BB@0x48 b-BB@0x5c ]
+	19      (00000044) if-ne                v2, v3, +00ch
+
+b-BB@0x48 : [ b-BB@0x50 ]
+	20      (00000048) iget-boolean         v7, v0, La1/i1;->b Z
+	21      (0000004c) iget-object          v0, v0, La1/i1;->a Lm8/c;
+
+b-BB@0x50 : [ b-BB@0xa6 ]
+	22      (00000050) invoke-static        v8, Lc4/b;->e0(Ljava/lang/Object;)V
+	23      (00000056) goto                 +28h
+	50:55
+	(Ljava/lang/Throwable; -> 58 b-BB@0x58)
+
+b-BB@0x58 : [ b-BB@0xba ]
+	24      (00000058) move-exception       v8
+	25      (0000005a) goto                 +30h
+
+b-BB@0x5c : 
+	26      (0000005c) new-instance         v7, Ljava/lang/IllegalStateException;
+	27      (00000060) const-string         v8, "call to 'resume' before 'invoke' with coroutine"
+	28      (00000064) invoke-direct        v7, v8, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	29      (0000006a) throw                v7
+
+b-BB@0x6c : [ b-BB@0x7e ]
+	30      (0000006c) invoke-static        v8, Lc4/b;->e0(Ljava/lang/Object;)V
+	31      (00000072) iget-object          v8, v6, La1/k1;->a Lm8/c;
+	32      (00000076) invoke-virtual       v8, Lm8/c;->e()Z
+	33      (0000007c) move-result          v2
+
+b-BB@0x7e : [ b-BB@0x9e b-BB@0xa0 ]
+	34      (0000007e) invoke-static        v2, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+	35      (00000084) move-result-object   v5
+	36      (00000086) iput-object          v8, v0, La1/i1;->a Lm8/c;
+	37      (0000008a) iput-boolean         v2, v0, La1/i1;->b Z
+	38      (0000008e) iput                 v3, v0, La1/i1;->e I
+	39      (00000092) invoke-interface     v7, v5, v0, Lu7/p;->invoke(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	40      (00000098) move-result-object   v7
+	41      (0000009a) if-ne                v7, v1, +003h
+	7e:99
+	(Ljava/lang/Throwable; -> b2 b-BB@0xb2)
+
+b-BB@0x9e : 
+	42      (0000009e) return-object        v1
+
+b-BB@0xa0 : [ b-BB@0xa6 ]
+	43      (000000a0) move-object          v0, v8
+	44      (000000a2) move-object          v8, v7
+	45      (000000a4) move                 v7, v2
+
+b-BB@0xa6 : [ b-BB@0xaa b-BB@0xb0 ]
+	46      (000000a6) if-eqz               v7, +005h
+
+b-BB@0xaa : [ b-BB@0xb0 ]
+	47      (000000aa) invoke-virtual       v0, v4, Lm8/c;->f(Ljava/lang/Object;)V
+
+b-BB@0xb0 : 
+	48      (000000b0) return-object        v8
+
+b-BB@0xb2 : [ b-BB@0xba ]
+	49      (000000b2) move-exception       v7
+	50      (000000b4) move-object          v0, v8
+	51      (000000b6) move-object          v8, v7
+	52      (000000b8) move                 v7, v2
+
+b-BB@0xba : [ b-BB@0xbe b-BB@0xc4 ]
+	53      (000000ba) if-eqz               v7, +005h
+
+b-BB@0xbe : [ b-BB@0xc4 ]
+	54      (000000be) invoke-virtual       v0, v4, Lm8/c;->f(Ljava/lang/Object;)V
+
+b-BB@0xc4 : 
+	55      (000000c4) throw                v8
+

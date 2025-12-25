@@ -1,0 +1,40 @@
+# La5/j;->d(La5/x;)Lc6/b; [access_flags=public final synchronized]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:a5.x
+#
+# - return:c6.b
+
+d-BB@0x0 : [ d-BB@0x2 ]
+	0       (00000000) monitor-enter        v1
+
+d-BB@0x2 : [ d-BB@0x16 d-BB@0x1a ]
+	1       (00000002) iget-object          v0, v1, La5/j;->c Ljava/util/HashMap;
+	2       (00000006) invoke-virtual       v0, v2, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	3       (0000000c) move-result-object   v2
+	4       (0000000e) check-cast           v2, La5/s;
+	5       (00000012) if-eqz               v2, +004h
+	2:11
+	(Ljava/lang/Throwable; -> 22 d-BB@0x22)
+
+d-BB@0x16 : 
+	6       (00000016) monitor-exit         v1
+	7       (00000018) return-object        v2
+
+d-BB@0x1a : 
+	8       (0000001a) sget-object          v2, La5/j;->h La5/g;
+	9       (0000001e) monitor-exit         v1
+	10      (00000020) return-object        v2
+	1a:1d
+	(Ljava/lang/Throwable; -> 22 d-BB@0x22)
+
+d-BB@0x22 : [ d-BB@0x24 ]
+	11      (00000022) move-exception       v2
+
+d-BB@0x24 : 
+	12      (00000024) monitor-exit         v1
+	13      (00000026) throw                v2
+	24:25
+	(Ljava/lang/Throwable; -> 22 d-BB@0x22)
+

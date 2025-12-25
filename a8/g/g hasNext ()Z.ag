@@ -1,0 +1,64 @@
+# La8/g;->hasNext()Z [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v4
+#
+# - return:boolean
+
+hasNext-BB@0x0 : [ hasNext-BB@0xa hasNext-BB@0x52 ]
+	0       (00000000) iget                 v0, v4, La8/g;->a I
+	1       (00000004) const/4              v1, 0
+	2       (00000006) if-eqz               v0, +026h
+
+hasNext-BB@0xa : [ hasNext-BB@0x12 hasNext-BB@0x32 ]
+	3       (0000000a) const/4              v2, 2
+	4       (0000000c) const/4              v3, 1
+	5       (0000000e) if-eq                v0, v3, +012h
+
+hasNext-BB@0x12 : [ hasNext-BB@0x16 hasNext-BB@0x30 ]
+	6       (00000012) if-eq                v0, v2, +00fh
+
+hasNext-BB@0x16 : [ hasNext-BB@0x1c hasNext-BB@0x30 ]
+	7       (00000016) const/4              v1, 3
+	8       (00000018) if-eq                v0, v1, +00ch
+
+hasNext-BB@0x1c : [ hasNext-BB@0x22 hasNext-BB@0x26 ]
+	9       (0000001c) const/4              v1, 4
+	10      (0000001e) if-ne                v0, v1, +004h
+
+hasNext-BB@0x22 : 
+	11      (00000022) const/4              v0, 0
+	12      (00000024) return               v0
+
+hasNext-BB@0x26 : 
+	13      (00000026) invoke-virtual       v4, La8/g;->b()Ljava/lang/RuntimeException;
+	14      (0000002c) move-result-object   v0
+	15      (0000002e) throw                v0
+
+hasNext-BB@0x30 : 
+	16      (00000030) return               v3
+
+hasNext-BB@0x32 : [ hasNext-BB@0x48 hasNext-BB@0x4e ]
+	17      (00000032) iget-object          v0, v4, La8/g;->c Ljava/util/Iterator;
+	18      (00000036) invoke-static        v0, Lkotlin/jvm/internal/j;->b(Ljava/lang/Object;)V
+	19      (0000003c) invoke-interface     v0, Ljava/util/Iterator;->hasNext()Z
+	20      (00000042) move-result          v0
+	21      (00000044) if-eqz               v0, +005h
+
+hasNext-BB@0x48 : 
+	22      (00000048) iput                 v2, v4, La8/g;->a I
+	23      (0000004c) return               v3
+
+hasNext-BB@0x4e : [ hasNext-BB@0x52 ]
+	24      (0000004e) iput-object          v1, v4, La8/g;->c Ljava/util/Iterator;
+
+hasNext-BB@0x52 : [ hasNext-BB@0x0 ]
+	25      (00000052) const/4              v0, 5
+	26      (00000054) iput                 v0, v4, La8/g;->a I
+	27      (00000058) iget-object          v0, v4, La8/g;->d Ll7/c;
+	28      (0000005c) invoke-static        v0, Lkotlin/jvm/internal/j;->b(Ljava/lang/Object;)V
+	29      (00000062) iput-object          v1, v4, La8/g;->d Ll7/c;
+	30      (00000066) sget-object          v1, Lh7/l;->a Lh7/l;
+	31      (0000006a) invoke-interface     v0, v1, Ll7/c;->resumeWith(Ljava/lang/Object;)V
+	32      (00000070) goto                 -38h
+

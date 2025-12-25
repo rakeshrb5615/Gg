@@ -1,0 +1,84 @@
+# La2/b;->g(I I)I [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:int
+# - v8:int
+#
+# - return:int
+
+g-BB@0x0 : [ g-BB@0x10 ]
+	0       (00000000) iget-object          v0, v6, La2/b;->d Ljava/lang/Object;
+	1       (00000004) check-cast           v0, Ljava/util/ArrayList;
+	2       (00000008) invoke-virtual       v0, Ljava/util/ArrayList;->size()I
+	3       (0000000e) move-result          v1
+
+g-BB@0x10 : [ g-BB@0x14 g-BB@0x82 ]
+	4       (00000010) if-ge                v8, v1, +039h
+
+g-BB@0x14 : [ g-BB@0x2c g-BB@0x50 ]
+	5       (00000014) invoke-virtual       v0, v8, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	6       (0000001a) move-result-object   v2
+	7       (0000001c) check-cast           v2, La2/a;
+	8       (00000020) iget                 v3, v2, La2/a;->a I
+	9       (00000024) const/16             v4, 8
+	10      (00000028) if-ne                v3, v4, +014h
+
+g-BB@0x2c : [ g-BB@0x34 g-BB@0x3a ]
+	11      (0000002c) iget                 v3, v2, La2/a;->b I
+	12      (00000030) if-ne                v3, v7, +005h
+
+g-BB@0x34 : [ g-BB@0x7c ]
+	13      (00000034) iget                 v7, v2, La2/a;->c I
+	14      (00000038) goto                 +22h
+
+g-BB@0x3a : [ g-BB@0x3e g-BB@0x42 ]
+	15      (0000003a) if-ge                v3, v7, +004h
+
+g-BB@0x3e : [ g-BB@0x42 ]
+	16      (0000003e) add-int/lit8         v7, v7, -1
+
+g-BB@0x42 : [ g-BB@0x4a g-BB@0x7c ]
+	17      (00000042) iget                 v2, v2, La2/a;->c I
+	18      (00000046) if-gt                v2, v7, +01bh
+
+g-BB@0x4a : [ g-BB@0x7c ]
+	19      (0000004a) add-int/lit8         v7, v7, 1
+	20      (0000004e) goto                 +17h
+
+g-BB@0x50 : [ g-BB@0x58 g-BB@0x7c ]
+	21      (00000050) iget                 v4, v2, La2/a;->b I
+	22      (00000054) if-gt                v4, v7, +014h
+
+g-BB@0x58 : [ g-BB@0x5e g-BB@0x70 ]
+	23      (00000058) const/4              v5, 2
+	24      (0000005a) if-ne                v3, v5, +00bh
+
+g-BB@0x5e : [ g-BB@0x68 g-BB@0x6c ]
+	25      (0000005e) iget                 v2, v2, La2/a;->c I
+	26      (00000062) add-int/2addr        v4, v2
+	27      (00000064) if-ge                v7, v4, +004h
+
+g-BB@0x68 : 
+	28      (00000068) const/4              v7, -1
+	29      (0000006a) return               v7
+
+g-BB@0x6c : [ g-BB@0x7c ]
+	30      (0000006c) sub-int/2addr        v7, v2
+	31      (0000006e) goto                 +7h
+
+g-BB@0x70 : [ g-BB@0x76 g-BB@0x7c ]
+	32      (00000070) const/4              v4, 1
+	33      (00000072) if-ne                v3, v4, +005h
+
+g-BB@0x76 : [ g-BB@0x7c ]
+	34      (00000076) iget                 v2, v2, La2/a;->c I
+	35      (0000007a) add-int/2addr        v7, v2
+
+g-BB@0x7c : [ g-BB@0x10 ]
+	36      (0000007c) add-int/lit8         v8, v8, 1
+	37      (00000080) goto                 -38h
+
+g-BB@0x82 : 
+	38      (00000082) return               v7
+

@@ -1,0 +1,97 @@
+# La5/z;->l(Ljava/io/InputStream;)Ljava/lang/String; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:java.io.InputStream
+#
+# - return:java.lang.String
+
+l-BB@0x0 : [ l-BB@0xa ]
+	0       (00000000) new-instance         v0, Ljava/io/BufferedInputStream;
+	1       (00000004) invoke-direct        v0, v4, Ljava/io/BufferedInputStream;-><init>(Ljava/io/InputStream;)V
+
+l-BB@0xa : [ l-BB@0x18 ]
+	2       (0000000a) new-instance         v4, Ljava/io/ByteArrayOutputStream;
+	3       (0000000e) invoke-direct        v4, Ljava/io/ByteArrayOutputStream;-><init>()V
+	4       (00000014) const/16             v1, 8192
+	a:13
+	(Ljava/lang/Throwable; -> 5a l-BB@0x5a)
+
+l-BB@0x18 : [ l-BB@0x1c ]
+	5       (00000018) new-array            v1, v1, [B
+	18:4b
+	(Ljava/lang/Throwable; -> 34 l-BB@0x34)
+
+l-BB@0x1c : [ l-BB@0x2a l-BB@0x38 ]
+	6       (0000001c) invoke-virtual       v0, v1, Ljava/io/InputStream;->read([B)I
+	7       (00000022) move-result          v2
+	8       (00000024) const/4              v3, -1
+	9       (00000026) if-eq                v2, v3, +009h
+	18:4b
+	(Ljava/lang/Throwable; -> 34 l-BB@0x34)
+
+l-BB@0x2a : [ l-BB@0x1c ]
+	10      (0000002a) const/4              v3, 0
+	11      (0000002c) invoke-virtual       v4, v1, v3, v2, Ljava/io/ByteArrayOutputStream;->write([B I I)V
+	12      (00000032) goto                 -bh
+	18:4b
+	(Ljava/lang/Throwable; -> 34 l-BB@0x34)
+
+l-BB@0x34 : [ l-BB@0x5e ]
+	13      (00000034) move-exception       v1
+	14      (00000036) goto                 +14h
+	18:4b
+	(Ljava/lang/Throwable; -> 34 l-BB@0x34)
+
+l-BB@0x38 : [ l-BB@0x4c ]
+	15      (00000038) sget-object          v1, Ljava/nio/charset/StandardCharsets;->UTF_8 Ljava/nio/charset/Charset;
+	16      (0000003c) invoke-virtual       v1, Ljava/nio/charset/Charset;->name()Ljava/lang/String;
+	17      (00000042) move-result-object   v1
+	18      (00000044) invoke-virtual       v4, v1, Ljava/io/ByteArrayOutputStream;->toString(Ljava/lang/String;)Ljava/lang/String;
+	19      (0000004a) move-result-object   v1
+	18:4b
+	(Ljava/lang/Throwable; -> 34 l-BB@0x34)
+
+l-BB@0x4c : 
+	20      (0000004c) invoke-virtual       v4, Ljava/io/ByteArrayOutputStream;->close()V
+	21      (00000052) invoke-virtual       v0, Ljava/io/BufferedInputStream;->close()V
+	22      (00000058) return-object        v1
+	4c:51
+	(Ljava/lang/Throwable; -> 5a l-BB@0x5a)
+
+l-BB@0x5a : [ l-BB@0x70 ]
+	23      (0000005a) move-exception       v4
+	24      (0000005c) goto                 +ah
+
+l-BB@0x5e : [ l-BB@0x6e ]
+	25      (0000005e) invoke-virtual       v4, Ljava/io/ByteArrayOutputStream;->close()V
+	26      (00000064) goto                 +5h
+	5e:63
+	(Ljava/lang/Throwable; -> 66 l-BB@0x66)
+
+l-BB@0x66 : [ l-BB@0x68 ]
+	27      (00000066) move-exception       v4
+
+l-BB@0x68 : [ l-BB@0x6e ]
+	28      (00000068) invoke-virtual       v1, v4, Ljava/lang/Throwable;->addSuppressed(Ljava/lang/Throwable;)V
+	68:6f
+	(Ljava/lang/Throwable; -> 5a l-BB@0x5a)
+
+l-BB@0x6e : 
+	29      (0000006e) throw                v1
+	68:6f
+	(Ljava/lang/Throwable; -> 5a l-BB@0x5a)
+
+l-BB@0x70 : [ l-BB@0x80 ]
+	30      (00000070) invoke-virtual       v0, Ljava/io/BufferedInputStream;->close()V
+	31      (00000076) goto                 +5h
+	70:75
+	(Ljava/lang/Throwable; -> 78 l-BB@0x78)
+
+l-BB@0x78 : [ l-BB@0x80 ]
+	32      (00000078) move-exception       v0
+	33      (0000007a) invoke-virtual       v4, v0, Ljava/lang/Throwable;->addSuppressed(Ljava/lang/Throwable;)V
+
+l-BB@0x80 : 
+	34      (00000080) throw                v4
+

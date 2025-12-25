@@ -1,0 +1,88 @@
+# La1/m;->invoke()Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v7
+#
+# - return:java.lang.Object
+
+invoke-BB@0x0 : [ D:invoke-BB@0xa 0:invoke-BB@0xc8 ]
+	0       (00000000) iget                 v0, v7, La1/m;->a I
+	1       (00000004) packed-switch        v0, +0000070h
+
+invoke-BB@0xa : [ invoke-BB@0x34 ]
+	2       (0000000a) iget-object          v0, v7, La1/m;->b La1/g0;
+	3       (0000000e) iget-object          v0, v0, La1/g0;->a La1/l0;
+	4       (00000012) const-string         v1, "There are multiple DataStores active for the same file: "
+	5       (00000016) iget-object          v2, v0, La1/l0;->c Lu7/a;
+	6       (0000001a) invoke-interface     v2, Lu7/a;->invoke()Ljava/lang/Object;
+	7       (00000020) move-result-object   v2
+	8       (00000022) check-cast           v2, Ljava/io/File;
+	9       (00000026) invoke-virtual       v2, Ljava/io/File;->getCanonicalFile()Ljava/io/File;
+	10      (0000002c) move-result-object   v2
+	11      (0000002e) sget-object          v3, La1/l0;->e Ljava/lang/Object;
+	12      (00000032) monitor-enter        v3
+
+invoke-BB@0x34 : [ invoke-BB@0x4c invoke-BB@0x8e ]
+	13      (00000034) invoke-virtual       v2, Ljava/io/File;->getAbsolutePath()Ljava/lang/String;
+	14      (0000003a) move-result-object   v4
+	15      (0000003c) sget-object          v5, La1/l0;->d Ljava/util/LinkedHashSet;
+	16      (00000040) invoke-interface     v5, v4, Ljava/util/Set;->contains(Ljava/lang/Object;)Z
+	17      (00000046) move-result          v6
+	18      (00000048) if-nez               v6, +023h
+	34:5b
+	(Ljava/lang/Throwable; -> 8a invoke-BB@0x8a)
+
+invoke-BB@0x4c : 
+	19      (0000004c) const-string         v1, "path"
+	20      (00000050) invoke-static        v4, v1, Lkotlin/jvm/internal/j;->d(Ljava/lang/Object; Ljava/lang/String;)V
+	21      (00000056) invoke-interface     v5, v4, Ljava/util/Set;->add(Ljava/lang/Object;)Z
+	22      (0000005c) monitor-exit         v3
+	23      (0000005e) new-instance         v1, La1/o0;
+	24      (00000062) iget-object          v3, v0, La1/l0;->a La1/f1;
+	25      (00000066) iget-object          v0, v0, La1/l0;->b Lu7/l;
+	26      (0000006a) invoke-interface     v0, v2, Lu7/l;->invoke(Ljava/lang/Object;)Ljava/lang/Object;
+	27      (00000070) move-result-object   v0
+	28      (00000072) check-cast           v0, La1/s0;
+	29      (00000076) new-instance         v4, La1/k0;
+	30      (0000007a) const/4              v5, 0
+	31      (0000007c) invoke-direct        v4, v2, v5, La1/k0;-><init>(Ljava/lang/Object; I)V
+	32      (00000082) invoke-direct        v1, v2, v3, v0, v4, La1/o0;-><init>(Ljava/io/File; La1/f1; La1/s0; La1/k0;)V
+	33      (00000088) return-object        v1
+
+invoke-BB@0x8a : [ invoke-BB@0xc4 ]
+	34      (0000008a) move-exception       v0
+	35      (0000008c) goto                 +1ch
+
+invoke-BB@0x8e : 
+	36      (0000008e) new-instance         v0, Ljava/lang/StringBuilder;
+	37      (00000092) invoke-direct        v0, v1, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	38      (00000098) invoke-virtual       v0, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	39      (0000009e) const-string         v1, ". You should either maintain your DataStore as a singleton or confirm that there is no two DataStore's active on the same file (by confirming that the scope is cancelled)."
+	40      (000000a2) invoke-virtual       v0, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	41      (000000a8) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	42      (000000ae) move-result-object   v0
+	43      (000000b0) new-instance         v1, Ljava/lang/IllegalStateException;
+	44      (000000b4) invoke-virtual       v0, Ljava/lang/Object;->toString()Ljava/lang/String;
+	45      (000000ba) move-result-object   v0
+	46      (000000bc) invoke-direct        v1, v0, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	47      (000000c2) throw                v1
+	8e:c3
+	(Ljava/lang/Throwable; -> 8a invoke-BB@0x8a)
+
+invoke-BB@0xc4 : 
+	48      (000000c4) monitor-exit         v3
+	49      (000000c6) throw                v0
+
+invoke-BB@0xc8 : 
+	50      (000000c8) iget-object          v0, v7, La1/m;->b La1/g0;
+	51      (000000cc) iget-object          v0, v0, La1/g0;->j Lh7/j;
+	52      (000000d0) invoke-virtual       v0, Lh7/j;->getValue()Ljava/lang/Object;
+	53      (000000d6) move-result-object   v0
+	54      (000000d8) check-cast           v0, La1/o0;
+	55      (000000dc) iget-object          v0, v0, La1/o0;->c La1/s0;
+	56      (000000e0) return-object        v0
+
+invoke-BB@0xe2 : 
+	57      (000000e2) nop                  
+	58      (000000e4) packed-switch-payload 0
+

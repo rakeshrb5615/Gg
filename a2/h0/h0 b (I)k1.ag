@@ -1,0 +1,91 @@
+# La2/h0;->b(I)La2/k1; [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v7
+# - v8:int
+#
+# - return:a2.k1
+
+b-BB@0x0 : [ b-BB@0x16 ]
+	0       (00000000) iget-object          v0, v7, La2/h0;->a Landroidx/recyclerview/widget/RecyclerView;
+	1       (00000004) iget-object          v1, v0, Landroidx/recyclerview/widget/RecyclerView;->f La2/d;
+	2       (00000008) invoke-virtual       v1, La2/d;->u()I
+	3       (0000000e) move-result          v1
+	4       (00000010) const/4              v2, 0
+	5       (00000012) const/4              v3, 0
+	6       (00000014) move-object          v4, v2
+
+b-BB@0x16 : [ b-BB@0x1a b-BB@0x72 ]
+	7       (00000016) if-ge                v3, v1, +02eh
+
+b-BB@0x1a : [ b-BB@0x32 b-BB@0x6c ]
+	8       (0000001a) iget-object          v5, v0, Landroidx/recyclerview/widget/RecyclerView;->f La2/d;
+	9       (0000001e) invoke-virtual       v5, v3, La2/d;->t(I)Landroid/view/View;
+	10      (00000024) move-result-object   v5
+	11      (00000026) invoke-static        v5, Landroidx/recyclerview/widget/RecyclerView;->M(Landroid/view/View;)La2/k1;
+	12      (0000002c) move-result-object   v5
+	13      (0000002e) if-eqz               v5, +01fh
+
+b-BB@0x32 : [ b-BB@0x3e b-BB@0x6c ]
+	14      (00000032) invoke-virtual       v5, La2/k1;->h()Z
+	15      (00000038) move-result          v6
+	16      (0000003a) if-nez               v6, +019h
+
+b-BB@0x3e : [ b-BB@0x46 b-BB@0x48 ]
+	17      (0000003e) iget                 v6, v5, La2/k1;->c I
+	18      (00000042) if-eq                v6, v8, +003h
+
+b-BB@0x46 : [ b-BB@0x6c ]
+	19      (00000046) goto                 +13h
+
+b-BB@0x48 : [ b-BB@0x64 b-BB@0x68 ]
+	20      (00000048) iget-object          v4, v0, Landroidx/recyclerview/widget/RecyclerView;->f La2/d;
+	21      (0000004c) iget-object          v6, v5, La2/k1;->a Landroid/view/View;
+	22      (00000050) iget-object          v4, v4, La2/d;->e Ljava/io/Serializable;
+	23      (00000054) check-cast           v4, Ljava/util/ArrayList;
+	24      (00000058) invoke-virtual       v4, v6, Ljava/util/ArrayList;->contains(Ljava/lang/Object;)Z
+	25      (0000005e) move-result          v4
+	26      (00000060) if-eqz               v4, +004h
+
+b-BB@0x64 : [ b-BB@0x6c ]
+	27      (00000064) move-object          v4, v5
+	28      (00000066) goto                 +3h
+
+b-BB@0x68 : [ b-BB@0x72 ]
+	29      (00000068) move-object          v4, v5
+	30      (0000006a) goto                 +4h
+
+b-BB@0x6c : [ b-BB@0x16 ]
+	31      (0000006c) add-int/lit8         v3, v3, 1
+	32      (00000070) goto                 -2dh
+
+b-BB@0x72 : [ b-BB@0x76 b-BB@0x78 ]
+	33      (00000072) if-nez               v4, +003h
+
+b-BB@0x76 : [ b-BB@0xaa ]
+	34      (00000076) goto                 +1ah
+
+b-BB@0x78 : [ b-BB@0x94 b-BB@0xac ]
+	35      (00000078) iget-object          v8, v0, Landroidx/recyclerview/widget/RecyclerView;->f La2/d;
+	36      (0000007c) iget-object          v0, v4, La2/k1;->a Landroid/view/View;
+	37      (00000080) iget-object          v8, v8, La2/d;->e Ljava/io/Serializable;
+	38      (00000084) check-cast           v8, Ljava/util/ArrayList;
+	39      (00000088) invoke-virtual       v8, v0, Ljava/util/ArrayList;->contains(Ljava/lang/Object;)Z
+	40      (0000008e) move-result          v8
+	41      (00000090) if-eqz               v8, +00eh
+
+b-BB@0x94 : [ b-BB@0x9c b-BB@0xaa ]
+	42      (00000094) sget-boolean         v8, Landroidx/recyclerview/widget/RecyclerView;->G0 Z
+	43      (00000098) if-eqz               v8, +009h
+
+b-BB@0x9c : [ b-BB@0xaa ]
+	44      (0000009c) const-string         v8, "RecyclerView"
+	45      (000000a0) const-string         v0, "assuming view holder cannot be find because it is hidden"
+	46      (000000a4) invoke-static        v8, v0, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String;)I
+
+b-BB@0xaa : 
+	47      (000000aa) return-object        v2
+
+b-BB@0xac : 
+	48      (000000ac) return-object        v4
+

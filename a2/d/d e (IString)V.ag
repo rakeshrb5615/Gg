@@ -1,0 +1,69 @@
+# La2/d;->e(I Ljava/lang/String;)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v8
+# - v9:int
+# - v10:java.lang.String
+#
+# - return:void
+
+e-BB@0x0 : [ e-BB@0x24 e-BB@0x9a ]
+	0       (00000000) iget-object          v0, v8, La2/d;->f Ljava/lang/Object;
+	1       (00000004) check-cast           v0, Ljava/lang/String;
+	2       (00000008) invoke-virtual       v0, Ljava/lang/String;->length()I
+	3       (0000000e) move-result          v1
+	4       (00000010) sub-int/2addr        v1, v9
+	5       (00000012) invoke-virtual       v10, Ljava/lang/String;->length()I
+	6       (00000018) move-result          v2
+	7       (0000001a) const/4              v3, 0
+	8       (0000001c) const/4              v4, 6
+	9       (0000001e) const/4              v5, 0
+	10      (00000020) if-lt                v1, v2, +03dh
+
+e-BB@0x24 : [ e-BB@0x2e ]
+	11      (00000024) invoke-virtual       v10, Ljava/lang/String;->length()I
+	12      (0000002a) move-result          v1
+	13      (0000002c) move                 v2, v5
+
+e-BB@0x2e : [ e-BB@0x32 e-BB@0x8a ]
+	14      (0000002e) if-ge                v2, v1, +02eh
+
+e-BB@0x32 : [ e-BB@0x4e e-BB@0x54 ]
+	15      (00000032) invoke-virtual       v10, v2, Ljava/lang/String;->charAt(I)C
+	16      (00000038) move-result          v6
+	17      (0000003a) add-int              v7, v9, v2
+	18      (0000003e) invoke-virtual       v0, v7, Ljava/lang/String;->charAt(I)C
+	19      (00000044) move-result          v7
+	20      (00000046) or-int/lit8          v7, v7, 32
+	21      (0000004a) if-ne                v6, v7, +005h
+
+e-BB@0x4e : [ e-BB@0x2e ]
+	22      (0000004e) add-int/lit8         v2, v2, 1
+	23      (00000052) goto                 -12h
+
+e-BB@0x54 : 
+	24      (00000054) new-instance         v9, Ljava/lang/StringBuilder;
+	25      (00000058) const-string         v10, "Expected valid boolean literal prefix, but had '"
+	26      (0000005c) invoke-direct        v9, v10, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	27      (00000062) invoke-virtual       v8, La2/d;->j()Ljava/lang/String;
+	28      (00000068) move-result-object   v10
+	29      (0000006a) invoke-virtual       v9, v10, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	30      (00000070) const/16             v10, 39
+	31      (00000074) invoke-virtual       v9, v10, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+	32      (0000007a) invoke-virtual       v9, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	33      (00000080) move-result-object   v9
+	34      (00000082) invoke-static        v8, v9, v5, v4, La2/d;->n(La2/d; Ljava/lang/String; I I)V
+	35      (00000088) throw                v3
+
+e-BB@0x8a : 
+	36      (0000008a) invoke-virtual       v10, Ljava/lang/String;->length()I
+	37      (00000090) move-result          v10
+	38      (00000092) add-int/2addr        v10, v9
+	39      (00000094) iput                 v10, v8, La2/d;->b I
+	40      (00000098) return-void          
+
+e-BB@0x9a : 
+	41      (0000009a) const-string         v9, "Unexpected end of boolean literal"
+	42      (0000009e) invoke-static        v8, v9, v5, v4, La2/d;->n(La2/d; Ljava/lang/String; I I)V
+	43      (000000a4) throw                v3
+

@@ -1,0 +1,30 @@
+# La1/p1;->a(La1/g0;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:a1.g0
+#
+# - return:void
+
+a-BB@0x0 : [ a-BB@0x8 a-BB@0x18 ]
+	0       (00000000) iget-object          v0, v1, La1/p1;->b La1/g0;
+	1       (00000004) if-eq                v0, v2, +00ah
+
+a-BB@0x8 : [ a-BB@0x10 a-BB@0x16 ]
+	2       (00000008) iget-object          v0, v1, La1/p1;->a La1/p1;
+	3       (0000000c) if-eqz               v0, +005h
+
+a-BB@0x10 : [ a-BB@0x16 ]
+	4       (00000010) invoke-virtual       v0, v2, La1/p1;->a(La1/g0;)V
+
+a-BB@0x16 : 
+	5       (00000016) return-void          
+
+a-BB@0x18 : 
+	6       (00000018) new-instance         v2, Ljava/lang/IllegalStateException;
+	7       (0000001c) const-string         v0, "Calling updateData inside updateData on the same DataStore instance is not supported
+since updates made in the parent updateData call will not be visible to the nested
+updateData call. See https://issuetracker.google.com/issues/241760537 for details."
+	8       (00000020) invoke-direct        v2, v0, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	9       (00000026) throw                v2
+

@@ -1,0 +1,29 @@
+# La1/c1;->onEvent(I Ljava/lang/String;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:int
+# - v3:java.lang.String
+#
+# - return:void
+
+onEvent-BB@0x0 : [ onEvent-BB@0xc ]
+	0       (00000000) iget-object          v2, v1, La1/c1;->a Ljava/util/concurrent/CopyOnWriteArrayList;
+	1       (00000004) invoke-interface     v2, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
+	2       (0000000a) move-result-object   v2
+
+onEvent-BB@0xc : [ onEvent-BB@0x18 onEvent-BB@0x2c ]
+	3       (0000000c) invoke-interface     v2, Ljava/util/Iterator;->hasNext()Z
+	4       (00000012) move-result          v0
+	5       (00000014) if-eqz               v0, +00ch
+
+onEvent-BB@0x18 : [ onEvent-BB@0xc ]
+	6       (00000018) invoke-interface     v2, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	7       (0000001e) move-result-object   v0
+	8       (00000020) check-cast           v0, Lu7/l;
+	9       (00000024) invoke-interface     v0, v3, Lu7/l;->invoke(Ljava/lang/Object;)Ljava/lang/Object;
+	10      (0000002a) goto                 -fh
+
+onEvent-BB@0x2c : 
+	11      (0000002c) return-void          
+

@@ -1,0 +1,31 @@
+# La8/d;->next()Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v2
+#
+# - return:java.lang.Object
+
+next-BB@0x0 : [ next-BB@0x8 next-BB@0xe ]
+	0       (00000000) iget                 v0, v2, La8/d;->b I
+	1       (00000004) if-gez               v0, +005h
+
+next-BB@0x8 : [ next-BB@0xe ]
+	2       (00000008) invoke-virtual       v2, La8/d;->b()V
+
+next-BB@0xe : [ next-BB@0x16 next-BB@0x2c ]
+	3       (0000000e) iget                 v0, v2, La8/d;->b I
+	4       (00000012) if-eqz               v0, +00dh
+
+next-BB@0x16 : 
+	5       (00000016) iget-object          v0, v2, La8/d;->a Ljava/lang/Object;
+	6       (0000001a) const-string         v1, "null cannot be cast to non-null type T of kotlin.sequences.GeneratorSequence"
+	7       (0000001e) invoke-static        v0, v1, Lkotlin/jvm/internal/j;->c(Ljava/lang/Object; Ljava/lang/String;)V
+	8       (00000024) const/4              v1, -1
+	9       (00000026) iput                 v1, v2, La8/d;->b I
+	10      (0000002a) return-object        v0
+
+next-BB@0x2c : 
+	11      (0000002c) new-instance         v0, Ljava/util/NoSuchElementException;
+	12      (00000030) invoke-direct        v0, Ljava/util/NoSuchElementException;-><init>()V
+	13      (00000036) throw                v0
+

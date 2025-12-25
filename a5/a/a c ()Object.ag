@@ -1,0 +1,94 @@
+# La5/a;->c()Ljava/lang/Object; [access_flags=public]
+#
+# Parameters:
+# local registers: v0...v6
+#
+# - return:java.lang.Object
+
+c-BB@0x0 : [ D:c-BB@0xe 26:c-BB@0x54 ]
+	0       (00000000) iget                 v0, v6, La5/a;->a I
+	1       (00000004) iget-object          v1, v6, La5/a;->b Ljava/lang/Object;
+	2       (00000008) packed-switch        v0, +0000076h
+
+c-BB@0xe : [ c-BB@0x12 ]
+	3       (0000000e) check-cast           v1, Ljava/lang/Class;
+
+c-BB@0x12 : 
+	4       (00000012) sget-object          v0, Ly6/v;->a Ly6/v;
+	5       (00000016) invoke-virtual       v0, v1, Ly6/v;->a(Ljava/lang/Class;)Ljava/lang/Object;
+	6       (0000001c) move-result-object   v0
+	7       (0000001e) return-object        v0
+	12:1d
+	(Ljava/lang/Exception; -> 20 c-BB@0x20)
+
+c-BB@0x20 : 
+	8       (00000020) move-exception       v0
+	9       (00000022) new-instance         v2, Ljava/lang/RuntimeException;
+	10      (00000026) new-instance         v3, Ljava/lang/StringBuilder;
+	11      (0000002a) const-string         v4, "Unable to create instance of "
+	12      (0000002e) invoke-direct        v3, v4, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	13      (00000034) invoke-virtual       v3, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	14      (0000003a) const-string         v1, ". Registering an InstanceCreator or a TypeAdapter for this type, or adding a no-args constructor may fix this problem."
+	15      (0000003e) invoke-virtual       v3, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	16      (00000044) invoke-virtual       v3, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	17      (0000004a) move-result-object   v1
+	18      (0000004c) invoke-direct        v2, v1, v0, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	19      (00000052) throw                v2
+
+c-BB@0x54 : [ c-BB@0x62 ]
+	20      (00000054) check-cast           v1, Ljava/lang/reflect/Constructor;
+	21      (00000058) const-string         v0, "' with no args"
+	22      (0000005c) const-string         v2, "Failed to invoke constructor '"
+	23      (00000060) const/4              v3, 0
+
+c-BB@0x62 : 
+	24      (00000062) invoke-virtual       v1, v3, Ljava/lang/reflect/Constructor;->newInstance([Ljava/lang/Object;)Ljava/lang/Object;
+	25      (00000068) move-result-object   v0
+	26      (0000006a) return-object        v0
+	62:69
+	(Ljava/lang/InstantiationException; -> be c-BB@0xbe)
+	(Ljava/lang/reflect/InvocationTargetException; -> 82 c-BB@0x82)
+	(Ljava/lang/IllegalAccessException; -> 6c c-BB@0x6c)
+
+c-BB@0x6c : 
+	27      (0000006c) move-exception       v0
+	28      (0000006e) sget-object          v1, Lb7/c;->a Lq4/b;
+	29      (00000072) new-instance         v1, Ljava/lang/RuntimeException;
+	30      (00000076) const-string         v2, "Unexpected IllegalAccessException occurred (Gson 2.13.2). Certain ReflectionAccessFilter features require Java >= 9 to work correctly. If you are not using ReflectionAccessFilter, report this to the Gson maintainers."
+	31      (0000007a) invoke-direct        v1, v2, v0, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	32      (00000080) throw                v1
+
+c-BB@0x82 : 
+	33      (00000082) move-exception       v3
+	34      (00000084) new-instance         v4, Ljava/lang/RuntimeException;
+	35      (00000088) new-instance         v5, Ljava/lang/StringBuilder;
+	36      (0000008c) invoke-direct        v5, v2, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	37      (00000092) invoke-static        v1, Lb7/c;->b(Ljava/lang/reflect/Constructor;)Ljava/lang/String;
+	38      (00000098) move-result-object   v1
+	39      (0000009a) invoke-virtual       v5, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	40      (000000a0) invoke-virtual       v5, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	41      (000000a6) invoke-virtual       v5, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	42      (000000ac) move-result-object   v0
+	43      (000000ae) invoke-virtual       v3, Ljava/lang/reflect/InvocationTargetException;->getCause()Ljava/lang/Throwable;
+	44      (000000b4) move-result-object   v1
+	45      (000000b6) invoke-direct        v4, v0, v1, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	46      (000000bc) throw                v4
+
+c-BB@0xbe : 
+	47      (000000be) move-exception       v3
+	48      (000000c0) new-instance         v4, Ljava/lang/RuntimeException;
+	49      (000000c4) new-instance         v5, Ljava/lang/StringBuilder;
+	50      (000000c8) invoke-direct        v5, v2, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	51      (000000ce) invoke-static        v1, Lb7/c;->b(Ljava/lang/reflect/Constructor;)Ljava/lang/String;
+	52      (000000d4) move-result-object   v1
+	53      (000000d6) invoke-virtual       v5, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	54      (000000dc) invoke-virtual       v5, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	55      (000000e2) invoke-virtual       v5, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	56      (000000e8) move-result-object   v0
+	57      (000000ea) invoke-direct        v4, v0, v3, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	58      (000000f0) throw                v4
+
+c-BB@0xf2 : 
+	59      (000000f2) nop                  
+	60      (000000f4) packed-switch-payload 1a
+

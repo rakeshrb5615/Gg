@@ -1,0 +1,26 @@
+# La8/a;->iterator()Ljava/util/Iterator; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v2
+#
+# - return:java.util.Iterator
+
+iterator-BB@0x0 : [ iterator-BB@0x16 iterator-BB@0x20 ]
+	0       (00000000) iget-object          v0, v2, La8/a;->a Ljava/util/concurrent/atomic/AtomicReference;
+	1       (00000004) const/4              v1, 0
+	2       (00000006) invoke-virtual       v0, v1, Ljava/util/concurrent/atomic/AtomicReference;->getAndSet(Ljava/lang/Object;)Ljava/lang/Object;
+	3       (0000000c) move-result-object   v0
+	4       (0000000e) check-cast           v0, La8/f;
+	5       (00000012) if-eqz               v0, +007h
+
+iterator-BB@0x16 : 
+	6       (00000016) invoke-interface     v0, La8/f;->iterator()Ljava/util/Iterator;
+	7       (0000001c) move-result-object   v0
+	8       (0000001e) return-object        v0
+
+iterator-BB@0x20 : 
+	9       (00000020) new-instance         v0, Ljava/lang/IllegalStateException;
+	10      (00000024) const-string         v1, "This sequence can be consumed only once."
+	11      (00000028) invoke-direct        v0, v1, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	12      (0000002e) throw                v0
+

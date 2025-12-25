@@ -1,0 +1,103 @@
+# La1/k0;->invoke()Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v6
+#
+# - return:java.lang.Object
+
+invoke-BB@0x0 : [ D:invoke-BB@0xa 0:invoke-BB@0xdc 1:invoke-BB@0xc8 ]
+	0       (00000000) iget                 v0, v6, La1/k0;->a I
+	1       (00000004) packed-switch        v0, +0000084h
+
+invoke-BB@0xa : [ invoke-BB@0x4a invoke-BB@0x4c ]
+	2       (0000000a) iget-object          v0, v6, La1/k0;->b Ljava/lang/Object;
+	3       (0000000e) check-cast           v0, Lc1/a;
+	4       (00000012) invoke-virtual       v0, Lc1/a;->invoke()Ljava/lang/Object;
+	5       (00000018) move-result-object   v0
+	6       (0000001a) check-cast           v0, Ljava/io/File;
+	7       (0000001e) invoke-virtual       v0, Ljava/io/File;->getName()Ljava/lang/String;
+	8       (00000024) move-result-object   v1
+	9       (00000026) const-string         v2, "getName(...)"
+	10      (0000002a) invoke-static        v1, v2, Lkotlin/jvm/internal/j;->d(Ljava/lang/Object; Ljava/lang/String;)V
+	11      (00000030) const-string         v2, ""
+	12      (00000034) const/4              v3, 0
+	13      (00000036) const/4              v4, 6
+	14      (00000038) const/16             v5, 46
+	15      (0000003c) invoke-static        v1, v5, v3, v4, Lb8/i;->z0(Ljava/lang/String; C I I)I
+	16      (00000042) move-result          v3
+	17      (00000044) const/4              v4, -1
+	18      (00000046) if-ne                v3, v4, +003h
+
+invoke-BB@0x4a : [ invoke-BB@0x6a ]
+	19      (0000004a) goto                 +10h
+
+invoke-BB@0x4c : [ invoke-BB@0x6a ]
+	20      (0000004c) add-int/lit8         v3, v3, 1
+	21      (00000050) invoke-virtual       v1, Ljava/lang/String;->length()I
+	22      (00000056) move-result          v2
+	23      (00000058) invoke-virtual       v1, v3, v2, Ljava/lang/String;->substring(I I)Ljava/lang/String;
+	24      (0000005e) move-result-object   v2
+	25      (00000060) const-string         v1, "substring(...)"
+	26      (00000064) invoke-static        v2, v1, Lkotlin/jvm/internal/j;->d(Ljava/lang/Object; Ljava/lang/String;)V
+
+invoke-BB@0x6a : [ invoke-BB@0x7a invoke-BB@0x8e ]
+	27      (0000006a) const-string         v1, "preferences_pb"
+	28      (0000006e) invoke-virtual       v2, v1, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+	29      (00000074) move-result          v1
+	30      (00000076) if-eqz               v1, +00ch
+
+invoke-BB@0x7a : 
+	31      (0000007a) invoke-virtual       v0, Ljava/io/File;->getAbsoluteFile()Ljava/io/File;
+	32      (00000080) move-result-object   v0
+	33      (00000082) const-string         v1, "file.absoluteFile"
+	34      (00000086) invoke-static        v0, v1, Lkotlin/jvm/internal/j;->d(Ljava/lang/Object; Ljava/lang/String;)V
+	35      (0000008c) return-object        v0
+
+invoke-BB@0x8e : 
+	36      (0000008e) new-instance         v1, Ljava/lang/StringBuilder;
+	37      (00000092) const-string         v2, "File extension for file: "
+	38      (00000096) invoke-direct        v1, v2, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	39      (0000009c) invoke-virtual       v1, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	40      (000000a2) const-string         v0, " does not match required extension for Preferences file: preferences_pb"
+	41      (000000a6) invoke-virtual       v1, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	42      (000000ac) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	43      (000000b2) move-result-object   v0
+	44      (000000b4) new-instance         v1, Ljava/lang/IllegalStateException;
+	45      (000000b8) invoke-virtual       v0, Ljava/lang/Object;->toString()Ljava/lang/String;
+	46      (000000be) move-result-object   v0
+	47      (000000c0) invoke-direct        v1, v0, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	48      (000000c6) throw                v1
+
+invoke-BB@0xc8 : 
+	49      (000000c8) iget-object          v0, v6, La1/k0;->b Ljava/lang/Object;
+	50      (000000cc) check-cast           v0, Ld8/p0;
+	51      (000000d0) invoke-interface     v0, Ld8/p0;->a()V
+	52      (000000d6) sget-object          v0, Lh7/l;->a Lh7/l;
+	53      (000000da) return-object        v0
+
+invoke-BB@0xdc : [ invoke-BB@0xea ]
+	54      (000000dc) sget-object          v0, La1/l0;->e Ljava/lang/Object;
+	55      (000000e0) iget-object          v1, v6, La1/k0;->b Ljava/lang/Object;
+	56      (000000e4) check-cast           v1, Ljava/io/File;
+	57      (000000e8) monitor-enter        v0
+
+invoke-BB@0xea : 
+	58      (000000ea) sget-object          v2, La1/l0;->d Ljava/util/LinkedHashSet;
+	59      (000000ee) invoke-virtual       v1, Ljava/io/File;->getAbsolutePath()Ljava/lang/String;
+	60      (000000f4) move-result-object   v1
+	61      (000000f6) invoke-interface     v2, v1, Ljava/util/Set;->remove(Ljava/lang/Object;)Z
+	62      (000000fc) monitor-exit         v0
+	63      (000000fe) sget-object          v0, Lh7/l;->a Lh7/l;
+	64      (00000102) return-object        v0
+	ea:fb
+	(Ljava/lang/Throwable; -> 104 invoke-BB@0x104)
+
+invoke-BB@0x104 : 
+	65      (00000104) move-exception       v1
+	66      (00000106) monitor-exit         v0
+	67      (00000108) throw                v1
+
+invoke-BB@0x10a : 
+	68      (0000010a) nop                  
+	69      (0000010c) packed-switch-payload 0 1
+

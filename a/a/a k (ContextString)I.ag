@@ -1,0 +1,139 @@
+# La/a;->k(Landroid/content/Context; Ljava/lang/String;)I [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v5
+# - v6:android.content.Context
+# - v7:java.lang.String
+#
+# - return:int
+
+k-BB@0x0 : [ k-BB@0x26 k-BB@0x28 ]
+	0       (00000000) invoke-static        Landroid/os/Process;->myPid()I
+	1       (00000006) move-result          v0
+	2       (00000008) invoke-static        Landroid/os/Process;->myUid()I
+	3       (0000000e) move-result          v1
+	4       (00000010) invoke-virtual       v6, Landroid/content/Context;->getPackageName()Ljava/lang/String;
+	5       (00000016) move-result-object   v2
+	6       (00000018) invoke-virtual       v6, v7, v0, v1, Landroid/content/Context;->checkPermission(Ljava/lang/String; I I)I
+	7       (0000001e) move-result          v0
+	8       (00000020) const/4              v3, -1
+	9       (00000022) if-ne                v0, v3, +003h
+
+k-BB@0x26 : [ k-BB@0x60 ]
+	10      (00000026) goto                 +1dh
+
+k-BB@0x28 : [ k-BB@0x36 k-BB@0x3a ]
+	11      (00000028) invoke-static        v7, Landroid/app/AppOpsManager;->permissionToOp(Ljava/lang/String;)Ljava/lang/String;
+	12      (0000002e) move-result-object   v7
+	13      (00000030) const/4              v0, 0
+	14      (00000032) if-nez               v7, +004h
+
+k-BB@0x36 : [ k-BB@0x106 ]
+	15      (00000036) goto/16              +068h
+
+k-BB@0x3a : [ k-BB@0x3e k-BB@0x62 ]
+	16      (0000003a) if-nez               v2, +014h
+
+k-BB@0x3e : [ k-BB@0x52 k-BB@0x60 ]
+	17      (0000003e) invoke-virtual       v6, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
+	18      (00000044) move-result-object   v2
+	19      (00000046) invoke-virtual       v2, v1, Landroid/content/pm/PackageManager;->getPackagesForUid(I)[Ljava/lang/String;
+	20      (0000004c) move-result-object   v2
+	21      (0000004e) if-eqz               v2, +009h
+
+k-BB@0x52 : [ k-BB@0x58 k-BB@0x5a ]
+	22      (00000052) array-length         v4, v2
+	23      (00000054) if-gtz               v4, +003h
+
+k-BB@0x58 : [ k-BB@0x60 ]
+	24      (00000058) goto                 +4h
+
+k-BB@0x5a : [ k-BB@0x62 ]
+	25      (0000005a) aget-object          v2, v2, v0
+	26      (0000005e) goto                 +2h
+
+k-BB@0x60 : 
+	27      (00000060) return               v3
+
+k-BB@0x62 : [ k-BB@0x7a k-BB@0xee ]
+	28      (00000062) invoke-static        Landroid/os/Process;->myUid()I
+	29      (00000068) move-result          v3
+	30      (0000006a) invoke-virtual       v6, Landroid/content/Context;->getPackageName()Ljava/lang/String;
+	31      (00000070) move-result-object   v4
+	32      (00000072) const-class          v5, Landroid/app/AppOpsManager;
+	33      (00000076) if-ne                v3, v1, +03ch
+
+k-BB@0x7a : [ k-BB@0x86 k-BB@0xee ]
+	34      (0000007a) invoke-static        v4, v2, Ljava/util/Objects;->equals(Ljava/lang/Object; Ljava/lang/Object;)Z
+	35      (00000080) move-result          v3
+	36      (00000082) if-eqz               v3, +036h
+
+k-BB@0x86 : [ k-BB@0x92 k-BB@0xd8 ]
+	37      (00000086) sget                 v3, Landroid/os/Build$VERSION;->SDK_INT I
+	38      (0000008a) const/16             v4, 29
+	39      (0000008e) if-lt                v3, v4, +025h
+
+k-BB@0x92 : [ k-BB@0xac k-BB@0xb0 ]
+	40      (00000092) invoke-virtual       v6, v5, Landroid/content/Context;->getSystemService(Ljava/lang/Class;)Ljava/lang/Object;
+	41      (00000098) move-result-object   v3
+	42      (0000009a) check-cast           v3, Landroid/app/AppOpsManager;
+	43      (0000009e) invoke-static        Landroid/os/Binder;->getCallingUid()I
+	44      (000000a4) move-result          v4
+	45      (000000a6) const/4              v5, 1
+	46      (000000a8) if-nez               v3, +004h
+
+k-BB@0xac : [ k-BB@0xb8 ]
+	47      (000000ac) move                 v2, v5
+	48      (000000ae) goto                 +5h
+
+k-BB@0xb0 : [ k-BB@0xb8 ]
+	49      (000000b0) invoke-virtual       v3, v7, v4, v2, Landroid/app/AppOpsManager;->checkOpNoThrow(Ljava/lang/String; I Ljava/lang/String;)I
+	50      (000000b6) move-result          v2
+
+k-BB@0xb8 : [ k-BB@0xbc k-BB@0xbe ]
+	51      (000000b8) if-eqz               v2, +003h
+
+k-BB@0xbc : [ k-BB@0x102 ]
+	52      (000000bc) goto                 +23h
+
+k-BB@0xbe : [ k-BB@0xca k-BB@0xcc ]
+	53      (000000be) invoke-static        v6, Ld0/e;->a(Landroid/content/Context;)Ljava/lang/String;
+	54      (000000c4) move-result-object   v6
+	55      (000000c6) if-nez               v3, +003h
+
+k-BB@0xca : [ k-BB@0xd4 ]
+	56      (000000ca) goto                 +5h
+
+k-BB@0xcc : [ k-BB@0xd4 ]
+	57      (000000cc) invoke-virtual       v3, v7, v1, v6, Landroid/app/AppOpsManager;->checkOpNoThrow(Ljava/lang/String; I Ljava/lang/String;)I
+	58      (000000d2) move-result          v5
+
+k-BB@0xd4 : [ k-BB@0x102 ]
+	59      (000000d4) move                 v2, v5
+	60      (000000d6) goto                 +16h
+
+k-BB@0xd8 : [ k-BB@0x102 ]
+	61      (000000d8) invoke-virtual       v6, v5, Landroid/content/Context;->getSystemService(Ljava/lang/Class;)Ljava/lang/Object;
+	62      (000000de) move-result-object   v6
+	63      (000000e0) check-cast           v6, Landroid/app/AppOpsManager;
+	64      (000000e4) invoke-virtual       v6, v7, v2, Landroid/app/AppOpsManager;->noteProxyOpNoThrow(Ljava/lang/String; Ljava/lang/String;)I
+	65      (000000ea) move-result          v2
+	66      (000000ec) goto                 +bh
+
+k-BB@0xee : [ k-BB@0x102 ]
+	67      (000000ee) invoke-virtual       v6, v5, Landroid/content/Context;->getSystemService(Ljava/lang/Class;)Ljava/lang/Object;
+	68      (000000f4) move-result-object   v6
+	69      (000000f6) check-cast           v6, Landroid/app/AppOpsManager;
+	70      (000000fa) invoke-virtual       v6, v7, v2, Landroid/app/AppOpsManager;->noteProxyOpNoThrow(Ljava/lang/String; Ljava/lang/String;)I
+	71      (00000100) move-result          v2
+
+k-BB@0x102 : [ k-BB@0x106 k-BB@0x108 ]
+	72      (00000102) if-nez               v2, +003h
+
+k-BB@0x106 : 
+	73      (00000106) return               v0
+
+k-BB@0x108 : 
+	74      (00000108) const/4              v6, -2
+	75      (0000010a) return               v6
+
