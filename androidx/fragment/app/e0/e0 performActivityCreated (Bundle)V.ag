@@ -1,0 +1,75 @@
+# Landroidx/fragment/app/e0;->performActivityCreated(Landroid/os/Bundle;)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:android.os.Bundle
+#
+# - return:void
+
+performActivityCreated-BB@0x0 : [ performActivityCreated-BB@0x24 performActivityCreated-BB@0xa0 ]
+	0       (00000000) iget-object          v0, v3, Landroidx/fragment/app/e0;->mChildFragmentManager Landroidx/fragment/app/b1;
+	1       (00000004) invoke-virtual       v0, Landroidx/fragment/app/b1;->M()V
+	2       (0000000a) const/4              v0, 3
+	3       (0000000c) iput                 v0, v3, Landroidx/fragment/app/e0;->mState I
+	4       (00000010) const/4              v1, 0
+	5       (00000012) iput-boolean         v1, v3, Landroidx/fragment/app/e0;->mCalled Z
+	6       (00000016) invoke-virtual       v3, v4, Landroidx/fragment/app/e0;->onActivityCreated(Landroid/os/Bundle;)V
+	7       (0000001c) iget-boolean         v4, v3, Landroidx/fragment/app/e0;->mCalled Z
+	8       (00000020) if-eqz               v4, +040h
+
+performActivityCreated-BB@0x24 : [ performActivityCreated-BB@0x30 performActivityCreated-BB@0x56 ]
+	9       (00000024) invoke-static        v0, Landroidx/fragment/app/b1;->H(I)Z
+	10      (0000002a) move-result          v4
+	11      (0000002c) if-eqz               v4, +015h
+
+performActivityCreated-BB@0x30 : [ performActivityCreated-BB@0x56 ]
+	12      (00000030) new-instance         v4, Ljava/lang/StringBuilder;
+	13      (00000034) const-string         v0, "moveto RESTORE_VIEW_STATE: "
+	14      (00000038) invoke-direct        v4, v0, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	15      (0000003e) invoke-virtual       v4, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	16      (00000044) invoke-virtual       v4, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	17      (0000004a) move-result-object   v4
+	18      (0000004c) const-string         v0, "FragmentManager"
+	19      (00000050) invoke-static        v0, v4, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String;)I
+
+performActivityCreated-BB@0x56 : [ performActivityCreated-BB@0x60 performActivityCreated-BB@0x7e ]
+	20      (00000056) iget-object          v4, v3, Landroidx/fragment/app/e0;->mView Landroid/view/View;
+	21      (0000005a) const/4              v0, 0
+	22      (0000005c) if-eqz               v4, +011h
+
+performActivityCreated-BB@0x60 : [ performActivityCreated-BB@0x68 performActivityCreated-BB@0x76 ]
+	23      (00000060) iget-object          v4, v3, Landroidx/fragment/app/e0;->mSavedFragmentState Landroid/os/Bundle;
+	24      (00000064) if-eqz               v4, +009h
+
+performActivityCreated-BB@0x68 : [ performActivityCreated-BB@0x78 ]
+	25      (00000068) const-string         v2, "savedInstanceState"
+	26      (0000006c) invoke-virtual       v4, v2, Landroid/os/Bundle;->getBundle(Ljava/lang/String;)Landroid/os/Bundle;
+	27      (00000072) move-result-object   v4
+	28      (00000074) goto                 +2h
+
+performActivityCreated-BB@0x76 : [ performActivityCreated-BB@0x78 ]
+	29      (00000076) move-object          v4, v0
+
+performActivityCreated-BB@0x78 : [ performActivityCreated-BB@0x7e ]
+	30      (00000078) invoke-virtual       v3, v4, Landroidx/fragment/app/e0;->restoreViewState(Landroid/os/Bundle;)V
+
+performActivityCreated-BB@0x7e : 
+	31      (0000007e) iput-object          v0, v3, Landroidx/fragment/app/e0;->mSavedFragmentState Landroid/os/Bundle;
+	32      (00000082) iget-object          v4, v3, Landroidx/fragment/app/e0;->mChildFragmentManager Landroidx/fragment/app/b1;
+	33      (00000086) iput-boolean         v1, v4, Landroidx/fragment/app/b1;->E Z
+	34      (0000008a) iput-boolean         v1, v4, Landroidx/fragment/app/b1;->F Z
+	35      (0000008e) iget-object          v0, v4, Landroidx/fragment/app/b1;->L Landroidx/fragment/app/f1;
+	36      (00000092) iput-boolean         v1, v0, Landroidx/fragment/app/f1;->g Z
+	37      (00000096) const/4              v0, 4
+	38      (00000098) invoke-virtual       v4, v0, Landroidx/fragment/app/b1;->t(I)V
+	39      (0000009e) return-void          
+
+performActivityCreated-BB@0xa0 : 
+	40      (000000a0) new-instance         v4, Landroidx/fragment/app/b2;
+	41      (000000a4) const-string         v0, "Fragment "
+	42      (000000a8) const-string         v1, " did not call through to super.onActivityCreated()"
+	43      (000000ac) invoke-static        v0, v3, v1, Lv1/a;->k(Ljava/lang/String; Landroidx/fragment/app/e0; Ljava/lang/String;)Ljava/lang/String;
+	44      (000000b2) move-result-object   v0
+	45      (000000b4) invoke-direct        v4, v0, Landroid/util/AndroidRuntimeException;-><init>(Ljava/lang/String;)V
+	46      (000000ba) throw                v4
+

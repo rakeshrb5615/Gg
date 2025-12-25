@@ -1,0 +1,72 @@
+# Landroidx/lifecycle/u0;->b(Ljava/lang/Class; Ljava/lang/reflect/Constructor; [Ljava/lang/Object;)Landroidx/lifecycle/v0; [access_flags=public static final varargs]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:java.lang.Class
+# - v3:java.lang.reflect.Constructor
+# - v4:java.lang.Object[]
+#
+# - return:androidx.lifecycle.v0
+
+b-BB@0x0 : 
+	0       (00000000) array-length         v0, v4
+	1       (00000002) invoke-static        v4, v0, Ljava/util/Arrays;->copyOf([Ljava/lang/Object; I)[Ljava/lang/Object;
+	2       (00000008) move-result-object   v4
+	3       (0000000a) invoke-virtual       v3, v4, Ljava/lang/reflect/Constructor;->newInstance([Ljava/lang/Object;)Ljava/lang/Object;
+	4       (00000010) move-result-object   v3
+	5       (00000012) check-cast           v3, Landroidx/lifecycle/v0;
+	6       (00000016) return-object        v3
+	0:15
+	(Ljava/lang/IllegalAccessException; -> 20 b-BB@0x20)
+	(Ljava/lang/InstantiationException; -> 1c b-BB@0x1c)
+	(Ljava/lang/reflect/InvocationTargetException; -> 18 b-BB@0x18)
+
+b-BB@0x18 : [ b-BB@0x24 ]
+	7       (00000018) move-exception       v3
+	8       (0000001a) goto                 +5h
+
+b-BB@0x1c : [ b-BB@0x54 ]
+	9       (0000001c) move-exception       v3
+	10      (0000001e) goto                 +1bh
+
+b-BB@0x20 : [ b-BB@0x86 ]
+	11      (00000020) move-exception       v3
+	12      (00000022) goto                 +32h
+
+b-BB@0x24 : 
+	13      (00000024) new-instance         v4, Ljava/lang/RuntimeException;
+	14      (00000028) new-instance         v0, Ljava/lang/StringBuilder;
+	15      (0000002c) const-string         v1, "An exception happened in constructor of "
+	16      (00000030) invoke-direct        v0, v1, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	17      (00000036) invoke-virtual       v0, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	18      (0000003c) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	19      (00000042) move-result-object   v2
+	20      (00000044) invoke-virtual       v3, Ljava/lang/reflect/InvocationTargetException;->getCause()Ljava/lang/Throwable;
+	21      (0000004a) move-result-object   v3
+	22      (0000004c) invoke-direct        v4, v2, v3, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	23      (00000052) throw                v4
+
+b-BB@0x54 : 
+	24      (00000054) new-instance         v4, Ljava/lang/RuntimeException;
+	25      (00000058) new-instance         v0, Ljava/lang/StringBuilder;
+	26      (0000005c) const-string         v1, "A "
+	27      (00000060) invoke-direct        v0, v1, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	28      (00000066) invoke-virtual       v0, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	29      (0000006c) const-string         v2, " cannot be instantiated."
+	30      (00000070) invoke-virtual       v0, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	31      (00000076) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	32      (0000007c) move-result-object   v2
+	33      (0000007e) invoke-direct        v4, v2, v3, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	34      (00000084) throw                v4
+
+b-BB@0x86 : 
+	35      (00000086) new-instance         v4, Ljava/lang/RuntimeException;
+	36      (0000008a) new-instance         v0, Ljava/lang/StringBuilder;
+	37      (0000008e) const-string         v1, "Failed to access "
+	38      (00000092) invoke-direct        v0, v1, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	39      (00000098) invoke-virtual       v0, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	40      (0000009e) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	41      (000000a4) move-result-object   v2
+	42      (000000a6) invoke-direct        v4, v2, v3, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	43      (000000ac) throw                v4
+

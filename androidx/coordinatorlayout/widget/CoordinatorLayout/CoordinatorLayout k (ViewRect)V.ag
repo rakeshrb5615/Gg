@@ -1,0 +1,64 @@
+# Landroidx/coordinatorlayout/widget/CoordinatorLayout;->k(Landroid/view/View; Landroid/graphics/Rect;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:android.view.View
+# - v6:android.graphics.Rect
+#
+# - return:void
+
+k-BB@0x0 : [ k-BB@0x30 k-BB@0x42 ]
+	0       (00000000) sget-object          v0, Lb0/g;->a Ljava/lang/ThreadLocal;
+	1       (00000004) invoke-virtual       v5, Landroid/view/View;->getWidth()I
+	2       (0000000a) move-result          v0
+	3       (0000000c) invoke-virtual       v5, Landroid/view/View;->getHeight()I
+	4       (00000012) move-result          v1
+	5       (00000014) const/4              v2, 0
+	6       (00000016) invoke-virtual       v6, v2, v2, v0, v1, Landroid/graphics/Rect;->set(I I I I)V
+	7       (0000001c) sget-object          v0, Lb0/g;->a Ljava/lang/ThreadLocal;
+	8       (00000020) invoke-virtual       v0, Ljava/lang/ThreadLocal;->get()Ljava/lang/Object;
+	9       (00000026) move-result-object   v1
+	10      (00000028) check-cast           v1, Landroid/graphics/Matrix;
+	11      (0000002c) if-nez               v1, +00bh
+
+k-BB@0x30 : [ k-BB@0x48 ]
+	12      (00000030) new-instance         v1, Landroid/graphics/Matrix;
+	13      (00000034) invoke-direct        v1, Landroid/graphics/Matrix;-><init>()V
+	14      (0000003a) invoke-virtual       v0, v1, Ljava/lang/ThreadLocal;->set(Ljava/lang/Object;)V
+	15      (00000040) goto                 +4h
+
+k-BB@0x42 : [ k-BB@0x48 ]
+	16      (00000042) invoke-virtual       v1, Landroid/graphics/Matrix;->reset()V
+
+k-BB@0x48 : [ k-BB@0x62 k-BB@0x72 ]
+	17      (00000048) invoke-static        v4, v5, v1, Lb0/g;->a(Landroidx/coordinatorlayout/widget/CoordinatorLayout; Landroid/view/View; Landroid/graphics/Matrix;)V
+	18      (0000004e) sget-object          v5, Lb0/g;->b Ljava/lang/ThreadLocal;
+	19      (00000052) invoke-virtual       v5, Ljava/lang/ThreadLocal;->get()Ljava/lang/Object;
+	20      (00000058) move-result-object   v0
+	21      (0000005a) check-cast           v0, Landroid/graphics/RectF;
+	22      (0000005e) if-nez               v0, +00ah
+
+k-BB@0x62 : [ k-BB@0x72 ]
+	23      (00000062) new-instance         v0, Landroid/graphics/RectF;
+	24      (00000066) invoke-direct        v0, Landroid/graphics/RectF;-><init>()V
+	25      (0000006c) invoke-virtual       v5, v0, Ljava/lang/ThreadLocal;->set(Ljava/lang/Object;)V
+
+k-BB@0x72 : 
+	26      (00000072) invoke-virtual       v0, v6, Landroid/graphics/RectF;->set(Landroid/graphics/Rect;)V
+	27      (00000078) invoke-virtual       v1, v0, Landroid/graphics/Matrix;->mapRect(Landroid/graphics/RectF;)Z
+	28      (0000007e) iget                 v5, v0, Landroid/graphics/RectF;->left F
+	29      (00000082) const/high16         v1, 1056964608
+	30      (00000086) add-float/2addr      v5, v1
+	31      (00000088) float-to-int         v5, v5
+	32      (0000008a) iget                 v2, v0, Landroid/graphics/RectF;->top F
+	33      (0000008e) add-float/2addr      v2, v1
+	34      (00000090) float-to-int         v2, v2
+	35      (00000092) iget                 v3, v0, Landroid/graphics/RectF;->right F
+	36      (00000096) add-float/2addr      v3, v1
+	37      (00000098) float-to-int         v3, v3
+	38      (0000009a) iget                 v0, v0, Landroid/graphics/RectF;->bottom F
+	39      (0000009e) add-float/2addr      v0, v1
+	40      (000000a0) float-to-int         v0, v0
+	41      (000000a2) invoke-virtual       v6, v5, v2, v3, v0, Landroid/graphics/Rect;->set(I I I I)V
+	42      (000000a8) return-void          
+

@@ -1,0 +1,63 @@
+# Landroidx/fragment/app/e0;->startActivityForResult(Landroid/content/Intent; I Landroid/os/Bundle;)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:android.content.Intent
+# - v5:int
+# - v6:android.os.Bundle
+#
+# - return:void
+
+startActivityForResult-BB@0x0 : [ startActivityForResult-BB@0x8 startActivityForResult-BB@0x76 ]
+	0       (00000000) iget-object          v0, v3, Landroidx/fragment/app/e0;->mHost Landroidx/fragment/app/o0;
+	1       (00000004) if-eqz               v0, +039h
+
+startActivityForResult-BB@0x8 : [ startActivityForResult-BB@0x18 startActivityForResult-BB@0x4a ]
+	2       (00000008) invoke-virtual       v3, Landroidx/fragment/app/e0;->getParentFragmentManager()Landroidx/fragment/app/b1;
+	3       (0000000e) move-result-object   v0
+	4       (00000010) iget-object          v1, v0, Landroidx/fragment/app/b1;->z Le/h;
+	5       (00000014) if-eqz               v1, +01bh
+
+startActivityForResult-BB@0x18 : [ startActivityForResult-BB@0x34 startActivityForResult-BB@0x3e ]
+	6       (00000018) new-instance         v1, Landroidx/fragment/app/y0;
+	7       (0000001c) iget-object          v2, v3, Landroidx/fragment/app/e0;->mWho Ljava/lang/String;
+	8       (00000020) invoke-direct        v1, v2, v5, Landroidx/fragment/app/y0;-><init>(Ljava/lang/String; I)V
+	9       (00000026) iget-object          v5, v0, Landroidx/fragment/app/b1;->C Ljava/util/ArrayDeque;
+	10      (0000002a) invoke-virtual       v5, v1, Ljava/util/ArrayDeque;->addLast(Ljava/lang/Object;)V
+	11      (00000030) if-eqz               v6, +007h
+
+startActivityForResult-BB@0x34 : [ startActivityForResult-BB@0x3e ]
+	12      (00000034) const-string         v5, "androidx.activity.result.contract.extra.ACTIVITY_OPTIONS_BUNDLE"
+	13      (00000038) invoke-virtual       v4, v5, v6, Landroid/content/Intent;->putExtra(Ljava/lang/String; Landroid/os/Bundle;)Landroid/content/Intent;
+
+startActivityForResult-BB@0x3e : 
+	14      (0000003e) iget-object          v5, v0, Landroidx/fragment/app/b1;->z Le/h;
+	15      (00000042) invoke-virtual       v5, v4, Le/h;->a(Ljava/lang/Object;)V
+	16      (00000048) return-void          
+
+startActivityForResult-BB@0x4a : [ startActivityForResult-BB@0x54 startActivityForResult-BB@0x60 ]
+	17      (0000004a) iget-object          v0, v0, Landroidx/fragment/app/b1;->t Landroidx/fragment/app/o0;
+	18      (0000004e) const/4              v1, -1
+	19      (00000050) if-ne                v5, v1, +008h
+
+startActivityForResult-BB@0x54 : 
+	20      (00000054) iget-object          v5, v0, Landroidx/fragment/app/o0;->b Landroidx/fragment/app/j0;
+	21      (00000058) invoke-static        v5, v4, v6, Le0/c;->startActivity(Landroid/content/Context; Landroid/content/Intent; Landroid/os/Bundle;)V
+	22      (0000005e) return-void          
+
+startActivityForResult-BB@0x60 : 
+	23      (00000060) invoke-virtual       v0, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	24      (00000066) new-instance         v4, Ljava/lang/IllegalStateException;
+	25      (0000006a) const-string         v5, "Starting activity with a requestCode requires a FragmentActivity host"
+	26      (0000006e) invoke-direct        v4, v5, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	27      (00000074) throw                v4
+
+startActivityForResult-BB@0x76 : 
+	28      (00000076) new-instance         v4, Ljava/lang/IllegalStateException;
+	29      (0000007a) const-string         v5, "Fragment "
+	30      (0000007e) const-string         v6, " not attached to Activity"
+	31      (00000082) invoke-static        v5, v3, v6, Lv1/a;->k(Ljava/lang/String; Landroidx/fragment/app/e0; Ljava/lang/String;)Ljava/lang/String;
+	32      (00000088) move-result-object   v5
+	33      (0000008a) invoke-direct        v4, v5, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	34      (00000090) throw                v4
+

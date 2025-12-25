@@ -1,0 +1,74 @@
+# Landroidx/coordinatorlayout/widget/CoordinatorLayout;->t(Z)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v13
+# - v14:boolean
+#
+# - return:void
+
+t-BB@0x0 : [ t-BB@0xc ]
+	0       (00000000) invoke-virtual       v13, Landroid/view/ViewGroup;->getChildCount()I
+	1       (00000006) move-result          v0
+	2       (00000008) const/4              v1, 0
+	3       (0000000a) move                 v2, v1
+
+t-BB@0xc : [ t-BB@0x10 t-BB@0x64 ]
+	4       (0000000c) if-ge                v2, v0, +02ch
+
+t-BB@0x10 : [ t-BB@0x2c t-BB@0x5e ]
+	5       (00000010) invoke-virtual       v13, v2, Landroid/view/ViewGroup;->getChildAt(I)Landroid/view/View;
+	6       (00000016) move-result-object   v3
+	7       (00000018) invoke-virtual       v3, Landroid/view/View;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
+	8       (0000001e) move-result-object   v4
+	9       (00000020) check-cast           v4, Lb0/d;
+	10      (00000024) iget-object          v4, v4, Lb0/d;->a Lb0/a;
+	11      (00000028) if-eqz               v4, +01bh
+
+t-BB@0x2c : [ t-BB@0x4a t-BB@0x52 ]
+	12      (0000002c) invoke-static        Landroid/os/SystemClock;->uptimeMillis()J
+	13      (00000032) move-result-wide     v5
+	14      (00000034) const/4              v11, 0
+	15      (00000036) const/4              v12, 0
+	16      (00000038) const/4              v9, 3
+	17      (0000003a) const/4              v10, 0
+	18      (0000003c) move-wide            v7, v5
+	19      (0000003e) invoke-static/range  v5 ... v12, Landroid/view/MotionEvent;->obtain(J J I F F I)Landroid/view/MotionEvent;
+	20      (00000044) move-result-object   v5
+	21      (00000046) if-eqz               v14, +006h
+
+t-BB@0x4a : [ t-BB@0x58 ]
+	22      (0000004a) invoke-virtual       v4, v13, v3, v5, Lb0/a;->j(Landroidx/coordinatorlayout/widget/CoordinatorLayout; Landroid/view/View; Landroid/view/MotionEvent;)Z
+	23      (00000050) goto                 +4h
+
+t-BB@0x52 : [ t-BB@0x58 ]
+	24      (00000052) invoke-virtual       v4, v3, v5, Lb0/a;->u(Landroid/view/View; Landroid/view/MotionEvent;)Z
+
+t-BB@0x58 : [ t-BB@0x5e ]
+	25      (00000058) invoke-virtual       v5, Landroid/view/MotionEvent;->recycle()V
+
+t-BB@0x5e : [ t-BB@0xc ]
+	26      (0000005e) add-int/lit8         v2, v2, 1
+	27      (00000062) goto                 -2bh
+
+t-BB@0x64 : [ t-BB@0x66 ]
+	28      (00000064) move                 v14, v1
+
+t-BB@0x66 : [ t-BB@0x6a t-BB@0x8a ]
+	29      (00000066) if-ge                v14, v0, +012h
+
+t-BB@0x6a : [ t-BB@0x66 ]
+	30      (0000006a) invoke-virtual       v13, v14, Landroid/view/ViewGroup;->getChildAt(I)Landroid/view/View;
+	31      (00000070) move-result-object   v2
+	32      (00000072) invoke-virtual       v2, Landroid/view/View;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
+	33      (00000078) move-result-object   v2
+	34      (0000007a) check-cast           v2, Lb0/d;
+	35      (0000007e) invoke-virtual       v2, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	36      (00000084) add-int/lit8         v14, v14, 1
+	37      (00000088) goto                 -11h
+
+t-BB@0x8a : 
+	38      (0000008a) const/4              v14, 0
+	39      (0000008c) iput-object          v14, v13, Landroidx/coordinatorlayout/widget/CoordinatorLayout;->p Landroid/view/View;
+	40      (00000090) iput-boolean         v1, v13, Landroidx/coordinatorlayout/widget/CoordinatorLayout;->m Z
+	41      (00000094) return-void          
+

@@ -1,0 +1,56 @@
+# Landroidx/appcompat/widget/SwitchCompat;->onInitializeAccessibilityNodeInfo(Landroid/view/accessibility/AccessibilityNodeInfo;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:android.view.accessibility.AccessibilityNodeInfo
+#
+# - return:void
+
+onInitializeAccessibilityNodeInfo-BB@0x0 : [ onInitializeAccessibilityNodeInfo-BB@0x1c onInitializeAccessibilityNodeInfo-BB@0x80 ]
+	0       (00000000) invoke-super         v3, v4, Landroid/view/View;->onInitializeAccessibilityNodeInfo(Landroid/view/accessibility/AccessibilityNodeInfo;)V
+	1       (00000006) const-string         v0, "android.widget.Switch"
+	2       (0000000a) invoke-virtual       v4, v0, Landroid/view/accessibility/AccessibilityNodeInfo;->setClassName(Ljava/lang/CharSequence;)V
+	3       (00000010) sget                 v0, Landroid/os/Build$VERSION;->SDK_INT I
+	4       (00000014) const/16             v1, 30
+	5       (00000018) if-ge                v0, v1, +034h
+
+onInitializeAccessibilityNodeInfo-BB@0x1c : [ onInitializeAccessibilityNodeInfo-BB@0x28 onInitializeAccessibilityNodeInfo-BB@0x2e ]
+	6       (0000001c) invoke-virtual       v3, Landroid/widget/CompoundButton;->isChecked()Z
+	7       (00000022) move-result          v0
+	8       (00000024) if-eqz               v0, +005h
+
+onInitializeAccessibilityNodeInfo-BB@0x28 : [ onInitializeAccessibilityNodeInfo-BB@0x32 ]
+	9       (00000028) iget-object          v0, v3, Landroidx/appcompat/widget/SwitchCompat;->u Ljava/lang/CharSequence;
+	10      (0000002c) goto                 +3h
+
+onInitializeAccessibilityNodeInfo-BB@0x2e : [ onInitializeAccessibilityNodeInfo-BB@0x32 ]
+	11      (0000002e) iget-object          v0, v3, Landroidx/appcompat/widget/SwitchCompat;->w Ljava/lang/CharSequence;
+
+onInitializeAccessibilityNodeInfo-BB@0x32 : [ onInitializeAccessibilityNodeInfo-BB@0x3e onInitializeAccessibilityNodeInfo-BB@0x80 ]
+	12      (00000032) invoke-static        v0, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+	13      (00000038) move-result          v1
+	14      (0000003a) if-nez               v1, +023h
+
+onInitializeAccessibilityNodeInfo-BB@0x3e : [ onInitializeAccessibilityNodeInfo-BB@0x52 onInitializeAccessibilityNodeInfo-BB@0x5a ]
+	15      (0000003e) invoke-virtual       v4, Landroid/view/accessibility/AccessibilityNodeInfo;->getText()Ljava/lang/CharSequence;
+	16      (00000044) move-result-object   v1
+	17      (00000046) invoke-static        v1, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+	18      (0000004c) move-result          v2
+	19      (0000004e) if-eqz               v2, +006h
+
+onInitializeAccessibilityNodeInfo-BB@0x52 : 
+	20      (00000052) invoke-virtual       v4, v0, Landroid/view/accessibility/AccessibilityNodeInfo;->setText(Ljava/lang/CharSequence;)V
+	21      (00000058) return-void          
+
+onInitializeAccessibilityNodeInfo-BB@0x5a : [ onInitializeAccessibilityNodeInfo-BB@0x80 ]
+	22      (0000005a) new-instance         v2, Ljava/lang/StringBuilder;
+	23      (0000005e) invoke-direct        v2, Ljava/lang/StringBuilder;-><init>()V
+	24      (00000064) invoke-virtual       v2, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/CharSequence;)Ljava/lang/StringBuilder;
+	25      (0000006a) const/16             v1, 32
+	26      (0000006e) invoke-virtual       v2, v1, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+	27      (00000074) invoke-virtual       v2, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/CharSequence;)Ljava/lang/StringBuilder;
+	28      (0000007a) invoke-virtual       v4, v2, Landroid/view/accessibility/AccessibilityNodeInfo;->setText(Ljava/lang/CharSequence;)V
+
+onInitializeAccessibilityNodeInfo-BB@0x80 : 
+	29      (00000080) return-void          
+

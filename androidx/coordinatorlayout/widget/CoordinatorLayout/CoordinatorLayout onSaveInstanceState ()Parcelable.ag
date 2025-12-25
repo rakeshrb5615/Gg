@@ -1,0 +1,52 @@
+# Landroidx/coordinatorlayout/widget/CoordinatorLayout;->onSaveInstanceState()Landroid/os/Parcelable; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v8
+#
+# - return:android.os.Parcelable
+
+onSaveInstanceState-BB@0x0 : [ onSaveInstanceState-BB@0x26 ]
+	0       (00000000) new-instance         v0, Lb0/f;
+	1       (00000004) invoke-super         v8, Landroid/view/View;->onSaveInstanceState()Landroid/os/Parcelable;
+	2       (0000000a) move-result-object   v1
+	3       (0000000c) invoke-direct        v0, v1, Lx0/b;-><init>(Landroid/os/Parcelable;)V
+	4       (00000012) new-instance         v1, Landroid/util/SparseArray;
+	5       (00000016) invoke-direct        v1, Landroid/util/SparseArray;-><init>()V
+	6       (0000001c) invoke-virtual       v8, Landroid/view/ViewGroup;->getChildCount()I
+	7       (00000022) move-result          v2
+	8       (00000024) const/4              v3, 0
+
+onSaveInstanceState-BB@0x26 : [ onSaveInstanceState-BB@0x2a onSaveInstanceState-BB@0x6c ]
+	9       (00000026) if-ge                v3, v2, +023h
+
+onSaveInstanceState-BB@0x2a : [ onSaveInstanceState-BB@0x50 onSaveInstanceState-BB@0x66 ]
+	10      (0000002a) invoke-virtual       v8, v3, Landroid/view/ViewGroup;->getChildAt(I)Landroid/view/View;
+	11      (00000030) move-result-object   v4
+	12      (00000032) invoke-virtual       v4, Landroid/view/View;->getId()I
+	13      (00000038) move-result          v5
+	14      (0000003a) invoke-virtual       v4, Landroid/view/View;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
+	15      (00000040) move-result-object   v6
+	16      (00000042) check-cast           v6, Lb0/d;
+	17      (00000046) iget-object          v6, v6, Lb0/d;->a Lb0/a;
+	18      (0000004a) const/4              v7, -1
+	19      (0000004c) if-eq                v5, v7, +00dh
+
+onSaveInstanceState-BB@0x50 : [ onSaveInstanceState-BB@0x54 onSaveInstanceState-BB@0x66 ]
+	20      (00000050) if-eqz               v6, +00bh
+
+onSaveInstanceState-BB@0x54 : [ onSaveInstanceState-BB@0x60 onSaveInstanceState-BB@0x66 ]
+	21      (00000054) invoke-virtual       v6, v4, Lb0/a;->r(Landroid/view/View;)Landroid/os/Parcelable;
+	22      (0000005a) move-result-object   v4
+	23      (0000005c) if-eqz               v4, +005h
+
+onSaveInstanceState-BB@0x60 : [ onSaveInstanceState-BB@0x66 ]
+	24      (00000060) invoke-virtual       v1, v5, v4, Landroid/util/SparseArray;->append(I Ljava/lang/Object;)V
+
+onSaveInstanceState-BB@0x66 : [ onSaveInstanceState-BB@0x26 ]
+	25      (00000066) add-int/lit8         v3, v3, 1
+	26      (0000006a) goto                 -22h
+
+onSaveInstanceState-BB@0x6c : 
+	27      (0000006c) iput-object          v1, v0, Lb0/f;->c Landroid/util/SparseArray;
+	28      (00000070) return-object        v0
+

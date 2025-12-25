@@ -1,0 +1,102 @@
+# Landroidx/lifecycle/b;->a(Ljava/util/List; Landroidx/lifecycle/u; Landroidx/lifecycle/n; Landroidx/lifecycle/t;)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:java.util.List
+# - v6:androidx.lifecycle.u
+# - v7:androidx.lifecycle.n
+# - v8:androidx.lifecycle.t
+#
+# - return:void
+
+a-BB@0x0 : [ a-BB@0x4 a-BB@0x8e ]
+	0       (00000000) if-eqz               v5, +047h
+
+a-BB@0x4 : [ a-BB@0x10 ]
+	1       (00000004) invoke-interface     v5, Ljava/util/List;->size()I
+	2       (0000000a) move-result          v0
+	3       (0000000c) const/4              v1, 1
+	4       (0000000e) sub-int/2addr        v0, v1
+
+a-BB@0x10 : [ a-BB@0x14 a-BB@0x8e ]
+	5       (00000010) if-ltz               v0, +03fh
+
+a-BB@0x14 : [ a-BB@0x24 ]
+	6       (00000014) invoke-interface     v5, v0, Ljava/util/List;->get(I)Ljava/lang/Object;
+	7       (0000001a) move-result-object   v2
+	8       (0000001c) check-cast           v2, Landroidx/lifecycle/c;
+	9       (00000020) iget-object          v3, v2, Landroidx/lifecycle/c;->b Ljava/lang/reflect/Method;
+
+a-BB@0x24 : [ a-BB@0x2c a-BB@0x58 ]
+	10      (00000024) iget                 v2, v2, Landroidx/lifecycle/c;->a I
+	11      (00000028) if-eqz               v2, +018h
+	24:5f
+	(Ljava/lang/reflect/InvocationTargetException; -> 74 a-BB@0x74)
+	(Ljava/lang/IllegalAccessException; -> 66 a-BB@0x66)
+
+a-BB@0x2c : [ a-BB@0x30 a-BB@0x48 ]
+	12      (0000002c) if-eq                v2, v1, +00eh
+	24:5f
+	(Ljava/lang/reflect/InvocationTargetException; -> 74 a-BB@0x74)
+	(Ljava/lang/IllegalAccessException; -> 66 a-BB@0x66)
+
+a-BB@0x30 : [ a-BB@0x36 a-BB@0x38 ]
+	13      (00000030) const/4              v4, 2
+	14      (00000032) if-eq                v2, v4, +003h
+	24:5f
+	(Ljava/lang/reflect/InvocationTargetException; -> 74 a-BB@0x74)
+	(Ljava/lang/IllegalAccessException; -> 66 a-BB@0x66)
+
+a-BB@0x36 : [ a-BB@0x60 ]
+	15      (00000036) goto                 +15h
+	24:5f
+	(Ljava/lang/reflect/InvocationTargetException; -> 74 a-BB@0x74)
+	(Ljava/lang/IllegalAccessException; -> 66 a-BB@0x66)
+
+a-BB@0x38 : [ a-BB@0x60 ]
+	16      (00000038) filled-new-array     v6, v7, [Ljava/lang/Object;
+	17      (0000003e) move-result-object   v2
+	18      (00000040) invoke-virtual       v3, v8, v2, Ljava/lang/reflect/Method;->invoke(Ljava/lang/Object; [Ljava/lang/Object;)Ljava/lang/Object;
+	19      (00000046) goto                 +dh
+	24:5f
+	(Ljava/lang/reflect/InvocationTargetException; -> 74 a-BB@0x74)
+	(Ljava/lang/IllegalAccessException; -> 66 a-BB@0x66)
+
+a-BB@0x48 : [ a-BB@0x60 ]
+	20      (00000048) filled-new-array     v6, [Ljava/lang/Object;
+	21      (0000004e) move-result-object   v2
+	22      (00000050) invoke-virtual       v3, v8, v2, Ljava/lang/reflect/Method;->invoke(Ljava/lang/Object; [Ljava/lang/Object;)Ljava/lang/Object;
+	23      (00000056) goto                 +5h
+	24:5f
+	(Ljava/lang/reflect/InvocationTargetException; -> 74 a-BB@0x74)
+	(Ljava/lang/IllegalAccessException; -> 66 a-BB@0x66)
+
+a-BB@0x58 : [ a-BB@0x60 ]
+	24      (00000058) const/4              v2, 0
+	25      (0000005a) invoke-virtual       v3, v8, v2, Ljava/lang/reflect/Method;->invoke(Ljava/lang/Object; [Ljava/lang/Object;)Ljava/lang/Object;
+	24:5f
+	(Ljava/lang/reflect/InvocationTargetException; -> 74 a-BB@0x74)
+	(Ljava/lang/IllegalAccessException; -> 66 a-BB@0x66)
+
+a-BB@0x60 : [ a-BB@0x10 ]
+	26      (00000060) add-int/lit8         v0, v0, -1
+	27      (00000064) goto                 -2ah
+
+a-BB@0x66 : 
+	28      (00000066) move-exception       v5
+	29      (00000068) new-instance         v6, Ljava/lang/RuntimeException;
+	30      (0000006c) invoke-direct        v6, v5, Ljava/lang/RuntimeException;-><init>(Ljava/lang/Throwable;)V
+	31      (00000072) throw                v6
+
+a-BB@0x74 : 
+	32      (00000074) move-exception       v5
+	33      (00000076) new-instance         v6, Ljava/lang/RuntimeException;
+	34      (0000007a) const-string         v7, "Failed to call observer method"
+	35      (0000007e) invoke-virtual       v5, Ljava/lang/reflect/InvocationTargetException;->getCause()Ljava/lang/Throwable;
+	36      (00000084) move-result-object   v5
+	37      (00000086) invoke-direct        v6, v7, v5, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	38      (0000008c) throw                v6
+
+a-BB@0x8e : 
+	39      (0000008e) return-void          
+

@@ -1,0 +1,164 @@
+# Landroidx/fragment/app/s;->onGetLayoutInflater(Landroid/os/Bundle;)Landroid/view/LayoutInflater; [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:android.os.Bundle
+#
+# - return:android.view.LayoutInflater
+
+onGetLayoutInflater-BB@0x0 : [ onGetLayoutInflater-BB@0x16 onGetLayoutInflater-BB@0x10e ]
+	0       (00000000) invoke-super         v6, v7, Landroidx/fragment/app/e0;->onGetLayoutInflater(Landroid/os/Bundle;)Landroid/view/LayoutInflater;
+	1       (00000006) move-result-object   v0
+	2       (00000008) iget-boolean         v1, v6, Landroidx/fragment/app/s;->mShowsDialog Z
+	3       (0000000c) const/4              v2, 2
+	4       (0000000e) const-string         v3, "FragmentManager"
+	5       (00000012) if-eqz               v1, +07eh
+
+onGetLayoutInflater-BB@0x16 : [ onGetLayoutInflater-BB@0x1e onGetLayoutInflater-BB@0x22 ]
+	6       (00000016) iget-boolean         v4, v6, Landroidx/fragment/app/s;->mCreatingDialog Z
+	7       (0000001a) if-eqz               v4, +004h
+
+onGetLayoutInflater-BB@0x1e : [ onGetLayoutInflater-BB@0x10e ]
+	8       (0000001e) goto/16              +078h
+
+onGetLayoutInflater-BB@0x22 : [ onGetLayoutInflater-BB@0x26 onGetLayoutInflater-BB@0x28 ]
+	9       (00000022) if-nez               v1, +003h
+
+onGetLayoutInflater-BB@0x26 : [ onGetLayoutInflater-BB@0xbc ]
+	10      (00000026) goto                 +4bh
+
+onGetLayoutInflater-BB@0x28 : [ onGetLayoutInflater-BB@0x30 onGetLayoutInflater-BB@0xbc ]
+	11      (00000028) iget-boolean         v1, v6, Landroidx/fragment/app/s;->mDialogCreated Z
+	12      (0000002c) if-nez               v1, +048h
+
+onGetLayoutInflater-BB@0x30 : [ onGetLayoutInflater-BB@0x34 ]
+	13      (00000030) const/4              v1, 0
+	14      (00000032) const/4              v4, 1
+
+onGetLayoutInflater-BB@0x34 : [ onGetLayoutInflater-BB@0x4c onGetLayoutInflater-BB@0xaa ]
+	15      (00000034) iput-boolean         v4, v6, Landroidx/fragment/app/s;->mCreatingDialog Z
+	16      (00000038) invoke-virtual       v6, v7, Landroidx/fragment/app/s;->onCreateDialog(Landroid/os/Bundle;)Landroid/app/Dialog;
+	17      (0000003e) move-result-object   v7
+	18      (00000040) iput-object          v7, v6, Landroidx/fragment/app/s;->mDialog Landroid/app/Dialog;
+	19      (00000044) iget-boolean         v5, v6, Landroidx/fragment/app/s;->mShowsDialog Z
+	20      (00000048) if-eqz               v5, +031h
+	34:af
+	(Ljava/lang/Throwable; -> 76 onGetLayoutInflater-BB@0x76)
+
+onGetLayoutInflater-BB@0x4c : [ onGetLayoutInflater-BB@0x66 onGetLayoutInflater-BB@0x7a ]
+	21      (0000004c) iget                 v5, v6, Landroidx/fragment/app/s;->mStyle I
+	22      (00000050) invoke-virtual       v6, v7, v5, Landroidx/fragment/app/s;->setupDialog(Landroid/app/Dialog; I)V
+	23      (00000056) invoke-virtual       v6, Landroidx/fragment/app/e0;->getContext()Landroid/content/Context;
+	24      (0000005c) move-result-object   v7
+	25      (0000005e) instance-of          v5, v7, Landroid/app/Activity;
+	26      (00000062) if-eqz               v5, +00ch
+	34:af
+	(Ljava/lang/Throwable; -> 76 onGetLayoutInflater-BB@0x76)
+
+onGetLayoutInflater-BB@0x66 : [ onGetLayoutInflater-BB@0x7a ]
+	27      (00000066) iget-object          v5, v6, Landroidx/fragment/app/s;->mDialog Landroid/app/Dialog;
+	28      (0000006a) check-cast           v7, Landroid/app/Activity;
+	29      (0000006e) invoke-virtual       v5, v7, Landroid/app/Dialog;->setOwnerActivity(Landroid/app/Activity;)V
+	30      (00000074) goto                 +3h
+	34:af
+	(Ljava/lang/Throwable; -> 76 onGetLayoutInflater-BB@0x76)
+
+onGetLayoutInflater-BB@0x76 : [ onGetLayoutInflater-BB@0xb6 ]
+	31      (00000076) move-exception       v7
+	32      (00000078) goto                 +1fh
+	34:af
+	(Ljava/lang/Throwable; -> 76 onGetLayoutInflater-BB@0x76)
+
+onGetLayoutInflater-BB@0x7a : [ onGetLayoutInflater-BB@0xb0 ]
+	33      (0000007a) iget-object          v7, v6, Landroidx/fragment/app/s;->mDialog Landroid/app/Dialog;
+	34      (0000007e) iget-boolean         v5, v6, Landroidx/fragment/app/s;->mCancelable Z
+	35      (00000082) invoke-virtual       v7, v5, Landroid/app/Dialog;->setCancelable(Z)V
+	36      (00000088) iget-object          v7, v6, Landroidx/fragment/app/s;->mDialog Landroid/app/Dialog;
+	37      (0000008c) iget-object          v5, v6, Landroidx/fragment/app/s;->mOnCancelListener Landroid/content/DialogInterface$OnCancelListener;
+	38      (00000090) invoke-virtual       v7, v5, Landroid/app/Dialog;->setOnCancelListener(Landroid/content/DialogInterface$OnCancelListener;)V
+	39      (00000096) iget-object          v7, v6, Landroidx/fragment/app/s;->mDialog Landroid/app/Dialog;
+	40      (0000009a) iget-object          v5, v6, Landroidx/fragment/app/s;->mOnDismissListener Landroid/content/DialogInterface$OnDismissListener;
+	41      (0000009e) invoke-virtual       v7, v5, Landroid/app/Dialog;->setOnDismissListener(Landroid/content/DialogInterface$OnDismissListener;)V
+	42      (000000a4) iput-boolean         v4, v6, Landroidx/fragment/app/s;->mDialogCreated Z
+	43      (000000a8) goto                 +4h
+	34:af
+	(Ljava/lang/Throwable; -> 76 onGetLayoutInflater-BB@0x76)
+
+onGetLayoutInflater-BB@0xaa : [ onGetLayoutInflater-BB@0xb0 ]
+	44      (000000aa) const/4              v7, 0
+	45      (000000ac) iput-object          v7, v6, Landroidx/fragment/app/s;->mDialog Landroid/app/Dialog;
+	34:af
+	(Ljava/lang/Throwable; -> 76 onGetLayoutInflater-BB@0x76)
+
+onGetLayoutInflater-BB@0xb0 : [ onGetLayoutInflater-BB@0xbc ]
+	46      (000000b0) iput-boolean         v1, v6, Landroidx/fragment/app/s;->mCreatingDialog Z
+	47      (000000b4) goto                 +4h
+
+onGetLayoutInflater-BB@0xb6 : 
+	48      (000000b6) iput-boolean         v1, v6, Landroidx/fragment/app/s;->mCreatingDialog Z
+	49      (000000ba) throw                v7
+
+onGetLayoutInflater-BB@0xbc : [ onGetLayoutInflater-BB@0xc8 onGetLayoutInflater-BB@0xf4 ]
+	50      (000000bc) invoke-static        v2, Landroidx/fragment/app/b1;->H(I)Z
+	51      (000000c2) move-result          v7
+	52      (000000c4) if-eqz               v7, +018h
+
+onGetLayoutInflater-BB@0xc8 : [ onGetLayoutInflater-BB@0xf4 ]
+	53      (000000c8) new-instance         v7, Ljava/lang/StringBuilder;
+	54      (000000cc) const-string         v1, "get layout inflater for DialogFragment "
+	55      (000000d0) invoke-direct        v7, v1, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	56      (000000d6) invoke-virtual       v7, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	57      (000000dc) const-string         v1, " from dialog context"
+	58      (000000e0) invoke-virtual       v7, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	59      (000000e6) invoke-virtual       v7, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	60      (000000ec) move-result-object   v7
+	61      (000000ee) invoke-static        v3, v7, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String;)I
+
+onGetLayoutInflater-BB@0xf4 : [ onGetLayoutInflater-BB@0xfc onGetLayoutInflater-BB@0x184 ]
+	62      (000000f4) iget-object          v7, v6, Landroidx/fragment/app/s;->mDialog Landroid/app/Dialog;
+	63      (000000f8) if-eqz               v7, +046h
+
+onGetLayoutInflater-BB@0xfc : 
+	64      (000000fc) invoke-virtual       v7, Landroid/app/Dialog;->getContext()Landroid/content/Context;
+	65      (00000102) move-result-object   v7
+	66      (00000104) invoke-virtual       v0, v7, Landroid/view/LayoutInflater;->cloneInContext(Landroid/content/Context;)Landroid/view/LayoutInflater;
+	67      (0000010a) move-result-object   v7
+	68      (0000010c) return-object        v7
+
+onGetLayoutInflater-BB@0x10e : [ onGetLayoutInflater-BB@0x11a onGetLayoutInflater-BB@0x184 ]
+	69      (0000010e) invoke-static        v2, Landroidx/fragment/app/b1;->H(I)Z
+	70      (00000114) move-result          v7
+	71      (00000116) if-eqz               v7, +037h
+
+onGetLayoutInflater-BB@0x11a : [ onGetLayoutInflater-BB@0x13e onGetLayoutInflater-BB@0x162 ]
+	72      (0000011a) new-instance         v7, Ljava/lang/StringBuilder;
+	73      (0000011e) const-string         v1, "getting layout inflater for DialogFragment "
+	74      (00000122) invoke-direct        v7, v1, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	75      (00000128) invoke-virtual       v7, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	76      (0000012e) invoke-virtual       v7, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	77      (00000134) move-result-object   v7
+	78      (00000136) iget-boolean         v1, v6, Landroidx/fragment/app/s;->mShowsDialog Z
+	79      (0000013a) if-nez               v1, +014h
+
+onGetLayoutInflater-BB@0x13e : 
+	80      (0000013e) new-instance         v1, Ljava/lang/StringBuilder;
+	81      (00000142) const-string         v2, "mShowsDialog = false: "
+	82      (00000146) invoke-direct        v1, v2, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	83      (0000014c) invoke-virtual       v1, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	84      (00000152) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	85      (00000158) move-result-object   v7
+	86      (0000015a) invoke-static        v3, v7, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String;)I
+	87      (00000160) return-object        v0
+
+onGetLayoutInflater-BB@0x162 : [ onGetLayoutInflater-BB@0x184 ]
+	88      (00000162) new-instance         v1, Ljava/lang/StringBuilder;
+	89      (00000166) const-string         v2, "mCreatingDialog = true: "
+	90      (0000016a) invoke-direct        v1, v2, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	91      (00000170) invoke-virtual       v1, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	92      (00000176) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	93      (0000017c) move-result-object   v7
+	94      (0000017e) invoke-static        v3, v7, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String;)I
+
+onGetLayoutInflater-BB@0x184 : 
+	95      (00000184) return-object        v0
+

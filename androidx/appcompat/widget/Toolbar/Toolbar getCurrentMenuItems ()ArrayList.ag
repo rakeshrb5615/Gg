@@ -1,0 +1,29 @@
+# Landroidx/appcompat/widget/Toolbar;->getCurrentMenuItems()Ljava/util/ArrayList; [access_flags=private]
+#
+# Parameters:
+# local registers: v0...v4
+#
+# - return:java.util.ArrayList
+
+getCurrentMenuItems-BB@0x0 : [ getCurrentMenuItems-BB@0x14 ]
+	0       (00000000) new-instance         v0, Ljava/util/ArrayList;
+	1       (00000004) invoke-direct        v0, Ljava/util/ArrayList;-><init>()V
+	2       (0000000a) invoke-virtual       v4, Landroidx/appcompat/widget/Toolbar;->getMenu()Landroid/view/Menu;
+	3       (00000010) move-result-object   v1
+	4       (00000012) const/4              v2, 0
+
+getCurrentMenuItems-BB@0x14 : [ getCurrentMenuItems-BB@0x20 getCurrentMenuItems-BB@0x34 ]
+	5       (00000014) invoke-interface     v1, Landroid/view/Menu;->size()I
+	6       (0000001a) move-result          v3
+	7       (0000001c) if-ge                v2, v3, +00ch
+
+getCurrentMenuItems-BB@0x20 : [ getCurrentMenuItems-BB@0x14 ]
+	8       (00000020) invoke-interface     v1, v2, Landroid/view/Menu;->getItem(I)Landroid/view/MenuItem;
+	9       (00000026) move-result-object   v3
+	10      (00000028) invoke-virtual       v0, v3, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+	11      (0000002e) add-int/lit8         v2, v2, 1
+	12      (00000032) goto                 -fh
+
+getCurrentMenuItems-BB@0x34 : 
+	13      (00000034) return-object        v0
+

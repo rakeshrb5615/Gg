@@ -1,0 +1,33 @@
+# Landroidx/fragment/app/e0;->performDestroy()V [access_flags=public]
+#
+# Parameters:
+# local registers: v0...v3
+#
+# - return:void
+
+performDestroy-BB@0x0 : [ performDestroy-BB@0x34 performDestroy-BB@0x36 ]
+	0       (00000000) iget-object          v0, v3, Landroidx/fragment/app/e0;->mChildFragmentManager Landroidx/fragment/app/b1;
+	1       (00000004) invoke-virtual       v0, Landroidx/fragment/app/b1;->k()V
+	2       (0000000a) iget-object          v0, v3, Landroidx/fragment/app/e0;->mLifecycleRegistry Landroidx/lifecycle/w;
+	3       (0000000e) sget-object          v1, Landroidx/lifecycle/n;->ON_DESTROY Landroidx/lifecycle/n;
+	4       (00000012) invoke-virtual       v0, v1, Landroidx/lifecycle/w;->e(Landroidx/lifecycle/n;)V
+	5       (00000018) const/4              v0, 0
+	6       (0000001a) iput                 v0, v3, Landroidx/fragment/app/e0;->mState I
+	7       (0000001e) iput-boolean         v0, v3, Landroidx/fragment/app/e0;->mCalled Z
+	8       (00000022) iput-boolean         v0, v3, Landroidx/fragment/app/e0;->mIsCreated Z
+	9       (00000026) invoke-virtual       v3, Landroidx/fragment/app/e0;->onDestroy()V
+	10      (0000002c) iget-boolean         v0, v3, Landroidx/fragment/app/e0;->mCalled Z
+	11      (00000030) if-eqz               v0, +003h
+
+performDestroy-BB@0x34 : 
+	12      (00000034) return-void          
+
+performDestroy-BB@0x36 : 
+	13      (00000036) new-instance         v0, Landroidx/fragment/app/b2;
+	14      (0000003a) const-string         v1, "Fragment "
+	15      (0000003e) const-string         v2, " did not call through to super.onDestroy()"
+	16      (00000042) invoke-static        v1, v3, v2, Lv1/a;->k(Ljava/lang/String; Landroidx/fragment/app/e0; Ljava/lang/String;)Ljava/lang/String;
+	17      (00000048) move-result-object   v1
+	18      (0000004a) invoke-direct        v0, v1, Landroid/util/AndroidRuntimeException;-><init>(Ljava/lang/String;)V
+	19      (00000050) throw                v0
+

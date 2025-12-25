@@ -1,0 +1,43 @@
+# Landroidx/appcompat/widget/SearchView$SearchAutoComplete;->setImeVisibility(Z)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:boolean
+#
+# - return:void
+
+setImeVisibility-BB@0x0 : [ setImeVisibility-BB@0x22 setImeVisibility-BB@0x3c ]
+	0       (00000000) invoke-virtual       v3, Landroid/view/View;->getContext()Landroid/content/Context;
+	1       (00000006) move-result-object   v0
+	2       (00000008) const-string         v1, "input_method"
+	3       (0000000c) invoke-virtual       v0, v1, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+	4       (00000012) move-result-object   v0
+	5       (00000014) check-cast           v0, Landroid/view/inputmethod/InputMethodManager;
+	6       (00000018) iget-object          v1, v3, Landroidx/appcompat/widget/SearchView$SearchAutoComplete;->m La2/l;
+	7       (0000001c) const/4              v2, 0
+	8       (0000001e) if-nez               v4, +00fh
+
+setImeVisibility-BB@0x22 : 
+	9       (00000022) iput-boolean         v2, v3, Landroidx/appcompat/widget/SearchView$SearchAutoComplete;->f Z
+	10      (00000026) invoke-virtual       v3, v1, Landroid/view/View;->removeCallbacks(Ljava/lang/Runnable;)Z
+	11      (0000002c) invoke-virtual       v3, Landroid/view/View;->getWindowToken()Landroid/os/IBinder;
+	12      (00000032) move-result-object   v4
+	13      (00000034) invoke-virtual       v0, v4, v2, Landroid/view/inputmethod/InputMethodManager;->hideSoftInputFromWindow(Landroid/os/IBinder; I)Z
+	14      (0000003a) return-void          
+
+setImeVisibility-BB@0x3c : [ setImeVisibility-BB@0x48 setImeVisibility-BB@0x5a ]
+	15      (0000003c) invoke-virtual       v0, v3, Landroid/view/inputmethod/InputMethodManager;->isActive(Landroid/view/View;)Z
+	16      (00000042) move-result          v4
+	17      (00000044) if-eqz               v4, +00bh
+
+setImeVisibility-BB@0x48 : 
+	18      (00000048) iput-boolean         v2, v3, Landroidx/appcompat/widget/SearchView$SearchAutoComplete;->f Z
+	19      (0000004c) invoke-virtual       v3, v1, Landroid/view/View;->removeCallbacks(Ljava/lang/Runnable;)Z
+	20      (00000052) invoke-virtual       v0, v3, v2, Landroid/view/inputmethod/InputMethodManager;->showSoftInput(Landroid/view/View; I)Z
+	21      (00000058) return-void          
+
+setImeVisibility-BB@0x5a : 
+	22      (0000005a) const/4              v4, 1
+	23      (0000005c) iput-boolean         v4, v3, Landroidx/appcompat/widget/SearchView$SearchAutoComplete;->f Z
+	24      (00000060) return-void          
+

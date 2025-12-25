@@ -1,0 +1,30 @@
+# Landroidx/fragment/app/e0;->getLayoutInflater(Landroid/os/Bundle;)Landroid/view/LayoutInflater; [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:android.os.Bundle
+#
+# - return:android.view.LayoutInflater
+
+getLayoutInflater-BB@0x0 : [ getLayoutInflater-BB@0x8 getLayoutInflater-BB@0x30 ]
+	0       (00000000) iget-object          v2, v1, Landroidx/fragment/app/e0;->mHost Landroidx/fragment/app/o0;
+	1       (00000004) if-eqz               v2, +016h
+
+getLayoutInflater-BB@0x8 : 
+	2       (00000008) check-cast           v2, Landroidx/fragment/app/i0;
+	3       (0000000c) iget-object          v2, v2, Landroidx/fragment/app/i0;->e Landroidx/fragment/app/j0;
+	4       (00000010) invoke-virtual       v2, Landroid/app/Activity;->getLayoutInflater()Landroid/view/LayoutInflater;
+	5       (00000016) move-result-object   v0
+	6       (00000018) invoke-virtual       v0, v2, Landroid/view/LayoutInflater;->cloneInContext(Landroid/content/Context;)Landroid/view/LayoutInflater;
+	7       (0000001e) move-result-object   v2
+	8       (00000020) iget-object          v0, v1, Landroidx/fragment/app/e0;->mChildFragmentManager Landroidx/fragment/app/b1;
+	9       (00000024) iget-object          v0, v0, Landroidx/fragment/app/b1;->f Landroidx/fragment/app/q0;
+	10      (00000028) invoke-virtual       v2, v0, Landroid/view/LayoutInflater;->setFactory2(Landroid/view/LayoutInflater$Factory2;)V
+	11      (0000002e) return-object        v2
+
+getLayoutInflater-BB@0x30 : 
+	12      (00000030) new-instance         v2, Ljava/lang/IllegalStateException;
+	13      (00000034) const-string         v0, "onGetLayoutInflater() cannot be executed until the Fragment is attached to the FragmentManager."
+	14      (00000038) invoke-direct        v2, v0, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	15      (0000003e) throw                v2
+

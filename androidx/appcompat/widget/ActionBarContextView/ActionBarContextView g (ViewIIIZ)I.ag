@@ -1,0 +1,43 @@
+# Landroidx/appcompat/widget/ActionBarContextView;->g(Landroid/view/View; I I I Z)I [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:android.view.View
+# - v3:int
+# - v4:int
+# - v5:int
+# - v6:boolean
+#
+# - return:int
+
+g-BB@0x0 : [ g-BB@0x1c g-BB@0x2a ]
+	0       (00000000) invoke-virtual       v2, Landroid/view/View;->getMeasuredWidth()I
+	1       (00000006) move-result          v0
+	2       (00000008) invoke-virtual       v2, Landroid/view/View;->getMeasuredHeight()I
+	3       (0000000e) move-result          v1
+	4       (00000010) sub-int/2addr        v5, v1
+	5       (00000012) div-int/lit8         v5, v5, 2
+	6       (00000016) add-int/2addr        v5, v4
+	7       (00000018) if-eqz               v6, +009h
+
+g-BB@0x1c : [ g-BB@0x36 ]
+	8       (0000001c) sub-int              v4, v3, v0
+	9       (00000020) add-int/2addr        v1, v5
+	10      (00000022) invoke-virtual       v2, v4, v5, v3, v1, Landroid/view/View;->layout(I I I I)V
+	11      (00000028) goto                 +7h
+
+g-BB@0x2a : [ g-BB@0x36 ]
+	12      (0000002a) add-int              v4, v3, v0
+	13      (0000002e) add-int/2addr        v1, v5
+	14      (00000030) invoke-virtual       v2, v3, v5, v4, v1, Landroid/view/View;->layout(I I I I)V
+
+g-BB@0x36 : [ g-BB@0x3a g-BB@0x3e ]
+	15      (00000036) if-eqz               v6, +004h
+
+g-BB@0x3a : 
+	16      (0000003a) neg-int              v2, v0
+	17      (0000003c) return               v2
+
+g-BB@0x3e : 
+	18      (0000003e) return               v0
+

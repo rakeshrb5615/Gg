@@ -1,0 +1,69 @@
+# Landroidx/fragment/app/e0;->performDestroyView()V [access_flags=public]
+#
+# Parameters:
+# local registers: v0...v5
+#
+# - return:void
+
+performDestroyView-BB@0x0 : [ performDestroyView-BB@0x14 performDestroyView-BB@0x44 ]
+	0       (00000000) iget-object          v0, v5, Landroidx/fragment/app/e0;->mChildFragmentManager Landroidx/fragment/app/b1;
+	1       (00000004) const/4              v1, 1
+	2       (00000006) invoke-virtual       v0, v1, Landroidx/fragment/app/b1;->t(I)V
+	3       (0000000c) iget-object          v0, v5, Landroidx/fragment/app/e0;->mView Landroid/view/View;
+	4       (00000010) if-eqz               v0, +01ah
+
+performDestroyView-BB@0x14 : [ performDestroyView-BB@0x36 performDestroyView-BB@0x44 ]
+	5       (00000014) iget-object          v0, v5, Landroidx/fragment/app/e0;->mViewLifecycleOwner Landroidx/fragment/app/v1;
+	6       (00000018) invoke-virtual       v0, Landroidx/fragment/app/v1;->b()V
+	7       (0000001e) iget-object          v0, v0, Landroidx/fragment/app/v1;->d Landroidx/lifecycle/w;
+	8       (00000022) iget-object          v0, v0, Landroidx/lifecycle/w;->c Landroidx/lifecycle/o;
+	9       (00000026) sget-object          v2, Landroidx/lifecycle/o;->c Landroidx/lifecycle/o;
+	10      (0000002a) invoke-virtual       v0, v2, Ljava/lang/Enum;->compareTo(Ljava/lang/Enum;)I
+	11      (00000030) move-result          v0
+	12      (00000032) if-ltz               v0, +009h
+
+performDestroyView-BB@0x36 : [ performDestroyView-BB@0x44 ]
+	13      (00000036) iget-object          v0, v5, Landroidx/fragment/app/e0;->mViewLifecycleOwner Landroidx/fragment/app/v1;
+	14      (0000003a) sget-object          v2, Landroidx/lifecycle/n;->ON_DESTROY Landroidx/lifecycle/n;
+	15      (0000003e) invoke-virtual       v0, v2, Landroidx/fragment/app/v1;->a(Landroidx/lifecycle/n;)V
+
+performDestroyView-BB@0x44 : [ performDestroyView-BB@0x5c performDestroyView-BB@0x94 ]
+	16      (00000044) iput                 v1, v5, Landroidx/fragment/app/e0;->mState I
+	17      (00000048) const/4              v0, 0
+	18      (0000004a) iput-boolean         v0, v5, Landroidx/fragment/app/e0;->mCalled Z
+	19      (0000004e) invoke-virtual       v5, Landroidx/fragment/app/e0;->onDestroyView()V
+	20      (00000054) iget-boolean         v1, v5, Landroidx/fragment/app/e0;->mCalled Z
+	21      (00000058) if-eqz               v1, +01eh
+
+performDestroyView-BB@0x5c : [ performDestroyView-BB@0x72 ]
+	22      (0000005c) invoke-static        v5, Lq1/b;->a(Landroidx/lifecycle/u;)Lq1/f;
+	23      (00000062) move-result-object   v1
+	24      (00000064) iget-object          v1, v1, Lq1/f;->b Lq1/e;
+	25      (00000068) iget-object          v1, v1, Lq1/e;->b Lr/k;
+	26      (0000006c) iget                 v2, v1, Lr/k;->c I
+	27      (00000070) move                 v3, v0
+
+performDestroyView-BB@0x72 : [ performDestroyView-BB@0x76 performDestroyView-BB@0x8e ]
+	28      (00000072) if-ge                v3, v2, +00eh
+
+performDestroyView-BB@0x76 : [ performDestroyView-BB@0x72 ]
+	29      (00000076) invoke-virtual       v1, v3, Lr/k;->e(I)Ljava/lang/Object;
+	30      (0000007c) move-result-object   v4
+	31      (0000007e) check-cast           v4, Lq1/c;
+	32      (00000082) invoke-virtual       v4, Lq1/c;->i()V
+	33      (00000088) add-int/lit8         v3, v3, 1
+	34      (0000008c) goto                 -dh
+
+performDestroyView-BB@0x8e : 
+	35      (0000008e) iput-boolean         v0, v5, Landroidx/fragment/app/e0;->mPerformedCreateView Z
+	36      (00000092) return-void          
+
+performDestroyView-BB@0x94 : 
+	37      (00000094) new-instance         v0, Landroidx/fragment/app/b2;
+	38      (00000098) const-string         v1, "Fragment "
+	39      (0000009c) const-string         v2, " did not call through to super.onDestroyView()"
+	40      (000000a0) invoke-static        v1, v5, v2, Lv1/a;->k(Ljava/lang/String; Landroidx/fragment/app/e0; Ljava/lang/String;)Ljava/lang/String;
+	41      (000000a6) move-result-object   v1
+	42      (000000a8) invoke-direct        v0, v1, Landroid/util/AndroidRuntimeException;-><init>(Ljava/lang/String;)V
+	43      (000000ae) throw                v0
+

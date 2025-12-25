@@ -1,0 +1,152 @@
+# Landroidx/fragment/app/a;->c(I Landroidx/fragment/app/e0; Ljava/lang/String; I)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:int
+# - v5:androidx.fragment.app.e0
+# - v6:java.lang.String
+# - v7:int
+#
+# - return:void
+
+c-BB@0x0 : [ c-BB@0x8 c-BB@0xe ]
+	0       (00000000) iget-object          v0, v5, Landroidx/fragment/app/e0;->mPreviousWho Ljava/lang/String;
+	1       (00000004) if-eqz               v0, +005h
+
+c-BB@0x8 : [ c-BB@0xe ]
+	2       (00000008) invoke-static        v5, v0, Lk1/c;->c(Landroidx/fragment/app/e0; Ljava/lang/String;)V
+
+c-BB@0xe : [ c-BB@0x2a c-BB@0x168 ]
+	3       (0000000e) invoke-virtual       v5, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	4       (00000014) move-result-object   v0
+	5       (00000016) invoke-virtual       v0, Ljava/lang/Class;->getModifiers()I
+	6       (0000001c) move-result          v1
+	7       (0000001e) invoke-virtual       v0, Ljava/lang/Class;->isAnonymousClass()Z
+	8       (00000024) move-result          v2
+	9       (00000026) if-nez               v2, +0a1h
+
+c-BB@0x2a : [ c-BB@0x36 c-BB@0x168 ]
+	10      (0000002a) invoke-static        v1, Ljava/lang/reflect/Modifier;->isPublic(I)Z
+	11      (00000030) move-result          v2
+	12      (00000032) if-eqz               v2, +09bh
+
+c-BB@0x36 : [ c-BB@0x42 c-BB@0x4e ]
+	13      (00000036) invoke-virtual       v0, Ljava/lang/Class;->isMemberClass()Z
+	14      (0000003c) move-result          v2
+	15      (0000003e) if-eqz               v2, +008h
+
+c-BB@0x42 : [ c-BB@0x4e c-BB@0x168 ]
+	16      (00000042) invoke-static        v1, Ljava/lang/reflect/Modifier;->isStatic(I)Z
+	17      (00000048) move-result          v1
+	18      (0000004a) if-eqz               v1, +08fh
+
+c-BB@0x4e : [ c-BB@0x5a c-BB@0xa6 ]
+	19      (0000004e) const-string         v0, " now "
+	20      (00000052) const-string         v1, ": was "
+	21      (00000056) if-eqz               v6, +028h
+
+c-BB@0x5a : [ c-BB@0x62 c-BB@0xa2 ]
+	22      (0000005a) iget-object          v2, v5, Landroidx/fragment/app/e0;->mTag Ljava/lang/String;
+	23      (0000005e) if-eqz               v2, +022h
+
+c-BB@0x62 : [ c-BB@0x6e c-BB@0x70 ]
+	24      (00000062) invoke-virtual       v6, v2, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	25      (00000068) move-result          v2
+	26      (0000006a) if-eqz               v2, +003h
+
+c-BB@0x6e : [ c-BB@0xa2 ]
+	27      (0000006e) goto                 +1ah
+
+c-BB@0x70 : 
+	28      (00000070) new-instance         v4, Ljava/lang/IllegalStateException;
+	29      (00000074) new-instance         v7, Ljava/lang/StringBuilder;
+	30      (00000078) const-string         v2, "Can't change tag of fragment "
+	31      (0000007c) invoke-direct        v7, v2, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	32      (00000082) invoke-virtual       v7, v5, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	33      (00000088) invoke-virtual       v7, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	34      (0000008e) iget-object          v5, v5, Landroidx/fragment/app/e0;->mTag Ljava/lang/String;
+	35      (00000092) invoke-static        v7, v5, v0, v6, Lv1/a;->o(Ljava/lang/StringBuilder; Ljava/lang/String; Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	36      (00000098) move-result-object   v5
+	37      (0000009a) invoke-direct        v4, v5, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	38      (000000a0) throw                v4
+
+c-BB@0xa2 : [ c-BB@0xa6 ]
+	39      (000000a2) iput-object          v6, v5, Landroidx/fragment/app/e0;->mTag Ljava/lang/String;
+
+c-BB@0xa6 : [ c-BB@0xaa c-BB@0x14e ]
+	40      (000000a6) if-eqz               v4, +054h
+
+c-BB@0xaa : [ c-BB@0xb0 c-BB@0x10c ]
+	41      (000000aa) const/4              v2, -1
+	42      (000000ac) if-eq                v4, v2, +030h
+
+c-BB@0xb0 : [ c-BB@0xb8 c-BB@0x102 ]
+	43      (000000b0) iget                 v6, v5, Landroidx/fragment/app/e0;->mFragmentId I
+	44      (000000b4) if-eqz               v6, +027h
+
+c-BB@0xb8 : [ c-BB@0xbc c-BB@0xbe ]
+	45      (000000b8) if-ne                v6, v4, +003h
+
+c-BB@0xbc : [ c-BB@0x102 ]
+	46      (000000bc) goto                 +23h
+
+c-BB@0xbe : 
+	47      (000000be) new-instance         v6, Ljava/lang/IllegalStateException;
+	48      (000000c2) new-instance         v7, Ljava/lang/StringBuilder;
+	49      (000000c6) const-string         v2, "Can't change container ID of fragment "
+	50      (000000ca) invoke-direct        v7, v2, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	51      (000000d0) invoke-virtual       v7, v5, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	52      (000000d6) invoke-virtual       v7, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	53      (000000dc) iget                 v5, v5, Landroidx/fragment/app/e0;->mFragmentId I
+	54      (000000e0) invoke-virtual       v7, v5, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	55      (000000e6) invoke-virtual       v7, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	56      (000000ec) invoke-virtual       v7, v4, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	57      (000000f2) invoke-virtual       v7, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	58      (000000f8) move-result-object   v4
+	59      (000000fa) invoke-direct        v6, v4, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	60      (00000100) throw                v6
+
+c-BB@0x102 : [ c-BB@0x14e ]
+	61      (00000102) iput                 v4, v5, Landroidx/fragment/app/e0;->mFragmentId I
+	62      (00000106) iput                 v4, v5, Landroidx/fragment/app/e0;->mContainerId I
+	63      (0000010a) goto                 +22h
+
+c-BB@0x10c : 
+	64      (0000010c) new-instance         v4, Ljava/lang/IllegalArgumentException;
+	65      (00000110) new-instance         v7, Ljava/lang/StringBuilder;
+	66      (00000114) const-string         v0, "Can't add fragment "
+	67      (00000118) invoke-direct        v7, v0, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	68      (0000011e) invoke-virtual       v7, v5, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	69      (00000124) const-string         v5, " with tag "
+	70      (00000128) invoke-virtual       v7, v5, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	71      (0000012e) invoke-virtual       v7, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	72      (00000134) const-string         v5, " to container view with no id"
+	73      (00000138) invoke-virtual       v7, v5, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	74      (0000013e) invoke-virtual       v7, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	75      (00000144) move-result-object   v5
+	76      (00000146) invoke-direct        v4, v5, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	77      (0000014c) throw                v4
+
+c-BB@0x14e : 
+	78      (0000014e) new-instance         v4, Landroidx/fragment/app/l1;
+	79      (00000152) invoke-direct        v4, v5, v7, Landroidx/fragment/app/l1;-><init>(Landroidx/fragment/app/e0; I)V
+	80      (00000158) invoke-virtual       v3, v4, Landroidx/fragment/app/m1;->b(Landroidx/fragment/app/l1;)V
+	81      (0000015e) iget-object          v4, v3, Landroidx/fragment/app/a;->q Landroidx/fragment/app/b1;
+	82      (00000162) iput-object          v4, v5, Landroidx/fragment/app/e0;->mFragmentManager Landroidx/fragment/app/b1;
+	83      (00000166) return-void          
+
+c-BB@0x168 : 
+	84      (00000168) new-instance         v4, Ljava/lang/IllegalStateException;
+	85      (0000016c) new-instance         v5, Ljava/lang/StringBuilder;
+	86      (00000170) const-string         v6, "Fragment "
+	87      (00000174) invoke-direct        v5, v6, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	88      (0000017a) invoke-virtual       v0, Ljava/lang/Class;->getCanonicalName()Ljava/lang/String;
+	89      (00000180) move-result-object   v6
+	90      (00000182) invoke-virtual       v5, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	91      (00000188) const-string         v6, " must be a public static class to be  properly recreated from instance state."
+	92      (0000018c) invoke-virtual       v5, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	93      (00000192) invoke-virtual       v5, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	94      (00000198) move-result-object   v5
+	95      (0000019a) invoke-direct        v4, v5, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	96      (000001a0) throw                v4
+

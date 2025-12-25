@@ -1,0 +1,29 @@
+# Landroidx/datastore/preferences/protobuf/v;->k(I)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:int
+#
+# - return:void
+
+k-BB@0x0 : [ k-BB@0x4 k-BB@0x1e ]
+	0       (00000000) if-ltz               v3, +00fh
+
+k-BB@0x4 : 
+	1       (00000004) iget                 v0, v2, Landroidx/datastore/preferences/protobuf/v;->memoizedSerializedSize I
+	2       (00000008) const/high16         v1, -2147483648
+	3       (0000000c) and-int/2addr        v0, v1
+	4       (0000000e) const                v1, 2147483647
+	5       (00000014) and-int/2addr        v3, v1
+	6       (00000016) or-int/2addr         v3, v0
+	7       (00000018) iput                 v3, v2, Landroidx/datastore/preferences/protobuf/v;->memoizedSerializedSize I
+	8       (0000001c) return-void          
+
+k-BB@0x1e : 
+	9       (0000001e) new-instance         v0, Ljava/lang/IllegalStateException;
+	10      (00000022) const-string         v1, "serialized size must be non-negative, was "
+	11      (00000026) invoke-static        v3, v1, Lg2/g;->c(I Ljava/lang/String;)Ljava/lang/String;
+	12      (0000002c) move-result-object   v3
+	13      (0000002e) invoke-direct        v0, v3, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	14      (00000034) throw                v0
+

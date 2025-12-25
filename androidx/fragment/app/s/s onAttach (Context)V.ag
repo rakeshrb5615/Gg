@@ -1,0 +1,81 @@
+# Landroidx/fragment/app/s;->onAttach(Landroid/content/Context;)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:android.content.Context
+#
+# - return:void
+
+onAttach-BB@0x0 : [ onAttach-BB@0x3e onAttach-BB@0x44 ]
+	0       (00000000) invoke-super         v4, v5, Landroidx/fragment/app/e0;->onAttach(Landroid/content/Context;)V
+	1       (00000006) invoke-virtual       v4, Landroidx/fragment/app/e0;->getViewLifecycleOwnerLiveData()Landroidx/lifecycle/c0;
+	2       (0000000c) move-result-object   v5
+	3       (0000000e) iget-object          v0, v4, Landroidx/fragment/app/s;->mObserver Landroidx/lifecycle/e0;
+	4       (00000012) invoke-virtual       v5, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	5       (00000018) const-string         v1, "observeForever"
+	6       (0000001c) invoke-static        v1, Landroidx/lifecycle/c0;->a(Ljava/lang/String;)V
+	7       (00000022) new-instance         v1, Landroidx/lifecycle/z;
+	8       (00000026) invoke-direct        v1, v5, v0, Landroidx/lifecycle/b0;-><init>(Landroidx/lifecycle/c0; Landroidx/lifecycle/e0;)V
+	9       (0000002c) iget-object          v5, v5, Landroidx/lifecycle/c0;->b Lp/f;
+	10      (00000030) invoke-virtual       v5, v0, Lp/f;->a(Ljava/lang/Object;)Lp/c;
+	11      (00000036) move-result-object   v2
+	12      (00000038) const/4              v3, 1
+	13      (0000003a) if-eqz               v2, +005h
+
+onAttach-BB@0x3e : [ onAttach-BB@0x78 ]
+	14      (0000003e) iget-object          v5, v2, Lp/c;->b Ljava/lang/Object;
+	15      (00000042) goto                 +1bh
+
+onAttach-BB@0x44 : [ onAttach-BB@0x60 onAttach-BB@0x6a ]
+	16      (00000044) new-instance         v2, Lp/c;
+	17      (00000048) invoke-direct        v2, v0, v1, Lp/c;-><init>(Ljava/lang/Object; Ljava/lang/Object;)V
+	18      (0000004e) iget                 v0, v5, Lp/f;->d I
+	19      (00000052) add-int/2addr        v0, v3
+	20      (00000054) iput                 v0, v5, Lp/f;->d I
+	21      (00000058) iget-object          v0, v5, Lp/f;->b Lp/c;
+	22      (0000005c) if-nez               v0, +007h
+
+onAttach-BB@0x60 : [ onAttach-BB@0x76 ]
+	23      (00000060) iput-object          v2, v5, Lp/f;->a Lp/c;
+	24      (00000064) iput-object          v2, v5, Lp/f;->b Lp/c;
+	25      (00000068) goto                 +7h
+
+onAttach-BB@0x6a : [ onAttach-BB@0x76 ]
+	26      (0000006a) iput-object          v2, v0, Lp/c;->c Lp/c;
+	27      (0000006e) iput-object          v0, v2, Lp/c;->d Lp/c;
+	28      (00000072) iput-object          v2, v5, Lp/f;->b Lp/c;
+
+onAttach-BB@0x76 : [ onAttach-BB@0x78 ]
+	29      (00000076) const/4              v5, 0
+
+onAttach-BB@0x78 : [ onAttach-BB@0x84 onAttach-BB@0xa0 ]
+	30      (00000078) check-cast           v5, Landroidx/lifecycle/b0;
+	31      (0000007c) instance-of          v0, v5, Landroidx/lifecycle/a0;
+	32      (00000080) if-nez               v0, +010h
+
+onAttach-BB@0x84 : [ onAttach-BB@0x88 onAttach-BB@0x8a ]
+	33      (00000084) if-eqz               v5, +003h
+
+onAttach-BB@0x88 : [ onAttach-BB@0x90 ]
+	34      (00000088) goto                 +4h
+
+onAttach-BB@0x8a : [ onAttach-BB@0x90 ]
+	35      (0000008a) invoke-virtual       v1, v3, Landroidx/lifecycle/b0;->a(Z)V
+
+onAttach-BB@0x90 : [ onAttach-BB@0x98 onAttach-BB@0x9e ]
+	36      (00000090) iget-boolean         v5, v4, Landroidx/fragment/app/s;->mShownByMe Z
+	37      (00000094) if-nez               v5, +005h
+
+onAttach-BB@0x98 : [ onAttach-BB@0x9e ]
+	38      (00000098) const/4              v5, 0
+	39      (0000009a) iput-boolean         v5, v4, Landroidx/fragment/app/s;->mDismissed Z
+
+onAttach-BB@0x9e : 
+	40      (0000009e) return-void          
+
+onAttach-BB@0xa0 : 
+	41      (000000a0) new-instance         v5, Ljava/lang/IllegalArgumentException;
+	42      (000000a4) const-string         v0, "Cannot add the same observer with different lifecycles"
+	43      (000000a8) invoke-direct        v5, v0, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	44      (000000ae) throw                v5
+

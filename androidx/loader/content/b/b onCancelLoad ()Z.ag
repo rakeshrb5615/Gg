@@ -1,0 +1,76 @@
+# Landroidx/loader/content/b;->onCancelLoad()Z [access_flags=public]
+#
+# Parameters:
+# local registers: v0...v5
+#
+# - return:boolean
+
+onCancelLoad-BB@0x0 : [ onCancelLoad-BB@0xa onCancelLoad-BB@0xa4 ]
+	0       (00000000) iget-object          v0, v5, Landroidx/loader/content/b;->mTask Landroidx/loader/content/a;
+	1       (00000004) const/4              v1, 0
+	2       (00000006) if-eqz               v0, +04fh
+
+onCancelLoad-BB@0xa : [ onCancelLoad-BB@0x14 onCancelLoad-BB@0x18 ]
+	3       (0000000a) iget-boolean         v0, v5, Landroidx/loader/content/e;->mStarted Z
+	4       (0000000e) const/4              v2, 1
+	5       (00000010) if-nez               v0, +004h
+
+onCancelLoad-BB@0x14 : [ onCancelLoad-BB@0x18 ]
+	6       (00000014) iput-boolean         v2, v5, Landroidx/loader/content/e;->mContentChanged Z
+
+onCancelLoad-BB@0x18 : [ onCancelLoad-BB@0x22 onCancelLoad-BB@0x4a ]
+	7       (00000018) iget-object          v0, v5, Landroidx/loader/content/b;->mCancellingTask Landroidx/loader/content/a;
+	8       (0000001c) const/4              v3, 0
+	9       (0000001e) if-eqz               v0, +016h
+
+onCancelLoad-BB@0x22 : [ onCancelLoad-BB@0x2e onCancelLoad-BB@0x44 ]
+	10      (00000022) iget-object          v0, v5, Landroidx/loader/content/b;->mTask Landroidx/loader/content/a;
+	11      (00000026) iget-boolean         v0, v0, Landroidx/loader/content/a;->m Z
+	12      (0000002a) if-eqz               v0, +00dh
+
+onCancelLoad-BB@0x2e : [ onCancelLoad-BB@0x44 ]
+	13      (0000002e) iget-object          v0, v5, Landroidx/loader/content/b;->mTask Landroidx/loader/content/a;
+	14      (00000032) iput-boolean         v1, v0, Landroidx/loader/content/a;->m Z
+	15      (00000036) iget-object          v0, v5, Landroidx/loader/content/b;->mHandler Landroid/os/Handler;
+	16      (0000003a) iget-object          v2, v5, Landroidx/loader/content/b;->mTask Landroidx/loader/content/a;
+	17      (0000003e) invoke-virtual       v0, v2, Landroid/os/Handler;->removeCallbacks(Ljava/lang/Runnable;)V
+
+onCancelLoad-BB@0x44 : 
+	18      (00000044) iput-object          v3, v5, Landroidx/loader/content/b;->mTask Landroidx/loader/content/a;
+	19      (00000048) return               v1
+
+onCancelLoad-BB@0x4a : [ onCancelLoad-BB@0x56 onCancelLoad-BB@0x72 ]
+	20      (0000004a) iget-object          v0, v5, Landroidx/loader/content/b;->mTask Landroidx/loader/content/a;
+	21      (0000004e) iget-boolean         v0, v0, Landroidx/loader/content/a;->m Z
+	22      (00000052) if-eqz               v0, +010h
+
+onCancelLoad-BB@0x56 : 
+	23      (00000056) iget-object          v0, v5, Landroidx/loader/content/b;->mTask Landroidx/loader/content/a;
+	24      (0000005a) iput-boolean         v1, v0, Landroidx/loader/content/a;->m Z
+	25      (0000005e) iget-object          v0, v5, Landroidx/loader/content/b;->mHandler Landroid/os/Handler;
+	26      (00000062) iget-object          v2, v5, Landroidx/loader/content/b;->mTask Landroidx/loader/content/a;
+	27      (00000066) invoke-virtual       v0, v2, Landroid/os/Handler;->removeCallbacks(Ljava/lang/Runnable;)V
+	28      (0000006c) iput-object          v3, v5, Landroidx/loader/content/b;->mTask Landroidx/loader/content/a;
+	29      (00000070) return               v1
+
+onCancelLoad-BB@0x72 : [ onCancelLoad-BB@0x90 onCancelLoad-BB@0x9e ]
+	30      (00000072) iget-object          v0, v5, Landroidx/loader/content/b;->mTask Landroidx/loader/content/a;
+	31      (00000076) iget-object          v4, v0, Landroidx/loader/content/a;->d Ljava/util/concurrent/atomic/AtomicBoolean;
+	32      (0000007a) invoke-virtual       v4, v2, Ljava/util/concurrent/atomic/AtomicBoolean;->set(Z)V
+	33      (00000080) iget-object          v0, v0, Landroidx/loader/content/a;->b Landroidx/loader/content/h;
+	34      (00000084) invoke-virtual       v0, v1, Ljava/util/concurrent/FutureTask;->cancel(Z)Z
+	35      (0000008a) move-result          v0
+	36      (0000008c) if-eqz               v0, +009h
+
+onCancelLoad-BB@0x90 : [ onCancelLoad-BB@0x9e ]
+	37      (00000090) iget-object          v1, v5, Landroidx/loader/content/b;->mTask Landroidx/loader/content/a;
+	38      (00000094) iput-object          v1, v5, Landroidx/loader/content/b;->mCancellingTask Landroidx/loader/content/a;
+	39      (00000098) invoke-virtual       v5, Landroidx/loader/content/b;->cancelLoadInBackground()V
+
+onCancelLoad-BB@0x9e : 
+	40      (0000009e) iput-object          v3, v5, Landroidx/loader/content/b;->mTask Landroidx/loader/content/a;
+	41      (000000a2) return               v0
+
+onCancelLoad-BB@0xa4 : 
+	42      (000000a4) return               v1
+

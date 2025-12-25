@@ -1,0 +1,92 @@
+# Landroidx/lifecycle/z0;->a(Ljava/lang/Class;)Landroidx/lifecycle/v0; [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:java.lang.Class
+#
+# - return:androidx.lifecycle.v0
+
+a-BB@0x0 : [ a-BB@0x30 a-BB@0x32 ]
+	0       (00000000) invoke-static        v5, Lkotlin/jvm/internal/s;->a(Ljava/lang/Class;)Lkotlin/jvm/internal/e;
+	1       (00000006) move-result-object   v5
+	2       (00000008) iget-object          v0, v4, Landroidx/lifecycle/z0;->a Ljava/lang/Object;
+	3       (0000000c) check-cast           v0, Lj6/s;
+	4       (00000010) sget-object          v1, Lkotlin/jvm/internal/e;->b Ljava/util/Map;
+	5       (00000014) iget-object          v1, v5, Lkotlin/jvm/internal/e;->a Ljava/lang/Class;
+	6       (00000018) const-string         v2, "jClass"
+	7       (0000001c) invoke-static        v1, v2, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	8       (00000022) invoke-virtual       v1, Ljava/lang/Class;->isAnonymousClass()Z
+	9       (00000028) move-result          v2
+	10      (0000002a) const/4              v3, 0
+	11      (0000002c) if-eqz               v2, +003h
+
+a-BB@0x30 : [ a-BB@0xa6 ]
+	12      (00000030) goto                 +3bh
+
+a-BB@0x32 : [ a-BB@0x3e a-BB@0x40 ]
+	13      (00000032) invoke-virtual       v1, Ljava/lang/Class;->isLocalClass()Z
+	14      (00000038) move-result          v2
+	15      (0000003a) if-eqz               v2, +003h
+
+a-BB@0x3e : [ a-BB@0xa6 ]
+	16      (0000003e) goto                 +34h
+
+a-BB@0x40 : [ a-BB@0x4c a-BB@0x8a ]
+	17      (00000040) invoke-virtual       v1, Ljava/lang/Class;->isArray()Z
+	18      (00000046) move-result          v2
+	19      (00000048) if-eqz               v2, +021h
+
+a-BB@0x4c : [ a-BB@0x60 a-BB@0x80 ]
+	20      (0000004c) invoke-virtual       v1, Ljava/lang/Class;->getComponentType()Ljava/lang/Class;
+	21      (00000052) move-result-object   v1
+	22      (00000054) invoke-virtual       v1, Ljava/lang/Class;->isPrimitive()Z
+	23      (0000005a) move-result          v2
+	24      (0000005c) if-eqz               v2, +012h
+
+a-BB@0x60 : [ a-BB@0x74 a-BB@0x80 ]
+	25      (00000060) invoke-virtual       v1, Ljava/lang/Class;->getName()Ljava/lang/String;
+	26      (00000066) move-result-object   v1
+	27      (00000068) invoke-static        v1, Lkotlin/jvm/internal/u;->b(Ljava/lang/String;)Ljava/lang/String;
+	28      (0000006e) move-result-object   v1
+	29      (00000070) if-eqz               v1, +008h
+
+a-BB@0x74 : [ a-BB@0x80 ]
+	30      (00000074) const-string         v2, "Array"
+	31      (00000078) invoke-virtual       v1, v2, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	32      (0000007e) move-result-object   v3
+
+a-BB@0x80 : [ a-BB@0x84 a-BB@0xa6 ]
+	33      (00000080) if-nez               v3, +013h
+
+a-BB@0x84 : [ a-BB@0xa6 ]
+	34      (00000084) const-string         v3, "kotlin.Array"
+	35      (00000088) goto                 +fh
+
+a-BB@0x8a : [ a-BB@0x9e a-BB@0xa6 ]
+	36      (0000008a) invoke-virtual       v1, Ljava/lang/Class;->getName()Ljava/lang/String;
+	37      (00000090) move-result-object   v2
+	38      (00000092) invoke-static        v2, Lkotlin/jvm/internal/u;->b(Ljava/lang/String;)Ljava/lang/String;
+	39      (00000098) move-result-object   v3
+	40      (0000009a) if-nez               v3, +006h
+
+a-BB@0x9e : [ a-BB@0xa6 ]
+	41      (0000009e) invoke-virtual       v1, Ljava/lang/Class;->getCanonicalName()Ljava/lang/String;
+	42      (000000a4) move-result-object   v3
+
+a-BB@0xa6 : [ a-BB@0xaa a-BB@0xc0 ]
+	43      (000000a6) if-eqz               v3, +00dh
+
+a-BB@0xaa : 
+	44      (000000aa) const-string         v1, "androidx.lifecycle.ViewModelProvider.DefaultKey:"
+	45      (000000ae) invoke-virtual       v1, v3, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	46      (000000b4) move-result-object   v1
+	47      (000000b6) invoke-virtual       v0, v5, v1, Lj6/s;->i(Lkotlin/jvm/internal/e; Ljava/lang/String;)Landroidx/lifecycle/v0;
+	48      (000000bc) move-result-object   v5
+	49      (000000be) return-object        v5
+
+a-BB@0xc0 : 
+	50      (000000c0) new-instance         v5, Ljava/lang/IllegalArgumentException;
+	51      (000000c4) const-string         v0, "Local and anonymous classes can not be ViewModels"
+	52      (000000c8) invoke-direct        v5, v0, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	53      (000000ce) throw                v5
+

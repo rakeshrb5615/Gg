@@ -1,0 +1,59 @@
+# Landroidx/fragment/app/b1;->m(Z Z)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:boolean
+# - v5:boolean
+#
+# - return:void
+
+m-BB@0x0 : [ m-BB@0x4 m-BB@0x2a ]
+	0       (00000000) if-eqz               v5, +015h
+
+m-BB@0x4 : [ m-BB@0x10 m-BB@0x12 ]
+	1       (00000004) iget-object          v0, v3, Landroidx/fragment/app/b1;->t Landroidx/fragment/app/o0;
+	2       (00000008) instance-of          v0, v0, Ld0/y;
+	3       (0000000c) if-nez               v0, +003h
+
+m-BB@0x10 : [ m-BB@0x2a ]
+	4       (00000010) goto                 +dh
+
+m-BB@0x12 : 
+	5       (00000012) new-instance         v4, Ljava/lang/IllegalStateException;
+	6       (00000016) const-string         v5, "Do not call dispatchMultiWindowModeChanged() on host. Host implements OnMultiWindowModeChangedProvider and automatically dispatches multi-window mode changes to fragments."
+	7       (0000001a) invoke-direct        v4, v5, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	8       (00000020) invoke-virtual       v3, v4, Landroidx/fragment/app/b1;->a0(Ljava/lang/IllegalStateException;)V
+	9       (00000026) const/4              v4, 0
+	10      (00000028) throw                v4
+
+m-BB@0x2a : [ m-BB@0x3e ]
+	11      (0000002a) iget-object          v0, v3, Landroidx/fragment/app/b1;->c Landroidx/fragment/app/k1;
+	12      (0000002e) invoke-virtual       v0, Landroidx/fragment/app/k1;->f()Ljava/util/List;
+	13      (00000034) move-result-object   v0
+	14      (00000036) invoke-interface     v0, Ljava/util/List;->iterator()Ljava/util/Iterator;
+	15      (0000003c) move-result-object   v0
+
+m-BB@0x3e : [ m-BB@0x4a m-BB@0x72 ]
+	16      (0000003e) invoke-interface     v0, Ljava/util/Iterator;->hasNext()Z
+	17      (00000044) move-result          v1
+	18      (00000046) if-eqz               v1, +016h
+
+m-BB@0x4a : [ m-BB@0x5a m-BB@0x3e ]
+	19      (0000004a) invoke-interface     v0, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	20      (00000050) move-result-object   v1
+	21      (00000052) check-cast           v1, Landroidx/fragment/app/e0;
+	22      (00000056) if-eqz               v1, -00ch
+
+m-BB@0x5a : [ m-BB@0x64 m-BB@0x3e ]
+	23      (0000005a) invoke-virtual       v1, v4, Landroidx/fragment/app/e0;->performMultiWindowModeChanged(Z)V
+	24      (00000060) if-eqz               v5, -011h
+
+m-BB@0x64 : [ m-BB@0x3e ]
+	25      (00000064) iget-object          v1, v1, Landroidx/fragment/app/e0;->mChildFragmentManager Landroidx/fragment/app/b1;
+	26      (00000068) const/4              v2, 1
+	27      (0000006a) invoke-virtual       v1, v4, v2, Landroidx/fragment/app/b1;->m(Z Z)V
+	28      (00000070) goto                 -19h
+
+m-BB@0x72 : 
+	29      (00000072) return-void          
+

@@ -1,0 +1,36 @@
+# Landroidx/core/widget/NestedScrollView;->m(Landroid/view/View; I I)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:android.view.View
+# - v4:int
+# - v5:int
+#
+# - return:boolean
+
+m-BB@0x0 : [ m-BB@0x22 m-BB@0x3a ]
+	0       (00000000) iget-object          v0, v2, Landroidx/core/widget/NestedScrollView;->c Landroid/graphics/Rect;
+	1       (00000004) invoke-virtual       v3, v0, Landroid/view/View;->getDrawingRect(Landroid/graphics/Rect;)V
+	2       (0000000a) invoke-virtual       v2, v3, v0, Landroid/view/ViewGroup;->offsetDescendantRectToMyCoords(Landroid/view/View; Landroid/graphics/Rect;)V
+	3       (00000010) iget                 v3, v0, Landroid/graphics/Rect;->bottom I
+	4       (00000014) add-int/2addr        v3, v4
+	5       (00000016) invoke-virtual       v2, Landroid/view/View;->getScrollY()I
+	6       (0000001c) move-result          v1
+	7       (0000001e) if-lt                v3, v1, +00eh
+
+m-BB@0x22 : [ m-BB@0x36 m-BB@0x3a ]
+	8       (00000022) iget                 v3, v0, Landroid/graphics/Rect;->top I
+	9       (00000026) sub-int/2addr        v3, v4
+	10      (00000028) invoke-virtual       v2, Landroid/view/View;->getScrollY()I
+	11      (0000002e) move-result          v4
+	12      (00000030) add-int/2addr        v4, v5
+	13      (00000032) if-gt                v3, v4, +004h
+
+m-BB@0x36 : 
+	14      (00000036) const/4              v3, 1
+	15      (00000038) return               v3
+
+m-BB@0x3a : 
+	16      (0000003a) const/4              v3, 0
+	17      (0000003c) return               v3
+

@@ -1,0 +1,33 @@
+# Landroidx/lifecycle/c0;->a(Ljava/lang/String;)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:java.lang.String
+#
+# - return:void
+
+a-BB@0x0 : [ a-BB@0x2e a-BB@0x30 ]
+	0       (00000000) invoke-static        Lo/a;->V()Lo/a;
+	1       (00000006) move-result-object   v0
+	2       (00000008) iget-object          v0, v0, Lo/a;->f Lo/b;
+	3       (0000000c) invoke-virtual       v0, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	4       (00000012) invoke-static        Landroid/os/Looper;->getMainLooper()Landroid/os/Looper;
+	5       (00000018) move-result-object   v0
+	6       (0000001a) invoke-virtual       v0, Landroid/os/Looper;->getThread()Ljava/lang/Thread;
+	7       (00000020) move-result-object   v0
+	8       (00000022) invoke-static        Ljava/lang/Thread;->currentThread()Ljava/lang/Thread;
+	9       (00000028) move-result-object   v1
+	10      (0000002a) if-ne                v0, v1, +003h
+
+a-BB@0x2e : 
+	11      (0000002e) return-void          
+
+a-BB@0x30 : 
+	12      (00000030) new-instance         v0, Ljava/lang/IllegalStateException;
+	13      (00000034) const-string         v1, "Cannot invoke "
+	14      (00000038) const-string         v2, " on a background thread"
+	15      (0000003c) invoke-static        v1, v3, v2, Lv1/a;->l(Ljava/lang/String; Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	16      (00000042) move-result-object   v3
+	17      (00000044) invoke-direct        v0, v3, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	18      (0000004a) throw                v0
+

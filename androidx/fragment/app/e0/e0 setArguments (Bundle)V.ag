@@ -1,0 +1,30 @@
+# Landroidx/fragment/app/e0;->setArguments(Landroid/os/Bundle;)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:android.os.Bundle
+#
+# - return:void
+
+setArguments-BB@0x0 : [ setArguments-BB@0x8 setArguments-BB@0x26 ]
+	0       (00000000) iget-object          v0, v1, Landroidx/fragment/app/e0;->mFragmentManager Landroidx/fragment/app/b1;
+	1       (00000004) if-eqz               v0, +011h
+
+setArguments-BB@0x8 : [ setArguments-BB@0x14 setArguments-BB@0x16 ]
+	2       (00000008) invoke-virtual       v1, Landroidx/fragment/app/e0;->isStateSaved()Z
+	3       (0000000e) move-result          v0
+	4       (00000010) if-nez               v0, +003h
+
+setArguments-BB@0x14 : [ setArguments-BB@0x26 ]
+	5       (00000014) goto                 +9h
+
+setArguments-BB@0x16 : 
+	6       (00000016) new-instance         v2, Ljava/lang/IllegalStateException;
+	7       (0000001a) const-string         v0, "Fragment already added and state has been saved"
+	8       (0000001e) invoke-direct        v2, v0, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	9       (00000024) throw                v2
+
+setArguments-BB@0x26 : 
+	10      (00000026) iput-object          v2, v1, Landroidx/fragment/app/e0;->mArguments Landroid/os/Bundle;
+	11      (0000002a) return-void          
+

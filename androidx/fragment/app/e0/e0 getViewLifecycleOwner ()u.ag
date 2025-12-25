@@ -1,0 +1,23 @@
+# Landroidx/fragment/app/e0;->getViewLifecycleOwner()Landroidx/lifecycle/u; [access_flags=public]
+#
+# Parameters:
+# local registers: v0...v3
+#
+# - return:androidx.lifecycle.u
+
+getViewLifecycleOwner-BB@0x0 : [ getViewLifecycleOwner-BB@0x8 getViewLifecycleOwner-BB@0xa ]
+	0       (00000000) iget-object          v0, v3, Landroidx/fragment/app/e0;->mViewLifecycleOwner Landroidx/fragment/app/v1;
+	1       (00000004) if-eqz               v0, +003h
+
+getViewLifecycleOwner-BB@0x8 : 
+	2       (00000008) return-object        v0
+
+getViewLifecycleOwner-BB@0xa : 
+	3       (0000000a) new-instance         v0, Ljava/lang/IllegalStateException;
+	4       (0000000e) const-string         v1, "Can't access the Fragment View's LifecycleOwner for "
+	5       (00000012) const-string         v2, " when getView() is null i.e., before onCreateView() or after onDestroyView()"
+	6       (00000016) invoke-static        v1, v3, v2, Lv1/a;->k(Ljava/lang/String; Landroidx/fragment/app/e0; Ljava/lang/String;)Ljava/lang/String;
+	7       (0000001c) move-result-object   v1
+	8       (0000001e) invoke-direct        v0, v1, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	9       (00000024) throw                v0
+

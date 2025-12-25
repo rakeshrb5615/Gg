@@ -1,0 +1,119 @@
+# Landroidx/core/widget/NestedScrollView;->h(Landroid/graphics/Rect;)I [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v10
+# - v11:android.graphics.Rect
+#
+# - return:int
+
+h-BB@0x0 : [ h-BB@0xe h-BB@0x10 ]
+	0       (00000000) invoke-virtual       v10, Landroid/view/ViewGroup;->getChildCount()I
+	1       (00000006) move-result          v0
+	2       (00000008) const/4              v1, 0
+	3       (0000000a) if-nez               v0, +003h
+
+h-BB@0xe : 
+	4       (0000000e) return               v1
+
+h-BB@0x10 : [ h-BB@0x34 h-BB@0x36 ]
+	5       (00000010) invoke-virtual       v10, Landroid/view/View;->getHeight()I
+	6       (00000016) move-result          v0
+	7       (00000018) invoke-virtual       v10, Landroid/view/View;->getScrollY()I
+	8       (0000001e) move-result          v2
+	9       (00000020) add-int              v3, v2, v0
+	10      (00000024) invoke-virtual       v10, Landroid/view/View;->getVerticalFadingEdgeLength()I
+	11      (0000002a) move-result          v4
+	12      (0000002c) iget                 v5, v11, Landroid/graphics/Rect;->top I
+	13      (00000030) if-lez               v5, +003h
+
+h-BB@0x34 : [ h-BB@0x36 ]
+	14      (00000034) add-int/2addr        v2, v4
+
+h-BB@0x36 : [ h-BB@0x66 h-BB@0x6c ]
+	15      (00000036) invoke-virtual       v10, v1, Landroid/view/ViewGroup;->getChildAt(I)Landroid/view/View;
+	16      (0000003c) move-result-object   v5
+	17      (0000003e) invoke-virtual       v5, Landroid/view/View;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
+	18      (00000044) move-result-object   v6
+	19      (00000046) check-cast           v6, Landroid/widget/FrameLayout$LayoutParams;
+	20      (0000004a) iget                 v7, v11, Landroid/graphics/Rect;->bottom I
+	21      (0000004e) invoke-virtual       v5, Landroid/view/View;->getHeight()I
+	22      (00000054) move-result          v8
+	23      (00000056) iget                 v9, v6, Landroid/widget/FrameLayout$LayoutParams;->topMargin I
+	24      (0000005a) add-int/2addr        v8, v9
+	25      (0000005c) iget                 v9, v6, Landroid/widget/FrameLayout$LayoutParams;->bottomMargin I
+	26      (00000060) add-int/2addr        v8, v9
+	27      (00000062) if-ge                v7, v8, +005h
+
+h-BB@0x66 : [ h-BB@0x6e ]
+	28      (00000066) sub-int              v4, v3, v4
+	29      (0000006a) goto                 +2h
+
+h-BB@0x6c : [ h-BB@0x6e ]
+	30      (0000006c) move                 v4, v3
+
+h-BB@0x6e : [ h-BB@0x76 h-BB@0xb2 ]
+	31      (0000006e) iget                 v7, v11, Landroid/graphics/Rect;->bottom I
+	32      (00000072) if-le                v7, v4, +020h
+
+h-BB@0x76 : [ h-BB@0x7e h-BB@0xb2 ]
+	33      (00000076) iget                 v8, v11, Landroid/graphics/Rect;->top I
+	34      (0000007a) if-le                v8, v2, +01ch
+
+h-BB@0x7e : [ h-BB@0x8a h-BB@0x92 ]
+	35      (0000007e) invoke-virtual       v11, Landroid/graphics/Rect;->height()I
+	36      (00000084) move-result          v1
+	37      (00000086) if-le                v1, v0, +006h
+
+h-BB@0x8a : [ h-BB@0x98 ]
+	38      (0000008a) iget                 v11, v11, Landroid/graphics/Rect;->top I
+	39      (0000008e) sub-int/2addr        v11, v2
+	40      (00000090) goto                 +4h
+
+h-BB@0x92 : [ h-BB@0x98 ]
+	41      (00000092) iget                 v11, v11, Landroid/graphics/Rect;->bottom I
+	42      (00000096) sub-int/2addr        v11, v4
+
+h-BB@0x98 : 
+	43      (00000098) invoke-virtual       v5, Landroid/view/View;->getBottom()I
+	44      (0000009e) move-result          v0
+	45      (000000a0) iget                 v1, v6, Landroid/widget/FrameLayout$LayoutParams;->bottomMargin I
+	46      (000000a4) add-int/2addr        v0, v1
+	47      (000000a6) sub-int/2addr        v0, v3
+	48      (000000a8) invoke-static        v11, v0, Ljava/lang/Math;->min(I I)I
+	49      (000000ae) move-result          v11
+	50      (000000b0) return               v11
+
+h-BB@0xb2 : [ h-BB@0xba h-BB@0xf0 ]
+	51      (000000b2) iget                 v3, v11, Landroid/graphics/Rect;->top I
+	52      (000000b6) if-ge                v3, v2, +01dh
+
+h-BB@0xba : [ h-BB@0xbe h-BB@0xf0 ]
+	53      (000000ba) if-ge                v7, v4, +01bh
+
+h-BB@0xbe : [ h-BB@0xca h-BB@0xd4 ]
+	54      (000000be) invoke-virtual       v11, Landroid/graphics/Rect;->height()I
+	55      (000000c4) move-result          v3
+	56      (000000c6) if-le                v3, v0, +007h
+
+h-BB@0xca : [ h-BB@0xdc ]
+	57      (000000ca) iget                 v11, v11, Landroid/graphics/Rect;->bottom I
+	58      (000000ce) sub-int/2addr        v4, v11
+	59      (000000d0) sub-int/2addr        v1, v4
+	60      (000000d2) goto                 +5h
+
+h-BB@0xd4 : [ h-BB@0xdc ]
+	61      (000000d4) iget                 v11, v11, Landroid/graphics/Rect;->top I
+	62      (000000d8) sub-int/2addr        v2, v11
+	63      (000000da) sub-int/2addr        v1, v2
+
+h-BB@0xdc : 
+	64      (000000dc) invoke-virtual       v10, Landroid/view/View;->getScrollY()I
+	65      (000000e2) move-result          v11
+	66      (000000e4) neg-int              v11, v11
+	67      (000000e6) invoke-static        v1, v11, Ljava/lang/Math;->max(I I)I
+	68      (000000ec) move-result          v11
+	69      (000000ee) return               v11
+
+h-BB@0xf0 : 
+	70      (000000f0) return               v1
+

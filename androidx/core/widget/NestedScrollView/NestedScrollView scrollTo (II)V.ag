@@ -1,0 +1,104 @@
+# Landroidx/core/widget/NestedScrollView;->scrollTo(I I)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v7
+# - v8:int
+# - v9:int
+#
+# - return:void
+
+scrollTo-BB@0x0 : [ scrollTo-BB@0xc scrollTo-BB@0xd4 ]
+	0       (00000000) invoke-virtual       v7, Landroid/view/ViewGroup;->getChildCount()I
+	1       (00000006) move-result          v0
+	2       (00000008) if-lez               v0, +066h
+
+scrollTo-BB@0xc : [ scrollTo-BB@0x86 scrollTo-BB@0x9a ]
+	3       (0000000c) const/4              v0, 0
+	4       (0000000e) invoke-virtual       v7, v0, Landroid/view/ViewGroup;->getChildAt(I)Landroid/view/View;
+	5       (00000014) move-result-object   v1
+	6       (00000016) invoke-virtual       v1, Landroid/view/View;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
+	7       (0000001c) move-result-object   v2
+	8       (0000001e) check-cast           v2, Landroid/widget/FrameLayout$LayoutParams;
+	9       (00000022) invoke-virtual       v7, Landroid/view/View;->getWidth()I
+	10      (00000028) move-result          v3
+	11      (0000002a) invoke-virtual       v7, Landroid/view/View;->getPaddingLeft()I
+	12      (00000030) move-result          v4
+	13      (00000032) sub-int/2addr        v3, v4
+	14      (00000034) invoke-virtual       v7, Landroid/view/View;->getPaddingRight()I
+	15      (0000003a) move-result          v4
+	16      (0000003c) sub-int/2addr        v3, v4
+	17      (0000003e) invoke-virtual       v1, Landroid/view/View;->getWidth()I
+	18      (00000044) move-result          v4
+	19      (00000046) iget                 v5, v2, Landroid/widget/FrameLayout$LayoutParams;->leftMargin I
+	20      (0000004a) add-int/2addr        v4, v5
+	21      (0000004c) iget                 v5, v2, Landroid/widget/FrameLayout$LayoutParams;->rightMargin I
+	22      (00000050) add-int/2addr        v4, v5
+	23      (00000052) invoke-virtual       v7, Landroid/view/View;->getHeight()I
+	24      (00000058) move-result          v5
+	25      (0000005a) invoke-virtual       v7, Landroid/view/View;->getPaddingTop()I
+	26      (00000060) move-result          v6
+	27      (00000062) sub-int/2addr        v5, v6
+	28      (00000064) invoke-virtual       v7, Landroid/view/View;->getPaddingBottom()I
+	29      (0000006a) move-result          v6
+	30      (0000006c) sub-int/2addr        v5, v6
+	31      (0000006e) invoke-virtual       v1, Landroid/view/View;->getHeight()I
+	32      (00000074) move-result          v1
+	33      (00000076) iget                 v6, v2, Landroid/widget/FrameLayout$LayoutParams;->topMargin I
+	34      (0000007a) add-int/2addr        v1, v6
+	35      (0000007c) iget                 v2, v2, Landroid/widget/FrameLayout$LayoutParams;->bottomMargin I
+	36      (00000080) add-int/2addr        v1, v2
+	37      (00000082) if-ge                v3, v4, +00ch
+
+scrollTo-BB@0x86 : [ scrollTo-BB@0x8a scrollTo-BB@0x8c ]
+	38      (00000086) if-gez               v8, +003h
+
+scrollTo-BB@0x8a : [ scrollTo-BB@0x9a ]
+	39      (0000008a) goto                 +8h
+
+scrollTo-BB@0x8c : [ scrollTo-BB@0x94 scrollTo-BB@0x9c ]
+	40      (0000008c) add-int              v2, v3, v8
+	41      (00000090) if-le                v2, v4, +006h
+
+scrollTo-BB@0x94 : [ scrollTo-BB@0x9c ]
+	42      (00000094) sub-int              v8, v4, v3
+	43      (00000098) goto                 +2h
+
+scrollTo-BB@0x9a : [ scrollTo-BB@0x9c ]
+	44      (0000009a) move                 v8, v0
+
+scrollTo-BB@0x9c : [ scrollTo-BB@0xa0 scrollTo-BB@0xb4 ]
+	45      (0000009c) if-ge                v5, v1, +00ch
+
+scrollTo-BB@0xa0 : [ scrollTo-BB@0xa4 scrollTo-BB@0xa6 ]
+	46      (000000a0) if-gez               v9, +003h
+
+scrollTo-BB@0xa4 : [ scrollTo-BB@0xb4 ]
+	47      (000000a4) goto                 +8h
+
+scrollTo-BB@0xa6 : [ scrollTo-BB@0xae scrollTo-BB@0xb6 ]
+	48      (000000a6) add-int              v0, v5, v9
+	49      (000000aa) if-le                v0, v1, +006h
+
+scrollTo-BB@0xae : [ scrollTo-BB@0xb6 ]
+	50      (000000ae) sub-int              v9, v1, v5
+	51      (000000b2) goto                 +2h
+
+scrollTo-BB@0xb4 : [ scrollTo-BB@0xb6 ]
+	52      (000000b4) move                 v9, v0
+
+scrollTo-BB@0xb6 : [ scrollTo-BB@0xc2 scrollTo-BB@0xce ]
+	53      (000000b6) invoke-virtual       v7, Landroid/view/View;->getScrollX()I
+	54      (000000bc) move-result          v0
+	55      (000000be) if-ne                v8, v0, +008h
+
+scrollTo-BB@0xc2 : [ scrollTo-BB@0xce scrollTo-BB@0xd4 ]
+	56      (000000c2) invoke-virtual       v7, Landroid/view/View;->getScrollY()I
+	57      (000000c8) move-result          v0
+	58      (000000ca) if-eq                v9, v0, +005h
+
+scrollTo-BB@0xce : [ scrollTo-BB@0xd4 ]
+	59      (000000ce) invoke-super         v7, v8, v9, Landroid/view/View;->scrollTo(I I)V
+
+scrollTo-BB@0xd4 : 
+	60      (000000d4) return-void          
+

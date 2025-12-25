@@ -1,0 +1,51 @@
+# Landroidx/core/widget/NestedScrollView;->j(I)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v12
+# - v13:int
+#
+# - return:void
+
+j-BB@0x0 : [ j-BB@0xc j-BB@0x82 ]
+	0       (00000000) invoke-virtual       v12, Landroid/view/ViewGroup;->getChildCount()I
+	1       (00000006) move-result          v0
+	2       (00000008) if-lez               v0, +03dh
+
+j-BB@0xc : [ j-BB@0x68 j-BB@0x82 ]
+	3       (0000000c) invoke-virtual       v12, Landroid/view/View;->getScrollX()I
+	4       (00000012) move-result          v2
+	5       (00000014) invoke-virtual       v12, Landroid/view/View;->getScrollY()I
+	6       (0000001a) move-result          v3
+	7       (0000001c) const/4              v10, 0
+	8       (0000001e) const/4              v11, 0
+	9       (00000020) iget-object          v1, v12, Landroidx/core/widget/NestedScrollView;->d Landroid/widget/OverScroller;
+	10      (00000024) const/4              v4, 0
+	11      (00000026) const/4              v6, 0
+	12      (00000028) const/4              v7, 0
+	13      (0000002a) const/high16         v8, -2147483648
+	14      (0000002e) const                v9, 2147483647
+	15      (00000034) move                 v5, v13
+	16      (00000036) invoke-virtual/range v1 ... v11, Landroid/widget/OverScroller;->fling(I I I I I I I I I I)V
+	17      (0000003c) const/4              v13, 2
+	18      (0000003e) iget-object          v0, v12, Landroidx/core/widget/NestedScrollView;->F Lq0/q;
+	19      (00000042) const/4              v1, 1
+	20      (00000044) invoke-virtual       v0, v13, v1, Lq0/q;->g(I I)Z
+	21      (0000004a) invoke-virtual       v12, Landroid/view/View;->getScrollY()I
+	22      (00000050) move-result          v13
+	23      (00000052) iput                 v13, v12, Landroidx/core/widget/NestedScrollView;->C I
+	24      (00000056) invoke-virtual       v12, Landroid/view/View;->postInvalidateOnAnimation()V
+	25      (0000005c) sget                 v13, Landroid/os/Build$VERSION;->SDK_INT I
+	26      (00000060) const/16             v0, 35
+	27      (00000064) if-lt                v13, v0, +00fh
+
+j-BB@0x68 : [ j-BB@0x82 ]
+	28      (00000068) iget-object          v13, v12, Landroidx/core/widget/NestedScrollView;->d Landroid/widget/OverScroller;
+	29      (0000006c) invoke-virtual       v13, Landroid/widget/OverScroller;->getCurrVelocity()F
+	30      (00000072) move-result          v13
+	31      (00000074) invoke-static        v13, Ljava/lang/Math;->abs(F)F
+	32      (0000007a) move-result          v13
+	33      (0000007c) invoke-static        v12, v13, Lt0/e;->a(Landroidx/core/widget/NestedScrollView; F)V
+
+j-BB@0x82 : 
+	34      (00000082) return-void          
+

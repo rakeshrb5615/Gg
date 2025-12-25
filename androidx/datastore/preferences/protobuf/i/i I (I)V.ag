@@ -1,0 +1,35 @@
+# Landroidx/datastore/preferences/protobuf/i;->I(I)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:int
+#
+# - return:void
+
+I-BB@0x0 : [ I-BB@0xc I-BB@0x3c ]
+	0       (00000000) invoke-virtual       v2, v3, Landroidx/datastore/preferences/protobuf/i;->K(I)Z
+	1       (00000006) move-result          v0
+	2       (00000008) if-nez               v0, +01ah
+
+I-BB@0xc : [ I-BB@0x22 I-BB@0x32 ]
+	3       (0000000c) const                v0, 2147483647
+	4       (00000012) iget                 v1, v2, Landroidx/datastore/preferences/protobuf/i;->i I
+	5       (00000016) sub-int/2addr        v0, v1
+	6       (00000018) iget                 v1, v2, Landroidx/datastore/preferences/protobuf/i;->g I
+	7       (0000001c) sub-int/2addr        v0, v1
+	8       (0000001e) if-le                v3, v0, +00ah
+
+I-BB@0x22 : 
+	9       (00000022) new-instance         v3, Landroidx/datastore/preferences/protobuf/z;
+	10      (00000026) const-string         v0, "Protocol message was too large.  May be malicious.  Use CodedInputStream.setSizeLimit() to increase the size limit."
+	11      (0000002a) invoke-direct        v3, v0, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+	12      (00000030) throw                v3
+
+I-BB@0x32 : 
+	13      (00000032) invoke-static        Landroidx/datastore/preferences/protobuf/z;->e()Landroidx/datastore/preferences/protobuf/z;
+	14      (00000038) move-result-object   v3
+	15      (0000003a) throw                v3
+
+I-BB@0x3c : 
+	16      (0000003c) return-void          
+

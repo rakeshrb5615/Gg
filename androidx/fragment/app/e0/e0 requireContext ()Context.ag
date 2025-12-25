@@ -1,0 +1,24 @@
+# Landroidx/fragment/app/e0;->requireContext()Landroid/content/Context; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v3
+#
+# - return:android.content.Context
+
+requireContext-BB@0x0 : [ requireContext-BB@0xc requireContext-BB@0xe ]
+	0       (00000000) invoke-virtual       v3, Landroidx/fragment/app/e0;->getContext()Landroid/content/Context;
+	1       (00000006) move-result-object   v0
+	2       (00000008) if-eqz               v0, +003h
+
+requireContext-BB@0xc : 
+	3       (0000000c) return-object        v0
+
+requireContext-BB@0xe : 
+	4       (0000000e) new-instance         v0, Ljava/lang/IllegalStateException;
+	5       (00000012) const-string         v1, "Fragment "
+	6       (00000016) const-string         v2, " not attached to a context."
+	7       (0000001a) invoke-static        v1, v3, v2, Lv1/a;->k(Ljava/lang/String; Landroidx/fragment/app/e0; Ljava/lang/String;)Ljava/lang/String;
+	8       (00000020) move-result-object   v1
+	9       (00000022) invoke-direct        v0, v1, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	10      (00000028) throw                v0
+

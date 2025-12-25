@@ -1,0 +1,146 @@
+# Landroidx/core/widget/NestedScrollView;->g(I)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v10
+# - v11:int
+#
+# - return:boolean
+
+g-BB@0x0 : [ g-BB@0xc g-BB@0xe ]
+	0       (00000000) invoke-virtual       v10, Landroid/view/View;->findFocus()Landroid/view/View;
+	1       (00000006) move-result-object   v1
+	2       (00000008) if-ne                v1, v10, +003h
+
+g-BB@0xc : [ g-BB@0xe ]
+	3       (0000000c) const/4              v1, 0
+
+g-BB@0xe : [ g-BB@0x2e g-BB@0x74 ]
+	4       (0000000e) move-object          v7, v1
+	5       (00000010) invoke-static        Landroid/view/FocusFinder;->getInstance()Landroid/view/FocusFinder;
+	6       (00000016) move-result-object   v1
+	7       (00000018) invoke-virtual       v1, v10, v7, v11, Landroid/view/FocusFinder;->findNextFocus(Landroid/view/ViewGroup; Landroid/view/View; I)Landroid/view/View;
+	8       (0000001e) move-result-object   v8
+	9       (00000020) invoke-virtual       v10, Landroidx/core/widget/NestedScrollView;->getMaxScrollAmount()I
+	10      (00000026) move-result          v1
+	11      (00000028) const/4              v9, 0
+	12      (0000002a) if-eqz               v8, +025h
+
+g-BB@0x2e : [ g-BB@0x42 g-BB@0x74 ]
+	13      (0000002e) invoke-virtual       v10, Landroid/view/View;->getHeight()I
+	14      (00000034) move-result          v2
+	15      (00000036) invoke-virtual       v10, v8, v1, v2, Landroidx/core/widget/NestedScrollView;->m(Landroid/view/View; I I)Z
+	16      (0000003c) move-result          v2
+	17      (0000003e) if-eqz               v2, +01bh
+
+g-BB@0x42 : [ g-BB@0x10e ]
+	18      (00000042) iget-object          v1, v10, Landroidx/core/widget/NestedScrollView;->c Landroid/graphics/Rect;
+	19      (00000046) invoke-virtual       v8, v1, Landroid/view/View;->getDrawingRect(Landroid/graphics/Rect;)V
+	20      (0000004c) invoke-virtual       v10, v8, v1, Landroid/view/ViewGroup;->offsetDescendantRectToMyCoords(Landroid/view/View; Landroid/graphics/Rect;)V
+	21      (00000052) invoke-virtual       v10, v1, Landroidx/core/widget/NestedScrollView;->h(Landroid/graphics/Rect;)I
+	22      (00000058) move-result          v1
+	23      (0000005a) const/4              v2, -1
+	24      (0000005c) const/4              v3, 0
+	25      (0000005e) const/4              v4, 0
+	26      (00000060) const/4              v5, 1
+	27      (00000062) const/4              v6, 1
+	28      (00000064) move-object          v0, v10
+	29      (00000066) invoke-virtual/range v0 ... v6, Landroidx/core/widget/NestedScrollView;->s(I I Landroid/view/MotionEvent; I I Z)I
+	30      (0000006c) invoke-virtual       v8, v11, Landroid/view/View;->requestFocus(I)Z
+	31      (00000072) goto                 +4eh
+
+g-BB@0x74 : [ g-BB@0x80 g-BB@0x96 ]
+	32      (00000074) const/16             v2, 33
+	33      (00000078) const/16             v3, 130
+	34      (0000007c) if-ne                v11, v2, +00dh
+
+g-BB@0x80 : [ g-BB@0x8c g-BB@0x96 ]
+	35      (00000080) invoke-virtual       v10, Landroid/view/View;->getScrollY()I
+	36      (00000086) move-result          v2
+	37      (00000088) if-ge                v2, v1, +007h
+
+g-BB@0x8c : [ g-BB@0xee ]
+	38      (0000008c) invoke-virtual       v10, Landroid/view/View;->getScrollY()I
+	39      (00000092) move-result          v1
+	40      (00000094) goto                 +2dh
+
+g-BB@0x96 : [ g-BB@0x9a g-BB@0xee ]
+	41      (00000096) if-ne                v11, v3, +02ch
+
+g-BB@0x9a : [ g-BB@0xa6 g-BB@0xee ]
+	42      (0000009a) invoke-virtual       v10, Landroid/view/ViewGroup;->getChildCount()I
+	43      (000000a0) move-result          v2
+	44      (000000a2) if-lez               v2, +026h
+
+g-BB@0xa6 : [ g-BB@0xee ]
+	45      (000000a6) invoke-virtual       v10, v9, Landroid/view/ViewGroup;->getChildAt(I)Landroid/view/View;
+	46      (000000ac) move-result-object   v2
+	47      (000000ae) invoke-virtual       v2, Landroid/view/View;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
+	48      (000000b4) move-result-object   v4
+	49      (000000b6) check-cast           v4, Landroid/widget/FrameLayout$LayoutParams;
+	50      (000000ba) invoke-virtual       v2, Landroid/view/View;->getBottom()I
+	51      (000000c0) move-result          v2
+	52      (000000c2) iget                 v4, v4, Landroid/widget/FrameLayout$LayoutParams;->bottomMargin I
+	53      (000000c6) add-int/2addr        v2, v4
+	54      (000000c8) invoke-virtual       v10, Landroid/view/View;->getScrollY()I
+	55      (000000ce) move-result          v4
+	56      (000000d0) invoke-virtual       v10, Landroid/view/View;->getHeight()I
+	57      (000000d6) move-result          v5
+	58      (000000d8) add-int/2addr        v5, v4
+	59      (000000da) invoke-virtual       v10, Landroid/view/View;->getPaddingBottom()I
+	60      (000000e0) move-result          v4
+	61      (000000e2) sub-int/2addr        v5, v4
+	62      (000000e4) sub-int/2addr        v2, v5
+	63      (000000e6) invoke-static        v2, v1, Ljava/lang/Math;->min(I I)I
+	64      (000000ec) move-result          v1
+
+g-BB@0xee : [ g-BB@0xf2 g-BB@0xf4 ]
+	65      (000000ee) if-nez               v1, +003h
+
+g-BB@0xf2 : 
+	66      (000000f2) return               v9
+
+g-BB@0xf4 : [ g-BB@0xf8 g-BB@0xfa ]
+	67      (000000f4) if-ne                v11, v3, +003h
+
+g-BB@0xf8 : [ g-BB@0xfc ]
+	68      (000000f8) goto                 +2h
+
+g-BB@0xfa : [ g-BB@0xfc ]
+	69      (000000fa) neg-int              v1, v1
+
+g-BB@0xfc : [ g-BB@0x10e ]
+	70      (000000fc) const/4              v2, -1
+	71      (000000fe) const/4              v3, 0
+	72      (00000100) const/4              v4, 0
+	73      (00000102) const/4              v5, 1
+	74      (00000104) const/4              v6, 1
+	75      (00000106) move-object          v0, v10
+	76      (00000108) invoke-virtual/range v0 ... v6, Landroidx/core/widget/NestedScrollView;->s(I I Landroid/view/MotionEvent; I I Z)I
+
+g-BB@0x10e : [ g-BB@0x114 g-BB@0x152 ]
+	77      (0000010e) const/4              v1, 1
+	78      (00000110) if-eqz               v7, +021h
+
+g-BB@0x114 : [ g-BB@0x120 g-BB@0x152 ]
+	79      (00000114) invoke-virtual       v7, Landroid/view/View;->isFocused()Z
+	80      (0000011a) move-result          v2
+	81      (0000011c) if-eqz               v2, +01bh
+
+g-BB@0x120 : [ g-BB@0x134 g-BB@0x152 ]
+	82      (00000120) invoke-virtual       v10, Landroid/view/View;->getHeight()I
+	83      (00000126) move-result          v2
+	84      (00000128) invoke-virtual       v10, v7, v9, v2, Landroidx/core/widget/NestedScrollView;->m(Landroid/view/View; I I)Z
+	85      (0000012e) move-result          v2
+	86      (00000130) if-nez               v2, +011h
+
+g-BB@0x134 : [ g-BB@0x152 ]
+	87      (00000134) invoke-virtual       v10, Landroid/view/ViewGroup;->getDescendantFocusability()I
+	88      (0000013a) move-result          v2
+	89      (0000013c) const/high16         v3, 131072
+	90      (00000140) invoke-virtual       v10, v3, Landroid/view/ViewGroup;->setDescendantFocusability(I)V
+	91      (00000146) invoke-virtual       v10, Landroid/view/View;->requestFocus()Z
+	92      (0000014c) invoke-virtual       v10, v2, Landroid/view/ViewGroup;->setDescendantFocusability(I)V
+
+g-BB@0x152 : 
+	93      (00000152) return               v1
+

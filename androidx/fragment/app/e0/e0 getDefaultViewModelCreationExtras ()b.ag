@@ -1,0 +1,88 @@
+# Landroidx/fragment/app/e0;->getDefaultViewModelCreationExtras()Lo1/b; [access_flags=public]
+#
+# Parameters:
+# local registers: v0...v4
+#
+# - return:o1.b
+
+getDefaultViewModelCreationExtras-BB@0x0 : [ getDefaultViewModelCreationExtras-BB@0x10 ]
+	0       (00000000) invoke-virtual       v4, Landroidx/fragment/app/e0;->requireContext()Landroid/content/Context;
+	1       (00000006) move-result-object   v0
+	2       (00000008) invoke-virtual       v0, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;
+	3       (0000000e) move-result-object   v0
+
+getDefaultViewModelCreationExtras-BB@0x10 : [ getDefaultViewModelCreationExtras-BB@0x18 getDefaultViewModelCreationExtras-BB@0x34 ]
+	4       (00000010) instance-of          v1, v0, Landroid/content/ContextWrapper;
+	5       (00000014) if-eqz               v1, +010h
+
+getDefaultViewModelCreationExtras-BB@0x18 : [ getDefaultViewModelCreationExtras-BB@0x20 getDefaultViewModelCreationExtras-BB@0x26 ]
+	6       (00000018) instance-of          v1, v0, Landroid/app/Application;
+	7       (0000001c) if-eqz               v1, +005h
+
+getDefaultViewModelCreationExtras-BB@0x20 : [ getDefaultViewModelCreationExtras-BB@0x36 ]
+	8       (00000020) check-cast           v0, Landroid/app/Application;
+	9       (00000024) goto                 +9h
+
+getDefaultViewModelCreationExtras-BB@0x26 : [ getDefaultViewModelCreationExtras-BB@0x10 ]
+	10      (00000026) check-cast           v0, Landroid/content/ContextWrapper;
+	11      (0000002a) invoke-virtual       v0, Landroid/content/ContextWrapper;->getBaseContext()Landroid/content/Context;
+	12      (00000030) move-result-object   v0
+	13      (00000032) goto                 -11h
+
+getDefaultViewModelCreationExtras-BB@0x34 : [ getDefaultViewModelCreationExtras-BB@0x36 ]
+	14      (00000034) const/4              v0, 0
+
+getDefaultViewModelCreationExtras-BB@0x36 : [ getDefaultViewModelCreationExtras-BB@0x3a getDefaultViewModelCreationExtras-BB@0x88 ]
+	15      (00000036) if-nez               v0, +029h
+
+getDefaultViewModelCreationExtras-BB@0x3a : [ getDefaultViewModelCreationExtras-BB@0x48 getDefaultViewModelCreationExtras-BB@0x88 ]
+	16      (0000003a) const/4              v1, 3
+	17      (0000003c) invoke-static        v1, Landroidx/fragment/app/b1;->H(I)Z
+	18      (00000042) move-result          v1
+	19      (00000044) if-eqz               v1, +022h
+
+getDefaultViewModelCreationExtras-BB@0x48 : [ getDefaultViewModelCreationExtras-BB@0x88 ]
+	20      (00000048) new-instance         v1, Ljava/lang/StringBuilder;
+	21      (0000004c) const-string         v2, "Could not find Application instance from Context "
+	22      (00000050) invoke-direct        v1, v2, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	23      (00000056) invoke-virtual       v4, Landroidx/fragment/app/e0;->requireContext()Landroid/content/Context;
+	24      (0000005c) move-result-object   v2
+	25      (0000005e) invoke-virtual       v2, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;
+	26      (00000064) move-result-object   v2
+	27      (00000066) invoke-virtual       v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	28      (0000006c) const-string         v2, ", you will not be able to use AndroidViewModel with the default ViewModelProvider.Factory"
+	29      (00000070) invoke-virtual       v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	30      (00000076) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	31      (0000007c) move-result-object   v1
+	32      (0000007e) const-string         v2, "FragmentManager"
+	33      (00000082) invoke-static        v2, v1, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String;)I
+
+getDefaultViewModelCreationExtras-BB@0x88 : [ getDefaultViewModelCreationExtras-BB@0x9c getDefaultViewModelCreationExtras-BB@0xa6 ]
+	34      (00000088) new-instance         v1, Lo1/c;
+	35      (0000008c) const/4              v2, 0
+	36      (0000008e) invoke-direct        v1, v2, Lo1/c;-><init>(I)V
+	37      (00000094) iget-object          v2, v1, Lo1/b;->a Ljava/util/LinkedHashMap;
+	38      (00000098) if-eqz               v0, +007h
+
+getDefaultViewModelCreationExtras-BB@0x9c : [ getDefaultViewModelCreationExtras-BB@0xa6 ]
+	39      (0000009c) sget-object          v3, Landroidx/lifecycle/w0;->d La6/e;
+	40      (000000a0) invoke-interface     v2, v3, v0, Ljava/util/Map;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+
+getDefaultViewModelCreationExtras-BB@0xa6 : [ getDefaultViewModelCreationExtras-BB@0xc6 getDefaultViewModelCreationExtras-BB@0xd8 ]
+	41      (000000a6) sget-object          v0, Landroidx/lifecycle/q0;->a La6/e;
+	42      (000000aa) invoke-interface     v2, v0, v4, Ljava/util/Map;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	43      (000000b0) sget-object          v0, Landroidx/lifecycle/q0;->b Lc5/c;
+	44      (000000b4) invoke-interface     v2, v0, v4, Ljava/util/Map;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+	45      (000000ba) invoke-virtual       v4, Landroidx/fragment/app/e0;->getArguments()Landroid/os/Bundle;
+	46      (000000c0) move-result-object   v0
+	47      (000000c2) if-eqz               v0, +00bh
+
+getDefaultViewModelCreationExtras-BB@0xc6 : [ getDefaultViewModelCreationExtras-BB@0xd8 ]
+	48      (000000c6) sget-object          v0, Landroidx/lifecycle/q0;->c Lv3/f;
+	49      (000000ca) invoke-virtual       v4, Landroidx/fragment/app/e0;->getArguments()Landroid/os/Bundle;
+	50      (000000d0) move-result-object   v3
+	51      (000000d2) invoke-interface     v2, v0, v3, Ljava/util/Map;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+
+getDefaultViewModelCreationExtras-BB@0xd8 : 
+	52      (000000d8) return-object        v1
+

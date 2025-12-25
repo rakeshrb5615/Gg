@@ -1,0 +1,255 @@
+# Landroidx/fragment/app/j1;->f()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v9
+#
+# - return:void
+
+f-BB@0x0 : [ f-BB@0xc f-BB@0xe ]
+	0       (00000000) iget-object          v0, v9, Landroidx/fragment/app/j1;->c Landroidx/fragment/app/e0;
+	1       (00000004) iget-boolean         v1, v0, Landroidx/fragment/app/e0;->mFromLayout Z
+	2       (00000008) if-eqz               v1, +003h
+
+f-BB@0xc : 
+	3       (0000000c) return-void          
+
+f-BB@0xe : [ f-BB@0x20 f-BB@0x42 ]
+	4       (0000000e) const/4              v1, 3
+	5       (00000010) invoke-static        v1, Landroidx/fragment/app/b1;->H(I)Z
+	6       (00000016) move-result          v2
+	7       (00000018) const-string         v3, "FragmentManager"
+	8       (0000001c) if-eqz               v2, +013h
+
+f-BB@0x20 : [ f-BB@0x42 ]
+	9       (00000020) new-instance         v2, Ljava/lang/StringBuilder;
+	10      (00000024) const-string         v4, "moveto CREATE_VIEW: "
+	11      (00000028) invoke-direct        v2, v4, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	12      (0000002e) invoke-virtual       v2, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	13      (00000034) invoke-virtual       v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	14      (0000003a) move-result-object   v2
+	15      (0000003c) invoke-static        v3, v2, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String;)I
+
+f-BB@0x42 : [ f-BB@0x4c f-BB@0x5a ]
+	16      (00000042) iget-object          v2, v0, Landroidx/fragment/app/e0;->mSavedFragmentState Landroid/os/Bundle;
+	17      (00000046) const/4              v4, 0
+	18      (00000048) if-eqz               v2, +009h
+
+f-BB@0x4c : [ f-BB@0x5c ]
+	19      (0000004c) const-string         v5, "savedInstanceState"
+	20      (00000050) invoke-virtual       v2, v5, Landroid/os/Bundle;->getBundle(Ljava/lang/String;)Landroid/os/Bundle;
+	21      (00000056) move-result-object   v2
+	22      (00000058) goto                 +2h
+
+f-BB@0x5a : [ f-BB@0x5c ]
+	23      (0000005a) move-object          v2, v4
+
+f-BB@0x5c : [ f-BB@0x6c f-BB@0x72 ]
+	24      (0000005c) invoke-virtual       v0, v2, Landroidx/fragment/app/e0;->performGetLayoutInflater(Landroid/os/Bundle;)Landroid/view/LayoutInflater;
+	25      (00000062) move-result-object   v5
+	26      (00000064) iget-object          v6, v0, Landroidx/fragment/app/e0;->mContainer Landroid/view/ViewGroup;
+	27      (00000068) if-eqz               v6, +005h
+
+f-BB@0x6c : [ f-BB@0x18e ]
+	28      (0000006c) move-object          v4, v6
+	29      (0000006e) goto/16              +090h
+
+f-BB@0x72 : [ f-BB@0x7a f-BB@0x18e ]
+	30      (00000072) iget                 v6, v0, Landroidx/fragment/app/e0;->mContainerId I
+	31      (00000076) if-eqz               v6, +08ch
+
+f-BB@0x7a : [ f-BB@0x80 f-BB@0x172 ]
+	32      (0000007a) const/4              v4, -1
+	33      (0000007c) if-eq                v6, v4, +07bh
+
+f-BB@0x80 : [ f-BB@0x98 f-BB@0x110 ]
+	34      (00000080) iget-object          v4, v0, Landroidx/fragment/app/e0;->mFragmentManager Landroidx/fragment/app/b1;
+	35      (00000084) iget-object          v4, v4, Landroidx/fragment/app/b1;->u Landroidx/fragment/app/m0;
+	36      (00000088) invoke-virtual       v4, v6, Landroidx/fragment/app/m0;->b(I)Landroid/view/View;
+	37      (0000008e) move-result-object   v4
+	38      (00000090) check-cast           v4, Landroid/view/ViewGroup;
+	39      (00000094) if-nez               v4, +03eh
+
+f-BB@0x98 : [ f-BB@0xa0 f-BB@0xa2 ]
+	40      (00000098) iget-boolean         v6, v0, Landroidx/fragment/app/e0;->mRestored Z
+	41      (0000009c) if-eqz               v6, +003h
+
+f-BB@0xa0 : [ f-BB@0x18e ]
+	42      (000000a0) goto                 +77h
+
+f-BB@0xa2 : [ f-BB@0xbc ]
+	43      (000000a2) invoke-virtual       v0, Landroidx/fragment/app/e0;->getResources()Landroid/content/res/Resources;
+	44      (000000a8) move-result-object   v1
+	45      (000000aa) iget                 v2, v0, Landroidx/fragment/app/e0;->mContainerId I
+	46      (000000ae) invoke-virtual       v1, v2, Landroid/content/res/Resources;->getResourceName(I)Ljava/lang/String;
+	47      (000000b4) move-result-object   v1
+	48      (000000b6) goto                 +3h
+	a2:b5
+	(Landroid/content/res/Resources$NotFoundException; -> b8 f-BB@0xb8)
+
+f-BB@0xb8 : [ f-BB@0xbc ]
+	49      (000000b8) const-string         v1, "unknown"
+
+f-BB@0xbc : 
+	50      (000000bc) new-instance         v2, Ljava/lang/IllegalArgumentException;
+	51      (000000c0) new-instance         v3, Ljava/lang/StringBuilder;
+	52      (000000c4) const-string         v4, "No view found for id 0x"
+	53      (000000c8) invoke-direct        v3, v4, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	54      (000000ce) iget                 v4, v0, Landroidx/fragment/app/e0;->mContainerId I
+	55      (000000d2) invoke-static        v4, Ljava/lang/Integer;->toHexString(I)Ljava/lang/String;
+	56      (000000d8) move-result-object   v4
+	57      (000000da) invoke-virtual       v3, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	58      (000000e0) const-string         v4, " ("
+	59      (000000e4) invoke-virtual       v3, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	60      (000000ea) invoke-virtual       v3, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	61      (000000f0) const-string         v1, ") for fragment "
+	62      (000000f4) invoke-virtual       v3, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	63      (000000fa) invoke-virtual       v3, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	64      (00000100) invoke-virtual       v3, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	65      (00000106) move-result-object   v0
+	66      (00000108) invoke-direct        v2, v0, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	67      (0000010e) throw                v2
+
+f-BB@0x110 : [ f-BB@0x118 f-BB@0x18e ]
+	68      (00000110) instance-of          v6, v4, Landroidx/fragment/app/FragmentContainerView;
+	69      (00000114) if-nez               v6, +03dh
+
+f-BB@0x118 : [ f-BB@0x18e ]
+	70      (00000118) sget-object          v6, Lk1/c;->a Lk1/b;
+	71      (0000011c) new-instance         v6, Lk1/a;
+	72      (00000120) new-instance         v7, Ljava/lang/StringBuilder;
+	73      (00000124) const-string         v8, "Attempting to add fragment "
+	74      (00000128) invoke-direct        v7, v8, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	75      (0000012e) invoke-virtual       v7, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	76      (00000134) const-string         v8, " to container "
+	77      (00000138) invoke-virtual       v7, v8, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	78      (0000013e) invoke-virtual       v7, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	79      (00000144) const-string         v8, " which is not a FragmentContainerView"
+	80      (00000148) invoke-virtual       v7, v8, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	81      (0000014e) invoke-virtual       v7, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	82      (00000154) move-result-object   v7
+	83      (00000156) invoke-direct        v6, v0, v7, Lk1/g;-><init>(Landroidx/fragment/app/e0; Ljava/lang/String;)V
+	84      (0000015c) invoke-static        v6, Lk1/c;->b(Lk1/g;)V
+	85      (00000162) invoke-static        v0, Lk1/c;->a(Landroidx/fragment/app/e0;)Lk1/b;
+	86      (00000168) move-result-object   v6
+	87      (0000016a) invoke-virtual       v6, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	88      (00000170) goto                 +fh
+
+f-BB@0x172 : 
+	89      (00000172) new-instance         v1, Ljava/lang/IllegalArgumentException;
+	90      (00000176) const-string         v2, "Cannot create fragment "
+	91      (0000017a) const-string         v3, " for a container view with no id"
+	92      (0000017e) invoke-static        v2, v0, v3, Lv1/a;->k(Ljava/lang/String; Landroidx/fragment/app/e0; Ljava/lang/String;)Ljava/lang/String;
+	93      (00000184) move-result-object   v0
+	94      (00000186) invoke-direct        v1, v0, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	95      (0000018c) throw                v1
+
+f-BB@0x18e : [ f-BB@0x1a2 f-BB@0x2da ]
+	96      (0000018e) iput-object          v4, v0, Landroidx/fragment/app/e0;->mContainer Landroid/view/ViewGroup;
+	97      (00000192) invoke-virtual       v0, v5, v4, v2, Landroidx/fragment/app/e0;->performCreateView(Landroid/view/LayoutInflater; Landroid/view/ViewGroup; Landroid/os/Bundle;)V
+	98      (00000198) iget-object          v2, v0, Landroidx/fragment/app/e0;->mView Landroid/view/View;
+	99      (0000019c) const/4              v5, 2
+	100     (0000019e) if-eqz               v2, +09eh
+
+f-BB@0x1a2 : [ f-BB@0x1ae f-BB@0x1d0 ]
+	101     (000001a2) invoke-static        v1, Landroidx/fragment/app/b1;->H(I)Z
+	102     (000001a8) move-result          v1
+	103     (000001aa) if-eqz               v1, +013h
+
+f-BB@0x1ae : [ f-BB@0x1d0 ]
+	104     (000001ae) new-instance         v1, Ljava/lang/StringBuilder;
+	105     (000001b2) const-string         v2, "moveto VIEW_CREATED: "
+	106     (000001b6) invoke-direct        v1, v2, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	107     (000001bc) invoke-virtual       v1, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	108     (000001c2) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	109     (000001c8) move-result-object   v1
+	110     (000001ca) invoke-static        v3, v1, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String;)I
+
+f-BB@0x1d0 : [ f-BB@0x1f0 f-BB@0x1f6 ]
+	111     (000001d0) iget-object          v1, v0, Landroidx/fragment/app/e0;->mView Landroid/view/View;
+	112     (000001d4) const/4              v2, 0
+	113     (000001d6) invoke-virtual       v1, v2, Landroid/view/View;->setSaveFromParentEnabled(Z)V
+	114     (000001dc) iget-object          v1, v0, Landroidx/fragment/app/e0;->mView Landroid/view/View;
+	115     (000001e0) const                v6, 2131362085
+	116     (000001e6) invoke-virtual       v1, v6, v0, Landroid/view/View;->setTag(I Ljava/lang/Object;)V
+	117     (000001ec) if-eqz               v4, +005h
+
+f-BB@0x1f0 : [ f-BB@0x1f6 ]
+	118     (000001f0) invoke-virtual       v9, Landroidx/fragment/app/j1;->b()V
+
+f-BB@0x1f6 : [ f-BB@0x1fe f-BB@0x20c ]
+	119     (000001f6) iget-boolean         v1, v0, Landroidx/fragment/app/e0;->mHidden Z
+	120     (000001fa) if-eqz               v1, +009h
+
+f-BB@0x1fe : [ f-BB@0x20c ]
+	121     (000001fe) iget-object          v1, v0, Landroidx/fragment/app/e0;->mView Landroid/view/View;
+	122     (00000202) const/16             v4, 8
+	123     (00000206) invoke-virtual       v1, v4, Landroid/view/View;->setVisibility(I)V
+
+f-BB@0x20c : [ f-BB@0x220 f-BB@0x22c ]
+	124     (0000020c) iget-object          v1, v0, Landroidx/fragment/app/e0;->mView Landroid/view/View;
+	125     (00000210) sget-object          v4, Lq0/q0;->a Ljava/util/WeakHashMap;
+	126     (00000214) invoke-virtual       v1, Landroid/view/View;->isAttachedToWindow()Z
+	127     (0000021a) move-result          v1
+	128     (0000021c) if-eqz               v1, +008h
+
+f-BB@0x220 : [ f-BB@0x240 ]
+	129     (00000220) iget-object          v1, v0, Landroidx/fragment/app/e0;->mView Landroid/view/View;
+	130     (00000224) invoke-static        v1, Lq0/g0;->c(Landroid/view/View;)V
+	131     (0000022a) goto                 +bh
+
+f-BB@0x22c : [ f-BB@0x240 ]
+	132     (0000022c) iget-object          v1, v0, Landroidx/fragment/app/e0;->mView Landroid/view/View;
+	133     (00000230) new-instance         v4, Landroidx/fragment/app/i1;
+	134     (00000234) invoke-direct        v4, v1, Landroidx/fragment/app/i1;-><init>(Landroid/view/View;)V
+	135     (0000023a) invoke-virtual       v1, v4, Landroid/view/View;->addOnAttachStateChangeListener(Landroid/view/View$OnAttachStateChangeListener;)V
+
+f-BB@0x240 : [ f-BB@0x276 f-BB@0x2da ]
+	136     (00000240) invoke-virtual       v0, Landroidx/fragment/app/e0;->performViewCreated()V
+	137     (00000246) iget-object          v1, v9, Landroidx/fragment/app/j1;->a Landroidx/fragment/app/k0;
+	138     (0000024a) invoke-virtual       v1, v2, Landroidx/fragment/app/k0;->m(Z)V
+	139     (00000250) iget-object          v1, v0, Landroidx/fragment/app/e0;->mView Landroid/view/View;
+	140     (00000254) invoke-virtual       v1, Landroid/view/View;->getVisibility()I
+	141     (0000025a) move-result          v1
+	142     (0000025c) iget-object          v2, v0, Landroidx/fragment/app/e0;->mView Landroid/view/View;
+	143     (00000260) invoke-virtual       v2, Landroid/view/View;->getAlpha()F
+	144     (00000266) move-result          v2
+	145     (00000268) invoke-virtual       v0, v2, Landroidx/fragment/app/e0;->setPostOnViewCreatedAlpha(F)V
+	146     (0000026e) iget-object          v2, v0, Landroidx/fragment/app/e0;->mContainer Landroid/view/ViewGroup;
+	147     (00000272) if-eqz               v2, +034h
+
+f-BB@0x276 : [ f-BB@0x27a f-BB@0x2da ]
+	148     (00000276) if-nez               v1, +032h
+
+f-BB@0x27a : [ f-BB@0x28a f-BB@0x2ce ]
+	149     (0000027a) iget-object          v1, v0, Landroidx/fragment/app/e0;->mView Landroid/view/View;
+	150     (0000027e) invoke-virtual       v1, Landroid/view/View;->findFocus()Landroid/view/View;
+	151     (00000284) move-result-object   v1
+	152     (00000286) if-eqz               v1, +024h
+
+f-BB@0x28a : [ f-BB@0x29c f-BB@0x2ce ]
+	153     (0000028a) invoke-virtual       v0, v1, Landroidx/fragment/app/e0;->setFocusedView(Landroid/view/View;)V
+	154     (00000290) invoke-static        v5, Landroidx/fragment/app/b1;->H(I)Z
+	155     (00000296) move-result          v2
+	156     (00000298) if-eqz               v2, +01bh
+
+f-BB@0x29c : [ f-BB@0x2ce ]
+	157     (0000029c) new-instance         v2, Ljava/lang/StringBuilder;
+	158     (000002a0) const-string         v4, "requestFocus: Saved focused view "
+	159     (000002a4) invoke-direct        v2, v4, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	160     (000002aa) invoke-virtual       v2, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	161     (000002b0) const-string         v1, " for Fragment "
+	162     (000002b4) invoke-virtual       v2, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	163     (000002ba) invoke-virtual       v2, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	164     (000002c0) invoke-virtual       v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	165     (000002c6) move-result-object   v1
+	166     (000002c8) invoke-static        v3, v1, Landroid/util/Log;->v(Ljava/lang/String; Ljava/lang/String;)I
+
+f-BB@0x2ce : [ f-BB@0x2da ]
+	167     (000002ce) iget-object          v1, v0, Landroidx/fragment/app/e0;->mView Landroid/view/View;
+	168     (000002d2) const/4              v2, 0
+	169     (000002d4) invoke-virtual       v1, v2, Landroid/view/View;->setAlpha(F)V
+
+f-BB@0x2da : 
+	170     (000002da) iput                 v5, v0, Landroidx/fragment/app/e0;->mState I
+	171     (000002de) return-void          
+

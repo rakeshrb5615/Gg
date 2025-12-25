@@ -1,0 +1,97 @@
+# Landroidx/coordinatorlayout/widget/CoordinatorLayout;->n(Landroid/view/View;)Lb0/d; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:android.view.View
+#
+# - return:b0.d
+
+n-BB@0x0 : [ n-BB@0x14 n-BB@0xd0 ]
+	0       (00000000) invoke-virtual       v5, Landroid/view/View;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
+	1       (00000006) move-result-object   v0
+	2       (00000008) check-cast           v0, Lb0/d;
+	3       (0000000c) iget-boolean         v1, v0, Lb0/d;->b Z
+	4       (00000010) if-nez               v1, +060h
+
+n-BB@0x14 : [ n-BB@0x20 ]
+	5       (00000014) invoke-virtual       v5, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	6       (0000001a) move-result-object   v5
+	7       (0000001c) const/4              v1, 0
+	8       (0000001e) move-object          v2, v1
+
+n-BB@0x20 : [ n-BB@0x24 n-BB@0x42 ]
+	9       (00000020) if-eqz               v5, +011h
+
+n-BB@0x24 : [ n-BB@0x38 n-BB@0x42 ]
+	10      (00000024) const-class          v2, Lb0/b;
+	11      (00000028) invoke-virtual       v5, v2, Ljava/lang/Class;->getAnnotation(Ljava/lang/Class;)Ljava/lang/annotation/Annotation;
+	12      (0000002e) move-result-object   v2
+	13      (00000030) check-cast           v2, Lb0/b;
+	14      (00000034) if-nez               v2, +007h
+
+n-BB@0x38 : [ n-BB@0x20 ]
+	15      (00000038) invoke-virtual       v5, Ljava/lang/Class;->getSuperclass()Ljava/lang/Class;
+	16      (0000003e) move-result-object   v5
+	17      (00000040) goto                 -10h
+
+n-BB@0x42 : [ n-BB@0x48 n-BB@0xcc ]
+	18      (00000042) const/4              v5, 1
+	19      (00000044) if-eqz               v2, +044h
+
+n-BB@0x48 : [ n-BB@0x6c n-BB@0xcc ]
+	20      (00000048) invoke-interface     v2, Lb0/b;->value()Ljava/lang/Class;
+	21      (0000004e) move-result-object   v3
+	22      (00000050) invoke-virtual       v3, v1, Ljava/lang/Class;->getDeclaredConstructor([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
+	23      (00000056) move-result-object   v3
+	24      (00000058) invoke-virtual       v3, v1, Ljava/lang/reflect/Constructor;->newInstance([Ljava/lang/Object;)Ljava/lang/Object;
+	25      (0000005e) move-result-object   v1
+	26      (00000060) check-cast           v1, Lb0/a;
+	27      (00000064) iget-object          v3, v0, Lb0/d;->a Lb0/a;
+	28      (00000068) if-eq                v3, v1, +032h
+	48:87
+	(Ljava/lang/Exception; -> 8a n-BB@0x8a)
+
+n-BB@0x6c : [ n-BB@0x70 n-BB@0x76 ]
+	29      (0000006c) if-eqz               v3, +005h
+	48:87
+	(Ljava/lang/Exception; -> 8a n-BB@0x8a)
+
+n-BB@0x70 : [ n-BB@0x76 ]
+	30      (00000070) invoke-virtual       v3, Lb0/a;->i()V
+	48:87
+	(Ljava/lang/Exception; -> 8a n-BB@0x8a)
+
+n-BB@0x76 : [ n-BB@0x82 n-BB@0xcc ]
+	31      (00000076) iput-object          v1, v0, Lb0/d;->a Lb0/a;
+	32      (0000007a) iput-boolean         v5, v0, Lb0/d;->b Z
+	33      (0000007e) if-eqz               v1, +027h
+	48:87
+	(Ljava/lang/Exception; -> 8a n-BB@0x8a)
+
+n-BB@0x82 : [ n-BB@0xcc ]
+	34      (00000082) invoke-virtual       v1, v0, Lb0/a;->g(Lb0/d;)V
+	35      (00000088) goto                 +22h
+
+n-BB@0x8a : [ n-BB@0xcc ]
+	36      (0000008a) move-exception       v1
+	37      (0000008c) new-instance         v3, Ljava/lang/StringBuilder;
+	38      (00000090) const-string         v4, "Default behavior class "
+	39      (00000094) invoke-direct        v3, v4, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	40      (0000009a) invoke-interface     v2, Lb0/b;->value()Ljava/lang/Class;
+	41      (000000a0) move-result-object   v2
+	42      (000000a2) invoke-virtual       v2, Ljava/lang/Class;->getName()Ljava/lang/String;
+	43      (000000a8) move-result-object   v2
+	44      (000000aa) invoke-virtual       v3, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	45      (000000b0) const-string         v2, " could not be instantiated. Did you forget a default constructor?"
+	46      (000000b4) invoke-virtual       v3, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	47      (000000ba) invoke-virtual       v3, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	48      (000000c0) move-result-object   v2
+	49      (000000c2) const-string         v3, "CoordinatorLayout"
+	50      (000000c6) invoke-static        v3, v2, v1, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I
+
+n-BB@0xcc : [ n-BB@0xd0 ]
+	51      (000000cc) iput-boolean         v5, v0, Lb0/d;->b Z
+
+n-BB@0xd0 : 
+	52      (000000d0) return-object        v0
+

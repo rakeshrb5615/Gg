@@ -1,0 +1,56 @@
+# Landroidx/fragment/app/w1;->write([C I I)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:char[]
+# - v5:int
+# - v6:int
+#
+# - return:void
+
+write-BB@0x0 : [ D:write-BB@0xa 0:write-BB@0x2a ]
+	0       (00000000) iget                 v0, v3, Landroidx/fragment/app/w1;->a I
+	1       (00000004) packed-switch        v0, +000002ch
+
+write-BB@0xa : 
+	2       (0000000a) iget-object          v0, v3, Landroidx/fragment/app/w1;->c Ljava/lang/CharSequence;
+	3       (0000000e) check-cast           v0, Ly6/q;
+	4       (00000012) iput-object          v4, v0, Ly6/q;->a [C
+	5       (00000016) const/4              v4, 0
+	6       (00000018) iput-object          v4, v0, Ly6/q;->b Ljava/lang/String;
+	7       (0000001c) iget-object          v4, v3, Landroidx/fragment/app/w1;->b Ljava/lang/StringBuilder;
+	8       (00000020) add-int/2addr        v6, v5
+	9       (00000022) invoke-virtual       v4, v0, v5, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/CharSequence; I I)Ljava/lang/Appendable;
+	10      (00000028) return-void          
+
+write-BB@0x2a : [ write-BB@0x2c ]
+	11      (0000002a) const/4              v0, 0
+
+write-BB@0x2c : [ write-BB@0x30 write-BB@0x58 ]
+	12      (0000002c) if-ge                v0, v6, +016h
+
+write-BB@0x30 : [ write-BB@0x40 write-BB@0x48 ]
+	13      (00000030) add-int              v1, v5, v0
+	14      (00000034) aget-char            v1, v4, v1
+	15      (00000038) const/16             v2, 10
+	16      (0000003c) if-ne                v1, v2, +006h
+
+write-BB@0x40 : [ write-BB@0x52 ]
+	17      (00000040) invoke-virtual       v3, Landroidx/fragment/app/w1;->i()V
+	18      (00000046) goto                 +6h
+
+write-BB@0x48 : [ write-BB@0x52 ]
+	19      (00000048) iget-object          v2, v3, Landroidx/fragment/app/w1;->b Ljava/lang/StringBuilder;
+	20      (0000004c) invoke-virtual       v2, v1, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+
+write-BB@0x52 : [ write-BB@0x2c ]
+	21      (00000052) add-int/lit8         v0, v0, 1
+	22      (00000056) goto                 -15h
+
+write-BB@0x58 : 
+	23      (00000058) return-void          
+
+write-BB@0x5a : 
+	24      (0000005a) nop                  
+	25      (0000005c) packed-switch-payload 0
+

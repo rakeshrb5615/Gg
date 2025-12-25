@@ -1,0 +1,93 @@
+# Landroidx/core/widget/NestedScrollView;->p(I I I I)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v9
+# - v10:int
+# - v11:int
+# - v12:int
+# - v13:int
+#
+# - return:boolean
+
+p-BB@0x0 : [ p-BB@0x2a p-BB@0x30 ]
+	0       (00000000) invoke-virtual       v9, Landroid/view/View;->getOverScrollMode()I
+	1       (00000006) move-result          v0
+	2       (00000008) invoke-super         v9, Landroid/view/View;->computeHorizontalScrollRange()I
+	3       (0000000e) invoke-super         v9, Landroid/view/View;->computeHorizontalScrollExtent()I
+	4       (00000014) invoke-virtual       v9, Landroidx/core/widget/NestedScrollView;->computeVerticalScrollRange()I
+	5       (0000001a) invoke-super         v9, Landroid/view/View;->computeVerticalScrollExtent()I
+	6       (00000020) const/4              v1, 1
+	7       (00000022) add-int/2addr        v12, v10
+	8       (00000024) const/4              v10, 0
+	9       (00000026) if-lez               v11, +005h
+
+p-BB@0x2a : [ p-BB@0x3a ]
+	10      (0000002a) move                 v3, v10
+	11      (0000002c) move                 v11, v1
+	12      (0000002e) goto                 +6h
+
+p-BB@0x30 : [ p-BB@0x34 p-BB@0x36 ]
+	13      (00000030) if-gez               v11, +003h
+
+p-BB@0x34 : [ p-BB@0x2a ]
+	14      (00000034) goto                 -5h
+
+p-BB@0x36 : [ p-BB@0x3a ]
+	15      (00000036) move                 v3, v11
+	16      (00000038) move                 v11, v10
+
+p-BB@0x3a : [ p-BB@0x3e p-BB@0x44 ]
+	17      (0000003a) if-le                v12, v13, +005h
+
+p-BB@0x3e : [ p-BB@0x40 ]
+	18      (0000003e) move                 v4, v13
+
+p-BB@0x40 : [ p-BB@0x50 ]
+	19      (00000040) move                 v12, v1
+	20      (00000042) goto                 +7h
+
+p-BB@0x44 : [ p-BB@0x48 p-BB@0x4c ]
+	21      (00000044) if-gez               v12, +004h
+
+p-BB@0x48 : [ p-BB@0x40 ]
+	22      (00000048) move                 v4, v10
+	23      (0000004a) goto                 -5h
+
+p-BB@0x4c : [ p-BB@0x50 ]
+	24      (0000004c) move                 v4, v12
+	25      (0000004e) move                 v12, v10
+
+p-BB@0x50 : [ p-BB@0x54 p-BB@0x7c ]
+	26      (00000050) if-eqz               v12, +016h
+
+p-BB@0x54 : [ p-BB@0x64 p-BB@0x7c ]
+	27      (00000054) iget-object          v13, v9, Landroidx/core/widget/NestedScrollView;->F Lq0/q;
+	28      (00000058) invoke-virtual       v13, v1, Lq0/q;->f(I)Z
+	29      (0000005e) move-result          v13
+	30      (00000060) if-nez               v13, +00eh
+
+p-BB@0x64 : [ p-BB@0x7c ]
+	31      (00000064) const/4              v7, 0
+	32      (00000066) invoke-virtual       v9, Landroidx/core/widget/NestedScrollView;->getScrollRange()I
+	33      (0000006c) move-result          v8
+	34      (0000006e) iget-object          v2, v9, Landroidx/core/widget/NestedScrollView;->d Landroid/widget/OverScroller;
+	35      (00000072) const/4              v5, 0
+	36      (00000074) const/4              v6, 0
+	37      (00000076) invoke-virtual/range v2 ... v8, Landroid/widget/OverScroller;->springBack(I I I I I I)Z
+
+p-BB@0x7c : [ p-BB@0x86 p-BB@0x8e ]
+	38      (0000007c) invoke-super         v9, v3, v4, Landroid/view/View;->scrollTo(I I)V
+	39      (00000082) if-nez               v11, +006h
+
+p-BB@0x86 : [ p-BB@0x8a p-BB@0x8c ]
+	40      (00000086) if-eqz               v12, +003h
+
+p-BB@0x8a : [ p-BB@0x8e ]
+	41      (0000008a) goto                 +2h
+
+p-BB@0x8c : 
+	42      (0000008c) return               v10
+
+p-BB@0x8e : 
+	43      (0000008e) return               v1
+

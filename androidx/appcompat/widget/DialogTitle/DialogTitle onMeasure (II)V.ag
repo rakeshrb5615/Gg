@@ -1,0 +1,54 @@
+# Landroidx/appcompat/widget/DialogTitle;->onMeasure(I I)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:int
+# - v8:int
+#
+# - return:void
+
+onMeasure-BB@0x0 : [ onMeasure-BB@0x12 onMeasure-BB@0x80 ]
+	0       (00000000) invoke-super         v6, v7, v8, Ln/b1;->onMeasure(I I)V
+	1       (00000006) invoke-virtual       v6, Landroid/widget/TextView;->getLayout()Landroid/text/Layout;
+	2       (0000000c) move-result-object   v0
+	3       (0000000e) if-eqz               v0, +039h
+
+onMeasure-BB@0x12 : [ onMeasure-BB@0x1e onMeasure-BB@0x80 ]
+	4       (00000012) invoke-virtual       v0, Landroid/text/Layout;->getLineCount()I
+	5       (00000018) move-result          v1
+	6       (0000001a) if-lez               v1, +033h
+
+onMeasure-BB@0x1e : [ onMeasure-BB@0x2e onMeasure-BB@0x80 ]
+	7       (0000001e) add-int/lit8         v1, v1, -1
+	8       (00000022) invoke-virtual       v0, v1, Landroid/text/Layout;->getEllipsisCount(I)I
+	9       (00000028) move-result          v0
+	10      (0000002a) if-lez               v0, +02bh
+
+onMeasure-BB@0x2e : [ onMeasure-BB@0x6c onMeasure-BB@0x74 ]
+	11      (0000002e) const/4              v0, 0
+	12      (00000030) invoke-virtual       v6, v0, Landroid/widget/TextView;->setSingleLine(Z)V
+	13      (00000036) const/4              v1, 2
+	14      (00000038) invoke-virtual       v6, v1, Landroid/widget/TextView;->setMaxLines(I)V
+	15      (0000003e) invoke-virtual       v6, Landroid/view/View;->getContext()Landroid/content/Context;
+	16      (00000044) move-result-object   v1
+	17      (00000046) const                v2, 16842817
+	18      (0000004c) const                v3, 16973892
+	19      (00000052) const/4              v4, 0
+	20      (00000054) sget-object          v5, Lg/a;->w [I
+	21      (00000058) invoke-virtual       v1, v4, v5, v2, v3, Landroid/content/Context;->obtainStyledAttributes(Landroid/util/AttributeSet; [I I I)Landroid/content/res/TypedArray;
+	22      (0000005e) move-result-object   v1
+	23      (00000060) invoke-virtual       v1, v0, v0, Landroid/content/res/TypedArray;->getDimensionPixelSize(I I)I
+	24      (00000066) move-result          v2
+	25      (00000068) if-eqz               v2, +006h
+
+onMeasure-BB@0x6c : [ onMeasure-BB@0x74 ]
+	26      (0000006c) int-to-float         v2, v2
+	27      (0000006e) invoke-virtual       v6, v0, v2, Ln/b1;->setTextSize(I F)V
+
+onMeasure-BB@0x74 : [ onMeasure-BB@0x80 ]
+	28      (00000074) invoke-virtual       v1, Landroid/content/res/TypedArray;->recycle()V
+	29      (0000007a) invoke-super         v6, v7, v8, Ln/b1;->onMeasure(I I)V
+
+onMeasure-BB@0x80 : 
+	30      (00000080) return-void          
+

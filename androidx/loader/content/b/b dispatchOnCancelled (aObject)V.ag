@@ -1,0 +1,27 @@
+# Landroidx/loader/content/b;->dispatchOnCancelled(Landroidx/loader/content/a; Ljava/lang/Object;)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v0
+# - v1:androidx.loader.content.a
+# - v2:java.lang.Object
+#
+# - return:void
+
+dispatchOnCancelled-BB@0x0 : [ dispatchOnCancelled-BB@0xe dispatchOnCancelled-BB@0x32 ]
+	0       (00000000) invoke-virtual       v0, v2, Landroidx/loader/content/b;->onCanceled(Ljava/lang/Object;)V
+	1       (00000006) iget-object          v2, v0, Landroidx/loader/content/b;->mCancellingTask Landroidx/loader/content/a;
+	2       (0000000a) if-ne                v2, v1, +014h
+
+dispatchOnCancelled-BB@0xe : [ dispatchOnCancelled-BB@0x32 ]
+	3       (0000000e) invoke-virtual       v0, Landroidx/loader/content/e;->rollbackContentChanged()V
+	4       (00000014) invoke-static        Landroid/os/SystemClock;->uptimeMillis()J
+	5       (0000001a) move-result-wide     v1
+	6       (0000001c) iput-wide            v1, v0, Landroidx/loader/content/b;->mLastLoadCompleteTime J
+	7       (00000020) const/4              v1, 0
+	8       (00000022) iput-object          v1, v0, Landroidx/loader/content/b;->mCancellingTask Landroidx/loader/content/a;
+	9       (00000026) invoke-virtual       v0, Landroidx/loader/content/e;->deliverCancellation()V
+	10      (0000002c) invoke-virtual       v0, Landroidx/loader/content/b;->executePendingTask()V
+
+dispatchOnCancelled-BB@0x32 : 
+	11      (00000032) return-void          
+

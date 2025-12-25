@@ -1,0 +1,57 @@
+# Landroidx/lifecycle/d;->b(Ljava/util/HashMap; Landroidx/lifecycle/c; Landroidx/lifecycle/n; Ljava/lang/Class;)V [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:java.util.HashMap
+# - v4:androidx.lifecycle.c
+# - v5:androidx.lifecycle.n
+# - v6:java.lang.Class
+#
+# - return:void
+
+b-BB@0x0 : [ b-BB@0x10 b-BB@0x82 ]
+	0       (00000000) invoke-virtual       v3, v4, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+	1       (00000006) move-result-object   v0
+	2       (00000008) check-cast           v0, Landroidx/lifecycle/n;
+	3       (0000000c) if-eqz               v0, +03bh
+
+b-BB@0x10 : [ b-BB@0x14 b-BB@0x16 ]
+	4       (00000010) if-ne                v5, v0, +003h
+
+b-BB@0x14 : [ b-BB@0x82 ]
+	5       (00000014) goto                 +37h
+
+b-BB@0x16 : 
+	6       (00000016) iget-object          v3, v4, Landroidx/lifecycle/c;->b Ljava/lang/reflect/Method;
+	7       (0000001a) new-instance         v4, Ljava/lang/IllegalArgumentException;
+	8       (0000001e) new-instance         v1, Ljava/lang/StringBuilder;
+	9       (00000022) const-string         v2, "Method "
+	10      (00000026) invoke-direct        v1, v2, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	11      (0000002c) invoke-virtual       v3, Ljava/lang/reflect/Method;->getName()Ljava/lang/String;
+	12      (00000032) move-result-object   v3
+	13      (00000034) invoke-virtual       v1, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	14      (0000003a) const-string         v3, " in "
+	15      (0000003e) invoke-virtual       v1, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	16      (00000044) invoke-virtual       v6, Ljava/lang/Class;->getName()Ljava/lang/String;
+	17      (0000004a) move-result-object   v3
+	18      (0000004c) invoke-virtual       v1, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	19      (00000052) const-string         v3, " already declared with different @OnLifecycleEvent value: previous value "
+	20      (00000056) invoke-virtual       v1, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	21      (0000005c) invoke-virtual       v1, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	22      (00000062) const-string         v3, ", new value "
+	23      (00000066) invoke-virtual       v1, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	24      (0000006c) invoke-virtual       v1, v5, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	25      (00000072) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	26      (00000078) move-result-object   v3
+	27      (0000007a) invoke-direct        v4, v3, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	28      (00000080) throw                v4
+
+b-BB@0x82 : [ b-BB@0x86 b-BB@0x8c ]
+	29      (00000082) if-nez               v0, +005h
+
+b-BB@0x86 : [ b-BB@0x8c ]
+	30      (00000086) invoke-virtual       v3, v4, v5, Ljava/util/HashMap;->put(Ljava/lang/Object; Ljava/lang/Object;)Ljava/lang/Object;
+
+b-BB@0x8c : 
+	31      (0000008c) return-void          
+

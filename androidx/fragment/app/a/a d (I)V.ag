@@ -1,0 +1,80 @@
+# Landroidx/fragment/app/a;->d(I)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v8
+# - v9:int
+#
+# - return:void
+
+d-BB@0x0 : [ d-BB@0xc d-BB@0xe ]
+	0       (00000000) iget-object          v0, v8, Landroidx/fragment/app/m1;->a Ljava/util/ArrayList;
+	1       (00000004) iget-boolean         v1, v8, Landroidx/fragment/app/m1;->g Z
+	2       (00000008) if-nez               v1, +003h
+
+d-BB@0xc : [ d-BB@0xce ]
+	3       (0000000c) goto                 +61h
+
+d-BB@0xe : [ d-BB@0x20 d-BB@0x52 ]
+	4       (0000000e) const/4              v1, 2
+	5       (00000010) invoke-static        v1, Landroidx/fragment/app/b1;->H(I)Z
+	6       (00000016) move-result          v2
+	7       (00000018) const-string         v3, "FragmentManager"
+	8       (0000001c) if-eqz               v2, +01bh
+
+d-BB@0x20 : [ d-BB@0x52 ]
+	9       (00000020) new-instance         v2, Ljava/lang/StringBuilder;
+	10      (00000024) const-string         v4, "Bump nesting in "
+	11      (00000028) invoke-direct        v2, v4, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	12      (0000002e) invoke-virtual       v2, v8, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	13      (00000034) const-string         v4, " by "
+	14      (00000038) invoke-virtual       v2, v4, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	15      (0000003e) invoke-virtual       v2, v9, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	16      (00000044) invoke-virtual       v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	17      (0000004a) move-result-object   v2
+	18      (0000004c) invoke-static        v3, v2, Landroid/util/Log;->v(Ljava/lang/String; Ljava/lang/String;)I
+
+d-BB@0x52 : [ d-BB@0x5c ]
+	19      (00000052) invoke-virtual       v0, Ljava/util/ArrayList;->size()I
+	20      (00000058) move-result          v2
+	21      (0000005a) const/4              v4, 0
+
+d-BB@0x5c : [ d-BB@0x60 d-BB@0xce ]
+	22      (0000005c) if-ge                v4, v2, +039h
+
+d-BB@0x60 : [ d-BB@0x74 d-BB@0xc8 ]
+	23      (00000060) invoke-virtual       v0, v4, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	24      (00000066) move-result-object   v5
+	25      (00000068) check-cast           v5, Landroidx/fragment/app/l1;
+	26      (0000006c) iget-object          v6, v5, Landroidx/fragment/app/l1;->b Landroidx/fragment/app/e0;
+	27      (00000070) if-eqz               v6, +02ch
+
+d-BB@0x74 : [ d-BB@0x8a d-BB@0xc8 ]
+	28      (00000074) iget                 v7, v6, Landroidx/fragment/app/e0;->mBackStackNesting I
+	29      (00000078) add-int/2addr        v7, v9
+	30      (0000007a) iput                 v7, v6, Landroidx/fragment/app/e0;->mBackStackNesting I
+	31      (0000007e) invoke-static        v1, Landroidx/fragment/app/b1;->H(I)Z
+	32      (00000084) move-result          v6
+	33      (00000086) if-eqz               v6, +021h
+
+d-BB@0x8a : [ d-BB@0xc8 ]
+	34      (0000008a) new-instance         v6, Ljava/lang/StringBuilder;
+	35      (0000008e) const-string         v7, "Bump nesting of "
+	36      (00000092) invoke-direct        v6, v7, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	37      (00000098) iget-object          v7, v5, Landroidx/fragment/app/l1;->b Landroidx/fragment/app/e0;
+	38      (0000009c) invoke-virtual       v6, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	39      (000000a2) const-string         v7, " to "
+	40      (000000a6) invoke-virtual       v6, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	41      (000000ac) iget-object          v5, v5, Landroidx/fragment/app/l1;->b Landroidx/fragment/app/e0;
+	42      (000000b0) iget                 v5, v5, Landroidx/fragment/app/e0;->mBackStackNesting I
+	43      (000000b4) invoke-virtual       v6, v5, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	44      (000000ba) invoke-virtual       v6, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	45      (000000c0) move-result-object   v5
+	46      (000000c2) invoke-static        v3, v5, Landroid/util/Log;->v(Ljava/lang/String; Ljava/lang/String;)I
+
+d-BB@0xc8 : [ d-BB@0x5c ]
+	47      (000000c8) add-int/lit8         v4, v4, 1
+	48      (000000cc) goto                 -38h
+
+d-BB@0xce : 
+	49      (000000ce) return-void          
+

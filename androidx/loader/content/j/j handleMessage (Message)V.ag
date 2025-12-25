@@ -1,0 +1,72 @@
+# Landroidx/loader/content/j;->handleMessage(Landroid/os/Message;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:android.os.Message
+#
+# - return:void
+
+handleMessage-BB@0x0 : [ handleMessage-BB@0x12 handleMessage-BB@0x20 ]
+	0       (00000000) iget-object          v0, v4, Landroid/os/Message;->obj Ljava/lang/Object;
+	1       (00000004) check-cast           v0, Landroidx/loader/content/i;
+	2       (00000008) iget                 v4, v4, Landroid/os/Message;->what I
+	3       (0000000c) const/4              v1, 1
+	4       (0000000e) if-eq                v4, v1, +009h
+
+handleMessage-BB@0x12 : [ handleMessage-BB@0x18 handleMessage-BB@0x1a ]
+	5       (00000012) const/4              v1, 2
+	6       (00000014) if-eq                v4, v1, +003h
+
+handleMessage-BB@0x18 : 
+	7       (00000018) return-void          
+
+handleMessage-BB@0x1a : 
+	8       (0000001a) iget-object          v4, v0, Landroidx/loader/content/i;->a Landroidx/loader/content/a;
+	9       (0000001e) return-void          
+
+handleMessage-BB@0x20 : [ handleMessage-BB@0x3e handleMessage-BB@0x5e ]
+	10      (00000020) iget-object          v4, v0, Landroidx/loader/content/i;->a Landroidx/loader/content/a;
+	11      (00000024) iget-object          v0, v0, Landroidx/loader/content/i;->b [Ljava/lang/Object;
+	12      (00000028) const/4              v1, 0
+	13      (0000002a) aget-object          v0, v0, v1
+	14      (0000002e) iget-object          v1, v4, Landroidx/loader/content/a;->d Ljava/util/concurrent/atomic/AtomicBoolean;
+	15      (00000032) invoke-virtual       v1, Ljava/util/concurrent/atomic/AtomicBoolean;->get()Z
+	16      (00000038) move-result          v1
+	17      (0000003a) if-eqz               v1, +012h
+
+handleMessage-BB@0x3e : [ handleMessage-BB@0x42 ]
+	18      (0000003e) iget-object          v1, v4, Landroidx/loader/content/a;->f Ljava/util/concurrent/CountDownLatch;
+
+handleMessage-BB@0x42 : [ handleMessage-BB@0x72 ]
+	19      (00000042) iget-object          v2, v4, Landroidx/loader/content/a;->n Landroidx/loader/content/b;
+	20      (00000046) invoke-virtual       v2, v4, v0, Landroidx/loader/content/b;->dispatchOnCancelled(Landroidx/loader/content/a; Ljava/lang/Object;)V
+	21      (0000004c) invoke-virtual       v1, Ljava/util/concurrent/CountDownLatch;->countDown()V
+	22      (00000052) goto                 +10h
+	42:4b
+	(Ljava/lang/Throwable; -> 54 handleMessage-BB@0x54)
+
+handleMessage-BB@0x54 : 
+	23      (00000054) move-exception       v4
+	24      (00000056) invoke-virtual       v1, Ljava/util/concurrent/CountDownLatch;->countDown()V
+	25      (0000005c) throw                v4
+
+handleMessage-BB@0x5e : [ handleMessage-BB@0x62 ]
+	26      (0000005e) iget-object          v1, v4, Landroidx/loader/content/a;->f Ljava/util/concurrent/CountDownLatch;
+
+handleMessage-BB@0x62 : [ handleMessage-BB@0x72 ]
+	27      (00000062) iget-object          v2, v4, Landroidx/loader/content/a;->n Landroidx/loader/content/b;
+	28      (00000066) invoke-virtual       v2, v4, v0, Landroidx/loader/content/b;->dispatchOnLoadComplete(Landroidx/loader/content/a; Ljava/lang/Object;)V
+	29      (0000006c) invoke-virtual       v1, Ljava/util/concurrent/CountDownLatch;->countDown()V
+	62:6b
+	(Ljava/lang/Throwable; -> 7a handleMessage-BB@0x7a)
+
+handleMessage-BB@0x72 : 
+	30      (00000072) const/4              v0, 3
+	31      (00000074) iput                 v0, v4, Landroidx/loader/content/a;->c I
+	32      (00000078) return-void          
+
+handleMessage-BB@0x7a : 
+	33      (0000007a) move-exception       v4
+	34      (0000007c) invoke-virtual       v1, Ljava/util/concurrent/CountDownLatch;->countDown()V
+	35      (00000082) throw                v4
+

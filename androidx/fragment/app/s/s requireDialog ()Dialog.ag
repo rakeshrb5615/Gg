@@ -1,0 +1,28 @@
+# Landroidx/fragment/app/s;->requireDialog()Landroid/app/Dialog; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v3
+#
+# - return:android.app.Dialog
+
+requireDialog-BB@0x0 : [ requireDialog-BB@0xc requireDialog-BB@0xe ]
+	0       (00000000) invoke-virtual       v3, Landroidx/fragment/app/s;->getDialog()Landroid/app/Dialog;
+	1       (00000006) move-result-object   v0
+	2       (00000008) if-eqz               v0, +003h
+
+requireDialog-BB@0xc : 
+	3       (0000000c) return-object        v0
+
+requireDialog-BB@0xe : 
+	4       (0000000e) new-instance         v0, Ljava/lang/IllegalStateException;
+	5       (00000012) new-instance         v1, Ljava/lang/StringBuilder;
+	6       (00000016) const-string         v2, "DialogFragment "
+	7       (0000001a) invoke-direct        v1, v2, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	8       (00000020) invoke-virtual       v1, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	9       (00000026) const-string         v2, " does not have a Dialog."
+	10      (0000002a) invoke-virtual       v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	11      (00000030) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	12      (00000036) move-result-object   v1
+	13      (00000038) invoke-direct        v0, v1, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	14      (0000003e) throw                v0
+

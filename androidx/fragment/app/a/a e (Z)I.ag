@@ -1,0 +1,64 @@
+# Landroidx/fragment/app/a;->e(Z)I [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:boolean
+#
+# - return:int
+
+e-BB@0x0 : [ e-BB@0x8 e-BB@0x96 ]
+	0       (00000000) iget-boolean         v0, v3, Landroidx/fragment/app/a;->r Z
+	1       (00000004) if-nez               v0, +049h
+
+e-BB@0x8 : [ e-BB@0x18 e-BB@0x62 ]
+	2       (00000008) const/4              v0, 2
+	3       (0000000a) invoke-static        v0, Landroidx/fragment/app/b1;->H(I)Z
+	4       (00000010) move-result          v0
+	5       (00000012) const/4              v1, 1
+	6       (00000014) if-eqz               v0, +027h
+
+e-BB@0x18 : [ e-BB@0x62 ]
+	7       (00000018) new-instance         v0, Ljava/lang/StringBuilder;
+	8       (0000001c) const-string         v2, "Commit: "
+	9       (00000020) invoke-direct        v0, v2, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	10      (00000026) invoke-virtual       v0, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	11      (0000002c) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	12      (00000032) move-result-object   v0
+	13      (00000034) const-string         v2, "FragmentManager"
+	14      (00000038) invoke-static        v2, v0, Landroid/util/Log;->v(Ljava/lang/String; Ljava/lang/String;)I
+	15      (0000003e) new-instance         v0, Landroidx/fragment/app/w1;
+	16      (00000042) invoke-direct        v0, Landroidx/fragment/app/w1;-><init>()V
+	17      (00000048) new-instance         v2, Ljava/io/PrintWriter;
+	18      (0000004c) invoke-direct        v2, v0, Ljava/io/PrintWriter;-><init>(Ljava/io/Writer;)V
+	19      (00000052) const-string         v0, "  "
+	20      (00000056) invoke-virtual       v3, v0, v2, v1, Landroidx/fragment/app/a;->g(Ljava/lang/String; Ljava/io/PrintWriter; Z)V
+	21      (0000005c) invoke-virtual       v2, Ljava/io/PrintWriter;->close()V
+
+e-BB@0x62 : [ e-BB@0x72 e-BB@0x84 ]
+	22      (00000062) iput-boolean         v1, v3, Landroidx/fragment/app/a;->r Z
+	23      (00000066) iget-boolean         v0, v3, Landroidx/fragment/app/m1;->g Z
+	24      (0000006a) iget-object          v1, v3, Landroidx/fragment/app/a;->q Landroidx/fragment/app/b1;
+	25      (0000006e) if-eqz               v0, +00bh
+
+e-BB@0x72 : [ e-BB@0x8a ]
+	26      (00000072) iget-object          v0, v1, Landroidx/fragment/app/b1;->i Ljava/util/concurrent/atomic/AtomicInteger;
+	27      (00000076) invoke-virtual       v0, Ljava/util/concurrent/atomic/AtomicInteger;->getAndIncrement()I
+	28      (0000007c) move-result          v0
+	29      (0000007e) iput                 v0, v3, Landroidx/fragment/app/a;->s I
+	30      (00000082) goto                 +4h
+
+e-BB@0x84 : [ e-BB@0x8a ]
+	31      (00000084) const/4              v0, -1
+	32      (00000086) iput                 v0, v3, Landroidx/fragment/app/a;->s I
+
+e-BB@0x8a : 
+	33      (0000008a) invoke-virtual       v1, v3, v4, Landroidx/fragment/app/b1;->v(Landroidx/fragment/app/z0; Z)V
+	34      (00000090) iget                 v4, v3, Landroidx/fragment/app/a;->s I
+	35      (00000094) return               v4
+
+e-BB@0x96 : 
+	36      (00000096) new-instance         v4, Ljava/lang/IllegalStateException;
+	37      (0000009a) const-string         v0, "commit already called"
+	38      (0000009e) invoke-direct        v4, v0, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	39      (000000a4) throw                v4
+

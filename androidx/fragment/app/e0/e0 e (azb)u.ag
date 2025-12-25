@@ -1,0 +1,50 @@
+# Landroidx/fragment/app/e0;->e(Lf/a; Landroidx/fragment/app/z; Le/b;)Landroidx/fragment/app/u; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v8
+# - v9:f.a
+# - v10:androidx.fragment.app.z
+# - v11:e.b
+#
+# - return:androidx.fragment.app.u
+
+e-BB@0x0 : [ e-BB@0xa e-BB@0x4c ]
+	0       (00000000) iget                 v0, v8, Landroidx/fragment/app/e0;->mState I
+	1       (00000004) const/4              v1, 1
+	2       (00000006) if-gt                v0, v1, +023h
+
+e-BB@0xa : [ e-BB@0x2e e-BB@0x36 ]
+	3       (0000000a) new-instance         v5, Ljava/util/concurrent/atomic/AtomicReference;
+	4       (0000000e) invoke-direct        v5, Ljava/util/concurrent/atomic/AtomicReference;-><init>()V
+	5       (00000014) new-instance         v2, Landroidx/fragment/app/a0;
+	6       (00000018) move-object          v3, v8
+	7       (0000001a) move-object          v6, v9
+	8       (0000001c) move-object          v4, v10
+	9       (0000001e) move-object          v7, v11
+	10      (00000020) invoke-direct/range  v2 ... v7, Landroidx/fragment/app/a0;-><init>(Landroidx/fragment/app/e0; Landroidx/fragment/app/z; Ljava/util/concurrent/atomic/AtomicReference; Lf/a; Le/b;)V
+	11      (00000026) iget                 v9, v3, Landroidx/fragment/app/e0;->mState I
+	12      (0000002a) if-ltz               v9, +006h
+
+e-BB@0x2e : [ e-BB@0x40 ]
+	13      (0000002e) invoke-virtual       v2, Landroidx/fragment/app/a0;->a()V
+	14      (00000034) goto                 +6h
+
+e-BB@0x36 : [ e-BB@0x40 ]
+	15      (00000036) iget-object          v9, v3, Landroidx/fragment/app/e0;->mOnPreAttachedListeners Ljava/util/ArrayList;
+	16      (0000003a) invoke-virtual       v9, v2, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+e-BB@0x40 : 
+	17      (00000040) new-instance         v9, Landroidx/fragment/app/u;
+	18      (00000044) invoke-direct        v9, v5, Landroidx/fragment/app/u;-><init>(Ljava/util/concurrent/atomic/AtomicReference;)V
+	19      (0000004a) return-object        v9
+
+e-BB@0x4c : 
+	20      (0000004c) move-object          v3, v8
+	21      (0000004e) new-instance         v9, Ljava/lang/IllegalStateException;
+	22      (00000052) const-string         v10, "Fragment "
+	23      (00000056) const-string         v11, " is attempting to registerForActivityResult after being created. Fragments must call registerForActivityResult() before they are created (i.e. initialization, onAttach(), or onCreate())."
+	24      (0000005a) invoke-static        v10, v8, v11, Lv1/a;->k(Ljava/lang/String; Landroidx/fragment/app/e0; Ljava/lang/String;)Ljava/lang/String;
+	25      (00000060) move-result-object   v10
+	26      (00000062) invoke-direct        v9, v10, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	27      (00000068) throw                v9
+

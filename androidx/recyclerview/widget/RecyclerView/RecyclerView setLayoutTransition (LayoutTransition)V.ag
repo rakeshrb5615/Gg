@@ -1,0 +1,22 @@
+# Landroidx/recyclerview/widget/RecyclerView;->setLayoutTransition(Landroid/animation/LayoutTransition;)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:android.animation.LayoutTransition
+#
+# - return:void
+
+setLayoutTransition-BB@0x0 : [ setLayoutTransition-BB@0x4 setLayoutTransition-BB@0xe ]
+	0       (00000000) if-nez               v2, +007h
+
+setLayoutTransition-BB@0x4 : 
+	1       (00000004) const/4              v2, 0
+	2       (00000006) invoke-super         v1, v2, Landroid/view/ViewGroup;->setLayoutTransition(Landroid/animation/LayoutTransition;)V
+	3       (0000000c) return-void          
+
+setLayoutTransition-BB@0xe : 
+	4       (0000000e) new-instance         v2, Ljava/lang/IllegalArgumentException;
+	5       (00000012) const-string         v0, "Providing a LayoutTransition into RecyclerView is not supported. Please use setItemAnimator() instead for animating changes to the items in this RecyclerView"
+	6       (00000016) invoke-direct        v2, v0, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	7       (0000001c) throw                v2
+

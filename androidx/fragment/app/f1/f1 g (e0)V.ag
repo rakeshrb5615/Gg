@@ -1,0 +1,48 @@
+# Landroidx/fragment/app/f1;->g(Landroidx/fragment/app/e0;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:androidx.fragment.app.e0
+#
+# - return:void
+
+g-BB@0x0 : [ g-BB@0xe g-BB@0x26 ]
+	0       (00000000) iget-boolean         v0, v4, Landroidx/fragment/app/f1;->g Z
+	1       (00000004) const-string         v1, "FragmentManager"
+	2       (00000008) const/4              v2, 2
+	3       (0000000a) if-eqz               v0, +00eh
+
+g-BB@0xe : [ g-BB@0x1a g-BB@0x68 ]
+	4       (0000000e) invoke-static        v2, Landroidx/fragment/app/b1;->H(I)Z
+	5       (00000014) move-result          v5
+	6       (00000016) if-eqz               v5, +029h
+
+g-BB@0x1a : 
+	7       (0000001a) const-string         v5, "Ignoring removeRetainedFragment as the state is already saved"
+	8       (0000001e) invoke-static        v1, v5, Landroid/util/Log;->v(Ljava/lang/String; Ljava/lang/String;)I
+	9       (00000024) return-void          
+
+g-BB@0x26 : [ g-BB@0x3a g-BB@0x68 ]
+	10      (00000026) iget-object          v0, v4, Landroidx/fragment/app/f1;->b Ljava/util/HashMap;
+	11      (0000002a) iget-object          v3, v5, Landroidx/fragment/app/e0;->mWho Ljava/lang/String;
+	12      (0000002e) invoke-virtual       v0, v3, Ljava/util/HashMap;->remove(Ljava/lang/Object;)Ljava/lang/Object;
+	13      (00000034) move-result-object   v0
+	14      (00000036) if-eqz               v0, +019h
+
+g-BB@0x3a : [ g-BB@0x46 g-BB@0x68 ]
+	15      (0000003a) invoke-static        v2, Landroidx/fragment/app/b1;->H(I)Z
+	16      (00000040) move-result          v0
+	17      (00000042) if-eqz               v0, +013h
+
+g-BB@0x46 : [ g-BB@0x68 ]
+	18      (00000046) new-instance         v0, Ljava/lang/StringBuilder;
+	19      (0000004a) const-string         v2, "Updating retained Fragments: Removed "
+	20      (0000004e) invoke-direct        v0, v2, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	21      (00000054) invoke-virtual       v0, v5, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	22      (0000005a) invoke-virtual       v0, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	23      (00000060) move-result-object   v5
+	24      (00000062) invoke-static        v1, v5, Landroid/util/Log;->v(Ljava/lang/String; Ljava/lang/String;)I
+
+g-BB@0x68 : 
+	25      (00000068) return-void          
+

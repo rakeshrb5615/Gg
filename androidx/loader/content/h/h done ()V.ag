@@ -1,0 +1,60 @@
+# Landroidx/loader/content/h;->done()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v5
+#
+# - return:void
+
+done-BB@0x0 : [ done-BB@0xc ]
+	0       (00000000) const-string         v0, "An error occurred while executing doInBackground()"
+	1       (00000004) iget-object          v1, v5, Landroidx/loader/content/h;->a Landroidx/loader/content/a;
+	2       (00000008) iget-object          v2, v1, Landroidx/loader/content/a;->e Ljava/util/concurrent/atomic/AtomicBoolean;
+
+done-BB@0xc : [ done-BB@0x20 done-BB@0x6e ]
+	3       (0000000c) invoke-virtual       v5, Ljava/util/concurrent/FutureTask;->get()Ljava/lang/Object;
+	4       (00000012) move-result-object   v3
+	5       (00000014) invoke-virtual       v2, Ljava/util/concurrent/atomic/AtomicBoolean;->get()Z
+	6       (0000001a) move-result          v4
+	7       (0000001c) if-nez               v4, +029h
+	c:25
+	(Ljava/lang/InterruptedException; -> 62 done-BB@0x62)
+	(Ljava/util/concurrent/ExecutionException; -> 4c done-BB@0x4c)
+	(Ljava/util/concurrent/CancellationException; -> 36 done-BB@0x36)
+	(Ljava/lang/Throwable; -> 28 done-BB@0x28)
+
+done-BB@0x20 : 
+	8       (00000020) invoke-virtual       v1, v3, Landroidx/loader/content/a;->a(Ljava/lang/Object;)V
+	9       (00000026) return-void          
+
+done-BB@0x28 : 
+	10      (00000028) move-exception       v1
+	11      (0000002a) new-instance         v2, Ljava/lang/RuntimeException;
+	12      (0000002e) invoke-direct        v2, v0, v1, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	13      (00000034) throw                v2
+
+done-BB@0x36 : [ done-BB@0x42 done-BB@0x6e ]
+	14      (00000036) invoke-virtual       v2, Ljava/util/concurrent/atomic/AtomicBoolean;->get()Z
+	15      (0000003c) move-result          v0
+	16      (0000003e) if-nez               v0, +018h
+
+done-BB@0x42 : [ done-BB@0x6e ]
+	17      (00000042) const/4              v0, 0
+	18      (00000044) invoke-virtual       v1, v0, Landroidx/loader/content/a;->a(Ljava/lang/Object;)V
+	19      (0000004a) goto                 +12h
+
+done-BB@0x4c : 
+	20      (0000004c) move-exception       v1
+	21      (0000004e) new-instance         v2, Ljava/lang/RuntimeException;
+	22      (00000052) invoke-virtual       v1, Ljava/lang/Throwable;->getCause()Ljava/lang/Throwable;
+	23      (00000058) move-result-object   v1
+	24      (0000005a) invoke-direct        v2, v0, v1, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	25      (00000060) throw                v2
+
+done-BB@0x62 : [ done-BB@0x6e ]
+	26      (00000062) move-exception       v0
+	27      (00000064) const-string         v1, "AsyncTask"
+	28      (00000068) invoke-static        v1, v0, Landroid/util/Log;->w(Ljava/lang/String; Ljava/lang/Throwable;)I
+
+done-BB@0x6e : 
+	29      (0000006e) return-void          
+

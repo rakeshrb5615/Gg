@@ -1,0 +1,43 @@
+# Landroidx/datastore/preferences/protobuf/v0;->g(Ljava/util/List;)I [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v7
+# - v8:java.util.List
+#
+# - return:int
+
+g-BB@0x0 : [ g-BB@0xe g-BB@0x10 ]
+	0       (00000000) invoke-interface     v8, Ljava/util/List;->size()I
+	1       (00000006) move-result          v0
+	2       (00000008) const/4              v1, 0
+	3       (0000000a) if-nez               v0, +003h
+
+g-BB@0xe : 
+	4       (0000000e) return               v1
+
+g-BB@0x10 : [ g-BB@0x12 ]
+	5       (00000010) move                 v2, v1
+
+g-BB@0x12 : [ g-BB@0x16 g-BB@0x48 ]
+	6       (00000012) if-ge                v1, v0, +01bh
+
+g-BB@0x16 : [ g-BB@0x12 ]
+	7       (00000016) invoke-interface     v8, v1, Ljava/util/List;->get(I)Ljava/lang/Object;
+	8       (0000001c) move-result-object   v3
+	9       (0000001e) check-cast           v3, Ljava/lang/Long;
+	10      (00000022) invoke-virtual       v3, Ljava/lang/Long;->longValue()J
+	11      (00000028) move-result-wide     v3
+	12      (0000002a) const/4              v5, 1
+	13      (0000002c) shl-long             v5, v3, v5
+	14      (00000030) const/16             v7, 63
+	15      (00000034) shr-long/2addr       v3, v7
+	16      (00000036) xor-long/2addr       v3, v5
+	17      (00000038) invoke-static        v3, v4, Landroidx/datastore/preferences/protobuf/l;->t0(J)I
+	18      (0000003e) move-result          v3
+	19      (00000040) add-int/2addr        v2, v3
+	20      (00000042) add-int/lit8         v1, v1, 1
+	21      (00000046) goto                 -1ah
+
+g-BB@0x48 : 
+	22      (00000048) return               v2
+

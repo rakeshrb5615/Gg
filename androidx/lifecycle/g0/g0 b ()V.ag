@@ -1,0 +1,65 @@
+# Landroidx/lifecycle/g0;->b()V [access_flags=private final]
+#
+# Parameters:
+# local registers: v0...v7
+#
+# - return:void
+
+b-BB@0x0 : [ b-BB@0x12 ]
+	0       (00000000) iget-object          v0, v7, Landroidx/lifecycle/g0;->b Ljava/lang/Object;
+	1       (00000004) check-cast           v0, La2/b;
+	2       (00000008) iget-object          v1, v0, La2/b;->e Ljava/lang/Object;
+	3       (0000000c) check-cast           v1, Ljava/util/ArrayDeque;
+	4       (00000010) monitor-enter        v1
+
+b-BB@0x12 : [ b-BB@0x44 ]
+	5       (00000012) iget-object          v2, v0, La2/b;->b Ljava/lang/Object;
+	6       (00000016) check-cast           v2, Landroid/content/SharedPreferences;
+	7       (0000001a) invoke-interface     v2, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
+	8       (00000020) move-result-object   v2
+	9       (00000022) iget-object          v3, v0, La2/b;->c Ljava/lang/Object;
+	10      (00000026) check-cast           v3, Ljava/lang/String;
+	11      (0000002a) new-instance         v4, Ljava/lang/StringBuilder;
+	12      (0000002e) invoke-direct        v4, Ljava/lang/StringBuilder;-><init>()V
+	13      (00000034) iget-object          v5, v0, La2/b;->e Ljava/lang/Object;
+	14      (00000038) check-cast           v5, Ljava/util/ArrayDeque;
+	15      (0000003c) invoke-virtual       v5, Ljava/util/ArrayDeque;->iterator()Ljava/util/Iterator;
+	16      (00000042) move-result-object   v5
+	12:8f
+	(Ljava/lang/Throwable; -> 8c b-BB@0x8c)
+
+b-BB@0x44 : [ b-BB@0x50 b-BB@0x72 ]
+	17      (00000044) invoke-interface     v5, Ljava/util/Iterator;->hasNext()Z
+	18      (0000004a) move-result          v6
+	19      (0000004c) if-eqz               v6, +013h
+	12:8f
+	(Ljava/lang/Throwable; -> 8c b-BB@0x8c)
+
+b-BB@0x50 : [ b-BB@0x44 ]
+	20      (00000050) invoke-interface     v5, Ljava/util/Iterator;->next()Ljava/lang/Object;
+	21      (00000056) move-result-object   v6
+	22      (00000058) check-cast           v6, Ljava/lang/String;
+	23      (0000005c) invoke-virtual       v4, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	24      (00000062) iget-object          v6, v0, La2/b;->d Ljava/lang/Object;
+	25      (00000066) check-cast           v6, Ljava/lang/String;
+	26      (0000006a) invoke-virtual       v4, v6, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	27      (00000070) goto                 -16h
+	12:8f
+	(Ljava/lang/Throwable; -> 8c b-BB@0x8c)
+
+b-BB@0x72 : 
+	28      (00000072) invoke-virtual       v4, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	29      (00000078) move-result-object   v0
+	30      (0000007a) invoke-interface     v2, v3, v0, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String; Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
+	31      (00000080) move-result-object   v0
+	32      (00000082) invoke-interface     v0, Landroid/content/SharedPreferences$Editor;->commit()Z
+	33      (00000088) monitor-exit         v1
+	34      (0000008a) return-void          
+	12:8f
+	(Ljava/lang/Throwable; -> 8c b-BB@0x8c)
+
+b-BB@0x8c : 
+	35      (0000008c) move-exception       v0
+	36      (0000008e) monitor-exit         v1
+	37      (00000090) throw                v0
+

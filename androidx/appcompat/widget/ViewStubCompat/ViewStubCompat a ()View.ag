@@ -1,0 +1,76 @@
+# Landroidx/appcompat/widget/ViewStubCompat;->a()Landroid/view/View; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v4
+#
+# - return:android.view.View
+
+a-BB@0x0 : [ a-BB@0x10 a-BB@0x9c ]
+	0       (00000000) invoke-virtual       v4, Landroid/view/View;->getParent()Landroid/view/ViewParent;
+	1       (00000006) move-result-object   v0
+	2       (00000008) instance-of          v1, v0, Landroid/view/ViewGroup;
+	3       (0000000c) if-eqz               v1, +048h
+
+a-BB@0x10 : [ a-BB@0x18 a-BB@0x8c ]
+	4       (00000010) iget                 v1, v4, Landroidx/appcompat/widget/ViewStubCompat;->a I
+	5       (00000014) if-eqz               v1, +03ch
+
+a-BB@0x18 : [ a-BB@0x24 a-BB@0x26 ]
+	6       (00000018) check-cast           v0, Landroid/view/ViewGroup;
+	7       (0000001c) iget-object          v1, v4, Landroidx/appcompat/widget/ViewStubCompat;->d Landroid/view/LayoutInflater;
+	8       (00000020) if-eqz               v1, +003h
+
+a-BB@0x24 : [ a-BB@0x36 ]
+	9       (00000024) goto                 +9h
+
+a-BB@0x26 : [ a-BB@0x36 ]
+	10      (00000026) invoke-virtual       v4, Landroid/view/View;->getContext()Landroid/content/Context;
+	11      (0000002c) move-result-object   v1
+	12      (0000002e) invoke-static        v1, Landroid/view/LayoutInflater;->from(Landroid/content/Context;)Landroid/view/LayoutInflater;
+	13      (00000034) move-result-object   v1
+
+a-BB@0x36 : [ a-BB@0x4e a-BB@0x54 ]
+	14      (00000036) iget                 v2, v4, Landroidx/appcompat/widget/ViewStubCompat;->a I
+	15      (0000003a) const/4              v3, 0
+	16      (0000003c) invoke-virtual       v1, v2, v0, v3, Landroid/view/LayoutInflater;->inflate(I Landroid/view/ViewGroup; Z)Landroid/view/View;
+	17      (00000042) move-result-object   v1
+	18      (00000044) iget                 v2, v4, Landroidx/appcompat/widget/ViewStubCompat;->b I
+	19      (00000048) const/4              v3, -1
+	20      (0000004a) if-eq                v2, v3, +005h
+
+a-BB@0x4e : [ a-BB@0x54 ]
+	21      (0000004e) invoke-virtual       v1, v2, Landroid/view/View;->setId(I)V
+
+a-BB@0x54 : [ a-BB@0x6e a-BB@0x76 ]
+	22      (00000054) invoke-virtual       v0, v4, Landroid/view/ViewGroup;->indexOfChild(Landroid/view/View;)I
+	23      (0000005a) move-result          v2
+	24      (0000005c) invoke-virtual       v0, v4, Landroid/view/ViewGroup;->removeViewInLayout(Landroid/view/View;)V
+	25      (00000062) invoke-virtual       v4, Landroid/view/View;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
+	26      (00000068) move-result-object   v3
+	27      (0000006a) if-eqz               v3, +006h
+
+a-BB@0x6e : [ a-BB@0x7c ]
+	28      (0000006e) invoke-virtual       v0, v1, v2, v3, Landroid/view/ViewGroup;->addView(Landroid/view/View; I Landroid/view/ViewGroup$LayoutParams;)V
+	29      (00000074) goto                 +4h
+
+a-BB@0x76 : [ a-BB@0x7c ]
+	30      (00000076) invoke-virtual       v0, v1, v2, Landroid/view/ViewGroup;->addView(Landroid/view/View; I)V
+
+a-BB@0x7c : 
+	31      (0000007c) new-instance         v0, Ljava/lang/ref/WeakReference;
+	32      (00000080) invoke-direct        v0, v1, Ljava/lang/ref/WeakReference;-><init>(Ljava/lang/Object;)V
+	33      (00000086) iput-object          v0, v4, Landroidx/appcompat/widget/ViewStubCompat;->c Ljava/lang/ref/WeakReference;
+	34      (0000008a) return-object        v1
+
+a-BB@0x8c : 
+	35      (0000008c) new-instance         v0, Ljava/lang/IllegalArgumentException;
+	36      (00000090) const-string         v1, "ViewStub must have a valid layoutResource"
+	37      (00000094) invoke-direct        v0, v1, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	38      (0000009a) throw                v0
+
+a-BB@0x9c : 
+	39      (0000009c) new-instance         v0, Ljava/lang/IllegalStateException;
+	40      (000000a0) const-string         v1, "ViewStub must have a non-null ViewGroup viewParent"
+	41      (000000a4) invoke-direct        v0, v1, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	42      (000000aa) throw                v0
+

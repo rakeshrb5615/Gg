@@ -1,0 +1,63 @@
+# Landroidx/core/widget/NestedScrollView;->onRequestFocusInDescendants(I Landroid/graphics/Rect;)Z [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:int
+# - v5:android.graphics.Rect
+#
+# - return:boolean
+
+onRequestFocusInDescendants-BB@0x0 : [ onRequestFocusInDescendants-BB@0x6 onRequestFocusInDescendants-BB@0xc ]
+	0       (00000000) const/4              v0, 2
+	1       (00000002) if-ne                v4, v0, +005h
+
+onRequestFocusInDescendants-BB@0x6 : [ onRequestFocusInDescendants-BB@0x16 ]
+	2       (00000006) const/16             v4, 130
+	3       (0000000a) goto                 +6h
+
+onRequestFocusInDescendants-BB@0xc : [ onRequestFocusInDescendants-BB@0x12 onRequestFocusInDescendants-BB@0x16 ]
+	4       (0000000c) const/4              v0, 1
+	5       (0000000e) if-ne                v4, v0, +004h
+
+onRequestFocusInDescendants-BB@0x12 : [ onRequestFocusInDescendants-BB@0x16 ]
+	6       (00000012) const/16             v4, 33
+
+onRequestFocusInDescendants-BB@0x16 : [ onRequestFocusInDescendants-BB@0x1a onRequestFocusInDescendants-BB@0x2e ]
+	7       (00000016) if-nez               v5, +00ch
+
+onRequestFocusInDescendants-BB@0x1a : [ onRequestFocusInDescendants-BB@0x3e ]
+	8       (0000001a) invoke-static        Landroid/view/FocusFinder;->getInstance()Landroid/view/FocusFinder;
+	9       (00000020) move-result-object   v0
+	10      (00000022) const/4              v1, 0
+	11      (00000024) invoke-virtual       v0, v3, v1, v4, Landroid/view/FocusFinder;->findNextFocus(Landroid/view/ViewGroup; Landroid/view/View; I)Landroid/view/View;
+	12      (0000002a) move-result-object   v0
+	13      (0000002c) goto                 +9h
+
+onRequestFocusInDescendants-BB@0x2e : [ onRequestFocusInDescendants-BB@0x3e ]
+	14      (0000002e) invoke-static        Landroid/view/FocusFinder;->getInstance()Landroid/view/FocusFinder;
+	15      (00000034) move-result-object   v0
+	16      (00000036) invoke-virtual       v0, v3, v5, v4, Landroid/view/FocusFinder;->findNextFocusFromRect(Landroid/view/ViewGroup; Landroid/graphics/Rect; I)Landroid/view/View;
+	17      (0000003c) move-result-object   v0
+
+onRequestFocusInDescendants-BB@0x3e : [ onRequestFocusInDescendants-BB@0x44 onRequestFocusInDescendants-BB@0x46 ]
+	18      (0000003e) const/4              v1, 0
+	19      (00000040) if-nez               v0, +003h
+
+onRequestFocusInDescendants-BB@0x44 : [ onRequestFocusInDescendants-BB@0x5a ]
+	20      (00000044) goto                 +bh
+
+onRequestFocusInDescendants-BB@0x46 : [ onRequestFocusInDescendants-BB@0x5a onRequestFocusInDescendants-BB@0x5c ]
+	21      (00000046) invoke-virtual       v3, Landroid/view/View;->getHeight()I
+	22      (0000004c) move-result          v2
+	23      (0000004e) invoke-virtual       v3, v0, v1, v2, Landroidx/core/widget/NestedScrollView;->m(Landroid/view/View; I I)Z
+	24      (00000054) move-result          v2
+	25      (00000056) if-nez               v2, +003h
+
+onRequestFocusInDescendants-BB@0x5a : 
+	26      (0000005a) return               v1
+
+onRequestFocusInDescendants-BB@0x5c : 
+	27      (0000005c) invoke-virtual       v0, v4, v5, Landroid/view/View;->requestFocus(I Landroid/graphics/Rect;)Z
+	28      (00000062) move-result          v4
+	29      (00000064) return               v4
+

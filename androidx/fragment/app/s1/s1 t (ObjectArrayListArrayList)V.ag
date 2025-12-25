@@ -1,0 +1,94 @@
+# Landroidx/fragment/app/s1;->t(Ljava/lang/Object; Ljava/util/ArrayList; Ljava/util/ArrayList;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:java.lang.Object
+# - v6:java.util.ArrayList
+# - v7:java.util.ArrayList
+#
+# - return:void
+
+t-BB@0x0 : [ t-BB@0xe t-BB@0x32 ]
+	0       (00000000) check-cast           v5, Landroid/transition/Transition;
+	1       (00000004) instance-of          v0, v5, Landroid/transition/TransitionSet;
+	2       (00000008) const/4              v1, 0
+	3       (0000000a) if-eqz               v0, +014h
+
+t-BB@0xe : [ t-BB@0x1a ]
+	4       (0000000e) check-cast           v5, Landroid/transition/TransitionSet;
+	5       (00000012) invoke-virtual       v5, Landroid/transition/TransitionSet;->getTransitionCount()I
+	6       (00000018) move-result          v0
+
+t-BB@0x1a : [ t-BB@0x1e t-BB@0xbe ]
+	7       (0000001a) if-ge                v1, v0, +052h
+
+t-BB@0x1e : [ t-BB@0x1a ]
+	8       (0000001e) invoke-virtual       v5, v1, Landroid/transition/TransitionSet;->getTransitionAt(I)Landroid/transition/Transition;
+	9       (00000024) move-result-object   v2
+	10      (00000026) invoke-virtual       v4, v2, v6, v7, Landroidx/fragment/app/s1;->t(Ljava/lang/Object; Ljava/util/ArrayList; Ljava/util/ArrayList;)V
+	11      (0000002c) add-int/lit8         v1, v1, 1
+	12      (00000030) goto                 -bh
+
+t-BB@0x32 : [ t-BB@0x3e t-BB@0xbe ]
+	13      (00000032) invoke-static        v5, Landroidx/fragment/app/s1;->s(Landroid/transition/Transition;)Z
+	14      (00000038) move-result          v0
+	15      (0000003a) if-nez               v0, +042h
+
+t-BB@0x3e : [ t-BB@0x4a t-BB@0xbe ]
+	16      (0000003e) invoke-virtual       v5, Landroid/transition/Transition;->getTargets()Ljava/util/List;
+	17      (00000044) move-result-object   v0
+	18      (00000046) if-eqz               v0, +03ch
+
+t-BB@0x4a : [ t-BB@0x5e t-BB@0xbe ]
+	19      (0000004a) invoke-interface     v0, Ljava/util/List;->size()I
+	20      (00000050) move-result          v2
+	21      (00000052) invoke-virtual       v6, Ljava/util/ArrayList;->size()I
+	22      (00000058) move-result          v3
+	23      (0000005a) if-ne                v2, v3, +032h
+
+t-BB@0x5e : [ t-BB@0x6a t-BB@0xbe ]
+	24      (0000005e) invoke-interface     v0, v6, Ljava/util/List;->containsAll(Ljava/util/Collection;)Z
+	25      (00000064) move-result          v0
+	26      (00000066) if-eqz               v0, +02ch
+
+t-BB@0x6a : [ t-BB@0x6e t-BB@0x72 ]
+	27      (0000006a) if-nez               v7, +004h
+
+t-BB@0x6e : [ t-BB@0x7a ]
+	28      (0000006e) move                 v0, v1
+	29      (00000070) goto                 +5h
+
+t-BB@0x72 : [ t-BB@0x7a ]
+	30      (00000072) invoke-virtual       v7, Ljava/util/ArrayList;->size()I
+	31      (00000078) move-result          v0
+
+t-BB@0x7a : [ t-BB@0x7e t-BB@0x96 ]
+	32      (0000007a) if-ge                v1, v0, +00eh
+
+t-BB@0x7e : [ t-BB@0x7a ]
+	33      (0000007e) invoke-virtual       v7, v1, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	34      (00000084) move-result-object   v2
+	35      (00000086) check-cast           v2, Landroid/view/View;
+	36      (0000008a) invoke-virtual       v5, v2, Landroid/transition/Transition;->addTarget(Landroid/view/View;)Landroid/transition/Transition;
+	37      (00000090) add-int/lit8         v1, v1, 1
+	38      (00000094) goto                 -dh
+
+t-BB@0x96 : [ t-BB@0xa2 ]
+	39      (00000096) invoke-virtual       v6, Ljava/util/ArrayList;->size()I
+	40      (0000009c) move-result          v7
+	41      (0000009e) add-int/lit8         v7, v7, -1
+
+t-BB@0xa2 : [ t-BB@0xa6 t-BB@0xbe ]
+	42      (000000a2) if-ltz               v7, +00eh
+
+t-BB@0xa6 : [ t-BB@0xa2 ]
+	43      (000000a6) invoke-virtual       v6, v7, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	44      (000000ac) move-result-object   v0
+	45      (000000ae) check-cast           v0, Landroid/view/View;
+	46      (000000b2) invoke-virtual       v5, v0, Landroid/transition/Transition;->removeTarget(Landroid/view/View;)Landroid/transition/Transition;
+	47      (000000b8) add-int/lit8         v7, v7, -1
+	48      (000000bc) goto                 -dh
+
+t-BB@0xbe : 
+	49      (000000be) return-void          
+

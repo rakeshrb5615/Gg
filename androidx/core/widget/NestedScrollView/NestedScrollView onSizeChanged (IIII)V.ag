@@ -1,0 +1,51 @@
+# Landroidx/core/widget/NestedScrollView;->onSizeChanged(I I I I)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v0
+# - v1:int
+# - v2:int
+# - v3:int
+# - v4:int
+#
+# - return:void
+
+onSizeChanged-BB@0x0 : [ onSizeChanged-BB@0x12 onSizeChanged-BB@0x58 ]
+	0       (00000000) invoke-super         v0, v1, v2, v3, v4, Landroid/view/View;->onSizeChanged(I I I I)V
+	1       (00000006) invoke-virtual       v0, Landroid/view/View;->findFocus()Landroid/view/View;
+	2       (0000000c) move-result-object   v1
+	3       (0000000e) if-eqz               v1, +025h
+
+onSizeChanged-BB@0x12 : [ onSizeChanged-BB@0x16 onSizeChanged-BB@0x18 ]
+	4       (00000012) if-ne                v0, v1, +003h
+
+onSizeChanged-BB@0x16 : [ onSizeChanged-BB@0x58 ]
+	5       (00000016) goto                 +21h
+
+onSizeChanged-BB@0x18 : [ onSizeChanged-BB@0x26 onSizeChanged-BB@0x58 ]
+	6       (00000018) const/4              v2, 0
+	7       (0000001a) invoke-virtual       v0, v1, v2, v4, Landroidx/core/widget/NestedScrollView;->m(Landroid/view/View; I I)Z
+	8       (00000020) move-result          v3
+	9       (00000022) if-eqz               v3, +01bh
+
+onSizeChanged-BB@0x26 : [ onSizeChanged-BB@0x42 onSizeChanged-BB@0x58 ]
+	10      (00000026) iget-object          v3, v0, Landroidx/core/widget/NestedScrollView;->c Landroid/graphics/Rect;
+	11      (0000002a) invoke-virtual       v1, v3, Landroid/view/View;->getDrawingRect(Landroid/graphics/Rect;)V
+	12      (00000030) invoke-virtual       v0, v1, v3, Landroid/view/ViewGroup;->offsetDescendantRectToMyCoords(Landroid/view/View; Landroid/graphics/Rect;)V
+	13      (00000036) invoke-virtual       v0, v3, Landroidx/core/widget/NestedScrollView;->h(Landroid/graphics/Rect;)I
+	14      (0000003c) move-result          v1
+	15      (0000003e) if-eqz               v1, +00dh
+
+onSizeChanged-BB@0x42 : [ onSizeChanged-BB@0x4a onSizeChanged-BB@0x52 ]
+	16      (00000042) iget-boolean         v3, v0, Landroidx/core/widget/NestedScrollView;->u Z
+	17      (00000046) if-eqz               v3, +006h
+
+onSizeChanged-BB@0x4a : 
+	18      (0000004a) invoke-virtual       v0, v2, v2, v1, Landroidx/core/widget/NestedScrollView;->u(I Z I)V
+	19      (00000050) return-void          
+
+onSizeChanged-BB@0x52 : [ onSizeChanged-BB@0x58 ]
+	20      (00000052) invoke-virtual       v0, v2, v1, Landroid/view/View;->scrollBy(I I)V
+
+onSizeChanged-BB@0x58 : 
+	21      (00000058) return-void          
+

@@ -1,0 +1,20 @@
+# Landroidx/loader/content/b;->waitForLoader()V [access_flags=public]
+#
+# Parameters:
+# local registers: v0...v1
+#
+# - return:void
+
+waitForLoader-BB@0x0 : [ waitForLoader-BB@0x8 waitForLoader-BB@0x12 ]
+	0       (00000000) iget-object          v0, v1, Landroidx/loader/content/b;->mTask Landroidx/loader/content/a;
+	1       (00000004) if-eqz               v0, +007h
+
+waitForLoader-BB@0x8 : [ waitForLoader-BB@0x12 ]
+	2       (00000008) iget-object          v0, v0, Landroidx/loader/content/a;->f Ljava/util/concurrent/CountDownLatch;
+	3       (0000000c) invoke-virtual       v0, Ljava/util/concurrent/CountDownLatch;->await()V
+	8:11
+	(Ljava/lang/InterruptedException; -> 12 waitForLoader-BB@0x12)
+
+waitForLoader-BB@0x12 : 
+	4       (00000012) return-void          
+

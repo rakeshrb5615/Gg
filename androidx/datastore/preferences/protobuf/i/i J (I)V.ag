@@ -1,0 +1,156 @@
+# Landroidx/datastore/preferences/protobuf/i;->J(I)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v9
+# - v10:int
+#
+# - return:void
+
+J-BB@0x0 : [ J-BB@0xe J-BB@0x1a ]
+	0       (00000000) iget                 v0, v9, Landroidx/datastore/preferences/protobuf/i;->e I
+	1       (00000004) iget                 v1, v9, Landroidx/datastore/preferences/protobuf/i;->g I
+	2       (00000008) sub-int/2addr        v0, v1
+	3       (0000000a) if-gt                v10, v0, +008h
+
+J-BB@0xe : [ J-BB@0x12 J-BB@0x1a ]
+	4       (0000000e) if-ltz               v10, +006h
+
+J-BB@0x12 : 
+	5       (00000012) add-int/2addr        v1, v10
+	6       (00000014) iput                 v1, v9, Landroidx/datastore/preferences/protobuf/i;->g I
+	7       (00000018) return-void          
+
+J-BB@0x1a : [ J-BB@0x22 J-BB@0x13a ]
+	8       (0000001a) iget-object          v2, v9, Landroidx/datastore/preferences/protobuf/i;->c Ljava/io/FileInputStream;
+	9       (0000001e) if-ltz               v10, +08eh
+
+J-BB@0x22 : [ J-BB@0x36 J-BB@0x126 ]
+	10      (00000022) iget                 v3, v9, Landroidx/datastore/preferences/protobuf/i;->i I
+	11      (00000026) add-int              v4, v3, v1
+	12      (0000002a) add-int              v5, v4, v10
+	13      (0000002e) iget                 v6, v9, Landroidx/datastore/preferences/protobuf/i;->j I
+	14      (00000032) if-gt                v5, v6, +07ah
+
+J-BB@0x36 : [ J-BB@0x44 ]
+	15      (00000036) iput                 v4, v9, Landroidx/datastore/preferences/protobuf/i;->i I
+	16      (0000003a) const/4              v1, 0
+	17      (0000003c) iput                 v1, v9, Landroidx/datastore/preferences/protobuf/i;->e I
+	18      (00000040) iput                 v1, v9, Landroidx/datastore/preferences/protobuf/i;->g I
+
+J-BB@0x44 : [ J-BB@0x4a J-BB@0xdc ]
+	19      (00000044) const/4              v1, 1
+	20      (00000046) if-ge                v0, v10, +04bh
+
+J-BB@0x4a : [ J-BB@0x50 ]
+	21      (0000004a) sub-int              v3, v10, v0
+	22      (0000004e) int-to-long          v3, v3
+
+J-BB@0x50 : [ J-BB@0x64 J-BB@0x78 ]
+	23      (00000050) invoke-virtual       v2, v3, v4, Ljava/io/InputStream;->skip(J)J
+	24      (00000056) move-result-wide     v5
+	25      (00000058) const-wide/16        v7, 0
+	26      (0000005c) cmp-long             v7, v5, v7
+	27      (00000060) if-ltz               v7, +00ch
+	50:57
+	(Landroidx/datastore/preferences/protobuf/z; -> c2 J-BB@0xc2)
+	(Ljava/lang/Throwable; -> be J-BB@0xbe)
+
+J-BB@0x64 : [ J-BB@0x6c J-BB@0x78 ]
+	28      (00000064) cmp-long             v3, v5, v3
+	29      (00000068) if-gtz               v3, +008h
+
+J-BB@0x6c : [ J-BB@0x70 J-BB@0x72 ]
+	30      (0000006c) if-nez               v7, +003h
+
+J-BB@0x70 : [ J-BB@0xdc ]
+	31      (00000070) goto                 +36h
+
+J-BB@0x72 : [ J-BB@0x44 ]
+	32      (00000072) long-to-int          v1, v5
+	33      (00000074) add-int/2addr        v0, v1
+	34      (00000076) goto                 -19h
+
+J-BB@0x78 : 
+	35      (00000078) new-instance         v10, Ljava/lang/IllegalStateException;
+	36      (0000007c) new-instance         v1, Ljava/lang/StringBuilder;
+	37      (00000080) invoke-direct        v1, Ljava/lang/StringBuilder;-><init>()V
+	38      (00000086) invoke-virtual       v2, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	39      (0000008c) move-result-object   v2
+	40      (0000008e) invoke-virtual       v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	41      (00000094) const-string         v2, "#skip returned invalid result: "
+	42      (00000098) invoke-virtual       v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	43      (0000009e) invoke-virtual       v1, v5, v6, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+	44      (000000a4) const-string         v2, "
+The InputStream implementation is buggy."
+	45      (000000a8) invoke-virtual       v1, v2, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	46      (000000ae) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	47      (000000b4) move-result-object   v1
+	48      (000000b6) invoke-direct        v10, v1, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	49      (000000bc) throw                v10
+	78:c9
+	(Ljava/lang/Throwable; -> be J-BB@0xbe)
+
+J-BB@0xbe : [ J-BB@0xca ]
+	50      (000000be) move-exception       v10
+	51      (000000c0) goto                 +5h
+	78:c9
+	(Ljava/lang/Throwable; -> be J-BB@0xbe)
+
+J-BB@0xc2 : 
+	52      (000000c2) move-exception       v10
+	53      (000000c4) iput-boolean         v1, v10, Landroidx/datastore/preferences/protobuf/z;->a Z
+	54      (000000c8) throw                v10
+	78:c9
+	(Ljava/lang/Throwable; -> be J-BB@0xbe)
+
+J-BB@0xca : 
+	55      (000000ca) iget                 v1, v9, Landroidx/datastore/preferences/protobuf/i;->i I
+	56      (000000ce) add-int/2addr        v1, v0
+	57      (000000d0) iput                 v1, v9, Landroidx/datastore/preferences/protobuf/i;->i I
+	58      (000000d4) invoke-virtual       v9, Landroidx/datastore/preferences/protobuf/i;->H()V
+	59      (000000da) throw                v10
+
+J-BB@0xdc : [ J-BB@0xf0 J-BB@0x124 ]
+	60      (000000dc) iget                 v2, v9, Landroidx/datastore/preferences/protobuf/i;->i I
+	61      (000000e0) add-int/2addr        v2, v0
+	62      (000000e2) iput                 v2, v9, Landroidx/datastore/preferences/protobuf/i;->i I
+	63      (000000e6) invoke-virtual       v9, Landroidx/datastore/preferences/protobuf/i;->H()V
+	64      (000000ec) if-ge                v0, v10, +01ch
+
+J-BB@0xf0 : [ J-BB@0x106 ]
+	65      (000000f0) iget                 v0, v9, Landroidx/datastore/preferences/protobuf/i;->e I
+	66      (000000f4) iget                 v2, v9, Landroidx/datastore/preferences/protobuf/i;->g I
+	67      (000000f8) sub-int              v2, v0, v2
+	68      (000000fc) iput                 v0, v9, Landroidx/datastore/preferences/protobuf/i;->g I
+	69      (00000100) invoke-virtual       v9, v1, Landroidx/datastore/preferences/protobuf/i;->I(I)V
+
+J-BB@0x106 : [ J-BB@0x112 J-BB@0x120 ]
+	70      (00000106) sub-int              v0, v10, v2
+	71      (0000010a) iget                 v3, v9, Landroidx/datastore/preferences/protobuf/i;->e I
+	72      (0000010e) if-le                v0, v3, +009h
+
+J-BB@0x112 : [ J-BB@0x106 ]
+	73      (00000112) add-int/2addr        v2, v3
+	74      (00000114) iput                 v3, v9, Landroidx/datastore/preferences/protobuf/i;->g I
+	75      (00000118) invoke-virtual       v9, v1, Landroidx/datastore/preferences/protobuf/i;->I(I)V
+	76      (0000011e) goto                 -ch
+
+J-BB@0x120 : [ J-BB@0x124 ]
+	77      (00000120) iput                 v0, v9, Landroidx/datastore/preferences/protobuf/i;->g I
+
+J-BB@0x124 : 
+	78      (00000124) return-void          
+
+J-BB@0x126 : 
+	79      (00000126) sub-int/2addr        v6, v3
+	80      (00000128) sub-int/2addr        v6, v1
+	81      (0000012a) invoke-virtual       v9, v6, Landroidx/datastore/preferences/protobuf/i;->J(I)V
+	82      (00000130) invoke-static        Landroidx/datastore/preferences/protobuf/z;->e()Landroidx/datastore/preferences/protobuf/z;
+	83      (00000136) move-result-object   v10
+	84      (00000138) throw                v10
+
+J-BB@0x13a : 
+	85      (0000013a) invoke-static        Landroidx/datastore/preferences/protobuf/z;->d()Landroidx/datastore/preferences/protobuf/z;
+	86      (00000140) move-result-object   v10
+	87      (00000142) throw                v10
+

@@ -1,0 +1,132 @@
+# Landroidx/loader/content/b;->dump(Ljava/lang/String; Ljava/io/FileDescriptor; Ljava/io/PrintWriter; [Ljava/lang/String;)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:java.lang.String
+# - v6:java.io.FileDescriptor
+# - v7:java.io.PrintWriter
+# - v8:java.lang.String[]
+#
+# - return:void
+
+dump-BB@0x0 : [ dump-BB@0x36 dump-BB@0x46 ]
+	0       (00000000) invoke-virtual       v7, v5, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
+	1       (00000006) const-string         v6, "mId="
+	2       (0000000a) invoke-virtual       v7, v6, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
+	3       (00000010) iget                 v6, v4, Landroidx/loader/content/e;->mId I
+	4       (00000014) invoke-virtual       v7, v6, Ljava/io/PrintWriter;->print(I)V
+	5       (0000001a) const-string         v6, " mListener="
+	6       (0000001e) invoke-virtual       v7, v6, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
+	7       (00000024) iget-object          v6, v4, Landroidx/loader/content/e;->mListener Landroidx/loader/content/d;
+	8       (00000028) invoke-virtual       v7, v6, Ljava/io/PrintWriter;->println(Ljava/lang/Object;)V
+	9       (0000002e) iget-boolean         v6, v4, Landroidx/loader/content/e;->mStarted Z
+	10      (00000032) if-nez               v6, +00ah
+
+dump-BB@0x36 : [ dump-BB@0x3e dump-BB@0x46 ]
+	11      (00000036) iget-boolean         v6, v4, Landroidx/loader/content/e;->mContentChanged Z
+	12      (0000003a) if-nez               v6, +006h
+
+dump-BB@0x3e : [ dump-BB@0x46 dump-BB@0x88 ]
+	13      (0000003e) iget-boolean         v6, v4, Landroidx/loader/content/e;->mProcessingChange Z
+	14      (00000042) if-eqz               v6, +023h
+
+dump-BB@0x46 : [ dump-BB@0x88 ]
+	15      (00000046) invoke-virtual       v7, v5, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
+	16      (0000004c) const-string         v6, "mStarted="
+	17      (00000050) invoke-virtual       v7, v6, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
+	18      (00000056) iget-boolean         v6, v4, Landroidx/loader/content/e;->mStarted Z
+	19      (0000005a) invoke-virtual       v7, v6, Ljava/io/PrintWriter;->print(Z)V
+	20      (00000060) const-string         v6, " mContentChanged="
+	21      (00000064) invoke-virtual       v7, v6, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
+	22      (0000006a) iget-boolean         v6, v4, Landroidx/loader/content/e;->mContentChanged Z
+	23      (0000006e) invoke-virtual       v7, v6, Ljava/io/PrintWriter;->print(Z)V
+	24      (00000074) const-string         v6, " mProcessingChange="
+	25      (00000078) invoke-virtual       v7, v6, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
+	26      (0000007e) iget-boolean         v6, v4, Landroidx/loader/content/e;->mProcessingChange Z
+	27      (00000082) invoke-virtual       v7, v6, Ljava/io/PrintWriter;->println(Z)V
+
+dump-BB@0x88 : [ dump-BB@0x90 dump-BB@0x98 ]
+	28      (00000088) iget-boolean         v6, v4, Landroidx/loader/content/e;->mAbandoned Z
+	29      (0000008c) if-nez               v6, +006h
+
+dump-BB@0x90 : [ dump-BB@0x98 dump-BB@0xc6 ]
+	30      (00000090) iget-boolean         v6, v4, Landroidx/loader/content/e;->mReset Z
+	31      (00000094) if-eqz               v6, +019h
+
+dump-BB@0x98 : [ dump-BB@0xc6 ]
+	32      (00000098) invoke-virtual       v7, v5, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
+	33      (0000009e) const-string         v6, "mAbandoned="
+	34      (000000a2) invoke-virtual       v7, v6, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
+	35      (000000a8) iget-boolean         v6, v4, Landroidx/loader/content/e;->mAbandoned Z
+	36      (000000ac) invoke-virtual       v7, v6, Ljava/io/PrintWriter;->print(Z)V
+	37      (000000b2) const-string         v6, " mReset="
+	38      (000000b6) invoke-virtual       v7, v6, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
+	39      (000000bc) iget-boolean         v6, v4, Landroidx/loader/content/e;->mReset Z
+	40      (000000c0) invoke-virtual       v7, v6, Ljava/io/PrintWriter;->println(Z)V
+
+dump-BB@0xc6 : [ dump-BB@0xd2 dump-BB@0x100 ]
+	41      (000000c6) iget-object          v6, v4, Landroidx/loader/content/b;->mTask Landroidx/loader/content/a;
+	42      (000000ca) const-string         v8, " waiting="
+	43      (000000ce) if-eqz               v6, +019h
+
+dump-BB@0xd2 : [ dump-BB@0x100 ]
+	44      (000000d2) invoke-virtual       v7, v5, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
+	45      (000000d8) const-string         v6, "mTask="
+	46      (000000dc) invoke-virtual       v7, v6, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
+	47      (000000e2) iget-object          v6, v4, Landroidx/loader/content/b;->mTask Landroidx/loader/content/a;
+	48      (000000e6) invoke-virtual       v7, v6, Ljava/io/PrintWriter;->print(Ljava/lang/Object;)V
+	49      (000000ec) invoke-virtual       v7, v8, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
+	50      (000000f2) iget-object          v6, v4, Landroidx/loader/content/b;->mTask Landroidx/loader/content/a;
+	51      (000000f6) iget-boolean         v6, v6, Landroidx/loader/content/a;->m Z
+	52      (000000fa) invoke-virtual       v7, v6, Ljava/io/PrintWriter;->println(Z)V
+
+dump-BB@0x100 : [ dump-BB@0x108 dump-BB@0x136 ]
+	53      (00000100) iget-object          v6, v4, Landroidx/loader/content/b;->mCancellingTask Landroidx/loader/content/a;
+	54      (00000104) if-eqz               v6, +019h
+
+dump-BB@0x108 : [ dump-BB@0x136 ]
+	55      (00000108) invoke-virtual       v7, v5, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
+	56      (0000010e) const-string         v6, "mCancellingTask="
+	57      (00000112) invoke-virtual       v7, v6, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
+	58      (00000118) iget-object          v6, v4, Landroidx/loader/content/b;->mCancellingTask Landroidx/loader/content/a;
+	59      (0000011c) invoke-virtual       v7, v6, Ljava/io/PrintWriter;->print(Ljava/lang/Object;)V
+	60      (00000122) invoke-virtual       v7, v8, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
+	61      (00000128) iget-object          v6, v4, Landroidx/loader/content/b;->mCancellingTask Landroidx/loader/content/a;
+	62      (0000012c) iget-boolean         v6, v6, Landroidx/loader/content/a;->m Z
+	63      (00000130) invoke-virtual       v7, v6, Ljava/io/PrintWriter;->println(Z)V
+
+dump-BB@0x136 : [ dump-BB@0x146 dump-BB@0x198 ]
+	64      (00000136) iget-wide            v0, v4, Landroidx/loader/content/b;->mUpdateThrottle J
+	65      (0000013a) const-wide/16        v2, 0
+	66      (0000013e) cmp-long             v6, v0, v2
+	67      (00000142) if-eqz               v6, +02bh
+
+dump-BB@0x146 : [ dump-BB@0x17e dump-BB@0x18a ]
+	68      (00000146) invoke-virtual       v7, v5, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
+	69      (0000014c) const-string         v5, "mUpdateThrottle="
+	70      (00000150) invoke-virtual       v7, v5, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
+	71      (00000156) iget-wide            v5, v4, Landroidx/loader/content/b;->mUpdateThrottle J
+	72      (0000015a) invoke-static        v5, v6, v7, Lp0/e;->e(J Ljava/io/PrintWriter;)V
+	73      (00000160) const-string         v5, " mLastLoadCompleteTime="
+	74      (00000164) invoke-virtual       v7, v5, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
+	75      (0000016a) iget-wide            v5, v4, Landroidx/loader/content/b;->mLastLoadCompleteTime J
+	76      (0000016e) invoke-static        Landroid/os/SystemClock;->uptimeMillis()J
+	77      (00000174) move-result-wide     v0
+	78      (00000176) cmp-long             v8, v5, v2
+	79      (0000017a) if-nez               v8, +008h
+
+dump-BB@0x17e : [ dump-BB@0x192 ]
+	80      (0000017e) const-string         v5, "--"
+	81      (00000182) invoke-virtual       v7, v5, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
+	82      (00000188) goto                 +5h
+
+dump-BB@0x18a : [ dump-BB@0x192 ]
+	83      (0000018a) sub-long/2addr       v5, v0
+	84      (0000018c) invoke-static        v5, v6, v7, Lp0/e;->e(J Ljava/io/PrintWriter;)V
+
+dump-BB@0x192 : [ dump-BB@0x198 ]
+	85      (00000192) invoke-virtual       v7, Ljava/io/PrintWriter;->println()V
+
+dump-BB@0x198 : 
+	86      (00000198) return-void          
+

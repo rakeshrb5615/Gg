@@ -1,0 +1,115 @@
+# Landroidx/loader/content/e;->deliverResult(Ljava/lang/Object;)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:java.lang.Object
+#
+# - return:void
+
+deliverResult-BB@0x0 : [ deliverResult-BB@0x8 deliverResult-BB@0xa6 ]
+	0       (00000000) iget-object          v0, v4, Landroidx/loader/content/e;->mListener Landroidx/loader/content/d;
+	1       (00000004) if-eqz               v0, +051h
+
+deliverResult-BB@0x8 : [ deliverResult-BB@0x20 deliverResult-BB@0x28 ]
+	2       (00000008) check-cast           v0, Lq1/c;
+	3       (0000000c) invoke-static        Landroid/os/Looper;->myLooper()Landroid/os/Looper;
+	4       (00000012) move-result-object   v1
+	5       (00000014) invoke-static        Landroid/os/Looper;->getMainLooper()Landroid/os/Looper;
+	6       (0000001a) move-result-object   v2
+	7       (0000001c) if-ne                v1, v2, +006h
+
+deliverResult-BB@0x20 : 
+	8       (00000020) invoke-virtual       v0, v5, Landroidx/lifecycle/d0;->h(Ljava/lang/Object;)V
+	9       (00000026) return-void          
+
+deliverResult-BB@0x28 : [ deliverResult-BB@0x2e ]
+	10      (00000028) iget-object          v1, v0, Landroidx/lifecycle/c0;->a Ljava/lang/Object;
+	11      (0000002c) monitor-enter        v1
+
+deliverResult-BB@0x2e : [ deliverResult-BB@0x3a deliverResult-BB@0x3e ]
+	12      (0000002e) iget-object          v2, v0, Landroidx/lifecycle/c0;->f Ljava/lang/Object;
+	13      (00000032) sget-object          v3, Landroidx/lifecycle/c0;->k Ljava/lang/Object;
+	14      (00000036) if-ne                v2, v3, +004h
+	2e:45
+	(Ljava/lang/Throwable; -> a0 deliverResult-BB@0xa0)
+
+deliverResult-BB@0x3a : [ deliverResult-BB@0x40 ]
+	15      (0000003a) const/4              v2, 1
+	16      (0000003c) goto                 +2h
+	2e:45
+	(Ljava/lang/Throwable; -> a0 deliverResult-BB@0xa0)
+
+deliverResult-BB@0x3e : [ deliverResult-BB@0x40 ]
+	17      (0000003e) const/4              v2, 0
+	2e:45
+	(Ljava/lang/Throwable; -> a0 deliverResult-BB@0xa0)
+
+deliverResult-BB@0x40 : [ deliverResult-BB@0x4a deliverResult-BB@0x4c ]
+	18      (00000040) iput-object          v5, v0, Landroidx/lifecycle/c0;->f Ljava/lang/Object;
+	19      (00000044) monitor-exit         v1
+	20      (00000046) if-nez               v2, +003h
+
+deliverResult-BB@0x4a : [ deliverResult-BB@0xa6 ]
+	21      (0000004a) goto                 +2eh
+
+deliverResult-BB@0x4c : [ deliverResult-BB@0x64 deliverResult-BB@0x94 ]
+	22      (0000004c) invoke-static        Lo/a;->V()Lo/a;
+	23      (00000052) move-result-object   v5
+	24      (00000054) iget-object          v0, v0, Landroidx/lifecycle/c0;->j Landroidx/lifecycle/y;
+	25      (00000058) iget-object          v5, v5, Lo/a;->f Lo/b;
+	26      (0000005c) iget-object          v1, v5, Lo/b;->g Landroid/os/Handler;
+	27      (00000060) if-nez               v1, +01ah
+
+deliverResult-BB@0x64 : [ deliverResult-BB@0x6a ]
+	28      (00000064) iget-object          v1, v5, Lo/b;->f Ljava/lang/Object;
+	29      (00000068) monitor-enter        v1
+
+deliverResult-BB@0x6a : [ deliverResult-BB@0x72 deliverResult-BB@0x8c ]
+	30      (0000006a) iget-object          v2, v5, Lo/b;->g Landroid/os/Handler;
+	31      (0000006e) if-nez               v2, +00fh
+	6a:91
+	(Ljava/lang/Throwable; -> 88 deliverResult-BB@0x88)
+
+deliverResult-BB@0x72 : [ deliverResult-BB@0x8c ]
+	32      (00000072) invoke-static        Landroid/os/Looper;->getMainLooper()Landroid/os/Looper;
+	33      (00000078) move-result-object   v2
+	34      (0000007a) invoke-static        v2, Lo/b;->V(Landroid/os/Looper;)Landroid/os/Handler;
+	35      (00000080) move-result-object   v2
+	36      (00000082) iput-object          v2, v5, Lo/b;->g Landroid/os/Handler;
+	37      (00000086) goto                 +3h
+	6a:91
+	(Ljava/lang/Throwable; -> 88 deliverResult-BB@0x88)
+
+deliverResult-BB@0x88 : [ deliverResult-BB@0x90 ]
+	38      (00000088) move-exception       v5
+	39      (0000008a) goto                 +3h
+	6a:91
+	(Ljava/lang/Throwable; -> 88 deliverResult-BB@0x88)
+
+deliverResult-BB@0x8c : [ deliverResult-BB@0x94 ]
+	40      (0000008c) monitor-exit         v1
+	41      (0000008e) goto                 +3h
+	6a:91
+	(Ljava/lang/Throwable; -> 88 deliverResult-BB@0x88)
+
+deliverResult-BB@0x90 : 
+	42      (00000090) monitor-exit         v1
+	43      (00000092) throw                v5
+
+deliverResult-BB@0x94 : 
+	44      (00000094) iget-object          v5, v5, Lo/b;->g Landroid/os/Handler;
+	45      (00000098) invoke-virtual       v5, v0, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
+	46      (0000009e) return-void          
+
+deliverResult-BB@0xa0 : [ deliverResult-BB@0xa2 ]
+	47      (000000a0) move-exception       v5
+
+deliverResult-BB@0xa2 : 
+	48      (000000a2) monitor-exit         v1
+	49      (000000a4) throw                v5
+	a2:a3
+	(Ljava/lang/Throwable; -> a0 deliverResult-BB@0xa0)
+
+deliverResult-BB@0xa6 : 
+	50      (000000a6) return-void          
+

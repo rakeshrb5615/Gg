@@ -1,0 +1,46 @@
+# Landroidx/core/widget/NestedScrollView;->getVerticalScrollFactorCompat()F [access_flags=public]
+#
+# Parameters:
+# local registers: v0...v5
+#
+# - return:float
+
+getVerticalScrollFactorCompat-BB@0x0 : [ getVerticalScrollFactorCompat-BB@0xe getVerticalScrollFactorCompat-BB@0x6a ]
+	0       (00000000) iget                 v0, v5, Landroidx/core/widget/NestedScrollView;->G F
+	1       (00000004) const/4              v1, 0
+	2       (00000006) cmpl-float           v0, v0, v1
+	3       (0000000a) if-nez               v0, +030h
+
+getVerticalScrollFactorCompat-BB@0xe : [ getVerticalScrollFactorCompat-BB@0x3c getVerticalScrollFactorCompat-BB@0x5a ]
+	4       (0000000e) new-instance         v0, Landroid/util/TypedValue;
+	5       (00000012) invoke-direct        v0, Landroid/util/TypedValue;-><init>()V
+	6       (00000018) invoke-virtual       v5, Landroid/view/View;->getContext()Landroid/content/Context;
+	7       (0000001e) move-result-object   v1
+	8       (00000020) invoke-virtual       v1, Landroid/content/Context;->getTheme()Landroid/content/res/Resources$Theme;
+	9       (00000026) move-result-object   v2
+	10      (00000028) const                v3, 16842829
+	11      (0000002e) const/4              v4, 1
+	12      (00000030) invoke-virtual       v2, v3, v0, v4, Landroid/content/res/Resources$Theme;->resolveAttribute(I Landroid/util/TypedValue; Z)Z
+	13      (00000036) move-result          v2
+	14      (00000038) if-eqz               v2, +011h
+
+getVerticalScrollFactorCompat-BB@0x3c : [ getVerticalScrollFactorCompat-BB@0x6a ]
+	15      (0000003c) invoke-virtual       v1, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+	16      (00000042) move-result-object   v1
+	17      (00000044) invoke-virtual       v1, Landroid/content/res/Resources;->getDisplayMetrics()Landroid/util/DisplayMetrics;
+	18      (0000004a) move-result-object   v1
+	19      (0000004c) invoke-virtual       v0, v1, Landroid/util/TypedValue;->getDimension(Landroid/util/DisplayMetrics;)F
+	20      (00000052) move-result          v0
+	21      (00000054) iput                 v0, v5, Landroidx/core/widget/NestedScrollView;->G F
+	22      (00000058) goto                 +9h
+
+getVerticalScrollFactorCompat-BB@0x5a : 
+	23      (0000005a) new-instance         v0, Ljava/lang/IllegalStateException;
+	24      (0000005e) const-string         v1, "Expected theme to define listPreferredItemHeight."
+	25      (00000062) invoke-direct        v0, v1, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	26      (00000068) throw                v0
+
+getVerticalScrollFactorCompat-BB@0x6a : 
+	27      (0000006a) iget                 v0, v5, Landroidx/core/widget/NestedScrollView;->G F
+	28      (0000006e) return               v0
+

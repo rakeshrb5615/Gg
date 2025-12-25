@@ -1,0 +1,81 @@
+# Landroidx/fragment/app/j1;->j()V [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v4
+#
+# - return:void
+
+j-BB@0x0 : [ j-BB@0xc j-BB@0xc4 ]
+	0       (00000000) iget-object          v0, v4, Landroidx/fragment/app/j1;->c Landroidx/fragment/app/e0;
+	1       (00000004) iget-boolean         v1, v0, Landroidx/fragment/app/e0;->mFromLayout Z
+	2       (00000008) if-eqz               v1, +05eh
+
+j-BB@0xc : [ j-BB@0x14 j-BB@0xc4 ]
+	3       (0000000c) iget-boolean         v1, v0, Landroidx/fragment/app/e0;->mInLayout Z
+	4       (00000010) if-eqz               v1, +05ah
+
+j-BB@0x14 : [ j-BB@0x1c j-BB@0xc4 ]
+	5       (00000014) iget-boolean         v1, v0, Landroidx/fragment/app/e0;->mPerformedCreateView Z
+	6       (00000018) if-nez               v1, +056h
+
+j-BB@0x1c : [ j-BB@0x2a j-BB@0x50 ]
+	7       (0000001c) const/4              v1, 3
+	8       (0000001e) invoke-static        v1, Landroidx/fragment/app/b1;->H(I)Z
+	9       (00000024) move-result          v1
+	10      (00000026) if-eqz               v1, +015h
+
+j-BB@0x2a : [ j-BB@0x50 ]
+	11      (0000002a) new-instance         v1, Ljava/lang/StringBuilder;
+	12      (0000002e) const-string         v2, "moveto CREATE_VIEW: "
+	13      (00000032) invoke-direct        v1, v2, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	14      (00000038) invoke-virtual       v1, v0, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	15      (0000003e) invoke-virtual       v1, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	16      (00000044) move-result-object   v1
+	17      (00000046) const-string         v2, "FragmentManager"
+	18      (0000004a) invoke-static        v2, v1, Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String;)I
+
+j-BB@0x50 : [ j-BB@0x5a j-BB@0x68 ]
+	19      (00000050) iget-object          v1, v0, Landroidx/fragment/app/e0;->mSavedFragmentState Landroid/os/Bundle;
+	20      (00000054) const/4              v2, 0
+	21      (00000056) if-eqz               v1, +009h
+
+j-BB@0x5a : [ j-BB@0x6a ]
+	22      (0000005a) const-string         v3, "savedInstanceState"
+	23      (0000005e) invoke-virtual       v1, v3, Landroid/os/Bundle;->getBundle(Ljava/lang/String;)Landroid/os/Bundle;
+	24      (00000064) move-result-object   v1
+	25      (00000066) goto                 +2h
+
+j-BB@0x68 : [ j-BB@0x6a ]
+	26      (00000068) move-object          v1, v2
+
+j-BB@0x6a : [ j-BB@0x80 j-BB@0xc4 ]
+	27      (0000006a) invoke-virtual       v0, v1, Landroidx/fragment/app/e0;->performGetLayoutInflater(Landroid/os/Bundle;)Landroid/view/LayoutInflater;
+	28      (00000070) move-result-object   v3
+	29      (00000072) invoke-virtual       v0, v3, v2, v1, Landroidx/fragment/app/e0;->performCreateView(Landroid/view/LayoutInflater; Landroid/view/ViewGroup; Landroid/os/Bundle;)V
+	30      (00000078) iget-object          v1, v0, Landroidx/fragment/app/e0;->mView Landroid/view/View;
+	31      (0000007c) if-eqz               v1, +024h
+
+j-BB@0x80 : [ j-BB@0xa0 j-BB@0xae ]
+	32      (00000080) const/4              v2, 0
+	33      (00000082) invoke-virtual       v1, v2, Landroid/view/View;->setSaveFromParentEnabled(Z)V
+	34      (00000088) iget-object          v1, v0, Landroidx/fragment/app/e0;->mView Landroid/view/View;
+	35      (0000008c) const                v3, 2131362085
+	36      (00000092) invoke-virtual       v1, v3, v0, Landroid/view/View;->setTag(I Ljava/lang/Object;)V
+	37      (00000098) iget-boolean         v1, v0, Landroidx/fragment/app/e0;->mHidden Z
+	38      (0000009c) if-eqz               v1, +009h
+
+j-BB@0xa0 : [ j-BB@0xae ]
+	39      (000000a0) iget-object          v1, v0, Landroidx/fragment/app/e0;->mView Landroid/view/View;
+	40      (000000a4) const/16             v3, 8
+	41      (000000a8) invoke-virtual       v1, v3, Landroid/view/View;->setVisibility(I)V
+
+j-BB@0xae : [ j-BB@0xc4 ]
+	42      (000000ae) invoke-virtual       v0, Landroidx/fragment/app/e0;->performViewCreated()V
+	43      (000000b4) iget-object          v1, v4, Landroidx/fragment/app/j1;->a Landroidx/fragment/app/k0;
+	44      (000000b8) invoke-virtual       v1, v2, Landroidx/fragment/app/k0;->m(Z)V
+	45      (000000be) const/4              v1, 2
+	46      (000000c0) iput                 v1, v0, Landroidx/fragment/app/e0;->mState I
+
+j-BB@0xc4 : 
+	47      (000000c4) return-void          
+

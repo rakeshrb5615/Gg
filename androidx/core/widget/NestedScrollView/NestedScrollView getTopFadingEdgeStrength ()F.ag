@@ -1,0 +1,33 @@
+# Landroidx/core/widget/NestedScrollView;->getTopFadingEdgeStrength()F [access_flags=public]
+#
+# Parameters:
+# local registers: v0...v2
+#
+# - return:float
+
+getTopFadingEdgeStrength-BB@0x0 : [ getTopFadingEdgeStrength-BB@0xc getTopFadingEdgeStrength-BB@0x10 ]
+	0       (00000000) invoke-virtual       v2, Landroid/view/ViewGroup;->getChildCount()I
+	1       (00000006) move-result          v0
+	2       (00000008) if-nez               v0, +004h
+
+getTopFadingEdgeStrength-BB@0xc : 
+	3       (0000000c) const/4              v0, 0
+	4       (0000000e) return               v0
+
+getTopFadingEdgeStrength-BB@0x10 : [ getTopFadingEdgeStrength-BB@0x24 getTopFadingEdgeStrength-BB@0x2c ]
+	5       (00000010) invoke-virtual       v2, Landroid/view/View;->getVerticalFadingEdgeLength()I
+	6       (00000016) move-result          v0
+	7       (00000018) invoke-virtual       v2, Landroid/view/View;->getScrollY()I
+	8       (0000001e) move-result          v1
+	9       (00000020) if-ge                v1, v0, +006h
+
+getTopFadingEdgeStrength-BB@0x24 : 
+	10      (00000024) int-to-float         v1, v1
+	11      (00000026) int-to-float         v0, v0
+	12      (00000028) div-float/2addr      v1, v0
+	13      (0000002a) return               v1
+
+getTopFadingEdgeStrength-BB@0x2c : 
+	14      (0000002c) const/high16         v0, 1065353216
+	15      (00000030) return               v0
+

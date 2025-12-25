@@ -1,0 +1,53 @@
+# Landroidx/loader/content/a;->a(Ljava/lang/Object;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:java.lang.Object
+#
+# - return:void
+
+a-BB@0x0 : [ a-BB@0x6 ]
+	0       (00000000) const-class          v0, Landroidx/loader/content/a;
+	1       (00000004) monitor-enter        v0
+
+a-BB@0x6 : [ a-BB@0xe a-BB@0x2a ]
+	2       (00000006) sget-object          v1, Landroidx/loader/content/a;->p Landroidx/loader/content/j;
+	3       (0000000a) if-nez               v1, +010h
+	6:2f
+	(Ljava/lang/Throwable; -> 26 a-BB@0x26)
+
+a-BB@0xe : [ a-BB@0x2a ]
+	4       (0000000e) new-instance         v1, Landroidx/loader/content/j;
+	5       (00000012) invoke-static        Landroid/os/Looper;->getMainLooper()Landroid/os/Looper;
+	6       (00000018) move-result-object   v2
+	7       (0000001a) invoke-direct        v1, v2, Landroid/os/Handler;-><init>(Landroid/os/Looper;)V
+	8       (00000020) sput-object          v1, Landroidx/loader/content/a;->p Landroidx/loader/content/j;
+	9       (00000024) goto                 +3h
+	6:2f
+	(Ljava/lang/Throwable; -> 26 a-BB@0x26)
+
+a-BB@0x26 : [ a-BB@0x54 ]
+	10      (00000026) move-exception       v4
+	11      (00000028) goto                 +16h
+	6:2f
+	(Ljava/lang/Throwable; -> 26 a-BB@0x26)
+
+a-BB@0x2a : 
+	12      (0000002a) sget-object          v1, Landroidx/loader/content/a;->p Landroidx/loader/content/j;
+	13      (0000002e) monitor-exit         v0
+	14      (00000030) new-instance         v0, Landroidx/loader/content/i;
+	15      (00000034) filled-new-array     v4, [Ljava/lang/Object;
+	16      (0000003a) move-result-object   v4
+	17      (0000003c) invoke-direct        v0, v3, v4, Landroidx/loader/content/i;-><init>(Landroidx/loader/content/a; [Ljava/lang/Object;)V
+	18      (00000042) const/4              v4, 1
+	19      (00000044) invoke-virtual       v1, v4, v0, Landroid/os/Handler;->obtainMessage(I Ljava/lang/Object;)Landroid/os/Message;
+	20      (0000004a) move-result-object   v4
+	21      (0000004c) invoke-virtual       v4, Landroid/os/Message;->sendToTarget()V
+	22      (00000052) return-void          
+
+a-BB@0x54 : 
+	23      (00000054) monitor-exit         v0
+	24      (00000056) throw                v4
+	54:55
+	(Ljava/lang/Throwable; -> 26 a-BB@0x26)
+

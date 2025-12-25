@@ -1,0 +1,61 @@
+# Landroidx/preference/PreferenceGroup;-><init>(Landroid/content/Context; Landroid/util/AttributeSet; I I)V [access_flags=public constructor]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:android.content.Context
+# - v3:android.util.AttributeSet
+# - v4:int
+# - v5:int
+#
+# - return:void
+
+<init>-BB@0x0 : [ <init>-BB@0x4e <init>-BB@0x9e ]
+	0       (00000000) invoke-direct        v1, v2, v3, v4, Landroidx/preference/Preference;-><init>(Landroid/content/Context; Landroid/util/AttributeSet; I)V
+	1       (00000006) new-instance         v5, Landroid/os/Handler;
+	2       (0000000a) invoke-static        Landroid/os/Looper;->getMainLooper()Landroid/os/Looper;
+	3       (00000010) move-result-object   v0
+	4       (00000012) invoke-direct        v5, v0, Landroid/os/Handler;-><init>(Landroid/os/Looper;)V
+	5       (00000018) new-instance         v5, Ljava/util/ArrayList;
+	6       (0000001c) invoke-direct        v5, Ljava/util/ArrayList;-><init>()V
+	7       (00000022) sget-object          v5, Lt1/b;->g [I
+	8       (00000026) const/4              v0, 0
+	9       (00000028) invoke-virtual       v2, v3, v5, v4, v0, Landroid/content/Context;->obtainStyledAttributes(Landroid/util/AttributeSet; [I I I)Landroid/content/res/TypedArray;
+	10      (0000002e) move-result-object   v2
+	11      (00000030) const/4              v3, 2
+	12      (00000032) const/4              v4, 1
+	13      (00000034) invoke-virtual       v2, v3, v4, Landroid/content/res/TypedArray;->getBoolean(I Z)Z
+	14      (0000003a) move-result          v5
+	15      (0000003c) invoke-virtual       v2, v3, v5, Landroid/content/res/TypedArray;->getBoolean(I Z)Z
+	16      (00000042) invoke-virtual       v2, v4, Landroid/content/res/TypedArray;->hasValue(I)Z
+	17      (00000048) move-result          v3
+	18      (0000004a) if-eqz               v3, +02ah
+
+<init>-BB@0x4e : [ <init>-BB@0x68 <init>-BB@0x9e ]
+	19      (0000004e) const                v3, 2147483647
+	20      (00000054) invoke-virtual       v2, v4, v3, Landroid/content/res/TypedArray;->getInt(I I)I
+	21      (0000005a) move-result          v5
+	22      (0000005c) invoke-virtual       v2, v4, v5, Landroid/content/res/TypedArray;->getInt(I I)I
+	23      (00000062) move-result          v4
+	24      (00000064) if-eq                v4, v3, +01dh
+
+<init>-BB@0x68 : [ <init>-BB@0x78 <init>-BB@0x9e ]
+	25      (00000068) iget-object          v3, v1, Landroidx/preference/Preference;->e Ljava/lang/String;
+	26      (0000006c) invoke-static        v3, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+	27      (00000072) move-result          v3
+	28      (00000074) if-eqz               v3, +015h
+
+<init>-BB@0x78 : [ <init>-BB@0x9e ]
+	29      (00000078) invoke-virtual       v1, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	30      (0000007e) move-result-object   v3
+	31      (00000080) invoke-virtual       v3, Ljava/lang/Class;->getSimpleName()Ljava/lang/String;
+	32      (00000086) move-result-object   v3
+	33      (00000088) const-string         v4, " should have a key defined if it contains an expandable preference"
+	34      (0000008c) invoke-virtual       v3, v4, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+	35      (00000092) move-result-object   v3
+	36      (00000094) const-string         v4, "PreferenceGroup"
+	37      (00000098) invoke-static        v4, v3, Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String;)I
+
+<init>-BB@0x9e : 
+	38      (0000009e) invoke-virtual       v2, Landroid/content/res/TypedArray;->recycle()V
+	39      (000000a4) return-void          
+

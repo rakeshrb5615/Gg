@@ -1,0 +1,37 @@
+# Landroidx/fragment/app/FragmentContainerView;->dispatchDraw(Landroid/graphics/Canvas;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v6
+# - v7:android.graphics.Canvas
+#
+# - return:void
+
+dispatchDraw-BB@0x0 : [ dispatchDraw-BB@0x12 dispatchDraw-BB@0x44 ]
+	0       (00000000) const-string         v0, "canvas"
+	1       (00000004) invoke-static        v7, v0, Lkotlin/jvm/internal/j;->e(Ljava/lang/Object; Ljava/lang/String;)V
+	2       (0000000a) iget-boolean         v0, v6, Landroidx/fragment/app/FragmentContainerView;->d Z
+	3       (0000000e) if-eqz               v0, +01bh
+
+dispatchDraw-BB@0x12 : [ dispatchDraw-BB@0x20 ]
+	4       (00000012) iget-object          v0, v6, Landroidx/fragment/app/FragmentContainerView;->a Ljava/util/ArrayList;
+	5       (00000016) invoke-virtual       v0, Ljava/util/ArrayList;->size()I
+	6       (0000001c) move-result          v1
+	7       (0000001e) const/4              v2, 0
+
+dispatchDraw-BB@0x20 : [ dispatchDraw-BB@0x24 dispatchDraw-BB@0x44 ]
+	8       (00000020) if-ge                v2, v1, +012h
+
+dispatchDraw-BB@0x24 : [ dispatchDraw-BB@0x20 ]
+	9       (00000024) invoke-virtual       v0, v2, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+	10      (0000002a) move-result-object   v3
+	11      (0000002c) add-int/lit8         v2, v2, 1
+	12      (00000030) check-cast           v3, Landroid/view/View;
+	13      (00000034) invoke-virtual       v6, Landroid/view/View;->getDrawingTime()J
+	14      (0000003a) move-result-wide     v4
+	15      (0000003c) invoke-super         v6, v7, v3, v4, v5, Landroid/view/ViewGroup;->drawChild(Landroid/graphics/Canvas; Landroid/view/View; J)Z
+	16      (00000042) goto                 -11h
+
+dispatchDraw-BB@0x44 : 
+	17      (00000044) invoke-super         v6, v7, Landroid/view/View;->dispatchDraw(Landroid/graphics/Canvas;)V
+	18      (0000004a) return-void          
+

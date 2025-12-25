@@ -1,0 +1,36 @@
+# Landroidx/coordinatorlayout/widget/CoordinatorLayout;->setVisibility(I)V [access_flags=public]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:int
+#
+# - return:void
+
+setVisibility-BB@0x0 : [ setVisibility-BB@0xc setVisibility-BB@0x10 ]
+	0       (00000000) invoke-super         v2, v3, Landroid/view/View;->setVisibility(I)V
+	1       (00000006) const/4              v0, 0
+	2       (00000008) if-nez               v3, +004h
+
+setVisibility-BB@0xc : [ setVisibility-BB@0x12 ]
+	3       (0000000c) const/4              v3, 1
+	4       (0000000e) goto                 +2h
+
+setVisibility-BB@0x10 : [ setVisibility-BB@0x12 ]
+	5       (00000010) move                 v3, v0
+
+setVisibility-BB@0x12 : [ setVisibility-BB@0x1a setVisibility-BB@0x30 ]
+	6       (00000012) iget-object          v1, v2, Landroidx/coordinatorlayout/widget/CoordinatorLayout;->v Landroid/graphics/drawable/Drawable;
+	7       (00000016) if-eqz               v1, +00dh
+
+setVisibility-BB@0x1a : [ setVisibility-BB@0x26 setVisibility-BB@0x30 ]
+	8       (0000001a) invoke-virtual       v1, Landroid/graphics/drawable/Drawable;->isVisible()Z
+	9       (00000020) move-result          v1
+	10      (00000022) if-eq                v1, v3, +007h
+
+setVisibility-BB@0x26 : [ setVisibility-BB@0x30 ]
+	11      (00000026) iget-object          v1, v2, Landroidx/coordinatorlayout/widget/CoordinatorLayout;->v Landroid/graphics/drawable/Drawable;
+	12      (0000002a) invoke-virtual       v1, v3, v0, Landroid/graphics/drawable/Drawable;->setVisible(Z Z)Z
+
+setVisibility-BB@0x30 : 
+	13      (00000030) return-void          
+

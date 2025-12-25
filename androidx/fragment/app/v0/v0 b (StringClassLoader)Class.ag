@@ -1,0 +1,38 @@
+# Landroidx/fragment/app/v0;->b(Ljava/lang/String; Ljava/lang/ClassLoader;)Ljava/lang/Class; [access_flags=public static]
+#
+# Parameters:
+# - local registers: v0...v2
+# - v3:java.lang.String
+# - v4:java.lang.ClassLoader
+#
+# - return:java.lang.Class
+
+b-BB@0x0 : [ b-BB@0x4 ]
+	0       (00000000) const-string         v0, "Unable to instantiate fragment "
+
+b-BB@0x4 : 
+	1       (00000004) invoke-static        v3, v4, Landroidx/fragment/app/v0;->a(Ljava/lang/String; Ljava/lang/ClassLoader;)Ljava/lang/Class;
+	2       (0000000a) move-result-object   v3
+	3       (0000000c) return-object        v3
+	4:b
+	(Ljava/lang/ClassNotFoundException; -> 28 b-BB@0x28)
+	(Ljava/lang/ClassCastException; -> e b-BB@0xe)
+
+b-BB@0xe : 
+	4       (0000000e) move-exception       v4
+	5       (00000010) new-instance         v1, La5/o;
+	6       (00000014) const-string         v2, ": make sure class is a valid subclass of Fragment"
+	7       (00000018) invoke-static        v0, v3, v2, Lv1/a;->l(Ljava/lang/String; Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	8       (0000001e) move-result-object   v3
+	9       (00000020) invoke-direct        v1, v3, v4, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	10      (00000026) throw                v1
+
+b-BB@0x28 : 
+	11      (00000028) move-exception       v4
+	12      (0000002a) new-instance         v1, La5/o;
+	13      (0000002e) const-string         v2, ": make sure class name exists"
+	14      (00000032) invoke-static        v0, v3, v2, Lv1/a;->l(Ljava/lang/String; Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;
+	15      (00000038) move-result-object   v3
+	16      (0000003a) invoke-direct        v1, v3, v4, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String; Ljava/lang/Throwable;)V
+	17      (00000040) throw                v1
+

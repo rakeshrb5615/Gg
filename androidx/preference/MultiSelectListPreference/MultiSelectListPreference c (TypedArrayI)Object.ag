@@ -1,0 +1,31 @@
+# Landroidx/preference/MultiSelectListPreference;->c(Landroid/content/res/TypedArray; I)Ljava/lang/Object; [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:android.content.res.TypedArray
+# - v5:int
+#
+# - return:java.lang.Object
+
+c-BB@0x0 : [ c-BB@0x16 ]
+	0       (00000000) invoke-virtual       v4, v5, Landroid/content/res/TypedArray;->getTextArray(I)[Ljava/lang/CharSequence;
+	1       (00000006) move-result-object   v4
+	2       (00000008) new-instance         v5, Ljava/util/HashSet;
+	3       (0000000c) invoke-direct        v5, Ljava/util/HashSet;-><init>()V
+	4       (00000012) array-length         v0, v4
+	5       (00000014) const/4              v1, 0
+
+c-BB@0x16 : [ c-BB@0x1a c-BB@0x32 ]
+	6       (00000016) if-ge                v1, v0, +00eh
+
+c-BB@0x1a : [ c-BB@0x16 ]
+	7       (0000001a) aget-object          v2, v4, v1
+	8       (0000001e) invoke-interface     v2, Ljava/lang/CharSequence;->toString()Ljava/lang/String;
+	9       (00000024) move-result-object   v2
+	10      (00000026) invoke-virtual       v5, v2, Ljava/util/HashSet;->add(Ljava/lang/Object;)Z
+	11      (0000002c) add-int/lit8         v1, v1, 1
+	12      (00000030) goto                 -dh
+
+c-BB@0x32 : 
+	13      (00000032) return-object        v5
+

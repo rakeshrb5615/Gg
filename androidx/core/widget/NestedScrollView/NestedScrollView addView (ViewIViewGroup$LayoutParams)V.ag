@@ -1,0 +1,25 @@
+# Landroidx/core/widget/NestedScrollView;->addView(Landroid/view/View; I Landroid/view/ViewGroup$LayoutParams;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v1
+# - v2:android.view.View
+# - v3:int
+# - v4:android.view.ViewGroup$LayoutParams
+#
+# - return:void
+
+addView-BB@0x0 : [ addView-BB@0xc addView-BB@0x14 ]
+	0       (00000000) invoke-virtual       v1, Landroid/view/ViewGroup;->getChildCount()I
+	1       (00000006) move-result          v0
+	2       (00000008) if-gtz               v0, +006h
+
+addView-BB@0xc : 
+	3       (0000000c) invoke-super         v1, v2, v3, v4, Landroid/view/ViewGroup;->addView(Landroid/view/View; I Landroid/view/ViewGroup$LayoutParams;)V
+	4       (00000012) return-void          
+
+addView-BB@0x14 : 
+	5       (00000014) new-instance         v2, Ljava/lang/IllegalStateException;
+	6       (00000018) const-string         v3, "ScrollView can host only one direct child"
+	7       (0000001c) invoke-direct        v2, v3, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	8       (00000022) throw                v2
+

@@ -1,0 +1,44 @@
+# Landroidx/fragment/app/e0;->requireParentFragment()Landroidx/fragment/app/e0; [access_flags=public final]
+#
+# Parameters:
+# local registers: v0...v3
+#
+# - return:androidx.fragment.app.e0
+
+requireParentFragment-BB@0x0 : [ requireParentFragment-BB@0xc requireParentFragment-BB@0x70 ]
+	0       (00000000) invoke-virtual       v3, Landroidx/fragment/app/e0;->getParentFragment()Landroidx/fragment/app/e0;
+	1       (00000006) move-result-object   v0
+	2       (00000008) if-nez               v0, +034h
+
+requireParentFragment-BB@0xc : [ requireParentFragment-BB@0x1c requireParentFragment-BB@0x34 ]
+	3       (0000000c) invoke-virtual       v3, Landroidx/fragment/app/e0;->getContext()Landroid/content/Context;
+	4       (00000012) move-result-object   v0
+	5       (00000014) const-string         v1, "Fragment "
+	6       (00000018) if-nez               v0, +00eh
+
+requireParentFragment-BB@0x1c : 
+	7       (0000001c) new-instance         v0, Ljava/lang/IllegalStateException;
+	8       (00000020) const-string         v2, " is not attached to any Fragment or host"
+	9       (00000024) invoke-static        v1, v3, v2, Lv1/a;->k(Ljava/lang/String; Landroidx/fragment/app/e0; Ljava/lang/String;)Ljava/lang/String;
+	10      (0000002a) move-result-object   v1
+	11      (0000002c) invoke-direct        v0, v1, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	12      (00000032) throw                v0
+
+requireParentFragment-BB@0x34 : 
+	13      (00000034) new-instance         v0, Ljava/lang/IllegalStateException;
+	14      (00000038) new-instance         v2, Ljava/lang/StringBuilder;
+	15      (0000003c) invoke-direct        v2, v1, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	16      (00000042) invoke-virtual       v2, v3, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	17      (00000048) const-string         v1, " is not a child Fragment, it is directly attached to "
+	18      (0000004c) invoke-virtual       v2, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	19      (00000052) invoke-virtual       v3, Landroidx/fragment/app/e0;->getContext()Landroid/content/Context;
+	20      (00000058) move-result-object   v1
+	21      (0000005a) invoke-virtual       v2, v1, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+	22      (00000060) invoke-virtual       v2, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	23      (00000066) move-result-object   v1
+	24      (00000068) invoke-direct        v0, v1, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	25      (0000006e) throw                v0
+
+requireParentFragment-BB@0x70 : 
+	26      (00000070) return-object        v0
+

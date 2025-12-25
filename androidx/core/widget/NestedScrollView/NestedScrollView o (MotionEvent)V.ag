@@ -1,0 +1,43 @@
+# Landroidx/core/widget/NestedScrollView;->o(Landroid/view/MotionEvent;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v3
+# - v4:android.view.MotionEvent
+#
+# - return:void
+
+o-BB@0x0 : [ o-BB@0x18 o-BB@0x4a ]
+	0       (00000000) invoke-virtual       v4, Landroid/view/MotionEvent;->getActionIndex()I
+	1       (00000006) move-result          v0
+	2       (00000008) invoke-virtual       v4, v0, Landroid/view/MotionEvent;->getPointerId(I)I
+	3       (0000000e) move-result          v1
+	4       (00000010) iget                 v2, v3, Landroidx/core/widget/NestedScrollView;->y I
+	5       (00000014) if-ne                v1, v2, +01bh
+
+o-BB@0x18 : [ o-BB@0x1c o-BB@0x20 ]
+	6       (00000018) if-nez               v0, +004h
+
+o-BB@0x1c : [ o-BB@0x22 ]
+	7       (0000001c) const/4              v0, 1
+	8       (0000001e) goto                 +2h
+
+o-BB@0x20 : [ o-BB@0x22 ]
+	9       (00000020) const/4              v0, 0
+
+o-BB@0x22 : [ o-BB@0x44 o-BB@0x4a ]
+	10      (00000022) invoke-virtual       v4, v0, Landroid/view/MotionEvent;->getY(I)F
+	11      (00000028) move-result          v1
+	12      (0000002a) float-to-int         v1, v1
+	13      (0000002c) iput                 v1, v3, Landroidx/core/widget/NestedScrollView;->n I
+	14      (00000030) invoke-virtual       v4, v0, Landroid/view/MotionEvent;->getPointerId(I)I
+	15      (00000036) move-result          v4
+	16      (00000038) iput                 v4, v3, Landroidx/core/widget/NestedScrollView;->y I
+	17      (0000003c) iget-object          v4, v3, Landroidx/core/widget/NestedScrollView;->s Landroid/view/VelocityTracker;
+	18      (00000040) if-eqz               v4, +005h
+
+o-BB@0x44 : [ o-BB@0x4a ]
+	19      (00000044) invoke-virtual       v4, Landroid/view/VelocityTracker;->clear()V
+
+o-BB@0x4a : 
+	20      (0000004a) return-void          
+

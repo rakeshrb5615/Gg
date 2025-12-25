@@ -1,0 +1,155 @@
+# Landroidx/fragment/app/s;->f(Z Z Z)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:boolean
+# - v6:boolean
+# - v7:boolean
+#
+# - return:void
+
+f-BB@0x0 : [ f-BB@0x8 f-BB@0xa ]
+	0       (00000000) iget-boolean         v0, v4, Landroidx/fragment/app/s;->mDismissed Z
+	1       (00000004) if-eqz               v0, +003h
+
+f-BB@0x8 : 
+	2       (00000008) return-void          
+
+f-BB@0xa : [ f-BB@0x1e f-BB@0x66 ]
+	3       (0000000a) const/4              v0, 1
+	4       (0000000c) iput-boolean         v0, v4, Landroidx/fragment/app/s;->mDismissed Z
+	5       (00000010) const/4              v1, 0
+	6       (00000012) iput-boolean         v1, v4, Landroidx/fragment/app/s;->mShownByMe Z
+	7       (00000016) iget-object          v2, v4, Landroidx/fragment/app/s;->mDialog Landroid/app/Dialog;
+	8       (0000001a) if-eqz               v2, +026h
+
+f-BB@0x1e : [ f-BB@0x34 f-BB@0x66 ]
+	9       (0000001e) const/4              v3, 0
+	10      (00000020) invoke-virtual       v2, v3, Landroid/app/Dialog;->setOnDismissListener(Landroid/content/DialogInterface$OnDismissListener;)V
+	11      (00000026) iget-object          v2, v4, Landroidx/fragment/app/s;->mDialog Landroid/app/Dialog;
+	12      (0000002a) invoke-virtual       v2, Landroid/app/Dialog;->dismiss()V
+	13      (00000030) if-nez               v6, +01bh
+
+f-BB@0x34 : [ f-BB@0x4c f-BB@0x58 ]
+	14      (00000034) invoke-static        Landroid/os/Looper;->myLooper()Landroid/os/Looper;
+	15      (0000003a) move-result-object   v6
+	16      (0000003c) iget-object          v2, v4, Landroidx/fragment/app/s;->mHandler Landroid/os/Handler;
+	17      (00000040) invoke-virtual       v2, Landroid/os/Handler;->getLooper()Landroid/os/Looper;
+	18      (00000046) move-result-object   v2
+	19      (00000048) if-ne                v6, v2, +008h
+
+f-BB@0x4c : [ f-BB@0x66 ]
+	20      (0000004c) iget-object          v6, v4, Landroidx/fragment/app/s;->mDialog Landroid/app/Dialog;
+	21      (00000050) invoke-virtual       v4, v6, Landroidx/fragment/app/s;->onDismiss(Landroid/content/DialogInterface;)V
+	22      (00000056) goto                 +8h
+
+f-BB@0x58 : [ f-BB@0x66 ]
+	23      (00000058) iget-object          v6, v4, Landroidx/fragment/app/s;->mHandler Landroid/os/Handler;
+	24      (0000005c) iget-object          v2, v4, Landroidx/fragment/app/s;->mDismissRunnable Ljava/lang/Runnable;
+	25      (00000060) invoke-virtual       v6, v2, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
+
+f-BB@0x66 : [ f-BB@0x72 f-BB@0xee ]
+	26      (00000066) iput-boolean         v0, v4, Landroidx/fragment/app/s;->mViewDestroyed Z
+	27      (0000006a) iget                 v6, v4, Landroidx/fragment/app/s;->mBackStackId I
+	28      (0000006e) if-ltz               v6, +040h
+
+f-BB@0x72 : [ f-BB@0x7a f-BB@0xac ]
+	29      (00000072) const-string         v6, "Bad id: "
+	30      (00000076) if-eqz               v7, +01bh
+
+f-BB@0x7a : [ f-BB@0x8a f-BB@0x92 ]
+	31      (0000007a) invoke-virtual       v4, Landroidx/fragment/app/e0;->getParentFragmentManager()Landroidx/fragment/app/b1;
+	32      (00000080) move-result-object   v5
+	33      (00000082) iget                 v7, v4, Landroidx/fragment/app/s;->mBackStackId I
+	34      (00000086) if-ltz               v7, +006h
+
+f-BB@0x8a : [ f-BB@0xd2 ]
+	35      (0000008a) invoke-virtual       v5, v7, v0, Landroidx/fragment/app/b1;->O(I I)Z
+	36      (00000090) goto                 +21h
+
+f-BB@0x92 : 
+	37      (00000092) invoke-virtual       v5, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	38      (00000098) new-instance         v5, Ljava/lang/IllegalArgumentException;
+	39      (0000009c) invoke-static        v7, v6, Lg2/g;->c(I Ljava/lang/String;)Ljava/lang/String;
+	40      (000000a2) move-result-object   v6
+	41      (000000a4) invoke-direct        v5, v6, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	42      (000000aa) throw                v5
+
+f-BB@0xac : [ f-BB@0xc2 f-BB@0xda ]
+	43      (000000ac) invoke-virtual       v4, Landroidx/fragment/app/e0;->getParentFragmentManager()Landroidx/fragment/app/b1;
+	44      (000000b2) move-result-object   v7
+	45      (000000b4) iget                 v1, v4, Landroidx/fragment/app/s;->mBackStackId I
+	46      (000000b8) invoke-virtual       v7, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	47      (000000be) if-ltz               v1, +00eh
+
+f-BB@0xc2 : [ f-BB@0xd2 ]
+	48      (000000c2) new-instance         v6, Landroidx/fragment/app/a1;
+	49      (000000c6) invoke-direct        v6, v7, v1, v0, Landroidx/fragment/app/a1;-><init>(Landroidx/fragment/app/b1; I I)V
+	50      (000000cc) invoke-virtual       v7, v6, v5, Landroidx/fragment/app/b1;->v(Landroidx/fragment/app/z0; Z)V
+
+f-BB@0xd2 : 
+	51      (000000d2) const/4              v5, -1
+	52      (000000d4) iput                 v5, v4, Landroidx/fragment/app/s;->mBackStackId I
+	53      (000000d8) return-void          
+
+f-BB@0xda : 
+	54      (000000da) new-instance         v5, Ljava/lang/IllegalArgumentException;
+	55      (000000de) invoke-static        v1, v6, Lg2/g;->c(I Ljava/lang/String;)Ljava/lang/String;
+	56      (000000e4) move-result-object   v6
+	57      (000000e6) invoke-direct        v5, v6, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+	58      (000000ec) throw                v5
+
+f-BB@0xee : [ f-BB@0x112 f-BB@0x156 ]
+	59      (000000ee) invoke-virtual       v4, Landroidx/fragment/app/e0;->getParentFragmentManager()Landroidx/fragment/app/b1;
+	60      (000000f4) move-result-object   v6
+	61      (000000f6) invoke-virtual       v6, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+	62      (000000fc) new-instance         v2, Landroidx/fragment/app/a;
+	63      (00000100) invoke-direct        v2, v6, Landroidx/fragment/app/a;-><init>(Landroidx/fragment/app/b1;)V
+	64      (00000106) iput-boolean         v0, v2, Landroidx/fragment/app/m1;->p Z
+	65      (0000010a) iget-object          v6, v4, Landroidx/fragment/app/e0;->mFragmentManager Landroidx/fragment/app/b1;
+	66      (0000010e) if-eqz               v6, +024h
+
+f-BB@0x112 : [ f-BB@0x11a f-BB@0x11c ]
+	67      (00000112) iget-object          v3, v2, Landroidx/fragment/app/a;->q Landroidx/fragment/app/b1;
+	68      (00000116) if-ne                v6, v3, +003h
+
+f-BB@0x11a : [ f-BB@0x156 ]
+	69      (0000011a) goto                 +1eh
+
+f-BB@0x11c : 
+	70      (0000011c) new-instance         v5, Ljava/lang/IllegalStateException;
+	71      (00000120) new-instance         v6, Ljava/lang/StringBuilder;
+	72      (00000124) const-string         v7, "Cannot remove Fragment attached to a different FragmentManager. Fragment "
+	73      (00000128) invoke-direct        v6, v7, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+	74      (0000012e) invoke-virtual       v4, Landroidx/fragment/app/e0;->toString()Ljava/lang/String;
+	75      (00000134) move-result-object   v7
+	76      (00000136) invoke-virtual       v6, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	77      (0000013c) const-string         v7, " is already attached to a FragmentManager."
+	78      (00000140) invoke-virtual       v6, v7, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+	79      (00000146) invoke-virtual       v6, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	80      (0000014c) move-result-object   v6
+	81      (0000014e) invoke-direct        v5, v6, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+	82      (00000154) throw                v5
+
+f-BB@0x156 : [ f-BB@0x16c f-BB@0x174 ]
+	83      (00000156) new-instance         v6, Landroidx/fragment/app/l1;
+	84      (0000015a) const/4              v3, 3
+	85      (0000015c) invoke-direct        v6, v4, v3, Landroidx/fragment/app/l1;-><init>(Landroidx/fragment/app/e0; I)V
+	86      (00000162) invoke-virtual       v2, v6, Landroidx/fragment/app/m1;->b(Landroidx/fragment/app/l1;)V
+	87      (00000168) if-eqz               v7, +006h
+
+f-BB@0x16c : 
+	88      (0000016c) invoke-virtual       v2, Landroidx/fragment/app/a;->f()V
+	89      (00000172) return-void          
+
+f-BB@0x174 : [ f-BB@0x178 f-BB@0x180 ]
+	90      (00000174) if-eqz               v5, +006h
+
+f-BB@0x178 : 
+	91      (00000178) invoke-virtual       v2, v0, Landroidx/fragment/app/a;->e(Z)I
+	92      (0000017e) return-void          
+
+f-BB@0x180 : 
+	93      (00000180) invoke-virtual       v2, v1, Landroidx/fragment/app/a;->e(Z)I
+	94      (00000186) return-void          
+

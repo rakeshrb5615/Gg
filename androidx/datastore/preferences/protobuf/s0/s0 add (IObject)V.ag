@@ -1,0 +1,66 @@
+# Landroidx/datastore/preferences/protobuf/s0;->add(I Ljava/lang/Object;)V [access_flags=public final]
+#
+# Parameters:
+# - local registers: v0...v4
+# - v5:int
+# - v6:java.lang.Object
+#
+# - return:void
+
+add-BB@0x0 : [ add-BB@0xa add-BB@0x7c ]
+	0       (00000000) invoke-virtual       v4, Landroidx/datastore/preferences/protobuf/b;->a()V
+	1       (00000006) if-ltz               v5, +03bh
+
+add-BB@0xa : [ add-BB@0x12 add-BB@0x7c ]
+	2       (0000000a) iget                 v0, v4, Landroidx/datastore/preferences/protobuf/s0;->c I
+	3       (0000000e) if-gt                v5, v0, +037h
+
+add-BB@0x12 : [ add-BB@0x1c add-BB@0x2a ]
+	4       (00000012) iget-object          v1, v4, Landroidx/datastore/preferences/protobuf/s0;->b [Ljava/lang/Object;
+	5       (00000016) array-length         v2, v1
+	6       (00000018) if-ge                v0, v2, +009h
+
+add-BB@0x1c : [ add-BB@0x5a ]
+	7       (0000001c) add-int/lit8         v2, v5, 1
+	8       (00000020) sub-int/2addr        v0, v5
+	9       (00000022) invoke-static        v1, v5, v1, v2, v0, Ljava/lang/System;->arraycopy(Ljava/lang/Object; I Ljava/lang/Object; I I)V
+	10      (00000028) goto                 +19h
+
+add-BB@0x2a : [ add-BB@0x5a ]
+	11      (0000002a) mul-int/lit8         v0, v0, 3
+	12      (0000002e) div-int/lit8         v0, v0, 2
+	13      (00000032) add-int/lit8         v0, v0, 1
+	14      (00000036) new-array            v0, v0, [Ljava/lang/Object;
+	15      (0000003a) const/4              v2, 0
+	16      (0000003c) invoke-static        v1, v2, v0, v2, v5, Ljava/lang/System;->arraycopy(Ljava/lang/Object; I Ljava/lang/Object; I I)V
+	17      (00000042) iget-object          v1, v4, Landroidx/datastore/preferences/protobuf/s0;->b [Ljava/lang/Object;
+	18      (00000046) add-int/lit8         v2, v5, 1
+	19      (0000004a) iget                 v3, v4, Landroidx/datastore/preferences/protobuf/s0;->c I
+	20      (0000004e) sub-int/2addr        v3, v5
+	21      (00000050) invoke-static        v1, v5, v0, v2, v3, Ljava/lang/System;->arraycopy(Ljava/lang/Object; I Ljava/lang/Object; I I)V
+	22      (00000056) iput-object          v0, v4, Landroidx/datastore/preferences/protobuf/s0;->b [Ljava/lang/Object;
+
+add-BB@0x5a : 
+	23      (0000005a) iget-object          v0, v4, Landroidx/datastore/preferences/protobuf/s0;->b [Ljava/lang/Object;
+	24      (0000005e) aput-object          v6, v0, v5
+	25      (00000062) iget                 v5, v4, Landroidx/datastore/preferences/protobuf/s0;->c I
+	26      (00000066) add-int/lit8         v5, v5, 1
+	27      (0000006a) iput                 v5, v4, Landroidx/datastore/preferences/protobuf/s0;->c I
+	28      (0000006e) iget                 v5, v4, Ljava/util/AbstractList;->modCount I
+	29      (00000072) add-int/lit8         v5, v5, 1
+	30      (00000076) iput                 v5, v4, Ljava/util/AbstractList;->modCount I
+	31      (0000007a) return-void          
+
+add-BB@0x7c : 
+	32      (0000007c) new-instance         v6, Ljava/lang/IndexOutOfBoundsException;
+	33      (00000080) const-string         v0, "Index:"
+	34      (00000084) const-string         v1, ", Size:"
+	35      (00000088) invoke-static        v0, v5, v1, Lv1/a;->p(Ljava/lang/String; I Ljava/lang/String;)Ljava/lang/StringBuilder;
+	36      (0000008e) move-result-object   v5
+	37      (00000090) iget                 v0, v4, Landroidx/datastore/preferences/protobuf/s0;->c I
+	38      (00000094) invoke-virtual       v5, v0, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+	39      (0000009a) invoke-virtual       v5, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+	40      (000000a0) move-result-object   v5
+	41      (000000a2) invoke-direct        v6, v5, Ljava/lang/IndexOutOfBoundsException;-><init>(Ljava/lang/String;)V
+	42      (000000a8) throw                v6
+
